@@ -2,13 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GAZT"
-             x:Class="GAZT.MainPage">
+             x:Class="GAZT.MainPage" FlowDirection="RightToLeft">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+
+        <StackLayout Orientation="Horizontal">
+            <!--<Button Text="{local:Translate ButtonA}"></Button>-->
+            <Button Text="{x:Static local:AppResources.ButtonA}"></Button>
+            <Button Text="Button 2"></Button>
+            <Button Text="Button 3"></Button>
+        </StackLayout>
+
+        <Button Text="Change Direction" Clicked="Button_Clicked"></Button>
+
+
     </StackLayout>
+
 
 </ContentPage>

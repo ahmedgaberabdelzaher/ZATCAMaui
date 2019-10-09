@@ -2,17 +2,24 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GAZT.Views;
+using System.Globalization;
+
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
 {
     public partial class App : Application
     {
+        public static CultureInfo ci;
         public App()
         {
+            String langName = "ar-AE";// "en-US";
+            ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+
             InitializeComponent();
 
-            MainPage = new LogInView();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
