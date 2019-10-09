@@ -12,28 +12,14 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
   </ItemGroup>
-
   <ItemGroup>
-    <Compile Update="Resources\Ar.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Ar.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\En.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>En.resx</DependentUpon>
-    </Compile>
+    <Compile Remove="LogInView.cs" />
+    <Compile Remove="Views\BorderlessEntry.xaml.cs" />
   </ItemGroup>
-
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Ar.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Ar.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\En.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>En.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
   </ItemGroup>
 </Project>

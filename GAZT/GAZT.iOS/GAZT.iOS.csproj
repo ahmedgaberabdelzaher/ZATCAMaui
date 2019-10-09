@@ -95,6 +95,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -153,8 +154,35 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{D8A46201-4EA5-4648-BDC5-D45C96378DE7}</Project>
+      <Project>{D36E23EC-2F43-4CF9-BFCE-B8EBA9F3A4A2}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_bg_green_full.png" />
+    <BundleResource Include="Resources\ic_background_green.png" />
+    <BundleResource Include="Resources\ic_bell.png" />
+    <BundleResource Include="Resources\ic_bell%402x.png" />
+    <BundleResource Include="Resources\ic_bell%403x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full%402x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full%403x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full2.png" />
+    <BundleResource Include="Resources\ic_bg_green_full2%402x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full2%403x.png" />
+    <BundleResource Include="Resources\ic_checkbox.png" />
+    <BundleResource Include="Resources\ic_checkbox%402x.png" />
+    <BundleResource Include="Resources\ic_checkbox%403x.png" />
+    <BundleResource Include="Resources\ic_logo.png" />
+    <BundleResource Include="Resources\ic_logo%402x.png" />
+    <BundleResource Include="Resources\ic_logo%403x.png" />
+    <BundleResource Include="Resources\ic_password.png" />
+    <BundleResource Include="Resources\ic_password%402x.png" />
+    <BundleResource Include="Resources\ic_password%403x.png" />
+    <BundleResource Include="Resources\ic_user.png" />
+    <BundleResource Include="Resources\ic_user%402x.png" />
+    <BundleResource Include="Resources\ic_user%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomRenderer\" />
   </ItemGroup>
 </Project>
