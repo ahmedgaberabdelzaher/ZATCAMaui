@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GAZT.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -11,7 +12,7 @@ namespace GAZT
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LogInView();
         }
 
         protected override void OnStart()

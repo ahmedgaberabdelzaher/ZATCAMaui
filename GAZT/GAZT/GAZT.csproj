@@ -12,4 +12,14 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="LogInView.cs" />
+    <Compile Remove="Views\BorderlessEntry.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
+  </ItemGroup>
 </Project>
