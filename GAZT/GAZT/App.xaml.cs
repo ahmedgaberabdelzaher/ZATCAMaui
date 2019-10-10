@@ -10,6 +10,7 @@ namespace GAZT
 {
     public partial class App : Application
     {
+        public static bool IsArabic = false;
         public static CultureInfo ci;
         public App()
         {
@@ -19,7 +20,7 @@ namespace GAZT
 
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LogInView();
         }
 
         protected override void OnStart()

@@ -24,6 +24,11 @@ namespace GAZT.Droid.CustomRenderer
             base.OnElementChanged(e);
             if (e.OldElement == null)
             {
+                if(App.IsArabic)
+                {
+                    Control.TextDirection = Android.Views.TextDirection.Rtl;
+                    Control.Gravity = Android.Views.GravityFlags.Right;
+                }
                 Control.Background = null;
                 fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
                 Control.TextSize = (float)fontSize;

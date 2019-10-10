@@ -24,6 +24,10 @@ namespace GAZT.iOS.CustomRenderer
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
+                if (App.IsArabic)
+                {
+                    Control.TextAlignment = UITextAlignment.Right;
+                }
 
             }
 

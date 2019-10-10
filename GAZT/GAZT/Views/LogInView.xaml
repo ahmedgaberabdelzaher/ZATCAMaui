@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
 
-            <Grid RowSpacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0">
+            <Grid RowSpacing="20" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="42*"/>
                     <RowDefinition Height="10*"/>
@@ -15,19 +15,22 @@
                     <RowDefinition Height="8*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="13*"/>
                     <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="67*"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="ic_background_green.png" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                 <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  BackgroundColor="White"  OutlineColor="Olive" BorderColor="Olive" HasShadow="false" CornerRadius="4">
 
                 </Frame>
-                <local:BorderlessEntry Text="" Placeholder="User Name" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="12,1,0,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                <local:BorderlessEntry x:Name="UserNameMobileNumber"  Text="" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  VerticalOptions="CenterAndExpand" BackgroundColor="White">
 
                 </local:BorderlessEntry>
-                <Image Source="ic_user.png"  Grid.Row="1" Grid.Column="2"  HorizontalOptions="Start" VerticalOptions="Center" />
-                <Label Text="User Name" Grid.Row="1" Grid.Column="0" Margin="20,-10,0,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White"/>
+                <Image Source="ic_user.png" Grid.Row="1" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
+                <Label Text=" User Name " Grid.Row="1" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" TextColor="Olive"/>
+            <Button Margin="10" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Ar" Clicked="OnArClicked" BackgroundColor="Teal"/>
+                            <Button Margin="10" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="En" Clicked="OnEnClicked" BackgroundColor="Teal"/>
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>
