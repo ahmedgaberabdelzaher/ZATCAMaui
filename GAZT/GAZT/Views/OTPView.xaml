@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"      xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="GAZT.Views.OTPView" Title="OTPView">
+    <ContentPage.Content>
+         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <Grid.RowDefinitions>
+            <RowDefinition Height="42*" />
+            <RowDefinition Height="4*" />
+                            <RowDefinition Height="7*" />
+            <RowDefinition Height="4*" />
+                            <RowDefinition Height="9*" />
+            <RowDefinition Height="4*" />
+                  <RowDefinition Height="30*" />
+                          
+
+                
+        </Grid.RowDefinitions>
+ <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="13*"/>
+                 <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="3*"/>
+                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                 <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="3*"/>
+                 <ColumnDefinition Width="16*"/>
+                   <ColumnDefinition Width="64*"/>
+                 <ColumnDefinition Width="14*"/>
+                </Grid.ColumnDefinitions>
+            
+       
+        <skia:SKCanvasView x:Name="canvasView"
+                         Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10"
+                           PaintSurface="OnCanvasViewPaintSurface" />
+           
+                
+             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <Grid.RowDefinitions>
+            <RowDefinition Height="27*" />
+            <RowDefinition Height="53*" />
+                           
+                            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+ <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+              
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit"/>
+                
+                </Grid>
+            
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <Image Source="ic_logo.png" Aspect="AspectFit"/>
+            </StackLayout>
+                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                
+                <Label Text="OTP is sent to your registered mobile number ******8549" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
+            </StackLayout>
+            <Frame Grid.Row="4" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" HeightRequest="50" WidthRequest="50" CornerRadius="4" HasShadow="true" />
+
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

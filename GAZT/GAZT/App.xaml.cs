@@ -14,13 +14,13 @@ namespace GAZT
         public static CultureInfo ci;
         public App()
         {
-            String langName = "en-US";// "ar-AE";//
+            String langName = "ar-AE";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
             InitializeComponent();
 
-            MainPage = new LogInView();
+            MainPage = new OTPView();
         }
 
         protected override void OnStart()

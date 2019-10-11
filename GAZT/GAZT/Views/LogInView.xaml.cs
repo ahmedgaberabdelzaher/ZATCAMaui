@@ -32,24 +32,6 @@ namespace GAZT.Views
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
-            //SKImageInfo info = args.Info;
-            //SKSurface surface = args.Surface;
-            //SKCanvas canvas = surface.Canvas;
-
-            //canvas.Clear();
-
-            //SKRect rect = new SKRect(100, 100, info.Height - 100, info.Width - 100);
-            //float startAngle = 0;// (float)startAngleSlider.Value;
-            //float sweepAngle = 0; //(float)sweepAngleSlider.Value;
-
-            //canvas.DrawOval(rect, outlinePaint);
-
-            //using (SKPath path = new SKPath())
-            //{
-            //    path.AddArc(rect, startAngle, sweepAngle);
-            //    canvas.DrawPath(path, arcPaint);
-            //}
-
             SKImageInfo info = args.Info;
             SKSurface surface = args.Surface;
             SKCanvas canvas = surface.Canvas;
@@ -74,11 +56,7 @@ namespace GAZT.Views
             float Radius = deviceHeight+ YPoint;
             path.AddCircle(XPoint,-YPoint, Radius);
 
-            //path.AddCircle(center.X - radius / 2, center.Y - radius / 2, radius);
-            //path.AddCircle(center.X - radius / 2, center.Y + radius / 2, radius);
-            //path.AddCircle(center.X + radius / 2, center.Y - radius / 2, radius);
-            //path.AddCircle(center.X + radius / 2, center.Y + radius / 2, radius);
-
+           
             SKPaint paint = new SKPaint()
             {
                 Style = SKPaintStyle.StrokeAndFill,
