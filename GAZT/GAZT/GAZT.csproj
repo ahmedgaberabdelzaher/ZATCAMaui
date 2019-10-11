@@ -13,6 +13,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="XamarinForms.CardView" Version="1.1.1.5" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="LogInView.cs" />
@@ -20,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

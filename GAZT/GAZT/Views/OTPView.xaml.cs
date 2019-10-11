@@ -4,14 +4,49 @@ using System.Collections.Generic;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
+using GAZT.Helper;
 
 namespace GAZT.Views
 {
     public partial class OTPView : ContentPage
     {
+        double DeviceHeight;
+        double DeviceWidth;
+
         public OTPView()
         {
             InitializeComponent();
+            OTPOne.HeightRequest = 50;
+            OTPOne.WidthRequest = 50;
+            OTPEEntryOne.HeightRequest = 50;
+            OTPEEntryOne.WidthRequest = 50;
+            DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+            DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+
+        }
+        private void SetOTPBoxHeightWidth()
+        {
+            double HTAndWT = DeviceWidth * 65 / 100;
+            OTPOne.HeightRequest = HTAndWT;
+            OTPOne.WidthRequest = HTAndWT;
+            OTPEEntryOne.HeightRequest = HTAndWT;
+            OTPEEntryOne.WidthRequest = HTAndWT;
+
+            OTPTwo.HeightRequest = HTAndWT;
+            OTPTwo.WidthRequest = HTAndWT;
+            OTPEEntryTwo.HeightRequest = HTAndWT;
+            OTPEEntryTwo.WidthRequest = HTAndWT;
+
+            OTPThree.HeightRequest = HTAndWT;
+            OTPThree.WidthRequest = HTAndWT;
+            OTPEEntryThree.HeightRequest = HTAndWT;
+            OTPEEntryThree.WidthRequest = HTAndWT;
+
+            OTPFour.HeightRequest = HTAndWT;
+            OTPFour.WidthRequest = HTAndWT;
+            OTPEEntryFour.HeightRequest = HTAndWT;
+            OTPEEntryFour.WidthRequest = HTAndWT;
+
         }
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {

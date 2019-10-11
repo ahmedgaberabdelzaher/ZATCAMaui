@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"      xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="GAZT.Views.OTPView" Title="OTPView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"      xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="GAZT.Views.OTPView" Title="OTPView">
     <ContentPage.Content>
          <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
              <Grid.RowDefinitions>
@@ -16,14 +16,13 @@
         </Grid.RowDefinitions>
  <Grid.ColumnDefinitions>
                      <ColumnDefinition Width="13*"/>
-                 <ColumnDefinition Width="30*"/>
+                 <ColumnDefinition Width="16*"/>
                 <ColumnDefinition Width="3*"/>
-                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="3*"/>
                  <ColumnDefinition Width="16*"/>
                                 <ColumnDefinition Width="3*"/>
                  <ColumnDefinition Width="16*"/>
-                   <ColumnDefinition Width="64*"/>
+                                <ColumnDefinition Width="3*"/>
+                 <ColumnDefinition Width="16*"/>
                  <ColumnDefinition Width="14*"/>
                 </Grid.ColumnDefinitions>
             
@@ -56,8 +55,31 @@
                 
                 <Label Text="OTP is sent to your registered mobile number ******8549" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
             </StackLayout>
-            <Frame Grid.Row="4" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" HeightRequest="50" WidthRequest="50" CornerRadius="4" HasShadow="true" />
+            <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" CornerRadius="6" HasShadow="false" >
 
+            </Frame>
+                                                     <local:BorderlessEntry x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
+
+              
+              <Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" CornerRadius="6" HasShadow="false" >
+
+            </Frame>
+                                                     <local:BorderlessEntry x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
+                                                     
+            
+              <Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" CornerRadius="6" HasShadow="false" >
+
+            </Frame>
+                                                     <local:BorderlessEntry x:Name="OTPEEntryThree" Grid.Row="4" Grid.Column="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
+                                                     
+            
+              <Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" CornerRadius="6" HasShadow="false" >
+
+            </Frame>
+                                                     <local:BorderlessEntry x:Name="OTPEEntryFour" Grid.Row="4" Grid.Column="7"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
+                                                     
+            
+            
             </Grid>
     </ContentPage.Content>
 </ContentPage>
