@@ -1,22 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GAZT"
-             x:Class="GAZT.MainPage" FlowDirection="RightToLeft">
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+              xmlns:tt="clr-namespace:TouchTracking"
+             x:Class="GAZT.MainPage" FlowDirection="RightToLeft" BackgroundColor="Olive">
 
-    <StackLayout>
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*" />
+            <!--<RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />-->
+        </Grid.RowDefinitions>
+ <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                </Style>
 
-        <StackLayout Orientation="Horizontal">
-            <!--<Button Text="{local:Translate ButtonA}"></Button>-->
+                <Style TargetType="Slider">
+                    <Setter Property="Margin" Value="20, 0" />
+                    <Setter Property="Minimum" Value="-360" />
+                    <Setter Property="Maximum" Value="360" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+    
+            
+        <skia:SKCanvasView x:Name="canvasView"
+                         
+                           PaintSurface="OnCanvasViewPaintSurface" />
+           
+    </Grid>
+       <!-- <StackLayout Orientation="Horizontal">
+            Button Text="{local:Translate ButtonA}"></Button>
             <Button Text="{x:Static local:AppResources.ButtonA}"></Button>
             <Button Text="Button 2"></Button>
             <Button Text="Button 3"></Button>
         </StackLayout>
 
         <Button Text="Change Direction" Clicked="Button_Clicked"></Button>
-
-
-    </StackLayout>
+-->
 
 
 </ContentPage>

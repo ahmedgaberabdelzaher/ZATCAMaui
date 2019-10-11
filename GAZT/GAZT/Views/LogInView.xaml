@@ -2,9 +2,110 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GAZT.Views.LogInView"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft">
+                          xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft" >
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+        <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <Grid.RowDefinitions>
+            <RowDefinition Height="42*" />
+            <RowDefinition Height="10*" />
+                            <RowDefinition Height="7*" />
+            <RowDefinition Height="4*" />
+                            <RowDefinition Height="7*" />
+            <RowDefinition Height="4*" />
+                            <RowDefinition Height="6*" />
+            <RowDefinition Height="3*" />
+                 <RowDefinition Height="5*" />
+                                 <RowDefinition Height="12*" />
+
+                
+        </Grid.RowDefinitions>
+ <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="13*"/>
+                 <ColumnDefinition Width="20*"/>
+                 <ColumnDefinition Width="67*"/>
+                </Grid.ColumnDefinitions>
+            
+       
+        <skia:SKCanvasView x:Name="canvasView"
+                         Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                           PaintSurface="OnCanvasViewPaintSurface" />
+           
+                
+             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+             <Grid.RowDefinitions>
+            <RowDefinition Height="27*" />
+            <RowDefinition Height="53*" />
+                           
+                            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+ <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+              
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit"/>
+                
+                </Grid>
+            
+            <StackLayout Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                </StackLayout>
+                                        <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  BackgroundColor="White"  OutlineColor="#c49b2d" BorderColor="#c49b2d" HasShadow="false" CornerRadius="4">
+
+                </Frame>
+               <local:BorderlessEntry  Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  VerticalOptions="CenterAndExpand" BackgroundColor="White">
+
+                </local:BorderlessEntry>
+                <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
+                <Label Text=" User Name " Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" TextColor="#c49b2d"/>
+         <!--   <Button Margin="10" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Ar" Clicked="OnArClicked" BackgroundColor="Teal"/>
+                            <Button Margin="10" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="En" Clicked="OnEnClicked" BackgroundColor="Teal"/>
+-->                            
+                        <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                      
+                </StackLayout>
+
+                        <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  BackgroundColor="White"  OutlineColor="#c49b2d" BorderColor="#c49b2d" HasShadow="false" CornerRadius="4">
+
+                </Frame>
+                <local:BorderlessEntry  Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  VerticalOptions="CenterAndExpand" BackgroundColor="White">
+
+                </local:BorderlessEntry>
+                <Image Source="ic_password.png" Grid.Row="4" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
+                <Label Text=" Password " Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" TextColor="#c49b2d"/>
+                                <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+              
+            </StackLayout>
+                    <!--   <StackLayout Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Padding="10,0,10,0" BackgroundColor="#005e4b">
+              
+                <Label Text="Search" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#c49b2d" >
+    -->              <!--  <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnSearchBtnClick}"/>
+                                      </Label.GestureRecognizers>-->
+               <!-- </Label>-->
+               <!-- <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer clic="{Binding OnSearchBtnClick}"/>
+                                      </StackLayout.GestureRecognizers>-->
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
+                        
+            </Frame>
+              <Label Text="Search"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" TextColor="#c49b2d" >
+          </Label>
+           
+            <StackLayout Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            </StackLayout>
+             <StackLayout Padding="30,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+             <Image  Source="ic_checkbox_check.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label   Text="Accept" TextColor="#c49b2d" HorizontalOptions="Start" VerticalOptions="Center"/>
+            </StackLayout>
+                
+                        </Grid>
+            
+    <!--</Grid>-->
+            
+             
+        <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
 
             <Grid RowSpacing="20" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0">
                 <Grid.RowDefinitions>
@@ -32,6 +133,10 @@
                             <Button Margin="10" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="En" Clicked="OnEnClicked" BackgroundColor="Teal"/>
 
             </Grid>
-        </StackLayout>
+        </StackLayout>-->
+            
+            
+          
+          
     </ContentPage.Content>
 </ContentPage>
