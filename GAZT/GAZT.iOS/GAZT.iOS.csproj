@@ -97,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
     <Compile Include="DependencyServices\DeviceInfo.cs" />
+    <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

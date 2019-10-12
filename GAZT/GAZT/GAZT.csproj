@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="Helper\" />
+    <Folder Include="CustomControl\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -45,5 +46,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="CustomControl\CustomLabel.config" />
   </ItemGroup>
 </Project>

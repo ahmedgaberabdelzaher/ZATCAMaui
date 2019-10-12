@@ -20,7 +20,7 @@ namespace GAZT
 
             InitializeComponent();
 
-            MainPage = new OTPView();
+            MainPage = new LogInView();
         }
 
         protected override void OnStart()
