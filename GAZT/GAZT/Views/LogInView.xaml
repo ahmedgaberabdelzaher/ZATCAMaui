@@ -58,7 +58,7 @@
 
                 </local:BorderlessEntry>
                 <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
-                <Label Text="{x:Static local:AppResources.UserName}" Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+                <local:CustomLabel Text="{x:Static local:AppResources.UserName}" Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
          <!--   <Button Margin="10" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Ar" Clicked="OnArClicked" BackgroundColor="Teal"/>
                             <Button Margin="10" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="En" Clicked="OnEnClicked" BackgroundColor="Teal"/>
 -->                            
@@ -73,7 +73,7 @@
 
                 </local:BorderlessEntry>
                 <Image Source="ic_password.png" Grid.Row="4" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
-                <Label Text="{x:Static local:AppResources.Password}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White"/>
+                <local:CustomLabel Text="{x:Static local:AppResources.Password}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White"/>
                                 <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
               
             </StackLayout>
@@ -90,14 +90,14 @@
             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
                         
             </Frame>
-              <Label Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
-          </Label>
+              <local:CustomLabel Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
+          </local:CustomLabel>
            
             <StackLayout Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
              <StackLayout Padding="30,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
              <Image  Source="ic_checkbox_check.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Label   Text="{x:Static local:AppResources.TermsAndConditions}"  Style="{StaticResource SmallGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center"/>
+            <local:CustomLabel   Text="{x:Static local:AppResources.TermsAndConditions}"  Style="{StaticResource SmallGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center"/>
             </StackLayout>
                 
                         </Grid>

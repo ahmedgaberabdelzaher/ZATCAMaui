@@ -129,4 +129,14 @@
    <data name="TermsAndConditions" xml:space="preserve">
     <value> Accept </value>
   </data>
+   <data name="OTPSentInformation" xml:space="preserve">
+    <value>OTP is sent to your registered mobile number ******8549</value>
+  </data>
+   <data name="AlertImage" xml:space="preserve">
+    <value>  ic_bell.png</value>
+  </data>
+   <data name="UnpaidBillDescription" xml:space="preserve">
+    <value>Total of the bills unpaid</value>
+  </data>
+
 </root>

@@ -12,7 +12,7 @@ using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Graphics;
-using GAZT.CustomControl;
+using GAZT;
 using GAZT.Droid.CustomRenderer;
 [assembly: ExportRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer))]
 namespace GAZT.Droid.CustomRenderer

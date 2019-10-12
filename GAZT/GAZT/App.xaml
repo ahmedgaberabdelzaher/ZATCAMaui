@@ -40,7 +40,7 @@
               <Style x:Key ="MediumWhiteLabelStyle" TargetType="Label">
                  <Setter Property="FontSize">
                 <Setter.Value>
-                  <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20"/>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="22"/>
                 </Setter.Value>
             </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />

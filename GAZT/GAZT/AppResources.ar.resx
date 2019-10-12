@@ -129,4 +129,10 @@
    <data name="TermsAndConditions" xml:space="preserve">
     <value>AcceptAr</value>
   </data>
+  <data name="OTPSentInformation" xml:space="preserve">
+    <value>OTP is sent to your registered mobile number ******8549</value>
+  </data>
+   <data name="AlertImage" xml:space="preserve">
+    <value>ic_bell.png</value>
+  </data>
 </root>

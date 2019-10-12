@@ -70,5 +70,23 @@ namespace GAZT {
                 return ResourceManager.GetString("TermsAndConditions", resourceCulture);
             }
         }
+        
+        public static string OTPSentInformation {
+            get {
+                return ResourceManager.GetString("OTPSentInformation", resourceCulture);
+            }
+        }
+        
+        public static string AlertImage {
+            get {
+                return ResourceManager.GetString("AlertImage", resourceCulture);
+            }
+        }
+        
+        public static string UnpaidBillDescription {
+            get {
+                return ResourceManager.GetString("UnpaidBillDescription", resourceCulture);
+            }
+        }
     }
 }

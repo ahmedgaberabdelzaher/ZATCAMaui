@@ -1,5 +1,5 @@
 ﻿using System;
-using GAZT.CustomControl;
+using GAZT;
 using GAZT.iOS.CustomRenderer;
 using Foundation;
 using UIKit;

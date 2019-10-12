@@ -53,7 +53,7 @@
             </StackLayout>
                      <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 
-                <Label Text="OTP is sent to your registered mobile number ******8549" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
+                <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource SmallGoldLabelStyle}"   HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
             </StackLayout>
             <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="#c49b2d" OutlineColor="#c49b2d" CornerRadius="6" HasShadow="false" >
 

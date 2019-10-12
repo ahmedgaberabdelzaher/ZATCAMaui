@@ -197,6 +197,7 @@
     <BundleResource Include="Resources\ic_uncheckbox.png" />
     <BundleResource Include="Resources\ic_uncheckbox%402x.png" />
     <BundleResource Include="Resources\ic_uncheckbox%403x.png" />
+    <BundleResource Include="Resources\circle.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderer\" />

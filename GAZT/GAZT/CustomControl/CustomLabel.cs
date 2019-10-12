@@ -1,6 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
-namespace GAZT.CustomControl
+namespace GAZT
 {
     public class CustomLabel : Label
     {
