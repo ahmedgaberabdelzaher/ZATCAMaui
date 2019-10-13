@@ -9,9 +9,18 @@ namespace GAZT.Views
 {
     public partial class MyCertificate : ContentPage
     {
+        List<string> list = new List<string>();
         public MyCertificate()
         {
             InitializeComponent();
+            list.Add("ghgh");
+            list.Add("fgfg");
+            list.Add("ff");
+            list.Add("ss");
+            SearchListView.ItemsSource = list;
+            EstimateZakatReturns.ItemsSource = list;
+
+
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

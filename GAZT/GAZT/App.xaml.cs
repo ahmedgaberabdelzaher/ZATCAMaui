@@ -20,7 +20,7 @@ namespace GAZT
 
             InitializeComponent();
 
-            MainPage = new DashboardView();
+            MainPage = new MyCertificate();
         }
 
         protected override void OnStart()
