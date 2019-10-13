@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="Gray"
                xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
     xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView">
     <ContentPage.Content>
@@ -118,8 +118,7 @@
                  <ColumnDefinition Width="40*"/>
                                                     <ColumnDefinition Width="10*"/>
                  <ColumnDefinition Width="40*"/>
-                 <!-- <ColumnDefinition Width="15*"/>
-                 <ColumnDefinition Width="35*"/> -->        
+  
                 </Grid.ColumnDefinitions>
                                                 
                                             
@@ -137,25 +136,114 @@
                                                 <local:CustomLabel Text="Overdue returns " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" FontSize="12"></local:CustomLabel>
                                                 
                                                 </StackLayout>
-                                               <!--  <local:CustomLabel Grid.Row="0" Grid.Column="1" Text="3" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0" FontSize="12"></local:CustomLabel>
-                                                <local:CustomLabel Grid.Row="1" Grid.Column="1"  Text="Overdue returns " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" FontSize="12"></local:CustomLabel>
--->
-                                                  <!--<Image Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
-
-                                                <local:CustomLabel Grid.Row="0" Grid.Column="4" Text="3" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,0"></local:CustomLabel>
-                                                <local:CustomLabel Grid.Row="1" Grid.Column="4"  Text="Overdue " HorizontalOptions="Start" VerticalOptions="Center" Margin="0,0,0,0"></local:CustomLabel>
-      -->
-                                                </Grid>
+                                                                                              </Grid>
                                         </StackLayout>
+                                      
             </Grid>
                 </Frame>
             </ContentView>
         </DataTemplate>
     </cards:CarouselView.ItemTemplate>
-
+    
+    
    
 </cards:CarouselView>
+                
+              <cards:CarouselView Grid.Row="9" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="EstimateZakatReturns" >
+    <cards:CarouselView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Frame 
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" 
+                    HasShadow="true"
+                    IsClippedToBounds="true"
+                    CornerRadius="20"
+                                    BorderColor="Gray"
+                    BackgroundColor="White">
+                                        <Image Source="{Binding Source}"/>   
+                
+                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                                <local:CustomLabel Text="Estimate Zakat returns" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12"></local:CustomLabel>
+                                                
+                                                </StackLayout>
+                
+                  
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CarouselView.ItemTemplate>
+    
+    
+   
+</cards:CarouselView>
+                
+                 <cards:CarouselView Grid.Row="9" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="MyCertificates" >
+    <cards:CarouselView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Frame 
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" 
+                    HasShadow="true"
+                    IsClippedToBounds="true"
+                    CornerRadius="20"
+                                    BorderColor="Gray"
+                    BackgroundColor="White">
+                                        <Image Source="{Binding Source}"/>   
+                
+                
+                  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                                <local:CustomLabel Text="My Certificate" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12"></local:CustomLabel>
+                                                
+                                                </StackLayout>
+                  
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CarouselView.ItemTemplate>
+    
+    
+   
+</cards:CarouselView>
+                
+                 <cards:CarouselView Grid.Row="9" Grid.Column="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="MyBillsInvoices" >
+    <cards:CarouselView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Frame 
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" 
+                    HasShadow="true"
+                    IsClippedToBounds="true"
+                    CornerRadius="20"
+                                    BorderColor="Gray"
+                    BackgroundColor="White">
+                                        <Image Source="{Binding Source}"/>   
+                
+                  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                                <local:CustomLabel Text="My bills(Invoices)" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12"></local:CustomLabel>
+                                                
+                                                </StackLayout>
+                
+                  
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CarouselView.ItemTemplate>
+    
+    
+   
+</cards:CarouselView>
+                
            </Grid> 
+            
              </Grid>   
     </ContentPage.Content>
 </ContentPage>
