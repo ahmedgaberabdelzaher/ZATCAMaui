@@ -23,9 +23,9 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
-            EstimateZakatReturns.ItemsSource = Items;
-            MyCertificates.ItemsSource = Items;
-            MyBillsInvoices.ItemsSource = Items;
+            //EstimateZakatReturns.ItemsSource = Items;
+            //MyCertificates.ItemsSource = Items;
+            //MyBillsInvoices.ItemsSource = Items;
             //DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             //DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             //SetEstimateZakatReturnsLayoutHeightWidth();

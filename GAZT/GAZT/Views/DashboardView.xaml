@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
-             
              xmlns:local="clr-namespace:GAZT;assembly:GAZT" 
              x:Class="GAZT.Views.DashboardView" BackgroundColor="White"
                xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
-    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView">
+    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" Title="Dashboard">
     <ContentPage.Content>
         
          <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -32,10 +31,10 @@
            <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />
              <RowDefinition Height="5*" />
-            <RowDefinition Height="31*" />
+            <RowDefinition Height="35*" />
              <RowDefinition Height="4*" />
              <RowDefinition Height="13*" />
-             <RowDefinition Height="12*" />
+             <RowDefinition Height="8*" />
              <RowDefinition Height="6*" />
                      <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
@@ -72,8 +71,8 @@
                     Padding="0" 
                     HasShadow="true"
                     IsClippedToBounds="true"
-                    CornerRadius="10"
-                                    BorderColor="Gray"
+                    CornerRadius="14.5"
+                                    BorderColor="#B1B1B1"
                     BackgroundColor="White">
                                         <Image Source="{Binding Source}"/> 
  
@@ -152,19 +151,18 @@
    
 </cards:CarouselView>
                 
-              <cards:CarouselView Grid.Row="9" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="EstimateZakatReturns" >
-    <cards:CarouselView.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
+              
                 <Frame 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="0" 
-                    HasShadow="true"
+                  Style="{StaticResource FrameStyle}"
                     IsClippedToBounds="true"
-                    CornerRadius="20"
-                                    BorderColor="Gray"
-                    BackgroundColor="White">
+                   
+                                  
+                    Grid.Row="9"
+                    Grid.Column="1"
+                  >
                                         <Image Source="{Binding Source}"/>   
                 
                  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
@@ -175,55 +173,57 @@
                 
                   
                 </Frame>
-            </ContentView>
-        </DataTemplate>
-    </cards:CarouselView.ItemTemplate>
-</cards:CarouselView>
+           
                 
-                 <cards:CarouselView Grid.Row="9" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="MyCertificates" >
-    <cards:CarouselView.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
+                
                 <Frame 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="0" 
-                    HasShadow="true"
+                   Style="{StaticResource FrameStyle}"
                     IsClippedToBounds="true"
-                    CornerRadius="20"
-                                    BorderColor="Gray"
-                    BackgroundColor="White">
+                  
+                    Grid.Row="9"
+                    Grid.Column="3"
+                   >
                                         <Image Source="{Binding Source}"/>   
                 
                 
                   <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
-                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
-                                                <local:CustomLabel Text="My Certificate" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12"></local:CustomLabel>
-                                                
+                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start">
+                             <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}"/>
+                                      </Image.GestureRecognizers>
+                        </Image>
+                                                <local:CustomLabel Text="My Certificate" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12">
+                             <local:CustomLabel.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}"/>
+                                      </local:CustomLabel.GestureRecognizers>
+                        </local:CustomLabel>
+                                                <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}"/>
+                                      </StackLayout.GestureRecognizers>
                                                 </StackLayout>
+                    
                   
+                                                <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}"/>
+                                      </Frame.GestureRecognizers>
                 </Frame>
-            </ContentView>
-        </DataTemplate>
-    </cards:CarouselView.ItemTemplate>
-    
-    
-   
-</cards:CarouselView>
+            
                 
-                 <cards:CarouselView Grid.Row="9" Grid.Column="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="MyBillsInvoices" >
-    <cards:CarouselView.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
+                
                 <Frame 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="0" 
-                    HasShadow="true"
+                   
                     IsClippedToBounds="true"
-                    CornerRadius="20"
-                                    BorderColor="Gray"
-                    BackgroundColor="White">
+                   
+                           Style="{StaticResource FrameStyle}"        
+                    Grid.Row="9"
+                    Grid.Column="5"
+                   >
                                         <Image Source="{Binding Source}"/>   
                 
                   <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
@@ -234,12 +234,7 @@
                 
                   
                 </Frame>
-            </ContentView>
-        </DataTemplate>
-    </cards:CarouselView.ItemTemplate>
-    
-    
-</cards:CarouselView>
+            
                    <BoxView  Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="7"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5"/>
                  <Image Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="7" Source="circle.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                                   <Image Grid.Row="12" Grid.Column="1"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>

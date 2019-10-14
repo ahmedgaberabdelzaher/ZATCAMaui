@@ -10,7 +10,7 @@ namespace GAZT
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
-        public ICommand OnLoginButtonClicked { get; set; }
+        public ICommand OnSubmitClicked { get; set; }
         #endregion
 
         #region Property
@@ -48,10 +48,9 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-            OnLoginButtonClicked = new RelayCommand(async () =>
+            OnSubmitClicked = new RelayCommand(async () =>
             {
-                bool IsComingFromSearch = true;
-                // _navigationService.NavigateTo(App.LoginView);
+                 _navigationService.NavigateTo(App.DashboardView);
 
             });
 

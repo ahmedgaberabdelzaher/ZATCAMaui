@@ -52,11 +52,11 @@
             
             <StackLayout Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
                 </StackLayout>
-                                        <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  BackgroundColor="White"  OutlineColor="#c49b2d" BorderColor="#c49b2d" HasShadow="false" CornerRadius="4">
+                                        <Frame Grid.Row="2" Grid.Column="0"  Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
 
                 </Frame>
                <local:BorderlessEntry  Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  VerticalOptions="CenterAndExpand" BackgroundColor="White">
-
+               
                 </local:BorderlessEntry>
                 <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
                 <local:CustomLabel Text="{x:Static local:AppResources.UserName}" Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
@@ -67,7 +67,7 @@
                                       
                 </StackLayout>
 
-                        <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  BackgroundColor="White"  OutlineColor="#c49b2d" BorderColor="#c49b2d" HasShadow="false" CornerRadius="4">
+                        <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0"  Style="{StaticResource FrameStyle}">
 
                 </Frame>
                 <local:BorderlessEntry  Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  VerticalOptions="CenterAndExpand" BackgroundColor="White">
@@ -89,20 +89,21 @@
                                         <TapGestureRecognizer clic="{Binding OnSearchBtnClick}"/>
                                       </StackLayout.GestureRecognizers>-->
             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
-                   <Label Text="Search" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#c49b2d" >
-    -->           <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}"/>
-                                      </Label.GestureRecognizers>
-              </Label>      
+                  
             </Frame>
               <local:CustomLabel Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
-          </local:CustomLabel>
+          <local:CustomLabel.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}"/>
+                                      </local:CustomLabel.GestureRecognizers>
+            </local:CustomLabel>
            
             <StackLayout Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
              <StackLayout Padding="30,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-             <Image  Source="ic_checkbox_check.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <local:CustomLabel   Text="{x:Static local:AppResources.TermsAndConditions}"  Style="{StaticResource SmallGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center"/>
+             <Image  Source="ic_checkbox.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <local:CustomLabel   Text="{x:Static local:AppResources.TermsAndConditions}"  Style="{StaticResource SmallGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center">
+                     
+                </local:CustomLabel>
             </StackLayout>
                 
                         </Grid>

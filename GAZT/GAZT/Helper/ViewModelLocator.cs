@@ -14,7 +14,7 @@ namespace GAZT
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<LogInViewModel>();
-            SimpleIoc.Default.Register<LogInViewModel>();
+            SimpleIoc.Default.Register<OTPViewModel>();
             SimpleIoc.Default.Register<DashboardViewModel>();
             SimpleIoc.Default.Register<MyCertificateViewModel>();
 
@@ -100,6 +100,7 @@ namespace GAZT
             var navigationService = new NavigationService();
             navigationService.Configure(App.LoginView, typeof(LogInView));
             navigationService.Configure(App.OTPView, typeof(OTPView));
+            navigationService.Configure(App.DashboardView, typeof(DashboardView));
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
 
             return navigationService;
