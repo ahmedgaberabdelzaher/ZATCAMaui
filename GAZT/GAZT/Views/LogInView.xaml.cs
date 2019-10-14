@@ -8,10 +8,13 @@ namespace GAZT.Views
 {
     public partial class LogInView : ContentPage
     {
+        LogInViewModel viewModel;
         public LogInView()
         {
+            viewModel = App.Locator.LogInView;
             InitializeComponent();
-           // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+            this.BindingContext = viewModel;
+            // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
         }
         //private void OnArClicked(object sender, EventArgs e)
         //{

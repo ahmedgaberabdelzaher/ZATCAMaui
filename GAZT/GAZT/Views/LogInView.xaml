@@ -4,7 +4,8 @@
              x:Class="GAZT.Views.LogInView"
                           xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
 
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft" >
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft" 
+             Title="Login">
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
              <Grid.RowDefinitions>

@@ -18,7 +18,6 @@ namespace GAZT.Views
             list.Add("ff");
             list.Add("ss");
             SearchListView.ItemsSource = list;
-            EstimateZakatReturns.ItemsSource = list;
 
 
         }
