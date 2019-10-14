@@ -100,7 +100,6 @@
     <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -169,41 +168,87 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_bg_green_full.png" />
-    <BundleResource Include="Resources\ic_background_green.png" />
+    <Folder Include="CustomRenderer\" />
+    <Folder Include="DependencyServices\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />
     <BundleResource Include="Resources\ic_bell%402x.png" />
     <BundleResource Include="Resources\ic_bell%403x.png" />
-    <BundleResource Include="Resources\ic_bg_green_full%402x.png" />
-    <BundleResource Include="Resources\ic_bg_green_full%403x.png" />
-    <BundleResource Include="Resources\ic_bg_green_full2.png" />
-    <BundleResource Include="Resources\ic_bg_green_full2%402x.png" />
-    <BundleResource Include="Resources\ic_bg_green_full2%403x.png" />
     <BundleResource Include="Resources\ic_checkbox.png" />
     <BundleResource Include="Resources\ic_checkbox%402x.png" />
     <BundleResource Include="Resources\ic_checkbox%403x.png" />
-    <BundleResource Include="Resources\ic_logo.png" />
-    <BundleResource Include="Resources\ic_logo%402x.png" />
-    <BundleResource Include="Resources\ic_logo%403x.png" />
+    <BundleResource Include="Resources\ic_dropdown.png" />
+    <BundleResource Include="Resources\ic_dropdown%402x.png" />
+    <BundleResource Include="Resources\ic_dropdown%403x.png" />
+    <BundleResource Include="Resources\ic_home_selected.png" />
+    <BundleResource Include="Resources\ic_home_selected%402x.png" />
+    <BundleResource Include="Resources\ic_home_selected%403x.png" />
+    <BundleResource Include="Resources\ic_language.png" />
+    <BundleResource Include="Resources\ic_language%402x.png" />
+    <BundleResource Include="Resources\ic_language%403x.png" />
     <BundleResource Include="Resources\ic_password.png" />
     <BundleResource Include="Resources\ic_password%402x.png" />
     <BundleResource Include="Resources\ic_password%403x.png" />
+    <BundleResource Include="Resources\ic_question_selected.png" />
+    <BundleResource Include="Resources\ic_question_selected%402x.png" />
+    <BundleResource Include="Resources\ic_question_selected%403x.png" />
+    <BundleResource Include="Resources\ic_question.png" />
+    <BundleResource Include="Resources\ic_question%402x.png" />
+    <BundleResource Include="Resources\ic_question%403x.png" />
+    <BundleResource Include="Resources\ic_user_2_selected.png" />
+    <BundleResource Include="Resources\ic_user_2_selected%402x.png" />
+    <BundleResource Include="Resources\ic_user_2_selected%403x.png" />
+    <BundleResource Include="Resources\ic_user_2.png" />
+    <BundleResource Include="Resources\ic_user_2%402x.png" />
+    <BundleResource Include="Resources\ic_user_2%403x.png" />
     <BundleResource Include="Resources\ic_user.png" />
     <BundleResource Include="Resources\ic_user%402x.png" />
     <BundleResource Include="Resources\ic_user%403x.png" />
-    <BundleResource Include="Resources\ic_checkbox_check.png" />
-    <BundleResource Include="Resources\ic_checkbox_check%402x.png" />
-    <BundleResource Include="Resources\ic_checkbox_check%403x.png" />
-    <BundleResource Include="Resources\ic_uncheckbox.png" />
-    <BundleResource Include="Resources\ic_uncheckbox%402x.png" />
-    <BundleResource Include="Resources\ic_uncheckbox%403x.png" />
-    <BundleResource Include="Resources\circle.png" />
-    <BundleResource Include="Resources\Icon metro-user%402x.png" />
-    <BundleResource Include="Resources\Icon-metro-user%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomRenderer\" />
-    <Folder Include="DependencyServices\" />
+    <BundleResource Include="Resources\IOS_user.zip" />
+    <BundleResource Include="Resources\check-mark.png" />
+    <BundleResource Include="Resources\check-mark%402x.png" />
+    <BundleResource Include="Resources\check-mark%403x.png" />
+    <BundleResource Include="Resources\file-2.png" />
+    <BundleResource Include="Resources\file-2%402x.png" />
+    <BundleResource Include="Resources\file-2%403x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full.png" />
+    <BundleResource Include="Resources\ic_bg_green_full%402x.png" />
+    <BundleResource Include="Resources\ic_bg_green_full%403x.png" />
+    <BundleResource Include="Resources\ic_certeficate.png" />
+    <BundleResource Include="Resources\ic_certeficate%402x.png" />
+    <BundleResource Include="Resources\ic_certeficate%403x.png" />
+    <BundleResource Include="Resources\ic_check_circle.png" />
+    <BundleResource Include="Resources\ic_check_circle%402x.png" />
+    <BundleResource Include="Resources\ic_check_circle%403x.png" />
+    <BundleResource Include="Resources\ic_file.png" />
+    <BundleResource Include="Resources\ic_file%402x.png" />
+    <BundleResource Include="Resources\ic_file%403x.png" />
+    <BundleResource Include="Resources\ic_loading.png" />
+    <BundleResource Include="Resources\ic_loading%402x.png" />
+    <BundleResource Include="Resources\ic_loading%403x.png" />
+    <BundleResource Include="Resources\ic_logo.png" />
+    <BundleResource Include="Resources\ic_logo%402x.png" />
+    <BundleResource Include="Resources\ic_logo%403x.png" />
+    <BundleResource Include="Resources\ic_money.png" />
+    <BundleResource Include="Resources\ic_money%402x.png" />
+    <BundleResource Include="Resources\ic_money%403x.png" />
+    <BundleResource Include="Resources\ic_paperpin.png" />
+    <BundleResource Include="Resources\ic_paperpin%402x.png" />
+    <BundleResource Include="Resources\ic_paperpin%403x.png" />
+    <BundleResource Include="Resources\ic_rectangle_sm.png" />
+    <BundleResource Include="Resources\ic_rectangle_sm%402x.png" />
+    <BundleResource Include="Resources\ic_rectangle_sm%403x.png" />
+    <BundleResource Include="Resources\money.png" />
+    <BundleResource Include="Resources\money%402x.png" />
+    <BundleResource Include="Resources\money%403x.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank%402x.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank%403x.png" />
+    <BundleResource Include="Resources\ic_home.png" />
+    <BundleResource Include="Resources\ic_home%402x.png" />
+    <BundleResource Include="Resources\ic_home%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
