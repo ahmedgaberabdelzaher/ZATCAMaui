@@ -89,7 +89,11 @@
                                         <TapGestureRecognizer clic="{Binding OnSearchBtnClick}"/>
                                       </StackLayout.GestureRecognizers>-->
             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
-                        
+                   <Label Text="Search" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#c49b2d" >
+    -->           <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}"/>
+                                      </Label.GestureRecognizers>
+              </Label>      
             </Frame>
               <local:CustomLabel Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
           </local:CustomLabel>

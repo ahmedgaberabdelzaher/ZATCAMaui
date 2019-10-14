@@ -14,6 +14,12 @@ namespace GAZT
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<LogInViewModel>();
+            SimpleIoc.Default.Register<LogInViewModel>();
+            SimpleIoc.Default.Register<DashboardViewModel>();
+            SimpleIoc.Default.Register<MyCertificateViewModel>();
+
+
+
 
         }
 
@@ -35,11 +41,68 @@ namespace GAZT
             }
         }
 
+        /// <summary>
+        /// Returns the current instance of OTPViewModel
+        /// </summary>
+        public OTPViewModel OTPView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OTPViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current instance of DashboardViewModel
+        /// </summary>
+        public DashboardViewModel DashboardView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DashboardViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current instance of MyCertificateViewModel
+        /// </summary>
+        public MyCertificateViewModel MyCertificate
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyCertificateViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
             navigationService.Configure(App.LoginView, typeof(LogInView));
-                     return navigationService;
+            navigationService.Configure(App.OTPView, typeof(OTPView));
+            navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
+
+            return navigationService;
         }
 
     }

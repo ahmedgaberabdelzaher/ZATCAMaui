@@ -12,6 +12,12 @@ namespace GAZT
     public partial class App : Application
     {
         public static string LoginView = "LoginView";
+        public static string OTPView = "OTPView";
+        public static string DashboardView = "DashboardView";
+        public static string MyCertificate = "MyCertificate";
+
+
+
         public static bool IsArabic = false;
         public static CultureInfo ci;
         public App()

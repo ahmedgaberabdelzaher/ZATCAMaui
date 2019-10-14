@@ -12,14 +12,12 @@ namespace GAZT.Views
     {
         double DeviceHeight;
         double DeviceWidth;
-
+        OTPViewModel viewModel;
         public OTPView()
         {
+            viewModel = App.Locator.OTPView;
             InitializeComponent();
-            OTPOne.HeightRequest = 50;
-            OTPOne.WidthRequest = 50;
-            OTPEEntryOne.HeightRequest = 50;
-            OTPEEntryOne.WidthRequest = 50;
+            this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 

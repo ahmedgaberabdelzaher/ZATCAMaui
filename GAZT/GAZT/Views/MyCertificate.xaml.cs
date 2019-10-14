@@ -9,10 +9,13 @@ namespace GAZT.Views
 {
     public partial class MyCertificate : ContentPage
     {
+        MyCertificateViewModel viewModel;
         List<string> list = new List<string>();
         public MyCertificate()
         {
+            viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+            this.BindingContext = viewModel;
             list.Add("ghgh");
             list.Add("fgfg");
             list.Add("ff");

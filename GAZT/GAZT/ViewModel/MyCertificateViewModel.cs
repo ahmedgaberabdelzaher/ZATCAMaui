@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 namespace GAZT
 {
-    public class LogInViewModel : ViewModelBase
+    public class MyCertificateViewModel : ViewModelBase
     {
         #region Variable
         private readonly INavigationService _navigationService;
@@ -32,13 +32,13 @@ namespace GAZT
         //    }
         //}
 
-      
+
 
         #endregion
 
         #region Constructor
 
-        public LogInViewModel(INavigationService navigationService, IDialogService dialogService)
+        public MyCertificateViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
@@ -55,7 +55,7 @@ namespace GAZT
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
                 bool IsComingFromSearch = true;
-               // _navigationService.NavigateTo(App.LoginView);
+                // _navigationService.NavigateTo(App.LoginView);
 
             });
 
@@ -64,7 +64,7 @@ namespace GAZT
         #endregion
 
         #region Method
-        
+
 
         #endregion
     }

@@ -13,10 +13,13 @@ namespace GAZT.Views
     {
         double DeviceHeight;
         double DeviceWidth;
+        DashboardViewModel viewModel;
         ObservableCollection<String> Items = new ObservableCollection<String>();
         public DashboardView()
         {
+            viewModel = App.Locator.DashboardView;
             InitializeComponent();
+            this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
