@@ -9,6 +9,7 @@ namespace GAZT.Views
     public partial class LogInView : ContentPage
     {
         LogInViewModel viewModel;
+        int LanguageToolBarCount = 0;
        public static bool IsArabic;
 
         public LogInView()
@@ -17,23 +18,49 @@ namespace GAZT.Views
             InitializeComponent();
            IsArabic = true;
             this.BindingContext = viewModel;
-          //  SetRTLDirection();
+            //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+
+            ToolbarItem toolbarItem1 = new ToolbarItem
+            {
+                Icon = "ic_language.png",
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(() =>
+                {
+                    if (App.IsArabic)
+                    {
+                        App.IsArabic = false;
+                        SetLTRDirection();
+                    }
+                    else
+                    {
+                        App.IsArabic = true;
+                        SetRTLDirection();
+                    }
+                })
+            };
+            if(LanguageToolBarCount == 0)
+            {
+                LanguageToolBarCount = 1;
+                this.ToolbarItems.Add(toolbarItem1);
+            }
+         
         }
-        private void OnOnLanguageClickClicked(object sender, EventArgs e)
-        {
-            if(App.IsArabic)
-            {
-                App.IsArabic = false;
-                SetLTRDirection();
-            }
-            else
-            {
-                App.IsArabic = true;
-                SetRTLDirection();
-            }
+        //private void OnOnLanguageClickClicked(object sender, EventArgs e)
+        //{
+        //    if(App.IsArabic)
+        //    {
+        //        App.IsArabic = false;
+        //        SetLTRDirection();
+        //    }
+        //    else
+        //    {
+        //        App.IsArabic = true;
+        //        SetRTLDirection();
+        //    }
           
-        }
+        //}
        
         public void SetRTLDirection()
         {
