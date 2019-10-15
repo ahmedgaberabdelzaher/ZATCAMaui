@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
    <data name="UserName" xml:space="preserve">
-    <value>User Name Ar</value>
+    <value> TIN </value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>PasswordAr</value>
+    <value> PasswordAr </value>
   </data>
    <data name="Login" xml:space="preserve">
     <value>LoginAr</value>
