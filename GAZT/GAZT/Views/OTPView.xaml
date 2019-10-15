@@ -1,102 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"      xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="GAZT.Views.OTPView" Title="OTPView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="GAZT.Views.OTPView" Title="OTPView">
     <ContentPage.Content>
-        <StackLayout >
-         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-             <Grid.RowDefinitions>
-            <RowDefinition Height="42*" />
-            <RowDefinition Height="4*" />
-                            <RowDefinition Height="7*" />
-            <RowDefinition Height="4*" />
-                            <RowDefinition Height="9*" />
-            <RowDefinition Height="4*" />
-                  <RowDefinition Height="7.9*" />
-                  <RowDefinition Height="24*" />
-                          
-
-                
-        </Grid.RowDefinitions>
- <Grid.ColumnDefinitions>
-                     <ColumnDefinition Width="13*"/>
-                 <ColumnDefinition Width="16*"/>
-                <ColumnDefinition Width="3*"/>
-                 <ColumnDefinition Width="16*"/>
-                                <ColumnDefinition Width="3*"/>
-                 <ColumnDefinition Width="16*"/>
-                                <ColumnDefinition Width="3*"/>
-                 <ColumnDefinition Width="16*"/>
-                 <ColumnDefinition Width="14*"/>
+        <StackLayout>
+            <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="42*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="7*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="7.9*" />
+                    <RowDefinition Height="22*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="13*" />
+                    <ColumnDefinition Width="16*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="16*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="16*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="16*" />
+                    <ColumnDefinition Width="14*" />
                 </Grid.ColumnDefinitions>
-            
-       
-        <skia:SKCanvasView x:Name="canvasView"
-                         Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10"
-                           PaintSurface="OnCanvasViewPaintSurface" />
-           
-
-             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-             <Grid.RowDefinitions>
-            <RowDefinition Height="27*" />
-            <RowDefinition Height="53*" />
-                           
-                            <RowDefinition Height="20*" />
-        </Grid.RowDefinitions>
- <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-              
-                </Grid.ColumnDefinitions>
-                
-                <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit"/>
-                
+                <skia:SKCanvasView x:Name="canvasView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" PaintSurface="OnCanvasViewPaintSurface" />
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="27*" />
+                        <RowDefinition Height="53*" />
+                        <RowDefinition Height="20*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
                 </Grid>
-
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                <Image Source="ic_logo.png" Aspect="AspectFit"/>
-            </StackLayout>
-            
-                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                
-                <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center"   HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
-            </StackLayout>
-            
-
-            <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-
-            </Frame>
-
-                                                     <local:BorderlessEntry x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
-
-              
-              <Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-
-            </Frame>
-                                                     <local:BorderlessEntry x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
-                                                     
-            
-              <Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-
-            </Frame>
-                                                     <local:BorderlessEntry x:Name="OTPEEntryThree" Grid.Row="4" Grid.Column="5"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
-                                                     
-            
-              <Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-
-            </Frame>
-                                                     <local:BorderlessEntry x:Name="OTPEEntryFour" Grid.Row="4" Grid.Column="7"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White"/>
-                                                     
-            
-            
-             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="0,0,0,0" >
-                  
-            </Frame>
-              <local:CustomLabel Text="Validate OTP"  Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
-            <local:CustomLabel.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}"/>
-                                      </local:CustomLabel.GestureRecognizers>
-            </local:CustomLabel>
-            
-            </Grid>
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image Source="ic_logo.png" Aspect="AspectFit" />
                 </StackLayout>
-         
+                <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d" />
+                </StackLayout>
+                <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>
+                <local:BorderlessEntry x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
+                <Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>
+                <local:BorderlessEntry x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
+                <Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>
+                <local:BorderlessEntry x:Name="OTPEEntryThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
+                <Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>
+                <local:BorderlessEntry x:Name="OTPEEntryFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
+                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0,0,0,0">
+                </Frame>
+                <local:CustomLabel Text="Validate OTP" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
+                    <local:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
+                    </local:CustomLabel.GestureRecognizers>
+                </local:CustomLabel>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
