@@ -89,19 +89,19 @@
                                                     <RowDefinition Height="50*" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="10*" />
-                                                    <ColumnDefinition Width="40*" />
-                                                    <ColumnDefinition Width="10*" />
-                                                    <ColumnDefinition Width="40*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                    <ColumnDefinition Width="35*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                    <ColumnDefinition Width="35*" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="file.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" />
+                                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="file.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,0,0"/>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
                                                     <local:CustomLabel Text="3" Style="{StaticResource MiniMaroonLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
                                                     </local:CustomLabel>
                                                     <local:CustomLabel Text="Overdue returns " Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
                                                     </local:CustomLabel>
                                                 </StackLayout>
-                                               <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" />
+                                               <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,0,0"/>
                                                <StackLayout Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
                                                     <local:CustomLabel Text="3" Style="{StaticResource MiniGreenLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
                                                     </local:CustomLabel>
