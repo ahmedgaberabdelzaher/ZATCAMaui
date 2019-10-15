@@ -226,6 +226,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_paperpin.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_rectangle_sm.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_home.png" />
+    <AndroidResource Include="Resources\drawable\Ellipse.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

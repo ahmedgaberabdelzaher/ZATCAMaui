@@ -248,6 +248,7 @@
     <BundleResource Include="Resources\file%403x.png" />
     <BundleResource Include="Resources\ic_bg_green_full_big.png" />
     <BundleResource Include="Resources\abc.png" />
+    <BundleResource Include="Resources\Ellipse.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
