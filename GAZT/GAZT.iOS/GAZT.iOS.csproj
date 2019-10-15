@@ -249,6 +249,12 @@
     <BundleResource Include="Resources\ic_bg_green_full_big.png" />
     <BundleResource Include="Resources\abc.png" />
     <BundleResource Include="Resources\Ellipse.png" />
+    <BundleResource Include="Resources\ic_envelop_selected.png" />
+    <BundleResource Include="Resources\ic_envelop_selected%402x.png" />
+    <BundleResource Include="Resources\ic_envelop_selected%403x.png" />
+    <BundleResource Include="Resources\ic_envelop.png" />
+    <BundleResource Include="Resources\ic_envelop%402x.png" />
+    <BundleResource Include="Resources\ic_envelop%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

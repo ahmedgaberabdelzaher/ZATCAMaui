@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="GAZT.Views.MyCertificate"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
-              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
     xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT" 
-             >
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT">
     <ContentPage.Content>
+        
         
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
           
@@ -26,12 +26,14 @@
             
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <Grid.RowDefinitions>
-                     <RowDefinition Height="7*" />
+                     <RowDefinition Height="5*" />
             <RowDefinition Height="4*" />
-                     <RowDefinition Height="7*" />
-            <RowDefinition Height="70*" />
-                     <RowDefinition Height="6*" />
-            <RowDefinition Height="6*" />
+                     <RowDefinition Height="5*" />
+            <RowDefinition Height="73*" />
+                     
+                     <RowDefinition Height="4*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
@@ -47,62 +49,70 @@
                 </Grid.ColumnDefinitions>
                 
                       <Image Grid.Row="0" Grid.Column="5" Source="{x:Static local:AppResources.AlertImage}" HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0"/>
+                      
 
-                <Label Text="My certificate" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-                
+                <local:CustomLabel Text="My certificate" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
+                        
+                    </local:CustomLabel>
                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" BackgroundColor="Transparent">
                     
                 </StackLayout>
-                                    <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="SearchListView" HasUnevenRows="true" SeparatorVisibility="None"  BackgroundColor="Transparent" >
+                                    <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="SearchListView" HasUnevenRows="true" SeparatorVisibility="None"  BackgroundColor="Transparent" Margin="9,0,9,0">
                 <x:Arguments>
                     <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                 </x:Arguments>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Label Text="454545"/>
-                                 <Label Text="454545"/>
-                                 <Label Text="454545"/>
-                                 <Label Text="454545"/>
-                                              <cards:CarouselView Grid.Row="9" Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  x:Name="EstimateZakatReturns" >
-    <cards:CarouselView.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
+                        <ViewCell>     
+                              
+                    <Frame  
+                                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" 
+                   
+                    IsClippedToBounds="true"
+                    CornerRadius="5"
+                                    HeightRequest="39"
+                                        Margin="4"           
+                                    BorderColor="#D5D5D5"
+                    BackgroundColor="#FCFCFC">
                 <Frame 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Padding="0" 
-                    HasShadow="true"
+                    HeightRequest="39"
                     IsClippedToBounds="true"
-                    CornerRadius="20"
-                                                    HeightRequest="300"
-                                                    WidthRequest="300"
-                                    BorderColor="Gray"
-                    BackgroundColor="Gray">
-                                        <Image Source="{Binding Source}"/>   
+                    CornerRadius="5"
+                                   
+                                    BorderColor="#D5D5D5"
+                    BackgroundColor="#FCFCFC">
+                                        
                 
-                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
-                                              <Image Grid.Row="0"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
-                                                <local:CustomLabel Text="Estimate Zakat returns" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center" FontSize="12"></local:CustomLabel>
+                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Orientation="Horizontal" Padding="0" Spacing="0">
+                                              <Image Grid.Row="0"  Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
+                                                <local:CustomLabel Text="Estimate Zakat returns" Style="{StaticResource MiniBlackLabelStyle}"   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,0,0" HorizontalTextAlignment="Start"></local:CustomLabel>
                                                 
                                                 </StackLayout>
                 
                   
                 </Frame>
-            </ContentView>
-        </DataTemplate>
-    </cards:CarouselView.ItemTemplate>
-</cards:CarouselView>
+           </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                <BoxView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5"/>
+                <!--<BoxView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5"/>
                  <Image Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" Source="circle.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                                   <Image Grid.Row="5" Grid.Column="1"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                                   
             <Image Grid.Row="5" Grid.Column="5"  Source="ic_user.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+            -->
+                 <BoxView Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
 
+                
             </Grid>
            
                 

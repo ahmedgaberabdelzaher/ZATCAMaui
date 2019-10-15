@@ -9,6 +9,7 @@
             <Color x:Key="GoldLabelTextColor">#c49b2d</Color>
             <Color x:Key="GreenLabelTextColor">#005e4b</Color>
             <Color x:Key="MaroonLabelTextColor">#A76d6d</Color>
+             <Color x:Key="BlackLabelTextColor">#000000</Color>
             <!-- <Color x:Key="MaroonLabelTextColor">"#A76d6d"</Color> -->
             <Style x:Key="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
@@ -148,6 +149,15 @@
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
             </Style>
+            <Style x:Key="MiniBlackLabelStyle" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="8" Tablet="16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+            </Style>
+            
             <!-- 
             <Style x:Key ="EditorStyle" TargetType="Editor">
                 <Setter Property="FontSize">
