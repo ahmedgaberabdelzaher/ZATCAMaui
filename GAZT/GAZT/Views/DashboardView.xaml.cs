@@ -22,7 +22,7 @@ namespace GAZT.Views
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
-            CardView.ItemsSource = Items;
+           // CardView.ItemsSource = Items;
             //EstimateZakatReturns.ItemsSource = Items;
             //MyCertificates.ItemsSource = Items;
             //MyBillsInvoices.ItemsSource = Items;

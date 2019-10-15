@@ -14,6 +14,8 @@ namespace GAZT
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
+        public ICommand OnOnLanguageClickClicked { get; set; }
+      
         #endregion
 
         #region Property
@@ -32,7 +34,7 @@ namespace GAZT
         //    }
         //}
 
-      
+
 
         #endregion
 
@@ -59,6 +61,13 @@ namespace GAZT
 
             });
 
+            OnLoginButtonClicked = new RelayCommand(async () =>
+            {
+                _navigationService.NavigateTo(App.OTPView);
+
+            });
+
+          
         }
 
         #endregion

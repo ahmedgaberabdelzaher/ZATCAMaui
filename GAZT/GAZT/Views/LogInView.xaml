@@ -6,6 +6,11 @@
 
              xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft" 
              Title="Login">
+    
+ <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_language.png" Order="Primary" Priority="0" Clicked="OnOnLanguageClickClicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
              <Grid.RowDefinitions>

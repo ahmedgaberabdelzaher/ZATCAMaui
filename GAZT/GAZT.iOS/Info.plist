@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>GAZT</string>
+	<string>GAZT E-Services</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.parallelminds.CSEPF</string>
 	<key>CFBundleVersion</key>

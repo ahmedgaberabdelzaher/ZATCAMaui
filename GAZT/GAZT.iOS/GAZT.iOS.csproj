@@ -210,9 +210,6 @@
     <BundleResource Include="Resources\check-mark.png" />
     <BundleResource Include="Resources\check-mark%402x.png" />
     <BundleResource Include="Resources\check-mark%403x.png" />
-    <BundleResource Include="Resources\file-2.png" />
-    <BundleResource Include="Resources\file-2%402x.png" />
-    <BundleResource Include="Resources\file-2%403x.png" />
     <BundleResource Include="Resources\ic_bg_green_full.png" />
     <BundleResource Include="Resources\ic_bg_green_full%402x.png" />
     <BundleResource Include="Resources\ic_bg_green_full%403x.png" />
@@ -249,6 +246,9 @@
     <BundleResource Include="Resources\ic_home.png" />
     <BundleResource Include="Resources\ic_home%402x.png" />
     <BundleResource Include="Resources\ic_home%403x.png" />
+    <BundleResource Include="Resources\file.png" />
+    <BundleResource Include="Resources\file%402x.png" />
+    <BundleResource Include="Resources\file%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

@@ -99,8 +99,6 @@
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
@@ -124,8 +122,7 @@
     <AndroidResource Include="Resources\drawable\ic_bg_green_full.png" />
     <AndroidResource Include="Resources\drawable\ic_certeficate.png" />
     <AndroidResource Include="Resources\drawable\ic_check_circle.png" />
-    <AndroidResource Include="Resources\drawable\ic_check-mark.png" />
-    <AndroidResource Include="Resources\drawable\ic_file-2.png" />
+    <AndroidResource Include="Resources\drawable\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable\ic_file.png" />
     <AndroidResource Include="Resources\drawable\ic_loading.png" />
     <AndroidResource Include="Resources\drawable\ic_money_bill.png" />
@@ -149,8 +146,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_bg_green_full.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_certeficate.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_check_circle.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_check-mark.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_file-2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_file.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_loading.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_money_bill.png" />
@@ -171,13 +167,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_user_2_selected.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_user_2.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_user.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Untitled-2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Untitled2.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_bg_green_full.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_certeficate.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_check_circle.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_check-mark.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_checkbox%402x.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_file-2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_file.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_loading.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_money_bill.png" />
@@ -187,7 +181,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_check_box_outline_blank.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_home.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_bell.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_checkbox%403x.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_dropdown.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_home_selected.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_language.png" />
@@ -201,8 +194,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_bg_green_full.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_certeficate.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_check_circle.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_check-mark.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_file-2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_file.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_loading.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_money_bill.png" />
@@ -226,8 +218,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_bg_green_full.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_certeficate.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check_circle.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check-mark.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_file-2.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_file.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_loading.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_money_bill.png" />
@@ -235,31 +226,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_paperpin.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_rectangle_sm.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_home.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_bell.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_checkbox.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_dropdown.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_home_selected.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_language.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_logo.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_password.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_question_selected.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_question.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_user_2_selected.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_user_2.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_user.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_bg_green_full.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_certeficate.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_check_circle.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_check-mark.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_file-2.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_file.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_loading.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_money_bill.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_money.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_paperpin.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_rectangle_sm.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_check_box_outline_blank.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_home.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
@@ -270,6 +236,7 @@
     <Folder Include="CustomRenderer\" />
     <Folder Include="DependencyServices\" />
     <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\mipmap-mdpi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">

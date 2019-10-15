@@ -9,29 +9,58 @@ namespace GAZT.Views
     public partial class LogInView : ContentPage
     {
         LogInViewModel viewModel;
+       public static bool IsArabic;
+
         public LogInView()
         {
             viewModel = App.Locator.LogInView;
             InitializeComponent();
+           IsArabic = true;
             this.BindingContext = viewModel;
+          //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
         }
-        //private void OnArClicked(object sender, EventArgs e)
-        //{
-        //    String langName = "ar-AE";
-        //    CultureInfo ci = new CultureInfo(langName);
-        //    AppResources.Culture = ci;
-        //    // AppResources.ResourceManager.ReleaseAllResources();
-        //    this.FlowDirection = FlowDirection.RightToLeft;
-        //}
-        //private void OnEnClicked(object sender, EventArgs e)
-        //{
-        //    String langName = "en-US";
-        //    CultureInfo ci = new CultureInfo(langName);
-        //    AppResources.Culture = ci;
-        //    // AppResources.ResourceManager.ReleaseAllResources();
-        //    this.FlowDirection = FlowDirection.LeftToRight;
-        //}
+        private void OnOnLanguageClickClicked(object sender, EventArgs e)
+        {
+            if(App.IsArabic)
+            {
+                App.IsArabic = false;
+                SetLTRDirection();
+            }
+            else
+            {
+                App.IsArabic = true;
+                SetRTLDirection();
+            }
+          
+        }
+       
+        public void SetRTLDirection()
+        {
+            String langName = "ar-AE";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            //InitializeComponent();
+            //var vUpdatedPage = new LogInView();
+            //Navigation.InsertPageBefore(vUpdatedPage, this);
+            //Navigation.PopAsync();
+            this.FlowDirection = FlowDirection.RightToLeft;
+        }
+
+        public void SetLTRDirection()
+        {
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            //var vUpdatedPage = new LogInView();
+            //Navigation.InsertPageBefore(vUpdatedPage, this);
+            //Navigation.PopAsync();
+
+            //InitializeComponent();
+            // AppResources.ResourceManager.ReleaseAllResources();
+            this.FlowDirection = FlowDirection.LeftToRight;
+        }
+
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {

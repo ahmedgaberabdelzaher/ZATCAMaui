@@ -18,7 +18,8 @@ namespace GAZT
 
 
 
-        public static bool IsArabic = false;
+       // public static bool IsArabic = false;
+        public static bool IsArabic = true;
         public static CultureInfo ci;
         public App()
         {
