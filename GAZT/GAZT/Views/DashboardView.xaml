@@ -22,8 +22,11 @@
                     <RowDefinition Height="35*" />
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="13*" />
-                    <RowDefinition Height="8*" />
                     <RowDefinition Height="12*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
@@ -47,6 +50,7 @@
                     <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
+                                
                                 <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="14.5" BorderColor="#B1B1B1" BackgroundColor="White">
                                     <Image Source="{Binding Source}" />
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -114,6 +118,7 @@
                         </DataTemplate>
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
+                
                 <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Style="{StaticResource FrameStyle}" IsClippedToBounds="true" Grid.Row="9" Grid.Column="1">
                     <Image Source="{Binding Source}" />
                     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
@@ -122,6 +127,7 @@
                         </local:CustomLabel>
                     </StackLayout>
                 </Frame>
+                
                 <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Style="{StaticResource FrameStyle}" IsClippedToBounds="true" Grid.Row="9" Grid.Column="3">
                     <Image Source="{Binding Source}" />
                     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
@@ -151,10 +157,10 @@
                         </local:CustomLabel>
                     </StackLayout>
                 </Frame>
-                <BoxView Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-                <Image Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
-                <Image Grid.Row="11" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Image Grid.Row="11" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <BoxView Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+                <Image Grid.Row="10"  Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="11"  Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="11"  Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
             </Grid>
         </Grid>
     </ContentPage.Content>
