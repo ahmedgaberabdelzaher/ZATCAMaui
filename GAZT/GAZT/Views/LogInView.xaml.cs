@@ -40,7 +40,7 @@ namespace GAZT.Views
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            //InitializeComponent();
+           InitializeComponent();
             //var vUpdatedPage = new LogInView();
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
@@ -56,7 +56,7 @@ namespace GAZT.Views
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
 
-            //InitializeComponent();
+            InitializeComponent();
             // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
         }

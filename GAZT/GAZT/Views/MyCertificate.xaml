@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT">
     <ContentPage.Content>
+        <ScrollView>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="42*" />
@@ -66,5 +67,6 @@
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
             </Grid>
         </Grid>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

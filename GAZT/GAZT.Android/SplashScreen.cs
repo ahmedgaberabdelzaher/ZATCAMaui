@@ -17,14 +17,14 @@ using Android.Graphics.Drawables;
 using Android.OS;
 namespace GAZT.Droid
 {
-    [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", NoHistory = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(MainLauncher = false, Theme = "@style/Theme.Splash", NoHistory = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            //   await Task.Delay(4000);
-            StartActivity(typeof(MainActivity));
+            //base.OnCreate(savedInstanceState);
+            ////   await Task.Delay(4000);
+            //StartActivity(typeof(MainActivity));
         }
     }
 }
