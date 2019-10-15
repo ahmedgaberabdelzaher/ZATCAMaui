@@ -10,7 +10,7 @@
             <RowDefinition Height="4*" />
                             <RowDefinition Height="9*" />
             <RowDefinition Height="4*" />
-                  <RowDefinition Height="6*" />
+                  <RowDefinition Height="7.9*" />
                   <RowDefinition Height="24*" />
                           
 
@@ -54,9 +54,9 @@
                 <Image Source="ic_logo.png" Aspect="AspectFit"/>
             </StackLayout>
             
-                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 
-                <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource SmallGoldLabelStyle}"   HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
+                <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center"   HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d"/>
             </StackLayout>
             
 
@@ -86,10 +86,10 @@
                                                      
             
             
-             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
+             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="0,0,0,0" >
                   
             </Frame>
-              <local:CustomLabel Text="OnSubmitClicked"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
+              <local:CustomLabel Text="Validate OTP"  Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
             <local:CustomLabel.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnSubmitClicked}"/>
                                       </local:CustomLabel.GestureRecognizers>
