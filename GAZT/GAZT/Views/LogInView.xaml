@@ -15,15 +15,15 @@
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
              <Grid.RowDefinitions>
             <RowDefinition Height="42*" />
-            <RowDefinition Height="10*" />
-                            <RowDefinition Height="7*" />
+            <RowDefinition Height="8*" />
+                            <RowDefinition Height="8*" />
             <RowDefinition Height="4*" />
-                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="8*" />
             <RowDefinition Height="4*" />
-                            <RowDefinition Height="6*" />
+                            <RowDefinition Height="7.9*" />
             <RowDefinition Height="3*" />
                  <RowDefinition Height="5*" />
-                                 <RowDefinition Height="12*" />
+                                 <RowDefinition Height="10*" />
 
                 
         </Grid.RowDefinitions>
@@ -64,7 +64,7 @@
                
                 </local:BorderlessEntry>
                 <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
-                <local:CustomLabel Text="{x:Static local:AppResources.UserName}" Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+                <local:CustomLabel Text="{x:Static local:AppResources.UserName}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-5,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
          <!--   <Button Margin="10" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Ar" Clicked="OnArClicked" BackgroundColor="Teal"/>
                             <Button Margin="10" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="En" Clicked="OnEnClicked" BackgroundColor="Teal"/>
 -->                            
@@ -79,7 +79,7 @@
 
                 </local:BorderlessEntry>
                 <Image Source="ic_password.png" Grid.Row="4" Grid.Column="0"  HorizontalOptions="End" VerticalOptions="Center" />
-                <local:CustomLabel Text="{x:Static local:AppResources.Password}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White"/>
+                <local:CustomLabel Text="{x:Static local:AppResources.Password}"  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-5,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White"/>
                                 <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
               
             </StackLayout>
@@ -96,7 +96,7 @@
             <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4"  BackgroundColor="#005e4b" Margin="10,0,10,0" >
                   
             </Frame>
-              <local:CustomLabel Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallGoldLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
+              <local:CustomLabel Text="{x:Static local:AppResources.Login}"  Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" >
           <local:CustomLabel.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}"/>
                                       </local:CustomLabel.GestureRecognizers>
@@ -104,9 +104,9 @@
            
             <StackLayout Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
-             <StackLayout Padding="30,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+             <StackLayout Padding="30,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
              <Image  Source="ic_checkbox.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <local:CustomLabel   Text="{x:Static local:AppResources.TermsAndConditions}"  Style="{StaticResource SmallGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center">
+            <local:CustomLabel   Text="Remember me"  Style="{StaticResource SmallMiniGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" >
                      
                 </local:CustomLabel>
             </StackLayout>

@@ -16,7 +16,15 @@
             <Style x:Key ="MiniGoldLabelStyle" TargetType="Label">
                  <Setter Property="FontSize">
                 <Setter.Value>
-                  <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14"/>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="9" Tablet="14"/>
+                </Setter.Value>
+            </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+      </Style>
+            <Style x:Key ="SmallMiniGoldLabelStyle" TargetType="Label">
+                 <Setter Property="FontSize">
+                <Setter.Value>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="7.5" Tablet="14"/>
                 </Setter.Value>
             </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -61,7 +69,7 @@
              <Style x:Key ="SmallWhiteLabelStyle" TargetType="Label">
                  <Setter Property="FontSize">
                 <Setter.Value>
-                  <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="19"/>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="13.5" Tablet="19"/>
                 </Setter.Value>
             </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
