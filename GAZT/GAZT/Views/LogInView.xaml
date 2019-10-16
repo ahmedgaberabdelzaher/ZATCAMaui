@@ -4,7 +4,7 @@
         <ToolbarItem Icon="ic_language.png" Order="Primary" Priority="0" Clicked="OnOnLanguageClickClicked" />
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-      
+  <!--    <ScrollView>-->
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="42*" />
@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="20*" />
                 <ColumnDefinition Width="67*" />
             </Grid.ColumnDefinitions>
-            <skia:SKCanvasView  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PaintSurface="OnCanvasViewPaintSurface" />
+            <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PaintSurface="OnCanvasViewPaintSurface" />
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="27*" />
@@ -69,6 +69,6 @@
             </StackLayout>
         </Grid>
         
-           
+          <!-- </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

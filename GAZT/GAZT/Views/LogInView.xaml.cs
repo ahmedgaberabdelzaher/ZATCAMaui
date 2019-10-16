@@ -112,6 +112,7 @@ namespace GAZT.Views
             float XPoint = DeviceWidth/2;
             float YPoint = (deviceHeight*40/100);// deviceHeight - ;
             float Radius = deviceHeight+ YPoint;
+            YPoint = YPoint + (float)App.NavigationBarHeightt; 
             path.AddCircle(XPoint,-YPoint, Radius);
 
            

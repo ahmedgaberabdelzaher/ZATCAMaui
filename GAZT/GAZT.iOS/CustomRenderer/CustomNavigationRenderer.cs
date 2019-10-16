@@ -1,0 +1,60 @@
+﻿using System;
+using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
+using UIKit;
+using GAZT.CustomControl;
+using GAZT.iOS.CustomRenderer;
+using CoreGraphics;
+
+[assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
+namespace GAZT.iOS.CustomRenderer
+{
+    public class CustomNavigationRenderer: NavigationRenderer
+    {
+public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            this.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            this.NavigationBar.ShadowImage = new UIImage();
+            var height = NavigationBar.Bounds.Height;
+            App.NavigationBarHeightt = height;
+            UIFont ft;
+
+            if (App.IsArabic)
+                ft = UIFont.FromName("Cairo-Regular", 16);
+            else
+                ft = UIFont.FromName("Helvetica-Normal", 16);
+
+            this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            {
+                Font = ft
+            };
+
+            try
+            {
+                MessagingCenter.Unsubscribe<string>(this, "SetFont");
+            }
+            catch (Exception exe)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: " + exe.Message);
+            }
+
+            MessagingCenter.Subscribe<string>(this, "SetFont", message =>
+            {
+
+                if (App.IsArabic)
+                    ft = UIFont.FromName("Cairo-Regular", 16);
+                else
+                    ft = UIFont.FromName("Helvetica-Normal", 16);
+
+                this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+                {
+                    Font = ft
+                };
+
+
+            });
+        }
+
+    }
+}

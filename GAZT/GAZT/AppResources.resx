@@ -242,7 +242,7 @@
     <value>New password</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
-    <value>Overdue return ( late returns)</value>
+    <value>Overdue return</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Paid</value>

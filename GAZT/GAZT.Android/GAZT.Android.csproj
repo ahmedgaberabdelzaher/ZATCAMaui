@@ -84,6 +84,7 @@
     <Compile Include="DependencyServices\DeviceInfo.cs" />
     <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
     <Compile Include="SplashScreen.cs" />
+    <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

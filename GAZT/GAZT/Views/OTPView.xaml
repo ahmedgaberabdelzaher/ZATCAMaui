@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="16*" />
                     <ColumnDefinition Width="14*" />
                 </Grid.ColumnDefinitions>
-                <skia:SKCanvasView x:Name="canvasView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" PaintSurface="OnCanvasViewPaintSurface" />
+                <skia:SKCanvasView Margin="0,-2,0,0" x:Name="canvasView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" PaintSurface="OnCanvasViewPaintSurface" />
                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="27*" />

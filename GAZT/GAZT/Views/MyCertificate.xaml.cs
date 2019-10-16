@@ -10,13 +10,19 @@ namespace GAZT.Views
     public partial class MyCertificate : ContentPage
     {
         MyCertificateViewModel viewModel;
-     
+        List<string> list = new List<string>();
         public MyCertificate()
         {
-            SetLTR();
+           
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+            SetLTR();
             this.BindingContext = viewModel;
+            list.Add("aaaaaaa");
+            list.Add("aaaaaaa");
+            list.Add("aaaaaaa"); 
+            list.Add("aaaaaaa");
+            SearchListView.ItemsSource = list;
         }
         private void SetLTR()
         {

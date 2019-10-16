@@ -98,6 +98,7 @@
     <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
     <Compile Include="DependencyServices\DeviceInfo.cs" />
     <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -127,8 +128,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-152.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

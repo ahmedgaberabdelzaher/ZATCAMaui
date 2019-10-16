@@ -9,6 +9,7 @@ namespace GAZT.CustomControl
             //BarBackgroundColor =Color.FromHex ("#7CBB47");
             BarBackgroundColor = Color.FromHex("#005e4b");
             BarTextColor = Color.FromHex("#ffffff");
+            // App.NavigationBarHeightt = Height;
         }
     }
 }
