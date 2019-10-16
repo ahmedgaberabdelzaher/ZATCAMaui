@@ -47,9 +47,267 @@ namespace GAZT {
             }
         }
         
-        public static string UserName {
+        public static string Alerts {
             get {
-                return ResourceManager.GetString("UserName", resourceCulture);
+                return ResourceManager.GetString("Alerts", resourceCulture);
+            }
+        }
+        
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        public static string AmendReturn {
+            get {
+                return ResourceManager.GetString("AmendReturn", resourceCulture);
+            }
+        }
+        
+        public static string AmountDetailsAndSADADNumberPayment {
+            get {
+                return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
+            }
+        }
+        
+        public static string AmountNotObjected {
+            get {
+                return ResourceManager.GetString("AmountNotObjected", resourceCulture);
+            }
+        }
+        
+        public static string Attachment {
+            get {
+                return ResourceManager.GetString("Attachment", resourceCulture);
+            }
+        }
+        
+        public static string Attachments {
+            get {
+                return ResourceManager.GetString("Attachments", resourceCulture);
+            }
+        }
+        
+        public static string Auditing {
+            get {
+                return ResourceManager.GetString("Auditing", resourceCulture);
+            }
+        }
+        
+        public static string AverageNumOfEmployment {
+            get {
+                return ResourceManager.GetString("AverageNumOfEmployment", resourceCulture);
+            }
+        }
+        
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        public static string Bill {
+            get {
+                return ResourceManager.GetString("Bill", resourceCulture);
+            }
+        }
+        
+        public static string BilledNumber {
+            get {
+                return ResourceManager.GetString("BilledNumber", resourceCulture);
+            }
+        }
+        
+        public static string Capital {
+            get {
+                return ResourceManager.GetString("Capital", resourceCulture);
+            }
+        }
+        
+        public static string Chatting {
+            get {
+                return ResourceManager.GetString("Chatting", resourceCulture);
+            }
+        }
+        
+        public static string ContractsToBeApproved {
+            get {
+                return ResourceManager.GetString("ContractsToBeApproved", resourceCulture);
+            }
+        }
+        
+        public static string CopiedSADADPaymentNumber {
+            get {
+                return ResourceManager.GetString("CopiedSADADPaymentNumber", resourceCulture);
+            }
+        }
+        
+        public static string CopySADADNumber {
+            get {
+                return ResourceManager.GetString("CopySADADNumber", resourceCulture);
+            }
+        }
+        
+        public static string CopySADADPaymentNumber {
+            get {
+                return ResourceManager.GetString("CopySADADPaymentNumber", resourceCulture);
+            }
+        }
+        
+        public static string DataAvailableToGAZT {
+            get {
+                return ResourceManager.GetString("DataAvailableToGAZT", resourceCulture);
+            }
+        }
+        
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        public static string DateHijri {
+            get {
+                return ResourceManager.GetString("DateHijri", resourceCulture);
+            }
+        }
+        
+        public static string DetailsOfSADADBill {
+            get {
+                return ResourceManager.GetString("DetailsOfSADADBill", resourceCulture);
+            }
+        }
+        
+        public static string DueAmount {
+            get {
+                return ResourceManager.GetString("DueAmount", resourceCulture);
+            }
+        }
+        
+        public static string DueDate {
+            get {
+                return ResourceManager.GetString("DueDate", resourceCulture);
+            }
+        }
+        
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        public static string EnterVerificationCode {
+            get {
+                return ResourceManager.GetString("EnterVerificationCode", resourceCulture);
+            }
+        }
+        
+        public static string EstimateSalesForFiscalYear {
+            get {
+                return ResourceManager.GetString("EstimateSalesForFiscalYear", resourceCulture);
+            }
+        }
+        
+        public static string EstimateZakatReturn {
+            get {
+                return ResourceManager.GetString("EstimateZakatReturn", resourceCulture);
+            }
+        }
+        
+        public static string ExportValue {
+            get {
+                return ResourceManager.GetString("ExportValue", resourceCulture);
+            }
+        }
+        
+        public static string FiscalYear {
+            get {
+                return ResourceManager.GetString("FiscalYear", resourceCulture);
+            }
+        }
+        
+        public static string ImportValue {
+            get {
+                return ResourceManager.GetString("ImportValue", resourceCulture);
+            }
+        }
+        
+        public static string ItHasPaidNumberForCurrentFiscalYear {
+            get {
+                return ResourceManager.GetString("ItHasPaidNumberForCurrentFiscalYear", resourceCulture);
+            }
+        }
+        
+        public static string LogIn {
+            get {
+                return ResourceManager.GetString("LogIn", resourceCulture);
+            }
+        }
+        
+        public static string MobileNumber {
+            get {
+                return ResourceManager.GetString("MobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string MyBills {
+            get {
+                return ResourceManager.GetString("MyBills", resourceCulture);
+            }
+        }
+        
+        public static string MyBillsInvoices {
+            get {
+                return ResourceManager.GetString("MyBillsInvoices", resourceCulture);
+            }
+        }
+        
+        public static string MyCertificate {
+            get {
+                return ResourceManager.GetString("MyCertificate", resourceCulture);
+            }
+        }
+        
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        public static string NewEmail {
+            get {
+                return ResourceManager.GetString("NewEmail", resourceCulture);
+            }
+        }
+        
+        public static string NewMobileNumber {
+            get {
+                return ResourceManager.GetString("NewMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        public static string OverdueReturn {
+            get {
+                return ResourceManager.GetString("OverdueReturn", resourceCulture);
+            }
+        }
+        
+        public static string Paid {
+            get {
+                return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        public static string PartiallyPaid {
+            get {
+                return ResourceManager.GetString("PartiallyPaid", resourceCulture);
             }
         }
         
@@ -59,33 +317,171 @@ namespace GAZT {
             }
         }
         
-        public static string Login {
+        public static string PayByMADA {
             get {
-                return ResourceManager.GetString("Login", resourceCulture);
+                return ResourceManager.GetString("PayByMADA", resourceCulture);
             }
         }
         
-        public static string TermsAndConditions {
+        public static string PurchaseValue {
             get {
-                return ResourceManager.GetString("TermsAndConditions", resourceCulture);
+                return ResourceManager.GetString("PurchaseValue", resourceCulture);
             }
         }
         
-        public static string OTPSentInformation {
+        public static string ReasonForChatting {
             get {
-                return ResourceManager.GetString("OTPSentInformation", resourceCulture);
+                return ResourceManager.GetString("ReasonForChatting", resourceCulture);
             }
         }
         
-        public static string AlertImage {
+        public static string ReasonOfAmend {
             get {
-                return ResourceManager.GetString("AlertImage", resourceCulture);
+                return ResourceManager.GetString("ReasonOfAmend", resourceCulture);
             }
         }
         
-        public static string UnpaidBillDescription {
+        public static string RegistrationCertificate {
             get {
-                return ResourceManager.GetString("UnpaidBillDescription", resourceCulture);
+                return ResourceManager.GetString("RegistrationCertificate", resourceCulture);
+            }
+        }
+        
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        public static string ReturnPeriod {
+            get {
+                return ResourceManager.GetString("ReturnPeriod", resourceCulture);
+            }
+        }
+        
+        public static string RetypePassword {
+            get {
+                return ResourceManager.GetString("RetypePassword", resourceCulture);
+            }
+        }
+        
+        public static string SADADNumber {
+            get {
+                return ResourceManager.GetString("SADADNumber", resourceCulture);
+            }
+        }
+        
+        public static string SADADPaymentNumber {
+            get {
+                return ResourceManager.GetString("SADADPaymentNumber", resourceCulture);
+            }
+        }
+        
+        public static string SalesDetails {
+            get {
+                return ResourceManager.GetString("SalesDetails", resourceCulture);
+            }
+        }
+        
+        public static string SalesNotSalesPoints {
+            get {
+                return ResourceManager.GetString("SalesNotSalesPoints", resourceCulture);
+            }
+        }
+        
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        public static string StartChatting {
+            get {
+                return ResourceManager.GetString("StartChatting", resourceCulture);
+            }
+        }
+        
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        public static string SubmittedReturn {
+            get {
+                return ResourceManager.GetString("SubmittedReturn", resourceCulture);
+            }
+        }
+        
+        public static string SummaryOfZakatCalculation {
+            get {
+                return ResourceManager.GetString("SummaryOfZakatCalculation", resourceCulture);
+            }
+        }
+        
+        public static string TaxpayerProfile {
+            get {
+                return ResourceManager.GetString("TaxpayerProfile", resourceCulture);
+            }
+        }
+        
+        public static string TIN {
+            get {
+                return ResourceManager.GetString("TIN", resourceCulture);
+            }
+        }
+        
+        public static string TotalAmount {
+            get {
+                return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        public static string TotalOfBillsUnpaid {
+            get {
+                return ResourceManager.GetString("TotalOfBillsUnpaid", resourceCulture);
+            }
+        }
+        
+        public static string TotalRequiredToBePaid {
+            get {
+                return ResourceManager.GetString("TotalRequiredToBePaid", resourceCulture);
+            }
+        }
+        
+        public static string TwentyFivePercentageObjectedAmount {
+            get {
+                return ResourceManager.GetString("TwentyFivePercentageObjectedAmount", resourceCulture);
+            }
+        }
+        
+        public static string Unpaid {
+            get {
+                return ResourceManager.GetString("Unpaid", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationCertificate {
+            get {
+                return ResourceManager.GetString("VATRegistrationCertificate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatAmount {
+            get {
+                return ResourceManager.GetString("ZakatAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatBase {
+            get {
+                return ResourceManager.GetString("ZakatBase", resourceCulture);
+            }
+        }
+        
+        public static string ZakatTaxType {
+            get {
+                return ResourceManager.GetString("ZakatTaxType", resourceCulture);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,22 +117,264 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-   <data name="UserName" xml:space="preserve">
-    <value> TIN </value>
+  <data name="Alerts" xml:space="preserve">
+  <value>التنبيهات</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>الجميع</value>
+  </data>
+  <data name="AmendReturn" xml:space="preserve">
+    <value>تعديل الإقرار</value>
+  </data>
+  <data name="AmountDetailsAndSADADNumberPayment" xml:space="preserve">
+    <value>تفاصيل المبلغ وفاتورة سداد</value>
+  </data>
+  <data name="AmountNotObjected" xml:space="preserve">
+    <value>المبلغ غير معترض عليه</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="Auditing" xml:space="preserve">
+    <value>التدقيق والمراجعة</value>
+  </data>
+  <data name="AverageNumOfEmployment" xml:space="preserve">
+    <value>متوسط عدد العمالة</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>تراجع</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Bill</value>
+  </data>
+  <data name="BilledNumber" xml:space="preserve">
+    <value>رقم المفوتر</value>
+  </data>
+  <data name="Capital" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="Chatting" xml:space="preserve">
+    <value>المحادثة الفورية</value>
+  </data>
+  <data name="ContractsToBeApproved" xml:space="preserve">
+    <value>العقود في منصة الاعتماد</value>
+  </data>
+  <data name="CopiedSADADPaymentNumber" xml:space="preserve">
+    <value>تم نسخ فاتورة سداد</value>
+  </data>
+  <data name="CopySADADNumber" xml:space="preserve">
+    <value>نسخ رقم فاتورة سداد</value>
+  </data>
+  <data name="CopySADADPaymentNumber" xml:space="preserve">
+    <value>نسخ رقم فاتورة سداد</value>
+  </data>
+  <data name="CopySADADNumber" xml:space="preserve">
+    <value>نسخ رقم فاتورة سداد</value>
+  </data>
+
+  <data name="DataAvailableToGAZT" xml:space="preserve">
+    <value>Data available to GAZT</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>محرم</value>
+  </data>
+  <data name="DateHijri" xml:space="preserve">
+    <value>Date ( Hijri)</value>
+  </data>
+  <data name="DetailsOfSADADBill" xml:space="preserve">
+    <value>تفاصيل فاتورة سداد</value>
+  </data>
+  <data name="DueAmount" xml:space="preserve">
+    <value>المبلغ المستحق</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="EnterVerificationCode" xml:space="preserve">
+    <value>الرجاء ادخال رمز التحقق الذي تم إرساله على الهاتف الجوال</value>
+  </data>
+  <data name="EstimateSalesForFiscalYear" xml:space="preserve">
+    <value> المبيعات المقدرة للسنة المالية</value>
+  </data>
+  <data name="EstimateZakatReturn" xml:space="preserve">
+    <value>إقرار زكاة تقديري</value>
+  </data>
+  <data name="ExportValue" xml:space="preserve">
+    <value>قيمة الصادرات</value>
+  </data>
+  <data name="FiscalYear" xml:space="preserve">
+    <value>السنة المالية</value>
+  </data>
+  <data name="ImportValue" xml:space="preserve">
+    <value>قيمة الاستيرادت</value>
+  </data>
+  <data name="ItHasPaidNumberForCurrentFiscalYear" xml:space="preserve">
+    <value>تم تسديد {} ر.س خلال السنة المالية الحالية</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>رقم الجوال</value>
+  </data>
+  <data name="MyBills" xml:space="preserve">
+    <value>فواتيري</value>
+  </data>
+  <data name="MyBillsInvoices" xml:space="preserve">
+    <value>فواتيري</value>
+  </data>
+  <data name="MyCertificate" xml:space="preserve">
+    <value>شهاداتي</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>البريد الإلكتروني الجديد</value>
+  </data>
+  <data name="NewMobileNumber" xml:space="preserve">
+    <value>رقم الجوال الجديد</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="OverdueReturn" xml:space="preserve">
+    <value>إقرارات متأخرة</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>المدفوعة</value>
+  </data>
+  <data name="PartiallyPaid" xml:space="preserve">
+    <value>مسدده جزئياً</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> PasswordAr </value>
+    <value>كلمة المرور</value>
   </data>
-   <data name="Login" xml:space="preserve">
-    <value>LoginAr</value>
+  <data name="PayByMADA" xml:space="preserve">
+    <value>السداد من خلال مدى</value>
   </data>
-   <data name="TermsAndConditions" xml:space="preserve">
-    <value>AcceptAr</value>
+  <data name="PurchaseValue" xml:space="preserve">
+    <value>قيمة المشتريات</value>
   </data>
-  <data name="OTPSentInformation" xml:space="preserve">
-    <value>OTP is sent to your registered mobile number ******8549</value>
+  <data name="ReasonForChatting" xml:space="preserve">
+    <value>الغرض من المحادثة</value>
   </data>
-   <data name="AlertImage" xml:space="preserve">
-    <value>ic_bell.png</value>
+  <data name="ReasonOfAmend" xml:space="preserve">
+    <value>سبب التعديل</value>
   </data>
+  <data name="RegistrationCertificate" xml:space="preserve">
+    <value>شهادة تسجيل</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="ReturnPeriod" xml:space="preserve">
+    <value>الفترة الضريبية</value>
+  </data>
+  <data name="RetypePassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور الجديدة</value>
+  </data>
+  <data name="SADADNumber" xml:space="preserve">
+    <value>رقم فاتورة سداد</value>
+  </data>
+  <data name="SADADPaymentNumber" xml:space="preserve">
+    <value>رقم فاتورة سداد</value>
+  </data>
+  <data name="SalesDetails" xml:space="preserve">
+    <value>تفاصيل المبيعات</value>
+  </data>
+  <data name="SalesNotSalesPoints" xml:space="preserve">
+    <value>المبيعات غير نقاط البيع</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="StartChatting" xml:space="preserve">
+    <value>بدء المحادثة</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>تقديم</value>
+  </data>
+  <data name="SubmittedReturn" xml:space="preserve">
+    <value>إقرارات مقدمة</value>
+  </data>
+  <data name="SummaryOfZakatCalculation" xml:space="preserve">
+    <value>إقرار زكاة تقديري</value>
+  </data>
+  <data name="TaxpayerProfile" xml:space="preserve">
+    <value>الملف الشخصي للمكلف</value>
+  </data>
+  <data name="TIN" xml:space="preserve">
+    <value>الرقم المميز</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="TotalOfBillsUnpaid" xml:space="preserve">
+    <value>مجموع الفواتير غير مسددة </value>
+  </data>
+  <data name="TotalRequiredToBePaid" xml:space="preserve">
+    <value>الإجمالي المطلوب سداده</value>
+  </data>
+  <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
+    <value>25% من المبلغ المعترض عليه</value>
+  </data>
+  <data name="Unpaid" xml:space="preserve">
+    <value>غير مدفوعة</value>
+  </data>
+  <data name="VATRegistrationCertificate" xml:space="preserve">
+    <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZakatAmount" xml:space="preserve">
+    <value>مبلغ الزكاة</value>
+  </data>
+  <data name="ZakatBase" xml:space="preserve">
+    <value>الوعاء الزكوي</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>نوع الزكاة/ الضريبة</value>
+  </data>
+   <data name="ZakatTaxType" xml:space="preserve">
+    <value>VAT</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>ZAKAT Estimate</value>
+  </data>
+  <data name="Capital" xml:space="preserve">
+    <value>رأس المال</value>
+  </data>
+<data name="Bills" xml:space="preserve">
+    <value>الفاتورة</value>
+  </data>
+<data name="DateAvailableToGAZT" xml:space="preserve">
+    <value>البيانات المتوفرة للهيئة</value>
+  </data>
+<data name="PayByMADA" xml:space="preserve">
+    <value>السداد من خلال مدى</value>
+  </data>
+
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>Certificate has been sent to recorded email</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول
+بملء هذا الإقرار أو المخول بالتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤوليه في حال ثبت خلاف ذلك  
+</value>
+  </data>
+    <data name="ZakatTaxType" xml:space="preserve">
+    <value>Dear taxpayer, when calculating the amendments ,found that your amendments do not match what was calculated by the General Authority for Zakat and Income, and in case you want to continue it will be created as an appeal</value>
+  </data>
+  
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>لن يتم تقديم طلب الاعتراض إلا في حال سداد المبلغ غير المعترض عليه بالإضافة إلى 25% من المبلغ المعترض عليه
+في حال قبول الاعتراض كليا أو جزئيا . سيتم إعادة المبلغ المسدد على المبلغ المعترض عليه
+</value>
+  </data>
+
 </root>

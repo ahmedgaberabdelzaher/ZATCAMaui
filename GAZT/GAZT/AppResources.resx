@@ -117,26 +117,245 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserName" xml:space="preserve">
-    <value> TIN </value>
+ 
+    <data name="Alerts" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="AmendReturn" xml:space="preserve">
+    <value>Amend return</value>
+  </data>
+  <data name="AmountDetailsAndSADADNumberPayment" xml:space="preserve">
+    <value>Amount details and SADAD number payment</value>
+  </data>
+  <data name="AmountNotObjected" xml:space="preserve">
+    <value>Amount not objected</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="Auditing" xml:space="preserve">
+    <value>Auditing</value>
+  </data>
+  <data name="AverageNumOfEmployment" xml:space="preserve">
+    <value>Average number of employment</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Bill</value>
+  </data>
+  <data name="BilledNumber" xml:space="preserve">
+    <value>Billed number</value>
+  </data>
+  <data name="Capital" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="Chatting" xml:space="preserve">
+    <value>Chatting</value>
+  </data>
+  <data name="ContractsToBeApproved" xml:space="preserve">
+    <value>Contracts to be approval</value>
+  </data>
+  <data name="CopiedSADADPaymentNumber" xml:space="preserve">
+    <value>It has copied SADAD payment number</value>
+  </data>
+  <data name="CopySADADNumber" xml:space="preserve">
+    <value>Copy SADAD number</value>
+  </data>
+  <data name="CopySADADPaymentNumber" xml:space="preserve">
+    <value>Copy SADAD payment number</value>
+  </data>
+  <data name="DataAvailableToGAZT" xml:space="preserve">
+    <value>Data available to GAZT</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateHijri" xml:space="preserve">
+    <value>Date ( Hijri)</value>
+  </data>
+  <data name="DetailsOfSADADBill" xml:space="preserve">
+    <value>Details of SADAD bill</value>
+  </data>
+  <data name="DueAmount" xml:space="preserve">
+    <value>Due amount</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>Due date</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterVerificationCode" xml:space="preserve">
+    <value>Please Enter verification code received on mobile</value>
+  </data>
+  <data name="EstimateSalesForFiscalYear" xml:space="preserve">
+    <value>Estimate sales for Fiscal year</value>
+  </data>
+  <data name="EstimateZakatReturn" xml:space="preserve">
+    <value>Estimate Zakat return</value>
+  </data>
+  <data name="ExportValue" xml:space="preserve">
+    <value>Export value</value>
+  </data>
+  <data name="FiscalYear" xml:space="preserve">
+    <value>Fiscal year</value>
+  </data>
+  <data name="ImportValue" xml:space="preserve">
+    <value>Import value</value>
+  </data>
+  <data name="ItHasPaidNumberForCurrentFiscalYear" xml:space="preserve">
+    <value>You have paid {} SAR for current fiscal year</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile number</value>
+  </data>
+  <data name="MyBills" xml:space="preserve">
+    <value>My bills</value>
+  </data>
+  <data name="MyBillsInvoices" xml:space="preserve">
+    <value>My bills (invoices)</value>
+  </data>
+  <data name="MyCertificate" xml:space="preserve">
+    <value>My certificate</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>New email</value>
+  </data>
+  <data name="NewMobileNumber" xml:space="preserve">
+    <value>New mobile number</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="OverdueReturn" xml:space="preserve">
+    <value>Overdue return ( late returns)</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="PartiallyPaid" xml:space="preserve">
+    <value>Partially paid</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> Password </value>
+    <value>Password</value>
   </data>
-   <data name="Login" xml:space="preserve">
-    <value> Login </value>
+  <data name="PayByMADA" xml:space="preserve">
+    <value>Pay by MADA</value>
   </data>
-   <data name="TermsAndConditions" xml:space="preserve">
-    <value> Accept </value>
+  <data name="PurchaseValue" xml:space="preserve">
+    <value>Purchase value</value>
   </data>
-   <data name="OTPSentInformation" xml:space="preserve">
-    <value>OTP is sent to your registered mobile number ******8549</value>
+  <data name="ReasonForChatting" xml:space="preserve">
+    <value>Reason from chatting</value>
   </data>
-   <data name="AlertImage" xml:space="preserve">
-    <value>  ic_bell.png</value>
+  <data name="ReasonOfAmend" xml:space="preserve">
+    <value>Reason of amend</value>
   </data>
-   <data name="UnpaidBillDescription" xml:space="preserve">
+  <data name="RegistrationCertificate" xml:space="preserve">
+    <value>Registration certificate</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="ReturnPeriod" xml:space="preserve">
+    <value>Return period</value>
+  </data>
+  <data name="RetypePassword" xml:space="preserve">
+    <value>Retype password</value>
+  </data>
+  <data name="SADADNumber" xml:space="preserve">
+    <value>SADAD number</value>
+  </data>
+  <data name="SADADPaymentNumber" xml:space="preserve">
+    <value>SADAD payment number</value>
+  </data>
+  <data name="SalesDetails" xml:space="preserve">
+    <value>Sales details</value>
+  </data>
+  <data name="SalesNotSalesPoints" xml:space="preserve">
+    <value>Sales not sales points</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="StartChatting" xml:space="preserve">
+    <value>Start chatting</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SubmittedReturn" xml:space="preserve">
+    <value>Submitted return</value>
+  </data>
+  <data name="SummaryOfZakatCalculation" xml:space="preserve">
+    <value>Summary of Zakat calculation</value>
+  </data>
+  <data name="TaxpayerProfile" xml:space="preserve">
+    <value>Taxpayer profile</value>
+  </data>
+  <data name="TIN" xml:space="preserve">
+    <value>TIN</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total amount</value>
+  </data>
+  <data name="TotalOfBillsUnpaid" xml:space="preserve">
     <value>Total of the bills unpaid</value>
+  </data>
+  <data name="TotalRequiredToBePaid" xml:space="preserve">
+    <value>Total required to be paid</value>
+  </data>
+  <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
+    <value>25% from  objected amount</value>
+  </data>
+  <data name="Unpaid" xml:space="preserve">
+    <value>Unpaid</value>
+  </data>
+  <data name="VATRegistrationCertificate" xml:space="preserve">
+    <value>VAT registration certificate</value>
+  </data>
+  <data name="ZakatAmount" xml:space="preserve">
+    <value>Zakat amount</value>
+  </data>
+  <data name="ZakatBase" xml:space="preserve">
+    <value>Zakat base</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>Zakat/tax type</value>
+  </data>
+   <data name="ZakatTaxType" xml:space="preserve">
+    <value>VAT</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>ZAKAT Estimate</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>Certificate has been sent to recorded email</value>
+  </data>
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>I agree that information  provided in this return is accurate, correct and complete with the attached documents, and that I am the authorized person
+for filing this return or authorized to sign on behalf of the taxpayer, and I assume full responsibility in the event proved otherwise.</value>
+  </data>
+    <data name="ZakatTaxType" xml:space="preserve">
+    <value>Dear taxpayer, when calculating the amendments ,found that your amendments do not match what was calculated by the General Authority for Zakat and Income, and in case you want to continue it will be created as an appeal</value>
+  </data>
+  
+  <data name="ZakatTaxType" xml:space="preserve">
+    <value>An appeal will not be filed only in case pay for Amount not objected plus 25% from objected amount.In case accepted in whole or in part objection .It will refunded to the amount objected</value>
   </data>
 
 </root>

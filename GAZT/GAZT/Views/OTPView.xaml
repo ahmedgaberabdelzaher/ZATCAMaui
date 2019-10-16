@@ -40,7 +40,7 @@
                     <Image Source="ic_logo.png" Aspect="AspectFit" />
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <local:CustomLabel Text="{x:Static local:AppResources.OTPSentInformation}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d" />
+                    <local:CustomLabel Text="OTP has been sent to your registerd phone number *******549" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d" />
                 </StackLayout>
                 <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
                 </Frame>
