@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" Title="Dashboard" FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"  FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -15,14 +15,14 @@
                     <RowDefinition Height="11*" />
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="2*" />
-                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="3*" />
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="5*" />
                     <RowDefinition Height="35*" />
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="13*" />
-                    <RowDefinition Height="14*" />
+                    <RowDefinition Height="13*" />
                     <RowDefinition Height="5*" />
                     <RowDefinition Height=".5*" />
                     <RowDefinition Height=".5*" />
@@ -49,7 +49,7 @@
                     <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="14.5" BorderColor="#B1B1B1" BackgroundColor="White">
+                                <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="14.5" BorderColor="#B1B1B1" BackgroundColor="White">
                                     <Image Source="{Binding Source}" />
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
@@ -98,14 +98,14 @@
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
                                                     <local:CustomLabel Text="3" Style="{StaticResource MiniMaroonLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
                                                     </local:CustomLabel>
-                                                    <local:CustomLabel Text="{x:Static local:AppResources.OverdueReturn}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
+                                                    <local:CustomLabel Text="{x:Static local:AppResources.OverdueReturn}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
                                                     </local:CustomLabel>
                                                 </StackLayout>
                                                 <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,0,0" />
                                                 <StackLayout Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
                                                     <local:CustomLabel Text="3" Style="{StaticResource MiniGreenLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
                                                     </local:CustomLabel>
-                                                    <local:CustomLabel Text="{x:Static local:AppResources.SubmittedReturn}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
+                                                    <local:CustomLabel Text="{x:Static local:AppResources.SubmittedReturn}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
                                                     </local:CustomLabel>
                                                 </StackLayout>
                                                 <!--  <StackLayout Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Style="{StaticResource MiniGreenLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">

@@ -200,7 +200,7 @@
     <value>Estimate sales for Fiscal year</value>
   </data>
   <data name="EstimateZakatReturn" xml:space="preserve">
-    <value>Estimate Zakat return</value>
+    <value>Estimate</value>
   </data>
   <data name="ExportValue" xml:space="preserve">
     <value>Export value</value>
@@ -224,7 +224,7 @@
     <value>My bills</value>
   </data>
   <data name="MyBillsInvoices" xml:space="preserve">
-    <value>My bills (invoices)</value>
+    <value>My bills</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
     <value>My certificate</value>
@@ -251,7 +251,7 @@
     <value>Partially paid</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value> Password </value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>Pay by MADA</value>
@@ -308,7 +308,7 @@
     <value>Taxpayer profile</value>
   </data>
   <data name="TIN" xml:space="preserve">
-    <value>TIN</value>
+    <value> TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>Total amount</value>

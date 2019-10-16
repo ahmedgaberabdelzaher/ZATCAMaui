@@ -14,6 +14,12 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.LogInView;
             InitializeComponent();
+            Thickness th = new Thickness();
+            th.Left = 0;
+            th.Right = 0;
+            th.Top = -40;
+            th.Bottom = 0;
+          // logo.Margin = th;
             App.IsArabic = true;
             this.BindingContext = viewModel;
             //  SetRTLDirection();
@@ -112,7 +118,7 @@ namespace GAZT.Views
             float XPoint = DeviceWidth/2;
             float YPoint = (deviceHeight*40/100);// deviceHeight - ;
             float Radius = deviceHeight+ YPoint;
-            YPoint = YPoint + (float)App.NavigationBarHeightt; 
+            //YPoint = YPoint;// + (float)App.NavigationBarHeightt; 
             path.AddCircle(XPoint,-YPoint, Radius);
 
            

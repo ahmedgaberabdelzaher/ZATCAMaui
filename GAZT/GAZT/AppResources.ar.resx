@@ -242,7 +242,7 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>كلمة المرور الجديدة</value>
+    <value> كلمة المرور الجديدة </value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
@@ -311,7 +311,7 @@
     <value>الملف الشخصي للمكلف</value>
   </data>
   <data name="TIN" xml:space="preserve">
-    <value>الرقم المميز</value>
+    <value> الرقم المميز </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>المبلغ الإجمالي</value>

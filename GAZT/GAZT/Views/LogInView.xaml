@@ -42,20 +42,20 @@
             <local:BorderlessEntry Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local:BorderlessEntry>
             <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <local:CustomLabel Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-5,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+            <local:CustomLabel  Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
                    <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
             <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
             </Frame>
             <local:BorderlessEntry Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local:BorderlessEntry>
-            <Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <local:CustomLabel Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-5,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+            <Image Source="ic_password.png"  Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
+            <local:CustomLabel  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
             <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
                      <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
             </Frame>
-            <local:CustomLabel Text="{x:Static local:AppResources.LogIn}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
+            <local:CustomLabel  Text="{x:Static local:AppResources.LogIn}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
                 <local:CustomLabel.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
                 </local:CustomLabel.GestureRecognizers>
@@ -64,7 +64,7 @@
             </StackLayout>
             <StackLayout Padding="10,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Image Source="ic_checkbox.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" />
-                <local:CustomLabel FontSize="Medium" Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
+                <local:CustomLabel  Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
                 </local:CustomLabel>
             </StackLayout>
         </Grid>
