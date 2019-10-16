@@ -10,13 +10,11 @@ namespace GAZT.Views
     {
         LogInViewModel viewModel;
         int LanguageToolBarCount = 0;
-       public static bool IsArabic;
-
         public LogInView()
         {
             viewModel = App.Locator.LogInView;
             InitializeComponent();
-           IsArabic = true;
+            App.IsArabic = true;
             this.BindingContext = viewModel;
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
@@ -86,6 +84,7 @@ namespace GAZT.Views
             InitializeComponent();
             // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
+            App.IsArabic = false;
         }
 
 

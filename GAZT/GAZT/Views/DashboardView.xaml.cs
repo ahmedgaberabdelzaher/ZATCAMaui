@@ -17,8 +17,10 @@ namespace GAZT.Views
         ObservableCollection<String> Items = new ObservableCollection<String>();
         public DashboardView()
         {
+          
             viewModel = App.Locator.DashboardView;
             InitializeComponent();
+            SetLTR();
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
@@ -32,15 +34,21 @@ namespace GAZT.Views
             //SetMyCertificatesLayoutHeightWidth();
             //SetMyBillsInvoicesLayoutHeightWidth();
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         //private void SetEstimateZakatReturnsLayoutHeightWidth()
         //{
-           
+
         //    double HeightWidth = (DeviceWidth*87)/100/3;
         //    EstimateZakatReturns.HeightRequest = HeightWidth;
         //    EstimateZakatReturns.HeightRequest = HeightWidth;
 
-                
+
         //}
 
         //private void SetMyCertificatesLayoutHeightWidth()

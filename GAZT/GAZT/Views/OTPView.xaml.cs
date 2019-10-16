@@ -5,7 +5,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using GAZT.Helper;
-
+using System.Globalization;
 namespace GAZT.Views
 {
     public partial class OTPView : ContentPage
@@ -15,12 +15,21 @@ namespace GAZT.Views
         OTPViewModel viewModel;
         public OTPView()
         {
+            SetLTR();
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 
+        }
+
+        private void SetLTR()
+        {
+            if(!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
         private void SetOTPBoxHeightWidth()
         {

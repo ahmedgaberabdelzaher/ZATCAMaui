@@ -29,6 +29,7 @@
     <Folder Include="Helper\" />
     <Folder Include="CustomControl\" />
     <Folder Include="ViewModel\" />
+    <Folder Include="Manager\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

@@ -10,21 +10,21 @@ namespace GAZT.Views
     public partial class MyCertificate : ContentPage
     {
         MyCertificateViewModel viewModel;
-        List<string> list = new List<string>();
+     
         public MyCertificate()
         {
+            SetLTR();
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
             this.BindingContext = viewModel;
-            list.Add("ghgh");
-            list.Add("fgfg");
-            list.Add("ff");
-            list.Add("ss");
-            SearchListView.ItemsSource = list;
-
-
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;

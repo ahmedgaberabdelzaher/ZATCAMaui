@@ -64,7 +64,7 @@
             </StackLayout>
             <StackLayout Padding="10,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Image Source="ic_checkbox.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" />
-                <local:CustomLabel FontSize="Medium" Text="Remember me" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
+                <local:CustomLabel FontSize="Medium" Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
                 </local:CustomLabel>
             </StackLayout>
         </Grid>

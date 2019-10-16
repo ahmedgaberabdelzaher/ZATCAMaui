@@ -484,5 +484,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxType", resourceCulture);
             }
         }
+        
+        public static string Bills {
+            get {
+                return ResourceManager.GetString("Bills", resourceCulture);
+            }
+        }
+        
+        public static string DateAvailableToGAZT {
+            get {
+                return ResourceManager.GetString("DateAvailableToGAZT", resourceCulture);
+            }
+        }
+        
+        public static string AmendmentsDoNotMatchText {
+            get {
+                return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
+            }
+        }
     }
 }

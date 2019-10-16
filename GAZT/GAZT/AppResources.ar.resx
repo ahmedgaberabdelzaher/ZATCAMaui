@@ -376,5 +376,13 @@
 في حال قبول الاعتراض كليا أو جزئيا . سيتم إعادة المبلغ المسدد على المبلغ المعترض عليه
 </value>
   </data>
-
+ <data name="AmendmentsDoNotMatchText" xml:space="preserve">
+    <value>
+           عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل ، وفي حال الرغبة في بالاستمرار سيتم إنشاء طلب اعتراض 
+        </value>
+  </data>
+ <data name="RememberMe" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>   
+ 
 </root>

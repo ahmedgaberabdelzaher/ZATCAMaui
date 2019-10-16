@@ -357,5 +357,20 @@ for filing this return or authorized to sign on behalf of the taxpayer, and I as
   <data name="ZakatTaxType" xml:space="preserve">
     <value>An appeal will not be filed only in case pay for Amount not objected plus 25% from objected amount.In case accepted in whole or in part objection .It will refunded to the amount objected</value>
   </data>
+  <data name="AmendmentsDoNotMatchText" xml:space="preserve">
+    <value>Dear taxpayer, when calculating the
+
+amendments ,found that your
+
+amendments do not match what was
+
+calculated by the General Authority
+
+for Zakat and Income, and in case of
+
+wants to continue will be created an
+
+appeal</value>
+  </data>
 
 </root>
