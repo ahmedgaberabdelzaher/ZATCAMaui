@@ -262,6 +262,9 @@
     <BundleResource Include="Resources\ic_envelop%402x.png" />
     <BundleResource Include="Resources\ic_envelop%403x.png" />
     <BundleResource Include="Resources\SST Arabic Light.ttf" />
+    <BundleResource Include="Resources\ic_OTP_Rectangle.png" />
+    <BundleResource Include="Resources\ic_OTP_Rectangle%402x.png" />
+    <BundleResource Include="Resources\ic_OTP_Rectangle%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

@@ -35,9 +35,11 @@ namespace GAZT.Droid.CustomRenderer
                 Control.SetTextColor(global::Android.Graphics.Color.Black);
                 var layoutParams = new MarginLayoutParams(Control.LayoutParameters);
                 layoutParams.SetMargins(0, 0, 0, 0);
-                LayoutParameters = layoutParams;
+				LayoutParameters = layoutParams;
                 Control.LayoutParameters = layoutParams;
-                Control.SetPadding(0, 0, 0, 0);
+				Control.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
+
+				Control.SetPadding(0, 0, 0, 0);
                 SetPadding(0, 0, 0, 0);
                 //if (App.IsArabic)
                 //{

@@ -4,14 +4,14 @@
         <StackLayout>
             <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="42*" />
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="7*" />
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="7.9*" />
-                    <RowDefinition Height="22*" />
+                    <RowDefinition Height="37.46*" />
+                    <RowDefinition Height="4.25*" />
+                    <RowDefinition Height="7.45*" />
+                    <RowDefinition Height="4.25*" />
+                    <RowDefinition Height="9.58*" />
+                    <RowDefinition Height="4.25*" />
+                    <RowDefinition Height="8.41*" />
+                    <RowDefinition Height="24.35*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="13*" />
@@ -27,9 +27,9 @@
                 <skia:SKCanvasView Margin="0,-2,0,0" x:Name="canvasView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" PaintSurface="OnCanvasViewPaintSurface" />
                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="27*" />
-                        <RowDefinition Height="53*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="55*" />
+                        <RowDefinition Height="30*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100*" />
@@ -42,18 +42,27 @@
                 <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <local:CustomLabel  Text="{x:Static local:AppResources.EnterVerificationCode}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d" />
                 </StackLayout>
-                <Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>
-                <local:BorderlessEntry x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
-                <Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>
-                <local:BorderlessEntry x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
-                <Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>
-                <local:BorderlessEntry x:Name="OTPEEntryThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
-                <Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>
-                <local:BorderlessEntry x:Name="OTPEEntryFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="White" />
+                <!--<Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>-->
+                <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit" >
+                </Image>
+               
+                <local:BorderlessEntry  x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <!--<Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>-->
+                 <Image Source="ic_OTP_Rectangle.png" x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                </Image>
+                <local:BorderlessEntry x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <!--<Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>-->
+                 <Image Source="ic_OTP_Rectangle.png" x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                </Image>
+                <local:BorderlessEntry x:Name="OTPEEntryThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <!--<Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                </Frame>-->
+                 <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                </Image>
+                <local:BorderlessEntry x:Name="OTPEEntryFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
                 <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0,0,0,0">
                 </Frame>
                 <local:CustomLabel Text="Validate OTP" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
