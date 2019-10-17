@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"  FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft">
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="42*" />
-                <RowDefinition Height="58*" />
+                <RowDefinition Height="37.46*" />
+                <RowDefinition Height="62.54*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*" />
@@ -21,19 +24,19 @@
                     <RowDefinition Height="5*" />
                     <RowDefinition Height="35*" />
                     <RowDefinition Height="4*" />
-                    <RowDefinition Height="13*" />
-                    <RowDefinition Height="13*" />
+                    <RowDefinition Height="25*" />
+                    <RowDefinition Height="1*" />
                     <RowDefinition Height="5*" />
                     <RowDefinition Height=".5*" />
                     <RowDefinition Height=".5*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="29*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="29*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="29*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="4*" />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Row="0" Grid.Column="5" Source="ic_bell.png" HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" />
@@ -122,17 +125,21 @@
                         </DataTemplate>
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
-                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Style="{StaticResource FrameStyle}" IsClippedToBounds="true" Grid.Row="9" Grid.Column="1">
-                    <Image Source="{Binding Source}" />
-                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+                <Image Source="Rectangle.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   Grid.Row="9" Grid.Column="1" Aspect="AspectFit">
+                     </Image>
+                   
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0"  Grid.Row="9" Grid.Column="1">
                         <Image Grid.Row="0" Source="ic_money.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
                         <local:CustomLabel Text="{x:Static local:AppResources.EstimateZakatReturn}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
                         </local:CustomLabel>
                     </StackLayout>
-                </Frame>
-                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Style="{StaticResource FrameStyle}" IsClippedToBounds="true" Grid.Row="9" Grid.Column="3">
-                    <Image Source="{Binding Source}" />
-                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+               
+                <Image Source="Rectangle.png"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   Grid.Row="9" Grid.Column="3">
+                    <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
+                        </Image.GestureRecognizers>
+                     </Image>
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0" Grid.Row="9" Grid.Column="3">
                         <Image Grid.Row="0" Source="ic_certeficate.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
@@ -147,18 +154,18 @@
                             <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <Frame.GestureRecognizers>
+                    <!--<Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" Style="{StaticResource FrameStyle}" Grid.Row="9" Grid.Column="5">
+                    </Frame.GestureRecognizers>-->
+               
+                <Image Source="Rectangle.png"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="5">
+                    </Image>
                     <Image Source="{Binding Source}" />
-                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0"  Grid.Row="9" Grid.Column="5">
                         <Image Grid.Row="0" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
                         <local:CustomLabel Text="{x:Static local:AppResources.MyBillsInvoices}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
                         </local:CustomLabel>
                     </StackLayout>
-                </Frame>
                 <BoxView Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Image Grid.Row="11" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
