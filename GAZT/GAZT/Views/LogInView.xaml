@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.LogInView" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" BackgroundColor="White" FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.LogInView" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" BackgroundColor="White" FlowDirection="RightToLeft">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_language.png" Order="Primary" Priority="0" Clicked="OnOnLanguageClickClicked" />
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-  <!--    <ScrollView>-->
+    <!-- <ScrollView>-->
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="42*" />
-                <RowDefinition Height="8*" />
-                <RowDefinition Height="8*" />
-                <RowDefinition Height="4*" />
-                <RowDefinition Height="8*" />
-                <RowDefinition Height="4*" />
+                <!--<RowDefinition Height="41.67*" />-->
+                 <!--<RowDefinition Height="35.18*" />
+                <RowDefinition Height="9.63*" />
+                <RowDefinition Height="6.81*" />
+                <RowDefinition Height="4.44*" />
+                <RowDefinition Height="6.81*" />
+                <RowDefinition Height="4.44*" />
                 <RowDefinition Height="7.9*" />
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="3.33*" />
+                <RowDefinition Height="3.33*" />
+                <RowDefinition Height="11.64*" />-->
+                 <RowDefinition Height="37.46*" />
+                <RowDefinition Height="10.25*" />
+                <RowDefinition Height="7.25*" />
+                <RowDefinition Height="4.72*" />
+                <RowDefinition Height="7.25*" />
+                <RowDefinition Height="4.72*" />
+                <RowDefinition Height="8.41*" />
+                <RowDefinition Height="3.51*" />
+                <RowDefinition Height="3.51*" />
+                <RowDefinition Height="12.92*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="13*" />
@@ -26,14 +37,17 @@
             <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PaintSurface="OnCanvasViewPaintSurface" />
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="27*" />
-                    <RowDefinition Height="53*" />
-                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="15*" />
+                    <RowDefinition Height="55*" />
+                     <RowDefinition Height="30*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
-                <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
+                <!--<StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"/>-->
+                 <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
+                                <!--<StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Yellow"/>-->
+
             </Grid>
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
             </StackLayout>
@@ -42,20 +56,20 @@
             <local:BorderlessEntry Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local:BorderlessEntry>
             <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <local:CustomLabel  Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+            <local:CustomLabel   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
                    <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
             <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
             </Frame>
-            <local:BorderlessEntry Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-            </local:BorderlessEntry>
+            <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+            </local1:BorderlessEntry>
             <Image Source="ic_password.png"  Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <local:CustomLabel  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+            <local:CustomLabel  FontFamily="{StaticResource SSTArabicLight}"  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
             <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
                      <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
             </Frame>
-            <local:CustomLabel  Text="{x:Static local:AppResources.LogIn}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
+            <local:CustomLabel   Text="{x:Static local:AppResources.LogIn}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
                 <local:CustomLabel.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
                 </local:CustomLabel.GestureRecognizers>
@@ -64,11 +78,11 @@
             </StackLayout>
             <StackLayout Padding="10,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Image Source="ic_checkbox.png" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center" />
-                <local:CustomLabel  Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
+                <local:CustomLabel    Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
                 </local:CustomLabel>
             </StackLayout>
         </Grid>
         
-          <!-- </ScrollView>-->
+         <!-- </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

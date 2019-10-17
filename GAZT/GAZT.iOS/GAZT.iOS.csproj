@@ -99,6 +99,8 @@
     <Compile Include="DependencyServices\DeviceInfo.cs" />
     <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
     <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
+    <Compile Include="CustomRenderer\KeyboardRender.cs" />
+    <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -159,6 +161,9 @@
     </PackageReference>
     <PackageReference Include="MvvmLightLibs">
       <Version>5.4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.IQKeyboardManager">
+      <Version>1.4.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -256,6 +261,7 @@
     <BundleResource Include="Resources\ic_envelop.png" />
     <BundleResource Include="Resources\ic_envelop%402x.png" />
     <BundleResource Include="Resources\ic_envelop%403x.png" />
+    <BundleResource Include="Resources\SST Arabic Light.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

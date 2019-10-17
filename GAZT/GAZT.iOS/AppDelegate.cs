@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
 using UIKit;
+using Xamarin;
 
 namespace GAZT.iOS
 {
@@ -22,7 +20,8 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
+            IQKeyboardManager.SharedManager.Enable = true;
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

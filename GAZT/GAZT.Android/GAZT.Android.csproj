@@ -85,6 +85,7 @@
     <Compile Include="CustomRenderer\CustomLabelRenderer.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -257,6 +258,9 @@
       <Project>{D36E23EC-2F43-4CF9-BFCE-B8EBA9F3A4A2}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\SST Arabic Light.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

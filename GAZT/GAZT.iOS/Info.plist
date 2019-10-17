@@ -11,6 +11,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+
+<key>UIAppFonts</key>
+<array>
+    <string>SST Arabic Light.ttf</string>
+</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -39,5 +44,8 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>Custom Property</key>
+	<string></string>
+
 </dict>
 </plist>
