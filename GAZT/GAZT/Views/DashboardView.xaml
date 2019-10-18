@@ -55,32 +55,66 @@
                                     <Image Source="{Binding Source}" />
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="7*" />
-                                            <RowDefinition Height="59*" />
-                                            <RowDefinition Height="12*" />
-                                            <RowDefinition Height="22*" />
+                                            <RowDefinition Height="8.02*" />
+                                            <RowDefinition Height="59.43*" />
+                                            <RowDefinition Height="11.32*" />
+                                            <RowDefinition Height="21.23*" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*" />
-                                            <ColumnDefinition Width="42*" />
-                                            <ColumnDefinition Width="11*" />
-                                            <ColumnDefinition Width="20*" />
-                                            <ColumnDefinition Width="12*" />
+                                            <ColumnDefinition Width="14.63*" />
+                                            <ColumnDefinition Width="42.86*" />
+                                            <ColumnDefinition Width="15.71*" />
+                                            <ColumnDefinition Width="15.95*" />
+                                            <ColumnDefinition Width="10.88*" />
                                         </Grid.ColumnDefinitions>
-                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" Orientation="Vertical">
+                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" >
+
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="36.43*" />
+                                            <RowDefinition Height="14.53*" />
+                                            <RowDefinition Height="15.5*" />
+                                            <RowDefinition Height="14.53*" />
+                                            <RowDefinition Height="19.01*" />
+                                          
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="14.68*" />
+                                            <ColumnDefinition Width="43*" />
+                                            <ColumnDefinition Width="12.43*" />
+                                            <ColumnDefinition Width="8.46*" />
+                                            <ColumnDefinition Width="1.37*" />
+                                            <ColumnDefinition Width="9.14*" />
+                                            <ColumnDefinition Width="10.92*" />
+                                        </Grid.ColumnDefinitions>
+
+                                                <Frame Grid.Row="1" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  CornerRadius="4" HasShadow="False" BackgroundColor="#005e4b">
+                                                </Frame>
+                                                <local:CustomLabel Grid.Row="1" Grid.Column="5"  Text="%20" HorizontalOptions="Start" Margin="0,0,0,0" Style="{StaticResource DashboardChartStatusGrayLabel}">
+                                                </local:CustomLabel>
+
+                                                <Frame Grid.Row="3" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" CornerRadius="4" HasShadow="False" BackgroundColor="#A76d6d">
+                                                </Frame>
+                                                <local:CustomLabel Grid.Row="3" Grid.Column="5"  Text="%80" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,0,0,0" Style="{StaticResource DashboardChartStatusGrayLabel}">
+                                                </local:CustomLabel>
+
+                                                </Grid>
+                                        </StackLayout>
+
+                                        <!--<StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" Orientation="Vertical">
                                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal">
-                                                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" BackgroundColor="#005e4b">
-                                                </BoxView>
+                                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HeightRequest="10" WidthRequest="20" CornerRadius="10" BackgroundColor="#005e4b">
+                                                </Frame>
                                                 <local:CustomLabel Text="%20" HorizontalOptions="Start" Margin="0,0,0,0" Style="{StaticResource MiniGrayLabelStyle}">
                                                 </local:CustomLabel>
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
-                                                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" BackgroundColor="#A76d6d">
-                                                </BoxView>
+                                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" CornerRadius="10" BackgroundColor="#A76d6d">
+                                                </Frame>
                                                 <local:CustomLabel Text="%80" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,0,0,0" Style="{StaticResource MiniGrayLabelStyle}">
                                                 </local:CustomLabel>
                                             </StackLayout>
-                                        </StackLayout>
+                                        </StackLayout>-->
                                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
                                             <Image Grid.Row="1" Grid.Column="1" Source="Ellipse.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
