@@ -14,6 +14,8 @@ namespace GAZT
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
+        public ICommand OnBellClicked { get; set; }
+
         #endregion
 
         #region Property
@@ -56,6 +58,12 @@ namespace GAZT
             {
                 bool IsComingFromSearch = true;
                 // _navigationService.NavigateTo(App.LoginView);
+
+            });
+
+            OnBellClicked = new RelayCommand(async () =>
+            {
+                //_navigationService.NavigateTo(App.MyCertificate);
 
             });
 
