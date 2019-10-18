@@ -20,9 +20,9 @@
                 <RowDefinition Height="12.92*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="13*" />
+                <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="67*" />
+                <ColumnDefinition Width="70*" />
             </Grid.ColumnDefinitions>
             <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PaintSurface="OnCanvasViewPaintSurface" />
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
