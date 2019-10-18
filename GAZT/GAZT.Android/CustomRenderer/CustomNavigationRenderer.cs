@@ -19,8 +19,14 @@ namespace GAZT.Droid.CustomRenderer
  public CustomNavigationRenderer(Context context) : base(context) 
  {
   }
+		protected override void OnLayout(bool changed, int l, int t, int r, int b)
+		{
+			base.OnLayout(changed, l, t, r, b);
+			var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			toolbar.LayoutDirection = LayoutDirection.Rtl;
 
-        protected override void OnElementChanged(ElementChangedEventArgs<NavigationPage> e)
+		}
+		protected override void OnElementChanged(ElementChangedEventArgs<NavigationPage> e)
         {
             base.OnElementChanged(e);
 

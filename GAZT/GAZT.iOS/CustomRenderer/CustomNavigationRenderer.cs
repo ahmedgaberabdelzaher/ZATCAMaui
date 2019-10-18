@@ -52,6 +52,7 @@ public override void ViewDidLoad()
                     Font = ft
                 };
 
+               // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
 
             });
         }
