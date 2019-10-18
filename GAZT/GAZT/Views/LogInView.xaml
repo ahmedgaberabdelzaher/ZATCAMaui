@@ -7,17 +7,7 @@
     <!-- <ScrollView>-->
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <!--<RowDefinition Height="41.67*" />-->
-                 <!--<RowDefinition Height="35.18*" />
-                <RowDefinition Height="9.63*" />
-                <RowDefinition Height="6.81*" />
-                <RowDefinition Height="4.44*" />
-                <RowDefinition Height="6.81*" />
-                <RowDefinition Height="4.44*" />
-                <RowDefinition Height="7.9*" />
-                <RowDefinition Height="3.33*" />
-                <RowDefinition Height="3.33*" />
-                <RowDefinition Height="11.64*" />-->
+               
                  <RowDefinition Height="37.46*" />
                 <RowDefinition Height="10.25*" />
                 <RowDefinition Height="7.25*" />
@@ -53,10 +43,10 @@
             </StackLayout>
             <Frame Grid.Row="2" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
             </Frame>
-            <local:BorderlessEntry Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-            </local:BorderlessEntry>
+            <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+            </local1:BorderlessEntry>
             <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+            <Label   Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
                    <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
             <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
@@ -64,7 +54,7 @@
             <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local1:BorderlessEntry>
             <Image Source="ic_password.png"  Grid.Row="4" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-            <Label FontFamily="{StaticResource SSTArabicLight}"  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+          <!--FontFamily="{StaticResource SSTArabicLight}"-->   <Label  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
             <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
                      <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
