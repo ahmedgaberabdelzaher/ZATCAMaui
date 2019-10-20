@@ -36,22 +36,64 @@
                 </local1:CustomLabel>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" BackgroundColor="Transparent">
                 </StackLayout>
-                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" RowHeight="50" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent" Margin="9,0,9,0">
-                    <x:Arguments>
-                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                    </x:Arguments>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="39" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                    <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0"  IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
+                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Orientation="Vertical">
+                 <Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC" >
+                       <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="75" />
+    </Frame.HeightRequest>
+                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0"  IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
+                                         <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="75" />
+    </Frame.HeightRequest>
+                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
                                             <local1:CustomLabel Text="Estimate Zakat returns" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
                                             </local1:CustomLabel>
                                             <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
                                         </StackLayout>
                                     </Frame>
                                 </Frame>
+
+                     <Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC" >
+                           <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="75" />
+    </Frame.HeightRequest>
+                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0"  IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
+                                          <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="75" />
+    </Frame.HeightRequest>
+                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
+                                            <local1:CustomLabel Text="Estimate Zakat returns" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                            </local1:CustomLabel>
+                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
+                                        </StackLayout>
+                                    </Frame>
+                                </Frame>
+                  
+                    </StackLayout>-->
+               <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent" Margin="9,0,9,0">
+                    <x:Arguments>
+                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                    </x:Arguments>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC" >
+                       <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
+    </Frame.HeightRequest>
+                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0"  IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
+                                         <Frame.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
+    </Frame.HeightRequest>
+                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
+                                            <local1:CustomLabel Text="Estimate Zakat returns" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                            </local1:CustomLabel>
+                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
+                                        </StackLayout>
+                                    </Frame>
+                                </Frame>
+
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

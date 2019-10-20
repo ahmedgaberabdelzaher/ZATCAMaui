@@ -61,7 +61,16 @@ namespace GAZT.Views
             float DeviceWidth = info.Width;
             float deviceHeight = info.Height;
             float XPoint = DeviceWidth / 2;
-            float YPoint = (deviceHeight * 40 / 100);// deviceHeight - ;
+            float YPoint;
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                YPoint = (deviceHeight * 92 / 100);// deviceHeight - ;
+            }
+            else
+            {
+                YPoint = (deviceHeight * 160 / 100);// (deviceHeight * 92 / 100);// deviceHeight - ;
+            }
+
             float Radius = deviceHeight + YPoint;
             path.AddCircle(XPoint, -YPoint, Radius);
 

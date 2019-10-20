@@ -14,7 +14,7 @@
             <Style x:Key="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="22" />
                     </Setter.Value>
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
@@ -24,7 +24,7 @@
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="13" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -33,7 +33,7 @@
             <Style x:Key="MicroGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="21" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -41,7 +41,7 @@
             <Style x:Key="SmallGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="19" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="24" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -49,7 +49,7 @@
             <Style x:Key="MediumGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="25" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -58,7 +58,7 @@
             <Style x:Key="DashboardChartStatusGrayLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="14" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource DashboardChartStatusGrayTextColor}" />
@@ -70,7 +70,7 @@
             <Style x:Key="MediumWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="22" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="25" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -78,7 +78,7 @@
             <Style x:Key="SmallWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="25" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -86,7 +86,7 @@
             <Style x:Key="MicroGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="22" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
@@ -94,7 +94,7 @@
             <Style x:Key="MiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="19" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -102,7 +102,7 @@
             <Style x:Key="CalanderWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -110,7 +110,7 @@
             <Style x:Key="SmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="25" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -118,7 +118,7 @@
             <Style x:Key="SmallMiniWhiteLabelStyleTwo" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="19" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="24" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
@@ -126,7 +126,7 @@
             <Style x:Key="MiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="13" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
@@ -134,7 +134,7 @@
             <Style x:Key="DashboardMiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="19" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
@@ -142,7 +142,7 @@
             <Style x:Key="MiniGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="13" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
@@ -150,7 +150,7 @@
             <Style x:Key="MiniMaroonLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="13" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource MaroonLabelTextColor}" />
@@ -158,7 +158,7 @@
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="14.5" Tablet="20" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="14.5" Tablet="23.5" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -168,7 +168,7 @@
             <Style x:Key="MiniBlackLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="13" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />

@@ -85,7 +85,6 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
-    <Compile Include="CustomRenderer\BorderlessEntryForOTPViewRenderer.cs" />
     <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>

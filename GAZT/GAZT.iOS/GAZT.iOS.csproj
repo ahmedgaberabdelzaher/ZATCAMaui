@@ -102,7 +102,6 @@
     <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
     <Compile Include="CustomRenderer\KeyboardRender.cs" />
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
-    <Compile Include="CustomRenderer\BorderlessEntryForOTPViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

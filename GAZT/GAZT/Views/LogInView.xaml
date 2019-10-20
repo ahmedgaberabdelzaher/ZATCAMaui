@@ -46,7 +46,9 @@
             <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local1:BorderlessEntry>
             <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,15,0" />
-            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" ></Label>
+            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" >
+ 
+            </Label>
                    <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
             <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
