@@ -6,16 +6,15 @@ using System.ComponentModel;
 using GAZT.iOS.CustomRenderer;
 using GAZT;
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
-
 namespace GAZT.iOS.CustomRenderer
 {
-    public class BorderlessEntryRenderer : EntryRenderer
+    public class BorderlessEntryForOTPViewRenderer : EntryRenderer
     {
         public static void Init() { }
         double fontSize;
 
-     
-       
+
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -24,15 +23,16 @@ namespace GAZT.iOS.CustomRenderer
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
-                if (App.IsArabic)
-                {
-                    Control.TextAlignment = UITextAlignment.Right;
-                }
-               
+                //if (App.IsArabic)
+                //{
+                //    Control.TextAlignment = UITextAlignment.Center;
+                //}
+
                 //if (StyleId.Equals("OTPEntry"))
                 //{
                 //    Control.TextAlignment = UITextAlignment.Center;
                 //}
+                Control.TextAlignment = UITextAlignment.Center;
             }
 
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));

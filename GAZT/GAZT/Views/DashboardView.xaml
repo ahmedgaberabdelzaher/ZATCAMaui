@@ -31,21 +31,21 @@
                     <RowDefinition Height=".875*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" /><!--5.69-->
+                    <ColumnDefinition Width="2*" /><!--5.69-->
                     <ColumnDefinition Width="31*" />
-                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="31*" /><!--26.95-->
-                    <ColumnDefinition Width=".5*" /><!--2.99-->
+                    <ColumnDefinition Width="1*" /><!--2.99-->
                     <ColumnDefinition Width="31*" />
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                <local:CustomLabel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Text="{x:Static local:AppResources.TotalOfBillsUnpaid}" Style="{StaticResource SmallMiniWhiteLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
-                <local:CustomLabel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="SAR 4000" Style="{StaticResource SmallMiniWhiteLabelStyleTwo}" HorizontalOptions="Start" VerticalOptions="Start" />
-                <local:CustomLabel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="2" Text="{x:Static local:AppResources.ItHasPaidNumberForCurrentFiscalYear}" Style="{StaticResource MicroGrayLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
+                <local1:CustomLabel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Text="{x:Static local:AppResources.TotalOfBillsUnpaid}" Style="{StaticResource SmallMiniWhiteLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
+                <local1:CustomLabel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="SAR 4000" Style="{StaticResource SmallMiniWhiteLabelStyleTwo}" HorizontalOptions="Start" VerticalOptions="Start" />
+                <local1:CustomLabel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="2" Text="{x:Static local:AppResources.ItHasPaidNumberForCurrentFiscalYear}" Style="{StaticResource MicroGrayLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
                 <StackLayout Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalOptions="End" VerticalOptions="Center" Orientation="Vertical">
-                    <local:CustomLabel Text="Mar 2018" Style="{StaticResource CalanderWhiteLabelStyle}" HorizontalOptions="End" VerticalOptions="Start" />
+                    <local1:CustomLabel Text="Mar 2018" Style="{StaticResource CalanderWhiteLabelStyle}" HorizontalOptions="End" VerticalOptions="Start" />
                     <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="0.5" BackgroundColor="#c9c9c9" />
-                    <local:CustomLabel Text="Mar 2019" Style="{StaticResource CalanderWhiteLabelStyle}" HorizontalOptions="End" VerticalOptions="Start" />
+                    <local1:CustomLabel Text="Mar 2019" Style="{StaticResource CalanderWhiteLabelStyle}" HorizontalOptions="End" VerticalOptions="Start" />
                 </StackLayout>
                 <cards:CarouselView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5" x:Name="CardView">
                     <cards:CarouselView.ItemTemplate>
@@ -90,8 +90,8 @@
 
                                                 <Frame Grid.Row="1" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  CornerRadius="4" HasShadow="False" BackgroundColor="#005e4b">
                                                 </Frame>
-                                                <local:CustomLabel Grid.Row="1" Grid.Column="5"  Text="%20" HorizontalOptions="Start" Margin="0,0,0,0" Style="{StaticResource DashboardChartStatusGrayLabel}">
-                                                </local:CustomLabel>
+                                                <local1:CustomLabel Grid.Row="1" Grid.Column="5"  Text="%20" HorizontalOptions="Start" Margin="0,0,0,0" Style="{StaticResource DashboardChartStatusGrayLabel}">
+                                                </local1:CustomLabel>
 
                                                 <Frame Grid.Row="3" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" CornerRadius="4" HasShadow="False" BackgroundColor="#A76d6d">
                                                 </Frame>
@@ -101,25 +101,12 @@
                                                 </Grid>
                                         </StackLayout>
 
-                                        <!--<StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" Orientation="Vertical">
-                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal">
-                                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HeightRequest="10" WidthRequest="20" CornerRadius="10" BackgroundColor="#005e4b">
-                                                </Frame>
-                                                <local:CustomLabel Text="%20" HorizontalOptions="Start" Margin="0,0,0,0" Style="{StaticResource MiniGrayLabelStyle}">
-                                                </local:CustomLabel>
-                                            </StackLayout>
-                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
-                                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="10" WidthRequest="20" CornerRadius="10" BackgroundColor="#A76d6d">
-                                                </Frame>
-                                                <local:CustomLabel Text="%80" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,0,0,0" Style="{StaticResource MiniGrayLabelStyle}">
-                                                </local:CustomLabel>
-                                            </StackLayout>
-                                        </StackLayout>-->
-                                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+                                       
+                                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1">
                                             <Image Grid.Row="1" Grid.Column="1" Source="Ellipse.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
-                                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F8F8FA">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F8F8FA" Margin="2">
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="50*" />
                                                     <RowDefinition Height="50*" />
@@ -141,15 +128,10 @@
                                                 <StackLayout Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
                                                     <local:CustomLabel Text="3" Style="{StaticResource MiniGreenLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
                                                     </local:CustomLabel>
-                                                    <local:CustomLabel Text="{x:Static local:AppResources.SubmittedReturn}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
-                                                    </local:CustomLabel>
+                                                    <local1:CustomLabel Text="{x:Static local:AppResources.SubmittedReturn}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
+                                                    </local1:CustomLabel>
                                                 </StackLayout>
-                                                <!--  <StackLayout Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Style="{StaticResource MiniGreenLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0">
-                                                    <local:CustomLabel Text="3" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="0,0,0,0">
-                                                    </local:CustomLabel>
-                                                    <local:CustomLabel Text="Submitted Returns" Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0">
-                                                    </local:CustomLabel>
-                                                </StackLayout>-->
+                                               
                                             </Grid>
                                         </StackLayout>
                                     </Grid>
@@ -158,16 +140,17 @@
                         </DataTemplate>
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
-                <Image Source="Rectangle.png"  Margin="1" Aspect="AspectFill"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   Grid.Row="9" Grid.Column="1" >
+                     <Image Source="Rectangle.png"  Aspect="AspectFit"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="1"  >
                      </Image>
+               
                    
-                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0"  Grid.Row="9" Grid.Column="1">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5"  Spacing="0"  Grid.Row="9" Grid.Column="1"  BackgroundColor="Transparent">
                         <Image Grid.Row="0" Source="ic_money.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
-                        <local:CustomLabel Text="{x:Static local:AppResources.EstimateZakatReturn}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
-                        </local:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.EstimateZakatReturn}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
+                        </local1:CustomLabel>
                     </StackLayout>
                
-                <Image Source="Rectangle.png"  Margin="1" Aspect="AspectFill"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   Grid.Row="9" Grid.Column="3">
+                <Image Source="Rectangle.png"  Margin="2" Aspect="AspectFit"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   Grid.Row="9" Grid.Column="3">
                     <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
                         </Image.GestureRecognizers>
@@ -178,11 +161,11 @@
                                 <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <local:CustomLabel Text="{x:Static local:AppResources.MyCertificate}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
-                            <local:CustomLabel.GestureRecognizers>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.MyCertificate}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
+                            <local1:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
-                            </local:CustomLabel.GestureRecognizers>
-                        </local:CustomLabel>
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
                         </StackLayout.GestureRecognizers>
@@ -191,13 +174,13 @@
                         <TapGestureRecognizer Command="{Binding OnMyCertificateClicked}" />
                     </Frame.GestureRecognizers>-->
                
-                <Image Source="Rectangle.png" Margin="1" Aspect="AspectFill"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="5" >
+                <Image Source="Rectangle.png" Margin="2" Aspect="AspectFit"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="5" >
                     </Image>
                     <Image Source="{Binding Source}" />
                     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0"  Grid.Row="9" Grid.Column="5">
                         <Image Grid.Row="0" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
-                        <local:CustomLabel Text="{x:Static local:AppResources.MyBillsInvoices}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
-                        </local:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.MyBillsInvoices}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="Center">
+                        </local1:CustomLabel>
                     </StackLayout>
                 <BoxView Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />

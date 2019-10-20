@@ -30,7 +30,8 @@ namespace GAZT.Droid.CustomRenderer
 
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
-           base.OnElementChanged(e);
+          
+            base.OnElementChanged(e);
             //if (Control != null)
             //{
             //    if (App.IsArabic)
