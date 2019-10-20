@@ -17,7 +17,7 @@ namespace GAZT.Views
         ObservableCollection<String> Items = new ObservableCollection<String>();
         public DashboardView()
         {
-          
+
             viewModel = App.Locator.DashboardView;
             InitializeComponent();
             SetLTR();
@@ -25,14 +25,6 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
-            //EstimateZakatReturns.ItemsSource = Items;
-            //MyCertificates.ItemsSource = Items;
-            //MyBillsInvoices.ItemsSource = Items;
-            //DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-            //DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
-            //SetEstimateZakatReturnsLayoutHeightWidth();
-            //SetMyCertificatesLayoutHeightWidth();
-            //SetMyBillsInvoicesLayoutHeightWidth();
         }
         private void SetLTR()
         {
@@ -41,31 +33,7 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        //private void SetEstimateZakatReturnsLayoutHeightWidth()
-        //{
 
-        //    double HeightWidth = (DeviceWidth*87)/100/3;
-        //    EstimateZakatReturns.HeightRequest = HeightWidth;
-        //    EstimateZakatReturns.HeightRequest = HeightWidth;
-
-
-        //}
-
-        //private void SetMyCertificatesLayoutHeightWidth()
-        //{
-        //          double HeightWidth = (DeviceWidth * (87 / 100)) / 3;
-        //    MyCertificates.HeightRequest = HeightWidth;
-        //    MyCertificates.HeightRequest = HeightWidth;
-
-
-        //}
-
-        //private void SetMyBillsInvoicesLayoutHeightWidth()
-        //{
-        //    double HeightWidth = (DeviceWidth * (87 / 100)) / 3;
-        //    MyBillsInvoices.HeightRequest = HeightWidth;
-        //    MyBillsInvoices.HeightRequest = HeightWidth;
-        //}
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
@@ -112,7 +80,7 @@ namespace GAZT.Views
 
         }
 
-       
+
 
     }
 }
