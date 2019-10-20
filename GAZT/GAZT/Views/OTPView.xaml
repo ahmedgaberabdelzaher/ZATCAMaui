@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local1="clr-namespace:GAZT" x:Class="GAZT.Views.OTPView"  FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local1="clr-namespace:GAZT" x:Class="GAZT.Views.OTPView"  FlowDirection="RightToLeft" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
             <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -42,31 +42,27 @@
                 <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <local1:CustomLabel  Text="{x:Static local:AppResources.EnterVerificationCode}" Style="{StaticResource MiniGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#c49b2d" />
                 </StackLayout>
-                <!--<Frame x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>-->
+               
                 <!--<Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit" >
                 </Image>
                
                 <local1:BorderlessEntry Keyboard="Numeric"  x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />-->
                  <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntryForOTPView Keyboard="Numeric" x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="" Keyboard="Numeric" x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
               
-                <!--<Frame x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>-->
+                
                  <Image Source="ic_OTP_Rectangle.png" x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntryForOTPView Keyboard="Numeric" x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
-                <!--<Frame x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>-->
+                <local1:BorderlessEntry Text="" Keyboard="Numeric" x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                
                  <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntryForOTPView x:Name="OTPEEntryThree" Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
-                <!--<Frame x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
-                </Frame>-->
+                <local1:BorderlessEntry Text="" x:Name="OTPEEntryThree" Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+               
                  <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" >
                 </Image>
-                <local1:BorderlessEntryForOTPView x:Name="OTPEEntryFour" StyleId="OTPEntry" Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="" x:Name="OTPEEntryFour" StyleId="OTPEntry" Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
                 <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0,0,0,0">
                 </Frame>
                 <local1:CustomLabel Text="Validate OTP" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">

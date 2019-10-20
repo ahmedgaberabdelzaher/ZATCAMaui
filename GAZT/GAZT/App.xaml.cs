@@ -20,6 +20,7 @@ namespace GAZT
 
        // public static bool IsArabic = false;
         public static bool IsArabic = true;
+        public static bool IsOTPiew = false;
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
         public App()

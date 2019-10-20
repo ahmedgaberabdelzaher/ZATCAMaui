@@ -28,7 +28,10 @@ namespace GAZT.iOS.CustomRenderer
                 {
                     Control.TextAlignment = UITextAlignment.Right;
                 }
-               
+               if(App.IsOTPiew)
+                {
+                    Control.TextAlignment = UITextAlignment.Center;
+                }
                 //if (StyleId.Equals("OTPEntry"))
                 //{
                 //    Control.TextAlignment = UITextAlignment.Center;

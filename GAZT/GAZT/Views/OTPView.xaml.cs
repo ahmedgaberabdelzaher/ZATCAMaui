@@ -16,11 +16,12 @@ namespace GAZT.Views
         public OTPView()
         {
             SetLTR();
+            App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             this.BindingContext = viewModel;
-            DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-            DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            //DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+            //DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 
         }
 
@@ -31,30 +32,16 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        private void SetOTPBoxHeightWidth()
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //}
+        protected override void OnDisappearing()
         {
-            double HTAndWT = DeviceWidth * 65 / 100;
-            //OTPOne.HeightRequest = HTAndWT;
-            //OTPOne.WidthRequest = HTAndWT;
-            //OTPEEntryOne.HeightRequest = HTAndWT;
-            //OTPEEntryOne.WidthRequest = HTAndWT;
-
-            //OTPTwo.HeightRequest = HTAndWT;
-            //OTPTwo.WidthRequest = HTAndWT;
-            //OTPEEntryTwo.HeightRequest = HTAndWT;
-            //OTPEEntryTwo.WidthRequest = HTAndWT;
-
-            //OTPThree.HeightRequest = HTAndWT;
-            //OTPThree.WidthRequest = HTAndWT;
-            //OTPEEntryThree.HeightRequest = HTAndWT;
-            //OTPEEntryThree.WidthRequest = HTAndWT;
-
-            //OTPFour.HeightRequest = HTAndWT;
-            //OTPFour.WidthRequest = HTAndWT;
-            //OTPEEntryFour.HeightRequest = HTAndWT;
-            //OTPEEntryFour.WidthRequest = HTAndWT;
-
+            base.OnDisappearing();
+            App.IsOTPiew = false;
         }
+      
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
