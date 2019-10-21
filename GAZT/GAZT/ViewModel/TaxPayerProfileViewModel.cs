@@ -1,24 +1,16 @@
 ﻿using System;
-using System;
-using System;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
-using Xamarin.Forms;
 namespace GAZT
 {
-    public class DashboardViewModel : ViewModelBase
+    public class TaxPayerProfileViewModel : ViewModelBase
     {
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
-        public ICommand OnMyCertificateClicked { get; set; }
-        public ICommand OnBellClicked { get; set; }
-        public ICommand OnMyTaxPayerProfileClicked { get; set; }
-
-        
-
+       // public ICommand OnSubmitClicked { get; set; }
         #endregion
 
         #region Property
@@ -38,12 +30,11 @@ namespace GAZT
         //}
 
 
-
         #endregion
 
         #region Constructor
 
-        public DashboardViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxPayerProfileViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
@@ -57,22 +48,11 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-            OnMyCertificateClicked = new RelayCommand(async () =>
-            {
-             _navigationService.NavigateTo(App.MyCertificate);
+            //OnSubmitClicked = new RelayCommand(async () =>
+            //{
+            //    _navigationService.NavigateTo(App.DashboardView);
 
-            });
-            OnBellClicked = new RelayCommand(async () =>
-            {
-                //_navigationService.NavigateTo(App.MyCertificate);
-
-            });
-            OnMyTaxPayerProfileClicked = new RelayCommand(async () =>
-            {
-               _navigationService.NavigateTo(App.TaxPayerProfileView);
-
-            });
-            
+            //});
 
         }
 
@@ -80,7 +60,9 @@ namespace GAZT
 
         #region Method
 
-
+        public void OnPageLoad()
+        {
+        }
         #endregion
     }
 }

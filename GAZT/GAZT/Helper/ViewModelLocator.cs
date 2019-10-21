@@ -17,7 +17,9 @@ namespace GAZT
             SimpleIoc.Default.Register<OTPViewModel>();
             SimpleIoc.Default.Register<DashboardViewModel>();
             SimpleIoc.Default.Register<MyCertificateViewModel>();
+            SimpleIoc.Default.Register<TaxPayerProfileViewModel>();
 
+            
 
 
 
@@ -95,6 +97,24 @@ namespace GAZT
             }
         }
 
+        /// <summary>
+        /// Returns the current instance of TaxPayerProfileViewModel
+        /// </summary>
+        public TaxPayerProfileViewModel TaxPayerProfileView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxPayerProfileViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+            
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -102,7 +122,9 @@ namespace GAZT
             navigationService.Configure(App.OTPView, typeof(OTPView));
             navigationService.Configure(App.DashboardView, typeof(DashboardView));
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
+            navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
 
+            
             return navigationService;
         }
 

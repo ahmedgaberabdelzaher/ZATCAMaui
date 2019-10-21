@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.TaxPayerProfileView" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37.46*" />
+                <RowDefinition Height="62.54*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="94*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <skia:SKCanvasView Margin="0,-2,0,0" x:Name="canvasView" Grid.Row="0" Grid.Column="0" PaintSurface="OnCanvasViewPaintSurface" />
+
+            <StackLayout Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="0,20,0,20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <cards:CarouselView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="5" x:Name="CardView" BackgroundColor="Yellow">
+                    <cards:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="14.5" BorderColor="#B1B1B1" BackgroundColor="White">
+                                    <Image Source="{Binding Source}" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="10*" />
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="10*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10*" />
+                                                <ColumnDefinition Width="90*" />
+
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" Margin="10,0,10,0">
+                                            </Frame>
+                                            <local1:BorderlessEntry Text="" Grid.Row="1" Grid.Column="1" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                            </local1:BorderlessEntry>
+                                            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="1" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                            </Label>
+
+                                            <Frame Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" Margin="10,0,10,0">
+                                            </Frame>
+                                            <local1:BorderlessEntry Text="" Grid.Row="3" Grid.Column="1" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                            </local1:BorderlessEntry>
+                                            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="3" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                            </Label>
+                                            <Frame Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" Margin="10,0,10,0">
+                                            </Frame>
+                                            <local1:BorderlessEntry Text="" Grid.Row="5" Grid.Column="1" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                            </local1:BorderlessEntry>
+                                            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="5" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                            </Label>
+                                            <Frame Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" Margin="10,0,10,0">
+                                            </Frame>
+                                            <local1:BorderlessEntry Text="" Grid.Row="7" Grid.Column="1" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                            </local1:BorderlessEntry>
+                                            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="7" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                            </Label>
+
+                                             <Frame Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" Margin="10,0,10,0">
+                                            </Frame>
+                                            <local1:BorderlessEntry Text="" Grid.Row="9" Grid.Column="1" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                            </local1:BorderlessEntry>
+                                            <Label   Text="{x:Static local:AppResources.TIN}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="9" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                            </Label>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </cards:CarouselView.ItemTemplate>
+                </cards:CarouselView>
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

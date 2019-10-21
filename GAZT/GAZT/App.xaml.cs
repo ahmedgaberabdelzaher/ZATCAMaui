@@ -15,10 +15,11 @@ namespace GAZT
         public static string OTPView = "OTPView";
         public static string DashboardView = "DashboardView";
         public static string MyCertificate = "MyCertificate";
+        public static string TaxPayerProfileView = "TaxPayerProfileView";
 
+        
 
-
-       // public static bool IsArabic = false;
+        // public static bool IsArabic = false;
         public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static double NavigationBarHeightt = 0;

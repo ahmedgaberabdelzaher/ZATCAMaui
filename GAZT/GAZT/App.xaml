@@ -158,7 +158,7 @@
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="14.5" Tablet="23.5" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="23.5" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
