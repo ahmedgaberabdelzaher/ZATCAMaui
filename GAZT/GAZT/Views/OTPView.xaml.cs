@@ -15,10 +15,11 @@ namespace GAZT.Views
         OTPViewModel viewModel;
         public OTPView()
         {
-            SetLTR();
+         
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
+            SetLTR();
             this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
