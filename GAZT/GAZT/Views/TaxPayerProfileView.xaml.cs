@@ -20,6 +20,7 @@ namespace GAZT.Views
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
+
             CardView.ItemsSource = Items;
         }
 

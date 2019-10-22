@@ -31,7 +31,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInView());
+            CustomNavigation navigationPage = new CustomNavigation(new TaxPayerProfileView());
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

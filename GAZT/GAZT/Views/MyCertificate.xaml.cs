@@ -27,9 +27,7 @@ namespace GAZT.Views
             };
 
             list.Add("aaaaaaa");
-            list.Add("aaaaaaa");
-            list.Add("aaaaaaa"); 
-            list.Add("aaaaaaa");
+           
             CertificateList.ItemsSource = list;
         }
         private void SetLTR()
