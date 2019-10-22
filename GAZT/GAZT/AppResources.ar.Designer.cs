@@ -95,6 +95,12 @@ namespace GAZT {
             }
         }
         
+        public static string Verify {
+            get {
+                return ResourceManager.GetString("Verify", resourceCulture);
+            }
+        }
+        
         public static string AverageNumOfEmployment {
             get {
                 return ResourceManager.GetString("AverageNumOfEmployment", resourceCulture);
@@ -416,6 +422,30 @@ namespace GAZT {
         public static string SummaryOfZakatCalculation {
             get {
                 return ResourceManager.GetString("SummaryOfZakatCalculation", resourceCulture);
+            }
+        }
+        
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        public static string RetypeEmail {
+            get {
+                return ResourceManager.GetString("RetypeEmail", resourceCulture);
+            }
+        }
+        
+        public static string OldEmail {
+            get {
+                return ResourceManager.GetString("OldEmail", resourceCulture);
+            }
+        }
+        
+        public static string ChnagePassword {
+            get {
+                return ResourceManager.GetString("ChnagePassword", resourceCulture);
             }
         }
         

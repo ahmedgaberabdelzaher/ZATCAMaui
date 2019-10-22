@@ -26,12 +26,12 @@ namespace GAZT
         public static CultureInfo ci;
         public App()
         {
-            String langName = "en-US";// "ar-AE";
+            String langName = "ar-AE";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new TaxPayerProfileView());
+            CustomNavigation navigationPage = new CustomNavigation(new LogInView());
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

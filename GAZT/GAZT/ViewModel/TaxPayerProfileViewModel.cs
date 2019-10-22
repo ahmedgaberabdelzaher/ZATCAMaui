@@ -183,6 +183,10 @@ namespace GAZT
 
         public void OnPageLoad()
         {
+            TPProfileVisibility = true;
+            ChangePasswordayoutVisibility = false;
+            ChangeMobileNumberLayoutVisibility = false;
+            ChangeEmailLayoutVisibility = false;
         }
         #endregion
     }

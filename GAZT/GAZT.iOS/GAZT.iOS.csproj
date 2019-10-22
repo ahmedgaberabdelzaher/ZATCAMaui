@@ -272,6 +272,10 @@
     <BundleResource Include="Resources\ic_location.png" />
     <BundleResource Include="Resources\ic_location%402x.png" />
     <BundleResource Include="Resources\ic_location%403x.png" />
+    <BundleResource Include="Resources\ic_edit.png" />
+    <BundleResource Include="Resources\ic_edit%402x.png" />
+    <BundleResource Include="Resources\ic_edit%403x.png" />
+    <BundleResource Include="Resources\slider-images-1440x2160.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

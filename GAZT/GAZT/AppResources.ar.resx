@@ -141,6 +141,9 @@
   <data name="Auditing" xml:space="preserve">
     <value>التدقيق والمراجعة</value>
   </data>
+   <data name="Verify" xml:space="preserve">
+    <value>تحقق</value>
+  </data>
   <data name="AverageNumOfEmployment" xml:space="preserve">
     <value>متوسط عدد العمالة</value>
   </data>
@@ -306,6 +309,21 @@
   </data>
   <data name="SummaryOfZakatCalculation" xml:space="preserve">
     <value>إقرار زكاة تقديري</value>
+  </data>
+   <data name="CurrentPassword" xml:space="preserve">
+    <value> Current Password </value>
+  </data>
+   <data name="RetypeEmail" xml:space="preserve">
+    <value>تأكيد البريد الإلكتروني</value>
+  </data>
+     <data name="OldEmail" xml:space="preserve">
+    <value>البريد الإلكتروني القديم</value>
+  </data>
+    <data name="ChnagePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+   <data name="CurrentPassword" xml:space="preserve">
+    <value>كلمة المرورالحالية</value>
   </data>
   <data name="TaxpayerProfile" xml:space="preserve">
     <value>الملف الشخصي للمكلف</value>
