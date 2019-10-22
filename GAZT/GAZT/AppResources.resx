@@ -193,6 +193,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+   <data name="OldEmail" xml:space="preserve">
+    <value>Old Email</value>
+  </data>
   <data name="EnterVerificationCode" xml:space="preserve">
     <value>Please Enter verification code received on mobile</value>
   </data>
@@ -253,6 +256,12 @@
   <data name="Password" xml:space="preserve">
     <value> Password </value>
   </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value> Current Password </value>
+  </data>
+   <data name="ChnagePassword" xml:space="preserve">
+    <value>Chnage Password </value>
+  </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>Pay by MADA</value>
   </data>
@@ -276,6 +285,9 @@
   </data>
   <data name="RetypePassword" xml:space="preserve">
     <value>Retype password</value>
+  </data>
+   <data name="RetypeEmail" xml:space="preserve">
+    <value>Retype Email</value>
   </data>
   <data name="SADADNumber" xml:space="preserve">
     <value>SADAD number</value>

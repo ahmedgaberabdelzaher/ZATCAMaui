@@ -197,6 +197,12 @@ namespace GAZT {
             }
         }
         
+        public static string OldEmail {
+            get {
+                return ResourceManager.GetString("OldEmail", resourceCulture);
+            }
+        }
+        
         public static string EnterVerificationCode {
             get {
                 return ResourceManager.GetString("EnterVerificationCode", resourceCulture);
@@ -317,6 +323,18 @@ namespace GAZT {
             }
         }
         
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        public static string ChnagePassword {
+            get {
+                return ResourceManager.GetString("ChnagePassword", resourceCulture);
+            }
+        }
+        
         public static string PayByMADA {
             get {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
@@ -362,6 +380,12 @@ namespace GAZT {
         public static string RetypePassword {
             get {
                 return ResourceManager.GetString("RetypePassword", resourceCulture);
+            }
+        }
+        
+        public static string RetypeEmail {
+            get {
+                return ResourceManager.GetString("RetypeEmail", resourceCulture);
             }
         }
         

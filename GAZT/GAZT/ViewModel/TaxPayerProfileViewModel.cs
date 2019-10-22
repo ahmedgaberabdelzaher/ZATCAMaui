@@ -15,8 +15,10 @@ namespace GAZT
         public ICommand OnChangePasswordClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
         public ICommand OnVerifyButtonClicked { get; set; }
+        public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
 
         
+
 
 
 
@@ -53,7 +55,7 @@ namespace GAZT
             }
         }
 
-        private bool _changeMobileNumberLayoutVisibility = true;
+        private bool _changeMobileNumberLayoutVisibility = false;
 
         public bool ChangeMobileNumberLayoutVisibility
         {
@@ -68,7 +70,7 @@ namespace GAZT
             }
         }
 
-        private bool _changeEmailLayoutVisibility = false;
+        private bool _changeEmailLayoutVisibility = true;
 
         public bool ChangeEmailLayoutVisibility
         {
@@ -125,6 +127,8 @@ namespace GAZT
 
             OnChangeEmailClicked = new RelayCommand(() =>
             {
+                //ChangeEmailLayoutVisibility = false;
+                //TPProfileVisibility = true;
                 //_navigationService.NavigateTo(App.DashboardView);
 
             });
@@ -149,8 +153,16 @@ namespace GAZT
                 _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
             });
-            
 
+            OnChangeEmailSubmitButtonClicked = new RelayCommand(() =>
+            {
+                ChangeEmailLayoutVisibility = false;
+                TPProfileVisibility = true;
+                //bool IsNavigatingFromLogin = false;
+                //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+
+            });
+            
 
         }
 
