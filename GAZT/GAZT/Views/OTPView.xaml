@@ -44,7 +44,11 @@
                 </Image>
                
                 <local1:BorderlessEntry Keyboard="Numeric"  x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />-->
-                               <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                 <Label   Text="{x:Static local:AppResources.EnterVerificationCode}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" >
+ 
+            </Label>
+
+                <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
                 <local1:BorderlessEntry Text="" Keyboard="Numeric" x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
               

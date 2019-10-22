@@ -26,7 +26,7 @@ namespace GAZT
         public static CultureInfo ci;
         public App()
         {
-            String langName = "ar-AE";// "ar-AE";
+            String langName = "en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 

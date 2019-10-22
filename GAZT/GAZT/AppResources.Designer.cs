@@ -485,6 +485,12 @@ namespace GAZT {
             }
         }
         
+        public static string Verify {
+            get {
+                return ResourceManager.GetString("Verify", resourceCulture);
+            }
+        }
+        
         public static string AmendmentsDoNotMatchText {
             get {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);

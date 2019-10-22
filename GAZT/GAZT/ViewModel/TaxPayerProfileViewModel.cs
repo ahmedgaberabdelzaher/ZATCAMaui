@@ -10,7 +10,16 @@ namespace GAZT
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
-       // public ICommand OnSubmitClicked { get; set; }
+         public ICommand OnChangeMobileNumberClicked { get; set; }
+        public ICommand OnChangeEmailClicked { get; set; }
+        public ICommand OnChangePasswordClicked { get; set; }
+        public ICommand OnSubmitButtonClicked { get; set; }
+        public ICommand OnVerifyButtonClicked { get; set; }
+
+        
+
+
+
         #endregion
 
         #region Property
@@ -29,6 +38,66 @@ namespace GAZT
         //    }
         //}
 
+        private bool _tPProfileVisibility = false;
+
+        public bool TPProfileVisibility
+        {
+            get
+            {
+                return _tPProfileVisibility;
+            }
+            set
+            {
+                _tPProfileVisibility = value;
+                RaisePropertyChanged("TPProfileVisibility");
+            }
+        }
+
+        private bool _changeMobileNumberLayoutVisibility = true;
+
+        public bool ChangeMobileNumberLayoutVisibility
+        {
+            get
+            {
+                return _changeMobileNumberLayoutVisibility;
+            }
+            set
+            {
+                _changeMobileNumberLayoutVisibility = value;
+                RaisePropertyChanged("ChangeMobileNumberLayoutVisibility");
+            }
+        }
+
+        private bool _changeEmailLayoutVisibility = false;
+
+        public bool ChangeEmailLayoutVisibility
+        {
+            get
+            {
+                return _changeEmailLayoutVisibility;
+            }
+            set
+            {
+                _changeEmailLayoutVisibility = value;
+                RaisePropertyChanged("ChangeEmailLayoutVisibility");
+            }
+        }
+
+        private bool _changePasswordayoutVisibility = false;
+
+        public bool ChangePasswordayoutVisibility
+        {
+            get
+            {
+                return _changePasswordayoutVisibility;
+            }
+            set
+            {
+                _changePasswordayoutVisibility = value;
+                RaisePropertyChanged("ChangePasswordayoutVisibility");
+            }
+        }
+        
 
         #endregion
 
@@ -48,11 +117,40 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-            //OnSubmitClicked = new RelayCommand(async () =>
-            //{
-            //    _navigationService.NavigateTo(App.DashboardView);
+            OnChangeMobileNumberClicked = new RelayCommand( () =>
+            {
+                //_navigationService.NavigateTo(App.DashboardView);
 
-            //});
+            });
+
+            OnChangeEmailClicked = new RelayCommand(() =>
+            {
+                //_navigationService.NavigateTo(App.DashboardView);
+
+            });
+
+            OnChangePasswordClicked = new RelayCommand(() =>
+            {
+                //_navigationService.NavigateTo(App.DashboardView);
+
+            });
+
+            OnSubmitButtonClicked = new RelayCommand(() =>
+            {
+                //_navigationService.NavigateTo(App.DashboardView);
+                ChangeMobileNumberLayoutVisibility = false;
+                TPProfileVisibility = true;
+
+            });
+
+            OnVerifyButtonClicked = new RelayCommand(() =>
+            {
+                bool IsNavigatingFromLogin = false;
+                _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+
+            });
+            
+
 
         }
 

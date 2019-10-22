@@ -13,13 +13,14 @@ namespace GAZT.Views
         double DeviceHeight;
         double DeviceWidth;
         OTPViewModel viewModel;
-        public OTPView()
+        public OTPView(bool IsComingFromLogIn)
         {
          
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
-            SetLTR();
+            viewModel.IsComingFromLogIn = IsComingFromLogIn;
+           SetLTR();
             this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();

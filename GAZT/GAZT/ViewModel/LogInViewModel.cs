@@ -63,7 +63,8 @@ namespace GAZT
 
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
-                _navigationService.NavigateTo(App.OTPView);
+                bool IsNavigatingFromLogin = true;
+                _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
             });
 

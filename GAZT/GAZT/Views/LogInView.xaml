@@ -57,15 +57,20 @@
             </local1:BorderlessEntry>
             <Image Source="ic_password.png"  Grid.Row="4" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,15,0"/>
           <!--FontFamily="{StaticResource SSTArabicLight}"-->   <Label  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="25,-10,25,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" />
+
+
             <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
-                     <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
+
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
             </Frame>
             <Label   Text="{x:Static local:AppResources.LogIn}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
                 </Label.GestureRecognizers>
             </Label>
+
+
             <StackLayout Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </StackLayout>
             <StackLayout Padding="10,0,10,0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

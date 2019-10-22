@@ -343,6 +343,9 @@
   <data name="ZakatTaxType" xml:space="preserve">
     <value>ZAKAT Estimate</value>
   </data>
+   <data name="Verify" xml:space="preserve">
+    <value>Verify</value>
+  </data>
   <data name="ZakatTaxType" xml:space="preserve">
     <value>Certificate has been sent to recorded email</value>
   </data>

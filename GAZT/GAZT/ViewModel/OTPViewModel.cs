@@ -11,6 +11,8 @@ namespace GAZT
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
+        public bool IsComingFromLogIn { get; set; }
+        
         #endregion
 
         #region Property
@@ -29,7 +31,7 @@ namespace GAZT
         //    }
         //}
 
-     
+
         #endregion
 
         #region Constructor
@@ -50,7 +52,14 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new RelayCommand(async () =>
             {
-                 _navigationService.NavigateTo(App.DashboardView);
+                if(IsComingFromLogIn)
+                {
+                    _navigationService.NavigateTo(App.DashboardView);
+                }
+                else
+                {
+                    _navigationService.GoBack();
+                }
 
             });
 

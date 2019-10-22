@@ -16,6 +16,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.TaxPayerProfileView;
             InitializeComponent();
+           
             SetLTR();
             this.BindingContext = viewModel;
             string str = "abc";
