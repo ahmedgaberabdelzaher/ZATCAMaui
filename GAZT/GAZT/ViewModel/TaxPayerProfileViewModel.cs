@@ -16,8 +16,10 @@ namespace GAZT
         public ICommand OnSubmitButtonClicked { get; set; }
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
+        public ICommand OnChangePasswordButtonClicked { get; set; }
 
-        
+
+
 
 
 
@@ -40,7 +42,7 @@ namespace GAZT
         //    }
         //}
 
-        private bool _tPProfileVisibility = false;
+        private bool _tPProfileVisibility = true;
 
         public bool TPProfileVisibility
         {
@@ -70,7 +72,7 @@ namespace GAZT
             }
         }
 
-        private bool _changeEmailLayoutVisibility = true;
+        private bool _changeEmailLayoutVisibility = false;
 
         public bool ChangeEmailLayoutVisibility
         {
@@ -121,22 +123,20 @@ namespace GAZT
             _dialogService = dialogService;
             OnChangeMobileNumberClicked = new RelayCommand( () =>
             {
-                //_navigationService.NavigateTo(App.DashboardView);
-
+                TPProfileVisibility = false;
+                ChangeMobileNumberLayoutVisibility = true;
             });
 
             OnChangeEmailClicked = new RelayCommand(() =>
             {
-                //ChangeEmailLayoutVisibility = false;
-                //TPProfileVisibility = true;
-                //_navigationService.NavigateTo(App.DashboardView);
-
+                TPProfileVisibility = false;
+                ChangeEmailLayoutVisibility = true;
             });
 
             OnChangePasswordClicked = new RelayCommand(() =>
             {
-                //_navigationService.NavigateTo(App.DashboardView);
-
+                TPProfileVisibility = false;
+                ChangePasswordayoutVisibility = true;
             });
 
             OnSubmitButtonClicked = new RelayCommand(() =>
@@ -162,7 +162,18 @@ namespace GAZT
                 //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
             });
+
+            OnChangePasswordButtonClicked = new RelayCommand(() =>
+            {
+                ChangePasswordayoutVisibility = false;
+                TPProfileVisibility = true;
+                //bool IsNavigatingFromLogin = false;
+                //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+
+            });
             
+
+
 
         }
 
