@@ -18,6 +18,7 @@ namespace GAZT.Droid.CustomRenderer
     {
  public CustomNavigationRenderer(Context context) : base(context) 
  {
+
   }
 		protected override void OnLayout(bool changed, int l, int t, int r, int b)
 		{

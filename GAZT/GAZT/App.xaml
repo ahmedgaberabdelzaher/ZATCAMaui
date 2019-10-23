@@ -62,7 +62,7 @@
                     </Setter.Value>
 
                 </Setter>
-                <Setter Property="FontFamily" Value="{StaticResource MadaRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
 
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
 
