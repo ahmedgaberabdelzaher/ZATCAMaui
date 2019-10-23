@@ -11,11 +11,16 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-
-<key>UIAppFonts</key>
-<array>
-    <string>SST Arabic Light.ttf</string>
-</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SST Arabic Light.ttf</string>
+		<string>fa-brands-400.ttf</string>
+		<string>Mada-Regular.ttf</string>
+		<string>SSTArabic-Bold.ttf</string>
+		<string>SSTArabic-Light.ttf</string>
+		<string>SSTArabic-Medium.ttf</string>
+		<string>SSTArabic-Roman.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -46,6 +51,5 @@
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>Custom Property</key>
 	<string></string>
-
 </dict>
 </plist>

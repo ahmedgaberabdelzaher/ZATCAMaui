@@ -11,12 +11,59 @@
             <Color x:Key="MaroonLabelTextColor">#A76d6d</Color>
             <Color x:Key="BlackLabelTextColor">#000000</Color>
             <!-- <Color x:Key="MaroonLabelTextColor">"#A76d6d"</Color> -->
+
+             <!-- SSTArabic-Bold -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicBold">
+                <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Bold" />
+            </OnPlatform>
+
+             <!-- SSTArabic-Light.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicLight">
+                <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Light" />
+            </OnPlatform>
+
+             <!-- SSTArabic-Medium.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
+                <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Medium" />
+            </OnPlatform>
+
+              <!-- SSTArabic-Roman.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicRoman">
+                <On Platform="Android" Value="SSTArabic-Roman.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Roman" />
+            </OnPlatform>
+
+               <!-- fa-brands-400.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="FaBands">
+                <On Platform="Android" Value="fa-brands-400.ttf#fa" />
+
+                <On Platform="iOS" Value="fa-brands-400" />
+            </OnPlatform>
+
+             <!-- Mada-Regular.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="MadaRegular">
+                <On Platform="Android" Value="Mada-Regular.ttf#Mada" />
+
+                <On Platform="iOS" Value="Mada-Regular" />
+            </OnPlatform>
+
+
             <Style x:Key="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="22" />
                     </Setter.Value>
+
                 </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource MadaRegular}" />
+
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
 
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -183,18 +230,14 @@
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource LabelTextColor}" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource BarTextColor}" />-->
-            <!-- <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />-->
+            <!-- <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
             <!-- </Style>-->
             <!--<OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
         <On Platform="Android" Value="Lato-Bold.ttf#Lato" />
         <On Platform="iOS" Value="Lato-Bold" />
     </OnPlatform>-->
 
-            <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicLight">
-                <On Platform="Android" Value="SST Arabic Light.ttf#SST Arabic" />
-
-                <On Platform="iOS" Value="SST Arabic Light" />
-            </OnPlatform>
+           
 
         </ResourceDictionary>
     </Application.Resources>
