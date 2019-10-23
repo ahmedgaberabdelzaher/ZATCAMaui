@@ -275,7 +275,7 @@
     <BundleResource Include="Resources\ic_edit.png" />
     <BundleResource Include="Resources\ic_edit%402x.png" />
     <BundleResource Include="Resources\ic_edit%403x.png" />
-    <BundleResource Include="Resources\slider-images-1440x2160.jpg" />
+    <BundleResource Include="Resources\acd.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
