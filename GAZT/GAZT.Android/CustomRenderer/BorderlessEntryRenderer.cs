@@ -35,15 +35,16 @@ namespace GAZT.Droid.CustomRenderer
 				SetPadding(0, 0, 0, 0);
 				if (App.IsArabic)
 				{
-					Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "Cairo-Regular.ttf");
-					Control.Typeface = font1;
-				}
-				else
-				{
-					Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "HelveticaNormal.ttf");
-					Control.Typeface = font1;
-				}
-			}
+                    Control.TextDirection = Android.Views.TextDirection.Rtl;
+                    Control.Gravity = Android.Views.GravityFlags.Right;
+
+                }
+                if (App.IsOTPiew)
+                {
+                    Control.TextDirection = Android.Views.TextDirection.Ltr;
+                    Control.Gravity = Android.Views.GravityFlags.Left;
+                }
+            }
 		}
 	}
 }
