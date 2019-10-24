@@ -13,47 +13,74 @@
             <!-- <Color x:Key="MaroonLabelTextColor">"#A76d6d"</Color> -->
 
              <!-- SSTArabic-Bold -->
-             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicBold">
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Bold" />
+            </OnPlatform>-->
+
+             <!-- SSTArabic-Light.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicLight">
+                <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Light" />
+            </OnPlatform>-->
+
+             <!-- SSTArabic-Medium.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
+                <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Medium" />
+            </OnPlatform>-->
+
+              <!-- SSTArabic-Roman.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicRoman">
+                <On Platform="Android" Value="SSTArabic-Roman.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Roman" />
+            </OnPlatform>-->
+
+               <!-- fa-brands-400.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="FaBands">
+                <On Platform="Android" Value="fa-brands-400.ttf#fa" />
+
+                <On Platform="iOS" Value="fa-brands-400" />
+            </OnPlatform>-->
+
+             <!-- Mada-Regular.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="MadaRegular">
+                <On Platform="Android" Value="Mada-Regular.ttf#Mada" />
+
+                <On Platform="iOS" Value="Mada-Regular" />
+            </OnPlatform>-->
+
+             <!-- SST Arabic Bold.ttf -->
+             <!--<OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
+                <On Platform="Android" Value="SST Arabic Bold.ttf#SST" />
+
+                <On Platform="iOS" Value="SST Arabic Bold" />
+            </OnPlatform>-->
+
+             <!-- SST Arabic Bold.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
+                <On Platform="Android" Value="SSTArabic-Bold.ttf#SST" />
 
                 <On Platform="iOS" Value="SSTArabic-Bold" />
             </OnPlatform>
 
-             <!-- SSTArabic-Light.ttf -->
-             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicLight">
+              <!-- SST Arabic Light.ttf -->
+             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArLight">
                 <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic" />
 
                 <On Platform="iOS" Value="SSTArabic-Light" />
             </OnPlatform>
 
-             <!-- SSTArabic-Medium.ttf -->
              <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
                 <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
 
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
-
-              <!-- SSTArabic-Roman.ttf -->
-             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicRoman">
-                <On Platform="Android" Value="SSTArabic-Roman.ttf#SSTArabic" />
-
-                <On Platform="iOS" Value="SSTArabic-Roman" />
-            </OnPlatform>
-
-               <!-- fa-brands-400.ttf -->
-             <OnPlatform x:TypeArguments="x:String" x:Key="FaBands">
-                <On Platform="Android" Value="fa-brands-400.ttf#fa" />
-
-                <On Platform="iOS" Value="fa-brands-400" />
-            </OnPlatform>
-
-             <!-- Mada-Regular.ttf -->
-             <OnPlatform x:TypeArguments="x:String" x:Key="MadaRegular">
-                <On Platform="Android" Value="Mada-Regular.ttf#Mada" />
-
-                <On Platform="iOS" Value="Mada-Regular" />
-            </OnPlatform>
-
+           
 
             <Style x:Key="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
@@ -62,7 +89,7 @@
                     </Setter.Value>
 
                 </Setter>
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
 
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
 

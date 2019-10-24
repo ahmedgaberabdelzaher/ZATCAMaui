@@ -213,7 +213,6 @@
     <BundleResource Include="Resources\ic_user.png" />
     <BundleResource Include="Resources\ic_user%402x.png" />
     <BundleResource Include="Resources\ic_user%403x.png" />
-    <BundleResource Include="Resources\IOS_user.zip" />
     <BundleResource Include="Resources\check-mark.png" />
     <BundleResource Include="Resources\check-mark%402x.png" />
     <BundleResource Include="Resources\check-mark%403x.png" />
@@ -262,7 +261,6 @@
     <BundleResource Include="Resources\ic_envelop.png" />
     <BundleResource Include="Resources\ic_envelop%402x.png" />
     <BundleResource Include="Resources\ic_envelop%403x.png" />
-    <BundleResource Include="Resources\SST Arabic Light.ttf" />
     <BundleResource Include="Resources\ic_OTP_Rectangle.png" />
     <BundleResource Include="Resources\ic_OTP_Rectangle%402x.png" />
     <BundleResource Include="Resources\ic_OTP_Rectangle%403x.png" />
@@ -278,10 +276,12 @@
     <BundleResource Include="Resources\acd.jpg" />
     <BundleResource Include="Resources\fa-brands-400.ttf" />
     <BundleResource Include="Resources\Mada-Regular.ttf" />
+    <BundleResource Include="Resources\SST Arabic Bold.ttf" />
+    <BundleResource Include="Resources\SST Arabic Light.ttf" />
+    <BundleResource Include="Resources\SST Arabic Medium.ttf" />
     <BundleResource Include="Resources\SSTArabic-Bold.ttf" />
     <BundleResource Include="Resources\SSTArabic-Light.ttf" />
     <BundleResource Include="Resources\SSTArabic-Medium.ttf" />
-    <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
