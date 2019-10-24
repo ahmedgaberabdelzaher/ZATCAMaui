@@ -42,6 +42,22 @@ namespace GAZT
         //    }
         //}
 
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        
         private bool _tPProfileVisibility = true;
 
         public bool TPProfileVisibility

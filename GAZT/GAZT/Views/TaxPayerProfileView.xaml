@@ -76,19 +76,23 @@
 
 
 
-                    <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                    <!--<Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.Name}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+                     <local1:GaztEntry Text="{Binding Name}" Source="ic_user.png" LabelText="{x:Static local:AppResources.Name}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                    <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+
+                    <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.TIN}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+                     <local1:GaztEntry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TIN}" Source="ic_user.png" LabelText="{x:Static local:AppResources.TIN}"/>
+
 
                     <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
@@ -155,19 +159,26 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                    <!--<Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
 
-                    <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                    <local1:GaztEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding MobileNumber}" Source="ic_user.png" LabelText="{x:Static local:AppResources.MobileNumber}"/>
+
+
+                    <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.NewMobileNumber}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+
+                   <local1:GaztEntry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewMobileNumber}" Source="ic_user.png" LabelText="{x:Static local:AppResources.NewMobileNumber}"/>
+
+
 
                     <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
                     </Frame>
@@ -233,27 +244,35 @@
                             <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
 
-                        <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        <!--<Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.OldEmail}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
 
-                        <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        <local1:GaztEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding OldEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.OldEmail}"/>
+
+
+                        <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.NewEmail}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
 
-                        <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        <local1:GaztEntry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.NewEmail}"/>
+
+
+
+                        <!--<Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.RetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
 
+                       <local1:GaztEntry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypeEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.RetypeEmail}"/>
 
 
 
@@ -263,26 +282,35 @@
 
 
 
-                        <Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        <!--<Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
 
-                        <Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                       <local1:GaztEntry Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CurrentPassword}"  LabelText="{x:Static local:AppResources.CurrentPassword}"/>
+
+
+                        <!--<Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="12" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
 
-                        <Frame Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        <local1:GaztEntry Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewPassword}"  LabelText="{x:Static local:AppResources.NewPassword}"/>
+
+
+                        <!--<Frame Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
                         <local1:BorderlessEntry Text="" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                         </local1:BorderlessEntry>
                         <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="14" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                        </Label>
+                        </Label>-->
+
+                        <local1:GaztEntry Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypePassword}" LabelText="{x:Static local:AppResources.RetypePassword}"/>
+
                     </Grid>
                 </ScrollView>
 
@@ -315,27 +343,35 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                    <!--<Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+                    <local1:GaztEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CurrentPassword}" LabelText="{x:Static local:AppResources.CurrentPassword}"/>
 
-                    <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+
+                    <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+
+                    <local1:GaztEntry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewPassword}" LabelText="{x:Static local:AppResources.NewPassword}"/>
 
 
-                    <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+
+                    <!--<Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-                    </Label>
+                    </Label>-->
+
+                    <local1:GaztEntry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypePassword}" LabelText="{x:Static local:AppResources.RetypePassword}"/>
+
 
 
 
