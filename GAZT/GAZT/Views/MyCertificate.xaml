@@ -16,12 +16,12 @@
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.64*" />
-                    <RowDefinition Height="3.06*" />
+                    <RowDefinition Height="4.06*" />
                     <RowDefinition Height="6.08*" />
                     <RowDefinition Height="76.22*" />
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="6*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
@@ -33,7 +33,7 @@
                     <ColumnDefinition Width="4*" />
                     <!--itemtemplate height 11.62 and separator height 1.75-->
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="My certificate" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
+                <local1:CustomLabel Text="My certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
 
 

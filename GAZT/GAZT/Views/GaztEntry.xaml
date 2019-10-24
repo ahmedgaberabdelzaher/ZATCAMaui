@@ -13,7 +13,7 @@
             </Frame>
             <local1:BorderlessEntry x:Name="EntryField" Text="{Binding Text, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local1:BorderlessEntry>
-              <Label x:Name="EntryLabelText"  Text="{Binding LabelText, Mode=TwoWay}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="0" Grid.Column="0" Margin="15,-13,15,0" Grid.ColumnSpan="2"  HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" >
+              <Label x:Name="EntryLabelText"  Text="{Binding LabelText, Mode=TwoWay}" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="0" Margin="15,-13,15,0" Grid.ColumnSpan="2"  HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" >
  </Label>
       
        </Grid>

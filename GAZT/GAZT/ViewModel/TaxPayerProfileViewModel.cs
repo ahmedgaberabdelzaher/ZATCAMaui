@@ -17,8 +17,8 @@ namespace GAZT
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnChangePasswordButtonClicked { get; set; }
-
-
+        public ICommand OnHomeIconClicked { get; set; }
+        
 
 
 
@@ -187,8 +187,12 @@ namespace GAZT
                 //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
             });
-            
 
+            OnHomeIconClicked = new RelayCommand(() =>
+            {
+                _navigationService.GoBack();
+            });
+            
 
 
         }

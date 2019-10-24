@@ -8,13 +8,13 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.64*" />
-                <RowDefinition Height="3.06*" />
+                <RowDefinition Height="4.06*" />
                 <RowDefinition Height="6.08*" />
                 <RowDefinition Height="25.68*" />
                 <RowDefinition Height="48.54*" />
                 <RowDefinition Height="4*" />
                 <RowDefinition Height="6*" />
-                <RowDefinition Height="4*" />
+                <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
@@ -98,7 +98,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="6" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label   Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="6" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -111,7 +111,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="8" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.Email}" Grid.Row="8" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label   Text="{x:Static local:AppResources.Email}" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="8" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -124,7 +124,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="10" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -139,18 +139,18 @@
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeMobileNumberLayoutVisibility}">
                     <Grid.RowDefinitions>
 
-                        <RowDefinition Height="12.25*" />
+                        <RowDefinition Height="8*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="12.5*" />
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.5*" />
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.5*" />
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.5*" />
-                        <RowDefinition Height="3*" />
-                        <RowDefinition Height="12.5*" />
-                        <RowDefinition Height="13.25*" />
+                        <RowDefinition Height="7*" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="9*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*" />
@@ -277,7 +277,7 @@
 
 
 
-                        <Label   Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="8" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
+                        <Label   Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
                         </Label>
 
 
@@ -314,13 +314,13 @@
                     </Grid>
                 </ScrollView>
 
-                <Frame HorizontalOptions="FillAndExpand" HeightRequest="40" VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                    <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="40" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50" VerticalOptions="End" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                    <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="50" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnChangeEmailSubmitButtonClicked}" />
                         </Label.GestureRecognizers>
                     </Label>
-                </Frame>
+                </StackLayout>
 
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangePasswordayoutVisibility}">
                     <Grid.RowDefinitions>
@@ -328,13 +328,13 @@
                         <RowDefinition Height="8.8*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="12.8*" />
-                        <RowDefinition Height="13*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.8*" />
-                        <RowDefinition Height="13*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.8*" />
-                        <RowDefinition Height="13*" />
+                        <RowDefinition Height="7*" />
                         <RowDefinition Height="12.8*" />
-                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="28*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*" />
@@ -386,7 +386,11 @@
                 </Grid>
             </StackLayout>
             <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
+                                     <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
+                            </Image.GestureRecognizers>
+            </Image>
             <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
             <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
 
