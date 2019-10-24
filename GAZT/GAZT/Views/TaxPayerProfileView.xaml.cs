@@ -23,6 +23,26 @@ namespace GAZT.Views
             Items.Add(str);
             CardView.ItemsSource = Items;
             viewModel.OnPageLoad();
+            SetLabelMArgin();
+        }
+
+        public void SetLabelMArgin()
+        {
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                MobileNumberText.Margin = new Thickness(15, -13, 15, 0);
+                EmailText.Margin = new Thickness(15, -13, 15, 0);
+                PasswordText.Margin = new Thickness(15, -13, 15, 0);
+                SubmitButtonHeightight.HeightRequest = 60;
+            }
+            else
+            {
+                MobileNumberText.Margin = new Thickness(15, -20, 15, 0);
+                EmailText.Margin = new Thickness(15, -20, 15, 0);
+                PasswordText.Margin = new Thickness(15, -20, 15, 0);
+                SubmitButtonHeightight.HeightRequest = 90;
+            }
+
         }
 
         private void SetLTR()

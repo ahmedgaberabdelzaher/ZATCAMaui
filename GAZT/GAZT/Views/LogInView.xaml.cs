@@ -22,6 +22,7 @@ namespace GAZT.Views
           // logo.Margin = th;
             App.IsArabic = true;
             this.BindingContext = viewModel;
+            SetLabelMArgin();
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
 
@@ -51,6 +52,23 @@ namespace GAZT.Views
             }
          
         }
+
+        public void SetLabelMArgin()
+        {
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                TIN.Margin = new Thickness(15, -13, 15, 0);
+                Password.Margin = new Thickness(15, -13, 15, 0);
+             
+            }
+            else
+            {
+                TIN.Margin = new Thickness(15, -20, 15, 0);
+                Password.Margin = new Thickness(15, -20, 15, 0);
+             
+            }
+
+        }
         //private void OnOnLanguageClickClicked(object sender, EventArgs e)
         //{
         //    if(App.IsArabic)
@@ -63,9 +81,9 @@ namespace GAZT.Views
         //        App.IsArabic = true;
         //        SetRTLDirection();
         //    }
-          
+
         //}
-       
+
         public void SetRTLDirection()
         {
             String langName = "ar-AE";

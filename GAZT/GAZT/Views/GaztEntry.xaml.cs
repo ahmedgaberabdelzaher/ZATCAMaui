@@ -11,6 +11,19 @@ namespace GAZT
             InitializeComponent();
             EntryField.BindingContext = this;
             EntryLabelText.BindingContext = this;
+            SetLabelMArgin();
+        }
+        public void SetLabelMArgin()
+        {
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                EntryLabelText.Margin = new Thickness(15, -13, 15, 0);
+            }
+            else
+            {
+                EntryLabelText.Margin = new Thickness(15, -20, 15, 0);
+            }
+         
         }
         public static void Init()
         {

@@ -98,7 +98,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="6" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label x:Name="MobileNumberText"  Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="6" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -111,7 +111,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="8" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.Email}" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label  x:Name="EmailText" Text="{x:Static local:AppResources.Email}" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="8" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -124,7 +124,7 @@
                     </Frame>
                     <local1:BorderlessEntry Text="" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label x:Name="PasswordText"  Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
                     <Image Grid.Row="10" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -314,8 +314,8 @@
                     </Grid>
                 </ScrollView>
 
-                <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="50" VerticalOptions="End" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                    <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="50" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                <StackLayout  x:Name="SubmitButtonHeightight"  HorizontalOptions="FillAndExpand"  VerticalOptions="End" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                    <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnChangeEmailSubmitButtonClicked}" />
                         </Label.GestureRecognizers>
