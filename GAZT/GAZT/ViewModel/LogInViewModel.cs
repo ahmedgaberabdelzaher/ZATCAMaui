@@ -82,15 +82,25 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-            OnLoginButtonClicked = new RelayCommand(async () =>
-            {
-                bool IsComingFromSearch = true;
-                _navigationService.NavigateTo(App.OTPView);
-
-            });
+     
 
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
+                
+                GAZTAuthenticationService.IsAuthenticatedClient AuthClient = new GAZTAuthenticationService.IsAuthenticatedClient();
+                GAZTAuthenticationService.loginValidation lv = new GAZTAuthenticationService.loginValidation();
+
+                lv.userId = "3300049744";
+                lv.password = "Test@123";
+
+                GAZTAuthenticationService.loginValidationRequest lvreq = new GAZTAuthenticationService.loginValidationRequest(lv);
+                GAZTAuthenticationService.loginValidationResponse1 lvres =  await AuthClient.loginValidationAsync(lvreq);
+
+                lvres.loginValidationResponse.@return = "Success";
+
+                await _dialogService.ShowMessageBox("Login Succesful, please provide OTP in th enext screen","Information");
+
+
                 bool IsNavigatingFromLogin = true;
                 _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
