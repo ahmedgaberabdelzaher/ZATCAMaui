@@ -57,8 +57,8 @@ namespace GAZT.Views
         {
             if (Device.Idiom == TargetIdiom.Phone)
             {
-                TIN.Margin = new Thickness(15, -13, 15, 0);
-                Password.Margin = new Thickness(15, -13, 15, 0);
+                TIN.Margin = new Thickness(15, -16, 15, 0);
+                Password.Margin = new Thickness(15, -16, 15, 0);
              
             }
             else

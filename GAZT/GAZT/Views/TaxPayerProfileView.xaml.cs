@@ -5,6 +5,8 @@ using Xamarin.Forms;
 
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using GAZT.Helper;
+
 namespace GAZT.Views
 {
     public partial class TaxPayerProfileView : ContentPage
@@ -28,12 +30,29 @@ namespace GAZT.Views
 
         public void SetLabelMArgin()
         {
+           double DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+            double DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             if (Device.Idiom == TargetIdiom.Phone)
             {
                 MobileNumberText.Margin = new Thickness(15, -13, 15, 0);
                 EmailText.Margin = new Thickness(15, -13, 15, 0);
                 PasswordText.Margin = new Thickness(15, -13, 15, 0);
                 SubmitButtonHeightight.HeightRequest = 60;
+                // scrollView.HeightRequest = DeviceHeight;// *73/100;
+                EntryOne.HeightRequest = DeviceHeight * 8 / 100;
+                EntryTwo.HeightRequest = DeviceHeight * 8 / 100;
+                EntryThree.HeightRequest = DeviceHeight * 8 / 100;
+                EntryFour.HeightRequest = DeviceHeight * 8 / 100;
+                EntryFive.HeightRequest = DeviceHeight * 8 / 100;
+                EntrySix.HeightRequest = DeviceHeight * 8 / 100;
+
+
+
+
+
+
+
+
             }
             else
             {
@@ -41,6 +60,13 @@ namespace GAZT.Views
                 EmailText.Margin = new Thickness(15, -20, 15, 0);
                 PasswordText.Margin = new Thickness(15, -20, 15, 0);
                 SubmitButtonHeightight.HeightRequest = 90;
+                //scrollView.HeightRequest = DeviceHeight;// * 73 / 100;
+                EntryOne.HeightRequest = DeviceHeight * 8 / 100;
+                EntryTwo.HeightRequest = DeviceHeight * 8 / 100;
+                EntryThree.HeightRequest = DeviceHeight * 8 / 100;
+                EntryFour.HeightRequest = DeviceHeight * 8 / 100;
+                EntryFive.HeightRequest = DeviceHeight * 8 / 100;
+                EntrySix.HeightRequest = DeviceHeight * 8 / 100;
             }
 
         }

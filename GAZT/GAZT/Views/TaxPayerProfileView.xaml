@@ -199,7 +199,7 @@
                 </Grid>
 
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                    <Grid RowSpacing="15" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                    <Grid RowSpacing="15"  HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Grid.RowDefinitions>
 
                         <!--<RowDefinition Height="6*" />
@@ -251,7 +251,7 @@
                         <Label   Text="{x:Static local:AppResources.OldEmail}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                        <local1:GaztEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding OldEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.OldEmail}"/>
+                        <local1:GaztEntry  x:Name="EntryOne"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding OldEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.OldEmail}"/>
 
 
                         <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
@@ -261,7 +261,7 @@
                         <Label   Text="{x:Static local:AppResources.NewEmail}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                        <local1:GaztEntry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.NewEmail}"/>
+                        <local1:GaztEntry x:Name="EntryTwo" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.NewEmail}"/>
 
 
 
@@ -272,12 +272,12 @@
                         <Label   Text="{x:Static local:AppResources.RetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                       <local1:GaztEntry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypeEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.RetypeEmail}"/>
+                       <local1:GaztEntry x:Name="EntryThree" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypeEmail}" Source="ic_user.png" LabelText="{x:Static local:AppResources.RetypeEmail}"/>
 
 
 
 
-                        <Label   Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
+                        <Label   Text="{x:Static local:AppResources.ChnagePassword}" HeightRequest="40" Grid.Row="8" Grid.Column="0" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
                         </Label>
 
 
@@ -289,7 +289,7 @@
                         <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                       <local1:GaztEntry Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CurrentPassword}"  LabelText="{x:Static local:AppResources.CurrentPassword}"/>
+                       <local1:GaztEntry  x:Name="EntryFour" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CurrentPassword}"  LabelText="{x:Static local:AppResources.CurrentPassword}"/>
 
 
                         <!--<Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
@@ -299,7 +299,7 @@
                         <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="12" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                        <local1:GaztEntry Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewPassword}"  LabelText="{x:Static local:AppResources.NewPassword}"/>
+                        <local1:GaztEntry  x:Name="EntryFive"  Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding NewPassword}"  LabelText="{x:Static local:AppResources.NewPassword}"/>
 
 
                         <!--<Frame Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
@@ -309,7 +309,7 @@
                         <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="14" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                         </Label>-->
 
-                        <local1:GaztEntry Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypePassword}" LabelText="{x:Static local:AppResources.RetypePassword}"/>
+                        <local1:GaztEntry  x:Name="EntrySix"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding RetypePassword}" LabelText="{x:Static local:AppResources.RetypePassword}"/>
 
                     </Grid>
                 </ScrollView>
