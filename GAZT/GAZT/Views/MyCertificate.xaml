@@ -81,9 +81,17 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <BoxView Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                     <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
+                            </Image.GestureRecognizers>
+                </Image>
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                      <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnMyTaxPayerProfileClicked}" />
+                            </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </Grid>
     </ContentPage.Content>

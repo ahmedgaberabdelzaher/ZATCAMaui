@@ -22,7 +22,7 @@ namespace GAZT.Views
           // logo.Margin = th;
             App.IsArabic = true;
             this.BindingContext = viewModel;
-            SetLabelMArgin();
+            viewModel.OnPageLoad();
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
 
@@ -57,14 +57,14 @@ namespace GAZT.Views
         {
             if (Device.Idiom == TargetIdiom.Phone)
             {
-                TIN.Margin = new Thickness(15, -16, 15, 0);
-                Password.Margin = new Thickness(15, -16, 15, 0);
+                //TIN.Margin = new Thickness(15, -16, 15, 0);
+                //Password.Margin = new Thickness(15, -16, 15, 0);
              
             }
             else
             {
-                TIN.Margin = new Thickness(15, -20, 15, 0);
-                Password.Margin = new Thickness(15, -20, 15, 0);
+                //TIN.Margin = new Thickness(15, -20, 15, 0);
+                //Password.Margin = new Thickness(15, -20, 15, 0);
              
             }
 

@@ -14,7 +14,7 @@
 
              <!-- SST Arabic Bold.ttf -->
              <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
-                <On Platform="Android" Value="SSTArabic-Bold.ttf#SST" />
+                <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
 
                 <On Platform="iOS" Value="SSTArabic-Bold" />
             </OnPlatform>

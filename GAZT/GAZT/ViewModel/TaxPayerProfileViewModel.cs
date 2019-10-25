@@ -18,7 +18,7 @@ namespace GAZT
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnChangePasswordButtonClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
-        
+
 
 
 
@@ -41,6 +41,8 @@ namespace GAZT
         //        RaisePropertyChanged("IsLoading");
         //    }
         //}
+
+       
 
         private string _name;
 

@@ -15,17 +15,17 @@
             <skia:SKCanvasView Margin="0,-2,0,0" x:Name="canvasView" Grid.Row="0" Grid.Column="0" PaintSurface="OnCanvasViewPaintSurface" />
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5*" /><!--spacce-->
+                    <RowDefinition Height="4*" /><!--spacce-->
                     <RowDefinition Height="4.69*" /><!--Text-->
                     <RowDefinition Height="1.81*" /><!--space-->
-                    <RowDefinition Height="2.78*" /><!--Text-->
+                    <RowDefinition Height="4.78*" /><!--Text-->
                     <RowDefinition Height="1.39*" /><!--space-->
                     <RowDefinition Height="2.22*" /><!--Text-->
                     <RowDefinition Height="4.86*" /> <!--space between text and box-->
                     <RowDefinition Height="36.48*" /><!--box-->
                     <RowDefinition Height="3.75*" /><!--space between box and 3 boxes-->
                     <RowDefinition Height="21.09*" /><!--3 boxes-->
-                    <RowDefinition Height="9.19*" /><!--space-->
+                    <RowDefinition Height="8.19*" /><!--space-->
                     <RowDefinition Height="5*" />     <!-- bottom height 14.31-->
                     <RowDefinition Height=".875*" /><!--5.56 space form bottom-->
                     <RowDefinition Height=".875*" />
