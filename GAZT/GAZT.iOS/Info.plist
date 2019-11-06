@@ -13,13 +13,13 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SST Arabic Light.ttf</string>
 		<string>fa-brands-400.ttf</string>
-		<string>Mada-Regular.ttf</string>
+		<string>SST Arabic Bold.ttf</string>
+		<string>SST Arabic Light.ttf</string>
+		<string>SST Arabic Medium.ttf</string>
 		<string>SSTArabic-Bold.ttf</string>
 		<string>SSTArabic-Light.ttf</string>
 		<string>SSTArabic-Medium.ttf</string>
-		<string>SSTArabic-Roman.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

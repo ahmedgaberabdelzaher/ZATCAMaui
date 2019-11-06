@@ -31,10 +31,11 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.IsOTPiew = true;
+        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

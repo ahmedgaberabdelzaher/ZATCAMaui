@@ -16,12 +16,12 @@
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.64*" />
-                    <RowDefinition Height="3.06*" />
+                    <RowDefinition Height="4.06*" />
                     <RowDefinition Height="6.08*" />
                     <RowDefinition Height="76.22*" />
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="6*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
@@ -33,7 +33,7 @@
                     <ColumnDefinition Width="4*" />
                     <!--itemtemplate height 11.62 and separator height 1.75-->
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="My certificate" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
+                <local1:CustomLabel Text="My certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
 
 
@@ -81,9 +81,17 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <BoxView Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                     <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
+                            </Image.GestureRecognizers>
+                </Image>
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                      <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnMyTaxPayerProfileClicked}" />
+                            </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </Grid>
     </ContentPage.Content>

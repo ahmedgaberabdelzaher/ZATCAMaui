@@ -15,7 +15,8 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
-
+        public ICommand OnMyTaxPayerProfileClicked { get; set; }
+        public ICommand OnHomeIconClicked { get; set; }
         #endregion
 
         #region Property
@@ -65,6 +66,15 @@ namespace GAZT
             {
                 //_navigationService.NavigateTo(App.MyCertificate);
 
+            });
+            OnMyTaxPayerProfileClicked = new RelayCommand(async () =>
+            {
+                _navigationService.NavigateTo(App.TaxPayerProfileView);
+
+            });
+            OnHomeIconClicked = new RelayCommand(() =>
+            {
+                _navigationService.GoBack();
             });
 
         }
