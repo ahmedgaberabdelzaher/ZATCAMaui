@@ -1,7 +1,8 @@
-﻿using System;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
+using System;
 using System.Windows.Input;
 namespace GAZT
 {
@@ -10,40 +11,18 @@ namespace GAZT
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
-         public ICommand OnChangeMobileNumberClicked { get; set; }
+        public ICommand OnChangeMobileNumberClicked { get; set; }
         public ICommand OnChangeEmailClicked { get; set; }
         public ICommand OnChangePasswordClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnChangePasswordButtonClicked { get; set; }
-
-
-
-
-
-
-
         #endregion
 
         #region Property
-        //private bool _isLoading;
-
-        //public bool IsLoading
-        //{
-        //    get
-        //    {
-        //        return _isLoading;
-        //    }
-        //    set
-        //    {
-        //        _isLoading = value;
-        //        RaisePropertyChanged("IsLoading");
-        //    }
-        //}
-
+        
         private bool _tPProfileVisibility = true;
-
         public bool TPProfileVisibility
         {
             get
@@ -58,7 +37,6 @@ namespace GAZT
         }
 
         private bool _changeMobileNumberLayoutVisibility = false;
-
         public bool ChangeMobileNumberLayoutVisibility
         {
             get
@@ -73,7 +51,6 @@ namespace GAZT
         }
 
         private bool _changeEmailLayoutVisibility = false;
-
         public bool ChangeEmailLayoutVisibility
         {
             get
@@ -88,7 +65,6 @@ namespace GAZT
         }
 
         private bool _changePasswordayoutVisibility = false;
-
         public bool ChangePasswordayoutVisibility
         {
             get
@@ -101,7 +77,21 @@ namespace GAZT
                 RaisePropertyChanged("ChangePasswordayoutVisibility");
             }
         }
-        
+
+        private TaxPayerProfile _TaxPayerProfile = App.TP;
+        public TaxPayerProfile TaxPayerProfile
+        {
+            get
+            {
+                return _TaxPayerProfile;
+            }
+            set
+            {
+                _TaxPayerProfile = value;
+                RaisePropertyChanged("TaxPayerProfile");
+            }
+        }
+
 
         #endregion
 
@@ -121,10 +111,11 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-            OnChangeMobileNumberClicked = new RelayCommand( () =>
+
+            OnChangeMobileNumberClicked = new RelayCommand(() =>
             {
-                TPProfileVisibility = false;
-                ChangeMobileNumberLayoutVisibility = true;
+               TPProfileVisibility = false;
+               ChangeMobileNumberLayoutVisibility = true;
             });
 
             OnChangeEmailClicked = new RelayCommand(() =>
@@ -171,9 +162,6 @@ namespace GAZT
                 //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 
             });
-            
-
-
 
         }
 

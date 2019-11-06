@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SkiaSharp;
+using SkiaSharp.Views.Forms;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
-
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
 namespace GAZT.Views
 {
     public partial class TaxPayerProfileView : ContentPage
@@ -16,7 +14,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.TaxPayerProfileView;
             InitializeComponent();
-           
+
             SetLTR();
             this.BindingContext = viewModel;
             string str = "abc";

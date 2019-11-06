@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Alerts" xml:space="preserve">
-  <value>التنبيهات</value>
+    <value>التنبيهات</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>الجميع</value>
@@ -141,7 +141,7 @@
   <data name="Auditing" xml:space="preserve">
     <value>التدقيق والمراجعة</value>
   </data>
-   <data name="Verify" xml:space="preserve">
+  <data name="Verify" xml:space="preserve">
     <value>تحقق</value>
   </data>
   <data name="AverageNumOfEmployment" xml:space="preserve">
@@ -157,7 +157,7 @@
     <value>رقم المفوتر</value>
   </data>
   <data name="Capital" xml:space="preserve">
-    <value>Capital</value>
+    <value>رأس المال</value>
   </data>
   <data name="Chatting" xml:space="preserve">
     <value>المحادثة الفورية</value>
@@ -174,10 +174,6 @@
   <data name="CopySADADPaymentNumber" xml:space="preserve">
     <value>نسخ رقم فاتورة سداد</value>
   </data>
-  <data name="CopySADADNumber" xml:space="preserve">
-    <value>نسخ رقم فاتورة سداد</value>
-  </data>
-
   <data name="DataAvailableToGAZT" xml:space="preserve">
     <value>Data available to GAZT</value>
   </data>
@@ -275,7 +271,7 @@
     <value>شهادة تسجيل</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>تذكرني</value>
   </data>
   <data name="ReturnPeriod" xml:space="preserve">
     <value>الفترة الضريبية</value>
@@ -310,20 +306,17 @@
   <data name="SummaryOfZakatCalculation" xml:space="preserve">
     <value>إقرار زكاة تقديري</value>
   </data>
-   <data name="CurrentPassword" xml:space="preserve">
-    <value> Current Password </value>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>كلمة المرورالحالية</value>
   </data>
-   <data name="RetypeEmail" xml:space="preserve">
+  <data name="RetypeEmail" xml:space="preserve">
     <value>تأكيد البريد الإلكتروني</value>
   </data>
-     <data name="OldEmail" xml:space="preserve">
+  <data name="OldEmail" xml:space="preserve">
     <value>البريد الإلكتروني القديم</value>
   </data>
-    <data name="ChnagePassword" xml:space="preserve">
+  <data name="ChnagePassword" xml:space="preserve">
     <value>تغيير كلمة المرور</value>
-  </data>
-   <data name="CurrentPassword" xml:space="preserve">
-    <value>كلمة المرورالحالية</value>
   </data>
   <data name="TaxpayerProfile" xml:space="preserve">
     <value>الملف الشخصي للمكلف</value>
@@ -356,51 +349,22 @@
     <value>الوعاء الزكوي</value>
   </data>
   <data name="ZakatTaxType" xml:space="preserve">
-    <value>نوع الزكاة/ الضريبة</value>
-  </data>
-   <data name="ZakatTaxType" xml:space="preserve">
-    <value>VAT</value>
-  </data>
-  <data name="ZakatTaxType" xml:space="preserve">
-    <value>ZAKAT Estimate</value>
-  </data>
-  <data name="Capital" xml:space="preserve">
-    <value>رأس المال</value>
-  </data>
-<data name="Bills" xml:space="preserve">
-    <value>الفاتورة</value>
-  </data>
-<data name="DateAvailableToGAZT" xml:space="preserve">
-    <value>البيانات المتوفرة للهيئة</value>
-  </data>
-<data name="PayByMADA" xml:space="preserve">
-    <value>السداد من خلال مدى</value>
-  </data>
-
-  <data name="ZakatTaxType" xml:space="preserve">
-    <value>Certificate has been sent to recorded email</value>
-  </data>
-  <data name="ZakatTaxType" xml:space="preserve">
-    <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول
-بملء هذا الإقرار أو المخول بالتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤوليه في حال ثبت خلاف ذلك  
-</value>
-  </data>
-    <data name="ZakatTaxType" xml:space="preserve">
-    <value>Dear taxpayer, when calculating the amendments ,found that your amendments do not match what was calculated by the General Authority for Zakat and Income, and in case you want to continue it will be created as an appeal</value>
-  </data>
-  
-  <data name="ZakatTaxType" xml:space="preserve">
     <value>لن يتم تقديم طلب الاعتراض إلا في حال سداد المبلغ غير المعترض عليه بالإضافة إلى 25% من المبلغ المعترض عليه
 في حال قبول الاعتراض كليا أو جزئيا . سيتم إعادة المبلغ المسدد على المبلغ المعترض عليه
 </value>
   </data>
- <data name="AmendmentsDoNotMatchText" xml:space="preserve">
+  <data name="Bills" xml:space="preserve">
+    <value>الفاتورة</value>
+  </data>
+  <data name="DateAvailableToGAZT" xml:space="preserve">
+    <value>البيانات المتوفرة للهيئة</value>
+  </data>
+  <data name="AmendmentsDoNotMatchText" xml:space="preserve">
     <value>
            عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل ، وفي حال الرغبة في بالاستمرار سيتم إنشاء طلب اعتراض 
         </value>
   </data>
- <data name="RememberMe" xml:space="preserve">
-    <value>تذكرني</value>
-  </data>   
- 
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Login Successful</value>
+  </data>
 </root>

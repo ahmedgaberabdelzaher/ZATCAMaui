@@ -6,6 +6,8 @@ using System.Globalization;
 using GAZT.CustomControl;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
 {
@@ -22,6 +24,8 @@ namespace GAZT
         // public static bool IsArabic = false;
         public static bool IsArabic = true;
         public static bool IsOTPiew = false;
+        public static TaxPayerProfile TP = null;
+
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
         public App()

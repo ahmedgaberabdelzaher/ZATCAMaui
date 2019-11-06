@@ -1,11 +1,10 @@
-﻿using System;
-using System;
-using System;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using System;
 using System.Windows.Input;
-using Xamarin.Forms;
+
 namespace GAZT
 {
     public class LogInViewModel : ViewModelBase
@@ -15,25 +14,52 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnOnLanguageClickClicked { get; set; }
-      
+
         #endregion
 
         #region Property
-        //private bool _isLoading;
 
-        //public bool IsLoading
-        //{
-        //    get
-        //    {
-        //        return _isLoading;
-        //    }
-        //    set
-        //    {
-        //        _isLoading = value;
-        //        RaisePropertyChanged("IsLoading");
-        //    }
-        //}
+        private string _UserName = "3300087028";
+        public string UserName
+        {
+            get
+            {
+                return _UserName;
+            }
+            set
+            {
+                _UserName = value;
+                RaisePropertyChanged("UserName");
+            }
+        }
 
+        private string _Password="Test@123";
+        public string Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                _Password = value;
+                RaisePropertyChanged("Password");
+            }
+        }
+
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
 
         #endregion
@@ -54,37 +80,57 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
-     
+
 
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
-                
-                GAZTAuthenticationService.IsAuthenticatedClient AuthClient = new GAZTAuthenticationService.IsAuthenticatedClient();
-                GAZTAuthenticationService.loginValidation lv = new GAZTAuthenticationService.loginValidation();
 
-                lv.userId = "3300049744";
-                lv.password = "Test@123";
+                IsLoading = true;
 
-                GAZTAuthenticationService.loginValidationRequest lvreq = new GAZTAuthenticationService.loginValidationRequest(lv);
-                GAZTAuthenticationService.loginValidationResponse1 lvres =  await AuthClient.loginValidationAsync(lvreq);
+                String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
 
-                lvres.loginValidationResponse.@return = "Success";
+                if (0 == String.Compare("success", response, true))
+                {
+                    IsLoading = false;
 
-                await _dialogService.ShowMessageBox("Login Succesful, please provide OTP in th enext screen","Information");
+                    String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("LoginSuccessful");
+                    String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
 
+                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
 
-                bool IsNavigatingFromLogin = true;
-                _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                    String lang = "EN";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+
+                    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
+
+                    if (0 == String.Compare("OTP has send", response, true))
+                    {
+                        App.TP = new Models.TaxPayerProfile();
+                        App.TP.Userid = UserName;
+                        bool IsNavigatingFromLogin = true;
+
+                        _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessageBox(response, "Information");
+                    }
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox(response, "Information");
+                }
 
             });
 
-          
+
         }
 
         #endregion
 
         #region Method
-        
+
 
         #endregion
     }

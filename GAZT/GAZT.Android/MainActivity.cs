@@ -19,6 +19,9 @@ namespace GAZT.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+
             LoadApplication(new App());
         }
     }

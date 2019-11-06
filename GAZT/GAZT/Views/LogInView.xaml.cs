@@ -4,12 +4,16 @@ using System.Globalization;
 using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using System.Text.RegularExpressions;
+using GalaSoft.MvvmLight.Views;
+
 namespace GAZT.Views
 {
     public partial class LogInView : ContentPage
     {
         LogInViewModel viewModel;
         int LanguageToolBarCount = 0;
+        
         public LogInView()
         {
             viewModel = App.Locator.LogInView;
@@ -51,6 +55,7 @@ namespace GAZT.Views
             }
          
         }
+
         //private void OnOnLanguageClickClicked(object sender, EventArgs e)
         //{
         //    if(App.IsArabic)
@@ -68,10 +73,11 @@ namespace GAZT.Views
        
         public void SetRTLDirection()
         {
+            InitializeComponent();
+
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-           InitializeComponent();
             //var vUpdatedPage = new LogInView();
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
@@ -80,14 +86,17 @@ namespace GAZT.Views
 
         public void SetLTRDirection()
         {
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
+           
             //var vUpdatedPage = new LogInView();
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
 
             InitializeComponent();
+
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+
             // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
             App.IsArabic = false;
@@ -139,5 +148,18 @@ namespace GAZT.Views
             canvas.DrawPath(path, paint);
 
         }
+
+        //public void Handle_UserNameTextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        //{
+        //    var email = this.UserNameTxtBox.Text;
+
+        //    var emailPattern = @"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+        //    var TINPattern = @"^([a-zA-Z0-9])$";
+        //    if (Regex.IsMatch(email, emailPattern) || Regex.IsMatch(email, TINPattern))
+        //    {
+        //    }
+        //}
+
+
     }
 }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using GAZT.Helper;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using System;
 using Xamarin.Forms;
-using GAZT.Helper;
-using System.Globalization;
 namespace GAZT.Views
 {
     public partial class OTPView : ContentPage
@@ -15,12 +12,12 @@ namespace GAZT.Views
         OTPViewModel viewModel;
         public OTPView(bool IsComingFromLogIn)
         {
-         
+
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             viewModel.IsComingFromLogIn = IsComingFromLogIn;
-           SetLTR();
+            SetLTR();
             this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
@@ -29,7 +26,7 @@ namespace GAZT.Views
 
         private void SetLTR()
         {
-            if(!App.IsArabic)
+            if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
@@ -43,7 +40,7 @@ namespace GAZT.Views
             base.OnDisappearing();
             App.IsOTPiew = false;
         }
-      
+
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;

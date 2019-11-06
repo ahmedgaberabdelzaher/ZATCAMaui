@@ -250,7 +250,19 @@ namespace GAZT {
                 return ResourceManager.GetString("LogIn", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Login Successful.
+        /// </summary>
+        public static string LoginSuccessful
+        {
+            get
+            {
+                return ResourceManager.GetString("LoginSuccessful", resourceCulture);
+            }
+        }
+
+
         public static string MobileNumber {
             get {
                 return ResourceManager.GetString("MobileNumber", resourceCulture);

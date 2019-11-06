@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -29,9 +29,8 @@
     <Compile Remove="Views\BorderlessEntry.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Connected Services\" />
     <Folder Include="Views\" />
-    <Folder Include="Helper\" />
-    <Folder Include="CustomControl\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Manager\" />
   </ItemGroup>
