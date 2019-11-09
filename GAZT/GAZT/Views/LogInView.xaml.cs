@@ -25,10 +25,11 @@ namespace GAZT.Views
             th.Bottom = 0;
           // logo.Margin = th;
             App.IsArabic = true;
+            SetRTLDirectionTest();
             this.BindingContext = viewModel;
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-
+       
             ToolbarItem toolbarItem1 = new ToolbarItem
             {
                 Icon = "ic_language.png",
@@ -36,16 +37,31 @@ namespace GAZT.Views
                 Priority = 1,
                 Command = new Command(() =>
                 {
+
+                    //Test Purpose
                     if (App.IsArabic)
                     {
                         App.IsArabic = false;
-                        SetLTRDirection();
+                        SetLTRDirectionTest();
                     }
                     else
                     {
                         App.IsArabic = true;
-                        SetRTLDirection();
+                        SetRTLDirectionTest();
                     }
+
+
+                    //Original Code
+                    //if (App.IsArabic)
+                    //{
+                    //    App.IsArabic = false;
+                    //    SetLTRDirection();
+                    //}
+                    //else
+                    //{
+                    //    App.IsArabic = true;
+                    //    SetRTLDirection();
+                    //}
                 })
             };
             if(LanguageToolBarCount == 0)
@@ -68,9 +84,40 @@ namespace GAZT.Views
         //        App.IsArabic = true;
         //        SetRTLDirection();
         //    }
-          
+
         //}
-       
+
+        public void SetRTLDirectionTest()
+        {
+            InitializeComponent();
+
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+
+            // AppResources.ResourceManager.ReleaseAllResources();
+            this.FlowDirection = FlowDirection.RightToLeft;
+            
+        }
+
+        public void SetLTRDirectionTest()
+        {
+
+            InitializeComponent();
+
+            String langName = "ar-AE";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            //var vUpdatedPage = new LogInView();
+            //Navigation.InsertPageBefore(vUpdatedPage, this);
+            //Navigation.PopAsync();
+            this.FlowDirection = FlowDirection.LeftToRight;
+            
+
+        }
+
+
+
         public void SetRTLDirection()
         {
             InitializeComponent();
@@ -99,7 +146,7 @@ namespace GAZT.Views
 
             // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
-            App.IsArabic = false;
+           
         }
 
 
@@ -148,18 +195,18 @@ namespace GAZT.Views
             canvas.DrawPath(path, paint);
 
         }
+       
+            //public void Handle_UserNameTextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+            //{
+            //    var email = this.UserNameTxtBox.Text;
 
-        //public void Handle_UserNameTextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
-        //{
-        //    var email = this.UserNameTxtBox.Text;
-
-        //    var emailPattern = @"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
-        //    var TINPattern = @"^([a-zA-Z0-9])$";
-        //    if (Regex.IsMatch(email, emailPattern) || Regex.IsMatch(email, TINPattern))
-        //    {
-        //    }
-        //}
+            //    var emailPattern = @"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
+            //    var TINPattern = @"^([a-zA-Z0-9])$";
+            //    if (Regex.IsMatch(email, emailPattern) || Regex.IsMatch(email, TINPattern))
+            //    {
+            //    }
+            //}
 
 
+        }
     }
-}

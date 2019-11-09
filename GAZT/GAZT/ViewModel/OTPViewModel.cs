@@ -105,8 +105,10 @@ namespace GAZT
                 throw new ArgumentNullException("dialogService");
             }
 
+           
+
             _dialogService = dialogService;
-            OnSubmitClicked = new RelayCommand(async () =>
+            this.OnSubmitClicked = new RelayCommand(async () => 
             {
                 if(IsComingFromLogIn)
                 {
@@ -129,7 +131,10 @@ namespace GAZT
                         TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
                         if (TP != null)
                         {
+                            String Password = App.TP.Password;
                             App.TP = TP;
+                            App.TP.Password = Password;
+
                             _navigationService.NavigateTo(App.DashboardView);
                         }   
                         else
@@ -140,9 +145,43 @@ namespace GAZT
                         await _dialogService.ShowMessageBox(ex.Message, "Information");
                     }
                 }
+                
                 else
                 {
-                    _navigationService.GoBack();
+                    TaxPayerProfile TP = null;
+                   
+                    try
+                    {
+                        
+                        String OTP = string.Empty;
+
+                        String lang = "EN";
+                        if (App.IsArabic == true)
+                        {
+                            lang = "AR";
+                            OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
+                        }
+                        else
+                        {
+                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                        }
+
+                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Userid,App.TP.Mobile,App.TP.NewMobile);
+                        if (TP != null)
+                        {
+                            App.TP = TP;
+                            _navigationService.NavigateTo(App.TaxPayerProfileView);
+                        }
+                        else
+                            await dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                    }
+                    catch (Exception ex)
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                    }
+
+
+                    // _navigationService.GoBack();
                 }
 
             });
@@ -152,6 +191,9 @@ namespace GAZT
         #endregion
 
         #region Method
+
+
+
 
         public void OnPageLoad()
         {

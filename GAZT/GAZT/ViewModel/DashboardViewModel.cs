@@ -57,6 +57,7 @@ namespace GAZT
             }
 
             _dialogService = dialogService;
+          
             OnMyCertificateClicked = new RelayCommand(async () =>
             {
              _navigationService.NavigateTo(App.MyCertificate);
@@ -72,8 +73,8 @@ namespace GAZT
                _navigationService.NavigateTo(App.TaxPayerProfileView);
 
             });
-            
 
+            _navigationService.GoBack();
         }
 
         #endregion

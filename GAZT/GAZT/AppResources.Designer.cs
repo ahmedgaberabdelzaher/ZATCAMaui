@@ -415,6 +415,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile Number Verification Successful.
+        /// </summary>
+        public static string MobileNumberVerificationSuccessful {
+            get {
+                return ResourceManager.GetString("MobileNumberVerificationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My bills.
         /// </summary>
         public static string MyBills {
@@ -523,11 +532,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PassWord Changed Sucessfully .
+        /// </summary>
+        public static string PassWordChangedSucessfully {
+            get {
+                return ResourceManager.GetString("PassWordChangedSucessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pay by MADA.
         /// </summary>
         public static string PayByMADA {
             get {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pdf.
+        /// </summary>
+        public static string Pdf {
+            get {
+                return ResourceManager.GetString("Pdf", resourceCulture);
             }
         }
         

@@ -2,6 +2,7 @@
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
+using System.Globalization;
 using Xamarin.Forms;
 namespace GAZT.Views
 {
@@ -30,10 +31,15 @@ namespace GAZT.Views
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            
         }
+
+       
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+           
             App.IsOTPiew = true;
         }
         protected override void OnDisappearing()

@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Windows.Input;
@@ -78,6 +79,49 @@ namespace GAZT
             }
         }
 
+        private string _NewMobile=string.Empty;
+        public string NewMobile
+        {
+            get
+            {
+                return _NewMobile;
+            }
+            set
+            {
+                _NewMobile = value;
+                RaisePropertyChanged("NewMobile");
+            }
+        }
+
+        private string _NewPassword = string.Empty;
+        public string NewPassword
+        {
+            get
+            {
+                return _NewPassword;
+            }
+            set
+            {
+                _NewPassword = value;
+                RaisePropertyChanged("NewPassword");
+            }
+        }
+
+        private string _RetypePassword = string.Empty;
+        public string RetypePassword
+        {
+            get
+            {
+                return _RetypePassword;
+            }
+            set
+            {
+                _RetypePassword = value;
+                RaisePropertyChanged("RetypePassword");
+            }
+        }
+
+
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -121,6 +165,7 @@ namespace GAZT
             OnChangeEmailClicked = new RelayCommand(() =>
             {
                 TPProfileVisibility = false;
+                ChangePasswordayoutVisibility = false;
                 ChangeEmailLayoutVisibility = true;
             });
 
@@ -138,10 +183,35 @@ namespace GAZT
 
             });
 
-            OnVerifyButtonClicked = new RelayCommand(() =>
+            OnVerifyButtonClicked = new RelayCommand(async() =>
             {
                 bool IsNavigatingFromLogin = false;
-                _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+
+                // IsLoading = true;
+               // TaxPayerProfile.Mobile = "00966534534645";
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+
+                bool response = await WebServiceManager.GAZTValidateMobileNumber(lang,TaxPayerProfile.Tin,TaxPayerProfile.Mobile,NewMobile);
+
+                if(response==true)
+                {
+
+                    TaxPayerProfile.NewMobile = NewMobile;
+                    App.TP.NewMobile = NewMobile;
+
+                    String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("MobileNumberVerificationSuccessful");
+
+                    String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
+
+                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+
+                    _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                }
+
+
+               
 
             });
 
@@ -154,10 +224,50 @@ namespace GAZT
 
             });
 
-            OnChangePasswordButtonClicked = new RelayCommand(() =>
+            OnChangePasswordButtonClicked = new RelayCommand(async() =>
             {
-                ChangePasswordayoutVisibility = false;
-                TPProfileVisibility = true;
+                bool IsNavigatingFromLogin = false;
+
+                // IsLoading = true;
+               // TaxPayerProfile.Mobile = "00966534534645";
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+
+                if (0 == String.Compare(NewPassword,RetypePassword, true))
+                {
+                    bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPassword);
+
+                    if (response == true)
+                    {
+
+                        TaxPayerProfile.NewPassword = NewPassword;
+                        App.TP.NewPassword = NewPassword;
+                        App.TP.Password = NewPassword;
+                        TaxPayerProfile.Password = NewPassword;
+
+                        String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("PassWordChangedSucessfully");
+
+
+                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess , "Information");
+
+                        
+                    }
+                    else
+                    {
+
+                    }
+
+
+
+
+                    ChangePasswordayoutVisibility = false;
+                    TPProfileVisibility = true;
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox("New Password and RetypePasswordNotMatch ", "Information");
+                }
                 //bool IsNavigatingFromLogin = false;
                 //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 

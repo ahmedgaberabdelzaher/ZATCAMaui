@@ -10,5 +10,10 @@ namespace GAZT.Helper
         public static string GAZTSOAPWebRequestForAuthenticationService = "https://tstdp1as1.mygazt.gov.sa:50001/local~mblgapi/AuthenticatedService";
         public static string GAZTSendAndReceiveOTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
         public static string GAZTValidateOTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
+        public static string GaZTVerifyMobileNumber = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
+        public static string GAZTValidateOTPForMobile = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
+        public static string GAZTValidateAndChangePassword = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='P',";
+        public static string GAZTGetPdf = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=";
+
     }
 }

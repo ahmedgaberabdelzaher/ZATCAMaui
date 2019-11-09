@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using System;
+using System.Globalization;
 using System.Windows.Input;
 
 namespace GAZT
@@ -19,7 +20,8 @@ namespace GAZT
 
         #region Property
 
-        private string _UserName = "3300087028";
+        // private string _UserName = "3300087028";
+        private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -33,7 +35,8 @@ namespace GAZT
             }
         }
 
-        private string _Password="Test@123";
+        //  private string _Password="Test@123";
+        private string _Password = string.Empty;
         public string Password
         {
             get
@@ -104,11 +107,21 @@ namespace GAZT
 
                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
 
-                    if (0 == String.Compare("OTP has send", response, true))
+                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                     {
                         App.TP = new Models.TaxPayerProfile();
                         App.TP.Userid = UserName;
+                        App.TP.Password = Password;
                         bool IsNavigatingFromLogin = true;
+
+                        if(App.IsArabic)
+                        {
+                            SetRTLDirectionTest();
+                        }
+                        else
+                        {
+                            SetLTRDirectionTest();
+                        }
 
                         _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
                     }
@@ -123,6 +136,35 @@ namespace GAZT
                 }
 
             });
+
+
+        }
+
+        public void SetRTLDirectionTest()
+        {
+           // InitializeComponent();
+
+            String langName = "ar-AE";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+
+            // AppResources.ResourceManager.ReleaseAllResources();
+           
+
+        }
+
+        public void SetLTRDirectionTest()
+        {
+
+          ///  InitializeComponent();
+
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            //var vUpdatedPage = new LogInView();
+            //Navigation.InsertPageBefore(vUpdatedPage, this);
+            //Navigation.PopAsync();
+            
 
 
         }

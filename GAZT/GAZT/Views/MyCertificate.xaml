@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft"  xmlns:controls="clr-namespace:pdfjs.Controls">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
@@ -18,10 +18,16 @@
                     <RowDefinition Height="2.64*" />
                     <RowDefinition Height="4.06*" />
                     <RowDefinition Height="6.08*" />
-                    <RowDefinition Height="76.22*" />
+                    <RowDefinition Height="20.22*" />
+                    <RowDefinition Height="56*"/>
                     <RowDefinition Height="4*" />
                     <RowDefinition Height="6*" />
                     <RowDefinition Height="3*" />
+
+                    <!--<RowDefinition Height="76.22*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="3*" />-->
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
@@ -37,7 +43,7 @@
                 </local1:CustomLabel>
 
 
-                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent" Margin="9,0,9,0">
+                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent"  Margin="9,0,9,0">
                     <x:Arguments>
                         <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                     </x:Arguments>
@@ -54,8 +60,18 @@
                                         </Frame.HeightRequest>
                                         <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
                                             <local1:CustomLabel Text="VAT registration certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
+                                                </Label.GestureRecognizers>
+
                                             </local1:CustomLabel>
-                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
+                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" >
+
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </StackLayout>
                                     </Frame>
                                 </Frame>
@@ -80,19 +96,30 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <BoxView Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-                <Image Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                <controls:PdfWebView x:Name="PdfView" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"/>
+                <!--<WebView x:Name="Webview"  
+                 HeightRequest="200"  
+                 WidthRequest="200"              
+                 VerticalOptions="FillAndExpand"
+                         Source="https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value"
+                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" />-->
+                <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
                      <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
                             </Image.GestureRecognizers>
                 </Image>
-                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+                <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
                       <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnMyTaxPayerProfileClicked}" />
                             </Image.GestureRecognizers>
                 </Image>
+                <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="3"></ActivityIndicator>
+
             </Grid>
+           
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

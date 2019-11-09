@@ -160,7 +160,7 @@ namespace GAZT.Manager
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
 
                     JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                    if (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP"))
+                    if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
                         TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
                     else
                         throw new Exception("Invalid OTP / OTP expired");
@@ -174,5 +174,176 @@ namespace GAZT.Manager
                 throw new Exception(ex.Message);
             }
         }
+
+
+        public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang,String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber)
+        {
+            TaxPayerProfile TP = null;
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+
+                String url = Constants.GAZTValidateOTPForMobile +"Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +OTP+ "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&sap-language=" + Lang;
+                var uri = new Uri(url);
+
+                HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+
+                if (GAZTValidateOTPResponse != null)
+                {
+                    String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+
+                    GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+
+                    JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
+                    if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
+                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                    else
+                        throw new Exception("Invalid OTP / OTP expired");
+                }
+
+                return TP;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin,string CurrentMobileNumber,string NewMobileNumber)
+        {
+            TaxPayerProfile TP = null;
+            bool result = false;
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+
+                String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +""+ "',CurrEmail='" +""+ "',NewEmail='" +""+ "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" +""+"',NewPwd='" + "')?$format=json&sap-language=" + Lang;
+                var uri = new Uri(url);
+
+                HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
+
+                if (GAZTValidateMobileNumberResponse != null)
+                {
+                    String GAZTValidateMobileNumberResponseJSON = GAZTValidateMobileNumberResponse.Content.ReadAsStringAsync().Result;
+
+                    GAZTValidateMobileNumberResponseJSON = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["d"].ToString();
+
+                    JToken GAZTValidateMobileNumberResponseJToken = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["Result"];
+
+                    if ((0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "Email and Mobile login code has been sent successfully")) || (0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "تم إرسال رمز تسجيل الدخول عبر البريد الإلكتروني والجوال بنجاح")))
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        throw new Exception("Invalid Mobile Number");
+                    }
+
+                    //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
+                    ////    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                    ////else
+                    ////    throw new Exception("Invalid OTP / OTP expired");
+                }
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public static async Task<bool> GAZTValidateAndChangePassword(String Lang, String Tin, string CurrentPassword, string NewPassword)
+        {
+            TaxPayerProfile TP = null;
+            bool result = false;
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+
+                String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" +""+ "',NewMobile='" +""+ "',CurrPwd='" + CurrentPassword + "',NewPwd='" +NewPassword+"')?$format=json&sap-language=" + Lang;
+                var uri = new Uri(url);
+
+                HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+
+                if (GAZTValidateAndChangePasswordResponse != null)
+                {
+                    String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
+
+                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+
+                    JToken GAZTValidateAndChangePasswordResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Result"];
+
+                    if ((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Password Changed Successfully")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "تم تغيير الرقم السري بنجاح")))
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        throw new Exception("Invalid Password");
+                    }
+
+                    //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
+                    ////    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                    ////else
+                    ////    throw new Exception("Invalid OTP / OTP expired");
+                }
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public static async Task<string> GAZTGetPdfUrl(String Lang, String Tin)
+        {
+            TaxPayerProfile TP = null;
+            bool result = false;
+            string PdfUrl = string.Empty;
+            DateTime dt = DateTime.Now;
+            string currentDate=dt.Year.ToString() +"-"+dt.Month.ToString()+"-"+dt.Day.ToString()+"T"+dt.Hour.ToString()+":"+dt.Minute.ToString();
+           // 2007 - 01 - 01T00: 00
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                String url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=Gpartz  eq  '3300057436'  and Langz   eq 'EN'  and  Begdaz eq   datetime'2007-01-01T00:00'  and Enddaz eq datetime'2019-10-13T11:12'  and  ObligFlagz eq 'I'  and  Auditor  eq  ''   and  TaxtpFg  eq  'VAT'  and  UserTin   eq  ''&$format=json";
+               // String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'"+""+"'&$format=json";
+                var uri = new Uri(url);
+
+                HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+
+                if (GAZTValidateAndChangePasswordResponse != null)
+                {
+                    String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
+
+                   
+                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+
+                    JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
+                    if (jObject != null)
+                    {
+                        JToken memberName = jObject["results"].First["Pdfurl"];
+                        result = true;
+                        PdfUrl = memberName.ToString();
+                    }
+                }
+
+                return PdfUrl;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
     }
 }
