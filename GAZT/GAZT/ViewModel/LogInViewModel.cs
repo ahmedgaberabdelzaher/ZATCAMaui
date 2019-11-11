@@ -52,7 +52,7 @@ namespace GAZT
             }
         }
 
-        private bool _isLoading;
+        private bool _isLoading = false;
         public bool IsLoading
         {
             get
@@ -106,6 +106,7 @@ namespace GAZT
 
                         Device.BeginInvokeOnMainThread(async() =>
                         {
+                            IsLoading = false;
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
                         });
 
@@ -139,7 +140,14 @@ namespace GAZT
                             }
                             else
                             {
-                                await _dialogService.ShowMessageBox(response, "Information");
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(response, "Information");
+                                });
                             }
                         });
 
@@ -147,7 +155,14 @@ namespace GAZT
                     }
                     else
                     {
-                        await _dialogService.ShowMessageBox(response, "Information");
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        Device.BeginInvokeOnMainThread(async() =>
+                        {
+                            await _dialogService.ShowMessageBox(response, "Information");
+                        });
                     }
                 });
 
