@@ -58,17 +58,17 @@ namespace GAZT
 
             _dialogService = dialogService;
           
-            OnMyCertificateClicked = new RelayCommand(async () =>
+            OnMyCertificateClicked = new Command(() =>
             {
              _navigationService.NavigateTo(App.MyCertificate);
 
             });
-            OnBellClicked = new RelayCommand(async () =>
+            OnBellClicked = new Command(async () =>
             {
                 //_navigationService.NavigateTo(App.MyCertificate);
 
             });
-            OnMyTaxPayerProfileClicked = new RelayCommand(async () =>
+            OnMyTaxPayerProfileClicked = new Command(async () =>
             {
                _navigationService.NavigateTo(App.TaxPayerProfileView);
 

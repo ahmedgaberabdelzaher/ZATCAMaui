@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using GAZT.Manager;
 using GAZT.Models;
+using Xamarin.Forms;
 
 namespace GAZT
 {
@@ -105,12 +106,12 @@ namespace GAZT
                 throw new ArgumentNullException("dialogService");
             }
 
-           
+
 
             _dialogService = dialogService;
-            this.OnSubmitClicked = new RelayCommand(async () => 
+            this.OnSubmitClicked = new Command(async () =>
             {
-                if(IsComingFromLogIn)
+                if (IsComingFromLogIn)
                 {
                     TaxPayerProfile TP = null;
                     try
@@ -136,7 +137,7 @@ namespace GAZT
                             App.TP.Password = Password;
 
                             _navigationService.NavigateTo(App.DashboardView);
-                        }   
+                        }
                         else
                             await dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
                     }
@@ -145,14 +146,14 @@ namespace GAZT
                         await _dialogService.ShowMessageBox(ex.Message, "Information");
                     }
                 }
-                
+
                 else
                 {
                     TaxPayerProfile TP = null;
-                   
+
                     try
                     {
-                        
+
                         String OTP = string.Empty;
 
                         String lang = "EN";
@@ -166,7 +167,7 @@ namespace GAZT
                             OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
                         }
 
-                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Userid,App.TP.Mobile,App.TP.NewMobile);
+                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Userid, App.TP.Mobile, App.TP.NewMobile);
                         if (TP != null)
                         {
                             App.TP = TP;
@@ -193,7 +194,13 @@ namespace GAZT
         #region Method
 
 
-
+        public void ClearData()
+        {
+            OTP1stNumberProvidedByTheUser = string.Empty;
+            OTP2ndNumberProvidedByTheUser = string.Empty;
+            OTP3rdNumberProvidedByTheUser = string.Empty;
+            OTP4thNumberProvidedByTheUser = string.Empty;
+        }
 
         public void OnPageLoad()
         {

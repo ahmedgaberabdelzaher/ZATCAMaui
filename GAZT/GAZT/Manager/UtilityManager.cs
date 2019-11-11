@@ -194,11 +194,19 @@ namespace GAZT.Manager
 
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
 
-                    JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                    if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
+                    string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
+                    if(GAZTValidateOTPResponseJToken== "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
+                    {
                         TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                    }
                     else
+                    {
                         throw new Exception("Invalid OTP / OTP expired");
+                    }
+                    //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
+                    //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                    //else
+                    //    throw new Exception("Invalid OTP / OTP expired");
                 }
 
                 return TP;

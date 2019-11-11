@@ -5,6 +5,8 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Windows.Input;
+using Xamarin.Forms;
+
 namespace GAZT
 {
     public class TaxPayerProfileViewModel : ViewModelBase
@@ -156,26 +158,26 @@ namespace GAZT
 
             _dialogService = dialogService;
 
-            OnChangeMobileNumberClicked = new RelayCommand(() =>
+            OnChangeMobileNumberClicked = new Command(() =>
             {
                TPProfileVisibility = false;
                ChangeMobileNumberLayoutVisibility = true;
             });
 
-            OnChangeEmailClicked = new RelayCommand(() =>
+            OnChangeEmailClicked = new Command(() =>
             {
                 TPProfileVisibility = false;
                 ChangePasswordayoutVisibility = false;
                 ChangeEmailLayoutVisibility = true;
             });
 
-            OnChangePasswordClicked = new RelayCommand(() =>
+            OnChangePasswordClicked = new Command(() =>
             {
                 TPProfileVisibility = false;
                 ChangePasswordayoutVisibility = true;
             });
 
-            OnSubmitButtonClicked = new RelayCommand(() =>
+            OnSubmitButtonClicked = new Command(() =>
             {
                 //_navigationService.NavigateTo(App.DashboardView);
                 ChangeMobileNumberLayoutVisibility = false;
@@ -183,7 +185,7 @@ namespace GAZT
 
             });
 
-            OnVerifyButtonClicked = new RelayCommand(async() =>
+            OnVerifyButtonClicked = new Command(async() =>
             {
                 bool IsNavigatingFromLogin = false;
 
@@ -215,7 +217,7 @@ namespace GAZT
 
             });
 
-            OnChangeEmailSubmitButtonClicked = new RelayCommand(() =>
+            OnChangeEmailSubmitButtonClicked = new Command(() =>
             {
                 ChangeEmailLayoutVisibility = false;
                 TPProfileVisibility = true;
@@ -224,7 +226,7 @@ namespace GAZT
 
             });
 
-            OnChangePasswordButtonClicked = new RelayCommand(async() =>
+            OnChangePasswordButtonClicked = new Command(async() =>
             {
                 bool IsNavigatingFromLogin = false;
 
@@ -278,6 +280,13 @@ namespace GAZT
         #endregion
 
         #region Method
+
+        public void ClearData()
+        {
+            NewMobile = string.Empty;
+            RetypePassword = string.Empty;
+            NewPassword = string.Empty;
+        }
 
         public void OnPageLoad()
         {

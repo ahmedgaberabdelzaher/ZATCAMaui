@@ -17,6 +17,7 @@ namespace GAZT.Views
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
+           // viewModel.ClearData();
             viewModel.IsComingFromLogIn = IsComingFromLogIn;
             SetLTR();
             this.BindingContext = viewModel;
@@ -39,12 +40,13 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-           
+            
             App.IsOTPiew = true;
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            viewModel.ClearData();
             App.IsOTPiew = false;
         }
 

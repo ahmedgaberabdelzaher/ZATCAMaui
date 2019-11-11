@@ -31,6 +31,19 @@ namespace GAZT.Views
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            viewModel.ClearData();
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.ClearData();
+           
+        }
+
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;

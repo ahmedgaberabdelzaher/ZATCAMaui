@@ -8,8 +8,8 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.64*" />
-                <RowDefinition Height="3.06*" />
-                <RowDefinition Height="6.08*" />
+                <RowDefinition Height="6.06*" />
+                <RowDefinition Height="3.08*" />
                 <RowDefinition Height="25.68*" />
                 <RowDefinition Height="48.54*" />
                 <RowDefinition Height="4*" />
@@ -106,7 +106,7 @@
 
                     <Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry Text="{Binding Password}" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <local1:BorderlessEntry Text="{Binding Password}" IsPassword="True" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-10,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
@@ -163,13 +163,13 @@
                         </Label.GestureRecognizers>
                     </Label>
 
-                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                    <!--<Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
                     </Frame>
                     <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnSubmitButtonClicked}" />
                         </Label.GestureRecognizers>
-                    </Label>
+                    </Label>-->
 
                 </Grid>
 

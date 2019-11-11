@@ -1,36 +1,26 @@
-﻿using System;
-using System;
-using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GalaSoft.MvvmLight.Command;
-using System.Windows.Input;
-using Xamarin.Forms;
 using GAZT.Manager;
 using GAZT.Models;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Net;
 using pdfjs.Interfaces;
+using System;
 using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
-namespace GAZT
+namespace GAZT.ViewModel
 {
-    public class MyCertificateViewModel : ViewModelBase
+    public class PdfViewModel : ViewModelBase
     {
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
-        public ICommand OnLoginButtonClicked { get; set; }
-        public ICommand OnBellClicked { get; set; }
-        public ICommand OnMyTaxPayerProfileClicked { get; set; }
-        public ICommand OnHomeIconClicked { get; set; }
-        public ICommand OnCertificateClicked { get; set; }
         #endregion
 
         #region Property
-        private bool _isLoading=false;
 
+        private bool _isLoading;
         public bool IsLoading
         {
             get
@@ -43,41 +33,6 @@ namespace GAZT
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-
-
-        private string _PdfSelected;
-        public string PdfSelected
-        {
-            get
-            {
-                _navigationService.NavigateTo(App.PdfView);
-                return _PdfSelected;
-            }
-            set
-            {
-                _PdfSelected = value;
-                RaisePropertyChanged("_PdfSelected");
-                _navigationService.NavigateTo(App.PdfView);
-            }
-        }
-
-
-
-        private bool _CertificateVisible = false;
-        public bool CertificateVisible
-        {
-            get
-            {
-                return _CertificateVisible;
-            }
-            set
-            {
-                _CertificateVisible = value;
-                RaisePropertyChanged("CertificateVisible");
-            }
-        }
-
 
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
@@ -134,13 +89,11 @@ namespace GAZT
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
-
-
         #endregion
 
         #region Constructor
 
-        public MyCertificateViewModel(INavigationService navigationService, IDialogService dialogService)
+        public PdfViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
@@ -152,58 +105,11 @@ namespace GAZT
             {
                 throw new ArgumentNullException("dialogService");
             }
-            //Task.Run(async () =>
-            //{
-            //    IsLoading = true;
-            //    String lang = "EN";
-            //    if (App.IsArabic == true)
-            //        lang = "AR";
-            //    ineligible:
-            //    String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
 
-            //    if (string.IsNullOrEmpty(response) != true)
-            //    {
-            //        DownloadUrl = response;
-            //        pdf();
-            //    }
-            //    else
-            //    {
-            //        TaxPayerProfile.Tin = "3300057436";
-            //        goto ineligible;
-            //    }
-            //    IsLoading = false;
-            //});
             _dialogService = dialogService;
-            OnLoginButtonClicked = new RelayCommand(async () =>
-            {
-                bool IsComingFromSearch = true;
-                // _navigationService.NavigateTo(App.LoginView);
 
-            });
-
-            OnCertificateClicked = new Command(() =>
-            {
-
-                _navigationService.NavigateTo(App.PdfView);
-                //_navigationService.NavigateTo(App.MyCertificate);
-
-            });
-
-
-            OnBellClicked = new Command(async () =>
-            {
-                //_navigationService.NavigateTo(App.MyCertificate);
-
-            });
-            OnMyTaxPayerProfileClicked = new Command(async () =>
-            {
-                _navigationService.NavigateTo(App.TaxPayerProfileView);
-
-            });
-            OnHomeIconClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+           
+           
 
         }
 
@@ -211,7 +117,32 @@ namespace GAZT
 
         #region Method
 
-        public void pdf()
+        public void OnPageLoad()
+        {
+            Task.Run(async () =>
+            {
+                IsLoading = true;
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                ineligible:
+                String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+
+                if (string.IsNullOrEmpty(response) != true)
+                {
+                    DownloadUrl = response;
+                    pdf();
+                }
+                else
+                {
+                    TaxPayerProfile.Tin = "3300057436";
+                    goto ineligible;
+                }
+                IsLoading = false;
+            });
+        }
+
+            public void pdf()
         {
             var localPath = string.Empty;
             Stream stream = null;
@@ -223,6 +154,8 @@ namespace GAZT
 
                     if (dependency == null)
                     {
+                       _dialogService.ShowMessageBox("Error loading PDF", "Information");
+
                         // DisplayAlert("Error loading PDF", "Computer says no", "OK");
 
                         return;
@@ -247,10 +180,10 @@ namespace GAZT
 
                             if (string.IsNullOrEmpty(strBase64) != true)
                             {
-                                
+
                                 byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
                                 stream = new MemoryStream(sPDFDecoded);
-                               
+
                                 StreamForDownloadURL = stream;
 
                             }
@@ -273,6 +206,7 @@ namespace GAZT
 
                     if (string.IsNullOrWhiteSpace(localPath))
                     {
+                        _dialogService.ShowMessageBox("Error loading PDF", "Information");
                         //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
 
                         return;
@@ -284,12 +218,11 @@ namespace GAZT
                 //else
                 //    Path = url;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
         }
-
         #endregion
     }
 }

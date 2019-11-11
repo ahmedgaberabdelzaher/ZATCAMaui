@@ -5,6 +5,7 @@ using GAZT.Manager;
 using System;
 using System.Globalization;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT
 {
@@ -20,8 +21,8 @@ namespace GAZT
 
         #region Property
 
-        // private string _UserName = "3300087028";
-        private string _UserName = string.Empty;
+        private string _UserName = "3300087028";
+        //private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -35,8 +36,8 @@ namespace GAZT
             }
         }
 
-        //  private string _Password="Test@123";
-        private string _Password = string.Empty;
+        private string _Password = "Test@123";
+        //private string _Password = string.Empty;
         public string Password
         {
             get
@@ -85,7 +86,7 @@ namespace GAZT
             _dialogService = dialogService;
 
 
-            OnLoginButtonClicked = new RelayCommand(async () =>
+            OnLoginButtonClicked = new Command(async () =>
             {
 
                 IsLoading = true;

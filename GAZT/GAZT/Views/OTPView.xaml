@@ -50,20 +50,20 @@
 
                 <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP1stNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="5" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP1stNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="5" BackgroundColor="Transparent" />
               
                 
                  <Image Source="ic_OTP_Rectangle.png" x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="OTPEEntryTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
                 
                  <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" x:Name="OTPEEntryThree" Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" x:Name="OTPEEntryThree" Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
 
                   <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" x:Name="OTPEEntryFour" Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" x:Name="OTPEEntryFour" Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
 
                 <!--<Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" >
                 </Image>

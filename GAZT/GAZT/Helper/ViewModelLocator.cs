@@ -2,6 +2,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using GAZT.ViewModel;
 using GAZT.Views;
 namespace GAZT
 {
@@ -18,8 +19,10 @@ namespace GAZT
             SimpleIoc.Default.Register<DashboardViewModel>();
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<TaxPayerProfileViewModel>();
+            SimpleIoc.Default.Register<PdfViewModel>();
 
-            
+
+
 
 
 
@@ -53,6 +56,24 @@ namespace GAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<OTPViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current instance of OTPViewModel
+        /// </summary>
+        public PdfViewModel pdfView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PdfViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -123,8 +144,9 @@ namespace GAZT
             navigationService.Configure(App.DashboardView, typeof(DashboardView));
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
+            navigationService.Configure(App.PdfView, typeof(PdfView));
 
-            
+
             return navigationService;
         }
 

@@ -18,8 +18,9 @@ namespace GAZT
         public static string DashboardView = "DashboardView";
         public static string MyCertificate = "MyCertificate";
         public static string TaxPayerProfileView = "TaxPayerProfileView";
+        public static string PdfView = "PdfView";
 
-        
+
 
         // public static bool IsArabic = false;
         public static bool IsArabic = true;

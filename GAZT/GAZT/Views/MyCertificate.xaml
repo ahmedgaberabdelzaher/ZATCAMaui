@@ -16,8 +16,8 @@
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.64*" />
-                    <RowDefinition Height="4.06*" />
-                    <RowDefinition Height="6.08*" />
+                    <RowDefinition Height="6.06*" />
+                    <RowDefinition Height="4.08*" />
                     <RowDefinition Height="20.22*" />
                     <RowDefinition Height="56*"/>
                     <RowDefinition Height="4*" />
@@ -43,7 +43,7 @@
                 </local1:CustomLabel>
 
 
-                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent"  Margin="9,0,9,0">
+                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CertificateList" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="Transparent" SelectedItem="{Binding PdfSelected}" Margin="9,0,9,0">
                     <x:Arguments>
                         <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                     </x:Arguments>
@@ -96,7 +96,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <controls:PdfWebView x:Name="PdfView" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"/>
+                <!--<controls:PdfWebView x:Name="PdfView" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"/>-->
                 <!--<WebView x:Name="Webview"  
                  HeightRequest="200"  
                  WidthRequest="200"              
