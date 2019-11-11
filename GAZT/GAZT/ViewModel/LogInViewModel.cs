@@ -22,7 +22,7 @@ namespace GAZT
 
         #region Property
 
-        private string _UserName = "3300087028";
+        private string _UserName = "3300078417";
        // private string _UserName = string.Empty;
         public string UserName
         {
@@ -37,7 +37,7 @@ namespace GAZT
             }
         }
 
-        private string _Password = "Test@123";
+        private string _Password = "Init@1234";
        // private string _Password = string.Empty;
         public string Password
         {
@@ -182,7 +182,7 @@ namespace GAZT
                             await _dialogService.ShowMessageBox(response, "Information");
                         });
                     }
-                });
+               
 
 
                 await Task.Run(() =>
