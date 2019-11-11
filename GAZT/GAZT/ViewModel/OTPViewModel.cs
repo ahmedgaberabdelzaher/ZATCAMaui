@@ -119,14 +119,18 @@ namespace GAZT
                         String OTP = string.Empty;
 
                         String lang = "EN";
+
+                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+
+
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
-                            OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
+                            //OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
                         }
                         else
                         {
-                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                           // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
                         }
 
                         TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
@@ -171,6 +175,7 @@ namespace GAZT
                         if (TP != null)
                         {
                             App.TP = TP;
+                            await dialogService.ShowMessageBox("Mobile Number Updated Successfully", "Information");
                             _navigationService.NavigateTo(App.TaxPayerProfileView);
                         }
                         else

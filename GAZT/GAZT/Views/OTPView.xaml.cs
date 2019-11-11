@@ -3,6 +3,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 namespace GAZT.Views
 {
@@ -17,7 +18,7 @@ namespace GAZT.Views
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
-           // viewModel.ClearData();
+            // viewModel.ClearData();
             viewModel.IsComingFromLogIn = IsComingFromLogIn;
             SetLTR();
             this.BindingContext = viewModel;
@@ -37,12 +38,230 @@ namespace GAZT.Views
 
        
 
-        protected override void OnAppearing()
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+
+           
+          
+        //}
+
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            
             App.IsOTPiew = true;
+            await Task.Run(() =>
+            {
+
+                Task.Delay(100);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    entry.Focus();
+                });
+            });
         }
+        private async void OnTextChangedOne(Object sender, EventArgs e)
+        {
+            string s = entry.Text;
+            await Task.Run(() =>
+            {
+                Task.Delay(100);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    string cnt = entry.Text;
+                    if (cnt.Length == 1)
+                    {
+                        entry.Unfocus();
+                        entryTwo.Focus();
+                    }
+
+                });
+            });
+
+
+
+        }
+
+
+
+
+        private async void OnTextChangedTwo(Object sender, EventArgs e)
+        {
+            string s = entry.Text;
+            await Task.Run(() =>
+            {
+                Task.Delay(100);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    string cnt = entryTwo.Text;
+                    if (cnt.Length == 1)
+                    {
+                        entryTwo.Unfocus();
+                        entrytThree.Focus();
+                    }
+                });
+            });
+
+
+
+        }
+
+
+
+        private async void OnTextChangedThree(Object sender, EventArgs e)
+        {
+            string s = entry.Text;
+            await Task.Run(() =>
+            {
+                Task.Delay(100);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    string cnt = entryTwo.Text;
+                    if (cnt.Length == 1)
+                    {
+                        entrytThree.Unfocus();
+                        entryFour.Focus();
+                    }
+                });
+            });
+
+
+
+        }
+
+
+
+        private async void OnTextChangedFour(Object sender, EventArgs e)
+        {
+            string s = entry.Text;
+            await Task.Run(() =>
+            {
+                Task.Delay(100);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    string cnt = entrytThree.Text;
+                    if (cnt.Length == 1)
+                    {
+                        entrytThree.Unfocus();
+                        entryFour.Focus();
+                    }
+                    if (cnt.Length > 1)
+                    {
+                        entryFour.Unfocus();
+                    }
+                });
+            });
+
+
+
+        }
+
+        //protected async override void OnAppearing()
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        Task.Delay(100);
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            entry.Focus();
+        //        });
+        //    });
+        //}
+        //private async void OnTextChangedOne(Object sender, EventArgs e)
+        //{
+        //    string s = entry.Text;
+        //    await Task.Run(() =>
+        //    {
+        //        Task.Delay(100);
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            string cnt = entry.Text;
+        //            if (cnt.Length == 1)
+        //            {
+        //                entry.Unfocus();
+        //                entryTwo.Focus();
+        //            }
+
+        //        });
+        //    });
+
+
+
+        //}
+
+
+
+
+        //private async void OnTextChangedTwo(Object sender, EventArgs e)
+        //{
+        //    string s = entry.Text;
+        //    await Task.Run(() =>
+        //    {
+        //        Task.Delay(100);
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            string cnt = entryTwo.Text;
+        //            if (cnt.Length == 1)
+        //            {
+        //                entryTwo.Unfocus();
+        //                entrytThree.Focus();
+        //            }
+        //        });
+        //    });
+
+
+
+        //}
+
+
+
+        //private async void OnTextChangedThree(Object sender, EventArgs e)
+        //{
+        //    string s = entry.Text;
+        //    await Task.Run(() =>
+        //    {
+        //        Task.Delay(100);
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            string cnt = entryTwo.Text;
+        //            if (cnt.Length == 1)
+        //            {
+        //                entrytThree.Unfocus();
+        //                entryFour.Focus();
+        //            }
+        //        });
+        //    });
+
+
+
+        //}
+
+
+
+        //private async void OnTextChangedFour(Object sender, EventArgs e)
+        //{
+        //    string s = entry.Text;
+        //    await Task.Run(() =>
+        //    {
+        //        Task.Delay(100);
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            string cnt = entrytThree.Text;
+        //            if (cnt.Length == 1)
+        //            {
+        //                entrytThree.Unfocus();
+        //                entryFour.Focus();
+        //            }
+        //            if (cnt.Length > 1)
+        //            {
+        //                entryFour.Unfocus();
+        //            }
+        //        });
+        //    });
+
+
+
+      //  }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

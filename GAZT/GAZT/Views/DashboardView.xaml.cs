@@ -25,6 +25,8 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
+
+
         }
         private void SetLTR()
         {
@@ -80,7 +82,15 @@ namespace GAZT.Views
 
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () => {
+                var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
+                if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
+            });
 
+            return true;
+        }
 
     }
 }

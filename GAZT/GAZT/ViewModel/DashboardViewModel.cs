@@ -11,7 +11,7 @@ namespace GAZT
     public class DashboardViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnMyCertificateClicked { get; set; }
         public ICommand OnBellClicked { get; set; }

@@ -195,13 +195,15 @@ namespace GAZT
                 if (App.IsArabic == true)
                     lang = "AR";
 
+               
+
                 bool response = await WebServiceManager.GAZTValidateMobileNumber(lang,TaxPayerProfile.Tin,TaxPayerProfile.Mobile,NewMobile);
 
                 if(response==true)
                 {
 
-                    TaxPayerProfile.NewMobile = NewMobile;
-                    App.TP.NewMobile = NewMobile;
+                    //TaxPayerProfile.NewMobile = NewMobile;
+                    //App.TP.NewMobile = NewMobile;
 
                     String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("MobileNumberVerificationSuccessful");
 
@@ -210,12 +212,17 @@ namespace GAZT
                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
 
                     _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+
+                  
+                        
                 }
 
 
-               
+
 
             });
+
+
 
             OnChangeEmailSubmitButtonClicked = new Command(() =>
             {
@@ -280,6 +287,15 @@ namespace GAZT
         #endregion
 
         #region Method
+
+        public async void SetTP()
+        {
+            String lang = "E";
+            if (App.IsArabic == true)
+                lang = "A";
+            String mobilenumber = await WebServiceManager.GAZTGetTp(TaxPayerProfile.Tin, lang);
+            TaxPayerProfile.Mobile = mobilenumber;
+        }
 
         public void ClearData()
         {
