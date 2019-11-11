@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local1="clr-namespace:GAZT" x:Class="GAZT.Views.OTPView"  FlowDirection="RightToLeft" BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="37.46*" />
@@ -50,20 +51,20 @@
 
                 <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP1stNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="entry" TextChanged="OnTextChangedOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="5" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP1stNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" x:Name="entry" TextChanged="OnTextChangedOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="5" BackgroundColor="Transparent" />
               
                 
                  <Image Source="ic_OTP_Rectangle.png" x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" Keyboard="Numeric" x:Name="entryTwo" TextChanged="OnTextChangedTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" x:Name="entryTwo" TextChanged="OnTextChangedTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
                 
                  <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPThree" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" x:Name="entrytThree" TextChanged="OnTextChangedThree"  Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" x:Name="entrytThree" TextChanged="OnTextChangedThree"  Keyboard="Numeric" Grid.Row="4" Grid.Column="5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
 
                   <Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 </Image>
-                <local1:BorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" x:Name="entryFour" TextChanged="OnTextChangedFour"  Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
+                <local1:BorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" x:Name="entryFour" TextChanged="OnTextChangedFour"  Keyboard="Numeric" Grid.Row="4" Grid.Column="7" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="2" BackgroundColor="Transparent" />
 
                 <!--<Image Source="ic_OTP_Rectangle.png"  x:Name="OTPFour" Grid.Row="4" Grid.Column="7" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" >
                 </Image>
@@ -76,6 +77,8 @@
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
             </Grid>
+                                        <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" ></ActivityIndicator>
+                </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,7 @@ using System.Windows.Input;
 using GAZT.Manager;
 using GAZT.Models;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace GAZT
 {
@@ -109,56 +110,84 @@ namespace GAZT
 
 
             _dialogService = dialogService;
-            this.OnSubmitClicked = new Command(async () =>
+            OnSubmitClicked = new Command(async() =>
             {
-                if (IsComingFromLogIn)
+                await ValidateOTP();
+            });
+
+        }
+
+        private async Task ValidateOTP()
+        {
+            try
+            {
+                await Task.Run(() =>
                 {
-                    TaxPayerProfile TP = null;
-                    try
-                    {
-                        String OTP = string.Empty;
-
-                        String lang = "EN";
-
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                    IsLoading = true;
+                });
 
 
-                        if (App.IsArabic == true)
-                        {
-                            lang = "AR";
-                            //OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
-                        }
-                        else
-                        {
-                           // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-                        }
-
-                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
-                        if (TP != null)
-                        {
-                            String Password = App.TP.Password;
-                            App.TP = TP;
-                            App.TP.Password = Password;
-
-                            _navigationService.NavigateTo(App.DashboardView);
-                        }
-                        else
-                            await dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
-                    }
-                    catch (Exception ex)
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
-                    }
-                }
-
-                else
+                await Task.Run(async () =>
                 {
-                    TaxPayerProfile TP = null;
-
-                    try
+                    if (IsComingFromLogIn)
                     {
+                        TaxPayerProfile TP = null;
+                        try
+                        {
+                            String OTP = string.Empty;
 
-                        String OTP = string.Empty;
+                            String lang = "EN";
+
+                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+
+
+                            if (App.IsArabic == true)
+                            {
+                                lang = "AR";
+                                //OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
+                            }
+                            else
+                            {
+                                // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                            }
+
+                            TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
+                            if (TP != null)
+                            {
+                                String Password = App.TP.Password;
+                                App.TP = TP;
+                                App.TP.Password = Password;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _navigationService.NavigateTo(App.DashboardView);
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                           
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(ex.Message, "Information");
+                            });
+                        }
+                    }
+
+                    else
+                    {
+                        TaxPayerProfile TP = null;
+
+                        try
+                        {
+
+                            String OTP = string.Empty;
 
                         String lang = "EN";
 
@@ -176,29 +205,49 @@ namespace GAZT
                            // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
                         }
 
-                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
-                        if (TP != null)
-                        {
-                            App.TP = TP;
-                            await dialogService.ShowMessageBox("Mobile Number Updated Successfully", "Information");
-                            _navigationService.NavigateTo(App.TaxPayerProfileView);
+                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Userid, App.TP.Mobile, App.TP.NewMobile);
+                            if (TP != null)
+                            {
+                                App.TP = TP;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox("Mobile Number Updated Successfully", "Information");
+                                    _navigationService.NavigateTo(App.TaxPayerProfileView);
+                                });
+
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                                });
+                            }
                         }
-                        else
-                            await dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                        catch (Exception ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(ex.Message, "Information");
+                            });
+                        }
+
+
+                        // _navigationService.GoBack();
                     }
-                    catch (Exception ex)
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
-                    }
+                });
 
 
-                    // _navigationService.GoBack();
-                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
 
-            });
-
+            }
         }
-
         #endregion
 
         #region Method

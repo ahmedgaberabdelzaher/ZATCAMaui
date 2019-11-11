@@ -59,6 +59,19 @@
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
 
             </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+
+            </Style>
+
             <Style x:Key="MicroGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
