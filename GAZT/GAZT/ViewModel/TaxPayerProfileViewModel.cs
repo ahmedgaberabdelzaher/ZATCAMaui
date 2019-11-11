@@ -256,41 +256,52 @@ namespace GAZT
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";
-
-                if (0 == String.Compare(NewPassword,RetypePassword, true))
+                try
                 {
-                    bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPassword);
-
-                    if (response == true)
+                    if (0 == String.Compare(NewPassword, RetypePassword, true))
                     {
+                        bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPassword);
 
-                        TaxPayerProfile.NewPassword = NewPassword;
-                        App.TP.NewPassword = NewPassword;
-                        App.TP.Password = NewPassword;
-                        TaxPayerProfile.Password = NewPassword;
+                        if (response == true)
+                        {
 
-                        String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
+                            TaxPayerProfile.NewPassword = NewPassword;
+                            App.TP.NewPassword = NewPassword;
+                            App.TP.Password = NewPassword;
+                            TaxPayerProfile.Password = NewPassword;
+
+                            String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
 
 
-                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess , "Information");
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
 
-                        
+
+                        }
+                        else
+                        {
+
+                        }
+
+
+
+
+                        ChangePasswordayoutVisibility = false;
+                        TPProfileVisibility = true;
                     }
                     else
                     {
-
+                        await _dialogService.ShowMessageBox("New Password and RetypePasswordNotMatch ", "Information");
                     }
-
-
-
-
-                    ChangePasswordayoutVisibility = false;
-                    TPProfileVisibility = true;
                 }
-                else
+                catch (Exception ex)
                 {
-                    await _dialogService.ShowMessageBox("New Password and RetypePasswordNotMatch ", "Information");
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                    });
                 }
+
                 //bool IsNavigatingFromLogin = false;
                 //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
 

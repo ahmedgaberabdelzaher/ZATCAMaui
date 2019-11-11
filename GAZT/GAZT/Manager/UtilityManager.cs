@@ -284,13 +284,13 @@ namespace GAZT.Manager
 
                     JToken GAZTValidateAndChangePasswordResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Result"];
 
-                    if ((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Password Changed Successfully")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "تم تغيير الرقم السري بنجاح")))
+                    if ((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Password Changed Successfully")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "تم تغيير كلمة المرور بنجاح")))
                     {
                         result = true;
                     }
                     else
                     {
-                        throw new Exception("Invalid Password");
+                        throw new ArgumentException("Invalid Password");
                     }
 
                     //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
