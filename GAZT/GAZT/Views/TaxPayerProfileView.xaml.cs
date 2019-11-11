@@ -34,12 +34,16 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            // viewModel.TaxPayerProfile = App.TP;
+            viewModel.SetTP();
             viewModel.ClearData();
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            // viewModel.TaxPayerProfile = App.TP;
+
+           
             viewModel.ClearData();
            
         }

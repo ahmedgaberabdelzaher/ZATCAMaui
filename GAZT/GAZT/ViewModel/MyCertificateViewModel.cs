@@ -58,7 +58,9 @@ namespace GAZT
             {
                 _PdfSelected = value;
                 RaisePropertyChanged("_PdfSelected");
-                _navigationService.NavigateTo(App.PdfView);
+               // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", "Information");
+               if(_PdfSelected!=null)
+                    _navigationService.NavigateTo(App.PdfView);
             }
         }
 
