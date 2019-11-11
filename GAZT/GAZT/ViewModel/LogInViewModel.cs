@@ -94,11 +94,6 @@ namespace GAZT
                     IsLoading = true;
                 });
 
-                String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
-
-                if (0 == String.Compare("success", response, true))
-                {
-                    IsLoading = false;
 
                     //App.IsArabic = true;
 
@@ -111,13 +106,26 @@ namespace GAZT
                         SetLTRDirectionTest();
                     }
 
-                    String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
-                    String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                    //String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
+                    //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+
+                   // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+
+                await Task.Run(async() =>
+                {
+                    String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                    if (0 == String.Compare("success", response, true))
+                    {
+                       
+
+
+                        String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+                        String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
 
                         Device.BeginInvokeOnMainThread(async() =>
                         {
                             IsLoading = false;
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, "Information");
                         });
 
 
