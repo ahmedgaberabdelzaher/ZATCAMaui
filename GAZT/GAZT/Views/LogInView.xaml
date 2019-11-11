@@ -4,6 +4,7 @@
         <ToolbarItem Icon="ic_language.png" Order="Primary" Priority="0" Clicked="OnOnLanguageClickClicked" />
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
 
@@ -72,9 +73,9 @@
                 <Label   Text="{x:Static local:AppResources.RememberMe}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center">
                 </Label>
             </StackLayout>
-            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="3"></ActivityIndicator>
         </Grid>
-            
+                        <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" ></ActivityIndicator>
+            </Grid>
         <!-- </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

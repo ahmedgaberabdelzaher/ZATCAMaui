@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -88,53 +89,73 @@ namespace GAZT
 
             OnLoginButtonClicked = new Command(async () =>
             {
-
-                IsLoading = true;
-
-                String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
-
-                if (0 == String.Compare("success", response, true))
+                await Task.Run(() =>
                 {
-                    IsLoading = false;
+                    IsLoading = true;
+                });
 
-                    String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("LoginSuccessful");
-                    String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
-
-                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
-
-                    String lang = "EN";
-                    if (App.IsArabic == true)
-                        lang = "AR";
-
-                    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
-
-                    if(0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                await Task.Run(async() =>
+                {
+                    String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                    if (0 == String.Compare("success", response, true))
                     {
-                        App.TP = new Models.TaxPayerProfile();
-                        App.TP.Userid = UserName;
-                        App.TP.Password = Password;
-                        bool IsNavigatingFromLogin = true;
+                       
 
-                        if(App.IsArabic)
-                        {
-                            SetRTLDirectionTest();
-                        }
-                        else
-                        {
-                            SetLTRDirectionTest();
-                        }
+                        String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("LoginSuccessful");
+                        String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
 
-                        _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                        Device.BeginInvokeOnMainThread(async() =>
+                        {
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                        });
+
+
+                        String lang = "EN";
+                        if (App.IsArabic == true)
+                            lang = "AR";
+                        await Task.Run(async() =>
+                        {
+                            response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
+                            if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                            {
+                                App.TP = new Models.TaxPayerProfile();
+                                App.TP.Userid = UserName;
+                                App.TP.Password = Password;
+                                bool IsNavigatingFromLogin = true;
+
+                                if (App.IsArabic)
+                                {
+                                    SetRTLDirectionTest();
+                                }
+                                else
+                                {
+                                    SetLTRDirectionTest();
+                                }
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                                });
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessageBox(response, "Information");
+                            }
+                        });
+
+                      
                     }
                     else
                     {
                         await _dialogService.ShowMessageBox(response, "Information");
                     }
-                }
-                else
+                });
+
+
+                await Task.Run(() =>
                 {
-                    await _dialogService.ShowMessageBox(response, "Information");
-                }
+                    IsLoading = false;
+                });
 
             });
 
