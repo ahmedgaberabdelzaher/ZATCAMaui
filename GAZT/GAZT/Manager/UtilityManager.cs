@@ -238,7 +238,7 @@ namespace GAZT.Manager
 
                     JToken GAZTValidateMobileNumberResponseJToken = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["Result"];
 
-                    if ((0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "Email and Mobile login code has been sent successfully")) || (0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "تم إرسال رمز تسجيل الدخول عبر البريد الإلكتروني والجوال بنجاح")))
+                    if ((0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "Email and Mobile login code has been sent successfully")) || (GAZTValidateMobileNumberResponseJToken.ToString() == "رمز تحقق الدخول للبريد الالكتروني والهاتف الجوال تم ارسالها بنجاح"))
                     {
                         result = true;
                     }

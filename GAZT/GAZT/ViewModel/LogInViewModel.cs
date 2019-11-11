@@ -97,8 +97,19 @@ namespace GAZT
                 {
                     IsLoading = false;
 
-                    String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("LoginSuccessful");
-                    String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
+                    //App.IsArabic = true;
+
+                    if (App.IsArabic)
+                    {
+                        SetRTLDirectionTest();
+                    }
+                    else
+                    {
+                        SetLTRDirectionTest();
+                    }
+
+                    String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
+                    String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
 

@@ -95,6 +95,20 @@ namespace GAZT
             }
         }
 
+        private string _CurrentMobile = string.Empty;
+        public string CurrentMobile
+        {
+            get
+            {
+                return _CurrentMobile;
+            }
+            set
+            {
+                _CurrentMobile = value;
+                RaisePropertyChanged("CurrentMobile");
+            }
+        }
+
         private string _NewPassword = string.Empty;
         public string NewPassword
         {
@@ -203,11 +217,11 @@ namespace GAZT
                 {
 
                     //TaxPayerProfile.NewMobile = NewMobile;
-                    //App.TP.NewMobile = NewMobile;
+                    App.TP.NewMobile = NewMobile;
 
-                    String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("MobileNumberVerificationSuccessful");
+                    String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
 
-                    String OnSuccessfulAuthentication = AppResources.ResourceManager.GetString("EnterVerificationCode");
+                    String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
 
@@ -255,7 +269,7 @@ namespace GAZT
                         App.TP.Password = NewPassword;
                         TaxPayerProfile.Password = NewPassword;
 
-                        String OnAuthenticationSuccess = AppResources.ResourceManager.GetString("PassWordChangedSucessfully");
+                        String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
 
 
                         await _dialogService.ShowMessageBox(OnAuthenticationSuccess , "Information");
@@ -294,7 +308,12 @@ namespace GAZT
             if (App.IsArabic == true)
                 lang = "A";
             String mobilenumber = await WebServiceManager.GAZTGetTp(TaxPayerProfile.Tin, lang);
+            CurrentMobile = mobilenumber;
+            App.TP.Mobile = mobilenumber;
             TaxPayerProfile.Mobile = mobilenumber;
+            App.TP.NewMobile = string.Empty;
+            TaxPayerProfile.NewMobile = string.Empty;
+           
         }
 
         public void ClearData()
@@ -310,6 +329,7 @@ namespace GAZT
             ChangePasswordayoutVisibility = false;
             ChangeMobileNumberLayoutVisibility = false;
             ChangeEmailLayoutVisibility = false;
+            CurrentMobile = TaxPayerProfile.Mobile;
         }
         #endregion
     }

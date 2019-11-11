@@ -125,7 +125,7 @@ namespace GAZT.ViewModel
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";
-                ineligible:
+               
                 String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
 
                 if (string.IsNullOrEmpty(response) != true)
@@ -135,8 +135,10 @@ namespace GAZT.ViewModel
                 }
                 else
                 {
-                    TaxPayerProfile.Tin = "3300057436";
-                    goto ineligible;
+                    String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
+
+                    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, "Information");
+
                 }
                 IsLoading = false;
             });

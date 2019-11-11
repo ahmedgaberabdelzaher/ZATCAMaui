@@ -378,4 +378,10 @@ appeal</value>
   <data name="Pdf" xml:space="preserve">
     <value>Pdf</value>
   </data>
+  <data name="PdfIsNoteAvailable" xml:space="preserve">
+    <value>Pdf Is Not Available </value>
+  </data>
+  <data name="TinEmail" xml:space="preserve">
+    <value>Tin-Email</value>
+  </data>
 </root>

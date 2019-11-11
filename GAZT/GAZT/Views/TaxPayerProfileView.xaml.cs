@@ -2,6 +2,7 @@
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 namespace GAZT.Views
 {
@@ -36,6 +37,7 @@ namespace GAZT.Views
             base.OnAppearing();
             // viewModel.TaxPayerProfile = App.TP;
             viewModel.SetTP();
+            Task.Delay(20000);
             viewModel.ClearData();
         }
         protected override void OnDisappearing()
@@ -44,7 +46,7 @@ namespace GAZT.Views
             // viewModel.TaxPayerProfile = App.TP;
 
            
-            viewModel.ClearData();
+           
            
         }
 

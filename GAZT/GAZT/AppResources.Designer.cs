@@ -559,6 +559,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pdf Is Not Available .
+        /// </summary>
+        public static string PdfIsNoteAvailable {
+            get {
+                return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string PurchaseValue {
@@ -726,6 +735,15 @@ namespace GAZT {
         public static string TIN {
             get {
                 return ResourceManager.GetString("TIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tin-Email.
+        /// </summary>
+        public static string TinEmail {
+            get {
+                return ResourceManager.GetString("TinEmail", resourceCulture);
             }
         }
         

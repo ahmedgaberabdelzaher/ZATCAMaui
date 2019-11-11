@@ -161,17 +161,22 @@ namespace GAZT
                         String OTP = string.Empty;
 
                         String lang = "EN";
+
+                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+
+                     
+
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
-                            OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
+                           // OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
                         }
                         else
                         {
-                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                           // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
                         }
 
-                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Userid, App.TP.Mobile, App.TP.NewMobile);
+                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                         if (TP != null)
                         {
                             App.TP = TP;
