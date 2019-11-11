@@ -1,4 +1,5 @@
 ﻿
+using System.Net;
 using Foundation;
 using UIKit;
 using Xamarin;
@@ -20,6 +21,10 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            ServicePointManager
+            .ServerCertificateValidationCallback +=
+            (sender, cert, chain, sslPolicyErrors) => true;
+
             Xamarin.Forms.Forms.Init();
             IQKeyboardManager.SharedManager.Enable = true;
             LoadApplication(new App());

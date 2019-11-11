@@ -108,7 +108,7 @@ namespace GAZT
 
                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
 
-                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    if(0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                     {
                         App.TP = new Models.TaxPayerProfile();
                         App.TP.Userid = UserName;

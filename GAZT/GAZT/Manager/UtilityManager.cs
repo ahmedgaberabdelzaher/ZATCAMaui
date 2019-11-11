@@ -112,7 +112,6 @@ namespace GAZT.Manager
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                 String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?$format=json";
                 var uri = new Uri(url);
-
                 HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
 
                 if(GAZTSendAndReceiveOTPResponse != null)
