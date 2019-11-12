@@ -51,7 +51,7 @@
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom x:TypeArguments="x:Double"  Phone="10" Tablet="16" />
                     </Setter.Value>
                 </Setter>
 
@@ -63,11 +63,11 @@
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
                     </Setter.Value>
                 </Setter>
 
-                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
 
             </Style>
