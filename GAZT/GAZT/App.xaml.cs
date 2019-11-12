@@ -19,6 +19,7 @@ namespace GAZT
         public static string MyCertificate = "MyCertificate";
         public static string TaxPayerProfileView = "TaxPayerProfileView";
         public static string PdfView = "PdfView";
+        public static string UpdateEmailAddress = "UpdateEmailAddress";
 
 
 

@@ -1,12 +1,11 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GalaSoft.MvvmLight.Command;
-using System.Windows.Input;
 using GAZT.Manager;
 using GAZT.Models;
-using Xamarin.Forms;
+using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT
 {
@@ -32,6 +31,20 @@ namespace GAZT
             {
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private string _OTPSentOnThisMobileNumber = App.TP.Mobile;
+        public string OTPSentOnThisMobileNumber
+        {
+            get
+            {
+                return _OTPSentOnThisMobileNumber;
+            }
+            set
+            {
+                _OTPSentOnThisMobileNumber = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
 
@@ -106,11 +119,9 @@ namespace GAZT
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-
-
+            
             _dialogService = dialogService;
-            OnSubmitClicked = new Command(async() =>
+            OnSubmitClicked = new Command(async () =>
             {
                 await ValidateOTP();
             });
@@ -167,15 +178,17 @@ namespace GAZT
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                                    ClearData();
                                 });
                             }
                         }
                         catch (Exception ex)
                         {
-                           
+
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(ex.Message, "Information");
+                                ClearData();
                             });
                         }
                     }
@@ -189,21 +202,19 @@ namespace GAZT
 
                             String OTP = string.Empty;
 
-                        String lang = "EN";
+                            String lang = "EN";
 
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
 
-                     
-
-                        if (App.IsArabic == true)
-                        {
-                            lang = "AR";
-                           // OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
-                        }
-                        else
-                        {
-                           // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-                        }
+                            if (App.IsArabic == true)
+                            {
+                                lang = "AR";
+                                // OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
+                            }
+                            else
+                            {
+                                // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                            }
 
                             TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                             if (TP != null)
@@ -211,7 +222,8 @@ namespace GAZT
                                 App.TP = TP;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox("Mobile Number Updated Successfully", "Information");
+                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
+                                    await _dialogService.ShowMessageBox(showmessage, "Information");
                                     _navigationService.NavigateTo(App.TaxPayerProfileView);
                                 });
 
@@ -220,7 +232,9 @@ namespace GAZT
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
+                                    await _dialogService.ShowMessageBox(showmessage, "Information");
+                                    ClearData();
                                 });
                             }
                         }
@@ -229,6 +243,7 @@ namespace GAZT
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(ex.Message, "Information");
+                                ClearData();
                             });
                         }
 
@@ -241,11 +256,12 @@ namespace GAZT
                 await Task.Run(() =>
                 {
                     IsLoading = false;
+                    ClearData();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                ClearData();
             }
         }
         #endregion

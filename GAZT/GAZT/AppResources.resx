@@ -384,4 +384,7 @@ appeal</value>
   <data name="TinEmail" xml:space="preserve">
     <value>Tin-Email</value>
   </data>
+  <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
+    <value>Mobile number updated successfully</value>
+  </data>
 </root>

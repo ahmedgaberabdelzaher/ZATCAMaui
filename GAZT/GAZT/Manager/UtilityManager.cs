@@ -352,7 +352,7 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<string> GAZTGetTp(String Tin,String Lang)
+        public static async Task<string> GAZTGetTaxPayerProfile(String Tin,String Lang)
         {
             TaxPayerProfile TP = null;
             String MobileNumber = string.Empty;

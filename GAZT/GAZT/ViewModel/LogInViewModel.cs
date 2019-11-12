@@ -113,11 +113,30 @@ namespace GAZT
 
                 await Task.Run(async () =>
                 {
+                    String lang = "EN";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+
                     String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
                     if (0 == String.Compare("success", response, true))
                     {
 
+                        try
+                        {
+                            String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserName, lang);
+                            if ( false == String.IsNullOrEmpty(MobileNumber))
+                            {
+                                if(App.TP ==null)
+                                {
+                                    App.TP = new Models.TaxPayerProfile();
+                                    App.TP.Mobile = MobileNumber;
+                                }                                    
+                            }
+                        }
+                        catch (Exception ex)
+                        {
 
+                        }
 
                         String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
                         String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
@@ -128,16 +147,14 @@ namespace GAZT
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, "Information");
                         });
 
-
-                        String lang = "EN";
-                        if (App.IsArabic == true)
-                            lang = "AR";
                         await Task.Run(async () =>
                         {
                             response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
                             if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                             {
-                                App.TP = new Models.TaxPayerProfile();
+                                if(App.TP ==null)
+                                    App.TP = new Models.TaxPayerProfile();
+
                                 App.TP.Userid = UserName;
                                 App.TP.Password = Password;
                                 bool IsNavigatingFromLogin = true;

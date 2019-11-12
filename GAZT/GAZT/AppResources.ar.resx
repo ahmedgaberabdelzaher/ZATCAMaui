@@ -379,4 +379,7 @@
   <data name="TinEmail" xml:space="preserve">
     <value>الرقم المميز -البريد الإلكتروني</value>
   </data>
+  <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث رقم الموبايل بنجاح</value>
+  </data>
 </root>

@@ -34,7 +34,19 @@ namespace GAZT.Models
 
         public String Userid { get; set; }
         public String Tin { get; set; }
-        public String Mobile { get; set; }
+
+        private String _Mobile = String.Empty;
+        public string Mobile
+        {
+            get
+            {
+                return _Mobile;
+            }
+            set
+            {
+                _Mobile = value;
+            }
+        }
 
         private String _NewMobile = String.Empty;
         public string NewMobile

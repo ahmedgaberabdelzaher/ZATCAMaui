@@ -415,6 +415,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile number updated successfully.
+        /// </summary>
+        public static string MobileNumberUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Number Verification Successful.
         /// </summary>
         public static string MobileNumberVerificationSuccessful {

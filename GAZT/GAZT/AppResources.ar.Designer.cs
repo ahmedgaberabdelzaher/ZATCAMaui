@@ -544,5 +544,19 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number updated successfully.
+        /// </summary>
+        public static string MobileNumberUpdatedSuccessfully
+        {
+            get
+            {
+                return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
+            }
+        }
+
+
+
     }
 }

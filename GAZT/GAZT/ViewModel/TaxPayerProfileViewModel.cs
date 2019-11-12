@@ -21,10 +21,11 @@ namespace GAZT
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnChangePasswordButtonClicked { get; set; }
+        public ICommand OnHomeIconClicked { get; set; }
         #endregion
 
         #region Property
-        
+
         private bool _tPProfileVisibility = true;
         public bool TPProfileVisibility
         {
@@ -50,6 +51,22 @@ namespace GAZT
             {
                 _changeMobileNumberLayoutVisibility = value;
                 RaisePropertyChanged("ChangeMobileNumberLayoutVisibility");
+            }
+        }
+
+
+
+        private bool _IsVerifyEnabled = false;
+        public bool IsVerifyEnabled
+        {
+            get
+            {
+                return _IsVerifyEnabled;
+            }
+            set
+            {
+                _IsVerifyEnabled = value;
+                RaisePropertyChanged("IsVerifyEnabled");
             }
         }
 
@@ -81,7 +98,7 @@ namespace GAZT
             }
         }
 
-        private string _NewMobile=string.Empty;
+        private string _NewMobile= "00966";
         public string NewMobile
         {
             get
@@ -91,6 +108,22 @@ namespace GAZT
             set
             {
                 _NewMobile = value;
+
+                if(!String.IsNullOrWhiteSpace(_NewMobile) || !String.IsNullOrEmpty(_NewMobile))
+                if(_NewMobile.Length ==14)
+                    IsVerifyEnabled = true;
+
+                //_NewMobile = value;
+                //if(!false == String.IsNullOrEmpty(_NewMobile) || !false == String.IsNullOrWhiteSpace(_NewMobile))
+                //if (_NewMobile.Substring(0, 5) == "00966" && _NewMobile.Length == 14)
+                //{
+                //    IsVerifyEnabled = true;
+                //}
+                //else 
+                //{
+                //                    _dialogService.ShowMessage("Please provide mobil number starting with country code 00966 followed by 9 digits", "Validation");
+
+                //                }
                 RaisePropertyChanged("NewMobile");
             }
         }
@@ -194,9 +227,12 @@ namespace GAZT
 
             OnChangeEmailClicked = new Command(() =>
             {
-                TPProfileVisibility = false;
-                ChangePasswordayoutVisibility = false;
-                ChangeEmailLayoutVisibility = true;
+                //TPProfileVisibility = false;
+                //ChangePasswordayoutVisibility = false;
+                //ChangeEmailLayoutVisibility = true;
+                //  _navigationService.NavigateTo(App.UpdateEmailAddress);
+                _dialogService.ShowMessage("work in progress", "information");
+
             });
 
             OnChangePasswordClicked = new Command(() =>
@@ -211,6 +247,11 @@ namespace GAZT
                 ChangeMobileNumberLayoutVisibility = false;
                 TPProfileVisibility = true;
 
+            });
+
+            OnHomeIconClicked = new Command(() =>
+            {
+                _navigationService.GoBack();
             });
 
             OnVerifyButtonClicked = new Command(async() =>
@@ -332,7 +373,7 @@ namespace GAZT
             String lang = "E";
             if (App.IsArabic == true)
                 lang = "A";
-            String mobilenumber = await WebServiceManager.GAZTGetTp(TaxPayerProfile.Tin, lang);
+            String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
             CurrentMobile = mobilenumber;
             App.TP.Mobile = mobilenumber;
             TaxPayerProfile.Mobile = mobilenumber;

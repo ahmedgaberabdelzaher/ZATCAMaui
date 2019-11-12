@@ -1,48 +1,23 @@
 ﻿using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
 namespace GAZT.Views
 {
-    public partial class TaxPayerProfileView : ContentPage
-    {
-        ObservableCollection<String> Items = new ObservableCollection<String>();
-
-        TaxPayerProfileViewModel viewModel;
-        public TaxPayerProfileView()
-        {
-            viewModel = App.Locator.TaxPayerProfileView;
-            InitializeComponent();
-
-            SetLTR();
-            this.BindingContext = viewModel;
-            string str = "abc";
-            Items.Add(str);
-            CardView.ItemsSource = Items;
-            viewModel.OnPageLoad();
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            viewModel.SetTP();
-            Task.Delay(20000);
-            viewModel.ClearData();
-        }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();           
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class UpdateEmailAddress : ContentPage
+	{
+		public UpdateEmailAddress ()
+		{
+			InitializeComponent ();
+		}
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
@@ -89,6 +64,5 @@ namespace GAZT.Views
             canvas.DrawPath(path, paint);
 
         }
-
     }
 }
