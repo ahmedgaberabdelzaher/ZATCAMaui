@@ -106,7 +106,7 @@
 
                     <Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry Text="{Binding Password}" Style="{StaticResource EntryStyle}" IsPassword="True" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" Style="{StaticResource EntryStyle}" IsPassword="True" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
@@ -301,7 +301,7 @@
 
                     <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry Text="{Binding Password}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>

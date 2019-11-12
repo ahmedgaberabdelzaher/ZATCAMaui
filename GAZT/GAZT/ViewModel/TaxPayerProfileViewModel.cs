@@ -109,6 +109,20 @@ namespace GAZT
             }
         }
 
+        private string _CurrentPassword = string.Empty;
+        public string CurrentPassword
+        {
+            get
+            {
+                return _CurrentPassword;
+            }
+            set
+            {
+                _CurrentPassword = value;
+                RaisePropertyChanged("CurrentPassword");
+            }
+        }
+
         private string _NewPassword = string.Empty;
         public string NewPassword
         {
@@ -265,8 +279,8 @@ namespace GAZT
                         if (response == true)
                         {
 
-                            TaxPayerProfile.NewPassword = NewPassword;
-                            App.TP.NewPassword = NewPassword;
+                            // TaxPayerProfile.NewPassword = NewPassword;
+                            CurrentPassword = NewPassword;
                             App.TP.Password = NewPassword;
                             TaxPayerProfile.Password = NewPassword;
 
@@ -324,6 +338,8 @@ namespace GAZT
             TaxPayerProfile.Mobile = mobilenumber;
             App.TP.NewMobile = string.Empty;
             TaxPayerProfile.NewMobile = string.Empty;
+
+            CurrentPassword = TaxPayerProfile.Password;
            
         }
 
@@ -341,6 +357,7 @@ namespace GAZT
             ChangeMobileNumberLayoutVisibility = false;
             ChangeEmailLayoutVisibility = false;
             CurrentMobile = TaxPayerProfile.Mobile;
+            CurrentPassword = TaxPayerProfile.Password;
         }
         #endregion
     }
