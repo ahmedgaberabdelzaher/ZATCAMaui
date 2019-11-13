@@ -187,6 +187,7 @@ namespace GAZT
 
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                IsLoading = false;
                                 await _dialogService.ShowMessageBox(ex.Message, "Information");
                                 ClearData();
                             });
