@@ -31,10 +31,12 @@ namespace GAZT.Views
         {
             base.OnAppearing();
             await viewModel.OnPageLoad();
-            string str = viewModel.DownloadUrl;
-            Uri uri = new Uri(str);
-            Device.OpenUri(uri);
-            
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                string str = viewModel.DownloadUrl;
+                Uri uri = new Uri(str);
+                Device.OpenUri(uri);
+            }
         }
     }
 }
