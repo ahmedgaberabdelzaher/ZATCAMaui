@@ -31,6 +31,8 @@ namespace GAZT
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
+        public static bool IsComingFromDashboardToLogOff = false;
+
         public App()
         {
             String langName = "ar-AE";//"en-US";// "ar-AE";

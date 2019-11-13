@@ -72,6 +72,20 @@ namespace GAZT.Views
          
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if(App.IsComingFromDashboardToLogOff)
+            {
+                Device.BeginInvokeOnMainThread(async () => {
+                    var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
+                    if (!result)
+                        viewModel._navigationService.NavigateTo(App.DashboardView); ; // or anything else
+                });
+
+               
+            }
+        }
         //private void OnOnLanguageClickClicked(object sender, EventArgs e)
         //{
         //    if(App.IsArabic)

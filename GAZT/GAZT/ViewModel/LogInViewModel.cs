@@ -14,8 +14,8 @@ namespace GAZT
     public class LogInViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnOnLanguageClickClicked { get; set; }
 

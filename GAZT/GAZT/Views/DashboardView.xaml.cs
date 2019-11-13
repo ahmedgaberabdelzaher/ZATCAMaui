@@ -92,5 +92,11 @@ namespace GAZT.Views
             return true;
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            App.IsComingFromDashboardToLogOff = true;
+        }
+
     }
 }
