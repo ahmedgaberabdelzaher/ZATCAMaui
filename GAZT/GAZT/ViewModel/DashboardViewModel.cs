@@ -76,7 +76,6 @@ namespace GAZT
 
             });
 
-            _navigationService.GoBack();
         }
 
         #endregion

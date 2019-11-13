@@ -82,14 +82,33 @@ namespace GAZT.Views
 
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            Device.BeginInvokeOnMainThread(async () => {
-                var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
-                if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
-            });
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    Device.BeginInvokeOnMainThread(async () => {
+        //        var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
+        //        if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
+        //    });
 
-            return true;
+        //    return true;
+        //}
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            App.IsComingFromDashboardToLogOff = true;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                if (pg.GetType() == typeof(OTPView))
+                {
+                    Navigation.RemovePage(pg);
+                }
+            }
         }
 
     }

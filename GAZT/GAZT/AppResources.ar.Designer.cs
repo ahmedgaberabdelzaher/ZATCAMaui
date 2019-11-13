@@ -250,19 +250,7 @@ namespace GAZT {
                 return ResourceManager.GetString("LogIn", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Login Successful.
-        /// </summary>
-        public static string LoginSuccessful
-        {
-            get
-            {
-                return ResourceManager.GetString("LoginSuccessful", resourceCulture);
-            }
-        }
-
-
+        
         public static string MobileNumber {
             get {
                 return ResourceManager.GetString("MobileNumber", resourceCulture);
@@ -544,19 +532,65 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Mobile number updated successfully.
-        /// </summary>
-        public static string MobileNumberUpdatedSuccessfully
-        {
-            get
-            {
+        
+        public static string LoginSuccessful {
+            get {
+                return ResourceManager.GetString("LoginSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string MobileNumberVerificationSuccessful {
+            get {
+                return ResourceManager.GetString("MobileNumberVerificationSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string PassWordChangedSucessfully {
+            get {
+                return ResourceManager.GetString("PassWordChangedSucessfully", resourceCulture);
+            }
+        }
+        
+        public static string PdfIsNoteAvailable {
+            get {
+                return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
+            }
+        }
+        
+        public static string TinEmail {
+            get {
+                return ResourceManager.GetString("TinEmail", resourceCulture);
+            }
+        }
+        
+        public static string MobileNumberUpdatedSuccessfully {
+            get {
                 return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
             }
         }
-
-
-
+        
+        public static string DetailsChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("DetailsChangedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string Emailverificationcodesentsuccessfully {
+            get {
+                return ResourceManager.GetString("Emailverificationcodesentsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        public static string LogoutConfirmationMessage {
+            get {
+                return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
+            }
+        }
     }
 }

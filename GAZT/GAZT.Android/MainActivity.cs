@@ -37,6 +37,9 @@ namespace GAZT.Droid
 
             LoadApplication(new App());
         }
-
+        //public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        //{
+        //    return false;
+        //}
     }
 }
