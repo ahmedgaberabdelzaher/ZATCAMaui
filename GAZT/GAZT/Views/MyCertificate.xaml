@@ -50,14 +50,14 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                    <Frame.HeightRequest>
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true"  HeightRequest="50" Margin="4"  BackgroundColor="#FCFCFC">
+                                    <StackLayout.HeightRequest>
                                         <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                    </Frame.HeightRequest>
-                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                        <Frame.HeightRequest>
+                                    </StackLayout.HeightRequest>
+                                    <StackLayout   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true"  BackgroundColor="#FCFCFC">
+                                        <StackLayout.HeightRequest>
                                             <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                        </Frame.HeightRequest>
+                                        </StackLayout.HeightRequest>
                                         <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
                                             <local1:CustomLabel Text="VAT registration certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
 
@@ -73,8 +73,8 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
-                                    </Frame>
-                                </Frame>
+                                    </StackLayout>
+                                </StackLayout>
 
                                  <!--<Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
                                     <Frame.HeightRequest>

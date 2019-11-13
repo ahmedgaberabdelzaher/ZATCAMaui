@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 namespace GAZT.Views
 {
+   
     public partial class OTPView : ContentPage
     {
         double DeviceHeight;
@@ -19,6 +20,7 @@ namespace GAZT.Views
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
+            viewModel.entry = entryFour;
             // viewModel.ClearData();
             viewModel.IsComingFrom = e;
             SetLTR();
@@ -26,8 +28,9 @@ namespace GAZT.Views
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 
-        }
 
+        }
+       
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -65,6 +68,11 @@ namespace GAZT.Views
                         entry.Unfocus();
                         entryTwo.Focus();
                     }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(entry.Text))
+                            entry.Text = entry.Text.Substring(0, 1);
+                    }
 
                 });
             });
@@ -90,6 +98,11 @@ namespace GAZT.Views
                         entryTwo.Unfocus();
                         entrytThree.Focus();
                     }
+                    else
+                    {
+                        if(!string.IsNullOrEmpty(entryTwo.Text))
+                        entryTwo.Text = entryTwo.Text.Substring(0, 1);
+                    }
                 });
             });
 
@@ -107,11 +120,16 @@ namespace GAZT.Views
                 Task.Delay(100);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    string cnt = entryTwo.Text;
+                    string cnt = entrytThree.Text;
                     if (cnt.Length == 1)
                     {
                         entrytThree.Unfocus();
                         entryFour.Focus();
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(entrytThree.Text))
+                            entrytThree.Text = entrytThree.Text.Substring(0, 1);
                     }
                 });
             });
@@ -130,16 +148,19 @@ namespace GAZT.Views
                 Task.Delay(100);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    string cnt = entrytThree.Text;
+                    string cnt = entryFour.Text;
                     if (cnt.Length == 1)
                     {
-                        entrytThree.Unfocus();
-                        entryFour.Focus();
-                    }
-                    if (cnt.Length > 1)
-                    {
+                       
                         entryFour.Unfocus();
                     }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(entryFour.Text))
+                            entryFour.Text = entryFour.Text.Substring(0, 1);
+                        entryFour.Focus();
+                    }
+                   
                 });
             });
 
