@@ -82,15 +82,15 @@ namespace GAZT.Views
 
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            Device.BeginInvokeOnMainThread(async () => {
-                var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
-                if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
-            });
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    Device.BeginInvokeOnMainThread(async () => {
+        //        var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
+        //        if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
+        //    });
 
-            return true;
-        }
+        //    return true;
+        //}
 
         protected override void OnDisappearing()
         {
