@@ -60,7 +60,16 @@ namespace GAZT
                 RaisePropertyChanged("_PdfSelected");
                // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", "Information");
                if(_PdfSelected!=null)
-                    _navigationService.NavigateTo(App.PdfView);
+                {
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        _navigationService.NavigateTo(App.PdfView);
+                    }
+                    else
+                    {
+                        ShowPdf();
+                    }
+               }
             }
         }
 
@@ -292,6 +301,52 @@ namespace GAZT
             }
         }
 
+
+        public async void ShowPdf()
+        {
+          string pdfUrl = await GetCertificateLink();
+            Uri uri = new Uri(pdfUrl);
+            Device.OpenUri(uri);
+        }
+        private  async Task<string> GetCertificateLink()
+        {
+            String response = null;
+           await Task.Run(async () =>
+            {
+
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+
+                //await Task.Run(async () =>
+                //{
+                 response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+
+                //if (string.IsNullOrEmpty(response) != true)
+                //{
+                //    string str = response;
+                //    Uri uri = new Uri(str);
+                //    Device.OpenUri(uri);
+                //}
+                //else
+                //{
+                //    String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
+
+                //    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, "Information");
+
+                //}
+                //});
+
+               
+
+
+
+
+
+
+            });
+            return response;
+        }
         #endregion
-    }
+        }
 }
