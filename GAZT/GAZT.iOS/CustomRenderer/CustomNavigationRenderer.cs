@@ -55,6 +55,27 @@ public override void ViewDidLoad()
                // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
 
             });
+
+
+            UIBarButtonItem button = new UIBarButtonItem("Logout", UIBarButtonItemStyle.Plain, (sender, e) =>
+            {
+                var Confirm = new UIAlertView("Confirmation", "Are you Sure You Want to Logout?", null, "Cancel", "Confirm");
+                Confirm.Show();
+                Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
+                {
+                    if (es.ButtonIndex == 0)
+                    {
+                        // do something if cancel
+                    }
+                    else
+                    {
+                        // Do something if yes
+                        this.NavigationController.PopViewController(true);
+                    }
+                };
+            });
+
+            this.NavigationItem.LeftBarButtonItem = button;
         }
 
     }

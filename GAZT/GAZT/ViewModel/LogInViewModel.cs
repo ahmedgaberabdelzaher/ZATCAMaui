@@ -141,11 +141,11 @@ namespace GAZT
                         String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
                         String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
 
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            IsLoading = false;
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, "Information");
-                        });
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    IsLoading = false;
+                        //    await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, "Information");
+                        //});
 
                         await Task.Run(async () =>
                         {
