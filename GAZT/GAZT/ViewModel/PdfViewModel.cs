@@ -62,6 +62,19 @@ namespace GAZT.ViewModel
             }
         }
 
+        private string _pdfUrl;
+        public string PdfUrl
+        {
+            get
+            {
+                return _pdfUrl;
+            }
+            set
+            {
+                _pdfUrl = value;
+                RaisePropertyChanged("PdfUrl");
+            }
+        }
         private string _DownloadUrl = String.Empty;
         public string DownloadUrl
         {
@@ -117,9 +130,9 @@ namespace GAZT.ViewModel
 
         #region Method
 
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
-            Task.Run(async () =>
+          await  Task.Run(async () =>
             {
                 IsLoading = true;
                 String lang = "EN";
@@ -127,11 +140,20 @@ namespace GAZT.ViewModel
                     lang = "AR";
                
                 String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-
+               
                 if (string.IsNullOrEmpty(response) != true)
                 {
-                    DownloadUrl = response;
-                    pdf();
+
+                    DownloadUrl = response;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        pdf();
+                    }
+                    else
+                    {
+                       // Device.OpenUri(new Uri(response));
+                    }
+
                 }
                 else
                 {
@@ -144,7 +166,7 @@ namespace GAZT.ViewModel
             });
         }
 
-            public void pdf()
+        public void pdf()
         {
             var localPath = string.Empty;
             Stream stream = null;
@@ -215,10 +237,8 @@ namespace GAZT.ViewModel
                     }
                 }
 
-                if (Device.RuntimePlatform == Device.Android)
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
-                //else
-                //    Path = url;
+
             }
             catch (Exception e)
             {
