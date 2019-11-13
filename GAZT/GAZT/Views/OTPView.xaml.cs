@@ -20,7 +20,7 @@ namespace GAZT.Views
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
-            viewModel.entry = entryFour;
+            
             // viewModel.ClearData();
             viewModel.IsComingFrom = e;
             SetLTR();

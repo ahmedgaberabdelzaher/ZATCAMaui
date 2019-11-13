@@ -21,6 +21,14 @@ namespace GAZT.Views
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
+            //if(!string.IsNullOrEmpty(App.Otp))
+            //{
+            //    viewModel.IsEnabledNewEmail = false;
+            //    viewModel.IsEnabledRetypeEmail = false;
+            //    viewModel.IsEnabledVerifyForEmail = false;
+            //    viewModel.IsEnabledNewPasswordForEmail = true;
+               
+            //}
             CardView.ItemsSource = Items;
            
             viewModel.OnPageLoad();

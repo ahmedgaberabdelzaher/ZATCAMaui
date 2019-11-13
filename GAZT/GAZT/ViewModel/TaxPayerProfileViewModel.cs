@@ -187,6 +187,214 @@ namespace GAZT
                 RaisePropertyChanged("RetypePassword");
             }
         }
+        //
+
+        private string _OldEmail = string.Empty;
+        public string OldEmail
+        {
+            get
+            {
+                return _OldEmail;
+            }
+            set
+            {
+                _OldEmail = value;
+                RaisePropertyChanged("OldEmail");
+            }
+        }
+
+        private string _NewEmail = string.Empty;
+        public string NewEmail
+        {
+            get
+            {
+                return _NewEmail;
+            }
+            set
+            {
+                _NewEmail = value;
+                if(!string.IsNullOrEmpty(_NewEmail))
+                {
+                    IsEnabledRetypeEmail = true;
+                }
+                else
+                {
+                    IsEnabledRetypeEmail = false;
+                }
+                RaisePropertyChanged("NewEmail");
+            }
+        }
+
+        private string _RetypeEmail = string.Empty;
+        public string RetypeEmail
+        {
+            get
+            {
+                return _RetypeEmail;
+            }
+            set
+            {
+                _RetypeEmail = value;
+                if (!string.IsNullOrEmpty(_RetypeEmail))
+                {
+                    IsEnabledVerifyForEmail = true;
+                }
+                else
+                {
+                    IsEnabledVerifyForEmail = false;
+                }
+                RaisePropertyChanged("RetypeEmail");
+            }
+        }
+
+        private string _CurrentPasswordForEmail = string.Empty;
+        public string CurrentPasswordForEmail
+        {
+            get
+            {
+                return _CurrentPasswordForEmail;
+            }
+            set
+            {
+                _CurrentPasswordForEmail = value;
+                RaisePropertyChanged("CurrentPasswordForEmail");
+            }
+        }
+
+        private string _NewPasswordForEmail = string.Empty;
+        public string NewPasswordForEmail
+        {
+            get
+            {
+                return _NewPasswordForEmail;
+            }
+            set
+            {
+                _NewPasswordForEmail = value;
+                if (!string.IsNullOrEmpty(_NewPasswordForEmail))
+                {
+                    IsEnabledRetypePasswordForEmail = true;
+                }
+                else
+                {
+                    IsEnabledRetypePasswordForEmail = false;
+                }
+                RaisePropertyChanged("NewPasswordForEmail");
+            }
+        }
+
+        private string _RetypePasswordForEmail = string.Empty;
+        public string RetypePasswordForEmail
+        {
+            get
+            {
+                return _RetypePasswordForEmail;
+            }
+            set
+            {
+                _RetypePasswordForEmail = value;
+                if (!string.IsNullOrEmpty(_RetypePasswordForEmail))
+                {
+                    IsEnabledSubmitForEmail = true;
+                }
+                else
+                {
+                    IsEnabledSubmitForEmail = false;
+                }
+                RaisePropertyChanged("RetypePasswordForEmail");
+            }
+        }
+
+        private bool _IsEnabledVerifyForEmail = false;
+        public bool IsEnabledVerifyForEmail
+        {
+            get
+            {
+                return _IsEnabledVerifyForEmail;
+            }
+            set
+            {
+                _IsEnabledVerifyForEmail = value;
+                //if (_IsEnabledVerifyForEmail == true)
+                //{
+                //    IsEnabledNewPasswordForEmail = true;
+                //    IsEnabledRetypeEmail = false;
+                //    IsEnabledNewEmail = false;
+                //}
+                RaisePropertyChanged("IsEnabledVerifyForEmail");
+            }
+        }
+
+
+        private bool _IsEnabledSubmitForEmail = false;
+        public bool IsEnabledSubmitForEmail
+        {
+            get
+            {
+                return _IsEnabledSubmitForEmail;
+            }
+            set
+            {
+                _IsEnabledSubmitForEmail = value;
+                RaisePropertyChanged("IsEnabledSubmitForEmail");
+            }
+        }
+
+
+        private bool _IsEnabledRetypeEmail = false;
+        public bool IsEnabledRetypeEmail
+        {
+            get
+            {
+                return _IsEnabledRetypeEmail;
+            }
+            set
+            {
+                _IsEnabledRetypeEmail = value;
+                RaisePropertyChanged("IsEnabledRetypeEmail");
+            }
+        }
+
+        private bool _IsEnabledNewEmail = true;
+        public bool IsEnabledNewEmail
+        {
+            get
+            {
+                return _IsEnabledNewEmail;
+            }
+            set
+            {
+                _IsEnabledNewEmail = value;
+                RaisePropertyChanged("IsEnabledNewEmail");
+            }
+        }
+
+        private bool _IsEnabledNewPasswordForEmail = false;
+        public bool IsEnabledNewPasswordForEmail
+        {
+            get
+            {
+                return _IsEnabledNewPasswordForEmail;
+            }
+            set
+            {
+                _IsEnabledNewPasswordForEmail = value;
+                RaisePropertyChanged("IsEnabledNewPasswordForEmail");
+            }
+        }
+        private bool _IsEnabledRetypePasswordForEmail = false;
+        public bool IsEnabledRetypePasswordForEmail
+        {
+            get
+            {
+                return _IsEnabledRetypePasswordForEmail;
+            }
+            set
+            {
+                _IsEnabledRetypePasswordForEmail = value;
+                RaisePropertyChanged("IsEnabledRetypePasswordForEmail");
+            }
+        }
 
 
         private TaxPayerProfile _TaxPayerProfile = App.TP;
@@ -267,25 +475,37 @@ namespace GAZT
 
                 try
                 {
-
-                    bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, TaxPayerProfile.Email, TaxPayerProfile.NewEmail);
-
-                    if (response == true)
+                    if (0 == String.Compare(NewEmail, RetypeEmail, true))
                     {
+                        bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail,NewEmail);
 
-                        //TaxPayerProfile.NewMobile = NewMobile;
-                        App.TP.NewMobile = NewMobile;
+                        if (response == true)
+                        {
 
-                        String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
+                            IsEnabledNewPasswordForEmail = true;
+                            IsEnabledRetypeEmail = false;
+                            IsEnabledNewEmail = false;
+                            //IsEnabledVerifyForEmail = false;
+                            //TaxPayerProfile.NewMobile = NewMobile;
+                            App.TP.NewMobile = NewMobile;
 
-                        String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                            String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
 
-                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                            String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
-                        _navigationService.NavigateTo(App.OTPView, NavigatingFromEmail);
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+
+                            _navigationService.NavigateTo(App.OTPView, NavigatingFromEmail);
 
 
 
+                        }
+                    }
+                    else
+                    {
+                        String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
+
+                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, "Information");
                     }
                 }
                 catch (Exception ex)
@@ -316,7 +536,7 @@ namespace GAZT
                     {
 
                         //  TaxPayerProfile.ne = NewMobile;
-                        // App.TP.NewMobile = ;
+                         App.TP.NewMobile = NewMobile;
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
 
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
@@ -349,16 +569,18 @@ namespace GAZT
                 try
                 {
 
-                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,App.Otp, TaxPayerProfile.Tin,TaxPayerProfile.Email,TaxPayerProfile.NewEmail,TaxPayerProfile.Password,TaxPayerProfile.NewPassword);
+                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,App.Otp, TaxPayerProfile.Tin,OldEmail,NewEmail,CurrentPasswordForEmail,NewPasswordForEmail);
 
                         if (TaxPayerProfile != null)
                         {
-
-                            TaxPayerProfile.Password = TaxPayerProfile.Password;
-                            TaxPayerProfile.Email = TP.Email;
-                            App.TP.Password = TaxPayerProfile.Password;
-                            TaxPayerProfile.Password = TP.Email;
-
+                            CurrentPassword = NewPasswordForEmail;
+                            App.TP.Email = NewEmail;
+                            TaxPayerProfile.Email = NewEmail;
+                            App.TP.Password = NewPasswordForEmail;
+                            TaxPayerProfile.Password = NewPasswordForEmail;
+                            setPropertyForEmailUpdation(NewEmail);
+                             
+                           
                             String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
 
 
@@ -370,6 +592,7 @@ namespace GAZT
                         }
                         else
                         {
+                            
                             String OnInvalidEmail = AppResources.InvalidEmail;
 
                             await _dialogService.ShowMessageBox(OnInvalidEmail, "Information");
@@ -407,6 +630,8 @@ namespace GAZT
                             CurrentPassword = NewPassword;
                             App.TP.Password = NewPassword;
                             TaxPayerProfile.Password = NewPassword;
+                            NewPassword = string.Empty;
+                            RetypePassword = string.Empty;
 
                             String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
 
@@ -428,7 +653,9 @@ namespace GAZT
                     }
                     else
                     {
-                        await _dialogService.ShowMessageBox("New Password and RetypePasswordNotMatch ", "Information");
+                        String OnNotMatchAuthentication = AppResources.NewPasswordandRetypePasswordNotMatch;
+
+                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, "Information");
                     }
                 }
                 catch (Exception ex)
@@ -450,6 +677,18 @@ namespace GAZT
         #endregion
 
         #region Method
+
+        public void setPropertyForEmailUpdation(string newEmail)
+        {
+            OldEmail = newEmail;
+            NewEmail = string.Empty;
+            RetypeEmail = string.Empty;
+            NewPasswordForEmail = string.Empty;
+            RetypePasswordForEmail = string.Empty;
+            IsEnabledNewEmail = true;
+            IsEnabledNewPasswordForEmail = false;
+            
+        }
 
         public async void SetTP()
         {
@@ -480,8 +719,10 @@ namespace GAZT
             ChangePasswordayoutVisibility = false;
             ChangeMobileNumberLayoutVisibility = false;
             ChangeEmailLayoutVisibility = false;
-            CurrentMobile = TaxPayerProfile.Mobile;
+            CurrentMobile = App.TP.Mobile;
             CurrentPassword = TaxPayerProfile.Password;
+            OldEmail = TaxPayerProfile.Email;
+            CurrentPasswordForEmail = TaxPayerProfile.Password;
         }
         #endregion
     }

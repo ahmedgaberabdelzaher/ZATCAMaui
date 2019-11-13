@@ -391,4 +391,10 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>بريد إلكتروني خاطئ</value>
   </data>
+  <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
+    <value>New Email and Retype Email Not Match</value>
+  </data>
+  <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
+    <value>New Password and Retype Password Not Match</value>
+  </data>
 </root>

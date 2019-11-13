@@ -505,6 +505,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Email and Retype Email Not Match.
+        /// </summary>
+        public static string NewEmailandRetypeEmailNotMatch {
+            get {
+                return ResourceManager.GetString("NewEmailandRetypeEmailNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New mobile number.
         /// </summary>
         public static string NewMobileNumber {
@@ -519,6 +528,15 @@ namespace GAZT {
         public static string NewPassword {
             get {
                 return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password and Retype Password Not Match.
+        /// </summary>
+        public static string NewPasswordandRetypePasswordNotMatch {
+            get {
+                return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
             }
         }
         

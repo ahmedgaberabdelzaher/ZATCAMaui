@@ -219,7 +219,9 @@ namespace GAZT
                             TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                             if (TP != null)
                             {
-                                App.TP = TP;
+                            //App.TP = TP;
+                            string UpdatedMobile = App.TP.NewMobile;
+                            App.TP.Mobile = UpdatedMobile;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
