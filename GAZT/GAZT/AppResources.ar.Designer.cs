@@ -586,5 +586,11 @@ namespace GAZT {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
+        
+        public static string LogoutConfirmationMessage {
+            get {
+                return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
+            }
+        }
     }
 }

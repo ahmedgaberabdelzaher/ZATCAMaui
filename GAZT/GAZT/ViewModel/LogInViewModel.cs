@@ -90,6 +90,7 @@ namespace GAZT
 
             OnLoginButtonClicked = new Command(async () =>
             {
+                App.IsComingFromDashboardToLogOff = false;
                 await Task.Run(() =>
                 {
                     IsLoading = true;

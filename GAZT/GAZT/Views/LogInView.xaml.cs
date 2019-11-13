@@ -78,9 +78,9 @@ namespace GAZT.Views
             if(App.IsComingFromDashboardToLogOff)
             {
                 Device.BeginInvokeOnMainThread(async () => {
-                    var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
+                    var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
                     if (!result)
-                        viewModel._navigationService.NavigateTo(App.DashboardView); ; // or anything else
+                        viewModel._navigationService.NavigateTo(App.DashboardView);  // or anything else
                 });
 
                

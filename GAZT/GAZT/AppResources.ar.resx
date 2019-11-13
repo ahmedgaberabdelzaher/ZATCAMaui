@@ -391,4 +391,7 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>بريد إلكتروني خاطئ</value>
   </data>
+   <data name="LogoutConfirmationMessage" xml:space="preserve">
+    <value>Do you really want to Logout?</value>
+  </data>
 </root>
