@@ -16,6 +16,7 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
+        public Entry entry { get; set; }
 
         #endregion
 
@@ -184,12 +185,14 @@ namespace GAZT
                         }
                         catch (Exception ex)
                         {
-
+                            IsLoading = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(ex.Message, "Information");
                                 ClearData();
+                               
                             });
+                           
                         }
                     }
 
