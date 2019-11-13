@@ -214,6 +214,11 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
 
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -243,28 +248,39 @@
                             <Label   Text="{x:Static local:AppResources.RetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
 
-                            <Label Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="8" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                            </Frame>
+
+                            <Label   Text="{x:Static local:AppResources.Verify}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnVerifyEmailButtonClicked}" />
+                                </Label.GestureRecognizers>
                             </Label>
 
-                            <Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
-                            </Frame>
-                            <local1:BorderlessEntry Text="{Binding Password}" Style="{StaticResource EntryStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
-                            </local1:BorderlessEntry>
-                            <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                            <Label Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
                             </Label>
+
+                        
 
                             <Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
-                            <local1:BorderlessEntry Text="{Binding NewPassword}" Style="{StaticResource EntryStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            <local1:BorderlessEntry Text="{Binding Password}" Style="{StaticResource EntryStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
-                            <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="12" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                            <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="12" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
 
                             <Frame Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
                             <local1:BorderlessEntry Text="{Binding NewPassword}" Style="{StaticResource EntryStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
-                            <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="14" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                            <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="14" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                            </Label>
+
+                            <Frame Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry Text="{Binding NewPassword}" Style="{StaticResource EntryStyle}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="16" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
                         </Grid>
                     </ScrollView>

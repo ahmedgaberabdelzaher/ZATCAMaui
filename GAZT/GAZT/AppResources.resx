@@ -387,4 +387,13 @@ appeal</value>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>Mobile number updated successfully</value>
   </data>
+  <data name="DetailsChangedSuccessfully" xml:space="preserve">
+    <value>Details Changed Successfully</value>
+  </data>
+  <data name="Emailverificationcodesentsuccessfully" xml:space="preserve">
+    <value>Email verification code sent successfully</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Invalid Email</value>
+  </data>
 </root>

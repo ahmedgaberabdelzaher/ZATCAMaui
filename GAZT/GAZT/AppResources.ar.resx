@@ -382,4 +382,13 @@
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>تم تحديث رقم الموبايل بنجاح</value>
   </data>
+  <data name="DetailsChangedSuccessfully" xml:space="preserve">
+    <value>تم تغيير التفاصيل بنجاح</value>
+  </data>
+  <data name="Emailverificationcodesentsuccessfully" xml:space="preserve">
+    <value>تم إرسال رمز التحقق للبريد الإلكتروني بنجاح</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>بريد إلكتروني خاطئ</value>
+  </data>
 </root>

@@ -15,5 +15,7 @@ namespace GAZT.Helper
         public static string GAZTValidateAndChangePassword = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='P',";
         public static string GAZTGetPdf = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=";
         public static string GAZTGetTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz";
+        public static string GAZTGetOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
+        public static string GAZTValidateOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
     }
 }

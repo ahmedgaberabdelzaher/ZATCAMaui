@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using GAZT.Models;
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -158,6 +159,7 @@ namespace GAZT
                                 App.TP.Userid = UserName;
                                 App.TP.Password = Password;
                                 bool IsNavigatingFromLogin = true;
+                                NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 
                                 if (App.IsArabic)
                                 {
@@ -170,7 +172,7 @@ namespace GAZT
 
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                                    _navigationService.NavigateTo(App.OTPView, NavigatingFromLogin);
                                 });
                             }
                             else

@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Xamarin.Forms;
+using GAZT.Models;
+
 namespace GAZT
 {
     public class DashboardViewModel : ViewModelBase

@@ -1,4 +1,5 @@
-﻿using SkiaSharp;
+﻿using GAZT.Models;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.ObjectModel;
@@ -21,6 +22,7 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
+           
             viewModel.OnPageLoad();
         }
 

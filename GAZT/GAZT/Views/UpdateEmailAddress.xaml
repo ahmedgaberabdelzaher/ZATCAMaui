@@ -4,6 +4,7 @@
     <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
   </ContentPage.ToolbarItems>
   <ContentPage.Content>
+      
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridForEmail">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.64*" />
@@ -43,14 +44,10 @@
                 </cards:CarouselView>
             </StackLayout>
 
-            <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+            <!--<StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">-->
 
-                
-
-                
-
-
-                <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5"   VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal" IsVisible="{Binding ChangeEmailLayoutVisibility}"
+               
+                <StackLayout Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5"   VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal" IsVisible="{Binding ChangeEmailLayoutVisibility}"
                   >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Grid RowSpacing="15" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGridForEmail},Path=BindingContext.ChangeEmailLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
@@ -156,7 +153,7 @@
 
               
 
-            </StackLayout>
+            <!--</StackLayout>-->
 
             <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >

@@ -16,6 +16,7 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
+        public NavigateToOtp IsComingFrom { get; set; }
 
         #endregion
 
@@ -121,14 +122,14 @@ namespace GAZT
             }
             
             _dialogService = dialogService;
-            OnSubmitClicked = new Command(async () =>
+            OnSubmitClicked = new Command(async() =>
             {
-                await ValidateOTP();
+               ValidateOTP();
             });
 
         }
 
-        private async Task ValidateOTP()
+        private async void ValidateOTP()
         {
             try
             {
@@ -138,9 +139,8 @@ namespace GAZT
                 });
 
 
-                await Task.Run(async () =>
-                {
-                    if (IsComingFromLogIn)
+               
+                    if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
                         TaxPayerProfile TP = null;
                         try
@@ -192,8 +192,7 @@ namespace GAZT
                             });
                         }
                     }
-
-                    else
+                    else if (IsComingFrom == NavigateToOtp.IsMobile)
                     {
                         TaxPayerProfile TP = null;
 
@@ -250,13 +249,24 @@ namespace GAZT
 
                         // _navigationService.GoBack();
                     }
-                });
+                    else if (IsComingFrom == NavigateToOtp.IsEmail)
+                    {
+                        String OTP = string.Empty;
+                        
+                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
 
+                        if(!string.IsNullOrEmpty(OTP))
+                        {
+                            App.Otp = OTP;
+                        }
+                        _navigationService.GoBack();
+                    }
+               
 
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                    ClearData();
+                   // ClearData();
                 });
             }
             catch (Exception)

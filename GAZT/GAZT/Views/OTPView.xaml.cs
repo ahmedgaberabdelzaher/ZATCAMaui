@@ -1,4 +1,5 @@
 ﻿using GAZT.Helper;
+using GAZT.Models;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
@@ -12,14 +13,14 @@ namespace GAZT.Views
         double DeviceHeight;
         double DeviceWidth;
         OTPViewModel viewModel;
-        public OTPView(bool IsComingFromLogIn)
+        public OTPView(NavigateToOtp e)
         {
 
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             // viewModel.ClearData();
-            viewModel.IsComingFromLogIn = IsComingFromLogIn;
+            viewModel.IsComingFrom = e;
             SetLTR();
             this.BindingContext = viewModel;
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();

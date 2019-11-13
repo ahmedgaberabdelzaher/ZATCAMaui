@@ -289,6 +289,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details Changed Successfully.
+        /// </summary>
+        public static string DetailsChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("DetailsChangedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details of SADAD bill.
         /// </summary>
         public static string DetailsOfSADADBill {
@@ -321,6 +330,15 @@ namespace GAZT {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email verification code sent successfully.
+        /// </summary>
+        public static string Emailverificationcodesentsuccessfully {
+            get {
+                return ResourceManager.GetString("Emailverificationcodesentsuccessfully", resourceCulture);
             }
         }
         
@@ -375,6 +393,15 @@ namespace GAZT {
         public static string ImportValue {
             get {
                 return ResourceManager.GetString("ImportValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Email.
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
         

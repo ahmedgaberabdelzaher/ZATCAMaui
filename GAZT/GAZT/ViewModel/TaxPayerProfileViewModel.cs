@@ -22,6 +22,7 @@ namespace GAZT
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnChangePasswordButtonClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
+        public ICommand OnVerifyEmailButtonClicked { get; set; }
         #endregion
 
         #region Property
@@ -97,6 +98,9 @@ namespace GAZT
                 RaisePropertyChanged("ChangePasswordayoutVisibility");
             }
         }
+
+       
+
 
         private string _NewMobile= "00966";
         public string NewMobile
@@ -221,17 +225,17 @@ namespace GAZT
 
             OnChangeMobileNumberClicked = new Command(() =>
             {
-               TPProfileVisibility = false;
-               ChangeMobileNumberLayoutVisibility = true;
+                TPProfileVisibility = false;
+                ChangeMobileNumberLayoutVisibility = true;
             });
 
             OnChangeEmailClicked = new Command(() =>
             {
-                //TPProfileVisibility = false;
-                //ChangePasswordayoutVisibility = false;
-                //ChangeEmailLayoutVisibility = true;
-                //  _navigationService.NavigateTo(App.UpdateEmailAddress);
-                _dialogService.ShowMessage("work in progress", "information");
+                TPProfileVisibility = false;
+                ChangePasswordayoutVisibility = false;
+                ChangeEmailLayoutVisibility = true;
+                //   _navigationService.NavigateTo(App.UpdateEmailAddress);
+                //// _dialogService.ShowMessage("work in progress", "information");
 
             });
 
@@ -254,52 +258,131 @@ namespace GAZT
                 _navigationService.GoBack();
             });
 
-            OnVerifyButtonClicked = new Command(async() =>
+            OnVerifyEmailButtonClicked = new Command(async() =>
             {
-                bool IsNavigatingFromLogin = false;
-
-                // IsLoading = true;
-               // TaxPayerProfile.Mobile = "00966534534645";
+                NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";
 
-               
-
-                bool response = await WebServiceManager.GAZTValidateMobileNumber(lang,TaxPayerProfile.Tin,TaxPayerProfile.Mobile,NewMobile);
-
-                if(response==true)
+                try
                 {
 
-                    //TaxPayerProfile.NewMobile = NewMobile;
-                    App.TP.NewMobile = NewMobile;
+                    bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, TaxPayerProfile.Email, TaxPayerProfile.NewEmail);
 
-                    String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
+                    if (response == true)
+                    {
 
-                    String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                        //TaxPayerProfile.NewMobile = NewMobile;
+                        App.TP.NewMobile = NewMobile;
 
-                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                        String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
 
-                    _navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                        String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
-                  
-                        
+                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+
+                        _navigationService.NavigateTo(App.OTPView, NavigatingFromEmail);
+
+
+
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                    });
+                }
+            });
 
 
+            OnVerifyButtonClicked = new Command(async() =>
+            {
+                bool IsNavigatingFromLogin = false;
+                NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
+                // IsLoading = true;
+                // TaxPayerProfile.Mobile = "00966534534645";
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                try
+                {
+                    bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, NewMobile);
 
+                    if (response == true)
+                    {
+
+                        //  TaxPayerProfile.ne = NewMobile;
+                        // App.TP.NewMobile = ;
+                        String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
+
+                        String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+
+                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+
+                        _navigationService.NavigateTo(App.OTPView, NavigatingFromMobile);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                    });
+                }
 
             });
 
 
 
-            OnChangeEmailSubmitButtonClicked = new Command(() =>
+            OnChangeEmailSubmitButtonClicked = new Command(async() =>
             {
-                ChangeEmailLayoutVisibility = false;
-                TPProfileVisibility = true;
-                //bool IsNavigatingFromLogin = false;
-                //_navigationService.NavigateTo(App.OTPView, IsNavigatingFromLogin);
+                TaxPayerProfile TP = null;
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                try
+                {
 
+                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,App.Otp, TaxPayerProfile.Tin,TaxPayerProfile.Email,TaxPayerProfile.NewEmail,TaxPayerProfile.Password,TaxPayerProfile.NewPassword);
+
+                        if (TaxPayerProfile != null)
+                        {
+
+                            TaxPayerProfile.Password = TaxPayerProfile.Password;
+                            TaxPayerProfile.Email = TP.Email;
+                            App.TP.Password = TaxPayerProfile.Password;
+                            TaxPayerProfile.Password = TP.Email;
+
+                            String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
+
+
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
+
+                            ChangeEmailLayoutVisibility = false;
+                            TPProfileVisibility = true;
+
+                        }
+                        else
+                        {
+                            String OnInvalidEmail = AppResources.InvalidEmail;
+
+                            await _dialogService.ShowMessageBox(OnInvalidEmail, "Information");
+                        }
+                       
+                }
+                catch (Exception ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(ex.Message, "Information");
+                        });
+                    }
             });
 
             OnChangePasswordButtonClicked = new Command(async() =>
