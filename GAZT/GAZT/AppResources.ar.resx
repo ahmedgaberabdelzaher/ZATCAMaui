@@ -374,7 +374,7 @@
     <value>تم تغيير كلمة المرور بنجاح</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
-    <value>Pdf Is Not Available</value>
+    <value>لا يوجد شهادات</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
     <value>الرقم المميز -البريد الإلكتروني</value>
@@ -392,15 +392,21 @@
     <value>بريد إلكتروني خاطئ</value>
   </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
-    <value>Do you really want to Logout?</value>
+    <value>هل أنت متأكد من تسجيل خروجك</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
-    <value>New Email and Retype Email Not Match</value>
+    <value>لا يوجد تطابق في البريد الإلكتروني</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
-    <value>New Password and Retype Password Not Match</value>
+    <value>يجب تطابق حقلي كلمة المرور الجديدة و تأكيد كلمة المرور</value>
   </data>
   <data name="EnterVerificationCodeForEmail" xml:space="preserve">
-    <value>Please Enter verification code received on email</value>
+    <value>الرجاء إدخال رمز التحقق المرسل من خلال البريد الإلكتروني</value>
+  </data>
+  <data name="InvalidOTP" xml:space="preserve">
+    <value>رمز التحقق غير صحيح الرجاء إعادة إدخال رمز التحقق</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>رمز مرور خاطئ</value>
   </data>
 </root>

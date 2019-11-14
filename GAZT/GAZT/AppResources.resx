@@ -379,7 +379,7 @@ appeal</value>
     <value>Pdf</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
-    <value>Pdf Is Not Available </value>
+    <value>No Certificate available</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
     <value>TIN-Email</value>
@@ -397,15 +397,21 @@ appeal</value>
     <value>Invalid Email</value>
   </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
-    <value>Do you really want to Logout?</value>
+    <value>Are you sure want to log off?</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
-    <value>New Email and Retype Email Not Match</value>
+    <value>The Email address is not matching</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
-    <value>New Password and Retype Password Not Match</value>
+    <value>New password field and confirm Password field must match</value>
   </data>
   <data name="EnterVerificationCodeForEmail" xml:space="preserve">
     <value>Please Enter verification code received on email</value>
+  </data>
+  <data name="InvalidOTP" xml:space="preserve">
+    <value>Invalid OTP, please enter correct OTP</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
   </data>
 </root>

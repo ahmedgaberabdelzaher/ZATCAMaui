@@ -491,7 +491,7 @@ namespace GAZT
 
                             String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
 
-                            String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                            String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
 
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
 
@@ -569,8 +569,9 @@ namespace GAZT
                     lang = "AR";
                 try
                 {
-
-                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,App.Otp, TaxPayerProfile.Tin,OldEmail,NewEmail,CurrentPasswordForEmail,NewPasswordForEmail);
+                    if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
+                    {
+                        TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, App.Otp, TaxPayerProfile.Tin, OldEmail, NewEmail, CurrentPasswordForEmail, NewPasswordForEmail);
 
                         if (TaxPayerProfile != null)
                         {
@@ -580,8 +581,8 @@ namespace GAZT
                             App.TP.Password = NewPasswordForEmail;
                             TaxPayerProfile.Password = NewPasswordForEmail;
                             setPropertyForEmailUpdation(NewEmail);
-                             
-                           
+
+
                             String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
 
 
@@ -589,26 +590,37 @@ namespace GAZT
 
                             //ChangeEmailLayoutVisibility = false;
                             //TPProfileVisibility = true;
-                        //remove all the pages from the stack
-                        App.IsComingFromDashboardToLogOff = false;
+                            //remove all the pages from the stack
+                            App.IsComingFromDashboardToLogOff = false;
+                            var _navigation = Application.Current.MainPage.Navigation;
+                            await _navigation.PopToRootAsync();
+
+                            // _navigationService.NavigateTo(App.LoginView);
 
                         }
                         else
                         {
-                            
+
                             String OnInvalidEmail = AppResources.InvalidEmail;
 
                             await _dialogService.ShowMessageBox(OnInvalidEmail, "Information");
                         }
-                       
+
+                    }
+                    else
+                    {
+                        String OnPasswordMatch = AppResources.NewPasswordandRetypePasswordNotMatch;
+
+                        await _dialogService.ShowMessageBox(OnPasswordMatch, "Information");
+                    }
                 }
                 catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(ex.Message, "Information");
-                        });
-                    }
+                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                    });
+                }
             });
 
             OnChangePasswordButtonClicked = new Command(async() =>
@@ -641,12 +653,16 @@ namespace GAZT
 
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
                             //remove all the pages from the stack
-
                             App.IsComingFromDashboardToLogOff = false;
+                            var _navigation = Application.Current.MainPage.Navigation;
+                            await _navigation.PopToRootAsync();
+                            //_navigationService.NavigateTo(App.LoginView);
                         }
                         else
                         {
+                            String OnInvalidPassword = AppResources.InvalidPassword;
 
+                            await _dialogService.ShowMessageBox(OnInvalidPassword, "Information");
                         }
 
 
@@ -723,7 +739,7 @@ namespace GAZT
             ChangePasswordayoutVisibility = false;
             ChangeMobileNumberLayoutVisibility = false;
             ChangeEmailLayoutVisibility = false;
-            CurrentMobile = App.TP.Mobile;
+            CurrentMobile = TaxPayerProfile.Mobile;
             CurrentPassword = TaxPayerProfile.Password;
             OldEmail = TaxPayerProfile.Email;
             CurrentPasswordForEmail = TaxPayerProfile.Password;

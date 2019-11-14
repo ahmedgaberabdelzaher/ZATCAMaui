@@ -27,9 +27,10 @@ namespace GAZT.Views
             App.IsArabic = true;
             SetRTLDirectionTest();
             this.BindingContext = viewModel;
+            
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-       
+
             ToolbarItem toolbarItem1 = new ToolbarItem
             {
                 Icon = "ic_language.png",
@@ -75,16 +76,22 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(App.IsComingFromDashboardToLogOff)
+            viewModel.UserName = String.Empty;
+            viewModel.Password = String.Empty;
+
+            if (App.IsComingFromDashboardToLogOff)
             {
                 Device.BeginInvokeOnMainThread(async () => {
                     var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
                     if (!result)
-                        viewModel._navigationService.NavigateTo(App.DashboardView);  // or anything else
+                    {
+                        viewModel._navigationService.NavigateTo(App.DashboardView);
+                    }
+                   
                 });
-
-               
             }
+            
+
         }
         //private void OnOnLanguageClickClicked(object sender, EventArgs e)
         //{

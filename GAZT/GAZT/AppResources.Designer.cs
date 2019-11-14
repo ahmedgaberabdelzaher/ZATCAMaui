@@ -415,6 +415,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid OTP, please enter correct OTP.
+        /// </summary>
+        public static string InvalidOTP {
+            get {
+                return ResourceManager.GetString("InvalidOTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Password.
+        /// </summary>
+        public static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have paid {} SAR for current fiscal year.
         /// </summary>
         public static string ItHasPaidNumberForCurrentFiscalYear {
@@ -442,7 +460,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you really want to Logout?.
+        ///   Looks up a localized string similar to Are you sure want to log off?.
         /// </summary>
         public static string LogoutConfirmationMessage {
             get {
@@ -523,7 +541,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Email and Retype Email Not Match.
+        ///   Looks up a localized string similar to The Email address is not matching.
         /// </summary>
         public static string NewEmailandRetypeEmailNotMatch {
             get {
@@ -550,7 +568,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Password and Retype Password Not Match.
+        ///   Looks up a localized string similar to New password field and confirm Password field must match.
         /// </summary>
         public static string NewPasswordandRetypePasswordNotMatch {
             get {
@@ -631,7 +649,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pdf Is Not Available .
+        ///   Looks up a localized string similar to No Certificate available.
         /// </summary>
         public static string PdfIsNoteAvailable {
             get {

@@ -222,7 +222,8 @@ namespace GAZT
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox("Probably invalid OTP, please try again", "Information");
+                                    string isInvalidOtp = AppResources.InvalidOTP;
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, "Information");
                                     ClearData();
                                 });
                             }
@@ -279,8 +280,8 @@ namespace GAZT
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
-                                    await _dialogService.ShowMessageBox(showmessage, "Information");
+                                    string isInvalidOtp = AppResources.InvalidOTP;
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, "Information");
                                     ClearData();
                                 });
                             }
