@@ -391,7 +391,7 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>بريد إلكتروني خاطئ</value>
   </data>
-   <data name="LogoutConfirmationMessage" xml:space="preserve">
+  <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>Do you really want to Logout?</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
@@ -399,5 +399,8 @@
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
     <value>New Password and Retype Password Not Match</value>
+  </data>
+  <data name="EnterVerificationCodeForEmail" xml:space="preserve">
+    <value>Please Enter verification code received on email</value>
   </data>
 </root>

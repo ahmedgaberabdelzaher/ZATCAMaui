@@ -4,6 +4,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 namespace GAZT.Views
@@ -21,10 +22,50 @@ namespace GAZT.Views
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             
+            
             // viewModel.ClearData();
-            viewModel.IsComingFrom = e;
+            
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.IsComingFrom = e;
+            if (e == NavigateToOtp.IsMobile)
+            {
+                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+                viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
+                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
+                var MobileNumber = viewModel.OTPSentOnThis;
+
+                var firstDigits = MobileNumber.Substring(0, 2);
+                var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                viewModel.OTPSentOnThis = maskedCardNumberWithSpaces;
+            }
+            else if(e == NavigateToOtp.IsEmail)
+            {
+                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
+                viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
+                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisEmail;
+            }
+            else if(e == NavigateToOtp.IsLogin)
+            {
+                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+                viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
+                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
+                var MobileNumber = viewModel.OTPSentOnThis;
+
+                var firstDigits = MobileNumber.Substring(0, 2);
+                var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                viewModel.OTPSentOnThis = maskedCardNumberWithSpaces;
+            }
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 

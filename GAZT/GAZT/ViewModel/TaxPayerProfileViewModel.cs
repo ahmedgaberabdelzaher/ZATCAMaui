@@ -487,7 +487,7 @@ namespace GAZT
                             IsEnabledNewEmail = false;
                             //IsEnabledVerifyForEmail = false;
                             //TaxPayerProfile.NewMobile = NewMobile;
-                            App.TP.NewMobile = NewMobile;
+                            App.TP.NewEmail =NewEmail ;
 
                             String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
 
@@ -586,8 +586,10 @@ namespace GAZT
 
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
 
-                            ChangeEmailLayoutVisibility = false;
-                            TPProfileVisibility = true;
+                            //ChangeEmailLayoutVisibility = false;
+                            //TPProfileVisibility = true;
+                        //remove all the pages from the stack
+                        App.IsComingFromDashboardToLogOff = false;
 
                         }
                         else
@@ -637,8 +639,9 @@ namespace GAZT
 
 
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
+                            //remove all the pages from the stack
 
-
+                            App.IsComingFromDashboardToLogOff = false;
                         }
                         else
                         {

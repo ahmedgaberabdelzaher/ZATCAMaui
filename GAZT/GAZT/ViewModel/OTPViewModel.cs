@@ -35,7 +35,52 @@ namespace GAZT
             }
         }
 
-        private string _OTPSentOnThisMobileNumber = App.TP.Mobile;
+        
+
+        private string _OTPSentOnThis = String.Empty;
+        public string OTPSentOnThis
+        {
+            get
+            {
+                return _OTPSentOnThis;
+            }
+            set
+            {
+                _OTPSentOnThis = value;
+                RaisePropertyChanged("OTPSentOnThis");
+            }
+        }
+
+        private string _OTPSentOnThisText = String.Empty;
+        public string OTPSentOnThisText
+        {
+            get
+            {
+                return _OTPSentOnThisText;
+            }
+            set
+            {
+                _OTPSentOnThisText = value;
+                RaisePropertyChanged("OTPSentOnThisText");
+            }
+        }
+
+
+        private string _OTPSentOnThisEmail = String.Empty;
+        public string OTPSentOnThisEmail
+        {
+            get
+            {
+                return _OTPSentOnThisEmail;
+            }
+            set
+            {
+                _OTPSentOnThisEmail = value;
+                RaisePropertyChanged("OTPSentOnThisEmail");
+            }
+        }
+
+        private string _OTPSentOnThisMobileNumber = string.Empty;
         public string OTPSentOnThisMobileNumber
         {
             get

@@ -382,7 +382,7 @@ appeal</value>
     <value>Pdf Is Not Available </value>
   </data>
   <data name="TinEmail" xml:space="preserve">
-    <value>Tin-Email</value>
+    <value>TIN-Email</value>
   </data>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>Mobile number updated successfully</value>
@@ -396,14 +396,16 @@ appeal</value>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid Email</value>
   </data>
-   <data name="LogoutConfirmationMessage" xml:space="preserve">
+  <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>Do you really want to Logout?</value>
   </data>
- 
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
     <value>New Email and Retype Email Not Match</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
     <value>New Password and Retype Password Not Match</value>
+  </data>
+  <data name="EnterVerificationCodeForEmail" xml:space="preserve">
+    <value>Please Enter verification code received on email</value>
   </data>
 </root>

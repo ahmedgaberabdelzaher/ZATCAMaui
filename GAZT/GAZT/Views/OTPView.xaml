@@ -49,9 +49,9 @@
 
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{x:Static local:AppResources.EnterVerificationCode}" />
+                                <Span Text="{Binding OTPSentOnThisText}" />
                                 <Span Text=" : " />
-                                <Span Text="{Binding OTPSentOnThisMobileNumber}"/>
+                                <Span Text="{Binding OTPSentOnThis}"/>
                             </FormattedString>
                         </Label.FormattedText>
                         
