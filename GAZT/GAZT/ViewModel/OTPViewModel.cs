@@ -271,7 +271,7 @@ namespace GAZT
                                 {
                                     string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
                                     await _dialogService.ShowMessageBox(showmessage, "Information");
-                                    _navigationService.NavigateTo(App.TaxPayerProfileView);
+                                    _navigationService.GoBack();
                                 });
 
                             }

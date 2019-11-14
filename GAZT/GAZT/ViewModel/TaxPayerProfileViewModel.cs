@@ -534,9 +534,10 @@ namespace GAZT
 
                     if (response == true)
                     {
-
+                        ChangeMobileNumberLayoutVisibility = false;
+                        TPProfileVisibility = true;
                         //  TaxPayerProfile.ne = NewMobile;
-                         App.TP.NewMobile = NewMobile;
+                        App.TP.NewMobile = NewMobile;
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
 
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;

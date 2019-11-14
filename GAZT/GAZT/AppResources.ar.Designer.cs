@@ -592,5 +592,23 @@ namespace GAZT {
                 return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
             }
         }
+        
+        public static string NewEmailandRetypeEmailNotMatch {
+            get {
+                return ResourceManager.GetString("NewEmailandRetypeEmailNotMatch", resourceCulture);
+            }
+        }
+        
+        public static string NewPasswordandRetypePasswordNotMatch {
+            get {
+                return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        public static string EnterVerificationCodeForEmail {
+            get {
+                return ResourceManager.GetString("EnterVerificationCodeForEmail", resourceCulture);
+            }
+        }
     }
 }
