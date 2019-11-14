@@ -534,8 +534,7 @@ namespace GAZT
 
                     if (response == true)
                     {
-                        ChangeMobileNumberLayoutVisibility = false;
-                        TPProfileVisibility = true;
+                        
                         //  TaxPayerProfile.ne = NewMobile;
                         App.TP.NewMobile = NewMobile;
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
@@ -543,7 +542,8 @@ namespace GAZT
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
                         await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
-
+                        ChangeMobileNumberLayoutVisibility = false;
+                        TPProfileVisibility = true;
                         _navigationService.NavigateTo(App.OTPView, NavigatingFromMobile);
 
                     }
