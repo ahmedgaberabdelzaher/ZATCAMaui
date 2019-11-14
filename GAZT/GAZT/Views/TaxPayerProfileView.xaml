@@ -177,7 +177,7 @@
                 <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5"   VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal" IsVisible="{Binding ChangeEmailLayoutVisibility}"
                   >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                        <Grid RowSpacing="15" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeEmailLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
+                        <Grid RowSpacing="10" HorizontalOptions="FillAndExpand"  ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeEmailLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
                             <Grid.RowDefinitions>
 
                                 <!--<RowDefinition Height="6*" />
@@ -286,8 +286,8 @@
                     </ScrollView>
                 </StackLayout>
 
-                <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" HeightRequest="40" VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                    <Label Text="{x:Static local:AppResources.Submit}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="40" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                <Frame  HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" HeightRequest="17" VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                    <Label Text="{x:Static local:AppResources.Submit}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="17" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnChangeEmailSubmitButtonClicked}" />
                         </Label.GestureRecognizers>
