@@ -591,6 +591,7 @@ namespace GAZT
                             //ChangeEmailLayoutVisibility = false;
                             //TPProfileVisibility = true;
                             //remove all the pages from the stack
+                            App.IsComingFromDashboardToLogOff = false;
                             var _navigation = Application.Current.MainPage.Navigation;
                             await _navigation.PopToRootAsync();
 
