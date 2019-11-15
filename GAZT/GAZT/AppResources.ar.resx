@@ -315,7 +315,7 @@
   <data name="OldEmail" xml:space="preserve">
     <value>البريد الإلكتروني القديم</value>
   </data>
-  <data name="ChnagePassword" xml:space="preserve">
+  <data name="ChangePassword" xml:space="preserve">
     <value>تغيير كلمة المرور</value>
   </data>
   <data name="TaxpayerProfile" xml:space="preserve">
@@ -418,4 +418,11 @@
   <data name="TaxPayerProfile" xml:space="preserve">
     <value>Tax Payer Profile</value>
   </data>
+   <data name="Information" xml:space="preserve">
+    <value>اشعار</value>
+  </data>
+  <data name="OkText" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+
 </root>

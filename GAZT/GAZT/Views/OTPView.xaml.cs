@@ -30,11 +30,12 @@ namespace GAZT.Views
             viewModel.IsComingFrom = e;
             if (e == NavigateToOtp.IsMobile)
             {
-                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+               
                 viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
+                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + viewModel.OTPSentOnThisMobileNumber;
+               // viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                 var MobileNumber = viewModel.OTPSentOnThis;
-
+                MobileNumber = "00966" + MobileNumber;
 
                 MobileNumber = MobileNumber.Substring(5, 9);
                 var firstDigits = MobileNumber.Substring(0, 2);

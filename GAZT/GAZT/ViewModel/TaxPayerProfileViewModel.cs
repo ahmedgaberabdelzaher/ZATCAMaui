@@ -5,6 +5,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -26,8 +27,9 @@ namespace GAZT
         public ICommand OnVerifyEmailButtonClicked { get; set; }
         public ICommand OnReTypePasswordVisibilityClicked { get; set; }
         public ICommand OnNewPasswordVisibilityClicked { get; set; }
-        
-            
+        public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+
+
         #endregion
 
         #region Property
@@ -508,7 +510,12 @@ namespace GAZT
 
                 try
                 {
-                    if (0 == String.Compare(NewEmail, RetypeEmail, true))
+                    bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
+                    bool bIsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
+
+                    bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
+
+                    if (IsValidNewEmail && bIsValidRetypeEmail && IsNewEmailAndRetypeEmaiEqual)
                     {
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail,NewEmail);
 
@@ -526,7 +533,7 @@ namespace GAZT
 
                             String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
 
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
 
                             _navigationService.NavigateTo(App.OTPView, NavigatingFromEmail);
 
@@ -536,9 +543,19 @@ namespace GAZT
                     }
                     else
                     {
-                        String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
+                        ClearEmailData();
+                        IsEnabledRetypeEmail = false;
+                        if(IsValidNewEmail || bIsValidRetypeEmail)
+                        {
+                            String OnNotMatchAuthentication = AppResources.InvalidEmail;
+                            await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                        }
+                        else
+                        {
+                            String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
+                            await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
 
-                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, "Information");
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -546,7 +563,7 @@ namespace GAZT
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                     });
                 }
             });
@@ -575,8 +592,9 @@ namespace GAZT
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, "Information");
+                            await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
                         });
+                        NewMobile = string.Empty;
                     }
 
                     if (response == true)
@@ -589,9 +607,10 @@ namespace GAZT
 
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
-                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
                         ChangeMobileNumberLayoutVisibility = false;
                         TPProfileVisibility = true;
+                        ClearMobileData();
                         _navigationService.NavigateTo(App.OTPView, NavigatingFromMobile);
 
                     }
@@ -601,7 +620,7 @@ namespace GAZT
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                     });
                 }
 
@@ -629,12 +648,11 @@ namespace GAZT
                             App.TP.Password = NewPasswordForEmail;
                             TaxPayerProfile.Password = NewPasswordForEmail;
                             setPropertyForEmailUpdation(NewEmail);
-
-
+                            ClearEmailData();
                             String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
 
 
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
 
                             //ChangeEmailLayoutVisibility = false;
                             //TPProfileVisibility = true;
@@ -651,22 +669,23 @@ namespace GAZT
 
                             String OnInvalidEmail = AppResources.InvalidEmail;
 
-                            await _dialogService.ShowMessageBox(OnInvalidEmail, "Information");
+                            await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
                         }
 
                     }
                     else
                     {
+                        ClearEmailData();
                         String OnPasswordMatch = AppResources.NewPasswordandRetypePasswordNotMatch;
 
-                        await _dialogService.ShowMessageBox(OnPasswordMatch, "Information");
+                        await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
                     }
                 }
                 catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                     });
                 }
             });
@@ -682,7 +701,7 @@ namespace GAZT
                     lang = "AR";
                 try
                 {
-                    if (0 == String.Compare(NewPassword, RetypePassword, true))
+                    if (0 == String.Compare(NewPassword, RetypePassword, true) && !string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(RetypePassword))
                     {
                         bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPassword);
 
@@ -692,17 +711,15 @@ namespace GAZT
                             // TaxPayerProfile.NewPassword = NewPassword;
                             CurrentPassword = NewPassword;
                             App.TP.Password = NewPassword;
-                            TaxPayerProfile.Password = NewPassword;
-                            NewPassword = string.Empty;
-                            RetypePassword = string.Empty;
+                            TaxPayerProfile.Password = NewPassword;                         
 
                             String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
-
-
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, "Information");
+                            
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                             //remove all the pages from the stack
                             App.IsComingFromDashboardToLogOff = false;
                             var _navigation = Application.Current.MainPage.Navigation;
+                            ClearPasswordData();
                             await _navigation.PopToRootAsync();
                             //_navigationService.NavigateTo(App.LoginView);
                         }
@@ -710,7 +727,7 @@ namespace GAZT
                         {
                             String OnInvalidPassword = AppResources.InvalidPassword;
 
-                            await _dialogService.ShowMessageBox(OnInvalidPassword, "Information");
+                            await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
                         }
 
 
@@ -723,7 +740,7 @@ namespace GAZT
                     {
                         String OnNotMatchAuthentication = AppResources.NewPasswordandRetypePasswordNotMatch;
 
-                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, "Information");
+                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
                     }
                 }
                 catch (Exception ex)
@@ -731,7 +748,7 @@ namespace GAZT
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, "Information");
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                     });
                 }
 
@@ -808,6 +825,35 @@ namespace GAZT
             NewMobile = string.Empty;
             RetypePassword = string.Empty;
             NewPassword = string.Empty;
+            NewEmail = string.Empty;
+            RetypeEmail = string.Empty;
+            CurrentPasswordForEmail = string.Empty;
+            NewPasswordForEmail = string.Empty;
+            IsEnabledNewEmail = true;
+
+        }
+
+        public void ClearEmailData()
+        {
+            NewEmail = string.Empty;
+            RetypeEmail = string.Empty;
+            CurrentPasswordForEmail = string.Empty;
+            NewPasswordForEmail = string.Empty;
+            IsEnabledNewEmail = true;
+        }
+
+        public void ClearMobileData()
+        {
+            NewMobile = string.Empty;           
+
+        }
+
+        public void ClearPasswordData()
+        {
+            
+            RetypePassword = string.Empty;
+            NewPassword = string.Empty;         
+
         }
 
         public void OnPageLoad()
@@ -824,7 +870,7 @@ namespace GAZT
 
         public  bool IsValidMobileNumber(string mobileNumber)
         {
-            if (mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)
+            if (!string.IsNullOrEmpty(mobileNumber) && mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)
             {
                 return true;
             }
@@ -835,6 +881,33 @@ namespace GAZT
 
         }
 
+
+        private bool IsValidEmailAddress(string EmailAddress)
+        {
+            Match emailMatch = Regex.Match(EmailAddress, emailIdValidation);
+            if (emailMatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CompareNewEmailAndRetedEmail(string NewEmailId, string RetypeEmailId)
+        {
+            if (0 == String.Compare(NewEmailId, RetypeEmailId, true))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+       
         #endregion
     }
 }

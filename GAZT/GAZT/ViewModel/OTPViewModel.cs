@@ -51,6 +51,20 @@ namespace GAZT
             }
         }
 
+        private string _oTPSentOnThisBackup = String.Empty;
+        public string OTPSentOnThisBackup
+        {
+            get
+            {
+                return _oTPSentOnThisBackup;
+            }
+            set
+            {
+                _oTPSentOnThisBackup = value;
+                RaisePropertyChanged("OTPSentOnThisBackup");
+            }
+        }
+
         private string _OTPSentOnThisText = String.Empty;
         public string OTPSentOnThisText
         {
@@ -223,7 +237,7 @@ namespace GAZT
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     string isInvalidOtp = AppResources.InvalidOTP;
-                                    await _dialogService.ShowMessageBox(isInvalidOtp, "Information");
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
                                     ClearData();
                                 });
                             }
@@ -234,7 +248,7 @@ namespace GAZT
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 IsLoading = false;
-                                await _dialogService.ShowMessageBox(ex.Message, "Information");
+                                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                                 ClearData();
                             });
                         }
@@ -271,7 +285,7 @@ namespace GAZT
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
-                                    await _dialogService.ShowMessageBox(showmessage, "Information");
+                                    await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
                                     _navigationService.GoBack();
                                 });
 
@@ -281,7 +295,7 @@ namespace GAZT
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     string isInvalidOtp = AppResources.InvalidOTP;
-                                    await _dialogService.ShowMessageBox(isInvalidOtp, "Information");
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
                                     ClearData();
                                 });
                             }
@@ -290,7 +304,7 @@ namespace GAZT
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(ex.Message, "Information");
+                                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                                 ClearData();
                             });
                         }
@@ -318,7 +332,7 @@ namespace GAZT
                    // ClearData();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ClearData();
             }

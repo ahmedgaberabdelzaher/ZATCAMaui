@@ -159,7 +159,7 @@ namespace GAZT.ViewModel
                 {
                     String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
 
-                    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, "Information");
+                    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
 
                 }
                 IsLoading = false;
@@ -178,7 +178,7 @@ namespace GAZT.ViewModel
 
                     if (dependency == null)
                     {
-                       _dialogService.ShowMessageBox("Error loading PDF", "Information");
+                       _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
 
                         // DisplayAlert("Error loading PDF", "Computer says no", "OK");
 
@@ -230,7 +230,7 @@ namespace GAZT.ViewModel
 
                     if (string.IsNullOrWhiteSpace(localPath))
                     {
-                        _dialogService.ShowMessageBox("Error loading PDF", "Information");
+                        _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
                         //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
 
                         return;

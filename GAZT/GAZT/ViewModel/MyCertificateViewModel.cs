@@ -26,6 +26,8 @@ namespace GAZT
         public ICommand OnMyTaxPayerProfileClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnCertificateClicked { get; set; }
+        public ICommand OnZakatCertificateClicked { get; set; }
+        
         #endregion
 
         #region Property
@@ -58,7 +60,7 @@ namespace GAZT
             {
                 _PdfSelected = value;
                 RaisePropertyChanged("_PdfSelected");
-               // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", "Information");
+               // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
                if(_PdfSelected!=null)
                 {
                     if (Device.RuntimePlatform == Device.Android)
@@ -191,7 +193,12 @@ namespace GAZT
                 // _navigationService.NavigateTo(App.LoginView);
 
             });
+            OnZakatCertificateClicked = new RelayCommand(async () =>
+            {
+               
 
+            });
+            
             OnCertificateClicked = new Command(() =>
             {
 
@@ -304,7 +311,9 @@ namespace GAZT
 
         public async void ShowPdf()
         {
-          string pdfUrl = await GetCertificateLink();
+            // string pdfUrl = await GetCertificateLink();
+
+            string pdfUrl = await GetZakatCertificateLink();
             Uri uri = new Uri(pdfUrl);
             Device.OpenUri(uri);
         }
@@ -317,36 +326,27 @@ namespace GAZT
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";
-
-                //await Task.Run(async () =>
-                //{
                  response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-
-                //if (string.IsNullOrEmpty(response) != true)
-                //{
-                //    string str = response;
-                //    Uri uri = new Uri(str);
-                //    Device.OpenUri(uri);
-                //}
-                //else
-                //{
-                //    String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
-
-                //    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, "Information");
-
-                //}
-                //});
-
-               
-
-
-
-
-
 
             });
             return response;
         }
-        #endregion
+
+        private async Task<string> GetZakatCertificateLink()
+        {
+            String response = null;
+            await Task.Run(async () =>
+            {
+
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
+
+            });
+            return response;
         }
+
+        #endregion
+    }
 }

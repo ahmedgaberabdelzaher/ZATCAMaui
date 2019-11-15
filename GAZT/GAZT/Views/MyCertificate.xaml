@@ -73,6 +73,23 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
+
+                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
+                                            <local1:CustomLabel Text="Zakat certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                </Label.GestureRecognizers>
+
+                                            </local1:CustomLabel>
+                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" >
+
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+
                                     </StackLayout>
                                 </StackLayout>
 

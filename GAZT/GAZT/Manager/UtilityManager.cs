@@ -162,7 +162,7 @@ namespace GAZT.Manager
                     if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
                         TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
                     else
-                        throw new Exception("Invalid OTP / OTP expired");
+                        throw new Exception(AppResources.InvalidOTP);
                 }
 
                 return TP;
@@ -200,7 +200,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception("Invalid OTP / OTP expired");
+                        throw new Exception(AppResources.InvalidOTP);
                     }
                     //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
                     //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
@@ -244,7 +244,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception("Invalid Mobile Number");
+                        throw new Exception(AppResources.EnterValidMobileNumber);
                     }
 
                     //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
@@ -290,7 +290,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new ArgumentException("Invalid Password");
+                        throw new ArgumentException(AppResources.InvalidPassword);
                     }
 
                     //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
@@ -463,7 +463,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception("Invalid OTP / OTP expired");
+                        throw new Exception(AppResources.InvalidOTP);
                     }
                     //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
                     //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
@@ -480,6 +480,47 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<string> GAZTZakatGetPdfUrl(String Lang, String Tin)
+        {
+            TaxPayerProfile TP = null;
+            bool result = false;
+            string PdfUrl = string.Empty;
+            DateTime dt = DateTime.Now;
+            string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
+            // 2007 - 01 - 01T00: 00
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
+                string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
 
+                 var uri = new Uri(ZakatURL);
+
+                HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+
+                if (GAZTValidateAndChangePasswordResponse != null)
+                {
+                    String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
+
+
+                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+
+                    JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
+                    if (jObject != null)
+                    {
+                        JToken memberName = jObject["results"].First["Pdfurl"];
+                        result = true;
+                        PdfUrl = memberName.ToString();
+                    }
+                }
+
+                return PdfUrl;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

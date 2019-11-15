@@ -20,6 +20,10 @@ namespace GAZT.Views
             SetLTR();
             ReTypePassword.IsPassword = true;
             NewPassword.IsPassword = true;
+            EmailRetypePassword.IsPassword = true;
+            EmailNewPassword.IsPassword = true;
+            CurrentPassword.IsPassword = true;
+            EmailCurrentPassword.IsPassword = true;
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
@@ -32,6 +36,7 @@ namespace GAZT.Views
                
             //}
             CardView.ItemsSource = Items;
+            viewModel.ClearData();
            
             viewModel.OnPageLoad();
         }
@@ -43,7 +48,24 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
+        
+             public void OnEmailCurrentPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            EmailCurrentPassword.IsPassword = !EmailCurrentPassword.IsPassword;
+        }
+        public void OnCurrentPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            CurrentPassword.IsPassword = !CurrentPassword.IsPassword;
+        }
+        public void OnEmailNewPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            EmailNewPassword.IsPassword = !EmailNewPassword.IsPassword;
+        }
+        public void OnEmailReTypePasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            EmailRetypePassword.IsPassword = !EmailRetypePassword.IsPassword;
+        }
+        
         public void OnNewPasswordVisibilityClicked(object sender, EventArgs args)
         {
             //Password.IsPassword = Password.IsPassword ? false : true;
@@ -58,7 +80,7 @@ namespace GAZT.Views
             base.OnAppearing();
             viewModel.SetTP();
             Task.Delay(20000);
-            viewModel.ClearData();
+            
         }
         protected override void OnDisappearing()
         {

@@ -111,7 +111,7 @@ namespace GAZT
                 //String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
                 //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
 
-                // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, "Information");
+                // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
 
                 await Task.Run(async () =>
                 {
@@ -146,7 +146,7 @@ namespace GAZT
                         //Device.BeginInvokeOnMainThread(async () =>
                         //{
                         //    IsLoading = false;
-                        //    await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, "Information");
+                        //    await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, AppResources.Information);
                         //});
 
                         await Task.Run(async () =>
@@ -175,7 +175,7 @@ namespace GAZT
                                 });
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(response, "Information");
+                                    await _dialogService.ShowMessageBox(response, AppResources.Information);
                                 });
                             }
                         });
@@ -190,7 +190,7 @@ namespace GAZT
                         });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(response, "Information");
+                            await _dialogService.ShowMessageBox(response, AppResources.Information);
                         });
                     }
 

@@ -628,5 +628,26 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
             }
         }
+        public static string Information
+        {
+            get
+            {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        public static string OkText
+        {
+            get
+            {
+                return ResourceManager.GetString("OkText", resourceCulture);
+            }
+        }
+        public static string TaxPayerProfile
+        {
+            get
+            {
+                return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
+            }
+        }
     }
 }
