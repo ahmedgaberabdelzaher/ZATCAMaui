@@ -162,15 +162,6 @@ namespace GAZT
                                 bool IsNavigatingFromLogin = true;
                                 NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 
-                                if (App.IsArabic)
-                                {
-                                    SetRTLDirectionTest();
-                                }
-                                else
-                                {
-                                    SetLTRDirectionTest();
-                                }
-
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.OTPView, NavigatingFromLogin);
@@ -212,39 +203,6 @@ namespace GAZT
 
                 });
             });
-        }
-
-
-
-
-
-            public void SetRTLDirectionTest()
-        {
-           // InitializeComponent();
-
-            String langName = "ar-AE";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-
-            // AppResources.ResourceManager.ReleaseAllResources();
-           
-
-        }
-
-        public void SetLTRDirectionTest()
-        {
-
-          ///  InitializeComponent();
-
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-            //var vUpdatedPage = new LogInView();
-            //Navigation.InsertPageBefore(vUpdatedPage, this);
-            //Navigation.PopAsync();
-            
-
-
         }
 
         #endregion

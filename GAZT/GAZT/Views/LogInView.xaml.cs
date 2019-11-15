@@ -37,20 +37,6 @@ namespace GAZT.Views
                 Priority = 1,
                 Command = new Command(() =>
                 {
-
-                    //Test Purpose
-                    //if (App.IsArabic)
-                    //{
-                    //    App.IsArabic = false;
-                    //    SetLTRDirectionTest();
-                    //}
-                    //else
-                    //{
-                    //    App.IsArabic = true;
-                    //    SetRTLDirectionTest();
-                    //}
-
-
                     //Original Code
                     if (App.IsArabic)
                     {
@@ -119,25 +105,17 @@ namespace GAZT.Views
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
             InitializeComponent();
-            //var vUpdatedPage = new LogInView();
-            //Navigation.InsertPageBefore(vUpdatedPage, this);
-            //Navigation.PopAsync();
+           
             this.FlowDirection = FlowDirection.RightToLeft;
         }
 
         public void SetLTRDirection()
         {
-           
-            //var vUpdatedPage = new LogInView();
-            //Navigation.InsertPageBefore(vUpdatedPage, this);
-            //Navigation.PopAsync();
-
         
             String langName = "en-US";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
             InitializeComponent();
-            // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
            
         }
