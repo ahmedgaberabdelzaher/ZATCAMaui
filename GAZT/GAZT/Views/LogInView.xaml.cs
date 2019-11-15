@@ -25,7 +25,6 @@ namespace GAZT.Views
             th.Bottom = 0;
           // logo.Margin = th;
             App.IsArabic = true;
-            SetRTLDirectionTest();
             this.BindingContext = viewModel;
             
             //  SetRTLDirection();
@@ -40,29 +39,29 @@ namespace GAZT.Views
                 {
 
                     //Test Purpose
-                    if (App.IsArabic)
-                    {
-                        App.IsArabic = false;
-                        SetLTRDirectionTest();
-                    }
-                    else
-                    {
-                        App.IsArabic = true;
-                        SetRTLDirectionTest();
-                    }
-
-
-                    //Original Code
                     //if (App.IsArabic)
                     //{
                     //    App.IsArabic = false;
-                    //    SetLTRDirection();
+                    //    SetLTRDirectionTest();
                     //}
                     //else
                     //{
                     //    App.IsArabic = true;
-                    //    SetRTLDirection();
+                    //    SetRTLDirectionTest();
                     //}
+
+
+                    //Original Code
+                    if (App.IsArabic)
+                    {
+                        App.IsArabic = false;
+                        SetLTRDirection();
+                    }
+                    else
+                    {
+                        App.IsArabic = true;
+                        SetRTLDirection();
+                    }
                 })
             };
             if(LanguageToolBarCount == 0)
@@ -108,44 +107,18 @@ namespace GAZT.Views
 
         //}
 
-        public void SetRTLDirectionTest()
-        {
-            InitializeComponent();
-
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-
-            // AppResources.ResourceManager.ReleaseAllResources();
-            this.FlowDirection = FlowDirection.RightToLeft;
-            
-        }
-
-        public void SetLTRDirectionTest()
-        {
-
-            InitializeComponent();
-
-            String langName = "ar-AE";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-            //var vUpdatedPage = new LogInView();
-            //Navigation.InsertPageBefore(vUpdatedPage, this);
-            //Navigation.PopAsync();
-            this.FlowDirection = FlowDirection.LeftToRight;
-            
-
-        }
+        
 
 
 
         public void SetRTLDirection()
         {
-            InitializeComponent();
+           
 
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
+            InitializeComponent();
             //var vUpdatedPage = new LogInView();
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
@@ -159,12 +132,11 @@ namespace GAZT.Views
             //Navigation.InsertPageBefore(vUpdatedPage, this);
             //Navigation.PopAsync();
 
-            InitializeComponent();
-
+        
             String langName = "en-US";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-
+            InitializeComponent();
             // AppResources.ResourceManager.ReleaseAllResources();
             this.FlowDirection = FlowDirection.LeftToRight;
            

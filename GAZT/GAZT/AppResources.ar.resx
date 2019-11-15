@@ -410,9 +410,9 @@
     <value>رمز مرور خاطئ</value>
   </data>
    <data name="EnterNewMobileNumber" xml:space="preserve">
-    <value>+966 enter your 9 digit mobile number</value>
+    <value>ادخل رقم الجوال المكون من ٩ ارقام</value>
   </data>
    <data name="EnterValidMobileNumber" xml:space="preserve">
-    <value>please enter valid mobile number</value>
+    <value>ارجو إدخال رقم جوال صحيح</value>
   </data>
 </root>

@@ -99,14 +99,14 @@ namespace GAZT
 
                 //App.IsArabic = true;
 
-                if (App.IsArabic)
-                {
-                    SetRTLDirectionTest();
-                }
-                else
-                {
-                    SetLTRDirectionTest();
-                }
+                //if (App.IsArabic)
+                //{
+                //    SetRTLDirectionTest();
+                //}
+                //else
+                //{
+                //    SetLTRDirectionTest();
+                //}
 
                 //String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
                 //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
