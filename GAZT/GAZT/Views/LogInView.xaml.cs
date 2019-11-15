@@ -76,8 +76,8 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.UserName = String.Empty;
-            viewModel.Password = String.Empty;
+            //viewModel.UserName = String.Empty;
+            //viewModel.Password = String.Empty;
 
             if (App.IsComingFromDashboardToLogOff)
             {

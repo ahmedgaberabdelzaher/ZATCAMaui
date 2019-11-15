@@ -17,5 +17,18 @@ namespace GAZT.Helper
         public static string GAZTGetTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz";
         public static string GAZTGetOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
         public static string GAZTValidateOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
+
+        //public static bool IsValidMobileNumber(string mobileNumber)
+        //{
+        //    if(mobileNumber.Substring(0,1).Equals(5) && mobileNumber.Length == 9)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+          
+        //}
     }
 }

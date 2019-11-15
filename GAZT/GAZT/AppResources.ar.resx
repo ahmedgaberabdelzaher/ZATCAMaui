@@ -409,4 +409,10 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
+   <data name="EnterNewMobileNumber" xml:space="preserve">
+    <value>+966 enter your 9 digit mobile number</value>
+  </data>
+   <data name="EnterValidMobileNumber" xml:space="preserve">
+    <value>please enter valid mobile number</value>
+  </data>
 </root>

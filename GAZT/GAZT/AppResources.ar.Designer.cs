@@ -610,5 +610,29 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterVerificationCodeForEmail", resourceCulture);
             }
         }
+        
+        public static string InvalidOTP {
+            get {
+                return ResourceManager.GetString("InvalidOTP", resourceCulture);
+            }
+        }
+        
+        public static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        public static string EnterNewMobileNumber {
+            get {
+                return ResourceManager.GetString("EnterNewMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string EnterValidMobileNumber {
+            get {
+                return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
+            }
+        }
     }
 }

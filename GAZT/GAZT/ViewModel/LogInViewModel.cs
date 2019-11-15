@@ -24,7 +24,7 @@ namespace GAZT
         #region Property
 
         private string _UserName = "3300087028";
-       // private string _UserName = string.Empty;
+        //private string _UserName = string.Empty;
         public string UserName
         {
             get

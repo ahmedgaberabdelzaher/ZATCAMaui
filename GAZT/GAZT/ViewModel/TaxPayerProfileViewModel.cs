@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -530,13 +531,28 @@ namespace GAZT
                     lang = "AR";
                 try
                 {
-                    bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, NewMobile);
+                    bool response = false;
+                    var mobileNumber = "00966" + NewMobile;
+                   bool isValidMobileNumber =IsValidMobileNumber(NewMobile);
+                    if(isValidMobileNumber)
+                    {
+                         response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
+
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, "Information");
+                        });
+                    }
 
                     if (response == true)
                     {
-                        
+
                         //  TaxPayerProfile.ne = NewMobile;
-                        App.TP.NewMobile = NewMobile;
+                       
+                        App.TP.NewMobile = mobileNumber;
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
 
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
@@ -744,6 +760,20 @@ namespace GAZT
             OldEmail = TaxPayerProfile.Email;
             CurrentPasswordForEmail = TaxPayerProfile.Password;
         }
+
+        public  bool IsValidMobileNumber(string mobileNumber)
+        {
+            if (mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
         #endregion
     }
 }
