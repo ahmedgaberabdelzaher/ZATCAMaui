@@ -38,7 +38,7 @@ namespace GAZT
             }
         }
 
-        private string _Password = "Test@123";
+        private string _Password = "P@ssw0rd";
         //private string _Password = string.Empty;
         public string Password
         {

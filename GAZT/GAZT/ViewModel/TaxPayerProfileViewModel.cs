@@ -24,6 +24,10 @@ namespace GAZT
         public ICommand OnChangePasswordButtonClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnVerifyEmailButtonClicked { get; set; }
+        public ICommand OnReTypePasswordVisibilityClicked { get; set; }
+        public ICommand OnNewPasswordVisibilityClicked { get; set; }
+        
+            
         #endregion
 
         #region Property
@@ -412,6 +416,34 @@ namespace GAZT
             }
         }
 
+        private bool _reTypePasswordVisibility = true;
+        public bool ReTypePasswordVisibility
+        {
+            get
+            {
+                return _reTypePasswordVisibility;
+            }
+            set
+            {
+                _reTypePasswordVisibility = value;
+                RaisePropertyChanged("ReTypePasswordVisibility");
+            }
+        }
+
+        private bool _newPasswordVisibility = true;
+        public bool NewPasswordVisibility
+        {
+            get
+            {
+                return _newPasswordVisibility;
+            }
+            set
+            {
+                _newPasswordVisibility = value;
+                RaisePropertyChanged("NewPasswordVisibility");
+            }
+        }
+
 
         #endregion
 
@@ -708,7 +740,36 @@ namespace GAZT
 
             });
 
-        }
+
+            OnNewPasswordVisibilityClicked = new Command(async () =>
+            {
+                if(NewPasswordVisibility)
+                {
+                    NewPasswordVisibility = false;
+                }
+                else
+                {
+                    NewPasswordVisibility = true;
+                }
+               
+
+            });
+
+            OnReTypePasswordVisibilityClicked = new Command(async () =>
+            {
+                if (ReTypePasswordVisibility)
+                {
+                    ReTypePasswordVisibility = false;
+                }
+                else
+                {
+                    ReTypePasswordVisibility = true;
+                }
+               
+
+            });
+
+    }
 
         #endregion
 

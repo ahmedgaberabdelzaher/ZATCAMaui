@@ -419,7 +419,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception("Invalid EmailId");
+                        throw new Exception(AppResources.InvalidEmail);
                     }
                     //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
                     //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);

@@ -331,6 +331,9 @@
     <BundleResource Include="Resources\SSTArabic-Bold.ttf" />
     <BundleResource Include="Resources\SSTArabic-Light.ttf" />
     <BundleResource Include="Resources\SSTArabic-Medium.ttf" />
+    <BundleResource Include="Resources\ic_TIN_Status.png" />
+    <BundleResource Include="Resources\ic_TIN_Status%402x.png" />
+    <BundleResource Include="Resources\ic_TIN_Status%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

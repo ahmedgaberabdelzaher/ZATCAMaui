@@ -415,4 +415,7 @@
    <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>ارجو إدخال رقم جوال صحيح</value>
   </data>
+  <data name="TaxPayerProfile" xml:space="preserve">
+    <value>Tax Payer Profile</value>
+  </data>
 </root>

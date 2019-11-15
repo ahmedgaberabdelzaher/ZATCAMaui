@@ -18,6 +18,8 @@ namespace GAZT.Views
             InitializeComponent();
 
             SetLTR();
+            ReTypePassword.IsPassword = true;
+            NewPassword.IsPassword = true;
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);
@@ -42,6 +44,15 @@ namespace GAZT.Views
             }
         }
 
+        public void OnNewPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            //Password.IsPassword = Password.IsPassword ? false : true;
+            NewPassword.IsPassword = !NewPassword.IsPassword;
+        }
+        public void OnReTypePasswordVisibilityClicked(object sender, EventArgs args)
+        {
+             ReTypePassword.IsPassword = !ReTypePassword.IsPassword;
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
