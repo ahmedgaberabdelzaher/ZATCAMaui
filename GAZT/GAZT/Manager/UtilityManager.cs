@@ -81,6 +81,25 @@ namespace GAZT.Manager
 
                                 XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/return", xmlnsManager);
                                 AuthenticationResult = node.InnerText;
+                                if(App.IsArabic)
+                                {
+                                    string tin = App.TP.Tin;
+                                    tin = tin + " - " + "User does not exist";
+                                    if (AuthenticationResult.Equals("User authentication failed"))
+                                    {
+                                        AuthenticationResult = AppResources.UserAuthenticationFailed;
+                                    }
+                                    else if (AuthenticationResult.Equals(tin))
+                                    {
+                                        AuthenticationResult = AppResources.UserDoesNotExist;
+                                    }
+                                    else
+                                    {
+                                        AuthenticationResult = AppResources.UserAccountLocked;
+                                    }
+                                }
+
+                               
                             }
                             else
                                 throw new Exception("SOAP request failed");
