@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local1="clr-namespace:GAZT" x:Class="GAZT.Views.OTPView"  FlowDirection="RightToLeft" BackgroundColor="White">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local1="clr-namespace:GAZT" x:Class="GAZT.Views.OTPView"  BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -45,7 +45,7 @@
                 </Image>
                
                 <local1:BorderlessEntry Keyboard="Numeric"  x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />-->
-                    <Label  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HorizontalTextAlignment="Center" >
+                    <Label  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HorizontalTextAlignment="Center">
 
                         <Label.FormattedText >
                             <FormattedString>

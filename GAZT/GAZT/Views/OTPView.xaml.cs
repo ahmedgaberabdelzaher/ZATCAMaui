@@ -21,11 +21,6 @@ namespace GAZT.Views
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
-            
-            
-            // viewModel.ClearData();
-            
-            SetLTR();
             this.BindingContext = viewModel;
             viewModel.IsComingFrom = e;
             if (e == NavigateToOtp.IsMobile)
@@ -73,15 +68,6 @@ namespace GAZT.Views
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
 
 
-        }
-       
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            
         }
 
         protected async override void OnAppearing()
