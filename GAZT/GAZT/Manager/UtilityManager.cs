@@ -336,9 +336,17 @@ namespace GAZT.Manager
                     JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
                     if (jObject != null)
                     {
-                        JToken memberName = jObject["results"].First["Pdfurl"];
-                        result = true;
-                        PdfUrl = memberName.ToString();
+                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                        {
+                            JToken memberName = jObject["results"].First["Pdfurl"];
+                            result = true;
+                            PdfUrl = memberName.ToString();
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                       
                     }
                 }
 

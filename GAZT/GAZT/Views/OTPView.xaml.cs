@@ -27,11 +27,12 @@ namespace GAZT.Views
             {
                 viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                 var MobileNumber = viewModel.OTPSentOnThis;
-                MobileNumber = "00966" + MobileNumber;
-
-                MobileNumber = MobileNumber.Substring(5, 9);
+                MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
                 var firstDigits = MobileNumber.Substring(0, 2);
                 var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                MobileNumber = "00966" + MobileNumber;
+
+               
 
                 var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 

@@ -333,10 +333,20 @@ namespace GAZT
         public async void ShowVATPdf()
         {
              string pdfUrl = await GetCertificateLink();
-
-           // string pdfUrl = await GetZakatCertificateLink();
-            Uri uri = new Uri(pdfUrl);
-            Device.OpenUri(uri);
+            if (pdfUrl != null)
+            {
+                Uri uri = new Uri(pdfUrl);
+                Device.OpenUri(uri);
+            }
+            else
+            {
+                //pop that certificate is not available
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                });
+            }
+           
         }
 
         public async void ShowZAKATPdf()
@@ -354,7 +364,7 @@ namespace GAZT
                 //pop that certificate is not available
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessageBox("Zakat Certificate is not available", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });
             }
            
