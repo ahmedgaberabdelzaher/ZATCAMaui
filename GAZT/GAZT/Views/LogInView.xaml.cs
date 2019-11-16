@@ -18,15 +18,11 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.LogInView;
             InitializeComponent();
-            Thickness th = new Thickness();
-            th.Left = 0;
-            th.Right = 0;
-            th.Top = -40;
-            th.Bottom = 0;
-          // logo.Margin = th;
+
+           
             App.IsArabic = true;
             this.BindingContext = viewModel;
-            
+            viewModel.PasswordVisibility = true;
             //  SetRTLDirection();
             // UserNameMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
 
@@ -78,6 +74,13 @@ namespace GAZT.Views
             
 
         }
+
+        public void OnPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            //Password.IsPassword = Password.IsPassword ? false : true;
+            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        }
+
         //private void OnOnLanguageClickClicked(object sender, EventArgs e)
         //{
         //    if(App.IsArabic)
@@ -93,7 +96,7 @@ namespace GAZT.Views
 
         //}
 
-        
+
 
 
 

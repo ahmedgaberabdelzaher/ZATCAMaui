@@ -67,7 +67,20 @@ namespace GAZT
             }
         }
 
-
+        private bool _passwordVisibility = false;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
+        
         #endregion
 
         #region Constructor

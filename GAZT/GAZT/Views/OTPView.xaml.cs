@@ -37,9 +37,15 @@ namespace GAZT.Views
 
                 var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                 var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + maskedString;
-
-               // viewModel.OTPSentOnThis = maskedString;
+                if (App.IsArabic)
+                {
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                }
+                else
+                {
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                }
+                // viewModel.OTPSentOnThis = maskedString;
             }
             else if(e == NavigateToOtp.IsEmail)
             {
