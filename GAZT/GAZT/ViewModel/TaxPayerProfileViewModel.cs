@@ -687,7 +687,9 @@ namespace GAZT
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                        string InvalidOTP = AppResources.InvalidOTP + "(" + AppResources.PleaseReVerify + ")";
+                        await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
+                        ClearPasswordDataForEmail();
                     });
                 }
             });
