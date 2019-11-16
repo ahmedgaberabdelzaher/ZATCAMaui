@@ -425,15 +425,15 @@
     <value>موافق</value>
   </data>
    <data name="UserAuthenticationFailed" xml:space="preserve">
-    <value> User authentication failed</value>
+    <value>فشلت مصادقة المستخدم</value>
   </data>
    <data name="UserDoesNotExist" xml:space="preserve">
-    <value>User does not exist</value>
+    <value>اسم المستخدم غير موجود </value>
   </data>
    <data name="UserAccountLocked" xml:space="preserve">
-    <value>User account locked</value>
+    <value>حساب المستخدم مغلق</value>
   </data>
    <data name="PleaseReVerify" xml:space="preserve">
-    <value>Please re-verify</value>
+    <value>الرجاء إعادة التحقق</value>
   </data>
 </root>

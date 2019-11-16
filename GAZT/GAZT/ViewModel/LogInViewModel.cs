@@ -197,6 +197,25 @@ namespace GAZT
                     }
                     else
                     {
+
+                        if (App.IsArabic)
+                        {
+                            string tin = UserName;
+                            tin = tin + " - " + "User does not exist";
+                            if (response.Equals("User authentication failed"))
+                            {
+                                response = AppResources.UserAuthenticationFailed;
+                            }
+                            else if (response.Equals(tin))
+                            {
+                                response = AppResources.UserDoesNotExist;
+                            }
+                            else
+                            {
+                                response = AppResources.UserAccountLocked;
+                            }
+                        }
+
                         await Task.Run(() =>
                         {
                             IsLoading = false;
