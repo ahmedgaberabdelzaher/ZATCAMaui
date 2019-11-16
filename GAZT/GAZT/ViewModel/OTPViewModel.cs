@@ -188,7 +188,7 @@ namespace GAZT
 
         }
 
-        private async void ValidateOTP()
+        private async Task ValidateOTP()
         {
             try
             {
@@ -308,9 +308,6 @@ namespace GAZT
                                 ClearData();
                             });
                         }
-
-
-                        // _navigationService.GoBack();
                     }
                     else if (IsComingFrom == NavigateToOtp.IsEmail)
                     {
@@ -322,7 +319,11 @@ namespace GAZT
                         {
                             App.Otp = OTP;
                         }
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
                         _navigationService.GoBack();
+                    });
+                   
                     }
                
 
