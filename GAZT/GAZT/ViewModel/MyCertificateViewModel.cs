@@ -201,7 +201,8 @@ namespace GAZT
                 }
                 else
                 {
-                    ShowVATPdf();
+                    ShowZAKATPdf();
+                   
                 }
 
             });
@@ -215,7 +216,7 @@ namespace GAZT
                 }
                 else
                 {
-                    ShowZAKATPdf();
+                    ShowVATPdf();
                 }
             });
 
@@ -356,15 +357,24 @@ namespace GAZT
         private async Task<string> GetZakatCertificateLink()
         {
             String response = null;
-            await Task.Run(async () =>
+            try
+            {
+               
+                await Task.Run(async () =>
+                {
+
+                    String lang = "EN";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+                    response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
+
+                });
+            }
+            catch(Exception ex)
             {
 
-                String lang = "EN";
-                if (App.IsArabic == true)
-                    lang = "AR";
-                response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
-
-            });
+            }
+            
             return response;
         }
 
