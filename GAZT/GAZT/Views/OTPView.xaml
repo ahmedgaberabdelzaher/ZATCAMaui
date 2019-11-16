@@ -45,15 +45,16 @@
                 </Image>
                
                 <local1:BorderlessEntry Keyboard="Numeric"  x:Name="OTPEEntryOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" Margin="2" BackgroundColor="Transparent" />-->
-                    <Label  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HorizontalTextAlignment="Center">
+                    <!--<StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" Orientation="Horizontal"></StackLayout>-->
+                    <Label Text="{Binding OTPSentOnThisText}"  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HorizontalTextAlignment="Center">
 
-                        <Label.FormattedText >
+                        <!--<Label.FormattedText >
                             <FormattedString>
                                 <Span Text="{Binding OTPSentOnThisText}" />
-                                <!--<Span Text=" : " />
-                                <Span Text="{Binding OTPSentOnThis}"/>-->
+                                <Span Text=" : " />
+                                <Span Text="{Binding OTPSentOnThis}"/>
                             </FormattedString>
-                        </Label.FormattedText>
+                        </Label.FormattedText>-->
                         
                     </Label>
 

@@ -25,10 +25,7 @@ namespace GAZT.Views
             viewModel.IsComingFrom = e;
             if (e == NavigateToOtp.IsMobile)
             {
-               
                 viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + viewModel.OTPSentOnThisMobileNumber;
-               // viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                 var MobileNumber = viewModel.OTPSentOnThis;
                 MobileNumber = "00966" + MobileNumber;
 
@@ -40,13 +37,15 @@ namespace GAZT.Views
 
                 var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                 var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                viewModel.OTPSentOnThis = maskedString;
+                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + maskedString;
+
+               // viewModel.OTPSentOnThis = maskedString;
             }
             else if(e == NavigateToOtp.IsEmail)
             {
                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                 viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
-                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisEmail;
+                viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText  +" " + viewModel.OTPSentOnThisEmail;
             }
             else if(e == NavigateToOtp.IsLogin)
             {
@@ -54,15 +53,23 @@ namespace GAZT.Views
                 viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
                 viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                 var MobileNumber = viewModel.OTPSentOnThis;
+
                 MobileNumber = MobileNumber.Substring(5, 9);
                 var firstDigits = MobileNumber.Substring(0, 2);
                 var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
 
                 var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
-                var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                viewModel.OTPSentOnThis = maskedString;
+                if(App.IsArabic)
+                {
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                }
+                else
+                {
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits  + "***" + lastDigits;
+                }
             }
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
             DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
@@ -250,5 +257,6 @@ namespace GAZT.Views
             canvas.DrawPath(path, paint);
 
         }
+
     }
 }
