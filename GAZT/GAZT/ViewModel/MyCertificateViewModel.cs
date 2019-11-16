@@ -195,15 +195,23 @@ namespace GAZT
             });
             OnZakatCertificateClicked = new RelayCommand(async () =>
             {
-                if (Device.RuntimePlatform == Device.Android)
+                try
                 {
-                    _navigationService.NavigateTo(App.PdfView);
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        _navigationService.NavigateTo(App.PdfView);
+                    }
+                    else
+                    {
+                        ShowZAKATPdf();
+
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    ShowZAKATPdf();
-                   
+
                 }
+               
 
             });
             
@@ -336,8 +344,16 @@ namespace GAZT
             // string pdfUrl = await GetCertificateLink();
 
             string pdfUrl = await GetZakatCertificateLink();
-            Uri uri = new Uri(pdfUrl);
-            Device.OpenUri(uri);
+            if(pdfUrl != null)
+            {
+                Uri uri = new Uri(pdfUrl);
+                Device.OpenUri(uri);
+            }
+            else
+            {
+                //pop that certificate is not available
+            }
+           
         }
         private  async Task<string> GetCertificateLink()
         {

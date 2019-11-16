@@ -503,15 +503,25 @@ namespace GAZT.Manager
                 {
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
-
+                    ZakatCertificate zakatCertificate = new ZakatCertificate();
                     GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-
+                    zakatCertificate = JsonConvert.DeserializeObject<ZakatCertificate>(GAZTValidateAndChangePasswordResponseJSON);
                     JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
+                    // string s =
+                    //jObject JsonConvert.DeserializeObject<string>(jObject);
                     if (jObject != null)
                     {
-                        JToken memberName = jObject["results"].First["Pdfurl"];
-                        result = true;
-                        PdfUrl = memberName.ToString();
+                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                        {
+                            JToken memberName = jObject["results"].First["Pdfurl"];
+                            result = true;
+                            PdfUrl = memberName.ToString();
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                       
                     }
                 }
 
@@ -520,7 +530,8 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                //  throw new Exception(ex.Message);
+                return null;
             }
         }
     }
