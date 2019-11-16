@@ -18,17 +18,17 @@ namespace GAZT.Views
             InitializeComponent();
             SetLTR();
             this.BindingContext = viewModel;
-            CertificateList.ItemSelected += (sender, e) =>
-            {
-                if (e.SelectedItem == null)
-                {
-                    return;
-                } ((ListView)sender).SelectedItem = null;
-            };
+            //CertificateList.ItemSelected += (sender, e) =>
+            //{
+            //    if (e.SelectedItem == null)
+            //    {
+            //        return;
+            //    } ((ListView)sender).SelectedItem = null;
+            //};
 
-            list.Add("aaaaaaa");
+            //list.Add("aaaaaaa");
            
-            CertificateList.ItemsSource = list;
+            //CertificateList.ItemsSource = list;
         }
         private void SetLTR()
         {

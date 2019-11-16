@@ -69,7 +69,7 @@ namespace GAZT
                     }
                     else
                     {
-                        ShowPdf();
+                       // ShowPdf();
                     }
                }
             }
@@ -195,16 +195,28 @@ namespace GAZT
             });
             OnZakatCertificateClicked = new RelayCommand(async () =>
             {
-               
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    _navigationService.NavigateTo(App.PdfView);
+                }
+                else
+                {
+                    ShowVATPdf();
+                }
 
             });
             
             OnCertificateClicked = new Command(() =>
             {
 
-                _navigationService.NavigateTo(App.PdfView);
-                //_navigationService.NavigateTo(App.MyCertificate);
-
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    _navigationService.NavigateTo(App.PdfView);
+                }
+                else
+                {
+                    ShowZAKATPdf();
+                }
             });
 
 
@@ -309,7 +321,16 @@ namespace GAZT
         }
 
 
-        public async void ShowPdf()
+        public async void ShowVATPdf()
+        {
+             string pdfUrl = await GetCertificateLink();
+
+           // string pdfUrl = await GetZakatCertificateLink();
+            Uri uri = new Uri(pdfUrl);
+            Device.OpenUri(uri);
+        }
+
+        public async void ShowZAKATPdf()
         {
             // string pdfUrl = await GetCertificateLink();
 

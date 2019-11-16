@@ -486,6 +486,7 @@ namespace GAZT
             {
                 TPProfileVisibility = false;
                 ChangePasswordayoutVisibility = true;
+                CurrentPassword = string.Empty;
             });
 
             OnSubmitButtonClicked = new Command(() =>
@@ -653,7 +654,7 @@ namespace GAZT
 
 
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
-
+                            ClearEmailData();
                             //ChangeEmailLayoutVisibility = false;
                             //TPProfileVisibility = true;
                             //remove all the pages from the stack
@@ -675,10 +676,11 @@ namespace GAZT
                     }
                     else
                     {
-                        ClearEmailData();
+                       
                         String OnPasswordMatch = AppResources.NewPasswordandRetypePasswordNotMatch;
 
                         await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
+                        ClearPasswordDataForEmail();
                     }
                 }
                 catch (Exception ex)
@@ -856,6 +858,16 @@ namespace GAZT
 
         }
 
+        public void ClearPasswordDataForEmail()
+        {
+
+            RetypePasswordForEmail = string.Empty;
+            NewPasswordForEmail = string.Empty;
+            IsEnabledRetypePasswordForEmail = false;
+            IsEnabledNewPasswordForEmail = true;
+
+        }
+
         public void OnPageLoad()
         {
             TPProfileVisibility = true;
@@ -906,6 +918,7 @@ namespace GAZT
                 return false;
             }
         }
+
 
        
         #endregion
