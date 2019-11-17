@@ -16,6 +16,7 @@ namespace GAZT.Views
            
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+            viewModel.OnPageLoad();
             SetLTR();
             this.BindingContext = viewModel;
             //CertificateList.ItemSelected += (sender, e) =>

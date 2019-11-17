@@ -75,12 +75,18 @@ namespace GAZT.Views
         {
              ReTypePassword.IsPassword = !ReTypePassword.IsPassword;
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             viewModel.SetTP();
             Task.Delay(20000);
-            
+            if(viewModel.IscomingFromOTPViewViaEmail)
+            {
+                await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+
+            }
+
+
         }
         protected override void OnDisappearing()
         {

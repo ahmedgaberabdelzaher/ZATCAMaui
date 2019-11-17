@@ -15,7 +15,7 @@ namespace GAZT
     {
         #region Variable
         private readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
+        public readonly IDialogService _dialogService;
         public ICommand OnChangeMobileNumberClicked { get; set; }
         public ICommand OnChangeEmailClicked { get; set; }
         public ICommand OnChangePasswordClicked { get; set; }
@@ -28,7 +28,7 @@ namespace GAZT
         public ICommand OnReTypePasswordVisibilityClicked { get; set; }
         public ICommand OnNewPasswordVisibilityClicked { get; set; }
         public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-
+        public bool IscomingFromOTPViewViaEmail = false;
 
         #endregion
 
@@ -526,6 +526,7 @@ namespace GAZT
                             IsEnabledNewPasswordForEmail = true;
                             IsEnabledRetypeEmail = false;
                             IsEnabledNewEmail = false;
+                            IscomingFromOTPViewViaEmail = true;
                             //IsEnabledVerifyForEmail = false;
                             //TaxPayerProfile.NewMobile = NewMobile;
                             App.TP.NewEmail =NewEmail ;
@@ -834,7 +835,7 @@ namespace GAZT
             CurrentPasswordForEmail = string.Empty;
             NewPasswordForEmail = string.Empty;
             IsEnabledNewEmail = true;
-
+            IscomingFromOTPViewViaEmail = false;
         }
 
         public void ClearEmailData()
@@ -872,7 +873,8 @@ namespace GAZT
 
         public void OnPageLoad()
         {
-            TPProfileVisibility = true;
+            TaxPayerProfile = App.TP;
+               TPProfileVisibility = true;
             ChangePasswordayoutVisibility = false;
             ChangeMobileNumberLayoutVisibility = false;
             ChangeEmailLayoutVisibility = false;

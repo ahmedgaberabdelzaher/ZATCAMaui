@@ -57,8 +57,8 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //viewModel.UserName = String.Empty;
-            //viewModel.Password = String.Empty;
+            viewModel.UserName = String.Empty;
+            viewModel.Password = String.Empty;
 
             if (App.IsComingFromDashboardToLogOff)
             {
@@ -67,6 +67,10 @@ namespace GAZT.Views
                     if (!result)
                     {
                         viewModel._navigationService.NavigateTo(App.DashboardView);
+                    }
+                    else
+                    {
+                        App.TP = null;
                     }
                    
                 });

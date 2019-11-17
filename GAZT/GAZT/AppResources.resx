@@ -441,4 +441,8 @@ appeal</value>
    <data name="PleaseReVerify" xml:space="preserve">
     <value>Please re-verify</value>
   </data>
+     <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
+    <value>It is compulsory to change password</value>
+  </data>
+  
 </root>

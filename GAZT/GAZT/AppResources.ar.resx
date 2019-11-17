@@ -436,4 +436,7 @@
    <data name="PleaseReVerify" xml:space="preserve">
     <value>الرجاء إعادة التحقق</value>
   </data>
+  <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
+    <value>يلزم تغيير كلمة المرور</value>
+  </data>
 </root>

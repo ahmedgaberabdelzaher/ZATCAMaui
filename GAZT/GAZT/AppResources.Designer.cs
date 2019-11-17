@@ -677,5 +677,12 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseReVerify", resourceCulture);
             }
         }
+        public static string MandatoryPasswordForEmailUpdatation
+        {
+            get
+            {
+                return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
+            }
+        }
     }
 }

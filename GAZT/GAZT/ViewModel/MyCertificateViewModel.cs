@@ -408,6 +408,11 @@ namespace GAZT
             return response;
         }
 
+        public void OnPageLoad()
+        {
+            TaxPayerProfile = App.TP;
+        }
+
         #endregion
     }
 }

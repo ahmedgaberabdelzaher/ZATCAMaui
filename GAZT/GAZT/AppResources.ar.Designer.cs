@@ -656,6 +656,12 @@ namespace GAZT {
                 return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
             }
         }
-       
+        public static string MandatoryPasswordForEmailUpdatation
+        {
+            get
+            {
+                return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
+            }
+        }
     }
 }
