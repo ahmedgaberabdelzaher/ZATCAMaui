@@ -34,9 +34,6 @@ namespace GAZT
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-        
-
         private string _OTPSentOnThis = String.Empty;
         public string OTPSentOnThis
         {
@@ -78,8 +75,6 @@ namespace GAZT
                 RaisePropertyChanged("OTPSentOnThisText");
             }
         }
-
-
         private string _OTPSentOnThisEmail = String.Empty;
         public string OTPSentOnThisEmail
         {
@@ -187,7 +182,10 @@ namespace GAZT
             });
 
         }
-
+        /// <summary>
+        /// OTP validation
+        /// </summary>
+        /// <returns></returns>
         private async Task ValidateOTP()
         {
             try
@@ -196,9 +194,6 @@ namespace GAZT
                 {
                     IsLoading = true;
                 });
-
-
-               
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
                         TaxPayerProfile TP = null;
@@ -214,11 +209,9 @@ namespace GAZT
                             if (App.IsArabic == true)
                             {
                                 lang = "AR";
-                                //OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
                             }
                             else
                             {
-                                // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
                             }
 
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
@@ -259,27 +252,16 @@ namespace GAZT
 
                         try
                         {
-
                             String OTP = string.Empty;
-
                             String lang = "EN";
-
                             OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-
                             if (App.IsArabic == true)
                             {
                                 lang = "AR";
-                                // OTP = OTP4thNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP1stNumberProvidedByTheUser;
                             }
-                            else
-                            {
-                                // OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-                            }
-
                             TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                             if (TP != null)
                             {
-                            //App.TP = TP;
                             string UpdatedMobile = App.TP.NewMobile;
                             App.TP.Mobile = UpdatedMobile;
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -288,7 +270,6 @@ namespace GAZT
                                     await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
                                     _navigationService.GoBack();
                                 });
-
                             }
                             else
                             {
@@ -325,12 +306,9 @@ namespace GAZT
                     });
                    
                     }
-               
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                   // ClearData();
                 });
             }
             catch (Exception ex)
@@ -341,8 +319,6 @@ namespace GAZT
         #endregion
 
         #region Method
-
-
         public void ClearData()
         {
             OTP1stNumberProvidedByTheUser = string.Empty;

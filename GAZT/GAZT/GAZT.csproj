@@ -59,9 +59,6 @@
     <EmbeddedResource Update="Views\PdfView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UpdateEmailAddress.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="CustomControl\CustomLabel.config" />

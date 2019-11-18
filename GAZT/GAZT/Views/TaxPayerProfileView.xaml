@@ -4,7 +4,6 @@
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.64*" />
@@ -26,10 +25,8 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
-
             <local1:CustomLabel Text="{x:Static local:AppResources.TaxPayerProfile}" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
             </local1:CustomLabel>
-
             <StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
                     <cards:CarouselView.ItemTemplate>
@@ -43,9 +40,7 @@
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
             </StackLayout>
-
             <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
-
                 <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding  Source={x:Reference Name=ParentGrid},Path=BindingContext.TPProfileVisibility}" BindingContext="{Binding TaxPayerProfile}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="6*" />
@@ -65,24 +60,21 @@
                         <ColumnDefinition Width="85*" />
                         <ColumnDefinition Width="15*" />
                     </Grid.ColumnDefinitions>
-
                     <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="{Binding Name}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
                     </local1:BorderlessEntry>
                     <Label Text="{x:Static local:AppResources.Name}" IsEnabled="False" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-
                     <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="{Binding Tin}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
                     </local1:BorderlessEntry>
-                    <Label Text="{x:Static local:AppResources.TIN}"  IsEnabled="False" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label Text="{x:Static local:AppResources.TIN}" IsEnabled="False" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-
                     <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                    <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
@@ -91,7 +83,6 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeMobileNumberClicked}" />
                         </Image.GestureRecognizers>
                     </Image>
-
                     <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="8" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -115,12 +106,9 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}" />
                         </Image.GestureRecognizers>
                     </Image>
-
                 </Grid>
-
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeMobileNumberLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
                     <Grid.RowDefinitions>
-
                         <RowDefinition Height="6*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="12.8*" />
@@ -138,23 +126,19 @@
                         <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="80*" />
                         <ColumnDefinition Width="10*" />
-
                     </Grid.ColumnDefinitions>
-
                     <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-
                     <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewMobile}" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
-                    <Label   Text="{x:Static local:AppResources.NewMobileNumber}"   Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label   Text="{x:Static local:AppResources.NewMobileNumber}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-
                     <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
                     </Frame>
                     <Label Text="{x:Static local:AppResources.Verify}" IsEnabled="{Binding IsVerifyEnabled}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
@@ -162,24 +146,11 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnVerifyButtonClicked}" />
                         </Label.GestureRecognizers>
                     </Label>
-
-                    <!--<Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
-                    </Frame>
-                    <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnSubmitButtonClicked}" />
-                        </Label.GestureRecognizers>
-                    </Label>-->
-
                 </Grid>
-
-
-                <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5"   VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal" IsVisible="{Binding ChangeEmailLayoutVisibility}">
-                 
+                <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Grid RowSpacing="10" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeEmailLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
                             <Grid.RowDefinitions>
-
                                 <!--<RowDefinition Height="6*" />
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="8*" />
@@ -198,7 +169,6 @@
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="8*" />
                         <RowDefinition Height="6*" />-->
-
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -219,90 +189,75 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*" />
                                 <ColumnDefinition Width="70*" />
                                 <ColumnDefinition Width="15*" />
                             </Grid.ColumnDefinitions>
-
                             <Frame x:Name="FrameHeight" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
-                            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.OldEmail}" IsEnabled="False" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-
                             <Frame Grid.Row="4" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
                             <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-
                             <Frame Grid.Row="6" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
                             <local1:BorderlessEntry IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypeEmail}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.RetypeEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-
-                            <Frame HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
                             </Frame>
-
-                            <Label   Text="{x:Static local:AppResources.Verify}"  Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                            <Label   Text="{x:Static local:AppResources.Verify}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnVerifyEmailButtonClicked}" />
                                 </Label.GestureRecognizers>
                             </Label>
-
                             <Label Text="{x:Static local:AppResources.ChnagePassword}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
                             </Label>
-
-
-
                             <Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
                             <local1:BorderlessEntry x:Name="EmailCurrentPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPasswordForEmail}" IsPassword="True" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="12" IsEnabled="False" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-                             <Image Grid.Row="12" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnEmailCurrentPasswordVisibilityClicked" />
-                        </Image.GestureRecognizers>
-                    </Image>
-
+                            <Image Grid.Row="12" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailCurrentPasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
                             <Frame Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
-                            <local1:BorderlessEntry x:Name="EmailNewPassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPasswordForEmail}"  Style="{StaticResource EntryStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            <local1:BorderlessEntry x:Name="EmailNewPassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPasswordForEmail}" Style="{StaticResource EntryStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.NewPassword}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" Grid.Row="14" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-                             <Image Grid.Row="14" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnEmailNewPasswordVisibilityClicked" />
-                        </Image.GestureRecognizers>
-                    </Image>
-
-
+                            <Image Grid.Row="14" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailNewPasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
                             <Frame Grid.Row="16" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                             </Frame>
-                            <local1:BorderlessEntry x:Name="EmailRetypePassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePasswordForEmail}"  Style="{StaticResource EntryStyle}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            <local1:BorderlessEntry x:Name="EmailRetypePassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePasswordForEmail}" Style="{StaticResource EntryStyle}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                             </local1:BorderlessEntry>
                             <Label   Text="{x:Static local:AppResources.RetypePassword}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Grid.Row="16" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                             </Label>
-                           <Image Grid.Row="16" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnEmailReTypePasswordVisibilityClicked" />
-                        </Image.GestureRecognizers>
-                    </Image>
-
+                            <Image Grid.Row="16" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailReTypePasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
                         </Grid>
                     </ScrollView>
                 </StackLayout>
-
                 <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" HeightRequest="17" VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                     <Label Text="{x:Static local:AppResources.Submit}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="17" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="End" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                         <Label.GestureRecognizers>
@@ -310,10 +265,8 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </Frame>
-
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangePasswordayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
                     <Grid.RowDefinitions>
-
                         <RowDefinition Height="6*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="12.8*" />
@@ -329,24 +282,21 @@
                         <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="75*" />
                         <ColumnDefinition Width="15*" />
-
                     </Grid.ColumnDefinitions>
-
                     <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
                     <local1:BorderlessEntry x:Name="CurrentPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-                     <Image Grid.Row="2" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                    <Image Grid.Row="2" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnCurrentPasswordVisibilityClicked" />
                         </Image.GestureRecognizers>
                     </Image>
-
                     <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry x:Name="NewPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPassword}" Style="{StaticResource EntryStyle}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <local1:BorderlessEntry x:Name="NewPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPassword}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
@@ -355,22 +305,17 @@
                             <TapGestureRecognizer Tapped="OnNewPasswordVisibilityClicked" />
                         </Image.GestureRecognizers>
                     </Image>
-
                     <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                     </Frame>
-                    <local1:BorderlessEntry x:Name="ReTypePassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePassword}"  Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <local1:BorderlessEntry x:Name="ReTypePassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePassword}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Margin="15,-13,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     </Label>
-                      <Image Grid.Row="6" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                    <Image Grid.Row="6" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnReTypePasswordVisibilityClicked" />
                         </Image.GestureRecognizers>
                     </Image>
-                     
-
-
-
                     <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
                     </Frame>
                     <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
@@ -378,22 +323,16 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordButtonClicked}" />
                         </Label.GestureRecognizers>
                     </Label>
-
                 </Grid>
-            
             </StackLayout>
-
             <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" >
+            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
                 </Image.GestureRecognizers>
             </Image>
             <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
             <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-
         </Grid>
-
     </ContentPage.Content>
-
 </ContentPage>

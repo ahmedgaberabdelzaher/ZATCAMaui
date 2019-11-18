@@ -50,8 +50,6 @@
                 </Grid.ColumnDefinitions>
                 <local1:CustomLabel Text="My Certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
-
-
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Orientation="Vertical" >
 
                     <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0" Padding="2" IsClippedToBounds="true" HeightRequest="40" Margin="4"   BackgroundColor="#c49b2d">
@@ -113,29 +111,6 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
-                <!--<Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                    <Frame.HeightRequest>
-                                        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                    </Frame.HeightRequest>
-                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                        <Frame.HeightRequest>
-                                            <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                        </Frame.HeightRequest>
-                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
-                                            <local1:CustomLabel Text="Registration Certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
-                                            </local1:CustomLabel>
-                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
-                                        </StackLayout>
-                                    </Frame>
-                                </Frame>-->
-
-                <!--<controls:PdfWebView x:Name="PdfView" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"/>-->
-                <!--<WebView x:Name="Webview"  
-                 HeightRequest="200"  
-                 WidthRequest="200"              
-                 VerticalOptions="FillAndExpand"
-                         Source="https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value"
-                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" />-->
                 <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image.GestureRecognizers>
@@ -149,10 +124,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="3"></ActivityIndicator>
-
             </Grid>
-
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

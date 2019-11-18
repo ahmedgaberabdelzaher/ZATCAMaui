@@ -13,23 +13,12 @@ namespace GAZT.Views
         List<string> list = new List<string>();
         public MyCertificate()
         {
-           
+
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
             viewModel.OnPageLoad();
             SetLTR();
             this.BindingContext = viewModel;
-            //CertificateList.ItemSelected += (sender, e) =>
-            //{
-            //    if (e.SelectedItem == null)
-            //    {
-            //        return;
-            //    } ((ListView)sender).SelectedItem = null;
-            //};
-
-            //list.Add("aaaaaaa");
-           
-            //CertificateList.ItemsSource = list;
         }
         private void SetLTR()
         {
@@ -48,12 +37,10 @@ namespace GAZT.Views
 
             SKPoint center = new SKPoint(info.Width / 2, info.Height / 2);
             float radius = Math.Min(info.Width, info.Height) / 4;
-
             SKPath path = new SKPath
             {
                 FillType = SKPathFillType.EvenOdd,
             };
-
             float a = center.X - radius / 2;
             float b = center.Y - radius / 2;
             float r = radius;
@@ -69,21 +56,14 @@ namespace GAZT.Views
             {
                 YPoint = (deviceHeight * 160 / 100);// (deviceHeight * 92 / 100);// deviceHeight - ;
             }
-
             float Radius = deviceHeight + YPoint;
             path.AddCircle(XPoint, -YPoint, Radius);
-
-
             SKPaint paint = new SKPaint()
             {
                 Style = SKPaintStyle.StrokeAndFill,
                 Color = SKColor.Parse("#005e4b"),
             };
-
             canvas.DrawPath(path, paint);
-
         }
-
-
     }
 }
