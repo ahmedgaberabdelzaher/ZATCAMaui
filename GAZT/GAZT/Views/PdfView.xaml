@@ -4,13 +4,21 @@
              x:Class="GAZT.Views.PdfView"
              xmlns:controls="clr-namespace:pdfjs.Controls">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+         <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
 
-            <controls:PdfWebView x:Name="PdfViewForCertificate" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"/>
+            <controls:PdfWebView x:Name="PdfViewForCertificate" IsVisible="{Binding IsVisiblePdfView}"  Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"/>
 
-            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="7"></ActivityIndicator>
 
-        </StackLayout>
-       
+        <!--</StackLayout>-->
+            <ActivityIndicator IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="7" BackgroundColor="Transparent"></ActivityIndicator>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
