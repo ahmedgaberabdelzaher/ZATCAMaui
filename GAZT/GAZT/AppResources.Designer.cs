@@ -684,5 +684,13 @@ namespace GAZT {
                 return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
             }
         }
+        public static string ChangePassword
+        {
+            get
+            {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
     }
+    
 }

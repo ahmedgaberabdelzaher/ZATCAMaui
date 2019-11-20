@@ -145,9 +145,6 @@ namespace GAZT
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
             navigationService.Configure(App.PdfView, typeof(PdfView));
-            navigationService.Configure(App.UpdateEmailAddress, typeof(UpdateEmailAddress));
-
-
             return navigationService;
         }
 

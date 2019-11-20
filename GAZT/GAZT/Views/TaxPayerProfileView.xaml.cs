@@ -1,4 +1,5 @@
-﻿using GAZT.Models;
+﻿using GAZT.Helper;
+using GAZT.Models;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
@@ -27,8 +28,17 @@ namespace GAZT.Views
             Items.Add(str);
             CardView.ItemsSource = Items;
             viewModel.ClearData();
-           
-            viewModel.OnPageLoad();
+           double ht =  DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = ht * 74.22 / 100;
+            double EntryHeight =ht * 8.19 / 100;
+
+            double spaceHeight = ht * 6.3 / 100;
+            double ButtonHeight = ht * 9.24 / 100;
+            double SpaceFromTop = ht * 10.8 / 100;
+           // viewModel.EntryHeight = 50;
+            //FrameHeightOldEmail.HeightRequest =  EntryHeight;
+            //EntryHeightOldEmail.HeightRequest =  EntryHeight;
+            //  viewModel.OnPageLoad();
         }
         private void SetLTR()
         {
@@ -53,7 +63,7 @@ namespace GAZT.Views
         {
             EmailRetypePassword.IsPassword = !EmailRetypePassword.IsPassword;
         }
-        
+
         public void OnNewPasswordVisibilityClicked(object sender, EventArgs args)
         {
             //Password.IsPassword = Password.IsPassword ? false : true;
@@ -61,21 +71,21 @@ namespace GAZT.Views
         }
         public void OnReTypePasswordVisibilityClicked(object sender, EventArgs args)
         {
-             ReTypePassword.IsPassword = !ReTypePassword.IsPassword;
+            ReTypePassword.IsPassword = !ReTypePassword.IsPassword;
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.SetTP();
+           // viewModel.SetTP();
             Task.Delay(20000);
-            if(viewModel.IscomingFromOTPViewViaEmail)
+            if (viewModel.IscomingFromOTPViewViaEmail)
             {
                 await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
             }
         }
         protected override void OnDisappearing()
         {
-            base.OnDisappearing();           
+            base.OnDisappearing();
         }
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {

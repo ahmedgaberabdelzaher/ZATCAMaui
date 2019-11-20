@@ -76,6 +76,9 @@
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRenderer\PdfWebViewRenderer.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="CustomRenderer\CustomNavigationRenderer.cs" />
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
+    <Compile Include="CustomRenderer\RoundCornersEffectDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />

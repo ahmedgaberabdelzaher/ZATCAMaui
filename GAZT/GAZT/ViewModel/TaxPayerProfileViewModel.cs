@@ -48,6 +48,20 @@ namespace GAZT
             }
         }
 
+        private double _entryHeight;
+        public double EntryHeight
+        {
+            get
+            {
+                return _entryHeight;
+            }
+            set
+            {
+                _entryHeight = value;
+                RaisePropertyChanged("EntryHeight");
+            }
+        }
+        
         private bool _changeMobileNumberLayoutVisibility = false;
         public bool ChangeMobileNumberLayoutVisibility
         {

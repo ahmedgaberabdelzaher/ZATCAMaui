@@ -8,12 +8,6 @@ namespace GAZT
     {
         public BorderlessEntry()
         {
-            //Content = new StackLayout
-            //{
-            //    Children = {
-            //        new Label { Text = "Hello ContentPage" }
-            //    }
-            //};
         }
     }
 }

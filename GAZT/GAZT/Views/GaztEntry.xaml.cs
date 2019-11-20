@@ -23,7 +23,7 @@ namespace GAZT
             {
                 EntryLabelText.Margin = new Thickness(15, -20, 15, 0);
             }
-         
+
         }
         public static void Init()
         {
@@ -54,13 +54,8 @@ namespace GAZT
             set
             {
                 SetValue(SourceProperty, value);
-
-
-
             }
         }
-
-
         public string LabelText
         {
             get

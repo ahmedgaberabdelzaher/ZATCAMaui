@@ -1,12 +1,8 @@
 ﻿using System;
-
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
-using GAZT.Helper;
 namespace GAZT.Views
 {
     public partial class DashboardView : ContentPage
@@ -17,7 +13,6 @@ namespace GAZT.Views
         ObservableCollection<String> Items = new ObservableCollection<String>();
         public DashboardView()
         {
-
             viewModel = App.Locator.DashboardView;
             InitializeComponent();
             SetLTR();
@@ -25,8 +20,6 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
-
-
         }
         private void SetLTR()
         {
@@ -35,8 +28,6 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
-
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
@@ -52,7 +43,6 @@ namespace GAZT.Views
             {
                 FillType = SKPathFillType.EvenOdd,
             };
-
             float a = center.X - radius / 2;
             float b = center.Y - radius / 2;
             float r = radius;
@@ -70,34 +60,18 @@ namespace GAZT.Views
             }
             float Radius = deviceHeight + YPoint;
             path.AddCircle(XPoint, -YPoint, Radius);
-
-
             SKPaint paint = new SKPaint()
             {
                 Style = SKPaintStyle.StrokeAndFill,
                 Color = SKColor.Parse("#005e4b"),
             };
-
             canvas.DrawPath(path, paint);
-
         }
-
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    Device.BeginInvokeOnMainThread(async () => {
-        //        var result = await this.DisplayAlert("Alert!", "Do you really want to Logout?", "Yes", "No");
-        //        if (result) viewModel._navigationService.NavigateTo(App.LoginView); ; // or anything else
-        //    });
-
-        //    return true;
-        //}
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             App.IsComingFromDashboardToLogOff = true;
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -110,6 +84,5 @@ namespace GAZT.Views
                 }
             }
         }
-
     }
 }
