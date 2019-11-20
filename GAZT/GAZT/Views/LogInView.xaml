@@ -22,20 +22,20 @@
 
                   <ColumnDefinition>
   <ColumnDefinition.Width>
-         <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="8*" />
+         <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="7*" />
   </ColumnDefinition.Width>
                        
 </ColumnDefinition>
 
                     <ColumnDefinition>
   <ColumnDefinition.Width>
-         <OnIdiom x:TypeArguments="GridLength" Phone="70*" Tablet="84*" />
+         <OnIdiom x:TypeArguments="GridLength" Phone="70*" Tablet="86*" />
   </ColumnDefinition.Width>
                        
 </ColumnDefinition>
                     <ColumnDefinition>
   <ColumnDefinition.Width>
-         <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="8*" />
+         <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="7*" />
   </ColumnDefinition.Width>
                        
 </ColumnDefinition>
@@ -56,9 +56,15 @@
                 </StackLayout>
                 <Frame Grid.Row="2" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
                 </Frame>
-                <local1:BorderlessEntry Text="{Binding UserName}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+
+                <local1:BorderlessEntry Text="{Binding UserName}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
                 </local1:BorderlessEntry>
-                <Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,15,0" />
+                                    </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0" Grid.Row="2" Grid.Column="0" >
+                                     <Image Source="ic_user.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Margin="0,0,0,0"  />
+
+                </StackLayout>
                 <Label  Text="{x:Static local:AppResources.TinEmail}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
  <Label.Margin>
                           <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
@@ -68,8 +74,10 @@
                 </StackLayout>
                 <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
                 </Frame>
-                <local1:BorderlessEntry IsPassword="{Binding PasswordVisibility}" Style="{StaticResource EntryStyle}" Text="{Binding Password}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" >
+                <local1:BorderlessEntry IsPassword="{Binding PasswordVisibility}" Style="{StaticResource EntryStyle}" Text="{Binding Password}"  Margin="12,1,12,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
                 </local1:BorderlessEntry>
+                                                    </StackLayout>
                 <Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,15,0" />
                 <Label  Text="{x:Static local:AppResources.Password}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="4" Grid.Column="0" Margin="25,-13,25,0" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     <Label.Margin>
