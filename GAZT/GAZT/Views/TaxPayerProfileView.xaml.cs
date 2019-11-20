@@ -29,16 +29,7 @@ namespace GAZT.Views
             CardView.ItemsSource = Items;
             viewModel.ClearData();
            double ht =  DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
-            ht = ht * 74.22 / 100;
-            double EntryHeight =ht * 8.19 / 100;
-
-            double spaceHeight = ht * 6.3 / 100;
-            double ButtonHeight = ht * 9.24 / 100;
-            double SpaceFromTop = ht * 10.8 / 100;
-           // viewModel.EntryHeight = 50;
-            //FrameHeightOldEmail.HeightRequest =  EntryHeight;
-            //EntryHeightOldEmail.HeightRequest =  EntryHeight;
-            //  viewModel.OnPageLoad();
+              viewModel.OnPageLoad();
         }
         private void SetLTR()
         {
@@ -76,7 +67,7 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           // viewModel.SetTP();
+            viewModel.SetTP();
             Task.Delay(20000);
             if (viewModel.IscomingFromOTPViewViaEmail)
             {
