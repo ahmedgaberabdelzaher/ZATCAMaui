@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
-            <local1:CustomLabel Text="{x:Static local:AppResources.TaxPayerProfile}" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
+            <local1:CustomLabel Text="{x:Static local:AppResources.TaxpayerProfile}" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
             </local1:CustomLabel>
             <StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
@@ -395,7 +395,7 @@
                     </StackLayout>
                 </ScrollView>
 
-                <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}" HeightRequest="17" VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}"  VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                     <Frame.HeightRequest>
                         <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="45" />
                     </Frame.HeightRequest>

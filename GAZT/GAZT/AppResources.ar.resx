@@ -409,31 +409,28 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
-   <data name="EnterNewMobileNumber" xml:space="preserve">
+  <data name="EnterNewMobileNumber" xml:space="preserve">
     <value>ادخل رقم الجوال المكون من ٩ ارقام</value>
   </data>
-   <data name="EnterValidMobileNumber" xml:space="preserve">
+  <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>ارجو إدخال رقم جوال صحيح</value>
   </data>
-  <data name="TaxPayerProfile" xml:space="preserve">
-    <value>Tax Payer Profile</value>
-  </data>
-   <data name="Information" xml:space="preserve">
+  <data name="Information" xml:space="preserve">
     <value>اشعار</value>
   </data>
   <data name="OkText" xml:space="preserve">
     <value>موافق</value>
   </data>
-   <data name="UserAuthenticationFailed" xml:space="preserve">
+  <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>فشلت مصادقة المستخدم</value>
   </data>
-   <data name="UserDoesNotExist" xml:space="preserve">
+  <data name="UserDoesNotExist" xml:space="preserve">
     <value>اسم المستخدم غير موجود </value>
   </data>
-   <data name="UserAccountLocked" xml:space="preserve">
+  <data name="UserAccountLocked" xml:space="preserve">
     <value>حساب المستخدم مغلق</value>
   </data>
-   <data name="PleaseReVerify" xml:space="preserve">
+  <data name="PleaseReVerify" xml:space="preserve">
     <value>الرجاء إعادة التحقق</value>
   </data>
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">

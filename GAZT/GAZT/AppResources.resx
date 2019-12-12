@@ -420,9 +420,9 @@ appeal</value>
    <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>Please enter valid mobile number</value>
   </data>
-   <data name="TaxPayerProfile" xml:space="preserve">
-    <value>Tax Payer Profile</value>
-  </data>
+   <!-- <data name="TaxPayerProfile" xml:space="preserve"> -->
+    <!-- <value>Tax Payer Profile</value> -->
+  <!-- </data> -->
    <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>

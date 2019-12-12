@@ -448,14 +448,14 @@ namespace GAZT {
                 return ResourceManager.GetString("ChnagePassword", resourceCulture);
             }
         }
-        
+
         public static string TaxpayerProfile {
             get {
                 return ResourceManager.GetString("TaxpayerProfile", resourceCulture);
             }
-        }
-        
-        public static string TIN {
+          }
+
+public static string TIN {
             get {
                 return ResourceManager.GetString("TIN", resourceCulture);
             }
@@ -649,13 +649,7 @@ namespace GAZT {
             }
         }
 
-        public static string TaxPayerProfile
-        {
-            get
-            {
-                return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
-            }
-        }
+        
         public static string MandatoryPasswordForEmailUpdatation
         {
             get

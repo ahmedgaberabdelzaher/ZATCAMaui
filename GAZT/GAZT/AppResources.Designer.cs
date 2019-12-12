@@ -642,13 +642,13 @@ namespace GAZT {
                 return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
-        public static string TaxPayerProfile
-        {
-            get
-            {
-                return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
-            }
-        }
+        //public static string TaxPayerProfile
+        //{
+        //    get
+        //    {
+        //        return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
+        //    }
+        //}
         public static string UserAuthenticationFailed
         {
             get

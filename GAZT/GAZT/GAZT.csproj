@@ -33,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Connected Services\" />
-    <Folder Include="Manager\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
