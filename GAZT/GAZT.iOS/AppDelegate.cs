@@ -1,6 +1,7 @@
 ﻿
 using System.Net;
 using Foundation;
+using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
 
@@ -26,6 +27,7 @@ namespace GAZT.iOS
             (sender, cert, chain, sslPolicyErrors) => true;
 
             Xamarin.Forms.Forms.Init();
+            InitRoundedCornerView.Init();
             IQKeyboardManager.SharedManager.Enable = true;
             LoadApplication(new App());
 

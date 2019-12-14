@@ -420,13 +420,29 @@ appeal</value>
    <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>Please enter valid mobile number</value>
   </data>
-   <data name="TaxPayerProfile" xml:space="preserve">
-    <value>Tax Payer Profile</value>
-  </data>
+   <!-- <data name="TaxPayerProfile" xml:space="preserve"> -->
+    <!-- <value>Tax Payer Profile</value> -->
+  <!-- </data> -->
    <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="OkText" xml:space="preserve">
     <value>Ok</value>
   </data> 
+  <data name="UserAuthenticationFailed" xml:space="preserve">
+    <value> User authentication failed</value>
+  </data>
+   <data name="UserDoesNotExist" xml:space="preserve">
+    <value>User does not exist</value>
+  </data>
+   <data name="UserAccountLocked" xml:space="preserve">
+    <value>User account locked</value>
+  </data>
+   <data name="PleaseReVerify" xml:space="preserve">
+    <value>Please re-verify</value>
+  </data>
+     <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
+    <value>It is compulsory to change password</value>
+  </data>
+  
 </root>

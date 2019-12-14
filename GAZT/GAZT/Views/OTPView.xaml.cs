@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 namespace GAZT.Views
 {
-   
+
     public partial class OTPView : ContentPage
     {
         double DeviceHeight;
@@ -17,7 +17,6 @@ namespace GAZT.Views
         OTPViewModel viewModel;
         public OTPView(NavigateToOtp e)
         {
-
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
@@ -27,12 +26,10 @@ namespace GAZT.Views
             {
                 viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                 var MobileNumber = viewModel.OTPSentOnThis;
-                MobileNumber = "00966" + MobileNumber;
-
-                MobileNumber = MobileNumber.Substring(5, 9);
+                MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
                 var firstDigits = MobileNumber.Substring(0, 2);
                 var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
+                MobileNumber = "00966" + MobileNumber;
                 var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
                 var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
@@ -45,15 +42,14 @@ namespace GAZT.Views
                 {
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
                 }
-                // viewModel.OTPSentOnThis = maskedString;
             }
-            else if(e == NavigateToOtp.IsEmail)
+            else if (e == NavigateToOtp.IsEmail)
             {
                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                 viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
-                viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText  +" " + viewModel.OTPSentOnThisEmail;
+                viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
             }
-            else if(e == NavigateToOtp.IsLogin)
+            else if (e == NavigateToOtp.IsLogin)
             {
                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
                 viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
@@ -67,14 +63,14 @@ namespace GAZT.Views
                 var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
                 string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-               var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                if(App.IsArabic)
+                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                if (App.IsArabic)
                 {
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
                 }
                 else
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits  + "***" + lastDigits;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
                 }
             }
             DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
@@ -82,7 +78,6 @@ namespace GAZT.Views
 
 
         }
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -116,17 +111,9 @@ namespace GAZT.Views
                         if (!string.IsNullOrEmpty(entry.Text))
                             entry.Text = entry.Text.Substring(0, 1);
                     }
-
                 });
             });
-
-
-
         }
-
-
-
-
         private async void OnTextChangedTwo(Object sender, EventArgs e)
         {
             string s = entry.Text;
@@ -143,18 +130,12 @@ namespace GAZT.Views
                     }
                     else
                     {
-                        if(!string.IsNullOrEmpty(entryTwo.Text))
-                        entryTwo.Text = entryTwo.Text.Substring(0, 1);
+                        if (!string.IsNullOrEmpty(entryTwo.Text))
+                            entryTwo.Text = entryTwo.Text.Substring(0, 1);
                     }
                 });
             });
-
-
-
         }
-
-
-
         private async void OnTextChangedThree(Object sender, EventArgs e)
         {
             string s = entry.Text;
@@ -176,13 +157,7 @@ namespace GAZT.Views
                     }
                 });
             });
-
-
-
         }
-
-
-
         private async void OnTextChangedFour(Object sender, EventArgs e)
         {
             string s = entry.Text;
@@ -194,7 +169,7 @@ namespace GAZT.Views
                     string cnt = entryFour.Text;
                     if (cnt.Length == 1)
                     {
-                       
+
                         entryFour.Unfocus();
                     }
                     else
@@ -203,38 +178,27 @@ namespace GAZT.Views
                             entryFour.Text = entryFour.Text.Substring(0, 1);
                         entryFour.Focus();
                     }
-                   
                 });
             });
-
-
-
         }
-
-        
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             viewModel.ClearData();
             App.IsOTPiew = false;
         }
-
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
             SKSurface surface = args.Surface;
             SKCanvas canvas = surface.Canvas;
-
             canvas.Clear();
-
             SKPoint center = new SKPoint(info.Width / 2, info.Height / 2);
             float radius = Math.Min(info.Width, info.Height) / 4;
-
             SKPath path = new SKPath
             {
                 FillType = SKPathFillType.EvenOdd,
             };
-
             float a = center.X - radius / 2;
             float b = center.Y - radius / 2;
             float r = radius;
@@ -252,17 +216,12 @@ namespace GAZT.Views
             }
             float Radius = deviceHeight + YPoint;
             path.AddCircle(XPoint, -YPoint, Radius);
-
-
             SKPaint paint = new SKPaint()
             {
                 Style = SKPaintStyle.StrokeAndFill,
                 Color = SKColor.Parse("#005e4b"),
             };
-
             canvas.DrawPath(path, paint);
-
         }
-
     }
 }

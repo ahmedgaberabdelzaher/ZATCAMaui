@@ -197,15 +197,9 @@ namespace GAZT
             {
                 try
                 {
-                    if (Device.RuntimePlatform == Device.Android)
-                    {
-                        _navigationService.NavigateTo(App.PdfView);
-                    }
-                    else
-                    {
+                  
                         ShowZAKATPdf();
-
-                    }
+   
                 }
                 catch(Exception ex)
                 {
@@ -218,14 +212,9 @@ namespace GAZT
             OnCertificateClicked = new Command(() =>
             {
 
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    _navigationService.NavigateTo(App.PdfView);
-                }
-                else
-                {
+               
                     ShowVATPdf();
-                }
+               
             });
 
 
@@ -333,18 +322,9 @@ namespace GAZT
         public async void ShowVATPdf()
         {
              string pdfUrl = await GetCertificateLink();
-
-           // string pdfUrl = await GetZakatCertificateLink();
-            Uri uri = new Uri(pdfUrl);
-            Device.OpenUri(uri);
-        }
-
-        public async void ShowZAKATPdf()
-        {
-            // string pdfUrl = await GetCertificateLink();
-
-            string pdfUrl = await GetZakatCertificateLink();
-            if(pdfUrl != null)
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+  if (pdfUrl != null)
             {
                 Uri uri = new Uri(pdfUrl);
                 Device.OpenUri(uri);
@@ -354,10 +334,66 @@ namespace GAZT
                 //pop that certificate is not available
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessageBox("Zakat Certificate is not available", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });
             }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+          
            
+        }
+
+        public async void ShowZAKATPdf()
+        {
+            // string pdfUrl = await GetCertificateLink();
+
+            string pdfUrl = await GetZakatCertificateLink();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    Uri uri = new Uri(pdfUrl);
+                    Device.OpenUri(uri);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+           
+            }
         }
         private  async Task<string> GetCertificateLink()
         {
@@ -396,6 +432,11 @@ namespace GAZT
             }
             
             return response;
+        }
+
+        public void OnPageLoad()
+        {
+            TaxPayerProfile = App.TP;
         }
 
         #endregion

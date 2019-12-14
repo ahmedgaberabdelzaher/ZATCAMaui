@@ -18,13 +18,10 @@ namespace GAZT
         public readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnOnLanguageClickClicked { get; set; }
-
         #endregion
-
         #region Property
-
-        private string _UserName = "3300087028";
-        //private string _UserName = string.Empty;
+         private string _UserName = "3300014611";
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -80,7 +77,7 @@ namespace GAZT
                 RaisePropertyChanged("PasswordVisibility");
             }
         }
-        
+
         #endregion
 
         #region Constructor
@@ -97,10 +94,7 @@ namespace GAZT
             {
                 throw new ArgumentNullException("dialogService");
             }
-
             _dialogService = dialogService;
-
-
             OnLoginButtonClicked = new Command(async () =>
             {
                 App.IsComingFromDashboardToLogOff = false;
@@ -108,66 +102,38 @@ namespace GAZT
                 {
                     IsLoading = true;
                 });
-
-
-                //App.IsArabic = true;
-
-                //if (App.IsArabic)
-                //{
-                //    SetRTLDirectionTest();
-                //}
-                //else
-                //{
-                //    SetLTRDirectionTest();
-                //}
-
-                //String OnAuthenticationSuccess = AppResources.LoginSuccessful;// ResourceManager.GetString("LoginSuccessful");
-                //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
-
-                // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
-
                 await Task.Run(async () =>
                 {
                     String lang = "EN";
                     if (App.IsArabic == true)
                         lang = "AR";
-
                     String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
                     if (0 == String.Compare("success", response, true))
                     {
-
                         try
                         {
                             String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserName, lang);
-                            if ( false == String.IsNullOrEmpty(MobileNumber))
+                            if (false == String.IsNullOrEmpty(MobileNumber))
                             {
-                                if(App.TP ==null)
+                                if (App.TP == null)
                                 {
                                     App.TP = new Models.TaxPayerProfile();
                                     App.TP.Mobile = MobileNumber;
-                                }                                    
+                                }
                             }
                         }
                         catch (Exception ex)
                         {
 
                         }
-
                         String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
                         String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
-
-                        //Device.BeginInvokeOnMainThread(async () =>
-                        //{
-                        //    IsLoading = false;
-                        //    await _dialogService.ShowMessageBox(OnAuthenticationSuccessMsg + ":" + OnSuccessfulAuthenticationqMsg, AppResources.Information);
-                        //});
-
                         await Task.Run(async () =>
                         {
                             response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
                             if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                             {
-                                if(App.TP ==null)
+                                if (App.TP == null)
                                     App.TP = new Models.TaxPayerProfile();
 
                                 App.TP.Userid = UserName;
@@ -192,11 +158,26 @@ namespace GAZT
                                 });
                             }
                         });
-
-
                     }
                     else
                     {
+                        if (App.IsArabic)
+                        {
+                            string tin = UserName;
+                            tin = tin + " - " + "User does not exist";
+                            if (response.Equals("User authentication failed"))
+                            {
+                                response = AppResources.UserAuthenticationFailed;
+                            }
+                            else if (response.Equals(tin))
+                            {
+                                response = AppResources.UserDoesNotExist;
+                            }
+                            else
+                            {
+                                response = AppResources.UserAccountLocked;
+                            }
+                        }
                         await Task.Run(() =>
                         {
                             IsLoading = false;
@@ -206,9 +187,6 @@ namespace GAZT
                             await _dialogService.ShowMessageBox(response, AppResources.Information);
                         });
                     }
-
-
-
                     await Task.Run(() =>
                     {
                         IsLoading = false;
@@ -217,12 +195,8 @@ namespace GAZT
                 });
             });
         }
-
         #endregion
-
         #region Method
-
-
         #endregion
     }
 }

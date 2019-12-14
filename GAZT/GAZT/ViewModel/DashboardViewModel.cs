@@ -18,29 +18,8 @@ namespace GAZT
         public ICommand OnMyCertificateClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
         public ICommand OnMyTaxPayerProfileClicked { get; set; }
-
-        
-
         #endregion
-
         #region Property
-        //private bool _isLoading;
-
-        //public bool IsLoading
-        //{
-        //    get
-        //    {
-        //        return _isLoading;
-        //    }
-        //    set
-        //    {
-        //        _isLoading = value;
-        //        RaisePropertyChanged("IsLoading");
-        //    }
-        //}
-
-
-
         #endregion
 
         #region Constructor
@@ -51,38 +30,30 @@ namespace GAZT
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
             _dialogService = dialogService;
-          
+
             OnMyCertificateClicked = new Command(() =>
             {
-             _navigationService.NavigateTo(App.MyCertificate);
+                _navigationService.NavigateTo(App.MyCertificate);
 
             });
             OnBellClicked = new Command(async () =>
             {
-                //_navigationService.NavigateTo(App.MyCertificate);
-
             });
             OnMyTaxPayerProfileClicked = new Command(async () =>
             {
-               _navigationService.NavigateTo(App.TaxPayerProfileView);
+                _navigationService.NavigateTo(App.TaxPayerProfileView);
 
             });
 
         }
-
         #endregion
-
         #region Method
-
-
         #endregion
     }
 }

@@ -16,6 +16,7 @@ namespace GAZT.ViewModel
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
+        public string pdfUrl;
         #endregion
 
         #region Property
@@ -30,7 +31,29 @@ namespace GAZT.ViewModel
             set
             {
                 _isLoading = value;
+                if(_isLoading==false)
+                {
+                    IsVisiblePdfView = true;
+                }
+                else
+                {
+                    IsVisiblePdfView = false;
+                }
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isVisiblePdfView=false;
+        public bool IsVisiblePdfView
+        {
+            get
+            {
+                return _isVisiblePdfView;
+            }
+            set
+            {
+                _isVisiblePdfView = value;
+                RaisePropertyChanged("IsVisiblePdfView");
             }
         }
 
@@ -75,6 +98,10 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfUrl");
             }
         }
+
+
+
+
         private string _DownloadUrl = String.Empty;
         public string DownloadUrl
         {
@@ -139,12 +166,12 @@ namespace GAZT.ViewModel
                 if (App.IsArabic == true)
                     lang = "AR";
                
-                String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+              //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
                
-                if (string.IsNullOrEmpty(response) != true)
+                if (!string.IsNullOrEmpty(pdfUrl))
                 {
 
-                    DownloadUrl = response;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
+                    DownloadUrl = pdfUrl;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         pdf();

@@ -642,12 +642,55 @@ namespace GAZT {
                 return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
-        public static string TaxPayerProfile
+        //public static string TaxPayerProfile
+        //{
+        //    get
+        //    {
+        //        return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
+        //    }
+        //}
+        public static string UserAuthenticationFailed
         {
             get
             {
-                return ResourceManager.GetString("TaxPayerProfile", resourceCulture);
+                return ResourceManager.GetString("UserAuthenticationFailed", resourceCulture);
+            }
+        }
+        public static string UserDoesNotExist
+        {
+            get
+            {
+                return ResourceManager.GetString("UserDoesNotExist", resourceCulture);
+            }
+        }
+        public static string UserAccountLocked
+        {
+            get
+            {
+                return ResourceManager.GetString("UserAccountLocked", resourceCulture);
+            }
+        }
+        public static string PleaseReVerify
+        {
+            get
+            {
+                return ResourceManager.GetString("PleaseReVerify", resourceCulture);
+            }
+        }
+        public static string MandatoryPasswordForEmailUpdatation
+        {
+            get
+            {
+                return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
+            }
+        }
+        public static string ChangePassword
+        {
+            get
+            {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
             }
         }
     }
+    
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
@@ -48,20 +48,15 @@
                     <ColumnDefinition Width="4*" />
                     <!--itemtemplate height 11.62 and separator height 1.75-->
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="My certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
+                <local1:CustomLabel Text="My Certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Orientation="Vertical" Padding="10" >
 
+                    
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="0"  BackgroundColor="#c49b2d" >
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Orientation="Vertical">
-                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0" Padding="0" IsClippedToBounds="true" HeightRequest="40" Margin="4" BackgroundColor="#FCFCFC">
-                    <StackLayout.HeightRequest>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="65" />
-                    </StackLayout.HeightRequest>
-                    <StackLayout   HeightRequest="40" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true" BackgroundColor="#FCFCFC">
-                        <StackLayout.HeightRequest>
-                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="65" />
-                        </StackLayout.HeightRequest>
-                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
+                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" >
+                           
                             <local1:CustomLabel Text="VAT registration certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
 
                                 <Label.GestureRecognizers>
@@ -75,66 +70,41 @@
                                     <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
                                 </Image.GestureRecognizers>
                             </Image>
-
                              <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
                                 </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
+                            </StackLayout>
+                    
+               </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="10"/>
 
-                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="0" Padding="0" IsClippedToBounds="true"  Margin="4" BackgroundColor="#FCFCFC">
-                    <StackLayout.HeightRequest>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="65" />
-                    </StackLayout.HeightRequest>
-                    <StackLayout   HeightRequest="40" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true" BackgroundColor="#FCFCFC">
-                        <StackLayout.HeightRequest>
-                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="65" />
-                        </StackLayout.HeightRequest>
-                <StackLayout HorizontalOptions="Fill"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
-                    <local1:CustomLabel Text="Zakat certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d" >
 
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                        </Label.GestureRecognizers>
+                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" >
+                           
+                            <local1:CustomLabel Text="Zakat certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
 
-                    </local1:CustomLabel>
-                    <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                </Label.GestureRecognizers>
 
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                     <StackLayout.GestureRecognizers>
+                            </local1:CustomLabel>
+                            <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            
+                               
+                             <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
                                 </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                    
+               </StackLayout>
                 </StackLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-                <!--<Frame VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="true" CornerRadius="5" HeightRequest="50" Margin="4" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                    <Frame.HeightRequest>
-                                        <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                    </Frame.HeightRequest>
-                                    <Frame   HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Padding="0" IsClippedToBounds="true" CornerRadius="5" BorderColor="#D5D5D5" BackgroundColor="#FCFCFC">
-                                        <Frame.HeightRequest>
-                                            <OnIdiom x:TypeArguments="x:Double" Phone="50" Tablet="72" />
-                                        </Frame.HeightRequest>
-                                        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0" Spacing="0">
-                                            <local1:CustomLabel Text="Registration Certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
-                                            </local1:CustomLabel>
-                                            <Image Grid.Row="0" Source="ic_envelop.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0" />
-                                        </StackLayout>
-                                    </Frame>
-                                </Frame>-->
-
-                <!--<controls:PdfWebView x:Name="PdfView" Source="{Binding PathOfPdf}"  VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7"/>-->
-                <!--<WebView x:Name="Webview"  
-                 HeightRequest="200"  
-                 WidthRequest="200"              
-                 VerticalOptions="FillAndExpand"
-                         Source="https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value"
-                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="7" />-->
                 <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image.GestureRecognizers>
@@ -148,10 +118,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="3"></ActivityIndicator>
-
             </Grid>
-
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>
