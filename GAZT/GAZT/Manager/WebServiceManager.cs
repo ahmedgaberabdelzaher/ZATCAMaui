@@ -87,9 +87,17 @@ namespace GAZT.Manager
                                 XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
                                 // AuthenticationResult = node.InnerText;
 
+                                
+
                                 Token = node.ChildNodes[0].InnerText;
 
-                                if(!string.IsNullOrEmpty(Token))
+                                if ((0 == String.Compare(Token, "User does not exist")))
+                                {
+                                    throw new Exception(Token);
+                                }
+
+
+                                if (!string.IsNullOrEmpty(Token))
                                 {
                                     App.Token=Token;
                                 }
@@ -122,16 +130,35 @@ namespace GAZT.Manager
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId)
         {
             String OTPSentConfirmation = String.Empty;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                 String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?$format=json";
                 var uri = new Uri(url);
-                HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
+                HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
+               
 
                 if (GAZTSendAndReceiveOTPResponse != null)
                 {
+                    HttpHeaders headers = GAZTSendAndReceiveOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
                 }
 
@@ -159,18 +186,36 @@ namespace GAZT.Manager
         public static async Task<TaxPayerProfile> GAZTValidateOTP(String Lang, String UserId, String OTP)
         {
             TaxPayerProfile TP = null;
+            String NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?$format=json";
+                String url = Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
                 var uri = new Uri(url);
-
-                HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
+                HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+               
 
                 if (GAZTValidateOTPResponse!=null)
                 {
+                    HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
@@ -195,17 +240,38 @@ namespace GAZT.Manager
         public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang,String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber)
         {
             TaxPayerProfile TP = null;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GAZTValidateOTPForMobile +"Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +OTP+ "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&sap-language=" + Lang;
+                String url = Constants.GAZTValidateOTPForMobile +"Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +OTP+ "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                
 
                 if (GAZTValidateOTPResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
+
+
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
@@ -238,17 +304,36 @@ namespace GAZT.Manager
         {
             TaxPayerProfile TP = null;
             bool result = false;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +""+ "',CurrEmail='" +""+ "',NewEmail='" +""+ "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" +""+"',NewPwd='" + "')?$format=json&sap-language=" + Lang;
+                String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +""+ "',CurrEmail='" +""+ "',NewEmail='" +""+ "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" +""+"',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
+                
 
                 if (GAZTValidateMobileNumberResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateMobileNumberResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     String GAZTValidateMobileNumberResponseJSON = GAZTValidateMobileNumberResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateMobileNumberResponseJSON = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["d"].ToString();
@@ -284,17 +369,39 @@ namespace GAZT.Manager
         {
             TaxPayerProfile TP = null;
             bool result = false;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" +""+ "',NewMobile='" +""+ "',CurrPwd='" + CurrentPassword + "',NewPwd='" +NewPassword+"')?$format=json&sap-language=" + Lang;
+                String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" +""+ "',NewMobile='" +""+ "',CurrPwd='" + CurrentPassword + "',NewPwd='" +NewPassword+"')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
 
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+               
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
+
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
@@ -340,8 +447,9 @@ namespace GAZT.Manager
                // String url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=Gpartz  eq  '3300057436'  and Langz   eq 'EN'  and  Begdaz eq   datetime'2007-01-01T00:00'  and Enddaz eq datetime'2019-10-13T11:12'  and  ObligFlagz eq 'I'  and  Auditor  eq  ''   and  TaxtpFg  eq  'VAT'  and  UserTin   eq  ''&$format=json";
                 String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'"+""+"'&$format=json";
                 var uri = new Uri(url);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+                
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
@@ -386,7 +494,7 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
-                String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&$format=json";
+                String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
                 client.DefaultRequestHeaders.Add("Token",App.Token);
                 var uri = new Uri(url);
 
@@ -397,14 +505,20 @@ namespace GAZT.Manager
 
                     HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
                     IEnumerable<string> values;
-                    if (headers.TryGetValues("Token", out values))
+                    if (headers.TryGetValues("token", out values))
                     {
                         NewToken = values.First();
                     }
-                    if(!string.IsNullOrEmpty(NewToken))
+
+                    if((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if((!string.IsNullOrEmpty(NewToken)))
                     {
                         App.Token = NewToken;
                     }
+                   
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
@@ -434,17 +548,36 @@ namespace GAZT.Manager
         {
             TaxPayerProfile TP = null;
             bool result = false;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&sap-language=" + Lang;
+                String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+              
 
                 if (GAZTValidateOTPResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
@@ -479,17 +612,36 @@ namespace GAZT.Manager
         public static async Task<TaxPayerProfile> GAZTValidateOTPForEmail(String Lang, String OTP, String Tin, string CurrentEmail, string NewEmail,string CurrentPassword,string NewPassword)
         {
             TaxPayerProfile TP = null;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
-                String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword+"')?$format=json&sap-language=" + Lang;
+                String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword+"')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                
 
                 if (GAZTValidateOTPResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
@@ -534,8 +686,9 @@ namespace GAZT.Manager
                 string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
 
                  var uri = new Uri(ZakatURL);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+               
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
@@ -579,6 +732,7 @@ namespace GAZT.Manager
             bool result = false;
             string PdfUrl = string.Empty;
             DateTime dt = DateTime.Now;
+            string NewToken = string.Empty;
             string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
             // 2007 - 01 - 01T00: 00
             try
@@ -589,11 +743,30 @@ namespace GAZT.Manager
                 // string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
 
                 //var uri = new Uri(ZakatURL);
-                 var uri = new Uri("https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='3300014611',Langz='EN',Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&$format=json");
+                 var uri = new Uri("https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='3300014611',Langz='EN',Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json");
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
+              
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
+                    HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
                     AllCertificate allCertificate = new AllCertificate();
