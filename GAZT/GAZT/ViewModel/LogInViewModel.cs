@@ -104,7 +104,7 @@ namespace GAZT
                 });
                 await Task.Run(async () =>
                 {
-                    String lang = "EN";
+                    String lang = "E";
                     if (App.IsArabic == true)
                         lang = "AR";
                     String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);

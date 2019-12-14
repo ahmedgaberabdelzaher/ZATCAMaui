@@ -3,9 +3,12 @@ using GAZT.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Xml;
 namespace GAZT.Manager
@@ -85,6 +88,12 @@ namespace GAZT.Manager
                                 // AuthenticationResult = node.InnerText;
 
                                 Token = node.ChildNodes[0].InnerText;
+
+                                if(!string.IsNullOrEmpty(Token))
+                                {
+                                    App.Token=Token;
+                                }
+
                                 Message = node.ChildNodes[1].InnerText;
 
                             }
@@ -119,8 +128,9 @@ namespace GAZT.Manager
                 String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?$format=json";
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
 
-                if(GAZTSendAndReceiveOTPResponse != null)
+                if (GAZTSendAndReceiveOTPResponse != null)
                 {
                     OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
                 }
@@ -157,8 +167,9 @@ namespace GAZT.Manager
                 var uri = new Uri(url);
 
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
 
-                if(GAZTValidateOTPResponse!=null)
+                if (GAZTValidateOTPResponse!=null)
                 {
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
@@ -371,16 +382,29 @@ namespace GAZT.Manager
             TaxPayerProfile TP = null;
             String MobileNumber = string.Empty;
             string PdfUrl = string.Empty;
+            string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                 String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&$format=json";
+                client.DefaultRequestHeaders.Add("Token",App.Token);
                 var uri = new Uri(url);
 
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
+
+                    HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("Token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if(!string.IsNullOrEmpty(NewToken))
+                    {
+                        App.Token = NewToken;
+                    }
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
                     GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
