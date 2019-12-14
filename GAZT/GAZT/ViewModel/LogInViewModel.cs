@@ -97,102 +97,103 @@ namespace GAZT
             _dialogService = dialogService;
             OnLoginButtonClicked = new Command(async () =>
             {
-                App.IsComingFromDashboardToLogOff = false;
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    String lang = "E";
-                    if (App.IsArabic == true)
-                        lang = "AR";
-                    String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
-                    if (0 == String.Compare("success", response, true))
-                    {
-                        try
-                        {
-                            String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserName, lang);
-                            if (false == String.IsNullOrEmpty(MobileNumber))
-                            {
-                                if (App.TP == null)
-                                {
-                                    App.TP = new Models.TaxPayerProfile();
-                                    App.TP.Mobile = MobileNumber;
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
+                _navigationService.NavigateTo(App.ForgotUsernamePassword);
+                //App.IsComingFromDashboardToLogOff = false;
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
+                //await Task.Run(async () =>
+                //{
+                //    String lang = "E";
+                //    if (App.IsArabic == true)
+                //        lang = "AR";
+                //    String response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                //    if (0 == String.Compare("success", response, true))
+                //    {
+                //        try
+                //        {
+                //            String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserName, lang);
+                //            if (false == String.IsNullOrEmpty(MobileNumber))
+                //            {
+                //                if (App.TP == null)
+                //                {
+                //                    App.TP = new Models.TaxPayerProfile();
+                //                    App.TP.Mobile = MobileNumber;
+                //                }
+                //            }
+                //        }
+                //        catch (Exception ex)
+                //        {
 
-                        }
-                        String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
-                        String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
-                        await Task.Run(async () =>
-                        {
-                            response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
-                            if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
-                            {
-                                if (App.TP == null)
-                                    App.TP = new Models.TaxPayerProfile();
+                //        }
+                //        String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+                //        String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
+                //        await Task.Run(async () =>
+                //        {
+                //            response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
+                //            if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                //            {
+                //                if (App.TP == null)
+                //                    App.TP = new Models.TaxPayerProfile();
 
-                                App.TP.Userid = UserName;
-                                App.TP.Password = Password;
-                                bool IsNavigatingFromLogin = true;
-                                NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+                //                App.TP.Userid = UserName;
+                //                App.TP.Password = Password;
+                //                bool IsNavigatingFromLogin = true;
+                //                NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    _navigationService.NavigateTo(App.OTPView, NavigatingFromLogin);
-                                });
-                            }
-                            else
-                            {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessageBox(response, AppResources.Information);
-                                });
-                            }
-                        });
-                    }
-                    else
-                    {
-                        if (App.IsArabic)
-                        {
-                            string tin = UserName;
-                            tin = tin + " - " + "User does not exist";
-                            if (response.Equals("User authentication failed"))
-                            {
-                                response = AppResources.UserAuthenticationFailed;
-                            }
-                            else if (response.Equals(tin))
-                            {
-                                response = AppResources.UserDoesNotExist;
-                            }
-                            else
-                            {
-                                response = AppResources.UserAccountLocked;
-                            }
-                        }
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(response, AppResources.Information);
-                        });
-                    }
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                //                Device.BeginInvokeOnMainThread(() =>
+                //                {
+                //                    _navigationService.NavigateTo(App.OTPView, NavigatingFromLogin);
+                //                });
+                //            }
+                //            else
+                //            {
+                //                await Task.Run(() =>
+                //                {
+                //                    IsLoading = false;
+                //                });
+                //                Device.BeginInvokeOnMainThread(async () =>
+                //                {
+                //                    await _dialogService.ShowMessageBox(response, AppResources.Information);
+                //                });
+                //            }
+                //        });
+                //    }
+                //    else
+                //    {
+                //        if (App.IsArabic)
+                //        {
+                //            string tin = UserName;
+                //            tin = tin + " - " + "User does not exist";
+                //            if (response.Equals("User authentication failed"))
+                //            {
+                //                response = AppResources.UserAuthenticationFailed;
+                //            }
+                //            else if (response.Equals(tin))
+                //            {
+                //                response = AppResources.UserDoesNotExist;
+                //            }
+                //            else
+                //            {
+                //                response = AppResources.UserAccountLocked;
+                //            }
+                //        }
+                //        await Task.Run(() =>
+                //        {
+                //            IsLoading = false;
+                //        });
+                //        Device.BeginInvokeOnMainThread(async () =>
+                //        {
+                //            await _dialogService.ShowMessageBox(response, AppResources.Information);
+                //        });
+                //    }
+                //    await Task.Run(() =>
+                //    {
+                //        IsLoading = false;
+                //    });
 
-                });
+                //});
             });
         }
         #endregion

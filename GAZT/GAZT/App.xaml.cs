@@ -20,7 +20,9 @@ namespace GAZT
         public static string TaxPayerProfileView = "TaxPayerProfileView";
         public static string PdfView = "PdfView";
         public static string UpdateEmailAddress = "UpdateEmailAddress";
+        public static string ForgotUsernamePassword = "ForgotUsernamePassword";
 
+        
 
 
         // public static bool IsArabic = false;

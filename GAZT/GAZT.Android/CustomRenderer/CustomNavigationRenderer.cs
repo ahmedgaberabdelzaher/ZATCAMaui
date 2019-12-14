@@ -117,13 +117,13 @@ namespace GAZT.Droid.CustomRenderer
             });         
 
                   textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
-                if(App.IsArabic){
-                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Cairo-Regular.ttf");
-                    textView.Typeface = spaceFont;
-                }else{
-                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "HelveticaNormal.ttf");
-                    textView.Typeface = spaceFont;
-                }
+                //if(App.IsArabic){
+                //    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Cairo-Regular.ttf");
+                //    textView.Typeface = spaceFont;
+                //}else{
+                //    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "HelveticaNormal.ttf");
+                //    textView.Typeface = spaceFont;
+                //}
                
                 _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
             }

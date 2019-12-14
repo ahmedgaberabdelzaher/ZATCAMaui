@@ -20,7 +20,9 @@ namespace GAZT
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<TaxPayerProfileViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
+            SimpleIoc.Default.Register<ForgotUsernamePasswordViewModel>();
 
+            
 
 
 
@@ -135,7 +137,25 @@ namespace GAZT
                 }
             }
         }
-            
+
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public ForgotUsernamePasswordViewModel ForgotUsernamePassword
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ForgotUsernamePasswordViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -145,6 +165,8 @@ namespace GAZT
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
             navigationService.Configure(App.PdfView, typeof(PdfView));
+            navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
+
             return navigationService;
         }
 
