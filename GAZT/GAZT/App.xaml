@@ -267,6 +267,7 @@
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
 
+           
             <!-- 
             <Style x:Key ="EditorStyle" TargetType="Editor">
                 <Setter Property="FontSize">

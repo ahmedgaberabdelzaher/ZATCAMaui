@@ -733,7 +733,7 @@ namespace GAZT.Manager
                 //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
                 string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=disabled&$format=json";
 
-                 var uri = new Uri(ZakatURL);
+                var uri = new Uri(ZakatURL);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
                
@@ -774,31 +774,26 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<string> GetAllGAZTCertificate(String Lang, String Tin)
+        public static async Task<AllCertificate> GAZTGetAllCertificate(String Lang, String Tin)
         {
-            TaxPayerProfile TP = null;
-            bool result = false;
-            string PdfUrl = string.Empty;
             DateTime dt = DateTime.Now;
-            string NewToken = string.Empty;
+            AllCertificate allCertificate = new AllCertificate();
             string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
-            // 2007 - 01 - 01T00: 00
+
+            string NewToken = string.Empty;
             try
             {
-                // Tin = "3300014611";
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
-                //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
-                // string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
-
-                //var uri = new Uri(ZakatURL);
-                 var uri = new Uri("https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='3300014611',Langz='EN',Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json");
-                client.DefaultRequestHeaders.Add("Token", App.Token);
-                HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
               
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+               // string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin +"'" + ",Langz='"+ Lang + "'" + ",Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
+                string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'"+ "2007-01-01T00%3A00%3A00'" +",Enddaz=datetime'"+ currentDate + "'"+")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
 
-                if (GAZTValidateAndChangePasswordResponse != null)
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                HttpResponseMessage GAZTGetAllCertificateResponse = await client.GetAsync(uri);
+
+                if (GAZTGetAllCertificateResponse != null)
                 {
-                    HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
+                    HttpHeaders headers = GAZTGetAllCertificateResponse.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
                     {
@@ -813,38 +808,15 @@ namespace GAZT.Manager
                     {
                         App.Token = NewToken;
                     }
+                          String GAZTGetAllCertificateResponseJSON = GAZTGetAllCertificateResponse.Content.ReadAsStringAsync().Result;
 
-
-                    String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
-
-                    AllCertificate allCertificate = new AllCertificate();
-                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-                    allCertificate = JsonConvert.DeserializeObject<AllCertificate>(GAZTValidateAndChangePasswordResponseJSON);
-                    JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
-                    // string s =
-                    //jObject JsonConvert.DeserializeObject<string>(jObject);
-                    if (jObject != null)
-                    {
-                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
-                        {
-                            JToken memberName = jObject["results"].First["Pdfurl"];
-                            result = true;
-                            PdfUrl = memberName.ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-
-                    }
+                    GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
+                    allCertificate = JsonConvert.DeserializeObject<AllCertificate>(GAZTGetAllCertificateResponseJSON);                    
                 }
-
-                return PdfUrl;
-
+                return allCertificate;
             }
             catch (Exception ex)
             {
-                //  throw new Exception(ex.Message);
                 return null;
             }
         }

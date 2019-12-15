@@ -25,6 +25,19 @@ namespace GAZT.Manager
                 return false;
             }
         }
+
+        public static string GetLanguageParameter()
+        {
+            if (App.IsArabic)
+            {
+                return "AR";
+            }
+            else
+            {
+                return "EN";
+            }
+         
+        }
         #endregion
     }
 }

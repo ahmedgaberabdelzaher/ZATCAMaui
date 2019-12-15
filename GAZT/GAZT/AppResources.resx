@@ -231,6 +231,15 @@
   <data name="MyCertificate" xml:space="preserve">
     <value>My Certificate</value>
   </data>
+   <data name="MyCertificates" xml:space="preserve">
+    <value>My Certificate(s)</value>
+  </data>
+  <data name="ZakatCertificates" xml:space="preserve">
+    <value>ZAKAT Certificate(s)</value>
+  </data> 
+   <data name="ExciseCertificates" xml:space="preserve">
+    <value>EXCISE Certificate(s)</value>
+  </data> 
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
