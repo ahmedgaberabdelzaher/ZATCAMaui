@@ -24,6 +24,27 @@ namespace GAZT.Views
             viewModel.OnPageLoad();
             SetLTR();
             this.BindingContext = viewModel;
+            EXISECertificateList.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
+            VATCertificateList.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
+            ZAKATCertificateList.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
         }
         private void SetLTR()
         {

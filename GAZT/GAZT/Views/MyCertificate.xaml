@@ -51,126 +51,130 @@
                 <local1:CustomLabel Text="My Certificate" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
 
-                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
-                <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
-                    <cards:CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="4" BorderColor="#B1B1B1" BackgroundColor="White">
-                                    <Image Source="{Binding Source}" />
-                                </Frame>
-                            </ContentView>
-                        </DataTemplate>
-                    </cards:CarouselView.ItemTemplate>
-                </cards:CarouselView>
-            </StackLayout>
-
-           <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
-
-               <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100*" />
-            </Grid.ColumnDefinitions>
-
-                   <ListView IsVisible="{Binding IsVATAvailable}" ItemSource ="{Binding VATCertificateList}" VerticalOptions="FillAndExpand" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedVATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
-                <x:Arguments>
-                    <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                </x:Arguments>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-
-                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d" >
-
-                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" >
-                           
-                            <local1:CustomLabel Text="Zakat certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
-
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                                </Label.GestureRecognizers>
-
-                            </local1:CustomLabel>
-                            <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            
-                    
-               </StackLayout>
+                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                    <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
+                        <cards:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView>
+                                    <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="4" BorderColor="#B1B1B1" BackgroundColor="White">
+                                        <Image Source="{Binding Source}" />
+                                    </Frame>
+                                </ContentView>
+                            </DataTemplate>
+                        </cards:CarouselView.ItemTemplate>
+                    </cards:CarouselView>
                 </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-</Grid>
-           </StackLayout>
-                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Orientation="Vertical" Padding="12" >
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2">
+                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical">
 
-                    
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="0"  BackgroundColor="#c49b2d" >
+                    <local1:CustomLabel  IsVisible="{Binding IsVATCertificateAvailable}" Text="EXCISE Certificate" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,0">
+                    </local1:CustomLabel>
 
-                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" >
-                           
-                            <local1:CustomLabel Text="VAT registration certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="FillAndExpand" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None" >
+                        <x:Arguments>
+                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                        </x:Arguments>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,2,0,8">
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d"  HeightRequest="50">
 
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
-                                </Label.GestureRecognizers>
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" HeightRequest="50">
 
-                            </local1:CustomLabel>
-                            <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                                <local1:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                             <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCertificateClicked}" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                    
-               </StackLayout>
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Label.GestureRecognizers>
 
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="10"/>
+                                                </local1:CustomLabel>
+                                                <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
 
-                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d" >
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
-                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" >
-                           
-                            <local1:CustomLabel Text="Zakat certificate" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
 
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                                </Label.GestureRecognizers>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-                            </local1:CustomLabel>
-                            <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                                </Image.GestureRecognizers>
-                            </Image>
+                    <local1:CustomLabel IsVisible="{Binding IsZAKATCertificateAvailable}" Text="ZAKAT Certificate" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="20,10,20,0">
+                    </local1:CustomLabel>
 
-                            
-                               
-                             <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                    
-               </StackLayout>
-                </StackLayout>-->
+                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsZAKATCertificateAvailable}" ItemsSource ="{Binding ZAKATCertificateList}" VerticalOptions="FillAndExpand" x:Name="ZAKATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <x:Arguments>
+                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                        </x:Arguments>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,2,0,8">
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d"  HeightRequest="50">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" HeightRequest="50">
+
+                                                <local1:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Label.GestureRecognizers>
+
+                                                </local1:CustomLabel>
+                                                <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                    <local1:CustomLabel  IsVisible="{Binding IsEXISECertificateAvailable}" Text="EXCISE Certificate" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,0">
+                    </local1:CustomLabel>
+
+                    <ListView Margin="20,0,20,0"  IsVisible="{Binding IsEXISECertificateAvailable}" ItemsSource ="{Binding EXICISECertificateList}" VerticalOptions="FillAndExpand" x:Name="EXISECertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedEXCISECertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <x:Arguments>
+                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                        </x:Arguments>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,2,0,3">
+
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d"  HeightRequest="50">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" HeightRequest="50">
+
+                                                <local1:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                                </local1:CustomLabel>
+                                                <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                                </Image>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+                    </ScrollView>
                 <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image.GestureRecognizers>
