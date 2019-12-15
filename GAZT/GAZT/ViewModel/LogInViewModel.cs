@@ -223,6 +223,7 @@ namespace GAZT
             _dialogService = dialogService;
             OnLoginButtonClicked = new Command(async () =>
             {
+                // _navigationService.NavigateTo(App.ForgotUsernamePassword);
                 App.IsComingFromDashboardToLogOff = false;
                 String response = string.Empty;
 
