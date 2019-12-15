@@ -70,7 +70,18 @@ namespace GAZT {
                 return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to App is facing network issue,please try again later..
+        /// </summary>
+        public static string VpnNotConnected
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
+            }
+        }
+
         public static string AmountNotObjected {
             get {
                 return ResourceManager.GetString("AmountNotObjected", resourceCulture);
@@ -347,11 +358,7 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Old Email.
         /// </summary>
-        public static string OldEmail {
-            get {
-                return ResourceManager.GetString("OldEmail", resourceCulture);
-            }
-        }
+       
         
         /// <summary>
         ///   Looks up a localized string similar to Overdue Return.
@@ -629,11 +636,7 @@ namespace GAZT {
             }
         }
         
-        public static string TinEmail {
-            get {
-                return ResourceManager.GetString("TinEmail", resourceCulture);
-            }
-        }
+       
         
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -671,11 +674,7 @@ namespace GAZT {
             }
         }
         
-        public static string NewPasswordandRetypePasswordNotMatch {
-            get {
-                return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
-            }
-        }
+        
         
         public static string EnterVerificationCodeForEmail {
             get {
@@ -713,11 +712,7 @@ namespace GAZT {
             }
         }
         
-        public static string OkText {
-            get {
-                return ResourceManager.GetString("OkText", resourceCulture);
-            }
-        }
+        
         
         public static string UserAuthenticationFailed {
             get {

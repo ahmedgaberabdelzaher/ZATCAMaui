@@ -786,7 +786,7 @@ namespace GAZT.Manager
               
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                // string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin +"'" + ",Langz='"+ Lang + "'" + ",Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
-                string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'"+ "2007-01-01T00%3A00%3A00'" +",Enddaz=datetime'"+ currentDate + "'"+")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
+                string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'"+ "2007-01-01T00%3A00%3A00'" +",Enddaz=datetime'"+ currentDate + "'"+")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTGetAllCertificateResponse = await client.GetAsync(uri);
