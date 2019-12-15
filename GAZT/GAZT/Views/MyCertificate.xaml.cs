@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
@@ -9,6 +9,8 @@ namespace GAZT.Views
 {
     public partial class MyCertificate : ContentPage
     {
+        ObservableCollection<String> Items = new ObservableCollection<String>();
+
         MyCertificateViewModel viewModel;
         List<string> list = new List<string>();
         public MyCertificate()
@@ -16,6 +18,9 @@ namespace GAZT.Views
 
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+            string str = "abc";
+            Items.Add(str);
+            CardView.ItemsSource = Items;
             viewModel.OnPageLoad();
             SetLTR();
             this.BindingContext = viewModel;

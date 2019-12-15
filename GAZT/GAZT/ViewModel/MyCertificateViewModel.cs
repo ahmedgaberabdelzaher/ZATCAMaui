@@ -439,7 +439,7 @@ namespace GAZT
             string lang = UtilityManager.GetLanguageParameter();
            
             TaxPayerProfile = App.TP;
-           await WebServiceManager.GetAllGAZTCertificate(lang, App.TP.Userid);
+          AllCertificate allCertificate =  await WebServiceManager.GetAllGAZTCertificate(lang, App.TP.Userid);
         }
 
         #endregion
