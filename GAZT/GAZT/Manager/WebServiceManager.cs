@@ -769,8 +769,10 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<string> GetAllGAZTCertificate(String Lang, String Tin)
+        public static async Task<AllCertificate> GetAllGAZTCertificate(String Lang, String Tin)
         {
+            AllCertificate allCertificate = new AllCertificate();
+
             TaxPayerProfile TP = null;
             bool result = false;
             string PdfUrl = string.Empty;
@@ -786,10 +788,10 @@ namespace GAZT.Manager
                 // string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
 
                 //var uri = new Uri(ZakatURL);
-                 var uri = new Uri("https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='3300014611',Langz='EN',Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json");
+                string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin +"'" + ",Langz='"+ Lang + "'" + ",Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
+            //  var uri = new Uri("https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='3300091641',Langz='EN',Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json");
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
-              
 
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
@@ -812,7 +814,7 @@ namespace GAZT.Manager
 
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
-                    AllCertificate allCertificate = new AllCertificate();
+                    
                     GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
                     allCertificate = JsonConvert.DeserializeObject<AllCertificate>(GAZTValidateAndChangePasswordResponseJSON);
                     JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
@@ -820,21 +822,21 @@ namespace GAZT.Manager
                     //jObject JsonConvert.DeserializeObject<string>(jObject);
                     if (jObject != null)
                     {
-                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
-                        {
-                            JToken memberName = jObject["results"].First["Pdfurl"];
-                            result = true;
-                            PdfUrl = memberName.ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                        //if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                        //{
+                        //    JToken memberName = jObject["results"].First["Pdfurl"];
+                        //    result = true;
+                        //    PdfUrl = memberName.ToString();
+                        //}
+                        //else
+                        //{
+                        //    return null;
+                        //}
 
                     }
                 }
 
-                return PdfUrl;
+                return allCertificate;
 
             }
             catch (Exception ex)

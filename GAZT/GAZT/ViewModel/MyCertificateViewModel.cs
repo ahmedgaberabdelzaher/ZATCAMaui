@@ -434,9 +434,19 @@ namespace GAZT
             return response;
         }
 
-        public void OnPageLoad()
+        public async void OnPageLoad()
         {
+            string lang = null;
+            if (App.IsArabic)
+            {
+                lang = "AR";
+            }
+            else
+            {
+                lang = "EN";
+            }
             TaxPayerProfile = App.TP;
+           await WebServiceManager.GetAllGAZTCertificate(lang, App.TP.Userid);
         }
 
         #endregion
