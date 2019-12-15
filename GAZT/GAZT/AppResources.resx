@@ -441,7 +441,13 @@ appeal</value>
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
     <value>It is compulsory to change password</value>
   </data>
-  <data name="TinIds" xml:space="preserve">
-    <value>TinIds</value>
+  <data name="TINS" xml:space="preserve">
+    <value>TIN's</value>
+  </data>
+  <data name="NoTINsAvailable" xml:space="preserve">
+    <value>No TIN's linked with this email address.</value>
+  </data>
+  <data name="VpnNotConnected" xml:space="preserve">
+    <value>App is facing network issue,please try again later.</value>
   </data>
 </root>

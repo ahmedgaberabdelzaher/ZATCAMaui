@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GAZT.Models
 {
-    public class TinIds
+    public class TIN
     {
         public string Name { get; set; }
         public string Tin { get; set; }

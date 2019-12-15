@@ -31,12 +31,36 @@ namespace GAZT
             }
             set
             {
+                PreviousUserName = UserName;
                 _UserName = value;
+                if(PreviousUserName!=_UserName)
+                {
+                    IsVisibleTinIds = false;
+                }
                 if(string.IsNullOrEmpty(_UserName))
                 {
                     IsLoginEnabled = false;
+                    Password = string.Empty;
+                    IsVisibleTinIds = false;
+                }
+                if(!string.IsNullOrEmpty(_UserName)&&!string.IsNullOrEmpty(Password))
+                {
+                    IsLoginEnabled = true;
                 }
                 RaisePropertyChanged("UserName");
+            }
+        }
+
+        private string _PreviousUserName = String.Empty;
+        public string PreviousUserName
+        {
+            get
+            {
+                return _PreviousUserName;
+            }
+            set
+            {
+                _PreviousUserName = value;
             }
         }
 
@@ -54,6 +78,10 @@ namespace GAZT
                 if(!string.IsNullOrEmpty(_Password) && !string.IsNullOrEmpty(UserName))
                 {
                       IsLoginEnabled = true;
+                }
+                else
+                {
+                    IsLoginEnabled = false;
                 }
                 RaisePropertyChanged("Password");
             }
@@ -92,23 +120,23 @@ namespace GAZT
         }
 
 
-        private List<TinIds> _tinIds;
-        public List<TinIds> TinIds
+        private List<TIN> _tINs;
+        public List<TIN> TINs
         {
             get
             {
-                return _tinIds;
+                return _tINs;
             }
             set
             {
-                _tinIds = value;
-                RaisePropertyChanged("TinIds");
+                _tINs = value;
+                RaisePropertyChanged("TINs");
             }
         }
 
 
-        private TinIds _selectedTinId;
-        public TinIds SelectedTinId
+        private TIN _selectedTinId;
+        public TIN SelectedTinId
         {
             get
             {
@@ -117,6 +145,10 @@ namespace GAZT
             set
             {
                 _selectedTinId = value;
+                if(_selectedTinId!=null)
+                {
+                    Password = string.Empty;
+                }
                 RaisePropertyChanged("SelectedTinId");
             }
         }
@@ -150,24 +182,50 @@ namespace GAZT
                 {
 
 
-                    TinIds = new List<TinIds>();
+                    TINs = new List<TIN>();
 
                     Task.Run(async () =>
                     {
-                        await Task.Run(() =>
+                        try
                         {
-                            IsLoading = true;
-                        });
+                            await Task.Run(() =>
+                            {
+                                IsLoading = true;
+                            });
 
-                        TinIds = await WebServiceManager.GAZTGetAllTins(UserName);
-                        if (TinIds.Count != 0 && SelectedTinId==null)
-                        {
-                            SelectedTinId = TinIds[0];
+                            TINs = await WebServiceManager.GAZTGetAllTins(UserName);
+                            if (TINs.Count != 0 && SelectedTinId == null)
+                            {
+                                SelectedTinId = TINs[0];
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    IsVisibleTinIds = false;
+                                    await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                });
+                                IsVisibleTinIds = false;
+                            }
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
                         }
-                        await Task.Run(() =>
+                        catch(Exception e)
                         {
-                            IsLoading = false;
-                        });
+                            IsVisibleTinIds = false;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                IsVisibleTinIds = false;
+                                await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
+                            });
+                            
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+                        }
                     });
                 }
                 RaisePropertyChanged("IsVisibleTinIds");
@@ -209,7 +267,7 @@ namespace GAZT
 
         public LogInViewModel(INavigationService navigationService, IDialogService dialogService)
         {
-            List<TinIds> tinIds = new List<TinIds>();
+            List<TIN> tinIds = new List<TIN>();
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -226,6 +284,7 @@ namespace GAZT
                 // _navigationService.NavigateTo(App.ForgotUsernamePassword);
                 App.IsComingFromDashboardToLogOff = false;
                 String response = string.Empty;
+                string UserId = string.Empty;
 
                 await Task.Run(() =>
                 {
@@ -242,18 +301,21 @@ namespace GAZT
                     if (SelectedTinId != null && IsVisibleTinIds == true)
                     {
                         response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
+                        UserId = SelectedTinId.Tin;
                     }
                     else
                     {
                         response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                        UserId = UserName;
                     }
 
-                        
+                  
+
                         if (0 == String.Compare("success", response, true))
                         {
                             try
                             {
-                                String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserName, lang);
+                                String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserId, lang);
                                 if (false == String.IsNullOrEmpty(MobileNumber))
                                 {
                                     if (App.TP == null)
@@ -271,13 +333,13 @@ namespace GAZT
                             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                             await Task.Run(async () =>
                             {
-                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserName);
+                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId);
                                 if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                 {
                                     if (App.TP == null)
                                         App.TP = new Models.TaxPayerProfile();
 
-                                    App.TP.Userid = UserName;
+                                    App.TP.Userid = UserId;
                                     App.TP.Password = Password;
                                     bool IsNavigatingFromLogin = true;
                                     NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
@@ -306,27 +368,47 @@ namespace GAZT
                             {
                                 string tin = UserName;
                                 tin = tin + " - " + "User does not exist";
-                                if (response.Equals("User authentication failed"))
-                                {
-                                    response = AppResources.UserAuthenticationFailed;
-                                }
-                                else if (response.Equals(tin))
-                                {
-                                    response = AppResources.UserDoesNotExist;
-                                }
-                                else
-                                {
-                                    response = AppResources.UserAccountLocked;
-                                }
+                            if (response.Equals("User authentication failed"))
+                            {
+                                response = AppResources.UserAuthenticationFailed;
+                            }
+                            else if (response.Equals(tin))
+                            {
+                                response = AppResources.UserDoesNotExist;
+                            }
+                            else if (0 == String.Compare("Authentication failed. Password locked", response, true))
+                            {
+                                response = AppResources.UserAccountLocked;
+                            }
+                            else if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                            {
+                                response = AppResources.VpnNotConnected;
+                            }
+                            else
+                            {
+                                response = AppResources.UserAccountLocked;
+                            }
                             }
                             await Task.Run(() =>
                             {
                                 IsLoading = false;
                             });
+
+                        if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                        {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
                             });
+                        }
+                        else
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                });
+                        }
                         }
                     
 

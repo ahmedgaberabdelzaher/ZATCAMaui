@@ -436,7 +436,13 @@
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
     <value>يلزم تغيير كلمة المرور</value>
   </data>
-  <data name="TinIds" xml:space="preserve">
-    <value>TinIds</value>
+  <data name="TINS" xml:space="preserve">
+    <value>الرقم المميز</value>
+  </data>
+  <data name="NoTINsAvailable" xml:space="preserve">
+    <value>ايوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
+  </data>
+  <data name="VpnNotConnected" xml:space="preserve">
+    <value>App is facing network issue,please try again later.</value>
   </data>
 </root>

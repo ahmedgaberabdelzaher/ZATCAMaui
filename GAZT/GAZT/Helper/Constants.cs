@@ -6,19 +6,35 @@ namespace GAZT.Helper
 {
     public static class Constants
     {
+        public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
+        public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
+
+        public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa:443";
+        public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
+
+        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa:443";
+        public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa:443";
+
+        public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
+        public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
+
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+
+
         public static string JSONContentType = "application/json";
-        public static string GAZTSOAPWebRequestForAuthenticationService = "https://tstdp1as1.mygazt.gov.sa:50001/local~mblgapi/AuthenticatedService";
-        public static string GAZTSendAndReceiveOTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
-        public static string GAZTValidateOTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
-        public static string GaZTVerifyMobileNumber = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
-        public static string GAZTValidateOTPForMobile = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
-        public static string GAZTValidateAndChangePassword = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='P',";
-        public static string GAZTGetPdf = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=";
-        public static string GAZTGetTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz";
-        public static string GAZTGetOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
-        public static string GAZTValidateOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
-        public static string GAZTZakatGetPdf = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_ZAKAT_SRV/Corr_detSet?$filter=Gpartz eq'";
-        public static string GetAllTin = "https://tstdp1as1.mygazt.gov.sa:50001/prt_logon/GetTINServlet?&emailId=";
+        public static string GAZTSOAPWebRequestForAuthenticationService = BaseUrlOfAuthentication+"/local~mblgapi/AuthenticatedService";
+        public static string GAZTSendAndReceiveOTP = BaseUrlOfODataServices+"/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
+        public static string GAZTValidateOTP = BaseUrlOfODataServices+"/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
+        public static string GaZTVerifyMobileNumber = BaseUrlOfODataServices+"/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
+        public static string GAZTValidateOTPForMobile = BaseUrlOfODataServices+"/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='M',";
+        public static string GAZTValidateAndChangePassword = BaseUrlOfODataServices+ "/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='P',";
+        public static string GAZTGetPdf = BaseUrlOfODataServices+"/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=";
+        public static string GAZTGetTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz";
+        public static string GAZTGetOTPForEmail = BaseUrlOfODataServices+"/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
+        public static string GAZTValidateOTPForEmail = BaseUrlOfODataServices+"/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
+        public static string GAZTZakatGetPdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_ZAKAT_SRV/Corr_detSet?$filter=Gpartz eq'";
+        public static string GetAllTin = BaseUrlOfAuthentication + "/prt_logon/GetTINServlet?&emailId=";
 
 
         //public static bool IsValidMobileNumber(string mobileNumber)

@@ -101,6 +101,11 @@ namespace GAZT.Manager
                                     throw new Exception(Token);
                                 }
 
+                                if ((0 == String.Compare(Token, "Authentication failed. Password locked")))
+                                {
+                                    throw new Exception(Token);
+                                }
+
 
                                 if (!string.IsNullOrEmpty(Token))
                                 {
@@ -134,11 +139,11 @@ namespace GAZT.Manager
         /// <returns></returns>
         /// 
 
-        public static async Task<List<TinIds>> GAZTGetAllTins(String Username)
+        public static async Task<List<TIN>> GAZTGetAllTins(String Username)
         {
             String OTPSentConfirmation = String.Empty;
           
-            List<TinIds> tinIds = new List<TinIds>();
+            List<TIN> tinIds = new List<TIN>();
             //string NewToken = string.Empty;
             try
             {
@@ -155,7 +160,7 @@ namespace GAZT.Manager
                 if (!string.IsNullOrEmpty(OTPSentConfirmation))
                 {
                     OTPSentConfirmation = JObject.Parse(OTPSentConfirmation)["tinData"].ToString();
-                    tinIds = JsonConvert.DeserializeObject<List<TinIds>>(OTPSentConfirmation);
+                    tinIds = JsonConvert.DeserializeObject<List<TIN>>(OTPSentConfirmation);
                     
                     // OTPSentConfirmationJToken = JObject.Parse(OTPSentConfirmation)["Result"];
                 }
@@ -177,7 +182,7 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
-                String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?$format=json";
+                String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?&saml2=disabled&$format=json";
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
@@ -488,7 +493,7 @@ namespace GAZT.Manager
             {
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                // String url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=Gpartz  eq  '3300057436'  and Langz   eq 'EN'  and  Begdaz eq   datetime'2007-01-01T00:00'  and Enddaz eq datetime'2019-10-13T11:12'  and  ObligFlagz eq 'I'  and  Auditor  eq  ''   and  TaxtpFg  eq  'VAT'  and  UserTin   eq  ''&$format=json";
-                String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'"+""+"'&$format=json";
+                String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'"+""+"'&saml2=disabled&$format=json";
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
@@ -726,7 +731,7 @@ namespace GAZT.Manager
                // Tin = "3300014611";
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
                 //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
-                string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&$format=json";
+                string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=disabled&$format=json";
 
                  var uri = new Uri(ZakatURL);
                 client.DefaultRequestHeaders.Add("Token", App.Token);

@@ -613,6 +613,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No TIN&apos;s linked with this email address..
+        /// </summary>
+        public static string NoTINsAvailable {
+            get {
+                return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string OkText {
@@ -892,11 +901,11 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TinIds.
+        ///   Looks up a localized string similar to TIN&apos;s.
         /// </summary>
-        public static string TinIds {
+        public static string TINS {
             get {
-                return ResourceManager.GetString("TinIds", resourceCulture);
+                return ResourceManager.GetString("TINS", resourceCulture);
             }
         }
         
@@ -987,6 +996,15 @@ namespace GAZT {
         public static string Verify {
             get {
                 return ResourceManager.GetString("Verify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App is facing network issue,please try again later..
+        /// </summary>
+        public static string VpnNotConnected {
+            get {
+                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
             }
         }
         
