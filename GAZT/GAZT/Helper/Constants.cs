@@ -17,9 +17,10 @@ namespace GAZT.Helper
         public static string GAZTGetTP = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz";
         public static string GAZTGetOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
         public static string GAZTValidateOTPForEmail = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/sap/Z_TP_CHANGE_PROFILE_SRV/ZDS_TPCHPROFILESet(Flag='E',";
-                public static string GAZTZakatGetPdf = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_ZAKAT_SRV/Corr_detSet?$filter=Gpartz eq'";
+        public static string GAZTZakatGetPdf = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_ZAKAT_SRV/Corr_detSet?$filter=Gpartz eq'";
+        public static string GetAllTin = "https://tstdp1as1.mygazt.gov.sa:50001/prt_logon/GetTINServlet?&emailId=";
 
-        
+
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{
         //    if(mobileNumber.Substring(0,1).Equals(5) && mobileNumber.Length == 9)

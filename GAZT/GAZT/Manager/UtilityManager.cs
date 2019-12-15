@@ -13,7 +13,7 @@ namespace GAZT.Manager
 
 
         #region Method
-        private static bool IsValidEmailAddress(string EmailAddress)
+        public static bool IsValidEmailAddress(string EmailAddress)
         {
             Match emailMatch = Regex.Match(EmailAddress, emailIdValidation);
             if (emailMatch.Success)

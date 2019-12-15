@@ -436,4 +436,7 @@
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
     <value>يلزم تغيير كلمة المرور</value>
   </data>
+  <data name="TinIds" xml:space="preserve">
+    <value>TinIds</value>
+  </data>
 </root>

@@ -96,6 +96,11 @@ namespace GAZT.Manager
                                     throw new Exception(Token);
                                 }
 
+                                if ((0 == String.Compare(Token, "User authentication failed")))
+                                {
+                                    throw new Exception(Token);
+                                }
+
 
                                 if (!string.IsNullOrEmpty(Token))
                                 {
@@ -127,6 +132,44 @@ namespace GAZT.Manager
         /// <param name="Lang"></param>
         /// <param name="UserId"></param>
         /// <returns></returns>
+        /// 
+
+        public static async Task<List<TinIds>> GAZTGetAllTins(String Username)
+        {
+            String OTPSentConfirmation = String.Empty;
+          
+            List<TinIds> tinIds = new List<TinIds>();
+            //string NewToken = string.Empty;
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                String url = Constants.GetAllTin +Username;
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
+
+
+                if (GAZTSendAndReceiveOTPResponse != null)
+                {
+                    OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
+                }
+                if (!string.IsNullOrEmpty(OTPSentConfirmation))
+                {
+                    OTPSentConfirmation = JObject.Parse(OTPSentConfirmation)["tinData"].ToString();
+                    tinIds = JsonConvert.DeserializeObject<List<TinIds>>(OTPSentConfirmation);
+                    
+                    // OTPSentConfirmationJToken = JObject.Parse(OTPSentConfirmation)["Result"];
+                }
+
+                return tinIds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId)
         {
             String OTPSentConfirmation = String.Empty;
