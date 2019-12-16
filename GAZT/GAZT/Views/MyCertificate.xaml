@@ -66,11 +66,27 @@
                 </StackLayout>
 
                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical" Spacing="0" BackgroundColor="Transparent">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
 
-                    <local1:CustomLabel  IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,20,20,0">
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+
+                    <local1:CustomLabel  Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" Margin="20,20,20,0">
                     </local1:CustomLabel>
 
-                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="FillAndExpand" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <ListView  Grid.Row="1" Grid.Column="0"  Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="Fill" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                         </x:Arguments>
@@ -105,11 +121,11 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0" />
-                    <local1:CustomLabel IsVisible="{Binding IsZAKATCertificateAvailable}" Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="20,10,20,0">
+                    <BoxView  Grid.Row="2" Grid.Column="0" IsVisible="{Binding IsZAKATCertificateAvailable}"  HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0" />
+                    <local1:CustomLabel  Grid.Row="3" Grid.Column="0"  IsVisible="{Binding IsZAKATCertificateAvailable}" Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="20,10,20,0">
                     </local1:CustomLabel>
 
-                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsZAKATCertificateAvailable}" ItemsSource ="{Binding ZAKATCertificateList}" VerticalOptions="FillAndExpand" x:Name="ZAKATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <ListView  Grid.Row="4" Grid.Column="0"  Margin="20,0,20,0" IsVisible="{Binding IsZAKATCertificateAvailable}" ItemsSource ="{Binding ZAKATCertificateList}" VerticalOptions="FillAndExpand" x:Name="ZAKATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                         </x:Arguments>
@@ -144,11 +160,11 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0"/>
-                    <local1:CustomLabel  IsVisible="{Binding IsEXISECertificateAvailable}" Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,10,20,0">
+                    <BoxView  Grid.Row="5" IsVisible="{Binding IsEXISECertificateAvailable}" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0"/>
+                    <local1:CustomLabel Grid.Row="6" Grid.Column="0" IsVisible="{Binding IsEXISECertificateAvailable}" Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" Margin="20,10,20,0">
                     </local1:CustomLabel>
 
-                    <ListView Margin="20,0,20,0"  IsVisible="{Binding IsEXISECertificateAvailable}" ItemsSource ="{Binding EXICISECertificateList}" VerticalOptions="FillAndExpand" x:Name="EXISECertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedEXCISECertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <ListView Grid.Row="7" Grid.Column="0" Margin="20,0,20,0"  IsVisible="{Binding IsEXISECertificateAvailable}" ItemsSource ="{Binding EXICISECertificateList}" VerticalOptions="FillAndExpand" x:Name="EXISECertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedEXCISECertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                         </x:Arguments>
@@ -172,7 +188,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                                            <BoxView  Grid.Row="8" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,10"/>
 
+</Grid>
                 </StackLayout>
                 <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
