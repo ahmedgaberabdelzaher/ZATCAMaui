@@ -64,12 +64,12 @@
                         </cards:CarouselView.ItemTemplate>
                     </cards:CarouselView>
                 </StackLayout>
-                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical">
+                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical" Spacing="0">
 
-                    <local1:CustomLabel  IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.MyCertificate}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,10,20,0">
+                    <local1:CustomLabel  IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,20,20,0">
                     </local1:CustomLabel>
 
-                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="FillAndExpand" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None" >
+                    <ListView Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="FillAndExpand" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                         </x:Arguments>
@@ -104,7 +104,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0"/>
+                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0" />
                     <local1:CustomLabel IsVisible="{Binding IsZAKATCertificateAvailable}" Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="20,10,20,0">
                     </local1:CustomLabel>
 
@@ -143,7 +143,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0"/>
+                    <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"  BackgroundColor="#c7c7c7" Margin="10,0,10,0"/>
                     <local1:CustomLabel  IsVisible="{Binding IsEXISECertificateAvailable}" Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,10,20,0">
                     </local1:CustomLabel>
 
