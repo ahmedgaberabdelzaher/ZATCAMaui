@@ -694,5 +694,23 @@ namespace GAZT {
                 return ResourceManager.GetString("VpnNotConnected", resourceCulture);
             }
         }
+        
+        public static string VATCertificates {
+            get {
+                return ResourceManager.GetString("VATCertificates", resourceCulture);
+            }
+        }
+        
+        public static string ZakatCertificates {
+            get {
+                return ResourceManager.GetString("ZakatCertificates", resourceCulture);
+            }
+        }
+        
+        public static string ExciseCertificates {
+            get {
+                return ResourceManager.GetString("ExciseCertificates", resourceCulture);
+            }
+        }
     }
 }
