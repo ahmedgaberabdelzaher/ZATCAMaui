@@ -51,7 +51,7 @@
                 <local1:CustomLabel Text="{x:Static local:AppResources.MyCertificate}" Style="{StaticResource MyCertificateSmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center">
                 </local1:CustomLabel>
 
-                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0" >
                     <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
                         <cards:CarouselView.ItemTemplate>
                             <DataTemplate>
@@ -64,7 +64,8 @@
                         </cards:CarouselView.ItemTemplate>
                     </cards:CarouselView>
                 </StackLayout>
-                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical" Spacing="0">
+
+                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Orientation="Vertical" Spacing="0" BackgroundColor="Transparent">
 
                     <local1:CustomLabel  IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Start" VerticalOptions="Center" Margin="20,20,20,0">
                     </local1:CustomLabel>
