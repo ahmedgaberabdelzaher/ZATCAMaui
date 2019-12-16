@@ -33,10 +33,17 @@ namespace GAZT.Droid.CustomRenderer
 				Control.LayoutParameters = layoutParams;
 				Control.SetPadding(0, 0, 0, 0);
 				SetPadding(0, 0, 0, 0);
-				if (App.IsArabic)
+
+                if (Control != null)
+                {
+                    Control.Gravity = Android.Views.GravityFlags.CenterVertical;
+                }
+
+                if (App.IsArabic)
 				{
                     Control.TextDirection = Android.Views.TextDirection.Rtl;
-                    Control.Gravity = Android.Views.GravityFlags.Right;
+                    Control.Gravity = Android.Views.GravityFlags.CenterVertical;
+                    
 
                 }
                 if (App.IsOTPiew)
