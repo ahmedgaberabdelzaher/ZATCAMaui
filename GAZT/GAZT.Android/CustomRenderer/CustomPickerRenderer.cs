@@ -34,7 +34,11 @@ namespace GAZT.Droid.CustomRenderer
                 if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                     Control.Background = AddPickerStyles(element.Image);
 
-
+                if (App.IsArabic)
+                {
+                    Control.TextDirection = Android.Views.TextDirection.Rtl;
+                    Control.Gravity = Android.Views.GravityFlags.CenterVertical;
+                }
 
             }
         }

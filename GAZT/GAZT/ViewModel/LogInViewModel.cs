@@ -21,7 +21,7 @@ namespace GAZT
         public ICommand OnOnLanguageClickClicked { get; set; }
         #endregion
         #region Property
-         private string _UserName = "3102183402";
+         private string _UserName = "saurabh-c@gazt.gov.sa";
        // private string _UserName = string.Empty;
         public string UserName
         {
@@ -147,6 +147,7 @@ namespace GAZT
                 _selectedTinId = value;
                 if(_selectedTinId!=null)
                 {
+                    App.CurrentDropdownTIN = SelectedTinId;
                     Password = string.Empty;
                 }
                 RaisePropertyChanged("SelectedTinId");
