@@ -246,7 +246,7 @@
                                             <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
                                         </Label.Margin>
                                     </Label>
-                                    <Image Grid.Row="12" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                    <Image Grid.Row="12" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnEmailCurrentPasswordVisibilityClicked" />
                                         </Image.GestureRecognizers>
@@ -260,7 +260,7 @@
                                             <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
                                         </Label.Margin>
                                     </Label>
-                                    <Image Grid.Row="14" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                    <Image Grid.Row="14" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnEmailNewPasswordVisibilityClicked" />
                                         </Image.GestureRecognizers>
@@ -270,8 +270,11 @@
                                     <local1:BorderlessEntry x:Name="EmailRetypePassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePasswordForEmail}" Style="{StaticResource EntryStyle}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                                     </local1:BorderlessEntry>
                                     <Label   Text="{x:Static local:AppResources.RetypePassword}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Grid.Row="16" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                        <Label.Margin>
+                                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                        </Label.Margin>
                                     </Label>
-                                    <Image Grid.Row="16" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                    <Image Grid.Row="16" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnEmailReTypePasswordVisibilityClicked" />
                                         </Image.GestureRecognizers>
@@ -429,11 +432,11 @@
                     <local1:BorderlessEntry x:Name="CurrentPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-<Label.Margin>
-                                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
-                                        </Label.Margin>
+                        <Label.Margin>
+                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                        </Label.Margin>
                     </Label>
-                    <Image Grid.Row="2" Grid.Column="3" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                    <Image Grid.Row="2" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnCurrentPasswordVisibilityClicked" />
                         </Image.GestureRecognizers>
@@ -443,9 +446,9 @@
                     <local1:BorderlessEntry x:Name="NewPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPassword}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.NewPassword}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-<Label.Margin>
-                                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
-                                        </Label.Margin>
+                        <Label.Margin>
+                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                        </Label.Margin>
                     </Label>
                     <Image Grid.Row="4" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>
@@ -457,9 +460,9 @@
                     <local1:BorderlessEntry x:Name="ReTypePassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePassword}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     </local1:BorderlessEntry>
                     <Label   Text="{x:Static local:AppResources.RetypePassword}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
-<Label.Margin>
-                                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
-                                        </Label.Margin>
+                        <Label.Margin>
+                            <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                        </Label.Margin>
                     </Label>
                     <Image Grid.Row="6" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                         <Image.GestureRecognizers>

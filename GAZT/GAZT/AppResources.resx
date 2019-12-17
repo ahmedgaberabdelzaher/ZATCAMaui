@@ -231,8 +231,8 @@
   <data name="MyCertificate" xml:space="preserve">
     <value>My Certificate</value>
   </data>
-   <data name="MyCertificates" xml:space="preserve">
-    <value>My Certificate(s)</value>
+   <data name="VATCertificates" xml:space="preserve">
+    <value>VAT Certificate(s)</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
     <value>ZAKAT Certificate(s)</value>

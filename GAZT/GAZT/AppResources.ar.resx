@@ -445,4 +445,17 @@
   <data name="VpnNotConnected" xml:space="preserve">
     <value>App is facing network issue,please try again later.</value>
   </data>
+    <data name="VATCertificates" xml:space="preserve">
+    <value>شهادات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZakatCertificates" xml:space="preserve">
+    <value>شهادات الزكاة</value>
+  </data> 
+   <data name="ExciseCertificates" xml:space="preserve">
+    <value>شهادات ضريبة السلع الانتقائية</value>
+  </data> 
+   <data name="ExciseCertificates" xml:space="preserve">
+    <value>شهادات ضريبة السلع الانتقائية</value>
+  </data>
+  
 </root>

@@ -70,18 +70,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to App is facing network issue,please try again later..
-        /// </summary>
-        public static string VpnNotConnected
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
-            }
-        }
-
+        
         public static string AmountNotObjected {
             get {
                 return ResourceManager.GetString("AmountNotObjected", resourceCulture);
@@ -286,9 +275,9 @@ namespace GAZT {
             }
         }
         
-        public static string MyCertificates {
+        public static string VATCertificates {
             get {
-                return ResourceManager.GetString("MyCertificates", resourceCulture);
+                return ResourceManager.GetString("VATCertificates", resourceCulture);
             }
         }
         
@@ -328,41 +317,6 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to New Password field and Confirm Password field must match.
-        /// </summary>
-        public static string NewPasswordandRetypePasswordNotMatch {
-            get {
-                return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No TIN&apos;s linked with this email address..
-        /// </summary>
-        public static string NoTINsAvailable {
-            get {
-                return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ok.
-        /// </summary>
-        public static string OkText {
-            get {
-                return ResourceManager.GetString("OkText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Old Email.
-        /// </summary>
-       
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Overdue Return.
-        /// </summary>
         public static string OverdueReturn {
             get {
                 return ResourceManager.GetString("OverdueReturn", resourceCulture);
@@ -519,27 +473,6 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to TIN-Email.
-        /// </summary>
-        public static string TinEmail {
-            get {
-                return ResourceManager.GetString("TinEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TIN&apos;s.
-        /// </summary>
-        public static string TINS {
-            get {
-                return ResourceManager.GetString("TINS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total Amount.
-        /// </summary>
         public static string TotalAmount {
             get {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
@@ -636,7 +569,11 @@ namespace GAZT {
             }
         }
         
-       
+        public static string TinEmail {
+            get {
+                return ResourceManager.GetString("TinEmail", resourceCulture);
+            }
+        }
         
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -674,7 +611,11 @@ namespace GAZT {
             }
         }
         
-        
+        public static string NewPasswordandRetypePasswordNotMatch {
+            get {
+                return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
+            }
+        }
         
         public static string EnterVerificationCodeForEmail {
             get {
@@ -712,7 +653,11 @@ namespace GAZT {
             }
         }
         
-        
+        public static string OkText {
+            get {
+                return ResourceManager.GetString("OkText", resourceCulture);
+            }
+        }
         
         public static string UserAuthenticationFailed {
             get {
@@ -744,9 +689,21 @@ namespace GAZT {
             }
         }
         
-        public static string TinIds {
+        public static string TINS {
             get {
-                return ResourceManager.GetString("TinIds", resourceCulture);
+                return ResourceManager.GetString("TINS", resourceCulture);
+            }
+        }
+        
+        public static string NoTINsAvailable {
+            get {
+                return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
+            }
+        }
+        
+        public static string VpnNotConnected {
+            get {
+                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
             }
         }
     }

@@ -2,11 +2,7 @@
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,11 +11,16 @@ namespace GAZT.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForgotUsernamePassword : ContentPage
     {
+        ObservableCollection<String> Items = new ObservableCollection<String>();
+
         ForgotUsernamePasswordViewModel viewModel;
         public ForgotUsernamePassword()
         {
             viewModel = App.Locator.ForgotUsernamePassword;
             InitializeComponent();
+            string str = "abc";
+            Items.Add(str);
+            CardView.ItemsSource = Items;
             try
             {
                 SetLTR();

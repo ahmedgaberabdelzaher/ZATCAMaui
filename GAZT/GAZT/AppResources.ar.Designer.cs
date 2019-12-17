@@ -443,19 +443,19 @@ namespace GAZT {
             }
         }
         
-        public static string ChnagePassword {
+        public static string ChangePassword {
             get {
-                return ResourceManager.GetString("ChnagePassword", resourceCulture);
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
             }
         }
-
+        
         public static string TaxpayerProfile {
             get {
                 return ResourceManager.GetString("TaxpayerProfile", resourceCulture);
             }
-          }
-
-public static string TIN {
+        }
+        
+        public static string TIN {
             get {
                 return ResourceManager.GetString("TIN", resourceCulture);
             }
@@ -634,34 +634,82 @@ public static string TIN {
                 return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
             }
         }
-        public static string Information
-        {
-            get
-            {
+        
+        public static string Information {
+            get {
                 return ResourceManager.GetString("Information", resourceCulture);
             }
         }
-        public static string OkText
-        {
-            get
-            {
+        
+        public static string OkText {
+            get {
                 return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
-
         
-        public static string MandatoryPasswordForEmailUpdatation
-        {
-            get
-            {
+        public static string UserAuthenticationFailed {
+            get {
+                return ResourceManager.GetString("UserAuthenticationFailed", resourceCulture);
+            }
+        }
+        
+        public static string UserDoesNotExist {
+            get {
+                return ResourceManager.GetString("UserDoesNotExist", resourceCulture);
+            }
+        }
+        
+        public static string UserAccountLocked {
+            get {
+                return ResourceManager.GetString("UserAccountLocked", resourceCulture);
+            }
+        }
+        
+        public static string PleaseReVerify {
+            get {
+                return ResourceManager.GetString("PleaseReVerify", resourceCulture);
+            }
+        }
+        
+        public static string MandatoryPasswordForEmailUpdatation {
+            get {
                 return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
             }
         }
-        public static string ChangePassword
-        {
-            get
-            {
-                return ResourceManager.GetString("ChangePassword", resourceCulture);
+        
+        public static string TINS {
+            get {
+                return ResourceManager.GetString("TINS", resourceCulture);
+            }
+        }
+        
+        public static string NoTINsAvailable {
+            get {
+                return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
+            }
+        }
+        
+        public static string VpnNotConnected {
+            get {
+                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
+            }
+        }
+        
+        public static string VATCertificates {
+            get {
+                return ResourceManager.GetString("VATCertificates", resourceCulture);
+            }
+        }
+        
+        public static string ZakatCertificates {
+            get {
+                return ResourceManager.GetString("ZakatCertificates", resourceCulture);
+            }
+        }
+        
+        public static string ExciseCertificates {
+            get {
+                return ResourceManager.GetString("ExciseCertificates", resourceCulture);
             }
         }
     }
