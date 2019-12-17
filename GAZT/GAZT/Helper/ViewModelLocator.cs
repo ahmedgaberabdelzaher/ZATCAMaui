@@ -22,7 +22,12 @@ namespace GAZT
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<ForgotUsernamePasswordViewModel>();
 
-            
+            SimpleIoc.Default.Register<TPProfileViewModel>();
+            SimpleIoc.Default.Register<VerifyEmailAddressViewModel>();
+            SimpleIoc.Default.Register<ChangeMobileNumberViewModel>();
+            SimpleIoc.Default.Register<ChangePasswordViewModel>();
+
+
 
 
 
@@ -156,6 +161,80 @@ namespace GAZT
             }
         }
 
+
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public TPProfileViewModel TPProfileView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TPProfileViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public VerifyEmailAddressViewModel VerifyEmailAddressView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VerifyEmailAddressViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public ChangeMobileNumberViewModel ChangeMobileNumberView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeMobileNumberViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ChangePasswordViewModel ChangePasswordView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangePasswordViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
+
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -166,6 +245,12 @@ namespace GAZT
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
             navigationService.Configure(App.PdfView, typeof(PdfView));
             navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
+
+
+            navigationService.Configure(App.TPProfileView, typeof(TPProfileView));
+            navigationService.Configure(App.VerifyEmailAddressView, typeof(VerifyEmailAddressView));
+            navigationService.Configure(App.ChangeMobileNumberView, typeof(ChangeMobileNumberView));
+            navigationService.Configure(App.ChangePasswordView, typeof(ChangePasswordView));
 
             return navigationService;
         }

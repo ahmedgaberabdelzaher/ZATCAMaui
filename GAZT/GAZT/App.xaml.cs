@@ -22,7 +22,13 @@ namespace GAZT
         public static string UpdateEmailAddress = "UpdateEmailAddress";
         public static string ForgotUsernamePassword = "ForgotUsernamePassword";
 
-        
+
+        public static string TPProfileView = "TPProfileView";
+        public static string VerifyEmailAddressView = "VerifyEmailAddressView";
+        public static string ChangeMobileNumberView = "ChangeMobileNumberView";
+        public static string ChangePasswordView = "ChangePasswordView";
+
+
 
 
         // public static bool IsArabic = false;

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:local1="clr-namespace:GAZT"
+             
+             x:Class="GAZT.Views.TPProfileView">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+
+            <!--<Label Text="{x:Static local:AppResources.Name}"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start"  BackgroundColor="White"/>
+            <Entry Text="" Style="{StaticResource EntryStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  BackgroundColor="White"></Entry>
+
+            <Label Text="{x:Static local:AppResources.Tin}"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start"  BackgroundColor="White"/>
+            <Entry Text="" Style="{StaticResource EntryStyle}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  BackgroundColor="White"></Entry>
+
+            <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start"  BackgroundColor="White"/>
+            <Entry Text="" Style="{StaticResource EntryStyle}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  BackgroundColor="White"></Entry>
+
+            <Label Text="{x:Static local:AppResources.Email}"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start"  BackgroundColor="White"/>
+            <Entry Text="" Style="{StaticResource EntryStyle}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  BackgroundColor="White"></Entry>
+
+            <Label Text="{x:Static local:AppResources.Password}"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start"  BackgroundColor="White"/>
+            <Entry Text="" Style="{StaticResource EntryStyle}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  BackgroundColor="White"></Entry>-->
+
+
+            <!--<Frame  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" >
+            </Frame>
+            <local1:BorderlessEntry Text="" Style="{StaticResource EntryStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
+            </local1:BorderlessEntry>
+            <Label Text="{x:Static local:AppResources.Name}" IsEnabled="False"  Style="{StaticResource MiniGoldLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                </Label.Margin>
+            </Label>-->
+            <!--<Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+            </Frame>
+            <local1:BorderlessEntry Text="{Binding Tin}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
+            </local1:BorderlessEntry>
+            <Label Text="{x:Static local:AppResources.TIN}" IsEnabled="False" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                </Label.Margin>
+            </Label>
+            <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+            </Frame>
+            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            </local1:BorderlessEntry>
+            <Label Text="{x:Static local:AppResources.MobileNumber}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                </Label.Margin>
+            </Label>
+            <Image Grid.Row="6" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeMobileNumberClicked}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+            </Frame>
+            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="8" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            </local1:BorderlessEntry>
+            <Label Text="{x:Static local:AppResources.Email}" Grid.Row="8" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                </Label.Margin>
+            </Label>
+            <Image Grid.Row="8" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailClicked}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Frame Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+            </Frame>
+            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" Style="{StaticResource EntryStyle}" IsPassword="True" Grid.Row="10" Grid.Column="0" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White" IsEnabled="False">
+            </local1:BorderlessEntry>
+            <Label   Text="{x:Static local:AppResources.Password}" Grid.Row="10" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                <Label.Margin>
+                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                </Label.Margin>
+            </Label>
+            <Image Grid.Row="10" Grid.Column="1" Source="ic_edit.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}" />
+                </Image.GestureRecognizers>
+            </Image>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
