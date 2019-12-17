@@ -168,7 +168,231 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
-                <ScrollView  Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+
+                <!--<ScrollView  Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">-->
+                    <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+
+                        <Grid RowSpacing="8" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeEmailLayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="20" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*" />
+                                <ColumnDefinition Width="70*" />
+                                <ColumnDefinition Width="15*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame x:Name="FrameHeightOldEmail" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry  x:Name="EntryHeightOldEmail" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.OldEmail}" IsEnabled="False" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame Grid.Row="4" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame Grid.Row="6" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypeEmail}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.RetypeEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                            </Frame>
+                            <Label   Text="{x:Static local:AppResources.Verify}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnVerifyEmailButtonClicked}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+                <!--</ScrollView>-->
+
+
+                <!--<ScrollView  Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibilityForPassword}">-->
+                    <StackLayout Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibilityForPassword}">
+
+                        <Grid RowSpacing="8" HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangeEmailLayoutVisibilityForPassword}" BindingContext="{Binding TaxPayerProfile}">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="20" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*" />
+                                <ColumnDefinition Width="70*" />
+                                <ColumnDefinition Width="15*" />
+                            </Grid.ColumnDefinitions>
+                            <!--<Frame x:Name="FrameHeightOldEmail" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry  x:Name="EntryHeightOldEmail" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.OldEmail}" IsEnabled="False" Grid.Row="2" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame Grid.Row="4" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.NewEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewEmail}" Grid.Row="4" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame Grid.Row="6" Grid.Column="0" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypeEmail}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.RetypeEmail}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypeEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                            </Frame>
+                            <Label   Text="{x:Static local:AppResources.Verify}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnVerifyEmailButtonClicked}" />
+                                </Label.GestureRecognizers>
+                            </Label>-->
+
+
+
+
+                            <Label Text="{x:Static local:AppResources.ChangePassword}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#005e4b">
+                            </Label>
+                            <Frame Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry x:Name="EmailCurrentPassword" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPasswordForEmail}" IsPassword="True" IsEnabled="False" Style="{StaticResource EntryStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.CurrentPassword}" Grid.Row="4" IsEnabled="False" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Image Grid.Row="4" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailCurrentPasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Frame Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry x:Name="EmailNewPassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.NewPasswordForEmail}" Style="{StaticResource EntryStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.NewPassword}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledNewPasswordForEmail}" Grid.Row="6" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Image Grid.Row="6" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailNewPasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Frame Grid.Row="8" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                            </Frame>
+                            <local1:BorderlessEntry x:Name="EmailRetypePassword" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.RetypePasswordForEmail}" Style="{StaticResource EntryStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,1,15,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                            </local1:BorderlessEntry>
+                            <Label   Text="{x:Static local:AppResources.RetypePassword}" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledRetypePasswordForEmail}" Grid.Row="8" Grid.Column="0" Style="{StaticResource MiniGoldLabelStyle}"  Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                                <Label.Margin>
+                                    <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                                </Label.Margin>
+                            </Label>
+                            <Image Grid.Row="8" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailReTypePasswordVisibilityClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+
+                        <!--<Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                        </Frame>
+                        <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailSubmitButtonClicked}" />
+                            </Label.GestureRecognizers>
+                        </Label>-->
+
+
+                        <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0">
+                        </Frame>
+                        <Label   Text="{x:Static local:AppResources.Submit}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailSubmitButtonClicked}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+
+                        <!--<Button Text="{x:Static local:AppResources.Submit}"  Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding OnChangeEmailSubmitButtonClicked}"></Button>-->
+
+                        <!--<Frame HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"   VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibilityForPassword}">
+                            <Frame.HeightRequest>
+                                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="45" />
+                            </Frame.HeightRequest>
+
+                            <Label Text="{x:Static local:AppResources.Submit}" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"  Style="{StaticResource SmallWhiteLabelStyle}" HeightRequest="17" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" IsVisible="{Binding ChangeEmailLayoutVisibilityForPassword}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnChangeEmailSubmitButtonClicked}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Frame>-->
+
+                    </Grid>
+                    </StackLayout>
+                <!--</ScrollView>-->
+
+
+
+                <!--<ScrollView  Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding ChangeEmailLayoutVisibility}">
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <OnIdiom x:TypeArguments="View">
@@ -396,9 +620,9 @@
 
 
                     </StackLayout>
-                </ScrollView>
+                </ScrollView>-->
 
-                <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}"  VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibility}">
+                <!--<Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.IsEnabledSubmitForEmail}"  VerticalOptions="End" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="0" IsVisible="{Binding ChangeEmailLayoutVisibilityForPassword}">
                     <Frame.HeightRequest>
                         <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="45" />
                     </Frame.HeightRequest>
@@ -408,7 +632,7 @@
                             <TapGestureRecognizer Command="{Binding OnChangeEmailSubmitButtonClicked}" />
                         </Label.GestureRecognizers>
                     </Label>
-                </Frame>
+                </Frame>-->
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.ChangePasswordayoutVisibility}" BindingContext="{Binding TaxPayerProfile}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="6*" />

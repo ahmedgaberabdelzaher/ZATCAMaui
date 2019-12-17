@@ -23,6 +23,8 @@ namespace GAZT.Views
             EmailNewPassword.IsPassword = true;
             CurrentPassword.IsPassword = true;
             EmailCurrentPassword.IsPassword = true;
+            viewModel.ChangeEmailLayoutVisibility = false;
+            viewModel.ChangeEmailLayoutVisibilityForPassword = false;
             this.BindingContext = viewModel;
             string str = "abc";
             Items.Add(str);

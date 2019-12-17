@@ -106,6 +106,22 @@ namespace GAZT
             }
         }
 
+
+        private bool _changeEmailLayoutVisibilityForPassword = false;
+        public bool ChangeEmailLayoutVisibilityForPassword
+        {
+            get
+            {
+                return _changeEmailLayoutVisibilityForPassword;
+            }
+            set
+            {
+                _changeEmailLayoutVisibilityForPassword = value;
+                RaisePropertyChanged("ChangeEmailLayoutVisibilityForPassword");
+            }
+        }
+
+
         private bool _changePasswordayoutVisibility = false;
         public bool ChangePasswordayoutVisibility
         {
@@ -454,6 +470,7 @@ namespace GAZT
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            ChangeEmailLayoutVisibilityForPassword = false;
             OnChangeMobileNumberClicked = new Command(() =>
             {
                 TPProfileVisibility = false;
@@ -510,7 +527,12 @@ namespace GAZT
                             String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
                             String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                            
                             _navigationService.NavigateTo(App.OTPView, NavigatingFromEmail);
+                            
+                            ChangeEmailLayoutVisibility = false;
+                            ChangeEmailLayoutVisibilityForPassword = true;
+
                         }
                     }
                     else
@@ -612,8 +634,10 @@ namespace GAZT
                         }
                         else
                         {
+                            
                             String OnInvalidEmail = AppResources.InvalidEmail;
                             await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
+                            
                         }
                     }
                     else
@@ -629,7 +653,10 @@ namespace GAZT
                     {
                         string InvalidOTP = AppResources.InvalidOTP + "(" + AppResources.PleaseReVerify + ")";
                         await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
+
                         ClearPasswordDataForEmail();
+                        ChangeEmailLayoutVisibility = true;
+                        ChangeEmailLayoutVisibilityForPassword = false;
                     });
                 }
             });
@@ -745,7 +772,7 @@ namespace GAZT
         {
             NewEmail = string.Empty;
             RetypeEmail = string.Empty;
-            CurrentPasswordForEmail = string.Empty;
+          //  CurrentPasswordForEmail = string.Empty;
             NewPasswordForEmail = string.Empty;
             IsEnabledNewEmail = true;
         }
