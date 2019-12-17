@@ -46,9 +46,11 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            if (App.CurrentDropdownTIN != null)
+            viewModel.SelectedTinId = App.CurrentDropdownTIN;
             //viewModel.UserName = String.Empty;
             //viewModel.Password = String.Empty;
-         //  await WebServiceManager.GetAllGAZTCertificate("EN", "");
+            //  await WebServiceManager.GetAllGAZTCertificate("EN", "");
             if (App.IsComingFromDashboardToLogOff)
             {
                 Device.BeginInvokeOnMainThread(async () =>

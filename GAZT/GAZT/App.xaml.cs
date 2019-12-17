@@ -22,7 +22,7 @@ namespace GAZT
         public static string UpdateEmailAddress = "UpdateEmailAddress";
         public static string ForgotUsernamePassword = "ForgotUsernamePassword";
 
-        
+        public static TIN CurrentDropdownTIN; 
 
 
         // public static bool IsArabic = false;

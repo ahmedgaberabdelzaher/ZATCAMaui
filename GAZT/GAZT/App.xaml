@@ -267,7 +267,16 @@
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
 
-           
+            <Style x:Key="PickerStyle" TargetType="Picker">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+            </Style>
+
             <!-- 
             <Style x:Key ="EditorStyle" TargetType="Editor">
                 <Setter Property="FontSize">

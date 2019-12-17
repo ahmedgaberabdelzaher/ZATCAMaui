@@ -69,10 +69,10 @@
                 </StackLayout>
                 <Frame Grid.Row="5" IsVisible="{Binding IsVisibleTinIds}" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
                 </Frame>
-                <StackLayout IsVisible="{Binding IsVisibleTinIds}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                <StackLayout IsVisible="{Binding IsVisibleTinIds}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
                     <!--<Picker Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource EntryStyle}" TextColor="Black" ItemsSource="{Binding TINs}" SelectedItem="{Binding SelectedTinId}" ItemDisplayBinding="{Binding Tin}" Margin="0,0,0,0"></Picker>-->
-                    <local1:CustomPicker Grid.Column="0" Grid.ColumnSpan="3"  Image="ic_dropdownOne.png" HeightRequest="30" IsEnabled="true" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}" DisplayMemberBinding="Tin" Margin="1"/>
-
+                    <local1:CustomPicker Style="{StaticResource PickerStyle}"  FontSize="10" TextColor="Black"  Image="ic_dropdownOne.png" HeightRequest="30" IsEnabled="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}" DisplayMemberBinding="Tin" Margin="1"/>
+                    
                 </StackLayout>
                 <Label IsVisible="{Binding IsVisibleTinIds}"  Text="{x:Static local:AppResources.TINS}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     <Label.Margin>

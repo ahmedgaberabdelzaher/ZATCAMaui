@@ -147,6 +147,7 @@ namespace GAZT
                 _selectedTinId = value;
                 if(_selectedTinId!=null)
                 {
+                    App.CurrentDropdownTIN = SelectedTinId;
                     Password = string.Empty;
                 }
                 RaisePropertyChanged("SelectedTinId");
