@@ -66,7 +66,12 @@ namespace GAZT
                 RaisePropertyChanged("_selectedForgotType");
                 if(SelectedForgotType != null)
                 {
+                    IsTaxPayerTypeEnable = true;
                     SetLayoutVisibilityForSelectedForgotType();
+                }
+                else
+                {
+                    IsTaxPayerTypeEnable = false;
                 }
 
 
@@ -160,7 +165,7 @@ namespace GAZT
             }
         }
 
-        private bool _isForgotUserNameWithIndividual = false;
+        private bool _isForgotUserNameWithIndividual = true;
         public bool IsForgotUserNameWithIndividual
         {
             get
@@ -188,7 +193,7 @@ namespace GAZT
             }
         }
 
-        private bool _isForgotPassword = true;
+        private bool _isForgotPassword = false;
         public bool IsForgotPassword
         {
             get
@@ -202,7 +207,7 @@ namespace GAZT
             }
         }
 
-        private bool _isTaxPayerTypeEnable = true;
+        private bool _isTaxPayerTypeEnable = false;
         public bool IsTaxPayerTypeEnable
         {
             get
@@ -274,12 +279,15 @@ namespace GAZT
         {
             if (SelectedForgotType.id.Equals("2"))
             {
+                //Device.BeginInvokeOnMainThread(() => {
 
-                IsTaxPayerTypeEnable = false;
-                SelectedTaxPayerType = null;
-                IsForgotPassword = true;
-                IsForgotUserNameWithIndividual = false;
-                IsForgotUserNameWithCorporate = false;
+                    IsTaxPayerTypeEnable = false;
+                    SelectedTaxPayerType = null;
+                    IsForgotPassword = true;
+                    IsForgotUserNameWithIndividual = false;
+                    IsForgotUserNameWithCorporate = false;
+                //});
+
             }
             else
             {

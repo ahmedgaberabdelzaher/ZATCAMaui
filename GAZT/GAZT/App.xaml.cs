@@ -29,8 +29,7 @@ namespace GAZT
         public static string ChangePasswordView = "ChangePasswordView";
 
 
-        public static TIN CurrentDropdownTIN; 
-
+        public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
         public static bool IsArabic = true;

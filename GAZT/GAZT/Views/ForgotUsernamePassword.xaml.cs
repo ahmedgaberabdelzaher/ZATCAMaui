@@ -96,8 +96,10 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.IsTaxPayerTypeEnable = true;
-            viewModel.IsForgotUserNameWithIndividual = true;
+            //viewModel.IsTaxPayerTypeEnable = true;
+            //viewModel.IsForgotUserNameWithIndividual = true;
+            //viewModel.IsForgotPassword = false;
+            //viewModel.IsForgotUserNameWithCorporate = false;
 
         }
     }
