@@ -478,7 +478,7 @@
    <data name="VerificationCode" xml:space="preserve">
     <value>رمز التحقـق</value>
   </data>
-   <data name="SelectPasswordUser name" xml:space="preserve">
+   <data name="SelectPasswordUserName" xml:space="preserve">
     <value>اختر كلمة المرور/ اسم المستخدم</value>
   </data>
    <data name="EntityType" xml:space="preserve">
@@ -487,10 +487,10 @@
   <data name="IDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>
-   <data name="ID Type" xml:space="preserve">
+   <data name="IDType" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
-  <data name="User ID" xml:space="preserve">
+  <data name="UserID" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>
 </root>

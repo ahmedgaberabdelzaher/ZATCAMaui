@@ -138,16 +138,16 @@ namespace GAZT
             {
             List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
             {
-                new ForgotUserNamePassword{ id = "1" , TaxPayerType = "Individual/Personal Business"},
-                new ForgotUserNamePassword{ id = "2" , TaxPayerType = "Corporate"}
+                new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
+                new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
 
             };
                 TaxpayerTypeList = list;
 
                 List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
             {
-                new ForgotCredentialType{ id = "1" , CredentialType = "Forgot Usernmae"},
-                new ForgotCredentialType{ id = "2" , CredentialType = "Forgot Password"}
+                new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
+                new ForgotCredentialType{ id = "2" , CredentialType = AppResources.Password}
 
             };
                 ForgotTypeList = forgotCredentialListlist;

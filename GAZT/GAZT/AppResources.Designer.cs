@@ -749,9 +749,9 @@ namespace GAZT {
             }
         }
         
-        public static string SelectPasswordUser_name {
+        public static string SelectPasswordUserName {
             get {
-                return ResourceManager.GetString("SelectPasswordUser name", resourceCulture);
+                return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
             }
         }
         
@@ -767,15 +767,15 @@ namespace GAZT {
             }
         }
         
-        public static string ID_Type {
+        public static string IDType {
             get {
-                return ResourceManager.GetString("ID Type", resourceCulture);
+                return ResourceManager.GetString("IDType", resourceCulture);
             }
         }
         
-        public static string User_ID {
+        public static string UserID {
             get {
-                return ResourceManager.GetString("User ID", resourceCulture);
+                return ResourceManager.GetString("UserID", resourceCulture);
             }
         }
     }

@@ -108,11 +108,17 @@
                     </Label.GestureRecognizers>
                 </Label>
 
-                 <Label    Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallMiniGoldLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
+                 <StackLayout  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+                        <Label    Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
                     </Label.GestureRecognizers>
                 </Label>
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
+                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+              
 
                 <StackLayout Grid.Row="11" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 </StackLayout>
