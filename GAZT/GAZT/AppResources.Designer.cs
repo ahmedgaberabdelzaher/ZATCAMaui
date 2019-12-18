@@ -706,5 +706,77 @@ namespace GAZT {
                 return ResourceManager.GetString("VpnNotConnected", resourceCulture);
             }
         }
+        
+        public static string ForgotPasswordORUseName {
+            get {
+                return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
+            }
+        }
+        
+        public static string Individual {
+            get {
+                return ResourceManager.GetString("Individual", resourceCulture);
+            }
+        }
+        
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        public static string ForgotUsername {
+            get {
+                return ResourceManager.GetString("ForgotUsername", resourceCulture);
+            }
+        }
+        
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        public static string NationaID {
+            get {
+                return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        public static string VerificationCode {
+            get {
+                return ResourceManager.GetString("VerificationCode", resourceCulture);
+            }
+        }
+        
+        public static string SelectPasswordUser_name {
+            get {
+                return ResourceManager.GetString("SelectPasswordUser name", resourceCulture);
+            }
+        }
+        
+        public static string EntityType {
+            get {
+                return ResourceManager.GetString("EntityType", resourceCulture);
+            }
+        }
+        
+        public static string IDNumber {
+            get {
+                return ResourceManager.GetString("IDNumber", resourceCulture);
+            }
+        }
+        
+        public static string ID_Type {
+            get {
+                return ResourceManager.GetString("ID Type", resourceCulture);
+            }
+        }
+        
+        public static string User_ID {
+            get {
+                return ResourceManager.GetString("User ID", resourceCulture);
+            }
+        }
     }
 }

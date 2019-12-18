@@ -40,7 +40,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>GAZT E-Services</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.GAZT.KSA</string>
+	<string>com.parallelminds.CSEPF</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleName</key>

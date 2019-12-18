@@ -457,5 +457,40 @@
    <data name="ExciseCertificates" xml:space="preserve">
     <value>شهادات ضريبة السلع الانتقائية</value>
   </data>
-  
+   <data name="ForgotPasswordORUseName" xml:space="preserve">
+    <value>نسيت كلمة المرور أو اسم المستخدم</value>
+  </data>
+   <data name="Individual" xml:space="preserve">
+    <value>مؤسسة/فردي</value>
+  </data>
+   <data name="Company" xml:space="preserve">
+    <value>شركة</value>
+  </data>
+   <data name="ForgotUsername" xml:space="preserve">
+    <value>نسيت اسم المستخدم</value>
+  </data>
+   <data name="ForgotPassword" xml:space="preserve">
+    <value>نسيت كلـمة المرور</value>
+  </data>
+  <data name="NationaID" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+   <data name="VerificationCode" xml:space="preserve">
+    <value>رمز التحقـق</value>
+  </data>
+   <data name="SelectPasswordUser name" xml:space="preserve">
+    <value>اختر كلمة المرور/ اسم المستخدم</value>
+  </data>
+   <data name="EntityType" xml:space="preserve">
+    <value>كيان المكلف</value>
+  </data>
+  <data name="IDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+   <data name="ID Type" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="User ID" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
 </root>
