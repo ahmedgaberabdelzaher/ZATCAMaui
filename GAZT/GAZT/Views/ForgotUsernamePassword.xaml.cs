@@ -93,5 +93,12 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.IsTaxPayerTypeEnable = true;
+            viewModel.IsForgotUserNameWithIndividual = true;
+
+        }
     }
 }

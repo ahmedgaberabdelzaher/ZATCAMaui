@@ -4,6 +4,8 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT
 {
@@ -12,7 +14,8 @@ namespace GAZT
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        //  public ICommand OnLoginButtonClicked { get; set; }
+        
+       public ICommand OnSubmitClicked { get; set; }
         #endregion
         #region Property
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -29,8 +32,7 @@ namespace GAZT
 
                 if (SelectedTaxPayerType != null)
                 {
-
-
+                    SetLayoutVisibilityForSelectedTaxpayerType();
                 }
             }
         }
@@ -51,8 +53,8 @@ namespace GAZT
             }
         }
 
-        private List<ForgotCredentialType> _selectedForgotType;
-        public List<ForgotCredentialType> SelectedForgotType
+        private ForgotCredentialType _selectedForgotType;
+        public ForgotCredentialType SelectedForgotType
         {
             get
             {
@@ -62,6 +64,10 @@ namespace GAZT
             {
                 _selectedForgotType = value;
                 RaisePropertyChanged("_selectedForgotType");
+                if(SelectedForgotType != null)
+                {
+                    SetLayoutVisibilityForSelectedForgotType();
+                }
 
 
             }
@@ -111,6 +117,105 @@ namespace GAZT
             }
         }
 
+        private string _enteredCaptchaValue;
+        public string EnteredCaptchaValue
+        {
+            get
+            {
+                return _enteredCaptchaValue;
+            }
+            set
+            {
+                _enteredCaptchaValue = value;
+                RaisePropertyChanged("EnteredCaptchaValue");
+            }
+        }
+
+        private string _corporateID;
+        public string CorporateID
+        {
+            get
+            {
+                return _corporateID;
+            }
+            set
+            {
+                _corporateID = value;
+                RaisePropertyChanged("CorporateID");
+            }
+        }
+
+        
+        private string _userName;
+        public string UserName
+        {
+            get
+            {
+                return _userName;
+            }
+            set
+            {
+                _userName = value;
+                RaisePropertyChanged("UserName");
+            }
+        }
+
+        private bool _isForgotUserNameWithIndividual = false;
+        public bool IsForgotUserNameWithIndividual
+        {
+            get
+            {
+                return _isForgotUserNameWithIndividual;
+            }
+            set
+            {
+                _isForgotUserNameWithIndividual = value;
+                RaisePropertyChanged("IsForgotUserName");
+            }
+        }
+
+        private bool _isForgotUserNameWithCorporate = false;
+        public bool IsForgotUserNameWithCorporate
+        {
+            get
+            {
+                return _isForgotUserNameWithCorporate;
+            }
+            set
+            {
+                _isForgotUserNameWithCorporate = value;
+                RaisePropertyChanged("IsForgotUserNameWithCorporate");
+            }
+        }
+
+        private bool _isForgotPassword = true;
+        public bool IsForgotPassword
+        {
+            get
+            {
+                return _isForgotPassword;
+            }
+            set
+            {
+                _isForgotPassword = value;
+                RaisePropertyChanged("IsForgotPassword");
+            }
+        }
+
+        private bool _isTaxPayerTypeEnable = true;
+        public bool IsTaxPayerTypeEnable
+        {
+            get
+            {
+                return _isTaxPayerTypeEnable;
+            }
+            set
+            {
+                _isTaxPayerTypeEnable = value;
+                RaisePropertyChanged("IsTaxPayerTypeEnable");
+            }
+        }
+
         
         #endregion
 
@@ -129,6 +234,11 @@ namespace GAZT
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            OnSubmitClicked = new Command(async () =>
+            {
+             // _navigationService.NavigateTo(App.ForgotUsernamePassword);
+            });
+            
         }
         #endregion Constructor
         #region Method
@@ -158,6 +268,42 @@ namespace GAZT
             }
 
 
+        }
+
+        private void SetLayoutVisibilityForSelectedForgotType()
+        {
+            if (SelectedForgotType.id.Equals("2"))
+            {
+
+                IsTaxPayerTypeEnable = false;
+                SelectedTaxPayerType = null;
+                IsForgotPassword = true;
+                IsForgotUserNameWithIndividual = false;
+                IsForgotUserNameWithCorporate = false;
+            }
+            else
+            {
+                IsTaxPayerTypeEnable = true;
+                IsForgotPassword = false;
+                IsForgotUserNameWithIndividual = true;
+                IsForgotUserNameWithCorporate = false;
+            }
+
+        }
+
+        private void SetLayoutVisibilityForSelectedTaxpayerType()
+        {
+            if (SelectedTaxPayerType.id.Equals("1"))
+            {
+
+                IsForgotUserNameWithIndividual = true;
+                IsForgotUserNameWithCorporate = false;
+            }
+            else
+            {
+                IsForgotUserNameWithIndividual = false;
+                IsForgotUserNameWithCorporate = true;
+            }
         }
         #endregion
     }

@@ -7,7 +7,7 @@ using GAZT.iOS.CustomRenderer;
 using GAZT;
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
 
-namespace GAZT.iOS.CustomRenderer
+namespace GAZT
 {
     public class BorderlessEntryRenderer : EntryRenderer
     {

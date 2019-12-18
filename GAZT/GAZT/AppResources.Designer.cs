@@ -778,5 +778,17 @@ namespace GAZT {
                 return ResourceManager.GetString("UserID", resourceCulture);
             }
         }
+        
+        public static string CorportaeID {
+            get {
+                return ResourceManager.GetString("CorportaeID", resourceCulture);
+            }
+        }
+        
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
     }
 }

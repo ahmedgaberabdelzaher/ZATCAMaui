@@ -495,4 +495,11 @@ appeal</value>
   <data name="UserID" xml:space="preserve">
     <value>User ID</value>
   </data>
+  <data name="CorportaeID" xml:space="preserve">
+    <value>Corportae ID</value>
+  </data>
+   <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+    
 </root>
