@@ -517,4 +517,11 @@ appeal</value>
   <data name="UnPaid" xml:space="preserve">
     <value>UnPaid</value>
   </data>
+   <data name="ForgotPasswordOrUserName" xml:space="preserve">
+    <value>Forgot password or UserName</value>
+  </data>
+  <data name="InvaliedCaptcha" xml:space="preserve">
+    <value> Invalid Captcha</value>
+  </data>
+ 
 </root>

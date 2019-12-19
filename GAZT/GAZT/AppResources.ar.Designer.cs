@@ -832,5 +832,17 @@ namespace GAZT {
                 return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
+        
+        public static string ForgotPasswordOrUserName {
+            get {
+                return ResourceManager.GetString("ForgotPasswordOrUserName", resourceCulture);
+            }
+        }
+        
+        public static string InvaliedCaptcha {
+            get {
+                return ResourceManager.GetString("InvaliedCaptcha", resourceCulture);
+            }
+        }
     }
 }
