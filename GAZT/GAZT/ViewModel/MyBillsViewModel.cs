@@ -169,56 +169,56 @@ namespace GAZT.ViewModel
         public async void onPageLoad()
         {
 
-            //List<MyBills> myBills = new List<MyBills>();
-            //try
-            //{
-
-
-            //    myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
-
-            //    if (myBills.Count != 0)
-            //    {
-            //        MyBills = new List<MyBills>();
-            //        MyBills = myBills;
-            //        MyBillsOriginal = myBills;
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    Device.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        await _dialogService.ShowMessageBox("No Bills Found", AppResources.Information);
-            //    });
-            //}
-
-            int i = 5;
-            MyBills = new List<MyBills>();
-            for (i = 0; i < 6; i++)
+            List<MyBills> myBills = new List<MyBills>();
+            try
             {
-                MyBills m = new MyBills();
-                m.Abtypt = "Abc";
-                m.BETRW = "100";
-                m.FAEDN = "12:02:20";
-                m.Status = "P";
-                m.VTRE2 = "54321";
 
-                MyBills.Add(m);
+
+                myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
+
+                if (myBills.Count != 0)
+                {
+                    MyBills = new List<MyBills>();
+                    MyBills = myBills;
+                    MyBillsOriginal = myBills;
+                }
+            }
+            catch (Exception e)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox("No Bills Found", AppResources.Information);
+                });
             }
 
-            int j = 5;
-            //S MyBills = new List<MyBills>();
-            for (i = 0; i < 6; i++)
-            {
-                MyBills m = new MyBills();
-                m.Abtypt = "Abc";
-                m.BETRW = "100";
-                m.FAEDN = "12:02:20";
-                m.Status = "I";
-                m.VTRE2 = "54321";
+            //int i = 5;
+            //MyBills = new List<MyBills>();
+            //for (i = 0; i < 6; i++)
+            //{
+            //    MyBills m = new MyBills();
+            //    m.Abtypt = "Abc";
+            //    m.BETRW = "100";
+            //    m.FAEDN = "12:02:20";
+            //    m.Status = "P";
+            //    m.VTRE2 = "54321";
 
-                MyBills.Add(m);
-            }
-            MyBillsOriginal = MyBills;
+            //    MyBills.Add(m);
+            //}
+
+            //int j = 5;
+            ////S MyBills = new List<MyBills>();
+            //for (i = 0; i < 6; i++)
+            //{
+            //    MyBills m = new MyBills();
+            //    m.Abtypt = "Abc";
+            //    m.BETRW = "100";
+            //    m.FAEDN = "12:02:20";
+            //    m.Status = "I";
+            //    m.VTRE2 = "54321";
+
+            //    MyBills.Add(m);
+            //}
+            //MyBillsOriginal = MyBills;
         }
     }
 }
