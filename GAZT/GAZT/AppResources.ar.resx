@@ -443,19 +443,19 @@
     <value>شهادات ضريبة السلع الانتقائية</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>number</value>
+    <value>رقم</value>
   </data>
   <data name="PaymentNumber" xml:space="preserve">
-    <value>Payment Number</value>
+    <value>رقم فاتورة</value>
   </data>
   <data name="Sadad" xml:space="preserve">
-    <value>sadad</value>
+    <value>سداد</value>
   </data>
   <data name="SadadPaymentNumberForBills" xml:space="preserve">
-    <value>sadad payment number</value>
+    <value>رقم فاتورة سداد</value>
   </data>
   <data name="ZakatTaxTypeForBills" xml:space="preserve">
-    <value>Zakat/taxtype</value>
+    <value>زكاة</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value />
@@ -472,46 +472,46 @@
   <data name="UnPaid" xml:space="preserve">
     <value>غير مدفوعة</value>
   </data>
-   <data name="ForgotPasswordORUseName" xml:space="preserve">
+  <data name="ForgotPasswordORUseName" xml:space="preserve">
     <value>نسيت كلمة المرور أو اسم المستخدم</value>
   </data>
-   <data name="Individual" xml:space="preserve">
+  <data name="Individual" xml:space="preserve">
     <value>مؤسسة/فردي</value>
   </data>
-   <data name="Company" xml:space="preserve">
+  <data name="Company" xml:space="preserve">
     <value>شركة</value>
   </data>
-   <data name="ForgotUsername" xml:space="preserve">
+  <data name="ForgotUsername" xml:space="preserve">
     <value>نسيت اسم المستخدم</value>
   </data>
-   <data name="ForgotPassword" xml:space="preserve">
+  <data name="ForgotPassword" xml:space="preserve">
     <value>نسيت كلـمة المرور</value>
   </data>
   <data name="NationaID" xml:space="preserve">
     <value>الهوية الوطنية</value>
   </data>
-   <data name="VerificationCode" xml:space="preserve">
+  <data name="VerificationCode" xml:space="preserve">
     <value>رمز التحقـق</value>
   </data>
-   <data name="SelectPasswordUserName" xml:space="preserve">
+  <data name="SelectPasswordUserName" xml:space="preserve">
     <value>اختر كلمة المرور/ اسم المستخدم</value>
   </data>
-   <data name="EntityType" xml:space="preserve">
+  <data name="EntityType" xml:space="preserve">
     <value>كيان المكلف</value>
   </data>
   <data name="IDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>
-   <data name="IDType" xml:space="preserve">
+  <data name="IDType" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
   <data name="UserID" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>
-   <data name="CorportaeID" xml:space="preserve">
+  <data name="CorportaeID" xml:space="preserve">
     <value> رقم الشركة</value>
   </data>
-   <data name="UserName" xml:space="preserve">
+  <data name="UserName" xml:space="preserve">
     <value> اسم المستخدم</value>
   </data>
 </root>

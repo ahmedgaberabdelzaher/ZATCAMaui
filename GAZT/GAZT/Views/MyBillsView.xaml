@@ -22,14 +22,24 @@
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="2*" />
+
+
+                <!--<ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="55*" />
+                <ColumnDefinition Width="55*" />-->
 
             </Grid.ColumnDefinitions>
-            <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" PaintSurface="OnCanvasViewPaintSurface" />
-            <local1:CustomLabel Text="MyBills" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="Center" VerticalOptions="Center" >
+            <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
+            <local1:CustomLabel Text="MyBills" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center" >
             </local1:CustomLabel>
             <!--<StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
@@ -44,37 +54,51 @@
                     </cards:CarouselView.ItemTemplate>
                 </cards:CarouselView>
             </StackLayout>-->
-            <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" >
-                <local1:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding onAllLabelClicked}" />
-                </local1:CustomLabel.GestureRecognizers>
-            </local1:CustomLabel>
 
-            <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="1"  >
-                <local1:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding onPaidLabelClicked}" />
-                </local1:CustomLabel.GestureRecognizers>
-            </local1:CustomLabel>
-            <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="2"  >
-                <local1:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding onUnpaidLabelClicked}" />
-                </local1:CustomLabel.GestureRecognizers>
-            </local1:CustomLabel>
-            <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="3"   >
-                <local1:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding onPartiallyPaidLabelClicked}" />
-                </local1:CustomLabel.GestureRecognizers>
-            </local1:CustomLabel>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"   Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5.08*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="55*"/>
+                </Grid.ColumnDefinitions>
+                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}"  Grid.Row="0" Grid.Column="0">
+                    <local1:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding onAllLabelClicked}" />
+                    </local1:CustomLabel.GestureRecognizers>
+                </local1:CustomLabel>
 
-            <ListView Grid.Column="0" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="4" x:Name="Bills" 
+                <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="1"  >
+                    <local1:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding onPaidLabelClicked}" />
+                    </local1:CustomLabel.GestureRecognizers>
+                </local1:CustomLabel>
+                <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="2"  >
+                    <local1:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding onUnpaidLabelClicked}" />
+                    </local1:CustomLabel.GestureRecognizers>
+                </local1:CustomLabel>
+                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="3"   >
+                    <local1:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding onPartiallyPaidLabelClicked}" />
+                    </local1:CustomLabel.GestureRecognizers>
+                </local1:CustomLabel>
+            </Grid>
+
+           
+            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="7">
+            <ListView  x:Name="Bills" 
                      
                      
-                 Margin="10,0,10,0"
+                 
            ItemsSource="{Binding MyBills}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      BackgroundColor="White"
+                      
             SeparatorVisibility="None"
             >
                 <ListView.ItemTemplate>
@@ -84,7 +108,7 @@
                                 <Frame OutlineColor="#C9C9C9"
                                        Margin="0,0,0,5"
                                >
-                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,5" Padding="0" BackgroundColor="White">
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,5" Padding="0" >
                                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="40*" />
@@ -169,6 +193,17 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </StackLayout>
+            <BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
