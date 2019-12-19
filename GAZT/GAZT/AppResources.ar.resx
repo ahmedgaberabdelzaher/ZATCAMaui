@@ -514,4 +514,7 @@
   <data name="UserName" xml:space="preserve">
     <value> اسم المستخدم</value>
   </data>
+  <data name="NoBillsAvailable" xml:space="preserve">
+    <value>No Bills Available</value>
+  </data>
 </root>

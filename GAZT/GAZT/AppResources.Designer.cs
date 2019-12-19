@@ -217,6 +217,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company.
+        /// </summary>
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
         public static string ContractsToBeApproved {
@@ -249,6 +258,15 @@ namespace GAZT {
         public static string CopySADADPaymentNumber {
             get {
                 return ResourceManager.GetString("CopySADADPaymentNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Corportae ID.
+        /// </summary>
+        public static string CorportaeID {
+            get {
+                return ResourceManager.GetString("CorportaeID", resourceCulture);
             }
         }
         
@@ -379,6 +397,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entity Type.
+        /// </summary>
+        public static string EntityType {
+            get {
+                return ResourceManager.GetString("EntityType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimate sales for Fiscal year.
         /// </summary>
         public static string EstimateSalesForFiscalYear {
@@ -424,11 +451,65 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forgot Password.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Forgot Password or User Name?.
+        /// </summary>
+        public static string ForgotPasswordORUseName {
+            get {
+                return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Username.
+        /// </summary>
+        public static string ForgotUsername {
+            get {
+                return ResourceManager.GetString("ForgotUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Number.
+        /// </summary>
+        public static string IDNumber {
+            get {
+                return ResourceManager.GetString("IDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Type.
+        /// </summary>
+        public static string IDType {
+            get {
+                return ResourceManager.GetString("IDType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import value.
         /// </summary>
         public static string ImportValue {
             get {
                 return ResourceManager.GetString("ImportValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual.
+        /// </summary>
+        public static string Individual {
+            get {
+                return ResourceManager.GetString("Individual", resourceCulture);
             }
         }
         
@@ -577,6 +658,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National ID.
+        /// </summary>
+        public static string NationaID {
+            get {
+                return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Email.
         /// </summary>
         public static string NewEmail {
@@ -618,6 +708,15 @@ namespace GAZT {
         public static string NewPasswordandRetypePasswordNotMatch {
             get {
                 return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Bills Available.
+        /// </summary>
+        public static string NoBillsAvailable {
+            get {
+                return ResourceManager.GetString("NoBillsAvailable", resourceCulture);
             }
         }
         
@@ -883,6 +982,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Password/User name.
+        /// </summary>
+        public static string SelectPasswordUserName {
+            get {
+                return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Chatting.
         /// </summary>
         public static string StartChatting {
@@ -1027,6 +1135,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User ID.
+        /// </summary>
+        public static string UserID {
+            get {
+                return ResourceManager.GetString("UserID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Name.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Certificate(s).
         /// </summary>
         public static string VATCertificates {
@@ -1041,6 +1167,15 @@ namespace GAZT {
         public static string VATRegistrationCertificate {
             get {
                 return ResourceManager.GetString("VATRegistrationCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Code.
+        /// </summary>
+        public static string VerificationCode {
+            get {
+                return ResourceManager.GetString("VerificationCode", resourceCulture);
             }
         }
         
@@ -1104,90 +1239,6 @@ namespace GAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
-            }
-        }
-        
-        public static string ForgotPasswordORUseName {
-            get {
-                return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
-            }
-        }
-        
-        public static string Individual {
-            get {
-                return ResourceManager.GetString("Individual", resourceCulture);
-            }
-        }
-        
-        public static string Company {
-            get {
-                return ResourceManager.GetString("Company", resourceCulture);
-            }
-        }
-        
-        public static string ForgotUsername {
-            get {
-                return ResourceManager.GetString("ForgotUsername", resourceCulture);
-            }
-        }
-        
-        public static string ForgotPassword {
-            get {
-                return ResourceManager.GetString("ForgotPassword", resourceCulture);
-            }
-        }
-        
-        public static string NationaID {
-            get {
-                return ResourceManager.GetString("NationaID", resourceCulture);
-            }
-        }
-        
-        public static string VerificationCode {
-            get {
-                return ResourceManager.GetString("VerificationCode", resourceCulture);
-            }
-        }
-        
-        public static string SelectPasswordUserName {
-            get {
-                return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
-            }
-        }
-        
-        public static string EntityType {
-            get {
-                return ResourceManager.GetString("EntityType", resourceCulture);
-            }
-        }
-        
-        public static string IDNumber {
-            get {
-                return ResourceManager.GetString("IDNumber", resourceCulture);
-            }
-        }
-        
-        public static string IDType {
-            get {
-                return ResourceManager.GetString("IDType", resourceCulture);
-            }
-        }
-        
-        public static string UserID {
-            get {
-                return ResourceManager.GetString("UserID", resourceCulture);
-            }
-        }
-        
-        public static string CorportaeID {
-            get {
-                return ResourceManager.GetString("CorportaeID", resourceCulture);
-            }
-        }
-        
-        public static string UserName {
-            get {
-                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }
