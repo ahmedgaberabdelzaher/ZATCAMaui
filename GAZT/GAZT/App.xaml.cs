@@ -30,8 +30,7 @@ namespace GAZT
         public static string MyBillsView = "MyBillsView";
 
 
-        public static TIN CurrentDropdownTIN; 
-
+        public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
         public static bool IsArabic = true;

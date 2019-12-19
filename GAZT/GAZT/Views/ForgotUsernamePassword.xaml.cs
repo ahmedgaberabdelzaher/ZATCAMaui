@@ -18,12 +18,13 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.ForgotUsernamePassword;
             InitializeComponent();
+            SetLTR();
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
             try
             {
-                SetLTR();
+               
                 this.BindingContext = viewModel;
                 viewModel.OnPageLoad();
             }
@@ -33,6 +34,7 @@ namespace GAZT.Views
             }
 
         }
+
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
@@ -90,6 +92,15 @@ namespace GAZT.Views
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //viewModel.IsTaxPayerTypeEnable = true;
+            //viewModel.IsForgotUserNameWithIndividual = true;
+            //viewModel.IsForgotPassword = false;
+            //viewModel.IsForgotUserNameWithCorporate = false;
+
         }
     }
 }

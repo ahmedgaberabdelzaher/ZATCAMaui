@@ -1106,5 +1106,89 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
+        
+        public static string ForgotPasswordORUseName {
+            get {
+                return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
+            }
+        }
+        
+        public static string Individual {
+            get {
+                return ResourceManager.GetString("Individual", resourceCulture);
+            }
+        }
+        
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        public static string ForgotUsername {
+            get {
+                return ResourceManager.GetString("ForgotUsername", resourceCulture);
+            }
+        }
+        
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        public static string NationaID {
+            get {
+                return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        public static string VerificationCode {
+            get {
+                return ResourceManager.GetString("VerificationCode", resourceCulture);
+            }
+        }
+        
+        public static string SelectPasswordUserName {
+            get {
+                return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
+            }
+        }
+        
+        public static string EntityType {
+            get {
+                return ResourceManager.GetString("EntityType", resourceCulture);
+            }
+        }
+        
+        public static string IDNumber {
+            get {
+                return ResourceManager.GetString("IDNumber", resourceCulture);
+            }
+        }
+        
+        public static string IDType {
+            get {
+                return ResourceManager.GetString("IDType", resourceCulture);
+            }
+        }
+        
+        public static string UserID {
+            get {
+                return ResourceManager.GetString("UserID", resourceCulture);
+            }
+        }
+        
+        public static string CorportaeID {
+            get {
+                return ResourceManager.GetString("CorportaeID", resourceCulture);
+            }
+        }
+        
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
     }
 }

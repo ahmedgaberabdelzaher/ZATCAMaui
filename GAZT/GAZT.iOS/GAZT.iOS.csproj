@@ -53,7 +53,7 @@
     <CodesignKey>iPhone Developer: Parag Bihade (XTS6299Y8J)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>GAZT Provisioning Profile</CodesignProvision>
+    <CodesignProvision>csepf DEVELOPMENT</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -65,7 +65,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>GAZT Distribution Provisioning Profile</CodesignProvision>
+    <CodesignProvision>csepf DISTRIBUTION</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -106,6 +106,7 @@
     <Compile Include="CustomRenderer\KeyboardRender.cs" />
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderer\RoundCornersEffectIOS.cs" />
+    <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
