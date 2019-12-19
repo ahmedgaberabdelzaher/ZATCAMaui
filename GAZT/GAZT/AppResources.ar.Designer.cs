@@ -53,12 +53,6 @@ namespace GAZT {
             }
         }
         
-        public static string All {
-            get {
-                return ResourceManager.GetString("All", resourceCulture);
-            }
-        }
-        
         public static string AmendReturn {
             get {
                 return ResourceManager.GetString("AmendReturn", resourceCulture);
@@ -305,18 +299,6 @@ namespace GAZT {
             }
         }
         
-        public static string Paid {
-            get {
-                return ResourceManager.GetString("Paid", resourceCulture);
-            }
-        }
-        
-        public static string PartiallyPaid {
-            get {
-                return ResourceManager.GetString("PartiallyPaid", resourceCulture);
-            }
-        }
-        
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
@@ -482,12 +464,6 @@ namespace GAZT {
         public static string TwentyFivePercentageObjectedAmount {
             get {
                 return ResourceManager.GetString("TwentyFivePercentageObjectedAmount", resourceCulture);
-            }
-        }
-        
-        public static string Unpaid {
-            get {
-                return ResourceManager.GetString("Unpaid", resourceCulture);
             }
         }
         
@@ -710,6 +686,66 @@ namespace GAZT {
         public static string ExciseCertificates {
             get {
                 return ResourceManager.GetString("ExciseCertificates", resourceCulture);
+            }
+        }
+        
+        public static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        public static string PaymentNumber {
+            get {
+                return ResourceManager.GetString("PaymentNumber", resourceCulture);
+            }
+        }
+        
+        public static string Sadad {
+            get {
+                return ResourceManager.GetString("Sadad", resourceCulture);
+            }
+        }
+        
+        public static string SadadPaymentNumberForBills {
+            get {
+                return ResourceManager.GetString("SadadPaymentNumberForBills", resourceCulture);
+            }
+        }
+        
+        public static string ZakatTaxTypeForBills {
+            get {
+                return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
+            }
+        }
+        
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        public static string Paid {
+            get {
+                return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        public static string PartiallyPaid {
+            get {
+                return ResourceManager.GetString("PartiallyPaid", resourceCulture);
+            }
+        }
+        
+        public static string UnPaid {
+            get {
+                return ResourceManager.GetString("UnPaid", resourceCulture);
             }
         }
         

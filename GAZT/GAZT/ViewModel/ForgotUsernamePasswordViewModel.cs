@@ -221,7 +221,21 @@ namespace GAZT
             }
         }
 
+        private string _iDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+        public string IDNumberOrCorporateIDOrUserName
+        {
+            get
+            {
+                return _iDNumberOrCorporateIDOrUserName;
+            }
+            set
+            {
+                _iDNumberOrCorporateIDOrUserName = value;
+                RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
+            }
+        }
         
+
         #endregion
 
         #region Constructor
@@ -279,22 +293,24 @@ namespace GAZT
         {
             if (SelectedForgotType.id.Equals("2"))
             {
+                IDNumberOrCorporateIDOrUserName = AppResources.UserName;
                 //Device.BeginInvokeOnMainThread(() => {
 
-                    IsTaxPayerTypeEnable = false;
-                    SelectedTaxPayerType = null;
-                    IsForgotPassword = true;
-                    IsForgotUserNameWithIndividual = false;
-                    IsForgotUserNameWithCorporate = false;
+                IsTaxPayerTypeEnable = false;
+                SelectedTaxPayerType = null;
+                //IsForgotPassword = true;
+                //IsForgotUserNameWithIndividual = false;
+                //IsForgotUserNameWithCorporate = false;
                 //});
 
             }
             else
             {
-                IsTaxPayerTypeEnable = true;
-                IsForgotPassword = false;
-                IsForgotUserNameWithIndividual = true;
-                IsForgotUserNameWithCorporate = false;
+                IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                //IsTaxPayerTypeEnable = true;
+                //IsForgotPassword = false;
+                //IsForgotUserNameWithIndividual = true;
+                //IsForgotUserNameWithCorporate = false;
             }
 
         }
@@ -303,14 +319,15 @@ namespace GAZT
         {
             if (SelectedTaxPayerType.id.Equals("1"))
             {
-
-                IsForgotUserNameWithIndividual = true;
-                IsForgotUserNameWithCorporate = false;
+                IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                //IsForgotUserNameWithIndividual = true;
+                //IsForgotUserNameWithCorporate = false;
             }
             else
             {
-                IsForgotUserNameWithIndividual = false;
-                IsForgotUserNameWithCorporate = true;
+                //IsForgotUserNameWithIndividual = false;
+                //IsForgotUserNameWithCorporate = true;
+                IDNumberOrCorporateIDOrUserName = AppResources.CorportaeID;
             }
         }
         #endregion
