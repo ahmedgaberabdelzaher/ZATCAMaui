@@ -20,4 +20,11 @@ namespace GAZT.Models
         IsMobile = 1,
         IsEmail = 2
     }
+
+    public enum BillStatus
+    {
+        P = 0,
+        I = 1,
+        O = 2
+    }
 }

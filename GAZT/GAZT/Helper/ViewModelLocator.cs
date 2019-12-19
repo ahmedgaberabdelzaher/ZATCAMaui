@@ -26,6 +26,7 @@ namespace GAZT
             SimpleIoc.Default.Register<VerifyEmailAddressViewModel>();
             SimpleIoc.Default.Register<ChangeMobileNumberViewModel>();
             SimpleIoc.Default.Register<ChangePasswordViewModel>();
+            SimpleIoc.Default.Register<MyBillsViewModel>();
 
 
 
@@ -231,6 +232,21 @@ namespace GAZT
             }
         }
 
+        public MyBillsViewModel MyBillsView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
 
@@ -251,6 +267,7 @@ namespace GAZT
             navigationService.Configure(App.VerifyEmailAddressView, typeof(VerifyEmailAddressView));
             navigationService.Configure(App.ChangeMobileNumberView, typeof(ChangeMobileNumberView));
             navigationService.Configure(App.ChangePasswordView, typeof(ChangePasswordView));
+            navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
 
             return navigationService;
         }

@@ -533,6 +533,66 @@ namespace GAZT.Manager
         }
 
 
+        public static async Task<List<MyBills>> GAZTGetMyBills(String Tin)
+        {
+            List<MyBills> myBills = new List<MyBills>();
+            String MobileNumber = string.Empty;
+            string PdfUrl = string.Empty;
+            string NewToken = string.Empty;
+            try
+            {
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+
+                HttpResponseMessage GAZTMyBillsResponse = await client.GetAsync(uri);
+
+                if (GAZTMyBillsResponse != null)
+                {
+
+                    HttpHeaders headers = GAZTMyBillsResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+
+                    String GAZTMyBillsResponseJSON = GAZTMyBillsResponse.Content.ReadAsStringAsync().Result;
+
+                    GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
+                   
+                    
+                    string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
+                    if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                    {
+                        myBills = JsonConvert.DeserializeObject<List<MyBills>>(GAZTMyBillsResponseJSONJToken);
+                    }
+                    else
+                    {
+                        throw new Exception("Invalid Response");
+                    }
+                }
+
+                return myBills;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
         public static async Task<string> GAZTGetTaxPayerProfile(String Tin,String Lang)
         {
             TaxPayerProfile TP = null;
