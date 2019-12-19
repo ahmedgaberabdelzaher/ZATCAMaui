@@ -161,9 +161,17 @@
 
 
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0" Grid.Row="9" Grid.Column="1" BackgroundColor="Transparent">
-                    <Image Grid.Row="0" Source="ic_money.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
+                    <Image Grid.Row="0" Source="ic_money.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" >
+
+                       
+                    </Image>
                     <local1:CustomLabel Text="{x:Static local:AppResources.EstimateZakatReturn}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-8,0,0" HorizontalTextAlignment="Center">
+
+                       
+
                     </local1:CustomLabel>
+
+                   
                 </StackLayout>
 
                 <Image Source="Rectangle.png" Margin="2" Aspect="AspectFit" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="3">
@@ -194,9 +202,19 @@
                 </Image>
                 <Image Source="{Binding Source}" />
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Orientation="Vertical" Padding="0,5,0,5" Spacing="0" Grid.Row="9" Grid.Column="5">
-                    <Image Grid.Row="0" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" />
+                    <Image Grid.Row="0" Source="ic_file.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnMyBillsClicked}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                     <local1:CustomLabel Text="{x:Static local:AppResources.MyBillsInvoices}" Style="{StaticResource DashboardMiniGrayLabelStyle}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-8,0,0" HorizontalTextAlignment="Center">
+                        <local1:CustomLabel.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnMyBillsClicked}" />
+                        </local1:CustomLabel.GestureRecognizers>
                     </local1:CustomLabel>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnMyBillsClicked}" />
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <BoxView Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
                 <Image Grid.Row="10" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home_selected.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />

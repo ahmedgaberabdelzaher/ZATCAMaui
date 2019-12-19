@@ -18,6 +18,8 @@ namespace GAZT
         public ICommand OnMyCertificateClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
         public ICommand OnMyTaxPayerProfileClicked { get; set; }
+        public ICommand OnMyBillsClicked { get; set; }
+
         #endregion
         #region Property
         #endregion
@@ -50,6 +52,15 @@ namespace GAZT
                 _navigationService.NavigateTo(App.TaxPayerProfileView);
 
             });
+
+            OnMyBillsClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.MyBillsView);
+
+            });
+
+           
+
 
         }
         #endregion

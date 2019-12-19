@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             FlowDirection="RightToLeft"
+             
+             x:Class="GAZT.Views.MyBillsView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" Margin="0" Padding="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.64*" />
+                <RowDefinition Height="6.06*" />
+                <RowDefinition Height="5.08*" />
+                <RowDefinition Height="23.68*" />
+                <RowDefinition Height="48.54*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="55*" />
+
+            </Grid.ColumnDefinitions>
+            <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" PaintSurface="OnCanvasViewPaintSurface" />
+            <local1:CustomLabel Text="MyBills" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="Center" VerticalOptions="Center" >
+            </local1:CustomLabel>
+            <!--<StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
+                    <cards:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="4" BorderColor="#B1B1B1" BackgroundColor="White">
+                                    <Image Source="{Binding Source}" />
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </cards:CarouselView.ItemTemplate>
+                </cards:CarouselView>
+            </StackLayout>-->
+            <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" >
+                <local1:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding onAllLabelClicked}" />
+                </local1:CustomLabel.GestureRecognizers>
+            </local1:CustomLabel>
+
+            <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="1"  >
+                <local1:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding onPaidLabelClicked}" />
+                </local1:CustomLabel.GestureRecognizers>
+            </local1:CustomLabel>
+            <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="2"  >
+                <local1:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding onUnpaidLabelClicked}" />
+                </local1:CustomLabel.GestureRecognizers>
+            </local1:CustomLabel>
+            <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="2" Grid.Column="3"   >
+                <local1:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding onPartiallyPaidLabelClicked}" />
+                </local1:CustomLabel.GestureRecognizers>
+            </local1:CustomLabel>
+
+            <ListView Grid.Column="0" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="4" x:Name="Bills" 
+                     
+                     
+                 Margin="10,0,10,0"
+           ItemsSource="{Binding MyBills}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                      BackgroundColor="White"
+            SeparatorVisibility="None"
+            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView>
+                                <Frame OutlineColor="#C9C9C9"
+                                       Margin="0,0,0,5"
+                               >
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,5" Padding="0" BackgroundColor="White">
+                                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  BackgroundColor="White" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                               
+                                              
+                                            </Grid.RowDefinitions>
+
+                                            <Label Text="{x:Static local:AppResources.ZakatTaxTypeForBills}" Margin="0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+
+                                            <Label Text="{Binding Abtypt}" 
+                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                   Grid.Row="0"
+                                   Grid.Column="1" />
+
+
+                                            <Label 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Grid.Row="1"
+                                                
+                                   Grid.Column="0"
+                                   >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span  Text="{x:Static local:AppResources.Sadad}" Style="{StaticResource MiniGoldLabelStyle}" />
+                                                        <Span Text="{x:Static local:AppResources.PaymentNumber}" Style="{StaticResource MiniGoldLabelStyle}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            
+                                            <Label Text="{Binding VTRE2}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+
+                                            <Label Text="{x:Static local:AppResources.DueAmount}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   />
+                                            <Label Text="{Binding BETRW}" 
+                                     
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                   Grid.Row="2"
+                                   Grid.Column="1" />
+
+                                            <Label Text="{x:Static local:AppResources.DueDate}" 
+                                      
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   />
+                                            <Label Text="{Binding FAEDN}" 
+                                       
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                   Grid.Row="3"
+                                   Grid.Column="1" />
+
+                                            <Image  Grid.Row="1"  Grid.Column="3" Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <BoxView  
+                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>
+
+                                           
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

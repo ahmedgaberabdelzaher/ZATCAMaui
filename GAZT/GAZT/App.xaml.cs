@@ -27,6 +27,7 @@ namespace GAZT
         public static string VerifyEmailAddressView = "VerifyEmailAddressView";
         public static string ChangeMobileNumberView = "ChangeMobileNumberView";
         public static string ChangePasswordView = "ChangePasswordView";
+        public static string MyBillsView = "MyBillsView";
 
 
         public static TIN CurrentDropdownTIN;

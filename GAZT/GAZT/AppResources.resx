@@ -120,9 +120,6 @@
   <data name="Alerts" xml:space="preserve">
     <value>Alerts</value>
   </data>
-  <data name="All" xml:space="preserve">
-    <value>All</value>
-  </data>
   <data name="AmendReturn" xml:space="preserve">
     <value>Amend Return</value>
   </data>
@@ -231,15 +228,15 @@
   <data name="MyCertificate" xml:space="preserve">
     <value>My Certificate</value>
   </data>
-   <data name="VATCertificates" xml:space="preserve">
+  <data name="VATCertificates" xml:space="preserve">
     <value>VAT Certificate(s)</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
     <value>ZAKAT Certificate(s)</value>
-  </data> 
-   <data name="ExciseCertificates" xml:space="preserve">
+  </data>
+  <data name="ExciseCertificates" xml:space="preserve">
     <value>EXCISE Certificate(s)</value>
-  </data> 
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -254,12 +251,6 @@
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>Overdue Return</value>
-  </data>
-  <data name="Paid" xml:space="preserve">
-    <value>Paid</value>
-  </data>
-  <data name="PartiallyPaid" xml:space="preserve">
-    <value>Partially Paid</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value> Password </value>
@@ -341,9 +332,6 @@
   </data>
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% from  objected amount</value>
-  </data>
-  <data name="Unpaid" xml:space="preserve">
-    <value>Unpaid</value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>VAT Registration Certificate</value>
@@ -502,4 +490,31 @@ appeal</value>
     <value>User Name</value>
   </data>
     
+  <data name="Number" xml:space="preserve">
+    <value>number</value>
+  </data>
+  <data name="PaymentNumber" xml:space="preserve">
+    <value>Payment Number</value>
+  </data>
+  <data name="Sadad" xml:space="preserve">
+    <value>sadad</value>
+  </data>
+  <data name="SadadPaymentNumberForBills" xml:space="preserve">
+    <value>sadad payment number</value>
+  </data>
+  <data name="ZakatTaxTypeForBills" xml:space="preserve">
+    <value>Zakat/taxtype</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="PartiallyPaid" xml:space="preserve">
+    <value>PartiallyPaid</value>
+  </data>
+  <data name="UnPaid" xml:space="preserve">
+    <value>UnPaid</value>
+  </data>
 </root>

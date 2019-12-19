@@ -1,0 +1,224 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace GAZT.ViewModel
+{
+    public class MyBillsViewModel : ViewModelBase
+    {
+        private readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public ICommand onAllLabelClicked { get; set; }
+        public ICommand onPaidLabelClicked { get; set; }
+        public ICommand onUnpaidLabelClicked { get; set; }
+        public ICommand onPartiallyPaidLabelClicked { get; set; }
+        private List<MyBills> _myBills;
+        public List<MyBills> MyBills
+        {
+            get
+            {
+                return _myBills;
+            }
+            set
+            {
+                _myBills = value;
+                RaisePropertyChanged("MyBills");
+            }
+        }
+
+        private List<MyBills> _myBillsOriginal;
+        public List<MyBills> MyBillsOriginal
+        {
+            get
+            {
+                return _myBillsOriginal;
+            }
+            set
+            {
+                _myBillsOriginal = value;
+                RaisePropertyChanged("MyBillsOriginal");
+            }
+        }
+       
+        private string _isUnderlineForAll= "Underline";
+        public string IsUnderlineForAll
+        {
+            get
+            {
+                return _isUnderlineForAll;
+            }
+            set
+            {
+                _isUnderlineForAll = value;
+                RaisePropertyChanged("IsUnderlineForAll");
+            }
+        }
+        private string _isUnderlineForPartiallyPaid="None";
+        public string IsUnderlineForPartiallyPaid
+        {
+            get
+            {
+                return _isUnderlineForPartiallyPaid;
+            }
+            set
+            {
+                _isUnderlineForPartiallyPaid = value;
+                RaisePropertyChanged("IsUnderlineForPartiallyPaid");
+            }
+        }
+        private string _isUnderlineForPaid="None";
+        public string IsUnderlineForPaid
+        {
+            get
+            {
+                return _isUnderlineForPaid;
+            }
+            set
+            {
+                _isUnderlineForPaid = value;
+                RaisePropertyChanged("IsUnderlineForPaid");
+            }
+        }
+        private string _isUnderlineForUnPaid="None";
+        public string IsUnderlineForUnPaid
+        {
+            get
+            {
+                return _isUnderlineForUnPaid;
+            }
+            set
+            {
+                _isUnderlineForUnPaid = value;
+                RaisePropertyChanged("IsUnderlineForUnPaid");
+            }
+        }
+
+        private string _statusImage;
+        public string StatusImage
+        {
+            get
+            {
+                return _statusImage;
+            }
+            set
+            {
+                _statusImage = value;
+                RaisePropertyChanged("StatusImage");
+            }
+        }
+
+
+       public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            onAllLabelClicked = new Command(() =>
+            {
+               // IsUnderlineForAll = "None";
+                if (MyBillsOriginal.Count != 0)
+                {
+                    List<MyBills> myBills = new List<MyBills>();
+                    myBills = MyBillsOriginal.ToList();
+                    MyBills = myBills;
+                }
+            });
+            onPaidLabelClicked = new Command(() =>
+            {
+                if (MyBillsOriginal.Count != 0)
+                {
+                    List<MyBills> myBills = new List<MyBills>();
+                    myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
+                    MyBills = myBills;
+                }
+            });
+            onUnpaidLabelClicked = new Command(() =>
+            {
+                if (MyBillsOriginal.Count != 0)
+                {
+                    List<MyBills> myBills = new List<MyBills>();
+                    myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
+                    MyBills = myBills;
+                }
+            });
+            onPartiallyPaidLabelClicked = new Command(() =>
+            {
+                if (MyBillsOriginal.Count != 0)
+                {
+                    List<MyBills> myBills = new List<MyBills>();
+                    myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+                    MyBills = myBills;
+                }
+            });
+        }
+
+
+        public async void onPageLoad()
+        {
+
+            List<MyBills> myBills = new List<MyBills>();
+            try
+            {
+
+
+                myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
+
+                if (myBills.Count != 0)
+                {
+                    MyBills = new List<MyBills>();
+                    MyBills = myBills;
+                    MyBillsOriginal = myBills;
+                }
+            }
+            catch (Exception e)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox("No Bills Found", AppResources.Information);
+                });
+            }
+
+            // int i = 5;
+            // MyBills = new List<MyBills>();
+            // for (i = 0; i < 6; i++)
+            // {
+            //     MyBills m = new MyBills();
+            //     m.Abtypt = "Abc";
+            //     m.BETRW = "100";
+            //     m.FAEDN = "12:02:20";
+            //     m.Status = "P";
+            //     m.VTRE2 = "54321";
+
+            //     MyBills.Add(m);
+            // }
+
+            // int j = 5;
+            ////S MyBills = new List<MyBills>();
+            // for (i = 0; i < 6; i++)
+            // {
+            //     MyBills m = new MyBills();
+            //     m.Abtypt = "Abc";
+            //     m.BETRW = "100";
+            //     m.FAEDN = "12:02:20";
+            //     m.Status = "I";
+            //     m.VTRE2 = "54321";
+
+            //     MyBills.Add(m);
+            // }
+            // MyBillsOriginal = MyBills;
+        }
+    }
+}

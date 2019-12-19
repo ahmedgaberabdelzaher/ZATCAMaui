@@ -33,4 +33,6 @@ namespace GAZT.Models
         public VATSet VATSet { get; set; }
         public ExciseSet ExciseSet { get; set; }
     }
+
+  
 }

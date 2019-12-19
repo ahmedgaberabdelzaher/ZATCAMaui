@@ -86,10 +86,10 @@
                     <local1:CustomLabel  Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsVATCertificateAvailable}" Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" Margin="20,20,20,0">
                     </local1:CustomLabel>
 
-                    <ListView  Grid.Row="1" Grid.Column="0"  Margin="20,0,20,0" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="Fill" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
-                        <x:Arguments>
+                    <ListView  Grid.Row="1" Grid.Column="0"  Margin="20,0,20,0" HeightRequest="75" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding VATCertificateList}" VerticalOptions="Fill" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <!--<x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                        </x:Arguments>
+                        </x:Arguments>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -125,10 +125,10 @@
                     <local1:CustomLabel  Grid.Row="3" Grid.Column="0"  IsVisible="{Binding IsZAKATCertificateAvailable}" Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="20,10,20,0">
                     </local1:CustomLabel>
 
-                    <ListView  Grid.Row="4" Grid.Column="0"  Margin="20,0,20,0" IsVisible="{Binding IsZAKATCertificateAvailable}" ItemsSource ="{Binding ZAKATCertificateList}" VerticalOptions="FillAndExpand" x:Name="ZAKATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
-                        <x:Arguments>
+                    <ListView  Grid.Row="4" Grid.Column="0"  Margin="20,0,20,0" HeightRequest="75" IsVisible="{Binding IsZAKATCertificateAvailable}" ItemsSource ="{Binding ZAKATCertificateList}" VerticalOptions="FillAndExpand" x:Name="ZAKATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <!--<x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                        </x:Arguments>
+                        </x:Arguments>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -164,10 +164,10 @@
                     <local1:CustomLabel Grid.Row="6" Grid.Column="0" IsVisible="{Binding IsEXISECertificateAvailable}" Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" Margin="20,10,20,0">
                     </local1:CustomLabel>
 
-                    <ListView Grid.Row="7" Grid.Column="0" Margin="20,0,20,0"  IsVisible="{Binding IsEXISECertificateAvailable}" ItemsSource ="{Binding EXICISECertificateList}" VerticalOptions="FillAndExpand" x:Name="EXISECertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedEXCISECertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
-                        <x:Arguments>
+                        <ListView Grid.Row="7" Grid.Column="0" Margin="20,0,20,0" HeightRequest="75"  IsVisible="{Binding IsEXISECertificateAvailable}" ItemsSource ="{Binding EXICISECertificateList}" VerticalOptions="FillAndExpand" x:Name="EXISECertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedEXCISECertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <!--<x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                        </x:Arguments>
+                        </x:Arguments>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

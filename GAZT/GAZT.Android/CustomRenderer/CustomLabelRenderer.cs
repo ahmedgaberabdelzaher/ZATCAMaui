@@ -21,6 +21,10 @@ namespace GAZT.Droid.CustomRenderer
     {
         Context _context;
 
+
+      
+
+
         public CustomLabelRenderer(Context context) : base(context)
         {
             _context = context;
@@ -32,6 +36,9 @@ namespace GAZT.Droid.CustomRenderer
         {
           
             base.OnElementChanged(e);
+
+           
+
             //if (Control != null)
             //{
             //    if (App.IsArabic)

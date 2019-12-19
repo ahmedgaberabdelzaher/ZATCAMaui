@@ -174,6 +174,18 @@
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
 
+
+            <Style x:Key="MyBillsSmallMiniWhiteLabelStyle" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+            </Style>
+
             <Style x:Key="TaxPayerSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -266,6 +278,8 @@
                  <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
+            
+            
 
             <Style x:Key="PickerStyle" TargetType="Picker">
                 <Setter Property="FontSize">
