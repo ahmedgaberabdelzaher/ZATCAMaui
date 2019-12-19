@@ -16,6 +16,9 @@ namespace GAZT
         public readonly IDialogService _dialogService;
         
        public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnCaptchaRegenerateClicked { get; set; }
+
+        
         #endregion
         #region Property
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -234,6 +237,20 @@ namespace GAZT
                 RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
             }
         }
+
+        private string _captcha ;
+        public string Captcha
+        {
+            get
+            {
+                return _captcha;
+            }
+            set
+            {
+                _captcha = value;
+                RaisePropertyChanged("Captcha");
+            }
+        }
         
 
         #endregion
@@ -257,6 +274,11 @@ namespace GAZT
             {
              // _navigationService.NavigateTo(App.ForgotUsernamePassword);
             });
+            OnCaptchaRegenerateClicked = new Command(async () =>
+            {
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
+            });
             
         }
         #endregion Constructor
@@ -265,6 +287,8 @@ namespace GAZT
         {
             try
             {
+               StringBuilder  captcha = GetCaptcha();
+                Captcha = captcha.ToString();
             List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
             {
                 new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
@@ -328,6 +352,41 @@ namespace GAZT
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = true;
                 IDNumberOrCorporateIDOrUserName = AppResources.CorportaeID;
+            }
+        }
+
+        public StringBuilder GetCaptcha()
+        {
+            StringBuilder Captcha;
+           
+                try
+                {
+                    Random random = new Random();
+                    string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                    StringBuilder captcha = new StringBuilder();
+                    for (int i = 0; i < 6; i++)
+                        captcha.Append(combination[random.Next(combination.Length)]);
+                    //Session["captcha"] = captcha.ToString();
+                    //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
+                    Captcha = captcha;
+                }
+                catch
+                {
+                    throw;
+                }
+                return Captcha;
+            
+        }
+
+        public bool ValidateCaptcha()
+        {
+            if(EnteredCaptchaValue.Equals(Captcha))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion

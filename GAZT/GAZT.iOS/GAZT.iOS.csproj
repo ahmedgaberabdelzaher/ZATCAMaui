@@ -344,6 +344,9 @@
     <BundleResource Include="Resources\ic_dropdownOne.png" />
     <BundleResource Include="Resources\ic_dropdownOne%402x.png" />
     <BundleResource Include="Resources\ic_dropdownOne%403x.png" />
+    <BundleResource Include="Resources\ic_sync_captcha.png" />
+    <BundleResource Include="Resources\ic_sync_captcha%402x.png" />
+    <BundleResource Include="Resources\ic_sync_captcha%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
