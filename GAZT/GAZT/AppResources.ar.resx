@@ -519,5 +519,8 @@
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value> Invalid Captcha</value>
+        </data>
+  <data name="NoBillsAvailable" xml:space="preserve">
+    <value>No Bills Available</value>
   </data>
 </root>

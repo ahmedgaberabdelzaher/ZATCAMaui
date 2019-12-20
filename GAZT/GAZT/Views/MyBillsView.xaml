@@ -65,25 +65,28 @@
                     <ColumnDefinition Width="15*"/>
                     <ColumnDefinition Width="55*"/>
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}"  Grid.Row="0" Grid.Column="0">
+                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0">
+                  
+                    
                     <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding onAllLabelClicked}" />
+                        
+                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForAll" Command="{Binding onAllLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
 
-                <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="1"  >
+                <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{DynamicResource searchBarStyleForPaid}" Grid.Row="0" Grid.Column="1"  >
                     <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding onPaidLabelClicked}" />
+                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPaid" Command="{Binding onPaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="2"  >
+                <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{DynamicResource searchBarStyleForUnPaid}" Grid.Row="0" Grid.Column="2"  >
                     <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding onUnpaidLabelClicked}" />
+                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{StaticResource MyBillsSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="3"   >
+                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"   >
                     <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding onPartiallyPaidLabelClicked}" />
+                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
             </Grid>

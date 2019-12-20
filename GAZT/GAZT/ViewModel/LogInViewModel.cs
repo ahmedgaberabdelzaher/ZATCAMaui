@@ -24,7 +24,7 @@ namespace GAZT
 
         #endregion
         #region Property
-        private string _UserName = "3102183402";
+        private string _UserName = "3102164652";
        // private string _UserName = string.Empty;
         public string UserName
         {
@@ -67,8 +67,8 @@ namespace GAZT
             }
         }
 
-        private string _Password = "Test@123";
-        //private string _Password = string.Empty;
+        private string _Password = "Test@1234";
+       // private string _Password = string.Empty;
         public string Password
         {
             get

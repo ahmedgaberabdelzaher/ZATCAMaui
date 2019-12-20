@@ -832,5 +832,11 @@ namespace GAZT {
                 return ResourceManager.GetString("InvaliedCaptcha", resourceCulture);
             }
         }
+        
+        public static string NoBillsAvailable {
+            get {
+                return ResourceManager.GetString("NoBillsAvailable", resourceCulture);
+            }
+        }
     }
 }

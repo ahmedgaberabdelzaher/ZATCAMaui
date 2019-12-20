@@ -28,7 +28,9 @@ namespace GAZT
         public static string ChangeMobileNumberView = "ChangeMobileNumberView";
         public static string ChangePasswordView = "ChangePasswordView";
         public static string MyBillsView = "MyBillsView";
+        public static string PdfiOSView = "PdfiOSView";
 
+        
 
         public static TIN CurrentDropdownTIN;
 

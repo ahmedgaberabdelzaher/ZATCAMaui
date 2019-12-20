@@ -476,25 +476,9 @@ namespace GAZT
         {
             if(Device.RuntimePlatform == Device.iOS)
             {
-             if (pdfUrl != null)
-            {
-                Uri uri = new Uri(pdfUrl);
-                Device.OpenUri(uri);
-            }
-            else
-            {
-                //pop that certificate is not available
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                });
-            }
-            }
-            else
-            {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
                 {
@@ -504,7 +488,23 @@ namespace GAZT
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     });
                 }
-            }        }
+            }
+            else
+            {
+                    if (pdfUrl != null)
+                    {
+                        _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    }
+                    else
+                    {
+                        //pop that certificate is not available
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                        });
+                    }
+            }
+        }
 
         public async Task ShowZAKATPdf(string pdfUrl)
         {
@@ -513,8 +513,7 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    Uri uri = new Uri(pdfUrl);
-                    Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
                 {
@@ -549,8 +548,7 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    Uri uri = new Uri(pdfUrl);
-                    Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
                 {

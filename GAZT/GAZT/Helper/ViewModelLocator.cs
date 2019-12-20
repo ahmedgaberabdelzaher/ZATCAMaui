@@ -27,8 +27,9 @@ namespace GAZT
             SimpleIoc.Default.Register<ChangeMobileNumberViewModel>();
             SimpleIoc.Default.Register<ChangePasswordViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
+            SimpleIoc.Default.Register<PdfiOSViewModel>();
 
-
+            
 
 
 
@@ -247,7 +248,24 @@ namespace GAZT
             }
         }
 
-
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public PdfiOSViewModel PdfiOSView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PdfiOSViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        
 
 
 
@@ -268,7 +286,9 @@ namespace GAZT
             navigationService.Configure(App.ChangeMobileNumberView, typeof(ChangeMobileNumberView));
             navigationService.Configure(App.ChangePasswordView, typeof(ChangePasswordView));
             navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
+            navigationService.Configure(App.PdfiOSView, typeof(PdfiOSView));
 
+            
             return navigationService;
         }
 
