@@ -33,7 +33,6 @@ namespace GAZT.Droid.CustomRenderer
 				Control.LayoutParameters = layoutParams;
 				Control.SetPadding(0, 0, 0, 0);
 				SetPadding(0, 0, 0, 0);
-
                 if (Control != null)
                 {
                     Control.Gravity = Android.Views.GravityFlags.CenterVertical;

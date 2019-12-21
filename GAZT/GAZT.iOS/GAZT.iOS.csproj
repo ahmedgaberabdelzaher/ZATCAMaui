@@ -54,6 +54,8 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>csepf DEVELOPMENT</CodesignProvision>
+    <MtouchLink>None</MtouchLink>
+    <MtouchExtraArgs>--interpreter</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -66,6 +68,7 @@
     <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>csepf DISTRIBUTION</CodesignProvision>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -108,6 +111,8 @@
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderer\RoundCornersEffectIOS.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
+    <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -310,7 +315,6 @@
     <BundleResource Include="Resources\file%403x.png" />
     <BundleResource Include="Resources\ic_bg_green_full_big.png" />
     <BundleResource Include="Resources\abc.png" />
-    <BundleResource Include="Resources\Ellipse.png" />
     <BundleResource Include="Resources\ic_envelop_selected.png" />
     <BundleResource Include="Resources\ic_envelop_selected%402x.png" />
     <BundleResource Include="Resources\ic_envelop_selected%403x.png" />
@@ -350,10 +354,14 @@
     <BundleResource Include="Resources\ic_sync_captcha.png" />
     <BundleResource Include="Resources\ic_sync_captcha%402x.png" />
     <BundleResource Include="Resources\ic_sync_captcha%403x.png" />
+    <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Logo_GAZT_color%403x.png" />

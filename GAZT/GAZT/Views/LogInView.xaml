@@ -52,7 +52,6 @@
                 <Frame Grid.Row="2" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0" Padding="0,0,0,25">
                 </Frame>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-
                     <local1:BorderlessEntry Text="{Binding UserName}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
                     </local1:BorderlessEntry>
                 </StackLayout>
@@ -70,9 +69,7 @@
                 <Frame Grid.Row="5" IsVisible="{Binding IsVisibleTinIds}" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
                 </Frame>
                 <StackLayout IsVisible="{Binding IsVisibleTinIds}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
-                    <!--<Picker Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource EntryStyle}" TextColor="Black" ItemsSource="{Binding TINs}" SelectedItem="{Binding SelectedTinId}" ItemDisplayBinding="{Binding Tin}" Margin="0,0,0,0"></Picker>-->
                     <local1:CustomPicker Style="{StaticResource PickerStyle}"  FontSize="10" TextColor="Black"  Image="ic_dropdownOne.png" HeightRequest="30" IsEnabled="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}" DisplayMemberBinding="Tin" Margin="1"/>
-                    
                 </StackLayout>
                 <Label IsVisible="{Binding IsVisibleTinIds}"  Text="{x:Static local:AppResources.TINS}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
                     <Label.Margin>
@@ -108,8 +105,8 @@
                     </Label.GestureRecognizers>
                 </Label>
 
-                 <StackLayout  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                        <Label    Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
+                 <StackLayout  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                        <Label    Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
                     </Label.GestureRecognizers>

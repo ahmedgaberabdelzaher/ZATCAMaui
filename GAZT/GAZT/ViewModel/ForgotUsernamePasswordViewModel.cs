@@ -4,6 +4,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -378,16 +379,23 @@ namespace GAZT
             
         }
 
-        public bool ValidateCaptcha()
+        public async Task<bool> ValidateCaptcha()
         {
+            bool isValidCaptcha = false;
             if(EnteredCaptchaValue.Equals(Captcha))
             {
-                return true;
+                isValidCaptcha =  true;
             }
             else
             {
-                return false;
+
+                await _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
+                isValidCaptcha = false;
             }
+            return isValidCaptcha;
         }
         #endregion
     }

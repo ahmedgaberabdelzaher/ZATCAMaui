@@ -514,6 +514,12 @@
   <data name="UserName" xml:space="preserve">
     <value> اسم المستخدم</value>
   </data>
+   <data name="ForgotPasswordOrUserName" xml:space="preserve">
+    <value> Forgot password or UserName</value>
+  </data>
+  <data name="InvaliedCaptcha" xml:space="preserve">
+    <value> Invalid Captcha</value>
+        </data>
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>
