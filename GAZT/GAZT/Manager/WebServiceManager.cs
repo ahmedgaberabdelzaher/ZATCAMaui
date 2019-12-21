@@ -881,5 +881,52 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<AllCertificate> GAZTGetDashboardData(String Lang, String Tin)
+        {
+            DateTime dt = DateTime.Now;
+            Dashboard dashboardData = new Dashboard();
+           // string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
+
+            string NewToken = string.Empty;
+            try
+            {
+
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+              // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
+              string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json" ;
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                HttpResponseMessage GAZTGetDashboardResponse = await client.GetAsync(uri);
+
+                if (GAZTGetDashboardResponse != null)
+                {
+                    HttpHeaders headers = GAZTGetDashboardResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        App.Token = NewToken;
+                    }
+                    String GAZTGetAllCertificateResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+
+                    GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
+                    dashboardData  = JsonConvert.DeserializeObject<Dashboard>(GAZTGetAllCertificateResponseJSON);
+                }
+                return null ;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

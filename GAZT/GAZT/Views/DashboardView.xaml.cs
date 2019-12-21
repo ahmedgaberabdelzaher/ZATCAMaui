@@ -20,6 +20,7 @@ namespace GAZT.Views
             string str = "abc";
             Items.Add(str);
             CardView.ItemsSource = Items;
+            viewModel.OnPageLoad();
         }
         private void SetLTR()
         {

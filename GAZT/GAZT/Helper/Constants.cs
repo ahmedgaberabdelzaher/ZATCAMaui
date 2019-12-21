@@ -18,8 +18,8 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
 
 
         public static string JSONContentType = "application/json";
@@ -37,6 +37,8 @@ namespace GAZT.Helper
         public static string GetAllTin = BaseUrlOfAuthentication + "/prt_logon/GetTINServlet?&emailId=";
         public static string GetAllCertificate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='";
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
+
+     public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
 
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{
