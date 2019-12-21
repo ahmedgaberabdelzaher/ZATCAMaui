@@ -29,7 +29,10 @@ namespace GAZT
             SimpleIoc.Default.Register<MyBillsViewModel>();
             SimpleIoc.Default.Register<PdfiOSViewModel>();
 
-            
+
+            SimpleIoc.Default.Register<LogInViewModel>();
+
+
 
 
 
@@ -248,6 +251,23 @@ namespace GAZT
             }
         }
 
+
+        public LogInPageViewModel LogInPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LogInPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
@@ -266,6 +286,9 @@ namespace GAZT
             }
         }
         
+
+
+
 
 
 
@@ -289,6 +312,10 @@ namespace GAZT
             navigationService.Configure(App.PdfiOSView, typeof(PdfiOSView));
 
             
+
+
+            navigationService.Configure(App.LogInPageView, typeof(LogInPageView));
+
             return navigationService;
         }
 

@@ -32,6 +32,10 @@ namespace GAZT
 
         
 
+        public static string LogInPageView = "LogInPageView";
+
+
+
         public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;

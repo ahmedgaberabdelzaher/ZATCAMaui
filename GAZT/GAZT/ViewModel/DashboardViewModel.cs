@@ -70,7 +70,8 @@ namespace GAZT
 
         public async Task OnPageLoad()
         {
-           await WebServiceManager.GAZTGetDashboardData("","");
+          string lang = UtilityManager.GetLanguageParameter();
+           await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
         }
         #endregion
     }

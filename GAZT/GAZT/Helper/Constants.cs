@@ -38,6 +38,8 @@ namespace GAZT.Helper
         public static string GetAllCertificate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='";
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
 
+     public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
+
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{
         //    if(mobileNumber.Substring(0,1).Equals(5) && mobileNumber.Length == 9)

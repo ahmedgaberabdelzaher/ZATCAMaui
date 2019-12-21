@@ -31,9 +31,13 @@
 
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
-           
 
 
+            <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicBold">
+                <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
+
+                <On Platform="iOS" Value="SSTArabic-Bold" />
+            </OnPlatform>
 
             <Style x:Key="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
@@ -48,6 +52,10 @@
 
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
+            
+            
+            
+
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -276,11 +284,13 @@
                 <Setter Property="TextColor" Value="{DynamicResource MaroonLabelTextColor}" />
             </Style>
             <Style x:Key="FrameStyle" TargetType="Frame">
-                <Setter Property="CornerRadius">
+                <!--<Setter Property="CornerRadius">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="14.5" Tablet="14.5" />
                     </Setter.Value>
-                </Setter>
+                </Setter>-->
+                
+                <Setter Property="CornerRadius" Value="0"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
@@ -304,6 +314,62 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+            </Style>
+
+            
+            <!--/For New Design/-->
+            
+            
+            <Style x:Key="GAZTSmallGreenLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
+                <Setter Property="Margin" Value="10,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                
+                
+                
+            </Style>
+
+
+
+            <Style x:Key="GAZTSmallGoldLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="Margin" Value="10,1,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
+
+            <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="0"></Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="BorderColor" Value="#B1B1B1" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Margin" Value="10,2,10,1"/>
+            </Style>
+
+            <Style x:Key="GAZTImageStyleForEntry" TargetType="Image">
+
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="13,0,13,0"/>
+
+            </Style>
+
+            <Style x:Key="GAZTTextBoxStyleForEntry" TargetType="Entry">
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="Margin" Value="10,0,10,0"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="GAZTPickerStyle" TargetType="Picker">
+                <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
 
