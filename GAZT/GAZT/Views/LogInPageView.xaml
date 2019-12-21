@@ -61,7 +61,8 @@
 
                 <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
-
+<!--//Test-->
+                
                 <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Image Source="ic_Login_button.png"></Image>
                     <Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}"  Style="{StaticResource GAZTSmallGoldLabelStyle}">
