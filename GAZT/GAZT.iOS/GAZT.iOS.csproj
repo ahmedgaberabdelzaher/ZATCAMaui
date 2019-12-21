@@ -378,4 +378,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_Login_button.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Dashboard_User.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Dashboard_User.png%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Dashboard_User.png%403x.png" />
+  </ItemGroup>
 </Project>

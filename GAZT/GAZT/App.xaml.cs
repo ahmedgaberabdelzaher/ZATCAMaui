@@ -33,7 +33,7 @@ namespace GAZT
         
 
         public static string LogInPageView = "LogInPageView";
-
+        public static string DashboardPageView = "DashboardPageView";
 
 
         public static TIN CurrentDropdownTIN;

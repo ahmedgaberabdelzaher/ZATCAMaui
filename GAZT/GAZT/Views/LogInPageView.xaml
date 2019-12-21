@@ -11,14 +11,14 @@
         <ScrollView Orientation="Vertical" >
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="45*"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -28,13 +28,13 @@
 
                 </Grid.ColumnDefinitions>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#065E49">
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#065E49">
 
                 </StackLayout>
 
-                <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
+                <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />
 
-                <Label Text="{x:Static local:AppResources.TinEmail}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+                <Label Text="{x:Static local:AppResources.TinEmail}" Margin="10,5,0,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
                 <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                 </Frame>
@@ -61,13 +61,21 @@
 
                 <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
-                <Image Source="ic_Login_button.png" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+
+                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="ic_Login_button.png"></Image>
+                    <Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}"  Style="{StaticResource GAZTSmallGoldLabelStyle}">
+                    </Label>
+                </StackLayout>
+                
+                
+                <!--<Image Source="ic_Login_button.png" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>-->
 
 
 
 
-                <Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}"  Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"  >
-                </Label>
+                <!--<Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}"  Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"  >
+                </Label>-->
 
 
 

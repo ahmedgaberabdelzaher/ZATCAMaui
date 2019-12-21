@@ -31,6 +31,7 @@ namespace GAZT
 
 
             SimpleIoc.Default.Register<LogInViewModel>();
+            SimpleIoc.Default.Register<DashboardPageViewModel>();
 
 
 
@@ -268,6 +269,23 @@ namespace GAZT
         }
 
 
+        public DashboardPageViewModel DashboardPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DashboardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
@@ -315,6 +333,7 @@ namespace GAZT
 
 
             navigationService.Configure(App.LogInPageView, typeof(LogInPageView));
+            navigationService.Configure(App.DashboardPageView, typeof(DashboardPageView));
 
             return navigationService;
         }
