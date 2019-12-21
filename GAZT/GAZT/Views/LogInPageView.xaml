@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+            xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             x:Class="GAZT.Views.LogInPageView">
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="76*"/>
+                    <ColumnDefinition Width="12*" />
+
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#065E49">
+
+                </StackLayout>
+
+                <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
+
+                <Label Text="{x:Static local:AppResources.TinEmail}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+                </Label>
+                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
+                </Frame>
+
+                <!--<Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
+
+                <custom:GAZTBorderlessEntry  Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+
+
+                <Label Text="{x:Static local:AppResources.TINS}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >
+                </Label>
+                <Frame Grid.Row="4"  Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
+                </Frame>
+
+                <Picker Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,0,10,0"></Picker>
+
+
+                <Label Text="{x:Static local:AppResources.Password}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" >
+                </Label>
+                <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
+                </Frame>
+
+                <!--<Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
+
+                <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+
+                <Image Source="ic_Login_button.png" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+
+
+
+
+                <Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}"  Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"  >
+                </Label>
+
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+        
+</ContentPage>

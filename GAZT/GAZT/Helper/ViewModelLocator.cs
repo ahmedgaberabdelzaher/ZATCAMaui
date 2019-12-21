@@ -29,6 +29,9 @@ namespace GAZT
             SimpleIoc.Default.Register<MyBillsViewModel>();
 
 
+            SimpleIoc.Default.Register<LogInViewModel>();
+
+
 
 
 
@@ -248,6 +251,25 @@ namespace GAZT
         }
 
 
+        public LogInPageViewModel LogInPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LogInPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
+
 
 
 
@@ -268,6 +290,9 @@ namespace GAZT
             navigationService.Configure(App.ChangeMobileNumberView, typeof(ChangeMobileNumberView));
             navigationService.Configure(App.ChangePasswordView, typeof(ChangePasswordView));
             navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
+
+
+            navigationService.Configure(App.LogInPageView, typeof(LogInPageView));
 
             return navigationService;
         }

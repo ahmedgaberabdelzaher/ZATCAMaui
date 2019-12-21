@@ -29,6 +29,9 @@ namespace GAZT
         public static string ChangePasswordView = "ChangePasswordView";
         public static string MyBillsView = "MyBillsView";
 
+        public static string LogInPageView = "LogInPageView";
+
+
 
         public static TIN CurrentDropdownTIN;
 
@@ -50,7 +53,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInView());
+            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView());
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

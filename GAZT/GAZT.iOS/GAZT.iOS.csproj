@@ -94,6 +94,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomRenderer\CustomPickerRenderer.cs" />
+    <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -231,7 +232,9 @@
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Logo_GAZT_color%402x.png" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />
     <BundleResource Include="Resources\ic_bell%402x.png" />
@@ -351,5 +354,20 @@
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Logo_GAZT_color%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Logo_GAZT_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Login_button%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Login_button%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Login_button.png" />
   </ItemGroup>
 </Project>
