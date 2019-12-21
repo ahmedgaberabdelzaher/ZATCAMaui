@@ -7,6 +7,8 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Xamarin.Forms;
 using GAZT.Models;
+using GAZT.Manager;
+using System.Threading.Tasks;
 
 namespace GAZT
 {
@@ -65,6 +67,11 @@ namespace GAZT
         }
         #endregion
         #region Method
+
+        public async Task OnPageLoad()
+        {
+           await WebServiceManager.GAZTGetDashboardData("","");
+        }
         #endregion
     }
 }
