@@ -1,16 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.LogInView" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" BackgroundColor="White" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:GAZT.CustomControl">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.LogInView" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" BackgroundColor="White" FlowDirection="RightToLeft">
     <ContentPage.Content>
-       <StackLayout Padding="10">
-      
-        <local1:EntryWithGaztStyle
-            SourceOne ="ic_user.png" 
-                             Text="Left and Right Image Entry Clicked"         
-                            Source="ic_user.png"
-              LeftImageClicked="ImageEntry_LeftImageClicked"
-              RightImageClicked="ImageEntry_RightImageClicked"
-                             />
-        <Entry x:Name="DefaultEntry" Placeholder="Default Entry"/>
-    </StackLayout>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="37.46*" />
+                    <RowDefinition Height="9.25*" />
+                    <RowDefinition Height="8.25*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="4.72*" />
+                    <RowDefinition Height="8.25*" />
+                    <RowDefinition Height="4.72*" />
+                    <RowDefinition Height="8.41*" />
+                    <RowDefinition Height="3.51*" />
+                    <RowDefinition Height="3.51*" />
+                    <RowDefinition Height="8.92*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="7*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:TypeArguments="GridLength" Phone="70*" Tablet="86*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                        <ColumnDefinition.Width>
+                            <OnIdiom x:TypeArguments="GridLength" Phone="15*" Tablet="7*" />
+                        </ColumnDefinition.Width>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PaintSurface="OnCanvasViewPaintSurface" />
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="55*" />
+                        <RowDefinition Height="30*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="ic_logo.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" />
+                </Grid>
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                </StackLayout>
+                <Frame Grid.Row="2" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0" Padding="0,0,0,25">
+                </Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                    <local1:BorderlessEntry Text="{Binding UserName}" Style="{StaticResource EntryStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
+                    </local1:BorderlessEntry>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0" Grid.Row="2" Grid.Column="0" >
+                    <Image Source="ic_user.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Margin="0,0,0,0"  />
+
+                </StackLayout>
+                <Label  Text="{x:Static local:AppResources.TinEmail}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label.Margin>
+                        <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                    </Label.Margin>
+                </Label>
+                <StackLayout Grid.Row="3" Margin="0,10,0,0" IsVisible="{Binding IsVisibleTinIds}" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                </StackLayout>
+                <Frame Grid.Row="5" IsVisible="{Binding IsVisibleTinIds}" Grid.Column="0" Style="{StaticResource FrameStyle}" Grid.ColumnSpan="3" Margin="10,0,10,0">
+                </Frame>
+                <StackLayout IsVisible="{Binding IsVisibleTinIds}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+                    <local1:CustomPicker Style="{StaticResource PickerStyle}"  FontSize="10" TextColor="Black"  Image="ic_dropdownOne.png" HeightRequest="30" IsEnabled="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}" DisplayMemberBinding="Tin" Margin="1"/>
+                </StackLayout>
+                <Label IsVisible="{Binding IsVisibleTinIds}"  Text="{x:Static local:AppResources.TINS}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label.Margin>
+                        <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                    </Label.Margin>
+                </Label>
+                <StackLayout Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <Frame Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" Style="{StaticResource FrameStyle}">
+                </Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,0,15,0"  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" >
+                    <local1:BorderlessEntry  IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Style="{StaticResource EntryStyle}" Text="{Binding Password}"  Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
+                    </local1:BorderlessEntry>
+                </StackLayout>
+                <Image Source="ic_password.png" Grid.Row="7" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,15,0" />
+                <Label  Text="{x:Static local:AppResources.Password}"  Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="7" Grid.Column="0"  Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
+                    <Label.Margin>
+                        <OnIdiom x:TypeArguments="Thickness" Phone="25,-13,25,0" Tablet="30,-18,30,0" />
+                    </Label.Margin>
+                </Label>
+                <Image Grid.Row="7" Grid.Column="2" Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPasswordVisibilityClicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout Grid.Row="8" IsEnabled="{Binding IsLoginEnabled}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsLoginEnabled}" VerticalOptions="FillAndExpand" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" HasShadow="false" CornerRadius="4" BackgroundColor="#005e4b" Margin="10,0,10,0">
+                </Frame>
+                <Label   Text="{x:Static local:AppResources.LogIn}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallWhiteLabelStyle}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                 <StackLayout  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                        <Label    Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
+                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+              
+
+                <StackLayout Grid.Row="11" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                </StackLayout>
+            </Grid>
+            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center"></ActivityIndicator>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

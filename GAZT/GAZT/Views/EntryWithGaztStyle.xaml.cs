@@ -12,7 +12,7 @@ namespace GAZT
             ImageSourceOne.ImageClicked += RightImageOn_Clicked;
             ImageSource.ImageClicked += LeftImageOn_Clicked;
             EntryField.BindingContext = this;
-            EntryLabelText.BindingContext = this;
+            //EntryLabelText.BindingContext = this;
           
             this.BindingContext = this;
         }
