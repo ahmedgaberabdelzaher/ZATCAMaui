@@ -1,22 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.EntryWithGaztStyle" xmlns:local1="clr-namespace:GAZT">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.EntryWithGaztStyle" xmlns:local1="clr-namespace:GAZT" xmlns:Control="clr-namespace:GAZT.CustomControl">
     <ContentView.Content>
+                    <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource FrameStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+
         <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="85*" />
+                <ColumnDefinition Width="70*" />
+                 <ColumnDefinition Width="15*" />
             </Grid.ColumnDefinitions>
-            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource FrameStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
-            </Frame>
+           
+                        <Control:CustomImage x:Name="ImageSourceOne" Source="{Binding SourceOne, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,10,0,10" />
+
             <local1:BorderlessEntry x:Name="EntryField" Text="{Binding Text, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" BackgroundColor="White">
             </local1:BorderlessEntry>
             <Label x:Name="EntryLabelText" Text="{Binding LabelText, Mode=TwoWay}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="0" Grid.Column="0" Margin="20,-10,20,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
             </Label>
-            <Image x:Name="ImageSource" Source="{Binding Source, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,10,0,10" />
+            <Control:CustomImage x:Name="ImageSource" Source="{Binding Source, Mode=TwoWay}" Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,10,0,10" />
 
         </Grid>
+                         </Frame>
     </ContentView.Content>
 </ContentView>
