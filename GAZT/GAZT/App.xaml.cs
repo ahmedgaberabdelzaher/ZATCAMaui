@@ -7,6 +7,7 @@ using GAZT.CustomControl;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
+using System.Net.Http;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -49,6 +50,12 @@ namespace GAZT
         public static CultureInfo ci;
         public static bool IsComingFromDashboardToLogOff = false;
 
+
+        //HttpClientHandlerForSSL Certificate Issue
+        public static HttpClientHandler httpClientHandler = null;
+
+
+
         public App()
         {
             String langName = "ar-AE";//"en-US";// "ar-AE";
@@ -63,6 +70,11 @@ namespace GAZT
 
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
+
+
+            httpClientHandler = new HttpClientHandler();
+            httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
 
             MainPage = navigationPage;
         }

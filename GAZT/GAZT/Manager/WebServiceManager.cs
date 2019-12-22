@@ -15,6 +15,10 @@ namespace GAZT.Manager
 {
     public static class WebServiceManager
     {
+
+
+        
+
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
@@ -146,7 +150,7 @@ namespace GAZT.Manager
             //string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GetAllTin +Username;
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
@@ -180,7 +184,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='')?&saml2=disabled&$format=json";
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -236,7 +240,7 @@ namespace GAZT.Manager
             String NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
                 var uri = new Uri(url);
@@ -290,7 +294,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GAZTValidateOTPForMobile +"Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +OTP+ "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
@@ -354,7 +358,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" +""+ "',CurrEmail='" +""+ "',NewEmail='" +""+ "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" +""+"',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
@@ -419,7 +423,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" +""+ "',NewMobile='" +""+ "',CurrPwd='" + CurrentPassword + "',NewPwd='" +NewPassword+"')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
@@ -490,7 +494,7 @@ namespace GAZT.Manager
            // 2007 - 01 - 01T00: 00
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                // String url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=Gpartz  eq  '3300057436'  and Langz   eq 'EN'  and  Begdaz eq   datetime'2007-01-01T00:00'  and Enddaz eq datetime'2019-10-13T11:12'  and  ObligFlagz eq 'I'  and  Auditor  eq  ''   and  TaxtpFg  eq  'VAT'  and  UserTin   eq  ''&$format=json";
                 String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'"+""+"'&saml2=disabled&$format=json";
                 var uri = new Uri(url);
@@ -540,7 +544,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
@@ -600,7 +604,9 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+              
+
+                HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
                 client.DefaultRequestHeaders.Add("Token",App.Token);
                 var uri = new Uri(url);
@@ -658,7 +664,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
@@ -722,7 +728,7 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
 
                 String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword+"')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
@@ -788,7 +794,7 @@ namespace GAZT.Manager
             try
             {
                // Tin = "3300014611";
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                 //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
                 string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=disabled&$format=json";
 
@@ -843,7 +849,7 @@ namespace GAZT.Manager
             try
             {
               
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                // string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin +"'" + ",Langz='"+ Lang + "'" + ",Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
                 string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'"+ "2007-01-01T00%3A00%3A00'" +",Enddaz=datetime'"+ currentDate + "'"+")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
 
@@ -890,7 +896,7 @@ namespace GAZT.Manager
             try
             {
 
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
               // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
               string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json" ;
 
@@ -938,7 +944,7 @@ namespace GAZT.Manager
             try
             {
 
-                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                HttpClient client = new HttpClient(App.httpClientHandler);
                  string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3300092086',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')&Saml2=disabled&saml2=disabled ";
                 //  string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
 
