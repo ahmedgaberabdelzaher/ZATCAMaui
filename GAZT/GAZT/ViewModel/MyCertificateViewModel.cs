@@ -628,14 +628,23 @@ namespace GAZT
             string lang = UtilityManager.GetLanguageParameter();
             TaxPayerProfile = App.TP;
             AllCertificate allCertificate =  await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
-            VATCertificateList = allCertificate.VATSet.results;
-            ZAKATCertificateList = allCertificate.ZakatSet.results;
-            EXICISECertificateList = allCertificate.ExciseSet.results;
-            if(VATCertificateList != null && VATCertificateList.Count == 0 && ZAKATCertificateList != null && ZAKATCertificateList.Count == 0 && EXICISECertificateList != null && EXICISECertificateList.Count == 0)
+            if (allCertificate != null)
+            {
+                VATCertificateList = allCertificate.VATSet.results;
+                ZAKATCertificateList = allCertificate.ZakatSet.results;
+                EXICISECertificateList = allCertificate.ExciseSet.results;
+                if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
+                {
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                      _navigationService.GoBack();
+                }
+                SetLayoutVisibility();
+            }
+            else
             {
                 await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                _navigationService.GoBack();
             }
-            SetLayoutVisibility();
         }
 
         private void SetLayoutVisibility()
