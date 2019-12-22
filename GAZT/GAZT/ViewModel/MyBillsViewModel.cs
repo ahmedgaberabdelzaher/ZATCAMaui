@@ -122,6 +122,7 @@ namespace GAZT.ViewModel
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
+            _dialogService = dialogService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -208,12 +209,13 @@ namespace GAZT.ViewModel
         public async void onPageLoad()
         {
 
-            List<MyBills> myBills = new List<MyBills>();
+            List<MyBills> myBills = null;
             try
             {
 
 
                 myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
+               
 
                 if (myBills != null && myBills.Count != 0)
                 {
@@ -224,14 +226,15 @@ namespace GAZT.ViewModel
                 else
                 {
               await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                    _navigationService.GoBack();
                 }
             }
             catch (Exception e)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
+               
                     await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                });
+                    _navigationService.GoBack();
+                
             }
 
             //int i = 5;
