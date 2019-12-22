@@ -253,7 +253,7 @@
     <value>Overdue Return</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> Password </value>
+    <value>Password </value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current Password</value>
@@ -319,7 +319,7 @@
     <value>Taxpayer Profile</value>
   </data>
   <data name="TIN" xml:space="preserve">
-    <value> TIN </value>
+    <value>TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
     <value>Total Amount</value>
@@ -424,7 +424,7 @@ appeal</value>
     <value>Ok</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
-    <value> User authentication failed</value>
+    <value>User authentication failed</value>
   </data>
   <data name="UserDoesNotExist" xml:space="preserve">
     <value>User does not exist</value>
@@ -439,16 +439,16 @@ appeal</value>
     <value>It is compulsory to change password</value>
   </data>
   <data name="TINS" xml:space="preserve">
-    <value>TIN's</value>
+    <value>Select TIN</value>
   </data>
   <data name="NoTINsAvailable" xml:space="preserve">
     <value>No TIN's linked with this email address.</value>
   </data>
   <data name="VpnNotConnected" xml:space="preserve">
-    <value>App is facing network issue,please try again later.</value>
+    <value>App is facing network issue, please try again later.</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value> Forgot Password or User Name?</value>
+    <value>Forgot Password or User Name?</value>
   </data>
   <data name="Individual" xml:space="preserve">
     <value>Individual</value>
@@ -496,13 +496,13 @@ appeal</value>
     <value>Payment Number</value>
   </data>
   <data name="Sadad" xml:space="preserve">
-    <value>sadad</value>
+    <value>SADAD</value>
   </data>
   <data name="SadadPaymentNumberForBills" xml:space="preserve">
-    <value>sadad payment number</value>
+    <value>Sadad Payment Number</value>
   </data>
   <data name="ZakatTaxTypeForBills" xml:space="preserve">
-    <value>Zakat/taxtype</value>
+    <value>Zakat</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -516,15 +516,12 @@ appeal</value>
   <data name="UnPaid" xml:space="preserve">
     <value>UnPaid</value>
   </data>
-
-   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>Forgot password or UserName</value>
+  <data name="ForgotPasswordOrUserName" xml:space="preserve">
+    <value>Forgot Password or UserName</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value> Invalid Captcha</value>
   </data>
- 
-
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>

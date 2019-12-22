@@ -35,7 +35,7 @@
 
                 <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />
 
-                <Label Text="{x:Static local:AppResources.TinEmail}" Margin="10,5,0,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+                <Label Text="{x:Static local:AppResources.TinEmail}" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
                 <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                 </Frame>

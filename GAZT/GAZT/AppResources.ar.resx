@@ -148,7 +148,7 @@
     <value>تراجع</value>
   </data>
   <data name="Bill" xml:space="preserve">
-    <value>Bill</value>
+    <value>الفاتورة</value>
   </data>
   <data name="BilledNumber" xml:space="preserve">
     <value>رقم المفوتر</value>
@@ -349,8 +349,7 @@
   </data>
   <data name="AmendmentsDoNotMatchText" xml:space="preserve">
     <value>
-           عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل ، وفي حال الرغبة في بالاستمرار سيتم إنشاء طلب اعتراض 
-        </value>
+           عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل ، وفي حال الرغبة في بالاستمرار سيتم إنشاء طلب اعتراض       </value>
   </data>
   <data name="LoginSuccessful" xml:space="preserve">
     <value>تم تسجيل دخولك بنجاح</value>
@@ -431,7 +430,7 @@
     <value>ايوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
   </data>
   <data name="VpnNotConnected" xml:space="preserve">
-    <value>App is facing network issue,please try again later.</value>
+    <value>App is facing network issue, please try again later.</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
     <value>شهادات ضريبة القيمة المضافة</value>
@@ -514,12 +513,12 @@
   <data name="UserName" xml:space="preserve">
     <value> اسم المستخدم</value>
   </data>
-   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value> Forgot password or UserName</value>
+  <data name="ForgotPasswordOrUserName" xml:space="preserve">
+    <value>نسيت كلمة المرور أو اسم المستخدم</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value> Invalid Captcha</value>
-        </data>
+  </data>
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>
