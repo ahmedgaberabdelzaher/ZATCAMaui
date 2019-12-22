@@ -6,7 +6,8 @@
              mc:Ignorable="d"
             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             x:Class="GAZT.Views.LogInPageView">
+             x:Class="GAZT.Views.LogInPageView"
+             FlowDirection="RightToLeft">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" >
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
