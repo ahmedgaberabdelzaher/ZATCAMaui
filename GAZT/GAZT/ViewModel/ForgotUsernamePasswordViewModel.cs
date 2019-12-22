@@ -490,8 +490,8 @@ namespace GAZT
         private async Task SendOTPToRegisterMobileNumber()
         {
             string lang = UtilityManager.GetLanguageParameter();
-             forgotPasswordOTP =  await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
-            if(forgotPasswordOTP != null)
+            forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+            if (forgotPasswordOTP != null)
             {
                 NewPasswordLayoutVisibility = true;
             }
