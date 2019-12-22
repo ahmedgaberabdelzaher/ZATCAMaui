@@ -273,25 +273,33 @@ namespace GAZT
            
             string lang = UtilityManager.GetLanguageParameter();
             dashboard =  await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-            TotalSubmittedReturn = dashboard.results[0].RtnTot;
-            TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
-            TotalPaidReturn = dashboard.results[0].PrtnTot;
-            TotalUnapidReturn = dashboard.results[0].UprtnTot;
-            TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
-            TotalNoofReturns = dashboard.results[0].IcrTot;
-            TotalOverDueReturn = dashboard.results[0].DueIcr;
-            TotalPaidBills = dashboard.results[0].PbillsTot;
-            TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
-            TotalUnpaidBills = dashboard.results[0].UpbillsTot;
-            TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
-            TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
-            TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
-            TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
+            if(dashboard.results != null)
+			{
+				TotalSubmittedReturn = dashboard.results[0].RtnTot;
+				TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
+				TotalPaidReturn = dashboard.results[0].PrtnTot;
+				TotalUnapidReturn = dashboard.results[0].UprtnTot;
+				TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
+				TotalNoofReturns = dashboard.results[0].IcrTot;
+				TotalOverDueReturn = dashboard.results[0].DueIcr;
+				TotalPaidBills = dashboard.results[0].PbillsTot;
+				TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
+				TotalUnpaidBills = dashboard.results[0].UpbillsTot;
+				TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
+				TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
+				TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
+				TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
+			}
+            else
+			{
+				 _dialogService.ShowMessageBox("No data available", AppResources.Information);
+			}
 
 
 
 
-        }
+
+		}
         #endregion
     }
 }

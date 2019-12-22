@@ -478,7 +478,9 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+					Uri uri = new Uri(pdfUrl);
+					Device.OpenUri(uri);
+                    //_navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
                 {
@@ -513,8 +515,10 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-                }
+					Uri uri = new Uri(pdfUrl);
+					Device.OpenUri(uri);
+					// _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+				}
                 else
                 {
                     //pop that certificate is not available
@@ -548,8 +552,10 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-                }
+					Uri uri = new Uri(pdfUrl);
+					Device.OpenUri(uri);
+					//  _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+				}
                 else
                 {
                     //pop that certificate is not available
