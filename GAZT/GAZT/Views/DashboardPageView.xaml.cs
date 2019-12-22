@@ -22,6 +22,7 @@ namespace GAZT.Views
             InitializeComponent();
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.onPageLoad();
         }
         #endregion
 

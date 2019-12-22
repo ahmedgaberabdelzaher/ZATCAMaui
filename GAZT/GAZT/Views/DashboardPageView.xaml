@@ -11,39 +11,175 @@
         <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+
+        <Grid HorizontalOptions="FillAndExpand"  ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="6*"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="93*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="30*" />
-
             </Grid.ColumnDefinitions>
-
             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#c49b2d">
-                
             </StackLayout>
             <Label Text="Muharram,14,1441" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0">
             </Label>
-
             <Label Text="Muharram,14,1441" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
             </Label>
 
+            <Label Text="Returns" HorizontalOptions="Start"  FontSize="Medium" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,0,10" TextDecorations="Underline" FontAttributes="Bold" TextColor="#065E49" VerticalOptions="CenterAndExpand" >
+            </Label>
+            <!-- Use your own layout and functionality here! -->
+            <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="70">
 
-            <Label  HorizontalOptions="StartAndExpand" Margin="0" FontSize="Medium"   VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span  Text="Total of the bills unpaid " TextColor="#005e4b"/>
-                        <Span  Text=" "/>
-                        <Span Text="SAR 4000" TextColor="#707070"/>
-                    </FormattedString>
-                </Label.FormattedText>
+                <CollectionView   ItemsSource="{Binding BillReturn}"  ItemsLayout="HorizontalList" Margin="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="50*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0" >
+                                    <Image Source="{Binding ImagePath}"  HorizontalOptions="End"></Image>
+
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="1" Grid.Row="0" >
+                                    <Label Text="{Binding ReturnCount}" HorizontalOptions="Start" FontSize="Large" TextColor="#065E49" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding ReturnTypeName}"  FontSize="Small"  TextColor="#c49b2d" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <BoxView BackgroundColor="#065E49" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1" Margin="0,0,0,0"></BoxView>
+
+
+            <Label Text="Bills" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Start"  FontSize="Medium" Margin="5,0,0,10" TextDecorations="Underline" FontAttributes="Bold" TextColor="#065E49" VerticalOptions="CenterAndExpand" >
             </Label>
 
+
+            <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,0,0" HeightRequest="70" HorizontalOptions="FillAndExpand">
+
+
+
+                <CollectionView ItemsSource="{Binding BillPaid}" ItemsLayout="HorizontalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="50*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0" >
+                                    <Image Source="{Binding ImagePath}"  HorizontalOptions="End"></Image>
+
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="1" Grid.Row="0" >
+                                    <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontSize="Large" TextColor="#065E49" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding BillTypeName}"  FontSize="Small"  TextColor="#c49b2d" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
+
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="30*" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="Estimate Zakat"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="My Certificate"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="2">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="My Bills"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="VAT-Lookup"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="Correspondance"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="2">
+                        <Image Source="ic_Login_button.png"></Image>
+                        <Label Text="VAT Declaration"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </StackLayout>
+
+                </Grid>
+
+
+
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="7" BackgroundColor="Blue"  Grid.Column="0"  Grid.ColumnSpan="3" Margin="0" VerticalOptions="EndAndExpand">
+
+            </StackLayout>
+
+
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

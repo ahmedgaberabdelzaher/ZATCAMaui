@@ -42,11 +42,114 @@ namespace GAZT.Models
         public string PrbillsBetrw { get; set; }
     }
 
+
+    public class BillReturn
+    {
+        private ReturnType _returnTypeProperty;
+        public ReturnType ReturnTypeProperty
+        {
+            get
+            {
+                return _returnTypeProperty;
+            }
+            set
+            {
+                _returnTypeProperty = value;
+                if(_returnTypeProperty == ReturnType.RtnTot)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "Submitted";
+                }
+                if (_returnTypeProperty == ReturnType.NrtnTot)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "Non Submitted";
+                }
+                if (_returnTypeProperty == ReturnType.PrtnTot)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "Paid";
+                }
+                if (_returnTypeProperty == ReturnType.UprtnTot)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "UnPaid";
+                }
+                if (_returnTypeProperty == ReturnType.PprtnTot)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "Partial Paid";
+                }
+                if (_returnTypeProperty == ReturnType.DueIcr)
+                {
+                    ImagePath = "ic_Check_Mark.png";
+                    ReturnTypeName = "OverDue";
+                }
+            }
+        }
+        public string ReturnTypeName { get; set; }
+        public string ReturnCount { get; set; }
+        public string ImagePath { get; set; }
+    }
+
+    public enum ReturnType
+    {
+        RtnTot = 0,
+        NrtnTot = 1,
+        PrtnTot = 2,
+        UprtnTot = 3,
+        PprtnTot = 4,
+        DueIcr = 5
+    }
+
+    public enum BillType
+    {
+        PbillsTot = 0,
+        UpbillsTot = 1,
+        PrbillsTot = 2,
+    }
+
+    public class BillPaid
+    {
+        private BillType _billTypeProperty;
+        public BillType BillTypeProperty
+        {
+            get
+            {
+                return _billTypeProperty;
+            }
+            set
+            {
+                _billTypeProperty = value;
+                if (_billTypeProperty == BillType.PbillsTot)
+                {
+                    ImagePath = "ic_check_circle.png";
+                    BillTypeName = "Paid";
+                }
+                if (_billTypeProperty == BillType.PrbillsTot)
+                {
+                    ImagePath = "ic_loading.png";
+                    BillTypeName = "Partial";
+                }
+                if (_billTypeProperty == BillType.UpbillsTot)
+                {
+                    ImagePath = "ic_money.png";
+                    BillTypeName = "Unpaid";
+                }
+               
+               
+            }
+        }
+        public string BillTypeName { get; set; }
+        public string BillCount { get; set; }
+        public string ImagePath { get; set; }
+    }
+
     //public class D
     //{
     //    public List<DashboardResult> results { get; set; }
     //}
 
-    
+
 
 }
