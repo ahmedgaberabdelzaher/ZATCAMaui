@@ -19,10 +19,8 @@ namespace GAZT.Views
             InitializeComponent();
             SetLTR();
             this.BindingContext = viewModel;
-           
-          
-       
-           
+             viewModel.OnPageLoad();
+
         }
         private void SetLTR()
         {
@@ -78,7 +76,6 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           await viewModel.OnPageLoad();
 
             Items.Add(viewModel.dashboard);
           //  CardView.ItemsSource = Items;

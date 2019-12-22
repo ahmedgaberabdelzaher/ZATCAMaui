@@ -6,6 +6,8 @@ namespace GAZT.Helper
 {
     public static class Constants
     {
+        public static string ContentType = "application/json";
+
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
 
@@ -37,9 +39,10 @@ namespace GAZT.Helper
         public static string GetAllTin = BaseUrlOfAuthentication + "/prt_logon/GetTINServlet?&emailId=";
         public static string GetAllCertificate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='";
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
+        public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
+        public static string FogotPasswordSendOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='";
 
-     public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
-
+        
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{
         //    if(mobileNumber.Substring(0,1).Equals(5) && mobileNumber.Length == 9)
