@@ -20,6 +20,10 @@ namespace GAZT
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnOnLanguageClickClicked { get; set; }
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
+        public ICommand OnNewLoginUIClicked { get; set; }
+        public ICommand OnNewDashboardUIClicked { get; set; }
+
+        
 
 
         #endregion
@@ -288,6 +292,15 @@ namespace GAZT
                 {
                     _navigationService.NavigateTo(App.ForgotUsernamePassword);
                 });
+            OnNewLoginUIClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.LogInPageView);
+            });
+            OnNewDashboardUIClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.DashboardPageView);
+            });
+
             OnLoginButtonClicked = new Command(async () =>
            {
                App.IsComingFromDashboardToLogOff = false;

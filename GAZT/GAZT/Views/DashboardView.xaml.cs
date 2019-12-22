@@ -3,6 +3,8 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using GAZT.Models;
+
 namespace GAZT.Views
 {
     public partial class DashboardView : ContentPage
@@ -10,17 +12,17 @@ namespace GAZT.Views
         double DeviceHeight;
         double DeviceWidth;
         DashboardViewModel viewModel;
-        ObservableCollection<String> Items = new ObservableCollection<String>();
+        ObservableCollection<Dashboard> Items = new ObservableCollection<Dashboard>();
         public DashboardView()
         {
             viewModel = App.Locator.DashboardView;
             InitializeComponent();
             SetLTR();
             this.BindingContext = viewModel;
-            string str = "abc";
-            Items.Add(str);
-            CardView.ItemsSource = Items;
-            viewModel.OnPageLoad();
+           
+          
+       
+           
         }
         private void SetLTR()
         {
@@ -73,9 +75,13 @@ namespace GAZT.Views
             base.OnDisappearing();
             App.IsComingFromDashboardToLogOff = true;
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+           await viewModel.OnPageLoad();
+
+            Items.Add(viewModel.dashboard);
+          //  CardView.ItemsSource = Items;
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Page pg = Navigation.NavigationStack[index];

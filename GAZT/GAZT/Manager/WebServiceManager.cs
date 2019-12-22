@@ -15,7 +15,6 @@ namespace GAZT.Manager
 {
     public static class WebServiceManager
     {
-
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
@@ -881,7 +880,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<AllCertificate> GAZTGetDashboardData(String Lang, String Tin)
+        public static async Task<Dashboard> GAZTGetDashboardData(String Lang, String Tin)
         {
             DateTime dt = DateTime.Now;
             Dashboard dashboardData = new Dashboard();
@@ -915,12 +914,12 @@ namespace GAZT.Manager
                     {
                         App.Token = NewToken;
                     }
-                    String GAZTGetAllCertificateResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+                    String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
 
-                    GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
-                    dashboardData  = JsonConvert.DeserializeObject<Dashboard>(GAZTGetAllCertificateResponseJSON);
+                    GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
+                    dashboardData  = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
                 }
-                return null ;
+                return dashboardData;
             }
             catch (Exception ex)
             {
@@ -928,5 +927,53 @@ namespace GAZT.Manager
             }
         }
 
+
+        public static async Task<AllCertificate> GAZTFogotPasswordSendOTP(String Lang, String Tin)
+        {
+            DateTime dt = DateTime.Now;
+            Dashboard dashboardData = new Dashboard();
+            // string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
+
+            string NewToken = string.Empty;
+            try
+            {
+
+                HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
+                 string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3300092086',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')&Saml2=disabled&saml2=disabled ";
+                //  string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
+
+              
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
+
+                if (GAZTFogotPasswordSendOTPResponse != null)
+                {
+                    HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    {
+                        throw new Exception("Invalid Token");
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                      //  App.Token =TokenForTest;
+                    }
+                    String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
+
+                   /// GAZTGetSendOTPResponseJSON = JObject.Parse(GAZTGetSendOTPResponseJSON)["d"].ToString();
+                   // dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetSendOTPResponseJSON);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

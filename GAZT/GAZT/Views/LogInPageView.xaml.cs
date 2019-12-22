@@ -57,7 +57,7 @@ namespace GAZT.Views
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+           // InitializeComponent();
 
             this.FlowDirection = FlowDirection.RightToLeft;
         }
@@ -66,7 +66,7 @@ namespace GAZT.Views
             String langName = "en-US";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+         //   InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
         }
 

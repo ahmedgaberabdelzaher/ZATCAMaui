@@ -117,6 +117,29 @@
                  </StackLayout>
               
 
+
+                 <StackLayout  Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                        <Label    Text="New Login UI"  Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnNewLoginUIClicked}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnNewLoginUIClicked}" />
+                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+
+                 <StackLayout  Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                        <Label    Text="New Dashboard UI"  Style="{StaticResource SmallMiniGoldLabelStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"  Margin="10,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnNewDashboardUIClicked}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnNewDashboardUIClicked}" />
+                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+
                 <StackLayout Grid.Row="11" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 </StackLayout>
             </Grid>
