@@ -325,7 +325,7 @@
     <value>Total Amount</value>
   </data>
   <data name="TotalOfBillsUnpaid" xml:space="preserve">
-    <value>Total of the Bills Unpaid</value>
+    <value>Total Unpaid-Bill Amount SAR:</value>
   </data>
   <data name="TotalRequiredToBePaid" xml:space="preserve">
     <value>Total required to be paid</value>

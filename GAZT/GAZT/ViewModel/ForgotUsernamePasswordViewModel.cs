@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
@@ -225,6 +226,50 @@ namespace GAZT
             }
         }
 
+        private bool _newPasswordLayoutVisibility = false;
+        public bool NewPasswordLayoutVisibility
+        {
+            get
+            {
+                return _newPasswordLayoutVisibility;
+            }
+            set
+            {
+                _newPasswordLayoutVisibility = value;
+                RaisePropertyChanged("NewPasswordLayoutVisibility");
+            }
+        }
+
+        private string _newPassword;
+        public string NewPassword
+        {
+            get
+            {
+                return _newPassword;
+            }
+            set
+            {
+                _newPassword = value;
+                RaisePropertyChanged("NewPassword");
+            }
+        }
+
+        private string _confirmPassword;
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
+        }
+
+
+
         private string _iDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
         public string IDNumberOrCorporateIDOrUserName
         {
@@ -273,7 +318,8 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-             // _navigationService.NavigateTo(App.ForgotUsernamePassword);
+                string lang = UtilityManager.GetLanguageParameter();
+               await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
@@ -396,6 +442,11 @@ namespace GAZT
                 isValidCaptcha = false;
             }
             return isValidCaptcha;
+        }
+
+        private void SendOTPToRegisterMobileNumber()
+        {
+
         }
         #endregion
     }
