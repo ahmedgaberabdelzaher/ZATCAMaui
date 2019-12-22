@@ -53,7 +53,7 @@
     <CodesignKey>iPhone Developer: Parag Bihade (XTS6299Y8J)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>csepf DEVELOPMENT</CodesignProvision>
+    <CodesignProvision>GAZT Developer KSA</CodesignProvision>
     <MtouchLink>None</MtouchLink>
     <MtouchExtraArgs>--interpreter</MtouchExtraArgs>
   </PropertyGroup>
@@ -67,7 +67,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>csepf DISTRIBUTION</CodesignProvision>
+    <CodesignProvision>GAZT Distribution KSA</CodesignProvision>
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">

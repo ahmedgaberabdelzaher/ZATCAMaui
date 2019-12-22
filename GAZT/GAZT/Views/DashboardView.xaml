@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="31*" />
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" LineBreakMode="WordWrap" Text="{Binding TotalUnpaidBillAmount}" Style="{StaticResource SmallMiniWhiteLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
+                <local1:CustomLabel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" LineBreakMode="WordWrap" Text="{Binding TotalUnpaidBillAmount}" Style="{StaticResource TPPfofileSmallMiniWhiteLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" />
                 
                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10"  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1"  IsClippedToBounds="true"  BackgroundColor="#717171">
                                                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

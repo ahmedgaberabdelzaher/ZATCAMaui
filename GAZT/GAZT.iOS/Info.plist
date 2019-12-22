@@ -43,9 +43,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>GAZT E-Services</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.parallelminds.CSEPF</string>
+	<string>com.GAZT.KSA</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleName</key>
 	<string>GAZT E-Services</string>
 	<key>XSAppIconAssets</key>

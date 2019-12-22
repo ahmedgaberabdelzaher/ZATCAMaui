@@ -160,10 +160,11 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
+
             <Style x:Key="SmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="20" />
                     </Setter.Value>
                 </Setter>
                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />

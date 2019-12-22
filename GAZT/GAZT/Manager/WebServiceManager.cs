@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 namespace GAZT.Manager
@@ -928,10 +929,10 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<AllCertificate> GAZTFogotPasswordSendOTP(String Lang, String Tin)
+        public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(String Lang, String Tin)
         {
             DateTime dt = DateTime.Now;
-            Dashboard dashboardData = new Dashboard();
+            ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
             // string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
 
             string NewToken = string.Empty;
@@ -939,11 +940,12 @@ namespace GAZT.Manager
             {
 
                 HttpClient client = new HttpClient(new System.Net.Http.HttpClientHandler());
-                 string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3300092086',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')&Saml2=disabled&saml2=disabled ";
+                // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3102164652',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')?Saml2=disabled&$format=json";
+                string uri =Constants.FogotPasswordSendOTP + Tin +"'" + ",EmailId='" + Tin + "'"+ ",TpType='" + Tin + "'" + ",MobileNo='" + Tin + "'" + ",SubType='" + Tin + "'" + ",Idnumber='" + Tin + "'" + ",Otp='" + Tin +"'" + ",NewPwd='"+ Tin + "'" + ",RdBt='" +"P'" + ",Dob=datetime'"+ "2015 -07-05T15:13:49" + "'" + ",Langu='" + "E" + "'" +")?Saml2=disabled&$format=json";
+
                 //  string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
 
-              
-                client.DefaultRequestHeaders.Add("Token", App.Token);
+
                 HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
 
                 if (GAZTFogotPasswordSendOTPResponse != null)
@@ -965,15 +967,34 @@ namespace GAZT.Manager
                     }
                     String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
 
-                   /// GAZTGetSendOTPResponseJSON = JObject.Parse(GAZTGetSendOTPResponseJSON)["d"].ToString();
-                   // dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetSendOTPResponseJSON);
+                    /// GAZTGetSendOTPResponseJSON = JObject.Parse(GAZTGetSendOTPResponseJSON)["d"].ToString();
+                    forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
                 }
-                return null;
+                return forgotPasswordOTP;
             }
             catch (Exception ex)
             {
                 return null;
             }
         }
+
+
+        public static async Task GAZTForgotPasswordValidateOTP(ForgotPasswordOTP forgotPasswordOTP)
+        {
+            //string url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
+            //var uri = new Uri(url);
+            //HttpClient client = new HttpClient();
+            //Task<HttpResponseMessage> res;
+            //var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
+            //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+            //res = client.PostAsync(uri, contentPost);
+            //var detailJson = res.Result.Content.ReadAsStringAsync().Result;
+
+            //System.Diagnostics.Debug.WriteLine("response =" + detailJson);
+
+        }
+
+
+
     }
 }

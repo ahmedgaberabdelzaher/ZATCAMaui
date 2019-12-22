@@ -19,8 +19,14 @@ namespace GAZT
         
        public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
+        public ICommand OnChangePasswordSubmitClicked { get; set; }
+        public ICommand OnResendOTPClicked { get; set; }
+        public ICommand OnValidateOTPClicked { get; set; }
+        ForgotPasswordOTP forgotPasswordOTP { get; set; }
 
-        
+
+
+
         #endregion
         #region Property
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -297,8 +303,22 @@ namespace GAZT
                 RaisePropertyChanged("Captcha");
             }
         }
-        
 
+        private string _enteredOTP;
+        public string EnteredOTP
+        {
+            get
+            {
+                return _enteredOTP;
+            }
+            set
+            {
+                _enteredOTP = value;
+                RaisePropertyChanged("EnteredOTP");
+            }
+        }
+
+        
         #endregion
 
         #region Constructor
@@ -318,20 +338,43 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                string lang = UtilityManager.GetLanguageParameter();
-               await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+              await  SendOTPToRegisterMobileNumber();
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
             });
+
+            OnChangePasswordSubmitClicked = new Command(async () =>
+            {
             
+            });
+
+            OnResendOTPClicked = new Command(async () =>
+            {
+               await SendOTPToRegisterMobileNumber();
+            });
+
+            OnValidateOTPClicked = new Command(async () =>
+            {
+                ValidateOTP();
+            });
+            
+
+
+
+
+
+
+
+
         }
         #endregion Constructor
         #region Method
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
+            string lang = UtilityManager.GetLanguageParameter();
             try
             {
                StringBuilder  captcha = GetCaptcha();
@@ -444,8 +487,19 @@ namespace GAZT
             return isValidCaptcha;
         }
 
-        private void SendOTPToRegisterMobileNumber()
+        private async Task SendOTPToRegisterMobileNumber()
         {
+            string lang = UtilityManager.GetLanguageParameter();
+             forgotPasswordOTP =  await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+            if(forgotPasswordOTP != null)
+            {
+                NewPasswordLayoutVisibility = true;
+            }
+        }
+
+        private async Task ValidateOTP()
+        {
+            await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
 
         }
         #endregion
