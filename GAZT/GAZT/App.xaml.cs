@@ -56,7 +56,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new DashboardPageView());
+            CustomNavigation navigationPage = new CustomNavigation(new LogInView());
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
