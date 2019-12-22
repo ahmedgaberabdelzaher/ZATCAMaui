@@ -136,33 +136,33 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_Estimate_zakat.png"></Image>
                         <Label Text="Estimate Zakat"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="1">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_certificate.png"></Image>
                         <Label Text="My Certificate"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="2">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_Mybills.png"></Image>
                         <Label Text="My Bills"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0,0,0,5" HorizontalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="0">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_vat_lookup_1.png"></Image>
                         <Label Text="VAT-Lookup"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
                     <StackLayout Grid.Row="1" Grid.Column="1">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_correspondance_1.png"></Image>
                         <Label Text="Correspondance"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
                     <StackLayout Grid.Row="1" Grid.Column="2">
-                        <Image Source="ic_Login_button.png"></Image>
+                        <Image Source="ic_vat_declaration_1.png"></Image>
                         <Label Text="VAT Declaration"  TextColor="#005e4b" FontSize="Micro" FontAttributes="Bold" Margin="0" HorizontalOptions="CenterAndExpand">
                         </Label>
                     </StackLayout>
@@ -174,9 +174,10 @@
 
             </StackLayout>
 
-            <StackLayout Grid.Row="7" BackgroundColor="Blue"  Grid.Column="0"  Grid.ColumnSpan="3" Margin="0" VerticalOptions="EndAndExpand">
 
-            </StackLayout>
+            <!--<StackLayout Grid.Row="7" BackgroundColor="Blue"  Grid.Column="0"  Grid.ColumnSpan="3" Margin="0" VerticalOptions="EndAndExpand">
+
+            </StackLayout>-->
 
 
         </Grid>
