@@ -10,6 +10,7 @@ using Android.Support.V4.Content;
 using Android;
 using Android.Support.V4.App;
 using Tavant.XToolkit;
+using DeviceOrientation.Forms.Plugin.Droid;
 
 namespace GAZT.Droid
 {

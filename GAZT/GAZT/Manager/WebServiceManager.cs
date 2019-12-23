@@ -1020,7 +1020,6 @@ namespace GAZT.Manager
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 res = client.PostAsync(uri, contentPost);
                 var detailJson = res.Result.Content.ReadAsStringAsync().Result;
-
                 System.Diagnostics.Debug.WriteLine("response =" + detailJson);
             }
             catch(Exception ex)
