@@ -24,6 +24,8 @@ namespace GAZT.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             InitRoundedCornerView.Init();
+
+          
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)

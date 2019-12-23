@@ -69,10 +69,10 @@ namespace GAZT.Views
                     }
                 });
             }
-            App.TP = null;
-            viewModel.UserName = string.Empty;
-            viewModel.Password = string.Empty;
-            viewModel.IsVisibleTinIds = false;
+            //App.TP = null;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
+            //viewModel.IsVisibleTinIds = false;
         }
         public void OnPasswordVisibilityClicked(object sender, EventArgs args)
         {

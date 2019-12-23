@@ -23,14 +23,14 @@ namespace GAZT
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
 
-        
+
 
 
         #endregion
         #region Property
 
-        //private string _UserName = "3300036062";
-        private string _UserName = string.Empty;
+        private string _UserName = "3102164652";
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -73,9 +73,9 @@ namespace GAZT
         }
 
 
-     //  private string _Password = "Test@123";
+       private string _Password = "Test@4321";
 
-    private string _Password = string.Empty;
+    //private string _Password = string.Empty;
         public string Password
         {
             get
