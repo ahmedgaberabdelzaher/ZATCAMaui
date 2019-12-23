@@ -16,8 +16,8 @@ namespace GAZT
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        
-       public ICommand OnSubmitClicked { get; set; }
+
+        public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnChangePasswordSubmitClicked { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
@@ -75,7 +75,7 @@ namespace GAZT
             {
                 _selectedForgotType = value;
                 RaisePropertyChanged("_selectedForgotType");
-                if(SelectedForgotType != null)
+                if (SelectedForgotType != null)
                 {
                     IsTaxPayerTypeEnable = true;
                     SetLayoutVisibilityForSelectedForgotType();
@@ -89,7 +89,7 @@ namespace GAZT
             }
         }
 
-        
+
 
         private ForgotUserNamePassword _forgotCredentialType;
         public ForgotUserNamePassword ForgotCredentialType
@@ -105,8 +105,8 @@ namespace GAZT
             }
         }
 
-        private List<ForgotUserNamePassword>  _taxpayerTypeList;
-        public List<ForgotUserNamePassword>  TaxpayerTypeList
+        private List<ForgotUserNamePassword> _taxpayerTypeList;
+        public List<ForgotUserNamePassword> TaxpayerTypeList
         {
             get
             {
@@ -161,7 +161,7 @@ namespace GAZT
             }
         }
 
-        
+
         private string _userName;
         public string UserName
         {
@@ -261,7 +261,7 @@ namespace GAZT
         }
 
 
-        
+
 
         private string _newPassword;
         public string NewPassword
@@ -307,7 +307,7 @@ namespace GAZT
             }
         }
 
-        private string _captcha ;
+        private string _captcha;
         public string Captcha
         {
             get
@@ -335,7 +335,7 @@ namespace GAZT
             }
         }
 
-        
+
         #endregion
 
         #region Constructor
@@ -355,8 +355,25 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                await SendUserNameToRegidteredEmail();
+              //bool isValiedCaptcha =   ValidateCaptcha();
+                //if(isValiedCaptcha)
+                //{
+                    if (SelectedForgotType.id.Equals("1") && SelectedTaxPayerType.id.Equals("1") && !(string.IsNullOrEmpty(IDNumber)))
+                    {
+                        await SendUserNameToRegidteredEmail();
+                    }
+                    else
+                    {
+                     await   SendOTPToRegisterMobileNumber();
+                    }
+
+                //}
+               
+             
+
                 // await  SendOTPToRegisterMobileNumber();
+               
+                
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
@@ -366,25 +383,18 @@ namespace GAZT
 
             OnChangePasswordSubmitClicked = new Command(async () =>
             {
-            
+
             });
 
             OnResendOTPClicked = new Command(async () =>
             {
-            //   await SendOTPToRegisterMobileNumber();
+                //   await SendOTPToRegisterMobileNumber();
             });
 
             OnValidateOTPClicked = new Command(async () =>
             {
-               await ValidateOTP();
+                await ValidateOTP();
             });
-            
-
-
-
-
-
-
 
 
         }
@@ -395,9 +405,9 @@ namespace GAZT
             string lang = UtilityManager.GetLanguageParameter();
             try
             {
-               StringBuilder  captcha = GetCaptcha();
+                StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
-            List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
+                List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
             {
                 new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
                 new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
@@ -413,7 +423,7 @@ namespace GAZT
             };
                 ForgotTypeList = forgotCredentialListlist;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -466,37 +476,36 @@ namespace GAZT
         public StringBuilder GetCaptcha()
         {
             StringBuilder Captcha;
-           
-                try
-                {
-                    Random random = new Random();
-                    string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-                    StringBuilder captcha = new StringBuilder();
-                    for (int i = 0; i < 6; i++)
-                        captcha.Append(combination[random.Next(combination.Length)]);
-                    //Session["captcha"] = captcha.ToString();
-                    //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
-                    Captcha = captcha;
-                }
-                catch
-                {
-                    throw;
-                }
-                return Captcha;
-            
+
+            try
+            {
+                Random random = new Random();
+                string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                StringBuilder captcha = new StringBuilder();
+                for (int i = 0; i < 6; i++)
+                    captcha.Append(combination[random.Next(combination.Length)]);
+                //Session["captcha"] = captcha.ToString();
+                //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
+                Captcha = captcha;
+            }
+            catch
+            {
+                throw;
+            }
+            return Captcha;
+
         }
 
-        public async Task<bool> ValidateCaptcha()
+        public bool ValidateCaptcha()
         {
             bool isValidCaptcha = false;
-            if(EnteredCaptchaValue.Equals(Captcha))
+            if (EnteredCaptchaValue.Equals(Captcha))
             {
-                isValidCaptcha =  true;
+                isValidCaptcha = true;
             }
             else
             {
-
-                await _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+                 _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
 
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
@@ -505,20 +514,20 @@ namespace GAZT
             return isValidCaptcha;
         }
 
-        //private async Task SendOTPToRegisterMobileNumber()
-        //{
-          
-        //    string lang = UtilityManager.GetLanguageParameter();
-        //    forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
-        //    if (forgotPasswordOTP != null)
-        //    {
-        //     OTPLayoutVisibility = true;
-        //    }
-        //}
+        private async Task SendOTPToRegisterMobileNumber()
+        {
+
+            string lang = UtilityManager.GetLanguageParameter();
+            forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+            if ((forgotPasswordOTP != null) && (forgotPasswordOTP.d != null))
+            {
+                OTPLayoutVisibility = true;
+            }
+        }
 
         private async Task ValidateOTP()
         {
-            if(!string.IsNullOrEmpty(EnteredOTP))
+            if (!string.IsNullOrEmpty(EnteredOTP))
             {
                 forgotPasswordOTP.d.Otp = EnteredOTP;
             }
@@ -528,7 +537,7 @@ namespace GAZT
 
             }
 
-         await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
+            await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
             OTPLayoutVisibility = false;
         }
 
@@ -536,47 +545,40 @@ namespace GAZT
         private async Task SendUserNameToRegidteredEmail()
         {
 
-            forgotPasswordOTP = new ForgotPasswordOTP();
+          
 
             Metadata metadata = new Metadata();
-        metadata.id = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='',Langu='EN',EmailId='',TpType='1',MobileNo='',SubType='ZS001',Idnumber='1010263144',Otp='',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='U')";
-      metadata.uri = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='',Langu='EN',EmailId='',TpType='',MobileNo='1',SubType='ZS001',Idnumber='1010263144',Otp='',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='U')";
-      metadata.type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+            metadata.id = "";
+            metadata.uri = "";
+            metadata.type = "";
             D d = new D();
-           
-       d.__metadata = metadata;
+
+          //  d.__metadata = "";
             d.Action = "40";
-           d.Tin = "";
-            d.Langu = "EN";
+            d.Tin = "";
+            d.Langu = UtilityManager.GetLanguageParameter();
             d.CurrAttmps = 0;
-            d.EmailId = "MFUDAILY@ALSALAM.AERO";
+            d.EmailId = "";
             d.TpType = "1";
             d.MobileNo = "";
             d.SubType = "ZS001";
-            d.Idnumber = "1010263144";
+            d.Idnumber = IDNumber;
             d.Otp = "";
             d.Minutes = 0;
             d.Name = "";
             d.Attempts = 0;
-         // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+            // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
             d.NewPwd = "";
             d.CnfPwd = "";
             d.RdBt = "U";
             d.Hyperlink = "";
-
-            forgotPasswordOTP.d = d;
-
-            await WebServiceManager.GAZTSendUserNameToEmail(forgotPasswordOTP);
-
-
-
+           
+            await WebServiceManager.GAZTSendUserNameToEmail(d);
 
         }
 
-
-
-    #endregion
-}
+        #endregion
+    }
 }
 
 

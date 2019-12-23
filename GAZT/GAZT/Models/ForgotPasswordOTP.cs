@@ -37,7 +37,8 @@ namespace GAZT.Models
 
     public class D
     {
-        public Metadata __metadata { get; set; }
+        // check metadata while calling for sentOTP
+       // public Metadata __metadata { get; set; }
         public string Action { get; set; }
         public string Tin { get; set; }
         public string Langu { get; set; }
@@ -51,7 +52,7 @@ namespace GAZT.Models
         public int Minutes { get; set; }
         public string Name { get; set; }
         public int Attempts { get; set; }
-        public DateTime Dob { get; set; }
+        //public DateTime Dob { get; set; }
         public string NewPwd { get; set; }
         public string CnfPwd { get; set; }
         public string RdBt { get; set; }

@@ -24,7 +24,7 @@ namespace GAZT.Views
             CardView.ItemsSource = Items;
             try
             {
-               
+
                 this.BindingContext = viewModel;
                 viewModel.OnPageLoad();
             }
