@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace GAZT.ViewModel
 {
    public class DashboardPageViewModel : ViewModelBase
@@ -39,15 +40,96 @@ namespace GAZT.ViewModel
             }
         }
 
+        private double _deviceWidth;
+        public double DeviceWidth
+        {
+            get
+            {
+                return _deviceWidth;
+            }
+            set
+            {
+                _deviceWidth = value;
+                RaisePropertyChanged("DeviceWidth");
+            }
+        }
 
-        
+        private int _heightRequestForCollectionView=0;
+        public int HeightRequestForCollectionView
+        {
+            get
+            {
+                return _heightRequestForCollectionView;
+            }
+            set
+            {
+                _heightRequestForCollectionView = value;
+                RaisePropertyChanged("HeightRequestForCollectionView");
+            }
+        }
+
+
+
+        private double _deviceHeight;
+        public double DeviceHeight
+        {
+            get
+            {
+                return _deviceHeight;
+            }
+            set
+            {
+                _deviceHeight = value;
+                RaisePropertyChanged("DeviceHeight");
+            }
+        }
+
+        private double _paddingHeight;
+        public double PaddingHeight
+        {
+            get
+            {
+                return _paddingHeight;
+            }
+            set
+            {
+                _paddingHeight = value;
+                RaisePropertyChanged("PaddingHeight");
+            }
+        }
+
+        private int _calendarHeightRequest;
+        public int CalendarHeightRequest
+        {
+            get
+            {
+                return _calendarHeightRequest;
+            }
+            set
+            {
+                _calendarHeightRequest = value;
+                RaisePropertyChanged("CalendarHeightRequest");
+            }
+        }
+
+
+        private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
+        public Xamarin.Forms.Thickness PaddingForCollectionView
+        {
+            get => _paddingForCollectionView;
+            set
+            {
+                _paddingForCollectionView = value;
+            }
+        }
+
 
         #endregion
 
 
         #region Constructor
 
-        
+
         #endregion
 
 

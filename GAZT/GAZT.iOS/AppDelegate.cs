@@ -1,5 +1,6 @@
 ﻿
 using System.Net;
+using DeviceOrientation.Forms.Plugin.iOS;
 using Foundation;
 using Tavant.XToolkit;
 using UIKit;

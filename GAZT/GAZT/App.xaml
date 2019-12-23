@@ -395,6 +395,20 @@
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
 
+
+
+            <Style x:Key="GAZTGreenLabelStyleForDashboardIcon" TargetType="Label">
+
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
+
             <!-- 
             <Style x:Key ="EditorStyle" TargetType="Editor">
                 <Setter Property="FontSize">
