@@ -989,17 +989,17 @@ namespace GAZT.Manager
 
         public static async Task GAZTForgotPasswordValidateOTP(ForgotPasswordOTP forgotPasswordOTP)
         {
-            string url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
+            string url = Constants.ValidateOTP;
             var uri = new Uri(url);
             HttpClient client = new HttpClient(App.httpClientHandler);
-            client.DefaultRequestHeaders.Add(" CSRF token validation", "Fetch");
-            Task<HttpResponseMessage> res;
-            //  var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
-            // HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-            res = client.GetAsync(uri);
-            var detailJson = res.Result.Content.ReadAsStringAsync().Result;
 
-            System.Diagnostics.Debug.WriteLine("response =" + detailJson);
+            client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
+            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+            HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+            // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
 
         }
 

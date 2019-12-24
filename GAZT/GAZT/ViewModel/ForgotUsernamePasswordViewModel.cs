@@ -528,8 +528,44 @@ namespace GAZT
         private async Task ValidateOTP()
         {
             if (!string.IsNullOrEmpty(EnteredOTP))
-            {
-                forgotPasswordOTP.d.Otp = EnteredOTP;
+            { string lang = UtilityManager.GetLanguageParameter();
+                string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                string id = st + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+
+                string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+
+                string uri = st1 + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                Metadata metadata = new Metadata();
+                metadata.id = id;
+                metadata.uri = uri;
+                metadata.type = type;
+
+                D d = new D();
+                d.__metadata = metadata;
+                d.Action = "01";
+                d.Tin = IDNumber;
+                d.Langu = UtilityManager.GetLanguageParameter();
+                d.CurrAttmps = 0;
+                d.EmailId = "";
+                d.TpType = "1";
+                d.MobileNo = "";
+                d.SubType = "ZS001";
+                d.Idnumber = "";
+                d.Otp = EnteredOTP;
+                d.Minutes = 0;
+                d.Name = "";
+                d.Attempts = 0;
+                // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                d.NewPwd = "";
+                d.CnfPwd = "";
+                d.RdBt = "P";
+                d.Hyperlink = "";
+                forgotPassword.d = d;
+               await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
+
             }
             else
             {
@@ -537,22 +573,18 @@ namespace GAZT
 
             }
 
-            await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
+           // await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
             OTPLayoutVisibility = false;
         }
 
 
         private async Task SendUserNameToRegidteredEmail()
         {
-
-          
-
             Metadata metadata = new Metadata();
             metadata.id = "";
             metadata.uri = "";
             metadata.type = "";
             D d = new D();
-
           //  d.__metadata = "";
             d.Action = "40";
             d.Tin = "";
@@ -572,9 +604,7 @@ namespace GAZT
             d.CnfPwd = "";
             d.RdBt = "U";
             d.Hyperlink = "";
-           
             await WebServiceManager.GAZTSendUserNameToEmail(d);
-
         }
 
         #endregion
