@@ -525,4 +525,56 @@
    <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+   <data name="Captcha" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="EnterNewpassword" xml:space="preserve">
+    <value>ادخل كلمة مرور جديدة</value>
+  </data>
+  <data name="EnterConfirmpassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور الجديدة</value>
+  </data>
+   <data name="EnterOTP" xml:space="preserve">
+    <value>Enter OTP</value>
+  </data>
+   <data name="ResendOTP" xml:space="preserve">
+    <value>Resend OTP</value>
+  </data>
+    <data name="PleaseenterUsername" xml:space="preserve">
+    <value>Please enter Username</value>
+  </data>
+   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
+    <value>الرمز المرئي المدخل غير صحيح، رجاء المحاولة مرة أخرى</value>
+  </data>
+   <data name="Somethingwentwrong" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="Pleasechangepassword" xml:space="preserve">
+    <value>Please change password</value>
+  </data>
+  <data name="Invalidverificationcodeentered" xml:space="preserve">
+    <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
+  </data>
+  <data name="PleaseenterOTP" xml:space="preserve">
+    <value>Please enter OTP</value>
+  </data>
+  
+  <data name="Usernamehasbeensenttoregisteredmobilenumber" xml:space="preserve">
+    <value>تم إرسال اسم المستخدم إلى رقم الجوال والبريد الالكترونى المسجل للمكلف</value>
+  </data>
+   <data name="Somethingwentwrong" xml:space="preserve">
+    <value>Something went wrong, Please try again</value>
+  </data>
+  <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
+    <value>Your Password has been Changed successfully.</value>
+  </data>
+  <data name="Boththepasswordfieldsshouldmatch" xml:space="preserve">
+    <value>كلمة المرور الجديدة و"تأكيد كلمة المرور الجديدة" غير متطابقة</value>
+  </data>
+  <data name="PasswordValidationMesseg" xml:space="preserve">
+    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
+  </data> 
 </root>

@@ -74,11 +74,8 @@ namespace GAZT
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
-
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
-
-
             httpClientHandler = new HttpClientHandler();
             httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 

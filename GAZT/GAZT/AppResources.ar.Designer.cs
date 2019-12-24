@@ -856,5 +856,95 @@ namespace GAZT {
                 return ResourceManager.GetString("ActivityIndicatorTitle", resourceCulture);
             }
         }
+        
+        public static string Captcha {
+            get {
+                return ResourceManager.GetString("Captcha", resourceCulture);
+            }
+        }
+        
+        public static string EnterNewpassword {
+            get {
+                return ResourceManager.GetString("EnterNewpassword", resourceCulture);
+            }
+        }
+        
+        public static string EnterConfirmpassword {
+            get {
+                return ResourceManager.GetString("EnterConfirmpassword", resourceCulture);
+            }
+        }
+        
+        public static string EnterOTP {
+            get {
+                return ResourceManager.GetString("EnterOTP", resourceCulture);
+            }
+        }
+        
+        public static string ResendOTP {
+            get {
+                return ResourceManager.GetString("ResendOTP", resourceCulture);
+            }
+        }
+        
+        public static string PleaseenterUsername {
+            get {
+                return ResourceManager.GetString("PleaseenterUsername", resourceCulture);
+            }
+        }
+        
+        public static string enteredcaptchacodeisincorrect {
+            get {
+                return ResourceManager.GetString("enteredcaptchacodeisincorrect", resourceCulture);
+            }
+        }
+        
+        public static string Somethingwentwrong {
+            get {
+                return ResourceManager.GetString("Somethingwentwrong", resourceCulture);
+            }
+        }
+        
+        public static string Pleasechangepassword {
+            get {
+                return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
+            }
+        }
+        
+        public static string Invalidverificationcodeentered {
+            get {
+                return ResourceManager.GetString("Invalidverificationcodeentered", resourceCulture);
+            }
+        }
+        
+        public static string PleaseenterOTP {
+            get {
+                return ResourceManager.GetString("PleaseenterOTP", resourceCulture);
+            }
+        }
+        
+        public static string Usernamehasbeensenttoregisteredmobilenumber {
+            get {
+                return ResourceManager.GetString("Usernamehasbeensenttoregisteredmobilenumber", resourceCulture);
+            }
+        }
+        
+        public static string YourPasswordhasbeenChangedsuccessfully {
+            get {
+                return ResourceManager.GetString("YourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string Boththepasswordfieldsshouldmatch {
+            get {
+                return ResourceManager.GetString("Boththepasswordfieldsshouldmatch", resourceCulture);
+            }
+        }
+        
+        public static string PasswordValidationMesseg {
+            get {
+                return ResourceManager.GetString("PasswordValidationMesseg", resourceCulture);
+            }
+        }
     }
 }
