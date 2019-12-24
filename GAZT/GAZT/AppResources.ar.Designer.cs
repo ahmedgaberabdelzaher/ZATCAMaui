@@ -850,5 +850,11 @@ namespace GAZT {
                 return ResourceManager.GetString("NoBillsAvailable", resourceCulture);
             }
         }
+        
+        public static string ActivityIndicatorTitle {
+            get {
+                return ResourceManager.GetString("ActivityIndicatorTitle", resourceCulture);
+            }
+        }
     }
 }

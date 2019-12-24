@@ -525,4 +525,7 @@ appeal</value>
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>
+   <data name="ActivityIndicatorTitle" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
 </root>
