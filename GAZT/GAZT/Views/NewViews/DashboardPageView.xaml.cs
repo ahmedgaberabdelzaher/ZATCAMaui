@@ -21,7 +21,8 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.DashboardPageView;
             InitializeComponent();
-            SetLTR();
+           
+           
             this.BindingContext = viewModel;
             viewModel.onPageLoad();
 
@@ -60,13 +61,7 @@ namespace GAZT.Views
             viewModel.PaddingForCollectionView=new Xamarin.Forms.Thickness(0,viewModel.PaddingHeight, 0, 0);
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+       
         #endregion
     }
 }
