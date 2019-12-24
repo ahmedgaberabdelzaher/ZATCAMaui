@@ -529,7 +529,7 @@
     <value>Captcha</value>
   </data>
    <data name="Captcha" xml:space="preserve">
-    <value>Captcha</value>
+    <value>الرمز المرئي</value>
   </data>
   <data name="EnterNewpassword" xml:space="preserve">
     <value>ادخل كلمة مرور جديدة</value>
