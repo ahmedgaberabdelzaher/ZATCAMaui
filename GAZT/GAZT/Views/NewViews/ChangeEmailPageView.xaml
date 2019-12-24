@@ -43,12 +43,8 @@
                 </Frame>
                 <custom:GAZTBorderlessEntry  Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
-                <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForButton}"  Grid.Column="0" Grid.ColumnSpan="2">
-                </Frame>
 
-                <Label Text="{x:Static local:AppResources.Verify}"  Style="{StaticResource GAZTWhiteLabelStyleForButton}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" >
-                </Label>
-
+                <Button Text="{x:Static local:AppResources.Verify}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTButton}"></Button>
 
 
             </Grid>
