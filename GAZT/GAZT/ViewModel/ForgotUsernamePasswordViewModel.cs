@@ -363,7 +363,6 @@ namespace GAZT
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
@@ -372,9 +371,9 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-            //bool isValiedCaptcha = ValidateCaptcha();
-            //if (isValiedCaptcha)
-            //{
+            bool isValiedCaptcha = ValidateCaptcha();
+            if (isValiedCaptcha)
+            {
                 if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
                     {
                         await SendUserNameToRegidteredEmail();
@@ -387,25 +386,15 @@ namespace GAZT
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox("Please enter Username", AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
 
                         }
-
                     }
-
-                //}
-                //else
-                //    {
-                //        await _dialogService.ShowMessageBox("entered captcha code is incorrect. please try again", AppResources.Information);
-
-                //    }
-
-
-
-
-                // await  SendOTPToRegisterMobileNumber();
-
-
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
+                }
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
@@ -531,13 +520,14 @@ namespace GAZT
         public bool ValidateCaptcha()
         {
             bool isValidCaptcha = false;
+            isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
             if (EnteredCaptchaValue.Equals(Captcha))
             {
                 isValidCaptcha = true;
             }
             else
             {
-                 _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+                // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
 
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
@@ -569,7 +559,7 @@ namespace GAZT
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox("Something went wrong", AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                     });
 
                 }
@@ -626,28 +616,28 @@ namespace GAZT
                 d.Hyperlink = "";
                 forgotPassword.d = d;
                 forgotPassword =  await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                if (!string.IsNullOrEmpty(forgotPassword.d.Tin))
+                if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
                 {
-                
-                    await _dialogService.ShowMessageBox("Please change password", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                    OTPLayoutVisibility = false;
                     NewPasswordLayoutVisibility = true;
                 }
                 else
                 {
-
-                    await _dialogService.ShowMessageBox("Invalid verification code entered", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
+                    EnteredOTP = null;
                 }
 
 
             }
             else
             {
-                await _dialogService.ShowMessageBox("Please enter OTP", AppResources.Information);
+                await _dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
 
             }
 
            // await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
-            OTPLayoutVisibility = false;
+           
         }
 
 
@@ -704,7 +694,7 @@ namespace GAZT
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
                     Device.BeginInvokeOnMainThread(async() => {
-                        await _dialogService.ShowMessageBox("Username has been sent to registered mobile number & email Id", AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
                         _navigationService.GoBack();
                     });
                     
@@ -713,7 +703,7 @@ namespace GAZT
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox("Something went wrong, Please try again", AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
 
                     });
                 }
@@ -770,18 +760,18 @@ namespace GAZT
                 forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
-                    await _dialogService.ShowMessageBox("Your Password has been Changed successfully.", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                     NewPasswordLayoutVisibility = false; 
                     _navigationService.GoBack();
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox("Something went wrong, Please try again", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                 }
             }
             else
             {
-                await _dialogService.ShowMessageBox("Both the password fields should match", AppResources.Information);
+                await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
             }
            
         }
