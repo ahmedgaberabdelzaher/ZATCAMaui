@@ -896,7 +896,6 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
                 string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
@@ -939,42 +938,17 @@ namespace GAZT.Manager
         {
             DateTime dt = DateTime.Now;
             ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-            // string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
-
             string NewToken = string.Empty;
             try
             {
-
-
-
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3102164652',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')?Saml2=disabled&$format=json";
                 string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + "E" + "'" + ")?Saml2=disabled&$format=json";
-
-                //  string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
-
-
                 HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
-
                 if (GAZTFogotPasswordSendOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
-                    //IEnumerable<string> values;
-                    //if (headers.TryGetValues("token", out values))
-                    //{
-                    //    NewToken = values.First();
-                    //}
-
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    throw new Exception("Invalid Token");
-                    //}
-                    //if ((!string.IsNullOrEmpty(NewToken)))
-                    //{
-                    //  //  App.Token =TokenForTest;
-                    //}
                     String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
-
                     /// GAZTGetSendOTPResponseJSON = JObject.Parse(GAZTGetSendOTPResponseJSON)["d"].ToString();
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
                 }
@@ -992,15 +966,12 @@ namespace GAZT.Manager
             string url = Constants.ValidateOTP;
             var uri = new Uri(url);
             HttpClient client = new HttpClient(App.httpClientHandler);
-
             client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
             HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
             HttpResponseMessage res = await client.PostAsync(uri, contentPost);
             // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
-
         }
 
         public static async Task GAZTSendUserNameToEmail(D forgotUserOTP)
@@ -1010,27 +981,38 @@ namespace GAZT.Manager
                 string url = Constants.SendUserNameToEmail;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                // client.DefaultRequestHeaders.Add("Content-Type", "application/json")
                 var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                 // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
-                //  System.Diagnostics.Debug.WriteLine("response =" + detailJson);
             }
             catch (Exception ex)
             {
 
             }
-
-
-
         }
 
+        public static async Task GAZTChangePassword(ForgotPasswordOTP forgotUserOTP)
+        {
+            try
+            {
+                string url = Constants.ChangePassword;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                var serilized = JsonConvert.SerializeObject(forgotUserOTP);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
 
     }
 }
