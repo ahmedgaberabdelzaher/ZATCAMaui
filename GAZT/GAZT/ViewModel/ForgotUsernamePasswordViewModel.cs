@@ -363,7 +363,6 @@ namespace GAZT
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
@@ -372,9 +371,9 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-            //bool isValiedCaptcha = ValidateCaptcha();
-            //if (isValiedCaptcha)
-            //{
+            bool isValiedCaptcha = ValidateCaptcha();
+            if (isValiedCaptcha)
+            {
                 if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
                     {
                         await SendUserNameToRegidteredEmail();
@@ -390,22 +389,12 @@ namespace GAZT
                             _dialogService.ShowMessageBox("Please enter Username", AppResources.Information);
 
                         }
-
                     }
-
-                //}
-                //else
-                //    {
-                //        await _dialogService.ShowMessageBox("entered captcha code is incorrect. please try again", AppResources.Information);
-
-                //    }
-
-
-
-
-                // await  SendOTPToRegisterMobileNumber();
-
-
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox("entered captcha code is incorrect. please try again", AppResources.Information);
+                }
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
@@ -531,13 +520,14 @@ namespace GAZT
         public bool ValidateCaptcha()
         {
             bool isValidCaptcha = false;
+            isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
             if (EnteredCaptchaValue.Equals(Captcha))
             {
                 isValidCaptcha = true;
             }
             else
             {
-                 _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+                // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
 
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
