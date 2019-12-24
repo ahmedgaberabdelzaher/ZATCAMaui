@@ -355,10 +355,10 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-              //bool isValiedCaptcha =   ValidateCaptcha();
+                //bool isValiedCaptcha =   ValidateCaptcha();
                 //if(isValiedCaptcha)
                 //{
-                    if (SelectedForgotType.id.Equals("1") && SelectedTaxPayerType.id.Equals("1") && !(string.IsNullOrEmpty(IDNumber)))
+                if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
                     {
                         await SendUserNameToRegidteredEmail();
                     }
@@ -388,7 +388,7 @@ namespace GAZT
 
             OnResendOTPClicked = new Command(async () =>
             {
-                //   await SendOTPToRegisterMobileNumber();
+               await SendOTPToRegisterMobileNumber();
             });
 
             OnValidateOTPClicked = new Command(async () =>
@@ -519,6 +519,17 @@ namespace GAZT
 
             string lang = UtilityManager.GetLanguageParameter();
             forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+            if (!string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
+            {
+                OTPLayoutVisibility = false;
+                await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
+
+                
+            }
+            else
+            {
+                await _dialogService.ShowMessageBox("Something went wrong", AppResources.Information);
+            }
             if ((forgotPasswordOTP != null) && (forgotPasswordOTP.d != null))
             {
                 OTPLayoutVisibility = true;
@@ -565,8 +576,19 @@ namespace GAZT
                 d.RdBt = "P";
                 d.Hyperlink = "";
                 forgotPassword.d = d;
-               await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                NewPasswordLayoutVisibility = true;
+                forgotPassword =  await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
+                if (!string.IsNullOrEmpty(forgotPassword.d.Tin))
+                {
+                
+                    await _dialogService.ShowMessageBox("Please change password", AppResources.Information);
+                    NewPasswordLayoutVisibility = true;
+                }
+                else
+                {
+
+                    await _dialogService.ShowMessageBox("OTP incorroct, Please Try again ", AppResources.Information);
+                }
+
 
             }
             else
@@ -582,31 +604,6 @@ namespace GAZT
 
         private async Task SendUserNameToRegidteredEmail()
         {
-            //  Metadata metadata = new Metadata();
-            //  metadata.id = "";
-            //  metadata.uri = "";
-            //  metadata.type = "";
-            //  D d = new D();
-            ////  d.__metadata = "";
-            //  d.Action = "40";
-            //  d.Tin = "";
-            //  d.Langu = UtilityManager.GetLanguageParameter();
-            //  d.CurrAttmps = 0;
-            //  d.EmailId = "";
-            //  d.TpType = "1";
-            //  d.MobileNo = "";
-            //  d.SubType = "ZS001";
-            //  d.Idnumber = IDNumber;
-            //  d.Otp = "";
-            //  d.Minutes = 0;
-            //  d.Name = "";
-            //  d.Attempts = 0;
-            //  // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-            //  d.NewPwd = "";
-            //  d.CnfPwd = "";
-            //  d.RdBt = "U";
-            //  d.Hyperlink = "";
-
             string lang = UtilityManager.GetLanguageParameter();
             string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
             //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
@@ -645,8 +642,17 @@ namespace GAZT
             forgotPassword.d = d;
 
 
-            await WebServiceManager.GAZTSendUserNameToEmail(d);
-        
+            forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
+            if(!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+            {
+              await  _dialogService.ShowMessageBox("Username sent to the registered email", AppResources.Information);
+                _navigationService.GoBack();
+            }
+            else
+            {
+              await  _dialogService.ShowMessageBox("Something went wrong, Please try again", AppResources.Information);
+            }
+
         }
 
         private async void ChangePassword()
@@ -687,8 +693,25 @@ namespace GAZT
             d.RdBt = "P";
             d.Hyperlink = "";
             forgotPassword.d = d;
-            await WebServiceManager.GAZTChangePassword(forgotPassword);
-
+            if(NewPassword.Equals(ConfirmPassword))
+            {
+                forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
+                if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                {
+                    await _dialogService.ShowMessageBox("Password changed successfully", AppResources.Information);
+                    NewPasswordLayoutVisibility = false; 
+                    _navigationService.GoBack();
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox("Something went wrong, Please try again", AppResources.Information);
+                }
+            }
+            else
+            {
+                await _dialogService.ShowMessageBox(AppResources.NewPasswordandRetypePasswordNotMatch, AppResources.Information);
+            }
+           
         }
         #endregion
     }

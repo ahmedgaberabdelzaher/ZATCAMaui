@@ -35,7 +35,7 @@ namespace GAZT.Views
 
         }
 
-
+       
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
@@ -96,6 +96,15 @@ namespace GAZT.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel.NewPassword = "";
+            viewModel.ConfirmPassword = "";
+            viewModel.EnteredOTP = "";
+            viewModel.IDNumber = "";
+            viewModel.NewPasswordLayoutVisibility = false;
+            viewModel.OTPLayoutVisibility = false;
+
+
+
             //viewModel.IsTaxPayerTypeEnable = true;
             //viewModel.IsForgotUserNameWithIndividual = true;
             //viewModel.IsForgotPassword = false;

@@ -961,23 +961,35 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task GAZTForgotPasswordValidateOTP(ForgotPasswordOTP forgotPasswordOTP)
-        {
-            string url = Constants.ValidateOTP;
-            var uri = new Uri(url);
-            HttpClient client = new HttpClient(App.httpClientHandler);
-            client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
-            HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-            HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-            // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
-        }
-
-        public static async Task GAZTSendUserNameToEmail(D forgotUserOTP)
+        public static async Task<ForgotPasswordOTP> GAZTForgotPasswordValidateOTP(ForgotPasswordOTP ValidateOTP)
         {
             try
             {
+                ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+                string url = Constants.ValidateOTP;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                var serilized = JsonConvert.SerializeObject(ValidateOTP);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                var detailJson = res.Content.ReadAsStringAsync().Result;
+                forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
+                return forgotPasswordOTP;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+                
+        }
+
+        public static async Task<ForgotPasswordOTP> GAZTSendUserNameToEmail(ForgotPasswordOTP forgotUserOTP)
+        {
+            try
+            {
+                ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
                 string url = Constants.SendUserNameToEmail;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
@@ -986,18 +998,21 @@ namespace GAZT.Manager
                 var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
+              var detailJson = res.Content.ReadAsStringAsync().Result;
+                forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
+                return forgotPasswordOTP;
             }
             catch (Exception ex)
             {
-
+                return null;
             }
         }
 
-        public static async Task GAZTChangePassword(ForgotPasswordOTP forgotUserOTP)
+        public static async Task<ForgotPasswordOTP> GAZTChangePassword(ForgotPasswordOTP forgotUserOTP)
         {
             try
             {
+                ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
                 string url = Constants.ChangePassword;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
@@ -1006,11 +1021,13 @@ namespace GAZT.Manager
                 var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                // var detailJson = res.Result.Content.ReadAsStringAsync().Result;
+                var detailJson = res.Content.ReadAsStringAsync().Result;
+                forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
+                return forgotPasswordOTP;
             }
             catch (Exception ex)
             {
-
+                return null;
             }
         }
 
