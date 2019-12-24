@@ -11,22 +11,18 @@
         <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-
         <Grid HorizontalOptions="FillAndExpand"  ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-
+                <RowDefinition Height="89*"/>
+                <RowDefinition Height="11*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="30*" />
-
             </Grid.ColumnDefinitions>
-            <ScrollView Orientation="Vertical"    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <ScrollView Orientation="Vertical"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -44,23 +40,18 @@
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#c49b2d" >
                     </StackLayout>
-
-                    <Label Text="Muharram,14,1441" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                    <Label Text="Muharram,14,1441" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" FontFamily="{StaticResource SSTArBold}" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                     </Label>
-                    <Label Text="Muharram,14,1441" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Label Text="Muharram,14,1441" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" FontFamily="{StaticResource SSTArBold}" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
                     </Label>
-
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#F4FCFD"></StackLayout>
                     <Label Text="Returns" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="Start" BackgroundColor="#F4FCFD"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,5,1" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
                     </Label>
-
-
-
                     <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="{Binding Source={x:Reference Name=BillReturnCollectionView}, Path=BindingContext.PaddingForCollectionView}"   Margin="0">
-                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center" Padding="0,0,0,0">
+                                <StackLayout Padding="0"   Margin="0">
+                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="3" RowSpacing="0" VerticalOptions="Center" Padding="0,0,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
@@ -69,44 +60,29 @@
                                             <ColumnDefinition Width="50*" />
                                             <ColumnDefinition Width="50*" />
                                         </Grid.ColumnDefinitions>
-
                                         <StackLayout Grid.Column="0" Grid.Row="0" >
-                                            <Image Source="{Binding ImagePath}"  HorizontalOptions="End"></Image>
-
+                                            <Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Image>
                                         </StackLayout>
-
                                         <StackLayout Grid.Column="1" Grid.Row="0" >
-                                            <Label Text="{Binding ReturnCount}" HorizontalOptions="Start" FontSize="Large" TextColor="#065E49" FontAttributes="Bold"/>
+                                            <Label Text="{Binding ReturnCount}" Margin="0"   Padding="0" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="#065E49" FontAttributes="Bold"/>
                                         </StackLayout>
-
-                                        <StackLayout Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Margin="0,-6,0,0"  Padding="0" Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
                                             <Label Text="{Binding ReturnTypeName}"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
                                         </StackLayout>
-
                                     </Grid>
                                 </StackLayout>
-
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
-
                     <BoxView BackgroundColor="#065E49" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1" ></BoxView>
-
-
-
-
-
                     <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#FEF5EF"></StackLayout>
-
                     <Label Text="Bills" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#FEF5EF"  Margin="5,5,5,1" HorizontalOptions="Start"    TextDecorations="Underline" FontAttributes="Bold" >
                     </Label>
-
                     <CollectionView ItemsSource="{Binding BillPaid}" BackgroundColor="#FEF8F4" x:Name="BillPaidCollectionView" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" ItemsLayout="HorizontalList"  HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="{Binding Source={x:Reference Name=BillPaidCollectionView}, Path=BindingContext.PaddingForCollectionView}"  Margin="0">
-                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="0" HorizontalOptions="Center">
+                                <StackLayout Padding="0"  Margin="0">
+                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="3" RowSpacing="0" HorizontalOptions="Center">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
@@ -115,126 +91,103 @@
                                             <ColumnDefinition Width="50*" />
                                             <ColumnDefinition Width="50*" />
                                         </Grid.ColumnDefinitions>
-
                                         <StackLayout Grid.Column="0" Grid.Row="0" >
-                                            <Image Source="{Binding ImagePath}"  HorizontalOptions="End"></Image>
-
+                                            <Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Image>
                                         </StackLayout>
-
                                         <StackLayout Grid.Column="1" Grid.Row="0" >
-                                            <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontSize="Large" TextColor="#065E49" FontAttributes="Bold"/>
+                                            <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" FontSize="Title" TextColor="#065E49" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         </StackLayout>
-
-                                        <StackLayout Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Margin="0,-6,0,0" Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand">
                                             <Label Text="{Binding BillTypeName}"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
                                         </StackLayout>
-
                                     </Grid>
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
-
                     <BoxView BackgroundColor="#065E49" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1" Margin="0,0,0,0"></BoxView>
-
-
-
                     <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White"></StackLayout>
-
                     <Label Text="E-Services" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White"  Margin="5,5,5,1" HorizontalOptions="Start"    TextDecorations="Underline" FontAttributes="Bold" >
                     </Label>
-
                     <StackLayout Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="3"  Margin="0,10,0,0">
-
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-
-
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="25*"/>
                                 <ColumnDefinition Width="25*"/>
                                 <ColumnDefinition Width="25*" />
                                 <ColumnDefinition Width="25*" />
-
                             </Grid.ColumnDefinitions>
-
                             <StackLayout Grid.Row="0" Grid.Column="0">
                                 <Image Source="ic_Estimate_zakat.png"></Image>
-                                <Label Text="Estimate Zakat"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="Estimate Zakat"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="0" Grid.Column="1">
                                 <Image Source="ic_certificate.png"></Image>
-                                <Label Text="My Certificate"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="My Certificate"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="0" Grid.Column="2">
                                 <Image Source="ic_Mybills.png"></Image>
-                                <Label Text="My Bills"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="My Bills"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
-
                             <StackLayout Grid.Row="0" Grid.Column="3">
                                 <Image Source="ic_vat_lookup_1.png"></Image>
-                                <Label Text="VAT-Lookup"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="VAT-Lookup"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="0">
                                 <Image Source="ic_correspondance_1.png"></Image>
-                                <Label Text="Correspondance"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="Correspondance"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_vat_declaration_1.png"></Image>
-                                <Label Text="VAT Declaration"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="VAT Declaration"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
-
                             <StackLayout Grid.Row="1" Grid.Column="2">
                                 <Image Source="ic_vat_lookup_1.png"></Image>
-                                <Label Text="VAT-Lookup"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="VAT-Lookup"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="3">
                                 <Image Source="ic_correspondance_1.png"></Image>
-                                <Label Text="Correspondance"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="Correspondance"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}"  Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
                             <StackLayout Grid.Row="2" Grid.Column="0">
                                 <Image Source="ic_vat_declaration_1.png"></Image>
-                                <Label Text="VAT Declaration"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,0,0,5">
+                                <Label Text="VAT Declaration"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                 </Label>
                             </StackLayout>
-
                         </Grid>
-
-
-
-
                     </StackLayout>
-
-
-
-
-
-
-
-
                 </Grid>
             </ScrollView>
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White"></StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White">
+            </StackLayout>
+            <Grid Grid.Row="1" Grid.Column="1"  BackgroundColor="White" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="ic_chat.png" BackgroundColor="White" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"></Image>
+                <Image Source="ic_social.png" BackgroundColor="White" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start"></Image>
+                <Image Source="ic_help.png" BackgroundColor="White" Grid.Row="0" Grid.Column="2" HorizontalOptions="Start"></Image>
+            </Grid>
             <Image Source="ic_footer_img.png" BackgroundColor="White" Grid.Row="1" Grid.Column="2" HorizontalOptions="End"></Image>
         </Grid>
-
-
-
-
     </ContentPage.Content>
 </ContentPage>

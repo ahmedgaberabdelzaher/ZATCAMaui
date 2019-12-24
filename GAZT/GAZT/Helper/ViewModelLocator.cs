@@ -3,7 +3,10 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT.ViewModel;
+using GAZT.ViewModel.NewViewModel;
 using GAZT.Views;
+using GAZT.Views.NewViews;
+
 namespace GAZT
 {
     public class ViewModelLocator
@@ -32,6 +35,11 @@ namespace GAZT
 
             SimpleIoc.Default.Register<LogInViewModel>();
             SimpleIoc.Default.Register<DashboardPageViewModel>();
+            SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
+            SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
+            SimpleIoc.Default.Register<ChangeEmailPageViewModel>();
+            SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
+            SimpleIoc.Default.Register<OTPPageViewModel>();
 
 
 
@@ -284,6 +292,84 @@ namespace GAZT
             }
         }
 
+        public TaxPayerProfilePageViewModel TaxPayerProfilePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxPayerProfilePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        public ChangeMobileNumberPageViewModel ChangeMobileNumberPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeMobileNumberPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ChangeEmailPageViewModel ChangeEmailPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeEmailPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ChangePasswordPageViewModel ChangePasswordPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangePasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public OTPPageViewModel OTPPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OTPPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
 
 
         /// <summary>
@@ -334,6 +420,12 @@ namespace GAZT
 
             navigationService.Configure(App.LogInPageView, typeof(LogInPageView));
             navigationService.Configure(App.DashboardPageView, typeof(DashboardPageView));
+            navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
+            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
+            navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
+            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
+            navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
+
 
             return navigationService;
         }

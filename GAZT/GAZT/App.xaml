@@ -349,9 +349,14 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
                 <Setter Property="Margin" Value="10,0,10,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                
-                
-                
+            </Style>
+
+            <Style x:Key="GAZTWhiteLabelStyleForButton" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
 
 
@@ -368,11 +373,19 @@
 
 
             <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="0"></Setter>
+                <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="10,2,10,1"/>
+            </Style>
+
+            <Style x:Key="GAZTFrameStyleForButton" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="4"></Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Margin" Value="10,10,10,1"/>
+                <Setter Property="Padding" Value="0,22,0,22"></Setter>
             </Style>
 
             <Style x:Key="GAZTImageStyleForEntry" TargetType="Image">
@@ -402,13 +415,25 @@
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
 
             </Style>
 
 
+            <Style x:Key="GAZTGreenLabelStyleForEservicesIcon" TargetType="Label">
+
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
+            
             <!-- 
             <Style x:Key ="EditorStyle" TargetType="Editor">
                 <Setter Property="FontSize">

@@ -8,6 +8,7 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using System.Net.Http;
+using GAZT.Views.NewViews;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -35,6 +36,12 @@ namespace GAZT
 
         public static string LogInPageView = "LogInPageView";
         public static string DashboardPageView = "DashboardPageView";
+        public static string TaxPayerProfilePageView = "TaxPayerProfilePageView";
+        public static string ChangeMobileNumberPageView = "ChangeMobileNumberPageView";
+        public static string ChangeEmailPageView = "ChangeEmailPageView";
+        public static string ChangePasswordPageView = "ChangePasswordPageView";
+        public static string OTPPageView = "OTPPageView";
+
 
 
         public static TIN CurrentDropdownTIN;
