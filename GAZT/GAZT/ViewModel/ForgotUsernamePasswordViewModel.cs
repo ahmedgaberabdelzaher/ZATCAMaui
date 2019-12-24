@@ -355,25 +355,40 @@ namespace GAZT
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                //bool isValiedCaptcha =   ValidateCaptcha();
-                //if(isValiedCaptcha)
-                //{
+            //bool isValiedCaptcha = ValidateCaptcha();
+            //if (isValiedCaptcha)
+            //{
                 if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
                     {
                         await SendUserNameToRegidteredEmail();
                     }
                     else
                     {
-                     await   SendOTPToRegisterMobileNumber();
+                        if(!String.IsNullOrEmpty(IDNumber))
+                        {
+                            await SendOTPToRegisterMobileNumber();
+                        }
+                        else
+                        {
+                            _dialogService.ShowMessageBox("Please enter Username", AppResources.Information);
+
+                        }
+
                     }
 
-                //}
-               
-             
+            //}
+            //else
+            //    {
+            //        await _dialogService.ShowMessageBox("Captch is Incorrect", AppResources.Information);
+
+            //    }
+
+
+
 
                 // await  SendOTPToRegisterMobileNumber();
-               
-                
+
+
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
