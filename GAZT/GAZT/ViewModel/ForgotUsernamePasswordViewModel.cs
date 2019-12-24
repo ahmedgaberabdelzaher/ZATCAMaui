@@ -616,16 +616,16 @@ namespace GAZT
                 d.Hyperlink = "";
                 forgotPassword.d = d;
                 forgotPassword =  await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                if (!string.IsNullOrEmpty(forgotPassword.d.Tin))
+                if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
                 {
-                
                     await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                    OTPLayoutVisibility = false;
                     NewPasswordLayoutVisibility = true;
                 }
                 else
                 {
-
                     await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
+                    EnteredOTP = null;
                 }
 
 
@@ -637,7 +637,7 @@ namespace GAZT
             }
 
            // await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
-            OTPLayoutVisibility = false;
+           
         }
 
 

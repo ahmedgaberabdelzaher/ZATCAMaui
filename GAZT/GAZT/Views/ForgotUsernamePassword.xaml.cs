@@ -102,7 +102,7 @@ namespace GAZT.Views
             viewModel.IDNumber = "";
             viewModel.NewPasswordLayoutVisibility = false;
             viewModel.OTPLayoutVisibility = false;
-
+            //viewModel.Captcha = "";
 
 
             //viewModel.IsTaxPayerTypeEnable = true;
