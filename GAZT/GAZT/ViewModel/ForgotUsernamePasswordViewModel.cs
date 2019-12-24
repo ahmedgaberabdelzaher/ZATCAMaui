@@ -263,7 +263,7 @@ namespace GAZT
 
 
 
-        private string _newPassword;
+        private string _newPassword="";
         public string NewPassword
         {
             get
@@ -277,7 +277,7 @@ namespace GAZT
             }
         }
 
-        private string _confirmPassword;
+        private string _confirmPassword="";
         public string ConfirmPassword
         {
             get
@@ -321,7 +321,7 @@ namespace GAZT
             }
         }
 
-        private string _enteredOTP;
+        private string _enteredOTP = "";
         public string EnteredOTP
         {
             get
@@ -582,30 +582,69 @@ namespace GAZT
 
         private async Task SendUserNameToRegidteredEmail()
         {
+            //  Metadata metadata = new Metadata();
+            //  metadata.id = "";
+            //  metadata.uri = "";
+            //  metadata.type = "";
+            //  D d = new D();
+            ////  d.__metadata = "";
+            //  d.Action = "40";
+            //  d.Tin = "";
+            //  d.Langu = UtilityManager.GetLanguageParameter();
+            //  d.CurrAttmps = 0;
+            //  d.EmailId = "";
+            //  d.TpType = "1";
+            //  d.MobileNo = "";
+            //  d.SubType = "ZS001";
+            //  d.Idnumber = IDNumber;
+            //  d.Otp = "";
+            //  d.Minutes = 0;
+            //  d.Name = "";
+            //  d.Attempts = 0;
+            //  // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+            //  d.NewPwd = "";
+            //  d.CnfPwd = "";
+            //  d.RdBt = "U";
+            //  d.Hyperlink = "";
+
+            string lang = UtilityManager.GetLanguageParameter();
+            string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+            //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+            string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
+
+            string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+
+            string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "1" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
+            string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+            ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
             Metadata metadata = new Metadata();
-            metadata.id = "";
-            metadata.uri = "";
-            metadata.type = "";
+            metadata.id = id;
+            metadata.uri = uri;
+            metadata.type = type;
+
             D d = new D();
-          //  d.__metadata = "";
+            d.__metadata = metadata;
             d.Action = "40";
             d.Tin = "";
             d.Langu = UtilityManager.GetLanguageParameter();
             d.CurrAttmps = 0;
             d.EmailId = "";
             d.TpType = "1";
-            d.MobileNo = "";
+            d.MobileNo ="";
             d.SubType = "ZS001";
             d.Idnumber = IDNumber;
-            d.Otp = "";
+            d.Otp = EnteredOTP;
             d.Minutes = 0;
             d.Name = "";
             d.Attempts = 0;
             // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-            d.NewPwd = "";
-            d.CnfPwd = "";
+            d.NewPwd = NewPassword;
+            d.CnfPwd = ConfirmPassword;
             d.RdBt = "U";
             d.Hyperlink = "";
+            forgotPassword.d = d;
+
+
             await WebServiceManager.GAZTSendUserNameToEmail(d);
         
         }
