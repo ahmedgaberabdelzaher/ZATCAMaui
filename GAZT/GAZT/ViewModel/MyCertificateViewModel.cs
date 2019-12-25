@@ -20,11 +20,10 @@ namespace GAZT
     public class MyCertificateViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
-        public ICommand OnMyTaxPayerProfileClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnCertificateClicked { get; set; }
         public ICommand OnZakatCertificateClicked { get; set; }
@@ -376,11 +375,7 @@ namespace GAZT
                 //_navigationService.NavigateTo(App.MyCertificate);
 
             });
-            OnMyTaxPayerProfileClicked = new Command(async () =>
-            {
-                _navigationService.NavigateTo(App.TaxPayerProfileView);
-
-            });
+           
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.GoBack();

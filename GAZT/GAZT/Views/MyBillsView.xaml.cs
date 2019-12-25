@@ -125,6 +125,10 @@ namespace GAZT.Views
 
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
+        protected void OnTaxPayerClicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
 
+        }
     }
 }

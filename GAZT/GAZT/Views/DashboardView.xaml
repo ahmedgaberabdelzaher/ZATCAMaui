@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" x:Class="GAZT.Views.DashboardView" BackgroundColor="White" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" Title="{x:Static local:AppResources.Dashoboard}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>

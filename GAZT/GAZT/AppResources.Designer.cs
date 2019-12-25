@@ -1403,5 +1403,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
+        
+        public static string Dashoboard {
+            get {
+                return ResourceManager.GetString("Dashoboard", resourceCulture);
+            }
+        }
     }
 }

@@ -577,4 +577,10 @@
   <data name="PasswordValidationMesseg" xml:space="preserve">
     <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data> 
+   <data name="Dashoboard" xml:space="preserve">
+    <value>Dashoboard</value>
+  </data>
+  <data name="MyBills" xml:space="preserve">
+    <value>MyBills</value>
+  </data>
 </root>

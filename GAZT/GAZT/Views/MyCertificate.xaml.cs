@@ -91,5 +91,12 @@ namespace GAZT.Views
             };
             canvas.DrawPath(path, paint);
         }
+
+        protected void OnTaxPayerClicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
+
+        }
+
     }
 }
