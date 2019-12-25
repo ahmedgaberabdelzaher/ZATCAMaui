@@ -45,13 +45,13 @@ namespace GAZT.Views
             double value = 0;
            if (viewModel.DeviceHeight>viewModel.DeviceWidth)
             {
-                value = 0.11 * viewModel.DeviceHeight;
+                value = 0.15 * viewModel.DeviceHeight;
                 viewModel.HeightRequestForCollectionView = Convert.ToInt32(value);
                 viewModel.CalendarHeightRequest =Convert.ToInt32(viewModel.DeviceHeight * 0.0468);
             }
            else
             {
-                value = 0.11 * viewModel.DeviceWidth;
+                value = 0.15 * viewModel.DeviceWidth;
                 viewModel.HeightRequestForCollectionView = Convert.ToInt32(value);
                 viewModel.CalendarHeightRequest = Convert.ToInt32(viewModel.DeviceWidth * 0.0468);
             }

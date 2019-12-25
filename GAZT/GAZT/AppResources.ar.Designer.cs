@@ -952,5 +952,143 @@ namespace GAZT {
                 return ResourceManager.GetString("Dashoboard", resourceCulture);
             }
         }
+        
+        public static string TotalSubmittedReturns {
+            get {
+                return ResourceManager.GetString("TotalSubmittedReturns", resourceCulture);
+            }
+        }
+        
+        public static string TotalNonSubmittedReturns {
+            get {
+                return ResourceManager.GetString("TotalNonSubmittedReturns", resourceCulture);
+            }
+        }
+        
+        public static string Total_Paid_Returns {
+            get {
+                return ResourceManager.GetString("Total Paid Returns", resourceCulture);
+            }
+        }
+        
+        public static string TotalUnpaidReturns {
+            get {
+                return ResourceManager.GetString("TotalUnpaidReturns", resourceCulture);
+            }
+        }
+        
+        public static string TotalPartiallyPaidReturns {
+            get {
+                return ResourceManager.GetString("TotalPartiallyPaidReturns", resourceCulture);
+            }
+        }
+        
+        public static string TotalNoofReturns {
+            get {
+                return ResourceManager.GetString("TotalNoofReturns", resourceCulture);
+            }
+        }
+        
+        public static string Total_Over_Due_Returns {
+            get {
+                return ResourceManager.GetString("Total Over Due Returns", resourceCulture);
+            }
+        }
+        
+        public static string Total_Paid_Bills {
+            get {
+                return ResourceManager.GetString("Total Paid Bills", resourceCulture);
+            }
+        }
+        
+        public static string TotalPaidBillsAmount {
+            get {
+                return ResourceManager.GetString("TotalPaidBillsAmount", resourceCulture);
+            }
+        }
+        
+        public static string TotalUnpaidBills {
+            get {
+                return ResourceManager.GetString("TotalUnpaidBills", resourceCulture);
+            }
+        }
+        
+        public static string TotalUnpaidBillsAmount {
+            get {
+                return ResourceManager.GetString("TotalUnpaidBillsAmount", resourceCulture);
+            }
+        }
+        
+        public static string TotalPartiallyPaidBills {
+            get {
+                return ResourceManager.GetString("TotalPartiallyPaidBills", resourceCulture);
+            }
+        }
+        
+        public static string TotalPartialPaidBillsAmount {
+            get {
+                return ResourceManager.GetString("TotalPartialPaidBillsAmount", resourceCulture);
+            }
+        }
+        
+        public static string Nodataavailable {
+            get {
+                return ResourceManager.GetString("Nodataavailable", resourceCulture);
+            }
+        }
+        
+        public static string Entercaptcha {
+            get {
+                return ResourceManager.GetString("Entercaptcha", resourceCulture);
+            }
+        }
+        
+        public static string EnterId {
+            get {
+                return ResourceManager.GetString("EnterId", resourceCulture);
+            }
+        }
+        
+        public static string Enterusername {
+            get {
+                return ResourceManager.GetString("Enterusername", resourceCulture);
+            }
+        }
+        
+        public static string ResendVerificationCode {
+            get {
+                return ResourceManager.GetString("ResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        public static string PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal {
+            get {
+                return ResourceManager.GetString("PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal", resourceCulture);
+            }
+        }
+        
+        public static string TheaccountwillbelockedafterThreefailedverificationcodeattempts {
+            get {
+                return ResourceManager.GetString("TheaccountwillbelockedafterThreefailedverificationcodeattempts", resourceCulture);
+            }
+        }
+        
+        public static string Clickhereforlogin {
+            get {
+                return ResourceManager.GetString("Clickhereforlogin", resourceCulture);
+            }
+        }
+        
+        public static string My_Bills {
+            get {
+                return ResourceManager.GetString("My Bills", resourceCulture);
+            }
+        }
+        
+        public static string Dashboard {
+            get {
+                return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
     }
 }
