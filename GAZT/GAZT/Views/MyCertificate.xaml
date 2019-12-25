@@ -200,9 +200,9 @@
                 </Image>
                 <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnMyTaxPayerProfileClicked}" />
-                    </Image.GestureRecognizers>
+ <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
+                </Image.GestureRecognizers>
                 </Image>
                 <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="3"></ActivityIndicator>
             </Grid>

@@ -75,6 +75,13 @@ namespace GAZT.Views
             {
                 await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
             }
+
+            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                Navigation.RemovePage(pg);
+            }
+
         }
         protected override void OnDisappearing()
         {

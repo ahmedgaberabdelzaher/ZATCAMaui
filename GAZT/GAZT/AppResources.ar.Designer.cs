@@ -946,5 +946,11 @@ namespace GAZT {
                 return ResourceManager.GetString("PasswordValidationMesseg", resourceCulture);
             }
         }
+        
+        public static string Dashoboard {
+            get {
+                return ResourceManager.GetString("Dashoboard", resourceCulture);
+            }
+        }
     }
 }
