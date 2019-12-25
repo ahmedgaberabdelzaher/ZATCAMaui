@@ -35,7 +35,7 @@
                 <custom:GAZTBorderlessEntry  Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
 
-                <Button Text="{x:Static local:AppResources.Verify}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTButton}"></Button>
+                <Button Text="{x:Static local:AppResources.Verify}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
             

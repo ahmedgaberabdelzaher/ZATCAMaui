@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderer\CustomPickerRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
+    <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />

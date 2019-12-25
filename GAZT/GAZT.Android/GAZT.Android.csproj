@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderer\CustomPickerRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
+    <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
     <Compile Include="CustomRenderer\PdfWebViewRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PlaftformSpecifics\LocalFileProvider.cs" />

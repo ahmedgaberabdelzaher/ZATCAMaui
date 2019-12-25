@@ -22,9 +22,8 @@ namespace GAZT.Views
 
             InitializeComponent();
             App.IsArabic = true;
-            SetRTLDirection();
             this.BindingContext = viewModel;
-
+           // viewModel.PasswordVisibility = true;
             ToolbarItem toolbarItem1 = new ToolbarItem
             {
                 Icon = "ic_language.png",
@@ -52,6 +51,42 @@ namespace GAZT.Views
 
         }
 
+       
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (App.CurrentDropdownTIN != null)
+                viewModel.SelectedTinId = App.CurrentDropdownTIN;
+            //viewModel.UserName = String.Empty;
+            //viewModel.Password = String.Empty;
+            //  await WebServiceManager.GetAllGAZTCertificate("EN", "");
+            if (App.IsComingFromDashboardToLogOff)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
+                    if (!result)
+                    {
+                        viewModel._navigationService.NavigateTo(App.DashboardView);
+                    }
+                    else
+                    {
+                        App.TP = null;
+                        viewModel.UserName = string.Empty;
+                        viewModel.Password = string.Empty;
+                        viewModel.IsVisibleTinIds = false;
+                    }
+                });
+            }
+            //App.TP = null;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
+            //viewModel.IsVisibleTinIds = false;
+        }
+        public void OnPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        }
         public void SetRTLDirection()
         {
             String langName = "ar-AE";
@@ -69,6 +104,5 @@ namespace GAZT.Views
             InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
         }
-
     }
 }

@@ -33,7 +33,7 @@ namespace GAZT
             SimpleIoc.Default.Register<PdfiOSViewModel>();
 
 
-            SimpleIoc.Default.Register<LogInViewModel>();
+            SimpleIoc.Default.Register<LogInPageViewModel>();
             SimpleIoc.Default.Register<DashboardPageViewModel>();
             SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
             SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
