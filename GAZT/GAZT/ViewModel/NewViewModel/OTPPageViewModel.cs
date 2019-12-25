@@ -228,7 +228,7 @@ namespace GAZT.ViewModel.NewViewModel
                             App.TP.Password = Password;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                _navigationService.NavigateTo(App.DashboardView);
+                                _navigationService.NavigateTo(App.DashboardPageView);
                             });
                         }
                         else

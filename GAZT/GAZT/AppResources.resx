@@ -220,7 +220,7 @@
     <value>Mobile Number</value>
   </data>
   <data name="MyBills" xml:space="preserve">
-    <value>My Bills</value>
+    <value>MyBills</value>
   </data>
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>My Bills</value>
@@ -525,13 +525,10 @@ appeal</value>
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>
-   <data name="ActivityIndicatorTitle" xml:space="preserve">
+  <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
   </data>
- <data name="Captcha" xml:space="preserve">
-    <value>Captcha</value>
-  </data>
-   <data name="Captcha" xml:space="preserve">
+  <data name="Captcha" xml:space="preserve">
     <value>Captcha</value>
   </data>
   <data name="EnterNewpassword" xml:space="preserve">
@@ -540,20 +537,20 @@ appeal</value>
   <data name="EnterConfirmpassword" xml:space="preserve">
     <value>Enter Confirm password</value>
   </data>
-   <data name="EnterOTP" xml:space="preserve">
+  <data name="EnterOTP" xml:space="preserve">
     <value>Enter OTP</value>
   </data>
-   <data name="ResendOTP" xml:space="preserve">
+  <data name="ResendOTP" xml:space="preserve">
     <value>Resend OTP</value>
   </data>
-    <data name="PleaseenterUsername" xml:space="preserve">
+  <data name="PleaseenterUsername" xml:space="preserve">
     <value>Please enter Username</value>
   </data>
-   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
+  <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
     <value>entered captcha code is incorrect. please try again</value>
   </data>
-   <data name="Somethingwentwrong" xml:space="preserve">
-    <value>Something went wrong</value>
+  <data name="Somethingwentwrong" xml:space="preserve">
+    <value>Something went wrong, Please try again</value>
   </data>
   <data name="Pleasechangepassword" xml:space="preserve">
     <value>Please change password</value>
@@ -567,9 +564,6 @@ appeal</value>
   <data name="Usernamehasbeensenttoregisteredmobilenumber" xml:space="preserve">
     <value>Username has been sent to registered mobile number and email Id</value>
   </data>
-   <data name="Somethingwentwrong" xml:space="preserve">
-    <value>Something went wrong, Please try again</value>
-  </data>
   <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
     <value>Your Password has been Changed successfully.</value>
   </data>
@@ -579,12 +573,40 @@ appeal</value>
   <data name="PasswordValidationMesseg" xml:space="preserve">
     <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
   </data>
-   <data name="Dashoboard" xml:space="preserve">
+  <data name="Dashoboard" xml:space="preserve">
     <value>Dashoboard</value>
   </data>
-  <data name="MyBills" xml:space="preserve">
-    <value>MyBills</value>
+  <data name="Bills" xml:space="preserve">
+    <value>Bills</value>
   </data>
-  
-   
+  <data name="Correspondance" xml:space="preserve">
+    <value>Correspondance</value>
+  </data>
+  <data name="EServices" xml:space="preserve">
+    <value>E-Services</value>
+  </data>
+  <data name="EstimateZakat" xml:space="preserve">
+    <value>Estimate Zakat</value>
+  </data>
+  <data name="NonSubmitted" xml:space="preserve">
+    <value>NonSubmitted</value>
+  </data>
+  <data name="OverDue" xml:space="preserve">
+    <value>OverDue</value>
+  </data>
+  <data name="Partial" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Submitted</value>
+  </data>
+  <data name="VATDeclaration" xml:space="preserve">
+    <value>VAT Declaration</value>
+  </data>
+  <data name="VATLookup" xml:space="preserve">
+    <value>VAT-Lookup</value>
+  </data>
 </root>

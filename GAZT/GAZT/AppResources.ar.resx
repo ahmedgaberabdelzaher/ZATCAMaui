@@ -220,7 +220,7 @@
     <value>رقم الجوال</value>
   </data>
   <data name="MyBills" xml:space="preserve">
-    <value>فواتيري</value>
+    <value>MyBills</value>
   </data>
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>فواتيري</value>
@@ -522,13 +522,10 @@
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No Bills Available</value>
   </data>
-   <data name="ActivityIndicatorTitle" xml:space="preserve">
+  <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
   </data>
   <data name="Captcha" xml:space="preserve">
-    <value>Captcha</value>
-  </data>
-   <data name="Captcha" xml:space="preserve">
     <value>الرمز المرئي</value>
   </data>
   <data name="EnterNewpassword" xml:space="preserve">
@@ -537,20 +534,20 @@
   <data name="EnterConfirmpassword" xml:space="preserve">
     <value>تأكيد كلمة المرور الجديدة</value>
   </data>
-   <data name="EnterOTP" xml:space="preserve">
+  <data name="EnterOTP" xml:space="preserve">
     <value>Enter OTP</value>
   </data>
-   <data name="ResendOTP" xml:space="preserve">
+  <data name="ResendOTP" xml:space="preserve">
     <value>Resend OTP</value>
   </data>
-    <data name="PleaseenterUsername" xml:space="preserve">
+  <data name="PleaseenterUsername" xml:space="preserve">
     <value>Please enter Username</value>
   </data>
-   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
+  <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
     <value>الرمز المرئي المدخل غير صحيح، رجاء المحاولة مرة أخرى</value>
   </data>
-   <data name="Somethingwentwrong" xml:space="preserve">
-    <value>Something went wrong</value>
+  <data name="Somethingwentwrong" xml:space="preserve">
+    <value>Something went wrong, Please try again</value>
   </data>
   <data name="Pleasechangepassword" xml:space="preserve">
     <value>Please change password</value>
@@ -561,12 +558,8 @@
   <data name="PleaseenterOTP" xml:space="preserve">
     <value>Please enter OTP</value>
   </data>
-  
   <data name="Usernamehasbeensenttoregisteredmobilenumber" xml:space="preserve">
     <value>تم إرسال اسم المستخدم إلى رقم الجوال والبريد الالكترونى المسجل للمكلف</value>
-  </data>
-   <data name="Somethingwentwrong" xml:space="preserve">
-    <value>Something went wrong, Please try again</value>
   </data>
   <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
     <value>Your Password has been Changed successfully.</value>
@@ -576,11 +569,38 @@
   </data>
   <data name="PasswordValidationMesseg" xml:space="preserve">
     <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
-  </data> 
-   <data name="Dashoboard" xml:space="preserve">
+  </data>
+  <data name="Dashoboard" xml:space="preserve">
     <value>Dashoboard</value>
   </data>
-  <data name="MyBills" xml:space="preserve">
-    <value>MyBills</value>
+  <data name="Correspondance" xml:space="preserve">
+    <value>Correspondance</value>
+  </data>
+  <data name="EServices" xml:space="preserve">
+    <value>E-Services</value>
+  </data>
+  <data name="EstimateZakat" xml:space="preserve">
+    <value>Estimate Zakat</value>
+  </data>
+  <data name="NonSubmitted" xml:space="preserve">
+    <value>NonSubmitted</value>
+  </data>
+  <data name="OverDue" xml:space="preserve">
+    <value>OverDue</value>
+  </data>
+  <data name="Partial" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Submitted</value>
+  </data>
+  <data name="VATDeclaration" xml:space="preserve">
+    <value>VAT Declaration</value>
+  </data>
+  <data name="VATLookup" xml:space="preserve">
+    <value>VAT-Lookup</value>
   </data>
 </root>

@@ -199,6 +199,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bills.
+        /// </summary>
+        public static string Bills {
+            get {
+                return ResourceManager.GetString("Bills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Both the password fields should match.
         /// </summary>
         public static string Boththepasswordfieldsshouldmatch {
@@ -298,11 +307,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correspondance.
+        /// </summary>
+        public static string Correspondance {
+            get {
+                return ResourceManager.GetString("Correspondance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Password.
         /// </summary>
         public static string CurrentPassword {
             get {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashoboard.
+        /// </summary>
+        public static string Dashoboard {
+            get {
+                return ResourceManager.GetString("Dashoboard", resourceCulture);
             }
         }
         
@@ -469,11 +496,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-Services.
+        /// </summary>
+        public static string EServices {
+            get {
+                return ResourceManager.GetString("EServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimate sales for Fiscal year.
         /// </summary>
         public static string EstimateSalesForFiscalYear {
             get {
                 return ResourceManager.GetString("EstimateSalesForFiscalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimate Zakat.
+        /// </summary>
+        public static string EstimateZakat {
+            get {
+                return ResourceManager.GetString("EstimateZakat", resourceCulture);
             }
         }
         
@@ -712,7 +757,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Bills.
+        ///   Looks up a localized string similar to MyBills.
         /// </summary>
         public static string MyBills {
             get {
@@ -811,6 +856,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NonSubmitted.
+        /// </summary>
+        public static string NonSubmitted {
+            get {
+                return ResourceManager.GetString("NonSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No TIN&apos;s linked with this email address..
         /// </summary>
         public static string NoTINsAvailable {
@@ -847,6 +901,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OverDue.
+        /// </summary>
+        public static string OverDue {
+            get {
+                return ResourceManager.GetString("OverDue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overdue Return.
         /// </summary>
         public static string OverdueReturn {
@@ -861,6 +924,15 @@ namespace GAZT {
         public static string Paid {
             get {
                 return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partial.
+        /// </summary>
+        public static string Partial {
+            get {
+                return ResourceManager.GetString("Partial", resourceCulture);
             }
         }
         
@@ -1036,6 +1108,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Returns.
+        /// </summary>
+        public static string Returns {
+            get {
+                return ResourceManager.GetString("Returns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retype Email.
         /// </summary>
         public static string RetypeEmail {
@@ -1149,6 +1230,15 @@ namespace GAZT {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitted.
+        /// </summary>
+        public static string Submitted {
+            get {
+                return ResourceManager.GetString("Submitted", resourceCulture);
             }
         }
         
@@ -1315,6 +1405,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Declaration.
+        /// </summary>
+        public static string VATDeclaration {
+            get {
+                return ResourceManager.GetString("VATDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT-Lookup.
+        /// </summary>
+        public static string VATLookup {
+            get {
+                return ResourceManager.GetString("VATLookup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Registration Certificate.
         /// </summary>
         public static string VATRegistrationCertificate {
@@ -1401,12 +1509,6 @@ namespace GAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
-            }
-        }
-        
-        public static string Dashoboard {
-            get {
-                return ResourceManager.GetString("Dashoboard", resourceCulture);
             }
         }
     }

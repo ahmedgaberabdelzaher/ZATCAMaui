@@ -1,14 +1,32 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 
 namespace GAZT.ViewModel
 {
    public class DashboardPageViewModel : ViewModelBase
     {
+
+        #region Variable
+
+        public readonly INavigationService _navigationService;
+        private readonly IDialogService _dialogService;
+        public ICommand OnMyCertificateClicked { get; set; }
+        public ICommand OnBellClicked { get; set; }
+        public ICommand OnMyTaxPayerProfileClicked { get; set; }
+        public ICommand OnMyBillsClicked { get; set; }
+        public Dashboard dashboard { get; set; }
+
+        #endregion
+
         #region Property
 
         private List<BillReturn> _billReturn;
@@ -129,14 +147,104 @@ namespace GAZT.ViewModel
 
         #region Constructor
 
+        public DashboardPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+
+            OnMyCertificateClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.MyCertificate);
+
+            });
+            OnBellClicked = new Xamarin.Forms.Command(async () =>
+            {
+            });
+            OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.TaxPayerProfileView);
+
+            });
+
+            OnMyBillsClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.MyBillsView);
+
+            });
+
+
+
+
+        }
 
         #endregion
 
 
         #region Method
 
-        public void onPageLoad()
+        public async Task onPageLoad()
         {
+            //BillReturn = new List<BillReturn>();
+            //Type myType = typeof(ReturnType);
+            
+            
+            //string lang = UtilityManager.GetLanguageParameter();
+            //dashboard = await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+            
+            
+            //if (dashboard.results != null)
+            //{
+            //    Type myType = typeof(DashboardResult);
+            //    List<string> returnValues = Enum.GetNames(typeof(ReturnType)).ToList();
+            //    DashboardResult result = new DashboardResult();
+            //    result = dashboard.results.FirstOrDefault();
+            //    foreach (var item in returnValues)
+            //    {
+            //        if(item.get)
+            //    }
+
+            //    int a = dashboard.results.First();
+
+            //    TotalSubmittedReturn = dashboard.results[0].RtnTot;
+            //    TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
+            //    TotalPaidReturn = dashboard.results[0].PrtnTot;
+            //    TotalUnapidReturn = dashboard.results[0].UprtnTot;
+            //    TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
+            //    TotalNoofReturns = dashboard.results[0].IcrTot;
+            //    TotalOverDueReturn = dashboard.results[0].DueIcr;
+            //    TotalPaidBills = dashboard.results[0].PbillsTot;
+            //    TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
+            //    TotalUnpaidBills = dashboard.results[0].UpbillsTot;
+            //    TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
+            //    TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
+            //    TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
+            //    TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
+            //}
+            //else
+            //{
+            //    _dialogService.ShowMessageBox("No data available", AppResources.Information);
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
             BillReturn = new List<BillReturn>();
 
                 BillReturn bill = new BillReturn();
