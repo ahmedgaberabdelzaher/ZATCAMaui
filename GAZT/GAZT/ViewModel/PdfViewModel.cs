@@ -31,7 +31,7 @@ namespace GAZT.ViewModel
             set
             {
                 _isLoading = value;
-                if(_isLoading==false)
+                if (_isLoading == false)
                 {
                     IsVisiblePdfView = true;
                 }
@@ -43,7 +43,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private bool _isVisiblePdfView=false;
+        private bool _isVisiblePdfView = false;
         public bool IsVisiblePdfView
         {
             get
@@ -148,8 +148,8 @@ namespace GAZT.ViewModel
 
             _dialogService = dialogService;
 
-           
-           
+
+
 
         }
 
@@ -159,38 +159,38 @@ namespace GAZT.ViewModel
 
         public async Task OnPageLoad()
         {
-          await  Task.Run(async () =>
-            {
-                IsLoading = true;
-                String lang = "EN";
-                if (App.IsArabic == true)
-                    lang = "AR";
-               
-              //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-               
+            await Task.Run(async () =>
+             {
+                 IsLoading = true;
+                 String lang = "EN";
+                 if (App.IsArabic == true)
+                     lang = "AR";
+
+                //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+
                 if (!string.IsNullOrEmpty(pdfUrl))
-                {
+                 {
 
-                    DownloadUrl = pdfUrl;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
+                     DownloadUrl = pdfUrl;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
                     if (Device.RuntimePlatform == Device.Android)
-                    {
-                        pdf();
+                     {
+                         pdf();
+                     }
+                     else
+                     {
+                        // Device.OpenUri(new Uri(response));
                     }
-                    else
-                    {
-                       // Device.OpenUri(new Uri(response));
-                    }
 
-                }
-                else
-                {
-                    String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
+                 }
+                 else
+                 {
+                     String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
 
-                    await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
+                     await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
 
-                }
-                IsLoading = false;
-            });
+                 }
+                 IsLoading = false;
+             });
         }
 
         public void pdf()
@@ -202,58 +202,49 @@ namespace GAZT.ViewModel
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     var dependency = DependencyService.Get<ILocalFileProvider>();
-
                     if (dependency == null)
                     {
-                       _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
-
+                        _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
                         // DisplayAlert("Error loading PDF", "Computer says no", "OK");
-
                         return;
                     }
-
                     var fileName = Guid.NewGuid().ToString();
-
                     // Download PDF locally for viewing
-
-                    using (System.Net.WebClient client = new System.Net.WebClient())
+                    try
                     {
-                        try
+                        byte[] PdfBytes;
+                        HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+                        WebResponse myResp = myReq.GetResponse();
+                        using (Stream streams = myResp.GetResponseStream())
+                        using (MemoryStream ms = new MemoryStream())
                         {
-
-                            StreamForDownloadURL = client.OpenRead(DownloadUrl);
-
-                            BinaryReader br = new BinaryReader(StreamForDownloadURL);
-
-                            byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
-
-                            string strBase64 = Convert.ToBase64String(result);
-
-                            if (string.IsNullOrEmpty(strBase64) != true)
+                            int count = 0;
+                            do
                             {
-
-                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                                stream = new MemoryStream(sPDFDecoded);
-
-                                StreamForDownloadURL = stream;
-
-                            }
-
-                            localPath =
-                          Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
+                                byte[] buf = new byte[1024];
+                                count = streams.Read(buf, 0, 1024);
+                                ms.Write(buf, 0, count);
+                            } while (streams.CanRead && count > 0);
+                            PdfBytes = ms.ToArray();
                         }
-                        catch (Exception)
+                        string strBase64 = String.Empty;
+                        if (PdfBytes != null)
                         {
+
+                            strBase64 = Convert.ToBase64String(PdfBytes);
                         }
+                        if (string.IsNullOrEmpty(strBase64) != true)
+                        {
+                            byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                            stream = new MemoryStream(sPDFDecoded);
+                            StreamForDownloadURL = stream;
+                        }
+                        localPath =
+                      Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                     }
-
-                    //    using (var httpClient = new HttpClient())
-                    //{
-                    //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
-
-                    //    localPath =
-                    //        Task.Run(() => dependency.SaveFileToDisk(pdfStream, $"{fileName}.pdf")).Result;
-                    //}
+                    catch (Exception)
+                    {
+                    }
 
                     if (string.IsNullOrWhiteSpace(localPath))
                     {
@@ -264,8 +255,7 @@ namespace GAZT.ViewModel
                     }
                 }
 
-                    PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
-
+                PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
             }
             catch (Exception e)
             {

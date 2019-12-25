@@ -633,6 +633,9 @@ namespace GAZT
                 VATCertificateList = allCertificate.VATSet.results;
                 ZAKATCertificateList = allCertificate.ZakatSet.results;
                 EXICISECertificateList = allCertificate.ExciseSet.results;
+
+            
+
                 if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
                 {
                     await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);

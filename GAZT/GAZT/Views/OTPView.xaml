@@ -45,7 +45,7 @@
 
                     <Image Source="ic_OTP_Rectangle.png" x:Name="OTPOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     </Image>
-                    <local1:BorderlessEntry Text="{Binding OTP1stNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" x:Name="entry" TextChanged="OnTextChangedOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="5" BackgroundColor="Transparent" />
+                    <local1:BorderlessEntry  Text="{Binding OTP1stNumberProvidedByTheUser}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" x:Name="entry" TextChanged="OnTextChangedOne" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="5" BackgroundColor="Transparent" />
 
 
                     <Image Source="ic_OTP_Rectangle.png" x:Name="OTPTwo" Grid.Row="4" Grid.Column="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
