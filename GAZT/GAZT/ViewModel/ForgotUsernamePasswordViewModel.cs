@@ -547,6 +547,7 @@ namespace GAZT
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (!string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                 {
                     Device.BeginInvokeOnMainThread(() => {
@@ -616,6 +617,7 @@ namespace GAZT
                 d.Hyperlink = "";
                 forgotPassword.d = d;
                 forgotPassword =  await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
                 {
                     await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
@@ -689,8 +691,8 @@ namespace GAZT
                
                
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
-              
-               
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
                     Device.BeginInvokeOnMainThread(async() => {
@@ -758,6 +760,7 @@ namespace GAZT
             if(NewPassword.Equals(ConfirmPassword))
             {
                 forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
                     await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
@@ -775,6 +778,16 @@ namespace GAZT
             }
            
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         #endregion
     }
 }

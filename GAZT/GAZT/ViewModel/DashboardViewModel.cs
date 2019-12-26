@@ -273,7 +273,8 @@ namespace GAZT
            
             string lang = UtilityManager.GetLanguageParameter();
             dashboard =  await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-            if(dashboard.results != null)
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+            if (dashboard.results != null)
 			{
 				TotalSubmittedReturn = dashboard.results[0].RtnTot;
 				TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
@@ -300,6 +301,16 @@ namespace GAZT
 
 
 		}
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         #endregion
     }
 }

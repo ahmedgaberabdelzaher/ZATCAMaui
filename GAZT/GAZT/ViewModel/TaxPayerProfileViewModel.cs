@@ -6,6 +6,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -841,6 +842,16 @@ namespace GAZT
                 return false;
             }
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         #endregion
     }
 }

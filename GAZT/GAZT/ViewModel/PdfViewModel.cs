@@ -261,7 +261,18 @@ namespace GAZT.ViewModel
             {
                 throw e;
             }
+
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         #endregion
     }
 }

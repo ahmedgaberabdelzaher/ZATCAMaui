@@ -589,6 +589,7 @@ namespace GAZT
                 if (App.IsArabic == true)
                     lang = "AR";
                  response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
             });
             return response;
@@ -607,6 +608,7 @@ namespace GAZT
                     if (App.IsArabic == true)
                         lang = "AR";
                     response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 });
             }
@@ -623,6 +625,8 @@ namespace GAZT
             string lang = UtilityManager.GetLanguageParameter();
             TaxPayerProfile = App.TP;
             AllCertificate allCertificate =  await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
             if (allCertificate != null)
             {
                 VATCertificateList = allCertificate.VATSet.results;
@@ -672,6 +676,16 @@ namespace GAZT
                 IsEXISECertificateAvailable = false;
             }
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         #endregion
     }
 }
