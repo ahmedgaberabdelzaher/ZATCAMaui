@@ -606,7 +606,56 @@ appeal</value>
   <data name="VATDeclaration" xml:space="preserve">
     <value>VAT Declaration</value>
   </data>
-  <data name="VATLookup" xml:space="preserve">
-    <value>VAT-Lookup</value>
+  <data name="TotalUnpaidBills" xml:space="preserve">
+    <value>Total Unpaid Bills</value>
   </data>
+  <data name="TotalUnpaidBillsAmount" xml:space="preserve">
+    <value>Total Unpaid Bills Amount</value>
+  </data>
+  <data name="TotalPartiallyPaidBills" xml:space="preserve">
+    <value>Total Partially Paid Bills</value>
+  </data>
+    <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
+    <value>Total Partial Paid Bills Amount</value>
+  </data>
+    <data name="Nodataavailable" xml:space="preserve">
+    <value>No data available</value>
+  </data>
+   <data name="Entercaptcha" xml:space="preserve">
+    <value>Enter captcha</value>
+  </data>
+   <data name="EnterId" xml:space="preserve">
+    <value>Enter Id</value>
+  </data> 
+   <data name="Enterusername" xml:space="preserve">
+    <value>Enter username</value>
+  </data>
+  <data name="ResendVerificationCode" xml:space="preserve">
+    <value>Resend Verification Code</value>
+  </data>
+  <data name="PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal" xml:space="preserve">
+ <value>Please Enter verification code received on mobile to Enter GAZT Portal</value>
+  </data>
+ <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
+ <value>The account will be locked after 3 failed verification code attempts</value>
+  </data>
+   <data name="ChangePassword" xml:space="preserve">
+ <value>ChangePassword</value>
+  </data>
+ <data name="Clickhereforlogin" xml:space="preserve">
+ <value>Click here for login</value>
+  </data>
+  <data name="MyBills" xml:space="preserve">
+ <value>MyBills</value>
+  </data>
+  
+  <data name="Dashboard" xml:space="preserve">
+ <value>Dashboard</value>
+  </data>
+  <data name="VarificationCode" xml:space="preserve">
+ <value>Varification Code</value>
+  </data>
+
+   
+
 </root>

@@ -63,67 +63,67 @@
                                     
                                      
                                                     <StackLayout Spacing="0" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel  Text="Total Submitted Return" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.TotalSubmittedReturns}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalSubmittedReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total  Non Submitted Return" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalNonSubmittedReturns}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalNonSubmittedReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Paid Return" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPaidReturns}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPaidReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="End" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Unapid Return(Open return)" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalUnpaidReturns}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalUnapidReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Partial Paid Return" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPartiallyPaidReturns}"  Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPartialPaidReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total  No of Returns" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalNoofReturns}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalNoofReturns}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Over Due Return" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalOverDueReturns}"  Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalOverDueReturn}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Paid Bills" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPaidBills}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPaidBills}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Paid Bills Amount" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPaidBillsAmount}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPaidBillsAmount}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Unpaid Bills" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalUnpaidBills}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalUnpaidBills}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                      <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Unpaid Bills Amount" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalUnpaidBillsAmount}"  Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalUnpaidBillsAmount}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Partial Paid Bills" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPartiallyPaidBills}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPartialPaidBills}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
                    
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal">
-                        <local1:CustomLabel Text="Total Partial Paid Bills Amount" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.TotalPartialPaidBillsAmount}" Style="{StaticResource DashboardMiniGrayBoldLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,0,10,0" HorizontalTextAlignment="End"/>
                         <local1:CustomLabel Text="{Binding TotalPartialPaidBillsAmount}" Style="{StaticResource DashboardMiniGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,0" HorizontalTextAlignment="End"/>
                     </StackLayout>
                                       </StackLayout>

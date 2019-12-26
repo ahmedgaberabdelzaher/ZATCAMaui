@@ -12,6 +12,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Xamarin.Forms;
+
 namespace GAZT.Manager
 {
     public static class WebServiceManager
@@ -915,6 +917,7 @@ namespace GAZT.Manager
                     if ((0 == String.Compare(NewToken, "Invalid Token")))
                     {
                         throw new Exception("Invalid Token");
+
                     }
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
@@ -1030,6 +1033,14 @@ namespace GAZT.Manager
                 return null;
             }
         }
-
+        private async static void SessionExpired(string token)
+        {
+            //for (int index = NavigationPage.NavigationStack.Count - 1; index > 0; index--)
+            //{
+            //    NavigationPage.
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
+        }
     }
 }

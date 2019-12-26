@@ -28,6 +28,7 @@ namespace GAZT.Views
             {
                 if (e.SelectedItem == null)
                 {
+                     
                     return;
                 } ((ListView)sender).SelectedItem = null;
             };

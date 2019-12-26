@@ -600,7 +600,56 @@
   <data name="VATDeclaration" xml:space="preserve">
     <value>VAT Declaration</value>
   </data>
-  <data name="VATLookup" xml:space="preserve">
-    <value>VAT-Lookup</value>
+  <data name="TotalPaidBillsAmount" xml:space="preserve">
+    <value>إجمالي مبلغ الفواتير المدفوعة</value>
+  </data>
+  <data name="TotalUnpaidBills" xml:space="preserve">
+    <value>مجموع الفواتير الغير مدفوعة</value>
+  </data>
+  <data name="TotalUnpaidBillsAmount" xml:space="preserve">
+    <value>إجمالي مبلغ الفواتير الغير مدفوعة</value>
+  </data>
+  <data name="TotalPartiallyPaidBills" xml:space="preserve">
+    <value>مجموع الفواتير المسددة جزئيا</value>
+  </data>
+    <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
+    <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
+  </data>
+    <data name="Nodataavailable" xml:space="preserve">
+    <value>لا تتوفر بيانات</value>
+  </data>
+   <data name="Entercaptcha" xml:space="preserve">
+    <value>أدخل كلمة التحقق</value>
+  </data>
+   <data name="EnterId" xml:space="preserve">
+    <value>أدخل الهوية</value>
+  </data> 
+   <data name="Enterusername" xml:space="preserve">
+    <value>أدخل إسم المستخدم</value>
+  </data>
+  <data name="ResendVerificationCode" xml:space="preserve">
+    <value>إعادة إرسال رمز التحقق</value>
+  </data>
+  <data name="PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal" xml:space="preserve">
+ <value>الرجاء إدخال رمز التحقق الوارد علي الجوال للدخول إلى بوابة الهيئة العامة للزكاة والدخل</value>
+  </data>
+ <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
+ <value>سيتم قفل الحساب بعد ٣ محاولات تحقق فاشلة</value>
+  </data>
+   <data name="ChangePassword" xml:space="preserve">
+ <value>تغيير كلمة المرور</value>
+  </data>
+ <data name="Clickhereforlogin" xml:space="preserve">
+ <value>انقر هنا لتسجيل الدخول</value>
+  </data>
+  <data name="MyBills" xml:space="preserve">
+ <value>فواتيري</value>
+  </data>
+ 
+  <data name="Dashboard" xml:space="preserve">
+ <value>لوحة المعلومات</value>
+  </data>
+ <data name="VarificationCode" xml:space="preserve">
+ <value>رمز التحقـق</value>
   </data>
 </root>
