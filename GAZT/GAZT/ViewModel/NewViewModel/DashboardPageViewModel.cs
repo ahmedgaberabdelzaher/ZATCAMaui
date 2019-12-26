@@ -192,106 +192,77 @@ namespace GAZT.ViewModel
 
         public async Task onPageLoad()
         {
-            //BillReturn = new List<BillReturn>();
-            //Type myType = typeof(ReturnType);
-            
-            
-            //string lang = UtilityManager.GetLanguageParameter();
-            //dashboard = await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-            
-            
-            //if (dashboard.results != null)
-            //{
-            //    Type myType = typeof(DashboardResult);
-            //    List<string> returnValues = Enum.GetNames(typeof(ReturnType)).ToList();
-            //    DashboardResult result = new DashboardResult();
-            //    result = dashboard.results.FirstOrDefault();
-            //    foreach (var item in returnValues)
-            //    {
-            //        if(item.get)
-            //    }
-
-            //    int a = dashboard.results.First();
-
-            //    TotalSubmittedReturn = dashboard.results[0].RtnTot;
-            //    TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
-            //    TotalPaidReturn = dashboard.results[0].PrtnTot;
-            //    TotalUnapidReturn = dashboard.results[0].UprtnTot;
-            //    TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
-            //    TotalNoofReturns = dashboard.results[0].IcrTot;
-            //    TotalOverDueReturn = dashboard.results[0].DueIcr;
-            //    TotalPaidBills = dashboard.results[0].PbillsTot;
-            //    TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
-            //    TotalUnpaidBills = dashboard.results[0].UpbillsTot;
-            //    TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
-            //    TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
-            //    TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
-            //    TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
-            //}
-            //else
-            //{
-            //    _dialogService.ShowMessageBox("No data available", AppResources.Information);
-            //}
-
-
-
-
-
-
-
-
-
-
-
-
-
             BillReturn = new List<BillReturn>();
-
-                BillReturn bill = new BillReturn();
-                bill.ReturnTypeProperty = ReturnType.RtnTot;
-                bill.ReturnCount = "10";
-           
-                BillReturn.Add(bill);
-
-                BillReturn bill1 = new BillReturn();
-                bill1.ReturnTypeProperty = ReturnType.DueIcr;
-                bill1.ReturnCount = "30";
-                BillReturn.Add(bill1);
-
-                BillReturn bill2 = new BillReturn();
-                bill2.ReturnTypeProperty = ReturnType.PrtnTot;
-                bill2.ReturnCount = "15";
-                BillReturn.Add(bill2);
-
-                BillReturn bill3 = new BillReturn();
-                bill3.ReturnTypeProperty = ReturnType.NrtnTot;
-                bill3.ReturnCount = "34";
-                BillReturn.Add(bill3);
-
-                BillReturn bill4 = new BillReturn();
-                bill4.ReturnTypeProperty = ReturnType.UprtnTot;
-                bill4.ReturnCount = "22";
-                BillReturn.Add(bill4);
+            Type myType = typeof(ReturnType);
 
 
+            string lang = UtilityManager.GetLanguageParameter();
+            dashboard = await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
 
-            BillPaid = new List<BillPaid>();
 
-            BillPaid billPaid1 = new BillPaid();
-            billPaid1.BillTypeProperty = BillType.PbillsTot;
-            billPaid1.BillCount = "10";
-            BillPaid.Add(billPaid1);
+            if (dashboard.results != null)
+            {
 
-            BillPaid billPaid2 = new BillPaid();
-            billPaid2.BillTypeProperty = BillType.PrbillsTot;
-            billPaid2.BillCount = "20";
-            BillPaid.Add(billPaid2);
+                //return
+                BillReturn = new List<BillReturn>();
 
-            BillPaid billPaid3 = new BillPaid();
-            billPaid3.BillTypeProperty = BillType.UpbillsTot;
-            billPaid3.BillCount = "40";
-            BillPaid.Add(billPaid3);
+                BillReturn objBill1 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.RtnTot;
+                objBill1.ReturnCount = dashboard.results[0].RtnTot;
 
+                BillReturn.Add(objBill1);
+
+                BillReturn objBill2 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.DueIcr;
+                objBill1.ReturnCount = dashboard.results[0].DueIcr;
+
+                BillReturn.Add(objBill2);
+
+                BillReturn objBill3 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.PrtnTot;
+                objBill1.ReturnCount = dashboard.results[0].PrtnTot;
+
+                BillReturn.Add(objBill3);
+
+                BillReturn objBill4 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.NrtnTot;
+                objBill1.ReturnCount = dashboard.results[0].NrtnTot;
+
+                BillReturn.Add(objBill4);
+
+                BillReturn objBill5 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.UprtnTot;
+                objBill1.ReturnCount = dashboard.results[0].UprtnTot;
+
+                BillReturn.Add(objBill5);
+
+                //Paid
+
+                BillPaid = new List<BillPaid>();
+
+                BillPaid objBillPaid1 = new BillPaid();
+                objBillPaid1.BillTypeProperty = BillType.PbillsTot;
+                objBillPaid1.BillCount = dashboard.results[0].PbillsTot;
+                BillPaid.Add(objBillPaid1);
+
+                BillPaid objBillPaid2 = new BillPaid();
+                objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
+                objBillPaid2.BillCount = dashboard.results[0].PrbillsTot;
+                BillPaid.Add(objBillPaid2);
+
+                BillPaid objBillPaid3 = new BillPaid();
+                objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
+                objBillPaid3.BillCount = dashboard.results[0].UpbillsTot;
+                BillPaid.Add(objBillPaid3);
+
+            }
+            else
+            {
+                _dialogService.ShowMessageBox("No data available", AppResources.Information);
+            }
+
+
+            
         }
 
         #endregion
