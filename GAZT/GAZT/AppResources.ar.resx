@@ -538,7 +538,7 @@
     <value>Enter OTP</value>
   </data>
   <data name="ResendOTP" xml:space="preserve">
-    <value>Resend OTP</value>
+    <value>إعادة إرسال رمز التحقق</value>
   </data>
   <data name="PleaseenterUsername" xml:space="preserve">
     <value>Please enter Username</value>
