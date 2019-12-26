@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -222,7 +223,8 @@ namespace GAZT.ViewModel
 
 
                 myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
-               
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
 
                 if (myBills != null && myBills.Count != 0)
                 {
@@ -273,5 +275,15 @@ namespace GAZT.ViewModel
             //}
             //MyBillsOriginal = MyBills;
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
     }
 }

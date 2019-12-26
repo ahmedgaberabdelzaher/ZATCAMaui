@@ -52,6 +52,7 @@ namespace GAZT
         public static TaxPayerProfile TP = null;
         public static string Token = String.Empty;
         public static string Otp = String.Empty;
+        public static bool IsSessionExpired = false;
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;

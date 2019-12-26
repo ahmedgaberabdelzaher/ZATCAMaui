@@ -205,6 +205,7 @@ namespace GAZT
                             });
 
                             TINs = await WebServiceManager.GAZTGetAllTins(UserName);
+                            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                             if (TINs.Count != 0 && SelectedTinId == null)
                             {
                                 SelectedTinId = TINs[0];
@@ -325,11 +326,13 @@ namespace GAZT
                     if (SelectedTinId != null && IsVisibleTinIds == true)
                    {
                        response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
+                       await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                        UserId = SelectedTinId.Tin;
                    }
                    else
                    {
                        response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                       await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                        UserId = UserName;
                    }
 
@@ -340,6 +343,7 @@ namespace GAZT
                        try
                        {
                            String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserId, lang);
+                           await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                            if (false == String.IsNullOrEmpty(MobileNumber))
                            {
                                if (App.TP == null)
@@ -358,6 +362,7 @@ namespace GAZT
                        await Task.Run(async () =>
                         {
                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId);
+                              await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                {
                                    if (App.TP == null)
@@ -447,6 +452,15 @@ namespace GAZT
         }
         #endregion
         #region Method
+
+        public async Task PopToRootPage()
+        {
+            if(App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
         #endregion
     }
 }
