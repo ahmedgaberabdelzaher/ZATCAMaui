@@ -27,11 +27,15 @@ namespace GAZT
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnCertificateClicked { get; set; }
         public ICommand OnZakatCertificateClicked { get; set; }
-        
+        public ICommand OnVATCertificateClicked { get; set; }
+        public ICommand OnExciseCertificateClicked { get; set; }
+        public AllCertificate allCertificate { get; set; }
+
+
         #endregion
 
         #region Property
-        private bool _isLoading=false;
+        private bool _isLoading = false;
 
         public bool IsLoading
         {
@@ -45,6 +49,38 @@ namespace GAZT
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        private bool _isCertificateAvailable = false;
+
+        public bool IsCertificateAvailable
+        {
+            get
+            {
+                return _isCertificateAvailable;
+            }
+            set
+            {
+                _isCertificateAvailable = value;
+                RaisePropertyChanged("IsCertificateAvailable");
+            }
+        }
+
+        private bool _setNoDataLabelVisibility = false;
+
+        public bool SetNoDataLabelVisibility
+        {
+            get
+            {
+                return _setNoDataLabelVisibility;
+            }
+            set
+            {
+                _setNoDataLabelVisibility = value;
+                RaisePropertyChanged("SetNoDataLabelVisibility");
+            }
+        }
+
+
 
         private bool _isVATCertificateAvailable = false;
 
@@ -61,144 +97,181 @@ namespace GAZT
             }
         }
 
-        private bool _isZAKATCertificateAvailable = false;
+        //private bool _isZAKATCertificateAvailable = false;
 
-        public bool IsZAKATCertificateAvailable
+        //public bool IsZAKATCertificateAvailable
+        //{
+        //    get
+        //    {
+        //        return _isZAKATCertificateAvailable;
+        //    }
+        //    set
+        //    {
+        //        _isZAKATCertificateAvailable = value;
+        //        RaisePropertyChanged("IsZAKATCertificateAvailable");
+        //    }
+        //}
+
+        //private bool _isEXISECertificateAvailable = false;
+
+        //public bool IsEXISECertificateAvailable
+        //{
+        //    get
+        //    {
+        //        return _isEXISECertificateAvailable;
+        //    }
+        //    set
+        //    {
+        //        _isEXISECertificateAvailable = value;
+        //        RaisePropertyChanged("IsEXISECertificateAvailable");
+        //    }
+        //}
+
+        //private List<Result> _VATCertificateList ;
+
+        //public List<Result> VATCertificateList
+        //{
+        //    get
+        //    {
+        //        return _VATCertificateList;
+        //    }
+        //    set
+        //    {
+        //        _VATCertificateList = value;
+        //        RaisePropertyChanged("VATCertificateList");
+        //    }
+        //}
+
+
+        //private Result _selectedVATCertificate;
+
+        //public Result SelectedVATCertificate
+        //{
+        //    get
+        //    {
+        //        return _selectedVATCertificate;
+        //    }
+        //    set
+        //    {
+        //        _selectedVATCertificate = value;
+        //        RaisePropertyChanged("SelectedVATCertificate");
+        //        if (SelectedVATCertificate != null &&  SelectedVATCertificate.Pdfurl != null)
+        //        {
+        //            ShowVATPdf(SelectedVATCertificate.Pdfurl);
+        //        }
+        //    }
+        //}
+
+
+        //private List<Result> _zAKATCertificateList;
+
+        //public List<Result> ZAKATCertificateList
+        //{
+        //    get
+        //    {
+        //        return _zAKATCertificateList;
+        //    }
+        //    set
+        //    {
+        //        _zAKATCertificateList = value;
+        //        RaisePropertyChanged("ZAKATCertificateList");
+        //    }
+        //}
+
+
+
+
+        //private Result _selectedZAKATCertificate;
+
+        //public Result SelectedZAKATCertificate
+        //{
+        //    get
+        //    {
+        //        return _selectedZAKATCertificate;
+        //    }
+        //    set
+        //    {
+        //        _selectedZAKATCertificate = value;
+        //        RaisePropertyChanged("SelectedZAKATCertificate");
+        //        if(SelectedZAKATCertificate != null && SelectedZAKATCertificate.Pdfurl != null)
+        //        {
+        //            ShowZAKATPdf(SelectedZAKATCertificate.Pdfurl);
+        //        }
+
+        //    }
+        //}
+
+        //private List<Result> _eXICISECertificateList;
+
+        //public List<Result> EXICISECertificateList
+        //{
+        //    get
+        //    {
+        //        return _eXICISECertificateList;
+        //    }
+        //    set
+        //    {
+        //        _eXICISECertificateList = value;
+        //        RaisePropertyChanged("EXICISECertificateList");
+
+        //    }
+        //}
+
+        //private Result _selectedEXCISECertificate;
+
+        //public Result SelectedEXCISECertificate
+        //{
+        //    get
+        //    {
+        //        return _selectedEXCISECertificate;
+        //    }
+        //    set
+        //    {
+        //        _selectedEXCISECertificate = value;
+        //        RaisePropertyChanged("SelectedEXCISECertificate");
+        //        if (SelectedEXCISECertificate != null &&  SelectedEXCISECertificate.Pdfurl != null)
+        //        {
+        //            ShowEXCISECertificate(SelectedEXCISECertificate.Pdfurl);
+        //        }
+        //    }
+        //}
+
+
+        private List<Result> _certificateList;
+
+        public List<Result> CertificateList
         {
             get
             {
-                return _isZAKATCertificateAvailable;
+                return _certificateList;
             }
             set
             {
-                _isZAKATCertificateAvailable = value;
-                RaisePropertyChanged("IsZAKATCertificateAvailable");
+                _certificateList = value;
+                RaisePropertyChanged("CertificateList");
             }
         }
 
-        private bool _isEXISECertificateAvailable = false;
 
-        public bool IsEXISECertificateAvailable
+        private Result _selectedCertificate;
+
+        public Result SelectedCertificate
         {
             get
             {
-                return _isEXISECertificateAvailable;
+                return _selectedCertificate;
             }
             set
             {
-                _isEXISECertificateAvailable = value;
-                RaisePropertyChanged("IsEXISECertificateAvailable");
-            }
-        }
-
-        private List<Result> _VATCertificateList ;
-
-        public List<Result> VATCertificateList
-        {
-            get
-            {
-                return _VATCertificateList;
-            }
-            set
-            {
-                _VATCertificateList = value;
-                RaisePropertyChanged("VATCertificateList");
-            }
-        }
-
-
-        private Result _selectedVATCertificate;
-
-        public Result SelectedVATCertificate
-        {
-            get
-            {
-                return _selectedVATCertificate;
-            }
-            set
-            {
-                _selectedVATCertificate = value;
-                RaisePropertyChanged("SelectedVATCertificate");
-                if (SelectedVATCertificate != null &&  SelectedVATCertificate.Pdfurl != null)
+                _selectedCertificate = value;
+                RaisePropertyChanged("SelectedCertificate");
+                if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
                 {
-                    ShowVATPdf(SelectedVATCertificate.Pdfurl);
+                    ShowPdf(SelectedCertificate.Pdfurl);
                 }
             }
         }
 
-
-        private List<Result> _zAKATCertificateList;
-
-        public List<Result> ZAKATCertificateList
-        {
-            get
-            {
-                return _zAKATCertificateList;
-            }
-            set
-            {
-                _zAKATCertificateList = value;
-                RaisePropertyChanged("ZAKATCertificateList");
-            }
-        }
-
-        
-
-
-        private Result _selectedZAKATCertificate;
-
-        public Result SelectedZAKATCertificate
-        {
-            get
-            {
-                return _selectedZAKATCertificate;
-            }
-            set
-            {
-                _selectedZAKATCertificate = value;
-                RaisePropertyChanged("SelectedZAKATCertificate");
-                if(SelectedZAKATCertificate != null && SelectedZAKATCertificate.Pdfurl != null)
-                {
-                    ShowZAKATPdf(SelectedZAKATCertificate.Pdfurl);
-                }
-            
-            }
-        }
-
-        private List<Result> _eXICISECertificateList;
-
-        public List<Result> EXICISECertificateList
-        {
-            get
-            {
-                return _eXICISECertificateList;
-            }
-            set
-            {
-                _eXICISECertificateList = value;
-                RaisePropertyChanged("EXICISECertificateList");
-               
-            }
-        }
-
-        private Result _selectedEXCISECertificate;
-
-        public Result SelectedEXCISECertificate
-        {
-            get
-            {
-                return _selectedEXCISECertificate;
-            }
-            set
-            {
-                _selectedEXCISECertificate = value;
-                RaisePropertyChanged("SelectedEXCISECertificate");
-                if (SelectedEXCISECertificate != null &&  SelectedEXCISECertificate.Pdfurl != null)
-                {
-                    ShowEXCISECertificate(SelectedEXCISECertificate.Pdfurl);
-                }
-            }
-        }
 
         private string _PdfSelected;
         public string PdfSelected
@@ -212,8 +285,8 @@ namespace GAZT
             {
                 _PdfSelected = value;
                 RaisePropertyChanged("_PdfSelected");
-               // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
-               if(_PdfSelected!=null)
+                // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
+                if (_PdfSelected != null)
                 {
                     if (Device.RuntimePlatform == Device.Android)
                     {
@@ -221,9 +294,9 @@ namespace GAZT
                     }
                     else
                     {
-                       // ShowPdf();
+                        // ShowPdf();
                     }
-               }
+                }
             }
         }
 
@@ -271,6 +344,23 @@ namespace GAZT
                 RaisePropertyChanged("PathOfPdf");
             }
         }
+
+        
+
+        private string _certificateType;
+        public string CertificateType
+        {
+            get
+            {
+                return _certificateType;
+            }
+            set
+            {
+                _certificateType = value;
+                RaisePropertyChanged("CertificateType");
+            }
+        }
+
 
         private string _DownloadUrl = String.Empty;
         public string DownloadUrl
@@ -345,28 +435,87 @@ namespace GAZT
                 // _navigationService.NavigateTo(App.LoginView);
 
             });
-            //OnZakatCertificateClicked = new RelayCommand(async () =>
-            //{
-            //    try
-            //    {
-                  
-            //            ShowZAKATPdf();
-   
-            //    }
-            //    catch(Exception ex)
-            //    {
+            OnVATCertificateClicked = new RelayCommand(async () =>
+            {
+                try
+                {
+                    if (allCertificate != null)
+                    {
+                        if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                        {
+                            CertificateType = AppResources.VATCertificates;
+                            SetCertificateListViewVisibility();
+                            CertificateList = allCertificate.VATSet.results;
+                        }
+                        else
+                        {
+                            CertificateType =String.Empty;
+                            SetNoDataLabelViewVisibility();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            });
 
-            //    }
-               
 
-            //});
-            
+            OnZakatCertificateClicked = new RelayCommand(async () =>
+            {
+                try
+                {
+                    if (allCertificate != null)
+                    {
+                        if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                        {
+                            CertificateType = AppResources.ZakatCertificates;
+                            SetCertificateListViewVisibility();
+                            CertificateList = allCertificate.ZakatSet.results;
+                        }
+                        else
+                        {
+                            CertificateType = String.Empty;
+                            SetNoDataLabelViewVisibility();
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+
+            OnExciseCertificateClicked = new RelayCommand(async () =>
+            {
+                try
+                {
+                    if (allCertificate != null)
+                    {
+                        if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                        {
+                            CertificateType = AppResources.ExciseCertificates;
+                            SetCertificateListViewVisibility();
+                            CertificateList = allCertificate.ExciseSet.results;
+                        }
+                        else
+                        {
+                            CertificateType = String.Empty;
+                            SetNoDataLabelViewVisibility();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+
+
             //OnCertificateClicked = new Command(() =>
             //{
 
-               
+
             //        ShowVATPdf();
-               
+
             //});
 
 
@@ -375,7 +524,7 @@ namespace GAZT
                 //_navigationService.NavigateTo(App.MyCertificate);
 
             });
-           
+
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.GoBack();
@@ -423,10 +572,10 @@ namespace GAZT
 
                             if (string.IsNullOrEmpty(strBase64) != true)
                             {
-                                
+
                                 byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
                                 stream = new MemoryStream(sPDFDecoded);
-                               
+
                                 StreamForDownloadURL = stream;
 
                             }
@@ -460,21 +609,21 @@ namespace GAZT
                 //else
                 //    Path = url;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
         }
 
 
-        public async void ShowVATPdf(string pdfUrl)
+        public async void ShowPdf(string pdfUrl)
         {
-            if(Device.RuntimePlatform == Device.iOS)
+            if (Device.RuntimePlatform == Device.iOS)
             {
                 if (pdfUrl != null)
                 {
-					Uri uri = new Uri(pdfUrl);
-					Device.OpenUri(uri);
+                    Uri uri = new Uri(pdfUrl);
+                    Device.OpenUri(uri);
                     //_navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
@@ -488,80 +637,6 @@ namespace GAZT
             }
             else
             {
-                    if (pdfUrl != null)
-                    {
-                        _navigationService.NavigateTo(App.PdfView, pdfUrl);
-                    }
-                    else
-                    {
-                        //pop that certificate is not available
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                        });
-                    }
-            }
-        }
-
-        public async Task ShowZAKATPdf(string pdfUrl)
-        {
-           
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                if (pdfUrl != null)
-                {
-					Uri uri = new Uri(pdfUrl);
-					Device.OpenUri(uri);
-					// _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-				}
-                else
-                {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
-            }
-            else
-            {
-                if (pdfUrl != null)
-                {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
-                }
-                else
-                {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
-           
-            }
-        }
-
-        private async Task ShowEXCISECertificate(string pdfUrl)
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                if (pdfUrl != null)
-                {
-					Uri uri = new Uri(pdfUrl);
-					Device.OpenUri(uri);
-					//  _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-				}
-                else
-                {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
-            }
-            else
-            {
                 if (pdfUrl != null)
                 {
                     _navigationService.NavigateTo(App.PdfView, pdfUrl);
@@ -575,72 +650,168 @@ namespace GAZT
                     });
                 }
             }
-
         }
 
+        //    public async Task ShowZAKATPdf(string pdfUrl)
+        //    {
 
-        private  async Task<string> GetCertificateLink()
-        {
-            String response = null;
-           await Task.Run(async () =>
-            {
+        //        if (Device.RuntimePlatform == Device.iOS)
+        //        {
+        //            if (pdfUrl != null)
+        //            {
+        //	Uri uri = new Uri(pdfUrl);
+        //	Device.OpenUri(uri);
+        //	// _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+        //}
+        //            else
+        //            {
+        //                //pop that certificate is not available
+        //                Device.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+        //                });
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (pdfUrl != null)
+        //            {
+        //                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+        //            }
+        //            else
+        //            {
+        //                //pop that certificate is not available
+        //                Device.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+        //                });
+        //            }
 
-                String lang = "EN";
-                if (App.IsArabic == true)
-                    lang = "AR";
-                 response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+        //        }
+        //    }
 
-            });
-            return response;
-        }
+        //    private async Task ShowEXCISECertificate(string pdfUrl)
+        //    {
+        //        if (Device.RuntimePlatform == Device.iOS)
+        //        {
+        //            if (pdfUrl != null)
+        //            {
+        //	Uri uri = new Uri(pdfUrl);
+        //	Device.OpenUri(uri);
+        //	//  _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+        //}
+        //            else
+        //            {
+        //                //pop that certificate is not available
+        //                Device.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+        //                });
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (pdfUrl != null)
+        //            {
+        //                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+        //            }
+        //            else
+        //            {
+        //                //pop that certificate is not available
+        //                Device.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+        //                });
+        //            }
+        //        }
 
-        private async Task<string> GetZakatCertificateLink()
-        {
-            String response = null;
-            try
-            {
-               
-                await Task.Run(async () =>
-                {
+        //    }
 
-                    String lang = "EN";
-                    if (App.IsArabic == true)
-                        lang = "AR";
-                    response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                });
-            }
-            catch(Exception ex)
-            {
+        //private  async Task<string> GetCertificateLink()
+        //{
+        //    String response = null;
+        //   await Task.Run(async () =>
+        //    {
 
-            }
-            
-            return response;
-        }
+        //        String lang = "EN";
+        //        if (App.IsArabic == true)
+        //            lang = "AR";
+        //         response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
+        //        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+        //    });
+        //    return response;
+        //}
+
+        //private async Task<string> GetZakatCertificateLink()
+        //{
+        //    String response = null;
+        //    try
+        //    {
+
+        //        await Task.Run(async () =>
+        //        {
+
+        //            String lang = "EN";
+        //            if (App.IsArabic == true)
+        //                lang = "AR";
+        //            response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
+        //            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+        //        });
+        //    }
+        //    catch(Exception ex)
+        //    {
+
+        //    }
+
+        //    return response;
+        //}
 
         public async Task OnPageLoad()
         {
             string lang = UtilityManager.GetLanguageParameter();
             TaxPayerProfile = App.TP;
-            AllCertificate allCertificate =  await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+            allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
             await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
             if (allCertificate != null)
             {
-                VATCertificateList = allCertificate.VATSet.results;
-                ZAKATCertificateList = allCertificate.ZakatSet.results;
-                EXICISECertificateList = allCertificate.ExciseSet.results;
-
-            
-
-                if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
+                if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
                 {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                      _navigationService.GoBack();
+                    CertificateType = AppResources.VATCertificates;
+                    SetCertificateListViewVisibility();
+                    CertificateList = allCertificate.VATSet.results;
                 }
-                SetLayoutVisibility();
+                else if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                {
+                    CertificateType = AppResources.ZakatCertificates;
+                    SetCertificateListViewVisibility();
+                    CertificateList = allCertificate.ZakatSet.results;
+                }
+                else if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                {
+                    CertificateType = AppResources.ExciseCertificates;
+                    SetCertificateListViewVisibility();
+                    CertificateList = allCertificate.ExciseSet.results;
+                }
+                else
+                {
+                    CertificateType = String.Empty; 
+                    SetNoDataLabelViewVisibility();
+                }
+                //ZAKATCertificateList = allCertificate.ZakatSet.results;
+                //EXICISECertificateList = allCertificate.ExciseSet.results;
+
+
+
+                //if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
+                //{
+                //    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                //      _navigationService.GoBack();
+                //}
+                // SetLayoutVisibility();
             }
             else
             {
@@ -649,33 +820,33 @@ namespace GAZT
             }
         }
 
-        private void SetLayoutVisibility()
-        {
-            if(VATCertificateList != null && VATCertificateList.Count > 0)
-            {
-                IsVATCertificateAvailable = true;
-            }
-            else
-            {
-                IsVATCertificateAvailable = false;
-            }
-            if (ZAKATCertificateList != null && ZAKATCertificateList.Count > 0)
-            {
-                IsZAKATCertificateAvailable = true;
-            }
-            else
-            {
-                IsZAKATCertificateAvailable = false;
-            }
-            if (EXICISECertificateList != null && EXICISECertificateList.Count > 0)
-            {
-                IsEXISECertificateAvailable = true;
-            }
-            else
-            {
-                IsEXISECertificateAvailable = false;
-            }
-        }
+        //private void SetLayoutVisibility()
+        //{
+        //    if(VATCertificateList != null && VATCertificateList.Count > 0)
+        //    {
+        //        IsVATCertificateAvailable = true;
+        //    }
+        //    else
+        //    {
+        //        IsVATCertificateAvailable = false;
+        //    }
+        //    if (ZAKATCertificateList != null && ZAKATCertificateList.Count > 0)
+        //    {
+        //        IsZAKATCertificateAvailable = true;
+        //    }
+        //    else
+        //    {
+        //        IsZAKATCertificateAvailable = false;
+        //    }
+        //    if (EXICISECertificateList != null && EXICISECertificateList.Count > 0)
+        //    {
+        //        IsEXISECertificateAvailable = true;
+        //    }
+        //    else
+        //    {
+        //        IsEXISECertificateAvailable = false;
+        //    }
+        //}
 
         public async Task PopToRootPage()
         {
@@ -684,6 +855,18 @@ namespace GAZT
                 var _navigation = Application.Current.MainPage.Navigation;
                 await _navigation.PopToRootAsync();
             }
+        }
+
+        private void SetCertificateListViewVisibility()
+        {
+            IsCertificateAvailable = true;
+            SetNoDataLabelVisibility = false;
+        }
+
+        private void SetNoDataLabelViewVisibility()
+        {
+            IsCertificateAvailable = false;
+            SetNoDataLabelVisibility = true;
         }
 
         #endregion

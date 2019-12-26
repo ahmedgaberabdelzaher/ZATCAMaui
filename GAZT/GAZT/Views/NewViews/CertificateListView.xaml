@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.NewViews.CertificateListView" xmlns:local1="clr-namespace:GAZT">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+             <ListView  HeightRequest="100" IsVisible="{Binding IsVATCertificateAvailable}" ItemsSource ="{Binding CertificateList}" VerticalOptions="Fill" x:Name="VATCertificateList" HasUnevenRows="true" SelectedItem="{Binding SelectedZAKATCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <!--<x:Arguments>
+                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                        </x:Arguments>-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,2,0,8">
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d"  HeightRequest="50">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" HeightRequest="50">
+
+                                                <local1:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Label.GestureRecognizers>
+
+                                                </local1:CustomLabel>
+                                                <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
