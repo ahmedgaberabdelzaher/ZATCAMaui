@@ -1497,5 +1497,13 @@ namespace GAZT
                 return ResourceManager.GetString("VATDeclaration", resourceCulture);
             }
         }
+
+        public static string VarificationCode
+        {
+            get
+            {
+                return ResourceManager.GetString("VarificationCode", resourceCulture);
+            }
+        }
     }
 }

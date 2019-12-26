@@ -172,7 +172,8 @@ namespace GAZT.Views.NewViews
             string OTPId = FourthEntry.Text;
             if (OTPId.Length == 1)
             {
-               /// SecondEntry.Focus();
+                /// SecondEntry.Focus();
+                FourthEntry.Unfocus();
             }
             else
             {
@@ -183,6 +184,7 @@ namespace GAZT.Views.NewViews
                 else
                 {
                     FourthEntry.Text = FourthEntry.Text.Substring(0, 1);
+                    FourthEntry.Unfocus();
                 }
             }
         }

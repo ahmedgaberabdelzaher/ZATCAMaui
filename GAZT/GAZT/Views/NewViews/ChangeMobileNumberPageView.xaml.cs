@@ -25,6 +25,7 @@ namespace GAZT.Views.NewViews
 
            
             this.BindingContext = viewModel;
+          
         }
         #endregion
 

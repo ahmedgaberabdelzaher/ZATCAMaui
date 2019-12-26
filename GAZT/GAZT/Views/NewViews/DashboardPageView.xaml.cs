@@ -24,6 +24,8 @@ namespace GAZT.Views
            
            
             this.BindingContext = viewModel;
+
+
             viewModel.onPageLoad();
 
             double deviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
@@ -39,6 +41,9 @@ namespace GAZT.Views
 
 
         #region Method
+
+
+       
 
         public void setHeight()
         {

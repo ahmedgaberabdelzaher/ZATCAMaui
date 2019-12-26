@@ -655,6 +655,27 @@ appeal</value>
   <data name="VarificationCode" xml:space="preserve">
  <value>Varification Code</value>
   </data>
+ 
+
+<data name="VATLookup" xml:space="preserve">
+    <value>VAT-Lookup</value>
+  </data>
+
+ <data name="TotalSubmittedReturns" xml:space="preserve">
+    <value>Total Submitted Returns</value>
+  </data>
+
+ <data name="TotalPaidReturns" xml:space="preserve">
+    <value>Total Paid Returns</value>
+  </data>
+
+<data name="TotalOverDueReturns" xml:space="preserve">
+    <value>Total Over Due Returns</value>
+  </data>
+  <data name="TotalPaidBills" xml:space="preserve">
+    <value>Total Paid Bills</value>
+  </data>
+  
 
    
 

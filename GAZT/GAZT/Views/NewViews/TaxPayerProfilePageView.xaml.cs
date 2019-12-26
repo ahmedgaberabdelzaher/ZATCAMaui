@@ -25,13 +25,32 @@ namespace GAZT.Views.NewViews
             
            
             this.BindingContext = viewModel;
-            
+            viewModel.OnPageLoad();
+
         }
         #endregion
 
         #region Method
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.SetTP();
+            Task.Delay(20000);
+          
 
-       
+            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                Navigation.RemovePage(pg);
+            }
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+        }
+
         #endregion
     }
 }
