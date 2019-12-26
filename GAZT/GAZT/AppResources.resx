@@ -582,16 +582,13 @@ appeal</value>
    <data name="Dashoboard" xml:space="preserve">
     <value>Dashoboard</value>
   </data>
-  <data name="MyBills" xml:space="preserve">
-    <value>MyBills</value>
-  </data>
     <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>Total Submitted Returns</value>
   </data>
    <data name="TotalNonSubmittedReturns" xml:space="preserve">
     <value>Total Non-Submitted Returns</value>
   </data>
-   <data name="Total Paid Returns" xml:space="preserve">
+   <data name="TotalPaidReturns" xml:space="preserve">
     <value>Total Paid Returns</value>
   </data>
    <data name="TotalUnpaidReturns" xml:space="preserve">
@@ -603,10 +600,10 @@ appeal</value>
    <data name="TotalNoofReturns" xml:space="preserve">
     <value>Total  No of Returns</value>
   </data>
-  <data name="Total Over Due Returns" xml:space="preserve">
+  <data name="TotalOverDueReturns" xml:space="preserve">
     <value>Total Over Due Returns</value>
   </data>
-  <data name="Total Paid Bills" xml:space="preserve">
+  <data name="TotalPaidBills" xml:space="preserve">
     <value>Total Paid Bills</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
@@ -651,16 +648,16 @@ appeal</value>
  <data name="Clickhereforlogin" xml:space="preserve">
  <value>Click here for login</value>
   </data>
-  <data name="My Bills" xml:space="preserve">
+  <data name="MyBills" xml:space="preserve">
  <value>MyBills</value>
   </data>
- <data name="My Bills" xml:space="preserve">
- <value>MyBills</value>
-  </data>
+  
   <data name="Dashboard" xml:space="preserve">
  <value>Dashboard</value>
   </data>
-  
+  <data name="VarificationCode" xml:space="preserve">
+ <value>Varification Code</value>
+  </data>
 
    
 

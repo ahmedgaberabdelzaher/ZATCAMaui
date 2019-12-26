@@ -589,7 +589,7 @@
    <data name="TotalNonSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات الغير مقدمة</value>
   </data>
-   <data name="Total Paid Returns" xml:space="preserve">
+   <data name="TotalPaidReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المدفوعة</value>
   </data>
    <data name="TotalUnpaidReturns" xml:space="preserve">
@@ -601,10 +601,10 @@
    <data name="TotalNoofReturns" xml:space="preserve">
     <value>إجمالي عدد الإقرارات</value>
   </data>
-  <data name="Total Over Due Returns" xml:space="preserve">
+  <data name="TotalOverDueReturns" xml:space="preserve">
     <value>مجموع الإقرارات المتأخرة</value>
   </data>
-  <data name="Total Paid Bills" xml:space="preserve">
+  <data name="TotalPaidBills" xml:space="preserve">
     <value>مجموع الفواتير المدفوعة</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
@@ -614,13 +614,13 @@
     <value>مجموع الفواتير الغير مدفوعة</value>
   </data>
   <data name="TotalUnpaidBillsAmount" xml:space="preserve">
-    <value></value>
+    <value>إجمالي مبلغ الفواتير الغير مدفوعة</value>
   </data>
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
-    <value></value>
+    <value>مجموع الفواتير المسددة جزئيا</value>
   </data>
     <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
-    <value>إجمالي مبلغ الفواتير الغير مدفوعة</value>
+    <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
     <data name="Nodataavailable" xml:space="preserve">
     <value>لا تتوفر بيانات</value>
@@ -649,11 +649,14 @@
  <data name="Clickhereforlogin" xml:space="preserve">
  <value>انقر هنا لتسجيل الدخول</value>
   </data>
-  <data name="My Bills" xml:space="preserve">
+  <data name="MyBills" xml:space="preserve">
  <value>فواتيري</value>
   </data>
  
   <data name="Dashboard" xml:space="preserve">
  <value>لوحة المعلومات</value>
+  </data>
+ <data name="VarificationCode" xml:space="preserve">
+ <value>رمز التحقـق</value>
   </data>
 </root>

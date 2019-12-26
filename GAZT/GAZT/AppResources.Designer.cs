@@ -953,9 +953,9 @@ namespace GAZT {
             }
         }
         
-        public static string Total_Paid_Returns {
+        public static string TotalPaidReturns {
             get {
-                return ResourceManager.GetString("Total Paid Returns", resourceCulture);
+                return ResourceManager.GetString("TotalPaidReturns", resourceCulture);
             }
         }
         
@@ -977,15 +977,15 @@ namespace GAZT {
             }
         }
         
-        public static string Total_Over_Due_Returns {
+        public static string TotalOverDueReturns {
             get {
-                return ResourceManager.GetString("Total Over Due Returns", resourceCulture);
+                return ResourceManager.GetString("TotalOverDueReturns", resourceCulture);
             }
         }
         
-        public static string Total_Paid_Bills {
+        public static string TotalPaidBills {
             get {
-                return ResourceManager.GetString("Total Paid Bills", resourceCulture);
+                return ResourceManager.GetString("TotalPaidBills", resourceCulture);
             }
         }
         
@@ -1067,15 +1067,15 @@ namespace GAZT {
             }
         }
         
-        public static string My_Bills {
-            get {
-                return ResourceManager.GetString("My Bills", resourceCulture);
-            }
-        }
-        
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        public static string VarificationCode {
+            get {
+                return ResourceManager.GetString("VarificationCode", resourceCulture);
             }
         }
     }
