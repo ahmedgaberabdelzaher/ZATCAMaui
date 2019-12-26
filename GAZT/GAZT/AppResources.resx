@@ -259,7 +259,7 @@
     <value>Current Password</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>ChangePassword</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>Pay by MADA</value>
@@ -615,68 +615,67 @@ appeal</value>
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
     <value>Total Partially Paid Bills</value>
   </data>
-    <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
+  <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>Total Partial Paid Bills Amount</value>
   </data>
-    <data name="Nodataavailable" xml:space="preserve">
+  <data name="Nodataavailable" xml:space="preserve">
     <value>No data available</value>
   </data>
-   <data name="Entercaptcha" xml:space="preserve">
+  <data name="Entercaptcha" xml:space="preserve">
     <value>Enter captcha</value>
   </data>
-   <data name="EnterId" xml:space="preserve">
+  <data name="EnterId" xml:space="preserve">
     <value>Enter Id</value>
-  </data> 
-   <data name="Enterusername" xml:space="preserve">
+  </data>
+  <data name="Enterusername" xml:space="preserve">
     <value>Enter username</value>
   </data>
   <data name="ResendVerificationCode" xml:space="preserve">
     <value>Resend Verification Code</value>
   </data>
   <data name="PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal" xml:space="preserve">
- <value>Please Enter verification code received on mobile to Enter GAZT Portal</value>
+    <value>Please Enter verification code received on mobile to Enter GAZT Portal</value>
   </data>
- <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
- <value>The account will be locked after 3 failed verification code attempts</value>
+  <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
+    <value>The account will be locked after 3 failed verification code attempts</value>
   </data>
-   <data name="ChangePassword" xml:space="preserve">
- <value>ChangePassword</value>
+  <data name="Clickhereforlogin" xml:space="preserve">
+    <value>Click here for login</value>
   </data>
- <data name="Clickhereforlogin" xml:space="preserve">
- <value>Click here for login</value>
-  </data>
-  <data name="MyBills" xml:space="preserve">
- <value>MyBills</value>
-  </data>
-  
   <data name="Dashboard" xml:space="preserve">
- <value>Dashboard</value>
+    <value>Dashboard</value>
   </data>
   <data name="VarificationCode" xml:space="preserve">
- <value>Varification Code</value>
+    <value>Varification Code</value>
   </data>
- 
-
-<data name="VATLookup" xml:space="preserve">
+  <data name="VATLookup" xml:space="preserve">
     <value>VAT-Lookup</value>
   </data>
-
- <data name="TotalSubmittedReturns" xml:space="preserve">
+  <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>Total Submitted Returns</value>
   </data>
-
- <data name="TotalPaidReturns" xml:space="preserve">
+  <data name="TotalPaidReturns" xml:space="preserve">
     <value>Total Paid Returns</value>
   </data>
-
-<data name="TotalOverDueReturns" xml:space="preserve">
+  <data name="TotalOverDueReturns" xml:space="preserve">
     <value>Total Over Due Returns</value>
   </data>
   <data name="TotalPaidBills" xml:space="preserve">
     <value>Total Paid Bills</value>
   </data>
-  
-
-   
-
+  <data name="TotalNonSubmittedReturns" xml:space="preserve">
+    <value>Total Non Submitted Returns</value>
+  </data>
+  <data name="TotalNoofReturns" xml:space="preserve">
+    <value>Total No Of Returns</value>
+  </data>
+  <data name="TotalPaidBillsAmount" xml:space="preserve">
+    <value>Total Paid Bills Amount</value>
+  </data>
+  <data name="TotalPartiallyPaidReturns" xml:space="preserve">
+    <value>Total Partially Paid Returns</value>
+  </data>
+  <data name="TotalUnpaidReturns" xml:space="preserve">
+    <value>Total Unpaid Returns</value>
+  </data>
 </root>

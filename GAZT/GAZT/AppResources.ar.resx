@@ -220,7 +220,7 @@
     <value>رقم الجوال</value>
   </data>
   <data name="MyBills" xml:space="preserve">
-    <value>MyBills</value>
+    <value>فواتيري</value>
   </data>
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>فواتيري</value>
@@ -571,7 +571,7 @@
     <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data>
   <data name="Dashoboard" xml:space="preserve">
-    <value>Dashoboard</value>
+    <value>لوحة المعلومات</value>
   </data>
   <data name="Correspondance" xml:space="preserve">
     <value>Correspondance</value>
@@ -612,68 +612,64 @@
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
     <value>مجموع الفواتير المسددة جزئيا</value>
   </data>
-    <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
+  <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
-    <data name="Nodataavailable" xml:space="preserve">
+  <data name="Nodataavailable" xml:space="preserve">
     <value>لا تتوفر بيانات</value>
   </data>
-   <data name="Entercaptcha" xml:space="preserve">
+  <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
   </data>
-   <data name="EnterId" xml:space="preserve">
+  <data name="EnterId" xml:space="preserve">
     <value>أدخل الهوية</value>
-  </data> 
-   <data name="Enterusername" xml:space="preserve">
+  </data>
+  <data name="Enterusername" xml:space="preserve">
     <value>أدخل إسم المستخدم</value>
   </data>
   <data name="ResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
   </data>
   <data name="PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal" xml:space="preserve">
- <value>الرجاء إدخال رمز التحقق الوارد علي الجوال للدخول إلى بوابة الهيئة العامة للزكاة والدخل</value>
+    <value>الرجاء إدخال رمز التحقق الوارد علي الجوال للدخول إلى بوابة الهيئة العامة للزكاة والدخل</value>
   </data>
- <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
- <value>سيتم قفل الحساب بعد ٣ محاولات تحقق فاشلة</value>
+  <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
+    <value>سيتم قفل الحساب بعد ٣ محاولات تحقق فاشلة</value>
   </data>
-   <data name="ChangePassword" xml:space="preserve">
- <value>تغيير كلمة المرور</value>
+  <data name="Clickhereforlogin" xml:space="preserve">
+    <value>انقر هنا لتسجيل الدخول</value>
   </data>
- <data name="Clickhereforlogin" xml:space="preserve">
- <value>انقر هنا لتسجيل الدخول</value>
-  </data>
-  <data name="MyBills" xml:space="preserve">
- <value>فواتيري</value>
-  </data>
- 
   <data name="Dashboard" xml:space="preserve">
- <value>لوحة المعلومات</value>
+    <value>لوحة المعلومات</value>
   </data>
- <data name="VarificationCode" xml:space="preserve">
- <value>رمز التحقـق</value>
+  <data name="VarificationCode" xml:space="preserve">
+    <value>رمز التحقـق</value>
   </data>
-  
   <data name="TotalPaidReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المدفوعة</value>
   </data>
-
-<data name="VATLookup" xml:space="preserve">
+  <data name="VATLookup" xml:space="preserve">
     <value>VAT-Lookup</value>
   </data>
-
- <data name="TotalSubmittedReturns" xml:space="preserve">
-    <value>Total Submitted Returns</value>
+  <data name="TotalSubmittedReturns" xml:space="preserve">
+    <value>إجمالي الإقرارات المقدمة</value>
   </data>
-
- <data name="TotalPaidReturns" xml:space="preserve">
-    <value>Total Paid Returns</value>
-  </data>
-
-<data name="TotalOverDueReturns" xml:space="preserve">
-    <value>Total Over Due Returns</value>
+  <data name="TotalOverDueReturns" xml:space="preserve">
+    <value>مجموع الإقرارات المتأخرة</value>
   </data>
   <data name="TotalPaidBills" xml:space="preserve">
-    <value>Total Paid Bills</value>
+    <value>مجموع الفواتير المدفوعة</value>
   </data>
-  
+  <data name="TotalNonSubmittedReturns" xml:space="preserve">
+    <value>إجمالي الإقرارات الغير مقدمة</value>
+  </data>
+  <data name="TotalNoofReturns" xml:space="preserve">
+    <value>إجمالي عدد الإقرارات</value>
+  </data>
+  <data name="TotalPartiallyPaidReturns" xml:space="preserve">
+    <value>إجمالي الإقرارات المسددة جزئيا</value>
+  </data>
+  <data name="TotalUnpaidReturns" xml:space="preserve">
+    <value>إجمالي الإقرارات الغير مدفوعة (إقرار مفتوح)</value>
+  </data>
 </root>
