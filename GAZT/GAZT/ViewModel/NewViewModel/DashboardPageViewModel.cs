@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace GAZT.ViewModel
 {
-   public class DashboardPageViewModel : ViewModelBase
+    public class DashboardPageViewModel : ViewModelBase
     {
 
         #region Variable
@@ -72,7 +72,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private int _heightRequestForCollectionView=0;
+        private int _heightRequestForCollectionView = 0;
         public int HeightRequestForCollectionView
         {
             get
@@ -197,120 +197,125 @@ namespace GAZT.ViewModel
         public void onPageLoad()
         {
 
+            List<BillReturn> BillReturnList = new List<BillReturn>();
+            List<BillPaid> BillPaidList = new List<BillPaid>();
 
-          
+            BillReturn = new List<BillReturn>();
+            BillPaid = new List<BillPaid>();
+
             string lang = UtilityManager.GetLanguageParameter();
-            Task.Run(async () =>
+
+
+            dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+
+
+
+            if (dashboard.results != null)
             {
-                
-                dashboard = await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-                
 
+                //return
+                //BillReturn = new List<BillReturn>();
 
-                if (dashboard.results != null)
+                BillReturn objBill1 = new BillReturn();
+                objBill1.ReturnTypeProperty = ReturnType.RtnTot;
+                String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(RtnTotstr))
                 {
-
-                    //return
-                    //BillReturn = new List<BillReturn>();
-
-                    //BillReturn objBill1 = new BillReturn();
-                    //objBill1.ReturnTypeProperty = ReturnType.RtnTot;
-                    //String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
-                    //if(string.IsNullOrEmpty(RtnTotstr))
-                    //{
-                    //    RtnTotstr = "0";
-                    //}
-                    //objBill1.ReturnCount = RtnTotstr;
-
-                    //BillReturn.Add(objBill1);
-
-                    BillReturn objBill2 = new BillReturn();
-                    objBill2.ReturnTypeProperty = ReturnType.DueIcr;
-                    String DueIcrstr = dashboard.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(DueIcrstr))
-                    {
-                        DueIcrstr = "0";
-                    }
-                    objBill2.ReturnCount = DueIcrstr;
-
-                    BillReturn.Add(objBill2);
-
-                    BillReturn objBill3 = new BillReturn();
-                    objBill3.ReturnTypeProperty = ReturnType.PrtnTot;
-                    String PrtnTotstr = dashboard.results[0].PrtnTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(PrtnTotstr))
-                    {
-                        PrtnTotstr = "0";
-                    }
-                    objBill3.ReturnCount = PrtnTotstr;
-
-                    BillReturn.Add(objBill3);
-
-                    BillReturn objBill4 = new BillReturn();
-                    objBill4.ReturnTypeProperty = ReturnType.NrtnTot;
-                    String NrtnTotstr = dashboard.results[0].NrtnTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(NrtnTotstr))
-                    {
-                        NrtnTotstr = "0";
-                    }
-
-                    objBill4.ReturnCount = NrtnTotstr;
-
-                    BillReturn.Add(objBill4);
-
-                    //BillReturn objBill5 = new BillReturn();
-                    //objBill5.ReturnTypeProperty = ReturnType.UprtnTot;
-                    //String UprtnTotstr = dashboard.results[0].UprtnTot.TrimStart(new Char[] { '0' });
-                    //if (string.IsNullOrEmpty(UprtnTotstr))
-                    //{
-                    //    UprtnTotstr = "0";
-                    //}
-                    //objBill5.ReturnCount = UprtnTotstr;
-
-                    //BillReturn.Add(objBill5);
-
-                    //Paid
-
-                    BillPaid = new List<BillPaid>();
-
-                    BillPaid objBillPaid1 = new BillPaid();
-                    objBillPaid1.BillTypeProperty = BillType.PbillsTot;
-                    String PbillsTotstr = dashboard.results[0].PbillsTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(PbillsTotstr))
-                    {
-                        PbillsTotstr = "0";
-                    }
-                    objBillPaid1.BillCount = PbillsTotstr;
-                    BillPaid.Add(objBillPaid1);
-
-                    BillPaid objBillPaid2 = new BillPaid();
-                    objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
-                    String PrbillsTotstr = dashboard.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(PrbillsTotstr))
-                    {
-                        PrbillsTotstr = "0";
-                    }
-                    objBillPaid2.BillCount = PrbillsTotstr;
-                    BillPaid.Add(objBillPaid2);
-
-                    BillPaid objBillPaid3 = new BillPaid();
-                    objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
-                    String UpbillsTotstr = dashboard.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(UpbillsTotstr))
-                    {
-                        UpbillsTotstr = "0";
-                    }
-                    objBillPaid3.BillCount = UpbillsTotstr;
-                    BillPaid.Add(objBillPaid3);
-
+                    RtnTotstr = "0";
                 }
-                else
+                objBill1.ReturnCount = RtnTotstr;
+
+                BillReturnList.Add(objBill1);
+
+                BillReturn objBill2 = new BillReturn();
+                objBill2.ReturnTypeProperty = ReturnType.DueIcr;
+                String DueIcrstr = dashboard.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(DueIcrstr))
                 {
-                    _dialogService.ShowMessageBox("No data available", AppResources.Information);
+                    DueIcrstr = "0";
+                }
+                objBill2.ReturnCount = DueIcrstr;
+
+                BillReturnList.Add(objBill2);
+
+                //BillReturn objBill3 = new BillReturn();
+                //objBill3.ReturnTypeProperty = ReturnType.PrtnTot;
+                //String PrtnTotstr = dashboard.results[0].PrtnTot.TrimStart(new Char[] { '0' });
+                //if (string.IsNullOrEmpty(PrtnTotstr))
+                //{
+                //    PrtnTotstr = "0";
+                //}
+                //objBill3.ReturnCount = PrtnTotstr;
+
+                //BillReturnList.Add(objBill3);
+
+                BillReturn objBill4 = new BillReturn();
+                objBill4.ReturnTypeProperty = ReturnType.NrtnTot;
+                String NrtnTotstr = dashboard.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(NrtnTotstr))
+                {
+                    NrtnTotstr = "0";
                 }
 
-            });
-            Task.Delay(2000);
+                objBill4.ReturnCount = NrtnTotstr;
+
+                BillReturnList.Add(objBill4);
+                BillReturn = BillReturnList;
+                //BillReturn objBill5 = new BillReturn();
+                //objBill5.ReturnTypeProperty = ReturnType.UprtnTot;
+                //String UprtnTotstr = dashboard.results[0].UprtnTot.TrimStart(new Char[] { '0' });
+                //if (string.IsNullOrEmpty(UprtnTotstr))
+                //{
+                //    UprtnTotstr = "0";
+                //}
+                //objBill5.ReturnCount = UprtnTotstr;
+
+                //BillReturn.Add(objBill5);
+
+                //Paid
+
+                //  BillPaid = new List<BillPaid>();
+
+                BillPaid objBillPaid1 = new BillPaid();
+                objBillPaid1.BillTypeProperty = BillType.PbillsTot;
+                String PbillsTotstr = dashboard.results[0].PbillsTot.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(PbillsTotstr))
+                {
+                    PbillsTotstr = "0";
+                }
+                objBillPaid1.BillCount = PbillsTotstr;
+                BillPaidList.Add(objBillPaid1);
+
+                BillPaid objBillPaid2 = new BillPaid();
+                objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
+                String PrbillsTotstr = dashboard.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(PrbillsTotstr))
+                {
+                    PrbillsTotstr = "0";
+                }
+                objBillPaid2.BillCount = PrbillsTotstr;
+                BillPaidList.Add(objBillPaid2);
+
+                BillPaid objBillPaid3 = new BillPaid();
+                objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
+                String UpbillsTotstr = dashboard.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
+                if (string.IsNullOrEmpty(UpbillsTotstr))
+                {
+                    UpbillsTotstr = "0";
+                }
+                objBillPaid3.BillCount = UpbillsTotstr;
+                BillPaidList.Add(objBillPaid3);
+                BillPaid = BillPaidList;
+
+
+
+            }
+            else
+            {
+                _dialogService.ShowMessageBox("No data available", AppResources.Information);
+            }
+
+
 
             //BillReturn = new List<BillReturn>();
 

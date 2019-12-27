@@ -272,7 +272,7 @@ namespace GAZT
         {
            
             string lang = UtilityManager.GetLanguageParameter();
-            dashboard =  await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+            dashboard =  WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
             await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
             if (dashboard.results != null)
 			{

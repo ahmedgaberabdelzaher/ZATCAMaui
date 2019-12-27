@@ -40,7 +40,7 @@
                 <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
                 <custom:GAZTBorderlessEntry Text="{Binding Tin}" Grid.Row="3"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
-                <Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
+                <!--<Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
 
 
                 <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
