@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAZT", "GAZT.csproj", "{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
