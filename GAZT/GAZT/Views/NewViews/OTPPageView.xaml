@@ -13,8 +13,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="10*"/>
-                    <RowDefinition Height="15*"/>
-                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25*"/>
@@ -33,31 +33,31 @@
                 <Label Text="{Binding OTPSentOnThisText}"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" >
                 </Label>
 
-                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="1,20,1,0"  Grid.Column="0" >
+                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="1,20,1,0"  Grid.Column="0" >
                 
                 
                 </Frame>
 
-                <custom:GAZTBorderlessEntry x:Name="FirstEntry"  Text="{Binding OTP1stNumberProvidedByTheUser}"  TextChanged="TextChangedForOne" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium"  VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Grid.Column="0" ></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry x:Name="FirstEntry"  Text="{Binding OTP1stNumberProvidedByTheUser}"  TextChanged="TextChangedForOne" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium"  VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"  Grid.Column="0" ></custom:GAZTBorderlessEntry>
 
 
-                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="1" >
+                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="1" >
                 </Frame>
 
-                <custom:GAZTBorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" x:Name="SecondEntry" TextChanged="TextChangedForTwo" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Grid.Column="1" ></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry Text="{Binding OTP2ndNumberProvidedByTheUser}" x:Name="SecondEntry" TextChanged="TextChangedForTwo" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"  Grid.Column="1" ></custom:GAZTBorderlessEntry>
 
 
 
-                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="2" >
+                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="2" >
                 </Frame>
 
-                <custom:GAZTBorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" x:Name="ThirdEntry" TextChanged="TextChangedForThree" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Grid.Column="2" ></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry Text="{Binding OTP3rdNumberProvidedByTheUser}" x:Name="ThirdEntry" TextChanged="TextChangedForThree" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"  Grid.Column="2" ></custom:GAZTBorderlessEntry>
 
 
-                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" HasShadow="True" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="3" >
+                <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}" HasShadow="True" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="5,20,5,0" Grid.Column="3" >
                 </Frame>
 
-                <custom:GAZTBorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" x:Name="FourthEntry" TextChanged="TextChangedForFour" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Grid.Column="3" ></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry Text="{Binding OTP4thNumberProvidedByTheUser}" x:Name="FourthEntry" TextChanged="TextChangedForFour" Keyboard="Numeric" FontFamily="{StaticResource SSTArabicBold}" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="2" Margin="30,12,30,0" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"  Grid.Column="3" ></custom:GAZTBorderlessEntry>
 
 
                 <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource GAZTVerifyButton}"></Button>

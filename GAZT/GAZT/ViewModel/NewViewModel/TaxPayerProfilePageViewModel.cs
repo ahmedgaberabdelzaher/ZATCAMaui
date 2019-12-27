@@ -17,6 +17,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnChangeMobileNumberClicked { get; set; }
         public ICommand OnChangeEmailClicked { get; set; }
         public ICommand OnChangePasswordClicked { get; set; }
+
+        public bool IscomingFromOTPViewViaEmail = false;
         #region Property
 
         private TaxPayerProfile _TaxPayerProfile = App.TP;

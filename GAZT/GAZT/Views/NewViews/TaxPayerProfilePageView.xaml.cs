@@ -36,13 +36,16 @@ namespace GAZT.Views.NewViews
             base.OnAppearing();
             viewModel.SetTP();
             Task.Delay(20000);
-          
+            if (viewModel.IscomingFromOTPViewViaEmail)
+            {
+                await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+            }
 
-            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
-            //{
-            //    Page pg = Navigation.NavigationStack[index];
-            //    Navigation.RemovePage(pg);
-            //}
+            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                Navigation.RemovePage(pg);
+            }
 
         }
 

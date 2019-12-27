@@ -333,6 +333,7 @@ namespace GAZT.ViewModel.NewViewModel
             OTP3rdNumberProvidedByTheUser = string.Empty;
             OTP4thNumberProvidedByTheUser = string.Empty;
         }
+        
         public void OnPageLoad()
         {
         }

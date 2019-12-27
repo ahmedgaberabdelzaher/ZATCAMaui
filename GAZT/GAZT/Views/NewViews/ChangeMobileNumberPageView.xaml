@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             x:Class="GAZT.Views.NewViews.ChangeMobileNumberPageView">
+             x:Class="GAZT.Views.NewViews.ChangeMobileNumberPageView"
+             Title="{x:Static local:AppResources.ChangeMobileNumber}"
+             >
     <ContentPage.Content>
         <ScrollView Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid >

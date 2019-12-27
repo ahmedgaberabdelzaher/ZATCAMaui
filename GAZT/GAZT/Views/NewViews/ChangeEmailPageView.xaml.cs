@@ -24,14 +24,20 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ChangeEmailPageView;
             InitializeComponent();
-          
+            SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
         }
         #endregion
 
         #region Method
-        
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         #endregion
     }
 }

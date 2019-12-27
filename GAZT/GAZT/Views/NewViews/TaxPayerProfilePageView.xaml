@@ -7,6 +7,8 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
+             Title="{x:Static local:AppResources.TaxpayerProfile}"
+             
              >
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" x:Name="ParentGrid" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >

@@ -678,11 +678,16 @@ appeal</value>
   <data name="TotalUnpaidReturns" xml:space="preserve">
     <value>Total Unpaid Returns</value>
   </data>
-   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
+  <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
     <value>The Account will be locked within 2 min</value>
   </data>
-   <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
+  <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
     <value>The account will be locked after 3 attempts</value>
   </data>
-  
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Change Email</value>
+  </data>
+  <data name="ChangeMobileNumber" xml:space="preserve">
+    <value>Change Mobile Number</value>
+  </data>
 </root>

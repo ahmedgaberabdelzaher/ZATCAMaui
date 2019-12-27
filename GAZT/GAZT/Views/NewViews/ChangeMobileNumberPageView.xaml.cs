@@ -23,7 +23,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ChangeMobileNumberPageView;
             InitializeComponent();
 
-           
+            SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
 
@@ -32,7 +32,27 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-       
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            Task.Delay(20000);
+          
+
+            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                Navigation.RemovePage(pg);
+            }
+
+        }
         #endregion
     }
 }
