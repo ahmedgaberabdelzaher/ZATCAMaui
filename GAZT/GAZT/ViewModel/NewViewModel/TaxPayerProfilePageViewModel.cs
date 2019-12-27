@@ -125,19 +125,18 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnChangeMobileNumberClicked = new Xamarin.Forms.Command(() =>
             {
-                TPProfileVisibility = false;
-               
+                _navigationService.NavigateTo(App.ChangeMobileNumberPageView);
+
             });
             OnChangeEmailClicked = new Xamarin.Forms.Command(() =>
             {
-                TPProfileVisibility = false;
-              
+                _navigationService.NavigateTo(App.ChangeEmailPageView);
+
 
             });
             OnChangePasswordClicked = new Xamarin.Forms.Command(() =>
             {
-                TPProfileVisibility = false;
-                CurrentPassword = string.Empty;
+                _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsLogin);
             });
         }
 

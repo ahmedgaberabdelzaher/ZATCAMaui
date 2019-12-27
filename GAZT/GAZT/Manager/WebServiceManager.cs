@@ -781,10 +781,10 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
-                client.DefaultRequestHeaders.Add("Token", App.Token);
+               
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
 
 

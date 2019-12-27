@@ -38,11 +38,11 @@ namespace GAZT.Views.NewViews
             Task.Delay(20000);
           
 
-            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
-            {
-                Page pg = Navigation.NavigationStack[index];
-                Navigation.RemovePage(pg);
-            }
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
 
         }
 

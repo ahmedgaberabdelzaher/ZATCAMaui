@@ -9,8 +9,8 @@
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
              >
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-            <Grid BindingContext="{Binding TaxPayerProfile}">
+        <ScrollView Orientation="Vertical" x:Name="ParentGrid" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid BindingContext="{Binding TaxPayerProfile}" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="93*"/>
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{x:Static local:AppResources.Name}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+               <Label Text="{x:Static local:AppResources.Name}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                 </Label>
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
@@ -53,7 +53,7 @@
                 </Image>
 
 
-                <Label Text="{x:Static local:AppResources.Email}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" >
+                  <Label Text="{x:Static local:AppResources.Email}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" >
                 </Label>
                 <Frame Grid.Row="7" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>

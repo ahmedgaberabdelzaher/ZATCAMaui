@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,14 +22,14 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-        public ChangePasswordPageView()
+        public ChangePasswordPageView(NavigateToOtp navigateTo)
         {
             viewModel = App.Locator.ChangePasswordPageView;
             InitializeComponent();
+            this.BindingContext = viewModel;           
+            viewModel.NavigateToOtpForEmailEnum = navigateTo;
+            viewModel.OnPageLoad();
 
-           
-            
-            this.BindingContext = viewModel;
         }
         #endregion
 

@@ -274,7 +274,7 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
                                 await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
-                                _navigationService.GoBack();
+                                _navigationService.NavigateTo(App.TaxPayerProfilePageView);
                             });
                         }
                         else
@@ -308,7 +308,9 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.GoBack();
+                      
+
+                        _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsEmail);
                     });
 
                 }

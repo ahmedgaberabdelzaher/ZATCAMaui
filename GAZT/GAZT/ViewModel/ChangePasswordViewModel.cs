@@ -7,5 +7,16 @@ namespace GAZT.ViewModel
 {
     public class ChangePasswordViewModel:ViewModelBase
     {
+        #region Property
+
+        
+
+        #endregion
+
+        #region Constructor
+        #endregion
+
+        #region Method
+        #endregion
     }
 }
