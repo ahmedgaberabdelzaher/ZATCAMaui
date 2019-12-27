@@ -679,10 +679,13 @@ appeal</value>
     <value>Total Unpaid Returns</value>
   </data>
    <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
-    <value>The Account will be locked within 2 min</value>
+    <value>The code will be expired within 2 minuites</value>
   </data>
    <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
-    <value>The account will be locked after 3 attempts</value>
+    <value>The account will be locked after 3 failed verification code attempt</value>
+  </data>
+   <data name="PasswordGuidelineText" xml:space="preserve">
+    <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
   </data>
   
 </root>

@@ -365,7 +365,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isIDTypeVisible = false;
+        public bool IsIDTypeVisible
+        {
+            get
+            {
+                return _isIDTypeVisible;
+            }
+            set
+            {
+                _isIDTypeVisible = value;
+                RaisePropertyChanged("IsIDTypeVisible");
+            }
+        }
 
+        
         #endregion
 
         #region Constructor
@@ -474,6 +488,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 IsTaxPayerTypeEnable = false;
                 SelectedTaxPayerType = null;
+                IsIDTypeVisible = false;
                 //IsForgotPassword = true;
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = false;
@@ -483,6 +498,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                IsIDTypeVisible = true;
                 //IsTaxPayerTypeEnable = true;
                 //IsForgotPassword = false;
                 //IsForgotUserNameWithIndividual = true;

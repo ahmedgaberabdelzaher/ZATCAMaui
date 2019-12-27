@@ -10,6 +10,7 @@
             <Color x:Key="GreenLabelTextColor">#005e4b</Color>
             <Color x:Key="MaroonLabelTextColor">#A76d6d</Color>
             <Color x:Key="BlackLabelTextColor">#000000</Color>
+             <Color x:Key="InformationRedColor">#F36C21</Color>
             
 
              <!-- SST Arabic Bold.ttf -->
@@ -88,6 +89,8 @@
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
+            
+
             <Style x:Key="SmallGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -115,6 +118,17 @@
                 <Setter Property="TextColor" Value="{DynamicResource DashboardChartStatusGrayTextColor}" />
             </Style>
 
+            <Style x:Key="InformationRedColorLabel" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
+            </Style>
+
+            
 
 
 

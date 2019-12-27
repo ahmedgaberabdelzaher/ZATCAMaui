@@ -673,9 +673,12 @@
     <value>إجمالي الإقرارات الغير مدفوعة (إقرار مفتوح)</value>
   </data>
    <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
-    <value>The Account will be locked within 2 min</value>
+    <value>الوقت المتبقي لصلاحية الرمز المرسل</value>
   </data>
    <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
-    <value>The account will be locked after 3 attempts</value>
+    <value>سيتم حجب الحساب في حال إدخال رمز التحقق أكثر من 3 مرات بشكل خاطئ</value>
+  </data>
+   <data name="PasswordGuidelineText" xml:space="preserve">
+    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data>
 </root>

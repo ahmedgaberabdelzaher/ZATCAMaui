@@ -1156,5 +1156,11 @@ namespace GAZT {
                 return ResourceManager.GetString("TheAccountWillBeLockedAfterThreeAttempts", resourceCulture);
             }
         }
+        
+        public static string PasswordGuidelineText {
+            get {
+                return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
+            }
+        }
     }
 }
