@@ -28,11 +28,11 @@ namespace GAZT.Views
             //{
             //    if (e.SelectedItem == null)
             //    {
-                     
+
             //        return;
             //    } ((ListView)sender).SelectedItem = null;
             //};
-            CertificateList.ItemSelected += (sender, e) =>
+            CertificateLst.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {

@@ -49,6 +49,7 @@ namespace GAZT
                     //{
                     //    Control.TextAlignment = UITextAlignment.Center;
                     //}
+
                     Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;

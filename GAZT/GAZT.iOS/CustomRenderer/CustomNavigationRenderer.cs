@@ -20,14 +20,14 @@ public override void ViewDidLoad()
             App.NavigationBarHeightt = height;
             UIFont ft;
 
-            if (App.IsArabic)
-                ft = UIFont.FromName("Cairo-Regular", 16);
-            else
-                ft = UIFont.FromName("Helvetica-Normal", 16);
+            //if (App.IsArabic)
+            //    ft = UIFont.FromName("Cairo-Regular", 16);
+            //else
+            //    ft = UIFont.FromName("Helvetica-Normal", 16);
 
             this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
             {
-                Font = ft
+                //Font = ft
             };
 
             try

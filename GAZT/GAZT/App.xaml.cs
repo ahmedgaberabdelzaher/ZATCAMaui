@@ -62,9 +62,6 @@ namespace GAZT
 
         //HttpClientHandlerForSSL Certificate Issue
         public static HttpClientHandler httpClientHandler = null;
-
-
-
         public App()
         {
             String langName = "ar-AE";//"en-US";// "ar-AE";
@@ -72,7 +69,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInView());
+            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView());
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

@@ -36,14 +36,14 @@
 
                     <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />
 
-                    <Label Text="{x:Static local:AppResources.TinEmail}" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <Label Text="{x:Static local:AppResources.TinEmail}" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Start" >
                     </Label>
                     <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
                     <!--<Image Source="ic_user.png" Grid.Row="2" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
 
-                    <custom:GAZTBorderlessEntry Text="{Binding UserName}" Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry Text="{Binding UserName}" Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom:GAZTBorderlessEntry>
 
 
                     <Label Text="{x:Static local:AppResources.TINS}" IsVisible="{Binding IsVisibleTinIds}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >
@@ -51,19 +51,18 @@
                     <Frame Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
-                    <custom:GAZTBorderlessPicker Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}"  ItemDisplayBinding="{Binding Tin}" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,0,10,0"></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker BackgroundColor="Red" HeightRequest="30" Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}"  ItemDisplayBinding="{Binding Tin}" Grid.Column="1" Grid.ColumnSpan="2" Margin="15,5,15,5"></custom:GAZTBorderlessPicker>
 
                     <Image Source="ic_dropdownOne.png" IsVisible="{Binding IsVisibleTinIds}" Margin="13,2,13,1" Grid.Row="4" Grid.Column="2"   HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
 
-
-                    <Label Text="{x:Static local:AppResources.Password}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <Label Text="{x:Static local:AppResources.Password}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Label>
                     <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
                     <!--<Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
 
-                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom:GAZTBorderlessEntry>
 
                     <!--//Test-->
 

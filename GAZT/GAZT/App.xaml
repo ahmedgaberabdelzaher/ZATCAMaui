@@ -357,6 +357,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
                 <Setter Property="Margin" Value="10,0,10,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
 
             <Style x:Key="GAZTWhiteLabelStyleForButton" TargetType="Label">
@@ -406,9 +407,11 @@
 
             <Style x:Key="GAZTTextBoxStyleForEntry" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
-                <Setter Property="VerticalTextAlignment" Value="Start" />
-                <Setter Property="Margin" Value="10,0,10,0"/>
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="15,0,15,0"/>
                 <Setter Property="FontSize" Value="Small"/>
+                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
 
             <Style x:Key="GAZTPickerStyle" TargetType="Picker">

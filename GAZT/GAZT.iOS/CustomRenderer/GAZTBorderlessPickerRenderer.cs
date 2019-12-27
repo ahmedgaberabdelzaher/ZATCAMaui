@@ -18,13 +18,35 @@ namespace GAZT.iOS.CustomRenderer
 {
     public class GAZTBorderlessPickerRenderer: PickerRenderer
     {
-        public static void Init() { }
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Picker> e)
         {
-            base.OnElementPropertyChanged(sender, e);
+            base.OnElementChanged(e);
+            // var fontSize = 10;// Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            if (Control != null)
+            {
+                this.Control.BackgroundColor = UIColor.White;
 
-            Control.Layer.BorderWidth = 0;
-            Control.BorderStyle = UITextBorderStyle.None;
+                this.Control.BorderStyle = UITextBorderStyle.None;
+                //if (App.IsArabic)
+                //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
+                //else
+                //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
+
+              // var element = (CustomPicker)this.Element;
+                //if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
+                //{
+                //    var downarrow = UIImage.FromBundle(element.Image);
+                //    Control.RightViewMode = UITextFieldViewMode.Always;
+                //    Control.RightView = new UIImageView(downarrow);
+                //}
+
+                if (App.IsArabic)
+                {
+                    Control.TextAlignment = UITextAlignment.Right;
+                }
+
+            }
+
         }
     }
 }
