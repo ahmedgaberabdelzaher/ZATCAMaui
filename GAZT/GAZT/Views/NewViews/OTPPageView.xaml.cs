@@ -110,11 +110,11 @@ namespace GAZT.Views.NewViews
             viewModel.ClearData();
             App.IsOTPiew = false;
 
-            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
-            {
-                Page pg = Navigation.NavigationStack[index];
-                Navigation.RemovePage(pg);
-            }
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
         }
         private void TextChangedForOne(object sender, TextChangedEventArgs e)
         {

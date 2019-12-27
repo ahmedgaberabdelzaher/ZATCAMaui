@@ -34,9 +34,9 @@
                         <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding OnVATCertificateClicked}" />
                     </Label.GestureRecognizers>
                 </local1:CustomLabel>
             </StackLayout>
@@ -47,9 +47,9 @@
                         <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForZakat" Command="{Binding OnZakatCertificateClicked}" />
                     </Label.GestureRecognizers>
                 </local1:CustomLabel>
             </StackLayout>
@@ -60,9 +60,9 @@
                         <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
+                                <TapGestureRecognizer  Tapped="ClickGestureRecognizer_ClickedForExcise" Command="{Binding OnExciseCertificateClicked}" />
                     </Label.GestureRecognizers>
                 </local1:CustomLabel>
             </StackLayout>

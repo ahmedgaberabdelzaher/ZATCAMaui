@@ -18,9 +18,15 @@ namespace GAZT.Views
 
             viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+
+            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+
             //string str = "abc";
             //Items.Add(str);
-           // CardView.ItemsSource = Items;
+            // CardView.ItemsSource = Items;
             viewModel.OnPageLoad();
             SetLTR();
             this.BindingContext = viewModel;
@@ -105,6 +111,37 @@ namespace GAZT.Views
         {
             viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
 
+        }
+
+
+        private void ClickGestureRecognizer_ClickedForExcise(object sender, EventArgs e)
+        {
+
+            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+
+            Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        }
+
+        private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
+        {
+
+            Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+
+            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        }
+
+        private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
+        {
+
+            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+
+            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
 
     }
