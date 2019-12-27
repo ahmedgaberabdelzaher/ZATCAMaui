@@ -28,7 +28,7 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-         private string _UserName = "3300036062";
+         private string _UserName = "3102164652";
        // private string _UserName = string.Empty;
         public string UserName
         {

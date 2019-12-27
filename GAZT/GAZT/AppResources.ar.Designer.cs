@@ -1168,5 +1168,17 @@ namespace GAZT {
                 return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
             }
         }
+        
+        public static string ChangeEmail {
+            get {
+                return ResourceManager.GetString("ChangeEmail", resourceCulture);
+            }
+        }
+        
+        public static string ChangeMobileNumber {
+            get {
+                return ResourceManager.GetString("ChangeMobileNumber", resourceCulture);
+            }
+        }
     }
 }
