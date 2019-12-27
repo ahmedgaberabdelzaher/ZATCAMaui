@@ -67,7 +67,7 @@ namespace GAZT.Views
                     var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
                     if (!result)
                     {
-                        viewModel._navigationService.NavigateTo(App.DashboardView);
+                        viewModel._navigationService.NavigateTo(App.DashboardPageView);
                     }
                     else
                     {
