@@ -1754,5 +1754,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
+        
+        public static string PasswordGuidelineText {
+            get {
+                return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
+            }
+        }
     }
 }

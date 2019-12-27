@@ -9,6 +9,7 @@
              x:Class="GAZT.Views.NewViews.OTPPageView">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
@@ -63,9 +64,22 @@
                 <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource GAZTVerifyButton}"></Button>
 
 
-                <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center"></ActivityIndicator>
 
             </Grid>
+
+                  <!-- Acticity indicator layout start -->
+        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!-- Acticity indicator layout end -->
+                </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

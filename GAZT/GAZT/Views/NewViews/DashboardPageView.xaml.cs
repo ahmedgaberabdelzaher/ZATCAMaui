@@ -1,5 +1,6 @@
 ﻿using GAZT.Helper;
 using GAZT.ViewModel;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,8 +72,19 @@ namespace GAZT.Views
             base.OnDisappearing();
             App.IsComingFromDashboardToLogOff = true;
         }
-    
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                if (pg.GetType() == typeof(OTPPageView))
+                {
+                    Navigation.RemovePage(pg);
+                }
+            }
+        }
         #endregion
     }
 }
