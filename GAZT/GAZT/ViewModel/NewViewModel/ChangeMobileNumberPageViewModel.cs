@@ -1,19 +1,175 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ChangeMobileNumberPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
+        public ICommand OnVerifyButtonClicked { get; set; }
+
         #region Property
+
+
+        private string _NewMobile = "00966";
+        public string NewMobile
+        {
+            get
+            {
+                return _NewMobile;
+            }
+            set
+            {
+                _NewMobile = value;
+
+                if (!String.IsNullOrWhiteSpace(_NewMobile) || !String.IsNullOrEmpty(_NewMobile))
+                    if (_NewMobile.Length == 14)
+                        IsVerifyEnabled = true;
+                RaisePropertyChanged("NewMobile");
+            }
+        }
+
+        private TaxPayerProfile _TaxPayerProfile = App.TP;
+        public TaxPayerProfile TaxPayerProfile
+        {
+            get
+            {
+                return _TaxPayerProfile;
+            }
+            set
+            {
+                _TaxPayerProfile = value;
+                RaisePropertyChanged("TaxPayerProfile");
+            }
+        }
+
+        private bool _IsVerifyEnabled = false;
+        public bool IsVerifyEnabled
+        {
+            get
+            {
+                return _IsVerifyEnabled;
+            }
+            set
+            {
+                _IsVerifyEnabled = value;
+                RaisePropertyChanged("IsVerifyEnabled");
+            }
+        }
+
+        private string _CurrentMobile = string.Empty;
+        public string CurrentMobile
+        {
+            get
+            {
+                return _CurrentMobile;
+            }
+            set
+            {
+                _CurrentMobile = value;
+                RaisePropertyChanged("CurrentMobile");
+            }
+        }
+
         #endregion
 
         #region Constructor
+
+        public ChangeMobileNumberPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+
+
+            OnVerifyButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                bool IsNavigatingFromLogin = false;
+                NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
+                String lang = "EN";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                try
+                {
+                    bool response = false;
+                    var mobileNumber = "00966" + NewMobile;
+                    bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
+                    if (isValidMobileNumber)
+                    {
+                        response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
+
+                    }
+                    else
+                    {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
+                        });
+                        NewMobile = string.Empty;
+                    }
+                    if (response == true)
+                    {
+                        App.TP.NewMobile = mobileNumber;
+                        String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
+                        String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                        ClearMobileData();
+                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    });
+                }
+            });
+        }
+
+
         #endregion
 
         #region Method
+
+        public void OnPageLoad()
+        {
+           
+            CurrentMobile = TaxPayerProfile.Mobile;
+         
+        }
+
+        public bool IsValidMobileNumber(string mobileNumber)
+        {
+            if (!string.IsNullOrEmpty(mobileNumber) && mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void ClearMobileData()
+        {
+            NewMobile = string.Empty;
+
+        }
         #endregion
     }
-}
+    }

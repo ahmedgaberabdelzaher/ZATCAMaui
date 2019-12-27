@@ -41,7 +41,9 @@ namespace GAZT
         public static string ChangeEmailPageView = "ChangeEmailPageView";
         public static string ChangePasswordPageView = "ChangePasswordPageView";
         public static string OTPPageView = "OTPPageView";
+        public static string ForgotUsernamePasswordPageView = "ForgotUsernamePasswordPageView";
 
+        
 
 
         public static TIN CurrentDropdownTIN;

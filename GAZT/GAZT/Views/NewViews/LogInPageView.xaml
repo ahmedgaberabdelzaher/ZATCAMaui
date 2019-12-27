@@ -72,16 +72,16 @@
                                 <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource GAZTSmallGoldLabelStyle}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-
+                    <Label  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.ForgotPasswordORUseName}" IsEnabled="{Binding IsLoginEnabled}" Style="{StaticResource GAZTSmallGoldLabelStyle}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"> 
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
+                            </Label.GestureRecognizers>
+                        </Label>
 
                     <!--<Image Source="ic_Login_button.png" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>-->
 

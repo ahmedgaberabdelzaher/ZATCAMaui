@@ -292,7 +292,7 @@ namespace GAZT.ViewModel
 
             OnForgotUsernamePasswordClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.ForgotUsernamePassword);
+                _navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
             });
             OnNewLoginUIClicked = new Command(async () =>
             {

@@ -15,7 +15,7 @@ namespace GAZT.Views.NewViews
     public partial class ChangeMobileNumberPageView : ContentPage
     {
         #region Variable
-        private ChangeMobileNumberPageViewModel viewModel;
+        ChangeMobileNumberPageViewModel viewModel;
         #endregion
         #region Constructor
         public ChangeMobileNumberPageView()
@@ -25,7 +25,9 @@ namespace GAZT.Views.NewViews
 
            
             this.BindingContext = viewModel;
-          
+            viewModel.OnPageLoad();
+
+
         }
         #endregion
 

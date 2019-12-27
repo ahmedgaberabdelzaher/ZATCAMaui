@@ -1150,5 +1150,17 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalUnpaidReturns", resourceCulture);
             }
         }
+        
+        public static string TheAccountwillbelockedwithinTwomin {
+            get {
+                return ResourceManager.GetString("TheAccountwillbelockedwithinTwomin", resourceCulture);
+            }
+        }
+        
+        public static string TheAccountWillBeLockedAfterThreeAttempts {
+            get {
+                return ResourceManager.GetString("TheAccountWillBeLockedAfterThreeAttempts", resourceCulture);
+            }
+        }
     }
 }

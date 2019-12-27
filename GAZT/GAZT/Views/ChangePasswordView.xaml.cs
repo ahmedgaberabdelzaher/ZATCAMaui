@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

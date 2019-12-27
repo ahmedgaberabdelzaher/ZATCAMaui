@@ -9,4 +9,11 @@ namespace GAZT.Models
         public string id { get; set; }
         public string CredentialType { get; set; }
     }
+
+    public class ChangePasswordForEmail
+    {
+        public string OldEmail { get; set; }
+        public string NewEmail { get; set; }
+        public NavigateToOtp navigateTo { get; set; }
+    }
 }

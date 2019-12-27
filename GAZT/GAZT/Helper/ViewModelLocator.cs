@@ -40,8 +40,10 @@ namespace GAZT
             SimpleIoc.Default.Register<ChangeEmailPageViewModel>();
             SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
             SimpleIoc.Default.Register<OTPPageViewModel>();
+            SimpleIoc.Default.Register<ForgotUsernamePasswordPageViewModel>();
 
 
+            
 
 
 
@@ -389,8 +391,26 @@ namespace GAZT
                 }
             }
         }
-        
 
+        /// <summary>
+        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// </summary>
+        public ForgotUsernamePasswordPageViewModel ForgotUsernamePasswordPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ForgotUsernamePasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
 
 
 
@@ -425,7 +445,9 @@ namespace GAZT
             navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
             navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
+            navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
 
+            
 
             return navigationService;
         }
