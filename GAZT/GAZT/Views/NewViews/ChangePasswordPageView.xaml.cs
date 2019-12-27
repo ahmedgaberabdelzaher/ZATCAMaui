@@ -35,6 +35,19 @@ namespace GAZT.Views.NewViews
 
         #region Method
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
+            {
+                Page pg = Navigation.NavigationStack[index];
+                if (pg.GetType() == typeof(OTPPageView))
+                {
+                    Navigation.RemovePage(pg);
+                }
+            }
+        }
+
         #endregion
 
 
