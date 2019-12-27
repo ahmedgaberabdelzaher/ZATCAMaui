@@ -23,6 +23,7 @@ namespace GAZT.Views
             InitializeComponent();
             App.IsArabic = true;
             this.BindingContext = viewModel;
+            App.IsComingFromDashboardToLogOff = false;
            // viewModel.PasswordVisibility = true;
             ToolbarItem toolbarItem1 = new ToolbarItem
             {

@@ -41,10 +41,19 @@ namespace GAZT.Views.NewViews
                 await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
             }
 
-            for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
+
+            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Page pg = Navigation.NavigationStack[index];
-                Navigation.RemovePage(pg);
+                if (pg.GetType() == typeof(OTPPageView))
+                {
+                    Navigation.RemovePage(pg);
+                }
             }
 
         }
