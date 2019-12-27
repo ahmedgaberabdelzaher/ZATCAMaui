@@ -198,12 +198,13 @@ namespace GAZT.ViewModel
         {
 
 
-
+          
             string lang = UtilityManager.GetLanguageParameter();
             Task.Run(async () =>
             {
+                
                 dashboard = await WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-
+                
 
 
                 if (dashboard.results != null)
@@ -214,31 +215,57 @@ namespace GAZT.ViewModel
 
                     BillReturn objBill1 = new BillReturn();
                     objBill1.ReturnTypeProperty = ReturnType.RtnTot;
-                    objBill1.ReturnCount = dashboard.results[0].RtnTot;
+                    String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
+                    if(string.IsNullOrEmpty(RtnTotstr))
+                    {
+                        RtnTotstr = "0";
+                    }
+                    objBill1.ReturnCount = RtnTotstr;
 
                     BillReturn.Add(objBill1);
 
                     BillReturn objBill2 = new BillReturn();
                     objBill2.ReturnTypeProperty = ReturnType.DueIcr;
-                    objBill2.ReturnCount = dashboard.results[0].DueIcr;
+                    String DueIcrstr = dashboard.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                    if (string.IsNullOrEmpty(DueIcrstr))
+                    {
+                        DueIcrstr = "0";
+                    }
+                    objBill2.ReturnCount = DueIcrstr;
 
                     BillReturn.Add(objBill2);
 
                     BillReturn objBill3 = new BillReturn();
                     objBill3.ReturnTypeProperty = ReturnType.PrtnTot;
-                    objBill3.ReturnCount = dashboard.results[0].PrtnTot;
+                    String PrtnTotstr = dashboard.results[0].PrtnTot.TrimStart(new Char[] { '0' });
+                    if (string.IsNullOrEmpty(PrtnTotstr))
+                    {
+                        PrtnTotstr = "0";
+                    }
+                    objBill3.ReturnCount = PrtnTotstr;
 
                     BillReturn.Add(objBill3);
 
                     BillReturn objBill4 = new BillReturn();
                     objBill4.ReturnTypeProperty = ReturnType.NrtnTot;
-                    objBill4.ReturnCount = dashboard.results[0].NrtnTot;
+                    String NrtnTotstr = dashboard.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                    if (string.IsNullOrEmpty(NrtnTotstr))
+                    {
+                        NrtnTotstr = "0";
+                    }
+
+                    objBill4.ReturnCount = NrtnTotstr;
 
                     BillReturn.Add(objBill4);
 
                     BillReturn objBill5 = new BillReturn();
                     objBill5.ReturnTypeProperty = ReturnType.UprtnTot;
-                    objBill5.ReturnCount = dashboard.results[0].UprtnTot;
+                    String UprtnTotstr = dashboard.results[0].UprtnTot.TrimStart(new Char[] { '0' });
+                    if (string.IsNullOrEmpty(UprtnTotstr))
+                    {
+                        UprtnTotstr = "0";
+                    }
+                    objBill5.ReturnCount = UprtnTotstr;
 
                     BillReturn.Add(objBill5);
 
@@ -246,20 +273,35 @@ namespace GAZT.ViewModel
 
                     BillPaid = new List<BillPaid>();
 
-                    BillPaid objBillPaid1 = new BillPaid();
-                    objBillPaid1.BillTypeProperty = BillType.PbillsTot;
-                    objBillPaid1.BillCount = dashboard.results[0].PbillsTot;
-                    BillPaid.Add(objBillPaid1);
+                    //BillPaid objBillPaid1 = new BillPaid();
+                    //objBillPaid1.BillTypeProperty = BillType.PbillsTot;
+                    //String PbillsTotstr = dashboard.results[0].PbillsTot.TrimStart(new Char[] { '0' });
+                    //if (string.IsNullOrEmpty(PbillsTotstr))
+                    //{
+                    //    PbillsTotstr = "0";
+                    //}
+                    //objBillPaid1.BillCount = PbillsTotstr;
+                    //BillPaid.Add(objBillPaid1);
 
                     BillPaid objBillPaid2 = new BillPaid();
                     objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
-                    objBillPaid2.BillCount = dashboard.results[0].PrbillsTot;
+                    String PrbillsTotstr = dashboard.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
+                    if (string.IsNullOrEmpty(PrbillsTotstr))
+                    {
+                        PrbillsTotstr = "0";
+                    }
+                    objBillPaid2.BillCount = PrbillsTotstr;
                     BillPaid.Add(objBillPaid2);
 
-                    BillPaid objBillPaid3 = new BillPaid();
-                    objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
-                    objBillPaid3.BillCount = dashboard.results[0].UpbillsTot;
-                    BillPaid.Add(objBillPaid3);
+                    //BillPaid objBillPaid3 = new BillPaid();
+                    //objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
+                    //String UpbillsTotstr = dashboard.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
+                    //if (string.IsNullOrEmpty(UpbillsTotstr))
+                    //{
+                    //    UpbillsTotstr = "0";
+                    //}
+                    //objBillPaid3.BillCount = UpbillsTotstr;
+                    //BillPaid.Add(objBillPaid3);
 
                 }
                 else
@@ -268,7 +310,7 @@ namespace GAZT.ViewModel
                 }
 
             });
-
+            Task.Delay(2000);
 
             //BillReturn = new List<BillReturn>();
 

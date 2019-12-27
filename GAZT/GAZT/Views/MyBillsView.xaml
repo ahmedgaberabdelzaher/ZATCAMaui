@@ -121,7 +121,7 @@
                                               
                                             </Grid.RowDefinitions>
 
-                                            <Label Text="{x:Static local:AppResources.ZakatTaxTypeForBills}" Margin="0" 
+                                                <Label Text="{x:Static local:AppResources.TaxType}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                    Grid.Row="0"
                                    Grid.Column="0"/>
@@ -142,7 +142,7 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span  Text="{x:Static local:AppResources.Sadad}" Style="{StaticResource MiniGoldLabelStyle}" />
-                                                        <Span Text="{x:Static local:AppResources.PaymentNumber}" Style="{StaticResource MiniGoldLabelStyle}" />
+                                                            <Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -158,7 +158,7 @@
                                    Grid.Row="2"
                                    Grid.Column="0"
                                    />
-                                            <Label Text="{Binding BETRW}" 
+                                                <Label Text="{Binding TestDueAmount}" 
                                      
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                    Grid.Row="2"
@@ -170,7 +170,7 @@
                                    Grid.Row="3"
                                    Grid.Column="0"
                                    />
-                                            <Label Text="{Binding FAEDN}" 
+                                                <Label Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}" 
                                        
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                    Grid.Row="3"

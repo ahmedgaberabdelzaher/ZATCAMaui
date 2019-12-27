@@ -229,13 +229,13 @@
     <value>My Certificate</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
-    <value>VAT Certificate(s)</value>
+    <value>VAT</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
-    <value>ZAKAT Certificate(s)</value>
+    <value>ZAKAT</value>
   </data>
   <data name="ExciseCertificates" xml:space="preserve">
-    <value>EXCISE Certificate(s)</value>
+    <value>EXCISE</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -574,7 +574,7 @@ appeal</value>
     <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
   </data>
   <data name="Dashoboard" xml:space="preserve">
-    <value>Dashoboard</value>
+    <value>Dashboard</value>
   </data>
   <data name="Bills" xml:space="preserve">
     <value>Bills</value>
@@ -678,13 +678,13 @@ appeal</value>
   <data name="TotalUnpaidReturns" xml:space="preserve">
     <value>Total Unpaid Returns</value>
   </data>
-   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
+  <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
     <value>The code will be expired within 2 minuites</value>
   </data>
-   <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
+  <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
     <value>The account will be locked after 3 failed verification code attempt</value>
   </data>
-   <data name="PasswordGuidelineText" xml:space="preserve">
+  <data name="PasswordGuidelineText" xml:space="preserve">
     <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
@@ -692,5 +692,8 @@ appeal</value>
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
     <value>Change Mobile Number</value>
+  </data>
+  <data name="TaxType" xml:space="preserve">
+    <value>TaxType</value>
   </data>
 </root>

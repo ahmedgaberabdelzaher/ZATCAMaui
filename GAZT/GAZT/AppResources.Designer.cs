@@ -361,7 +361,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dashoboard.
+        ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string Dashoboard {
             get {
@@ -595,7 +595,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXCISE Certificate(s).
+        ///   Looks up a localized string similar to EXCISE.
         /// </summary>
         public static string ExciseCertificates {
             get {
@@ -1038,6 +1038,15 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character..
         /// </summary>
+        public static string PasswordGuidelineText {
+            get {
+                return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character..
+        /// </summary>
         public static string PasswordValidationMesseg {
             get {
                 return ResourceManager.GetString("PasswordValidationMesseg", resourceCulture);
@@ -1360,7 +1369,16 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The account will be locked after 3 attempts.
+        ///   Looks up a localized string similar to TaxType.
+        /// </summary>
+        public static string TaxType {
+            get {
+                return ResourceManager.GetString("TaxType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The account will be locked after 3 failed verification code attempt.
         /// </summary>
         public static string TheAccountWillBeLockedAfterThreeAttempts {
             get {
@@ -1378,7 +1396,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Account will be locked within 2 min.
+        ///   Looks up a localized string similar to The code will be expired within 2 minuites.
         /// </summary>
         public static string TheAccountwillbelockedwithinTwomin {
             get {
@@ -1639,7 +1657,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Certificate(s).
+        ///   Looks up a localized string similar to VAT.
         /// </summary>
         public static string VATCertificates {
             get {
@@ -1729,7 +1747,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ZAKAT Certificate(s).
+        ///   Looks up a localized string similar to ZAKAT.
         /// </summary>
         public static string ZakatCertificates {
             get {
@@ -1752,12 +1770,6 @@ namespace GAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
-            }
-        }
-        
-        public static string PasswordGuidelineText {
-            get {
-                return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
             }
         }
     }

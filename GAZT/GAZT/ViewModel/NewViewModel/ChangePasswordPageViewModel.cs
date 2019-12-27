@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -289,7 +290,18 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
 
                         ClearPasswordDataForEmail();
-                        _navigationService.NavigateTo(App.ChangeEmailPageView);
+                        if (NavigateToOtpForEmailEnum == NavigateToOtp.IsEmail)
+                        {
+                            var _navigation = Application.Current.MainPage.Navigation;
+                            await _navigation.PopAsync();
+                            await _navigation.PopAsync();
+
+
+
+                            _navigationService.NavigateTo(App.ChangeEmailPageView);
+
+                           
+                        }
 
                       
                     });
