@@ -10,7 +10,7 @@
              Title="{x:Static local:AppResources.ChangeMobileNumber}"
              >
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <ScrollView Orientation="Vertical"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -20,24 +20,28 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="93*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="73*"/>
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
-                <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                 </Frame>
-                <custom:GAZTBorderlessEntry  Text="{Binding CurrentMobile}" IsEnabled="False"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry  Text="{Binding CurrentMobile}" IsEnabled="False"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
-                <Label Text="{x:Static local:AppResources.NewMobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                <Label Text="{x:Static local:AppResources.NewMobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
-                <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                 </Frame>
-                <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+
+                <custom:GAZTBorderlessEntry IsEnabled="False" VerticalOptions="End" Text="00966" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+
+                <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" Margin="0"  Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="1"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
 
-                <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="{Binding IsVerifyEnabled}" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="{Binding IsVerifyEnabled}" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
             

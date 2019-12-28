@@ -1414,7 +1414,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TIN-Email.
+        ///   Looks up a localized string similar to TIN or Email ID.
         /// </summary>
         public static string TinEmail {
             get {

@@ -53,6 +53,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledNewPasswordForEmail");
             }
         }
+        private bool _passwordVisibility = false;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
+
         private string _RetypePasswordForEmail = string.Empty;
         public string RetypePasswordForEmail
         {

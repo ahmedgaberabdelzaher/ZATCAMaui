@@ -34,6 +34,19 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
+        private bool _passwordVisibility = false;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
 
         private bool _tPProfileVisibility = true;
         public bool TPProfileVisibility

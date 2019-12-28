@@ -364,7 +364,7 @@
     <value>لا يوجد شهادات</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
-    <value>الرقم المميز -البريد الإلكتروني</value>
+    <value>TIN or Email ID</value>
   </data>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>تم تحديث رقم الموبايل بنجاح</value>
