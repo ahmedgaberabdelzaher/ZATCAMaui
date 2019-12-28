@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 
 using Xamarin.Forms;
 using GAZT.ViewModel.NewViewModel;
+using GAZT.Manager;
 
 namespace GAZT.Views.NewViews
 {
@@ -89,6 +90,13 @@ namespace GAZT.Views.NewViews
 
         }
 
+        protected void OnUserNameUnFocussed(object sender, EventArgs e)
+        {
+            string userName = UserName.Text;
+            bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+            viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+        }
+        
         private void SetLTR()
         {
             if (!App.IsArabic)

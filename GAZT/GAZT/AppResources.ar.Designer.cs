@@ -1180,5 +1180,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ChangeMobileNumber", resourceCulture);
             }
         }
+        
+        public static string TaxType {
+            get {
+                return ResourceManager.GetString("TaxType", resourceCulture);
+            }
+        }
     }
 }

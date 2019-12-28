@@ -243,6 +243,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Logo_GAZT_color%402x.png" />
+    <BundleResource Include="Resources\ic_Dashboard_User.png" />
+    <BundleResource Include="Resources\ic_Dashboard_User%402x.png" />
+    <BundleResource Include="Resources\ic_Dashboard_User%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />

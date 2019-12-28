@@ -80,6 +80,56 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private List<TIN> _tINs;
+        public List<TIN> TINs
+        {
+            get
+            {
+                return _tINs;
+            }
+            set
+            {
+                _tINs = value;
+                RaisePropertyChanged("TINs");
+            }
+        }
+
+
+        private TIN _selectedTinId;
+        public TIN SelectedTinId
+        {
+            get
+            {
+                return _selectedTinId;
+            }
+            set
+            {
+                _selectedTinId = value;
+                if (_selectedTinId != null)
+                {
+                    App.CurrentDropdownTIN = SelectedTinId;
+                   // Password = string.Empty;
+                }
+                RaisePropertyChanged("SelectedTinId");
+            }
+        }
+
+        private bool _isVisibleTinIds = false;
+        public bool IsVisibleTinIds
+        {
+            get
+            {
+                return _isVisibleTinIds;
+            }
+            set
+            {
+                _isVisibleTinIds = value;
+                
+                RaisePropertyChanged("IsVisibleTinIds");
+            }
+        }
+
+
         private ForgotCredentialType _selectedForgotType;
         public ForgotCredentialType SelectedForgotType
         {
@@ -574,8 +624,9 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async () =>
             {
+                string idNumber = GetTinId();
                 string lang = UtilityManager.GetLanguageParameter();
-                forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, IDNumber);
+                forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (!string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                 {
@@ -609,14 +660,15 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (!string.IsNullOrEmpty(EnteredOTP))
             {
+                string idNumber = GetTinId();
                 string lang = UtilityManager.GetLanguageParameter();
                 string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
                 //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
-                string id = st + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
 
                 string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
 
-                string uri = st1 + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
                 string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
                 ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
                 Metadata metadata = new Metadata();
@@ -627,7 +679,7 @@ namespace GAZT.ViewModel.NewViewModel
                 D d = new D();
                 d.__metadata = metadata;
                 d.Action = "01";
-                d.Tin = IDNumber;
+                d.Tin = idNumber;
                 d.Langu = UtilityManager.GetLanguageParameter();
                 d.CurrAttmps = 0;
                 d.EmailId = "";
@@ -659,8 +711,6 @@ namespace GAZT.ViewModel.NewViewModel
                     await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
                     EnteredOTP = null;
                 }
-
-
             }
             else
             {
@@ -668,13 +718,12 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
-            // await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPasswordOTP);
-
         }
 
 
         private async Task SendUserNameToRegidteredEmail()
         {
+            string idNumber = GetTinId();
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -685,7 +734,7 @@ namespace GAZT.ViewModel.NewViewModel
                 string lang = UtilityManager.GetLanguageParameter();
                 string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
                 //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
-                string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
+                string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
 
                 string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
 
@@ -707,7 +756,7 @@ namespace GAZT.ViewModel.NewViewModel
                 d.TpType = "1";
                 d.MobileNo = "";
                 d.SubType = "ZS001";
-                d.Idnumber = IDNumber;
+                d.Idnumber = idNumber;
                 d.Otp = EnteredOTP;
                 d.Minutes = 0;
                 d.Name = "";
@@ -718,8 +767,6 @@ namespace GAZT.ViewModel.NewViewModel
                 d.RdBt = "U";
                 d.Hyperlink = "";
                 forgotPassword.d = d;
-
-
                 forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -729,8 +776,6 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
                         _navigationService.GoBack();
                     });
-
-
                 }
                 else
                 {
@@ -751,14 +796,15 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async void ChangePassword()
         {
+            string idNumber = GetTinId();
             string lang = UtilityManager.GetLanguageParameter();
             string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
             //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
-            string id = st + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
+            string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
 
             string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
 
-            string uri = st1 + "'" + IDNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
+            string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
             string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
             ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
             Metadata metadata = new Metadata();
@@ -769,7 +815,7 @@ namespace GAZT.ViewModel.NewViewModel
             D d = new D();
             d.__metadata = metadata;
             d.Action = "40";
-            d.Tin = IDNumber;
+            d.Tin = idNumber;
             d.Langu = UtilityManager.GetLanguageParameter();
             d.CurrAttmps = 0;
             d.EmailId = "";
@@ -817,6 +863,84 @@ namespace GAZT.ViewModel.NewViewModel
                 await _navigation.PopToRootAsync();
             }
         }
+
+        public void SetTinsListLayoutVisibility(bool IsEmailUserName)
+        {
+            if(IsEmailUserName)
+            {
+                TINs = new List<TIN>();
+
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = true;
+                        });
+
+                        TINs = await WebServiceManager.GAZTGetAllTins(IDNumber);
+                        if (TINs.Count != 0 && SelectedTinId == null)
+                        {
+                            IsVisibleTinIds = true;
+                            SelectedTinId = TINs[0];
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                IsVisibleTinIds = false;
+                                await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                            });
+                            IsVisibleTinIds = false;
+                        }
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        IsVisibleTinIds = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            IsVisibleTinIds = false;
+                            await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
+                        });
+
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                    }
+
+                   
+                });
+            }
+            else
+            {
+                IsVisibleTinIds = false;
+            }
+
+          
+
+            }
+
+        private string GetTinId()
+        {
+            string tinId = "";
+            bool isEmailUser = UtilityManager.IsValidEmailAddress(IDNumber);
+            if (isEmailUser)
+            {
+                tinId = SelectedTinId.Tin;
+            }
+            else
+            {
+                tinId = IDNumber;
+            }
+            return tinId;
+        }
+
 
         #endregion
     }

@@ -11,7 +11,6 @@
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnMyTaxPayerProfileClicked}">
-            
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
