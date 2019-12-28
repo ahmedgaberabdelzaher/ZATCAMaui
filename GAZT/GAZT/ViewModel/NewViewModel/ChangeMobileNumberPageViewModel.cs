@@ -161,7 +161,9 @@ namespace GAZT.ViewModel.NewViewModel
                         App.TP.NewMobile = mobileNumber;
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
-                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                        });
                         ClearMobileData();
                         Device.BeginInvokeOnMainThread(async () => {
                             _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
