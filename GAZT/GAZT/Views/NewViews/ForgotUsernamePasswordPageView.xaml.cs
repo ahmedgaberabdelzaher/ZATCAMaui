@@ -94,6 +94,12 @@ namespace GAZT.Views.NewViews
         {
             string userName = UserName.Text;
             bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+            if (!IsValiedEmailAddress)
+            {
+                viewModel.IsVisibleTinIds = false;
+            }
+            
+
             viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
         }
         

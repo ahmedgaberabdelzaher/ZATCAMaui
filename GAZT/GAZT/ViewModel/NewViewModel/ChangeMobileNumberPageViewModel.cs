@@ -162,7 +162,7 @@ namespace GAZT.ViewModel.NewViewModel
                         String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
                         });
                         ClearMobileData();
                         Device.BeginInvokeOnMainThread(async () => {

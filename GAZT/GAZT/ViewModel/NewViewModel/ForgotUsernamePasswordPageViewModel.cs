@@ -25,9 +25,6 @@ namespace GAZT.ViewModel.NewViewModel
 
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
         
-
-
-
         #endregion
         #region Property
 

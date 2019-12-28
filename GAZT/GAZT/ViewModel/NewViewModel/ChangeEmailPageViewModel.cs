@@ -229,7 +229,7 @@ namespace GAZT.ViewModel.NewViewModel
                             String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
                             String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
                             Device.BeginInvokeOnMainThread(async() => {
-                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
 
                                 _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
                             });
