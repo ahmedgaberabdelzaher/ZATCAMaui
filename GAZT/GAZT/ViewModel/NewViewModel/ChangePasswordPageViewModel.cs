@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace GAZT.ViewModel.NewViewModel
+namespace GAZT
 {
    public class ChangePasswordPageViewModel : ViewModelBase
     {
