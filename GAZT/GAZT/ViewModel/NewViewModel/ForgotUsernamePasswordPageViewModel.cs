@@ -637,6 +637,7 @@ namespace GAZT.ViewModel.NewViewModel
             if (EnteredCaptchaValue.Equals(Captcha))
             {
                 isValidCaptcha = true;
+                EnteredCaptchaValue = string.Empty;
             }
             else
             {

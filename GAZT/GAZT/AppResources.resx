@@ -547,7 +547,7 @@ appeal</value>
     <value>Please enter Username</value>
   </data>
   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
-    <value>entered captcha code is incorrect. please try again</value>
+    <value>Entered captcha code is incorrect. Please try again</value>
   </data>
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
@@ -646,7 +646,7 @@ appeal</value>
     <value>Dashboard</value>
   </data>
   <data name="VarificationCode" xml:space="preserve">
-    <value>Varification Code</value>
+    <value>Verification Code</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
     <value>VAT-Lookup</value>

@@ -47,6 +47,18 @@ public override void ViewDidLoad()
                 else
                     ft = UIFont.FromName("Helvetica-Normal", 16);
 
+
+                try
+                {
+                    UIBarButtonItem backButton = new UIBarButtonItem();
+                    backButton.Title = ""; //Your BackBurron Title here
+                    NavigationController.NavigationBar.TopItem.BackBarButtonItem = backButton;
+                }
+                catch (Exception)
+                {
+
+                }
+
                 this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
                 {
                     Font = ft
@@ -76,6 +88,8 @@ public override void ViewDidLoad()
             });
 
             this.NavigationItem.LeftBarButtonItem = button;
+
+
         }
 
     }

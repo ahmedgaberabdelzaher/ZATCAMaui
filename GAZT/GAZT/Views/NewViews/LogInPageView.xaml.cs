@@ -91,6 +91,7 @@ namespace GAZT.Views
             viewModel.UserName = string.Empty;
             viewModel.Password = string.Empty;
             viewModel.IsVisibleTinIds = false;
+
         }
         public void OnPasswordVisibilityClicked(object sender, EventArgs args)
         {

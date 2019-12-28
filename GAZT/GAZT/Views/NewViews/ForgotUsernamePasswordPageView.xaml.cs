@@ -114,6 +114,8 @@ namespace GAZT.Views.NewViews
             viewModel.NewPasswordLayoutVisibility = false;
             viewModel.OTPLayoutVisibility = false;
             viewModel.NavigateToLoginLinkVisibility = false;
+            viewModel.EnteredCaptchaValue  = "";
+
             //viewModel.Captcha = "";
 
 
