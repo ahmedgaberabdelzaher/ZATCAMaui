@@ -7,7 +7,7 @@
               xmlns:custom="clr-namespace:GAZT"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.DashboardPageView" 
-          
+             Title="{x:Static local:AppResources.Dashboard}"
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnMyTaxPayerProfileClicked}">
