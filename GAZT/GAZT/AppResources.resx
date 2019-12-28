@@ -220,7 +220,7 @@
     <value>Mobile Number</value>
   </data>
   <data name="MyBills" xml:space="preserve">
-    <value>MyBills</value>
+    <value>My Bills</value>
   </data>
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>My Bills</value>
@@ -367,7 +367,7 @@ appeal</value>
     <value>Login Successful</value>
   </data>
   <data name="MobileNumberVerificationSuccessful" xml:space="preserve">
-    <value>Mobile Number Verification Successful</value>
+    <value>Mobile Number Verification Code sent successfully.</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
     <value>Password Changed Sucessfully </value>
@@ -388,7 +388,7 @@ appeal</value>
     <value>Details Changed Successfully</value>
   </data>
   <data name="Emailverificationcodesentsuccessfully" xml:space="preserve">
-    <value>Email Verification Code sent successfully</value>
+    <value>Email Verification Code sent successfully.</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid Email</value>
@@ -403,7 +403,7 @@ appeal</value>
     <value>New Password field and Confirm Password field must match</value>
   </data>
   <data name="EnterVerificationCodeForEmail" xml:space="preserve">
-    <value>Please enter verification code received on email</value>
+    <value>Please enter verification code received on email.</value>
   </data>
   <data name="InvalidOTP" xml:space="preserve">
     <value>Invalid OTP, please enter correct OTP</value>

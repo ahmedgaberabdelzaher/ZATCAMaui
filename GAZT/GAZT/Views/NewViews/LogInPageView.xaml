@@ -50,7 +50,7 @@
                     <Frame Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
-                    <custom:GAZTBorderlessPicker BackgroundColor="Red" HeightRequest="30" Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}"  ItemDisplayBinding="{Binding Tin}" Grid.Column="1" Grid.ColumnSpan="2" Margin="15,5,15,5"></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker  HeightRequest="30" Grid.Row="4" IsVisible="{Binding IsVisibleTinIds}" SelectedItem="{Binding SelectedTinId, Mode=TwoWay}" ItemsSource="{Binding TINs}"  ItemDisplayBinding="{Binding Tin}" Grid.Column="1" Grid.ColumnSpan="2" Margin="15,5,15,5"></custom:GAZTBorderlessPicker>
 
                     <Image Source="ic_dropdownOne.png" IsVisible="{Binding IsVisibleTinIds}" Margin="13,2,13,1" Grid.Row="4" Grid.Column="2"   HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
 

@@ -778,17 +778,18 @@ namespace GAZT
 
             if (allCertificate != null)
             {
-                if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
-                {
-                    CertificateType = AppResources.VATCertificates;
-                    SetCertificateListViewVisibility();
-                    CertificateList = allCertificate.VATSet.results;
-                }
-                else if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
                 {
                     CertificateType = AppResources.ZakatCertificates;
                     SetCertificateListViewVisibility();
                     CertificateList = allCertificate.ZakatSet.results;
+                    
+                }
+                else if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                {
+                    CertificateType = AppResources.VATCertificates;
+                    SetCertificateListViewVisibility();
+                    CertificateList = allCertificate.VATSet.results;
                 }
                 else if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
                 {

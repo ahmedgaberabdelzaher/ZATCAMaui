@@ -216,6 +216,7 @@ namespace GAZT.ViewModel
 
         public async void onPageLoad()
         {
+            MyBills = null;
 
             List<MyBills> myBills = null;
             try

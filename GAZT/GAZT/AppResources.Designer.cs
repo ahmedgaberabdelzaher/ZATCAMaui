@@ -935,17 +935,11 @@ namespace GAZT {
             }
         }
         
-
- 
-        /// <summary>
-        ///   Looks up a localized string similar to TIN or Email ID.
-        /// </summary>
-        //public static string TinEmail {
-
-        //    get {
-        //        return ResourceManager.GetString("Dashoboard", resourceCulture);
-        //    }
-        //}
+        public static string Dashoboard {
+            get {
+                return ResourceManager.GetString("Dashoboard", resourceCulture);
+            }
+        }
         
         public static string Bills {
             get {
