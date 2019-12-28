@@ -196,7 +196,7 @@ namespace GAZT.ViewModel
 
         public void onPageLoad()
         {
-
+          
             List<BillReturn> BillReturnList = new List<BillReturn>();
             List<BillPaid> BillPaidList = new List<BillPaid>();
 

@@ -5,7 +5,9 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -34,6 +36,20 @@ namespace GAZT.ViewModel.NewViewModel
                     if (_NewMobile.Length == 14)
                         IsVerifyEnabled = true;
                 RaisePropertyChanged("NewMobile");
+            }
+        }
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -99,6 +115,24 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVerifyButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+                await VarifyMobileNumber();
+            });
+        }
+
+
+        #endregion
+
+        #region Method
+
+        private async Task VarifyMobileNumber()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
                 bool IsNavigatingFromLogin = false;
                 NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
                 String lang = "EN";
@@ -129,7 +163,9 @@ namespace GAZT.ViewModel.NewViewModel
                         String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
                         await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
                         ClearMobileData();
-                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                        Device.BeginInvokeOnMainThread(async () => {
+                            _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                        });
                     }
                 }
                 catch (Exception ex)
@@ -140,13 +176,14 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                 }
             });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+
         }
-
-
-        #endregion
-
-        #region Method
-
         public void OnPageLoad()
         {
            

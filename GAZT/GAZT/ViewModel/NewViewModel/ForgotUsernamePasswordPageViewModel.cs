@@ -526,8 +526,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.GoBack();
             });
-
-  
+           
 
         }
         #endregion Constructor

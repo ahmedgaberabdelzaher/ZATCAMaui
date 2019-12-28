@@ -6,6 +6,7 @@ using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -40,6 +41,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewPasswordForEmail");
             }
         }
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private bool _IsEnabledNewPasswordForEmail = false;
         public bool IsEnabledNewPasswordForEmail
         {
@@ -53,6 +68,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledNewPasswordForEmail");
             }
         }
+        private bool _passwordVisibility = false;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
+
         private string _RetypePasswordForEmail = string.Empty;
         public string RetypePasswordForEmail
         {
@@ -196,6 +225,25 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+               await ChangePassword();
+            });
+
+
+        }
+
+        #endregion
+
+        #region Method
+
+        private async Task ChangePassword()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
                 TaxPayerProfile TP = null;
                 String lang = "EN";
                 if (App.IsArabic == true)
@@ -218,68 +266,87 @@ namespace GAZT.ViewModel.NewViewModel
                                 setPropertyForEmailUpdation(NewEmail);
                                 ClearEmailData();
                                 String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
-                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
+                                });
                                 ClearEmailData();
                                 App.IsComingFromDashboardToLogOff = false;
-                                var _navigation = Application.Current.MainPage.Navigation;
-                                await _navigation.PopToRootAsync();
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    await _navigation.PopToRootAsync();
+                                });
+                                
                             }
                             else
                             {
 
                                 String OnInvalidEmail = AppResources.InvalidEmail;
-                                await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
+                                });
 
                             }
                         }
                         else
                         {
                             String OnPasswordMatch = AppResources.NewPasswordandRetypePasswordNotMatch;
-                            await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
+                            });
                             ClearPasswordDataForEmail();
                         }
                     }
-                    else if(NavigateToOtpForEmailEnum == NavigateToOtp.IsLogin)//For Default Password Change
+                    else if (NavigateToOtpForEmailEnum == NavigateToOtp.IsLogin)//For Default Password Change
                     {
-                         
-                            try
+
+                        try
+                        {
+                            if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
                             {
-                                if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
+                                bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPasswordForEmail);
+                                if (response == true)
                                 {
-                                    bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPasswordForEmail);
-                                    if (response == true)
-                                    {
-                                        CurrentPassword = NewPasswordForEmail;
-                                        App.TP.Password = NewPasswordForEmail;
-                                        TaxPayerProfile.Password = NewPasswordForEmail;
-                                        String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
+                                    CurrentPassword = NewPasswordForEmail;
+                                    App.TP.Password = NewPasswordForEmail;
+                                    TaxPayerProfile.Password = NewPasswordForEmail;
+                                    String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
+                                    Device.BeginInvokeOnMainThread(async () => {
                                         await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
-                                        App.IsComingFromDashboardToLogOff = false;
-                                        var _navigation = Application.Current.MainPage.Navigation;
+                                    });
+                                  
+                                    App.IsComingFromDashboardToLogOff = false;
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    
+                                    Device.BeginInvokeOnMainThread(async () => {
                                         ClearPasswordData();
                                         await _navigation.PopToRootAsync();
-                                    }
-                                    else
-                                    {
-                                        String OnInvalidPassword = AppResources.InvalidPassword;
-                                        await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
-                                    }
-                                
+                                    });
                                 }
                                 else
                                 {
-                                    String OnNotMatchAuthentication = AppResources.NewPasswordandRetypePasswordNotMatch;
-                                    await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                                    String OnInvalidPassword = AppResources.InvalidPassword;
+                                    Device.BeginInvokeOnMainThread(async () => {
+                                        await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
+                                    });
                                 }
+
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                                String OnNotMatchAuthentication = AppResources.NewPasswordandRetypePasswordNotMatch;
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
                                 });
                             }
-                       
+                        }
+                        catch (Exception ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                            });
+                        }
+
                     }
                 }
                 catch (Exception ex)
@@ -295,26 +362,21 @@ namespace GAZT.ViewModel.NewViewModel
                             var _navigation = Application.Current.MainPage.Navigation;
                             await _navigation.PopAsync();
                             await _navigation.PopAsync();
-
-
-
                             _navigationService.NavigateTo(App.ChangeEmailPageView);
 
-                           
+
                         }
 
-                      
+
                     });
                 }
             });
 
-
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
-
-        #endregion
-
-        #region Method
-
         public void ClearPasswordData()
         {
             NewPasswordForEmail = string.Empty;

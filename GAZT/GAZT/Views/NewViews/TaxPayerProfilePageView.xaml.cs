@@ -57,7 +57,10 @@ namespace GAZT.Views.NewViews
             }
 
         }
-
+        public void OnPasswordVisibilityClicked(object sender, EventArgs args)
+        {
+            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

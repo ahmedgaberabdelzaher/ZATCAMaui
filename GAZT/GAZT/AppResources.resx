@@ -379,7 +379,7 @@ appeal</value>
     <value>No Certificate Available</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
-    <value>TIN-Email</value>
+    <value>TIN or Email ID</value>
   </data>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>Mobile Number Updated Successfully</value>

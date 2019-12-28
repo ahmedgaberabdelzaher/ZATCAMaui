@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -32,6 +34,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        
         private string _NewEmail = string.Empty;
         public string NewEmail
         {
@@ -168,6 +185,25 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+             await   VarifyEmail();
+            });
+
+        }
+
+        #endregion
+
+        #region Method
+
+
+        private async Task VarifyEmail()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
                 NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
                 String lang = "EN";
                 if (App.IsArabic == true)
@@ -186,17 +222,19 @@ namespace GAZT.ViewModel.NewViewModel
                         if (response == true)
                         {
 
-                            
+
                             IsEnabledRetypeEmail = false;
                             IsEnabledNewEmail = false;
                             App.TP.NewEmail = NewEmail;
                             String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
                             String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async() => {
+                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess + ":" + OnSuccessfulAuthentication, AppResources.Information);
 
-                            _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
+                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
+                            });
 
-                        
+
 
                         }
                     }
@@ -207,12 +245,17 @@ namespace GAZT.ViewModel.NewViewModel
                         if (IsValidNewEmail || bIsValidRetypeEmail)
                         {
                             String OnNotMatchAuthentication = AppResources.InvalidEmail;
-                            await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async() => {
+                                await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                            });
                         }
                         else
                         {
                             String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
-                            await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                            });
+
 
                         }
                     }
@@ -226,11 +269,11 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
 
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
-
-        #endregion
-
-        #region Method
         public void OnPageLoad()
         {
             TaxPayerProfile = App.TP;
