@@ -433,13 +433,13 @@
     <value>توجد مشكلة في الشبكة, الرجاء إعادة المحاولة لاحقًا</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
-    <value>شهادات ضريبة القيمة المضافة</value>
+    <value>VAT</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
-    <value>شهادات الزكاة</value>
+    <value>ZAKAT</value>
   </data>
   <data name="ExciseCertificates" xml:space="preserve">
-    <value>شهادات ضريبة السلع الانتقائية</value>
+    <value>Excise</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>رقم</value>
@@ -686,5 +686,8 @@
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
     <value>Change Mobile Number</value>
+  </data>
+  <data name="TaxType" xml:space="preserve">
+    <value>TaxType</value>
   </data>
 </root>

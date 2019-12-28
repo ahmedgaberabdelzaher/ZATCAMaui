@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT" Title="{x:Static local:AppResources.MyCertificate}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
@@ -34,11 +34,14 @@
                         <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
-                    </Label.GestureRecognizers>
-                </local1:CustomLabel>
+
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForZakat" Command="{Binding OnZakatCertificateClicked}" />
+                            </Label.GestureRecognizers>
+                        </local1:CustomLabel>
+
+                     
             </StackLayout>
 
             <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
@@ -47,12 +50,12 @@
                         <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                    </Label.GestureRecognizers>
-                </local1:CustomLabel>
-            </StackLayout>
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding OnVATCertificateClicked}" />
+                            </Label.GestureRecognizers>
+                        </local1:CustomLabel>
+                    </StackLayout>
 
             <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
                 <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
@@ -60,9 +63,9 @@
                         <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
+                                <TapGestureRecognizer  Tapped="ClickGestureRecognizer_ClickedForExcise" Command="{Binding OnExciseCertificateClicked}" />
                     </Label.GestureRecognizers>
                 </local1:CustomLabel>
             </StackLayout>

@@ -23,7 +23,8 @@ namespace GAZT.Views.NewViews
             SetLTR();
             string str = "abc";
             Items.Add(str);
-            CardView.ItemsSource = Items;
+            App.IsComingFromDashboardToLogOff = false;
+           // CardView.ItemsSource = Items;
             try
             {
 

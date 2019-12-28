@@ -26,7 +26,6 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ChangePasswordPageView;
             InitializeComponent();
-            SetLTR();
             this.BindingContext = viewModel;           
             viewModel.NavigateToOtpForEmailEnum = navigateTo;
             viewModel.OnPageLoad();
@@ -35,13 +34,20 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-        private void SetLTR()
+
+        protected override void OnAppearing()
         {
-            if (!App.IsArabic)
+            base.OnAppearing();
+            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+                Page pg = Navigation.NavigationStack[index];
+                if (pg.GetType() == typeof(OTPPageView))
+                {
+                    Navigation.RemovePage(pg);
+                }
             }
         }
+
         #endregion
 
 
