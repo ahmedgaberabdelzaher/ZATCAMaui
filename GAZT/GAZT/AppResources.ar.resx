@@ -172,13 +172,13 @@
     <value>نسخ رقم فاتورة سداد</value>
   </data>
   <data name="DataAvailableToGAZT" xml:space="preserve">
-    <value>Data available to GAZT</value>
+    <value>التاريخ المتوفر للهيئة</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>محرم</value>
   </data>
   <data name="DateHijri" xml:space="preserve">
-    <value>Date ( Hijri)</value>
+    <value>التاريخ بالهجري</value>
   </data>
   <data name="DetailsOfSADADBill" xml:space="preserve">
     <value>تفاصيل فاتورة سداد</value>
@@ -430,7 +430,7 @@
     <value>ايوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
   </data>
   <data name="VpnNotConnected" xml:space="preserve">
-    <value>App is facing network issue, please try again later.</value>
+    <value>توجد مشكلة في الشبكة, الرجاء إعادة المحاولة لاحقًا</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
     <value>شهادات ضريبة القيمة المضافة</value>
@@ -517,10 +517,10 @@
     <value>نسيت كلمة المرور أو اسم المستخدم</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
-    <value> Invalid Captcha</value>
+    <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>No Bills Available</value>
+    <value>الفواتير غير متوفرة</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
@@ -535,34 +535,34 @@
     <value>تأكيد كلمة المرور الجديدة</value>
   </data>
   <data name="EnterOTP" xml:space="preserve">
-    <value>Enter OTP</value>
+    <value>ادخل رمز التحقق</value>
   </data>
   <data name="ResendOTP" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
   </data>
   <data name="PleaseenterUsername" xml:space="preserve">
-    <value>Please enter Username</value>
+    <value>الرجاء ادخال كلمة المرور</value>
   </data>
   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
     <value>الرمز المرئي المدخل غير صحيح، رجاء المحاولة مرة أخرى</value>
   </data>
   <data name="Somethingwentwrong" xml:space="preserve">
-    <value>Something went wrong, Please try again</value>
+    <value>حدث خطأ ما الرجاء اعادة المحاوله</value>
   </data>
   <data name="Pleasechangepassword" xml:space="preserve">
-    <value>Please change password</value>
+    <value>الرجاء تغيير كلمة المرور</value>
   </data>
   <data name="Invalidverificationcodeentered" xml:space="preserve">
     <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
   </data>
   <data name="PleaseenterOTP" xml:space="preserve">
-    <value>Please enter OTP</value>
+    <value>الرجاء ادخال رمز التحقق</value>
   </data>
   <data name="Usernamehasbeensenttoregisteredmobilenumber" xml:space="preserve">
     <value>تم إرسال اسم المستخدم إلى رقم الجوال والبريد الالكترونى المسجل للمكلف</value>
   </data>
   <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
-    <value>Your Password has been Changed successfully.</value>
+    <value>تم تغيير كلمة المرور بنجاح</value>
   </data>
   <data name="Boththepasswordfieldsshouldmatch" xml:space="preserve">
     <value>كلمة المرور الجديدة و"تأكيد كلمة المرور الجديدة" غير متطابقة</value>
@@ -672,13 +672,13 @@
   <data name="TotalUnpaidReturns" xml:space="preserve">
     <value>إجمالي الإقرارات الغير مدفوعة (إقرار مفتوح)</value>
   </data>
-   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
+  <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
     <value>الوقت المتبقي لصلاحية الرمز المرسل</value>
   </data>
-   <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
+  <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
     <value>سيتم حجب الحساب في حال إدخال رمز التحقق أكثر من 3 مرات بشكل خاطئ</value>
   </data>
-   <data name="PasswordGuidelineText" xml:space="preserve">
+  <data name="PasswordGuidelineText" xml:space="preserve">
     <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
