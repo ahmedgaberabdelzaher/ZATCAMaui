@@ -490,7 +490,7 @@ appeal</value>
     <value>User Name</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>number</value>
+    <value>Number</value>
   </data>
   <data name="PaymentNumber" xml:space="preserve">
     <value>Payment Number</value>

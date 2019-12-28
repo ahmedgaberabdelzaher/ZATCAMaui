@@ -959,8 +959,8 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                using (var client = new HttpClient(App.httpClientHandler))
-                {
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                
                     // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
                     string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
 
@@ -1001,7 +1001,7 @@ namespace GAZT.Manager
                     }
                     return dashboardData;
 
-                }
+                
             }
             catch (Exception ex)
             {

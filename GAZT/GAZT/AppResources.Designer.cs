@@ -946,7 +946,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to number.
+        ///   Looks up a localized string similar to Number.
         /// </summary>
         public static string Number {
             get {
