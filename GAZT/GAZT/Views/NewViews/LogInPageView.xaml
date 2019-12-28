@@ -66,7 +66,7 @@
                     <!--//Test-->
 
                     <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="{Binding IsLoginEnabled}" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Image Source="ic_Login_button.png" IsEnabled="{Binding IsLoginEnabled}">
+                        <Image Source="Login_button.png" IsEnabled="{Binding IsLoginEnabled}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnLoginButtonClicked}" />
                             </Image.GestureRecognizers>

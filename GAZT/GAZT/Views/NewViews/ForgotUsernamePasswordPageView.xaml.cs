@@ -113,6 +113,7 @@ namespace GAZT.Views.NewViews
             viewModel.IDNumber = "";
             viewModel.NewPasswordLayoutVisibility = false;
             viewModel.OTPLayoutVisibility = false;
+            viewModel.NavigateToLoginLinkVisibility = false;
             //viewModel.Captcha = "";
 
 

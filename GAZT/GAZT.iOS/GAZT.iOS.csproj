@@ -246,6 +246,9 @@
     <BundleResource Include="Resources\ic_Dashboard_User.png" />
     <BundleResource Include="Resources\ic_Dashboard_User%402x.png" />
     <BundleResource Include="Resources\ic_Dashboard_User%403x.png" />
+    <BundleResource Include="Resources\ic_check_circle_24px.png" />
+    <BundleResource Include="Resources\ic_check_circle_24px%402x.png" />
+    <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />
@@ -476,15 +479,6 @@
     <BundleResource Include="Resources\ic_Mybills%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_evasion_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_evasion_1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_evasion_1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_vat_declaration_1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -501,5 +495,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_footer_img%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_evasion_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_evasion_1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_evasion_1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Login_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Login_button%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Login_button%403x.png" />
   </ItemGroup>
 </Project>

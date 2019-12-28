@@ -950,7 +950,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<Dashboard> GAZTGetDashboardData(String Lang, String Tin)
+        public static Dashboard GAZTGetDashboardData(String Lang, String Tin)
         {
             DateTime dt = DateTime.Now;
             Dashboard dashboardData = new Dashboard();
@@ -960,42 +960,48 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
-                string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
+                
+                    // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
+                    string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
 
-                client.DefaultRequestHeaders.Add("Token", App.Token);
-                HttpResponseMessage GAZTGetDashboardResponse = await client.GetAsync(uri);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    HttpResponseMessage GAZTGetDashboardResponse = null;
 
-                if (GAZTGetDashboardResponse != null)
-                {
-                    HttpHeaders headers = GAZTGetDashboardResponse.Headers;
-                    IEnumerable<string> values;
-                    if (headers.TryGetValues("token", out values))
+                    GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+
+
+                    if (GAZTGetDashboardResponse != null)
                     {
-                        NewToken = values.First();
-                    }
+                        HttpHeaders headers = GAZTGetDashboardResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-
-                    }
-                    if ((!string.IsNullOrEmpty(NewToken)))
-                    {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
-                            return null;
-                        }
-                        App.Token = NewToken;
-                    }
-                    String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+                            throw new Exception("Invalid Token");
 
-                    GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
-                    dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
-                }
-                return dashboardData;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+
+                        GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
+                        dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
+                    }
+                    return dashboardData;
+
+                
             }
             catch (Exception ex)
             {

@@ -11,6 +11,7 @@
             <Color x:Key="MaroonLabelTextColor">#A76d6d</Color>
             <Color x:Key="BlackLabelTextColor">#000000</Color>
              <Color x:Key="InformationRedColor">#F36C21</Color>
+             <Color x:Key="ForgotPasswordGrayTextColor">#7D858D</Color>
             
 
              <!-- SST Arabic Bold.ttf -->
@@ -68,6 +69,20 @@
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
 
             </Style>
+
+            <Style x:Key="ForgotPasswordTextColor" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
+
+            </Style>
+
+            
 
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontSize">

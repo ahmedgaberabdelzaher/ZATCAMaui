@@ -21,8 +21,10 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnChangePasswordSubmitClicked { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
         public ICommand OnValidateOTPClicked { get; set; }
-        ForgotPasswordOTP forgotPasswordOTP { get; set; }
+        public ICommand OnLoginPageLinkClicked { get; set; }
 
+        ForgotPasswordOTP forgotPasswordOTP { get; set; }
+        
 
 
 
@@ -340,8 +342,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-
+        private bool _navigateToLoginLinkVisibility = false;
+        public bool NavigateToLoginLinkVisibility
+        {
+            get
+            {
+                return _navigateToLoginLinkVisibility;
+            }
+            set
+            {
+                _navigateToLoginLinkVisibility = value;
+                RaisePropertyChanged("NavigateToLoginLinkVisibility");
+            }
+        }
+        
 
         private string _newPassword = "";
         public string NewPassword
@@ -401,6 +415,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _forgotPasswordUserNameChangedMessage;
+        public string ForgotPasswordUserNameChangedMessage
+        {
+            get
+            {
+                return _forgotPasswordUserNameChangedMessage;
+            }
+            set
+            {
+                _forgotPasswordUserNameChangedMessage = value;
+                RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
+            }
+        }
+        
         private string _enteredOTP = "";
         public string EnteredOTP
         {
@@ -494,6 +522,12 @@ namespace GAZT.ViewModel.NewViewModel
                 await ValidateOTP();
             });
 
+            OnLoginPageLinkClicked = new Command( () =>
+            {
+                _navigationService.GoBack();
+            });
+
+  
 
         }
         #endregion Constructor
@@ -516,7 +550,7 @@ namespace GAZT.ViewModel.NewViewModel
                 List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
             {
                 new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
-                new ForgotCredentialType{ id = "2" , CredentialType = AppResources.Password}
+                new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
 
             };
                 ForgotTypeList = forgotCredentialListlist;
@@ -608,8 +642,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
 
-                StringBuilder captcha = GetCaptcha();
-                Captcha = captcha.ToString();
                 isValidCaptcha = false;
             }
             return isValidCaptcha;
@@ -773,8 +805,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
-                        _navigationService.GoBack();
+                        //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
+                        // _navigationService.GoBack();
+                        NewPasswordLayoutVisibility = false;
+                        OTPLayoutVisibility = false;
+                        NavigateToLoginLinkVisibility = true;
+                        ForgotPasswordUserNameChangedMessage = AppResources.Usernamehasbeensenttoregisteredmobilenumber;
                     });
                 }
                 else
@@ -839,9 +875,14 @@ namespace GAZT.ViewModel.NewViewModel
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
-                    await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
+                   // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
+
                     NewPasswordLayoutVisibility = false;
-                    _navigationService.GoBack();
+                    OTPLayoutVisibility = false;
+                    NavigateToLoginLinkVisibility = true;
+                    ForgotPasswordUserNameChangedMessage = AppResources.YourPasswordhasbeenChangedsuccessfully;
+
+                    //  _navigationService.GoBack();
                 }
                 else
                 {
