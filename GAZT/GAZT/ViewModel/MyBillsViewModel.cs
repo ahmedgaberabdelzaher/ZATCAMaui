@@ -144,7 +144,17 @@ namespace GAZT.ViewModel
                     {
                         List<MyBills> myBills = new List<MyBills>();
                         myBills = MyBillsOriginal.ToList();
-                        MyBills = myBills;
+                        if (myBills != null && myBills.Count > 0)
+                        {
+                            MyBills = myBills;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            });
+                        }
                     }
                 else
                     {
@@ -160,7 +170,17 @@ namespace GAZT.ViewModel
                     {
                         List<MyBills> myBills = new List<MyBills>();
                         myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
-                        MyBills = myBills;
+                        if (myBills != null && myBills.Count > 0)
+                        {
+                            MyBills = myBills;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            });
+                        }
                     }
                     else
                     {
@@ -176,7 +196,17 @@ namespace GAZT.ViewModel
                     {
                         List<MyBills> myBills = new List<MyBills>();
                         myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
-                        MyBills = myBills;
+                        if (myBills != null && myBills.Count > 0)
+                        {
+                            MyBills = myBills;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            });
+                        }
                     }
                     else
                     {
@@ -193,7 +223,18 @@ namespace GAZT.ViewModel
                     {
                         List<MyBills> myBills = new List<MyBills>();
                         myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
-                        MyBills = myBills;
+                        if(myBills != null && myBills.Count > 0)
+                        {
+                            MyBills = myBills;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            });
+                        }
+                       
                     }
                     else
                     {
