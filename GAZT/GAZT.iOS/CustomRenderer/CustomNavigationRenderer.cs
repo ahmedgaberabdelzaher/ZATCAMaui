@@ -20,12 +20,16 @@ namespace GAZT.iOS.CustomRenderer
             App.NavigationBarHeightt = height;
             UIFont ft;
             //this.NavigationBar.TintColor = UIColor.Yellow;
-           // this.NavigationBar.BarTintColor = UIColor.Green;
-
-            this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            // this.NavigationBar.BarTintColor = UIColor.Green;
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
-                Font = UIFont.FromName("SSTArabic-Medium", 16)
-            };
+                Font = UIFont.FromName("SSTArabic-Medium", 16),
+                TextColor = UIColor.White
+            });
+            //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            //{
+            //    Font = UIFont.FromName("SSTArabic-Medium", 16)
+            //};
             //if (App.IsArabic)
             //    ft = UIFont.FromName("Cairo-Regular", 16);
             //else
