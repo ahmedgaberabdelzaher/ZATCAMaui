@@ -530,12 +530,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_envelop.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_envelop_selected.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_envelop.png" />
-    <AndroidResource Include="Resources\drawable\icon.png">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable\Rectangle.png">
       <SubType>
       </SubType>
@@ -883,6 +877,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_check_circle_24px.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
