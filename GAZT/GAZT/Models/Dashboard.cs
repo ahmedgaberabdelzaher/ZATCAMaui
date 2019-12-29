@@ -58,32 +58,32 @@ namespace GAZT.Models
                 if(_returnTypeProperty == ReturnType.RtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "Submitted";
+                    ReturnTypeName = AppResources.Submitted;
                 }
                 if (_returnTypeProperty == ReturnType.NrtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "Non Submitted";
+                    ReturnTypeName = AppResources.NonSubmitted;
                 }
                 if (_returnTypeProperty == ReturnType.PrtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "Paid";
+                    ReturnTypeName = AppResources.Paid;
                 }
                 if (_returnTypeProperty == ReturnType.UprtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "UnPaid";
+                    ReturnTypeName = AppResources.UnPaid;
                 }
                 if (_returnTypeProperty == ReturnType.PprtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "Partial Paid";
+                    ReturnTypeName = AppResources.PartiallyPaid;
                 }
                 if (_returnTypeProperty == ReturnType.DueIcr)
                 {
                     ImagePath = "ic_Check_Mark.png";
-                    ReturnTypeName = "OverDue";
+                    ReturnTypeName = AppResources.OverDue;
                 }
             }
         }
@@ -124,17 +124,17 @@ namespace GAZT.Models
                 if (_billTypeProperty == BillType.PbillsTot)
                 {
                     ImagePath = "ic_check_circle.png";
-                    BillTypeName = "Paid";
+                    BillTypeName = AppResources.Paid;
                 }
                 if (_billTypeProperty == BillType.PrbillsTot)
                 {
                     ImagePath = "ic_loading.png";
-                    BillTypeName = "Partial";
+                    BillTypeName = AppResources.Partial;
                 }
                 if (_billTypeProperty == BillType.UpbillsTot)
                 {
                     ImagePath = "ic_money.png";
-                    BillTypeName = "Unpaid";
+                    BillTypeName = AppResources.UnPaid;
                 }
                
                
