@@ -168,7 +168,7 @@ namespace GAZT.ViewModel
             OnBellClicked = new Xamarin.Forms.Command(async () =>
             {
             });
-            OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(async () =>
+            OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.TaxPayerProfileView);
 

@@ -688,7 +688,7 @@
     <value>تغيير البريد الالكتروني</value>
   </data>
   <data name="TaxType" xml:space="preserve">
-    <value>TaxType</value>
+    <value>نوع الضريبة</value>
   </data>
   <data name="OverDue" xml:space="preserve">
     <value>تأخير</value>
