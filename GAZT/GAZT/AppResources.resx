@@ -679,7 +679,7 @@ appeal</value>
     <value>Total Unpaid Returns</value>
   </data>
   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
-    <value>The code will be expired within 2 minuites</value>
+    <value>The code will be expired within </value>
   </data>
   <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
     <value>The account will be locked after 3 failed verification code attempt</value>

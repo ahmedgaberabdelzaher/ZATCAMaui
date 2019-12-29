@@ -1026,7 +1026,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         TotalSec = TotalSec - 1;
                         TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-                        OTPValidDuration = string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                        OTPValidDuration =" " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     });
                     return true;
                 }
