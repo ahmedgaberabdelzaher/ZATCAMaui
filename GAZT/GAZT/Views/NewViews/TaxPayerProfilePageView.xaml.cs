@@ -22,8 +22,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxPayerProfilePageView;
             InitializeComponent();
-            
-           
+            SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
 
@@ -31,6 +30,15 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();

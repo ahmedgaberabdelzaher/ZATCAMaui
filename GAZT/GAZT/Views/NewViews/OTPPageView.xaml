@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             x:Class="GAZT.Views.NewViews.OTPPageView">
+             x:Class="GAZT.Views.NewViews.OTPPageView"
+             FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">

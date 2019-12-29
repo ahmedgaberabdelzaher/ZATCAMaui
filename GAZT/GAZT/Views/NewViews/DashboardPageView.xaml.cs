@@ -22,7 +22,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.DashboardPageView;
             InitializeComponent();
-           
+            SetLTR();
            
             this.BindingContext = viewModel;
 
@@ -43,8 +43,14 @@ namespace GAZT.Views
 
         #region Method
 
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
 
-       
 
         public void setHeight()
         {

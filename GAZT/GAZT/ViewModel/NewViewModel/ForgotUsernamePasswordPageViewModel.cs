@@ -706,65 +706,89 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task ValidateOTP()
         {
-            if (!string.IsNullOrEmpty(EnteredOTP))
+            await Task.Run(() =>
             {
-                string idNumber = GetTinId();
-                string lang = UtilityManager.GetLanguageParameter();
-                string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-                //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
-                string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                IsLoading = true;
+            });
 
-                string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-
-                string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
-                string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-                Metadata metadata = new Metadata();
-                metadata.id = id;
-                metadata.uri = uri;
-                metadata.type = type;
-
-                D d = new D();
-                d.__metadata = metadata;
-                d.Action = "01";
-                d.Tin = idNumber;
-                d.Langu = UtilityManager.GetLanguageParameter();
-                d.CurrAttmps = 0;
-                d.EmailId = "";
-                d.TpType = "1";
-                d.MobileNo = "";
-                d.SubType = "ZS001";
-                d.Idnumber = "";
-                d.Otp = EnteredOTP;
-                d.Minutes = 0;
-                d.Name = "";
-                d.Attempts = 0;
-                // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-                d.NewPwd = "";
-                d.CnfPwd = "";
-                d.RdBt = "P";
-                d.Hyperlink = "";
-                forgotPassword.d = d;
-                forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
+            await Task.Run(async() =>
+            {
+                if (!string.IsNullOrEmpty(EnteredOTP))
                 {
-                    await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
-                    OTPLayoutVisibility = false;
-                    NewPasswordLayoutVisibility = true;
-                    MobileNumber = forgotPassword.d.MobileNo;
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                    //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                    string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+
+                    string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+
+                    string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
+                    string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                    Metadata metadata = new Metadata();
+                    metadata.id = id;
+                    metadata.uri = uri;
+                    metadata.type = type;
+
+                    D d = new D();
+                    d.__metadata = metadata;
+                    d.Action = "01";
+                    d.Tin = idNumber;
+                    d.Langu = UtilityManager.GetLanguageParameter();
+                    d.CurrAttmps = 0;
+                    d.EmailId = "";
+                    d.TpType = "1";
+                    d.MobileNo = "";
+                    d.SubType = "ZS001";
+                    d.Idnumber = "";
+                    d.Otp = EnteredOTP;
+                    d.Minutes = 0;
+                    d.Name = "";
+                    d.Attempts = 0;
+                    // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                    d.NewPwd = "";
+                    d.CnfPwd = "";
+                    d.RdBt = "P";
+                    d.Hyperlink = "";
+                    forgotPassword.d = d;
+                    forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                        });
+
+                        OTPLayoutVisibility = false;
+                        NewPasswordLayoutVisibility = true;
+                        MobileNumber = forgotPassword.d.MobileNo;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
+                        });
+                        EnteredOTP = null;
+                    }
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
-                    EnteredOTP = null;
-                }
-            }
-            else
-            {
-                await _dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await _dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
+                    });
 
-            }
+
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+
+            
 
         }
 
@@ -846,69 +870,88 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        private async void ChangePassword()
+        private async Task ChangePassword()
         {
-            string idNumber = GetTinId();
-            string lang = UtilityManager.GetLanguageParameter();
-            string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-            //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
-            string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
-
-            string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-
-            string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
-            string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
-            ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
-            Metadata metadata = new Metadata();
-            metadata.id = id;
-            metadata.uri = uri;
-            metadata.type = type;
-
-            D d = new D();
-            d.__metadata = metadata;
-            d.Action = "40";
-            d.Tin = idNumber;
-            d.Langu = UtilityManager.GetLanguageParameter();
-            d.CurrAttmps = 0;
-            d.EmailId = "";
-            d.TpType = "1";
-            d.MobileNo = "";
-            d.SubType = "";
-            d.Idnumber = "";
-            d.Otp = EnteredOTP;
-            d.Minutes = 0;
-            d.Name = "";
-            d.Attempts = 0;
-            // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
-            d.NewPwd = NewPassword;
-            d.CnfPwd = ConfirmPassword;
-            d.RdBt = "P";
-            d.Hyperlink = "";
-            forgotPassword.d = d;
-            if (NewPassword.Equals(ConfirmPassword))
+            await Task.Run(() =>
             {
-                forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
-                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                IsLoading = true;
+            });
+
+            await Task.Run(async() =>
+            {
+                string idNumber = GetTinId();
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
+
+                string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+
+                string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
+                string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
+                Metadata metadata = new Metadata();
+                metadata.id = id;
+                metadata.uri = uri;
+                metadata.type = type;
+
+                D d = new D();
+                d.__metadata = metadata;
+                d.Action = "40";
+                d.Tin = idNumber;
+                d.Langu = UtilityManager.GetLanguageParameter();
+                d.CurrAttmps = 0;
+                d.EmailId = "";
+                d.TpType = "1";
+                d.MobileNo = "";
+                d.SubType = "";
+                d.Idnumber = "";
+                d.Otp = EnteredOTP;
+                d.Minutes = 0;
+                d.Name = "";
+                d.Attempts = 0;
+                // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
+                d.NewPwd = NewPassword;
+                d.CnfPwd = ConfirmPassword;
+                d.RdBt = "P";
+                d.Hyperlink = "";
+                forgotPassword.d = d;
+                if (NewPassword.Equals(ConfirmPassword))
                 {
-                   // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
+                    forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                    {
+                        // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
 
-                    NewPasswordLayoutVisibility = false;
-                    OTPLayoutVisibility = false;
-                    NavigateToLoginLinkVisibility = true;
-                    ForgotPasswordUserNameChangedMessage = AppResources.YourPasswordhasbeenChangedsuccessfully;
+                        NewPasswordLayoutVisibility = false;
+                        OTPLayoutVisibility = false;
+                        NavigateToLoginLinkVisibility = true;
+                        ForgotPasswordUserNameChangedMessage = AppResources.YourPasswordhasbeenChangedsuccessfully;
 
-                    //  _navigationService.GoBack();
+                        //  _navigationService.GoBack();
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                        });
+                    }
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
+                    });
                 }
-            }
-            else
+            });
+
+            await Task.Run(() =>
             {
-                await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
-            }
+                IsLoading = false;
+            });
+
+            
 
         }
 

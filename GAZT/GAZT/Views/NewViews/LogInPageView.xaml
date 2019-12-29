@@ -7,7 +7,6 @@
             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.LogInPageView"
-             Title="LogIn"
              FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

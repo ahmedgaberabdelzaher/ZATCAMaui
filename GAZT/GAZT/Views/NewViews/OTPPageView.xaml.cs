@@ -27,6 +27,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.OTPPageView;
             InitializeComponent();
+            SetLTR();
             this.BindingContext = viewModel;
 
             viewModel.IsComingFrom = e;
@@ -103,7 +104,13 @@ namespace GAZT.Views.NewViews
                 });
             });
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
