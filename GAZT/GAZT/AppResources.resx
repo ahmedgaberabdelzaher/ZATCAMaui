@@ -598,7 +598,7 @@ appeal</value>
     <value>Partial</value>
   </data>
   <data name="Returns" xml:space="preserve">
-    <value>Returns</value>
+    <value>إقرارات</value>
   </data>
   <data name="Submitted" xml:space="preserve">
     <value>Submitted</value>
@@ -695,5 +695,8 @@ appeal</value>
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>TaxType</value>
+  </data>
+  <data name="OverDue" xml:space="preserve">
+    <value>OverDue</value>
   </data>
 </root>

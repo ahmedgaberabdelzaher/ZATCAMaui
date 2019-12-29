@@ -364,7 +364,7 @@
     <value>لا يوجد شهادات</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
-    <value>TIN or Email ID</value>
+    <value>الرقم المميز أو البريد الإلكتروني</value>
   </data>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
     <value>تم تحديث رقم الموبايل بنجاح</value>
@@ -583,7 +583,7 @@
     <value>Estimate Zakat</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
-    <value>NonSubmitted</value>
+    <value> لم يتم تقديمه</value>
   </data>
   <data name="OverDue" xml:space="preserve">
     <value>OverDue</value>
@@ -598,7 +598,7 @@
     <value>تم تقديمه</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>VAT Declaration</value>
+    <value>تعهد ضريبة القيمة المضافة</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المدفوعة</value>
@@ -682,12 +682,15 @@
     <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
-    <value>Change Email</value>
+    <value>تغيير البريد الالكتروني</value>
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
-    <value>Change Mobile Number</value>
+    <value>تغيير البريد الالكتروني</value>
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>TaxType</value>
+  </data>
+  <data name="OverDue" xml:space="preserve">
+    <value>تأخير</value>
   </data>
 </root>
