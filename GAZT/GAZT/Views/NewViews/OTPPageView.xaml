@@ -13,9 +13,9 @@
           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="45*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="15*"/>
                 <RowDefinition Height="12*"/>
-                <RowDefinition Height="30*"/>
+                <RowDefinition Height="25*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"/>
