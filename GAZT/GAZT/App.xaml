@@ -458,7 +458,7 @@
             <Style x:Key="GAZTTextBoxStyleForEntry" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="Margin" Value="15,0,15,0"/>
+                <Setter Property="Margin" Value="15,0,15,-5"/>
                 <Setter Property="FontSize" Value="Small"/>
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
