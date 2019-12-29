@@ -5,6 +5,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -239,6 +240,21 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MobileNumber");
             }
         }
+
+        private string _oTPValidDuration;
+        public string OTPValidDuration
+        {
+            get
+            {
+                return _oTPValidDuration;
+            }
+            set
+            {
+                _oTPValidDuration = value;
+                RaisePropertyChanged("OTPValidDuration");
+            }
+        }
+
         
 
         private string _userName;
@@ -663,6 +679,9 @@ namespace GAZT.ViewModel.NewViewModel
 
                         // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
                         OTPLayoutVisibility = true;
+                        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        TimerStart();
                     });
 
                 }
@@ -980,6 +999,79 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+
+
+
+        private void TimerStart()
+        {
+            CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
+           
+            int TotalSec = 120;
+
+            CancellationTokenSource CTS = _CancellationTokenSource;
+
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (CTS.IsCancellationRequested)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (TotalSec == 0)
+                    {
+                        return false;
+                    }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        TotalSec = TotalSec - 1;
+                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                        OTPValidDuration = string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                    });
+                    return true;
+                }
+            });
+        }
+
+    //    private void TimerStop()
+    //    {
+    //        Interlocked.Exchange(ref _CancellationTokenSource, new CancellationTokenSource()).Cancel();
+    //    }
+
+    //    static void OnTimerCancelChanged(BindableObject bindable, object oldvalue, object newvalue)
+    //    {
+    //        ((CountDownTimer)bindable).TimerStop();
+    //    }
+
+    //    static void OnTimerTimeChanged(BindableObject bindable, object oldvalue, object newvalue)
+    //    {
+    //        ((CountDownTimer)bindable).TimerStop();
+    //        ((CountDownTimer)bindable).TimerStart();
+    //    }
+
+    //    public static readonly BindableProperty CountDownMinutesProperty = BindableProperty.Create("CountDownMinutes", typeof(int), typeof(CountDownTimer), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
+    //    public int CountDownMinutes
+    //    {
+    //        get { return (int)base.GetValue(CountDownMinutesProperty); }
+    //        set { base.SetValue(CountDownMinutesProperty, value); }
+    //    }
+
+    //    public static readonly BindableProperty CountDownSecondsProperty = BindableProperty.Create("CountDownSeconds", typeof(int), typeof(CountDownTimer), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
+    //    public int CountDownSeconds
+    //    {
+    //        get { return (int)base.GetValue(CountDownSecondsProperty); }
+    //        set { base.SetValue(CountDownSecondsProperty, value); }
+    //    }
+
+    //    public static readonly BindableProperty TimerCancelProperty = BindableProperty.Create("TimerCancel", typeof(bool), typeof(CountDownTimer), false, BindingMode.TwoWay, null, OnTimerCancelChanged);
+    //    public bool TimerCancel
+    //    {
+    //        get { return (bool)base.GetValue(TimerCancelProperty); }
+    //        set { base.SetValue(TimerCancelProperty, value); }
+    //    }
+
+    //}
+//}
         #endregion
     }
 }

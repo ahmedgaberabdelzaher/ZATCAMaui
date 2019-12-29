@@ -142,6 +142,15 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
+             <Style x:Key="InformationGrayColorLabel" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
+            </Style>
 
             
 
