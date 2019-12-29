@@ -433,13 +433,13 @@
     <value>توجد مشكلة في الشبكة, الرجاء إعادة المحاولة لاحقًا</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
-    <value>VAT</value>
+    <value>ضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
-    <value>ZAKAT</value>
+    <value>الزكاة/ضريبة الدخل</value>
   </data>
   <data name="ExciseCertificates" xml:space="preserve">
-    <value>Excise</value>
+    <value>الضريبة الانتقائية</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>رقم</value>
@@ -589,7 +589,7 @@
     <value>OverDue</value>
   </data>
   <data name="Partial" xml:space="preserve">
-    <value>Partial</value>
+    <value>مسددة جزئيا</value>
   </data>
   <data name="Returns" xml:space="preserve">
     <value>Returns</value>

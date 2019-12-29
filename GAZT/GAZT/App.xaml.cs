@@ -72,6 +72,7 @@ namespace GAZT
 
             InitializeComponent();
             CustomNavigation navigationPage = new CustomNavigation(new LogInPageView());
+            //          new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
