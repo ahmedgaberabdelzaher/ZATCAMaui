@@ -51,7 +51,7 @@ public override void ViewDidLoad()
                 try
                 {
                     UIBarButtonItem backButton = new UIBarButtonItem();
-                    backButton.Title = ""; //Your BackBurron Title here
+                    backButton.Title = "bbbb"; //Your BackBurron Title here
                     NavigationController.NavigationBar.TopItem.BackBarButtonItem = backButton;
                 }
                 catch (Exception)

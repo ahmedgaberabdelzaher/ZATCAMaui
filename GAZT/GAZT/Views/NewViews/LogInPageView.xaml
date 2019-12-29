@@ -7,6 +7,7 @@
             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.LogInPageView"
+             Title="LogIn"
              FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -61,8 +62,13 @@
 
                     <!--<Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
 
-                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom:GAZTBorderlessEntry>
 
+                    <Image Grid.Row="6"  Grid.Column="2"  Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPasswordVisibilityClicked" />
+                    </Image.GestureRecognizers>
+                </Image>
                     <!--//Test-->
 
                     <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" IsEnabled="{Binding IsLoginEnabled}" Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">

@@ -577,7 +577,7 @@
     <value>Correspondance</value>
   </data>
   <data name="EServices" xml:space="preserve">
-    <value>E-Services</value>
+    <value>الخدمات الإلكترونية</value>
   </data>
   <data name="EstimateZakat" xml:space="preserve">
     <value>Estimate Zakat</value>
@@ -595,7 +595,7 @@
     <value>Returns</value>
   </data>
   <data name="Submitted" xml:space="preserve">
-    <value>Submitted</value>
+    <value>تم تقديمه</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
     <value>VAT Declaration</value>

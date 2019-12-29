@@ -257,7 +257,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private bool _passwordVisibility = false;
+        private bool _passwordVisibility = true;
         public bool PasswordVisibility
         {
             get

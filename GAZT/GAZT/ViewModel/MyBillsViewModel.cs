@@ -150,6 +150,7 @@ namespace GAZT.ViewModel
                         }
                         else
                         {
+                            MyBills = null;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -158,6 +159,7 @@ namespace GAZT.ViewModel
                     }
                 else
                     {
+                        MyBills = null;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -176,6 +178,7 @@ namespace GAZT.ViewModel
                         }
                         else
                         {
+                            MyBills = null;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -184,6 +187,7 @@ namespace GAZT.ViewModel
                     }
                     else
                     {
+                        MyBills = null;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -202,6 +206,7 @@ namespace GAZT.ViewModel
                         }
                         else
                         {
+                            MyBills = null;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -210,6 +215,7 @@ namespace GAZT.ViewModel
                     }
                     else
                     {
+                        MyBills = null;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -229,6 +235,7 @@ namespace GAZT.ViewModel
                         }
                         else
                         {
+                            MyBills = null;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
@@ -238,6 +245,7 @@ namespace GAZT.ViewModel
                     }
                     else
                     {
+                        MyBills = null;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);

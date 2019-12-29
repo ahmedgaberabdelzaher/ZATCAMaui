@@ -24,7 +24,7 @@ namespace GAZT.Views
             App.IsArabic = true;
             this.BindingContext = viewModel;
             App.IsComingFromDashboardToLogOff = false;
-           // viewModel.PasswordVisibility = true;
+           viewModel.PasswordVisibility = true;
             ToolbarItem toolbarItem1 = new ToolbarItem
             {
                 Icon = "ic_language.png",
