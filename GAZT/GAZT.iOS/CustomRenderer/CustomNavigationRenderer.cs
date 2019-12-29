@@ -11,7 +11,7 @@ namespace GAZT.iOS.CustomRenderer
 {
     public class CustomNavigationRenderer: NavigationRenderer
     {
-public override void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             this.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
@@ -19,16 +19,22 @@ public override void ViewDidLoad()
             var height = NavigationBar.Bounds.Height;
             App.NavigationBarHeightt = height;
             UIFont ft;
+            //this.NavigationBar.TintColor = UIColor.Yellow;
+           // this.NavigationBar.BarTintColor = UIColor.Green;
 
+            this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            {
+                Font = UIFont.FromName("SSTArabic-Medium", 16)
+            };
             //if (App.IsArabic)
             //    ft = UIFont.FromName("Cairo-Regular", 16);
             //else
             //    ft = UIFont.FromName("Helvetica-Normal", 16);
 
-            this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
-            {
-                //Font = ft
-            };
+            //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            //{
+            //    //Font = ft
+            //};
 
             try
             {
@@ -59,38 +65,38 @@ public override void ViewDidLoad()
 
                 }
 
-                this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
-                {
-                    Font = ft
-                };
+                //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+                //{
+                //    Font = ft
+                //};
 
-               // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
+                // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
 
             });
 
 
-            UIBarButtonItem button = new UIBarButtonItem("Logout", UIBarButtonItemStyle.Plain, (sender, e) =>
-            {
-                var Confirm = new UIAlertView("Confirmation", "Are you Sure You Want to Logout?", null, "Cancel", "Confirm");
-                Confirm.Show();
-                Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
-                {
-                    if (es.ButtonIndex == 0)
-                    {
-                        // do something if cancel
-                    }
-                    else
-                    {
-                        // Do something if yes
-                        this.NavigationController.PopViewController(true);
-                    }
-                };
-            });
+            //    UIBarButtonItem button = new UIBarButtonItem("Logout", UIBarButtonItemStyle.Plain, (sender, e) =>
+            //    {
+            //        var Confirm = new UIAlertView("Confirmation", "Are you Sure You Want to Logout?", null, "Cancel", "Confirm");
+            //        Confirm.Show();
+            //        Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
+            //        {
+            //            if (es.ButtonIndex == 0)
+            //            {
+            //                // do something if cancel
+            //            }
+            //            else
+            //            {
+            //                // Do something if yes
+            //                this.NavigationController.PopViewController(true);
+            //            }
+            //        };
+            //    });
 
-            this.NavigationItem.LeftBarButtonItem = button;
+            //    this.NavigationItem.LeftBarButtonItem = button;
 
 
+            //}
         }
-
     }
 }
