@@ -1072,15 +1072,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pdf.
-        /// </summary>
-        public static string Pdf {
-            get {
-                return ResourceManager.GetString("Pdf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No Certificate Available.
         /// </summary>
         public static string PdfIsNoteAvailable {

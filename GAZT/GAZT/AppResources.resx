@@ -372,9 +372,6 @@ appeal</value>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
     <value>Password Changed Sucessfully </value>
   </data>
-  <data name="Pdf" xml:space="preserve">
-    <value>Pdf</value>
-  </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>No Certificate Available</value>
   </data>
@@ -695,8 +692,5 @@ appeal</value>
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>TaxType</value>
-  </data>
-  <data name="OverDue" xml:space="preserve">
-    <value>OverDue</value>
   </data>
 </root>
