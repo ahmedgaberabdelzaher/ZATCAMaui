@@ -143,6 +143,7 @@ namespace GAZT.Models
         public string BillTypeName { get; set; }
         public string BillCount { get; set; }
         public string ImagePath { get; set; }
+        public string BillAmount { get; set; }
     }
 
     //public class D

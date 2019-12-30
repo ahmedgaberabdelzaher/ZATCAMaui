@@ -95,13 +95,23 @@ namespace GAZT.Views.NewViews
 
         protected async void OnUserNameUnFocussed(object sender, EventArgs e)
         {
+            try
+            {
+                bool IsValiedEmailAddress = false;
                 string userName = UserName.Text;
-                bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                if(!string.IsNullOrEmpty(userName))
+                 IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
                 if (!IsValiedEmailAddress)
                 {
                     viewModel.IsVisibleTinIds = false;
                 }
-               await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+                await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         
         }
 
