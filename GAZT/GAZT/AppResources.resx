@@ -693,4 +693,9 @@ appeal</value>
   <data name="TaxType" xml:space="preserve">
     <value>Tax Type</value>
   </data>
+  <data name="PleaseEnterAValidUserID" xml:space="preserve">
+    <value>Please enter a valid User ID</value>
+  </data>
+  
+
 </root>

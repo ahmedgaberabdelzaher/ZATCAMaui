@@ -1174,5 +1174,11 @@ namespace GAZT {
                 return ResourceManager.GetString("TaxType", resourceCulture);
             }
         }
+        
+        public static string PleaseEnterAValidUserID {
+            get {
+                return ResourceManager.GetString("PleaseEnterAValidUserID", resourceCulture);
+            }
+        }
     }
 }

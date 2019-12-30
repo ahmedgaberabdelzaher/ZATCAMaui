@@ -9,7 +9,9 @@
              x:Class="GAZT.Views.LogInPageView"
              FlowDirection="RightToLeft">
     <ContentPage.Content>
+         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+           
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
            
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
@@ -102,7 +104,9 @@
             </StackLayout>
         </Grid>
         <!-- Acticity indicator layout end -->
+        
         </Grid>
+              </ScrollView>      
     </ContentPage.Content>
         
 </ContentPage>

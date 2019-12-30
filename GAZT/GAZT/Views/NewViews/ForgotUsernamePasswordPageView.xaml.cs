@@ -92,15 +92,19 @@ namespace GAZT.Views.NewViews
 
         protected void OnUserNameUnFocussed(object sender, EventArgs e)
         {
-            string userName = UserName.Text;
-            bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
-            if (!IsValiedEmailAddress)
-            {
-                viewModel.IsVisibleTinIds = false;
-            }
-            
+            //if(!string.IsNullOrEmpty(UserName.Text))
+            //{
+                string userName = UserName.Text;
+                bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                if (!IsValiedEmailAddress)
+                {
+                    viewModel.IsVisibleTinIds = false;
+                }
+                viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+            //}
 
-            viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+
+
         }
         
         private void SetLTR()
@@ -121,7 +125,8 @@ namespace GAZT.Views.NewViews
             viewModel.OTPLayoutVisibility = false;
             viewModel.NavigateToLoginLinkVisibility = false;
             viewModel.EnteredCaptchaValue  = "";
-
+            viewModel.IsVisibleTinIds = false;
+            viewModel.IsIDTypeVisible = false;
             //viewModel.Captcha = "";
 
 

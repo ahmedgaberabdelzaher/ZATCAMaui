@@ -27,12 +27,12 @@ namespace GAZT.iOS.CustomRenderer
                 this.Control.BackgroundColor = UIColor.White;
 
                 this.Control.BorderStyle = UITextBorderStyle.None;
-                //if (App.IsArabic)
-                //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
-                //else
-                //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
-
-              // var element = (CustomPicker)this.Element;
+                if (App.IsArabic)
+                    this.Control.Font = UIFont.FromName("SSTArabic-Medium", 12);
+                else
+                    this.Control.Font = UIFont.FromName("SSTArabic-Medium", 12);
+               
+                // var element = (CustomPicker)this.Element;
                 //if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 //{
                 //    var downarrow = UIImage.FromBundle(element.Image);

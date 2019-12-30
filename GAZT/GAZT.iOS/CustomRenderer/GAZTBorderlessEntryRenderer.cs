@@ -59,9 +59,13 @@ namespace GAZT.iOS.CustomRenderer
                 //{
                 //    Control.TextAlignment = UITextAlignment.Center;
                 //}
+                base.OnElementPropertyChanged(sender, e);
+
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
-                Control.TextColor = UIColor.Black;
+
+                Control.Layer.BorderWidth = 0;
+                Control.BorderStyle = UITextBorderStyle.None;
             }
 
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
