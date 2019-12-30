@@ -92,8 +92,6 @@ namespace GAZT.Views.NewViews
 
         protected void OnUserNameUnFocussed(object sender, EventArgs e)
         {
-            //if(!string.IsNullOrEmpty(UserName.Text))
-            //{
                 string userName = UserName.Text;
                 bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
                 if (!IsValiedEmailAddress)
@@ -101,12 +99,26 @@ namespace GAZT.Views.NewViews
                     viewModel.IsVisibleTinIds = false;
                 }
                 viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
-            //}
+        
+        }
 
+        protected void OnUserNAmeFocused(object sender, EventArgs e)
+        {
+            if(viewModel.SelectedTaxPayerType != null)
+            {
+                UserName.Keyboard = Keyboard.Numeric;
+            }
+            else
+            {
+                UserName.Keyboard = Keyboard.Default;
 
+            }
 
         }
-        
+
+      
+
+
         private void SetLTR()
         {
             if (!App.IsArabic)
