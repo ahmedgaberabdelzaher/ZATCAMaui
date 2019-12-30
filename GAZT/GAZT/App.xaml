@@ -10,7 +10,7 @@
             <Color x:Key="GreenLabelTextColor">#005e4b</Color>
             <Color x:Key="MaroonLabelTextColor">#A76d6d</Color>
             <Color x:Key="BlackLabelTextColor">#000000</Color>
-             <Color x:Key="InformationRedColor">#F36C21</Color>
+             <Color x:Key="InformationRedColor">#ff0000</Color>
              <Color x:Key="ForgotPasswordGrayTextColor">#7D858D</Color>
             
 
@@ -301,7 +301,7 @@
             <Style x:Key="MiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="15" />
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="15" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />

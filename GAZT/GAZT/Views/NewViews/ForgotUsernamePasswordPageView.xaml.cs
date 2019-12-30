@@ -92,17 +92,33 @@ namespace GAZT.Views.NewViews
 
         protected void OnUserNameUnFocussed(object sender, EventArgs e)
         {
-            string userName = UserName.Text;
-            bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
-            if (!IsValiedEmailAddress)
-            {
-                viewModel.IsVisibleTinIds = false;
-            }
-            
-
-            viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
-        }
+                string userName = UserName.Text;
+                bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                if (!IsValiedEmailAddress)
+                {
+                    viewModel.IsVisibleTinIds = false;
+                }
+                viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
         
+        }
+
+        protected void OnUserNAmeFocused(object sender, EventArgs e)
+        {
+            if(viewModel.SelectedTaxPayerType != null)
+            {
+                UserName.Keyboard = Keyboard.Numeric;
+            }
+            else
+            {
+                UserName.Keyboard = Keyboard.Default;
+
+            }
+
+        }
+
+      
+
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -121,7 +137,8 @@ namespace GAZT.Views.NewViews
             viewModel.OTPLayoutVisibility = false;
             viewModel.NavigateToLoginLinkVisibility = false;
             viewModel.EnteredCaptchaValue  = "";
-
+            viewModel.IsVisibleTinIds = false;
+            viewModel.IsIDTypeVisible = false;
             //viewModel.Captcha = "";
 
 

@@ -669,29 +669,38 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async () =>
             {
-                string idNumber = GetTinId();
-                string lang = UtilityManager.GetLanguageParameter();
-                forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
-                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if (!string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
+                try
                 {
-                    Device.BeginInvokeOnMainThread(() => {
+                    string idNumber = GetTinId();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
+                    {
+                        Device.BeginInvokeOnMainThread(() => {
 
-                        // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
-                        OTPLayoutVisibility = true;
-                        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
-                        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                        TimerStart();
-                    });
+                            // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
+                            OTPLayoutVisibility = true;
+                            string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            TimerStart();
+                        });
+
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
+                        });
+
+                    }
+                }
+                catch(Exception ex)
+                {
 
                 }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                    });
 
-                }
+                
 
             });
 
@@ -842,7 +851,7 @@ namespace GAZT.ViewModel.NewViewModel
                 forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                 {
                     Device.BeginInvokeOnMainThread(async () => {
                         //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
@@ -856,7 +865,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
 
                     });
                 }
@@ -988,20 +997,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public void SetTinsListLayoutVisibility(bool IsEmailUserName)
+        public async Task SetTinsListLayoutVisibility(bool IsEmailUserName)
         {
-            if(IsEmailUserName)
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+            if (IsEmailUserName)
             {
                 TINs = new List<TIN>();
 
-                Task.Run(async () =>
-                {
+                
                     try
                     {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
+                       
 
                         TINs = await WebServiceManager.GAZTGetAllTins(IDNumber);
                         if (TINs.Count != 0 && SelectedTinId == null)
@@ -1032,23 +1043,24 @@ namespace GAZT.ViewModel.NewViewModel
                             await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
                         });
 
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        
                     }
 
                    
-                });
+               
             }
             else
             {
                 IsVisibleTinIds = false;
             }
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
 
-          
 
-            }
+        }
 
         private string GetTinId()
         {
@@ -1100,45 +1112,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
         }
 
-    //    private void TimerStop()
-    //    {
-    //        Interlocked.Exchange(ref _CancellationTokenSource, new CancellationTokenSource()).Cancel();
-    //    }
-
-    //    static void OnTimerCancelChanged(BindableObject bindable, object oldvalue, object newvalue)
-    //    {
-    //        ((CountDownTimer)bindable).TimerStop();
-    //    }
-
-    //    static void OnTimerTimeChanged(BindableObject bindable, object oldvalue, object newvalue)
-    //    {
-    //        ((CountDownTimer)bindable).TimerStop();
-    //        ((CountDownTimer)bindable).TimerStart();
-    //    }
-
-    //    public static readonly BindableProperty CountDownMinutesProperty = BindableProperty.Create("CountDownMinutes", typeof(int), typeof(CountDownTimer), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
-    //    public int CountDownMinutes
-    //    {
-    //        get { return (int)base.GetValue(CountDownMinutesProperty); }
-    //        set { base.SetValue(CountDownMinutesProperty, value); }
-    //    }
-
-    //    public static readonly BindableProperty CountDownSecondsProperty = BindableProperty.Create("CountDownSeconds", typeof(int), typeof(CountDownTimer), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
-    //    public int CountDownSeconds
-    //    {
-    //        get { return (int)base.GetValue(CountDownSecondsProperty); }
-    //        set { base.SetValue(CountDownSecondsProperty, value); }
-    //    }
-
-    //    public static readonly BindableProperty TimerCancelProperty = BindableProperty.Create("TimerCancel", typeof(bool), typeof(CountDownTimer), false, BindingMode.TwoWay, null, OnTimerCancelChanged);
-    //    public bool TimerCancel
-    //    {
-    //        get { return (bool)base.GetValue(TimerCancelProperty); }
-    //        set { base.SetValue(TimerCancelProperty, value); }
-    //    }
-
-    //}
-//}
+    
         #endregion
     }
 }

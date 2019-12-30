@@ -278,6 +278,7 @@ namespace GAZT.ViewModel
 
                 if (myBills != null && myBills.Count != 0)
                 {
+                    myBills = UpdateDueAmount(myBills);
                     MyBills = new List<MyBills>();
                     MyBills = myBills;
                     MyBillsOriginal = myBills;
@@ -334,6 +335,44 @@ namespace GAZT.ViewModel
                 await _navigation.PopToRootAsync();
             }
         }
+
+        private List<MyBills> UpdateDueAmount(List<MyBills> myBills)
+        {
+           // List<MyBills> list = new List<MyBills>();
+          
+
+            for (int i = 0; i < myBills.Count; i++)
+            {
+
+                if (myBills[i].TestDueAmount.Contains("."))
+                {
+                    string[] Amount  = new String[2];
+                    Amount = myBills[i].TestDueAmount.Split('.');
+                    double testDueAmount = Convert.ToDouble(Amount[0]);
+                    string _testDueAmount = testDueAmount.ToString("#,##0");
+                    _testDueAmount = _testDueAmount +"." + Amount[1];
+                    myBills[i].TestDueAmount = _testDueAmount;
+                }
+                else
+                {
+                    double testDueAmount = Convert.ToDouble(myBills[i].TestDueAmount);
+                    string _testDueAmount = testDueAmount.ToString("#,##0");
+                    myBills[i].TestDueAmount = _testDueAmount;
+                }
+
+                if (myBills[i].FAEDN.Contains("T"))
+                {
+                    string[] _dueDate = new String[2];
+                    _dueDate = myBills[i].FAEDN.Split('T');
+                 
+                    myBills[i].FAEDN = _dueDate[0];
+                }
+
+            }
+            return myBills;
+        }
+
+       
 
     }
 }
