@@ -35,11 +35,12 @@
                 <Label Text="{x:Static local:AppResources.NewMobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
                 <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
+                        <Label Grid.Row="3" Grid.Column="0" Text="00966" BackgroundColor="Red"></Label>
                 </Frame>
 
                 <!--<custom:GAZTBorderlessEntry IsEnabled="False" VerticalOptions="End" Text="00966" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
 
-                <custom:GAZTBorderlessEntry Text="{Binding NewMobile}"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry Text="{Binding NewMobile}"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" Margin="0" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="1"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
 
                 <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
