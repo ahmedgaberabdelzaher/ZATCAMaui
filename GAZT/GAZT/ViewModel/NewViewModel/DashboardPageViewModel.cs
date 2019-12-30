@@ -4,6 +4,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,37 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("DeviceWidth");
             }
         }
+
+        private string _startDate;
+        public string StartDate
+        {
+            get
+            {
+                return _startDate;
+            }
+            set
+            {
+                _startDate = value;
+                RaisePropertyChanged("StartDate");
+            }
+        }
+
+        private string _endDate;
+        public string EndDate
+        {
+            get
+            {
+                return _endDate;
+            }
+            set
+            {
+                _endDate = value;
+                RaisePropertyChanged("EndDate");
+            }
+        }
+
+
+        
 
         private int _heightRequestForCollectionView = 0;
         public int HeightRequestForCollectionView
@@ -215,6 +247,10 @@ namespace GAZT.ViewModel
 
                 //return
                 //BillReturn = new List<BillReturn>();
+                DateTime BegDate = dashboard.results[0].Begda;
+                DateTime endDate = dashboard.results[0].Endda;
+                 StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
+                 EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
 
                 BillReturn objBill1 = new BillReturn();
                 objBill1.ReturnTypeProperty = ReturnType.RtnTot;

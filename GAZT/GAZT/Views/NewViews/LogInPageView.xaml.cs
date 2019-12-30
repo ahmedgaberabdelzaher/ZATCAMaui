@@ -21,6 +21,8 @@ namespace GAZT.Views
             viewModel = App.Locator.LogInPageView;
 
             InitializeComponent();
+         string str =   DateTime.Now.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
+
             App.IsArabic = true;
             this.BindingContext = viewModel;
             App.IsComingFromDashboardToLogOff = false;
