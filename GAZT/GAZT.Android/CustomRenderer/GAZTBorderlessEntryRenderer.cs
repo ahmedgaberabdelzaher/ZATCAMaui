@@ -21,7 +21,13 @@ namespace GAZT.Droid.CustomRenderer
 {
     public class GAZTBorderlessEntryRenderer : EntryRenderer
     {
-      
+        public GAZTBorderlessEntryRenderer(Context context) : base(context)
+        {
+        }
+
+        public static void Init() { }
+        double fontSize;
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);

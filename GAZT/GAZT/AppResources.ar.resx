@@ -344,9 +344,6 @@
   <data name="Bills" xml:space="preserve">
     <value>الفاتورة</value>
   </data>
-  <data name="DateAvailableToGAZT" xml:space="preserve">
-    <value>البيانات المتوفرة للهيئة</value>
-  </data>
   <data name="AmendmentsDoNotMatchText" xml:space="preserve">
     <value>
            عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل ، وفي حال الرغبة في بالاستمرار سيتم إنشاء طلب اعتراض       </value>
@@ -455,9 +452,6 @@
   </data>
   <data name="ZakatTaxTypeForBills" xml:space="preserve">
     <value>زكاة</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
   </data>
   <data name="All" xml:space="preserve">
     <value>الجميع</value>
@@ -586,13 +580,13 @@
     <value> لم يتم تقديمه</value>
   </data>
   <data name="OverDue" xml:space="preserve">
-    <value>OverDue</value>
+    <value>تأخير</value>
   </data>
   <data name="Partial" xml:space="preserve">
     <value>مسددة جزئيا</value>
   </data>
   <data name="Returns" xml:space="preserve">
-   <value>إقرارات</value>
+    <value>إقرارات</value>
   </data>
   <data name="Submitted" xml:space="preserve">
     <value>تم تقديمه</value>
@@ -689,8 +683,5 @@
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
-  </data>
-  <data name="OverDue" xml:space="preserve">
-    <value>تأخير</value>
   </data>
 </root>

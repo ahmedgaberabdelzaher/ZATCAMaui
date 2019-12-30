@@ -497,12 +497,6 @@ namespace GAZT {
             }
         }
         
-        public static string DateAvailableToGAZT {
-            get {
-                return ResourceManager.GetString("DateAvailableToGAZT", resourceCulture);
-            }
-        }
-        
         public static string AmendmentsDoNotMatchText {
             get {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
@@ -716,12 +710,6 @@ namespace GAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
-            }
-        }
-        
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
