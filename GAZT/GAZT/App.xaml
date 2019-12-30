@@ -304,7 +304,7 @@
                         <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="15" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordTextColor}" />
             </Style>
             <Style x:Key="DashboardMiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
