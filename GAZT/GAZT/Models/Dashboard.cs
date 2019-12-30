@@ -62,7 +62,7 @@ namespace GAZT.Models
                 }
                 if (_returnTypeProperty == ReturnType.NrtnTot)
                 {
-                    ImagePath = "ic_Check_Mark.png";
+                    ImagePath = "non_submitted.png";
                     ReturnTypeName = AppResources.NonSubmitted;
                 }
                 if (_returnTypeProperty == ReturnType.PrtnTot)
@@ -77,12 +77,12 @@ namespace GAZT.Models
                 }
                 if (_returnTypeProperty == ReturnType.PprtnTot)
                 {
-                    ImagePath = "ic_Check_Mark.png";
+                    ImagePath = "partiallay_paid_returns.png";
                     ReturnTypeName = AppResources.PartiallyPaid;
                 }
                 if (_returnTypeProperty == ReturnType.DueIcr)
                 {
-                    ImagePath = "ic_Check_Mark.png";
+                    ImagePath = "overdue_Returns.png";
                     ReturnTypeName = AppResources.OverDue;
                 }
             }
