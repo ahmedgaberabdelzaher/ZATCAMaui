@@ -15,9 +15,10 @@ namespace GAZT.Views
         MyBillsViewModel viewModel;
         public MyBillsView()
         {
-            viewModel = App.Locator.MyBillsView;
             InitializeComponent();
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            viewModel = App.Locator.MyBillsView;
+           
+            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];

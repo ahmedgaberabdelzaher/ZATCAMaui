@@ -256,9 +256,9 @@
                 </Setter>
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
 
-               
+                
 
-                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
 
             <Style x:Key="TaxPayerSmallMiniWhiteLabelStyle" TargetType="Label">
