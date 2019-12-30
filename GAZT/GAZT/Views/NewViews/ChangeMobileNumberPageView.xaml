@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.NewViews.ChangeMobileNumberPageView"
              Title="{x:Static local:AppResources.ChangeMobileNumber}"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              >
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -37,9 +37,9 @@
                 </Label>
                 <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                           </Frame>
-                    <StackLayout Grid.Row="3" Grid.Column="0"  Margin="10,0,10,-5" >
-                        <Label  VerticalTextAlignment="Center"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="00966" FontAttributes="Bold"  ></Label>
-
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,0,10,-5" >
+                        <Label  Text="+00966" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"   ></Label>
+                        <custom:GAZTBorderlessEntry  Margin="-10,0,-10,0" Text="{Binding NewMobile}" VerticalTextAlignment="Center"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"    Keyboard="Numeric"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
                     </StackLayout>
                 
                     <!--<Label Grid.Row="3" BackgroundColor="Aqua" Grid.Column="0" Margin="13,0,13,-5" VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="00966"  ></Label>-->
@@ -47,8 +47,7 @@
 
                     <!--<custom:GAZTBorderlessEntry IsEnabled="False" VerticalOptions="End" Text="00966" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
 
-                <custom:GAZTBorderlessEntry  Text="{Binding NewMobile}" VerticalTextAlignment="Center"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898" Margin="10,0,10,-5"  VerticalOptions="Center" Keyboard="Numeric" Grid.Row="3"  Grid.Column="1" Grid.ColumnSpan="2"  Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
-
+              
                     
 
                 <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>

@@ -458,4 +458,85 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_footer_img%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\non_submitted%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overdue_Returns%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partiallay_paid_returns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partiallay_paid_returns%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partiallay_paid_returns%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\non_submitted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\non_submitted%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Estimate_zakat1 %403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_bills_circle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_bills_circle1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_bills_circle1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_cirteficte_circle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_cirteficte_circle1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\My_cirteficte_circle1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Estimate_zakat 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Estimate_zakat1 %402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_Evasion%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_Evasion%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vatlookup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_correspondance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_correspondance%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_correspondance%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_tax_Evasion.png" />
+  </ItemGroup>
 </Project>

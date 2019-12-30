@@ -26,6 +26,14 @@ namespace GAZT.ViewModel
         public ICommand OnMyBillsClicked { get; set; }
         public Dashboard dashboard { get; set; }
 
+
+        public ICommand OnEstimateZakatClicked { get; set; }
+        public ICommand OnVATLookupClicked { get; set; }
+        public ICommand OnCorrespondanceClicked { get; set; }
+        public ICommand OnVatdeclarationClicked { get; set; }
+        public ICommand OnTaxevasionClicked { get; set; }
+
+
         #endregion
 
         #region Property
@@ -234,6 +242,34 @@ namespace GAZT.ViewModel
             OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(async () =>
             {
                 _navigationService.NavigateTo(App.TaxPayerProfilePageView);
+
+            });
+
+
+
+            OnEstimateZakatClicked = new Xamarin.Forms.Command(async () =>
+            {
+               await _dialogService.ShowMessage("Available in future release",AppResources.Information);
+
+            });
+            OnVATLookupClicked = new Xamarin.Forms.Command(async () =>
+            {
+                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+
+            });
+            OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
+            {
+                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+
+            });
+            OnVatdeclarationClicked = new Xamarin.Forms.Command(async () =>
+            {
+                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+
+            });
+            OnTaxevasionClicked = new Xamarin.Forms.Command(async () =>
+            {
+                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
 
             });
 

@@ -102,10 +102,13 @@
                         <ViewCell>
                             <ContentView>
                                 <Frame OutlineColor="#C9C9C9"
-                                       Margin="0,0,0,5"
+                                       Margin="0,0,0,10"
+                                       Padding="10,5,10,5"
+                                       CornerRadius="5"
+                                       
                                >
-                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,5" Padding="0" >
-                                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  BackgroundColor="White" >
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
+                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="40*" />
                                                 <ColumnDefinition Width="50*" />
@@ -160,13 +163,22 @@
                                    Grid.Row="2"
                                    Grid.Column="0"
                                    />
-                                                <Label Text="{Binding TestDueAmount}" 
+                                                <Label  
                                      
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                    Grid.Row="2"
-                                   Grid.Column="1" />
+                                   Grid.Column="1" >
 
-                                            <Label Text="{x:Static local:AppResources.DueDate}" 
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span    Text="SAR "/>
+                                                            <Span  Text="{Binding TestDueAmount}"  />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+
+                                                </Label>
+
+                                                <Label Text="{x:Static local:AppResources.DueDate}" 
                                       
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                    Grid.Row="3"
@@ -178,7 +190,8 @@
                                    Grid.Row="3"
                                    Grid.Column="1" />
 
-                                            <Image  Grid.Row="1"  Grid.Column="3" Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                            <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                             <BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>
 
