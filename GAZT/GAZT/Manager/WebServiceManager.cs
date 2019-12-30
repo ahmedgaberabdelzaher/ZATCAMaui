@@ -204,14 +204,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -267,14 +267,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -327,14 +327,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -397,14 +397,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return false;
@@ -470,14 +470,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return false;
@@ -595,14 +595,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -663,14 +663,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -727,14 +727,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return false;
@@ -797,14 +797,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -923,14 +923,14 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    {
-                        App.IsSessionExpired = true;
-                        throw new Exception("Invalid Token");
-                    }
+                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                    //{
+                    //    App.IsSessionExpired = true;
+                    //    throw new Exception("Invalid Token");
+                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if ((0 == String.Compare(NewToken, "Token has expaired")))
+                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
@@ -979,15 +979,15 @@ namespace GAZT.Manager
                             NewToken = values.First();
                         }
 
-                        if ((0 == String.Compare(NewToken, "Invalid Token")))
-                        {
-                            App.IsSessionExpired = true;
-                            throw new Exception("Invalid Token");
+                        //if ((0 == String.Compare(NewToken, "Invalid Token")))
+                        //{
+                        //    App.IsSessionExpired = true;
+                        //    throw new Exception("Invalid Token");
 
-                        }
+                        //}
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")))
+                            if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;

@@ -142,6 +142,8 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span  Text="{x:Static local:AppResources.Sadad}" Style="{StaticResource MiniGoldLabelStyle}" />
+                                                            <Span  Text=" " Style="{StaticResource MiniGoldLabelStyle}" />
+
                                                             <Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>

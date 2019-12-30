@@ -121,7 +121,7 @@
     <value>Alerts</value>
   </data>
   <data name="AmendReturn" xml:space="preserve">
-    <value>Amend Return</value>
+    <value>Amend return</value>
   </data>
   <data name="AmountDetailsAndSADADNumberPayment" xml:space="preserve">
     <value>Amount details and SADAD number payment</value>
@@ -160,7 +160,7 @@
     <value>Contracts to be approved</value>
   </data>
   <data name="CopiedSADADPaymentNumber" xml:space="preserve">
-    <value>It has copied SADAD payment number</value>
+    <value>SADAD payment number copied</value>
   </data>
   <data name="CopySADADNumber" xml:space="preserve">
     <value>Copy SADAD number</value>
@@ -181,22 +181,22 @@
     <value>Details of SADAD bill</value>
   </data>
   <data name="DueAmount" xml:space="preserve">
-    <value>Due Amount</value>
+    <value>Due amount</value>
   </data>
   <data name="DueDate" xml:space="preserve">
-    <value>Due Date</value>
+    <value>Due date</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="OldEmail" xml:space="preserve">
-    <value>Old Email</value>
+    <value>Old email</value>
   </data>
   <data name="EnterVerificationCode" xml:space="preserve">
     <value>Please enter verification code received on mobile</value>
   </data>
   <data name="EstimateSalesForFiscalYear" xml:space="preserve">
-    <value>Estimate sales for Fiscal year</value>
+    <value>Estimate sales for fiscal year</value>
   </data>
   <data name="EstimateZakatReturn" xml:space="preserve">
     <value>Estimate</value>
@@ -214,10 +214,10 @@
     <value>You have paid {} SAR for current fiscal year</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log In</value>
+    <value>Log in</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
-    <value>Mobile Number</value>
+    <value>Mobile number</value>
   </data>
   <data name="MyBills" xml:space="preserve">
     <value>My Bills</value>
@@ -241,16 +241,16 @@
     <value>Name</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
-    <value>New Email</value>
+    <value>New email</value>
   </data>
   <data name="NewMobileNumber" xml:space="preserve">
-    <value>New Mobile Number</value>
+    <value>New mobile number</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>New password</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
-    <value>Overdue Return</value>
+    <value>Overdue return</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password </value>
@@ -259,13 +259,13 @@
     <value>Current Password</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>ChangePassword</value>
+    <value>Change Password</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>Pay by MADA</value>
   </data>
   <data name="PurchaseValue" xml:space="preserve">
-    <value>Purchase Value</value>
+    <value>Purchase value</value>
   </data>
   <data name="ReasonForChatting" xml:space="preserve">
     <value>Reason for chatting</value>
@@ -277,25 +277,25 @@
     <value>Registration certificate</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>Remember Me</value>
+    <value>Remember me</value>
   </data>
   <data name="ReturnPeriod" xml:space="preserve">
-    <value>Return Period</value>
+    <value>Return period</value>
   </data>
   <data name="RetypePassword" xml:space="preserve">
-    <value>Retype Password</value>
+    <value>Retype password</value>
   </data>
   <data name="RetypeEmail" xml:space="preserve">
-    <value>Retype Email</value>
+    <value>Retype email</value>
   </data>
   <data name="SADADNumber" xml:space="preserve">
     <value>SADAD number</value>
   </data>
   <data name="SADADPaymentNumber" xml:space="preserve">
-    <value>SADAD Payment Number</value>
+    <value>SADAD payment number</value>
   </data>
   <data name="SalesDetails" xml:space="preserve">
-    <value>Sales Details</value>
+    <value>Sales details</value>
   </data>
   <data name="SalesNotSalesPoints" xml:space="preserve">
     <value>Sales not sales points</value>
@@ -304,28 +304,28 @@
     <value>Save</value>
   </data>
   <data name="StartChatting" xml:space="preserve">
-    <value>Start Chatting</value>
+    <value>Start chatting</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
   <data name="SubmittedReturn" xml:space="preserve">
-    <value>Submitted Return</value>
+    <value>Submitted return</value>
   </data>
   <data name="SummaryOfZakatCalculation" xml:space="preserve">
-    <value>Summary of Zakat Calculation</value>
+    <value>Summary of Zakat calculation</value>
   </data>
   <data name="TaxpayerProfile" xml:space="preserve">
-    <value>Taxpayer Profile</value>
+    <value>Taxpayer profile</value>
   </data>
   <data name="TIN" xml:space="preserve">
     <value>TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
-    <value>Total Amount</value>
+    <value>Total amount</value>
   </data>
   <data name="TotalOfBillsUnpaid" xml:space="preserve">
-    <value>Total Unpaid-Bill Amount SAR:</value>
+    <value>Total unpaid-bill amount SAR:</value>
   </data>
   <data name="TotalRequiredToBePaid" xml:space="preserve">
     <value>Total required to be paid</value>
@@ -334,82 +334,71 @@
     <value>25% from  objected amount</value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
-    <value>VAT Registration Certificate</value>
+    <value>VAT registration certificate</value>
   </data>
   <data name="ZakatAmount" xml:space="preserve">
-    <value>Zakat Amount</value>
+    <value>Zakat amount</value>
   </data>
   <data name="ZakatBase" xml:space="preserve">
-    <value>Zakat Base</value>
+    <value>Zakat base</value>
   </data>
   <data name="ZakatTaxType" xml:space="preserve">
-    <value>An appeal will not be filed only in case pay for Amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected</value>
+    <value>An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected</value>
   </data>
   <data name="Verify" xml:space="preserve">
     <value>Verify</value>
   </data>
   <data name="AmendmentsDoNotMatchText" xml:space="preserve">
-    <value>Dear taxpayer, when calculating the
-
-amendments, found that your
-
-amendments do not match what was
-
-calculated by the General Authority
-
-for Zakat and Income, and in case of
-
-wants to continue will be created an
-
-appeal</value>
+    <value>Dear taxpayer, when calculating the amendments, found that your
+amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal</value>
   </data>
   <data name="LoginSuccessful" xml:space="preserve">
-    <value>Login Successful</value>
+    <value>Login successful</value>
   </data>
   <data name="MobileNumberVerificationSuccessful" xml:space="preserve">
-    <value>Mobile Number Verification Code sent successfully.</value>
+    <value>Mobile number verification code sent successfully</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
-    <value>Password Changed Sucessfully </value>
+    <value>Password changed sucessfully </value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
-    <value>No Certificate Available</value>
+    <value>No certificate available</value>
   </data>
   <data name="TinEmail" xml:space="preserve">
     <value>TIN or Email ID</value>
   </data>
   <data name="MobileNumberUpdatedSuccessfully" xml:space="preserve">
-    <value>Mobile Number Updated Successfully</value>
+    <value>Mobile number updated successfully</value>
   </data>
   <data name="DetailsChangedSuccessfully" xml:space="preserve">
-    <value>Details Changed Successfully</value>
+    <value>Details changed successfully</value>
   </data>
   <data name="Emailverificationcodesentsuccessfully" xml:space="preserve">
-    <value>Email Verification Code sent successfully.</value>
+    <value>Email verification code sent successfully.</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
-    <value>Invalid Email</value>
+    <value>Invalid email</value>
   </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to log off?</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
-    <value>The Email address is not matching</value>
+    <value>The email address is not matching</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
-    <value>New Password field and Confirm Password field must match</value>
+    <value>New password field and confirm password field must match</value>
   </data>
   <data name="EnterVerificationCodeForEmail" xml:space="preserve">
-    <value>Please enter verification code received on email.</value>
+    <value>Please enter verification code received on email</value>
   </data>
   <data name="InvalidOTP" xml:space="preserve">
     <value>Invalid OTP, please enter correct OTP</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
-    <value>Invalid Password</value>
+    <value>Invalid password</value>
   </data>
   <data name="EnterNewMobileNumber" xml:space="preserve">
-    <value>+966 enter your 9 digit mobile number</value>
+    <value>Enter your 9 digit mobile number</value>
   </data>
   <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>Please enter valid mobile number</value>
@@ -439,64 +428,64 @@ appeal</value>
     <value>Select TIN</value>
   </data>
   <data name="NoTINsAvailable" xml:space="preserve">
-    <value>No TIN's linked with this email address.</value>
+    <value>No TIN's linked with this email address</value>
   </data>
   <data name="VpnNotConnected" xml:space="preserve">
-    <value>App is facing network issue, please try again later.</value>
+    <value>App is facing network issue, please try again later</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value>Forgot Password or User Name?</value>
+    <value>Forgot password or user name?</value>
   </data>
   <data name="Individual" xml:space="preserve">
-    <value>Individual/Personal Business</value>
+    <value>Individual/Personal business</value>
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
   </data>
   <data name="ForgotUsername" xml:space="preserve">
-    <value>Forgot User Name</value>
+    <value>Forgot user name</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot Password</value>
+    <value>Forgot password</value>
   </data>
   <data name="NationaID" xml:space="preserve">
     <value>National ID</value>
   </data>
   <data name="VerificationCode" xml:space="preserve">
-    <value>Verification Code</value>
+    <value>Verification code</value>
   </data>
   <data name="SelectPasswordUserName" xml:space="preserve">
-    <value>Select Password/User name</value>
+    <value>Select password/user name</value>
   </data>
   <data name="EntityType" xml:space="preserve">
-    <value>Entity Type</value>
+    <value>Entity type</value>
   </data>
   <data name="IDNumber" xml:space="preserve">
     <value>ID Number</value>
   </data>
   <data name="IDType" xml:space="preserve">
-    <value>Taxpayer Type</value>
+    <value>Taxpayer type</value>
   </data>
   <data name="UserID" xml:space="preserve">
     <value>User ID</value>
   </data>
   <data name="CorportaeID" xml:space="preserve">
-    <value>Corportae ID</value>
+    <value>Corporate ID</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>User Name</value>
+    <value>User name</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Number</value>
   </data>
   <data name="PaymentNumber" xml:space="preserve">
-    <value>Payment Number</value>
+    <value>Payment number</value>
   </data>
   <data name="Sadad" xml:space="preserve">
     <value>SADAD</value>
   </data>
   <data name="SadadPaymentNumberForBills" xml:space="preserve">
-    <value>Sadad Payment Number</value>
+    <value>Sadad payment number</value>
   </data>
   <data name="ZakatTaxTypeForBills" xml:space="preserve">
     <value>Zakat</value>
@@ -508,19 +497,19 @@ appeal</value>
     <value>Paid</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>PartiallyPaid</value>
+    <value>Partially paid</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
-    <value>UnPaid</value>
+    <value>Unpaid</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>Forgot Password or UserName</value>
+    <value>Forgot password or user name</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
-    <value> Invalid Captcha</value>
+    <value> Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>No Bills Available</value>
+    <value>No bills available</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
@@ -529,10 +518,10 @@ appeal</value>
     <value>Captcha</value>
   </data>
   <data name="EnterNewpassword" xml:space="preserve">
-    <value>Enter New password</value>
+    <value>Enter new password</value>
   </data>
   <data name="EnterConfirmpassword" xml:space="preserve">
-    <value>Enter Confirm password</value>
+    <value>Enter confirm password</value>
   </data>
   <data name="EnterOTP" xml:space="preserve">
     <value>Enter OTP</value>
@@ -541,7 +530,7 @@ appeal</value>
     <value>Resend OTP</value>
   </data>
   <data name="PleaseenterUsername" xml:space="preserve">
-    <value>Please enter Username</value>
+    <value>Please enter username</value>
   </data>
   <data name="enteredcaptchacodeisincorrect" xml:space="preserve">
     <value>Entered captcha code is incorrect. Please try again</value>
@@ -562,7 +551,7 @@ appeal</value>
     <value>Username has been sent to registered mobile number and email Id</value>
   </data>
   <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
-    <value>Your Password has been Changed successfully.</value>
+    <value>Your password has been changed successfully</value>
   </data>
   <data name="Boththepasswordfieldsshouldmatch" xml:space="preserve">
     <value>Both the password fields should match</value>
@@ -577,7 +566,7 @@ appeal</value>
     <value>Bills</value>
   </data>
   <data name="Correspondance" xml:space="preserve">
-    <value>Correspondance</value>
+    <value>Correspondence</value>
   </data>
   <data name="EServices" xml:space="preserve">
     <value>E-Services</value>
@@ -586,10 +575,10 @@ appeal</value>
     <value>Estimate Zakat</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
-    <value>NonSubmitted</value>
+    <value>Non Submitted</value>
   </data>
   <data name="OverDue" xml:space="preserve">
-    <value>OverDue</value>
+    <value>Overdue</value>
   </data>
   <data name="Partial" xml:space="preserve">
     <value>Partial</value>
@@ -604,16 +593,16 @@ appeal</value>
     <value>VAT Declaration</value>
   </data>
   <data name="TotalUnpaidBills" xml:space="preserve">
-    <value>Total Unpaid Bills</value>
+    <value>Total unpaid bills</value>
   </data>
   <data name="TotalUnpaidBillsAmount" xml:space="preserve">
-    <value>Total Unpaid Bills Amount</value>
+    <value>Total unpaid bills amount</value>
   </data>
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
-    <value>Total Partially Paid Bills</value>
+    <value>Total partially paid bills</value>
   </data>
   <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
-    <value>Total Partial Paid Bills Amount</value>
+    <value>Total partial paid bills amount</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
     <value>No data available</value>
@@ -628,10 +617,10 @@ appeal</value>
     <value>Enter username</value>
   </data>
   <data name="ResendVerificationCode" xml:space="preserve">
-    <value>Resend Verification Code</value>
+    <value>Resend verification code</value>
   </data>
   <data name="PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal" xml:space="preserve">
-    <value>Please Enter verification code received on mobile to Enter GAZT Portal</value>
+    <value>Please enter verification code received on mobile to Enter GAZT eServices App</value>
   </data>
   <data name="TheaccountwillbelockedafterThreefailedverificationcodeattempts" xml:space="preserve">
     <value>The account will be locked after 3 failed verification code attempts</value>
@@ -643,37 +632,37 @@ appeal</value>
     <value>Dashboard</value>
   </data>
   <data name="VarificationCode" xml:space="preserve">
-    <value>Verification Code</value>
+    <value>Verification code</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
-    <value>VAT-Lookup</value>
+    <value>VAT Lookup</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
-    <value>Total Submitted Returns</value>
+    <value>Total submitted returns</value>
   </data>
   <data name="TotalPaidReturns" xml:space="preserve">
-    <value>Total Paid Returns</value>
+    <value>Total paid returns</value>
   </data>
   <data name="TotalOverDueReturns" xml:space="preserve">
-    <value>Total Over Due Returns</value>
+    <value>Total over due returns</value>
   </data>
   <data name="TotalPaidBills" xml:space="preserve">
-    <value>Total Paid Bills</value>
+    <value>Total paid bills</value>
   </data>
   <data name="TotalNonSubmittedReturns" xml:space="preserve">
-    <value>Total Non Submitted Returns</value>
+    <value>Total non submitted returns</value>
   </data>
   <data name="TotalNoofReturns" xml:space="preserve">
-    <value>Total No Of Returns</value>
+    <value>Total no of returns</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
-    <value>Total Paid Bills Amount</value>
+    <value>Total paid bills amount</value>
   </data>
   <data name="TotalPartiallyPaidReturns" xml:space="preserve">
-    <value>Total Partially Paid Returns</value>
+    <value>Total partially paid returns</value>
   </data>
   <data name="TotalUnpaidReturns" xml:space="preserve">
-    <value>Total Unpaid Returns</value>
+    <value>Total unpaid returns</value>
   </data>
   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
     <value>The code will be expired within </value>
@@ -691,6 +680,6 @@ appeal</value>
     <value>Change Mobile Number</value>
   </data>
   <data name="TaxType" xml:space="preserve">
-    <value>TaxType</value>
+    <value>Tax type</value>
   </data>
 </root>

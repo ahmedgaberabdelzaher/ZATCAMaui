@@ -49,7 +49,17 @@
                     <Label Text="{Binding EndDate}" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,1,0,1" FontSize="Small" FontFamily="{StaticResource SSTArBold}" BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
                     </Label>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#F4FCFD"></StackLayout>
-                    <Label Text="{x:Static local:AppResources.Returns}" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="Start" BackgroundColor="#F4FCFD"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,5,1" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
+                    <Label Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="Start" BackgroundColor="#F4FCFD"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,5,1" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span  Text="{x:Static local:AppResources.Returns}"  />
+                                <Span  Text=" (" TextDecorations="None"/>
+                                <Span  Text="{x:Static local:AppResources.TotalNoofReturns}" TextDecorations="None"  />
+                                <Span Text=":-" TextDecorations="None"/>
+                                <Span Text="{Binding TotalNoOfReturns}" TextDecorations="None"/>
+                                <Span Text=")" TextDecorations="None"/>
+                            </FormattedString>
+                        </Label.FormattedText>
                     </Label>
                     <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
@@ -105,7 +115,17 @@
                                             <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" FontSize="Title" TextColor="#065E49" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         </StackLayout>-->
                                         <StackLayout Grid.Row="1" Grid.Column="0" Margin="0,-6,0,0"  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
-                                            <Label Text="{Binding BillTypeName}"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+                                            <Label Text="{Binding BillTypeName}" Margin="0,0,0,-7" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+                                            <Label Margin="0"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="(SAR "></Span>
+                                                        <Span Text="{Binding BillAmount}"/>
+                                                        <Span Text=")"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>

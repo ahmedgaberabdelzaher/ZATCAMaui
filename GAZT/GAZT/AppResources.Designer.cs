@@ -88,19 +88,8 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear taxpayer, when calculating the
-        ///
-        ///amendments, found that your
-        ///
-        ///amendments do not match what was
-        ///
-        ///calculated by the General Authority
-        ///
-        ///for Zakat and Income, and in case of
-        ///
-        ///wants to continue will be created an
-        ///
-        ///appeal.
+        ///   Looks up a localized string similar to Dear taxpayer, when calculating the amendments, found that your
+        ///amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal.
         /// </summary>
         public static string AmendmentsDoNotMatchText {
             get {
@@ -109,7 +98,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amend Return.
+        ///   Looks up a localized string similar to Amend return.
         /// </summary>
         public static string AmendReturn {
             get {
@@ -253,7 +242,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ChangePassword.
+        ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
             get {
@@ -298,7 +287,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It has copied SADAD payment number.
+        ///   Looks up a localized string similar to SADAD payment number copied.
         /// </summary>
         public static string CopiedSADADPaymentNumber {
             get {
@@ -325,7 +314,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Corportae ID.
+        ///   Looks up a localized string similar to Corporate ID.
         /// </summary>
         public static string CorportaeID {
             get {
@@ -334,7 +323,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Correspondance.
+        ///   Looks up a localized string similar to Correspondence.
         /// </summary>
         public static string Correspondance {
             get {
@@ -397,7 +386,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Details Changed Successfully.
+        ///   Looks up a localized string similar to Details changed successfully.
         /// </summary>
         public static string DetailsChangedSuccessfully {
             get {
@@ -415,7 +404,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Due Amount.
+        ///   Looks up a localized string similar to Due amount.
         /// </summary>
         public static string DueAmount {
             get {
@@ -424,7 +413,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Due Date.
+        ///   Looks up a localized string similar to Due date.
         /// </summary>
         public static string DueDate {
             get {
@@ -442,7 +431,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Verification Code sent successfully..
+        ///   Looks up a localized string similar to Email verification code sent successfully..
         /// </summary>
         public static string Emailverificationcodesentsuccessfully {
             get {
@@ -460,7 +449,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter Confirm password.
+        ///   Looks up a localized string similar to Enter confirm password.
         /// </summary>
         public static string EnterConfirmpassword {
             get {
@@ -487,7 +476,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +966 enter your 9 digit mobile number.
+        ///   Looks up a localized string similar to Enter your 9 digit mobile number.
         /// </summary>
         public static string EnterNewMobileNumber {
             get {
@@ -496,7 +485,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter New password.
+        ///   Looks up a localized string similar to Enter new password.
         /// </summary>
         public static string EnterNewpassword {
             get {
@@ -541,7 +530,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter verification code received on email..
+        ///   Looks up a localized string similar to Please enter verification code received on email.
         /// </summary>
         public static string EnterVerificationCodeForEmail {
             get {
@@ -550,7 +539,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entity Type.
+        ///   Looks up a localized string similar to Entity type.
         /// </summary>
         public static string EntityType {
             get {
@@ -568,7 +557,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimate sales for Fiscal year.
+        ///   Looks up a localized string similar to Estimate sales for fiscal year.
         /// </summary>
         public static string EstimateSalesForFiscalYear {
             get {
@@ -622,7 +611,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password.
+        ///   Looks up a localized string similar to Forgot password.
         /// </summary>
         public static string ForgotPassword {
             get {
@@ -631,7 +620,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password or User Name?.
+        ///   Looks up a localized string similar to Forgot password or user name?.
         /// </summary>
         public static string ForgotPasswordORUseName {
             get {
@@ -640,7 +629,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password or UserName.
+        ///   Looks up a localized string similar to Forgot password or user name.
         /// </summary>
         public static string ForgotPasswordOrUserName {
             get {
@@ -649,7 +638,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot User Name.
+        ///   Looks up a localized string similar to Forgot user name.
         /// </summary>
         public static string ForgotUsername {
             get {
@@ -667,7 +656,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxpayer Type.
+        ///   Looks up a localized string similar to Taxpayer type.
         /// </summary>
         public static string IDType {
             get {
@@ -685,7 +674,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Individual/Personal Business.
+        ///   Looks up a localized string similar to Individual/Personal business.
         /// </summary>
         public static string Individual {
             get {
@@ -703,7 +692,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Email.
+        ///   Looks up a localized string similar to Invalid email.
         /// </summary>
         public static string InvalidEmail {
             get {
@@ -721,7 +710,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Password.
+        ///   Looks up a localized string similar to Invalid password.
         /// </summary>
         public static string InvalidPassword {
             get {
@@ -739,7 +728,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Invalid Captcha.
+        ///   Looks up a localized string similar to  Invalid captcha.
         /// </summary>
         public static string InvaliedCaptcha {
             get {
@@ -757,7 +746,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log In.
+        ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string LogIn {
             get {
@@ -766,7 +755,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login Successful.
+        ///   Looks up a localized string similar to Login successful.
         /// </summary>
         public static string LoginSuccessful {
             get {
@@ -793,7 +782,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Number.
+        ///   Looks up a localized string similar to Mobile number.
         /// </summary>
         public static string MobileNumber {
             get {
@@ -802,7 +791,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Number Updated Successfully.
+        ///   Looks up a localized string similar to Mobile number updated successfully.
         /// </summary>
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -811,7 +800,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Number Verification Code sent successfully..
+        ///   Looks up a localized string similar to Mobile number verification code sent successfully.
         /// </summary>
         public static string MobileNumberVerificationSuccessful {
             get {
@@ -865,7 +854,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Email.
+        ///   Looks up a localized string similar to New email.
         /// </summary>
         public static string NewEmail {
             get {
@@ -874,7 +863,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Email address is not matching.
+        ///   Looks up a localized string similar to The email address is not matching.
         /// </summary>
         public static string NewEmailandRetypeEmailNotMatch {
             get {
@@ -883,7 +872,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Mobile Number.
+        ///   Looks up a localized string similar to New mobile number.
         /// </summary>
         public static string NewMobileNumber {
             get {
@@ -892,7 +881,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Password.
+        ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string NewPassword {
             get {
@@ -901,7 +890,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Password field and Confirm Password field must match.
+        ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
         public static string NewPasswordandRetypePasswordNotMatch {
             get {
@@ -910,7 +899,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Bills Available.
+        ///   Looks up a localized string similar to No bills available.
         /// </summary>
         public static string NoBillsAvailable {
             get {
@@ -928,7 +917,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NonSubmitted.
+        ///   Looks up a localized string similar to Non Submitted.
         /// </summary>
         public static string NonSubmitted {
             get {
@@ -937,7 +926,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No TIN&apos;s linked with this email address..
+        ///   Looks up a localized string similar to No TIN&apos;s linked with this email address.
         /// </summary>
         public static string NoTINsAvailable {
             get {
@@ -964,7 +953,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Old Email.
+        ///   Looks up a localized string similar to Old email.
         /// </summary>
         public static string OldEmail {
             get {
@@ -973,7 +962,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OverDue.
+        ///   Looks up a localized string similar to Overdue.
         /// </summary>
         public static string OverDue {
             get {
@@ -982,7 +971,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overdue Return.
+        ///   Looks up a localized string similar to Overdue return.
         /// </summary>
         public static string OverdueReturn {
             get {
@@ -1009,7 +998,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PartiallyPaid.
+        ///   Looks up a localized string similar to Partially paid.
         /// </summary>
         public static string PartiallyPaid {
             get {
@@ -1027,7 +1016,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password Changed Sucessfully .
+        ///   Looks up a localized string similar to Password changed sucessfully .
         /// </summary>
         public static string PassWordChangedSucessfully {
             get {
@@ -1063,7 +1052,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payment Number.
+        ///   Looks up a localized string similar to Payment number.
         /// </summary>
         public static string PaymentNumber {
             get {
@@ -1072,7 +1061,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Certificate Available.
+        ///   Looks up a localized string similar to No certificate available.
         /// </summary>
         public static string PdfIsNoteAvailable {
             get {
@@ -1099,7 +1088,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter Username.
+        ///   Looks up a localized string similar to Please enter username.
         /// </summary>
         public static string PleaseenterUsername {
             get {
@@ -1108,7 +1097,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Enter verification code received on mobile to Enter GAZT Portal.
+        ///   Looks up a localized string similar to Please enter verification code received on mobile to Enter GAZT eServices App.
         /// </summary>
         public static string PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal {
             get {
@@ -1126,7 +1115,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Purchase Value.
+        ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string PurchaseValue {
             get {
@@ -1162,7 +1151,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remember Me.
+        ///   Looks up a localized string similar to Remember me.
         /// </summary>
         public static string RememberMe {
             get {
@@ -1180,7 +1169,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resend Verification Code.
+        ///   Looks up a localized string similar to Resend verification code.
         /// </summary>
         public static string ResendVerificationCode {
             get {
@@ -1189,7 +1178,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return Period.
+        ///   Looks up a localized string similar to Return period.
         /// </summary>
         public static string ReturnPeriod {
             get {
@@ -1207,7 +1196,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retype Email.
+        ///   Looks up a localized string similar to Retype email.
         /// </summary>
         public static string RetypeEmail {
             get {
@@ -1216,7 +1205,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retype Password.
+        ///   Looks up a localized string similar to Retype password.
         /// </summary>
         public static string RetypePassword {
             get {
@@ -1243,7 +1232,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SADAD Payment Number.
+        ///   Looks up a localized string similar to SADAD payment number.
         /// </summary>
         public static string SADADPaymentNumber {
             get {
@@ -1252,7 +1241,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sadad Payment Number.
+        ///   Looks up a localized string similar to Sadad payment number.
         /// </summary>
         public static string SadadPaymentNumberForBills {
             get {
@@ -1261,7 +1250,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sales Details.
+        ///   Looks up a localized string similar to Sales details.
         /// </summary>
         public static string SalesDetails {
             get {
@@ -1288,7 +1277,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Password/User name.
+        ///   Looks up a localized string similar to Select password/user name.
         /// </summary>
         public static string SelectPasswordUserName {
             get {
@@ -1306,7 +1295,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start Chatting.
+        ///   Looks up a localized string similar to Start chatting.
         /// </summary>
         public static string StartChatting {
             get {
@@ -1333,7 +1322,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submitted Return.
+        ///   Looks up a localized string similar to Submitted return.
         /// </summary>
         public static string SubmittedReturn {
             get {
@@ -1342,7 +1331,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summary of Zakat Calculation.
+        ///   Looks up a localized string similar to Summary of Zakat calculation.
         /// </summary>
         public static string SummaryOfZakatCalculation {
             get {
@@ -1351,7 +1340,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxpayer Profile.
+        ///   Looks up a localized string similar to Taxpayer profile.
         /// </summary>
         public static string TaxpayerProfile {
             get {
@@ -1360,7 +1349,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TaxType.
+        ///   Looks up a localized string similar to Tax type.
         /// </summary>
         public static string TaxType {
             get {
@@ -1423,7 +1412,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Amount.
+        ///   Looks up a localized string similar to Total amount.
         /// </summary>
         public static string TotalAmount {
             get {
@@ -1432,7 +1421,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Non Submitted Returns.
+        ///   Looks up a localized string similar to Total non submitted returns.
         /// </summary>
         public static string TotalNonSubmittedReturns {
             get {
@@ -1441,7 +1430,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total No Of Returns.
+        ///   Looks up a localized string similar to Total no of returns.
         /// </summary>
         public static string TotalNoofReturns {
             get {
@@ -1450,7 +1439,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Unpaid-Bill Amount SAR:.
+        ///   Looks up a localized string similar to Total unpaid-bill amount SAR:.
         /// </summary>
         public static string TotalOfBillsUnpaid {
             get {
@@ -1459,7 +1448,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Over Due Returns.
+        ///   Looks up a localized string similar to Total over due returns.
         /// </summary>
         public static string TotalOverDueReturns {
             get {
@@ -1468,7 +1457,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Paid Bills.
+        ///   Looks up a localized string similar to Total paid bills.
         /// </summary>
         public static string TotalPaidBills {
             get {
@@ -1477,7 +1466,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Paid Bills Amount.
+        ///   Looks up a localized string similar to Total paid bills amount.
         /// </summary>
         public static string TotalPaidBillsAmount {
             get {
@@ -1486,7 +1475,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Paid Returns.
+        ///   Looks up a localized string similar to Total paid returns.
         /// </summary>
         public static string TotalPaidReturns {
             get {
@@ -1495,7 +1484,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Partially Paid Bills.
+        ///   Looks up a localized string similar to Total partially paid bills.
         /// </summary>
         public static string TotalPartiallyPaidBills {
             get {
@@ -1504,7 +1493,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Partially Paid Returns.
+        ///   Looks up a localized string similar to Total partially paid returns.
         /// </summary>
         public static string TotalPartiallyPaidReturns {
             get {
@@ -1513,7 +1502,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Partial Paid Bills Amount.
+        ///   Looks up a localized string similar to Total partial paid bills amount.
         /// </summary>
         public static string TotalPartialPaidBillsAmount {
             get {
@@ -1531,7 +1520,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Submitted Returns.
+        ///   Looks up a localized string similar to Total submitted returns.
         /// </summary>
         public static string TotalSubmittedReturns {
             get {
@@ -1540,7 +1529,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Unpaid Bills.
+        ///   Looks up a localized string similar to Total unpaid bills.
         /// </summary>
         public static string TotalUnpaidBills {
             get {
@@ -1549,7 +1538,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Unpaid Bills Amount.
+        ///   Looks up a localized string similar to Total unpaid bills amount.
         /// </summary>
         public static string TotalUnpaidBillsAmount {
             get {
@@ -1558,7 +1547,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Unpaid Returns.
+        ///   Looks up a localized string similar to Total unpaid returns.
         /// </summary>
         public static string TotalUnpaidReturns {
             get {
@@ -1576,7 +1565,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UnPaid.
+        ///   Looks up a localized string similar to Unpaid.
         /// </summary>
         public static string UnPaid {
             get {
@@ -1621,7 +1610,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Name.
+        ///   Looks up a localized string similar to User name.
         /// </summary>
         public static string UserName {
             get {
@@ -1639,7 +1628,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verification Code.
+        ///   Looks up a localized string similar to Verification code.
         /// </summary>
         public static string VarificationCode {
             get {
@@ -1666,7 +1655,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT-Lookup.
+        ///   Looks up a localized string similar to VAT Lookup.
         /// </summary>
         public static string VATLookup {
             get {
@@ -1675,7 +1664,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Registration Certificate.
+        ///   Looks up a localized string similar to VAT registration certificate.
         /// </summary>
         public static string VATRegistrationCertificate {
             get {
@@ -1684,7 +1673,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verification Code.
+        ///   Looks up a localized string similar to Verification code.
         /// </summary>
         public static string VerificationCode {
             get {
@@ -1702,7 +1691,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App is facing network issue, please try again later..
+        ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string VpnNotConnected {
             get {
@@ -1711,7 +1700,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Password has been Changed successfully..
+        ///   Looks up a localized string similar to Your password has been changed successfully.
         /// </summary>
         public static string YourPasswordhasbeenChangedsuccessfully {
             get {
@@ -1720,7 +1709,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Amount.
+        ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
         public static string ZakatAmount {
             get {
@@ -1729,7 +1718,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Base.
+        ///   Looks up a localized string similar to Zakat base.
         /// </summary>
         public static string ZakatBase {
             get {
@@ -1747,7 +1736,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An appeal will not be filed only in case pay for Amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected.
+        ///   Looks up a localized string similar to An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected.
         /// </summary>
         public static string ZakatTaxType {
             get {
