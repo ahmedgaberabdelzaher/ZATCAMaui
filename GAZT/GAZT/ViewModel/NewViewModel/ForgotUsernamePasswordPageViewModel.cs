@@ -690,7 +690,7 @@ namespace GAZT.ViewModel.NewViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
                         });
 
                     }
@@ -865,7 +865,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
 
                     });
                 }

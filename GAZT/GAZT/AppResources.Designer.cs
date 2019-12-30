@@ -1752,5 +1752,14 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid user ID.
+        /// </summary>
+        public static string ZPleaseEnterAValidUserID {
+            get {
+                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
+            }
+        }
     }
 }
