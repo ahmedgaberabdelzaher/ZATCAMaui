@@ -496,7 +496,7 @@ appeal</value>
     <value>Payment Number</value>
   </data>
   <data name="Sadad" xml:space="preserve">
-    <value>SADAD</value>
+    <value>SADAD </value>
   </data>
   <data name="SadadPaymentNumberForBills" xml:space="preserve">
     <value>Sadad Payment Number</value>
@@ -694,7 +694,7 @@ appeal</value>
     <value>Change Mobile Number</value>
   </data>
   <data name="TaxType" xml:space="preserve">
-    <value>TaxType</value>
+    <value>Tax Type</value>
   </data>
   <data name="OverDue" xml:space="preserve">
     <value>OverDue</value>

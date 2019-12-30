@@ -127,7 +127,7 @@
                                    Grid.Column="0"/>
 
                                             <Label Text="{Binding Abtypt}" 
-                                 
+                                  Margin="0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                    Grid.Row="0"
                                    Grid.Column="1" />
