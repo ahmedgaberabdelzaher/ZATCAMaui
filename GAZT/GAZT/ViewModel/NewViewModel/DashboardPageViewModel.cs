@@ -320,9 +320,16 @@ namespace GAZT.ViewModel
                 //BillReturn = new List<BillReturn>();
                 DateTime BegDate = dashboard.results[0].Begda;
                 DateTime endDate = dashboard.results[0].Endda;
-                StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
-                EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
-
+                if (App.IsArabic)
+                {
+                    StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
+                    EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
+                }
+                else
+                {
+                    StartDate = BegDate.ToString();
+                    EndDate = endDate.ToString();
+                }
                 BillReturn objBill1 = new BillReturn();
                 objBill1.ReturnTypeProperty = ReturnType.RtnTot;
                 String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });

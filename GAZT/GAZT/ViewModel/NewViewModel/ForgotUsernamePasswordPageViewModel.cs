@@ -251,6 +251,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _oTPValidDuration = value;
+                if(_oTPValidDuration.Equals(" 00:00"))
+                {
+                    ButtonDisableColor = Color.FromHex("#005e4b");
+                    IsResendOTPEnabled = true;
+                }
+               
                 RaisePropertyChanged("OTPValidDuration");
             }
         }
@@ -470,6 +476,80 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _newPasswordVisibility = false;
+        public bool NewPasswordVisibility
+        {
+            get
+            {
+                return _newPasswordVisibility;
+            }
+            set
+            {
+                _newPasswordVisibility = value;
+                RaisePropertyChanged("NewPasswordVisibility");
+            }
+        }
+        private Color _buttonDisableColor =Color.FromHex("#9EA4A9") ;
+        public Color ButtonDisableColor
+        {
+            get
+            {
+                return _buttonDisableColor;
+            }
+            set
+            {
+                _buttonDisableColor = value;
+                RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+
+        
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+
+        
+        private bool _confirmPasswordVisibility = false;
+        public bool ConfirmPasswordVisibility
+        {
+            get
+            {
+                return _confirmPasswordVisibility;
+            }
+            set
+            {
+                _confirmPasswordVisibility = value;
+                RaisePropertyChanged("ConfirmPasswordVisibility");
+            }
+        }
+
+        //private bool _isResendOTPEnabled = false;
+        //public bool IsResendOTPEnabled
+        //{
+        //    get
+        //    {
+        //        return _isResendOTPEnabled;
+        //    }
+        //    set
+        //    {
+        //        _isResendOTPEnabled = value;
+        //        RaisePropertyChanged("IsResendOTPEnabled");
+        //    }
+        //}
+
+        
+
 
         #endregion
 
@@ -681,8 +761,12 @@ namespace GAZT.ViewModel.NewViewModel
 
                             // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
                             OTPLayoutVisibility = true;
+                            ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            IsResendOTPEnabled = false;
+
                             string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+
                             TimerStart();
                         });
 

@@ -683,6 +683,6 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Tax type</value>
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
-    <value>Please enter a valid user ID</value>
+        <value>Please enter a valid User ID</value>
   </data>
 </root>
