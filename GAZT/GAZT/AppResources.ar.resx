@@ -684,7 +684,7 @@
   <data name="TaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
   </data>
-  <data name="PleaseEnterAValidUserID" xml:space="preserve">
+  <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
     <value>الرجاء إدخال معرف مستخدم صالح</value>
   </data>
 </root>

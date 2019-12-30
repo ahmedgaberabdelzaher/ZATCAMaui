@@ -21,6 +21,9 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ForgotUsernamePasswordPageView;
             InitializeComponent();
+            viewModel.NewPasswordVisibility = true;
+            viewModel.ConfirmPasswordVisibility = true;
+
             SetLTR();
             string str = "abc";
             Items.Add(str);
@@ -90,7 +93,7 @@ namespace GAZT.Views.NewViews
 
         }
 
-        protected void OnUserNameUnFocussed(object sender, EventArgs e)
+        protected async void OnUserNameUnFocussed(object sender, EventArgs e)
         {
                 string userName = UserName.Text;
                 bool IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
@@ -98,7 +101,7 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.IsVisibleTinIds = false;
                 }
-                viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+               await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
         
         }
 
@@ -116,7 +119,14 @@ namespace GAZT.Views.NewViews
 
         }
 
-      
+        public void OnNewPasswordEyeClicked(object sender, EventArgs args)
+        {
+            viewModel.NewPasswordVisibility = !viewModel.NewPasswordVisibility;
+        }
+        public void OnConfirmPasswordEyeClicked(object sender, EventArgs args)
+        {
+            viewModel.ConfirmPasswordVisibility = !viewModel.ConfirmPasswordVisibility;
+        }
 
 
         private void SetLTR()

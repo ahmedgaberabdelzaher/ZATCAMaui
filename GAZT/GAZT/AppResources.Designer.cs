@@ -1175,9 +1175,9 @@ namespace GAZT {
             }
         }
         
-        public static string PleaseEnterAValidUserID {
+        public static string ZPleaseEnterAValidUserID {
             get {
-                return ResourceManager.GetString("PleaseEnterAValidUserID", resourceCulture);
+                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
             }
         }
     }

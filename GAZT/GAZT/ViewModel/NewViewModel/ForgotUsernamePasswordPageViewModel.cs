@@ -470,6 +470,35 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _newPasswordVisibility = false;
+        public bool NewPasswordVisibility
+        {
+            get
+            {
+                return _newPasswordVisibility;
+            }
+            set
+            {
+                _newPasswordVisibility = value;
+                RaisePropertyChanged("NewPasswordVisibility");
+            }
+        }
+
+        private bool _confirmPasswordVisibility = false;
+        public bool ConfirmPasswordVisibility
+        {
+            get
+            {
+                return _confirmPasswordVisibility;
+            }
+            set
+            {
+                _confirmPasswordVisibility = value;
+                RaisePropertyChanged("ConfirmPasswordVisibility");
+            }
+        }
+
+
 
         #endregion
 
@@ -690,7 +719,7 @@ namespace GAZT.ViewModel.NewViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
                         });
 
                     }
@@ -865,7 +894,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.PleaseEnterAValidUserID, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
 
                     });
                 }
