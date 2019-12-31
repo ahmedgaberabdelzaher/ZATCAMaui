@@ -274,6 +274,9 @@
     <BundleResource Include="Resources\Login_button.png" />
     <BundleResource Include="Resources\Login_button%402x.png" />
     <BundleResource Include="Resources\Login_button%403x.png" />
+    <BundleResource Include="Resources\ic_Estimate_zakat1.png" />
+    <BundleResource Include="Resources\ic_Estimate_zakat1%402x.png" />
+    <BundleResource Include="Resources\ic_Estimate_zakat1%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />
@@ -486,9 +489,6 @@
     <BundleResource Include="Resources\non_submitted%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_Estimate_zakat1 %403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\My_bills_circle1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -505,12 +505,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\My_cirteficte_circle1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Estimate_zakat 1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Estimate_zakat1 %402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_tax_Evasion%402x.png" />
