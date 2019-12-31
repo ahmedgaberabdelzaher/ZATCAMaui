@@ -534,22 +534,33 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        //private bool _isResendOTPEnabled = false;
-        //public bool IsResendOTPEnabled
-        //{
-        //    get
-        //    {
-        //        return _isResendOTPEnabled;
-        //    }
-        //    set
-        //    {
-        //        _isResendOTPEnabled = value;
-        //        RaisePropertyChanged("IsResendOTPEnabled");
-        //    }
-        //}
 
-        
-
+        private bool _isSubmitEnabled = false;
+        public bool IsSubmitEnabled
+        {
+            get
+            {
+                return _isSubmitEnabled;
+            }
+            set
+            {
+                _isSubmitEnabled = value;
+                RaisePropertyChanged("IsSubmitEnabled");
+            }
+        }
+        private Color _submitDisableButtonColor = Color.FromHex("#9EA4A9");
+        public Color SubmitDisableButtonColor
+        {
+            get
+            {
+                return _submitDisableButtonColor;
+            }
+            set
+            {
+                _submitDisableButtonColor = value;
+                RaisePropertyChanged("SubmitDisableButtonColor");
+            }
+        }
 
         #endregion
 
@@ -569,30 +580,39 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                bool isValiedCaptcha = ValidateCaptcha();
-                if (isValiedCaptcha)
+              bool _isAllFormDataAvailable =  ValidateForms();
+                if(_isAllFormDataAvailable)
                 {
-                    if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
+                    bool isValiedCaptcha = ValidateCaptcha();
+                    if (isValiedCaptcha)
                     {
-                        await SendUserNameToRegidteredEmail();
+                        if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
+                        {
+                            await SendUserNameToRegidteredEmail();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+                        else
+                        {
+                            if (!String.IsNullOrEmpty(IDNumber))
+                            {
+                                await SendOTPToRegisterMobileNumber();
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+
+                            }
+                        }
                     }
                     else
                     {
-                        if (!String.IsNullOrEmpty(IDNumber))
-                        {
-                            await SendOTPToRegisterMobileNumber();
-                        }
-                        else
-                        {
-                            _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
-
-                        }
+                        await _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
                     }
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
+                    await _dialogService.ShowMessageBox("Enter the required field", AppResources.Information);
                 }
+
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
@@ -697,6 +717,68 @@ namespace GAZT.ViewModel.NewViewModel
                 //IsForgotUserNameWithCorporate = true;
                 IDNumberOrCorporateIDOrUserName = AppResources.CorportaeID;
             }
+        }
+
+        private bool  ValidateForms()
+        {
+            bool IsAllDataAvailable = false;
+            if(SelectedForgotType != null && SelectedForgotType.id.Equals("2"))
+            {
+                if(!string.IsNullOrEmpty(IDNumber))
+                {
+                    bool IsEmailUserName = false;
+                    IsEmailUserName = UtilityManager.IsValidEmailAddress(IDNumber);
+
+                    if (IsEmailUserName)
+                    {
+                        if (SelectedTinId != null && !string.IsNullOrEmpty(EnteredCaptchaValue))
+                        {
+                            IsAllDataAvailable = true;
+                           
+                        }
+                        else
+                        {
+                            IsAllDataAvailable = false; 
+                           
+                        }
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(EnteredCaptchaValue))
+                        {
+                            IsAllDataAvailable = true;
+                        }
+                        else
+                        {
+                            IsAllDataAvailable = false; 
+                        }
+                    }
+                    
+
+                }
+                else
+                {
+                    IsAllDataAvailable = false; 
+                }
+
+            }
+            else if (SelectedTaxPayerType != null && (SelectedTaxPayerType.id.Equals("1") || SelectedTaxPayerType.id.Equals("2")))
+            {
+                if (SelectedTaxPayerType != null && !string.IsNullOrEmpty(IDNumber) && !string.IsNullOrEmpty(EnteredCaptchaValue))
+                {
+                    IsAllDataAvailable = true;
+                }
+                else
+                {
+                    IsAllDataAvailable = false;
+                }
+            }
+            else
+            {
+                IsAllDataAvailable = false;
+            }
+
+            return IsAllDataAvailable;
         }
 
         public StringBuilder GetCaptcha()
