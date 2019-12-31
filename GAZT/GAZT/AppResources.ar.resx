@@ -196,7 +196,7 @@
     <value>الرجاء ادخال رمز التحقق الذي تم إرساله على الهاتف الجوال</value>
   </data>
   <data name="EstimateSalesForFiscalYear" xml:space="preserve">
-    <value> المبيعات المقدرة للسنة المالية</value>
+    <value>المبيعات المقدرة للسنة المالية</value>
   </data>
   <data name="EstimateZakatReturn" xml:space="preserve">
     <value>إقرار زكاة تقديري</value>
@@ -238,13 +238,13 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value> كلمة المرور الجديدة </value>
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value> كلمة المرور </value>
+    <value>كلمة المرور</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>السداد من خلال مدى</value>
@@ -505,7 +505,7 @@
     <value> رقم الشركة</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value> اسم المستخدم</value>
+    <value>اسم المستخدم</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
     <value>نسيت كلمة المرور أو اسم المستخدم</value>
@@ -574,10 +574,10 @@
     <value>الخدمات الإلكترونية</value>
   </data>
   <data name="EstimateZakat" xml:space="preserve">
-    <value>Estimate Zakat</value>
+    <value>إقرار زكاة تقديري</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
-    <value> لم يتم تقديمه</value>
+    <value>لم يتم تقديمه</value>
   </data>
   <data name="OverDue" xml:space="preserve">
     <value>تأخير</value>
