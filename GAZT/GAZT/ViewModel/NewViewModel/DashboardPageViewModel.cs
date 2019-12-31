@@ -322,13 +322,13 @@ namespace GAZT.ViewModel
                 DateTime endDate = dashboard.results[0].Endda;
                 if (App.IsArabic)
                 {
-                    StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
-                    EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE"));
+                    StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
+                    EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                 }
                 else
                 {
-                    StartDate = BegDate.ToString();
-                    EndDate = endDate.ToString();
+                    StartDate = BegDate.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    EndDate = endDate.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                 }
                 BillReturn objBill1 = new BillReturn();
                 objBill1.ReturnTypeProperty = ReturnType.RtnTot;
