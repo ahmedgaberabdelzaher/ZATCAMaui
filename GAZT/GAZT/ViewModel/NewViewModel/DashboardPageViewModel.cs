@@ -24,6 +24,11 @@ namespace GAZT.ViewModel
         public ICommand OnBellClicked { get; set; }
         public ICommand OnMyTaxPayerProfileClicked { get; set; }
         public ICommand OnMyBillsClicked { get; set; }
+        public ICommand OnLogoutClicked { get; set; }
+        public ICommand OnUserProfileClicked { get; set; }
+
+        
+
         public Dashboard dashboard { get; set; }
 
 
@@ -95,6 +100,21 @@ namespace GAZT.ViewModel
             }
         }
 
+        private string _tinNumber;
+        public string TinNumber
+        {
+            get
+            {
+                return _tinNumber;
+            }
+            set
+            {
+                _tinNumber = value;
+                RaisePropertyChanged("TinNumber");
+            }
+        }
+
+        
         private string _endDate;
         public string EndDate
         {
@@ -126,7 +146,7 @@ namespace GAZT.ViewModel
             }
         }
 
-
+        
 
         private double _deviceHeight;
         public double DeviceHeight
@@ -141,6 +161,21 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("DeviceHeight");
             }
         }
+
+        private bool _userProfileLayoutVisibility = false;
+        public bool UserProfileLayoutVisibility
+        {
+            get
+            {
+                return _userProfileLayoutVisibility;
+            }
+            set
+            {
+                _userProfileLayoutVisibility = value;
+                RaisePropertyChanged("UserProfileLayoutVisibility");
+            }
+        }
+
 
         private double _paddingHeight;
         public double PaddingHeight
@@ -173,8 +208,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("TotalNoOfReturns");
             }
         }
-
-
         private int _calendarHeightRequest;
         public int CalendarHeightRequest
         {
@@ -245,7 +278,17 @@ namespace GAZT.ViewModel
 
             });
 
+            OnLogoutClicked = new Xamarin.Forms.Command(async () =>
+            {
+               
+            });
 
+            OnUserProfileClicked = new Xamarin.Forms.Command(async () =>
+            {
+                UserProfileLayoutVisibility = !UserProfileLayoutVisibility;
+            });
+
+            
 
             OnEstimateZakatClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -283,6 +326,7 @@ namespace GAZT.ViewModel
 
         public void onPageLoad()
         {
+            TinNumber = App.TP.Userid;
             String TotalCountOfReturn = string.Empty;
             List<BillReturn> BillReturnList = new List<BillReturn>();
             List<BillPaid> BillPaidList = new List<BillPaid>();
@@ -547,6 +591,13 @@ namespace GAZT.ViewModel
             }
         }
 
+        public void LogOut()
+        {
+
+                var _navigation = Application.Current.MainPage.Navigation;
+                _navigation.PopToRootAsync();
+        }
+
         public string ConvertintoCommaSeperated(string strAmount)
         {
             string actualAmount = string.Empty;
@@ -567,6 +618,7 @@ namespace GAZT.ViewModel
             }
             return actualAmount;
         }
+
 
         #endregion
     }

@@ -659,9 +659,9 @@ namespace GAZT {
             }
         }
         
-        public static string VpnNotConnected {
+        public static string NetworkConnectivityIssue {
             get {
-                return ResourceManager.GetString("VpnNotConnected", resourceCulture);
+                return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
             }
         }
         
@@ -1178,6 +1178,30 @@ namespace GAZT {
         public static string ZPleaseEnterAValidUserID {
             get {
                 return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
+            }
+        }
+        
+        public static string ZFicalYear {
+            get {
+                return ResourceManager.GetString("ZFicalYear", resourceCulture);
+            }
+        }
+        
+        public static string ZYourSessionhasexpiredPleaseLoginagain {
+            get {
+                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
+            }
+        }
+        
+        public static string ZLogout {
+            get {
+                return ResourceManager.GetString("ZLogout", resourceCulture);
+            }
+        }
+        
+        public static string ZEntertherequiredfield {
+            get {
+                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
     }

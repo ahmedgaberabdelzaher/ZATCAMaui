@@ -22,6 +22,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.DashboardPageView;
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
             SetLTR();
            
             this.BindingContext = viewModel;
@@ -91,6 +92,17 @@ namespace GAZT.Views
                 }
             }
         }
+
+        private async void OnLogoutClicked(Object sender, EventArgs e)
+        {
+            var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
+            if (result)
+            {
+                App.TP = null;
+                viewModel.LogOut();
+            }
+        }
+        
         #endregion
     }
 }

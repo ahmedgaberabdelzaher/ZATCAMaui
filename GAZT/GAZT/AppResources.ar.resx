@@ -690,4 +690,13 @@
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
   </data>
+   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
+    <value>Your Session has expired,Please Login again</value>
+  </data>
+  <data name="ZLogout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+   <data name="ZEntertherequiredfield" xml:space="preserve">
+    <value>Please enter valid user id</value>
+  </data>
 </root>
