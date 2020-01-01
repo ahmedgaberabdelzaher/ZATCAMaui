@@ -31,7 +31,7 @@
 
             <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />
 
-            <Label Text="{Binding OTPSentOnThisText}" FlowDirection="RightToLeft" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Start" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" >
+            <Label Text="{Binding OTPSentOnThisText}"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" >
             </Label>
 
             <Frame

@@ -190,6 +190,35 @@ namespace GAZT
         }
 
 
+        private bool _passwordVisibilityForNewPassword = true;
+        public bool PasswordVisibilityForNewPassword
+        {
+            get
+            {
+                return _passwordVisibilityForNewPassword;
+            }
+            set
+            {
+                _passwordVisibilityForNewPassword = value;
+                RaisePropertyChanged("PasswordVisibilityForNewPassword");
+            }
+        }
+
+        private bool _passwordVisibilityForRetypePassword = true;
+        public bool PasswordVisibilityForRetypePassword
+        {
+            get
+            {
+                return _passwordVisibilityForRetypePassword;
+            }
+            set
+            {
+                _passwordVisibilityForRetypePassword = value;
+                RaisePropertyChanged("PasswordVisibilityForRetypePassword");
+            }
+        }
+
+
         private NavigateToOtp _NavigateToOtpForEmailEnum;
         public NavigateToOtp NavigateToOtpForEmailEnum
         {
@@ -253,9 +282,11 @@ namespace GAZT
 
                     if (NavigateToOtpForEmailEnum == NavigateToOtp.IsEmail)
                     {
+                        if(string.Equals(App.TP.Password,)
                         if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
                         {
                             TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, App.Otp, TaxPayerProfile.Tin, OldEmail, NewEmail, TaxPayerProfile.Password, NewPasswordForEmail);
+                            await PopToRootPage();
                             if (TaxPayerProfile != null)
                             {
                                 CurrentPassword = NewPasswordForEmail;
@@ -304,6 +335,7 @@ namespace GAZT
                             if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
                             {
                                 bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPasswordForEmail);
+                                await PopToRootPage();
                                 if (response == true)
                                 {
                                     CurrentPassword = NewPasswordForEmail;
@@ -377,6 +409,16 @@ namespace GAZT
                 IsLoading = false;
             });
         }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+
         public void ClearPasswordData()
         {
             NewPasswordForEmail = string.Empty;

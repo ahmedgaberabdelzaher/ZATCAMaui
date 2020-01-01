@@ -230,7 +230,7 @@ namespace GAZT
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 IsVisibleTinIds = false;
-                                await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
+                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                             });
 
                             await Task.Run(() =>
@@ -411,7 +411,7 @@ namespace GAZT
                            }
                            else if (0 == String.Compare("Error: NameResolutionFailure", response, true))
                            {
-                               response = AppResources.VpnNotConnected;
+                               response = AppResources.NetworkConnectivityIssue;
                            }
                            else
                            {
@@ -427,7 +427,7 @@ namespace GAZT
                        {
                            Device.BeginInvokeOnMainThread(async () =>
                            {
-                               await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
+                               await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                            });
                        }
                        else

@@ -1099,7 +1099,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                        if (forgotPassword!=null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                         {
                             // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
 
@@ -1206,7 +1206,7 @@ namespace GAZT.ViewModel.NewViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsVisibleTinIds = false;
-                            await _dialogService.ShowMessageBox(AppResources.VpnNotConnected, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                         });
 
                         

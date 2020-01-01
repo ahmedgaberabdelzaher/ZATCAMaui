@@ -38,7 +38,7 @@
                 <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                           </Frame>
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,0,10,-5" >
-                        <Label  Text="+00966" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"   ></Label>
+                        <Label  Text="+966" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"   ></Label>
                         <custom:GAZTBorderlessEntry  Margin="-10,0,-10,0" Text="{Binding NewMobile}" VerticalTextAlignment="Center"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"    Keyboard="Numeric"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
                     </StackLayout>
                 

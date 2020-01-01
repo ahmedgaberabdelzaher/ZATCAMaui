@@ -356,10 +356,10 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Login successful</value>
   </data>
   <data name="MobileNumberVerificationSuccessful" xml:space="preserve">
-    <value>Mobile number verification code sent successfully</value>
+    <value>Mobile number verification code sent successfully.</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
-    <value>Password changed sucessfully </value>
+    <value>Password has been changed  successfully</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>No certificate available</value>
@@ -430,7 +430,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="NoTINsAvailable" xml:space="preserve">
     <value>No TIN's linked with this email address</value>
   </data>
-  <data name="VpnNotConnected" xml:space="preserve">
+  <data name="NetworkConnectivityIssue" xml:space="preserve">
     <value>App is facing network issue, please try again later</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
@@ -506,7 +506,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Forgot password or user name</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
-    <value> Invalid captcha</value>
+    <value>Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
     <value>No bills available</value>
@@ -683,6 +683,12 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Tax type</value>
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
-        <value>Please enter a valid User ID</value>
+    <value>Please enter a valid User ID</value>
+  </data>
+  <data name="ZFicalYear" xml:space="preserve">
+    <value>Fical Year</value>
+  </data>
+  <data name="ZTryAgain" xml:space="preserve">
+    <value />
   </data>
 </root>

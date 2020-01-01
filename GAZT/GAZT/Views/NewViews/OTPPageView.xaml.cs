@@ -45,11 +45,11 @@ namespace GAZT.Views.NewViews
                 var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                 if (App.IsArabic)
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + lastDigits + "***" + firstDigits;
                 }
                 else
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
                 }
             }
             else if (e == NavigateToOtp.IsEmail)

@@ -91,50 +91,40 @@ namespace GAZT.Manager
                                 xmlnsManager.AddNamespace("ns2", "http://gazt.gov.sa/");
 
                                 XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
-                                // AuthenticationResult = node.InnerText;
-
-
-
                                 Token = node.ChildNodes[0].InnerText;
-
                                 if ((0 == String.Compare(Token, "User does not exist")))
                                 {
                                     throw new Exception(Token);
                                 }
-
                                 if ((0 == String.Compare(Token, "User authentication failed")))
                                 {
                                     throw new Exception(Token);
                                 }
-
                                 if ((0 == String.Compare(Token, "Authentication failed. Password locked")))
                                 {
                                     throw new Exception(Token);
                                 }
-
-
                                 if (!string.IsNullOrEmpty(Token))
                                 {
                                     App.Token = Token;
                                     App.IsSessionExpired = false;
                                 }
-
                                 Message = node.ChildNodes[1].InnerText;
 
                             }
                             else
-                                throw new Exception("SOAP request failed");
+                                throw new Exception(AppResources.NetworkConnectivityIssue);
                         }
                     }
                 }
                 else
-                    throw new Exception("SOAP request not created");
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
 
                 return Message;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception(AppResources.NetworkConnectivityIssue);
             }
         }
 
@@ -148,35 +138,42 @@ namespace GAZT.Manager
 
         public static async Task<List<TIN>> GAZTGetAllTins(String Username)
         {
-            String OTPSentConfirmation = String.Empty;
-
-            List<TIN> tinIds = new List<TIN>();
-            //string NewToken = string.Empty;
+            String GAZTGetTINsResponseResult = String.Empty;
+            List<TIN> TINs = null;
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GetAllTin + Username;
                 var uri = new Uri(url);
-                HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
-
-
-                if (GAZTSendAndReceiveOTPResponse != null)
+                HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
+                if (GAZTGetTINsResponse != null)
                 {
-                    OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
+                    GAZTGetTINsResponseResult = GAZTGetTINsResponse.Content.ReadAsStringAsync().Result;
                 }
-                if (!string.IsNullOrEmpty(OTPSentConfirmation))
+                if (!string.IsNullOrEmpty(GAZTGetTINsResponseResult))
                 {
-                    OTPSentConfirmation = JObject.Parse(OTPSentConfirmation)["tinData"].ToString();
-                    tinIds = JsonConvert.DeserializeObject<List<TIN>>(OTPSentConfirmation);
+                    GAZTGetTINsResponseResult = JObject.Parse(GAZTGetTINsResponseResult)["tinData"].ToString();
+                  
+                    TINs = JsonConvert.DeserializeObject<List<TIN>>(GAZTGetTINsResponseResult);
 
-                    // OTPSentConfirmationJToken = JObject.Parse(OTPSentConfirmation)["Result"];
+                    if(TINs==null)
+                    {
+                        throw new Exception(AppResources.NoTINsAvailable);
+                    }
                 }
 
-                return tinIds;
+                return TINs;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
+                {
+                    throw new Exception(AppResources.NoTINsAvailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
@@ -193,8 +190,6 @@ namespace GAZT.Manager
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
-
-
                 if (GAZTSendAndReceiveOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTSendAndReceiveOTPResponse.Headers;
@@ -204,11 +199,6 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -218,22 +208,21 @@ namespace GAZT.Manager
                         }
                         App.Token = NewToken;
                     }
-
-
-                    OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
                 }
 
-                OTPSentConfirmation = JObject.Parse(OTPSentConfirmation)["d"].ToString();
-                JToken OTPSentConfirmationJToken = JObject.Parse(OTPSentConfirmation)["Result"];
-
-                if (OTPSentConfirmationJToken != null)
-                    OTPSentConfirmation = OTPSentConfirmationJToken.Value<String>();
-
+                OTPSentConfirmation = GAZTSendAndReceiveOTPResponse.Content.ReadAsStringAsync().Result;
+                if (!string.IsNullOrEmpty(OTPSentConfirmation))
+                {
+                    OTPSentConfirmation = JObject.Parse(OTPSentConfirmation)["d"].ToString();
+                    JToken OTPSentConfirmationJToken = JObject.Parse(OTPSentConfirmation)["Result"];
+                    if (OTPSentConfirmationJToken != null)
+                        OTPSentConfirmation = OTPSentConfirmationJToken.Value<String>();
+                }
                 return OTPSentConfirmation;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(AppResources.NetworkConnectivityIssue);
             }
         }
 
@@ -251,13 +240,10 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
                 String url = Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateOTPResponse.Headers;
@@ -266,12 +252,6 @@ namespace GAZT.Manager
                     {
                         NewToken = values.First();
                     }
-
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -281,28 +261,31 @@ namespace GAZT.Manager
                         }
                         App.Token = NewToken;
                     }
-
-
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
-
-                    GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
-
-                    JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                    if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
-                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    else
-                        throw new Exception(AppResources.InvalidOTP);
+                    if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
+                    {
+                        GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+                        JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
+                        if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
+                            TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        else
+                            throw new Exception(AppResources.InvalidOTP);
+                    }
                 }
-
                 return TP;
-
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                {
+                    throw new Exception(AppResources.InvalidOTP);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
-
 
         public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang, String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber)
         {
@@ -311,13 +294,10 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
                 String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateOTPResponse.Headers;
@@ -327,11 +307,6 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -342,26 +317,21 @@ namespace GAZT.Manager
                         App.Token = NewToken;
                     }
 
-
-
-
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
-
-                    GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
-
-                    string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
-                    if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
+                    if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
                     {
-                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+
+                        string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
+                        if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
+                        {
+                            TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.InvalidOTP);
+                        }
                     }
-                    else
-                    {
-                        throw new Exception(AppResources.InvalidOTP);
-                    }
-                    //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
-                    //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    //else
-                    //    throw new Exception("Invalid OTP / OTP expired");
                 }
 
                 return TP;
@@ -369,13 +339,19 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                {
+                    throw new Exception(AppResources.InvalidOTP);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
         public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin, string CurrentMobileNumber, string NewMobileNumber)
         {
-            TaxPayerProfile TP = null;
             bool result = false;
             string NewToken = string.Empty;
             try
@@ -386,8 +362,6 @@ namespace GAZT.Manager
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateMobileNumberResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateMobileNumberResponse.Headers;
@@ -397,11 +371,6 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -411,27 +380,27 @@ namespace GAZT.Manager
                         }
                         App.Token = NewToken;
                     }
-
-
                     String GAZTValidateMobileNumberResponseJSON = GAZTValidateMobileNumberResponse.Content.ReadAsStringAsync().Result;
-
-                    GAZTValidateMobileNumberResponseJSON = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["d"].ToString();
-
-                    JToken GAZTValidateMobileNumberResponseJToken = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["Result"];
-
-                    if ((0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "Email and Mobile login code has been sent successfully")) || (GAZTValidateMobileNumberResponseJToken.ToString() == "رمز تحقق الدخول للبريد الالكتروني والهاتف الجوال تم ارسالها بنجاح"))
+                    if (!string.IsNullOrEmpty(GAZTValidateMobileNumberResponseJSON))
                     {
-                        result = true;
+                        if (!string.IsNullOrEmpty(GAZTValidateMobileNumberResponseJSON))
+                        {
+                            GAZTValidateMobileNumberResponseJSON = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["d"].ToString();
+                            JToken GAZTValidateMobileNumberResponseJToken = JObject.Parse(GAZTValidateMobileNumberResponseJSON)["Result"];
+                            if ((0 == String.Compare(GAZTValidateMobileNumberResponseJToken.Value<String>(), "Email and Mobile login code has been sent successfully")) || (GAZTValidateMobileNumberResponseJToken.ToString() == "رمز تحقق الدخول للبريد الالكتروني والهاتف الجوال تم ارسالها بنجاح"))
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.EnterValidMobileNumber);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NetworkConnectivityIssue);
+                        }
                     }
-                    else
-                    {
-                        throw new Exception(AppResources.EnterValidMobileNumber);
-                    }
-
-                    //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
-                    ////    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    ////else
-                    ////    throw new Exception("Invalid OTP / OTP expired");
                 }
 
                 return result;
@@ -439,28 +408,29 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.EnterValidMobileNumber))
+                {
+                    throw new Exception(AppResources.EnterValidMobileNumber);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
 
         public static async Task<bool> GAZTValidateAndChangePassword(String Lang, String Tin, string CurrentPassword, string NewPassword)
         {
-            TaxPayerProfile TP = null;
             bool result = false;
             string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
                 String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
-
-
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
@@ -470,11 +440,6 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -489,23 +454,26 @@ namespace GAZT.Manager
 
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
-                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-
-                    JToken GAZTValidateAndChangePasswordResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Result"];
-
-                    if ((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Password Changed Successfully")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "تم تغيير كلمة المرور بنجاح")))
+                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
                     {
-                        result = true;
-                    }
-                    else
-                    {
-                        throw new ArgumentException(AppResources.InvalidPassword);
-                    }
+                        GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
 
-                    //if (true == GAZTValidateOTPResponseJToken.Value<bool>())
-                    ////    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    ////else
-                    ////    throw new Exception("Invalid OTP / OTP expired");
+                        JToken GAZTValidateAndChangePasswordResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Result"];
+
+                        if ((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Password Changed Successfully")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "تم تغيير كلمة المرور بنجاح")))
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            throw new ArgumentException(AppResources.PasswordGuidelineText);
+                        }
+
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException(AppResources.NetworkConnectivityIssue);
                 }
 
                 return result;
@@ -513,7 +481,14 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.NetworkConnectivityIssue))
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+                else
+                {
+                    throw new Exception(AppResources.PasswordGuidelineText);
+                }
             }
         }
 
@@ -534,29 +509,28 @@ namespace GAZT.Manager
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
 
-
-                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-
-                    JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
-                    if (jObject != null)
+                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
                     {
-                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                        GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+                        JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
+                        if (jObject != null)
                         {
-                            JToken memberName = jObject["results"].First["Pdfurl"];
-                            result = true;
-                            PdfUrl = memberName.ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                            if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                            {
+                                JToken memberName = jObject["results"].First["Pdfurl"];
+                                result = true;
+                                PdfUrl = memberName.ToString();
+                            }
+                            else
+                            {
+                                return null;
+                            }
 
+                        }
                     }
                 }
 
@@ -565,7 +539,7 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(AppResources.NetworkConnectivityIssue);
             }
         }
 
@@ -582,24 +556,15 @@ namespace GAZT.Manager
                 String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
-
                 HttpResponseMessage GAZTMyBillsResponse = await client.GetAsync(uri);
-
                 if (GAZTMyBillsResponse != null)
                 {
-
                     HttpHeaders headers = GAZTMyBillsResponse.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
                     {
                         NewToken = values.First();
                     }
-
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -612,18 +577,26 @@ namespace GAZT.Manager
 
                     String GAZTMyBillsResponseJSON = GAZTMyBillsResponse.Content.ReadAsStringAsync().Result;
 
-                    GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
-
-
-                    string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
-                    if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                    if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
                     {
-                        myBills = JsonConvert.DeserializeObject<List<MyBills>>(GAZTMyBillsResponseJSONJToken);
+                        GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
+
+
+                        string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
+                        if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                        {
+                            myBills = JsonConvert.DeserializeObject<List<MyBills>>(GAZTMyBillsResponseJSONJToken);
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
                     }
                     else
                     {
-                        throw new Exception("Invalid Response");
+                        throw new Exception(AppResources.NoBillsAvailable);
                     }
+
                 }
 
                 return myBills;
@@ -631,26 +604,28 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
+                {
+                    throw new Exception(AppResources.NoBillsAvailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
-
         public static async Task<string> GAZTGetTaxPayerProfile(String Tin, String Lang)
         {
-            TaxPayerProfile TP = null;
             String MobileNumber = string.Empty;
             string PdfUrl = string.Empty;
             string NewToken = string.Empty;
             try
             {
-
-
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
-
                 HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
 
                 if (GAZTValidateAndChangePasswordResponse != null)
@@ -663,11 +638,6 @@ namespace GAZT.Manager
                         NewToken = values.First();
                     }
 
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -679,17 +649,23 @@ namespace GAZT.Manager
                     }
 
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
-
-                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-
-                    string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Mobile"].ToString();
-                    if (string.IsNullOrEmpty(GAZTValidateOTPResponseJToken) != true)
+                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
                     {
-                        MobileNumber = GAZTValidateOTPResponseJToken;
+                        GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+
+                        string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["Mobile"].ToString();
+                        if (string.IsNullOrEmpty(GAZTValidateOTPResponseJToken) != true)
+                        {
+                            MobileNumber = GAZTValidateOTPResponseJToken;
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.Nodataavailable);
+                        }
                     }
                     else
                     {
-                        throw new Exception("Invalid Response");
+                        throw new Exception(AppResources.Nodataavailable);
                     }
                 }
 
@@ -698,26 +674,29 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                {
+                    throw new Exception(AppResources.Nodataavailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
 
         public static async Task<bool> GAZTGetOTPForEmail(String Lang, String Tin, string CurrentEmail, string NewEmail)
         {
-            TaxPayerProfile TP = null;
             bool result = false;
             string NewToken = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-
                 String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateOTPResponse.Headers;
@@ -726,12 +705,6 @@ namespace GAZT.Manager
                     {
                         NewToken = values.First();
                     }
-
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -745,22 +718,25 @@ namespace GAZT.Manager
 
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
-                    GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
-
-                    string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
-                    if (GAZTValidateOTPResponseJToken == "Email and Mobile login code has been sent successfully" || GAZTValidateOTPResponseJToken.ToString() == "رمز تحقق الدخول للبريد الالكتروني والهاتف الجوال تم ارسالها بنجاح")
+                    if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
                     {
-                        result = true;
-                        //TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+
+                        string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
+                        if (GAZTValidateOTPResponseJToken == "Email and Mobile login code has been sent successfully" || GAZTValidateOTPResponseJToken.ToString() == "رمز تحقق الدخول للبريد الالكتروني والهاتف الجوال تم ارسالها بنجاح")
+                        {
+                            result = true;
+                            //TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.InvalidEmail);
+                        }
                     }
                     else
                     {
-                        throw new Exception(AppResources.InvalidEmail);
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
                     }
-                    //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
-                    //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    //else
-                    //    throw new Exception("Invalid OTP / OTP expired");
                 }
 
                 return result;
@@ -768,7 +744,14 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.InvalidEmail))
+                {
+                    throw new Exception(AppResources.InvalidEmail);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
@@ -786,8 +769,6 @@ namespace GAZT.Manager
                 var uri = new Uri(url);
                
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
-
-
                 if (GAZTValidateOTPResponse != null)
                 {
                     HttpHeaders headers = GAZTValidateOTPResponse.Headers;
@@ -796,12 +777,6 @@ namespace GAZT.Manager
                     {
                         NewToken = values.First();
                     }
-
-                    //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                    //{
-                    //    App.IsSessionExpired = true;
-                    //    throw new Exception("Invalid Token");
-                    //}
                     if ((!string.IsNullOrEmpty(NewToken)))
                     {
                         if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -815,21 +790,25 @@ namespace GAZT.Manager
 
                     String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
 
-                    GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
-
-                    string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
-                    if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
+                    if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
                     {
-                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+
+                        string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
+                        if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
+                        {
+                            TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.InvalidOTP);
+                        }
                     }
                     else
                     {
-                        throw new Exception(AppResources.InvalidOTP);
+
                     }
-                    //if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Details changed successfully")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "تم تغيير التفاصيل بنجاح")))
-                    //    TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                    //else
-                    //    throw new Exception("Invalid OTP / OTP expired");
+                   
                 }
 
                 return TP;
@@ -837,7 +816,14 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                {
+                    throw new Exception(AppResources.InvalidEmail);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
             }
         }
 
@@ -864,26 +850,28 @@ namespace GAZT.Manager
                 if (GAZTValidateAndChangePasswordResponse != null)
                 {
                     String GAZTValidateAndChangePasswordResponseJSON = GAZTValidateAndChangePasswordResponse.Content.ReadAsStringAsync().Result;
-
-                    ZakatCertificate zakatCertificate = new ZakatCertificate();
-                    GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
-                    zakatCertificate = JsonConvert.DeserializeObject<ZakatCertificate>(GAZTValidateAndChangePasswordResponseJSON);
-                    JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
-                    // string s =
-                    //jObject JsonConvert.DeserializeObject<string>(jObject);
-                    if (jObject != null)
+                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
                     {
-                        if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                        ZakatCertificate zakatCertificate = new ZakatCertificate();
+                        GAZTValidateAndChangePasswordResponseJSON = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON)["d"].ToString();
+                        zakatCertificate = JsonConvert.DeserializeObject<ZakatCertificate>(GAZTValidateAndChangePasswordResponseJSON);
+                        JObject jObject = JObject.Parse(GAZTValidateAndChangePasswordResponseJSON);
+                        // string s =
+                        //jObject JsonConvert.DeserializeObject<string>(jObject);
+                        if (jObject != null)
                         {
-                            JToken memberName = jObject["results"].First["Pdfurl"];
-                            result = true;
-                            PdfUrl = memberName.ToString();
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                            if (GAZTValidateAndChangePasswordResponseJSON.Contains("Pdfurl"))
+                            {
+                                JToken memberName = jObject["results"].First["Pdfurl"];
+                                result = true;
+                                PdfUrl = memberName.ToString();
+                            }
+                            else
+                            {
+                                return null;
+                            }
 
+                        }
                     }
                 }
 
@@ -938,9 +926,12 @@ namespace GAZT.Manager
                         App.Token = NewToken;
                     }
                     String GAZTGetAllCertificateResponseJSON = GAZTGetAllCertificateResponse.Content.ReadAsStringAsync().Result;
+                    if (!string.IsNullOrEmpty(GAZTGetAllCertificateResponseJSON))
+                    {
+                        GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
+                        allCertificate = JsonConvert.DeserializeObject<AllCertificate>(GAZTGetAllCertificateResponseJSON);
 
-                    GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
-                    allCertificate = JsonConvert.DeserializeObject<AllCertificate>(GAZTGetAllCertificateResponseJSON);
+                    }
                 }
                 return allCertificate;
             }
@@ -953,8 +944,7 @@ namespace GAZT.Manager
         public static Dashboard GAZTGetDashboardData(String Lang, String Tin)
         {
             DateTime dt = DateTime.Now;
-            Dashboard dashboardData = new Dashboard();
-            // string currentDate = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "T" + dt.Hour.ToString() + ":" + dt.Minute.ToString();
+            Dashboard dashboardData = null;
 
             string NewToken = string.Empty;
             try
@@ -979,12 +969,6 @@ namespace GAZT.Manager
                             NewToken = values.First();
                         }
 
-                        //if ((0 == String.Compare(NewToken, "Invalid Token")))
-                        //{
-                        //    App.IsSessionExpired = true;
-                        //    throw new Exception("Invalid Token");
-
-                        //}
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
@@ -995,9 +979,11 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
-
-                        GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
-                        dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
+                        if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
+                        {
+                            GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
+                            dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
+                        }
                     }
                     return dashboardData;
 

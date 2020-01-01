@@ -24,8 +24,9 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public ChangePasswordPageView(NavigateToOtp navigateTo)
         {
-            viewModel = App.Locator.ChangePasswordPageView;
             InitializeComponent();
+            viewModel = App.Locator.ChangePasswordPageView;
+            
             SetLTR();
             this.BindingContext = viewModel;           
             viewModel.NavigateToOtpForEmailEnum = navigateTo;
@@ -55,9 +56,14 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
-        public void OnPasswordVisibilityClicked(object sender, EventArgs args)
+        public void OnPasswordVisibilityClickedForNewPassword(object sender, EventArgs args)
         {
-            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+            viewModel.PasswordVisibilityForNewPassword = !viewModel.PasswordVisibilityForNewPassword;
+        }
+
+        public void OnPasswordVisibilityClickedForRetypePassword(object sender, EventArgs args)
+        {
+            viewModel.PasswordVisibilityForRetypePassword = !viewModel.PasswordVisibilityForRetypePassword;
         }
         #endregion
 

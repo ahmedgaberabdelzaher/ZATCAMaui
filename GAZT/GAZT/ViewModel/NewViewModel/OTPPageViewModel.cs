@@ -221,6 +221,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
 
                         TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
+                        await PopToRootPage();
                         if (TP != null)
                         {
                             String Password = App.TP.Password;
@@ -266,6 +267,8 @@ namespace GAZT.ViewModel.NewViewModel
                             lang = "AR";
                         }
                         TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                        await PopToRootPage();
+
                         if (TP != null)
                         {
                             string UpdatedMobile = App.TP.NewMobile;
@@ -336,6 +339,16 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
+        }
+
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
         }
         #endregion
     }

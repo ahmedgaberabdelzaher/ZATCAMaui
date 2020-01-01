@@ -5,7 +5,9 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -155,11 +157,18 @@ namespace GAZT.ViewModel.NewViewModel
             });
         }
 
-            #endregion
+        #endregion
 
-            #region Method
-
-            public void OnPageLoad()
+        #region Method
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
+            }
+        }
+        public void OnPageLoad()
         {
             TaxPayerProfile = App.TP;
             TPProfileVisibility = true;
@@ -176,6 +185,8 @@ namespace GAZT.ViewModel.NewViewModel
             if (App.IsArabic == true)
                 lang = "A";
             String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
+            await PopToRootPage();
+
             CurrentMobile = mobilenumber;
             App.TP.Mobile = mobilenumber;
             TaxPayerProfile.Mobile = mobilenumber;
@@ -190,7 +201,7 @@ namespace GAZT.ViewModel.NewViewModel
             CurrentPasswordForEmail = string.Empty;
           
         }
-
+       
 
         #endregion
     }

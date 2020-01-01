@@ -355,7 +355,7 @@
     <value>تم التحقق من رقم الجوال بنجاح</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
-    <value>تم تغيير كلمة المرور بنجاح</value>
+    <value>تم تحديث كلمة المرور بنجاح</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>لا يوجد شهادات</value>
@@ -426,7 +426,7 @@
   <data name="NoTINsAvailable" xml:space="preserve">
     <value>ايوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
   </data>
-  <data name="VpnNotConnected" xml:space="preserve">
+  <data name="NetworkConnectivityIssue" xml:space="preserve">
     <value>توجد مشكلة في الشبكة, الرجاء إعادة المحاولة لاحقًا</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
@@ -686,5 +686,8 @@
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
     <value>الرجاء إدخال معرف مستخدم صالح</value>
+  </data>
+  <data name="ZFicalYear" xml:space="preserve">
+    <value>Fical Year</value>
   </data>
 </root>

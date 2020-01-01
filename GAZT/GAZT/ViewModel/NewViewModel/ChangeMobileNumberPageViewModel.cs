@@ -95,6 +95,9 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+     
+
         #endregion
 
         #region Constructor
@@ -146,7 +149,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (isValidMobileNumber)
                     {
                         response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
-
+                        await PopToRootPage();
                     }
                     else
                     {
@@ -202,6 +205,15 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
                 return false;
+            }
+        }
+
+        public async Task PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
         public void ClearMobileData()
