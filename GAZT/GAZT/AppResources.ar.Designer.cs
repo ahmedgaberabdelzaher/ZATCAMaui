@@ -1229,19 +1229,22 @@ namespace GAZT {
             }
         }
         
-        public static string ZYourSessionhasexpiredPleaseLoginagain {
-            get {
-                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
-            }
-        }
-        
         public static string ZEntertherequiredfield {
             get {
                 return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
-
-
         
+        public static string ZLogout {
+            get {
+                return ResourceManager.GetString("ZLogout", resourceCulture);
+            }
+        }
+        
+        public static string ZYourSessionhasexpiredPleaseLoginagain {
+            get {
+                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
+            }
+        }
     }
 }

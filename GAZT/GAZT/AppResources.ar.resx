@@ -517,7 +517,7 @@
     <value>الفواتير غير متوفرة</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
-    <value>Loading...</value>
+    <value>...تحميل</value>
   </data>
   <data name="Captcha" xml:space="preserve">
     <value>الرمز المرئي</value>
