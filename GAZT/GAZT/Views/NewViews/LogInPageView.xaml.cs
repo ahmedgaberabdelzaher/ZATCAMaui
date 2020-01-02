@@ -63,27 +63,9 @@ namespace GAZT.Views
             //viewModel.UserName = String.Empty;
             //viewModel.Password = String.Empty;
             //  await WebServiceManager.GetAllGAZTCertificate("EN", "");
-            if (App.IsComingFromDashboardToLogOff && !App.IsSessionExpired)
+            if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage, "Yes", "No");
-                    if (!result)
-                    {
-                        viewModel._navigationService.NavigateTo(App.DashboardPageView);
-                    }
-                    else
-                    {
-                        App.TP = null;
-                        viewModel.UserName = string.Empty;
-                        viewModel.Password = string.Empty;
-                        viewModel.IsVisibleTinIds = false;
-                    }
-                });
-            }
-            else if (App.IsSessionExpired)
-            {
-                await viewModel._dialogService.ShowMessageBox("Your Session has expired,Please Login again", AppResources.Information);
+                await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
             }
             else
             {

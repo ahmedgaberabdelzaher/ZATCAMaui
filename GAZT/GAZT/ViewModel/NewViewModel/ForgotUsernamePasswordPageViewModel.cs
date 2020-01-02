@@ -610,7 +610,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox("Enter the required field", AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.ZEntertherequiredfield, AppResources.Information);
                 }
 
             });

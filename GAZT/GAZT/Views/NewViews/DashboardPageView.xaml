@@ -7,15 +7,20 @@
               xmlns:custom="clr-namespace:GAZT"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.DashboardPageView"
-             
+                   xmlns:local1="clr-namespace:GAZT"
           Title="{x:Static local:AppResources.Dashoboard}"
              >
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnMyTaxPayerProfileClicked}">
+        <ToolbarItem Text="{Binding TinNumber}"  Order="Primary" Priority="0" Command="{Binding OnMyTaxPayerProfileClicked}">
+</ToolbarItem>
+        <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnUserProfileClicked}">
         </ToolbarItem>
+
+             
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand"  ColumnSpacing="0" RowSpacing="0">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand"  ColumnSpacing="0" RowSpacing="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="89*"/>
                 <RowDefinition Height="11*"/>
@@ -276,5 +281,25 @@
             </Grid>
             <Image Source="ic_footer_img.png" BackgroundColor="White" Grid.Row="1" Grid.Column="2" HorizontalOptions="End"></Image>
         </Grid>
+
+             <StackLayout  Grid.Row="0" Grid.Column="0"  local1:RoundCornersEffect.CornerRadius="0"  HorizontalOptions="EndAndExpand" VerticalOptions="Start" Padding="1"  BackgroundColor="#c49b2d"  IsVisible="{Binding UserProfileLayoutVisibility}">
+
+                            <StackLayout local1:RoundCornersEffect.CornerRadius="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  BackgroundColor="White" Padding="1">
+                                
+                                  <Label Text="Profile"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="10,0,10,0">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnMyTaxPayerProfileClicked}" />
+                                    </Label.GestureRecognizers>
+                                  </Label>
+                                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"  BackgroundColor="{StaticResource GoldLabelTextColor}"></BoxView>
+                 <Label Text="Logout"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="10,0,10,0">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLogoutClicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+
+            </Grid>
     </ContentPage.Content>
 </ContentPage>
