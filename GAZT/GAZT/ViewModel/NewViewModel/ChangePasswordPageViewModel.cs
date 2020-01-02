@@ -282,7 +282,6 @@ namespace GAZT
 
                     if (NavigateToOtpForEmailEnum == NavigateToOtp.IsEmail)
                     {
-                        if(string.Equals(App.TP.Password,)
                         if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
                         {
                             TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, App.Otp, TaxPayerProfile.Tin, OldEmail, NewEmail, TaxPayerProfile.Password, NewPasswordForEmail);
@@ -376,6 +375,7 @@ namespace GAZT
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                                ClearPasswordDataForEmail();
                             });
                         }
 

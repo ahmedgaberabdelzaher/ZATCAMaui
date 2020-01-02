@@ -1709,6 +1709,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User account locked.
+        /// </summary>
+        public static string ZAccountLocked {
+            get {
+                return ResourceManager.GetString("ZAccountLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
         public static string ZakatAmount {
@@ -1763,6 +1772,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log off.
+        /// </summary>
+        public static string ZLogoff {
+            get {
+                return ResourceManager.GetString("ZLogoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failed. Password locked.
+        /// </summary>
+        public static string ZPasswordLocked {
+            get {
+                return ResourceManager.GetString("ZPasswordLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid User ID.
         /// </summary>
         public static string ZPleaseEnterAValidUserID {
@@ -1772,11 +1799,38 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to SAR.
         /// </summary>
-        public static string ZTryAgain {
+        public static string ZSAR {
             get {
-                return ResourceManager.GetString("ZTryAgain", resourceCulture);
+                return ResourceManager.GetString("ZSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total paid amount.
+        /// </summary>
+        public static string ZTotalPaidAmount {
+            get {
+                return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total unpaid amount.
+        /// </summary>
+        public static string ZTotalUnPaidAmount {
+            get {
+                return ResourceManager.GetString("ZTotalUnPaidAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is not currently valid.
+        /// </summary>
+        public static string ZUserNotValid {
+            get {
+                return ResourceManager.GetString("ZUserNotValid", resourceCulture);
             }
         }
     }

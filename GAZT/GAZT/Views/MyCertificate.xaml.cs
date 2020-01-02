@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
@@ -9,25 +10,51 @@ namespace GAZT.Views
 {
     public partial class MyCertificate : ContentPage
     {
-       // ObservableCollection<String> Items = new ObservableCollection<String>();
+        // ObservableCollection<String> Items = new ObservableCollection<String>();
 
         MyCertificateViewModel viewModel;
         List<string> list = new List<string>();
         public MyCertificate()
         {
-
-            viewModel = App.Locator.MyCertificate;
             InitializeComponent();
+            viewModel = App.Locator.MyCertificate;
             SetLTR();
-            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
 
 
             //string str = "abc";
             //Items.Add(str);
             // CardView.ItemsSource = Items;
+
             viewModel.OnPageLoad();
+            if (viewModel.allCertificate != null)
+            {
+                if (viewModel.allCertificate.ZakatSet != null && viewModel.allCertificate.ZakatSet.results != null && viewModel.allCertificate.ZakatSet.results.Count > 0)
+                {
+                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+
+                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                }
+                else if (viewModel.allCertificate.VATSet != null && viewModel.allCertificate.VATSet.results != null && viewModel.allCertificate.VATSet.results.Count > 0)
+                {
+                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+
+                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                }
+                else if (viewModel.allCertificate.ExciseSet != null && viewModel.allCertificate.ExciseSet.results != null && viewModel.allCertificate.ExciseSet.results.Count > 0)
+                {
+                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+
+                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                }
+            }
+
+
+
+
             SetLTR();
             this.BindingContext = viewModel;
             //EXISECertificateList.ItemSelected += (sender, e) =>

@@ -171,7 +171,8 @@
 
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span    Text="SAR "/>
+                                                            <Span    Text="{x:Static local:AppResources.ZSAR} "/>
+                                                            <Span Text=" "/>
                                                             <Span  Text="{Binding TestDueAmount}"  />
                                                         </FormattedString>
                                                     </Label.FormattedText>

@@ -21,7 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Property
 
 
-        private string _NewMobile = string.Empty;
+        private string _NewMobile = "5";
         public string NewMobile
         {
             get

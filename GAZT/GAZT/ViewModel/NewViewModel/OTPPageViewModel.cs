@@ -210,15 +210,11 @@ namespace GAZT.ViewModel.NewViewModel
                         String lang = "EN";
 
                         OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-
-
+                        
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
-                        }
-                        else
-                        {
-                        }
+                        }                      
 
                         TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
                         await PopToRootPage();
@@ -227,7 +223,7 @@ namespace GAZT.ViewModel.NewViewModel
                             String Password = App.TP.Password;
                             App.TP = TP;
                             App.TP.Password = Password;
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 _navigationService.NavigateTo(App.DashboardPageView);
                             });
@@ -309,10 +305,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         App.Otp = OTP;
                     }
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                      
-
                         _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsEmail);
                     });
 

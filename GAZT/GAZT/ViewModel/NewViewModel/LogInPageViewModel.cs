@@ -308,7 +308,7 @@ namespace GAZT.ViewModel
                 App.IsComingFromDashboardToLogOff = false;
                 String response = string.Empty;
                 string UserId = string.Empty;
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -443,16 +443,19 @@ namespace GAZT.ViewModel
                             IsLoading = false;
                         });
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(response,ex.Message);
+                            await _dialogService.ShowMessageBox(ex.Message,AppResources.Information);
+                            UserName = string.Empty;
+                            Password = string.Empty;
                         });
                         await Task.Run(() =>
                         {
                             IsLoading = false;
                         });
+                    
                     }
                 });
             });

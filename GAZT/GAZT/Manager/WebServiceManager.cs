@@ -104,6 +104,14 @@ namespace GAZT.Manager
                                 {
                                     throw new Exception(Token);
                                 }
+                                if ((0 == String.Compare(Token, "User is not currently valid")))
+                                {
+                                    throw new Exception(Token);
+                                }
+                                if ((0 == String.Compare(Token, "User account locked")))
+                                {
+                                    throw new Exception(Token);
+                                }
                                 if (!string.IsNullOrEmpty(Token))
                                 {
                                     App.Token = Token;
@@ -124,7 +132,33 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                throw new Exception(AppResources.NetworkConnectivityIssue);
+                if (string.Equals(ex.Message,"User does not exist"))
+                {
+                    throw new Exception(AppResources.UserDoesNotExist);
+                }
+                else if (string.Equals(ex.Message,"User authentication failed"))
+                {
+                    throw new Exception(AppResources.UserAuthenticationFailed);
+                }
+                else if (string.Equals(ex.Message, "Authentication failed. Password locked"))
+                {
+                    throw new Exception(AppResources.ZPasswordLocked);
+                }
+                else if (string.Equals(ex.Message, "User is not currently valid"))
+                {
+                    throw new Exception(AppResources.ZUserNotValid);
+                }
+                else if (string.Equals(ex.Message, "User account locked"))
+                {
+                    throw new Exception(AppResources.ZAccountLocked);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+
+
+
             }
         }
 
@@ -246,31 +280,38 @@ namespace GAZT.Manager
                 HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                 if (GAZTValidateOTPResponse != null)
                 {
-                    HttpHeaders headers = GAZTValidateOTPResponse.Headers;
-                    IEnumerable<string> values;
-                    if (headers.TryGetValues("token", out values))
+                    if (GAZTValidateOTPResponse.Headers != null)
                     {
-                        NewToken = values.First();
-                    }
-                    if ((!string.IsNullOrEmpty(NewToken)))
-                    {
-                        if ((0 == String.Compare(NewToken, "Token has expaired"))|| (0 == String.Compare(NewToken, "Invalid Token")))
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
                         {
-                            App.IsSessionExpired = true;
-                            return null;
+                            NewToken = values.First();
                         }
-                        App.Token = NewToken;
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
+                        {
+                            GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
+                            JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
+                            if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
+                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                            else
+                                throw new Exception(AppResources.InvalidOTP);
+                        }
                     }
-                    String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
-                    if (!string.IsNullOrEmpty(GAZTValidateOTPResponseJSON))
-                    {
-                        GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
-                        JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                        if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
-                            TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                        else
-                            throw new Exception(AppResources.InvalidOTP);
-                    }
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
                 return TP;
             }

@@ -688,7 +688,25 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
   </data>
-  <data name="ZTryAgain" xml:space="preserve">
-    <value />
+  <data name="ZAccountLocked" xml:space="preserve">
+    <value>User account locked</value>
+  </data>
+  <data name="ZLogoff" xml:space="preserve">
+    <value>Log off</value>
+  </data>
+  <data name="ZPasswordLocked" xml:space="preserve">
+    <value>Authentication failed. Password locked</value>
+  </data>
+  <data name="ZSAR" xml:space="preserve">
+    <value>SAR</value>
+  </data>
+  <data name="ZTotalPaidAmount" xml:space="preserve">
+    <value>Total paid amount</value>
+  </data>
+  <data name="ZTotalUnPaidAmount" xml:space="preserve">
+    <value>Total unpaid amount</value>
+  </data>
+  <data name="ZUserNotValid" xml:space="preserve">
+    <value>User is not currently valid</value>
   </data>
 </root>

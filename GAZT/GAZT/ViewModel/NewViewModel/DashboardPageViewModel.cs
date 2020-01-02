@@ -382,16 +382,16 @@ namespace GAZT.ViewModel
 
                     BillReturnList.Add(objBill2);
 
-                    BillReturn objBill3 = new BillReturn();
-                    objBill3.ReturnTypeProperty = Models.ReturnType.PprtnTot;
-                    String PprtnTotstr = dashboard.results[0].PprtnTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(PprtnTotstr))
-                    {
-                        PprtnTotstr = "0";
-                    }
-                    objBill3.ReturnCount = PprtnTotstr;
+                    //BillReturn objBill3 = new BillReturn();
+                    //objBill3.ReturnTypeProperty = Models.ReturnType.PprtnTot;
+                    //String PprtnTotstr = dashboard.results[0].PprtnTot.TrimStart(new Char[] { '0' });
+                    //if (string.IsNullOrEmpty(PprtnTotstr))
+                    //{
+                    //    PprtnTotstr = "0";
+                    //}
+                    //objBill3.ReturnCount = PprtnTotstr;
 
-                    BillReturnList.Add(objBill3);
+                    //BillReturnList.Add(objBill3);
 
                     BillReturn = BillReturnList;
 
