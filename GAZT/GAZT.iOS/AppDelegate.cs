@@ -30,6 +30,7 @@ namespace GAZT.iOS
             Xamarin.Forms.Forms.Init();
             InitRoundedCornerView.Init();
             IQKeyboardManager.SharedManager.Enable = true;
+            UINavigationBar.Appearance.TintColor = UIColor.Red;
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -13,7 +13,7 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="12*" />
-                <RowDefinition Height="90*" />
+                <RowDefinition Height="88*" />
               
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -56,12 +56,12 @@
                     <RowDefinition Height="5.08*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="31*"/>
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0">
+                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
                   
                     
                     <local1:CustomLabel.GestureRecognizers>

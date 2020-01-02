@@ -1720,7 +1720,8 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
-        public static string ZakatAmount {
+        public static string PasswordGuidelineText
+        {
             get {
                 return ResourceManager.GetString("ZakatAmount", resourceCulture);
             }
@@ -1810,11 +1811,11 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid User ID.
         /// </summary>
-        public static string ZPleaseEnterAValidUserID {
-            get {
-                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
-            }
-        }
+        //public static string ZPleaseEnterAValidUserID {
+        //    get {
+        //        return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
+        //    }
+        //}
         
         /// <summary>
         ///   Looks up a localized string similar to SAR.
@@ -1851,13 +1852,30 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUserNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Your Session has expired,Please Login again.
+        ///   Looks up a localized string similar to User is not currently valid.
         /// </summary>
-        public static string ZYourSessionhasexpiredPleaseLoginagain {
-            get {
+        public static string ZAccountLocked
+        {
+            get
+            {
+                return ResourceManager.GetString("ZAccountLocked", resourceCulture);
+            }
+        }
+
+        public static string ZYourSessionhasexpiredPleaseLoginagain
+        {
+            get
+            {
                 return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
+            }
+        }
+        public static string ZEntertherequiredfield
+        {
+            get
+            {
+                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
     }
