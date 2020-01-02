@@ -1720,13 +1720,7 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
-        public static string PasswordGuidelineText
-        {
-            get {
-                return ResourceManager.GetString("ZakatAmount", resourceCulture);
-            }
-        }
-        
+       
         /// <summary>
         ///   Looks up a localized string similar to Zakat base.
         /// </summary>
@@ -1856,14 +1850,7 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to User is not currently valid.
         /// </summary>
-        public static string ZAccountLocked
-        {
-            get
-            {
-                return ResourceManager.GetString("ZAccountLocked", resourceCulture);
-            }
-        }
-
+       
         public static string ZYourSessionhasexpiredPleaseLoginagain
         {
             get
@@ -1871,12 +1858,16 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
             }
         }
-        public static string ZEntertherequiredfield
+
+        public static string ZPleaseEnterAValidUserID
         {
             get
             {
-                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
+                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
             }
         }
+
+       
+
     }
 }

@@ -13,10 +13,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{Binding TinNumber}"  Order="Primary" Priority="0" Command="{Binding OnMyTaxPayerProfileClicked}" >
 </ToolbarItem>
-        <ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnUserProfileClicked}">
+        <!--<ToolbarItem Icon="ic_Dashboard_User.png" Order="Primary" Priority="0" Command="{Binding OnUserProfileClicked}">
+        </ToolbarItem>-->
+
+        <ToolbarItem Icon="ic_logout.png" Order="Primary" Priority="0" Command="{Binding OnUserProfileClicked}">
         </ToolbarItem>
 
-             
+
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

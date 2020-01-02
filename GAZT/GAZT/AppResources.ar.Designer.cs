@@ -1240,5 +1240,8 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
+
+
+        
     }
 }

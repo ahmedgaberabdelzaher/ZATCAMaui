@@ -148,7 +148,7 @@
     <value>تراجع</value>
   </data>
   <data name="Bill" xml:space="preserve">
-    <value>الفاتورة</value>
+    <value>الفواتير</value>
   </data>
   <data name="BilledNumber" xml:space="preserve">
     <value>رقم المفوتر</value>
@@ -342,7 +342,7 @@
 </value>
   </data>
   <data name="Bills" xml:space="preserve">
-    <value>الفاتورة</value>
+    <value>الفواتير</value>
   </data>
   <data name="AmendmentsDoNotMatchText" xml:space="preserve">
     <value>

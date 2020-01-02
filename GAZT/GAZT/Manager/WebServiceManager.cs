@@ -585,7 +585,7 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<List<MyBills>> GAZTGetMyBills(String Tin)
+        public static async Task<List<MyBills>> GAZTGetMyBills(String Tin,string lang)
         {
             List<MyBills> myBills = new List<MyBills>();
             String MobileNumber = string.Empty;
@@ -594,7 +594,7 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json";
+                String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json&sap-language="+lang;
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTMyBillsResponse = await client.GetAsync(uri);

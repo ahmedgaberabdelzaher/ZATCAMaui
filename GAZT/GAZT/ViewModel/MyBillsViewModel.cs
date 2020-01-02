@@ -271,8 +271,8 @@ namespace GAZT.ViewModel
             try
             {
 
-
-                myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin);
+                string lang = UtilityManager.GetLanguageParameter();
+                myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin,lang);
                 await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
 
