@@ -222,7 +222,6 @@ namespace GAZT.ViewModel
             }
         }
 
-
         private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
         public Xamarin.Forms.Thickness PaddingForCollectionView
         {
