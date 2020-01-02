@@ -162,19 +162,19 @@ namespace GAZT.ViewModel
             }
         }
 
-        private bool _userProfileLayoutVisibility = false;
-        public bool UserProfileLayoutVisibility
-        {
-            get
-            {
-                return _userProfileLayoutVisibility;
-            }
-            set
-            {
-                _userProfileLayoutVisibility = value;
-                RaisePropertyChanged("UserProfileLayoutVisibility");
-            }
-        }
+        //private bool _userProfileLayoutVisibility = false;
+        //public bool UserProfileLayoutVisibility
+        //{
+        //    get
+        //    {
+        //        return _userProfileLayoutVisibility;
+        //    }
+        //    set
+        //    {
+        //        _userProfileLayoutVisibility = value;
+        //        RaisePropertyChanged("UserProfileLayoutVisibility");
+        //    }
+        //}
 
 
         private double _paddingHeight;
@@ -278,14 +278,14 @@ namespace GAZT.ViewModel
 
             });
 
-            OnLogoutClicked = new Xamarin.Forms.Command(async () =>
-            {
-               
-            });
+            //OnLogoutClicked = new Xamarin.Forms.Command(async () =>
+            //{
+            //    LogOut();
+            //});
 
             OnUserProfileClicked = new Xamarin.Forms.Command(async () =>
             {
-                UserProfileLayoutVisibility = !UserProfileLayoutVisibility;
+              //  UserProfileLayoutVisibility = !UserProfileLayoutVisibility;
             });
 
             
