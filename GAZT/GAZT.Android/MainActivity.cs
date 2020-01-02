@@ -39,7 +39,8 @@ namespace GAZT.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadExternalStorage }, 0);
             }
 
-            LoadApplication(new App());
+
+             LoadApplication(new App());
         }
         //public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
         //{
