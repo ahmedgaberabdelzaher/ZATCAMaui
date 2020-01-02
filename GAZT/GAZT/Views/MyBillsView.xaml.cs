@@ -15,13 +15,14 @@ namespace GAZT.Views
         MyBillsViewModel viewModel;
         public MyBillsView()
         {
-            InitializeComponent();
-            viewModel = App.Locator.MyBillsView;
-           
             Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            InitializeComponent();
+            viewModel = App.Locator.MyBillsView;
+           
+         
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;

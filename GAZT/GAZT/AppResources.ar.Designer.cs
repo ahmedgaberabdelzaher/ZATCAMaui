@@ -1187,15 +1187,51 @@ namespace GAZT {
             }
         }
         
-        public static string ZYourSessionhasexpiredPleaseLoginagain {
+        public static string ZAccountLocked {
             get {
-                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
+                return ResourceManager.GetString("ZAccountLocked", resourceCulture);
             }
         }
         
-        public static string ZLogout {
+        public static string ZLogoff {
             get {
-                return ResourceManager.GetString("ZLogout", resourceCulture);
+                return ResourceManager.GetString("ZLogoff", resourceCulture);
+            }
+        }
+        
+        public static string ZPasswordLocked {
+            get {
+                return ResourceManager.GetString("ZPasswordLocked", resourceCulture);
+            }
+        }
+        
+        public static string ZSAR {
+            get {
+                return ResourceManager.GetString("ZSAR", resourceCulture);
+            }
+        }
+        
+        public static string ZTotalPaidAmount {
+            get {
+                return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZTotalUnPaidAmount {
+            get {
+                return ResourceManager.GetString("ZTotalUnPaidAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZUserNotValid {
+            get {
+                return ResourceManager.GetString("ZUserNotValid", resourceCulture);
+            }
+        }
+        
+        public static string ZYourSessionhasexpiredPleaseLoginagain {
+            get {
+                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
             }
         }
         

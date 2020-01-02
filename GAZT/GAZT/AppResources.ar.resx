@@ -711,4 +711,10 @@
   <data name="ZUserNotValid" xml:space="preserve">
     <value>User is not currently valid</value>
   </data>
+   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
+    <value>Your Session has expired,Please Login again</value>
+  </data>
+   <data name="ZEntertherequiredfield" xml:space="preserve">
+    <value>Please enter valid user id</value>
+  </data>
 </root>
