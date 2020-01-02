@@ -168,5 +168,16 @@ namespace GAZT.Views.NewViews
             //viewModel.IsForgotUserNameWithCorporate = false;
 
         }
-    }
+
+        private async void OnOTPEntered(Object sender, EventArgs e)
+        {
+            string Otp = EnteredOTP.Text;
+            if(Otp.Length > 4)
+            {
+                EnteredOTP.Text = EnteredOTP.Text.Substring(0, 4);
+                EnteredOTP.Unfocus();
+            }
+        }
+
+        }
 }
