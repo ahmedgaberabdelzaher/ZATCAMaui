@@ -117,7 +117,7 @@ namespace GAZT.Views.NewViews
                 bool isValidNumber = UtilityManager.IsOTPNumberValid(Otp);
                 if(!isValidNumber)
                 {
-                    EnteredOTP.Text = "";
+                    EnteredOTP.Text = Otp.Substring(0, Otp.Length-1);
                 }
             }
             if (Otp.Length > 4)

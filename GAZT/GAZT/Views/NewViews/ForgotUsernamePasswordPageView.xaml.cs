@@ -61,6 +61,34 @@ namespace GAZT.Views.NewViews
             }
         }
 
+        
+       private async void OnIDNumberTextChanged(Object sender, EventArgs e)
+        {
+
+            if (viewModel.SelectedTaxPayerType != null)
+            {
+                string IdNumber = UserName.Text;
+                if (IdNumber.Length > 0)
+                {
+                    bool isValidNumber = UtilityManager.IsOTPNumberValid(IdNumber);
+                    if (!isValidNumber)
+                    {
+                        string _idNumber = IdNumber.Substring(0, IdNumber.Length - 1);
+                        UserName.Text = _idNumber;
+                    }
+                }
+                if(viewModel.SelectedTaxPayerType.id.Equals("1"))
+                {
+                    if (IdNumber.Length > 10)
+                    {
+                        UserName.Text = UserName.Text.Substring(0, 10);
+                        UserName.Unfocus();
+                    }
+                }
+                
+            }
+        }
+
         protected void OnUserNAmeFocused(object sender, EventArgs e)
         {
             if(viewModel.SelectedTaxPayerType != null)
@@ -70,7 +98,6 @@ namespace GAZT.Views.NewViews
             else
             {
                 UserName.Keyboard = Keyboard.Default;
-
             }
 
         }
