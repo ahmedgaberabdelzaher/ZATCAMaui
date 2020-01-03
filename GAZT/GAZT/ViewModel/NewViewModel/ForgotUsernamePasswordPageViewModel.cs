@@ -45,6 +45,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isOTPEntryEnable = true;
+
+        public bool IsOTPEntryEnable
+        {
+            get
+            {
+                return _isOTPEntryEnable;
+            }
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged(() => IsOTPEntryEnable);
+            }
+        }
+
+        
         private ForgotUserNamePassword _selectedTaxPayerType;
         public ForgotUserNamePassword SelectedTaxPayerType
         {
@@ -255,6 +271,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     IsResendOTPEnabled = true;
+                    IsOTPEntryEnable = false;
                 }
                
                 RaisePropertyChanged("OTPValidDuration");
@@ -845,7 +862,7 @@ namespace GAZT.ViewModel.NewViewModel
                             OTPLayoutVisibility = true;
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsResendOTPEnabled = false;
-
+                            IsOTPEntryEnable = true;
                             string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
