@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GAZT.Helper;
+using GAZT.Manager;
 
 namespace GAZT.Views.NewViews
 {
@@ -111,6 +112,14 @@ namespace GAZT.Views.NewViews
         private async void OnOTPEntered(Object sender, EventArgs e)
         {
             string Otp = EnteredOTP.Text;
+            if(Otp.Length > 0)
+            {
+                bool isValidNumber = UtilityManager.IsOTPNumberValid(Otp);
+                if(!isValidNumber)
+                {
+                    EnteredOTP.Text = "";
+                }
+            }
             if (Otp.Length > 4)
             {
                 EnteredOTP.Text = EnteredOTP.Text.Substring(0, 4);
