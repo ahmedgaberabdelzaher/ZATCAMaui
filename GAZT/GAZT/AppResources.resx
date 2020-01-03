@@ -464,7 +464,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>ID Number</value>
   </data>
   <data name="IDType" xml:space="preserve">
-    <value>Taxpayer type</value>
+    <value>Taxpayer Type</value>
   </data>
   <data name="UserID" xml:space="preserve">
     <value>User ID</value>
