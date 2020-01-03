@@ -97,144 +97,7 @@ namespace GAZT
             }
         }
 
-        //private bool _isZAKATCertificateAvailable = false;
-
-        //public bool IsZAKATCertificateAvailable
-        //{
-        //    get
-        //    {
-        //        return _isZAKATCertificateAvailable;
-        //    }
-        //    set
-        //    {
-        //        _isZAKATCertificateAvailable = value;
-        //        RaisePropertyChanged("IsZAKATCertificateAvailable");
-        //    }
-        //}
-
-        //private bool _isEXISECertificateAvailable = false;
-
-        //public bool IsEXISECertificateAvailable
-        //{
-        //    get
-        //    {
-        //        return _isEXISECertificateAvailable;
-        //    }
-        //    set
-        //    {
-        //        _isEXISECertificateAvailable = value;
-        //        RaisePropertyChanged("IsEXISECertificateAvailable");
-        //    }
-        //}
-
-        //private List<Result> _VATCertificateList ;
-
-        //public List<Result> VATCertificateList
-        //{
-        //    get
-        //    {
-        //        return _VATCertificateList;
-        //    }
-        //    set
-        //    {
-        //        _VATCertificateList = value;
-        //        RaisePropertyChanged("VATCertificateList");
-        //    }
-        //}
-
-
-        //private Result _selectedVATCertificate;
-
-        //public Result SelectedVATCertificate
-        //{
-        //    get
-        //    {
-        //        return _selectedVATCertificate;
-        //    }
-        //    set
-        //    {
-        //        _selectedVATCertificate = value;
-        //        RaisePropertyChanged("SelectedVATCertificate");
-        //        if (SelectedVATCertificate != null &&  SelectedVATCertificate.Pdfurl != null)
-        //        {
-        //            ShowVATPdf(SelectedVATCertificate.Pdfurl);
-        //        }
-        //    }
-        //}
-
-
-        //private List<Result> _zAKATCertificateList;
-
-        //public List<Result> ZAKATCertificateList
-        //{
-        //    get
-        //    {
-        //        return _zAKATCertificateList;
-        //    }
-        //    set
-        //    {
-        //        _zAKATCertificateList = value;
-        //        RaisePropertyChanged("ZAKATCertificateList");
-        //    }
-        //}
-
-
-
-
-        //private Result _selectedZAKATCertificate;
-
-        //public Result SelectedZAKATCertificate
-        //{
-        //    get
-        //    {
-        //        return _selectedZAKATCertificate;
-        //    }
-        //    set
-        //    {
-        //        _selectedZAKATCertificate = value;
-        //        RaisePropertyChanged("SelectedZAKATCertificate");
-        //        if(SelectedZAKATCertificate != null && SelectedZAKATCertificate.Pdfurl != null)
-        //        {
-        //            ShowZAKATPdf(SelectedZAKATCertificate.Pdfurl);
-        //        }
-
-        //    }
-        //}
-
-        //private List<Result> _eXICISECertificateList;
-
-        //public List<Result> EXICISECertificateList
-        //{
-        //    get
-        //    {
-        //        return _eXICISECertificateList;
-        //    }
-        //    set
-        //    {
-        //        _eXICISECertificateList = value;
-        //        RaisePropertyChanged("EXICISECertificateList");
-
-        //    }
-        //}
-
-        //private Result _selectedEXCISECertificate;
-
-        //public Result SelectedEXCISECertificate
-        //{
-        //    get
-        //    {
-        //        return _selectedEXCISECertificate;
-        //    }
-        //    set
-        //    {
-        //        _selectedEXCISECertificate = value;
-        //        RaisePropertyChanged("SelectedEXCISECertificate");
-        //        if (SelectedEXCISECertificate != null &&  SelectedEXCISECertificate.Pdfurl != null)
-        //        {
-        //            ShowEXCISECertificate(SelectedEXCISECertificate.Pdfurl);
-        //        }
-        //    }
-        //}
+       
 
 
         private List<Result> _certificateList;
@@ -407,27 +270,7 @@ namespace GAZT
             {
                 throw new ArgumentNullException("dialogService");
             }
-            //Task.Run(async () =>
-            //{
-            //    IsLoading = true;
-            //    String lang = "EN";
-            //    if (App.IsArabic == true)
-            //        lang = "AR";
-            //    ineligible:
-            //    String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-
-            //    if (string.IsNullOrEmpty(response) != true)
-            //    {
-            //        DownloadUrl = response;
-            //        pdf();
-            //    }
-            //    else
-            //    {
-            //        TaxPayerProfile.Tin = "3300057436";
-            //        goto ineligible;
-            //    }
-            //    IsLoading = false;
-            //});
+           
             _dialogService = dialogService;
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
@@ -510,14 +353,7 @@ namespace GAZT
             });
 
 
-            //OnCertificateClicked = new Command(() =>
-            //{
-
-
-            //        ShowVATPdf();
-
-            //});
-
+          
 
             OnBellClicked = new Command(async () =>
             {

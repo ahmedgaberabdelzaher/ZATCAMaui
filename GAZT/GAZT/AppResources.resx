@@ -721,4 +721,10 @@ amendments do not match what was calculated by the General Authority for Zakat a
    <data name="ZError" xml:space="preserve">
     <value>Error</value>
   </data>
+   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
+    <value>You have one remaining attempt then the account will be locked</value>
+  </data>
+  <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
+    <value>Your account has been locked. Please contact our call center at : 19993</value>
+  </data>
 </root>

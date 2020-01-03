@@ -1252,5 +1252,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZError", resourceCulture);
             }
         }
+        
+        public static string ZYouhaveoneremainingattemptthentheaccountwillbelocked {
+            get {
+                return ResourceManager.GetString("ZYouhaveoneremainingattemptthentheaccountwillbelocked", resourceCulture);
+            }
+        }
+        
+        public static string ZYouraccounthasbeenlockedPleasecontactourcallcenter {
+            get {
+                return ResourceManager.GetString("ZYouraccounthasbeenlockedPleasecontactourcallcenter", resourceCulture);
+            }
+        }
     }
 }

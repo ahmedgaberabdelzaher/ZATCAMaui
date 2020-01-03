@@ -725,4 +725,12 @@
   <data name="ZError" xml:space="preserve">
     <value>خطأ</value>
   </data>
+  <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
+    <value>تبقت لك محاولة واحدة وبعدها سيتم حجب حسابك</value>
+  </data>
+  <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
+    <value>
+تم حجب الحساب، الرجاء التواصل مع مركز الإتصال الموحد عبر الرقم : 19993
+ </value>
+  </data>
 </root>

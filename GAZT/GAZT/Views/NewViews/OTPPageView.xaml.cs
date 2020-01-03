@@ -75,7 +75,14 @@ namespace GAZT.Views.NewViews
                 var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                 if (App.IsArabic)
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits  + "***" + firstDigits;
+                    }
+                    else
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                    }
                 }
                 else
                 {

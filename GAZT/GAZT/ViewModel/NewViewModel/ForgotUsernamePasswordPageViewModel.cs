@@ -906,7 +906,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (!string.IsNullOrEmpty(EnteredOTP))
                 {
-                    
+                    currentAttempts++;
                     string idNumber = GetTinId();
                     string lang = UtilityManager.GetLanguageParameter();
                     string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
@@ -925,7 +925,15 @@ namespace GAZT.ViewModel.NewViewModel
 
                     D d = new D();
                     d.__metadata = metadata;
-                    d.Action = "01";
+                    if(currentAttempts < 4)
+                    {
+                        d.Action = "01";
+                    }
+                    else
+                    {
+                        d.Action = "42";
+                    }
+                
                     d.Tin = idNumber;
                     d.Langu = UtilityManager.GetLanguageParameter();
                     d.CurrAttmps = currentAttempts;
@@ -945,9 +953,8 @@ namespace GAZT.ViewModel.NewViewModel
                     d.Hyperlink = "";
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                    currentAttempts++;
                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
+                    if (forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
                     {
                         Device.BeginInvokeOnMainThread(async () => {
                             await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
@@ -957,21 +964,37 @@ namespace GAZT.ViewModel.NewViewModel
                         NewPasswordLayoutVisibility = true;
                         MobileNumber = forgotPassword.d.MobileNo;
                     }
-                    else
+                    else if(forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                            _navigationService.GoBack();
                         });
+                    }
+                    else
+                    {
+                        if (currentAttempts == 1)
+                        {
+                            //Invalied user name
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
+                            });
+                        }
+                        else if (currentAttempts == 2)
+                        {
+                            // You have one remaining attaampt
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.ZError);
+                            });
+                        }
+                        else
+                        {
+                        }
                         EnteredOTP = "";
                     }
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
-                    });
-
-
                 }
             });
 
