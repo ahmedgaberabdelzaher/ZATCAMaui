@@ -44,7 +44,7 @@
                     <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
-                    <custom:GAZTBorderlessEntry Text="{Binding UserName}" Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></custom:GAZTBorderlessEntry>
 
 
                     <Label Text="{x:Static local:AppResources.TINS}" IsVisible="{Binding IsVisibleTinIds}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >

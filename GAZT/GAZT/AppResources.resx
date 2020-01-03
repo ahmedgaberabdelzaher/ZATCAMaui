@@ -709,22 +709,25 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZUserNotValid" xml:space="preserve">
     <value>User is not currently valid</value>
   </data>
-    <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
+  <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
     <value>Your Session has expired,Please Login again</value>
   </data>
-   <data name="ZLogout" xml:space="preserve">
+  <data name="ZLogout" xml:space="preserve">
     <value>Logout</value>
   </data>
-   <data name="ZEntertherequiredfield" xml:space="preserve">
+  <data name="ZEntertherequiredfield" xml:space="preserve">
     <value>Please enter valid user id</value>
   </data>
-   <data name="ZError" xml:space="preserve">
+  <data name="ZError" xml:space="preserve">
     <value>Error</value>
   </data>
-   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
+  <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
     <value>You have one remaining attempt then the account will be locked</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
     <value>Your account has been locked. Please contact our call center at : 19993</value>
+  </data>
+  <data name="ZUserNameIncorrect" xml:space="preserve">
+    <value>User name or password is incorrect</value>
   </data>
 </root>

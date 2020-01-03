@@ -688,7 +688,7 @@
     <value> 
 تعذر تحديد اسم المستخدم رجاء التواصل مع مركز الاتصال الموحد: 19993
   </value>
-    </data>
+  </data>
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
   </data>
@@ -732,5 +732,8 @@
     <value>
 تم حجب الحساب، الرجاء التواصل مع مركز الإتصال الموحد عبر الرقم : 19993
  </value>
+  </data>
+  <data name="ZUserNameIncorrect" xml:space="preserve">
+    <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
   </data>
 </root>

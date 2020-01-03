@@ -320,18 +320,32 @@ namespace GAZT.ViewModel
                         String lang = "E";
                         if (App.IsArabic == true)
                             lang = "AR";
-
-
-                        //  bool isValidEmail= UtilityManager.IsValidEmailAddress(UserName);
+                       
                         if (SelectedTinId != null && IsVisibleTinIds == true)
                         {
-                            response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
-                            UserId = SelectedTinId.Tin;
+                            bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);
+                            if (isValidEmail == true)
+                            {
+                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
+                                UserId = SelectedTinId.Tin;
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.ZUserNameIncorrect);
+                            }
                         }
                         else
                         {
-                            response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
-                            UserId = UserName;
+                            bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
+                            if (isValidTin == true)
+                            {
+                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                                UserId = UserName;
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.ZUserNameIncorrect);
+                            }
                         }
 
 

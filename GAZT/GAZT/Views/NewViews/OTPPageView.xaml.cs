@@ -26,8 +26,7 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public OTPPageView(NavigateToOtp e)
         {
-            try
-            {
+           
                 InitializeComponent();
                 viewModel = App.Locator.OTPPageView;
 
@@ -83,27 +82,30 @@ namespace GAZT.Views.NewViews
 
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
-                string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                if (App.IsArabic)
-                {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits  + "***" + firstDigits;
+                        string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                        if (App.IsArabic)
+                        {
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                            }
+                            else
+                            {
+                                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                            }
+                        }
+                        else
+                        {
+                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                        }
                     }
-                    else
-                    {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                    }
-                }
-                else
-                {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                    DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+                    DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
                 }
             }
-            DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-            DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
-        }
+            
+       
         #endregion
 
         #region Method
