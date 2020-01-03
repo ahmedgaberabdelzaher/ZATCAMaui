@@ -105,61 +105,23 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private String _OTP1stNumberProvidedByTheUser;
-        public String OTP1stNumberProvidedByTheUser
+      
+        private String _enteredOTP;
+        public String EnteredOTP
         {
             get
             {
-                return _OTP1stNumberProvidedByTheUser;
+                return _enteredOTP;
             }
             set
             {
-                _OTP1stNumberProvidedByTheUser = value;
-                RaisePropertyChanged("OTP1stNumberProvidedByTheUser");
-            }
-        }
-        private String _OTP2ndNumberProvidedByTheUser;
-        public String OTP2ndNumberProvidedByTheUser
-        {
-            get
-            {
-                return _OTP2ndNumberProvidedByTheUser;
-            }
-            set
-            {
-                _OTP2ndNumberProvidedByTheUser = value;
-                RaisePropertyChanged("OTP2ndNumberProvidedByTheUser");
-            }
-        }
-        private String _OTP3rdNumberProvidedByTheUser;
-        public String OTP3rdNumberProvidedByTheUser
-        {
-            get
-            {
-                return _OTP3rdNumberProvidedByTheUser;
-            }
-            set
-            {
-                _OTP3rdNumberProvidedByTheUser = value;
-                RaisePropertyChanged("OTP3rdNumberProvidedByTheUser");
-            }
-        }
-
-        private String _OTP4thNumberProvidedByTheUser;
-        public String OTP4thNumberProvidedByTheUser
-        {
-            get
-            {
-                return _OTP4thNumberProvidedByTheUser;
-            }
-            set
-            {
-                _OTP4thNumberProvidedByTheUser = value;
-                RaisePropertyChanged("OTP4thNumberProvidedByTheUser");
+                _enteredOTP = value;
+                RaisePropertyChanged("EnteredOTP");
             }
         }
 
 
+         
         #endregion
 
         #region Constructor
@@ -209,7 +171,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                         String lang = "EN";
 
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                        OTP = EnteredOTP;
                         
                         if (App.IsArabic == true)
                         {
@@ -257,7 +219,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         String OTP = string.Empty;
                         String lang = "EN";
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                        OTP = EnteredOTP;
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
@@ -299,7 +261,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     String OTP = string.Empty;
 
-                    OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                    OTP = EnteredOTP;
 
                     if (!string.IsNullOrEmpty(OTP))
                     {
@@ -325,10 +287,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Method
         public void ClearData()
         {
-            OTP1stNumberProvidedByTheUser = string.Empty;
-            OTP2ndNumberProvidedByTheUser = string.Empty;
-            OTP3rdNumberProvidedByTheUser = string.Empty;
-            OTP4thNumberProvidedByTheUser = string.Empty;
+            EnteredOTP = string.Empty;
         }
         
         public void OnPageLoad()
