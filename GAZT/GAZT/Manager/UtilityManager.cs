@@ -10,6 +10,8 @@ namespace GAZT.Manager
         #region variable
         public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
         public static string passwordValidation = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$";
+        public static string numberRegex = "^[0-9]+$";
+        public static string mobileNumberValidation = "^([0-9]{8,8})$";
 
         #endregion
 
@@ -54,6 +56,21 @@ namespace GAZT.Manager
             }
 
         }
+
+        public static bool IsOTPNumberValid(string OTP)
+        {
+            Match mobileMatch = Regex.Match(OTP, numberRegex);
+            if (mobileMatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
 
         #endregion
     }

@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GAZT.Helper;
+using GAZT.Manager;
 
 namespace GAZT.Views.NewViews
 {
@@ -82,28 +83,26 @@ namespace GAZT.Views.NewViews
 
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
-                        string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                        if (App.IsArabic)
-                        {
-                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                        }
-                        else
-                        {
-                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                        }
+                string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                if (App.IsArabic)
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits  + "***" + firstDigits;
+                    }
+                    else
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
                     }
                 }
-                DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-                DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
-            }
-            catch(Exception ex)
-            {
-                Task.Run(async () =>
+                else
                 {
-                   await DisplayAlert(AppResources.Information, AppResources.NetworkConnectivityIssue,"Ok");
-                });
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                }
             }
+            DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+            DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
         }
         #endregion
 
@@ -118,11 +117,25 @@ namespace GAZT.Views.NewViews
             {
 
                 Task.Delay(100);
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    FirstEntry.Focus();
-                });
+               
             });
+        }
+        private async void OnOTPEntered(Object sender, EventArgs e)
+        {
+            string Otp = EnteredOTP.Text;
+            if(Otp.Length > 0)
+            {
+                bool isValidNumber = UtilityManager.IsOTPNumberValid(Otp);
+                if(!isValidNumber)
+                {
+                    EnteredOTP.Text = Otp.Substring(0, Otp.Length-1);
+                }
+            }
+            if (Otp.Length > 4)
+            {
+                EnteredOTP.Text = EnteredOTP.Text.Substring(0, 4);
+                EnteredOTP.Unfocus();
+            }
         }
         private void SetLTR()
         {
@@ -143,83 +156,6 @@ namespace GAZT.Views.NewViews
             //    Navigation.RemovePage(pg);
             //}
         }
-        private void TextChangedForOne(object sender, TextChangedEventArgs e)
-        {
-            string OTPId = FirstEntry.Text;
-            if(OTPId.Length==1)
-            {
-                SecondEntry.Focus();
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(FirstEntry.Text))
-                {
-                    
-                }
-                else
-                {
-                    FirstEntry.Text = FirstEntry.Text.Substring(0, 1);
-                }
-            }
-        }
-        private void TextChangedForTwo(object sender, TextChangedEventArgs e)
-        {
-            string OTPId = SecondEntry.Text;
-            if (OTPId.Length == 1)
-            {
-                ThirdEntry.Focus();
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(SecondEntry.Text))
-                {
-                    FirstEntry.Focus();
-                }
-                else
-                {
-                    SecondEntry.Text = SecondEntry.Text.Substring(0, 1);
-                }
-            }
-        }
-        private void TextChangedForThree(object sender, TextChangedEventArgs e)
-        {
-            string OTPId = ThirdEntry.Text;
-            if (OTPId.Length == 1)
-            {
-                FourthEntry.Focus();
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(ThirdEntry.Text))
-                {
-                    SecondEntry.Focus();
-                }
-                else
-                {
-                    ThirdEntry.Text = ThirdEntry.Text.Substring(0, 1);
-                }
-            }
-        }
-        private void TextChangedForFour(object sender, TextChangedEventArgs e)
-        {
-            string OTPId = FourthEntry.Text;
-            if (OTPId.Length == 1)
-            {
-                /// SecondEntry.Focus();
-                FourthEntry.Unfocus();
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(FourthEntry.Text))
-                {
-                    ThirdEntry.Focus();
-                }
-                else
-                {
-                    FourthEntry.Text = FourthEntry.Text.Substring(0, 1);
-                    FourthEntry.Unfocus();
-                }
-            }
-        }
+     
     }
 }
