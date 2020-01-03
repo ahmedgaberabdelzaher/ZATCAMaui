@@ -22,6 +22,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel.NewPasswordVisibility = true;
             viewModel.ConfirmPasswordVisibility = true;
+            viewModel.currentAttempts = 0;
             SetLTR();
             string str = "abc";
             Items.Add(str);

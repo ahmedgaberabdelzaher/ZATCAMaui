@@ -685,8 +685,10 @@
     <value>نوع الضريبة</value>
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
-    <value>الرجاء إدخال معرف مستخدم صالح</value>
-  </data>
+    <value> 
+تعذر تحديد اسم المستخدم رجاء التواصل مع مركز الاتصال الموحد: 19993
+  </value>
+    </data>
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
   </data>
@@ -719,5 +721,8 @@
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
     <value>Your Session has expired,Please Login again</value>
+  </data>
+  <data name="ZError" xml:space="preserve">
+    <value>خطأ</value>
   </data>
 </root>

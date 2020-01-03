@@ -23,7 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnResendOTPClicked { get; set; }
         public ICommand OnValidateOTPClicked { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
-
+        public int currentAttempts = 0;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
 
         #endregion
@@ -873,9 +873,8 @@ namespace GAZT.ViewModel.NewViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                         });
-
                     }
                 }
                 catch(Exception ex)
@@ -907,6 +906,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (!string.IsNullOrEmpty(EnteredOTP))
                 {
+                    
                     string idNumber = GetTinId();
                     string lang = UtilityManager.GetLanguageParameter();
                     string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
@@ -928,7 +928,7 @@ namespace GAZT.ViewModel.NewViewModel
                     d.Action = "01";
                     d.Tin = idNumber;
                     d.Langu = UtilityManager.GetLanguageParameter();
-                    d.CurrAttmps = 0;
+                    d.CurrAttmps = currentAttempts;
                     d.EmailId = "";
                     d.TpType = "1";
                     d.MobileNo = "";
@@ -945,7 +945,8 @@ namespace GAZT.ViewModel.NewViewModel
                     d.Hyperlink = "";
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    currentAttempts++;
+                   await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (forgotPassword.d != null && !(string.IsNullOrEmpty(forgotPassword.d.Tin)))
                     {
                         Device.BeginInvokeOnMainThread(async () => {
@@ -961,7 +962,7 @@ namespace GAZT.ViewModel.NewViewModel
                         Device.BeginInvokeOnMainThread(async () => {
                             await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.Information);
                         });
-                        EnteredOTP = null;
+                        EnteredOTP = "";
                     }
                 }
                 else
@@ -1048,7 +1049,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
 
                     });
                 }
@@ -1071,6 +1072,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async () =>
             {
+                currentAttempts = 0;
                 bool isNewPasswordValid = UtilityManager.IsPasswordValid(NewPassword);
                 bool isConfirmPasswordValid = UtilityManager.IsPasswordValid(ConfirmPassword);
                 if (isNewPasswordValid && isConfirmPasswordValid)

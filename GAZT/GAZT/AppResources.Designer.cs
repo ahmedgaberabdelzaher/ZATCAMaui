@@ -1246,5 +1246,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
+        
+        public static string ZError {
+            get {
+                return ResourceManager.GetString("ZError", resourceCulture);
+            }
+        }
     }
 }
