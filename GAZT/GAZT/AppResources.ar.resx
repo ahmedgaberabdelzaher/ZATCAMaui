@@ -679,7 +679,7 @@
     <value>تغيير البريد الالكتروني</value>
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
-    <value>تغيير البريد الالكتروني</value>
+    <value>Change Mobile Number</value>
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>نوع الضريبة</value>

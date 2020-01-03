@@ -191,7 +191,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void OnPageLoad()
         {
-           
+            TaxPayerProfile = App.TP;
             CurrentMobile = TaxPayerProfile.Mobile;
          
         }

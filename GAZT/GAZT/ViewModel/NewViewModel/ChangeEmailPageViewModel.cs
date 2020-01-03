@@ -218,7 +218,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (IsValidNewEmail && bIsValidRetypeEmail && IsNewEmailAndRetypeEmaiEqual)
                     {
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
-                        await PopToRootPage();
+                        PopToRootPage();
                         
                         if (response == true)
                         {
@@ -310,12 +310,12 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
                 var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+                _navigation.PopToRootAsync();
             }
         }
         public void ClearEmailData()

@@ -72,7 +72,7 @@ namespace GAZT.ViewModel
         }
 
 
-        private string _Password = "Test@123";
+        private string _Password = "Test@1234";
 
        // private string _Password = string.Empty;
         public string Password
@@ -338,8 +338,7 @@ namespace GAZT.ViewModel
 
                         if (0 == String.Compare("success", response, true))
                         {
-                            try
-                            {
+                            
                                 String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserId, lang);
                                 if (false == String.IsNullOrEmpty(MobileNumber))
                                 {
@@ -349,11 +348,7 @@ namespace GAZT.ViewModel
                                         App.TP.Mobile = MobileNumber;
                                     }
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
+                           
                             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
                             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                             await Task.Run(async () =>

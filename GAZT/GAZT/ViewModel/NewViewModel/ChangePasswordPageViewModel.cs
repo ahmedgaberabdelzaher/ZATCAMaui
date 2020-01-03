@@ -204,6 +204,21 @@ namespace GAZT
             }
         }
 
+
+        private bool _passwordVisibilityForOldPassword = true;
+        public bool PasswordVisibilityForOldPassword
+        {
+            get
+            {
+                return _passwordVisibilityForOldPassword;
+            }
+            set
+            {
+                _passwordVisibilityForOldPassword = value;
+                RaisePropertyChanged("PasswordVisibilityForOldPassword");
+            }
+        }
+
         private bool _passwordVisibilityForRetypePassword = true;
         public bool PasswordVisibilityForRetypePassword
         {
@@ -427,7 +442,8 @@ namespace GAZT
         public void OnPageLoad()
         {
             TaxPayerProfile = App.TP;
-            CurrentPassword = TaxPayerProfile.Password;
+            //CurrentPassword = TaxPayerProfile.Password;
+            CurrentPassword = String.Empty;
             OldEmail = TaxPayerProfile.Email;
             NewEmail = TaxPayerProfile.NewEmail;
             IsEnabledNewPasswordForEmail = true;

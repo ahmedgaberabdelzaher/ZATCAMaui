@@ -25,65 +25,85 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public OTPPageView(NavigateToOtp e)
         {
-            viewModel = App.Locator.OTPPageView;
-            InitializeComponent();
-            SetLTR();
-            this.BindingContext = viewModel;
-
-            viewModel.IsComingFrom = e;
-            if (e == NavigateToOtp.IsMobile)
+            try
             {
-                viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                var MobileNumber = viewModel.OTPSentOnThis;
-                MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
-                var firstDigits = MobileNumber.Substring(0, 2);
-                var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                MobileNumber = "00966" + MobileNumber;
-                var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+                InitializeComponent();
+                viewModel = App.Locator.OTPPageView;
 
-                var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                if (App.IsArabic)
+                SetLTR();
+                this.BindingContext = viewModel;
+
+                viewModel.IsComingFrom = e;
+                if (e == NavigateToOtp.IsMobile)
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                    if (App.TP != null)
+                    {
+                        viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
+                        var MobileNumber = viewModel.OTPSentOnThis;
+                        MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
+                        var firstDigits = MobileNumber.Substring(0, 2);
+                        var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                        MobileNumber = "00966" + MobileNumber;
+                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                        var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                        if (App.IsArabic)
+                        {
+                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                        }
+                        else
+                        {
+                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                        }
+                    }
                 }
-                else
+                else if (e == NavigateToOtp.IsEmail)
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                    if (App.TP != null)
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
+                        viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
+                        viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
+                    }
                 }
+                else if (e == NavigateToOtp.IsLogin)
+                {
+                    if (App.TP != null)
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+                        viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
+                        viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
+                        var MobileNumber = viewModel.OTPSentOnThis;
+
+                        MobileNumber = MobileNumber.Substring(5, 9);
+                        var firstDigits = MobileNumber.Substring(0, 2);
+                        var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                        string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                        if (App.IsArabic)
+                        {
+                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                        }
+                        else
+                        {
+                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                        }
+                    }
+                }
+                DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+                DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             }
-            else if (e == NavigateToOtp.IsEmail)
+            catch(Exception ex)
             {
-                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
-                viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
-                viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
-            }
-            else if (e == NavigateToOtp.IsLogin)
-            {
-                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
-                viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
-                viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
-                var MobileNumber = viewModel.OTPSentOnThis;
-
-                MobileNumber = MobileNumber.Substring(5, 9);
-                var firstDigits = MobileNumber.Substring(0, 2);
-                var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
-                var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
-
-                string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                if (App.IsArabic)
+                Task.Run(async () =>
                 {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                }
-                else
-                {
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                }
+                   await DisplayAlert(AppResources.Information, AppResources.NetworkConnectivityIssue,"Ok");
+                });
             }
-            DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-            DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
         }
         #endregion
 

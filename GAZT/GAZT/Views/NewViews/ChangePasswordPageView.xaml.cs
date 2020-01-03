@@ -61,6 +61,11 @@ namespace GAZT.Views.NewViews
             viewModel.PasswordVisibilityForNewPassword = !viewModel.PasswordVisibilityForNewPassword;
         }
 
+        public void OnPasswordVisibilityClickedForOldPassword(object sender, EventArgs args)
+        {
+            viewModel.PasswordVisibilityForOldPassword = !viewModel.PasswordVisibilityForOldPassword;
+        }
+        
         public void OnPasswordVisibilityClickedForRetypePassword(object sender, EventArgs args)
         {
             viewModel.PasswordVisibilityForRetypePassword = !viewModel.PasswordVisibilityForRetypePassword;
