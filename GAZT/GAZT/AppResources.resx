@@ -497,7 +497,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Paid</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>Partially</value>
+    <value>Partially Paid</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>Unpaid</value>

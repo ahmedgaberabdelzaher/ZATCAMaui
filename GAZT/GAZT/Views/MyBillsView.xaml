@@ -62,7 +62,7 @@
                     <ColumnDefinition Width="23*"/>
                     <ColumnDefinition Width="31*"/>
                 </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
+                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
                   
                     
                     <local1:CustomLabel.GestureRecognizers>
@@ -81,7 +81,7 @@
                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="10,0,10,0" VerticalTextAlignment="Start">
+                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="5,0,5,0" VerticalTextAlignment="Start">
                     <local1:CustomLabel.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
