@@ -736,4 +736,7 @@
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
   </data>
+  <data name="ZSadadInvoiceNumber" xml:space="preserve">
+    <value>رقم فاتورة سداد</value>
+  </data>
 </root>

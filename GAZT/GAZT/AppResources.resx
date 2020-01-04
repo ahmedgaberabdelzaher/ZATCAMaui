@@ -727,6 +727,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
     <value>Your account has been locked. Please contact our call center at : 19993</value>
   </data>
+  <data name="ZSadadInvoiceNumber" xml:space="preserve">
+    <value>SADAD invoice number</value>
+  </data>
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>User name or password is incorrect</value>
   </data>

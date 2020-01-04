@@ -1826,6 +1826,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SADAD invoice number.
+        /// </summary>
+        public static string ZSadadInvoiceNumber {
+            get {
+                return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SAR.
         /// </summary>
         public static string ZSAR {
