@@ -310,7 +310,7 @@ namespace GAZT
                                 TaxPayerProfile.Password = NewPasswordForEmail;
                                 setPropertyForEmailUpdation(NewEmail);
                                 ClearEmailData();
-                                String OnAuthenticationSuccess = AppResources.DetailsChangedSuccessfully;
+                                String OnAuthenticationSuccess = AppResources.ZEmailUpdatedSuccessfully;
                                 Device.BeginInvokeOnMainThread(async () => {
                                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                 });

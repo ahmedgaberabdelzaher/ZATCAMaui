@@ -791,7 +791,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile number updated successfully.
+        ///   Looks up a localized string similar to Mobile Number  has been changed  successfully.
         /// </summary>
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -1768,6 +1768,15 @@ namespace GAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address has been changed  successfully.
+        /// </summary>
+        public static string ZEmailUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZEmailUpdatedSuccessfully", resourceCulture);
             }
         }
         

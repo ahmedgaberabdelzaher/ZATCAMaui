@@ -25,33 +25,34 @@ namespace GAZT.Views
             //string str = "abc";
             //Items.Add(str);
             // CardView.ItemsSource = Items;
-
-            viewModel.OnPageLoad();
-            if (viewModel.allCertificate != null)
+            Task.Run(async () =>
             {
-                if (viewModel.allCertificate.ZakatSet != null && viewModel.allCertificate.ZakatSet.results != null && viewModel.allCertificate.ZakatSet.results.Count > 0)
+                await viewModel.OnPageLoad();
+                if (viewModel.allCertificate != null)
                 {
-                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+                    if (viewModel.allCertificate.ZakatSet != null && viewModel.allCertificate.ZakatSet.results != null && viewModel.allCertificate.ZakatSet.results.Count > 0)
+                    {
+                        Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
 
-                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                        Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                        Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    }
+                    else if (viewModel.allCertificate.VATSet != null && viewModel.allCertificate.VATSet.results != null && viewModel.allCertificate.VATSet.results.Count > 0)
+                    {
+                        Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+
+                        Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                        Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    }
+                    else if (viewModel.allCertificate.ExciseSet != null && viewModel.allCertificate.ExciseSet.results != null && viewModel.allCertificate.ExciseSet.results.Count > 0)
+                    {
+                        Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+
+                        Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                        Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+                    }
                 }
-                else if (viewModel.allCertificate.VATSet != null && viewModel.allCertificate.VATSet.results != null && viewModel.allCertificate.VATSet.results.Count > 0)
-                {
-                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-
-                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-                }
-                else if (viewModel.allCertificate.ExciseSet != null && viewModel.allCertificate.ExciseSet.results != null && viewModel.allCertificate.ExciseSet.results.Count > 0)
-                {
-                    Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-
-                    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-                    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-                }
-            }
-
+            });
 
 
 

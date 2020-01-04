@@ -127,18 +127,25 @@
 
                                                 <Label Text="{x:Static local:AppResources.TaxType}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"/>
 
                                             <Label Text="{Binding Abtypt}" 
+                                                  
                                   Margin="0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="1" />
 
 
                                             <Label 
                                    Style="{StaticResource MiniGoldLabelStyle}"
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                               
                                    Grid.Column="0"
@@ -156,17 +163,23 @@
                                             <Label Text="{Binding VTRE2}" 
                                                  
                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" />
 
                                             <Label Text="{x:Static local:AppResources.DueAmount}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
                                    />
                                                 <Label  
                                      
                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="1" >
 
@@ -183,12 +196,16 @@
                                                 <Label Text="{x:Static local:AppResources.DueDate}" 
                                       
                                    Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
                                    />
                                                 <Label Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}" 
                                        
                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="1" />
 

@@ -30,8 +30,8 @@ namespace GAZT.Models
         public string Text { get; set; }
         public string Text1 { get; set; }
         public string DueIcr { get; set; }
-        public DateTime Begda { get; set; }
-        public DateTime Endda { get; set; }
+        public DateTime? Begda { get; set; }
+        public DateTime? Endda { get; set; }
         public string Persl { get; set; }
         public string Waers { get; set; }
         public string PbillsTot { get; set; }

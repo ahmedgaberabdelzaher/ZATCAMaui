@@ -364,20 +364,36 @@ namespace GAZT.ViewModel
 
                         //return
                         //BillReturn = new List<BillReturn>();
-                        DateTime BegDate = dashboard.results[0].Begda;
-                        DateTime endDate = dashboard.results[0].Endda;
+                        DateTime? BegDate = dashboard.results[0].Begda;
+                        DateTime? endDate = dashboard.results[0].Endda;
                         if (App.IsArabic)
                         {
                             //StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                             //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-
-                            StartDate = BegDate.ToString("yyyy MM dd", new CultureInfo("ar-sa"));
-                            EndDate = endDate.ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                            }
+                            if (endDate != null)
+                            {
+                                EndDate = Convert.ToDateTime(endDate).ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                            }
                         }
                         else
                         {
-                            StartDate = BegDate.ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-                            EndDate = endDate.ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+
+                            }
+                            if (endDate != null)
+                            {
+                                EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+
+                            }
+
+
                         }
                         BillReturn objBill1 = new BillReturn();
                         objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
