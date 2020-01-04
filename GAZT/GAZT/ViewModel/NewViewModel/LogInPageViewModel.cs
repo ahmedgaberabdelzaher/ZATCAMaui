@@ -309,6 +309,11 @@ namespace GAZT.ViewModel
                 String response = string.Empty;
                 string UserId = string.Empty;
                 
+                if(string.IsNullOrEmpty(UserName)|| string.IsNullOrEmpty(Password))
+                {
+                    throw new Exception(AppResources.Pleaseenteryourlogininformation);
+                }
+
                 await Task.Run(() =>
                 {
                     IsLoading = true;

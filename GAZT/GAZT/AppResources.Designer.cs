@@ -1208,11 +1208,7 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Username not found! Please contact our Call center at: 19993..
         /// </summary>
-        public static string ZPleaseEnterAValidUserID {
-            get {
-                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
-            }
-        }
+      
         
         /// <summary>
         ///   Looks up a localized string similar to SADAD invoice number.

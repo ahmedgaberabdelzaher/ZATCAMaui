@@ -298,7 +298,7 @@
     <value>إقرار زكاة تقديري</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
-    <value>كلمة المرورالحالية</value>
+    <value>كلمة المرور القديمة</value>
   </data>
   <data name="RetypeEmail" xml:space="preserve">
     <value>تأكيد البريد الإلكتروني</value>
@@ -738,5 +738,8 @@
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
     <value>رقم فاتورة سداد</value>
+  </data>
+  <data name="Pleaseenteryourlogininformation" xml:space="preserve">
+    <value>يرجى إدخال معلومات تسجيل الدخول الخاصة بك</value>
   </data>
 </root>
