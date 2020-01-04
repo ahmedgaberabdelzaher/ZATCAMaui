@@ -1270,5 +1270,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUserNameIncorrect", resourceCulture);
             }
         }
+        
+        public static string Pleaseenteryourlogininformation {
+            get {
+                return ResourceManager.GetString("Pleaseenteryourlogininformation", resourceCulture);
+            }
+        }
     }
 }

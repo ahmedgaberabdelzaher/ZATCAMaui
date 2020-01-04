@@ -736,4 +736,7 @@
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
   </data>
+  <data name="Pleaseenteryourlogininformation" xml:space="preserve">
+    <value>يرجى إدخال معلومات تسجيل الدخول الخاصة بك</value>
+  </data>
 </root>

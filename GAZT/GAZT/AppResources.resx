@@ -497,7 +497,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Paid</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>Partially paid</value>
+    <value>Partially</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>Unpaid</value>
@@ -730,4 +730,8 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>User name or password is incorrect</value>
   </data>
+ <data name="Pleaseenteryourlogininformation" xml:space="preserve">
+    <value>Please enter your login information</value>
+  </data> 
+
 </root>

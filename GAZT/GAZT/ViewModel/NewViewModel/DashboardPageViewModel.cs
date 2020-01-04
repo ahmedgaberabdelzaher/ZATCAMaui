@@ -371,13 +371,13 @@ namespace GAZT.ViewModel
                             //StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                             //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
 
-                            StartDate = BegDate.ToString("MMMM dd yyyy", new CultureInfo("ar-sa"));
-                            EndDate = endDate.ToString("MMMM dd yyyy", new CultureInfo("ar-sa"));
+                            StartDate = BegDate.ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                            EndDate = endDate.ToString("yyyy MM dd", new CultureInfo("ar-sa"));
                         }
                         else
                         {
-                            StartDate = BegDate.ToString("dddd, MMMM dd yyyy", new CultureInfo("en-US"));
-                            EndDate = endDate.ToString("dddd, MMMM dd yyyy", new CultureInfo("en-US"));
+                            StartDate = BegDate.ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+                            EndDate = endDate.ToString("yyyy,MM,dd", new CultureInfo("en-US"));
                         }
                         BillReturn objBill1 = new BillReturn();
                         objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
