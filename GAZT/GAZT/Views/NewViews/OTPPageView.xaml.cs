@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.OTPPageView;
 
                 SetLTR();
+            viewModel.OnPageLoad();
                 this.BindingContext = viewModel;
 
                 viewModel.IsComingFrom = e;

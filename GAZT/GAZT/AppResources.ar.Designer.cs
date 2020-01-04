@@ -1264,5 +1264,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYouraccounthasbeenlockedPleasecontactourcallcenter", resourceCulture);
             }
         }
+        
+        public static string ZUserNameIncorrect {
+            get {
+                return ResourceManager.GetString("ZUserNameIncorrect", resourceCulture);
+            }
+        }
     }
 }

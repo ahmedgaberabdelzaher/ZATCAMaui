@@ -5,6 +5,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
         public NavigateToOtp IsComingFrom { get; set; }
+        public ICommand OnResendOTPClicked { get; set; }
 
         #endregion
 
@@ -120,8 +122,98 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _tinNumber = string.Empty;
+        public string TinNumber
+        {
+            get
+            {
+                return _tinNumber;
+            }
+            set
+            {
+                _tinNumber = value;
+                RaisePropertyChanged("TinNumber");
+            }
+        }
 
-         
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+
+        private bool _isOTPEntryEnable = true;
+
+        public bool IsOTPEntryEnable
+        {
+            get
+            {
+                return _isOTPEntryEnable;
+            }
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged(() => IsOTPEntryEnable);
+            }
+        }
+
+        private string _oTPValidDuration;
+        public string OTPValidDuration
+        {
+            get
+            {
+                return _oTPValidDuration;
+            }
+            set
+            {
+                _oTPValidDuration = value;
+                if (_oTPValidDuration.Equals(" 00:00"))
+                {
+                    ButtonDisableColor = Color.FromHex("#005e4b");
+                    IsResendOTPEnabled = true;
+                    IsOTPEntryEnable = false;
+                }
+
+                RaisePropertyChanged("OTPValidDuration");
+            }
+        }
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+
+        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        public Color ButtonDisableColor
+        {
+            get
+            {
+                return _buttonDisableColor;
+            }
+            set
+            {
+                _buttonDisableColor = value;
+                RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -148,6 +240,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 ValidateOTP();
             });
+            OnResendOTPClicked = new Command(async () =>
+            {
+                await SendOTPToRegisterMobileNumberToLogIn();
+            });
+
 
         }
         /// <summary>
@@ -292,8 +389,87 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
+            TinNumber = App.TP.Userid;
+            MobileNumber = App.TP.Mobile;
+            TimerStart();
+        }
+        private async Task SendOTPToRegisterMobileNumberToLogIn()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string lang = UtilityManager.GetLanguageParameter();
+                    var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    {
+                        bool IsNavigatingFromLogin = true;
+                        ButtonDisableColor = Color.FromHex("#9EA4A9");
+                        IsResendOTPEnabled = false;
+                        IsOTPEntryEnable = true;
+                        string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        TimerStart();
+                     
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            });
+
+
+
+
+
+            //});
+
+
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
         }
 
+        private void TimerStart()
+        {
+            CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
+
+            int TotalSec = 120;
+
+            CancellationTokenSource CTS = _CancellationTokenSource;
+
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (CTS.IsCancellationRequested)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (TotalSec == 0)
+                    {
+                        return false;
+                    }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        TotalSec = TotalSec - 1;
+                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                        OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                    });
+                    return true;
+                }
+            });
+        }
 
         public async Task PopToRootPage()
         {

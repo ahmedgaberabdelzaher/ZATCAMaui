@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -17,7 +18,6 @@ namespace GAZT
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
         public NavigateToOtp IsComingFrom { get; set; }
-
         #endregion
 
         #region Property
@@ -103,6 +103,98 @@ namespace GAZT
             }
         }
 
+        private string _tinNumber = string.Empty;
+        public string TinNumber
+        {
+            get
+            {
+                return _tinNumber;
+            }
+            set
+            {
+                _tinNumber = value;
+                RaisePropertyChanged("TinNumber");
+            }
+        }
+
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+
+        private bool _isOTPEntryEnable = true;
+
+        public bool IsOTPEntryEnable
+        {
+            get
+            {
+                return _isOTPEntryEnable;
+            }
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged(() => IsOTPEntryEnable);
+            }
+        }
+
+        private string _oTPValidDuration;
+        public string OTPValidDuration
+        {
+            get
+            {
+                return _oTPValidDuration;
+            }
+            set
+            {
+                _oTPValidDuration = value;
+                if (_oTPValidDuration.Equals(" 00:00"))
+                {
+                    ButtonDisableColor = Color.FromHex("#005e4b");
+                    IsResendOTPEnabled = true;
+                    IsOTPEntryEnable = false;
+                }
+
+                RaisePropertyChanged("OTPValidDuration");
+            }
+        }
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+
+        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        public Color ButtonDisableColor
+        {
+            get
+            {
+                return _buttonDisableColor;
+            }
+            set
+            {
+                _buttonDisableColor = value;
+                RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+
         private String _OTP1stNumberProvidedByTheUser;
         public String OTP1stNumberProvidedByTheUser
         {
@@ -184,6 +276,7 @@ namespace GAZT
             {
                 ValidateOTP();
             });
+            
 
         }
         /// <summary>
@@ -333,6 +426,7 @@ namespace GAZT
         }
         public void OnPageLoad()
         {
+            
         }
 
         public async Task PopToRootPage()
@@ -343,6 +437,10 @@ namespace GAZT
                 await _navigation.PopToRootAsync();
             }
         }
+
+        
+
+        
 
         #endregion
     }

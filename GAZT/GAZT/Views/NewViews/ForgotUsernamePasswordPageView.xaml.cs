@@ -63,7 +63,7 @@ namespace GAZT.Views.NewViews
 
         
        private async void OnIDNumberTextChanged(Object sender, EventArgs e)
-        {
+       {
 
             if (viewModel.SelectedTaxPayerType != null)
             {

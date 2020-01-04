@@ -11,30 +11,46 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="240"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                   <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100*"/>
+          
+                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="10" Padding="10"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="White" >
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto " />
 
-            </Grid.ColumnDefinitions>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Row="0" Grid.Column="0"   Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#065E49">
-
-            </StackLayout>
-
-            <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0"   Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />
-
-            <Label Text="{Binding OTPSentOnThisText}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="1" Grid.Column="0"   >
+                        
+                        <Label Text="{Binding OTPSentOnThisText}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGoldLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   >
             </Label>
 
-            <Label Grid.Row="2" Grid.Column="0"     HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyle}" Margin="10,5,10,0">
+                        <Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.UserName}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="0">
+                        </Label>
+                        <Frame Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        </Frame>
+                        <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TinNumber}" Style="{StaticResource ForgotPasswordTextColor}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="5">
+                        </Label>
+
+                        <Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="0">
+                        </Label>
+                        <Frame Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
+                        </Frame>
+                        <Label Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding MobileNumber}" Style="{StaticResource ForgotPasswordTextColor}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="5">
+                        </Label>
+
+                        <Label Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="Start" Margin="0" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static local:AppResources.VarificationCode}"   />
@@ -42,17 +58,52 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="3"  Grid.Column="0"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="10,5,10,0" >
+                        <Frame  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0" >
                         </Frame>
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  Grid.Row="3"  Grid.Column="0"     Margin="10,5,10,0" >
-                            <local:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3"  Grid.Column="0"       Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White" TextColor="Black" FontSize="10" IsEnabled="{Binding IsOTPEntryEnable}">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    >
+                            <local:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5"     Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White" TextColor="Black" FontSize="10" IsEnabled="{Binding IsOTPEntryEnable}">
                             </local:GAZTBorderlessEntry>
                         </StackLayout>
 
-            <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="5" Grid.Column="0"   Style="{StaticResource GAZTVerifyButton}"></Button>
+                        <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.TheaccountwillbelockedafterThreefailedverificationcodeattempts}" Margin="0" Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="Start" >
+                        </Label>
+
+                        <Label Grid.Row="8" Grid.Column="0"  Margin="0" HorizontalOptions="CenterAndExpand"  >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
+                                    <Span  Text="{Binding OTPValidDuration}" Style="{StaticResource InformationRedColorLabel}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsResendOTPEnabled}" VerticalOptions="CenterAndExpand" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HasShadow="false" CornerRadius="4" BackgroundColor="{Binding ButtonDisableColor}" Margin="5">
+                        </Frame>
+                        <Label   Text="{x:Static local:AppResources.ResendOTP}" IsEnabled="{Binding IsResendOTPEnabled}" Style="{StaticResource SmallWhiteLabelStyle}"  Grid.Row="8" Grid.Column="1" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="5">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnResendOTPClicked}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        
+                            <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                        <!--<Frame  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="10,5,10,0" >
+                        </Frame>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,5,10,0" >
+                            <local:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3"  Grid.Column="0"       Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White" TextColor="Black" FontSize="10" IsEnabled="{Binding IsOTPEntryEnable}">
+                            </local:GAZTBorderlessEntry>
+                        </StackLayout>-->
 
 
-</Grid>
+                    </Grid>
+                </StackLayout>
+            <!--<StackLayout Grid.Row="0" Grid.Column="0"   Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#065E49">
+
+            </StackLayout>
+
+            <Image Source="ic_Logo_GAZT_color.png" Grid.Row="0" Grid.Column="0"   Margin="0"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" />-->
+
+          
                 </ScrollView>
             <!-- Acticity indicator layout start -->
         <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
