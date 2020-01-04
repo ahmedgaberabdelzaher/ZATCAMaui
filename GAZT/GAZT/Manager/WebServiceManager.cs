@@ -18,10 +18,6 @@ namespace GAZT.Manager
 {
     public static class WebServiceManager
     {
-
-
-
-
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  

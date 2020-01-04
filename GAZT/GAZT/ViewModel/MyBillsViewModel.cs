@@ -35,6 +35,35 @@ namespace GAZT.ViewModel
             }
         }
 
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _setNoDataLabelVisibility = false;
+
+        public bool SetNoDataLabelVisibility
+        {
+            get
+            {
+                return _setNoDataLabelVisibility;
+            }
+            set
+            {
+                _setNoDataLabelVisibility = value;
+                RaisePropertyChanged("SetNoDataLabelVisibility");
+            }
+        }
+
         private List<MyBills> _myBillsOriginal;
         public List<MyBills> MyBillsOriginal
         {
@@ -147,23 +176,26 @@ namespace GAZT.ViewModel
                         if (myBills != null && myBills.Count > 0)
                         {
                             MyBills = myBills;
+                            SetNoDataLabelVisibility = false;
                         }
                         else
                         {
                             MyBills = null;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                            });
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            //});
+                            SetNoDataLabelVisibility = true;
                         }
                     }
                 else
                     {
                         MyBills = null;
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        });
+                        SetNoDataLabelVisibility = true;
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        //});
                     }
                 });
                 onPaidLabelClicked = new Command(() =>
@@ -175,23 +207,26 @@ namespace GAZT.ViewModel
                         if (myBills != null && myBills.Count > 0)
                         {
                             MyBills = myBills;
+                            SetNoDataLabelVisibility = false;
                         }
                         else
                         {
                             MyBills = null;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                            });
+                            SetNoDataLabelVisibility = true;
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            //});
                         }
                     }
                     else
                     {
+                        SetNoDataLabelVisibility = true;
                         MyBills = null;
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        });
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        //});
                     }
                 });
                 onUnpaidLabelClicked = new Command(() =>
@@ -203,23 +238,26 @@ namespace GAZT.ViewModel
                         if (myBills != null && myBills.Count > 0)
                         {
                             MyBills = myBills;
+                            SetNoDataLabelVisibility = false;
                         }
                         else
                         {
                             MyBills = null;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                            });
+                            SetNoDataLabelVisibility = true;
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            //});
                         }
                     }
                     else
                     {
                         MyBills = null;
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        });
+                        SetNoDataLabelVisibility = true;
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        //});
                     }
 
                 });
@@ -232,70 +270,88 @@ namespace GAZT.ViewModel
                         if(myBills != null && myBills.Count > 0)
                         {
                             MyBills = myBills;
+                            SetNoDataLabelVisibility = false;
                         }
                         else
                         {
                             MyBills = null;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                            });
+                            SetNoDataLabelVisibility = true;
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            //});
                         }
                        
                     }
                     else
                     {
                         MyBills = null;
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        });
+                        SetNoDataLabelVisibility = true;
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        //});
                     }
                 });
             }
             catch(Exception e)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                });
+
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                //});
             }
         }
 
 
-        public async void onPageLoad()
+        public async Task onPageLoad()
         {
-            MyBills = null;
-
-            List<MyBills> myBills = null;
-            try
+            await Task.Run(() =>
             {
+                IsLoading = true;
+            });
 
-                string lang = UtilityManager.GetLanguageParameter();
-                myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin,lang);
-                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-
-                if (myBills != null && myBills.Count != 0)
-                {
-                    myBills = UpdateDueAmount(myBills);
-                    MyBills = new List<MyBills>();
-                    MyBills = myBills;
-                    MyBillsOriginal = myBills;
-                }
-                else
-                {
-              await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                    _navigationService.GoBack();
-                }
-            }
-            catch (Exception e)
+            await Task.Run(async() =>
             {
-               
+                MyBills = null;
+
+                List<MyBills> myBills = null;
+                try
+                {
+
+                    string lang = UtilityManager.GetLanguageParameter();
+                    myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+
+                    if (myBills != null && myBills.Count != 0)
+                    {
+                        myBills = UpdateDueAmount(myBills);
+                        MyBills = new List<MyBills>();
+                        MyBills = myBills;
+                        MyBillsOriginal = myBills;
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        _navigationService.GoBack();
+                    }
+                }
+                catch (Exception e)
+                {
+
                     await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
                     _navigationService.GoBack();
-                
-            }
+
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+            
 
             //int i = 5;
             //MyBills = new List<MyBills>();

@@ -23,6 +23,7 @@ namespace GAZT.Views.NewViews
             viewModel.NewPasswordVisibility = true;
             viewModel.ConfirmPasswordVisibility = true;
             viewModel.currentAttempts = 0;
+            viewModel.OTPValidDuration = "00:00";
             SetLTR();
             string str = "abc";
             Items.Add(str);
@@ -63,7 +64,7 @@ namespace GAZT.Views.NewViews
 
         
        private async void OnIDNumberTextChanged(Object sender, EventArgs e)
-        {
+       {
 
             if (viewModel.SelectedTaxPayerType != null)
             {

@@ -10,6 +10,7 @@
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="12*" />
@@ -80,7 +81,7 @@
                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="10,0,10,0" >
+                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="10,0,10,0" VerticalTextAlignment="Start">
                     <local1:CustomLabel.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
                     </local1:CustomLabel.GestureRecognizers>
@@ -206,6 +207,8 @@
                 </ListView.ItemTemplate>
             </ListView>
             </StackLayout>
+             <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            </local1:CustomLabel>
             <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image.GestureRecognizers>
@@ -221,5 +224,18 @@
 
 
         </Grid>
+             <!-- Acticity indicator layout start -->
+        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!-- Acticity indicator layout end -->
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -995,6 +995,9 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                    });
                 }
             });
 
