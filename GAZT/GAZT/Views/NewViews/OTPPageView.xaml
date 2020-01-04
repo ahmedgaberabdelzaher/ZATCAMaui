@@ -77,14 +77,14 @@
                             </Label.FormattedText>
                         </Label>
 
-                        <Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsResendOTPEnabled}" VerticalOptions="CenterAndExpand" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HasShadow="false" CornerRadius="4" BackgroundColor="{Binding ButtonDisableColor}" Margin="5">
+                        <!--<Frame HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsResendOTPEnabled}" VerticalOptions="CenterAndExpand" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"  HasShadow="false" CornerRadius="4" BackgroundColor="{Binding ButtonDisableColor}" Margin="5">
                         </Frame>
                         <Label   Text="{x:Static local:AppResources.ResendOTP}" IsEnabled="{Binding IsResendOTPEnabled}" Style="{StaticResource SmallWhiteLabelStyle}"  Grid.Row="8" Grid.Column="1" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="5">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnResendOTPClicked}" />
                             </Label.GestureRecognizers>
-                        </Label>
-
+                        </Label>-->
+                             <Button Text="{x:Static local:AppResources.ResendOTP}"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand"  Grid.Row="8" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}"></Button>
                         
                             <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
                         <!--<Frame  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="10,5,10,0" >

@@ -238,7 +238,18 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                ValidateOTP();
+                if(string.IsNullOrEmpty(EnteredOTP))
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                    });
+                }
+                else
+                {
+                    await ValidateOTP();
+                }
+
+               
             });
             OnResendOTPClicked = new Command(async () =>
             {

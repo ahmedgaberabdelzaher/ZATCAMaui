@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.OTPPageView;
 
                 SetLTR();
+            viewModel.OTPValidDuration = "00:00";
             viewModel.OnPageLoad();
                 this.BindingContext = viewModel;
 
