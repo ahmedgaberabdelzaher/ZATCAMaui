@@ -742,4 +742,10 @@
   <data name="Pleaseenteryourlogininformation" xml:space="preserve">
     <value>يرجى إدخال معلومات تسجيل الدخول الخاصة بك</value>
   </data>
+  <data name="ZNo" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="ZYes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
 </root>
