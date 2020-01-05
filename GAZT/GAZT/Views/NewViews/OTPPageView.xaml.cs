@@ -117,6 +117,9 @@ namespace GAZT.Views.NewViews
         {
             base.OnAppearing();
             App.IsOTPiew = true;
+            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+            viewModel.IsResendOTPEnabled = false;
+            viewModel.IsOTPEntryEnable = true;
             await Task.Run(() =>
             {
 
@@ -152,6 +155,7 @@ namespace GAZT.Views.NewViews
         {
             base.OnDisappearing();
             viewModel.ClearData();
+            viewModel.StopTimer = false; 
             App.IsOTPiew = false;
 
             //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)

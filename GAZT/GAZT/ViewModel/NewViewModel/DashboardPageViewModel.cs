@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -146,7 +147,21 @@ namespace GAZT.ViewModel
             }
         }
 
-        
+        private int _heightRequestForReturnCollectionView = 0;
+        public int HeightRequestForReturnCollectionView
+        {
+            get
+            {
+                return _heightRequestForReturnCollectionView;
+            }
+            set
+            {
+                _heightRequestForReturnCollectionView = value;
+                RaisePropertyChanged("HeightRequestForReturnCollectionView");
+            }
+        }
+
+
 
         private double _deviceHeight;
         public double DeviceHeight
@@ -221,6 +236,35 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("CalendarHeightRequest");
             }
         }
+
+        private bool _footerImageInArabic;
+        public bool FooterImageInArabic
+        {
+            get
+            {
+                return _footerImageInArabic;
+            }
+            set
+            {
+                _footerImageInArabic = value;
+                RaisePropertyChanged("FooterImageInArabic");
+            }
+        }
+
+        private bool _footerImageInEnglish;
+        public bool FooterImageInEnglish
+        {
+            get
+            {
+                return _footerImageInEnglish;
+            }
+            set
+            {
+                _footerImageInEnglish = value;
+                RaisePropertyChanged("FooterImageInEnglish");
+            }
+        }
+
 
         private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
         public Xamarin.Forms.Thickness PaddingForCollectionView
@@ -312,7 +356,6 @@ namespace GAZT.ViewModel
             OnTaxevasionClicked = new Xamarin.Forms.Command(async () =>
             {
                 await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-
             });
 
 
@@ -327,17 +370,14 @@ namespace GAZT.ViewModel
         {
             try
             {
+                SetFooterImageVisibility();
                 TinNumber = App.TP.Userid;
                 String TotalCountOfReturn = string.Empty;
                 List<BillReturn> BillReturnList = new List<BillReturn>();
                 List<BillPaid> BillPaidList = new List<BillPaid>();
-
                 BillReturn = new List<BillReturn>();
                 BillPaid = new List<BillPaid>();
-
                 string lang = UtilityManager.GetLanguageParameter();
-
-
                 dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -610,6 +650,15 @@ namespace GAZT.ViewModel
                 var _navigation = Application.Current.MainPage.Navigation;
                 _navigation.PopToRootAsync();
             }
+
+            //for (int index = 0; index < Navigation.NavigationStack.Count; index++)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    if (pg.GetType() == typeof(OTPPageView))
+            //    {
+            //        Navigation.RemovePage(pg);
+            //    }
+            //}
         }
 
         public void LogOut()
@@ -640,7 +689,19 @@ namespace GAZT.ViewModel
             return actualAmount;
         }
 
-
+        private void SetFooterImageVisibility()
+        {
+            if(App.IsArabic)
+            {
+                FooterImageInArabic = false;
+                FooterImageInEnglish = true;
+            }
+            else
+            {
+                FooterImageInArabic = true;
+                FooterImageInEnglish = false;
+            }
+        }
         #endregion
     }
 }
