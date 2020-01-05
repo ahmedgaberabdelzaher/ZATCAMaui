@@ -133,13 +133,10 @@ namespace GAZT.Views.NewViews
             viewModel.EnteredCaptchaValue  = "";
             viewModel.IsVisibleTinIds = false;
             viewModel.IsIDTypeVisible = false;
-            //viewModel.Captcha = "";
-
-
-            //viewModel.IsTaxPayerTypeEnable = true;
-            //viewModel.IsForgotUserNameWithIndividual = true;
-            //viewModel.IsForgotPassword = false;
-            //viewModel.IsForgotUserNameWithCorporate = false;
+            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+            viewModel.IsResendOTPEnabled = false;
+            viewModel.IsOTPEntryEnable = true;
+            viewModel.StopTimer = true;
 
         }
 
@@ -152,6 +149,11 @@ namespace GAZT.Views.NewViews
                 EnteredOTP.Unfocus();
             }
         }
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.StopTimer = false;
         }
+
+    }
 }

@@ -25,6 +25,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnLoginPageLinkClicked { get; set; }
         public int currentAttempts = 0;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
+        public bool StopTimer = true;
 
         #endregion
         #region Property
@@ -1309,6 +1310,10 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     if (TotalSec == 0)
+                    {
+                        return false;
+                    }
+                    else if (!StopTimer)
                     {
                         return false;
                     }

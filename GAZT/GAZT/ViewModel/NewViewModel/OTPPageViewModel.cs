@@ -482,6 +482,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         return false;
                     }
+                    else
+                    {
+
+                    }
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         TotalSec = TotalSec - 1;
