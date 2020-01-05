@@ -24,6 +24,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ChangeEmailPageView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();

@@ -17,6 +17,7 @@ namespace GAZT.Views
         public MyCertificate()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyCertificate;
             SetLTR();
 

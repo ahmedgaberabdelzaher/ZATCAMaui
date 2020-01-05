@@ -22,6 +22,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.DashboardPageView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             NavigationPage.SetHasBackButton(this, false);
             SetLTR();
            

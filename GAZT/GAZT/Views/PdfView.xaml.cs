@@ -20,6 +20,7 @@ namespace GAZT.Views
             viewModel = App.Locator.pdfView;
              
             InitializeComponent ();
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.pdfUrl = Pdfurl;
             this.BindingContext = viewModel;
              

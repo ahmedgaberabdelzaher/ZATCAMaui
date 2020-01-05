@@ -20,6 +20,7 @@ namespace GAZT.Views
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyBillsView;
            
          
