@@ -8,6 +8,7 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              FlowDirection="RightToLeft"
+             Title="{x:Static local:AppResources.VATLookup}"
              >
     <ContentPage.Content>
         <StackLayout>
@@ -15,6 +16,7 @@
                 <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -35,14 +37,8 @@
                         <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}"  >
                         </Frame>
                         <StackLayout    Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  >
-                            <custom:GAZTBorderlessPicker Style="{StaticResource PickerStyle}"    Grid.Row="1"      FontSize="10"   IsEnabled="true" TextColor="Black"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>VAT Account Number</x:String>
-                                        <x:String>CR Number</x:String>
-                                        <x:String>VAT certificate Number</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
+                            <custom:GAZTBorderlessPicker Style="{StaticResource PickerStyle}"    Grid.Row="1"      FontSize="10"   IsEnabled="true" TextColor="Black"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}">
+                               
                             </custom:GAZTBorderlessPicker>
                         </StackLayout>
                         <Image Source="ic_dropdownOne.png"  Margin="9,0,9,0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
@@ -54,7 +50,7 @@
                         <Label Text="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Frame  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryNumber"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}"  Placeholder="{Binding VATACCOrCRNOOrVATCER}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:GAZTBorderlessEntry>
 
                         <Frame Grid.Row="5"   Grid.Column="1"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" >
                         </Frame>
@@ -93,7 +89,11 @@
 
 
 
-                        <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand"></Button>
+                        <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
+
+
+                        <Label Text="{Binding FinalResult}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"/>
+
 
                     </Grid>
                 </ScrollView>

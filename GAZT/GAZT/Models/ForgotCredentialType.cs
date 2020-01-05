@@ -16,4 +16,10 @@ namespace GAZT.Models
         public string NewEmail { get; set; }
         public NavigateToOtp navigateTo { get; set; }
     }
+
+    public class VATParameterType
+    {
+        public string id { get; set; }
+        public string ParameterType { get; set; }
+    }
 }
