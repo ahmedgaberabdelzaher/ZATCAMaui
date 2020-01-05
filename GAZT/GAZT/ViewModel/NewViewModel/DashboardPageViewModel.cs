@@ -647,18 +647,12 @@ namespace GAZT.ViewModel
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
 
-            //for (int index = 0; index < Navigation.NavigationStack.Count; index++)
-            //{
-            //    Page pg = Navigation.NavigationStack[index];
-            //    if (pg.GetType() == typeof(OTPPageView))
-            //    {
-            //        Navigation.RemovePage(pg);
-            //    }
-            //}
         }
 
         public void LogOut()
