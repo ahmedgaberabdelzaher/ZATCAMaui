@@ -63,15 +63,20 @@
                         </Label>
                     </StackLayout>
 
-                    <Label Text="{x:Static local:AppResources.ZTotalPaidAmount}" Padding="0"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,0,5,1"   TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="1" Grid.Column="0" >
+                                        <StackLayout HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Padding="0,0,0,0" Margin="5,5,5,1" >
+
+                    <Label Text="{x:Static local:AppResources.ZTotalPaidAmount}" Padding="0"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,0,5,1"   TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="1" Grid.Column="0"  >
                     </Label>
-                    <Label Text="{x:Static local:AppResources.ZSAR}" Padding="2,0,2,0" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="Start"    TextColor="#FFFFFF"   Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" >
+                                              <Label Text="{x:Static local:AppResources.ZSAR}" Padding="2,0,2,0" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="Start"    TextColor="#FFFFFF"   Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" >
                     </Label>
 
-                    <Label Text="{x:Static local:AppResources.ZTotalUnPaidAmount}" Padding="0,-8,0,0"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,0,5,1"  BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        </StackLayout>
+                  
+
+                    <!--<Label Text="{x:Static local:AppResources.ZTotalUnPaidAmount}" Padding="0,-8,0,0"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand" Margin="5,0,5,1"  BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
                     <Label Text="{x:Static local:AppResources.ZSAR}" Padding="2,-8,2,0"  VerticalOptions="CenterAndExpand" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="Start"   BackgroundColor="#c49b2d" TextColor="#FFFFFF"   Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" >
-                    </Label>
+                    </Label>-->
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#F4FCFD"></StackLayout>
                     <Label Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="Start" BackgroundColor="#F4FCFD"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Margin="5,5,5,1" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
