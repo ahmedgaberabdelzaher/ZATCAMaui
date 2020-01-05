@@ -1853,6 +1853,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the corresponding number.
+        /// </summary>
+        public static string ZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SADAD invoice number.
         /// </summary>
         public static string ZSadadInvoiceNumber {
@@ -1867,6 +1876,15 @@ namespace GAZT {
         public static string ZSAR {
             get {
                 return ResourceManager.GetString("ZSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Parameter.
+        /// </summary>
+        public static string ZSearchParameter {
+            get {
+                return ResourceManager.GetString("ZSearchParameter", resourceCulture);
             }
         }
         

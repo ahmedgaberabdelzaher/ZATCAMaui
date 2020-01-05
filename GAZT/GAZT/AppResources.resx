@@ -745,4 +745,10 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZYes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
+    <value>Please enter the corresponding number</value>
+  </data>
+  <data name="ZSearchParameter" xml:space="preserve">
+    <value>Search Parameter</value>
+  </data>
 </root>
