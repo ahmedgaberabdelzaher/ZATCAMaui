@@ -222,6 +222,35 @@ namespace GAZT.ViewModel
             }
         }
 
+        private bool _footerImageInArabic;
+        public bool FooterImageInArabic
+        {
+            get
+            {
+                return _footerImageInArabic;
+            }
+            set
+            {
+                _footerImageInArabic = value;
+                RaisePropertyChanged("FooterImageInArabic");
+            }
+        }
+
+        private bool _footerImageInEnglish;
+        public bool FooterImageInEnglish
+        {
+            get
+            {
+                return _footerImageInEnglish;
+            }
+            set
+            {
+                _footerImageInEnglish = value;
+                RaisePropertyChanged("FooterImageInEnglish");
+            }
+        }
+
+
         private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
         public Xamarin.Forms.Thickness PaddingForCollectionView
         {
@@ -312,7 +341,6 @@ namespace GAZT.ViewModel
             OnTaxevasionClicked = new Xamarin.Forms.Command(async () =>
             {
                 await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-
             });
 
 
@@ -327,17 +355,14 @@ namespace GAZT.ViewModel
         {
             try
             {
+                SetFooterImageVisibility();
                 TinNumber = App.TP.Userid;
                 String TotalCountOfReturn = string.Empty;
                 List<BillReturn> BillReturnList = new List<BillReturn>();
                 List<BillPaid> BillPaidList = new List<BillPaid>();
-
                 BillReturn = new List<BillReturn>();
                 BillPaid = new List<BillPaid>();
-
                 string lang = UtilityManager.GetLanguageParameter();
-
-
                 dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -640,7 +665,19 @@ namespace GAZT.ViewModel
             return actualAmount;
         }
 
-
+        private void SetFooterImageVisibility()
+        {
+            if(App.IsArabic)
+            {
+                FooterImageInArabic = false;
+                FooterImageInEnglish = true;
+            }
+            else
+            {
+                FooterImageInArabic = true;
+                FooterImageInEnglish = false;
+            }
+        }
         #endregion
     }
 }
