@@ -25,6 +25,7 @@ namespace GAZT.Views.NewViews
         public ChangePasswordPageView(NavigateToOtp navigateTo)
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.ChangePasswordPageView;
             
             SetLTR();

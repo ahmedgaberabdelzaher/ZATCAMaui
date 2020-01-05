@@ -28,7 +28,8 @@ namespace GAZT.Views.NewViews
         {
            
                 InitializeComponent();
-                viewModel = App.Locator.OTPPageView;
+            NavigationPage.SetBackButtonTitle(this, "");
+            viewModel = App.Locator.OTPPageView;
 
                 SetLTR();
             viewModel.OTPValidDuration = "00:00";

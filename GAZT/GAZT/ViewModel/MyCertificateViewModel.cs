@@ -458,9 +458,9 @@ namespace GAZT
             {
                 if (pdfUrl != null)
                 {
-                    Uri uri = new Uri(pdfUrl);
-                    Device.OpenUri(uri);
-                    //_navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                 }
                 else
                 {
@@ -488,122 +488,7 @@ namespace GAZT
             }
         }
 
-        //    public async Task ShowZAKATPdf(string pdfUrl)
-        //    {
-
-        //        if (Device.RuntimePlatform == Device.iOS)
-        //        {
-        //            if (pdfUrl != null)
-        //            {
-        //	Uri uri = new Uri(pdfUrl);
-        //	Device.OpenUri(uri);
-        //	// _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-        //}
-        //            else
-        //            {
-        //                //pop that certificate is not available
-        //                Device.BeginInvokeOnMainThread(async () =>
-        //                {
-        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //                });
-        //            }
-        //        }
-        //        else
-        //        {
-        //            if (pdfUrl != null)
-        //            {
-        //                _navigationService.NavigateTo(App.PdfView, pdfUrl);
-        //            }
-        //            else
-        //            {
-        //                //pop that certificate is not available
-        //                Device.BeginInvokeOnMainThread(async () =>
-        //                {
-        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //                });
-        //            }
-
-        //        }
-        //    }
-
-        //    private async Task ShowEXCISECertificate(string pdfUrl)
-        //    {
-        //        if (Device.RuntimePlatform == Device.iOS)
-        //        {
-        //            if (pdfUrl != null)
-        //            {
-        //	Uri uri = new Uri(pdfUrl);
-        //	Device.OpenUri(uri);
-        //	//  _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-        //}
-        //            else
-        //            {
-        //                //pop that certificate is not available
-        //                Device.BeginInvokeOnMainThread(async () =>
-        //                {
-        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //                });
-        //            }
-        //        }
-        //        else
-        //        {
-        //            if (pdfUrl != null)
-        //            {
-        //                _navigationService.NavigateTo(App.PdfView, pdfUrl);
-        //            }
-        //            else
-        //            {
-        //                //pop that certificate is not available
-        //                Device.BeginInvokeOnMainThread(async () =>
-        //                {
-        //                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-        //                });
-        //            }
-        //        }
-
-        //    }
-
-
-        //private  async Task<string> GetCertificateLink()
-        //{
-        //    String response = null;
-        //   await Task.Run(async () =>
-        //    {
-
-        //        String lang = "EN";
-        //        if (App.IsArabic == true)
-        //            lang = "AR";
-        //         response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-        //        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-        //    });
-        //    return response;
-        //}
-
-        //private async Task<string> GetZakatCertificateLink()
-        //{
-        //    String response = null;
-        //    try
-        //    {
-
-        //        await Task.Run(async () =>
-        //        {
-
-        //            String lang = "EN";
-        //            if (App.IsArabic == true)
-        //                lang = "AR";
-        //            response = await WebServiceManager.GAZTZakatGetPdfUrl(lang, TaxPayerProfile.Tin);
-        //            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-        //        });
-        //    }
-        //    catch(Exception ex)
-        //    {
-
-        //    }
-
-        //    return response;
-        //}
+      
 
         public async Task OnPageLoad()
         {
@@ -689,8 +574,13 @@ namespace GAZT
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+
+              
             }
         }
 

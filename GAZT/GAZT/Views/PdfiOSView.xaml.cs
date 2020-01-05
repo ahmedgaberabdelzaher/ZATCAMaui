@@ -12,6 +12,7 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.PdfiOSView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
             if (!string.IsNullOrEmpty(Pdfurl))
             {

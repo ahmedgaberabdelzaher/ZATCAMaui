@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -339,8 +340,8 @@ namespace GAZT.ViewModel
             });
             OnVATLookupClicked = new Xamarin.Forms.Command(async () =>
             {
-                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-
+                //await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+                _navigationService.NavigateTo(App.VATLookupPageView);
             });
             OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -646,9 +647,12 @@ namespace GAZT.ViewModel
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
+
         }
 
         public void LogOut()

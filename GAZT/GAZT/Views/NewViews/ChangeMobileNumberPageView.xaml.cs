@@ -22,7 +22,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ChangeMobileNumberPageView;
             InitializeComponent();
-
+            NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();

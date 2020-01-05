@@ -72,7 +72,7 @@ namespace GAZT.ViewModel
         }
 
 
-        private string _Password = "Test@123";
+        private string _Password = "Test@1234";
 
        // private string _Password = string.Empty;
         public string Password

@@ -1772,6 +1772,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Number.
+        /// </summary>
+        public static string ZCRNumber {
+            get {
+                return ResourceManager.GetString("ZCRNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CR Number is not equal to 10.
+        /// </summary>
+        public static string ZCRNumberisnotequalto10 {
+            get {
+                return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address has been changed  successfully.
         /// </summary>
         public static string ZEmailUpdatedSuccessfully {
@@ -1853,6 +1871,51 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter lookup number.
+        /// </summary>
+        public static string ZPleaseenterlookupnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterlookupnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the corresponding number.
+        /// </summary>
+        public static string ZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the CR composed of 10 digits.
+        /// </summary>
+        public static string ZPleaseentertheCRcomposedof10digits {
+            get {
+                return ResourceManager.GetString("ZPleaseentertheCRcomposedof10digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the VAT Account No. composed of 15 digits.
+        /// </summary>
+        public static string ZPleaseentertheVATAccountNocomposedof15digits {
+            get {
+                return ResourceManager.GetString("ZPleaseentertheVATAccountNocomposedof15digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select parameter type.
+        /// </summary>
+        public static string ZPleaseselectparametertype {
+            get {
+                return ResourceManager.GetString("ZPleaseselectparametertype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SADAD invoice number.
         /// </summary>
         public static string ZSadadInvoiceNumber {
@@ -1867,6 +1930,15 @@ namespace GAZT {
         public static string ZSAR {
             get {
                 return ResourceManager.GetString("ZSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Parameter.
+        /// </summary>
+        public static string ZSearchParameter {
+            get {
+                return ResourceManager.GetString("ZSearchParameter", resourceCulture);
             }
         }
         
@@ -1903,6 +1975,51 @@ namespace GAZT {
         public static string ZUserNotValid {
             get {
                 return ResourceManager.GetString("ZUserNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Account Number.
+        /// </summary>
+        public static string ZVATAccountNumber {
+            get {
+                return ResourceManager.GetString("ZVATAccountNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Certificate is not equal to 15.
+        /// </summary>
+        public static string ZVATCerNumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZVATCerNumberisnotequalto15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Certificate Number.
+        /// </summary>
+        public static string ZVATCertificateNumber {
+            get {
+                return ResourceManager.GetString("ZVATCertificateNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search result.
+        /// </summary>
+        public static string ZVATLookupDialogue {
+            get {
+                return ResourceManager.GetString("ZVATLookupDialogue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number is not equal to 15.
+        /// </summary>
+        public static string ZVATNumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
         

@@ -22,6 +22,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxPayerProfilePageView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();

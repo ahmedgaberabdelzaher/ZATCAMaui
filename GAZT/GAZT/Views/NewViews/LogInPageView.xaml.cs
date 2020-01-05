@@ -21,8 +21,10 @@ namespace GAZT.Views
             viewModel = App.Locator.LogInPageView;
 
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             //long number = 1000000000000;
             //string whatYouWant = number.ToString("#,##0");
+            NavigationPage.SetBackButtonTitle(this,"");
             App.IsArabic = true;
             this.BindingContext = viewModel;
             App.IsComingFromDashboardToLogOff = false;

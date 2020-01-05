@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using GAZT.ViewModel.NewViewModel;
 using GAZT.Manager;
+using GAZT.CustomControl;
 
 namespace GAZT.Views.NewViews
 {
@@ -20,6 +21,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ForgotUsernamePasswordPageView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.NewPasswordVisibility = true;
             viewModel.ConfirmPasswordVisibility = true;
             viewModel.currentAttempts = 0;
@@ -27,6 +29,9 @@ namespace GAZT.Views.NewViews
             SetLTR();
             string str = "abc";
             Items.Add(str);
+            //  NavigationPage.SetBackButtonTitle(this, "Forgot");
+            CustomNavigation.SetBackButtonTitle(this, "Forgot");
+            // NavigationPage.BackButtonTitle = "Forgot";
             App.IsComingFromDashboardToLogOff = false;
             try
             {

@@ -12,26 +12,28 @@ using Xamarin.Forms.Xaml;
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChangeEmailPageView : ContentPage
+    public partial class VATLookupPageView : ContentPage
     {
-        #region Variable
-        ChangeEmailPageViewModel viewModel;
-        
-        #endregion
-
-        #region Constructor
-        public ChangeEmailPageView()
+        VATLookupPageViewModel viewModel;
+        int LanguageToolBarCount = 0;
+        public VATLookupPageView()
         {
-            viewModel = App.Locator.ChangeEmailPageView;
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-            SetLTR();
+            viewModel = App.Locator.VATLookupPageView;
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
+            SetLTR();
+            ToolbarItem toolbarItem1 = new ToolbarItem
+            {
+              
+            
+            };
+            if (LanguageToolBarCount == 0)
+            {
+                LanguageToolBarCount = 1;
+                this.ToolbarItems.Add(toolbarItem1);
+            }
         }
-        #endregion
-
-        #region Method
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -39,6 +41,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        #endregion
+        
     }
 }
