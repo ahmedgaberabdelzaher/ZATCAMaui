@@ -21,6 +21,10 @@ namespace GAZT.ViewModel.NewViewModel
         public bool IsComingFromLogIn { get; set; }
         public NavigateToOtp IsComingFrom { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
+        CancellationTokenSource _CancellationTokenSource;
+        int TotalSec;
+        public bool StopTimer = false;
+
 
         #endregion
 
@@ -235,6 +239,7 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
 
+            _CancellationTokenSource = new CancellationTokenSource();
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
@@ -401,7 +406,9 @@ namespace GAZT.ViewModel.NewViewModel
         public void OnPageLoad()
         {
             TinNumber = App.TP.Userid;
-            MobileNumber = App.TP.Mobile;
+            string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+            StopTimer = true;
             TimerStart();
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
@@ -424,8 +431,8 @@ namespace GAZT.ViewModel.NewViewModel
                         ButtonDisableColor = Color.FromHex("#9EA4A9");
                         IsResendOTPEnabled = false;
                         IsOTPEntryEnable = true;
-                        string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                        //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                         TimerStart();
                      
                     }
@@ -455,7 +462,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
 
-            int TotalSec = 120;
+             TotalSec = 120;
 
             CancellationTokenSource CTS = _CancellationTokenSource;
 
@@ -471,6 +478,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         return false;
                     }
+                    else if(!StopTimer)
+                    {
+                        return false;
+                    }
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         TotalSec = TotalSec - 1;
@@ -481,6 +492,43 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
         }
+
+        private void TimerStop()
+        {
+            Interlocked.Exchange(ref _CancellationTokenSource, new CancellationTokenSource()).Cancel();
+        }
+
+        //static void OnTimerCancelChanged(BindableObject bindable, object oldvalue, object newvalue)
+        //{
+        //    ((OTPPageViewModel)bindable).TimerStop();
+        //}
+
+        //static void OnTimerTimeChanged(BindableObject bindable, object oldvalue, object newvalue)
+        //{
+        //    ((OTPPageViewModel)bindable).TimerStop();
+        //    ((OTPPageViewModel)bindable).TimerStart();
+        //}
+
+        //public static readonly BindableProperty CountDownMinutesProperty = BindableProperty.Create("CountDownMinutes", typeof(int), typeof(OTPPageViewModel), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
+        //public int CountDownMinutes
+        //{
+        //    get { return (int)base.GetValue(CountDownMinutesProperty); }
+        //    set { base.SetValue(CountDownMinutesProperty, value); }
+        //}
+
+        //public static readonly BindableProperty CountDownSecondsProperty = BindableProperty.Create("CountDownSeconds", typeof(int), typeof(OTPPageViewModel), 0, BindingMode.TwoWay, null, OnTimerTimeChanged);
+        //public int CountDownSeconds
+        //{
+        //    get { return (int)base.GetValue(CountDownSecondsProperty); }
+        //    set { base.SetValue(CountDownSecondsProperty, value); }
+        //}
+
+        //public static readonly BindableProperty TimerCancelProperty = BindableProperty.Create("TimerCancel", typeof(bool), typeof(OTPPageViewModel), false, BindingMode.TwoWay, null, OnTimerCancelChanged);
+        //public bool TimerCancel
+        //{
+        //    get { return (bool)base.GetValue(TimerCancelProperty); }
+        //    set { base.SetValue(TimerCancelProperty, value); }
+        //}
 
         public async Task PopToRootPage()
         {
