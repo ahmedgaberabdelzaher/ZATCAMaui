@@ -82,7 +82,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
+                        <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForReturnCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Padding="10,0,10,0"   Margin="0">

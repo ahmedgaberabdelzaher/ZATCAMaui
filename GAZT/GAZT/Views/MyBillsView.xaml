@@ -111,8 +111,8 @@
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40*" />
-                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="48*" />
+                                                <ColumnDefinition Width="42*" />
                                                 <ColumnDefinition Width="3*" />
                                                 <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
@@ -143,17 +143,17 @@
 
 
                                             <Label 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
                                                 HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
-                                              
+                                             
                                    Grid.Column="0"
                                    >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                            <Span  Text="{x:Static local:AppResources.ZSadadInvoiceNumber}" Style="{StaticResource MiniGoldLabelStyle}" />
-                                                            <Span  Text=" " Style="{StaticResource MiniGoldLabelStyle}" />
+                                                            <Span   Text="{x:Static local:AppResources.ZSadadInvoiceNumber}"  />
 
                                                             <!--<Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />-->
                                                     </FormattedString>
@@ -187,7 +187,7 @@
                                                         <FormattedString>
                                                             <Span    Text="{x:Static local:AppResources.ZSAR} "/>
                                                             <Span Text=" "/>
-                                                            <Span  Text="{Binding TestDueAmount}"  />
+                                                                <Span  Text="{Binding TestDueAmount}"  />
                                                         </FormattedString>
                                                     </Label.FormattedText>
 

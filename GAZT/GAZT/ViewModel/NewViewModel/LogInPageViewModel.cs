@@ -309,10 +309,7 @@ namespace GAZT.ViewModel
                 String response = string.Empty;
                 string UserId = string.Empty;
                 
-                if(string.IsNullOrEmpty(UserName)|| string.IsNullOrEmpty(Password))
-                {
-                    throw new Exception(AppResources.Pleaseenteryourlogininformation);
-                }
+             
 
                 await Task.Run(() =>
                 {
@@ -325,7 +322,11 @@ namespace GAZT.ViewModel
                         String lang = "E";
                         if (App.IsArabic == true)
                             lang = "AR";
-                       
+                        if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+                        {
+                            throw new Exception(AppResources.Pleaseenteryourlogininformation);
+                        }
+
                         if (SelectedTinId != null && IsVisibleTinIds == true)
                         {
                             bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);

@@ -146,7 +146,21 @@ namespace GAZT.ViewModel
             }
         }
 
-        
+        private int _heightRequestForReturnCollectionView = 0;
+        public int HeightRequestForReturnCollectionView
+        {
+            get
+            {
+                return _heightRequestForReturnCollectionView;
+            }
+            set
+            {
+                _heightRequestForReturnCollectionView = value;
+                RaisePropertyChanged("HeightRequestForReturnCollectionView");
+            }
+        }
+
+
 
         private double _deviceHeight;
         public double DeviceHeight
@@ -221,6 +235,8 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("CalendarHeightRequest");
             }
         }
+
+
 
         private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
         public Xamarin.Forms.Thickness PaddingForCollectionView
