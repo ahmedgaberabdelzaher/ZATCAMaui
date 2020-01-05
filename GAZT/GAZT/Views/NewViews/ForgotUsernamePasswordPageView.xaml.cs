@@ -48,28 +48,28 @@ namespace GAZT.Views.NewViews
             {
                 bool IsValiedEmailAddress = false;
                 string userName = UserName.Text;
-                if(!string.IsNullOrEmpty(userName))
-                 IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                if (!string.IsNullOrEmpty(userName))
+                    IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
                 if (!IsValiedEmailAddress)
                 {
                     viewModel.IsVisibleTinIds = false;
                 }
                 await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
 
-        
-       private async void OnIDNumberTextChanged(Object sender, EventArgs e)
+
+        private async void OnIDNumberTextChanged(Object sender, EventArgs e)
        {
 
             if (viewModel.SelectedTaxPayerType != null)
             {
                 string IdNumber = UserName.Text;
-                if (IdNumber.Length > 0)
+                if (IdNumber != null && IdNumber.Length > 0)
                 {
                     bool isValidNumber = UtilityManager.IsOTPNumberValid(IdNumber);
                     if (!isValidNumber)
@@ -133,25 +133,27 @@ namespace GAZT.Views.NewViews
             viewModel.EnteredCaptchaValue  = "";
             viewModel.IsVisibleTinIds = false;
             viewModel.IsIDTypeVisible = false;
-            //viewModel.Captcha = "";
-
-
-            //viewModel.IsTaxPayerTypeEnable = true;
-            //viewModel.IsForgotUserNameWithIndividual = true;
-            //viewModel.IsForgotPassword = false;
-            //viewModel.IsForgotUserNameWithCorporate = false;
+            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+            viewModel.IsResendOTPEnabled = false;
+            viewModel.IsOTPEntryEnable = true;
+            viewModel.StopTimer = true;
 
         }
 
         private async void OnOTPEntered(Object sender, EventArgs e)
         {
             string Otp = EnteredOTP.Text;
-            if(Otp.Length > 4)
+            if(Otp != null && Otp.Length > 4)
             {
                 EnteredOTP.Text = EnteredOTP.Text.Substring(0, 4);
                 EnteredOTP.Unfocus();
             }
         }
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.StopTimer = false;
         }
+
+    }
 }
