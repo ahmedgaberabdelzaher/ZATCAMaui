@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -649,6 +650,15 @@ namespace GAZT.ViewModel
                 var _navigation = Application.Current.MainPage.Navigation;
                 _navigation.PopToRootAsync();
             }
+
+            //for (int index = 0; index < Navigation.NavigationStack.Count; index++)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    if (pg.GetType() == typeof(OTPPageView))
+            //    {
+            //        Navigation.RemovePage(pg);
+            //    }
+            //}
         }
 
         public void LogOut()

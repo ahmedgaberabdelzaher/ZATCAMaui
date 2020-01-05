@@ -87,7 +87,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                        <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForReturnCollectionView}">
+                    <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Padding="10,0,10,0"   Margin="0">
@@ -285,7 +285,7 @@
                 <Image Source="ic_social.png" BackgroundColor="White" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start"></Image>
                 <Image Source="ic_help.png" BackgroundColor="White" Grid.Row="0" Grid.Column="2" HorizontalOptions="Start"></Image>
             </Grid>
-            <Image Source="ic_footer_img.png" BackgroundColor="White" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" IsVisible="{Binding FooterImageInArabic}"></Image>
+            <Image Source="ic_footer_img.png" BackgroundColor="White" Grid.Row="1" Grid.Column="2" HorizontalOptions="End" IsVisible="{Binding FooterImageInArabic}"></Image>
             <Image Source="ic_footer_img.png" BackgroundColor="White" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" IsVisible="{Binding FooterImageInEnglish}"></Image>
 
         </Grid>
