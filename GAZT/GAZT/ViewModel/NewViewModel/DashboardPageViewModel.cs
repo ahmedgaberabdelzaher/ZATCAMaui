@@ -412,11 +412,11 @@ namespace GAZT.ViewModel
                             //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                             if (BegDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                             }
                             if (endDate != null)
                             {
-                                EndDate = Convert.ToDateTime(endDate).ToString("yyyy MM dd", new CultureInfo("ar-sa"));
+                                EndDate = Convert.ToDateTime(endDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
                             }
                         }
                         else
