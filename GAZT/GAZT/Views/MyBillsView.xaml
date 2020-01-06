@@ -11,33 +11,33 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="12*" />
-                <RowDefinition Height="88*" />
-              
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12*" />
+                    <RowDefinition Height="88*" />
 
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="30*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="30*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="30*" />
-                <ColumnDefinition Width="2*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="2*" />
 
 
-                <!--<ColumnDefinition Width="15*" />
+                    <!--<ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="55*" />-->
 
-            </Grid.ColumnDefinitions>
-            <!--<skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
+                </Grid.ColumnDefinitions>
+                <!--<skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
             <local1:CustomLabel Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center" >
             </local1:CustomLabel>-->
-            <!--<StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <!--<StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
                     <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
@@ -51,46 +51,46 @@
                 </cards:CarouselView>
             </StackLayout>-->
 
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  BackgroundColor="#005e4b">
-             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5.08*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="23*"/>
-                    <ColumnDefinition Width="23*"/>
-                    <ColumnDefinition Width="23*"/>
-                    <ColumnDefinition Width="31*"/>
-                </Grid.ColumnDefinitions>
-                <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
-                  
-                    
-                    <local1:CustomLabel.GestureRecognizers>
-                        
-                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForAll" Command="{Binding onAllLabelClicked}" />
-                    </local1:CustomLabel.GestureRecognizers>
-                </local1:CustomLabel>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  BackgroundColor="#005e4b">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5.08*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="31*"/>
+                        </Grid.ColumnDefinitions>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{DynamicResource searchBarStyleForPaid}" Grid.Row="0" Grid.Column="1"  >
-                    <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPaid" Command="{Binding onPaidLabelClicked}" />
-                    </local1:CustomLabel.GestureRecognizers>
-                </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{DynamicResource searchBarStyleForUnPaid}" Grid.Row="0" Grid.Column="2"  >
-                    <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
-                    </local1:CustomLabel.GestureRecognizers>
-                </local1:CustomLabel>
-                <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="5,0,5,0" VerticalTextAlignment="Start">
-                    <local1:CustomLabel.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
-                    </local1:CustomLabel.GestureRecognizers>
-                </local1:CustomLabel>
-            </Grid>
 
-           </StackLayout>
-            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
-            <ListView  x:Name="Bills" 
+                            <local1:CustomLabel.GestureRecognizers>
+
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForAll" Command="{Binding onAllLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+
+                        <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{DynamicResource searchBarStyleForPaid}" Grid.Row="0" Grid.Column="1"  >
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPaid" Command="{Binding onPaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{DynamicResource searchBarStyleForUnPaid}" Grid.Row="0" Grid.Column="2"  >
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="5,0,5,0" VerticalTextAlignment="Start">
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                    </Grid>
+
+                </StackLayout>
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
+                    <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -98,41 +98,41 @@
                       
             SeparatorVisibility="None"
             >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ContentView>
-                                <Frame OutlineColor="#C9C9C9"
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView>
+                                        <Frame OutlineColor="#C9C9C9"
                                        Margin="0,0,0,10"
                                        Padding="10,5,10,5"
                                        CornerRadius="5"
                                        
                                >
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
-                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="48*" />
-                                                <ColumnDefinition Width="42*" />
-                                                <ColumnDefinition Width="3*" />
-                                                <ColumnDefinition Width="7*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                               
-                                              
-                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
+                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="48*" />
+                                                        <ColumnDefinition Width="42*" />
+                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="7*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
 
-                                                <Label Text="{x:Static local:AppResources.TaxType}" Margin="0" 
+
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Text="{x:Static local:AppResources.TaxType}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"/>
 
-                                            <Label Text="{Binding Abtypt}" 
+                                                    <Label Text="{Binding Abtypt}" 
                                                   
                                   Margin="0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -142,7 +142,7 @@
                                    Grid.Column="1" />
 
 
-                                            <Label 
+                                                    <Label 
                                                  Style="{StaticResource MiniGoldLabelStyle}"
                                   
                                                 HorizontalOptions="StartAndExpand"
@@ -151,16 +151,16 @@
                                              
                                    Grid.Column="0"
                                    >
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                            <Span   Text="{x:Static local:AppResources.ZSadadInvoiceNumber}"  />
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span   Text="{x:Static local:AppResources.ZSadadInvoiceNumber}"  />
 
-                                                            <!--<Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />-->
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            
-                                            <Label Text="{Binding VTRE2}" 
+                                                                <!--<Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />-->
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                    <Label Text="{Binding VTRE2}" 
                                                  
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -168,14 +168,14 @@
                                    Grid.Row="1"
                                    Grid.Column="1" />
 
-                                            <Label Text="{x:Static local:AppResources.DueAmount}" 
+                                                    <Label Text="{x:Static local:AppResources.DueAmount}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
                                    />
-                                                <Label  
+                                                    <Label  
                                      
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                     HorizontalOptions="StartAndExpand"
@@ -183,17 +183,17 @@
                                    Grid.Row="2"
                                    Grid.Column="1" >
 
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span    Text="{x:Static local:AppResources.ZSAR} "/>
-                                                            <Span Text=" "/>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span    Text="{x:Static local:AppResources.ZSAR} "/>
+                                                                <Span Text=" "/>
                                                                 <Span  Text="{Binding TestDueAmount}"  />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
 
-                                                </Label>
+                                                    </Label>
 
-                                                <Label Text="{x:Static local:AppResources.DueDate}" 
+                                                    <Label Text="{x:Static local:AppResources.DueDate}" 
                                       
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -201,7 +201,7 @@
                                    Grid.Row="3"
                                    Grid.Column="0"
                                    />
-                                                <Label Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}" 
+                                                    <Label Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}" 
                                        
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -209,24 +209,24 @@
                                    Grid.Row="3"
                                    Grid.Column="1" />
 
-                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                            <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                            <BoxView  
+                                                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    <BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>
 
-                                           
-                                        </Grid>
-                                    </StackLayout>
-                                </Frame>
-                            </ContentView>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            </StackLayout>
-             <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
-            </local1:CustomLabel>
-            <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                </local1:CustomLabel>
+                <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
@@ -240,19 +240,19 @@
             </Image>-->
 
 
-        </Grid>
-             <!-- Acticity indicator layout start -->
-        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
-            </StackLayout>
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-                </StackLayout>
-            </StackLayout>
-        </Grid>
-        <!-- Acticity indicator layout end -->
             </Grid>
+            <!-- Acticity indicator layout start -->
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout end -->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -101,9 +101,15 @@
             <local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
             </local1:CustomLabel>
 
-           
+
+
+
+          
+
 
         </Grid>
+        
+        
         
     </ContentPage.Content>
 </ContentPage>

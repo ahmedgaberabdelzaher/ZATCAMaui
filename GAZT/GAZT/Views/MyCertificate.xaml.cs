@@ -21,14 +21,16 @@ namespace GAZT.Views
             viewModel = App.Locator.MyCertificate;
             SetLTR();
 
-
+            this.BindingContext = viewModel;
 
             //string str = "abc";
             //Items.Add(str);
             // CardView.ItemsSource = Items;
-            Task.Run(async () =>
-            {
-                await viewModel.OnPageLoad();
+
+          
+
+           
+                viewModel.OnPageLoad();
                 if (viewModel.allCertificate != null)
                 {
                     if (viewModel.allCertificate.ZakatSet != null && viewModel.allCertificate.ZakatSet.results != null && viewModel.allCertificate.ZakatSet.results.Count > 0)
@@ -53,12 +55,11 @@ namespace GAZT.Views
                         Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                     }
                 }
-            });
+            
+           
 
 
 
-            SetLTR();
-            this.BindingContext = viewModel;
             //EXISECertificateList.ItemSelected += (sender, e) =>
             //{
             //    if (e.SelectedItem == null)

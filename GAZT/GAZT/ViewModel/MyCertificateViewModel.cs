@@ -490,12 +490,12 @@ namespace GAZT
 
       
 
-        public async Task OnPageLoad()
+        public void OnPageLoad()
         {
             string lang = UtilityManager.GetLanguageParameter();
             TaxPayerProfile = App.TP;
-            allCertificate = await WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
-            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+            allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
             if (allCertificate != null)
             {
@@ -537,7 +537,7 @@ namespace GAZT
             }
             else
             {
-                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 _navigationService.GoBack();
             }
         }
@@ -570,7 +570,7 @@ namespace GAZT
         //    }
         //}
 
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {

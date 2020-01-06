@@ -43,6 +43,7 @@ namespace GAZT
         public static string OTPPageView = "OTPPageView";
         public static string ForgotUsernamePasswordPageView = "ForgotUsernamePasswordPageView";
         public static string VATLookupPageView = "VATLookupPageView";
+        public static string ZakatReturnListPageView = "ZakatReturnListPageView";
 
 
 

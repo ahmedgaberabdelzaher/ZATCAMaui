@@ -922,7 +922,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<AllCertificate> GAZTGetAllCertificate(String Lang, String Tin)
+        public static  AllCertificate GAZTGetAllCertificate(String Lang, String Tin)
         {
             DateTime dt = DateTime.Now;
             AllCertificate allCertificate = new AllCertificate();
@@ -937,7 +937,7 @@ namespace GAZT.Manager
                 string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'" + "2007-01-01T00%3A00%3A00'" + ",Enddaz=datetime'" + currentDate + "'" + ")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
-                HttpResponseMessage GAZTGetAllCertificateResponse = await client.GetAsync(uri);
+                HttpResponseMessage GAZTGetAllCertificateResponse = client.GetAsync(uri).Result;
 
                 if (GAZTGetAllCertificateResponse != null)
                 {
