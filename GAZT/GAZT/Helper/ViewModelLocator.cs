@@ -41,9 +41,10 @@ namespace GAZT
             SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
             SimpleIoc.Default.Register<OTPPageViewModel>();
             SimpleIoc.Default.Register<ForgotUsernamePasswordPageViewModel>();
+            SimpleIoc.Default.Register<VATLookupPageViewModel>();
 
 
-            
+
 
 
 
@@ -410,8 +411,21 @@ namespace GAZT
             }
         }
 
-        
 
+        public VATLookupPageViewModel VATLookupPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
 
@@ -446,8 +460,9 @@ namespace GAZT
             navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
             navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
+            navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
 
-            
+
 
             return navigationService;
         }

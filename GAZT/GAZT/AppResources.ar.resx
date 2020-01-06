@@ -751,4 +751,43 @@
   <data name="ZEmailUpdatedSuccessfully" xml:space="preserve">
     <value>تم تحديث البريد الالكتروني بنجاح</value>
   </data>
+  <data name="ZCRNumber" xml:space="preserve">
+    <value>CR Number</value>
+  </data>
+  <data name="ZCRNumberisnotequalto10" xml:space="preserve">
+    <value>CR Number is not equal to 10</value>
+  </data>
+  <data name="ZPleaseenterlookupnumber" xml:space="preserve">
+    <value>Please enter lookup number</value>
+  </data>
+  <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
+    <value>Please enter the corresponding number</value>
+  </data>
+  <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
+    <value>Please enter the CR composed of 10 digits</value>
+  </data>
+  <data name="ZPleaseentertheVATAccountNocomposedof15digits" xml:space="preserve">
+    <value>Please enter the VAT Account No. composed of 15 digits</value>
+  </data>
+  <data name="ZPleaseselectparametertype" xml:space="preserve">
+    <value>Please select parameter type</value>
+  </data>
+  <data name="ZSearchParameter" xml:space="preserve">
+    <value>Search Parameter</value>
+  </data>
+  <data name="ZVATAccountNumber" xml:space="preserve">
+    <value>VAT Account Number</value>
+  </data>
+  <data name="ZVATCerNumberisnotequalto15" xml:space="preserve">
+    <value>VAT Certificate is not equal to 15</value>
+  </data>
+  <data name="ZVATCertificateNumber" xml:space="preserve">
+    <value>VAT Certificate Number</value>
+  </data>
+  <data name="ZVATLookupDialogue" xml:space="preserve">
+    <value>Search result</value>
+  </data>
+  <data name="ZVATNumberisnotequalto15" xml:space="preserve">
+    <value>VAT Number is not equal to 15</value>
+  </data>
 </root>

@@ -1271,9 +1271,111 @@ namespace GAZT {
             }
         }
         
+        public static string ZSadadInvoiceNumber {
+            get {
+                return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
+            }
+        }
+        
         public static string Pleaseenteryourlogininformation {
             get {
                 return ResourceManager.GetString("Pleaseenteryourlogininformation", resourceCulture);
+            }
+        }
+        
+        public static string ZNo {
+            get {
+                return ResourceManager.GetString("ZNo", resourceCulture);
+            }
+        }
+        
+        public static string ZYes {
+            get {
+                return ResourceManager.GetString("ZYes", resourceCulture);
+            }
+        }
+        
+        public static string ZEmailUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZEmailUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZCRNumber {
+            get {
+                return ResourceManager.GetString("ZCRNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZCRNumberisnotequalto10 {
+            get {
+                return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
+            }
+        }
+        
+        public static string ZPleaseenterlookupnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterlookupnumber", resourceCulture);
+            }
+        }
+        
+        public static string ZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        public static string ZPleaseentertheCRcomposedof10digits {
+            get {
+                return ResourceManager.GetString("ZPleaseentertheCRcomposedof10digits", resourceCulture);
+            }
+        }
+        
+        public static string ZPleaseentertheVATAccountNocomposedof15digits {
+            get {
+                return ResourceManager.GetString("ZPleaseentertheVATAccountNocomposedof15digits", resourceCulture);
+            }
+        }
+        
+        public static string ZPleaseselectparametertype {
+            get {
+                return ResourceManager.GetString("ZPleaseselectparametertype", resourceCulture);
+            }
+        }
+        
+        public static string ZSearchParameter {
+            get {
+                return ResourceManager.GetString("ZSearchParameter", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAccountNumber {
+            get {
+                return ResourceManager.GetString("ZVATAccountNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCerNumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZVATCerNumberisnotequalto15", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCertificateNumber {
+            get {
+                return ResourceManager.GetString("ZVATCertificateNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookupDialogue {
+            get {
+                return ResourceManager.GetString("ZVATLookupDialogue", resourceCulture);
+            }
+        }
+        
+        public static string ZVATNumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
     }

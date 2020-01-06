@@ -340,8 +340,8 @@ namespace GAZT.ViewModel
             });
             OnVATLookupClicked = new Xamarin.Forms.Command(async () =>
             {
-                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-
+                //await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+                _navigationService.NavigateTo(App.VATLookupPageView);
             });
             OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
             {
