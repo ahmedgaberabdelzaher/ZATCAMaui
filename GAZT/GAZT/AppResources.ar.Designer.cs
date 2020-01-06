@@ -1378,5 +1378,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
+        
+        public static string Hi {
+            get {
+                return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        public static string EnterVerificationCodeTitle {
+            get {
+                return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
+            }
+        }
     }
 }

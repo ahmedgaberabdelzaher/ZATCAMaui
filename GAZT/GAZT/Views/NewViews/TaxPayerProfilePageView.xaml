@@ -43,7 +43,7 @@
                 <!--<Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
 
 
-                <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
+                <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource ForgotPasswordTextColor}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
                 </Label>
                 <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>

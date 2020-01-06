@@ -115,7 +115,21 @@ namespace GAZT.ViewModel
             }
         }
 
+        private string _taxPayerName;
+        public string TaxPayerName
+        {
+            get
+            {
+                return _taxPayerName;
+            }
+            set
+            {
+                _taxPayerName = value;
+                RaisePropertyChanged("TaxPayerName");
+            }
+        }
         
+
         private string _endDate;
         public string EndDate
         {
@@ -370,6 +384,15 @@ namespace GAZT.ViewModel
         {
             try
             {
+                if (App.IsArabic)
+                {
+                    TaxPayerName = AppResources.Hi + " (" + App.TP.Tin + ") " + App.TP.Name  ;
+                }
+                else
+                {
+                    TaxPayerName = AppResources.Hi + App.TP.Name + " (" + App.TP.Tin + ")";
+                }
+             
                 SetFooterImageVisibility();
                 TinNumber = App.TP.Userid;
                 String TotalCountOfReturn = string.Empty;

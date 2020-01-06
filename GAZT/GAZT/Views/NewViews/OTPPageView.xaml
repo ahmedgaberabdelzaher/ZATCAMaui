@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.OTPPageView"
+             Title="{x:Static local:AppResources.EnterVerificationCodeTitle}"
              FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -61,7 +62,7 @@
                         <Frame  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0" >
                         </Frame>
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    >
-                            <local:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5"     Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White" TextColor="Black" FontSize="10" IsEnabled="{Binding IsOTPEntryEnable}">
+                            <local:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP"  TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5"     Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White" TextColor="Black" FontSize="10" IsEnabled="{Binding IsOTPEntryEnable}" IsPassword="True">
                             </local:GAZTBorderlessEntry>
                         </StackLayout>
 

@@ -61,7 +61,7 @@ namespace GAZT.Views
             if (viewModel.DeviceHeight>viewModel.DeviceWidth)
             {
                 value = 0.19 * viewModel.DeviceHeight;
-                valueForReturn = 0.12 * viewModel.DeviceHeight;
+                valueForReturn = 0.11 * viewModel.DeviceHeight;
                 viewModel.HeightRequestForCollectionView = Convert.ToInt32(value);
                 viewModel.HeightRequestForReturnCollectionView= Convert.ToInt32(valueForReturn);
                 viewModel.CalendarHeightRequest =Convert.ToInt32(viewModel.DeviceHeight * 0.0468);
@@ -69,7 +69,7 @@ namespace GAZT.Views
            else
             {
                 value = 0.19 * viewModel.DeviceWidth;
-                valueForReturn = 0.12 * viewModel.DeviceHeight;
+                valueForReturn = 0.11 * viewModel.DeviceHeight;
                 viewModel.HeightRequestForCollectionView = Convert.ToInt32(value);
                 viewModel.HeightRequestForReturnCollectionView = Convert.ToInt32(valueForReturn);
                 viewModel.CalendarHeightRequest = Convert.ToInt32(viewModel.DeviceWidth * 0.0468);

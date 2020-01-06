@@ -705,7 +705,7 @@
     <value>ر.س</value>
   </data>
   <data name="ZTotalPaidAmount" xml:space="preserve">
-    <value>Total paid amount</value>
+    <value>إجمالي المبلغ المدفوع</value>
   </data>
   <data name="ZTotalUnPaidAmount" xml:space="preserve">
     <value>Total unpaid amount</value>
@@ -789,5 +789,11 @@
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>VAT Number is not equal to 15</value>
+  </data>
+   <data name="Hi" xml:space="preserve">
+    <value>مرحباً, </value>
+  </data>
+   <data name="EnterVerificationCodeTitle" xml:space="preserve">
+    <value>رمز التحقق للبوابة الإلكترونية</value>
   </data>
 </root>
