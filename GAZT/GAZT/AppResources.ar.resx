@@ -373,7 +373,7 @@
     <value>تم إرسال رمز التحقق للبريد الإلكتروني بنجاح</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
-    <value>بريد إلكتروني خاطئ</value>
+    <value>البريد الإلكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>هل أنت متأكد من تسجيل خروجك</value>
@@ -679,7 +679,7 @@
     <value>تغيير البريد الالكتروني</value>
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
-    <value>Change Mobile Number</value>
+    <value>تغيير رقم الجوال</value>
   </data>
   <data name="TaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
