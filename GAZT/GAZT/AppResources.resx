@@ -784,11 +784,16 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>VAT Number is not equal to 15</value>
   </data>
-   <data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
     <value>Hi, </value>
   </data>
-   <data name="EnterVerificationCodeTitle" xml:space="preserve">
+  <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>Enter Verification Code</value>
   </data>
-  
+  <data name="ZZakatReturnListing" xml:space="preserve">
+    <value>Zakat Return Listing</value>
+  </data>
+  <data name="ZZakatReturnDetails" xml:space="preserve">
+    <value>Zakat Return Details</value>
+  </data>
 </root>

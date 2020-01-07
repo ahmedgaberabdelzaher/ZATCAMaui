@@ -790,10 +790,16 @@
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>VAT Number is not equal to 15</value>
   </data>
-   <data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
     <value>مرحباً, </value>
   </data>
-   <data name="EnterVerificationCodeTitle" xml:space="preserve">
+  <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>رمز التحقق للبوابة الإلكترونية</value>
+  </data>
+  <data name="ZZakatReturnListing" xml:space="preserve">
+    <value>Zakat Return Listing</value>
+  </data>
+  <data name="ZZakatReturnDetails" xml:space="preserve">
+    <value>Zakat Return Details</value>
   </data>
 </root>

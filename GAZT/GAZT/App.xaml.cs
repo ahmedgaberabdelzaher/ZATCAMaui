@@ -44,6 +44,7 @@ namespace GAZT
         public static string ForgotUsernamePasswordPageView = "ForgotUsernamePasswordPageView";
         public static string VATLookupPageView = "VATLookupPageView";
         public static string ZakatReturnListPageView = "ZakatReturnListPageView";
+        public static string ZakatReturnDetailsPageView = "ZakatReturnDetailsPageView";
 
 
 

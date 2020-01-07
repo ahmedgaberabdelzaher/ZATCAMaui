@@ -431,6 +431,26 @@
 
             </Style>
 
+            <Style x:Key="GAZTSmallGrayLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="Margin" Value="10,1,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
+            <Style x:Key="GAZTSmallBlackLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="Margin" Value="10,1,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+
+            </Style>
+
 
             <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
@@ -507,6 +527,23 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+
+            <Style x:Key="GAZTGoldLabelStyleForCaptionFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="Margin" Value="10,1,10,1" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="GAZTGrayLabelStyleForCaptionFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="Margin" Value="10,1,10,1" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 

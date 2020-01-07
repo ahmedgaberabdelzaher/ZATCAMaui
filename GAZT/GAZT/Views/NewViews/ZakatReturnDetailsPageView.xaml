@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:custom="clr-namespace:GAZT"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
+             x:Class="GAZT.Views.NewViews.ZakatReturnDetailsPageView"
+              Title="{x:Static local:AppResources.ZZakatReturnDetails}"
+             FlowDirection="LeftToRight">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"         >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Summary of zakat calculation"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    </Label>
+
+
+                <Label Text="FiscalYear" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallBlackLabelStyle}"/>
+
+                <Label Text="2019-2010" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTSmallGrayLabelStyle}"/>
+
+                <Label Text="Return Period" Grid.Row="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallBlackLabelStyle}"/>
+
+                <Label Text="2019.22.22-2010.22.11" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTSmallGrayLabelStyle}"/>
+
+
+                <Label Text="Estimate Sales For Fiscal Year" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="SAR 00000000000.00" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                <Label Text="Capital" Grid.Row="6" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="SAR 00000000000.00" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                <Label Text="Zakat Base" Grid.Row="7" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="SAR 00000000000.00" Grid.Row="7" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                <Label Text="Zakat Amount" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="SAR 00000000000.00" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+
+
+
+                <!--<Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>-->
+
+
+
+
+                </Grid>
+
+
+
+            <!-- Acticity indicator layout start -->
+            <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>-->
+            <!-- Acticity indicator layout End -->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
