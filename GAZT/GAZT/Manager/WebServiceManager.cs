@@ -39,7 +39,7 @@ namespace GAZT.Manager
         /// <param name="UserName"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
-        public static String GAZTAuthenticateTIN(String UserName, String Password)
+        public static String GAZTAuthenticateTIN(String UserName, String Password, string DeviceId)
         {
             string AuthenticationResult = String.Empty;
             string Message = string.Empty;
@@ -57,7 +57,7 @@ namespace GAZT.Manager
                             <gazt:loginValidation>
                                 <userId>" + UserName + @"</userId>
                                 <password>" + Password + @"</password>
-                                 <deviceId>" + Password + @"</deviceId>
+                                 <deviceId>" + DeviceId + @"</deviceId>
                             </gazt:loginValidation>  
                         </soap:Body>  
                     </soap:Envelope>");

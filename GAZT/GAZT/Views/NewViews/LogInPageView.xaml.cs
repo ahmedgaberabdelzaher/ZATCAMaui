@@ -21,6 +21,7 @@ namespace GAZT.Views
             viewModel = App.Locator.LogInPageView;
 
             InitializeComponent();
+            GetDeviceID();
             NavigationPage.SetBackButtonTitle(this, "");
             //long number = 1000000000000;
             //string whatYouWant = number.ToString("#,##0");
@@ -74,8 +75,8 @@ namespace GAZT.Views
             {
 
             }
-            viewModel.UserName = string.Empty;
-            viewModel.Password = string.Empty;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
             viewModel.IsVisibleTinIds = false;
 
         }
@@ -99,6 +100,12 @@ namespace GAZT.Views
             AppResources.Culture = ci;
             InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
+        }
+
+        private void GetDeviceID()
+        {
+          string  deviceId = System.Guid.NewGuid().ToString();
+            viewModel.DeviceId = deviceId;
         }
     }
 }

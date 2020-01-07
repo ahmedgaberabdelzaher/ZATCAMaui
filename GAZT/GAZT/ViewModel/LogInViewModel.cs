@@ -325,15 +325,15 @@ namespace GAZT
                     //  bool isValidEmail= UtilityManager.IsValidEmailAddress(UserName);
                     if (SelectedTinId != null && IsVisibleTinIds == true)
                    {
-                       response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
-                       await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                       UserId = SelectedTinId.Tin;
+                       //response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
+                       //await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                       //UserId = SelectedTinId.Tin;
                    }
                    else
                    {
-                       response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
-                       await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                       UserId = UserName;
+                       //response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                       //await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                       //UserId = UserName;
                    }
 
 

@@ -21,15 +21,16 @@ namespace GAZT.ViewModel
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
-
+        public string DeviceId { get; set; }
+        
 
 
 
         #endregion
         #region Property
 
-        // private string _UserName = "3102164652";
-        private string _UserName = string.Empty;
+         private string _UserName = "3102164652";
+        //private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -72,9 +73,9 @@ namespace GAZT.ViewModel
         }
 
 
-        //private string _Password = "Test@1234";
+        private string _Password = "Test@1234";
 
-        private string _Password = string.Empty;
+       // private string _Password = string.Empty;
         public string Password
         {
             get
@@ -332,7 +333,7 @@ namespace GAZT.ViewModel
                             bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);
                             if (isValidEmail == true)
                             {
-                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password);
+                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password,DeviceId);
                                 UserId = SelectedTinId.Tin;
                             }
                             else
@@ -345,7 +346,7 @@ namespace GAZT.ViewModel
                             bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
                             if (isValidTin == true)
                             {
-                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password);
+                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId);
                                 UserId = UserName;
                             }
                             else

@@ -131,14 +131,14 @@ namespace GAZT.Views.NewViews
         private async void OnOTPEntered(Object sender, EventArgs e)
         {
             string Otp = EnteredOTP.Text;
-            if(Otp.Length > 0)
-            {
-                bool isValidNumber = UtilityManager.IsOTPNumberValid(Otp);
-                if(!isValidNumber)
-                {
-                    EnteredOTP.Text = Otp.Substring(0, Otp.Length-1);
-                }
-            }
+            //if(Otp.Length > 0)
+            //{
+            //    bool isValidNumber = UtilityManager.IsOTPNumberValid(Otp);
+            //    if(!isValidNumber)
+            //    {
+            //        EnteredOTP.Text = Otp.Substring(0, Otp.Length-1);
+            //    }
+            //}
             if (Otp.Length > 4)
             {
                 EnteredOTP.Text = EnteredOTP.Text.Substring(0, 4);

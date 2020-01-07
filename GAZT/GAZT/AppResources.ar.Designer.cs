@@ -1390,5 +1390,17 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
             }
         }
+        
+        public static string ZZakatReturnListing {
+            get {
+                return ResourceManager.GetString("ZZakatReturnListing", resourceCulture);
+            }
+        }
+        
+        public static string ZZakatReturnDetails {
+            get {
+                return ResourceManager.GetString("ZZakatReturnDetails", resourceCulture);
+            }
+        }
     }
 }
