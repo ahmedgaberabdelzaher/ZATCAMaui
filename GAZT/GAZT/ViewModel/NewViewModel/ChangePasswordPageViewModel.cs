@@ -281,11 +281,18 @@ namespace GAZT
 
         private async Task ChangePassword()
         {
+          
+
+            bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+            await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+            if (!_isMandatoryFieldEntered)
+            {
+                return;
+            }
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
-
             await Task.Run(async () =>
             {
                 TaxPayerProfile TP = null;
@@ -475,6 +482,37 @@ namespace GAZT
             IsEnabledNewPasswordForEmail = true;
 
         }
+
+        private bool IsMandatoryFieldEntered()
+        {
+            bool IsMandatoryFieldEntered = false;
+            if (string.IsNullOrEmpty(CurrentPassword) || string.IsNullOrEmpty(NewPasswordForEmail) || string.IsNullOrEmpty(RetypePasswordForEmail))
+            {
+                IsMandatoryFieldEntered = false;
+            }
+            else
+            {
+                IsMandatoryFieldEntered = true;
+            }
+            return IsMandatoryFieldEntered;
+        }
+
+        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        {
+            if (!IsMandatoryFieldEntered)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                });
+            }
+
+        }
+
         #endregion
     }
     }

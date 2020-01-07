@@ -802,4 +802,7 @@
   <data name="ZZakatReturnDetails" xml:space="preserve">
     <value>Zakat Return Details</value>
   </data>
+  <data name="YMandatorydatanotentered" xml:space="preserve">
+    <value>البيانات الإلزامية غير مدخلة</value>
+  </data>
 </root>

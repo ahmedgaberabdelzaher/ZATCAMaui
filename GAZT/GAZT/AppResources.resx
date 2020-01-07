@@ -796,4 +796,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZZakatReturnDetails" xml:space="preserve">
     <value>Zakat Return Details</value>
   </data>
+   <data name="YMandatorydatanotentered" xml:space="preserve">
+    <value>Mandatory data not entered</value>
+  </data>
 </root>

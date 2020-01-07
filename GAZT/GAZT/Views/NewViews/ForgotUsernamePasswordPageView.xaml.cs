@@ -128,6 +128,7 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel.IsLoading = false;
             viewModel.NewPassword = "";
             viewModel.ConfirmPassword = "";
             viewModel.EnteredOTP = "";

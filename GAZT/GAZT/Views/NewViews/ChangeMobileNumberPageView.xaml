@@ -42,14 +42,6 @@
                         <custom:GAZTBorderlessEntry  Margin="-10,0,-10,0" Text="{Binding NewMobile}" VerticalTextAlignment="Center"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"    Keyboard="Numeric"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
                     </StackLayout>
                 
-                    <!--<Label Grid.Row="3" BackgroundColor="Aqua" Grid.Column="0" Margin="13,0,13,-5" VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="00966"  ></Label>-->
-
-
-                    <!--<custom:GAZTBorderlessEntry IsEnabled="False" VerticalOptions="End" Text="00966" Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"  Grid.Row="3"  Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
-
-              
-                    
-
                 <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>

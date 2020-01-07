@@ -185,7 +185,12 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-             await   VarifyEmail();
+                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+                await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+                if (_isMandatoryFieldEntered)
+                {
+                    await VarifyEmail();
+                }
             });
 
         }
@@ -327,6 +332,32 @@ namespace GAZT.ViewModel.NewViewModel
             //  CurrentPasswordForEmail = string.Empty;
            
             IsEnabledNewEmail = true;
+        }
+
+        private bool IsMandatoryFieldEntered()
+        {
+            bool IsMandatoryFieldEntered = false;
+            if (string.IsNullOrEmpty(OldEmail) || string.IsNullOrEmpty(NewEmail) || string.IsNullOrEmpty(RetypeEmail))
+            {
+                IsMandatoryFieldEntered = false;
+            }
+            else
+            {
+                IsMandatoryFieldEntered = true;
+            }
+            return IsMandatoryFieldEntered;
+        }
+
+        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        {
+            if (!IsMandatoryFieldEntered)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                });
+            }
+
         }
         #endregion
     }

@@ -133,7 +133,12 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsLoading = true;
             });
-
+            bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+            await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+            if (!_isMandatoryFieldEntered)
+            {
+                return;
+            }
             await Task.Run(async () =>
             {
                 bool IsNavigatingFromLogin = false;
@@ -223,6 +228,37 @@ namespace GAZT.ViewModel.NewViewModel
             NewMobile = string.Empty;
 
         }
+
+        private bool IsMandatoryFieldEntered()
+        {
+            bool IsMandatoryFieldEntered = false;
+            if (string.IsNullOrEmpty(CurrentMobile) || string.IsNullOrEmpty(NewMobile))
+            {
+                IsMandatoryFieldEntered = false;
+            }
+            else
+            {
+                IsMandatoryFieldEntered = true;
+            }
+            return IsMandatoryFieldEntered;
+        }
+
+        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        {
+            if (!IsMandatoryFieldEntered)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                });
+            }
+
+        }
+
         #endregion
     }
     }

@@ -640,7 +640,12 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnChangePasswordSubmitClicked = new Command(async () =>
             {
-                await ChangePassword();
+                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+                await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+                if (_isMandatoryFieldEntered)
+                {
+                    await ChangePassword();
+                }
             });
 
             OnResendOTPClicked = new Command(async () =>
@@ -1092,6 +1097,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task ChangePassword()
         {
+           
+       
+
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -1330,7 +1338,37 @@ namespace GAZT.ViewModel.NewViewModel
             });
         }
 
-    
+        private bool IsMandatoryFieldEntered()
+        {
+            bool IsMandatoryFieldEntered = false;
+            if (string.IsNullOrEmpty(NewPassword) || string.IsNullOrEmpty(ConfirmPassword))
+            {
+                IsMandatoryFieldEntered = false;
+            }
+            else
+            {
+                IsMandatoryFieldEntered = true;
+            }
+            return IsMandatoryFieldEntered;
+        }
+
+        private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
+        {
+            if (!IsMandatoryFieldEntered)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsVisibleTinIds = false;
+                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                });
+            }
+              
+        }
+
         #endregion
     }
 }

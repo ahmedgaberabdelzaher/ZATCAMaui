@@ -1402,5 +1402,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZakatReturnDetails", resourceCulture);
             }
         }
+        
+        public static string YMandatorydatanotentered {
+            get {
+                return ResourceManager.GetString("YMandatorydatanotentered", resourceCulture);
+            }
+        }
     }
 }
