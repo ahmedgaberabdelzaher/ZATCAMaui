@@ -418,24 +418,68 @@ namespace GAZT.ViewModel.NewViewModel
                 IsLoading = true;
             });
 
+
+            
             await Task.Run(async () =>
             {
+
+
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+
+                    if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
-                        bool IsNavigatingFromLogin = true;
-                        ButtonDisableColor = Color.FromHex("#9EA4A9");
-                        IsResendOTPEnabled = false;
-                        IsOTPEntryEnable = true;
-                        //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                        //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                        TimerStart();
-                     
+
+                      
+                        var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
+                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                        {
+                            bool IsNavigatingFromLogin = true;
+                            ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            IsResendOTPEnabled = false;
+                            IsOTPEntryEnable = true;
+                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            TimerStart();
+
+                        }
+
                     }
+                    else if (IsComingFrom == NavigateToOtp.IsMobile)
+                    {
+                      bool  response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                        if (response)
+                        {
+                            bool IsNavigatingFromLogin = true;
+                            ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            IsResendOTPEnabled = false;
+                            IsOTPEntryEnable = true;
+                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            TimerStart();
+                        }
+
+
+                    }
+                    else if (IsComingFrom == NavigateToOtp.IsEmail)
+                    {
+                        bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
+                        if(response)
+                        {
+                            bool IsNavigatingFromLogin = true;
+                            ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            IsResendOTPEnabled = false;
+                            IsOTPEntryEnable = true;
+                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            TimerStart();
+                        }
+
+                    }
+
+
                 }
                 catch (Exception ex)
                 {
