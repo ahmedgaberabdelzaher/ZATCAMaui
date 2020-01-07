@@ -431,21 +431,22 @@
 
             </Style>
 
-            <Style x:Key="GAZTSmallGrayLabelStyle" TargetType="Label">
+            <!--<Style x:Key="GAZTSmallGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
-                <Setter Property="Margin" Value="10,1,10,1"/>
+                <Setter Property="Margin" Value="1,1,1,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
 
-            </Style>
+            </Style>-->
 
             <Style x:Key="GAZTSmallBlackLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
-                <Setter Property="Margin" Value="10,1,10,1"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+                <Setter Property="Padding" Value="0,0,0,-5"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
 
@@ -504,6 +505,10 @@
             </Style>
 
 
+            
+
+
+
             <Style x:Key="GAZTVerifyButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="CornerRadius" Value="9"/>
@@ -531,11 +536,30 @@
             </Style>
 
 
+            <Style x:Key="GAZTGoldLabelStyleForSmallFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Padding" Value="0,0,0,-5"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
             <Style x:Key="GAZTGoldLabelStyleForCaptionFont" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="Margin" Value="10,1,10,1" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Padding" Value="0,0,0,-5"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="GAZTGrayLabelStyleForSmallFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Padding" Value="0,0,0,-5"/>
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
@@ -543,9 +567,30 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="Margin" Value="10,1,10,1" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Padding" Value="0,0,0,-5"/>
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
+
+            <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="BackgroundColor" Value="#E6EFED" />
+                <Setter Property="BorderColor" Value="#F4FCFD" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Margin" Value="0,-2,0,2"/>
+                <Setter Property="Padding" Value="25"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <Style x:Key="GAZTBoxViewStyle" TargetType="BoxView">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                <Setter Property="HeightRequest" Value="1"></Setter>
+                <Setter Property="Color" Value="Black"></Setter>
+            </Style>
+
 
             <Style x:Key="GAZTDropdownStyle" TargetType="Picker">
                 <Setter Property="FontSize" Value="Small" />

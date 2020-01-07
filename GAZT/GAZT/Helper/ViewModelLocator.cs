@@ -44,6 +44,8 @@ namespace GAZT
             SimpleIoc.Default.Register<VATLookupPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
+            SimpleIoc.Default.Register<BillDetailsPageViewModel>();
+            SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
 
 
 
@@ -459,6 +461,37 @@ namespace GAZT
             }
         }
 
+        public BillDetailsPageViewModel BillDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BillDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        public SalesDetailsPageViewModel SalesDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
 
@@ -495,6 +528,8 @@ namespace GAZT
             navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
             navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
+            navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
+            navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
 
 
 

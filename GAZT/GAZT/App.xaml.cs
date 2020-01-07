@@ -45,6 +45,8 @@ namespace GAZT
         public static string VATLookupPageView = "VATLookupPageView";
         public static string ZakatReturnListPageView = "ZakatReturnListPageView";
         public static string ZakatReturnDetailsPageView = "ZakatReturnDetailsPageView";
+        public static string BillDetailsPageView = "BillDetailsPageView";
+        public static string SalesDetailsPageView = "SalesDetailsPageView";
 
 
 
@@ -73,7 +75,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SalesDetailsPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
