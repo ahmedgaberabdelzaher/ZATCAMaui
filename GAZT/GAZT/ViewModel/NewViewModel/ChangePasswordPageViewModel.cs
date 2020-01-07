@@ -269,7 +269,31 @@ namespace GAZT
 
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               await ChangePassword();
+                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+               // await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+                if (_isMandatoryFieldEntered)
+                {
+                    bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
+                    if(!_isNewPasswordSameAsOldPasswordSame)
+                    {
+                        await ChangePassword();
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
+                        });
+                    }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
+                       
+                    });
+                }
             });
 
 
@@ -281,14 +305,6 @@ namespace GAZT
 
         private async Task ChangePassword()
         {
-          
-
-            bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
-            await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
-            if (!_isMandatoryFieldEntered)
-            {
-                return;
-            }
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -499,18 +515,39 @@ namespace GAZT
 
         private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
-            if (!IsMandatoryFieldEntered)
+            bool _isMandatoryFieldEntered = IsMandatoryFieldEntered;
+            try
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                if (!_isMandatoryFieldEntered)
                 {
-                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
-                    await Task.Run(() =>
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        IsLoading = false;
+                        await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                     });
-                });
+                }
             }
+            catch(Exception ex)
+            {
 
+            }
+            
+
+        }
+
+        private bool IsNewPasswordSameAsOldPasswordSame()
+        {
+            if(NewPasswordForEmail.Equals(App.TP.Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

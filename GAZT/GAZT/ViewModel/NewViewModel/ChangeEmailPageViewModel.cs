@@ -186,10 +186,13 @@ namespace GAZT.ViewModel.NewViewModel
             OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
-                await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 if (_isMandatoryFieldEntered)
                 {
                     await VarifyEmail();
+                }
+                else
+                {
+                    await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 }
             });
 
@@ -354,7 +357,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
                 });
             }
 

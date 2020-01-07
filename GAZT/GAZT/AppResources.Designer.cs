@@ -1403,9 +1403,15 @@ namespace GAZT {
             }
         }
         
-        public static string YMandatorydatanotentered {
+        public static string ZZMandatorydatanotentered {
             get {
-                return ResourceManager.GetString("YMandatorydatanotentered", resourceCulture);
+                return ResourceManager.GetString("ZZMandatorydatanotentered", resourceCulture);
+            }
+        }
+        
+        public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
+            get {
+                return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
         }
     }

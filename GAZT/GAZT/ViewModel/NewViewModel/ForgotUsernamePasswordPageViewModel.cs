@@ -1359,7 +1359,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsVisibleTinIds = false;
-                    await _dialogService.ShowMessageBox(AppResources.YMandatorydatanotentered, AppResources.Alerts);
+                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
                     await Task.Run(() =>
                     {
                         IsLoading = false;
