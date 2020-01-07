@@ -313,12 +313,13 @@ namespace GAZT
                                 String OnAuthenticationSuccess = AppResources.ZEmailUpdatedSuccessfully;
                                 Device.BeginInvokeOnMainThread(async () => {
                                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    await _navigation.PopToRootAsync();
                                 });
                                 ClearEmailData();
                                 App.IsComingFromDashboardToLogOff = false;
                                 Device.BeginInvokeOnMainThread(async () => {
-                                    var _navigation = Application.Current.MainPage.Navigation;
-                                    await _navigation.PopToRootAsync();
+                                    
                                 });
                                 
                             }

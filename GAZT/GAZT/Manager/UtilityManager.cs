@@ -12,6 +12,9 @@ namespace GAZT.Manager
         public static string passwordValidation = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$";
         public static string numberRegex = "^[0-9]+$";
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
+        public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
+
+       
 
         #endregion
 
@@ -76,6 +79,33 @@ namespace GAZT.Manager
         {
             Match mobileMatch = Regex.Match(OTP, numberRegex);
             if (mobileMatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public static bool IsUserNameValid(string userName)
+        {
+            bool isCorrectUserName = false;
+            foreach( char letter in userName.ToCharArray())
+            {
+                if(letter <= 127)
+                {
+                    isCorrectUserName = true;
+                }
+                else
+                {
+                    isCorrectUserName = false;
+                }
+
+            }
+            Match UserNameMatch = Regex.Match(userName, EnglishString);
+            if (UserNameMatch.Success)
             {
                 return true;
             }

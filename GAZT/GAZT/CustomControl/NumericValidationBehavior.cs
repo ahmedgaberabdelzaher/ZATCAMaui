@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GAZT.Manager;
 using Xamarin.Forms;
 
 namespace GAZT
@@ -21,11 +22,23 @@ namespace GAZT
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
 
-            if (!string.IsNullOrWhiteSpace(args.NewTextValue))
+            if(args.NewTextValue.Length <= 4)
             {
-                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x)); //Make sure all characters are numbers
-
-                ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                if (!string.IsNullOrWhiteSpace(args.NewTextValue))
+                {
+                    bool isValidNumber = UtilityManager.IsOTPNumberValid(args.NewTextValue);
+                    if (!isValidNumber)
+                    {
+                        ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                    }
+                }
+                if(args.NewTextValue.Length == 4)
+                    ((Entry)sender).Unfocus();
+            }
+            else
+            {
+                ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                ((Entry)sender).Unfocus();
             }
         }
     }
