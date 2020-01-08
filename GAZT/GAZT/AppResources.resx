@@ -803,6 +803,6 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>The new password must not match the existing password</value>
   </data>
    <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
-    <value>The new password must not match the existing password</value>
+    <value>Please use the OTP to activate the new mobile number</value>
   </data>
 </root>

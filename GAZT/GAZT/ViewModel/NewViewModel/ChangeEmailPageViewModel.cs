@@ -219,11 +219,11 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                     bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
-                    bool bIsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
+                    bool IsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
 
                     bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
 
-                    if (IsValidNewEmail && bIsValidRetypeEmail && IsNewEmailAndRetypeEmaiEqual)
+                    if (IsValidNewEmail && IsValidRetypeEmail && IsNewEmailAndRetypeEmaiEqual)
                     {
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
                         PopToRootPage();
@@ -251,7 +251,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         ClearEmailData();
                         IsEnabledRetypeEmail = false;
-                        if (IsValidNewEmail || bIsValidRetypeEmail)
+                        if (IsValidNewEmail || IsValidRetypeEmail)
                         {
                             String OnNotMatchAuthentication = AppResources.InvalidEmail;
                             Device.BeginInvokeOnMainThread(async() => {

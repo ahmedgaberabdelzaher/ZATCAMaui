@@ -628,7 +628,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    await _dialogService.ShowMessageBox(AppResources.ZEntertherequiredfield, AppResources.Information);
+                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
                 }
 
             });
@@ -795,6 +795,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsAllDataAvailable = false;
                 }
+            }
+            else if(SelectedForgotType == null)
+            {
+                IsAllDataAvailable = false;
             }
             else
             {
@@ -1367,6 +1371,20 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
               
+        }
+
+        
+
+        private bool IsNewPasswordSameAsOldPasswordSame()
+        {
+            if (NewPassword.Equals(App.TP.Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion
