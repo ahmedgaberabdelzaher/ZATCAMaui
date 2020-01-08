@@ -1164,7 +1164,7 @@ namespace GAZT.ViewModel.NewViewModel
                             NewPasswordLayoutVisibility = false;
                             OTPLayoutVisibility = false;
                             NavigateToLoginLinkVisibility = true;
-                            ForgotPasswordUserNameChangedMessage = AppResources.YourPasswordhasbeenChangedsuccessfully;
+                            ForgotPasswordUserNameChangedMessage = AppResources.PassWordChangedSucessfully;
 
                             //  _navigationService.GoBack();
                         }
