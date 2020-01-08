@@ -29,6 +29,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.SalesDetailsPageView;
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.onPageLoad();
         }
 
         #endregion
