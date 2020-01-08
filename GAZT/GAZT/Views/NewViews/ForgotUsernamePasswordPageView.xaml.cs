@@ -143,6 +143,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsResendOTPEnabled = false;
             viewModel.IsOTPEntryEnable = true;
             viewModel.StopTimer = true;
+            viewModel.ForgotPasswordUserNameChangedMessage = "";
 
         }
 
