@@ -101,7 +101,7 @@ namespace GAZT.Views
 
         private async void OnLogoutClicked(Object sender, EventArgs e)
         {
-            var result = await this.DisplayAlert("Alert!", AppResources.LogoutConfirmationMessage,AppResources.ZYes,AppResources.ZNo);
+            var result = await this.DisplayAlert(AppResources.Alerts, AppResources.LogoutConfirmationMessage,AppResources.ZYes,AppResources.ZNo);
             if (result)
             {
                 App.TP = null;

@@ -1403,8 +1403,7 @@ namespace GAZT {
             }
         }
         
-        public static string ZZMandatorydatanotentered
-        {
+        public static string ZZMandatorydatanotentered {
             get {
                 return ResourceManager.GetString("ZZMandatorydatanotentered", resourceCulture);
             }
