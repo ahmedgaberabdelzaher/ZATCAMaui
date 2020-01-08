@@ -47,6 +47,7 @@ namespace GAZT
         public static string ZakatReturnDetailsPageView = "ZakatReturnDetailsPageView";
         public static string BillDetailsPageView = "BillDetailsPageView";
         public static string SalesDetailsPageView = "SalesDetailsPageView";
+        public static string AmendSalesDetailsPageView = "AmendSalesDetailsPageView";
 
 
 

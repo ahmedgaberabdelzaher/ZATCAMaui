@@ -5,7 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GAZT.Views.NewViews.SalesDetailsPageView"
-             FlowDirection="LeftToRight">
+             FlowDirection="LeftToRight"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             Title="{x:Static local:AppResources.ZSalesDetails}">
     <ContentPage.Content>
 
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >

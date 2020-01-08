@@ -46,6 +46,7 @@ namespace GAZT
             SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
             SimpleIoc.Default.Register<BillDetailsPageViewModel>();
             SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
+            SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
 
 
 
@@ -493,6 +494,22 @@ namespace GAZT
         }
 
 
+        public AmendSalesDetailsPageViewModel AmendSalesDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
 
         private INavigationService CreateNavigationService()
@@ -530,6 +547,7 @@ namespace GAZT
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
             navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
+            navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
 
 
 

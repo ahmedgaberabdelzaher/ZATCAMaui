@@ -15,6 +15,27 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+
+
+
+        private ZakatReturns _selectedZakatReturn;
+        public ZakatReturns SelectedZakatReturn
+        {
+            get
+            {
+                return _selectedZakatReturn;
+            }
+            set
+            {
+                _selectedZakatReturn = value;
+                if (_selectedZakatReturn != null)
+                {
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsPageView);
+                }
+                RaisePropertyChanged("SelectedZakatReturn");
+            }
+        }
+
         private List<ZakatReturns> _myZakatReturns;
         public List<ZakatReturns> MyZakatReturns
         {
