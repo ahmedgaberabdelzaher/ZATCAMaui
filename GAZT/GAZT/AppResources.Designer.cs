@@ -1414,5 +1414,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
         }
+        
+        public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
+            }
+        }
     }
 }

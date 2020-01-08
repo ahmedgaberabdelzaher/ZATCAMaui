@@ -167,10 +167,10 @@ namespace GAZT.ViewModel.NewViewModel
                     if (response == true)
                     {
                         App.TP.NewMobile = mobileNumber;
-                        String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
-                        String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                        //String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
+                        //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZZPleaseusetheOTPtoactivatethenewnobilenumber, AppResources.Information);
                         });
                         ClearMobileData();
                         Device.BeginInvokeOnMainThread(async () => {

@@ -809,4 +809,7 @@
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
     <value>يجب أن لا تتطابق كلمة المرور الجديدة مع كلمة المرور الحالية</value>
   </data>
+  <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
+    <value>يمكنك استخدام رمز التالي للتفعيل رقم الجوال الجديد</value>
+  </data>
 </root>
