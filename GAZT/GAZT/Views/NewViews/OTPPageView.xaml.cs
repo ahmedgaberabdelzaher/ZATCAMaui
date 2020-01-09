@@ -41,20 +41,31 @@ namespace GAZT.Views.NewViews
                 {
                     if (App.TP != null)
                     {
+                    viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
                         viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                         var MobileNumber = viewModel.OTPSentOnThis;
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
                         var firstDigits = MobileNumber.Substring(0, 2);
                         var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                        MobileNumber = "00966" + MobileNumber;
-                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+                   MobileNumber = "00966" + MobileNumber;
+                    string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
+                    viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                    var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
                         var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                         if (App.IsArabic)
                         {
-                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
-                        }
+                                if (Device.RuntimePlatform == Device.iOS)
+                                {
+                                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + lastDigits + "***" + firstDigits;
+                                }
+                                else
+                                {
+                                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+
+                                }
+                         }
                         else
                         {
                             viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
@@ -63,9 +74,12 @@ namespace GAZT.Views.NewViews
                 }
                 else if (e == NavigateToOtp.IsEmail)
                 {
-                    if (App.TP != null)
+                viewModel.EmailOrMobileNumber = AppResources.Email ;
+                if (App.TP != null)
                     {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
+                    string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                    viewModel.MobileNumber = App.TP.NewEmail;// "XXXXXXXXXX" + _mobileNumber;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                         viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
                         viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
                     }
@@ -74,7 +88,8 @@ namespace GAZT.Views.NewViews
                 {
                     if (App.TP != null)
                     {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+                    viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
                         viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
                         viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                         var MobileNumber = viewModel.OTPSentOnThis;

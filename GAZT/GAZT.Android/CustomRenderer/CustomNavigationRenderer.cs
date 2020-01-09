@@ -78,7 +78,7 @@ namespace GAZT.Droid.CustomRenderer
                 // TODO: CHANGE VALUES HERE
                 if(App.IsArabic)
                 {
-                    textView.TextSize = 14;
+                    textView.TextSize = 16;
                 }
                 else
                 {
@@ -104,27 +104,28 @@ namespace GAZT.Droid.CustomRenderer
                       textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
                     if (App.IsArabic)
                     {
-                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Cairo-Regular.ttf");
+                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "SSTArabic-Medium.ttf");
                         textView.Typeface = spaceFont;
                     }
                     else
                     {
-                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "HelveticaNormal.ttf");
+                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "SSTArabic-Medium.ttf");
                         textView.Typeface = spaceFont;
                     }
-                        
-
             });         
 
-                  textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
-                //if(App.IsArabic){
-                //    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Cairo-Regular.ttf");
-                //    textView.Typeface = spaceFont;
-                //}else{
-                //    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "HelveticaNormal.ttf");
-                //    textView.Typeface = spaceFont;
-                //}
-               
+                 textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
+                if (App.IsArabic)
+                {
+                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "SSTArabic-Medium.ttf");
+                    textView.Typeface = spaceFont;
+                }
+                else
+                {
+                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "SSTArabic-Medium.ttf");
+                    textView.Typeface = spaceFont;
+                }
+
                 _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
             }
 

@@ -83,12 +83,11 @@
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Grid.Row="5"  Grid.Column="0"   >
 
                             <custom:GAZTBorderlessEntry Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="9"   Grid.Column="0"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" >
+                                 <custom:GAZTBorderlessEntry.Behaviors>
+                              <custom:CaptchaValidatorBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </StackLayout>
-
-
-
-
                         <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 
 

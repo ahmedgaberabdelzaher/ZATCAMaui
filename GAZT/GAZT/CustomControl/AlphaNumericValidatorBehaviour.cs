@@ -23,7 +23,7 @@ namespace GAZT
         {
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
             {
-              bool isValidNumber = UtilityManager.IsUserNameValid(args.NewTextValue);
+                bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
                     if (letter <= 127)

@@ -1420,5 +1420,35 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
             }
         }
+        
+        public static string ZAmendSalesDetails {
+            get {
+                return ResourceManager.GetString("ZAmendSalesDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZBillDetails {
+            get {
+                return ResourceManager.GetString("ZBillDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZSalesDetails {
+            get {
+                return ResourceManager.GetString("ZSalesDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
+            get {
+                return ResourceManager.GetString("ZZTheNewEmailMustNotMatchtheexistingEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber", resourceCulture);
+            }
+        }
     }
 }

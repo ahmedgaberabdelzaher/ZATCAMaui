@@ -40,43 +40,43 @@ namespace GAZT.iOS.CustomRenderer
             //    //Font = ft
             //};
 
-            try
-            {
-                MessagingCenter.Unsubscribe<string>(this, "SetFont");
-            }
-            catch (Exception exe)
-            {
-                System.Diagnostics.Debug.WriteLine("Exception: " + exe.Message);
-            }
+            //try
+            //{
+            //    MessagingCenter.Unsubscribe<string>(this, "SetFont");
+            //}
+            //catch (Exception exe)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Exception: " + exe.Message);
+            //}
 
-            MessagingCenter.Subscribe<string>(this, "SetFont", message =>
-            {
+            //MessagingCenter.Subscribe<string>(this, "SetFont", message =>
+            //{
 
-                if (App.IsArabic)
-                    ft = UIFont.FromName("Cairo-Regular", 16);
-                else
-                    ft = UIFont.FromName("Helvetica-Normal", 16);
+            //    if (App.IsArabic)
+            //        ft = UIFont.FromName("Cairo-Regular", 16);
+            //    else
+            //        ft = UIFont.FromName("Helvetica-Normal", 16);
 
 
-                try
-                {
-                    UIBarButtonItem backButton = new UIBarButtonItem();
-                    backButton.Title = "bbbb"; //Your BackBurron Title here
-                    NavigationController.NavigationBar.TopItem.BackBarButtonItem = backButton;
-                }
-                catch (Exception)
-                {
+            //    try
+            //    {
+            //        UIBarButtonItem backButton = new UIBarButtonItem();
+            //        backButton.Title = "bbbb"; //Your BackBurron Title here
+            //        NavigationController.NavigationBar.TopItem.BackBarButtonItem = backButton;
+            //    }
+            //    catch (Exception)
+            //    {
 
-                }
+            //    }
 
-                //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
-                //{
-                //    Font = ft
-                //};
+            //    //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            //    //{
+            //    //    Font = ft
+            //    //};
 
-                // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
+            //    // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
 
-            });
+            //});
 
 
             //    UIBarButtonItem button = new UIBarButtonItem("Logout", UIBarButtonItemStyle.Plain, (sender, e) =>
