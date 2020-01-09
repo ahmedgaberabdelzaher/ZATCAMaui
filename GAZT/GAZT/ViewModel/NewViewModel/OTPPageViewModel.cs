@@ -70,6 +70,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _emailOrMobileNumber = AppResources.MobileNumber;
+        public string EmailOrMobileNumber
+        {
+            get
+            {
+                return _emailOrMobileNumber;
+            }
+            set
+            {
+                _emailOrMobileNumber = value;
+                RaisePropertyChanged("EmailOrMobileNumber");
+            }
+        }
+
+        
         private string _OTPSentOnThisText = String.Empty;
         public string OTPSentOnThisText
         {
@@ -431,7 +446,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
 
-                      
+                        EmailOrMobileNumber = AppResources.MobileNumber;
                         var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
@@ -449,15 +464,16 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsMobile)
                     {
-                      bool  response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                        EmailOrMobileNumber = AppResources.MobileNumber;
+                        bool  response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                         if (response)
                         {
                             bool IsNavigatingFromLogin = true;
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsResendOTPEnabled = false;
                             IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
+                            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                             TimerStart();
                         }
 
@@ -465,6 +481,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsEmail)
                     {
+                        EmailOrMobileNumber = AppResources.Email;
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
                         if(response)
                         {
@@ -472,8 +489,8 @@ namespace GAZT.ViewModel.NewViewModel
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsResendOTPEnabled = false;
                             IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                            MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
                             TimerStart();
                         }
 
