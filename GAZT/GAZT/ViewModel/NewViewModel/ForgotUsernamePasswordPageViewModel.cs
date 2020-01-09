@@ -640,11 +640,27 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnChangePasswordSubmitClicked = new Command(async () =>
             {
-                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
-                await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
-                if (_isMandatoryFieldEntered)
+                try
                 {
-                    await ChangePassword();
+                    bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+                   // bool _isNewPasswordAndConfirmPasswordSame = IsNewPasswordSameAsOldPasswordSame();
+                    await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+                    if (_isMandatoryFieldEntered)
+                    {
+                        //if (!_isNewPasswordAndConfirmPasswordSame)
+                        //{
+                            await ChangePassword();
+                        //}
+                        //else
+                        //{
+                        //    await ShowNewPasswordAndOldPassowrdNotBeSameInformation();
+                        //}
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                   
                 }
             });
 
@@ -1373,19 +1389,32 @@ namespace GAZT.ViewModel.NewViewModel
               
         }
 
-        
+        //private async Task ShowNewPasswordAndOldPassowrdNotBeSameInformation()
+        //{
+            
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+                  
+        //            await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
+        //            await Task.Run(() =>
+        //            {
+        //                IsLoading = false;
+        //            });
+        //        });
+        //}
 
-        private bool IsNewPasswordSameAsOldPasswordSame()
-        {
-            if (NewPassword.Equals(App.TP.Password))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //private bool IsNewPasswordSameAsOldPasswordSame()
+        //{
+        //    //if (NewPassword.Equals(App.TP.Password))
+        //    //{
+        //    //    return true;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return false;
+        //    //}
+        //    ret
+        //}
 
         #endregion
     }

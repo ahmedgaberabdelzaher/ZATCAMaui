@@ -814,4 +814,11 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZSalesDetails" xml:space="preserve">
     <value>Sales Details</value>
   </data>
+   <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
+    <value>The new email must not match the existing email</value>
+  </data>
+  <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
+    <value>The new mobile number must  match the existing mobile number</value>
+  </data>
+    
 </root>

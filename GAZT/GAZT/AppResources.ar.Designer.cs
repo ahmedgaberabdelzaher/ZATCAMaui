@@ -1438,5 +1438,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSalesDetails", resourceCulture);
             }
         }
+        
+        public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
+            get {
+                return ResourceManager.GetString("ZZTheNewEmailMustNotMatchtheexistingEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber", resourceCulture);
+            }
+        }
     }
 }

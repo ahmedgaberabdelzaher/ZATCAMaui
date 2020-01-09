@@ -151,10 +151,19 @@ namespace GAZT.ViewModel.NewViewModel
                     bool response = false;
                     var mobileNumber = "00966" + NewMobile;
                     bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
+                    bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
                     if (isValidMobileNumber)
                     {
-                        response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
-                        await PopToRootPage();
+                        if(!isNewMobileNumberSameAsOldMobileNumber)
+                        {
+                            response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
+                            await PopToRootPage();
+                        }
+                        else
+                        {
+                          await  ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
+                        }
+                    
                     }
                     else
                     {
@@ -225,7 +234,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void ClearMobileData()
         {
-            NewMobile = string.Empty;
+          //  NewMobile = string.Empty;
 
         }
 
@@ -257,6 +266,32 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
 
+        }
+
+        private async Task ShowNewMobileNumberNotSameAsOldMobileNumberInformation()
+        {
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+
+                await _dialogService.ShowMessageBox(AppResources.ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber, AppResources.Alerts);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            });
+        }
+
+        private bool IsNewMobileNumberSameAsOldMobileNumber(string newMobileNumber)
+        {
+            if (newMobileNumber.Equals(App.TP.Mobile))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion
