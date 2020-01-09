@@ -12,7 +12,7 @@
              FlowDirection="LeftToRight">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"         >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -28,35 +28,35 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
                     <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                     </Frame>
-                    <Label Text="Summary of zakat calculation"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Label Text="Bill Details"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
 
-                    <Label Text="SADAD Payment Number" Grid.Row="1" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="SADAD Payment Number"  Grid.Row="1" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="0000000000000" Grid.Row="1" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="SAR 000000000000.00"  Grid.Row="1" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <Label Text="SADAD GAZT Id  " Grid.Row="2" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="SADAD GAZT Id  " Grid.Row="2" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <Label Text="Zakat Amount" Grid.Row="3" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="Zakat Amount" Grid.Row="3" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="SAR 00000000000.00" Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="SAR 00000000000.00" Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <Label Text="By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information." Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
 
 
 
-                    <Button Text="Copy SADAD Payment Number" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="Copy SADAD Payment Number" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
-                    <Button Text="Pay by MADA" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="Pay by MADA" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
 
                     <!--<StackLayout Orientation="Horizontal"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >

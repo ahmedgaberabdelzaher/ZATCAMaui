@@ -25,42 +25,63 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="93*"/>
-                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="86*"/>
+                        <ColumnDefinition Width="14*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Sales Type"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                    <Label Text="Total VAT Sales" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+
+
+                    <Label Text="New Value"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
-                    <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                     </Frame>
-                    <custom:GAZTBorderlessEntry  Grid.Row="1" Text="{Binding OldEmail}"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                        <!--<custom:GAZTBorderlessEntry.Behaviors>
+                    <custom:GAZTBorderlessEntry  Grid.Row="2"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry.Behaviors>
                             <custom:AlphaNumericValidatorBehaviour/>
-                        </custom:GAZTBorderlessEntry.Behaviors>-->
+                        </custom:GAZTBorderlessEntry.Behaviors>
                     </custom:GAZTBorderlessEntry>
+                    <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
+                        </Image.GestureRecognizers>
+                    </Image>-->
 
-                    <Label Text="Change Reason"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                    <Label Text="Change Reason"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
-                    <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                     </Frame>
-                    <custom:GAZTBorderlessEntry Text="{Binding NewEmail}"  Grid.Row="3"   Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                        <!--<custom:GAZTBorderlessEntry.Behaviors>
+                    <custom:GAZTBorderlessEntry  Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry.Behaviors>
                             <custom:AlphaNumericValidatorBehaviour/>
-                        </custom:GAZTBorderlessEntry.Behaviors>-->
+                        </custom:GAZTBorderlessEntry.Behaviors>
                     </custom:GAZTBorderlessEntry>
+                    <!--<Image Grid.Row="3"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForNewPassword" />
+                        </Image.GestureRecognizers>
+                    </Image>-->
 
-                    <Label Text="Attachments"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
+
+
+
+                    <Label Text="Attachments"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
-                    <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                     </Frame>
-                    <custom:GAZTBorderlessEntry Text="{Binding RetypeEmail}"  Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                        <!--<custom:GAZTBorderlessEntry.Behaviors>
-                            <custom:AlphaNumericValidatorBehaviour/>
-                        </custom:GAZTBorderlessEntry.Behaviors>-->
+                    <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                      
                     </custom:GAZTBorderlessEntry>
+                    <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
+                       
+                    </Image>
 
 
-                    <Button Text="Submit"  Command="{Binding OnVerifyEmailButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="Submit" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+
+
 
 
                 </Grid>

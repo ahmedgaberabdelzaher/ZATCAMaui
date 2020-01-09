@@ -79,8 +79,8 @@ namespace GAZT.ViewModel.NewViewModel
             for(int i=0;i<=5;i++)
             {
                 ZakatReturns returns1 = new ZakatReturns();
-                returns1.FiscalYear = "1430";
-                returns1.ReturnPeriod = "2018/08/23.2017/8/11";
+                returns1.FiscalYear = "2018";
+                returns1.ReturnPeriod = "2018/08/08-2017/06/07";
                 MyZakatReturns.Add(returns1);
             }
         }
