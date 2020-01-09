@@ -8,12 +8,25 @@
              FlowDirection="LeftToRight"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             Title="{x:Static local:AppResources.ZSalesDetails}">
+             Title="{x:Static local:AppResources.ZSalesDetails}"
+             >
     
     <ContentPage.Content>
 
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="86*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+           
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -21,31 +34,56 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="67*"/>
                     <RowDefinition Height="auto"/>
-               
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="FiscalYear" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
 
-                <Label Text="2019-2010" Grid.Row="0" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-                <Label Text="Financial Period From"   Grid.Row="1" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
-
-                <Label Text="13 جمادى 1441 هـ - 13 جمادى 1441 هـ"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-                <BoxView  Grid.Row="3" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                </Frame>
 
 
-                <Label Text="Estimated Sales" Margin="10,0,10,0"   Grid.Row="4" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
-                <Label Text="SAR 1800000.000" Margin="10,0,10,0"  Grid.Row="4" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                <Label Text="Data available to GAZT"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                </Label>
 
-                <BoxView  Grid.Row="5" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                <StackLayout Grid.Row="1"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,-11" Orientation="Horizontal">
+                    <Label   Margin="0,0,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span  Text="Fiscal Year"   />
+                                <Span  Text="  "   />
+                                <Span  Text="2019-2010" FontFamily="{StaticResource SSTArabicMedium}" TextColor="{DynamicResource ForgotPasswordGrayTextColor}" FontSize="Caption" FontAttributes="Bold" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+
+                    <!--<Label Text="2019-2010"  Margin="5,0,5,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+
+                </StackLayout>
+                
+                <!--<Label Text="FiscalYear" Grid.Row="0" Margin="10,0,10,-15"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="2019-2010" Grid.Row="0"  Grid.Column="1" Margin="10,0,10,0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+
+                <Label Text="Financial Period From" Margin="10,0,10,-10"  Grid.Row="2" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                <Label Text="13 جمادى 1441 هـ - 13 جمادى 1441 هـ"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                <BoxView  Grid.Row="4" Margin="0,5,0,-5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+
+
+                <Label Text="Estimated Sales" Margin="10,2,10,-5"   Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+
+                <Label Text="SAR 1800000.000" Margin="10,0,10,-4"   Grid.Row="5" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+
+                <BoxView  Grid.Row="6" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
 
                 <ListView  x:Name="SalesDetails" 
@@ -55,7 +93,7 @@
             HasUnevenRows="True"
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
-                      Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                      Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
             SeparatorVisibility="Default"
             >
                     <ListView.ItemTemplate>
@@ -73,14 +111,14 @@
                                             <ColumnDefinition Width="55*"/>
                                             <ColumnDefinition Width="45*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label  Text="{Binding SalesType}" Margin="10,-40,10,-20" Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                        <Label  Text="{Binding SalesType}" Margin="10,-16,10,-10"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                         </Label>
-                                        <Label  Text="Information from releated parties" Margin="10,-40,10,-30"  Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+                                        <Label  Text="Information from related parties" Margin="10,-40,10,-40"  Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                         </Label>
-                                        <Label  Text="Estimated Sales" Grid.Row="4" Grid.Column="1" Margin="10,-40,10,-30" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+                                        <Label  Text="Estimated Sales" Grid.Row="4" Grid.Column="1" Margin="10,-40,10,-40" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                         </Label>
-                                        <Label Text="{Binding InformationFromPartie}" Margin="10,-10,10,3"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                        <Label Text="{Binding EstimateSales}" Margin="10,-10,10,3"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <Label Text="{Binding InformationFromPartie}" Margin="10,-10,10,10"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <Label Text="{Binding EstimateSales}" Margin="10,-10,10,10"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                     </Grid>
                                 </Grid>
                             </ViewCell>
@@ -88,13 +126,17 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,40,0,40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    
+               
+            
+        </Grid>
+                </ScrollView>
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,40,0,40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
                 </StackLayout>
 
-                <Button Text="Accept Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="7" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="Accept Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
-                <Button Text="Amend Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="Amend Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
         </Grid>
