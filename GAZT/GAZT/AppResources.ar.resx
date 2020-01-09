@@ -824,6 +824,6 @@
     <value>البريد الإلكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
     <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
-    <value>The new mobile number must not match the existing mobile number</value>
+    <value>The new mobile number must  match the existing mobile number</value>
   </data>
 </root>
