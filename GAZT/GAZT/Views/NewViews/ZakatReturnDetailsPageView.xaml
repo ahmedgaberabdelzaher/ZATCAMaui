@@ -82,7 +82,7 @@
                             </Grid.RowDefinitions>
                             <Button Text="Sales Details" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button>
 
-                            <Button Text="Bills" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <Button Text="Bills" Command="{Binding OnBillsButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
                         </Grid>
                     </StackLayout>

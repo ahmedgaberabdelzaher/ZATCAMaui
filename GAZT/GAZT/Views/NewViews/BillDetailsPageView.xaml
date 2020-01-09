@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.BillDetailsPageView"
-             Title="{x:Static local:AppResources.ZZakatReturnDetails}"
+             Title="{x:Static local:AppResources.ZBillDetails}"
              FlowDirection="LeftToRight">
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

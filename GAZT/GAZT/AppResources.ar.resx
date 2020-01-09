@@ -357,7 +357,6 @@
   <data name="PassWordChangedSucessfully" xml:space="preserve">
     <value>تم تحديث كلمة المرور بنجاح</value>
   </data>
-   
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>لا يوجد شهادات</value>
   </data>
@@ -811,5 +810,14 @@
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>يمكنك استخدام رمز التالي للتفعيل رقم الجوال الجديد</value>
+  </data>
+  <data name="ZAmendSalesDetails" xml:space="preserve">
+    <value>Amend Sales Details</value>
+  </data>
+  <data name="ZBillDetails" xml:space="preserve">
+    <value>Bill Details</value>
+  </data>
+  <data name="ZSalesDetails" xml:space="preserve">
+    <value>Sales Details</value>
   </data>
 </root>

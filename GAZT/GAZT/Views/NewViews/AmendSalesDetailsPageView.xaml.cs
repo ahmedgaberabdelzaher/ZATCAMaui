@@ -11,33 +11,27 @@ using Xamarin.Forms.Xaml;
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ZakatReturnListPageView : ContentPage
+    public partial class AmendSalesDetailsPageView : ContentPage
     {
-
         #region Variable
-        ZakatReturnListPageViewModel viewModel;
+        AmendSalesDetailsPageViewModel viewModel;
         #endregion
 
         #region Property
         #endregion
 
         #region Constructor
-
-        public ZakatReturnListPageView()
+        public AmendSalesDetailsPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.ZakatReturnListPageView;
-            SetLTR();
+            viewModel = App.Locator.AmendSalesDetailsPageView;
             this.BindingContext = viewModel;
-            viewModel.OnPageLoad();
+            SetLTR();
 
-           
         }
-
         #endregion
 
         #region Method
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -45,9 +39,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         #endregion
-
 
     }
 }
