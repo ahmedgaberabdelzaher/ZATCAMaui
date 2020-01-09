@@ -22,15 +22,17 @@ namespace GAZT.ViewModel
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
         public string DeviceId { get; set; }
-        
+        public int CurrentAttempt = 0;
+
+
 
 
 
         #endregion
         #region Property
 
-        // private string _UserName = "3102164652";
-        private string _UserName = string.Empty;
+        private string _UserName = "3300036062";
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -73,9 +75,9 @@ namespace GAZT.ViewModel
         }
 
 
-       // private string _Password = "Test@1234";
+        private string _Password = "Test@1234";
 
-        private string _Password = string.Empty;
+      //  private string _Password = string.Empty;
         public string Password
         {
             get
@@ -306,6 +308,7 @@ namespace GAZT.ViewModel
 
             OnLoginButtonClicked = new Command(async () =>
             {
+                CurrentAttempt++;
                 App.IsComingFromDashboardToLogOff = false;
                 String response = string.Empty;
                 string UserId = string.Empty;
@@ -320,6 +323,7 @@ namespace GAZT.ViewModel
                 {
                     try
                     {
+                        string language = UtilityManager.GetLanguageParameter();
                         String lang = "E";
                         if (App.IsArabic == true)
                             lang = "AR";
@@ -327,13 +331,15 @@ namespace GAZT.ViewModel
                         {
                             throw new Exception(AppResources.Pleaseenteryourlogininformation);
                         }
-
+                        string _currentAttempts = CurrentAttempt.ToString();
+                        string languag = UtilityManager.GetLanguageParameter();
                         if (SelectedTinId != null && IsVisibleTinIds == true)
                         {
                             bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);
                             if (isValidEmail == true)
                             {
-                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password,DeviceId);
+                            
+                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password,DeviceId, _currentAttempts, languag);
                                 UserId = SelectedTinId.Tin;
                             }
                             else
@@ -346,7 +352,7 @@ namespace GAZT.ViewModel
                             bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
                             if (isValidTin == true)
                             {
-                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId);
+                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
                                 UserId = UserName;
                             }
                             else
@@ -374,7 +380,8 @@ namespace GAZT.ViewModel
                             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                             await Task.Run(async () =>
                             {
-                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId);
+                                string currentAttempts = "1";
+                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
                                 if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                 {
                                     if (App.TP == null)
@@ -464,8 +471,8 @@ namespace GAZT.ViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(ex.Message,AppResources.Information);
-                            UserName = string.Empty;
-                            Password = string.Empty;
+                            //UserName = string.Empty;
+                            //Password = string.Empty;
                         });
                         await Task.Run(() =>
                         {

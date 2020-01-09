@@ -24,6 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
         public bool StopTimer = false;
+        public int currentAttempts = 1;
 
 
         #endregion
@@ -304,9 +305,9 @@ namespace GAZT.ViewModel.NewViewModel
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
-                        }                      
-
-                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
+                        }
+                        currentAttempts++;
+                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
                         await PopToRootPage();
                         if (TP != null)
                         {
@@ -420,6 +421,7 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
+
             TinNumber = App.TP.Userid;
             string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
@@ -445,9 +447,9 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
-
+                        currentAttempts = 1;
                         EmailOrMobileNumber = AppResources.MobileNumber;
-                        var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
+                        var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                         {

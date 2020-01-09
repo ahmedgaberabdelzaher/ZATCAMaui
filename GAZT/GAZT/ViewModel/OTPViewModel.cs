@@ -310,8 +310,8 @@ namespace GAZT
                         else
                         {
                         }
-
-                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
+                        
+                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP,"1");
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (TP != null)
                         {

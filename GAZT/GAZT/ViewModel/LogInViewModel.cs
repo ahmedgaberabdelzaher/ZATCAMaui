@@ -361,7 +361,7 @@ namespace GAZT
                        String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                        await Task.Run(async () =>
                         {
-                               response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId);
+                            response = null;// await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId);
                               await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                {

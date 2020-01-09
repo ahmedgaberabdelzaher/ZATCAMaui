@@ -21,6 +21,7 @@ namespace GAZT.Views.NewViews
         OTPPageViewModel viewModel;
         double DeviceHeight;
         double DeviceWidth;
+    
         #endregion
 
         #region Constructor
@@ -136,6 +137,7 @@ namespace GAZT.Views.NewViews
             viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
             viewModel.IsResendOTPEnabled = false;
             viewModel.IsOTPEntryEnable = true;
+            viewModel.currentAttempts = 1;
             await Task.Run(() =>
             {
 
