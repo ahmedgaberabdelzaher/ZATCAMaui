@@ -30,6 +30,13 @@ namespace GAZT.Views.NewViews
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.onPageLoad();
+
+            SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+
+                if (sender is ListView lv) lv.SelectedItem = null;
+            };
         }
 
         #endregion

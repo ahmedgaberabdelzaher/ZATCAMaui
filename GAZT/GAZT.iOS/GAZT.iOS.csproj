@@ -542,4 +542,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_logout%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attachment%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attachment%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attachment.png" />
+  </ItemGroup>
 </Project>

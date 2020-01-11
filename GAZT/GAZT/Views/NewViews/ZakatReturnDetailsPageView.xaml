@@ -38,17 +38,17 @@
 
 
 
-                    <Label Text="Summary of zakat calculation"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Label Text="Summary of Zakat calculation"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
 
 
-                    <Label Text="FiscalYear" Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallBlackLabelStyle}"/>
+                    <Label Text="Fiscal Year" Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="2019-2010" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="2019-2010" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <Label Text="Return Period" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallBlackLabelStyle}"/>
+                    <Label Text="Return Period" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="2019.22.22-2010.22.11" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="2019.2.2-2010.2.1" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <BoxView  Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
@@ -80,7 +80,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Button Text="Sales Details" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <Button Text="Sales Details" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button>
 
                             <Button Text="Bills" Command="{Binding OnBillsButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
 

@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -11,6 +12,8 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand OnSalesDetailsClicked { get; set; }
         #endregion
 
         #region Property
@@ -32,6 +35,19 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
+
+            OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView);
+            });
+
+            OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.SalesDetailsPageView);
+            });
+
+
+            
         }
         #endregion
 
