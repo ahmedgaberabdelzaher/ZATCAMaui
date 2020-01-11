@@ -56,10 +56,10 @@ namespace GAZT.Manager
                         <soap:Body>
                             <gazt:loginValidation>
                                 <userId>" + UserName + @"</userId>
-                                   <lang>EN</lang> 
+                                   <lang>" +lang+ @"</lang> 
                                 <password>" + Password + @"</password>
                                  <deviceId>" + DeviceId + @"</deviceId>
-                                        <count>1</count>
+                                        <count>" + CurrentAttempt + @"</count>
 
                             </gazt:loginValidation>  
                         </soap:Body>  
@@ -314,10 +314,12 @@ namespace GAZT.Manager
                         {
                             GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
                             JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                            if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
+                         //   string result = GAZTValidateOTPResponseJToken.Value.ToString();
+
+                         //   if ((0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "Valid OTP")) || (0 == String.Compare(GAZTValidateOTPResponseJToken.Value<String>(), "كلمة مرور صالحة لمرة واحدة")))
                                 TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                            else
-                                throw new Exception(AppResources.InvalidOTP);
+                            //else
+                            //    throw new Exception(AppResources.InvalidOTP);
                         }
                     }
                 }

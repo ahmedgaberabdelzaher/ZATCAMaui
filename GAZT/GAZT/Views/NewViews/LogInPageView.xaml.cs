@@ -62,6 +62,7 @@ namespace GAZT.Views
         {
             base.OnAppearing();
             App.TP = null;
+            viewModel.CurrentAttempt = 0;
             if (App.CurrentDropdownTIN != null)
                 viewModel.SelectedTinId = App.CurrentDropdownTIN;
             //viewModel.UserName = String.Empty;

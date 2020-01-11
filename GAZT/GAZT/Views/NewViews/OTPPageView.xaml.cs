@@ -137,7 +137,7 @@ namespace GAZT.Views.NewViews
             viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
             viewModel.IsResendOTPEnabled = false;
             viewModel.IsOTPEntryEnable = true;
-            viewModel.currentAttempts = 1;
+            viewModel.currentAttempts = 0;
             await Task.Run(() =>
             {
 

@@ -24,8 +24,8 @@ namespace GAZT.ViewModel.NewViewModel
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
         public bool StopTimer = false;
-        public int currentAttempts = 1;
-
+        public int currentAttempts = 0;
+        bool isValiedOTP = false;
 
         #endregion
 
@@ -308,8 +308,20 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         currentAttempts++;
                         TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
+                       AccountLockedMessage(TP);
+                        if (!isValiedOTP)
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+                            return;
+                        }
+                        
+                 
+
                         await PopToRootPage();
-                        if (TP != null)
+                        if (TP != null && isValiedOTP)
                         {
                             String Password = App.TP.Password;
                             App.TP = TP;
@@ -318,6 +330,7 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 _navigationService.NavigateTo(App.DashboardPageView);
                             });
+
                         }
                         else
                         {
@@ -447,7 +460,6 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
-                        currentAttempts = 1;
                         EmailOrMobileNumber = AppResources.MobileNumber;
                         var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
@@ -605,6 +617,31 @@ namespace GAZT.ViewModel.NewViewModel
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
+            }
+        }
+
+        private async void AccountLockedMessage(TaxPayerProfile tp)
+        {
+             isValiedOTP = false;
+
+            if(tp != null && tp.Result.Equals("User locked successfully") || tp.Result.Equals("*** لا توجد أية رسالة فيT100 ***"))
+            {
+                await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                isValiedOTP = false;
+                _navigationService.GoBack();
+            }
+            else if (tp != null && tp.Result.Equals("Valid OTP") || tp.Result.Equals("كلمة مرور صالحة لمرة واحدة"))
+            {
+                isValiedOTP = true;
+            }
+            else if(tp != null && currentAttempts == 1 &&  (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            {
+                await _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.ZError);
+                isValiedOTP = false;
+            }
+            else if(tp != null && currentAttempts == 2 && (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            {
+                await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.Alerts);
             }
         }
         #endregion
