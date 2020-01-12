@@ -62,6 +62,7 @@ namespace GAZT.Views
         {
             base.OnAppearing();
             App.TP = null;
+            viewModel.CurrentAttempt = 0;
             if (App.CurrentDropdownTIN != null)
                 viewModel.SelectedTinId = App.CurrentDropdownTIN;
             //viewModel.UserName = String.Empty;
@@ -75,8 +76,8 @@ namespace GAZT.Views
             {
 
             }
-            viewModel.UserName = string.Empty;
-            viewModel.Password = string.Empty;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
             viewModel.IsVisibleTinIds = false;
 
         }

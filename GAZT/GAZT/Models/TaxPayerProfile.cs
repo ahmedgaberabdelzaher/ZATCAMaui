@@ -9,6 +9,13 @@ namespace GAZT.Models
     {
         public String FirstName{ get; set; }
         public String LastName { get; set; }
+        public int Attempts { get; set; }
+        public int CurrAttmps { get; set; }
+        public string Langz { get; set; }
+        public int Minutes { get; set; }
+        public string Result { get; set; }
+        public string Otp { get; set; }
+
         public String Name
         {
             get
