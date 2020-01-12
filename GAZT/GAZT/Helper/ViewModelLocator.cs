@@ -47,6 +47,7 @@ namespace GAZT
             SimpleIoc.Default.Register<BillDetailsPageViewModel>();
             SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
             SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
 
 
 
@@ -509,6 +510,21 @@ namespace GAZT
             }
         }
 
+        public ChecKTINStatusViewModel CheckTINStatusPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChecKTINStatusViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
 
@@ -548,6 +564,7 @@ namespace GAZT
             navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
+            navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
 
 
 

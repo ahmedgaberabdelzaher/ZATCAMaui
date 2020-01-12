@@ -39,6 +39,7 @@ namespace GAZT.ViewModel
         public ICommand OnVatdeclarationClicked { get; set; }
         public ICommand OnTaxevasionClicked { get; set; }
 
+        public ICommand OnTINStatusClicked { get; set; }
 
         #endregion
 
@@ -371,8 +372,11 @@ namespace GAZT.ViewModel
             {
                 await _dialogService.ShowMessage("Available in future release", AppResources.Information);
             });
-
-
+            OnTINStatusClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.CheckTINStatusPageView);
+            });
+            
         }
 
         #endregion

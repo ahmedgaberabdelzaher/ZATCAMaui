@@ -48,6 +48,7 @@ namespace GAZT
         public static string BillDetailsPageView = "BillDetailsPageView";
         public static string SalesDetailsPageView = "SalesDetailsPageView";
         public static string AmendSalesDetailsPageView = "AmendSalesDetailsPageView";
+        public static string CheckTINStatusPageView = "CheckTINStatusPageView";
 
 
 
@@ -76,7 +77,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new CheckTINStatusPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

@@ -814,4 +814,22 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZSalesDetails" xml:space="preserve">
     <value>Sales Details</value>
   </data>
+  <data name="ZClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ZCRNo" xml:space="preserve">
+    <value>CRNo</value>
+  </data>
+  <data name="ZLastUpdate" xml:space="preserve">
+    <value>Last Update</value>
+  </data>
+  <data name="ZShowlessdetails" xml:space="preserve">
+    <value>Show less details</value>
+  </data>
+  <data name="ZShowmoredetails" xml:space="preserve">
+    <value>Show more details</value>
+  </data>
+  <data name="ZTINStatus" xml:space="preserve">
+    <value>TIN Status</value>
+  </data>
 </root>

@@ -1043,7 +1043,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password has been changed  successfully.
+        ///   Looks up a localized string similar to Password has been changed  .
         /// </summary>
         public static string PassWordChangedSucessfully {
             get {
@@ -1808,6 +1808,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZClose {
+            get {
+                return ResourceManager.GetString("ZClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRNo.
+        /// </summary>
+        public static string ZCRNo {
+            get {
+                return ResourceManager.GetString("ZCRNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CR Number.
         /// </summary>
         public static string ZCRNumber {
@@ -1858,6 +1876,15 @@ namespace GAZT {
         public static string ZFicalYear {
             get {
                 return ResourceManager.GetString("ZFicalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Update.
+        /// </summary>
+        public static string ZLastUpdate {
+            get {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
             }
         }
         
@@ -1984,6 +2011,33 @@ namespace GAZT {
         public static string ZSearchParameter {
             get {
                 return ResourceManager.GetString("ZSearchParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show less details.
+        /// </summary>
+        public static string ZShowlessdetails {
+            get {
+                return ResourceManager.GetString("ZShowlessdetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show more details.
+        /// </summary>
+        public static string ZShowmoredetails {
+            get {
+                return ResourceManager.GetString("ZShowmoredetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN Status.
+        /// </summary>
+        public static string ZTINStatus {
+            get {
+                return ResourceManager.GetString("ZTINStatus", resourceCulture);
             }
         }
         
