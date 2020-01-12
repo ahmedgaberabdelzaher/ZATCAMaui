@@ -1450,5 +1450,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber", resourceCulture);
             }
         }
+        
+        public static string ZZInternetConnectionMessage {
+            get {
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
     }
 }

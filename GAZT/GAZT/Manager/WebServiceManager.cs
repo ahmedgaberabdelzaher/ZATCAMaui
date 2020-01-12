@@ -1156,5 +1156,64 @@ namespace GAZT.Manager
             //    Navigation.RemovePage(pg);
             //}
         }
+
+        public static async Task<string> GAZTGetTinStatus(string lang, string Tin)
+        {
+            string NewToken = string.Empty;
+            try
+            {
+                string _language = null;
+                if (App.IsArabic)
+                    _language = "A";
+                else
+                    _language = "E";
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GetTinStatus + _language + "',Tin='" + Tin  + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
+
+                if (GAZTTinStatus != null)
+                {
+
+                    HttpHeaders headers = GAZTTinStatus.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String GAZTValidateAndChangePasswordResponseJSON = GAZTTinStatus.Content.ReadAsStringAsync().Result;
+                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
+                    {
+
+                    }
+
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                {
+                    throw new Exception(AppResources.Nodataavailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+            }
+        }
+
     }
 }
