@@ -43,8 +43,9 @@ namespace GAZT.Views.NewViews
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            Task.Delay(20000);
-          
+            // Task.Delay(20000);
+            viewModel.NewMobile = "5";
+            
 
           
 

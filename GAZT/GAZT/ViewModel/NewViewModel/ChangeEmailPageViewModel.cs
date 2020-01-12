@@ -186,9 +186,27 @@ namespace GAZT.ViewModel.NewViewModel
             OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+                bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
+                bool _isNEwEmailAndOldEmailSame = IsNewEmailSameAsOldEmailSame();
                 if (_isMandatoryFieldEntered)
                 {
-                    await VarifyEmail();
+                    if(IsNewEmailAndRetypeEmaiEqual)
+                    {
+                        if (!_isNEwEmailAndOldEmailSame)
+                        {
+                            await VarifyEmail();
+                        }
+                        else
+                        {
+                            await ShowNewEmailAndOldEmailNotBeSameInformation();
+                        }
+                    }
+                    else
+                    {
+                       await ShowNewEmailAndRetypedemailSameInformation();
+                    }
+                  
+                  
                 }
                 else
                 {
@@ -221,10 +239,10 @@ namespace GAZT.ViewModel.NewViewModel
                     bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
                     bool IsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
 
-                    bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
 
-                    if (IsValidNewEmail && IsValidRetypeEmail && IsNewEmailAndRetypeEmaiEqual)
+                    if (IsValidNewEmail && IsValidRetypeEmail)
                     {
+                        
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
                         PopToRootPage();
                         
@@ -249,7 +267,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-                        ClearEmailData();
+                        //ClearEmailData();
                         IsEnabledRetypeEmail = false;
                         if (IsValidNewEmail || IsValidRetypeEmail)
                         {
@@ -308,7 +326,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         private bool CompareNewEmailAndRetedEmail(string NewEmailId, string RetypeEmailId)
         {
-            if (0 == String.Compare(NewEmailId, RetypeEmailId, true))
+            if (0 == String.Compare(NewEmailId.ToUpper(), RetypeEmailId.ToUpper(), true))
             {
                 return true;
             }
@@ -330,8 +348,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void ClearEmailData()
         {
-            NewEmail = string.Empty;
-            RetypeEmail = string.Empty;
+            //NewEmail = string.Empty;
+            //RetypeEmail = string.Empty;
             //  CurrentPasswordForEmail = string.Empty;
            
             IsEnabledNewEmail = true;
@@ -362,6 +380,44 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
+
+        private async Task ShowNewEmailAndOldEmailNotBeSameInformation()
+        {
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+              
+                await _dialogService.ShowMessageBox(AppResources.ZZTheNewEmailMustNotMatchtheexistingEmail, AppResources.Alerts);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            });
+        }
+
+        private bool IsNewEmailSameAsOldEmailSame()
+        {
+            if (NewEmail.ToUpper().Equals(App.TP.Email))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private async Task ShowNewEmailAndRetypedemailSameInformation()
+        {
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+
+                await _dialogService.ShowMessageBox(AppResources.NewEmailandRetypeEmailNotMatch, AppResources.ZError);
+             
+            });
+        }
+
         #endregion
     }
 }

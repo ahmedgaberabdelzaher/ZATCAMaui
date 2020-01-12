@@ -4,6 +4,8 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -12,9 +14,34 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
+        //  public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand OnAcceptReturnButtonClicked { get; set; }
+        public ICommand OnAmendReturnButtonClicked { get; set; }
+
+
+
         #endregion
 
         #region Property
+        private SalesDetails _selectedSalesDetails;
+        public SalesDetails SelectedSalesDetails
+        {
+            get
+            {
+                return _selectedSalesDetails;
+            }
+            set
+            {
+                _selectedSalesDetails = value;
+                if (_selectedSalesDetails != null)
+                {
+                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
+                }
+                RaisePropertyChanged("SelectedSalesDetails");
+            }
+        }
+
+
         private List<SalesDetails> _SalesDetailsList;
         public List<SalesDetails> SalesDetailsList
         {
@@ -45,6 +72,17 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
             _dialogService = dialogService;
+
+
+            OnAcceptReturnButtonClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView);
+            });
+
+            OnAmendReturnButtonClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
+            });
         }
         #endregion
 

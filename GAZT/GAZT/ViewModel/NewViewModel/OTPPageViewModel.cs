@@ -24,7 +24,8 @@ namespace GAZT.ViewModel.NewViewModel
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
         public bool StopTimer = false;
-
+        public int currentAttempts = 0;
+        bool isValiedOTP = false;
 
         #endregion
 
@@ -70,6 +71,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _emailOrMobileNumber = AppResources.MobileNumber;
+        public string EmailOrMobileNumber
+        {
+            get
+            {
+                return _emailOrMobileNumber;
+            }
+            set
+            {
+                _emailOrMobileNumber = value;
+                RaisePropertyChanged("EmailOrMobileNumber");
+            }
+        }
+
+        
         private string _OTPSentOnThisText = String.Empty;
         public string OTPSentOnThisText
         {
@@ -289,11 +305,23 @@ namespace GAZT.ViewModel.NewViewModel
                         if (App.IsArabic == true)
                         {
                             lang = "AR";
-                        }                      
+                        }
+                        currentAttempts++;
+                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
+                       AccountLockedMessage(TP);
+                        if (!isValiedOTP)
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+                            return;
+                        }
+                        
+                 
 
-                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP);
                         await PopToRootPage();
-                        if (TP != null)
+                        if (TP != null && isValiedOTP)
                         {
                             String Password = App.TP.Password;
                             App.TP = TP;
@@ -302,6 +330,7 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 _navigationService.NavigateTo(App.DashboardPageView);
                             });
+
                         }
                         else
                         {
@@ -405,6 +434,7 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
+
             TinNumber = App.TP.Userid;
             string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
@@ -430,9 +460,8 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
-
-                      
-                        var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid);
+                        EmailOrMobileNumber = AppResources.MobileNumber;
+                        var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                         {
@@ -449,15 +478,16 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsMobile)
                     {
-                      bool  response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                        EmailOrMobileNumber = AppResources.MobileNumber;
+                        bool  response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                         if (response)
                         {
                             bool IsNavigatingFromLogin = true;
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsResendOTPEnabled = false;
                             IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
+                            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                             TimerStart();
                         }
 
@@ -465,6 +495,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsEmail)
                     {
+                        EmailOrMobileNumber = AppResources.Email;
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
                         if(response)
                         {
@@ -472,8 +503,8 @@ namespace GAZT.ViewModel.NewViewModel
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsResendOTPEnabled = false;
                             IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                            MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
                             TimerStart();
                         }
 
@@ -586,6 +617,31 @@ namespace GAZT.ViewModel.NewViewModel
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
+            }
+        }
+
+        private async void AccountLockedMessage(TaxPayerProfile tp)
+        {
+             isValiedOTP = false;
+
+            if(tp != null && tp.Result.Equals("User locked successfully") || tp.Result.Equals("*** لا توجد أية رسالة فيT100 ***"))
+            {
+                await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                isValiedOTP = false;
+                _navigationService.GoBack();
+            }
+            else if (tp != null && tp.Result.Equals("Valid OTP") || tp.Result.Equals("كلمة مرور صالحة لمرة واحدة"))
+            {
+                isValiedOTP = true;
+            }
+            else if(tp != null && currentAttempts == 1 &&  (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            {
+                await _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.ZError);
+                isValiedOTP = false;
+            }
+            else if(tp != null && currentAttempts == 2 && (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            {
+                await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.Alerts);
             }
         }
         #endregion

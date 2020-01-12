@@ -44,7 +44,7 @@
                         <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TinNumber}" Style="{StaticResource ForgotPasswordTextColor}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="5">
                         </Label>
 
-                        <Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="0">
+                        <Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding EmailOrMobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" Margin="0">
                         </Label>
                         <Frame Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" Margin="0">
                         </Frame>
