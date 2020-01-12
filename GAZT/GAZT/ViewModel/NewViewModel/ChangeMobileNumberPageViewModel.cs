@@ -171,7 +171,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
                         });
-                        NewMobile = string.Empty;
+                        NewMobile = "5";
                     }
                     if (response == true)
                     {
@@ -234,7 +234,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void ClearMobileData()
         {
-          //  NewMobile = string.Empty;
+            NewMobile = "5";
+            //  NewMobile = string.Empty;
 
         }
 

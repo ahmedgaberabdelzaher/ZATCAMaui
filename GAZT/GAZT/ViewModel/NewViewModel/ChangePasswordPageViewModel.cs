@@ -487,6 +487,9 @@ namespace GAZT
         public void ClearEmailData()
         {
             NewEmail = string.Empty;
+            NewPasswordForEmail = string.Empty;
+            CurrentPassword = string.Empty;
+            RetypePasswordForEmail = string.Empty;
             
         }
 

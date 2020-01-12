@@ -374,7 +374,7 @@ namespace GAZT.ViewModel
                             UserId = UserName;
                             string _language = UtilityManager.GetLanguageParameter();
                           
-                          await  WebServiceManager.GAZTGetTinStatus(_language, UserName);
+                         // await  WebServiceManager.GAZTGetTinStatus(_language, UserName);
 
                         }
                         else

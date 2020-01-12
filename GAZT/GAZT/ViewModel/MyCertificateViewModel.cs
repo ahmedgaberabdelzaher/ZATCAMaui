@@ -537,8 +537,9 @@ namespace GAZT
             }
             else
             {
-                _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                _navigationService.GoBack();
+                SetNoDataLabelVisibility = true;
+             //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+             // _navigationService.GoBack();
             }
         }
 
