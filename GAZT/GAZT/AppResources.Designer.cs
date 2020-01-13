@@ -1524,7 +1524,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLastUpdate", resourceCulture);
             }
         }
+     
 
-       
     }
 }
