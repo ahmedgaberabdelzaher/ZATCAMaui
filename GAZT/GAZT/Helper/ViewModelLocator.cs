@@ -47,6 +47,9 @@ namespace GAZT
             SimpleIoc.Default.Register<BillDetailsPageViewModel>();
             SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
             SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ICRListPageViewModel>();
+
+
 
 
 
@@ -509,6 +512,21 @@ namespace GAZT
             }
         }
 
+        public ICRListPageViewModel ICRListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ICRListPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
 
@@ -548,6 +566,7 @@ namespace GAZT
             navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
+            navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
 
 
 

@@ -48,6 +48,7 @@ namespace GAZT
         public static string BillDetailsPageView = "BillDetailsPageView";
         public static string SalesDetailsPageView = "SalesDetailsPageView";
         public static string AmendSalesDetailsPageView = "AmendSalesDetailsPageView";
+        public static string ICRListPageView = "ICRListPageView";
 
 
 

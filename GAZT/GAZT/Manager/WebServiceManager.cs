@@ -670,6 +670,87 @@ namespace GAZT.Manager
             }
         }
 
+
+
+        public static async Task<ICR> GAZTGetICRs(String Tin, string lang)
+        {
+            ICR myICRs = new ICR();
+            string NewToken = string.Empty;
+            try
+            {
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GetMyICRs +Tin+"',Fbguid='" + "',UserTin='"+"'"+ ")?&saml2=disabled"+"&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTMyICRsResponse = await client.GetAsync(uri);
+                if (GAZTMyICRsResponse != null)
+                {
+                    HttpHeaders headers = GAZTMyICRsResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String GAZTMyICRsResponseJSON = GAZTMyICRsResponse.Content.ReadAsStringAsync().Result;
+
+                    if (!string.IsNullOrEmpty(GAZTMyICRsResponseJSON))
+                    {
+                        GAZTMyICRsResponseJSON = JObject.Parse(GAZTMyICRsResponseJSON)["d"].ToString();
+
+
+                        string GAZTMyICRsLISTSetResponseJSON = JObject.Parse(GAZTMyICRsResponseJSON)["ICR_LISTSet"].ToString();
+                        string GAZTMyICRsSTATUSSetResponseJSON = JObject.Parse(GAZTMyICRsResponseJSON)["ICR_STATUSSet"].ToString();
+                        GAZTMyICRsLISTSetResponseJSON = JObject.Parse(GAZTMyICRsLISTSetResponseJSON)["results"].ToString();
+                        GAZTMyICRsSTATUSSetResponseJSON = JObject.Parse(GAZTMyICRsSTATUSSetResponseJSON)["results"].ToString();
+
+                        if(string.IsNullOrEmpty(GAZTMyICRsSTATUSSetResponseJSON) != true)
+                        {
+                            myICRs.ICR_STATUSSet = JsonConvert.DeserializeObject<List<ICRStatus>>(GAZTMyICRsSTATUSSetResponseJSON);
+                        }
+                        if (string.IsNullOrEmpty(GAZTMyICRsLISTSetResponseJSON) != true)
+                        {
+                            myICRs.ICR_LISTSet = JsonConvert.DeserializeObject<List<ICRListSet>>(GAZTMyICRsLISTSetResponseJSON);
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.ZNoICRAvailable);
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.ZNoICRAvailable);
+                    }
+
+                }
+
+                return myICRs;
+
+            }
+            catch (Exception ex)
+            {
+                if (string.Equals(ex.Message, AppResources.ZNoICRAvailable))
+                {
+                    throw new Exception(AppResources.ZNoICRAvailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+            }
+        }
+
+
+
         public static async Task<string> GAZTGetTaxPayerProfile(String Tin, String Lang)
         {
             String MobileNumber = string.Empty;
