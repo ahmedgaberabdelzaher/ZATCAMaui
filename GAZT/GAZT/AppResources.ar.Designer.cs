@@ -1465,5 +1465,11 @@ namespace GAZT {
             }
         }
         
+        
+        public static string ZZPasswordislockedInvalidattempts {
+            get {
+                return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
+            }
+        }
     }
 }

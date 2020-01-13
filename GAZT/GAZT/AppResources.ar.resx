@@ -848,4 +848,7 @@
   <data name="ZTINStatus" xml:space="preserve">
     <value>حالة الرقم المميز</value>
   </data>
+   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+    <value>كلمة المرور مؤمنة. محاولات غير صالحة</value>
+  </data>
 </root>

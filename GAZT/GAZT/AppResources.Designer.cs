@@ -1505,9 +1505,15 @@ namespace GAZT {
             }
         }
         
-        public static string InternetConnectionMessage {
+        public static string ZZInternetConnectionMessage {
             get {
-                return ResourceManager.GetString("InternetConnectionMessage", resourceCulture);
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
+        public static string ZZPasswordislockedInvalidattempts {
+            get {
+                return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
 
