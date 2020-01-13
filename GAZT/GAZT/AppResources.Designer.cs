@@ -1456,5 +1456,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
             }
         }
+        
+        public static string ZZPasswordislockedInvalidattempts {
+            get {
+                return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
+            }
+        }
     }
 }

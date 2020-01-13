@@ -830,4 +830,7 @@
     <value>لا يوجد خط إنترنيت</value>
     <comment>ES11,ES13 PensionerProfileView,ES8 BankDetailsView,FAQsView</comment>
   </data>
+   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+    <value>كلمة المرور مؤمنة. محاولات غير صالحة</value>
+  </data>
 </root>

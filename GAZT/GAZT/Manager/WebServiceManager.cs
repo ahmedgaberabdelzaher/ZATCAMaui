@@ -42,6 +42,7 @@ namespace GAZT.Manager
         /// <returns></returns>
         public static String GAZTAuthenticateTIN(String UserName, String Password, string DeviceId, string CurrentAttempt,string lang)
         {
+            lang = "EN";
             string AuthenticationResult = String.Empty;
             string Message = string.Empty;
             string Token = string.Empty;
@@ -112,6 +113,11 @@ namespace GAZT.Manager
                                 {
                                     throw new Exception(Token);
                                 }
+                                if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                                {
+                                    throw new Exception(Token);
+                                }
+                               // Password is locked.Invalid attempts
                                 if (!string.IsNullOrEmpty(Token))
                                 {
                                     App.Token = Token;
@@ -152,10 +158,15 @@ namespace GAZT.Manager
                 {
                     throw new Exception(AppResources.ZAccountLocked);
                 }
+                else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                {
+                    throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
+                }
                 else
                 {
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
+               
 
 
 

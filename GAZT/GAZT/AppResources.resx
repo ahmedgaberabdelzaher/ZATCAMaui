@@ -823,4 +823,8 @@ amendments do not match what was calculated by the General Authority for Zakat a
    <data name="ZZInternetConnectionMessage" xml:space="preserve">
     <value>No internet connection</value>
   </data>  
+   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+    <value>Password is locked.Invalid attempts</value>
+  </data>
+ 
 </root>
