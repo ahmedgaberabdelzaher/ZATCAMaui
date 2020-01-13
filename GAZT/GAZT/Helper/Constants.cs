@@ -49,6 +49,9 @@ namespace GAZT.Helper
 
 
 
+        public static string GetTinStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTIN_STAT_SRV/HeaderSet(Langz='";
+
+        
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{
         //    if(mobileNumber.Substring(0,1).Equals(5) && mobileNumber.Length == 9)

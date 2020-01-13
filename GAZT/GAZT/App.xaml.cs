@@ -49,6 +49,7 @@ namespace GAZT
         public static string SalesDetailsPageView = "SalesDetailsPageView";
         public static string AmendSalesDetailsPageView = "AmendSalesDetailsPageView";
         public static string ICRListPageView = "ICRListPageView";
+        public static string CheckTINStatusPageView = "CheckTINStatusPageView";
 
 
 
@@ -84,9 +85,15 @@ namespace GAZT
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
-            httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+            try
+            {
+                httpClientHandler = new HttpClientHandler();
+                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+            }
+            catch(Exception ex)
+            {
 
+            }
 
             MainPage = navigationPage;
         }

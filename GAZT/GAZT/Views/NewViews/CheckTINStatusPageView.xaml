@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+            
+             Title="TIN Status"
+             x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{x:Static local:AppResources.TIN}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                        <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsEnabled="False">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry x:Name="entryTIN" Text="{Binding TIN}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+
+
+
+                        <Label Text="{x:Static local:AppResources.ZTINStatus}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Frame IsEnabled="False"  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry x:Name="entryTINStatus" Text="{Binding TINStatus}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+
+
+                        <Label Text="{x:Static local:AppResources.ZLastUpdate}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Frame IsEnabled="False"  Grid.Row="5"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Text="{Binding LastUpdate}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+
+                        <Label Text="{Binding ShowLessOrMore}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Blue" Margin="10"  >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnClickLessOrMore}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <!--<StackLayout Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand">
+                            <ListView ItemsSource="{Binding ListTINStatus}"
+              HasUnevenRows="True"
+             Margin="10,0,10,0"
+              HeightRequest="150"
+              BackgroundColor="White"
+                      x:Name="ListTINStatus"
+                 IsVisible="{Binding IsVisibleListItems}"    
+               >
+                                <ListView.ItemTemplate>
+
+                                    <DataTemplate>
+                                        <ViewCell>
+
+                                            
+                                            <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                                                <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="1" ColumnSpacing="1">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50*"  />
+                                                        <ColumnDefinition Width="50*" />
+                                                        <ColumnDefinition Width="50*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>
+                                                    <Label Text="{Binding CRNos}" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                               TextColor="Black"
+                                      
+                               FontSize="Medium"/>
+                                                    <BoxView  
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1"/>
+
+                                                    --><!--<Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>--><!--
+
+                                                    <Label Text="{Binding CRStatus}" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                               TextColor="Black"
+                                      
+                               FontSize="Medium"/>
+                                                    <BoxView  
+                     Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1"/>
+
+                                                    --><!--<Frame Grid.Row="0" Grid.Column="2" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>--><!--
+
+                                                    <Label Text="{Binding LastUpdate}" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                               TextColor="Black"
+                                      
+                               FontSize="Medium"/>
+                                                    
+                                                </Grid>
+                                             
+                                            </StackLayout>
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                         </StackLayout>-->
+                            <ListView  x:Name="ListTINStatus" 
+           ItemsSource="{Binding ConsumerRegisteration}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                                       ItemTapped="ListTINStatus_ItemTapped"
+                             IsVisible="{Binding IsVisibleListItems}"    
+                      Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"
+            SeparatorVisibility="Default"
+                                       HeightRequest="220"
+            >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                       
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="40*"/>
+                                                        <ColumnDefinition Width="60*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                <Label  Text="{x:Static local:AppResources.ZCRNo}" Margin="10,0,10,-15" Grid.Row="0"  Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                    </Label>
+                                                <Label  Text="{x:Static local:AppResources.ZTINStatus}" Margin="10,0,10,-15"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                    </Label>
+                                                <Label  Text="{x:Static local:AppResources.ZLastUpdate}" Grid.Row="2" Grid.Column="0" Margin="10,0,10,5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                    </Label>
+                                                    <Label Text="{Binding Idnumber}" Margin="10,0,10,-10"  Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding StatusText}" Margin="10,0,10,-10"  Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Udate}" Margin="10,0,10,5"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                                                </Grid>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+
+                       
+
+
+                       
+                        
+                    </Grid>
+
+
+            
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

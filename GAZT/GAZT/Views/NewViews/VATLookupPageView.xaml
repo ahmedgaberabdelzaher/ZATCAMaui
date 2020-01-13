@@ -34,25 +34,25 @@
 
                         <Label Text="{x:Static local:AppResources.ZSearchParameter}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                        <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}"  >
+                        <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  >
                         </Frame>
                         <StackLayout    Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  >
                             <custom:GAZTBorderlessPicker Style="{StaticResource PickerStyle}"    Grid.Row="1"      FontSize="10"   IsEnabled="true" TextColor="Black"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}">
                                
                             </custom:GAZTBorderlessPicker>
                         </StackLayout>
-                        <Image Source="ic_dropdownOne.png"  Margin="9,0,9,0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
+                        <!--<Image Source="ic_dropdownOne.png"  Margin="15,0,9,0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
 
 
 
 
 
                         <Label Text="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-                        <Frame  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}"  IsVisible="{Binding IsIDTypeVisible}">
+                        <Frame  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}"  Placeholder="{Binding VATACCOrCRNOOrVATCER}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:GAZTBorderlessEntry>
 
-                        <Frame Grid.Row="5"   Grid.Column="1"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" >
+                        <Frame Grid.Row="5"   Grid.Column="1"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" >
                         </Frame>
                         <Label  Text="{Binding Captcha}" Style="{StaticResource MiniGoldLabelStyle}" Grid.Row="5"   Grid.Column="1"    HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White">
 
@@ -62,7 +62,7 @@
                         <local1:GAZTBorderlessEntry Text="{Binding Captcha}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="9"   Grid.Column="1"   Margin="2,1,2,1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" BackgroundColor="White">
                         </local1:GAZTBorderlessEntry>
                     </StackLayout>-->
-                        <Image Grid.Row="5"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" >
+                        <Image Grid.Row="5"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0,10,0">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
                             </Image.GestureRecognizers>
@@ -77,16 +77,17 @@
                             </Label.FormattedText>
                         </Label>
 
-                        <Frame  Grid.Row="5"  Grid.Column="0"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}" >
+                        <Frame  Grid.Row="5"  Grid.Column="0"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Grid.Row="5"  Grid.Column="0"   >
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  Grid.Row="5"  Grid.Column="0"   >
 
-                            <custom:GAZTBorderlessEntry Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="9"   Grid.Column="0"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" >
-                                 <custom:GAZTBorderlessEntry.Behaviors>
-                              <custom:CaptchaValidatorBehaviour/>
-                            </custom:GAZTBorderlessEntry.Behaviors>
+                            <custom:GAZTBorderlessEntry  Grid.Row="9"  Grid.Column="0" Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  HorizontalTextAlignment="Center" >
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:CaptchaValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
+
                         </StackLayout>
                         <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 

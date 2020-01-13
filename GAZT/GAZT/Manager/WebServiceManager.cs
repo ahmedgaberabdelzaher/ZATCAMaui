@@ -2,6 +2,7 @@
 using GAZT.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,6 +42,7 @@ namespace GAZT.Manager
         /// <returns></returns>
         public static String GAZTAuthenticateTIN(String UserName, String Password, string DeviceId, string CurrentAttempt,string lang)
         {
+            lang = "EN";
             string AuthenticationResult = String.Empty;
             string Message = string.Empty;
             string Token = string.Empty;
@@ -111,6 +113,11 @@ namespace GAZT.Manager
                                 {
                                     throw new Exception(Token);
                                 }
+                                if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                                {
+                                    throw new Exception(Token);
+                                }
+                               // Password is locked.Invalid attempts
                                 if (!string.IsNullOrEmpty(Token))
                                 {
                                     App.Token = Token;
@@ -151,10 +158,15 @@ namespace GAZT.Manager
                 {
                     throw new Exception(AppResources.ZAccountLocked);
                 }
+                else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                {
+                    throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
+                }
                 else
                 {
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
+               
 
 
 
@@ -1085,6 +1097,11 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
+                if (false == CrossConnectivity.Current.IsConnected)
+                {
+                    throw new WebException();
+                }
+
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 
                     // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
@@ -1125,10 +1142,15 @@ namespace GAZT.Manager
 
                 
             }
-            catch (Exception ex)
+            catch (WebException webException)
             {
                 return null;
             }
+            catch (Exception exception)
+            {
+                return null;
+            }
+
         }
 
 
@@ -1228,14 +1250,68 @@ namespace GAZT.Manager
                 return null;
             }
         }
-        private async static void SessionExpired(string token)
+        
+
+        public static async Task<TINStatus> GAZTGetTinStatus(string lang, string Tin)
         {
-            //for (int index = NavigationPage.NavigationStack.Count - 1; index > 0; index--)
-            //{
-            //    NavigationPage.
-            //    Page pg = Navigation.NavigationStack[index];
-            //    Navigation.RemovePage(pg);
-            //}
+            TINStatus tINStatus = new TINStatus();
+            string NewToken = string.Empty;
+            try
+            {
+
+
+                string _language = null;
+                if (App.IsArabic)
+                    _language = "A";
+                else
+                    _language = "E";
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GetTinStatus + _language + "',Tin='" + Tin  + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
+
+                if (GAZTTinStatus != null)
+                {
+
+                    HttpHeaders headers = GAZTTinStatus.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String TINStatusResponse = GAZTTinStatus.Content.ReadAsStringAsync().Result;
+
+
+                    tINStatus = JsonConvert.DeserializeObject<TINStatus>(TINStatusResponse);
+                  
+
+                }
+                return tINStatus;
+            }
+            catch (Exception ex)
+            {
+                if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                {
+                    throw new Exception(AppResources.Nodataavailable);
+                }
+                else
+                {
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+                }
+            }
         }
+
     }
 }
