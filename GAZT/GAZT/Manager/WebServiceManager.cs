@@ -2,6 +2,7 @@
 using GAZT.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -1004,6 +1005,11 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
+                if (false == CrossConnectivity.Current.IsConnected)
+                {
+                    throw new WebException();
+                }
+
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 
                     // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
@@ -1044,10 +1050,15 @@ namespace GAZT.Manager
 
                 
             }
-            catch (Exception ex)
+            catch (WebException webException)
             {
                 return null;
             }
+            catch (Exception exception)
+            {
+                return null;
+            }
+
         }
 
 
@@ -1147,15 +1158,7 @@ namespace GAZT.Manager
                 return null;
             }
         }
-        private async static void SessionExpired(string token)
-        {
-            //for (int index = NavigationPage.NavigationStack.Count - 1; index > 0; index--)
-            //{
-            //    NavigationPage.
-            //    Page pg = Navigation.NavigationStack[index];
-            //    Navigation.RemovePage(pg);
-            //}
-        }
+        
 
         public static async Task<string> GAZTGetTinStatus(string lang, string Tin)
         {

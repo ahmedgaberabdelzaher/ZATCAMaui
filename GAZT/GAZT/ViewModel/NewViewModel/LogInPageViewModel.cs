@@ -32,8 +32,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-        private string _UserName = "3000001666";
-       // private string _UserName = string.Empty;
+       // private string _UserName = "3000001666";
+        private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -76,9 +76,9 @@ namespace GAZT.ViewModel
         }
 
 
-        private string _Password = "Test@1234";
+        //private string _Password = "Test@1234";
 
-      //  private string _Password = string.Empty;
+        private string _Password = string.Empty;
         public string Password
         {
             get
@@ -314,10 +314,14 @@ namespace GAZT.ViewModel
                 {
                     if(CrossConnectivity.Current.IsConnected)
                     {
-
                       await  Login();
                     }
+                    else
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
+                    }
                 }
+              
                
             });
         }

@@ -27,12 +27,7 @@ namespace GAZT.ViewModel
         public ICommand OnMyBillsClicked { get; set; }
         public ICommand OnLogoutClicked { get; set; }
         public ICommand OnUserProfileClicked { get; set; }
-
-        
-
         public Dashboard dashboard { get; set; }
-
-
         public ICommand OnEstimateZakatClicked { get; set; }
         public ICommand OnVATLookupClicked { get; set; }
         public ICommand OnCorrespondanceClicked { get; set; }
@@ -145,8 +140,6 @@ namespace GAZT.ViewModel
         }
 
 
-
-
         private int _heightRequestForCollectionView = 0;
         public int HeightRequestForCollectionView
         {
@@ -174,9 +167,7 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("HeightRequestForReturnCollectionView");
             }
         }
-
-
-
+        
         private double _deviceHeight;
         public double DeviceHeight
         {
@@ -314,22 +305,20 @@ namespace GAZT.ViewModel
                 _navigationService.NavigateTo(App.MyCertificate);
 
             });
-            OnBellClicked = new Xamarin.Forms.Command(async () =>
-            {
-            });
+          
             OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.TaxPayerProfileView);
 
             });
 
-            OnMyBillsClicked = new Xamarin.Forms.Command(async () =>
+            OnMyBillsClicked = new Xamarin.Forms.Command( () =>
             {
                 _navigationService.NavigateTo(App.MyBillsView);
 
             });
 
-            OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(async () =>
+            OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command( () =>
             {
                 _navigationService.NavigateTo(App.TaxPayerProfilePageView);
 
@@ -340,19 +329,19 @@ namespace GAZT.ViewModel
             //    LogOut();
             //});
 
-            OnUserProfileClicked = new Xamarin.Forms.Command(async () =>
+            OnUserProfileClicked = new Xamarin.Forms.Command( () =>
             {
               //  UserProfileLayoutVisibility = !UserProfileLayoutVisibility;
             });
 
             
 
-            OnEstimateZakatClicked = new Xamarin.Forms.Command(async () =>
+            OnEstimateZakatClicked = new Xamarin.Forms.Command( () =>
             {
                 _navigationService.NavigateTo(App.ZakatReturnListPageView);
 
             });
-            OnVATLookupClicked = new Xamarin.Forms.Command(async () =>
+            OnVATLookupClicked = new Xamarin.Forms.Command( () =>
             {
                 //await _dialogService.ShowMessage("Available in future release", AppResources.Information);
                 _navigationService.NavigateTo(App.VATLookupPageView);
@@ -401,7 +390,9 @@ namespace GAZT.ViewModel
                 BillReturn = new List<BillReturn>();
                 BillPaid = new List<BillPaid>();
                 string lang = UtilityManager.GetLanguageParameter();
+
                 dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 if (dashboard != null)
@@ -598,11 +589,6 @@ namespace GAZT.ViewModel
                         objBillPaid2.BillCount = PartialPaidBillsstr;
                         objBillPaid2.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
                         BillPaidList.Add(objBillPaid2);
-
-
-
-
-
                     }
 
                     else
