@@ -6,7 +6,7 @@
              mc:Ignorable="d"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="RightToLeft"
+            
              Title="TIN Status"
              x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
     <ContentPage.Content>
@@ -115,7 +115,7 @@
                             </ListView>
                          </StackLayout>-->
                             <ListView  x:Name="ListTINStatus" 
-           ItemsSource="{Binding ListTINStatus}"
+           ItemsSource="{Binding ConsumerRegisteration}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -146,9 +146,9 @@
                                                     </Label>
                                                 <Label  Text="{x:Static local:AppResources.ZLastUpdate}" Grid.Row="2" Grid.Column="0" Margin="10,0,10,5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                    <Label Text="{Binding CRNos}" Margin="10,0,10,-10"  Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <Label Text="{Binding CRStatus}" Margin="10,0,10,-10"  Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <Label Text="{Binding LastUpdate}" Margin="10,0,10,5"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Idnumber}" Margin="10,0,10,-10"  Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding StatusText}" Margin="10,0,10,-10"  Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Udate}" Margin="10,0,10,5"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                                                 </Grid>
                                             </Grid>

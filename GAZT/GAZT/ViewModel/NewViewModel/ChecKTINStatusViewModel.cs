@@ -1,12 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using GAZT.Manager;
+using System.Globalization;
+using Newtonsoft.Json;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -17,7 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCloseClick { get; set; }
 
         public ICommand OnClickLessOrMore { get; set; }
-
+        public DateTime lastTapped;
 
 
         private string _TIN = string.Empty;
@@ -80,9 +84,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        private List<TINStatus> _listTINStatus;
+        private TINStatus _listTINStatus;
 
-        public List<TINStatus> ListTINStatus
+        public TINStatus ListTINStatus
         {
             get
             {
@@ -92,6 +96,21 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _listTINStatus = value;
                 RaisePropertyChanged("ListTINStatus");
+            }
+        }
+
+        private List<ConsumerRegisteration> _consumerRegisteration;
+
+        public List<ConsumerRegisteration> ConsumerRegisteration
+        {
+            get
+            {
+                return _consumerRegisteration;
+            }
+            set
+            {
+                _consumerRegisteration = value;
+                RaisePropertyChanged("ConsumerRegisteration");
             }
         }
 
@@ -138,18 +157,57 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
-
-            List<TINStatus> StatusList = new List<TINStatus>
+            
+            string Lang = UtilityManager.GetLanguageParameter();
+            if (lastTapped < DateTime.Now.AddSeconds(-4))
             {
-                new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                 new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                  new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                   new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                    new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                     new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
-                new TINStatus{ CRNos="111111122222222",CRStatus="Active",LastUpdate="11-10-2019"}
-            };
-            ListTINStatus = StatusList;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    ListTINStatus= await WebServiceManager.GAZTGetTinStatus(Lang,App.TP.Tin);
+
+                    TIN = ListTINStatus.d.Tin;
+                    TINStatus = ListTINStatus.d.StatusText;
+                    if (ListTINStatus.d.Udate != null)
+                    {
+                        LastUpdate = Convert.ToDateTime(ListTINStatus.d.Udate).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                         
+                    }
+
+                    ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
+
+                    if(ConsumerRegisteration !=null)
+                    {
+                        if (ListTINStatus.d.ItemSet.results !=null)
+                        {
+                            foreach (ConsumerRegisteration itemCR in ListTINStatus.d.ItemSet.results)
+                            {
+                                if (itemCR.Udate != null)
+                                {
+                                    
+                                    itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox(AppResources.InternetConnectionMessage, AppResources.Alerts);
+                }
+            }
+
+            //List<TINStatus> StatusList = new List<TINStatus>
+            //{
+            //    new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //     new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //      new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //       new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //        new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //         new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
+            //    new TINStatus{ CRNos="111111122222222",CRStatus="Active",LastUpdate="11-10-2019"}
+            //};
+            //ListTINStatus = StatusList;
 
         }
     }

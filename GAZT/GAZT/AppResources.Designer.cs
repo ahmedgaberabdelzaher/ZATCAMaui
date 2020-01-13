@@ -1222,22 +1222,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRNo", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CR Number.
-        /// </summary>
-        public static string ZCRNumber {
-            get {
+        public static string ZSAR
+        {
+            get
+            {
                 return ResourceManager.GetString("ZSAR", resourceCulture);
             }
         }
-        
-        public static string ZTotalPaidAmount {
-            get {
-                return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
-            }
-        }
-        
+
+
+
+
         public static string ZTotalUnPaidAmount {
             get {
                 return ResourceManager.GetString("ZTotalUnPaidAmount", resourceCulture);
@@ -1378,10 +1373,18 @@ namespace GAZT {
         /// </summary>
         public static string ZTotalPaidAmount {
             get {
+                return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
+            }
+        }
+
+        public static string ZPleaseentertheCRcomposedof10digits
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseentertheCRcomposedof10digits", resourceCulture);
             }
         }
-        
+
         public static string ZPleaseentertheVATAccountNocomposedof15digits {
             get {
                 return ResourceManager.GetString("ZPleaseentertheVATAccountNocomposedof15digits", resourceCulture);
@@ -1507,5 +1510,15 @@ namespace GAZT {
                 return ResourceManager.GetString("InternetConnectionMessage", resourceCulture);
             }
         }
+
+        public static string ZLastUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
+            }
+        }
+
+       
     }
 }

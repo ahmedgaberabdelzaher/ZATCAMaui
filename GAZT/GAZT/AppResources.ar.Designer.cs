@@ -1456,5 +1456,14 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
             }
         }
+
+        public static string ZLastUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
+            }
+        }
+        
     }
 }

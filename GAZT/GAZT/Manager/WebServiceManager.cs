@@ -1157,11 +1157,14 @@ namespace GAZT.Manager
             //}
         }
 
-        public static async Task<string> GAZTGetTinStatus(string lang, string Tin)
+        public static async Task<TINStatus> GAZTGetTinStatus(string lang, string Tin)
         {
+            TINStatus tINStatus = new TINStatus();
             string NewToken = string.Empty;
             try
             {
+
+
                 string _language = null;
                 if (App.IsArabic)
                     _language = "A";
@@ -1193,14 +1196,14 @@ namespace GAZT.Manager
                         App.Token = NewToken;
                     }
 
-                    String GAZTValidateAndChangePasswordResponseJSON = GAZTTinStatus.Content.ReadAsStringAsync().Result;
-                    if (!string.IsNullOrEmpty(GAZTValidateAndChangePasswordResponseJSON))
-                    {
+                    String TINStatusResponse = GAZTTinStatus.Content.ReadAsStringAsync().Result;
 
-                    }
+
+                    tINStatus = JsonConvert.DeserializeObject<TINStatus>(TINStatusResponse);
+                  
 
                 }
-                return null;
+                return tINStatus;
             }
             catch (Exception ex)
             {
