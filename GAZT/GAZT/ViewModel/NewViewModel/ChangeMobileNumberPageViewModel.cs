@@ -95,8 +95,37 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _newMobileNumberArabicLayout = false;
+        public bool NewMobileNumberArabicLayout
+        {
+            get
+            {
+                return _newMobileNumberArabicLayout;
+            }
+            set
+            {
+                _newMobileNumberArabicLayout = value;
+                RaisePropertyChanged("NewMobileNumberArabicLayout");
+            }
+        }
 
-     
+        private bool _newMobileNumberEnglishLayout = false;
+        public bool NewMobileNumberEnglishLayout
+        {
+            get
+            {
+                return _newMobileNumberEnglishLayout;
+            }
+            set
+            {
+                _newMobileNumberEnglishLayout = value;
+                RaisePropertyChanged("NewMobileNumberEnglishLayout");
+            }
+        }
+
+
+
+
 
         #endregion
 
@@ -154,16 +183,16 @@ namespace GAZT.ViewModel.NewViewModel
                     bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
                     if (isValidMobileNumber)
                     {
-                        if(!isNewMobileNumberSameAsOldMobileNumber)
+                        if (!isNewMobileNumberSameAsOldMobileNumber)
                         {
                             response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
                             await PopToRootPage();
                         }
                         else
                         {
-                          await  ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
+                            await ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
                         }
-                    
+
                     }
                     else
                     {
@@ -207,9 +236,24 @@ namespace GAZT.ViewModel.NewViewModel
         {
             TaxPayerProfile = App.TP;
             CurrentMobile = TaxPayerProfile.Mobile;
-         
+            SetNewMobileNumberLayoutVisibility();
         }
 
+        private void SetNewMobileNumberLayoutVisibility()
+        {
+            if(App.IsArabic)
+            {
+                NewMobileNumberArabicLayout = true;
+                NewMobileNumberEnglishLayout = false;
+            }
+            else
+            {
+                NewMobileNumberEnglishLayout = true;
+                NewMobileNumberArabicLayout = false;
+            }
+       }
+
+       
         public bool IsValidMobileNumber(string mobileNumber)
         {
             if (!string.IsNullOrEmpty(mobileNumber) && mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)

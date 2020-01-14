@@ -156,7 +156,7 @@ namespace GAZT.Manager
                 }
                 else if (string.Equals(ex.Message, "User account locked"))
                 {
-                    throw new Exception(AppResources.ZAccountLocked);
+                    throw new Exception(AppResources.UserAccountLocked);
                 }
                 else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
                 {

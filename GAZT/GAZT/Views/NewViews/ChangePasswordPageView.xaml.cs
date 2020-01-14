@@ -48,6 +48,7 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Page pg = Navigation.NavigationStack[index];

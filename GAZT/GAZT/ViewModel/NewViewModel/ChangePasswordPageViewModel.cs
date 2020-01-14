@@ -472,6 +472,8 @@ namespace GAZT
             CurrentPassword = String.Empty;
             OldEmail = TaxPayerProfile.Email;
             NewEmail = TaxPayerProfile.NewEmail;
+            NewPasswordForEmail = string.Empty;
+            RetypePasswordForEmail = string.Empty;
             IsEnabledNewPasswordForEmail = true;
             IsEnabledRetypePasswordForEmail = true;
         }
