@@ -814,17 +814,49 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZSalesDetails" xml:space="preserve">
     <value>Sales Details</value>
   </data>
+  <data name="ZClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ZCRNo" xml:space="preserve">
+    <value>CRNo</value>
+  </data>
+  <data name="ZLastUpdate" xml:space="preserve">
+    <value>Last Update</value>
+  </data>
+  <data name="ZShowlessdetails" xml:space="preserve">
+    <value>Show less details</value>
+  </data>
+  <data name="ZShowmoredetails" xml:space="preserve">
+    <value>Show more details</value>
+  </data>
+  <data name="ZTINStatus" xml:space="preserve">
+    <value>TIN Status</value>
+  </data>
    <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
     <value>The new email must not match the existing email</value>
   </data>
   <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
     <value>The new mobile number must  match the existing mobile number</value>
   </data>
-   <data name="ZZInternetConnectionMessage" xml:space="preserve">
-    <value>No internet connection</value>
-  </data>  
-   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
-    <value>Password is locked.Invalid attempts</value>
+  <data name="ZICR" xml:space="preserve">
+    <value>ICR</value>
   </data>
- 
+  <data name="ZNoICRAvailable" xml:space="preserve">
+    <value>No ICRs available</value>
+  </data>
+  <data name="ZReturnPeriod" xml:space="preserve">
+    <value>Return period</value>
+  </data>
+  <data name="ZTaxPeriod" xml:space="preserve">
+    <value>Tax period</value>
+  </data>
+  <data name="ZVATReturnForm" xml:space="preserve">
+    <value>VAT return form</value>
+  </data>
+  <data name="ZSelectICRStatus" xml:space="preserve">
+    <value>Select ICR status</value>
+  </data>
+   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+    <value>Password is locked. Invalid attempts</value>
+  </data>
 </root>

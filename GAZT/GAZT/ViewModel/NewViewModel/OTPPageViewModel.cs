@@ -497,7 +497,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         EmailOrMobileNumber = AppResources.Email;
                         bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
-                        if(response)
+                        await PopToRootPage();
+                        if (response)
                         {
                             bool IsNavigatingFromLogin = true;
                             ButtonDisableColor = Color.FromHex("#9EA4A9");

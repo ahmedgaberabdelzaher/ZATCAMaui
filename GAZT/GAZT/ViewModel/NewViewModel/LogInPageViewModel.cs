@@ -319,7 +319,7 @@ namespace GAZT.ViewModel
                     }
                     else
                     {
-                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
+                       // await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
                     }
                 }
               

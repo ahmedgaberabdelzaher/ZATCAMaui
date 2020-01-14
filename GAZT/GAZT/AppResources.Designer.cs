@@ -1439,6 +1439,42 @@ namespace GAZT {
             }
         }
         
+        public static string ZClose {
+            get {
+                return ResourceManager.GetString("ZClose", resourceCulture);
+            }
+        }
+        
+        public static string ZCRNo {
+            get {
+                return ResourceManager.GetString("ZCRNo", resourceCulture);
+            }
+        }
+        
+        public static string ZLastUpdate {
+            get {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
+            }
+        }
+        
+        public static string ZShowlessdetails {
+            get {
+                return ResourceManager.GetString("ZShowlessdetails", resourceCulture);
+            }
+        }
+        
+        public static string ZShowmoredetails {
+            get {
+                return ResourceManager.GetString("ZShowmoredetails", resourceCulture);
+            }
+        }
+        
+        public static string ZTINStatus {
+            get {
+                return ResourceManager.GetString("ZTINStatus", resourceCulture);
+            }
+        }
+        
         public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
             get {
                 return ResourceManager.GetString("ZZTheNewEmailMustNotMatchtheexistingEmail", resourceCulture);
@@ -1451,9 +1487,39 @@ namespace GAZT {
             }
         }
         
-        public static string ZZInternetConnectionMessage {
+        public static string ZICR {
             get {
-                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+                return ResourceManager.GetString("ZICR", resourceCulture);
+            }
+        }
+        
+        public static string ZNoICRAvailable {
+            get {
+                return ResourceManager.GetString("ZNoICRAvailable", resourceCulture);
+            }
+        }
+        
+        public static string ZReturnPeriod {
+            get {
+                return ResourceManager.GetString("ZReturnPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZTaxPeriod {
+            get {
+                return ResourceManager.GetString("ZTaxPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZVATReturnForm {
+            get {
+                return ResourceManager.GetString("ZVATReturnForm", resourceCulture);
+            }
+        }
+        
+        public static string ZSelectICRStatus {
+            get {
+                return ResourceManager.GetString("ZSelectICRStatus", resourceCulture);
             }
         }
         

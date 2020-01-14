@@ -8,1459 +8,1951 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GAZT {
+namespace GAZT
+{
     using System;
     using System.Reflection;
-    
-    
+
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppResources_ar {
-        
+    public class AppResources_ar
+    {
+
         private static System.Resources.ResourceManager resourceMan;
-        
+
         private static System.Globalization.CultureInfo resourceCulture;
-        
+
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources_ar() {
+        internal AppResources_ar()
+        {
         }
-        
+
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.Equals(null, resourceMan)) {
+        public static System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.Equals(null, resourceMan))
+                {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("GAZT.AppResources.ar", typeof(AppResources_ar).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Globalization.CultureInfo Culture {
-            get {
+        public static System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
-        public static string Alerts {
-            get {
+
+        public static string Alerts
+        {
+            get
+            {
                 return ResourceManager.GetString("Alerts", resourceCulture);
             }
         }
-        
-        public static string AmendReturn {
-            get {
+
+        public static string AmendReturn
+        {
+            get
+            {
                 return ResourceManager.GetString("AmendReturn", resourceCulture);
             }
         }
-        
-        public static string AmountDetailsAndSADADNumberPayment {
-            get {
+
+        public static string AmountDetailsAndSADADNumberPayment
+        {
+            get
+            {
                 return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
             }
         }
-        
-        public static string AmountNotObjected {
-            get {
+
+        public static string AmountNotObjected
+        {
+            get
+            {
                 return ResourceManager.GetString("AmountNotObjected", resourceCulture);
             }
         }
-        
-        public static string Attachment {
-            get {
+
+        public static string Attachment
+        {
+            get
+            {
                 return ResourceManager.GetString("Attachment", resourceCulture);
             }
         }
-        
-        public static string Attachments {
-            get {
+
+        public static string Attachments
+        {
+            get
+            {
                 return ResourceManager.GetString("Attachments", resourceCulture);
             }
         }
-        
-        public static string Auditing {
-            get {
+
+        public static string Auditing
+        {
+            get
+            {
                 return ResourceManager.GetString("Auditing", resourceCulture);
             }
         }
-        
-        public static string Verify {
-            get {
+
+        public static string Verify
+        {
+            get
+            {
                 return ResourceManager.GetString("Verify", resourceCulture);
             }
         }
-        
-        public static string AverageNumOfEmployment {
-            get {
+
+        public static string AverageNumOfEmployment
+        {
+            get
+            {
                 return ResourceManager.GetString("AverageNumOfEmployment", resourceCulture);
             }
         }
-        
-        public static string Back {
-            get {
+
+        public static string Back
+        {
+            get
+            {
                 return ResourceManager.GetString("Back", resourceCulture);
             }
         }
-        
-        public static string Bill {
-            get {
+
+        public static string Bill
+        {
+            get
+            {
                 return ResourceManager.GetString("Bill", resourceCulture);
             }
         }
-        
-        public static string BilledNumber {
-            get {
+
+        public static string BilledNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("BilledNumber", resourceCulture);
             }
         }
-        
-        public static string Capital {
-            get {
+
+        public static string Capital
+        {
+            get
+            {
                 return ResourceManager.GetString("Capital", resourceCulture);
             }
         }
-        
-        public static string Chatting {
-            get {
+
+        public static string Chatting
+        {
+            get
+            {
                 return ResourceManager.GetString("Chatting", resourceCulture);
             }
         }
-        
-        public static string ContractsToBeApproved {
-            get {
+
+        public static string ContractsToBeApproved
+        {
+            get
+            {
                 return ResourceManager.GetString("ContractsToBeApproved", resourceCulture);
             }
         }
-        
-        public static string CopiedSADADPaymentNumber {
-            get {
+
+        public static string CopiedSADADPaymentNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("CopiedSADADPaymentNumber", resourceCulture);
             }
         }
-        
-        public static string CopySADADNumber {
-            get {
+
+        public static string CopySADADNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("CopySADADNumber", resourceCulture);
             }
         }
-        
-        public static string CopySADADPaymentNumber {
-            get {
+
+        public static string CopySADADPaymentNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("CopySADADPaymentNumber", resourceCulture);
             }
         }
-        
-        public static string DataAvailableToGAZT {
-            get {
+
+        public static string DataAvailableToGAZT
+        {
+            get
+            {
                 return ResourceManager.GetString("DataAvailableToGAZT", resourceCulture);
             }
         }
-        
-        public static string Date {
-            get {
+
+        public static string Date
+        {
+            get
+            {
                 return ResourceManager.GetString("Date", resourceCulture);
             }
         }
-        
-        public static string DateHijri {
-            get {
+
+        public static string DateHijri
+        {
+            get
+            {
                 return ResourceManager.GetString("DateHijri", resourceCulture);
             }
         }
-        
-        public static string DetailsOfSADADBill {
-            get {
+
+        public static string DetailsOfSADADBill
+        {
+            get
+            {
                 return ResourceManager.GetString("DetailsOfSADADBill", resourceCulture);
             }
         }
-        
-        public static string DueAmount {
-            get {
+
+        public static string DueAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("DueAmount", resourceCulture);
             }
         }
-        
-        public static string DueDate {
-            get {
+
+        public static string DueDate
+        {
+            get
+            {
                 return ResourceManager.GetString("DueDate", resourceCulture);
             }
         }
-        
-        public static string Email {
-            get {
+
+        public static string Email
+        {
+            get
+            {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
         }
-        
-        public static string EnterVerificationCode {
-            get {
+
+        public static string EnterVerificationCode
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterVerificationCode", resourceCulture);
             }
         }
-        
-        public static string EstimateSalesForFiscalYear {
-            get {
+
+        public static string EstimateSalesForFiscalYear
+        {
+            get
+            {
                 return ResourceManager.GetString("EstimateSalesForFiscalYear", resourceCulture);
             }
         }
-        
-        public static string EstimateZakatReturn {
-            get {
+
+        public static string EstimateZakatReturn
+        {
+            get
+            {
                 return ResourceManager.GetString("EstimateZakatReturn", resourceCulture);
             }
         }
-        
-        public static string ExportValue {
-            get {
+
+        public static string ExportValue
+        {
+            get
+            {
                 return ResourceManager.GetString("ExportValue", resourceCulture);
             }
         }
-        
-        public static string FiscalYear {
-            get {
+
+        public static string FiscalYear
+        {
+            get
+            {
                 return ResourceManager.GetString("FiscalYear", resourceCulture);
             }
         }
-        
-        public static string ImportValue {
-            get {
+
+        public static string ImportValue
+        {
+            get
+            {
                 return ResourceManager.GetString("ImportValue", resourceCulture);
             }
         }
-        
-        public static string ItHasPaidNumberForCurrentFiscalYear {
-            get {
+
+        public static string ItHasPaidNumberForCurrentFiscalYear
+        {
+            get
+            {
                 return ResourceManager.GetString("ItHasPaidNumberForCurrentFiscalYear", resourceCulture);
             }
         }
-        
-        public static string LogIn {
-            get {
+
+        public static string LogIn
+        {
+            get
+            {
                 return ResourceManager.GetString("LogIn", resourceCulture);
             }
         }
-        
-        public static string MobileNumber {
-            get {
+
+        public static string MobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("MobileNumber", resourceCulture);
             }
         }
-        
-        public static string MyBills {
-            get {
+
+        public static string MyBills
+        {
+            get
+            {
                 return ResourceManager.GetString("MyBills", resourceCulture);
             }
         }
-        
-        public static string MyBillsInvoices {
-            get {
+
+        public static string MyBillsInvoices
+        {
+            get
+            {
                 return ResourceManager.GetString("MyBillsInvoices", resourceCulture);
             }
         }
-        
-        public static string MyCertificate {
-            get {
+
+        public static string MyCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("MyCertificate", resourceCulture);
             }
         }
-        
-        public static string Name {
-            get {
+
+        public static string Name
+        {
+            get
+            {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
         }
-        
-        public static string NewEmail {
-            get {
+
+        public static string NewEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("NewEmail", resourceCulture);
             }
         }
-        
-        public static string NewMobileNumber {
-            get {
+
+        public static string NewMobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("NewMobileNumber", resourceCulture);
             }
         }
-        
-        public static string NewPassword {
-            get {
+
+        public static string NewPassword
+        {
+            get
+            {
                 return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
-        
-        public static string OverdueReturn {
-            get {
+
+        public static string OverdueReturn
+        {
+            get
+            {
                 return ResourceManager.GetString("OverdueReturn", resourceCulture);
             }
         }
-        
-        public static string Password {
-            get {
+
+        public static string Password
+        {
+            get
+            {
                 return ResourceManager.GetString("Password", resourceCulture);
             }
         }
-        
-        public static string PayByMADA {
-            get {
+
+        public static string PayByMADA
+        {
+            get
+            {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
             }
         }
-        
-        public static string PurchaseValue {
-            get {
+
+        public static string PurchaseValue
+        {
+            get
+            {
                 return ResourceManager.GetString("PurchaseValue", resourceCulture);
             }
         }
-        
-        public static string ReasonForChatting {
-            get {
+
+        public static string ReasonForChatting
+        {
+            get
+            {
                 return ResourceManager.GetString("ReasonForChatting", resourceCulture);
             }
         }
-        
-        public static string ReasonOfAmend {
-            get {
+
+        public static string ReasonOfAmend
+        {
+            get
+            {
                 return ResourceManager.GetString("ReasonOfAmend", resourceCulture);
             }
         }
-        
-        public static string RegistrationCertificate {
-            get {
+
+        public static string RegistrationCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("RegistrationCertificate", resourceCulture);
             }
         }
-        
-        public static string RememberMe {
-            get {
+
+        public static string RememberMe
+        {
+            get
+            {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
             }
         }
-        
-        public static string ReturnPeriod {
-            get {
+
+        public static string ReturnPeriod
+        {
+            get
+            {
                 return ResourceManager.GetString("ReturnPeriod", resourceCulture);
             }
         }
-        
-        public static string RetypePassword {
-            get {
+
+        public static string RetypePassword
+        {
+            get
+            {
                 return ResourceManager.GetString("RetypePassword", resourceCulture);
             }
         }
-        
-        public static string SADADNumber {
-            get {
+
+        public static string SADADNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("SADADNumber", resourceCulture);
             }
         }
-        
-        public static string SADADPaymentNumber {
-            get {
+
+        public static string SADADPaymentNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("SADADPaymentNumber", resourceCulture);
             }
         }
-        
-        public static string SalesDetails {
-            get {
+
+        public static string SalesDetails
+        {
+            get
+            {
                 return ResourceManager.GetString("SalesDetails", resourceCulture);
             }
         }
-        
-        public static string SalesNotSalesPoints {
-            get {
+
+        public static string SalesNotSalesPoints
+        {
+            get
+            {
                 return ResourceManager.GetString("SalesNotSalesPoints", resourceCulture);
             }
         }
-        
-        public static string Save {
-            get {
+
+        public static string Save
+        {
+            get
+            {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
         }
-        
-        public static string StartChatting {
-            get {
+
+        public static string StartChatting
+        {
+            get
+            {
                 return ResourceManager.GetString("StartChatting", resourceCulture);
             }
         }
-        
-        public static string Submit {
-            get {
+
+        public static string Submit
+        {
+            get
+            {
                 return ResourceManager.GetString("Submit", resourceCulture);
             }
         }
-        
-        public static string SubmittedReturn {
-            get {
+
+        public static string SubmittedReturn
+        {
+            get
+            {
                 return ResourceManager.GetString("SubmittedReturn", resourceCulture);
             }
         }
-        
-        public static string SummaryOfZakatCalculation {
-            get {
+
+        public static string SummaryOfZakatCalculation
+        {
+            get
+            {
                 return ResourceManager.GetString("SummaryOfZakatCalculation", resourceCulture);
             }
         }
-        
-        public static string CurrentPassword {
-            get {
+
+        public static string CurrentPassword
+        {
+            get
+            {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
-        
-        public static string RetypeEmail {
-            get {
+
+        public static string RetypeEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("RetypeEmail", resourceCulture);
             }
         }
-        
-        public static string OldEmail {
-            get {
+
+        public static string OldEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("OldEmail", resourceCulture);
             }
         }
-        
-        public static string ChangePassword {
-            get {
+
+        public static string ChangePassword
+        {
+            get
+            {
                 return ResourceManager.GetString("ChangePassword", resourceCulture);
             }
         }
-        
-        public static string TaxpayerProfile {
-            get {
+
+        public static string TaxpayerProfile
+        {
+            get
+            {
                 return ResourceManager.GetString("TaxpayerProfile", resourceCulture);
             }
         }
-        
-        public static string TIN {
-            get {
+
+        public static string TIN
+        {
+            get
+            {
                 return ResourceManager.GetString("TIN", resourceCulture);
             }
         }
-        
-        public static string TotalAmount {
-            get {
+
+        public static string TotalAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
             }
         }
-        
-        public static string TotalOfBillsUnpaid {
-            get {
+
+        public static string TotalOfBillsUnpaid
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalOfBillsUnpaid", resourceCulture);
             }
         }
-        
-        public static string TotalRequiredToBePaid {
-            get {
+
+        public static string TotalRequiredToBePaid
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalRequiredToBePaid", resourceCulture);
             }
         }
-        
-        public static string TwentyFivePercentageObjectedAmount {
-            get {
+
+        public static string TwentyFivePercentageObjectedAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("TwentyFivePercentageObjectedAmount", resourceCulture);
             }
         }
-        
-        public static string VATRegistrationCertificate {
-            get {
+
+        public static string VATRegistrationCertificate
+        {
+            get
+            {
                 return ResourceManager.GetString("VATRegistrationCertificate", resourceCulture);
             }
         }
-        
-        public static string ZakatAmount {
-            get {
+
+        public static string ZakatAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("ZakatAmount", resourceCulture);
             }
         }
-        
-        public static string ZakatBase {
-            get {
+
+        public static string ZakatBase
+        {
+            get
+            {
                 return ResourceManager.GetString("ZakatBase", resourceCulture);
             }
         }
-        
-        public static string ZakatTaxType {
-            get {
+
+        public static string ZakatTaxType
+        {
+            get
+            {
                 return ResourceManager.GetString("ZakatTaxType", resourceCulture);
             }
         }
-        
-        public static string Bills {
-            get {
+
+        public static string Bills
+        {
+            get
+            {
                 return ResourceManager.GetString("Bills", resourceCulture);
             }
         }
-        
-        public static string AmendmentsDoNotMatchText {
-            get {
+
+        public static string AmendmentsDoNotMatchText
+        {
+            get
+            {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
             }
         }
-        
-        public static string LoginSuccessful {
-            get {
+
+        public static string LoginSuccessful
+        {
+            get
+            {
                 return ResourceManager.GetString("LoginSuccessful", resourceCulture);
             }
         }
-        
-        public static string MobileNumberVerificationSuccessful {
-            get {
+
+        public static string MobileNumberVerificationSuccessful
+        {
+            get
+            {
                 return ResourceManager.GetString("MobileNumberVerificationSuccessful", resourceCulture);
             }
         }
-        
-        public static string PassWordChangedSucessfully {
-            get {
+
+        public static string PassWordChangedSucessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("PassWordChangedSucessfully", resourceCulture);
             }
         }
-        
-        public static string PdfIsNoteAvailable {
-            get {
+
+        public static string PdfIsNoteAvailable
+        {
+            get
+            {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
             }
         }
-        
-        public static string TinEmail {
-            get {
+
+        public static string TinEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("TinEmail", resourceCulture);
             }
         }
-        
-        public static string MobileNumberUpdatedSuccessfully {
-            get {
+
+        public static string MobileNumberUpdatedSuccessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
             }
         }
-        
-        public static string DetailsChangedSuccessfully {
-            get {
+
+        public static string DetailsChangedSuccessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("DetailsChangedSuccessfully", resourceCulture);
             }
         }
-        
-        public static string Emailverificationcodesentsuccessfully {
-            get {
+
+        public static string Emailverificationcodesentsuccessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("Emailverificationcodesentsuccessfully", resourceCulture);
             }
         }
-        
-        public static string InvalidEmail {
-            get {
+
+        public static string InvalidEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
-        
-        public static string LogoutConfirmationMessage {
-            get {
+
+        public static string LogoutConfirmationMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
             }
         }
-        
-        public static string NewEmailandRetypeEmailNotMatch {
-            get {
+
+        public static string NewEmailandRetypeEmailNotMatch
+        {
+            get
+            {
                 return ResourceManager.GetString("NewEmailandRetypeEmailNotMatch", resourceCulture);
             }
         }
-        
-        public static string NewPasswordandRetypePasswordNotMatch {
-            get {
+
+        public static string NewPasswordandRetypePasswordNotMatch
+        {
+            get
+            {
                 return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
             }
         }
-        
-        public static string EnterVerificationCodeForEmail {
-            get {
+
+        public static string EnterVerificationCodeForEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterVerificationCodeForEmail", resourceCulture);
             }
         }
-        
-        public static string InvalidOTP {
-            get {
+
+        public static string InvalidOTP
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidOTP", resourceCulture);
             }
         }
-        
-        public static string InvalidPassword {
-            get {
+
+        public static string InvalidPassword
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidPassword", resourceCulture);
             }
         }
-        
-        public static string EnterNewMobileNumber {
-            get {
+
+        public static string EnterNewMobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterNewMobileNumber", resourceCulture);
             }
         }
-        
-        public static string EnterValidMobileNumber {
-            get {
+
+        public static string EnterValidMobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
             }
         }
-        
-        public static string Information {
-            get {
+
+        public static string Information
+        {
+            get
+            {
                 return ResourceManager.GetString("Information", resourceCulture);
             }
         }
-        
-        public static string OkText {
-            get {
+
+        public static string OkText
+        {
+            get
+            {
                 return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
-        
-        public static string UserAuthenticationFailed {
-            get {
+
+        public static string UserAuthenticationFailed
+        {
+            get
+            {
                 return ResourceManager.GetString("UserAuthenticationFailed", resourceCulture);
             }
         }
-        
-        public static string UserDoesNotExist {
-            get {
+
+        public static string UserDoesNotExist
+        {
+            get
+            {
                 return ResourceManager.GetString("UserDoesNotExist", resourceCulture);
             }
         }
-        
-        public static string UserAccountLocked {
-            get {
+
+        public static string UserAccountLocked
+        {
+            get
+            {
                 return ResourceManager.GetString("UserAccountLocked", resourceCulture);
             }
         }
-        
-        public static string PleaseReVerify {
-            get {
+
+        public static string PleaseReVerify
+        {
+            get
+            {
                 return ResourceManager.GetString("PleaseReVerify", resourceCulture);
             }
         }
-        
-        public static string MandatoryPasswordForEmailUpdatation {
-            get {
+
+        public static string MandatoryPasswordForEmailUpdatation
+        {
+            get
+            {
                 return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
             }
         }
-        
-        public static string TINS {
-            get {
+
+        public static string TINS
+        {
+            get
+            {
                 return ResourceManager.GetString("TINS", resourceCulture);
             }
         }
-        
-        public static string NoTINsAvailable {
-            get {
+
+        public static string NoTINsAvailable
+        {
+            get
+            {
                 return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
             }
         }
-        
-        public static string NetworkConnectivityIssue {
-            get {
+
+        public static string NetworkConnectivityIssue
+        {
+            get
+            {
                 return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
             }
         }
-        
-        public static string VATCertificates {
-            get {
+
+        public static string VATCertificates
+        {
+            get
+            {
                 return ResourceManager.GetString("VATCertificates", resourceCulture);
             }
         }
-        
-        public static string ZakatCertificates {
-            get {
+
+        public static string ZakatCertificates
+        {
+            get
+            {
                 return ResourceManager.GetString("ZakatCertificates", resourceCulture);
             }
         }
-        
-        public static string ExciseCertificates {
-            get {
+
+        public static string ExciseCertificates
+        {
+            get
+            {
                 return ResourceManager.GetString("ExciseCertificates", resourceCulture);
             }
         }
-        
-        public static string Number {
-            get {
+
+        public static string Number
+        {
+            get
+            {
                 return ResourceManager.GetString("Number", resourceCulture);
             }
         }
-        
-        public static string PaymentNumber {
-            get {
+
+        public static string PaymentNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("PaymentNumber", resourceCulture);
             }
         }
-        
-        public static string Sadad {
-            get {
+
+        public static string Sadad
+        {
+            get
+            {
                 return ResourceManager.GetString("Sadad", resourceCulture);
             }
         }
-        
-        public static string SadadPaymentNumberForBills {
-            get {
+
+        public static string SadadPaymentNumberForBills
+        {
+            get
+            {
                 return ResourceManager.GetString("SadadPaymentNumberForBills", resourceCulture);
             }
         }
-        
-        public static string ZakatTaxTypeForBills {
-            get {
+
+        public static string ZakatTaxTypeForBills
+        {
+            get
+            {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
-        
-        public static string All {
-            get {
+
+        public static string All
+        {
+            get
+            {
                 return ResourceManager.GetString("All", resourceCulture);
             }
         }
-        
-        public static string Paid {
-            get {
+
+        public static string Paid
+        {
+            get
+            {
                 return ResourceManager.GetString("Paid", resourceCulture);
             }
         }
-        
-        public static string PartiallyPaid {
-            get {
+
+        public static string PartiallyPaid
+        {
+            get
+            {
                 return ResourceManager.GetString("PartiallyPaid", resourceCulture);
             }
         }
-        
-        public static string UnPaid {
-            get {
+
+        public static string UnPaid
+        {
+            get
+            {
                 return ResourceManager.GetString("UnPaid", resourceCulture);
             }
         }
-        
-        public static string ForgotPasswordORUseName {
-            get {
+
+        public static string ForgotPasswordORUseName
+        {
+            get
+            {
                 return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
             }
         }
-        
-        public static string Individual {
-            get {
+
+        public static string Individual
+        {
+            get
+            {
                 return ResourceManager.GetString("Individual", resourceCulture);
             }
         }
-        
-        public static string Company {
-            get {
+
+        public static string Company
+        {
+            get
+            {
                 return ResourceManager.GetString("Company", resourceCulture);
             }
         }
-        
-        public static string ForgotUsername {
-            get {
+
+        public static string ForgotUsername
+        {
+            get
+            {
                 return ResourceManager.GetString("ForgotUsername", resourceCulture);
             }
         }
-        
-        public static string ForgotPassword {
-            get {
+
+        public static string ForgotPassword
+        {
+            get
+            {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
             }
         }
-        
-        public static string NationaID {
-            get {
+
+        public static string NationaID
+        {
+            get
+            {
                 return ResourceManager.GetString("NationaID", resourceCulture);
             }
         }
-        
-        public static string VerificationCode {
-            get {
+
+        public static string VerificationCode
+        {
+            get
+            {
                 return ResourceManager.GetString("VerificationCode", resourceCulture);
             }
         }
-        
-        public static string SelectPasswordUserName {
-            get {
+
+        public static string SelectPasswordUserName
+        {
+            get
+            {
                 return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
             }
         }
-        
-        public static string EntityType {
-            get {
+
+        public static string EntityType
+        {
+            get
+            {
                 return ResourceManager.GetString("EntityType", resourceCulture);
             }
         }
-        
-        public static string IDNumber {
-            get {
+
+        public static string IDNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("IDNumber", resourceCulture);
             }
         }
-        
-        public static string IDType {
-            get {
+
+        public static string IDType
+        {
+            get
+            {
                 return ResourceManager.GetString("IDType", resourceCulture);
             }
         }
-        
-        public static string UserID {
-            get {
+
+        public static string UserID
+        {
+            get
+            {
                 return ResourceManager.GetString("UserID", resourceCulture);
             }
         }
-        
-        public static string CorportaeID {
-            get {
+
+        public static string CorportaeID
+        {
+            get
+            {
                 return ResourceManager.GetString("CorportaeID", resourceCulture);
             }
         }
-        
-        public static string UserName {
-            get {
+
+        public static string UserName
+        {
+            get
+            {
                 return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
-        
-        public static string ForgotPasswordOrUserName {
-            get {
+
+        public static string ForgotPasswordOrUserName
+        {
+            get
+            {
                 return ResourceManager.GetString("ForgotPasswordOrUserName", resourceCulture);
             }
         }
-        
-        public static string InvaliedCaptcha {
-            get {
+
+        public static string InvaliedCaptcha
+        {
+            get
+            {
                 return ResourceManager.GetString("InvaliedCaptcha", resourceCulture);
             }
         }
-        
-        public static string NoBillsAvailable {
-            get {
+
+        public static string NoBillsAvailable
+        {
+            get
+            {
                 return ResourceManager.GetString("NoBillsAvailable", resourceCulture);
             }
         }
-        
-        public static string ActivityIndicatorTitle {
-            get {
+
+        public static string ActivityIndicatorTitle
+        {
+            get
+            {
                 return ResourceManager.GetString("ActivityIndicatorTitle", resourceCulture);
             }
         }
-        
-        public static string Captcha {
-            get {
+
+        public static string Captcha
+        {
+            get
+            {
                 return ResourceManager.GetString("Captcha", resourceCulture);
             }
         }
-        
-        public static string EnterNewpassword {
-            get {
+
+        public static string EnterNewpassword
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterNewpassword", resourceCulture);
             }
         }
-        
-        public static string EnterConfirmpassword {
-            get {
+
+        public static string EnterConfirmpassword
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterConfirmpassword", resourceCulture);
             }
         }
-        
-        public static string EnterOTP {
-            get {
+
+        public static string EnterOTP
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterOTP", resourceCulture);
             }
         }
-        
-        public static string ResendOTP {
-            get {
+
+        public static string ResendOTP
+        {
+            get
+            {
                 return ResourceManager.GetString("ResendOTP", resourceCulture);
             }
         }
-        
-        public static string PleaseenterUsername {
-            get {
+
+        public static string PleaseenterUsername
+        {
+            get
+            {
                 return ResourceManager.GetString("PleaseenterUsername", resourceCulture);
             }
         }
-        
-        public static string enteredcaptchacodeisincorrect {
-            get {
+
+        public static string enteredcaptchacodeisincorrect
+        {
+            get
+            {
                 return ResourceManager.GetString("enteredcaptchacodeisincorrect", resourceCulture);
             }
         }
-        
-        public static string Somethingwentwrong {
-            get {
+
+        public static string Somethingwentwrong
+        {
+            get
+            {
                 return ResourceManager.GetString("Somethingwentwrong", resourceCulture);
             }
         }
-        
-        public static string Pleasechangepassword {
-            get {
+
+        public static string Pleasechangepassword
+        {
+            get
+            {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
             }
         }
-        
-        public static string Invalidverificationcodeentered {
-            get {
+
+        public static string Invalidverificationcodeentered
+        {
+            get
+            {
                 return ResourceManager.GetString("Invalidverificationcodeentered", resourceCulture);
             }
         }
-        
-        public static string PleaseenterOTP {
-            get {
+
+        public static string PleaseenterOTP
+        {
+            get
+            {
                 return ResourceManager.GetString("PleaseenterOTP", resourceCulture);
             }
         }
-        
-        public static string Usernamehasbeensenttoregisteredmobilenumber {
-            get {
+
+        public static string Usernamehasbeensenttoregisteredmobilenumber
+        {
+            get
+            {
                 return ResourceManager.GetString("Usernamehasbeensenttoregisteredmobilenumber", resourceCulture);
             }
         }
-        
-        public static string YourPasswordhasbeenChangedsuccessfully {
-            get {
+
+        public static string YourPasswordhasbeenChangedsuccessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("YourPasswordhasbeenChangedsuccessfully", resourceCulture);
             }
         }
-        
-        public static string Boththepasswordfieldsshouldmatch {
-            get {
+
+        public static string Boththepasswordfieldsshouldmatch
+        {
+            get
+            {
                 return ResourceManager.GetString("Boththepasswordfieldsshouldmatch", resourceCulture);
             }
         }
-        
-        public static string PasswordValidationMesseg {
-            get {
+
+        public static string PasswordValidationMesseg
+        {
+            get
+            {
                 return ResourceManager.GetString("PasswordValidationMesseg", resourceCulture);
             }
         }
-        
-        public static string Dashoboard {
-            get {
+
+        public static string Dashoboard
+        {
+            get
+            {
                 return ResourceManager.GetString("Dashoboard", resourceCulture);
             }
         }
-        
-        public static string Correspondance {
-            get {
+
+        public static string Correspondance
+        {
+            get
+            {
                 return ResourceManager.GetString("Correspondance", resourceCulture);
             }
         }
-        
-        public static string EServices {
-            get {
+
+        public static string EServices
+        {
+            get
+            {
                 return ResourceManager.GetString("EServices", resourceCulture);
             }
         }
-        
-        public static string EstimateZakat {
-            get {
+
+        public static string EstimateZakat
+        {
+            get
+            {
                 return ResourceManager.GetString("EstimateZakat", resourceCulture);
             }
         }
-        
-        public static string NonSubmitted {
-            get {
+
+        public static string NonSubmitted
+        {
+            get
+            {
                 return ResourceManager.GetString("NonSubmitted", resourceCulture);
             }
         }
-        
-        public static string OverDue {
-            get {
+
+        public static string OverDue
+        {
+            get
+            {
                 return ResourceManager.GetString("OverDue", resourceCulture);
             }
         }
-        
-        public static string Partial {
-            get {
+
+        public static string Partial
+        {
+            get
+            {
                 return ResourceManager.GetString("Partial", resourceCulture);
             }
         }
-        
-        public static string Returns {
-            get {
+
+        public static string Returns
+        {
+            get
+            {
                 return ResourceManager.GetString("Returns", resourceCulture);
             }
         }
-        
-        public static string Submitted {
-            get {
+
+        public static string Submitted
+        {
+            get
+            {
                 return ResourceManager.GetString("Submitted", resourceCulture);
             }
         }
-        
-        public static string VATDeclaration {
-            get {
+
+        public static string VATDeclaration
+        {
+            get
+            {
                 return ResourceManager.GetString("VATDeclaration", resourceCulture);
             }
         }
-        
-        public static string TotalPaidBillsAmount {
-            get {
+
+        public static string TotalPaidBillsAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPaidBillsAmount", resourceCulture);
             }
         }
-        
-        public static string TotalUnpaidBills {
-            get {
+
+        public static string TotalUnpaidBills
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalUnpaidBills", resourceCulture);
             }
         }
-        
-        public static string TotalUnpaidBillsAmount {
-            get {
+
+        public static string TotalUnpaidBillsAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalUnpaidBillsAmount", resourceCulture);
             }
         }
-        
-        public static string TotalPartiallyPaidBills {
-            get {
+
+        public static string TotalPartiallyPaidBills
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPartiallyPaidBills", resourceCulture);
             }
         }
-        
-        public static string TotalPartialPaidBillsAmount {
-            get {
+
+        public static string TotalPartialPaidBillsAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPartialPaidBillsAmount", resourceCulture);
             }
         }
-        
-        public static string Nodataavailable {
-            get {
+
+        public static string Nodataavailable
+        {
+            get
+            {
                 return ResourceManager.GetString("Nodataavailable", resourceCulture);
             }
         }
-        
-        public static string Entercaptcha {
-            get {
+
+        public static string Entercaptcha
+        {
+            get
+            {
                 return ResourceManager.GetString("Entercaptcha", resourceCulture);
             }
         }
-        
-        public static string EnterId {
-            get {
+
+        public static string EnterId
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterId", resourceCulture);
             }
         }
-        
-        public static string Enterusername {
-            get {
+
+        public static string Enterusername
+        {
+            get
+            {
                 return ResourceManager.GetString("Enterusername", resourceCulture);
             }
         }
-        
-        public static string ResendVerificationCode {
-            get {
+
+        public static string ResendVerificationCode
+        {
+            get
+            {
                 return ResourceManager.GetString("ResendVerificationCode", resourceCulture);
             }
         }
-        
-        public static string PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal {
-            get {
+
+        public static string PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal
+        {
+            get
+            {
                 return ResourceManager.GetString("PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal", resourceCulture);
             }
         }
-        
-        public static string TheaccountwillbelockedafterThreefailedverificationcodeattempts {
-            get {
+
+        public static string TheaccountwillbelockedafterThreefailedverificationcodeattempts
+        {
+            get
+            {
                 return ResourceManager.GetString("TheaccountwillbelockedafterThreefailedverificationcodeattempts", resourceCulture);
             }
         }
-        
-        public static string Clickhereforlogin {
-            get {
+
+        public static string Clickhereforlogin
+        {
+            get
+            {
                 return ResourceManager.GetString("Clickhereforlogin", resourceCulture);
             }
         }
-        
-        public static string Dashboard {
-            get {
+
+        public static string Dashboard
+        {
+            get
+            {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
             }
         }
-        
-        public static string VarificationCode {
-            get {
+
+        public static string VarificationCode
+        {
+            get
+            {
                 return ResourceManager.GetString("VarificationCode", resourceCulture);
             }
         }
-        
-        public static string TotalPaidReturns {
-            get {
+
+        public static string TotalPaidReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPaidReturns", resourceCulture);
             }
         }
-        
-        public static string VATLookup {
-            get {
+
+        public static string VATLookup
+        {
+            get
+            {
                 return ResourceManager.GetString("VATLookup", resourceCulture);
             }
         }
-        
-        public static string TotalSubmittedReturns {
-            get {
+
+        public static string TotalSubmittedReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalSubmittedReturns", resourceCulture);
             }
         }
-        
-        public static string TotalOverDueReturns {
-            get {
+
+        public static string TotalOverDueReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalOverDueReturns", resourceCulture);
             }
         }
-        
-        public static string TotalPaidBills {
-            get {
+
+        public static string TotalPaidBills
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPaidBills", resourceCulture);
             }
         }
-        
-        public static string TotalNonSubmittedReturns {
-            get {
+
+        public static string TotalNonSubmittedReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalNonSubmittedReturns", resourceCulture);
             }
         }
-        
-        public static string TotalNoofReturns {
-            get {
+
+        public static string TotalNoofReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalNoofReturns", resourceCulture);
             }
         }
-        
-        public static string TotalPartiallyPaidReturns {
-            get {
+
+        public static string TotalPartiallyPaidReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalPartiallyPaidReturns", resourceCulture);
             }
         }
-        
-        public static string TotalUnpaidReturns {
-            get {
+
+        public static string TotalUnpaidReturns
+        {
+            get
+            {
                 return ResourceManager.GetString("TotalUnpaidReturns", resourceCulture);
             }
         }
-        
-        public static string TheAccountwillbelockedwithinTwomin {
-            get {
+
+        public static string TheAccountwillbelockedwithinTwomin
+        {
+            get
+            {
                 return ResourceManager.GetString("TheAccountwillbelockedwithinTwomin", resourceCulture);
             }
         }
-        
-        public static string TheAccountWillBeLockedAfterThreeAttempts {
-            get {
+
+        public static string TheAccountWillBeLockedAfterThreeAttempts
+        {
+            get
+            {
                 return ResourceManager.GetString("TheAccountWillBeLockedAfterThreeAttempts", resourceCulture);
             }
         }
-        
-        public static string PasswordGuidelineText {
-            get {
+
+        public static string PasswordGuidelineText
+        {
+            get
+            {
                 return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
             }
         }
-        
-        public static string ChangeEmail {
-            get {
+
+        public static string ChangeEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("ChangeEmail", resourceCulture);
             }
         }
-        
-        public static string ChangeMobileNumber {
-            get {
+
+        public static string ChangeMobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ChangeMobileNumber", resourceCulture);
             }
         }
-        
-        public static string TaxType {
-            get {
+
+        public static string TaxType
+        {
+            get
+            {
                 return ResourceManager.GetString("TaxType", resourceCulture);
             }
         }
-        
-        public static string ZPleaseEnterAValidUserID {
-            get {
+
+        public static string ZPleaseEnterAValidUserID
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
             }
         }
-        
-        public static string ZFicalYear {
-            get {
+
+        public static string ZFicalYear
+        {
+            get
+            {
                 return ResourceManager.GetString("ZFicalYear", resourceCulture);
             }
         }
-        
-        public static string ZAccountLocked {
-            get {
+
+        public static string ZAccountLocked
+        {
+            get
+            {
                 return ResourceManager.GetString("ZAccountLocked", resourceCulture);
             }
         }
-        
-        public static string ZLogoff {
-            get {
+
+        public static string ZLogoff
+        {
+            get
+            {
                 return ResourceManager.GetString("ZLogoff", resourceCulture);
             }
         }
-        
-        public static string ZPasswordLocked {
-            get {
+
+        public static string ZPasswordLocked
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPasswordLocked", resourceCulture);
             }
         }
-        
-        public static string ZSAR {
-            get {
+
+        public static string ZSAR
+        {
+            get
+            {
                 return ResourceManager.GetString("ZSAR", resourceCulture);
             }
         }
-        
-        public static string ZTotalPaidAmount {
-            get {
+
+        public static string ZTotalPaidAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
             }
         }
-        
-        public static string ZTotalUnPaidAmount {
-            get {
+
+        public static string ZTotalUnPaidAmount
+        {
+            get
+            {
                 return ResourceManager.GetString("ZTotalUnPaidAmount", resourceCulture);
             }
         }
-        
-        public static string ZUserNotValid {
-            get {
+
+        public static string ZUserNotValid
+        {
+            get
+            {
                 return ResourceManager.GetString("ZUserNotValid", resourceCulture);
             }
         }
-        
-        public static string ZEntertherequiredfield {
-            get {
+
+        public static string ZEntertherequiredfield
+        {
+            get
+            {
                 return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
-        
-        public static string ZLogout {
-            get {
+
+        public static string ZLogout
+        {
+            get
+            {
                 return ResourceManager.GetString("ZLogout", resourceCulture);
             }
         }
-        
-        public static string ZYourSessionhasexpiredPleaseLoginagain {
-            get {
+
+        public static string ZYourSessionhasexpiredPleaseLoginagain
+        {
+            get
+            {
                 return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
             }
         }
-        
-        public static string ZError {
-            get {
+
+        public static string ZError
+        {
+            get
+            {
                 return ResourceManager.GetString("ZError", resourceCulture);
             }
         }
-        
-        public static string ZYouhaveoneremainingattemptthentheaccountwillbelocked {
-            get {
+
+        public static string ZYouhaveoneremainingattemptthentheaccountwillbelocked
+        {
+            get
+            {
                 return ResourceManager.GetString("ZYouhaveoneremainingattemptthentheaccountwillbelocked", resourceCulture);
             }
         }
-        
-        public static string ZYouraccounthasbeenlockedPleasecontactourcallcenter {
-            get {
+
+        public static string ZYouraccounthasbeenlockedPleasecontactourcallcenter
+        {
+            get
+            {
                 return ResourceManager.GetString("ZYouraccounthasbeenlockedPleasecontactourcallcenter", resourceCulture);
             }
         }
-        
-        public static string ZUserNameIncorrect {
-            get {
+
+        public static string ZUserNameIncorrect
+        {
+            get
+            {
                 return ResourceManager.GetString("ZUserNameIncorrect", resourceCulture);
             }
         }
-        
-        public static string ZSadadInvoiceNumber {
-            get {
+
+        public static string ZSadadInvoiceNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
             }
         }
-        
-        public static string Pleaseenteryourlogininformation {
-            get {
+
+        public static string Pleaseenteryourlogininformation
+        {
+            get
+            {
                 return ResourceManager.GetString("Pleaseenteryourlogininformation", resourceCulture);
             }
         }
-        
-        public static string ZNo {
-            get {
+
+        public static string ZNo
+        {
+            get
+            {
                 return ResourceManager.GetString("ZNo", resourceCulture);
             }
         }
-        
-        public static string ZYes {
-            get {
+
+        public static string ZYes
+        {
+            get
+            {
                 return ResourceManager.GetString("ZYes", resourceCulture);
             }
         }
-        
-        public static string ZEmailUpdatedSuccessfully {
-            get {
+
+        public static string ZEmailUpdatedSuccessfully
+        {
+            get
+            {
                 return ResourceManager.GetString("ZEmailUpdatedSuccessfully", resourceCulture);
             }
         }
-        
-        public static string ZCRNumber {
-            get {
+
+        public static string ZCRNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZCRNumber", resourceCulture);
             }
         }
-        
-        public static string ZCRNumberisnotequalto10 {
-            get {
+
+        public static string ZCRNumberisnotequalto10
+        {
+            get
+            {
                 return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
             }
         }
-        
-        public static string ZPleaseenterlookupnumber {
-            get {
+
+        public static string ZPleaseenterlookupnumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseenterlookupnumber", resourceCulture);
             }
         }
-        
-        public static string ZPleaseenterthecorrespondingnumber {
-            get {
+
+        public static string ZPleaseenterthecorrespondingnumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
             }
         }
-        
-        public static string ZPleaseentertheCRcomposedof10digits {
-            get {
+
+        public static string ZPleaseentertheCRcomposedof10digits
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseentertheCRcomposedof10digits", resourceCulture);
             }
         }
-        
-        public static string ZPleaseentertheVATAccountNocomposedof15digits {
-            get {
+
+        public static string ZPleaseentertheVATAccountNocomposedof15digits
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseentertheVATAccountNocomposedof15digits", resourceCulture);
             }
         }
-        
-        public static string ZPleaseselectparametertype {
-            get {
+
+        public static string ZPleaseselectparametertype
+        {
+            get
+            {
                 return ResourceManager.GetString("ZPleaseselectparametertype", resourceCulture);
             }
         }
-        
-        public static string ZSearchParameter {
-            get {
+
+        public static string ZSearchParameter
+        {
+            get
+            {
                 return ResourceManager.GetString("ZSearchParameter", resourceCulture);
             }
         }
-        
-        public static string ZVATAccountNumber {
-            get {
+
+        public static string ZVATAccountNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZVATAccountNumber", resourceCulture);
             }
         }
-        
-        public static string ZVATCerNumberisnotequalto15 {
-            get {
+
+        public static string ZVATCerNumberisnotequalto15
+        {
+            get
+            {
                 return ResourceManager.GetString("ZVATCerNumberisnotequalto15", resourceCulture);
             }
         }
-        
-        public static string ZVATCertificateNumber {
-            get {
+
+        public static string ZVATCertificateNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZVATCertificateNumber", resourceCulture);
             }
         }
-        
-        public static string ZVATLookupDialogue {
-            get {
+
+        public static string ZVATLookupDialogue
+        {
+            get
+            {
                 return ResourceManager.GetString("ZVATLookupDialogue", resourceCulture);
             }
         }
-        
-        public static string ZVATNumberisnotequalto15 {
-            get {
+
+        public static string ZVATNumberisnotequalto15
+        {
+            get
+            {
                 return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
-        
-        public static string Hi {
-            get {
+
+        public static string Hi
+        {
+            get
+            {
                 return ResourceManager.GetString("Hi", resourceCulture);
             }
         }
-        
-        public static string EnterVerificationCodeTitle {
-            get {
+
+        public static string EnterVerificationCodeTitle
+        {
+            get
+            {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
             }
         }
-        
-        public static string ZZakatReturnListing {
-            get {
+
+        public static string ZZakatReturnListing
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZakatReturnListing", resourceCulture);
             }
         }
-        
-        public static string ZZakatReturnDetails {
-            get {
+
+        public static string ZZakatReturnDetails
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZakatReturnDetails", resourceCulture);
             }
         }
-        
-        public static string ZZMandatorydatanotentered {
-            get {
+
+        public static string ZZMandatorydatanotentered
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZMandatorydatanotentered", resourceCulture);
             }
         }
-        
-        public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
-            get {
+
+        public static string ZZThenewpasswordmustnotmatchtheexistingpassword
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
         }
-        
-        public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
-            get {
+
+        public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
             }
         }
-        
-        public static string ZAmendSalesDetails {
-            get {
+
+        public static string ZAmendSalesDetails
+        {
+            get
+            {
                 return ResourceManager.GetString("ZAmendSalesDetails", resourceCulture);
             }
         }
-        
-        public static string ZBillDetails {
-            get {
+
+        public static string ZBillDetails
+        {
+            get
+            {
                 return ResourceManager.GetString("ZBillDetails", resourceCulture);
             }
         }
-        
-        public static string ZSalesDetails {
-            get {
+
+        public static string ZSalesDetails
+        {
+            get
+            {
                 return ResourceManager.GetString("ZSalesDetails", resourceCulture);
             }
         }
-        
-        public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
-            get {
+
+        public static string ZZTheNewEmailMustNotMatchtheexistingEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZTheNewEmailMustNotMatchtheexistingEmail", resourceCulture);
             }
         }
-        
-        public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
-            get {
+
+        public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber", resourceCulture);
             }
         }
-        
-        public static string ZZInternetConnectionMessage {
-            get {
+
+        public static string ZZInternetConnectionMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
             }
         }
-        
-        public static string ZZPasswordislockedInvalidattempts {
-            get {
+
+        public static string ZLastUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
+            }
+        }
+
+
+        public static string ZZPasswordislockedInvalidattempts
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
+
+      
     }
 }

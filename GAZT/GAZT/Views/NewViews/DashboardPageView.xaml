@@ -232,7 +232,7 @@
                                 </StackLayout>
 
 
-                                <!--<StackLayout Grid.Row="1" Grid.Column="0">
+                                <StackLayout Grid.Row="0" Grid.Column="2">
                                 <Image Source="ic_vatlookup.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnVATLookupClicked}" />
@@ -244,7 +244,21 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
-                            <StackLayout Grid.Row="1" Grid.Column="1">
+
+                                <StackLayout Grid.Row="1" Grid.Column="1">
+                                    <Image Source="ic_TIN_Status.png" HeightRequest="80" WidthRequest="80">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnTINStatusClicked}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="TIN Status"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnTINStatusClicked}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+
+                                <!--<StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
@@ -255,8 +269,8 @@
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>
-                            <StackLayout Grid.Row="1" Grid.Column="2">
+                            </StackLayout>-->
+                            <StackLayout Grid.Row="0" Grid.Column="2">
                                 <Image Source="ic_vat_declaration_1.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
@@ -267,7 +281,7 @@
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>-->
+                            </StackLayout>
                             <!--<StackLayout Grid.Row="2" Grid.Column="0">
                                 <Image Source="ic_tax_Evasion.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
