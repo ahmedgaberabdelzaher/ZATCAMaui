@@ -13,6 +13,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
@@ -37,7 +38,7 @@
                         <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  >
                         </Frame>
                         <StackLayout    Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5"  >
-                            <custom:GAZTBorderlessPicker Style="{StaticResource PickerStyle}"    Grid.Row="1"      FontSize="10"   IsEnabled="true" TextColor="Black"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}">
+                            <custom:GAZTBorderlessPicker Style="{StaticResource GAZTDropdownStyle}"    Grid.Row="1"        IsEnabled="true"     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}">
                                
                             </custom:GAZTBorderlessPicker>
                         </StackLayout>
@@ -92,12 +93,25 @@
                         <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 
 
-                        <Label Text="{Binding FinalResult}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Label Text="{Binding FinalResult}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"/>
 
 
                     </Grid>
                 </ScrollView>
             </Grid>
+                  <!-- Acticity indicator layout start -->
+        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!-- Acticity indicator layout end -->
+                </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -76,8 +76,8 @@ namespace GAZT.Views
             {
 
             }
-            viewModel.UserName = string.Empty;
-            viewModel.Password = string.Empty;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
             viewModel.IsVisibleTinIds = false;
 
         }

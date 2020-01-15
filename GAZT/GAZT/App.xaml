@@ -74,7 +74,6 @@
             <Style x:Key="ForgotPasswordTextColor" TargetType="Entry">
                
                  <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
-                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                  <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="Margin" Value="15,0,15,0"/>
