@@ -1808,6 +1808,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZClose {
+            get {
+                return ResourceManager.GetString("ZClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRNo.
+        /// </summary>
+        public static string ZCRNo {
+            get {
+                return ResourceManager.GetString("ZCRNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CR Number.
         /// </summary>
         public static string ZCRNumber {
@@ -1822,6 +1840,15 @@ namespace GAZT {
         public static string ZCRNumberisnotequalto10 {
             get {
                 return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declarations.
+        /// </summary>
+        public static string ZDeclaration {
+            get {
+                return ResourceManager.GetString("ZDeclaration", resourceCulture);
             }
         }
         
@@ -1867,6 +1894,15 @@ namespace GAZT {
         public static string ZICR {
             get {
                 return ResourceManager.GetString("ZICR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Update.
+        /// </summary>
+        public static string ZLastUpdate {
+            get {
+                return ResourceManager.GetString("ZLastUpdate", resourceCulture);
             }
         }
         
@@ -2024,11 +2060,38 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show less details.
+        /// </summary>
+        public static string ZShowlessdetails {
+            get {
+                return ResourceManager.GetString("ZShowlessdetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show more details.
+        /// </summary>
+        public static string ZShowmoredetails {
+            get {
+                return ResourceManager.GetString("ZShowmoredetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tax period.
         /// </summary>
         public static string ZTaxPeriod {
             get {
                 return ResourceManager.GetString("ZTaxPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN Status.
+        /// </summary>
+        public static string ZTINStatus {
+            get {
+                return ResourceManager.GetString("ZTINStatus", resourceCulture);
             }
         }
         
@@ -2177,11 +2240,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No internet connection.
+        /// </summary>
+        public static string ZZInternetConnectionMessage {
+            get {
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mandatory data not entered.
         /// </summary>
         public static string ZZMandatorydatanotentered {
             get {
                 return ResourceManager.GetString("ZZMandatorydatanotentered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is locked.Invalid attempts.
+        /// </summary>
+        public static string ZZPasswordislockedInvalidattempts {
+            get {
+                return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
         

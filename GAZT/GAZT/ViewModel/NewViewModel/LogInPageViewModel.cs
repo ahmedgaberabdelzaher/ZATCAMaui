@@ -310,7 +310,6 @@ namespace GAZT.ViewModel
 
             OnLoginButtonClicked = new Command(async () =>
             {
-                
                 if (lastTapped<DateTime.Now.AddSeconds(-4))
                 {
                     if(CrossConnectivity.Current.IsConnected)

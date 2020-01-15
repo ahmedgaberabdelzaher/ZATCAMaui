@@ -848,7 +848,28 @@
   <data name="ZTINStatus" xml:space="preserve">
     <value>حالة الرقم المميز</value>
   </data>
-   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+  <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
     <value>كلمة المرور مؤمنة. محاولات غير صالحة</value>
+  </data>
+  <data name="ZICR" xml:space="preserve">
+    <value>ICR</value>
+  </data>
+  <data name="ZNoICRAvailable" xml:space="preserve">
+    <value>No ICRs available</value>
+  </data>
+  <data name="ZReturnPeriod" xml:space="preserve">
+    <value>فترة الإقرار</value>
+  </data>
+  <data name="ZTaxPeriod" xml:space="preserve">
+    <value>الفترة الضريبية</value>
+  </data>
+  <data name="ZVATReturnForm" xml:space="preserve">
+    <value>إقرار ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZSelectICRStatus" xml:space="preserve">
+    <value>Select ICR status</value>
+  </data>
+  <data name="ZDeclaration" xml:space="preserve">
+    <value>تأكيد صحة البيانات</value>
   </data>
 </root>

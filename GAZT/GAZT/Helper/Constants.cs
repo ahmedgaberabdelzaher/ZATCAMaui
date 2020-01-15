@@ -45,7 +45,7 @@ namespace GAZT.Helper
         public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet? saml2 = disabled";
         public static string ChangePassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
 
-        public static string GetMyICRs = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_WI_SRV/ICR_HDRSet(Fbnum='',Lang='E',Gpart='',Euser='";
+        public static string GetMyICRs = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_WI_SRV/ICR_HDRSet(Fbnum='',Lang='";
 
 
 

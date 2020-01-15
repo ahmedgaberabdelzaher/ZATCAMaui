@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             Title="{x:Static local:AppResources.ZICR}"
+             Title="{x:Static local:AppResources.ZDeclaration}"
              x:Class="GAZT.Views.NewViews.ICRListPageView">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -34,16 +34,21 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Frame Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus, Mode=TwoWay}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
+
                 </Frame>
+                <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-                <custom:GAZTBorderlessPicker Style="{StaticResource GAZTDropdownStyle}" Title="{x:Static local:AppResources.ZSelectICRStatus}" IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus, Mode=TwoWay}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
-
-                <Image Grid.Row="0"  Grid.Column="6"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" />
 
 
 
-                <StackLayout Margin="10,5,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
+
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                     <ListView  x:Name="Bills" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"
@@ -63,12 +68,12 @@
                                        CornerRadius="0"
                                        
                                >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="2,2,2,2" Padding="0" >
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
                                                 <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="1*" />
-                                                        <ColumnDefinition Width="38*" />
-                                                        <ColumnDefinition Width="51*" />
+                                                        <ColumnDefinition Width="45*" />
+                                                        <ColumnDefinition Width="44*" />
                                                         <ColumnDefinition Width="3*" />
                                                         <ColumnDefinition Width="7*" />
                                                     </Grid.ColumnDefinitions>
@@ -90,7 +95,7 @@
 
                                                     <Label Text="{Binding Incotext}" 
                                                   
-                                 Margin="0,0,0,-5" 
+                                 Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -107,7 +112,7 @@
 
                                                     <Label Text="{Binding TaxPeriod}" 
                                                   
-                                  Margin="0,0,0,-5" 
+                                  Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -121,9 +126,9 @@
                                    Grid.Row="2"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding Txt50}" 
+                                                    <Label Text="{Binding FormatedDate}" 
                                                   
-                                  Margin="0,0,0,-5" 
+                                  Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -137,9 +142,9 @@
                                    Grid.Row="3"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding DueDt}" 
+                                                    <Label Text="{Binding DueDate}" 
                                                   
-                                  Margin="0,0,0,0"
+                                  Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -149,7 +154,7 @@
 
 
                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3"  Source="ic_check_circle.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                     <BoxView  
                      Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 

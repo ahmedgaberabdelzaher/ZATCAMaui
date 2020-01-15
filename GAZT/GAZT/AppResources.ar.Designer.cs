@@ -1953,6 +1953,24 @@ namespace GAZT
             }
         }
 
-      
+        public static string ZTINStatus
+        {
+            get
+            {
+                return ResourceManager.GetString("ZTINStatus", resourceCulture);
+            }
+        }
+
+        public static string ZCRNo
+        {
+            get
+            {
+                return ResourceManager.GetString("ZCRNo", resourceCulture);
+            }
+        }
+
+
+
+
     }
 }
