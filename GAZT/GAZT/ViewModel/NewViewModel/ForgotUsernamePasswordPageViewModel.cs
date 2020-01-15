@@ -951,7 +951,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     D d = new D();
                     d.__metadata = metadata;
-                    if(currentAttempts < 4)
+                    if(currentAttempts < 3)
                     {
                         d.Action = "01";
                     }

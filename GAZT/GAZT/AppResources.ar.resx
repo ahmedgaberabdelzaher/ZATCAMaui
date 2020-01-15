@@ -496,7 +496,7 @@
     <value>رقم الهوية</value>
   </data>
   <data name="IDType" xml:space="preserve">
-    <value>اسم المستخدم</value>
+    <value>نوع الـمكلف</value>
   </data>
   <data name="UserID" xml:space="preserve">
     <value>رقم الهوية</value>
