@@ -1528,5 +1528,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Declarations.
+        /// </summary>
+        public static string ZDeclaration
+        {
+            get
+            {
+                return ResourceManager.GetString("ZDeclaration", resourceCulture);
+            }
+        }
+
     }
 }
