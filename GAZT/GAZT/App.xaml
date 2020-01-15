@@ -484,7 +484,7 @@
             <Style x:Key="GAZTTextBoxStyleForEntry" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="Margin" Value="15,2,15,2"/>
+                <Setter Property="Margin" Value="15,0,15,0"/>
                 <Setter Property="FontSize" Value="Small"/>
                   <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                  <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
