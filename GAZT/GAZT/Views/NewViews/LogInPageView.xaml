@@ -67,7 +67,11 @@
 
                     <!--<Image Source="ic_password.png" Grid.Row="4" Grid.Column="0" Style="{StaticResource GAZTImageStyleForEntry}" ></Image>-->
 
-                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry Text="{Binding Password}" IsFocused="{Binding IsFocused}" IsPassword="{Binding PasswordVisibility}" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                        <custom:GAZTBorderlessEntry.Behaviors>
+                              <custom:AlphaNumericValidatorBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                    </custom:GAZTBorderlessEntry>
 
                     <Image Grid.Row="6"  Grid.Column="2"  Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                     <Image.GestureRecognizers>

@@ -231,7 +231,18 @@
                                     </Label>
                                 </StackLayout>-->
 
-
+                            <!--<StackLayout Grid.Row="1" Grid.Column="1">
+                                <Image Source="ic_vat_declaration_1.png" HeightRequest="80" WidthRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="{x:Static local:AppResources.VATDeclaration}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>-->
                                 <!--<StackLayout Grid.Row="0" Grid.Column="2">
                                 <Image Source="ic_vatlookup.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
