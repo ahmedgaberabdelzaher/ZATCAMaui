@@ -1546,5 +1546,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
             }
         }
+        
+        public static string ZInstructions {
+            get {
+                return ResourceManager.GetString("ZInstructions", resourceCulture);
+            }
+        }
+        
+        public static string ZSummary {
+            get {
+                return ResourceManager.GetString("ZSummary", resourceCulture);
+            }
+        }
+        
+        public static string ZTPDetails {
+            get {
+                return ResourceManager.GetString("ZTPDetails", resourceCulture);
+            }
+        }
     }
 }

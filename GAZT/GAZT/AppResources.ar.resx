@@ -874,5 +874,15 @@
   </data>
    <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
     <value>Please enter the corresponding number</value>
+        </data>
+  <data name="ZInstructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="ZSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+        
+  <data name="ZTPDetails" xml:space="preserve">
+    <value>TPDetails</value>
   </data>
 </root>

@@ -464,6 +464,14 @@
                 <Setter Property="Margin" Value="10,2,10,1"/>
             </Style>
 
+            <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="BorderColor" Value="#B1B1B1" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Margin" Value="10,2,10,1"/>
+            </Style>
+
             <Style x:Key="GAZTFrameStyleForButton" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="4"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
@@ -490,6 +498,17 @@
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
+
+
+            <Style x:Key="GAZTTextBoxStyleForVATReturnEditor" TargetType="Editor">
+                <Setter Property="Margin" Value="15,0,15,0"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+
 
             <Style x:Key="GAZTPickerStyle" TargetType="Picker">
                 <Setter Property="FontSize" Value="Small"/>
@@ -625,6 +644,20 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="0"/>
             </Style>
+
+
+            <Style x:Key="TabbedPageSmallMiniWhiteLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Caption"/>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+            </Style>
+
+            <Style x:Key="TabbedPageMediumMiniGoldLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Caption"/>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+            </Style>
+
 
 
             <!--<Style x:Key="GAZTButton" TargetType="Button">

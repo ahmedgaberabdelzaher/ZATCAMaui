@@ -92,8 +92,9 @@
                         </StackLayout>
                         <Button Text="Search"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 
-
-                        <Label Text="{Binding FinalResult}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"/>
+                         <Label Text="{Binding NameOrNoResultLabel}" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Start" >
+                    </Label>
+                        <Label Text="{Binding Name}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"/>
 
 
                     </Grid>
