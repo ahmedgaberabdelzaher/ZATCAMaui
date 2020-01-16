@@ -1523,22 +1523,28 @@ namespace GAZT {
             }
         }
         
+        public static string ZZInternetConnectionMessage {
+            get {
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
         public static string ZZPasswordislockedInvalidattempts {
             get {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Declarations.
-        /// </summary>
-        public static string ZDeclaration
-        {
-            get
-            {
+        
+        public static string ZDeclaration {
+            get {
                 return ResourceManager.GetString("ZDeclaration", resourceCulture);
             }
         }
-
+        
+        public static string ZZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
     }
 }

@@ -755,7 +755,7 @@
     <value>رقم السجل</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>CR Number is not equal to 10</value>
+    <value>Entered number must be 10 digit</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -779,7 +779,7 @@
     <value>VAT Account Number</value>
   </data>
   <data name="ZVATCerNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Certificate is not equal to 15</value>
+    <value>Invalid VAT number provided</value>
   </data>
   <data name="ZVATCertificateNumber" xml:space="preserve">
     <value>VAT Certificate Number</value>
@@ -788,7 +788,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Number is not equal to 15</value>
+    <value>Entered number must be 15 digit</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>مرحباً, </value>
@@ -871,5 +871,8 @@
   </data>
   <data name="ZDeclaration" xml:space="preserve">
     <value>تأكيد صحة البيانات</value>
+  </data>
+   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
+    <value>Please enter the corresponding number</value>
   </data>
 </root>

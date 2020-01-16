@@ -75,6 +75,35 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _name = "";
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        private string _nameOrNoResultLabel = "";
+        public string NameOrNoResultLabel
+        {
+            get
+            {
+                return _nameOrNoResultLabel;
+            }
+            set
+            {
+                _nameOrNoResultLabel = value;
+                RaisePropertyChanged("NameOrNoResultLabel");
+            }
+        }
+        
+
         private List<VATParameterType> _parameterTypeList;
         public List<VATParameterType> ParameterTypeList
         {
@@ -128,19 +157,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _finalResult = "";
-        public string FinalResult
-        {
-            get
-            {
-                return _finalResult;
-            }
-            set
-            {
-                _finalResult = value;
-                RaisePropertyChanged("FinalResult");
-            }
-        }
+       
 
         private string _lookupNumber = "";
         public string LookupNumber
@@ -227,7 +244,7 @@ namespace GAZT.ViewModel.NewViewModel
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATCertificateNumber}
             };
             ParameterTypeList = VATParameterList;
-            FinalResult = "";
+           
 
            
 
@@ -270,8 +287,32 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     string _language = UtilityManager.GetLanguageParameter();
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
-                   // FinalResult = vatLookUp.d.results[0].Name;
+                    if(vatLookUp.d != null)
+                    {
+                        if(string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                        {
+                            NameOrNoResultLabel = AppResources.Name;
+                            Name = vatLookUp.d.results[0].Name;
+                        }
+                        else
+                        {
+                            NameOrNoResultLabel = "";
+                            Name = "";
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                            });
+                        }
+                        
+                    }
+                    else
+                    {
+                        Name = vatLookUp.d.results[0].Name;
+                        NameOrNoResultLabel = AppResources.Nodataavailable;
+                    }
+                   
                 }
+                
                 // IsLoading = true;
             });
             await Task.Run(() =>
@@ -367,7 +408,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
-            FinalResult = AppResources.ZVATLookupDialogue;
+         
         }
     }
 }
