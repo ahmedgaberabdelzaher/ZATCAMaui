@@ -32,8 +32,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-       // private string _UserName = "3000001666";
-        private string _UserName = string.Empty;
+        // private string _UserName = "3300036062";
+         private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -376,8 +376,7 @@ namespace GAZT.ViewModel
                         {
                             response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
                             UserId = UserName;
-                            string _language = UtilityManager.GetLanguageParameter();
-                          
+                            
                          // await  WebServiceManager.GAZTGetTinStatus(_language, UserName);
 
                         }

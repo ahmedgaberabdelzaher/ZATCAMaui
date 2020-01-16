@@ -54,10 +54,10 @@ namespace GAZT.iOS.CustomRenderer
                 Control.BorderStyle = UITextBorderStyle.None;
             }
 
-            fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            //fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             //this.Control.Font = UIFont.FromName(NSBundle.MainBundle.LocalizedString("FontName", ""), (float)fontSize);
             // this.Control.Font = UIFont.SystemFontOfSize((float)fontSize);
-            fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            //fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             //if (App.IsArabic)
             //    this.Control.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
             //else

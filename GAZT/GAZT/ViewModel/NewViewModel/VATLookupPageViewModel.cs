@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,23 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
 
         public ICommand OnCaptchaRegenerateClicked { get; set; }
-
+        bool isMendatoryDataEntered = true;
         public ICommand OnSubmitClicked { get; set; }
+
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private string _parameter;
         public string Parameter
@@ -173,61 +189,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             OnSubmitClicked = new Command(async () =>
             {
-
-                if (SelectedParameterType != null)
-                {
-                    if (LookupNumber != null && LookupNumber != "")
-                    {
-                        if (SelectedParameterType.id.Equals("1"))
-                        {
-                            if (LookupNumber.Length != 15)
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
-                                return;
-                            }
-
-                        }
-                        else if (SelectedParameterType.id.Equals("2"))
-                        {
-                            if (LookupNumber.Length != 10)
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
-                                return;
-                            }
-
-                        }
-                        else if (SelectedParameterType.id.Equals("3"))
-                        {
-                            if (LookupNumber.Length != 15)
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
-                                return;
-                            }
-
-                        }
-                        bool isValiedCaptcha = ValidateCaptcha();
-                        if (!isValiedCaptcha)
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
-                        return;
-                    }
-                }
-
-                else
-                {
-                    _dialogService.ShowMessageBox(AppResources.ZPleaseenterlookupnumber, AppResources.Information);
-                    return;
-                }
-                
-                _dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
-                FinalResult = AppResources.ZVATLookupDialogue;
-
+                await OnSubmitClick();
             });
         }
 
@@ -260,13 +222,17 @@ namespace GAZT.ViewModel.NewViewModel
             Captcha = captcha.ToString();
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
-                new VATParameterType{ id = "1" , ParameterType = AppResources.ZVATAccountNumber},
+               new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZCRNumber},
-                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATCertificateNumber}
+                new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATCertificateNumber}
             };
             ParameterTypeList = VATParameterList;
             FinalResult = "";
-    }
+
+           
+
+
+        }
             
         public StringBuilder GetCaptcha()
         {
@@ -289,6 +255,119 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return Captcha;
 
+        }
+
+        private async Task OnSubmitClick()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async() =>
+            {
+             ValidateFormData();
+                if(isMendatoryDataEntered)
+                {
+                    string _language = UtilityManager.GetLanguageParameter();
+                    VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
+                   // FinalResult = vatLookUp.d.results[0].Name;
+                }
+                // IsLoading = true;
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
+
+        private void ValidateFormData()
+        {
+           
+            if (SelectedParameterType != null)
+            {
+                if (LookupNumber != null && LookupNumber != "")
+                {
+                    if (SelectedParameterType.id.Equals("3"))
+                    {
+                        if (LookupNumber.Length != 15)
+                        {
+                            Device.BeginInvokeOnMainThread( () =>
+                            {
+                                isMendatoryDataEntered = false;
+                                 _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
+                                return;
+                            });
+                           
+                        }
+
+                    }
+                    else if (SelectedParameterType.id.Equals("2"))
+                    {
+                        if (LookupNumber.Length != 10)
+                        {
+                            Device.BeginInvokeOnMainThread( () =>
+                            {
+                                isMendatoryDataEntered = false;
+                                 _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
+                                return;
+                            });
+                           
+                        }
+
+                    }
+                    else if (SelectedParameterType.id.Equals("4"))
+                    {
+                        if (LookupNumber.Length != 15)
+                        {
+                            Device.BeginInvokeOnMainThread( () =>
+                            {
+                                isMendatoryDataEntered = false;
+                                 _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                return;
+                            });
+                          
+                        }
+
+                    }
+                    bool isValiedCaptcha = ValidateCaptcha();
+                    if (!isValiedCaptcha)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            isMendatoryDataEntered = false;
+                             _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
+                            return;
+                        });
+                        
+                    }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        isMendatoryDataEntered = false;
+                        _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
+                        return;
+
+                    });
+                   
+                }
+            }
+
+            else
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    isMendatoryDataEntered = false;
+                     _dialogService.ShowMessageBox(AppResources.ZPleaseenterlookupnumber, AppResources.Information);
+                    return;
+
+                });
+               
+            }
+
+            //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
+            FinalResult = AppResources.ZVATLookupDialogue;
         }
     }
 }
