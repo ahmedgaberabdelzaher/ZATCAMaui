@@ -691,7 +691,8 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GetMyICRs +Tin+"',Fbguid='" + "',UserTin='"+"'"+ ")?&saml2=disabled"+"&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
+
+                String url = Constants.GetMyICRs +lang+"',Gpart='',Euser='" + Tin+"',Fbguid='" + "',UserTin='"+"'"+ ")?&saml2=disabled"+"&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTMyICRsResponse = await client.GetAsync(uri);

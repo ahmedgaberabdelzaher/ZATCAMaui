@@ -832,7 +832,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZTINStatus" xml:space="preserve">
     <value>TIN Status</value>
   </data>
-   <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
+  <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
     <value>The new email must not match the existing email</value>
   </data>
   <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
@@ -856,7 +856,13 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZSelectICRStatus" xml:space="preserve">
     <value>Select ICR status</value>
   </data>
-   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
-    <value>Password is locked. Invalid attempts</value>
+  <data name="ZZInternetConnectionMessage" xml:space="preserve">
+    <value>No internet connection</value>
+  </data>
+  <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
+    <value>Password is locked.Invalid attempts</value>
+  </data>
+  <data name="ZDeclaration" xml:space="preserve">
+    <value>Declarations</value>
   </data>
 </root>

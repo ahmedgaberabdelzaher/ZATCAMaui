@@ -30,6 +30,8 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             SetLTR();
             viewModel.onPageLoad();
+
+            
         }
 
         #endregion
@@ -37,13 +39,20 @@ namespace GAZT.Views.NewViews
         #region Method
         private void SetLTR()
         {
+            
+
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+            
         #endregion
 
-
+        private void onDropdownButtonClicked(object sender, EventArgs e)
+        {
+            BPicker.Focus();
+           
+        }
     }
 }

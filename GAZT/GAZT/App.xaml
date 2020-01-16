@@ -611,6 +611,7 @@
 
             <Style x:Key="GAZTDropdownStyle" TargetType="Picker">
                 <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>
                 <Setter Property="Margin" Value="15,5,15,5" />
                  <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT.Manager;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,13 +10,124 @@ namespace GAZT.Models
         public string Incotext { get; set; }//VATReturnForm
         public string Persl { get; set; }//TaxPeriodCode
         public string TaxPeriod { get; set; }//TaxPeriodDescription
-        public string Txt50 { get; set; }//ReturnPeriod
-        public string DueDt { get; set; }//DueDate
-        
-        public string Status { get; set; }//StatusCode
+
+        private string _txt50;
+        public string Txt50 {
+            get
+            {
+                return _txt50;
+            }
+            set
+            {
+                _txt50 = value;
+                if (_txt50 != null)
+                {
+                    FormatedDate=UtilityManager.dateConversion(_txt50);
+                }
+            }
+        }//ReturnPeriod
+
+        private string _formatedDate;
+        public string FormatedDate
+        {
+            get
+            {
+                return _formatedDate;
+            }
+            set
+            {
+                _formatedDate = value;
+            }
+        }
+
+        private string _dueDate;
+        public string DueDate
+        {
+            get
+            {
+                return _dueDate;
+            }
+            set
+            {
+                _dueDate = value;
+            }
+        }
+
+
+        public string _dueDT;
+        public string DueDt {
+           
+            get
+            {
+                return _dueDT;
+            }
+            set
+            {
+                _dueDT = value;
+                if (_dueDT != null)
+                {
+                    if (_dueDT.Contains("T"))
+                    {
+                        string[] _dueDate = new String[2];
+                        _dueDate = _dueDT.Split('T');
+
+                        DueDate = _dueDate[0];
+                    }
+                }
+            }
+       }//DueDate
+
+        private string _status;//StatusCode
+        public string Status {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                if(!string.IsNullOrEmpty(_status))
+                {
+                    
+                        //For Border Colour
+                        if (string.Equals(_status, "E0001") || string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
+                        {
+                            BorderColour = "#bfbebe";
+                        }
+                        else if (string.Equals(_status, "E0006") || string.Equals(_status, "E0045") || string.Equals(_status, "E0090"))
+                        {
+                            BorderColour = "#005e4b";
+                            StatusImage = "ic_Paid.png";
+                        }
+                        else if (string.Equals(_status, "E0020") || string.Equals(_status, "E0055") || string.Equals(_status, "E0057") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089"))
+                        {
+                            BorderColour = "#c49b2d";
+                            StatusImage = "ic_Check_golden.png";
+                        }
+
+                        //For Image
+                        if (string.Equals(_status, "E0001"))
+                        {
+                            StatusImage = "ic_Check_Gray.png";
+                        }
+                        else if (string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
+                        {
+                            StatusImage = "ic_save_Gray.png";
+                        }
+                        else if (string.Equals(_status, "E0057"))
+                        {
+                            StatusImage = "ic_save_golden.png";
+                        }
+
+
+                   
+                }
+            }
+     }
 
         private string _statusTxt;
-        public string StatusTxt {
+        public string StatusTxt
+        {
             get
             {
                 return _statusTxt;
@@ -23,28 +135,53 @@ namespace GAZT.Models
             set
             {
                 _statusTxt = value;
-                if(!string.IsNullOrEmpty(_statusTxt))
-                {
-                    if(string.Equals(_statusTxt, "To be filled") || string.Equals(_statusTxt, "In Draft") || string.Equals(_statusTxt, "Draft in Amendment by Taxpayer"))
-                    {
-                        BorderColour = "#bfbebe";
-                    }
-                    else if(string.Equals(_statusTxt, "Amended") || string.Equals(_statusTxt, "Billed") || string.Equals(_statusTxt, "GSTC – Escalation Completed"))
-                    {
-                        BorderColour = "#005e4b";
-                    }
-                    else if(string.Equals(_statusTxt, "In Additional Clarif. with TP")|| string.Equals(_statusTxt, "Submitted") || string.Equals(_statusTxt, "Draft in Amendment by GAZT") || string.Equals(_statusTxt, "Amendment Submitted") || string.Equals(_statusTxt, "In Supervisor's Pool") || string.Equals(_statusTxt, "For Supervisor's Review") || string.Equals(_statusTxt, "For Officer's Review") || string.Equals(_statusTxt, "GSTC – Escalation In Process"))
-                    {
-                        BorderColour = "#c49b2d";
-                    }
-                }
+
+
+                //if (!string.IsNullOrEmpty(_statusTxt))
+                //{
+                //    //For Border Colour
+                //    if (string.Equals(_statusTxt, "To be filled") || string.Equals(_statusTxt, "In Draft") || string.Equals(_statusTxt, "Draft in Amendment by Taxpayer"))
+                //    {
+                //        BorderColour = "#bfbebe";
+                //    }
+                //    else if (string.Equals(_statusTxt, "Amended") || string.Equals(_statusTxt, "Billed") || string.Equals(_statusTxt, "GSTC – Escalation Completed"))
+                //    {
+                //        BorderColour = "#005e4b";
+                //        StatusImage = "ic_Paid.png";
+                //    }
+                //    else if (string.Equals(_statusTxt, "In Additional Clarif. with TP") || string.Equals(_statusTxt, "Submitted") || string.Equals(_statusTxt, "Draft in Amendment by GAZT") || string.Equals(_statusTxt, "Amendment Submitted") || string.Equals(_statusTxt, "In Supervisor's Pool") || string.Equals(_statusTxt, "For Supervisor's Review") || string.Equals(_statusTxt, "For Officer's Review") || string.Equals(_statusTxt, "GSTC – Escalation In Process"))
+                //    {
+                //        BorderColour = "#c49b2d";
+                //        StatusImage = "ic_Check_golden.png";
+                //    }
+
+                //    //For Image
+                //    if (string.Equals(_statusTxt, "To be filled"))
+                //    {
+                //        StatusImage = "ic_Check_Gray.png";
+                //    }
+                //    else if (string.Equals(_statusTxt, "In Draft") || string.Equals(_statusTxt, "Draft in Amendment by Taxpayer"))
+                //    {
+                //        StatusImage = "ic_save_Gray.png";
+                //    }
+                //    else if (string.Equals(_statusTxt, "Draft in Amendment by GAZT"))
+                //    {
+                //        StatusImage = "ic_save_golden.png";
+                //    }
+
+
+                //}
+
+
+
             }
-        }//StatusDescription
+        }
+        //StatusDescription
 
         public string Fbguid { get; set; }//Fbguidto get information about ICR
 
         private string _borderColour;
-        public  string BorderColour
+        public string BorderColour
         {
             get
             {
@@ -53,6 +190,19 @@ namespace GAZT.Models
             set
             {
                 _borderColour = value;
+            }
+        }
+
+        private string _statusImage;
+        public string StatusImage
+        {
+            get
+            {
+                return _statusImage;
+            }
+            set
+            {
+                _statusImage = value;
             }
         }
 

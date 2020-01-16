@@ -32,8 +32,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-         private string _UserName = "3300036062";
-     //   private string _UserName = string.Empty;
+        // private string _UserName = "3300036062";
+         private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -77,9 +77,9 @@ namespace GAZT.ViewModel
         }
 
 
-        private string _Password = "Test@1234";
+        //private string _Password = "Test@1234";
 
-      //  private string _Password = string.Empty;
+        private string _Password = string.Empty;
         public string Password
         {
             get
@@ -310,7 +310,6 @@ namespace GAZT.ViewModel
 
             OnLoginButtonClicked = new Command(async () =>
             {
-                
                 if (lastTapped<DateTime.Now.AddSeconds(-4))
                 {
                     if(CrossConnectivity.Current.IsConnected)

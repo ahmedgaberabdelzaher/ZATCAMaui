@@ -222,9 +222,8 @@ namespace GAZT.ViewModel.NewViewModel
             Captcha = captcha.ToString();
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
-              
+               new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZCRNumber},
-                  new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATCertificateNumber}
             };
             ParameterTypeList = VATParameterList;
@@ -266,12 +265,12 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-            await ValidateFormData();
+             ValidateFormData();
                 if(isMendatoryDataEntered)
                 {
                     string _language = UtilityManager.GetLanguageParameter();
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
-                    FinalResult = vatLookUp.d.results[0].Name;
+                   // FinalResult = vatLookUp.d.results[0].Name;
                 }
                 // IsLoading = true;
             });
@@ -281,7 +280,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
         }
 
-        private async Task ValidateFormData()
+        private void ValidateFormData()
         {
            
             if (SelectedParameterType != null)
@@ -292,10 +291,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (LookupNumber.Length != 15)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread( () =>
                             {
                                 isMendatoryDataEntered = false;
-                                await _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
+                                 _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                 return;
                             });
                            
@@ -306,10 +305,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (LookupNumber.Length != 10)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread( () =>
                             {
                                 isMendatoryDataEntered = false;
-                                await _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
+                                 _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
                                 return;
                             });
                            
@@ -320,10 +319,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (LookupNumber.Length != 15)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread( () =>
                             {
                                 isMendatoryDataEntered = false;
-                                await _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                 _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
                                 return;
                             });
                           
@@ -333,10 +332,10 @@ namespace GAZT.ViewModel.NewViewModel
                     bool isValiedCaptcha = ValidateCaptcha();
                     if (!isValiedCaptcha)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             isMendatoryDataEntered = false;
-                            await _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
+                             _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
                             return;
                         });
                         
@@ -344,7 +343,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         isMendatoryDataEntered = false;
                         _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
@@ -357,10 +356,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             else
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     isMendatoryDataEntered = false;
-                    await _dialogService.ShowMessageBox(AppResources.ZPleaseenterlookupnumber, AppResources.Information);
+                     _dialogService.ShowMessageBox(AppResources.ZPleaseenterlookupnumber, AppResources.Information);
                     return;
 
                 });
