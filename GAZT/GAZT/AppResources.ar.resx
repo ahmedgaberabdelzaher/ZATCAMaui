@@ -872,4 +872,13 @@
   <data name="ZDeclaration" xml:space="preserve">
     <value>تأكيد صحة البيانات</value>
   </data>
+  <data name="ZInstructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="ZSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="ZTPDetails" xml:space="preserve">
+    <value>TPDetails</value>
+  </data>
 </root>

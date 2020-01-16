@@ -97,7 +97,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderer\CustomEditorRenderer.cs" />
     <Compile Include="CustomRenderer\CustomPickerRenderer.cs" />
+    <Compile Include="CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
     <Compile Include="AppDelegate.cs" />

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             FlowDirection="LeftToRight"
+             x:Class="GAZT.Views.NewViews.VATReturnsPageView">
+    <ContentPage.Content>
+
+        <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*" />
+                <RowDefinition Height="78*" />
+                <RowDefinition Height="10*" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                
+            </Grid.ColumnDefinitions>
+           
+            <StackLayout Grid.Row="1"  BackgroundColor="Yellow">
+                <ScrollView >
+                    <StackLayout HeightRequest="800" BackgroundColor="Black" >
+                        <BoxView BackgroundColor="Aqua" HeightRequest="400"></BoxView>
+                    </StackLayout>
+                    
+                    
+                </ScrollView>
+            </StackLayout>
+            <StackLayout Grid.Row="0" BackgroundColor="Red">
+
+            </StackLayout >
+            <StackLayout Grid.Row="2"  BackgroundColor="Blue">
+
+            </StackLayout>
+        </Grid>-->
+
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12*" />
+                    <RowDefinition Height="78*" />
+                    <RowDefinition Height="auto" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+
+                  
+                </Grid.ColumnDefinitions>
+             
+
+                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="False" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="90*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                            </Frame>
+                            <Label Text="{x:Static local:AppResources.ZInstructions}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+
+                            <Label Text="Kindly read the below instrunctions before completing Return Form"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+
+                             <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="1."/>
+                                        <Span Text="Please fill the requested information for each step."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+
+                              <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="2."/>
+                                        <Span Text="The application cannot be successfully submitted until all of the mandatory fields have been completed."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="3."/>
+                                        <Span Text="Taxpayers should ensure that their existing taxpayer details are complete and up to date before filling their VAT returns."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                             <Label  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="4."/>
+                                        <Span Text="Please refer to the FAQ sections before filling out the Return form."/>
+                                        <Span Text="Click here to open FAQ URL."  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+
+
+                            <CheckBox x:Name="chkDeclaration" CheckedChanged="chkDeclaration_CheckedChanged" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0"></CheckBox>
+
+
+                            <Label  Grid.Row="6" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="I declare that i have read and understood the above instrunctions."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <!--<Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="Zakat Amount" Grid.Row="3" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                            <Label Text="SAR 00000000000.00" Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information." Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+
+                            <Button Text="Copy SADAD Payment Number" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+
+                            <Button Text="Pay by MADA" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>-->
+
+
+                           
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+
+
+                <ScrollView Orientation="Vertical" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="90*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                        </Frame>
+                        <Label Text="Tax Return Details"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+
+
+                        <Label Text="Return Type"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding CurrentPassword}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                         
+                        </custom:GAZTBorderlessEntry>
+                        
+
+
+                        <Label Text="VAT Return"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="4"   Grid.Column="0"  Text="{Binding NewPasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                           
+                        </custom:GAZTBorderlessEntry>
+                       
+
+
+
+
+                        <Label Text="Return Reference Number"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            
+                        </custom:GAZTBorderlessEntry>
+
+                        <Label Text="Tax Period"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="8"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+
+                        <Label Text="Period From"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="10"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+                        <Label Text="Period To"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="12"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+
+
+                        <Frame Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                        </Frame>
+                        <Label Text="Tax Payer Information"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+
+
+                        <Label Text="TIN"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="15" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="15"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+
+                        <Label Text="VAT Account Number"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="17" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="17"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+                        <Label Text="Identification Number"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="19" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="19"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+                        <Label Text="TP Name"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="21" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="21"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEntry>
+
+
+                        <Label Text="Address"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </Label>
+                        <Frame Grid.Row="23" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEditor  Grid.Row="23"   Grid.Column="0"  Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                        </custom:GAZTBorderlessEditor>
+
+
+
+                        <CheckBox x:Name="chkClearification"  Grid.Row="24" Margin="10,0,10,0" Grid.Column="0"></CheckBox>
+
+                        <Label Text="Kindly confirm that the above information is correct before proceeding."  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="24" Grid.Column="1" Grid.ColumnSpan="2" >
+                        </Label>
+
+                        <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Kindly confirm that the above information is correct before proceeding."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label-->
+
+
+                        <Label  Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Note." FontAttributes="Bold"/>
+                                    <Span Text="In case you don't agree with above information,click on this link and confirm."/>
+                                    <Span Text="Change of registration form."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </Grid>
+
+
+
+                </ScrollView>
+
+
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"     Margin="10,10,10,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5.08*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="31*"/>
+                        </Grid.ColumnDefinitions>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZInstructions}"   Style="{DynamicResource searchBarStyleForInstructions}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+
+                            <local1:CustomLabel.GestureRecognizers>
+
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForInstructions" Command="{Binding onAllLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZTPDetails}"  Style="{DynamicResource searchBarStyleForTPDetails}" Grid.Row="0" Grid.Column="1"  >
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForTPDetails" Command="{Binding onPaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="VAT return form"  Style="{DynamicResource searchBarStyleForVATReturnForm}" Grid.Row="0" Grid.Column="2"  >
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVATReturnForm" Command="{Binding onUnpaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZSummary}"   Style="{DynamicResource searchBarStyleForSummary}" Grid.Row="0" Grid.Column="3"  Margin="5,0,5,0" VerticalTextAlignment="Start">
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForSummary" Command="{Binding onPartiallyPaidLabelClicked}" />
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
+                    </Grid>
+
+                </StackLayout>
+
+
+
+
+                <Button Text="Step 2" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Style="{StaticResource GAZTVerifyButton}"></Button>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
