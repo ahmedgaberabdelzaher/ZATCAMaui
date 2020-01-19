@@ -49,80 +49,23 @@
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Placeholder="{Binding LastUpdate}"   PlaceholderColor= "#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
 
-                        <Label Text="{Binding ShowLessOrMore}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Blue" Margin="10"  >
+                        <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnClickLessOrMore}"></TapGestureRecognizer>
                             </Label.GestureRecognizers>
-                        </Label>
+                        </custom:CustomLabel>
 
-                        <!--<StackLayout Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand">
-                            <ListView ItemsSource="{Binding ListTINStatus}"
-              HasUnevenRows="True"
-             Margin="10,0,10,0"
-              HeightRequest="150"
-              BackgroundColor="White"
-                      x:Name="ListTINStatus"
-                 IsVisible="{Binding IsVisibleListItems}"    
-               >
-                                <ListView.ItemTemplate>
-
-                                    <DataTemplate>
-                                        <ViewCell>
-
-                                            
-                                            <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
-                                                <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="1" ColumnSpacing="1">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                    
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50*"  />
-                                                        <ColumnDefinition Width="50*" />
-                                                        <ColumnDefinition Width="50*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>
-                                                    <Label Text="{Binding CRNos}" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                               TextColor="Black"
-                                      
-                               FontSize="Medium"/>
-                                                    <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1"/>
-
-                                                    --><!--<Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>--><!--
-
-                                                    <Label Text="{Binding CRStatus}" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                               TextColor="Black"
-                                      
-                               FontSize="Medium"/>
-                                                    <BoxView  
-                     Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="End" WidthRequest="1"/>
-
-                                                    --><!--<Frame Grid.Row="0" Grid.Column="2" Style="{StaticResource GAZTFrameGridStyleForEntry}" Margin="0"></Frame>--><!--
-
-                                                    <Label Text="{Binding LastUpdate}" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                               TextColor="Black"
-                                      
-                               FontSize="Medium"/>
-                                                    
-                                                </Grid>
-                                             
-                                            </StackLayout>
-
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                         </StackLayout>-->
+                     
                             <ListView  x:Name="ListTINStatus" 
            ItemsSource="{Binding ConsumerRegisteration}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                       Margin="10,0,10,0"
                                        ItemTapped="ListTINStatus_ItemTapped"
                              IsVisible="{Binding IsVisibleListItems}"    
                       Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"
-            SeparatorVisibility="Default"
+            SeparatorVisibility="None"
                                        HeightRequest="220"
             >
                                 <ListView.ItemTemplate>
@@ -134,6 +77,7 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
+                                                         <RowDefinition Height="auto"/>
                                                        
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
@@ -149,7 +93,8 @@
                                                     <Label Text="{Binding Idnumber}" Margin="10,0,10,-10"  Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <Label Text="{Binding StatusText}" Margin="10,0,10,-10"  Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <Label Text="{Binding Udate}" Margin="10,0,10,5"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
+                                                    <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#7D858D" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>-->
+                                                    <BoxView Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5" BackgroundColor="#B1B1B1" />
                                                 </Grid>
                                             </Grid>
                                         </ViewCell>
