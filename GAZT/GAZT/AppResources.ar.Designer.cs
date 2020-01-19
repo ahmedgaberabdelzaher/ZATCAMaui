@@ -1564,5 +1564,29 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTPDetails", resourceCulture);
             }
         }
+        
+        public static string ZStepOne {
+            get {
+                return ResourceManager.GetString("ZStepOne", resourceCulture);
+            }
+        }
+        
+        public static string ZStepsTitle {
+            get {
+                return ResourceManager.GetString("ZStepsTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZStepThree {
+            get {
+                return ResourceManager.GetString("ZStepThree", resourceCulture);
+            }
+        }
+        
+        public static string ZStepTwo {
+            get {
+                return ResourceManager.GetString("ZStepTwo", resourceCulture);
+            }
+        }
     }
 }
