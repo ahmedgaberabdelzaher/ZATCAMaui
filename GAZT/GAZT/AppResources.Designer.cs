@@ -1817,7 +1817,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CRNo.
+        ///   Looks up a localized string similar to CR No..
         /// </summary>
         public static string ZCRNo {
             get {
@@ -1835,11 +1835,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CR Number is not equal to 10.
+        ///   Looks up a localized string similar to Entered number must be 10 digit.
         /// </summary>
         public static string ZCRNumberisnotequalto10 {
             get {
                 return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declarations.
+        /// </summary>
+        public static string ZDeclaration {
+            get {
+                return ResourceManager.GetString("ZDeclaration", resourceCulture);
             }
         }
         
@@ -1885,6 +1894,15 @@ namespace GAZT {
         public static string ZICR {
             get {
                 return ResourceManager.GetString("ZICR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructions.
+        /// </summary>
+        public static string ZInstructions {
+            get {
+                return ResourceManager.GetString("ZInstructions", resourceCulture);
             }
         }
         
@@ -2114,6 +2132,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ZSummary {
+            get {
+                return ResourceManager.GetString("ZSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tax period.
         /// </summary>
         public static string ZTaxPeriod {
@@ -2150,6 +2177,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TPDetails.
+        /// </summary>
+        public static string ZTPDetails {
+            get {
+                return ResourceManager.GetString("ZTPDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name or password is incorrect.
         /// </summary>
         public static string ZUserNameIncorrect {
@@ -2177,7 +2213,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Certificate is not equal to 15.
+        ///   Looks up a localized string similar to Invalid VAT number provided.
         /// </summary>
         public static string ZVATCerNumberisnotequalto15 {
             get {
@@ -2204,7 +2240,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Number is not equal to 15.
+        ///   Looks up a localized string similar to Entered number must be 15 digit.
         /// </summary>
         public static string ZVATNumberisnotequalto15 {
             get {
@@ -2276,6 +2312,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No internet connection.
+        /// </summary>
+        public static string ZZInternetConnectionMessage {
+            get {
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mandatory data not entered.
         /// </summary>
         public static string ZZMandatorydatanotentered {
@@ -2285,11 +2330,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password is locked. Invalid attempts.
+        ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
             get {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the corresponding number.
+        /// </summary>
+        public static string ZZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
             }
         }
         
@@ -2320,49 +2374,12 @@ namespace GAZT {
             }
         }
         
-        public static string ZZInternetConnectionMessage {
-            get {
-                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
-            }
-        }
-        
-     
         /// <summary>
         ///   Looks up a localized string similar to The new password must not match the existing password.
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
-            }
-        }
-        
-        public static string ZDeclaration {
-            get {
-                return ResourceManager.GetString("ZDeclaration", resourceCulture);
-            }
-        }
-        
-        public static string ZZPleaseenterthecorrespondingnumber {
-            get {
-                return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
-            }
-        }
-        
-        public static string ZInstructions {
-            get {
-                return ResourceManager.GetString("ZInstructions", resourceCulture);
-            }
-        }
-        
-        public static string ZSummary {
-            get {
-                return ResourceManager.GetString("ZSummary", resourceCulture);
-            }
-        }
-        
-        public static string ZTPDetails {
-            get {
-                return ResourceManager.GetString("ZTPDetails", resourceCulture);
             }
         }
     }
