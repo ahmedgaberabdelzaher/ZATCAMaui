@@ -30,7 +30,7 @@
                           <ColumnDefinition Width="86*"/>
                                 <ColumnDefinition Width="14*"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+                        <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
                         <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}"  Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
                              <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepOne}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
@@ -39,7 +39,7 @@
                              </custom:CustomLabel>
                              <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepThree}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
-                            </StackLayout>
+                            </StackLayout>-->
 
                         <Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
                             <Label.FormattedText>
@@ -102,7 +102,7 @@
 
                             </Grid>
 
-                                                     <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
+                            <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
 
                         <!--<Button Text="{x:Static local:AppResources.ZSearch}" Clicked="OnSubmitClicked" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>-->
 
@@ -118,9 +118,9 @@
                                     </StackLayout.GestureRecognizers>
                                         </StackLayout>-->
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" VerticalTextAlignment="Center">
+                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Start" VerticalTextAlignment="Start">
                     </Label>
-                        <Label Text="{Binding Name}" HorizontalOptions="Start"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding Name}" HorizontalOptions="Start"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="StartAndExpand" VerticalTextAlignment="Start"/>
 
                         </StackLayout>
                         

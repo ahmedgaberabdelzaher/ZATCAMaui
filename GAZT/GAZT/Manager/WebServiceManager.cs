@@ -1258,23 +1258,19 @@ namespace GAZT.Manager
             TINStatus tINStatus = new TINStatus();
             string NewToken = string.Empty;
             try
-            {
-
-
-                string _language = null;
+            { string _language = null;
                 if (App.IsArabic)
                     _language = "A";
                 else
                     _language = "E";
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GetTinStatus + _language + "',Tin='" + Tin  + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-              //  client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
 
                 if (GAZTTinStatus != null)
                 {
-
                     HttpHeaders headers = GAZTTinStatus.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
