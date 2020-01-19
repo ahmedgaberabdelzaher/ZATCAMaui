@@ -33,7 +33,7 @@ namespace GAZT.Views
 
             ToolbarItem AnnonymousService = new ToolbarItem
             {
-                Icon = "ic_Paid.png",
+                Icon = "ic_checkbox.png",
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(() =>
