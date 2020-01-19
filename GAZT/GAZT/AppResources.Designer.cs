@@ -2326,7 +2326,7 @@ namespace GAZT {
             }
         }
         
-        public static string ZZPasswordislockedInvalidattempts {
+     
         /// <summary>
         ///   Looks up a localized string similar to The new password must not match the existing password.
         /// </summary>
