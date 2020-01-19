@@ -7,7 +7,7 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
             
-             Title="TIN Status"
+             Title="{x:Static local:AppResources.ZTINStatus}"
              x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
     <ContentPage.Content>
         <StackLayout>
