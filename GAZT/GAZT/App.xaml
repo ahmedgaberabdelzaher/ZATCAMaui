@@ -648,7 +648,7 @@
             <Style x:Key="GAZTSmallGreenLabelStyleForSteps" TargetType="Label">
                 <Setter Property="FontSize" Value="Micro"/>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
                 <Setter Property="Margin" Value="10,0,10,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>

@@ -133,17 +133,11 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("_selectedParameterType");
                 if (SelectedParameterType != null)
                 {
-
-                    SetLayoutVisibilityForSelectedParameterType();
+                    SetPlaceholderText();
                 }
-                else
-                {
-                }
-
-
             }
         }
-        private string _VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
+        private string _VATACCOrCRNOOrVATCER = "";// AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
         public string VATACCOrCRNOOrVATCER
         {
             get
@@ -173,25 +167,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void SetLayoutVisibilityForSelectedParameterType()
+        private void SetPlaceholderText()
         {
-            if (SelectedParameterType.id.Equals("1"))
+            if (SelectedParameterType.id.Equals("3"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
-               
+
 
             }
-            else if(SelectedParameterType.id.Equals("2"))
+            else if (SelectedParameterType.id.Equals("2"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheCRcomposedof10digits;
-                //IsTaxPayerTypeEnable = true;
-                //IsForgotPassword = false;
-                //IsForgotUserNameWithIndividual = true;
-                //IsForgotUserNameWithCorporate = false;
             }
             else
             {
-                VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
+                VATACCOrCRNOOrVATCER = AppResources.PleaseentertheVATCertificateNocomposedof15digits;
             }
 
         }
@@ -235,26 +225,27 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
-            StringBuilder captcha = GetCaptcha();
-            Captcha = captcha.ToString();
+          
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZCRNumber},
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATCertificateNumber}
             };
+
+            StringBuilder captcha = GetCaptcha();
+            Captcha = captcha.ToString();
             ParameterTypeList = VATParameterList;
            
-
-           
-
-
         }
             
         public StringBuilder GetCaptcha()
         {
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    SelectedParameterType = ParameterTypeList[0];
+            //});
             StringBuilder Captcha;
-
             try
             {
                 Random random = new Random();
@@ -282,7 +273,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-                // ValidateFormData();//isMendatoryDataEntered
+                ValidateFormData();//isMendatoryDataEntered
                 if (true)
                 {
                     string _language = UtilityManager.GetLanguageParameter();

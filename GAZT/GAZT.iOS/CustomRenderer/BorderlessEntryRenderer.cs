@@ -30,21 +30,21 @@ namespace GAZT
                 {
                     Control.TextAlignment = UITextAlignment.Left;
                 }
-                if (App.IsOTPiew)
-                {
-                    Control.TextAlignment = UITextAlignment.Center;
-                }
-                else
-                {
-                    if (App.IsArabic)
-                    {
-                        Control.TextAlignment = UITextAlignment.Right;
-                    }
-                    else
-                    {
-                        Control.TextAlignment = UITextAlignment.Left;
-                    }
-                }
+                //if (App.IsOTPiew)
+                //{
+                //    Control.TextAlignment = UITextAlignment.Center;
+                //}
+                //else
+                //{
+                //    if (App.IsArabic)
+                //    {
+                //        Control.TextAlignment = UITextAlignment.Right;
+                //    }
+                //    else
+                //    {
+                //        Control.TextAlignment = UITextAlignment.Left;
+                //    }
+                //}
                     //if (StyleId.Equals("OTPEntry"))
                     //{
                     //    Control.TextAlignment = UITextAlignment.Center;

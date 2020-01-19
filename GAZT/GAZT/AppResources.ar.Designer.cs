@@ -1588,5 +1588,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepTwo", resourceCulture);
             }
         }
+        
+        public static string PleaseentertheVATCertificateNocomposedof15digits {
+            get {
+                return ResourceManager.GetString("PleaseentertheVATCertificateNocomposedof15digits", resourceCulture);
+            }
+        }
+        
+        public static string ZSearch {
+            get {
+                return ResourceManager.GetString("ZSearch", resourceCulture);
+            }
+        }
     }
 }

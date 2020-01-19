@@ -10,8 +10,9 @@
              Title="{x:Static local:AppResources.VATLookup}"
              >
     <ContentPage.Content>
+        <ScrollView>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -29,22 +30,29 @@
                           <ColumnDefinition Width="86*"/>
                                 <ColumnDefinition Width="14*"/>
                         </Grid.ColumnDefinitions>
-
-                        <Label  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Label.FormattedText>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}"  Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                             </custom:CustomLabel>
+                             <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepOne}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                             </custom:CustomLabel>
+                             <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepTwo}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                             </custom:CustomLabel>
+                             <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepThree}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                             </custom:CustomLabel>
+                             
+                            <!--<Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" FontAttributes="Bold"/>
-                                    <Span Text="{x:Static x:Environment.NewLine}" />
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" />
+                                    <Span  />
                                     <Span Text="{x:Static local:AppResources.ZStepOne}" />
                                     <Span Text="{x:Static x:Environment.NewLine}" />
                                     <Span Text="{x:Static local:AppResources.ZStepTwo}" />
                                     <Span Text="{x:Static x:Environment.NewLine}" />
                                     <Span Text="{x:Static local:AppResources.ZStepThree}" />
-
                                 </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label Text="{x:Static local:AppResources.ZSearchParameter}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                            </Label.FormattedText>-->
+                     
+                            </StackLayout>
 
                         <Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
                             <Label.FormattedText>
@@ -66,7 +74,9 @@
 
                         <Frame  Grid.Row="2"   Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Style="{StaticResource GAZTFrameStyleForEntry}" >
                         </Frame>
-                        <custom:GAZTBorderlessPicker Style="{StaticResource GAZTDropdownStyle}"   TextColor="Black"   Grid.Row="2"    Grid.Column="0" Grid.ColumnSpan="2"     ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}"></custom:GAZTBorderlessPicker>
+                        <custom:GAZTBorderlessPicker Style="{StaticResource GAZTDropdownStyle}"     Grid.Row="2"    Grid.Column="0"     ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}" Title="{x:Static local:AppResources.ZSearchParameter}"></custom:GAZTBorderlessPicker>
+                         <Image Grid.Row="2"  Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Source="ic_dropdownOne.png"  />
+
                         <Label Text="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Frame  Grid.Row="4"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
@@ -107,11 +117,6 @@
                                 </Image>
 
                             </Grid>
-
-                      
-
-                       
-
                       
                         <Button Text="{x:Static local:AppResources.ZSearch}"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 
@@ -135,6 +140,6 @@
         </Grid>
         <!-- Acticity indicator layout end -->
                </Grid>      
-       
+       </ScrollView>
     </ContentPage.Content>
 </ContentPage>

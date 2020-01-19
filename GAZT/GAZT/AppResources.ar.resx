@@ -840,10 +840,10 @@
     <value>تاريخ اخر تعديل</value>
   </data>
   <data name="ZShowlessdetails" xml:space="preserve">
-    <value>Show less details</value>
+    <value>عرض تفاصيل أقل</value>
   </data>
   <data name="ZShowmoredetails" xml:space="preserve">
-    <value>Show more details</value>
+    <value>عرض المزيد من التفاصيل</value>
   </data>
   <data name="ZTINStatus" xml:space="preserve">
     <value>حالة الرقم المميز</value>
@@ -895,5 +895,11 @@
   </data>
   <data name="ZStepTwo" xml:space="preserve">
     <value>الخطوة 2: أدخل الرقم التسلسلي في خانة البحث</value>
+  </data>
+  <data name="PleaseentertheVATCertificateNocomposedof15digits" xml:space="preserve">
+    <value>يرجى ادخال رقم شهادة ضريبة القيمة المضافة المؤلف من 15 رقم</value>
+  </data>
+    <data name="ZSearch" xml:space="preserve">
+    <value>بحث</value>
   </data>
 </root>

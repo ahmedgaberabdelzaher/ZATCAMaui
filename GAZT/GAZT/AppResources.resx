@@ -763,6 +763,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZPleaseentertheVATAccountNocomposedof15digits" xml:space="preserve">
     <value>Please enter the VAT Account No. composed of 15 digits</value>
   </data>
+  <data name="PleaseentertheVATCertificateNocomposedof15digits" xml:space="preserve">
+    <value>Please enter the VAT Certificate No. composed of 15 digits</value>
+  </data>
   <data name="ZPleaseselectparametertype" xml:space="preserve">
     <value>Please select parameter type</value>
   </data>
@@ -818,7 +821,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Close</value>
   </data>
   <data name="ZCRNo" xml:space="preserve">
-    <value>CRNo</value>
+    <value>CR No.</value>
   </data>
   <data name="ZLastUpdate" xml:space="preserve">
     <value>Last Update</value>
@@ -865,12 +868,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZDeclaration" xml:space="preserve">
     <value>Declarations</value>
   </data>
-    
   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
     <value>Please enter the corresponding number</value>
   </data>
-  
-
   <data name="ZInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
