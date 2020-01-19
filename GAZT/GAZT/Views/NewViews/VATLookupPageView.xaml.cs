@@ -18,8 +18,8 @@ namespace GAZT.Views.NewViews
         int LanguageToolBarCount = 0;
         public VATLookupPageView()
         {
-            InitializeComponent();
             viewModel = App.Locator.VATLookupPageView;
+            InitializeComponent();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
             SetLTR();
@@ -41,6 +41,5 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        
     }
 }

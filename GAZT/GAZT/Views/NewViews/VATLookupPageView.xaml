@@ -39,19 +39,6 @@
                              </custom:CustomLabel>
                              <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepThree}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
-                             
-                            <!--<Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" />
-                                    <Span  />
-                                    <Span Text="{x:Static local:AppResources.ZStepOne}" />
-                                    <Span Text="{x:Static x:Environment.NewLine}" />
-                                    <Span Text="{x:Static local:AppResources.ZStepTwo}" />
-                                    <Span Text="{x:Static x:Environment.NewLine}" />
-                                    <Span Text="{x:Static local:AppResources.ZStepThree}" />
-                                </FormattedString>
-                            </Label.FormattedText>-->
-                     
                             </StackLayout>
 
                         <Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
@@ -106,10 +93,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
-
                                 <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" ></custom:GAZTBorderlessEntry>
-
-
                                 <Image Grid.Row="0"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
@@ -117,13 +101,29 @@
                                 </Image>
 
                             </Grid>
-                      
-                        <Button Text="{x:Static local:AppResources.ZSearch}"  x:Name="btnSearch" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Command="{Binding OnSubmitClicked}"></Button>
 
-                         <Label Text="{Binding NameOrNoResultLabel}" Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" >
+                                                     <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
+
+                        <!--<Button Text="{x:Static local:AppResources.ZSearch}" Clicked="OnSubmitClicked" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>-->
+
+                                        <!--<StackLayout custom:RoundCornersEffect.CornerRadius="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="#005e4b" HeightRequest="40"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.ZSearch}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
+                                    </custom:CustomLabel.GestureRecognizers>
+                                            </custom:CustomLabel>
+                                             <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
+                                    </StackLayout.GestureRecognizers>
+                                        </StackLayout>-->
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" VerticalTextAlignment="Center">
                     </Label>
-                        <Label Text="{Binding Name}"  x:Name="lbResult" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"/>
+                        <Label Text="{Binding Name}" HorizontalOptions="Start"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
 
+                        </StackLayout>
+                        
 
                     </Grid>
       
