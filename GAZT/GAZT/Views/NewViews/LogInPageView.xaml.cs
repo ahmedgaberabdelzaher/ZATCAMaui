@@ -30,6 +30,18 @@ namespace GAZT.Views
             this.BindingContext = viewModel;
             App.IsComingFromDashboardToLogOff = false;
            viewModel.PasswordVisibility = true;
+
+            ToolbarItem AnnonymousService = new ToolbarItem
+            {
+                Icon = "ic_Paid.png",
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(() =>
+                {
+                    viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(AnnonymousService);
             ToolbarItem toolbarItem1 = new ToolbarItem
             {
                 Icon = "ic_language.png",
@@ -55,6 +67,9 @@ namespace GAZT.Views
                 this.ToolbarItems.Add(toolbarItem1);
             }
 
+
+          
+            
         }
 
        
