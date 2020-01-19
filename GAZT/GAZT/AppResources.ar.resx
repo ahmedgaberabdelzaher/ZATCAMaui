@@ -840,10 +840,10 @@
     <value>تاريخ اخر تعديل</value>
   </data>
   <data name="ZShowlessdetails" xml:space="preserve">
-    <value>Show less details</value>
+    <value>عرض تفاصيل أقل</value>
   </data>
   <data name="ZShowmoredetails" xml:space="preserve">
-    <value>Show more details</value>
+    <value>عرض المزيد من التفاصيل</value>
   </data>
   <data name="ZTINStatus" xml:space="preserve">
     <value>حالة الرقم المميز</value>
