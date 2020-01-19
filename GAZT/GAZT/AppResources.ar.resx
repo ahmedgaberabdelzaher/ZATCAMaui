@@ -872,17 +872,28 @@
   <data name="ZDeclaration" xml:space="preserve">
     <value>تأكيد صحة البيانات</value>
   </data>
-   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
+  <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
     <value>Please enter the corresponding number</value>
-        </data>
+  </data>
   <data name="ZInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
   <data name="ZSummary" xml:space="preserve">
     <value>Summary</value>
   </data>
-        
   <data name="ZTPDetails" xml:space="preserve">
     <value>TPDetails</value>
+  </data>
+  <data name="ZStepOne" xml:space="preserve">
+    <value>الخطوة 1: حدد نوع البحث باختيار الرقم الضريبي أو رقم السجل التجاري أو رقم شهادة التسجيل بضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZStepsTitle" xml:space="preserve">
+    <value>لإجراء البحث، يجب اتباع الخطوات التالية:</value>
+  </data>
+  <data name="ZStepThree" xml:space="preserve">
+    <value>الخطوة 3: اضغط على زر "بحث" للحصول على النتائج</value>
+  </data>
+  <data name="ZStepTwo" xml:space="preserve">
+    <value>الخطوة 2: أدخل الرقم التسلسلي في خانة البحث</value>
   </data>
 </root>
