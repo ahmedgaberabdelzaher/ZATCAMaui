@@ -1268,7 +1268,7 @@ namespace GAZT.Manager
                     _language = "E";
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 String url = Constants.GetTinStatus + _language + "',Tin='" + Tin  + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-                client.DefaultRequestHeaders.Add("Token", App.Token);
+              //  client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
 

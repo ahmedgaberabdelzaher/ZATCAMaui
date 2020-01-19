@@ -245,8 +245,8 @@
                                     </Label>
                                 </StackLayout>
 
-                                <!--<StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Image Source="ic_TIN_Status.png" HeightRequest="80" WidthRequest="80">
+                                <StackLayout Grid.Row="1" Grid.Column="0">
+                                    <Image Source="ic_TIN_Status.png" Aspect="AspectFit">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnTINStatusClicked}" />
                                         </Image.GestureRecognizers>
@@ -256,7 +256,7 @@
                                             <TapGestureRecognizer Command="{Binding OnTINStatusClicked}" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                </StackLayout>-->
+                                </StackLayout>
 
                                 <!--<StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">

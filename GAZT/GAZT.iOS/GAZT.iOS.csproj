@@ -279,6 +279,7 @@
     <BundleResource Include="Resources\ic_Estimate_zakat1.png" />
     <BundleResource Include="Resources\ic_Estimate_zakat1%402x.png" />
     <BundleResource Include="Resources\ic_Estimate_zakat1%403x.png" />
+    <BundleResource Include="Resources\public.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />

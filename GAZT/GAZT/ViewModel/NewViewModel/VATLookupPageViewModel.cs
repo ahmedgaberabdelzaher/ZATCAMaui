@@ -282,8 +282,8 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-             ValidateFormData();
-                if(isMendatoryDataEntered)
+                // ValidateFormData();//isMendatoryDataEntered
+                if (true)
                 {
                     string _language = UtilityManager.GetLanguageParameter();
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
