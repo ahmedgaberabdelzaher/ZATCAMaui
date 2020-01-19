@@ -4,6 +4,8 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -43,6 +45,24 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
+                if(_selectedICRStatus!=null)
+                {
+                    if (ICRDummyList != null && ICRDummyList.Count!=0)
+                    {
+                        if (string.Equals(_selectedICRStatus.Txt30, "All"))
+                        {
+                            ICRList = ICRDummyList;
+                        }
+                        else if (string.Equals(_selectedICRStatus.Estat, "E01TP"))
+                        {
+                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") ||(x.Status== "E0013")).ToList();
+                        }
+                        else
+                        {
+                            ICRList = ICRDummyList.Where(x => x.Status == _selectedICRStatus.Estat).ToList();
+                        }
+                    }
+                }
                 RaisePropertyChanged("_selectedICRStatus");
             }
         }
@@ -60,6 +80,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ICRStatusList");
             }
         }
+
+
+        private List<ICRListSet> _iCRDummyList;
+        public List<ICRListSet> ICRDummyList
+        {
+            get
+            {
+                return _iCRDummyList;
+            }
+            set
+            {
+                _iCRDummyList = value;
+            }
+        }
+
+
 
         private List<ICRListSet> _iCRList;
         public List<ICRListSet> ICRList
@@ -128,12 +164,17 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         ICRStatusList = new List<ICRStatus>();
                         ICRStatusList = icrList.ICR_STATUSSet;
+                       
                     }
 
                     if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                     {
                         ICRList = new List<ICRListSet>();
                         ICRList = icrList.ICR_LISTSet;
+                        ICRDummyList = ICRList;
+                        SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+
+
                     }
                     else
                     {
@@ -210,6 +251,10 @@ namespace GAZT.ViewModel.NewViewModel
             //}
             //ICRList = icrList;
         }
+
+
+       
+
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)

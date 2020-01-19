@@ -57,15 +57,15 @@ namespace GAZT.Views.NewViews
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                         if (App.IsArabic)
                         {
-                                if (Device.RuntimePlatform == Device.iOS)
-                                {
+                                //if (Device.RuntimePlatform == Device.iOS)
+                                //{
                                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + lastDigits + "***" + firstDigits;
-                                }
-                                else
-                                {
-                                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                                //}
+                                //else
+                                //{
+                                //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
 
-                                }
+                                //}
                          }
                         else
                         {
@@ -105,14 +105,14 @@ namespace GAZT.Views.NewViews
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                         if (App.IsArabic)
                         {
-                            if (Device.RuntimePlatform == Device.iOS)
-                            {
+                            //if (Device.RuntimePlatform == Device.iOS)
+                            //{
                                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
-                            }
-                            else
-                            {
-                                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                            }
+                            //}
+                            //else
+                            //{
+                            //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                            //}
                         }
                         else
                         {

@@ -2320,12 +2320,49 @@ namespace GAZT {
             }
         }
         
+        public static string ZZInternetConnectionMessage {
+            get {
+                return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
+        public static string ZZPasswordislockedInvalidattempts {
         /// <summary>
         ///   Looks up a localized string similar to The new password must not match the existing password.
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
+            }
+        }
+        
+        public static string ZDeclaration {
+            get {
+                return ResourceManager.GetString("ZDeclaration", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterthecorrespondingnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        public static string ZInstructions {
+            get {
+                return ResourceManager.GetString("ZInstructions", resourceCulture);
+            }
+        }
+        
+        public static string ZSummary {
+            get {
+                return ResourceManager.GetString("ZSummary", resourceCulture);
+            }
+        }
+        
+        public static string ZTPDetails {
+            get {
+                return ResourceManager.GetString("ZTPDetails", resourceCulture);
             }
         }
     }

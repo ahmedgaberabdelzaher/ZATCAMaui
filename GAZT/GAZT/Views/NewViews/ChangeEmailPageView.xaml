@@ -33,7 +33,7 @@
                 </Label>
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
-                <custom:GAZTBorderlessEntry  Grid.Row="1" Text="{Binding OldEmail}" IsEnabled="False" Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                <custom:GAZTBorderlessEntry  Grid.Row="1" Placeholder="{Binding OldEmail}" PlaceholderColor= "#7D858D"  IsEnabled="False" Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                      <custom:GAZTBorderlessEntry.Behaviors>
                               <custom:AlphaNumericValidatorBehaviour/>
                             </custom:GAZTBorderlessEntry.Behaviors>

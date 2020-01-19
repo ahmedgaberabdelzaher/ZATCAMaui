@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -115,8 +116,67 @@ namespace GAZT.Manager
             }
 
         }
+        public static string ReverseString(string s)
+        {
+            char[] arr = s.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
+        }
+        public static string dateConversion(string Date)
+        {
+            String FullDate = string.Empty;
+            String StartDate = string.Empty;
+            String EndDate = string.Empty;
+
+            if (!string.IsNullOrEmpty(Date))
+            {
+                string[] _dueDate = new String[2];
+                _dueDate = Date.Split('-');
+
+                StartDate = _dueDate[0];
+                EndDate = _dueDate[1];
 
 
+                if (App.IsArabic)
+                {
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("ar-sa"));
+                    }
+                    if (EndDate != null)
+                    {
+                        string trimEndDate = EndDate.Trim();
+                        DateTime dateEnd = DateTime.ParseExact(trimEndDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("ar-sa"));
+                    }
+                    //StartDate = ReverseString(StartDate);
+                    //EndDate= ReverseString(EndDate);
+                    FullDate = StartDate + " , " + EndDate;
+                }
+                else
+                {
+
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                    }
+                    if (EndDate != null)
+                    {
+                        string trimEndDate = EndDate.Trim();
+                        DateTime dateEnd = DateTime.ParseExact(trimEndDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                    FullDate = StartDate + " - " + EndDate;
+
+                }
+            }
+            return FullDate;
+        }
         #endregion
     }
 }

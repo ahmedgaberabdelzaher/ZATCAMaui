@@ -49,6 +49,7 @@ namespace GAZT
             SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
             SimpleIoc.Default.Register<ICRListPageViewModel>();
             SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
+            SimpleIoc.Default.Register<VATReturnsPageViewModel>();
 
 
 
@@ -544,6 +545,22 @@ namespace GAZT
         }
 
 
+        public VATReturnsPageViewModel VATReturnsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATReturnsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
 
         private INavigationService CreateNavigationService()
@@ -584,6 +601,7 @@ namespace GAZT
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
             navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
+            navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
 
 
 

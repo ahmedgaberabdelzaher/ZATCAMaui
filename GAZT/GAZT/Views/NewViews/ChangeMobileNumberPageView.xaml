@@ -31,7 +31,7 @@
                 </Label>
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                 </Frame>
-                <custom:GAZTBorderlessEntry  Text="{Binding CurrentMobile}" IsEnabled="False"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry  Placeholder="{Binding CurrentMobile}" PlaceholderColor= "#7D858D"  IsEnabled="False"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="3" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
 
                 <Label Text="{x:Static local:AppResources.NewMobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>

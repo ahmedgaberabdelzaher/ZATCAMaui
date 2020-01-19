@@ -691,7 +691,8 @@ namespace GAZT.Manager
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GetMyICRs +Tin+"',Fbguid='" + "',UserTin='"+"'"+ ")?&saml2=disabled"+"&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
+
+                String url = Constants.GetMyICRs +lang+"',Gpart='',Euser='" + Tin+"',Fbguid='" + "',UserTin='"+"'"+ ")?&saml2=disabled"+"&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTMyICRsResponse = await client.GetAsync(uri);
@@ -1312,6 +1313,67 @@ namespace GAZT.Manager
                 }
             }
         }
+
+
+        public static async Task<VATLookUp> GAZTGetVATLookUp(string lang, string IdType, String IdNumber)
+        {
+           
+            string NewToken = string.Empty;
+            try
+            {
+                VATLookUp vATLookUp = new VATLookUp();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                //   String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
+                //String url = "http://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=disabled&sap-language='EN'&$filter=Idtype eq 4  and Idnumber eq '100192000001995'&$format=json";   
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+
+                if (GAZTVATLookUp != null)
+                {
+
+                    HttpHeaders headers = GAZTVATLookUp.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
+
+
+                    vATLookUp = JsonConvert.DeserializeObject<VATLookUp>(TINStatusResponse);
+
+
+                }
+                return vATLookUp;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
 
     }
 }

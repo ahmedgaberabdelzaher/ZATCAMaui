@@ -749,7 +749,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>CR Number</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>CR Number is not equal to 10</value>
+    <value>Entered number must be 10 digit</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -773,7 +773,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>VAT Account Number</value>
   </data>
   <data name="ZVATCerNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Certificate is not equal to 15</value>
+    <value>Invalid VAT number provided</value>
   </data>
   <data name="ZVATCertificateNumber" xml:space="preserve">
     <value>VAT Certificate Number</value>
@@ -782,7 +782,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Number is not equal to 15</value>
+    <value>Entered number must be 15 digit</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>Hi, </value>
@@ -856,8 +856,29 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZSelectICRStatus" xml:space="preserve">
     <value>Select ICR status</value>
   </data>
+  <data name="ZZInternetConnectionMessage" xml:space="preserve">
+    <value>No internet connection</value>
+  </data>
   <data name="ZZPasswordislockedInvalidattempts" xml:space="preserve">
-    <value>Password is locked. Invalid attempts</value>
+    <value>Password is locked.Invalid attempts</value>
+  </data>
+  <data name="ZDeclaration" xml:space="preserve">
+    <value>Declarations</value>
+  </data>
+    
+  <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
+    <value>Please enter the corresponding number</value>
+  </data>
+  
+
+  <data name="ZInstructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="ZSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="ZTPDetails" xml:space="preserve">
+    <value>TPDetails</value>
   </data>
   <data name="ZSearch" xml:space="preserve">
     <value>Search</value>
