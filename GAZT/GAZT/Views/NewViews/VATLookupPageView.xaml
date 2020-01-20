@@ -101,30 +101,14 @@
                                 </Image>
 
                             </Grid>
-
                             <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
 
-                        <!--<Button Text="{x:Static local:AppResources.ZSearch}" Clicked="OnSubmitClicked" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>-->
-
-                                        <!--<StackLayout custom:RoundCornersEffect.CornerRadius="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="#005e4b" HeightRequest="40"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
-
-                                            <custom:CustomLabel Text="{x:Static local:AppResources.ZSearch}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
-                                        <custom:CustomLabel.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
-                                    </custom:CustomLabel.GestureRecognizers>
-                                            </custom:CustomLabel>
-                                             <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OnSubmitClicked}" />
-                                    </StackLayout.GestureRecognizers>
-                                        </StackLayout>-->
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Start" VerticalTextAlignment="Start">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HeightRequest="50">
+                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" VerticalTextAlignment="Center">
                     </Label>
-                        <Label Text="{Binding Name}" HorizontalOptions="Start"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="StartAndExpand" VerticalTextAlignment="Start"/>
+                        <Label Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
 
                         </StackLayout>
-                        
-
                     </Grid>
       
                   <!-- Acticity indicator layout start -->

@@ -25,15 +25,11 @@ namespace GAZT.ViewModel
         public string DeviceId { get; set; }
         public int CurrentAttempt = 0;
         private DateTime lastTapped;
-
-
-
-
         #endregion
         #region Property
 
-        // private string _UserName = "3300036062";
-         private string _UserName = string.Empty;
+        private string _UserName = "3100032587";
+        // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -77,9 +73,9 @@ namespace GAZT.ViewModel
         }
 
 
-        //private string _Password = "Test@1234";
+        private string _Password = "Test@1234";
 
-        private string _Password = string.Empty;
+       // private string _Password = string.Empty;
         public string Password
         {
             get
@@ -376,9 +372,6 @@ namespace GAZT.ViewModel
                         {
                             response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
                             UserId = UserName;
-                            
-                         // await  WebServiceManager.GAZTGetTinStatus(_language, UserName);
-
                         }
                         else
                         {

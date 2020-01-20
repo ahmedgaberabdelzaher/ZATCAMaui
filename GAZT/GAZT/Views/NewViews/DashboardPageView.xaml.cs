@@ -1,4 +1,5 @@
 ﻿using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.ViewModel;
 using GAZT.Views.NewViews;
 using System;
@@ -86,9 +87,10 @@ namespace GAZT.Views
             App.IsComingFromDashboardToLogOff = true;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+          
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Page pg = Navigation.NavigationStack[index];

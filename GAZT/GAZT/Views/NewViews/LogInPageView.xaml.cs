@@ -33,7 +33,7 @@ namespace GAZT.Views
 
             ToolbarItem AnnonymousService = new ToolbarItem
             {
-                Icon = "ic_checkbox.png",
+                Icon = "ic_qr_code.png",
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(() =>
@@ -91,8 +91,8 @@ namespace GAZT.Views
             {
 
             }
-            viewModel.UserName = string.Empty;
-            viewModel.Password = string.Empty;
+            //viewModel.UserName = string.Empty;
+            //viewModel.Password = string.Empty;
             viewModel.IsVisibleTinIds = false;
 
         }
