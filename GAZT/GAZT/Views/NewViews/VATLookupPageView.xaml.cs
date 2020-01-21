@@ -18,21 +18,21 @@ namespace GAZT.Views.NewViews
         int LanguageToolBarCount = 0;
         public VATLookupPageView()
         {
-            InitializeComponent();
             viewModel = App.Locator.VATLookupPageView;
+            InitializeComponent();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
             SetLTR();
-            ToolbarItem toolbarItem1 = new ToolbarItem
-            {
+            //ToolbarItem toolbarItem1 = new ToolbarItem
+            //{
               
             
-            };
-            if (LanguageToolBarCount == 0)
-            {
-                LanguageToolBarCount = 1;
-                this.ToolbarItems.Add(toolbarItem1);
-            }
+            //};
+            //if (LanguageToolBarCount == 0)
+            //{
+            //    LanguageToolBarCount = 1;
+            //    this.ToolbarItems.Add(toolbarItem1);
+            //}
         }
         private void SetLTR()
         {
@@ -41,6 +41,5 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        
     }
 }

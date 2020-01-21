@@ -749,7 +749,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>CR Number</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>CR Number is not equal to 10</value>
+    <value>Entered number must be 10 digit</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -763,6 +763,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZPleaseentertheVATAccountNocomposedof15digits" xml:space="preserve">
     <value>Please enter the VAT Account No. composed of 15 digits</value>
   </data>
+  <data name="PleaseentertheVATCertificateNocomposedof15digits" xml:space="preserve">
+    <value>Please enter the VAT Certificate No. composed of 15 digits</value>
+  </data>
   <data name="ZPleaseselectparametertype" xml:space="preserve">
     <value>Please select parameter type</value>
   </data>
@@ -773,7 +776,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>VAT Account Number</value>
   </data>
   <data name="ZVATCerNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Certificate is not equal to 15</value>
+    <value>Invalid VAT number provided</value>
   </data>
   <data name="ZVATCertificateNumber" xml:space="preserve">
     <value>VAT Certificate Number</value>
@@ -782,7 +785,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>VAT Number is not equal to 15</value>
+    <value>Entered number must be 15 digit</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>Hi, </value>
@@ -818,7 +821,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Close</value>
   </data>
   <data name="ZCRNo" xml:space="preserve">
-    <value>CRNo</value>
+    <value>CR No.</value>
   </data>
   <data name="ZLastUpdate" xml:space="preserve">
     <value>Last Update</value>
@@ -865,6 +868,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZDeclaration" xml:space="preserve">
     <value>Declarations</value>
   </data>
+  <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
+    <value>Please enter the corresponding number</value>
+  </data>
   <data name="ZInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
@@ -873,5 +879,20 @@ amendments do not match what was calculated by the General Authority for Zakat a
   </data>
   <data name="ZTPDetails" xml:space="preserve">
     <value>TPDetails</value>
+  </data>
+  <data name="ZSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ZStepOne" xml:space="preserve">
+    <value>Step 1: Select your search parameter (VAT Account Number or CR or VAT Certificate No.)</value>
+  </data>
+  <data name="ZStepsTitle" xml:space="preserve">
+    <value>To perform the search, you should follow the 3 steps:</value>
+  </data>
+  <data name="ZStepThree" xml:space="preserve">
+    <value>Step 3: Click on “Search” button to obtain the results</value>
+  </data>
+  <data name="ZStepTwo" xml:space="preserve">
+    <value>Step 2: Enter the exact parameter number in the search field</value>
   </data>
 </root>

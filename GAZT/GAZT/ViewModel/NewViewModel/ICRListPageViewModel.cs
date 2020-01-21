@@ -81,7 +81,25 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ICRListSet _selectedICR;
+        public ICRListSet SelectedICR
+        {
+            get
+            {
+                return _selectedICR;
+            }
+            set
+            {
+                _selectedICR = value;
+                if(SelectedICR != null)
+                {
+                    GetVATAllReturns();
+                }
+                RaisePropertyChanged("SelectedICR");
+            }
+        }
 
+        
         private List<ICRListSet> _iCRDummyList;
         public List<ICRListSet> ICRDummyList
         {
@@ -155,7 +173,6 @@ namespace GAZT.ViewModel.NewViewModel
                 ICR icrList = null;
                 try
                 {
-
                     string lang = UtilityManager.GetLanguageParameter();
                     icrList = await WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
@@ -167,6 +184,10 @@ namespace GAZT.ViewModel.NewViewModel
                        
                     }
 
+                    VATDeclaration vATDeclaration = new VATDeclaration();
+                    //  vATDeclaration.
+                   // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
+                  
                     if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                     {
                         ICRList = new List<ICRListSet>();
@@ -253,7 +274,16 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-       
+       private async Task GetVATAllReturns()
+        {
+
+            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
+            if(_vATDeclaration.d != null)
+            {
+                _vATDeclaration.d.StdpurchaseAmt = "2000";
+              var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
+            }
+        }
 
         public async Task PopToRootPage()
         {
