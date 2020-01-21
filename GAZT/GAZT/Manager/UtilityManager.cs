@@ -122,6 +122,36 @@ namespace GAZT.Manager
             Array.Reverse(arr);
             return new string(arr);
         }
+
+        public static string SingleDateConversion(string Date)
+        {
+          
+            String StartDate = Date;
+
+            if (!string.IsNullOrEmpty(StartDate))
+            {
+                if (App.IsArabic)
+                {
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("ar-sa"));
+                    }
+                }
+                else
+                {
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                }
+            }
+            return StartDate;
+        }
+
         public static string dateConversion(string Date)
         {
             String FullDate = string.Empty;

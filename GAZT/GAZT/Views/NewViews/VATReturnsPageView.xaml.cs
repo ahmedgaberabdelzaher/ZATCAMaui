@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.VATReturnsPageView;
             this.BindingContext = viewModel;
+            viewModel.pageLoad();
         }
         #endregion
 
