@@ -51,7 +51,7 @@ namespace GAZT
         public static string ICRListPageView = "ICRListPageView";
         public static string CheckTINStatusPageView = "CheckTINStatusPageView";
         public static string VATReturnsPageView = "VATReturnsPageView";
-
+        public static string ZakatBillDetailsPageView = "ZakatBillDetailsPageView";
 
 
         public static TIN CurrentDropdownTIN;

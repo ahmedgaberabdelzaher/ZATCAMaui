@@ -50,6 +50,7 @@ namespace GAZT
             SimpleIoc.Default.Register<ICRListPageViewModel>();
             SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
             SimpleIoc.Default.Register<VATReturnsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatBillDetailsPageViewModel>();
 
 
 
@@ -560,7 +561,20 @@ namespace GAZT
             }
         }
 
-
+        public ZakatBillDetailsPageViewModel ZakatBillDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatBillDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
         private INavigationService CreateNavigationService()
@@ -602,6 +616,7 @@ namespace GAZT
             navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
+            navigationService.Configure(App.ZakatBillDetailsPageView, typeof(ZakatBillDetailsPageView));
 
 
 

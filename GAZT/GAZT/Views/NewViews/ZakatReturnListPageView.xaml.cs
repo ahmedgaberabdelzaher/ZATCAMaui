@@ -31,12 +31,12 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
 
-            ZakatReturns.ItemTapped += (object sender, ItemTappedEventArgs e) => {
-                // don't do anything if we just de-selected the row.
-                if (e.Item == null) return;
+            //ZakatReturns.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+            //    // don't do anything if we just de-selected the row.
+            //    if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
-            };
+            //    if (sender is ListView lv) lv.SelectedItem = null;
+            //};
 
         }
 
@@ -51,9 +51,18 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        private void onDropdownButtonClicked(object sender, EventArgs e)
+        {
+            BPicker.Focus();
+
+        }
 
         #endregion
 
-
+        private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+            return;
+        }
     }
 }

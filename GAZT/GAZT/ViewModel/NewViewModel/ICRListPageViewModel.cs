@@ -181,13 +181,13 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         ICRStatusList = new List<ICRStatus>();
                         ICRStatusList = icrList.ICR_STATUSSet;
-                       
+
                     }
 
                     VATDeclaration vATDeclaration = new VATDeclaration();
                     //  vATDeclaration.
-                   // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
-                  
+                    // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
+
                     if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                     {
                         ICRList = new List<ICRListSet>();

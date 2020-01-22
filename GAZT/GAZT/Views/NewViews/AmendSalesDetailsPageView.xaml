@@ -11,54 +11,66 @@
              FlowDirection="LeftToRight">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="10*"/>
 
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="86*"/>
-                        <ColumnDefinition Width="14*"/>
-                    </Grid.ColumnDefinitions>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="86*"/>
+                                <ColumnDefinition Width="14*"/>
+                            </Grid.ColumnDefinitions>
 
 
-                    <Label Text="Total VAT Sales" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZTotalVATSales}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
 
-                    <Label Text="New Value"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
-                    </Label>
-                    <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                    </Frame>
-                    <custom:GAZTBorderlessEntry  Grid.Row="2"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                        <custom:GAZTBorderlessEntry.Behaviors>
-                            <custom:AlphaNumericValidatorBehaviour/>
-                        </custom:GAZTBorderlessEntry.Behaviors>
-                    </custom:GAZTBorderlessEntry>
-                    <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
+                            <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+                            <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            </Frame>
+                            <custom:GAZTBorderlessEntry  Grid.Row="2"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                            <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
                         </Image.GestureRecognizers>
                     </Image>-->
 
 
-                    <Label Text="Change Reason"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
-                    </Label>
-                    <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                    </Frame>
-                    <custom:GAZTBorderlessEntry  Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                        <custom:GAZTBorderlessEntry.Behaviors>
-                            <custom:AlphaNumericValidatorBehaviour/>
-                        </custom:GAZTBorderlessEntry.Behaviors>
-                    </custom:GAZTBorderlessEntry>
-                    <!--<Image Grid.Row="3"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
+                            <Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+                            <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            </Frame>
+                            <custom:GAZTBorderlessEntry  Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                            <!--<Image Grid.Row="3"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForNewPassword" />
                         </Image.GestureRecognizers>
@@ -67,29 +79,178 @@
 
 
 
-                    <Label Text="Attachments"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
-                    </Label>
-                    <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                    </Frame>
-                    <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                      
-                    </custom:GAZTBorderlessEntry>
-                    <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
-                       
-                    </Image>
+                            <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+                            <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            </Frame>
+                            <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                            </custom:GAZTBorderlessEntry>
+                            <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
+
+                            </Image>
 
 
-                    <Button Text="Submit" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <StackLayout HorizontalOptions="FillAndExpand" IsVisible="True" VerticalOptions="FillAndExpand" Grid.Row="7"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="86*"/>
+                                            <ColumnDefinition Width="14*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+
+                                        <Label Text="File size should not be more than 5MB"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                                        <Label Text="Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt."  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+                                        <Label Text="Maximum no. of 5 attachments can be uploaded."  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
 
 
-                </Grid>
 
 
-            </ScrollView>
-            <!-- Acticity indicator layout start -->
-            <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+
+                                        <StackLayout Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                            <ListView  x:Name="Attachmentlist" 
+           ItemsSource="{Binding ZakatReturnAttachmentsList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                      ItemTapped="Attachmentlist_ItemTapped"
+            SeparatorVisibility="None"
+            >
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <ContentView>
+                                                                <Frame OutlineColor="#C9C9C9"
+                                               
+                                       Margin="0,0,0,10"
+                                       Padding="0,0,0,0"
+                                       CornerRadius="0"
+                                       
+                               >
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                                                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="8*" />
+                                                                                <ColumnDefinition Width="52*" />
+                                                                                <ColumnDefinition Width="10*" />
+                                                                                <ColumnDefinition Width="15*" />
+                                                                                <ColumnDefinition Width="15*" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+
+                                                                            </Grid.RowDefinitions>
+
+
+
+                                                                            <Label Text="{Binding Id}" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="0" 
+                                   />
+
+                                                                            <Label Text="{Binding DocumentName}" 
+                                                                       Margin="3,0,3,0"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="1" 
+                                   />
+
+                                                                            <Label  
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="2" 
+                                   >
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding Size}"/>
+                                                                                        <Span Text="MB"/>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+
+                                                                            <Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+
+                                                                            </Image>
+
+                                                                            <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+
+                                                                            </Image>
+
+
+                                                                            <!--<Label Text="1" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="3" 
+                                   />
+
+                                                                <Label Text="1" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="4" 
+                                   />-->
+
+
+
+
+
+                                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+
+
+                                                                        </Grid>
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                            </ContentView>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackLayout>
+
+
+
+
+                                    </Grid>
+                                </ScrollView>
+                            </StackLayout>
+
+
+
+
+
+                        </Grid>
+
+
+                    </ScrollView>
+                    <!-- Acticity indicator layout start -->
+                    <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -99,7 +260,13 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>-->
-            <!-- Acticity indicator layout end -->
+                    <!-- Acticity indicator layout end -->
+                </Grid>
+                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
+
+            </Grid>
+           
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -55,6 +55,9 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SalesDetailsList");
             }
         }
+
+      
+
         #endregion
 
         #region Constructor
@@ -143,6 +146,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             SalesDetailsList = SalesDetailsDummyList;
 
+          
         }
         #endregion
     }
