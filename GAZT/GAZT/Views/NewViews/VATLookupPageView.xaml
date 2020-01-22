@@ -97,7 +97,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
-                                <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" ></custom:GAZTBorderlessEntry>
+                        <Label  Grid.Row="0"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" VerticalOptions="CenterAndExpand" ></Label>
                                 <Image Grid.Row="0"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
