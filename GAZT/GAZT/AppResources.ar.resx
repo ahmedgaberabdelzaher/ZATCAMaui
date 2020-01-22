@@ -947,4 +947,237 @@
   <data name="ZReturnReferenceNumber" xml:space="preserve">
     <value>Return Reference Number</value>
   </data>
+  
+  
+   <data name="ZAmount" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="ZTaxPayerDetails" xml:space="preserve">
+    <value>TaxPayerDetails</value>
+  </data>
+  <data name="ZTaxpayerInformation" xml:space="preserve">
+    <value>نموذج الإقرار الضريبي</value>
+  </data>
+  <data name="ZTotalVat" xml:space="preserve">
+    <value>Total VAT</value>
+  </data>
+  <data name="ZVatAcknowledgment" xml:space="preserve">
+    <value>اشعار استلام</value>
+  </data>
+  <data name="ZVatAcknowledgmentHelpText" xml:space="preserve">
+    <value>للمزيد من المعلومات يرجى الاتصال بالدعم الفني - 19993
+تحتفظ الهيئة بحق إجراء مزيد من التحقيق لنموذج الإقرار الخاص بك</value>
+  </data>
+  <data name="ZVatAcknowledgmentReceiptText" xml:space="preserve">
+    <value>تم استلام الإقرار الضريبي بنجاح عن الفترة</value>
+  </data>
+  <data name="ZVatAcknowledgmentWaitingText" xml:space="preserve">
+    <value>يرجى ملاحظة بأن إقرارك الضريبي الحالي يخضع للمعالجة، ويرجى الانتظار 30 دقيقة لاستلام رقم فاتورة سداد الخاص بك</value>
+  </data>
+  <data name="ZVatAddress" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="ZVatAdjustmentWithSAR" xml:space="preserve">
+    <value>مبلغ التعديل (ريال)</value>
+  </data>
+  <data name="ZVatAmountWithSAR" xml:space="preserve">
+    <value>المبلغ (ريال)</value>
+  </data>
+  <data name="ZVatAttachmentMaxSizeNotfication" xml:space="preserve">
+    <value>يجب أن لا يزيد عدد المرفقات عن 40 ملفات.</value>
+  </data>
+  <data name="ZVatAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="ZVatAttachmentSizeNotfication" xml:space="preserve">
+    <value>يجب أن يكون حجم الملف أقل من 20 ميجا بايت.</value>
+  </data>
+  <data name="ZVatAttachmentTypeNotfication" xml:space="preserve">
+    <value>الرجاء ارفاق الملفات بصيغ Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt.</value>
+  </data>
+  <data name="ZVatCertifyInformation" xml:space="preserve">
+    <value>أقر بأن المعلومات المقدمة في هذا الإقرار على حد علمي دقيقة وصحيحة وكاملة من جميع الجوانب، وأنني الشخص المخول بملء هذا الإقرار أو أنني مخول للتوقيع بالنيابة عن ذلك الشخص، وإننى أيضا على علم بالعقوبات المغلطة الخاصة بادراج معلومات خاطئة.</value>
+  </data>
+  <data name="ZVatClickFaqInstructions" xml:space="preserve">
+    <value>انقر هنا لفتح صحفة الأسئلة الشائعة</value>
+  </data>
+  <data name="ZVatClickForMoreDetails" xml:space="preserve">
+    <value>انقر هنا للتفاصيل</value>
+  </data>
+  <data name="ZVatConfirmMessage" xml:space="preserve">
+    <value>يرجى تأكيد أن المعلومات أعلاه صحيحة قبل المواصلة</value>
+  </data>
+  <data name="ZVatCorrectionsfrompreviousperiod" xml:space="preserve">
+    <value>تصحيحات من الفترات السابقة (بين ± 5000.00 ريال)</value>
+  </data>
+  <data name="ZVatcreditcarriedforward" xml:space="preserve">
+    <value>ضريبة القيمة المضافة التي تم ترحيلها من الفترة / الفترات السابقة</value>
+  </data>
+  <data name="ZVatDateInstructions" xml:space="preserve">
+    <value>يرجى التأكد بأن معلومات المكلف الحالية كاملة وحديثة قبل تقديم الإقرار الضريبي</value>
+  </data>
+  <data name="ZVatDeclarationInstructions" xml:space="preserve">
+    <value>أقر بأنني قرأت وفهمت التعليمات أعلاه</value>
+  </data>
+  <data name="ZVatDocumentNumber" xml:space="preserve">
+    <value>رقم الوثيقة</value>
+  </data>
+  <data name="ZVatDownloadAcknowledgment" xml:space="preserve">
+    <value>تحميل إشعار الاستلام</value>
+  </data>
+  <data name="ZVatDownloadForm" xml:space="preserve">
+    <value>تحميل النموذج</value>
+  </data>
+  <data name="ZVatExemptPurchases" xml:space="preserve">
+    <value>المشتريات المعفاة</value>
+  </data>
+  <data name="ZVatExemptsales" xml:space="preserve">
+    <value>المبيعات المعفاة</value>
+  </data>
+  <data name="ZVatExports" xml:space="preserve">
+    <value>الصادرات</value>
+  </data>
+  <data name="ZVatFaqSectionInstructions" xml:space="preserve">
+    <value>يرجى الرجوع إلى قسم الأسئلة الشائعة قبل البدء بتعبئة نموذج الإقرار</value>
+  </data>
+  <data name="ZVatFillInstructions" xml:space="preserve">
+    <value>يرجى إكمال المعلومات المطلوبة لكل خطوة</value>
+  </data>
+  <data name="ZVatIdentificationNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="ZVatImportsSubjectToVatAccounted" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي</value>
+  </data>
+  <data name="ZVatImportsVatPaidatcustoms" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك</value>
+  </data>
+  <data name="ZVatNetdue" xml:space="preserve">
+    <value>صافي الضريبة المستحقة (أو المستردة)</value>
+  </data>
+  <data name="ZVatNoData" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+  <data name="ZVatNote" xml:space="preserve">
+    <value>ملاحظة</value>
+  </data>
+  <data name="ZVatNoteDetail" xml:space="preserve">
+    <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
+  </data>
+  <data name="ZVatNotes" xml:space="preserve">
+    <value>الملاحظات</value>
+  </data>
+  <data name="ZVatNotesClearandClose" xml:space="preserve">
+    <value>مسح وإغلاق</value>
+  </data>
+  <data name="ZVatNotesSaveandClose" xml:space="preserve">
+    <value>حفظ وإغلاق</value>
+  </data>
+  <data name="ZVatOnPurchases" xml:space="preserve">
+    <value>الضريبة على المشتريات</value>
+  </data>
+  <data name="ZVatOnSales" xml:space="preserve">
+    <value>ضريبة القيمة المضافة على المبيعات</value>
+  </data>
+  <data name="ZVatPeriodFrom" xml:space="preserve">
+    <value>بداية الفترة</value>
+  </data>
+  <data name="ZVatPeriodTo" xml:space="preserve">
+    <value>نهاية الفترة</value>
+  </data>
+  <data name="ZVatPrivateHealthcare" xml:space="preserve">
+    <value>المبيعات للمواطنين (الخدمات الصحية الخاصة/التعليم الأهلي الخاص)</value>
+  </data>
+  <data name="ZVatReadInstructions" xml:space="preserve">
+    <value>يرجى قراءة التعليمات أدناه قبل إكمال نموذج الإقرار</value>
+  </data>
+  <data name="ZVatReceiptDate" xml:space="preserve">
+    <value>تاريخ الإستلام</value>
+  </data>
+  <data name="ZVatRefresh" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="ZVatReturn" xml:space="preserve">
+    <value>إقرار ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZVatReturnReferenceNo" xml:space="preserve">
+    <value>الرقم المرجعي للإقرار</value>
+  </data>
+  <data name="ZVatReturnReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي للإقرار</value>
+  </data>
+  <data name="ZVatReturnType" xml:space="preserve">
+    <value>نوع الإقرار</value>
+  </data>
+  <data name="ZVatSerialNumber" xml:space="preserve">
+    <value>الرقم</value>
+  </data>
+  <data name="ZVatStandardrateddomesticpurchases" xml:space="preserve">
+    <value>المشتريات الخاضعة للنسبة الأساسية</value>
+  </data>
+  <data name="ZVatStandardRatedSales" xml:space="preserve">
+    <value>المبيعات الخاضعة للنسبة الأساسية</value>
+  </data>
+  <data name="ZVatStepFour" xml:space="preserve">
+    <value>الخطوة4</value>
+  </data>
+  <data name="ZVatStepThree" xml:space="preserve">
+    <value>الخطوة3</value>
+  </data>
+  <data name="ZVatStepTwo" xml:space="preserve">
+    <value>Step2</value>
+  </data>
+  <data name="ZVatSubmittedInstructions" xml:space="preserve">
+    <value>لايمكن تقديم الطلب بنجاح حتى يتم إكمال جميع الحقول الإلزامية</value>
+  </data>
+  <data name="ZVatSummary" xml:space="preserve">
+    <value>ملخص</value>
+  </data>
+  <data name="ZVatTandCfour" xml:space="preserve">
+    <value>إذا احتاج المكلف التصحيح على هذا النموذج بعد التقديم، يجب على المكلف تقديم نموذج التعديل إذا كان مبلغ التصحيح يساوي أو يزيد عن 5000.00 ريال سعودي أو يساوي أو يقل عن -5000.00 ريال سعودي.</value>
+  </data>
+  <data name="ZVatTandCone" xml:space="preserve">
+    <value>يفترض بأن المكلف قد قرأ وفهم نظام ولوائح ضريبة القيمة المضافة في المملكة وأن المعلومات الواردة على حد علم المكلف دقيقة وصحيحة وكاملة</value>
+  </data>
+  <data name="ZVatTandCthree" xml:space="preserve">
+    <value>تحتفظ الهيئة بحق فتح حالة مراجعة للتحقق من صحة نموذج الإقرار هذا و أي إقرارات سابقة لمدة أقصاها 5 سنوات والتي قد ينتج عنها فرض غرامات حسب نظام ولائحة ضريبة القيمة المضافة في المملكة</value>
+  </data>
+  <data name="ZVatTandCtwo" xml:space="preserve">
+    <value>تحتفظ الهيئة بحق طلب المعلومات والحصول عليها أو طلب سجلات مالية أو إدارية للمكلف والمنشآت الخاصة بهم لمقارنة وتوثيق المعلومات الواردة في هذا الإقرار</value>
+  </data>
+  <data name="ZVatTaxablePeriod" xml:space="preserve">
+    <value>الفترة الضريبية</value>
+  </data>
+  <data name="ZVatTaxpayersName" xml:space="preserve">
+    <value>اسم المكلف</value>
+  </data>
+  <data name="ZVatTaxReturnDetails" xml:space="preserve">
+    <value>تفاصيل الإقرار الضريبي</value>
+  </data>
+  <data name="ZVatTermsAndConditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
+  <data name="ZVatTotalAdjustment" xml:space="preserve">
+    <value>Total Adjustment</value>
+  </data>
+  <data name="ZVatTotalPurchases" xml:space="preserve">
+    <value>إجمالي المشتريات</value>
+  </data>
+  <data name="ZVatTotalSales" xml:space="preserve">
+    <value>إجمالي المبيعات</value>
+  </data>
+  <data name="ZVatTotalVATdueforcurrentperiod" xml:space="preserve">
+    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية الحالية</value>
+  </data>
+  <data name="ZVatVATAmountWithSAR" xml:space="preserve">
+    <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
+  </data>
+  <data name="ZVatZerorateddomesticsales" xml:space="preserve">
+    <value>المبيعات المحلية الخاضعة للنسبة الصفرية</value>
+  </data>
+  <data name="ZVatZeroRatedPurchases" xml:space="preserve">
+    <value>المشتريات الخاضعة للنسبة الصفرية</value>
+  </data>
+  
+  
 </root>

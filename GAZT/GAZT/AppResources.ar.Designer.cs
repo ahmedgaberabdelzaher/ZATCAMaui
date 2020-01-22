@@ -1690,5 +1690,802 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
             }
         }
+
+        public static string ZVatReadInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReadInstructions", resourceCulture);
+            }
+        }
+
+
+        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Acknowledgement.
+        /// </summary>
+        public static string ZVatAcknowledgment
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAcknowledgment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For further information, please contact helpdesk - 19993
+        ///GAZT reserves the right to investigate your return form further..
+        /// </summary>
+        public static string ZVatAcknowledgmentHelpText
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAcknowledgmentHelpText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT acknowledges the receipt of your tax return successfully for.
+        /// </summary>
+        public static string ZVatAcknowledgmentReceiptText
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAcknowledgmentReceiptText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Note your current tax return is under processing and please allow up to 30 minutes to receive your SADAD bill number.
+        /// </summary>
+        public static string ZVatAcknowledgmentWaitingText
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAcknowledgmentWaitingText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string ZVatAddress
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAddress", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adjustment (SAR).
+        /// </summary>
+        public static string ZVatAdjustmentWithSAR
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAdjustmentWithSAR", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Amount (SAR).
+        /// </summary>
+        public static string ZVatAmountWithSAR
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAmountWithSAR", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum no. of allowed attachments are 40..
+        /// </summary>
+        public static string ZVatAttachmentMaxSizeNotfication
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAttachmentMaxSizeNotfication", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        public static string ZVatAttachments
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAttachments", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to File size should not be more than 20 MB..
+        /// </summary>
+        public static string ZVatAttachmentSizeNotfication
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAttachmentSizeNotfication", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt..
+        /// </summary>
+        public static string ZVatAttachmentTypeNotfication
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatAttachmentTypeNotfication", resourceCulture);
+            }
+        }
+
+     
+
+       
+
+        /// <summary>
+        ///   Looks up a localized string similar to I certify that the information given in this return is, to the best of my knowledge, true, correct, and complete in every respect. I am the person who is required to file this return or I am authorized to sign on behalf of that person. I also understand that I will be charged heavy penalties for submitting incorrect information.
+        /// </summary>
+        public static string ZVatCertifyInformation
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatCertifyInformation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to open FAQ URL.
+        /// </summary>
+        public static string ZVatClickFaqInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatClickFaqInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Click here for details.
+        /// </summary>
+        public static string ZVatClickForMoreDetails
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatClickForMoreDetails", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Kindly confirm that the above information is correct before proceeding..
+        /// </summary>
+        public static string ZVatConfirmMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatConfirmMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Corrections from previous period ( between SAR ± 5000.00 ).
+        /// </summary>
+        public static string ZVatCorrectionsfrompreviousperiod
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatCorrectionsfrompreviousperiod", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
+        /// </summary>
+        public static string ZVatcreditcarriedforward
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayers should ensure that their existing taxpayer details are complete and up to date before filing their VAT returns..
+        /// </summary>
+        public static string ZVatDateInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatDateInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to I declare that I have read and understood the above instructions..
+        /// </summary>
+        public static string ZVatDeclarationInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatDeclarationInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Document Number.
+        /// </summary>
+        public static string ZVatDocumentNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatDocumentNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Download Acknowledgment.
+        /// </summary>
+        public static string ZVatDownloadAcknowledgment
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatDownloadAcknowledgment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Download Form.
+        /// </summary>
+        public static string ZVatDownloadForm
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Exempt purchases.
+        /// </summary>
+        public static string ZVatExemptPurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatExemptPurchases", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Exempt sales.
+        /// </summary>
+        public static string ZVatExemptsales
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatExemptsales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Exports.
+        /// </summary>
+        public static string ZVatExports
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatExports", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please refer to the FAQ section before filling out the return form..
+        /// </summary>
+        public static string ZVatFaqSectionInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatFaqSectionInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the requested information for each step..
+        /// </summary>
+        public static string ZVatFillInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatFillInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Identification Number.
+        /// </summary>
+        public static string ZVatIdentificationNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatIdentificationNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT accounted for through the reverse charge mechanism.
+        /// </summary>
+        public static string ZVatImportsSubjectToVatAccounted
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatImportsSubjectToVatAccounted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT paid at customs.
+        /// </summary>
+        public static string ZVatImportsVatPaidatcustoms
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatImportsVatPaidatcustoms", resourceCulture);
+            }
+        }
+
+      
+
+        /// <summary>
+        ///   Looks up a localized string similar to Net VAT due (or reclaimed).
+        /// </summary>
+        public static string ZVatNetdue
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNetdue", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No data.
+        /// </summary>
+        public static string ZVatNoData
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNoData", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string ZVatNote
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNote", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to In case you don&apos;t agree with above information, click on this link and confirm.
+        /// </summary>
+        public static string ZVatNoteDetail
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNoteDetail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string ZVatNotes
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNotes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Clear &amp; Close.
+        /// </summary>
+        public static string ZVatNotesClearandClose
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNotesClearandClose", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Save &amp; Close.
+        /// </summary>
+        public static string ZVatNotesSaveandClose
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatNotesSaveandClose", resourceCulture);
+            }
+        }
+
+      
+
+        /// <summary>
+        ///   Looks up a localized string similar to VAT on Purchases.
+        /// </summary>
+        public static string ZVatOnPurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatOnPurchases", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VAT on Sales.
+        /// </summary>
+        public static string ZVatOnSales
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatOnSales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Period From.
+        /// </summary>
+        public static string ZVatPeriodFrom
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatPeriodFrom", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Period To.
+        /// </summary>
+        public static string ZVatPeriodTo
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatPeriodTo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Private Healthcare / Private Education.
+        /// </summary>
+        public static string ZVatPrivateHealthcare
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatPrivateHealthcare", resourceCulture);
+            }
+        }
+
+     
+
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt Date.
+        /// </summary>
+        public static string ZVatReceiptDate
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReceiptDate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string ZVatRefresh
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatRefresh", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return.
+        /// </summary>
+        public static string ZVatReturn
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReturn", resourceCulture);
+            }
+        }
+
+       
+
+        /// <summary>
+        ///   Looks up a localized string similar to Return Reference No..
+        /// </summary>
+        public static string ZVatReturnReferenceNo
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReturnReferenceNo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Return Reference Number.
+        /// </summary>
+        public static string ZVatReturnReferenceNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReturnReferenceNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Return Type.
+        /// </summary>
+        public static string ZVatReturnType
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatReturnType", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to S. No..
+        /// </summary>
+        public static string ZVatSerialNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatSerialNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard rated domestic purchases.
+        /// </summary>
+        public static string ZVatStandardrateddomesticpurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatStandardrateddomesticpurchases", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard rated sales.
+        /// </summary>
+        public static string ZVatStandardRatedSales
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatStandardRatedSales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Step 4.
+        /// </summary>
+        public static string ZVatStepFour
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatStepFour", resourceCulture);
+            }
+        }
+
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Step2.
+        /// </summary>
+        public static string ZVatStepTwo
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatStepTwo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The application cannot be successfully submitted until all of the mandatory fields have been completed..
+        /// </summary>
+        public static string ZVatSubmittedInstructions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatSubmittedInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ZVatSummary
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatSummary", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to After submission of this form, and if the taxpayer finds that they need to do a correction, a self - amendment form should be submitted if the amount of the correction is equal to or more than SAR 5000.00 or equal to or less than SAR -5000.00 ..
+        /// </summary>
+        public static string ZVatTandCfour
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTandCfour", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete..
+        /// </summary>
+        public static string ZVatTandCone
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTandCone", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT holds the right to open an audit case in order to verify this return form and any previous forms to a maximum of 5 years past which may result in levy of fines as per the Kingdom of Saudi Arabia’s VAT Law and Regulations..
+        /// </summary>
+        public static string ZVatTandCthree
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTandCthree", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this return..
+        /// </summary>
+        public static string ZVatTandCtwo
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTandCtwo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Taxable Period.
+        /// </summary>
+        public static string ZVatTaxablePeriod
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTaxablePeriod", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayer&apos;s Name.
+        /// </summary>
+        public static string ZVatTaxpayersName
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTaxpayersName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Return Details.
+        /// </summary>
+        public static string ZVatTaxReturnDetails
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTaxReturnDetails", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Terms &amp; Conditions.
+        /// </summary>
+        public static string ZVatTermsAndConditions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTermsAndConditions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total Adjustment.
+        /// </summary>
+        public static string ZVatTotalAdjustment
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTotalAdjustment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total purchases.
+        /// </summary>
+        public static string ZVatTotalPurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTotalPurchases", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total Sales.
+        /// </summary>
+        public static string ZVatTotalSales
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTotalSales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total VAT due for current period.
+        /// </summary>
+        public static string ZVatTotalVATdueforcurrentperiod
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatTotalVATdueforcurrentperiod", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Amount (SAR).
+        /// </summary>
+        public static string ZVatVATAmountWithSAR
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatVATAmountWithSAR", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zero rated domestic sales.
+        /// </summary>
+        public static string ZVatZerorateddomesticsales
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatZerorateddomesticsales", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zero rated purchases.
+        /// </summary>
+        public static string ZVatZeroRatedPurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("ZVatZeroRatedPurchases", resourceCulture);
+            }
+        }
+
     }
 }
