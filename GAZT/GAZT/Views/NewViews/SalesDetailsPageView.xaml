@@ -37,26 +37,31 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
                     <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
 
-                <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="3" >
 
                 </Frame>
 
 
 
-                <Label Text="Data available to GAZT"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label Text="{x:Static local:AppResources.ZDataavailabletoGAZT}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
 
-                <StackLayout Grid.Row="1"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,-11" Orientation="Horizontal">
+                <!--<StackLayout Grid.Row="1"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,-11" Orientation="Horizontal">
                     <Label   Margin="0,0,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span  Text="Fiscal Year"   />
+                                        <Span  Text="{x:Static local:AppResources.FiscalYear}"   />
                                 <Span  Text="  "   />
                                 <Span  Text="2019-2010" FontFamily="{StaticResource SSTArabicMedium}" TextColor="{DynamicResource ForgotPasswordGrayTextColor}" FontSize="Caption" FontAttributes="Bold" />
                             </FormattedString>
@@ -64,26 +69,36 @@
                     </Label>
 
 
-                    <!--<Label Text="2019-2010"  Margin="5,0,5,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+                    --><!--<Label Text="2019-2010"  Margin="5,0,5,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>--><!--
 
-                </StackLayout>
-                
-                <!--<Label Text="FiscalYear" Grid.Row="0" Margin="10,0,10,-15"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                </StackLayout>-->
+                        <Label Text="{x:Static local:AppResources.FiscalYear}" Margin="10,0,10,-10"  Grid.Row="1" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                        <Label Text="2019-2010"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                        <!--<Label Text="FiscalYear" Grid.Row="0" Margin="10,0,10,-15"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                 <Label Text="2019-2010" Grid.Row="0"  Grid.Column="1" Margin="10,0,10,0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
 
-                <Label Text="Financial Period From" Margin="10,0,10,-10"  Grid.Row="2" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                        <Label Text="{x:Static local:AppResources.ZFinancialPeriodFrom}" Margin="10,0,10,-10"  Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                <Label Text="13 جمادى 1441 هـ - 13 جمادى 1441 هـ"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                <Label Text="13 جمادى 1441 هـ - 13 جمادى 1441 هـ"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                <BoxView  Grid.Row="4" Margin="0,5,0,-5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                        <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Margin="10,0,10,-10" Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                        <Label Text="94000009313" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
-                <Label Text="Estimated Sales" Margin="10,2,10,-5"   Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
-                <Label Text="SAR 1800000.000" Margin="10,0,10,-4"   Grid.Row="5" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                        <BoxView  Grid.Row="7" Margin="0,5,0,-5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
-                <BoxView  Grid.Row="6" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+
+                        <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Margin="10,2,10,-5"   Grid.Row="8" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+
+                <Label Text="SAR 1800000.000" Margin="10,0,10,-4"   Grid.Row="8" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                        <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End" Margin="5,0,5,-8"></Image>
+
+                        <BoxView  Grid.Row="9" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
 
                 <ListView  x:Name="SalesDetails" 
@@ -93,7 +108,7 @@
             HasUnevenRows="True"
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
-                      Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                      Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
             SeparatorVisibility="Default"
             >
                     <ListView.ItemTemplate>
@@ -108,35 +123,58 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="55*"/>
-                                            <ColumnDefinition Width="45*"/>
-                                        </Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                </Grid.ColumnDefinitions>
                                         <Label  Text="{Binding SalesType}" Margin="10,-16,10,-10"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                         </Label>
-                                        <Label  Text="Information from related parties" Margin="10,-40,10,-40"  Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+
+                                                <Label  Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Margin="10,-40,10,-40"  Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                         </Label>
-                                        <Label  Text="Estimated Sales" Grid.Row="4" Grid.Column="1" Margin="10,-40,10,-40" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+                                                <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="4" Grid.Column="1" Margin="10,-40,10,-40" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                         </Label>
-                                        <Label Text="{Binding InformationFromPartie}" Margin="10,-10,10,10"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                <Image Source="ic_info.png" Grid.Column="2" Grid.Row="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="5,-16,0,-10"></Image>
+
+                                                <Label Text="{Binding InformationFromPartie}" Margin="10,-10,10,10"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <Label Text="{Binding EstimateSales}" Margin="10,-10,10,10"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                    </Grid>
+                                                <Image Source="ic_edit_gray.png" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,-10,10,10"></Image>
+
+                                            </Grid>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                        <Grid BackgroundColor="White" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                  
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="90*"/>
+                                   
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Grid.Row="0" VerticalOptions="Start"></CheckBox>
+                                <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0"></Label>
+                            </Grid>
+                        </Grid>
 
-               
-            
-        </Grid>
+
+                    </Grid>
+                    
+                    
+                    
                 </ScrollView>
                 <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,40,0,40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
                 </StackLayout>
 
-                <Button Text="Accept Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="{x:Static local:AppResources.ZAcceptReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
-                <Button Text="Amend Return" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
         </Grid>

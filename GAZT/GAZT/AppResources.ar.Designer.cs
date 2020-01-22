@@ -1600,5 +1600,95 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSearch", resourceCulture);
             }
         }
+        
+        public static string ZAcceptReturn {
+            get {
+                return ResourceManager.GetString("ZAcceptReturn", resourceCulture);
+            }
+        }
+        
+        public static string ZBillDeatilsInfo {
+            get {
+                return ResourceManager.GetString("ZBillDeatilsInfo", resourceCulture);
+            }
+        }
+        
+        public static string ZChangeReason {
+            get {
+                return ResourceManager.GetString("ZChangeReason", resourceCulture);
+            }
+        }
+        
+        public static string ZDataavailabletoGAZT {
+            get {
+                return ResourceManager.GetString("ZDataavailabletoGAZT", resourceCulture);
+            }
+        }
+        
+        public static string ZEstimatedSales {
+            get {
+                return ResourceManager.GetString("ZEstimatedSales", resourceCulture);
+            }
+        }
+        
+        public static string ZEstimateSales {
+            get {
+                return ResourceManager.GetString("ZEstimateSales", resourceCulture);
+            }
+        }
+        
+        public static string ZFinancialPeriodFrom {
+            get {
+                return ResourceManager.GetString("ZFinancialPeriodFrom", resourceCulture);
+            }
+        }
+        
+        public static string ZInformationfromrelatedparties {
+            get {
+                return ResourceManager.GetString("ZInformationfromrelatedparties", resourceCulture);
+            }
+        }
+        
+        public static string ZNewValue {
+            get {
+                return ResourceManager.GetString("ZNewValue", resourceCulture);
+            }
+        }
+        
+        public static string ZSADADGAZTId {
+            get {
+                return ResourceManager.GetString("ZSADADGAZTId", resourceCulture);
+            }
+        }
+        
+        public static string ZSummaryofZakatcalculation {
+            get {
+                return ResourceManager.GetString("ZSummaryofZakatcalculation", resourceCulture);
+            }
+        }
+        
+        public static string ZTotalVATSales {
+            get {
+                return ResourceManager.GetString("ZTotalVATSales", resourceCulture);
+            }
+        }
+        
+        public static string ZStatus {
+            get {
+                return ResourceManager.GetString("ZStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZNote {
+            get {
+                return ResourceManager.GetString("ZNote", resourceCulture);
+            }
+        }
+        
+        public static string ZReturnReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
+            }
+        }
     }
 }
