@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,21 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView()
         {
-            Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
-            Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-            Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+
+            //NavigationPage navPage = new NavigationPage
+            //{
+            //    BarBackgroundColor = Color.FromHex("#c49b2d"),
+            //    BarTextColor = Color.FromHex("#c49b2d")
+            //};
+            
+
+
+            //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
+            //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+            //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
             InitializeComponent();
             viewModel = App.Locator.VATReturnsPageView;
             this.BindingContext = viewModel;
@@ -38,6 +48,32 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+
+        //private void ClickGestureRecognizer_ClickedForCustomLabel(object sender, EventArgs e)
+        //{
+        //    Label labelInstrunction = (Label)sender;
+        //    if(labelInstrunction.Text== "Instrunction")
+        //    {
+        //        labelInstrunction.Style = (Style)App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+        //    }
+        //    else if(labelInstrunction.Text == "TaxPayer Details")
+        //    {
+        //        labelInstrunction.Style = (Style)App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+        //    }
+        //    else if (labelInstrunction.Text == "VAT Return Form")
+        //    {
+        //        labelInstrunction.Style = (Style)App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+        //    }
+        //    else if (labelInstrunction.Text == "Summary")
+        //    {
+        //        labelInstrunction.Style = (Style)App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+        //    }
+
+
+        //}
+
+            
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
         {
@@ -77,6 +113,49 @@ namespace GAZT.Views.NewViews
         }
 
         #endregion
+
+        public void OnPageSelected(object sender, SelectionChangedEventArgs e)
+        {
+            // CollectionView pagename =(CollectionView)sender;
+           
+
+      
+
+            VATDeclarationTabbedPageName previous = (e.PreviousSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
+            VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
+
+            //Set the current to the color you want
+            current.TextColor = Color.FromHex("#c49b2d");
+            
+          
+
+            if (previous != null)
+            {
+                //Reset the previous to defaulr color
+                previous.TextColor = Color.FromHex("#FFFFFF");
+            }
+
+
+            if(current.pageName== "Instrunction")
+            {
+                viewModel.InstrunctionClicked();
+            }
+            else if(current.pageName== "TaxPayer Details")
+            {
+                viewModel.TaxpayerDetailsClicked();
+            }
+            else if (current.pageName == "VAT Return Form")
+            {
+                viewModel.VATReturnFormClicked();
+            }
+            else if (current.pageName == "Summary")
+            {
+                viewModel.SummaryClicked();
+            }
+
+
+
+        }
 
         private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {

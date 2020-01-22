@@ -15,7 +15,7 @@ namespace GAZT.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DashboardPageView : ContentPage
-    {
+    {   
         DashboardPageViewModel viewModel;
 
         #region Constructor

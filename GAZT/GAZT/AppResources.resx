@@ -895,4 +895,233 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZStepTwo" xml:space="preserve">
     <value>Step 2: Enter the exact parameter number in the search field</value>
   </data>
+  <data name="ZAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ZTaxPayerDetails" xml:space="preserve">
+    <value>TaxPayerDetails</value>
+  </data>
+  <data name="ZTaxpayerInformation" xml:space="preserve">
+    <value>Taxpayer Information</value>
+  </data>
+  <data name="ZTotalVat" xml:space="preserve">
+    <value>Total VAT</value>
+  </data>
+  <data name="ZVatAcknowledgment" xml:space="preserve">
+    <value>Acknowledgement</value>
+  </data>
+  <data name="ZVatAcknowledgmentHelpText" xml:space="preserve">
+    <value>For further information, please contact helpdesk - 19993
+GAZT reserves the right to investigate your return form further.</value>
+  </data>
+  <data name="ZVatAcknowledgmentReceiptText" xml:space="preserve">
+    <value>GAZT acknowledges the receipt of your tax return successfully for</value>
+  </data>
+  <data name="ZVatAcknowledgmentWaitingText" xml:space="preserve">
+    <value>Note your current tax return is under processing and please allow up to 30 minutes to receive your SADAD bill number</value>
+  </data>
+  <data name="ZVatAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ZVatAdjustmentWithSAR" xml:space="preserve">
+    <value>Adjustment (SAR)</value>
+  </data>
+  <data name="ZVatAmountWithSAR" xml:space="preserve">
+    <value>Amount (SAR)</value>
+  </data>
+  <data name="ZVatAttachmentMaxSizeNotfication" xml:space="preserve">
+    <value>Maximum no. of allowed attachments are 40.</value>
+  </data>
+  <data name="ZVatAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ZVatAttachmentSizeNotfication" xml:space="preserve">
+    <value>File size should not be more than 20 MB.</value>
+  </data>
+  <data name="ZVatAttachmentTypeNotfication" xml:space="preserve">
+    <value>Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt.</value>
+  </data>
+  <data name="ZVatCertifyInformation" xml:space="preserve">
+    <value>I certify that the information given in this return is, to the best of my knowledge, true, correct, and complete in every respect. I am the person who is required to file this return or I am authorized to sign on behalf of that person. I also understand that I will be charged heavy penalties for submitting incorrect information</value>
+  </data>
+  <data name="ZVatClickFaqInstructions" xml:space="preserve">
+    <value>Click here to open FAQ URL</value>
+  </data>
+  <data name="ZVatClickForMoreDetails" xml:space="preserve">
+    <value>Click here for details</value>
+  </data>
+  <data name="ZVatConfirmMessage" xml:space="preserve">
+    <value>Kindly confirm that the above information is correct before proceeding.</value>
+  </data>
+  <data name="ZVatCorrectionsfrompreviousperiod" xml:space="preserve">
+    <value>Corrections from previous period ( between SAR ± 5000.00 )</value>
+  </data>
+  <data name="ZVatcreditcarriedforward" xml:space="preserve">
+    <value>VAT credit carried forward from previous period(s)</value>
+  </data>
+  <data name="ZVatDateInstructions" xml:space="preserve">
+    <value>Taxpayers should ensure that their existing taxpayer details are complete and up to date before filing their VAT returns.</value>
+  </data>
+  <data name="ZVatDeclarationInstructions" xml:space="preserve">
+    <value>I declare that I have read and understood the above instructions.</value>
+  </data>
+  <data name="ZVatDocumentNumber" xml:space="preserve">
+    <value>Document Number</value>
+  </data>
+  <data name="ZVatDownloadAcknowledgment" xml:space="preserve">
+    <value>Download Acknowledgment</value>
+  </data>
+  <data name="ZVatDownloadForm" xml:space="preserve">
+    <value>Download Form</value>
+  </data>
+  <data name="ZVatExemptPurchases" xml:space="preserve">
+    <value>Exempt purchases</value>
+  </data>
+  <data name="ZVatExemptsales" xml:space="preserve">
+    <value>Exempt sales</value>
+  </data>
+  <data name="ZVatExports" xml:space="preserve">
+    <value>Exports</value>
+  </data>
+  <data name="ZVatFaqSectionInstructions" xml:space="preserve">
+    <value>Please refer to the FAQ section before filling out the return form.</value>
+  </data>
+  <data name="ZVatFillInstructions" xml:space="preserve">
+    <value>Please fill the requested information for each step.</value>
+  </data>
+  <data name="ZVatIdentificationNumber" xml:space="preserve">
+    <value>Identification Number</value>
+  </data>
+  <data name="ZVatImportsSubjectToVatAccounted" xml:space="preserve">
+    <value>Imports subject to VAT accounted for through the reverse charge mechanism</value>
+  </data>
+  <data name="ZVatImportsVatPaidatcustoms" xml:space="preserve">
+    <value>Imports subject to VAT paid at customs</value>
+  </data>
+  <data name="ZVatNetdue" xml:space="preserve">
+    <value>Net VAT due (or reclaimed)</value>
+  </data>
+  <data name="ZVatNoData" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="ZVatNote" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="ZVatNoteDetail" xml:space="preserve">
+    <value>In case you don't agree with above information, click on this link and confirm</value>
+  </data>
+  <data name="ZVatNotes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="ZVatNotesClearandClose" xml:space="preserve">
+    <value>Clear &amp; Close</value>
+  </data>
+  <data name="ZVatNotesSaveandClose" xml:space="preserve">
+    <value>Save &amp; Close</value>
+  </data>
+  <data name="ZVatOnPurchases" xml:space="preserve">
+    <value>VAT on Purchases</value>
+  </data>
+  <data name="ZVatOnSales" xml:space="preserve">
+    <value>VAT on Sales</value>
+  </data>
+  <data name="ZVatPeriodFrom" xml:space="preserve">
+    <value>Period From</value>
+  </data>
+  <data name="ZVatPeriodTo" xml:space="preserve">
+    <value>Period To</value>
+  </data>
+  <data name="ZVatPrivateHealthcare" xml:space="preserve">
+    <value>Private Healthcare / Private Education</value>
+  </data>
+  <data name="ZVatReadInstructions" xml:space="preserve">
+    <value>Kindly read the below instructions before completing return form:</value>
+  </data>
+  <data name="ZVatReceiptDate" xml:space="preserve">
+    <value>Receipt Date</value>
+  </data>
+  <data name="ZVatRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ZVatReturn" xml:space="preserve">
+    <value>VAT Return</value>
+  </data>
+  <data name="ZVatReturnReferenceNo" xml:space="preserve">
+    <value>Return Reference No.</value>
+  </data>
+  <data name="ZVatReturnReferenceNumber" xml:space="preserve">
+    <value>Return Reference Number</value>
+  </data>
+  <data name="ZVatReturnType" xml:space="preserve">
+    <value>Return Type</value>
+  </data>
+  <data name="ZVatSerialNumber" xml:space="preserve">
+    <value>S. No.</value>
+  </data>
+  <data name="ZVatStandardrateddomesticpurchases" xml:space="preserve">
+    <value>Standard rated domestic purchases</value>
+  </data>
+  <data name="ZVatStandardRatedSales" xml:space="preserve">
+    <value>Standard rated sales</value>
+  </data>
+  <data name="ZVatStepFour" xml:space="preserve">
+    <value>Step 4</value>
+  </data>
+  <data name="ZVatStepThree" xml:space="preserve">
+    <value>Step 3</value>
+  </data>
+  <data name="ZVatStepTwo" xml:space="preserve">
+    <value>Step2</value>
+  </data>
+  <data name="ZVatSubmittedInstructions" xml:space="preserve">
+    <value>The application cannot be successfully submitted until all of the mandatory fields have been completed.</value>
+  </data>
+  <data name="ZVatSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="ZVatTandCfour" xml:space="preserve">
+    <value>After submission of this form, and if the taxpayer finds that they need to do a correction, a self - amendment form should be submitted if the amount of the correction is equal to or more than SAR 5000.00 or equal to or less than SAR -5000.00 .</value>
+  </data>
+  <data name="ZVatTandCone" xml:space="preserve">
+    <value>It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.</value>
+  </data>
+  <data name="ZVatTandCthree" xml:space="preserve">
+    <value>GAZT holds the right to open an audit case in order to verify this return form and any previous forms to a maximum of 5 years past which may result in levy of fines as per the Kingdom of Saudi Arabia’s VAT Law and Regulations.</value>
+  </data>
+  <data name="ZVatTandCtwo" xml:space="preserve">
+    <value>GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this return.</value>
+  </data>
+  <data name="ZVatTaxablePeriod" xml:space="preserve">
+    <value>Taxable Period</value>
+  </data>
+  <data name="ZVatTaxpayersName" xml:space="preserve">
+    <value>Taxpayer's Name</value>
+  </data>
+  <data name="ZVatTaxReturnDetails" xml:space="preserve">
+    <value>Tax Return Details</value>
+  </data>
+  <data name="ZVatTermsAndConditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="ZVatTotalAdjustment" xml:space="preserve">
+    <value>Total Adjustment</value>
+  </data>
+  <data name="ZVatTotalPurchases" xml:space="preserve">
+    <value>Total purchases</value>
+  </data>
+  <data name="ZVatTotalSales" xml:space="preserve">
+    <value>Total Sales</value>
+  </data>
+  <data name="ZVatTotalVATdueforcurrentperiod" xml:space="preserve">
+    <value>Total VAT due for current period</value>
+  </data>
+  <data name="ZVatVATAmountWithSAR" xml:space="preserve">
+    <value>VAT Amount (SAR)</value>
+  </data>
+  <data name="ZVatZerorateddomesticsales" xml:space="preserve">
+    <value>Zero rated domestic sales</value>
+  </data>
+  <data name="ZVatZeroRatedPurchases" xml:space="preserve">
+    <value>Zero rated purchases</value>
+  </data>
 </root>

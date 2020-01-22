@@ -280,8 +280,9 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
             if(_vATDeclaration.d != null)
             {
-                _vATDeclaration.d.StdpurchaseAmt = "2000";
-              var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
+
+           //     _vATDeclaration.d.StdpurchaseAmt = "2000";
+           //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
             }
         }
 

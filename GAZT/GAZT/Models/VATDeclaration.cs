@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace GAZT.Models
 {
@@ -303,4 +305,71 @@ namespace GAZT.Models
         public VATDeclarationD d { get; set; }
     }
 
+
+    public class VATDeclarationTabbedPageName : INotifyPropertyChanged
+    {
+
+        Color textColor = Color.FromHex("#FFFFFF");
+       
+        Font _font = Font.Default;
+
+        Font fontnew;
+        
+
+        public VATDeclarationTabbedPageName()
+        {
+           
+            
+            //_font.FontFamily=
+        }
+
+      
+        public string pageName { get; set; }
+
+        public Color TextColor
+        {
+            set
+            {
+                if (textColor != value)
+                {
+                    textColor = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("TextColor"));
+                    }
+                }
+            }
+            get
+            {
+                return textColor;
+            }
+        }
+
+        public Font Font 
+        {
+            set
+            {
+                if (_font != value)
+                {
+                    _font = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("Font"));
+                    }
+                }
+            }
+            get
+            {
+                return _font;
+            }
+        }
+
+
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
 }

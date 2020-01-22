@@ -632,4 +632,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_delete%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_more_options%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_more_options%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_more_options.png" />
+  </ItemGroup>
 </Project>
