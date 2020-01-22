@@ -26,6 +26,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.AmendSalesDetailsPageView;
             this.BindingContext = viewModel;
+            viewModel.OnLoad();
             SetLTR();
 
         }
@@ -41,5 +42,10 @@ namespace GAZT.Views.NewViews
         }
         #endregion
 
+        private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+            return;
+        }
     }
 }

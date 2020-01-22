@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:custom="clr-namespace:GAZT"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
+             FlowDirection="LeftToRight"
+             x:Class="GAZT.Views.NewViews.ZakatBillDetailsPageView">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="30*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" Grid.Row="0" Grid.Column="0">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                            </Frame>
+
+                            <Label Text="{x:Static local:AppResources.ZBillDetails}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+
+                            <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.pn" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
+
+                            <Label Text="Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
+
+
+                            <Label Text="{x:Static local:AppResources.TotalAmount}" Margin="10,0,0,-5"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+
+
+                            <Label Text="The Undisputed Amount:" Grid.Row="4" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                            <Label Text="500.00" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="The Disputed Amount:" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                            <Label Text="500.00" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="Total Amount" Grid.Row="6" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Label Text="1000.00" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+
+                            <Label Text="SADAD Bill Details"  Grid.Row="7" Grid.Column="0" Margin="10,0,0,-5"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+
+
+                            <Label Text="SADAD Invoice Number:" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                            <Label Text="3110002349" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="SADAD GAZT Id:" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                            <Label Text="020" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="The Undisputed Amount:" Grid.Row="10" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Label Text="500.00" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="25% of Disputed Amount:" Grid.Row="11" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Label Text="125.00" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                            <Label Text="Total Amount:" Grid.Row="12" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Label Text="625.00" Grid.Row="12" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+                        </Grid>
+
+                     
+                   
+
+
+
+
+
+
+                    </Grid>
+                </ScrollView>
+
+
+                <!-- Acticity indicator layout start -->
+                <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>-->
+                <!-- Acticity indicator layout End -->
+                <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+                    <Button Text="{x:Static local:AppResources.CopySADADPaymentNumber}" Command="{Binding OnCopySadadNumberButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+
+                    <Button Text="{x:Static local:AppResources.PayByMADA}" Command="{Binding OnPayByMadaButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+
+                </StackLayout>
+            </Grid>
+           
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -276,14 +276,50 @@ namespace GAZT.ViewModel.NewViewModel
 
        private async Task GetVATAllReturns()
         {
+            try
+            {
+                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
+                if (_vATDeclaration != null && _vATDeclaration.d != null)
+                {
+                    VATDeclaration vATDeclaration = new VATDeclaration();
+                    VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                    Result5 result5 = new Result5();
+                    List<Result5> lst = new List<Result5>();
+                    ADRSet _aDRSet = new ADRSet();
 
-            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
-            if(_vATDeclaration.d != null)
+                    lst.Add(result5);
+                    vATDeclaration.d = vATDeclarationD;
+                    vATDeclaration.d.ADRSet = _aDRSet;
+                    vATDeclaration.d.ADRSet.results = lst;
+
+                    try
+                    {
+                        // Made changes in the data to test the API
+                        _vATDeclaration.d.StdpurchaseAmt = "3000";
+                        _vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
+                        _vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
+                        _vATDeclaration.d.Operationz = "05";
+                        _vATDeclaration.d.StepNumber = "04";
+                        _vATDeclaration.d.StdsalesAmt = "5400";
+                        _vATDeclaration.d.SalesGccAmt = "5400";
+
+                        _vATDeclaration.d.StepNumberz = "04";
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+                }
+            }
+            catch(Exception ex)
             {
 
            //     _vATDeclaration.d.StdpurchaseAmt = "2000";
            //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
             }
+
+            
         }
 
         public async Task PopToRootPage()

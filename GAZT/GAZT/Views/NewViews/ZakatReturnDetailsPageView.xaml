@@ -26,51 +26,60 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                    <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="3" >
 
                     </Frame>
 
 
 
-                    <Label Text="Summary of Zakat calculation"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Label Text="{x:Static local:AppResources.ZSummaryofZakatcalculation}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
                     </Label>
 
 
-                    <Label Text="Fiscal Year" Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                    <Label Text="{x:Static local:AppResources.FiscalYear}" Margin="10,0,10,-10" Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                     <Label Text="2019-2010" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <Label Text="Return Period" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                    <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="10,0,10,-10" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                     <Label Text="2019.2.2-2010.2.1" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <BoxView  Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                    <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Margin="10,0,10,-10" Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="Estimate Sales" Grid.Row="6" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="94000009313" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                    <Label Text="SAR 00000000000.00" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
-                    <Label Text="Capital" Grid.Row="7" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
-
-                    <Label Text="SAR 00000000000.00" Grid.Row="7" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-
-                    <Label Text="Zakat Base" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="{x:Static local:AppResources.ZEstimateSales}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="SAR 00000000000.00" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-
-                    <Label Text="Zakat Amount" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End"></Image> 
+                    <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="SAR 00000000000.00" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="9" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                    <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+
+                    <Label Text="SAR 00000000000.00" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                    <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+
+                    <Label Text="SAR 00000000000.00" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="End"></Image>
 
 
 
-                    <StackLayout Orientation="Horizontal"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
+                    <StackLayout Orientation="Horizontal"  Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
@@ -80,9 +89,10 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Button Text="Sales Details" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button>
 
-                            <Button Text="Bills" Command="{Binding OnBillsButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <Button Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button>
+
+                            <Button Text="{x:Static local:AppResources.Bills}" Command="{Binding OnBillsButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
                         </Grid>
                     </StackLayout>

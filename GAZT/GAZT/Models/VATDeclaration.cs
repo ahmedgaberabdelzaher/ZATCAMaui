@@ -36,7 +36,7 @@ namespace GAZT.Models
         public string XObsoletez { get; set; }
         public string Rcodez { get; set; }
         public string Erfusrz { get; set; }
-        public DateTime Erfdtz { get; set; }
+        public string Erfdtz { get; set; }
         public string Erftmz { get; set; }
         public string AttByz { get; set; }
         public string ByPusrz { get; set; }
@@ -223,8 +223,8 @@ namespace GAZT.Models
         public string Vrtaxret { get; set; }
         public string Incotyp { get; set; }
         public string Persl { get; set; }
-        public DateTime Abrzu { get; set; }
-        public DateTime Abrzo { get; set; }
+        public string Abrzu { get; set; }
+        public string Abrzo { get; set; }
         public string Fin { get; set; }
         public string Tpnm { get; set; }
         public string TcFg { get; set; }
@@ -263,7 +263,7 @@ namespace GAZT.Models
         public string RefundFg { get; set; }
         public string ExporterFg { get; set; }
         public string DecFg { get; set; }
-        public DateTime ReceiptDt { get; set; }
+        public string ReceiptDt { get; set; }
         public string Sopbel { get; set; }
         public string Caltp { get; set; }
         public string StepNumber { get; set; }

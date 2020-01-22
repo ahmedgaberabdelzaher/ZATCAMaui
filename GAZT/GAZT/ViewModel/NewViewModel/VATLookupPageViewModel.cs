@@ -286,6 +286,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnSubmitClick()
         {
+            isMendatoryDataEntered = true;
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -401,6 +402,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
+                        isMendatoryDataEntered = false;
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             isMendatoryDataEntered = false;
@@ -425,7 +427,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch(Exception ex)
             {
-
+                isMendatoryDataEntered = false;
             }
             
 

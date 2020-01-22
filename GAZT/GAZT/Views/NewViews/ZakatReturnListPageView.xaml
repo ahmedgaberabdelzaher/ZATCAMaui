@@ -8,9 +8,10 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
+             FlowDirection="LeftToRight"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView">
     <ContentPage.Content>
-        <StackLayout Margin="10,10,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <!--<StackLayout Margin="10,10,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <ListView  x:Name="ZakatReturns" 
            ItemsSource="{Binding MyZakatReturns}"
           HorizontalOptions="FillAndExpand"
@@ -88,7 +89,219 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </StackLayout>-->
 
+         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="18*" />
+                    <ColumnDefinition Width="14*" />
+
+
+                    <!--<ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="55*" />-->
+
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"    ItemsSource="{Binding ZakatReturnStatus}" ItemDisplayBinding="{Binding Value}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
+
+                </Frame>
+                <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+
+
+
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
+                    <ListView  x:Name="Bills" 
+           ItemsSource="{Binding MyZakatReturns}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                               ItemTapped="Bills_ItemTapped"
+                 SelectedItem="{Binding SelectedZakatReturn}"     
+            SeparatorVisibility="None"
+            >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView>
+                                        <Frame OutlineColor="#C9C9C9"
+                                               
+                                       Margin="0,0,0,10"
+                                       Padding="0,0,0,0"
+                                       CornerRadius="0"
+                                       
+                               >
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*" />
+                                                        <ColumnDefinition Width="45*" />
+                                                        <ColumnDefinition Width="44*" />
+                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="7*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Text="{Binding IDNumber}" Margin="8,0,8,-5" 
+                                   Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+
+                                                    <!--<Label Text="{Binding Incotext}" 
+                                                  
+                                 Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="2" />-->
+
+                                                    <Label Text="{x:Static local:AppResources.FiscalYear}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           Margin="8,0,8,-5"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+
+                                                    <Label Text="{Binding FiscalYear}" 
+                                                  
+                                  Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="2" />
+
+                                                    <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,-5" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1"/>
+
+                                                    <Label Text="{Binding ReturnPeriod}" 
+                                                  
+                                  Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="2" />
+
+                                                    <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,-5" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="1"/>
+
+                                                    <Label Text="{Binding DueDate}" 
+                                                  
+                                  Margin="-7,0,-7,-5"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="2" />
+
+                                                    <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="1"/>
+
+                                                    <Label Text="{Binding Status}" 
+                                                  
+                                  Margin="-7,0,-7,0"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="2" />
+
+
+                                                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    <BoxView  
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+
+
+                                                    <BoxView  
+                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="5" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+
+
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <!--<local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                </local1:CustomLabel>-->
+                <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
+            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
+                 <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
+                </Image.GestureRecognizers>
+            </Image>-->
+
+
+            </Grid>
+            <!-- Acticity indicator layout start -->
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout end -->
+        </Grid>
+        
+        
+        
     </ContentPage.Content>
 </ContentPage>
