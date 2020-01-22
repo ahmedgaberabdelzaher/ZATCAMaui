@@ -12,7 +12,12 @@
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
              
              >
-   
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text ="Item 1"  
+                Priority="0" Order="Primary" Command="{Binding onOptionClicked}"/>
+
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
         <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >

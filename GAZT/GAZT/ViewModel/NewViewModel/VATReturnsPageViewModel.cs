@@ -20,7 +20,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onVATReturnFormClicked { get; set; }
         public ICommand onSummaryClicked { get; set; }
 
-       
+        public ICommand onOptionClicked { get; set; }
+
+
         #endregion
 
         #region Property
@@ -301,6 +303,18 @@ namespace GAZT.ViewModel.NewViewModel
                 SummaryClicked();
             });
 
+            onOptionClicked = new Xamarin.Forms.Command(async () =>
+            {
+                if(IsVisibleOptionMenu==true)
+                {
+                    IsVisibleOptionMenu = false;
+                }
+                else
+                {
+                    IsVisibleOptionMenu = true;
+                }
+               
+            });
 
 
             //OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
