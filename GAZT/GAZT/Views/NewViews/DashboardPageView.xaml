@@ -98,7 +98,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <CollectionView   ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
+                    <CollectionView    ItemsSource="{Binding BillReturn}" x:Name="BillReturnCollectionView"  ItemsLayout="HorizontalList" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"   Margin="0"  BackgroundColor="#F4FCFD" HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Padding="10,0,10,0"   Margin="0">
@@ -132,7 +132,7 @@
                     <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#FEF5EF"></StackLayout>
                     <Label Text="{x:Static local:AppResources.Bills}" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#FEF5EF"  Margin="5,5,5,1" HorizontalOptions="Start"    TextDecorations="Underline" FontAttributes="Bold" >
                     </Label>
-                    <CollectionView ItemsSource="{Binding BillPaid}" BackgroundColor="#FEF8F4" x:Name="BillPaidCollectionView" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" ItemsLayout="HorizontalList"  HeightRequest="{Binding HeightRequestForCollectionView}">
+                        <CollectionView  ItemsSource="{Binding BillPaid}" BackgroundColor="#FEF8F4" x:Name="BillPaidCollectionView" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" ItemsLayout="HorizontalList"  HeightRequest="{Binding HeightRequestForCollectionView}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Padding="10,0,10,0"  Margin="0">

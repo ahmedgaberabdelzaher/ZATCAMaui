@@ -307,10 +307,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
 
                 }
-              
-
-               // vATDeclaration.d.Fbguid = SelectedICR.Fbguid;
-             var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+              _vATDeclaration =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
                  _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
             }
         }

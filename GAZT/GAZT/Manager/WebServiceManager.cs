@@ -1437,14 +1437,14 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<VATDeclarationD> SaveVATDeclarationData(VATDeclaration vATDeclaration, string Fbguid)
+        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration, string Fbguid)
         {
             try
             {
-                VATDeclarationD _vATDeclarationD = new VATDeclarationD();
+                VATDeclaration _vATDeclarationD = new VATDeclaration();
                 char LangZ = GetLangZParameter();
-                String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
-              //  String url = Constants.GAZTGetAllVATDeclarationReturnData + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + LangZ + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                String url = Constants.SaveVATDeclarationData;
+               // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -1454,8 +1454,8 @@ namespace GAZT.Manager
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                 var detailJson = res.Content.ReadAsStringAsync().Result;
-               // _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclarationD>(detailJson);
-                return null;// forgotPasswordOTP;
+              _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+              return  _vATDeclarationD;
             }
             catch (Exception ex)
             {

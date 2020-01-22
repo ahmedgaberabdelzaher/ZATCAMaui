@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,36 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+        private List<CreditCarried> _creditCarriedsList;
+        public List<CreditCarried> CreditCarriedsList
+        {
+            get
+            {
+                return _creditCarriedsList;
+            }
+            set
+            {
+                _creditCarriedsList = value;
+                RaisePropertyChanged("CreditCarriedsList");
+            }
+        }
+
+        private List<VATAttachments> _vatAttachmentsList;
+        public List<VATAttachments> VatAttachmentsList
+        {
+            get
+            {
+                return _vatAttachmentsList;
+            }
+            set
+            {
+                _vatAttachmentsList = value;
+                RaisePropertyChanged("VatAttachmentsList");
+            }
+        }
+
+      
+
         #endregion
 
         #region Constructor
@@ -62,6 +93,40 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+
+        public void pageLoad()
+        {
+            int j = 5;
+            List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
+            CreditCarriedsList = new List<CreditCarried>();
+            for (j = 0; j < 6; j++)
+            {
+                CreditCarried m = new CreditCarried();
+                m.SerialNumber = "0001";
+                m.ReturnReferenceNumber = "000000000001";
+                m.DocumentNumber = "0102000010202";
+                m.Amount = "100000000,00";
+
+                creditsCrarriedDummy.Add(m);
+            }
+            CreditCarriedsList = creditsCrarriedDummy;
+
+
+            int k = 5;
+            List<VATAttachments> vatAttachment = new List<VATAttachments>();
+            VatAttachmentsList = new List<VATAttachments>();
+            for (k = 0; k < 6; k++)
+            {
+                VATAttachments m = new VATAttachments();
+                m.Id = "0001";
+                m.DocumentName = "Test-Document.pdf";
+                m.Size = "20.00";
+
+                vatAttachment.Add(m);
+            }
+            VatAttachmentsList = vatAttachment;
+        }
+
         #endregion
     }
 }
