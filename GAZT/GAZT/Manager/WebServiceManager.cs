@@ -1320,10 +1320,7 @@ namespace GAZT.Manager
             {
                 VATLookUp vATLookUp = new VATLookUp();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                //   String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
                 String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
-                //String url = "http://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=disabled&sap-language='EN'&$filter=Idtype eq 4  and Idnumber eq '100192000001995'&$format=json";   
-
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
 
@@ -1380,8 +1377,6 @@ namespace GAZT.Manager
                 VATDeclaration _vATDeclaration = new VATDeclaration();
                 char LangZ = GetLangZParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                //   String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-                // String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
                 String url = Constants.GAZTGetAllVATDeclarationReturnData + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + LangZ + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -1403,7 +1398,7 @@ namespace GAZT.Manager
                         if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
-                            // return null;
+                            return null;
                         }
                         App.Token = NewToken;
                     }
@@ -1440,14 +1435,14 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<VATDeclarationD> SaveVATDeclarationData(VATDeclarationD vATDeclaration, string Fbguid)
+        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration, string Fbguid)
         {
             try
             {
-                VATDeclarationD _vATDeclarationD = new VATDeclarationD();
+                VATDeclaration _vATDeclarationD = new VATDeclaration();
                 char LangZ = GetLangZParameter();
-                // string url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet" + "&$format=json";// Constants.SendUserNameToEmail;
-                String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?Saml2=disabled";// Constants.GAZTGetAllVATDeclarationReturnData + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + LangZ + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                String url = Constants.SaveVATDeclarationData;
+               // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -1457,8 +1452,8 @@ namespace GAZT.Manager
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                 var detailJson = res.Content.ReadAsStringAsync().Result;
-                _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclarationD>(detailJson);
-                return _vATDeclarationD;// forgotPasswordOTP;
+              _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+              return  _vATDeclarationD;
             }
             catch (Exception ex)
             {
@@ -1466,6 +1461,53 @@ namespace GAZT.Manager
             }
         }
 
+
+        public static async Task<VATDeclarationD> GAZTGetSavedData(string lang, string IdType, String IdNumber)
+        {
+            string NewToken = string.Empty;
+            try
+            {
+                VATDeclarationD vATLookUp = new VATDeclarationD();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.SaveVATDeclarationData;
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                if (GAZTVATLookUp != null)
+                {
+                    HttpHeaders headers = GAZTVATLookUp.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+                    String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
+                    vATLookUp = JsonConvert.DeserializeObject<VATDeclarationD>(TINStatusResponse);
+                }
+                return vATLookUp;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
     }
 
 }
