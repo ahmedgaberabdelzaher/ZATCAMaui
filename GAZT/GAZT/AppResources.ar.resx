@@ -720,7 +720,7 @@
     <value>Logout</value>
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
-    <value>Your Session has expired,Please Login again</value>
+    <value>لقد انتهت مدة صلاحيتك ، يرجي تسجيل الدخول مرة أخري</value>
   </data>
   <data name="ZError" xml:space="preserve">
     <value>خطأ</value>
