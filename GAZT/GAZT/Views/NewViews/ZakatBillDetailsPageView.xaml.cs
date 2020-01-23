@@ -17,8 +17,15 @@ namespace GAZT.Views.NewViews
         public ZakatBillDetailsPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.ZakatBillDetailsPageView;
-            this.BindingContext = viewModel;
+            try
+            {
+                viewModel = App.Locator.ZakatBillDetailsPageView;
+                this.BindingContext = viewModel;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }
