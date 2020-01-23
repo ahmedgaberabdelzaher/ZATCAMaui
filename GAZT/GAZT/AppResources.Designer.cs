@@ -1745,6 +1745,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 25% of Disputed Amount.
+        /// </summary>
+        public static string Z25ofDisputedAmount {
+            get {
+                return ResourceManager.GetString("Z25ofDisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept Return.
         /// </summary>
         public static string ZAcceptReturn {
@@ -1849,6 +1858,15 @@ namespace GAZT {
         public static string ZChangeReason {
             get {
                 return ResourceManager.GetString("ZChangeReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt..
+        /// </summary>
+        public static string ZChooseonlyfilewithextension {
+            get {
+                return ResourceManager.GetString("ZChooseonlyfilewithextension", resourceCulture);
             }
         }
         
@@ -1961,6 +1979,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File size should not be more than 5MB.
+        /// </summary>
+        public static string ZFilesizeshouldnotbemorethan5MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan5MB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial Period From.
         /// </summary>
         public static string ZFinancialPeriodFrom {
@@ -2024,6 +2051,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum no. of 5 attachments can be uploaded..
+        /// </summary>
+        public static string ZMaximumnoof5attachmentscanbeuploaded {
+            get {
+                return ResourceManager.GetString("ZMaximumnoof5attachmentscanbeuploaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Value.
         /// </summary>
         public static string ZNewValue {
@@ -2056,6 +2092,26 @@ namespace GAZT {
         public static string ZNote {
             get {
                 return ResourceManager.GetString("ZNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number..
+        /// </summary>
+        public static string ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber {
+            get {
+                return ResourceManager.GetString("ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestorece" +
+                        "iveyourSADADbillnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount.
+        /// </summary>
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount {
+            get {
+                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
+                        "sputedamount", resourceCulture);
             }
         }
         
@@ -2137,6 +2193,15 @@ namespace GAZT {
         public static string ZReturnReferenceNumber {
             get {
                 return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Bill Details.
+        /// </summary>
+        public static string ZSADADBillDetails {
+            get {
+                return ResourceManager.GetString("ZSADADBillDetails", resourceCulture);
             }
         }
         
@@ -2308,6 +2373,24 @@ namespace GAZT {
         public static string ZTaxPeriod {
             get {
                 return ResourceManager.GetString("ZTaxPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Disputed Amount.
+        /// </summary>
+        public static string ZTheDisputedAmount {
+            get {
+                return ResourceManager.GetString("ZTheDisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Undisputed Amount.
+        /// </summary>
+        public static string ZTheUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZTheUndisputedAmount", resourceCulture);
             }
         }
         
