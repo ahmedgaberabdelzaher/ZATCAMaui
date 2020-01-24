@@ -24,11 +24,16 @@ namespace GAZT.Views.NewViews
         public AmendSalesDetailsPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.AmendSalesDetailsPageView;
-            this.BindingContext = viewModel;
-            viewModel.OnLoad();
-            SetLTR();
+            try
+            {
+                viewModel = App.Locator.AmendSalesDetailsPageView;
+                this.BindingContext = viewModel;
+                viewModel.OnLoad();
+                SetLTR();
+            }catch (Exception ex)
+            {
 
+            }
         }
         #endregion
 

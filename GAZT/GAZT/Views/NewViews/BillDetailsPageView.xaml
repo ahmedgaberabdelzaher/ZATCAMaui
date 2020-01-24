@@ -42,7 +42,7 @@
 
                     <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.pn" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
 
-                    <Label Text="Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number." Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
+                    <Label Text="{x:Static local:AppResources.ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber}" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
 
 
                     <Label Text="{x:Static local:AppResources.SADADPaymentNumber}"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
