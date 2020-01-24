@@ -122,7 +122,7 @@ namespace GAZT.Manager
                                 {
                                     App.Token = Token;
                                     App.IsSessionExpired = false;
-                                }
+                                           }
                                 Message = node.ChildNodes[1].InnerText;
 
                             }
@@ -1097,10 +1097,8 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                if (false == CrossConnectivity.Current.IsConnected)
-                {
-                    throw new WebException();
-                }
+
+
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1507,6 +1505,72 @@ namespace GAZT.Manager
                 return null;
             }
         }
+
+
+        public static async Task<TINStatus> GAZTGetEstimateZakatReturnList()
+        {
+          //  TINStatus tINStatus = new TINStatus();
+            string NewToken = string.Empty;
+            try
+            {
+                string _language = null;
+                if (App.IsArabic)
+                    _language = "A";
+                else
+                    _language = "E";
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3102226654',Auditor='',Lang='EN',UserTin='3102226654')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+                if (GAZTEstimateZakatReturnList != null)
+                {
+                    HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+
+
+                  //  tINStatus = JsonConvert.DeserializeObject<TINStatus>(TINStatusResponse);
+
+
+                }
+                return null;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
+
+
     }
 
 }

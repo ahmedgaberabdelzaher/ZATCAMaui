@@ -31,7 +31,16 @@ namespace GAZT.Views.NewViews
             SetLTR();
             viewModel.onPageLoad();
 
-            
+
+            ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+                     // don't do anything if we just de-selected the row.
+                     if (e.Item == null) return;
+
+                     if (sender is ListView lv) lv.SelectedItem = null;
+          };
+
+
+
         }
 
         #endregion

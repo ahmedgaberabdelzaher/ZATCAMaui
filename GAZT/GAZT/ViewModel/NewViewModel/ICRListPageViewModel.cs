@@ -302,7 +302,6 @@ namespace GAZT.ViewModel.NewViewModel
                         _vATDeclaration.d.StepNumber = "04";
                         _vATDeclaration.d.StdsalesAmt = "5400";
                         _vATDeclaration.d.SalesGccAmt = "5400";
-
                         _vATDeclaration.d.StepNumberz = "04";
                     }
                     catch (Exception ex)
