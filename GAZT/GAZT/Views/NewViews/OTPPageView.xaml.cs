@@ -187,10 +187,10 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                var fileData = await CrossFilePicker.Current.PickFile();
-                data = fileData.DataArray;
-                lbl.Text = fileData.FileName;
-                AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
+                //var fileData = await CrossFilePicker.Current.PickFile();
+                //data = fileData.DataArray;
+                //lbl.Text = fileData.FileName;
+                //AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
 
 
             }
