@@ -4,12 +4,15 @@ using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using GAZT.Manager;
+using Plugin.FilePicker;
+using Plugin.FilePicker.Abstractions;
 
 namespace GAZT.Views
 {
     public partial class LogInView : ContentPage
     {
         LogInViewModel viewModel;
+        byte[] data;
         int LanguageToolBarCount = 0;
         public LogInView()
         {
@@ -163,5 +166,22 @@ namespace GAZT.Views
         //{
         //    DefaultEntry.Text = "Working Both Both Entry Clicked";
         //}
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+             var fileData = await CrossFilePicker.Current.PickFile();
+             data = fileData.DataArray;
+             lbl.Text = fileData.FileName;
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
     }
 }

@@ -109,8 +109,9 @@ namespace GAZT.Models
         public string type { get; set; }
     }
 
-    public class Result4
+    public class Attachment
     {
+      
         public Metadata5 __metadata { get; set; }
         public string RetGuid { get; set; }
         public string Seqno { get; set; }
@@ -136,7 +137,7 @@ namespace GAZT.Models
 
     public class ATTACHSet
     {
-        public List<Result4> results { get; set; }
+        public List<Attachment> results { get; set; }
     }
 
     public class Metadata6
@@ -174,7 +175,10 @@ namespace GAZT.Models
     {
         public List<object> results { get; set; }
     }
-
+    public class AttachmentRootOject
+    {
+        public Attachment d { get; set; }
+    }
     public class VATDeclarationD
     {
         public VATDeclarationsMetadata __metadata { get; set; }

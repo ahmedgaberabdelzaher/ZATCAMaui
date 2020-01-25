@@ -122,7 +122,8 @@ namespace GAZT.Manager
                                 {
                                     App.Token = Token;
                                     App.IsSessionExpired = false;
-                                           }
+
+                                }
                                 Message = node.ChildNodes[1].InnerText;
 
                             }
@@ -1569,7 +1570,34 @@ namespace GAZT.Manager
         }
 
 
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte)//, string returnedFguid
+        {
+            try
+            {
+                AttachmentRootOject _attachment = new AttachmentRootOject();
+                char LangZ = GetLangZParameter();
+                 String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("slug", "testdstsdsf.pdf");
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                content.Add(baContent, "File", "filename.pdf");
+                var response = await client.PostAsync(url, content);
+                var responsestr = response.Content.ReadAsStringAsync().Result;
+                _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
 
+
+                return _attachment;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
     }
 
