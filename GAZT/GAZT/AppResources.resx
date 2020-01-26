@@ -1169,4 +1169,31 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZReturnReferenceNumber" xml:space="preserve">
     <value>Return Reference Number</value>
   </data>
+  <data name="Z25ofDisputedAmount" xml:space="preserve">
+    <value>25% of Disputed Amount</value>
+  </data>
+  <data name="ZChooseonlyfilewithextension" xml:space="preserve">
+    <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt.</value>
+  </data>
+  <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
+    <value>File size should not be more than 5MB</value>
+  </data>
+  <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
+    <value>Maximum no. of 5 attachments can be uploaded.</value>
+  </data>
+  <data name="ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber" xml:space="preserve">
+    <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
+  </data>
+  <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
+    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount</value>
+  </data>
+  <data name="ZSADADBillDetails" xml:space="preserve">
+    <value>SADAD Bill Details</value>
+  </data>
+  <data name="ZTheDisputedAmount" xml:space="preserve">
+    <value>The Disputed Amount</value>
+  </data>
+  <data name="ZTheUndisputedAmount" xml:space="preserve">
+    <value>The Undisputed Amount</value>
+  </data>
 </root>

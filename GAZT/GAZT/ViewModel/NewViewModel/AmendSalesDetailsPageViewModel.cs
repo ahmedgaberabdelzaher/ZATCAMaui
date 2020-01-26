@@ -53,7 +53,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.ZakatBillDetailsPageView);
+                try
+                {
+                    _navigationService.NavigateTo(App.ZakatBillDetailsPageView);
+                }
+                catch(Exception ex)
+                {
+
+                }
             });
 
 

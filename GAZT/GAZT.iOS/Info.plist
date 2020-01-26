@@ -53,5 +53,11 @@
 	<string></string>
 	<key>Custom Property1</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Picking Media</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To take picture</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>To select date</string>
 </dict>
 </plist>

@@ -84,7 +84,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnAmendReturnButtonClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
+                try
+                {
+                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
+                }
+                catch(Exception ex)
+                {
+
+                }
             });
         }
         #endregion

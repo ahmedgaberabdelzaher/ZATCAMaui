@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.LogInView" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" BackgroundColor="White" FlowDirection="RightToLeft">
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="37.46*" />
@@ -144,6 +144,12 @@
                 </StackLayout>
             </Grid>
             <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center"></ActivityIndicator>
-        </Grid>
+        </Grid>-->
+
+        <StackLayout>  
+       <Button Text="Pick File" Clicked="Button_Clicked" HorizontalOptions="Center"  
+               VerticalOptions="Center"/>  
+       <Label Text="File Is :" x:Name="lbl"/>  
+   </StackLayout>
     </ContentPage.Content>
 </ContentPage>

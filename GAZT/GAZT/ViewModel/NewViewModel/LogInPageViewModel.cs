@@ -67,7 +67,6 @@ namespace GAZT.ViewModel
             }
             set
             {
-
                 _PreviousUserName = value;
             }
         }
@@ -370,8 +369,10 @@ namespace GAZT.ViewModel
                         bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
                         if (isValidTin == true)
                         {
-                            response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
+                          response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
+                         // await  WebServiceManager.GAZTGetEstimateZakatReturnList();
                             UserId = UserName;
+
                         }
                         else
                         {
