@@ -958,13 +958,13 @@
 
                             <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding CurrentPassword}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
-                                <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
+                                <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                            </Image.GestureRecognizers>
                             </Image>
 
 
@@ -1016,7 +1016,7 @@
                                    Grid.Column="0" 
                                    />
 
-                                                                <Label Text="{Binding DocumentName}" 
+                                                                <Label Text="{Binding Filename}" 
                                                                        Margin="3,0,3,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -1045,7 +1045,9 @@
                                                                 </Image>
 
                                                                 <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-
+                                                                     <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                            </Image.GestureRecognizers>
                                                                 </Image>
 
 
@@ -1168,7 +1170,7 @@
 
                         <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEditor>
 

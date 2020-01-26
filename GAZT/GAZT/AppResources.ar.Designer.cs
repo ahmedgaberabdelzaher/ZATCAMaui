@@ -2202,5 +2202,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTheUndisputedAmount", resourceCulture);
             }
         }
+        
+        public static string ZSelectTaxpayerType {
+            get {
+                return ResourceManager.GetString("ZSelectTaxpayerType", resourceCulture);
+            }
+        }
     }
 }

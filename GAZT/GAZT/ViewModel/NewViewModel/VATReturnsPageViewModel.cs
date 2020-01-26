@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+using System.Collections.ObjectModel;
 namespace GAZT.ViewModel.NewViewModel
 {
     public class VATReturnsPageViewModel:ViewModelBase
@@ -26,6 +26,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onSummaryClicked { get; set; }
         public ICommand OnSaveAsDraftClicked { get; set; }
         public ICommand onOptionClicked { get; set; }
+        public ICommand OnAttachmentClick{ get; set; }
+
         byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
         string StepNumber = "04";
@@ -94,11 +96,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-       
-
-
-
         private List<VATDeclarationTabbedPageName> _vatTabbledPageList;
         public List<VATDeclarationTabbedPageName> VatTabbledPageList
         {
@@ -113,8 +110,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<VATAttachments> _vatAttachmentsList;
-        public List<VATAttachments> VatAttachmentsList
+        private ObservableCollection<Attachment> _vatAttachmentsList;
+        public ObservableCollection<Attachment> VatAttachmentsList
         {
             get
             {
@@ -383,7 +380,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _attachmentName ="Attachments";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
 
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
+
+        
 
         private string _buttonName=AppResources.ZVatStepTwo;
         public string ButtonName
@@ -400,6 +412,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _noteText ="";
+        public string NoteText
+        {
+            get
+            {
+                return _noteText;
+            }
+            set
+            {
+                _noteText = value;
+
+                RaisePropertyChanged("NoteText");
+            }
+        }
+        
         private List<Note> _responseNote;
         public List<Note> ResponseNote
         {
@@ -587,6 +614,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         SubmitClicked();
                     }
+                    else if (ButtonName == AppResources.ZNote)
+                    {
+                        SetNoteData();
+                    }
                 }
             });
 
@@ -607,7 +638,34 @@ namespace GAZT.ViewModel.NewViewModel
                 VATReturnFormClicked();
                
             });
+            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    var fileData = await CrossFilePicker.Current.PickFile();
+                    attachment = fileData.DataArray;
+                    AttachmentName = fileData.FileName;
+                    
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz);
+                    if(_attachment != null && _attachment.d != null)
+                    {
+                        VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                        Device.BeginInvokeOnMainThread(async () => {
+                            VatAttachmentsList = myCollection;
+                        });
+                        VatAttachmentsList = myCollection;
+                    }
 
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+
+            });
+            
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
                 SummaryClicked();
@@ -704,7 +762,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleNotes = true;
-            ButtonName = AppResources.Submit;
+            ButtonName = AppResources.ZNote;
         }
         public async void ClickAttachment()
         {
@@ -712,28 +770,16 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleAttachments = true;
             ButtonName = AppResources.Submit;
 
-            try
-            {
-                var fileData = await CrossFilePicker.Current.PickFile();
-                attachment = fileData.DataArray;
-               string fileName= fileData.FileName;
-                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, fileName, VATDeclarationData.d.ReturnIdz);
-
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-
         }
         public void ClickVoid()
         {
             
         }
 
+        private void AddNote()
+        {
+
+        }
         
         public void ClearPage()
         {
@@ -781,6 +827,9 @@ namespace GAZT.ViewModel.NewViewModel
             VatTabbledPageList = vatTabbedList;
             InstrunctionClicked();
 
+            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+
+            VatAttachmentsList = myCollection;
 
             if (VATDeclarationData != null)
             {
@@ -833,21 +882,25 @@ namespace GAZT.ViewModel.NewViewModel
             CreditCarriedsList = creditsCrarriedDummy;
 
 
-            int k = 5;
-            List<VATAttachments> vatAttachment = new List<VATAttachments>();
-            VatAttachmentsList = new List<VATAttachments>();
-            for (k = 0; k < 6; k++)
-            {
-                VATAttachments m = new VATAttachments();
-                m.Id = "0001";
-                m.DocumentName = "Test-Document.pdf";
-                m.Size = "20.00";
+            //int k = 5;
+            //List<Attachment> vatAttachment = new List<Attachment>();
+            //VatAttachmentsList = new List<Attachment>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    Attachment m = new Attachment();
+            //    //m.Id = "0001";
+            //    //m.DocumentName = "Test-Document.pdf";
+            //    //m.Size = "20.00";
 
-                vatAttachment.Add(m);
-            }
-            VatAttachmentsList = vatAttachment;
+            //    vatAttachment.Add(m);
+            //}
+            //VatAttachmentsList = vatAttachment;
         }
 
+        private void SetNoteData()
+        {
+            VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
+        }
         #endregion
     }
 }

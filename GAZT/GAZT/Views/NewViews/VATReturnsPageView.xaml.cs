@@ -44,8 +44,13 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
+            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
 
-          
+                if (sender is ListView lv) lv.SelectedItem = null;
+            };
+            
 
             viewModel.pageLoad();
             viewModel.IsMainButtonEnabled = false;
@@ -82,8 +87,13 @@ namespace GAZT.Views.NewViews
 
         //}
 
-            
-
+        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            Attachment attachment = (Attachment)arrowImage.BindingContext;
+            var results =  await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename,  viewModel.VATDeclarationData.d.ReturnIdz);
+        }
+        
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
         {
 
