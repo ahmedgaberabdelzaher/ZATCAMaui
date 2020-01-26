@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -307,80 +308,91 @@ namespace GAZT.ViewModel
 
         public async Task onPageLoad()
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
-
-            await Task.Run(async() =>
-            {
-                MyBills = null;
-
-                List<MyBills> myBills = null;
-                try
+                await Task.Run(() =>
                 {
+                    IsLoading = true;
+                });
 
-                    string lang = UtilityManager.GetLanguageParameter();
-                    myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                await Task.Run(async () =>
+                {
+                    MyBills = null;
+
+                    List<MyBills> myBills = null;
+                    try
+                    {
+
+                        string lang = UtilityManager.GetLanguageParameter();
+                        myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
 
                     if (myBills != null && myBills.Count != 0)
-                    {
-                        myBills = UpdateDueAmount(myBills);
-                        MyBills = new List<MyBills>();
-                        MyBills = myBills;
-                        MyBillsOriginal = myBills;
+                        {
+                            myBills = UpdateDueAmount(myBills);
+                            MyBills = new List<MyBills>();
+                            MyBills = myBills;
+                            MyBillsOriginal = myBills;
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
+
                         await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
                         _navigationService.GoBack();
+
                     }
-                }
-                catch (Exception e)
+                });
+
+                await Task.Run(() =>
                 {
+                    IsLoading = false;
+                });
 
-                    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                    _navigationService.GoBack();
 
-                }
-            });
+                //int i = 5;
+                //MyBills = new List<MyBills>();
+                //for (i = 0; i < 6; i++)
+                //{
+                //    MyBills m = new MyBills();
+                //    m.Abtypt = "Abc";
+                //    m.BETRW = "100";
+                //    m.FAEDN = "12:02:20";
+                //    m.Status = "P";
+                //    m.VTRE2 = "54321";
 
-            await Task.Run(() =>
+                //    MyBills.Add(m);
+                //}
+
+                //int j = 5;
+                ////S MyBills = new List<MyBills>();
+                //for (i = 0; i < 6; i++)
+                //{
+                //    MyBills m = new MyBills();
+                //    m.Abtypt = "Abc";
+                //    m.BETRW = "100";
+                //    m.FAEDN = "12:02:20";
+                //    m.Status = "I";
+                //    m.VTRE2 = "54321";
+
+                //    MyBills.Add(m);
+                //}
+                //MyBillsOriginal = MyBills;
+            }
+            catch(InternetException ex)
             {
-                IsLoading = false;
-            });
-            
-
-            //int i = 5;
-            //MyBills = new List<MyBills>();
-            //for (i = 0; i < 6; i++)
-            //{
-            //    MyBills m = new MyBills();
-            //    m.Abtypt = "Abc";
-            //    m.BETRW = "100";
-            //    m.FAEDN = "12:02:20";
-            //    m.Status = "P";
-            //    m.VTRE2 = "54321";
-
-            //    MyBills.Add(m);
-            //}
-
-            //int j = 5;
-            ////S MyBills = new List<MyBills>();
-            //for (i = 0; i < 6; i++)
-            //{
-            //    MyBills m = new MyBills();
-            //    m.Abtypt = "Abc";
-            //    m.BETRW = "100";
-            //    m.FAEDN = "12:02:20";
-            //    m.Status = "I";
-            //    m.VTRE2 = "54321";
-
-            //    MyBills.Add(m);
-            //}
-            //MyBillsOriginal = MyBills;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
 
         public async Task PopToRootPage()

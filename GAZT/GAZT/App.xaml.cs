@@ -74,12 +74,12 @@ namespace GAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-            String langName = "en-US";//"en-US";// "ar-AE";
+            String langName = "ar-AE";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new ZakatReturnListPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

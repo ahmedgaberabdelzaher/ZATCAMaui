@@ -14,6 +14,7 @@ using System.Net;
 using pdfjs.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using GAZT.Helper;
 
 namespace GAZT
 {
@@ -492,54 +493,61 @@ namespace GAZT
 
         public void OnPageLoad()
         {
-            string lang = UtilityManager.GetLanguageParameter();
-            TaxPayerProfile = App.TP;
-            allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
-            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-            if (allCertificate != null)
+            try
             {
-                if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                string lang = UtilityManager.GetLanguageParameter();
+                TaxPayerProfile = App.TP;
+                allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                if (allCertificate != null)
                 {
-                    CertificateType = AppResources.ZakatCertificates;
-                    SetCertificateListViewVisibility();
-                    CertificateList = allCertificate.ZakatSet.results;
-                    
-                }
-                else if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
-                {
-                    CertificateType = AppResources.VATCertificates;
-                    SetCertificateListViewVisibility();
-                    CertificateList = allCertificate.VATSet.results;
-                }
-                else if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
-                {
-                    CertificateType = AppResources.ExciseCertificates;
-                    SetCertificateListViewVisibility();
-                    CertificateList = allCertificate.ExciseSet.results;
+                    if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+                    {
+                        CertificateType = AppResources.ZakatCertificates;
+                        SetCertificateListViewVisibility();
+                        CertificateList = allCertificate.ZakatSet.results;
+
+                    }
+                    else if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                    {
+                        CertificateType = AppResources.VATCertificates;
+                        SetCertificateListViewVisibility();
+                        CertificateList = allCertificate.VATSet.results;
+                    }
+                    else if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                    {
+                        CertificateType = AppResources.ExciseCertificates;
+                        SetCertificateListViewVisibility();
+                        CertificateList = allCertificate.ExciseSet.results;
+                    }
+                    else
+                    {
+                        CertificateType = String.Empty;
+                        SetNoDataLabelViewVisibility();
+                    }
+                    //ZAKATCertificateList = allCertificate.ZakatSet.results;
+                    //EXICISECertificateList = allCertificate.ExciseSet.results;
+
+
+
+                    //if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
+                    //{
+                    //    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    //      _navigationService.GoBack();
+                    //}
+                    // SetLayoutVisibility();
                 }
                 else
                 {
-                    CertificateType = String.Empty; 
-                    SetNoDataLabelViewVisibility();
+                    SetNoDataLabelVisibility = true;
+                    //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    // _navigationService.GoBack();
                 }
-                //ZAKATCertificateList = allCertificate.ZakatSet.results;
-                //EXICISECertificateList = allCertificate.ExciseSet.results;
-
-
-
-                //if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
-                //{
-                //    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                //      _navigationService.GoBack();
-                //}
-                // SetLayoutVisibility();
             }
-            else
+            catch(InternetException ex)
             {
-                SetNoDataLabelVisibility = true;
-             //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-             // _navigationService.GoBack();
+                 _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
             }
         }
 

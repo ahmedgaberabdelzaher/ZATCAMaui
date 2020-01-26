@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Plugin.Connectivity;
@@ -199,39 +200,50 @@ namespace GAZT.ViewModel
                     {
                         try
                         {
-                            await Task.Run(() =>
+                            try
                             {
-                                IsLoading = true;
-                            });
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = true;
+                                });
 
-                            TINs = await WebServiceManager.GAZTGetAllTins(UserName);
-                            if ((TINs!=null) && (TINs.Count != 0) && (SelectedTinId == null))
-                            {
-                                SelectedTinId = TINs[0];
+                                TINs = await WebServiceManager.GAZTGetAllTins(UserName);
+                                if ((TINs != null) && (TINs.Count != 0) && (SelectedTinId == null))
+                                {
+                                    SelectedTinId = TINs[0];
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsVisibleTinIds = false;
+                                        await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                    });
+                                    IsVisibleTinIds = false;
+                                }
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
                             }
-                            else
+                            catch (Exception e)
                             {
+                                IsVisibleTinIds = false;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     IsVisibleTinIds = false;
-                                    await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                    await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                                 });
-                                IsVisibleTinIds = false;
-                            }
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-                        }
-                        catch (Exception e)
-                        {
-                            IsVisibleTinIds = false;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsVisibleTinIds = false;
-                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                            });
 
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                            }
+                        }
+                        catch(InternetException ex)
+                        {
+                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                             await Task.Run(() =>
                             {
                                 IsLoading = false;
@@ -308,13 +320,15 @@ namespace GAZT.ViewModel
             {
                 if (lastTapped<DateTime.Now.AddSeconds(-4))
                 {
-                    if(CrossConnectivity.Current.IsConnected)
+                    try
                     {
-                      await  Login();
-                    }
-                    else
+                        
+                            await Login();
+                        
+                      
+                    }catch(InternetException ex)
                     {
-                       // await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
+                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
                     }
                 }
               
@@ -341,162 +355,173 @@ namespace GAZT.ViewModel
             {
                 try
                 {
-                    string language = UtilityManager.GetLanguageParameter();
-                    String lang = "E";
-                    if (App.IsArabic == true)
-                        lang = "AR";
-                    if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+                    try
                     {
-                        throw new Exception(AppResources.Pleaseenteryourlogininformation);
-                    }
-                    string _currentAttempts = CurrentAttempt.ToString();
-                    string languag = UtilityManager.GetLanguageParameter();
-                    if (SelectedTinId != null && IsVisibleTinIds == true)
-                    {
-                        bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);
-                        if (isValidEmail == true)
+                        string language = UtilityManager.GetLanguageParameter();
+                        String lang = "E";
+                        if (App.IsArabic == true)
+                            lang = "AR";
+                        if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                         {
-
-                            response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
-                            UserId = SelectedTinId.Tin;
+                            throw new Exception(AppResources.Pleaseenteryourlogininformation);
                         }
-                        else
+                        string _currentAttempts = CurrentAttempt.ToString();
+                        string languag = UtilityManager.GetLanguageParameter();
+                        if (SelectedTinId != null && IsVisibleTinIds == true)
                         {
-                            throw new Exception(AppResources.ZUserNameIncorrect);
-                        }
-                    }
-                    else
-                    {
-                        bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
-                        if (isValidTin == true)
-                        {
-                            response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
-                            UserId = UserName;
-                        }
-                        else
-                        {
-                            throw new Exception(AppResources.ZUserNameIncorrect);
-                        }
-                    }
-
-
-
-                    if (0 == String.Compare("success", response, true))
-                    {
-
-                        String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserId, lang);
-                        if (false == String.IsNullOrEmpty(MobileNumber))
-                        {
-                            if (App.TP == null)
+                            bool isValidEmail = UtilityManager.IsValidEmailAddress(UserName);
+                            if (isValidEmail == true)
                             {
-                                App.TP = new Models.TaxPayerProfile();
-                                App.TP.Mobile = MobileNumber;
+
+                                response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
+                                UserId = SelectedTinId.Tin;
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.ZUserNameIncorrect);
+                            }
+                        }
+                        else
+                        {
+                            bool isValidTin = UtilityManager.IsOTPNumberValid(UserName);
+                            if (isValidTin == true)
+                            {
+                                response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
+                                UserId = UserName;
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.ZUserNameIncorrect);
                             }
                         }
 
-                        String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
-                        String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
-                        await Task.Run(async () =>
+
+
+                        if (0 == String.Compare("success", response, true))
                         {
-                            string currentAttempts = "1";
-                            response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
-                            if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+
+                            String MobileNumber = await WebServiceManager.GAZTGetTaxPayerProfile(UserId, lang);
+                            if (false == String.IsNullOrEmpty(MobileNumber))
                             {
                                 if (App.TP == null)
-                                    App.TP = new Models.TaxPayerProfile();
-
-                                App.TP.Userid = UserId;
-                                App.TP.Password = Password;
-                                bool IsNavigatingFromLogin = true;
-                                NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
-
-                                Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                    App.TP = new Models.TaxPayerProfile();
+                                    App.TP.Mobile = MobileNumber;
+                                }
+                            }
+
+                            String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+                            String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
+                            await Task.Run(async () =>
+                            {
+                                string currentAttempts = "1";
+                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                                {
+                                    if (App.TP == null)
+                                        App.TP = new Models.TaxPayerProfile();
+
+                                    App.TP.Userid = UserId;
+                                    App.TP.Password = Password;
+                                    bool IsNavigatingFromLogin = true;
+                                    NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                    });
+                                }
+                                else
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                    });
+                                }
+                            });
+                        }
+                        else
+                        {
+                            if (App.IsArabic)
+                            {
+                                string tin = UserName;
+                                tin = tin + " - " + "User does not exist";
+                                if (response.Equals("User authentication failed"))
+                                {
+                                    response = AppResources.UserAuthenticationFailed;
+                                }
+                                else if (response.Equals(tin))
+                                {
+                                    response = AppResources.UserDoesNotExist;
+                                }
+                                else if (0 == String.Compare("Authentication failed. Password locked", response, true))
+                                {
+                                    response = AppResources.UserAccountLocked;
+                                }
+                                else if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                                {
+                                    response = AppResources.NetworkConnectivityIssue;
+                                }
+                                else
+                                {
+                                    response = AppResources.UserAccountLocked;
+                                }
+                            }
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                                 });
                             }
                             else
                             {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
+
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessageBox(response, AppResources.Information);
                                 });
                             }
+                        }
+
+
+
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
                         });
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        if (App.IsArabic)
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            string tin = UserName;
-                            tin = tin + " - " + "User does not exist";
-                            if (response.Equals("User authentication failed"))
-                            {
-                                response = AppResources.UserAuthenticationFailed;
-                            }
-                            else if (response.Equals(tin))
-                            {
-                                response = AppResources.UserDoesNotExist;
-                            }
-                            else if (0 == String.Compare("Authentication failed. Password locked", response, true))
-                            {
-                                response = AppResources.UserAccountLocked;
-                            }
-                            else if (0 == String.Compare("Error: NameResolutionFailure", response, true))
-                            {
-                                response = AppResources.NetworkConnectivityIssue;
-                            }
-                            else
-                            {
-                                response = AppResources.UserAccountLocked;
-                            }
-                        }
+                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                        //UserName = string.Empty;
+                        //Password = string.Empty;
+                    });
                         await Task.Run(() =>
                         {
                             IsLoading = false;
                         });
 
-                        if (0 == String.Compare("Error: NameResolutionFailure", response, true))
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                            });
-                        }
-                        else
-                        {
-
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(response, AppResources.Information);
-                            });
-                        }
                     }
-
-
-
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
                 }
-                catch (Exception ex)
+                catch(InternetException ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                        //UserName = string.Empty;
-                        //Password = string.Empty;
-                    });
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                     await Task.Run(() =>
                     {
                         IsLoading = false;
                     });
-
                 }
             });
         }

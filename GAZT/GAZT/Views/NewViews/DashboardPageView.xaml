@@ -78,7 +78,9 @@
 
                     <Label Text="{x:Static local:AppResources.ZTotalPaidAmount}" Padding="0,0,0,-5"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand"   TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="2" Grid.Column="0"  >
                     </Label>
-                                              <Label Text="{x:Static local:AppResources.ZSAR}" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="Start"    TextColor="#FFFFFF"   Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" >
+                            <Label Text="{Binding TotalPaidAmount}" Padding="0,0,0,-5"  HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="StartAndExpand"   TextColor="#FFFFFF" VerticalOptions="Center"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Grid.Row="2" Grid.Column="0"  >
+                            </Label>
+                            <Label Text="{x:Static local:AppResources.ZSAR}" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HeightRequest="{Binding CalendarHeightRequest}" HorizontalOptions="Start"    TextColor="#FFFFFF"   Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" >
                     </Label>
 
                                         </StackLayout>
@@ -156,12 +158,11 @@
                                             <Label Text="{Binding BillTypeName}" Margin="0,0,0,-7" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
                                             <Label Margin="0"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{x:Static local:AppResources.ZSAR} "></Span>
-                                                        <Span Text=" "/>
-                                                        <Span Text="{Binding BillAmount}"/>
-                                                      
-                                                    </FormattedString>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding BillAmount}"/>
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static local:AppResources.ZSAR} "></Span>
+                                                        </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
 

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -158,79 +159,91 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task VarifyMobileNumber()
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
-            bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
-            await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
-            if (!_isMandatoryFieldEntered)
-            {
-                return;
-            }
-            await Task.Run(async () =>
-            {
-                bool IsNavigatingFromLogin = false;
-                NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
-                String lang = "EN";
-                if (App.IsArabic == true)
-                    lang = "AR";
-                try
+                await Task.Run(() =>
                 {
-                    bool response = false;
-                    var mobileNumber = "00966" + NewMobile;
-                    bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
-                    bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
-                    if (isValidMobileNumber)
+                    IsLoading = true;
+                });
+                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+                await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
+                if (!_isMandatoryFieldEntered)
+                {
+                    return;
+                }
+                await Task.Run(async () =>
+                {
+                    bool IsNavigatingFromLogin = false;
+                    NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
+                    String lang = "EN";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+                    try
                     {
-                        if (!isNewMobileNumberSameAsOldMobileNumber)
+                        bool response = false;
+                        var mobileNumber = "00966" + NewMobile;
+                        bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
+                        bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
+                        if (isValidMobileNumber)
                         {
-                            response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
-                            await PopToRootPage();
+                            if (!isNewMobileNumberSameAsOldMobileNumber)
+                            {
+                                response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
+                                await PopToRootPage();
+                            }
+                            else
+                            {
+                                await ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
+                            }
+
                         }
                         else
                         {
-                            await ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
+                            });
+                            NewMobile = "5";
                         }
-
+                        if (response == true)
+                        {
+                            App.TP.NewMobile = mobileNumber;
+                        //String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
+                        //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
+                        Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.ZZPleaseusetheOTPtoactivatethenewnobilenumber, AppResources.Information);
+                            });
+                            ClearMobileData();
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                            });
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
-                        });
-                        NewMobile = "5";
-                    }
-                    if (response == true)
-                    {
-                        App.TP.NewMobile = mobileNumber;
-                        //String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
-                        //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.ZZPleaseusetheOTPtoactivatethenewnobilenumber, AppResources.Information);
-                        });
-                        ClearMobileData();
-                        Device.BeginInvokeOnMainThread(async () => {
-                            _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                         });
                     }
-                }
-                catch (Exception ex)
+                });
+
+                await Task.Run(() =>
                 {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    });
-                }
-            });
+                    IsLoading = false;
+                });
 
-            await Task.Run(() =>
+            }
+            catch(InternetException ex)
             {
-                IsLoading = false;
-            });
-
-
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
         public void OnPageLoad()
         {

@@ -383,7 +383,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Are you sure you want to log off?</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
-    <value>The email address is not matching</value>
+    <value>New Email field and Retype Email field must match</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
     <value>New password field and confirm password field must match</value>
@@ -392,7 +392,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please enter verification code received on email</value>
   </data>
   <data name="InvalidOTP" xml:space="preserve">
-    <value>Invalid OTP, please enter correct OTP</value>
+    <value>The entered code is incorrect</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>Invalid password</value>
@@ -509,7 +509,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>No bills available</value>
+    <value>No invoices available</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
@@ -605,7 +605,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Total partial paid bills amount</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>No data available</value>
+    <value>No certificate available</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>Enter captcha</value>
@@ -725,7 +725,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>You have one remaining attempt then the account will be locked</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
-    <value>Your account has been locked. Please contact our call center at : 19993</value>
+    <value>Login attempt failed because of entering 3 wrong verification codes</value>
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
     <value>SADAD invoice number</value>

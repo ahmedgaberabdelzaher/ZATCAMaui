@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -286,51 +287,62 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnSubmitClick()
         {
-            isMendatoryDataEntered = true;
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async() =>
-            {
-                ValidateFormData();//isMendatoryDataEntered
-                if (isMendatoryDataEntered)
+                isMendatoryDataEntered = true;
+                await Task.Run(() =>
                 {
-                    isMendatoryDataEntered = true;
-                    string _language = UtilityManager.GetLanguageParameter();
-                    VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
-                    if(vatLookUp.d != null)
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    ValidateFormData();//isMendatoryDataEntered
+                if (isMendatoryDataEntered)
                     {
-                        if(string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                        isMendatoryDataEntered = true;
+                        string _language = UtilityManager.GetLanguageParameter();
+                        VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
+                        if (vatLookUp.d != null)
                         {
-                            NameOrNoResultLabel = AppResources.Name;
-                            Name = vatLookUp.d.results[0].Name;
+                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                        {
+                                NameOrNoResultLabel = AppResources.Name;
+                                Name = vatLookUp.d.results[0].Name;
+                            }
+                            else
+                            {
+                                NameOrNoResultLabel = "";
+                                Name = "";
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                });
+                            }
+
                         }
                         else
                         {
-                            NameOrNoResultLabel = "";
-                            Name = "";
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
-                            });
+                            Name = vatLookUp.d.results[0].Name;
+                            NameOrNoResultLabel = AppResources.Nodataavailable;
                         }
-                        
+
                     }
-                    else
-                    {
-                        Name = vatLookUp.d.results[0].Name;
-                        NameOrNoResultLabel = AppResources.Nodataavailable;
-                    }
-                   
-                }
-                
+
                 // IsLoading = true;
             });
-            await Task.Run(() =>
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(InternetException ex)
             {
-                IsLoading = false;
-            });
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
 
         private void ValidateFormData()

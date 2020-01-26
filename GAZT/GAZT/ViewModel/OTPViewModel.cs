@@ -287,132 +287,143 @@ namespace GAZT
         {
             try
             {
-                await Task.Run(() =>
+                try
                 {
-                    IsLoading = true;
-                });
-                if (IsComingFrom == NavigateToOtp.IsLogin)
-                {
-                    TaxPayerProfile TP = null;
-                    try
+                    await Task.Run(() =>
                     {
-                        String OTP = string.Empty;
-
-                        String lang = "EN";
-
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-
-
-                        if (App.IsArabic == true)
-                        {
-                            lang = "AR";
-                        }
-                        else
-                        {
-                        }
-                        
-                        TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP,"1");
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (TP != null)
-                        {
-                            String Password = App.TP.Password;
-                            App.TP = TP;
-                            App.TP.Password = Password;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                _navigationService.NavigateTo(App.DashboardView);
-                            });
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                string isInvalidOtp = AppResources.InvalidOTP;
-                                await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
-                                ClearData();
-                            });
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            IsLoading = false;
-                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                            ClearData();
-                        });
-                    }
-                }
-                else if (IsComingFrom == NavigateToOtp.IsMobile)
-                {
-                    TaxPayerProfile TP = null;
-
-                    try
-                    {
-                        String OTP = string.Empty;
-                        String lang = "EN";
-                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-                        if (App.IsArabic == true)
-                        {
-                            lang = "AR";
-                        }
-                        TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (TP != null)
-                        {
-                            string UpdatedMobile = App.TP.NewMobile;
-                            App.TP.Mobile = UpdatedMobile;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
-                                await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                string isInvalidOtp = AppResources.InvalidOTP;
-                                await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
-                                ClearData();
-                            });
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                            ClearData();
-                        });
-                    }
-                }
-                else if (IsComingFrom == NavigateToOtp.IsEmail)
-                {
-                    String OTP = string.Empty;
-
-                    OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
-
-                    if (!string.IsNullOrEmpty(OTP))
-                    {
-                        App.Otp = OTP;
-                    }
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        _navigationService.GoBack();
+                        IsLoading = true;
                     });
+                    if (IsComingFrom == NavigateToOtp.IsLogin)
+                    {
+                        TaxPayerProfile TP = null;
+                        try
+                        {
+                            String OTP = string.Empty;
 
+                            String lang = "EN";
+
+                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+
+
+                            if (App.IsArabic == true)
+                            {
+                                lang = "AR";
+                            }
+                            else
+                            {
+                            }
+
+                            TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, "1");
+                            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            if (TP != null)
+                            {
+                                String Password = App.TP.Password;
+                                App.TP = TP;
+                                App.TP.Password = Password;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _navigationService.NavigateTo(App.DashboardView);
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    string isInvalidOtp = AppResources.InvalidOTP;
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
+                                    ClearData();
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                IsLoading = false;
+                                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                                ClearData();
+                            });
+                        }
+                    }
+                    else if (IsComingFrom == NavigateToOtp.IsMobile)
+                    {
+                        TaxPayerProfile TP = null;
+
+                        try
+                        {
+                            String OTP = string.Empty;
+                            String lang = "EN";
+                            OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+                            if (App.IsArabic == true)
+                            {
+                                lang = "AR";
+                            }
+                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            if (TP != null)
+                            {
+                                string UpdatedMobile = App.TP.NewMobile;
+                                App.TP.Mobile = UpdatedMobile;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
+                                    await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    string isInvalidOtp = AppResources.InvalidOTP;
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
+                                    ClearData();
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                                ClearData();
+                            });
+                        }
+                    }
+                    else if (IsComingFrom == NavigateToOtp.IsEmail)
+                    {
+                        String OTP = string.Empty;
+
+                        OTP = OTP1stNumberProvidedByTheUser + OTP2ndNumberProvidedByTheUser + OTP3rdNumberProvidedByTheUser + OTP4thNumberProvidedByTheUser;
+
+                        if (!string.IsNullOrEmpty(OTP))
+                        {
+                            App.Otp = OTP;
+                        }
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _navigationService.GoBack();
+                        });
+
+                    }
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                 }
+                catch (Exception ex)
+                {
+                    ClearData();
+                }
+            }
+            catch(ThreadInterruptedException ex)
+            {
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-            }
-            catch (Exception ex)
-            {
-                ClearData();
             }
         }
         #endregion
