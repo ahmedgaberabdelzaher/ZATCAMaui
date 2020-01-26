@@ -1731,6 +1731,67 @@ namespace GAZT.Manager
                 return null;
             }
         }
+        //done internet exception handling
+        public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData()
+        {
+            VATCalculationData vATCalculationData = new VATCalculationData();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TaxPayerProfile TP = null;
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTValidateOTPResponseJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        vATCalculationData = JsonConvert.DeserializeObject<VATCalculationData>(GAZTValidateOTPResponseJSON);
+                        
+                    }
+
+                    return vATCalculationData;
+
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                    {
+                        throw new Exception(AppResources.InvalidEmail);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
 
 
         public static async Task<TINStatus> GAZTGetEstimateZakatReturnList()
@@ -1824,7 +1885,8 @@ namespace GAZT.Manager
             }
         }
 
-          
+
+        
       
     }
 
