@@ -24,7 +24,10 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onOptionClicked { get; set; }
 
         public ICommand onCreditCarriedForwardClicked { get; set; }
-        
+
+        public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
+
+
 
 
         #endregion
@@ -442,8 +445,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<Result4> _responseAttachSet;
-        public List<Result4> ResponseAttachSet
+        private List<Attachment> _responseAttachSet;
+        public List<Attachment> ResponseAttachSet
         {
             get
             {
@@ -503,6 +506,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+       
+
         private VATDeclarationTabbedPageName _pageSelectedItems;
         public VATDeclarationTabbedPageName PageSelectedItems
         {
@@ -533,8 +538,42 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _vATRate001="5.00";
+        public string VATRate001
+        {
+            get
+            {
+                return _vATRate001;
+            }
+            set
+            {
+                _vATRate001 = value;
 
-        
+                RaisePropertyChanged("VATRate001");
+            }
+        }
+
+        private string _vATRate002="5.00";
+        public string VATRate002
+        {
+            get
+            {
+                return _vATRate002;
+            }
+            set
+            {
+                _vATRate002 = value;
+
+                RaisePropertyChanged("VATRate002");
+            }
+        }
+
+      
+
+
+
+
+
 
 
         #endregion
@@ -584,6 +623,14 @@ namespace GAZT.ViewModel.NewViewModel
                         SubmitClicked();
                     }
                 }
+            });
+
+
+            onStandardRatedSalesVatAmountTapped = new Xamarin.Forms.Command(() =>
+            {
+                // InstrunctionClicked();
+                ResponseVATDeclarationD.StdsalesVat = StandardRatedSalesVatAmount(ResponseVATDeclarationD.StdsalesAmt, ResponseVATDeclarationD.StdsalesAdj);
+
             });
 
             onInstructionsClicked = new Xamarin.Forms.Command(async () =>
@@ -809,6 +856,111 @@ namespace GAZT.ViewModel.NewViewModel
             }
             VatAttachmentsList = vatAttachment;
         }
+
+        #region CalculationPart
+
+        public string StandardRatedSalesVatAmount(string Amount,string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate001);
+
+                VATAmount = (((dAmount - dAdjustment) * dVATRate)/100).ToString();
+            }
+            return VATAmount;
+        }
+
+        public string TotalAmount(string Amount1,string Amount2,string Amount3,string Amount4,string Amount5)
+        {
+            String TotalAmount = string.Empty;
+            if(!String.IsNullOrEmpty(Amount1)&& !String.IsNullOrEmpty(Amount2)&& !String.IsNullOrEmpty(Amount3)&& !String.IsNullOrEmpty(Amount4)&& !String.IsNullOrEmpty(Amount5))
+            {
+                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3) + Convert.ToDouble(Amount4) + Convert.ToDouble(Amount5)).ToString();
+            }
+            return TotalAmount;
+        }
+        public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
+        {
+            String TotalAmount = string.Empty;
+            if (!String.IsNullOrEmpty(Adjustment1) && !String.IsNullOrEmpty(Adjustment2) && !String.IsNullOrEmpty(Adjustment3) && !String.IsNullOrEmpty(Adjustment4) && !String.IsNullOrEmpty(Adjustment5))
+            {
+                TotalAmount = (Convert.ToDouble(Adjustment1) + Convert.ToDouble(Adjustment2) + Convert.ToDouble(Adjustment3) + Convert.ToDouble(Adjustment4) + Convert.ToDouble(Adjustment5)).ToString();
+            }
+            return TotalAmount;
+        }
+
+        public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
+        {
+            String TotalAmount = string.Empty;
+            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
+            {
+                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3)).ToString();
+            }
+            return TotalAmount;
+        }
+
+
+        public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate002);
+
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+            }
+            return VATAmount;
+        }
+        //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
+        public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate001 = Convert.ToDouble(VATRate001);
+                Double dVATRate002 = Convert.ToDouble(VATRate002);
+
+                VATAmount = (((dAmount* dVATRate001) /100)- ((dAdjustment * dVATRate002) / 100)).ToString();
+            }
+            return VATAmount;
+        }
+
+        public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate002);
+
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+            }
+            return VATAmount;
+        }
+
+        public string NetVatDue(string CurrentPeriod, string PreviousPeriod,string ForwardFromPreviousPeriod)
+        {
+            string NetVatDue = string.Empty;
+            if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod))
+            {
+                Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
+                Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
+                Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
+
+                NetVatDue = (dCurrentPeriod+dPreviousPeriod+dForwardFromPreviousPeriod).ToString();
+            }
+            return NetVatDue;
+        }
+
+        #endregion
 
         #endregion
     }
