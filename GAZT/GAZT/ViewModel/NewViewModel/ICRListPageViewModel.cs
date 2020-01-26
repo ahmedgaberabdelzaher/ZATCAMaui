@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
@@ -326,7 +327,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                         }
                         _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
-                    }
+                   
                 }
                 catch (Exception ex)
                 {

@@ -442,8 +442,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<Result4> _responseAttachSet;
-        public List<Result4> ResponseAttachSet
+        private List<Attachment> _responseAttachSet;
+        public List<Attachment> ResponseAttachSet
         {
             get
             {

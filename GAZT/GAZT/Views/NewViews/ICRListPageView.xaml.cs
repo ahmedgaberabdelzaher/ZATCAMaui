@@ -31,7 +31,7 @@ namespace GAZT.Views.NewViews
             SetLTR();
             viewModel.onPageLoad();
 
-            Bills.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+            ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 

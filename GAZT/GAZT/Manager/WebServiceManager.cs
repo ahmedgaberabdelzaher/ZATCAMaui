@@ -1824,59 +1824,8 @@ namespace GAZT.Manager
             }
         }
 
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                string NewToken = string.Empty;
-                try
-                {
-                    VATDeclarationD vATLookUp = new VATDeclarationD();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.SaveVATDeclarationData;
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
-                    if (GAZTVATLookUp != null)
-                    {
-                        HttpHeaders headers = GAZTVATLookUp.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                        }
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-                        String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
-                        vATLookUp = JsonConvert.DeserializeObject<VATDeclarationD>(TINStatusResponse);
-                    }
-                    return vATLookUp;
-                }
-                catch (Exception ex)
-                {
-                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
-                    //{
-                    //    throw new Exception(AppResources.Nodataavailable);
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
-                    //}
-                    return null;
-                }
-            }
-            else
-            {
-
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-
-            }
-        }
+          
+      
     }
 
 }
