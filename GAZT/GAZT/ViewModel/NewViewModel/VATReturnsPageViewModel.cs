@@ -1,11 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
+using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -20,11 +24,11 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onTaxPayerDetailsClicked { get; set; }
         public ICommand onVATReturnFormClicked { get; set; }
         public ICommand onSummaryClicked { get; set; }
-
+        public ICommand OnSaveAsDraftClicked { get; set; }
         public ICommand onOptionClicked { get; set; }
-
+        byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
-        
+        string StepNumber = "04";
 
 
         #endregion
@@ -636,7 +640,13 @@ namespace GAZT.ViewModel.NewViewModel
             //    await _dialogService.ShowMessage("It has copied sadad payment number", AppResources.Information);
             //});
 
-
+            OnSaveAsDraftClicked = new Command(async () =>
+            {
+                string operation = "05";// Passed 05 to save the data as a draft
+                VATDeclarationData.d.Operationz = operation;
+                VATDeclarationData.d.StepNumber = StepNumber;
+                await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+            });
         }
 
         #endregion
@@ -678,11 +688,17 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleCreditCarriedForward = true;
             ButtonName = AppResources.Submit;
         }
-        public void SubmitClicked()
+        public async Task SubmitClicked()
         {
             ClearPage();
             IsVisibleAcknowledgment = true;
             ButtonName = AppResources.Submit;
+            string operation = "01";
+            VATDeclarationData.d.StepNumber = StepNumber;
+            VATDeclarationData.d.Operationz = operation;
+            await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+
+
         }
         public void ClickNotes()
         {
@@ -690,11 +706,28 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleNotes = true;
             ButtonName = AppResources.Submit;
         }
-        public void ClickAttachment()
+        public async void ClickAttachment()
         {
             ClearPage();
             IsVisibleAttachments = true;
             ButtonName = AppResources.Submit;
+
+            try
+            {
+                var fileData = await CrossFilePicker.Current.PickFile();
+                attachment = fileData.DataArray;
+               string fileName= fileData.FileName;
+                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, fileName, VATDeclarationData.d.ReturnIdz);
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
         }
         public void ClickVoid()
         {
@@ -718,12 +751,17 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleCreditCarriedForward = false;
         }
 
-        public void pageLoad()
+        public async Task  pageLoad()
         {
-           
-            
 
-            
+            string periodKey = VATDeclarationData.d.Periodkeyz;
+            string TxnTp = VATDeclarationData.d.TxnTpz;
+            string status = VATDeclarationData.d.Statusz;
+            string FormBundleNumber = VATDeclarationData.d.Fbnum;
+            string Gpart = VATDeclarationData.d.Gpart;
+            await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
+
+
             List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
             VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
            
