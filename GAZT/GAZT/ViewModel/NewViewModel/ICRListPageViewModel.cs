@@ -325,15 +325,14 @@ namespace GAZT.ViewModel.NewViewModel
                     //catch (Exception ex)
                     //{
 
-<<<<<<< HEAD
+
                         //}
                         //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
                     }
-=======
-                        }
-                        _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
-                   
->>>>>>> a9fce9b02eb61a3bd7f856203f94e7180aff9ca4
+
+                        //}
+                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+
                 }
                 catch (Exception ex)
                 {
