@@ -1408,6 +1408,7 @@ namespace GAZT.Manager
                     _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(TINStatusResponse);
 
 
+
                 }
                    return _vATDeclaration;
             }

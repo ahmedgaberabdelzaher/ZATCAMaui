@@ -223,8 +223,8 @@ namespace GAZT.Models
         public string Vrtaxret { get; set; }
         public string Incotyp { get; set; }
         public string Persl { get; set; }
-        public string Abrzu { get; set; }
-        public string Abrzo { get; set; }
+        public DateTime Abrzu { get; set; }
+        public DateTime Abrzo { get; set; }
         public string Fin { get; set; }
         public string Tpnm { get; set; }
         public string TcFg { get; set; }

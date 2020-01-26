@@ -23,14 +23,10 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-        public VATReturnsPageView()
+        public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
 
-            //NavigationPage navPage = new NavigationPage
-            //{
-            //    BarBackgroundColor = Color.FromHex("#c49b2d"),
-            //    BarTextColor = Color.FromHex("#c49b2d")
-            //};
+           
             
 
 
@@ -40,10 +36,25 @@ namespace GAZT.Views.NewViews
             //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
             //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+
             InitializeComponent();
+
+           
             viewModel = App.Locator.VATReturnsPageView;
             this.BindingContext = viewModel;
+            if (_vATDeclarationInfo.d != null)
+            {
+                viewModel.VATDeclarationData = _vATDeclarationInfo;
+            }
+
+          
+
             viewModel.pageLoad();
+            viewModel.IsMainButtonEnabled = false;
+            viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+           // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
+
+
         }
         #endregion
 
@@ -125,35 +136,62 @@ namespace GAZT.Views.NewViews
             VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
 
             //Set the current to the color you want
-            current.TextColor = Color.FromHex("#c49b2d");
+            //if (current != null)
+            //{
+            //    current.TextColor = Color.FromHex("#c49b2d");
+            //}
             
-          
+            //if (previous != null)
+            //{
+            //    //Reset the previous to defaulr color
+            //    previous.TextColor = Color.FromHex("#FFFFFF");
+            //}
 
-            if (previous != null)
+            if (current != null)
             {
-                //Reset the previous to defaulr color
-                previous.TextColor = Color.FromHex("#FFFFFF");
-            }
+                if (current.pageName == "Instrunction")
+                {
+                    viewModel.InstrunctionClicked();
+                    setColor(previous, current);
+                }
+                else if (current.pageName == "TaxPayer Details")
+                {
+                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    {
+                        viewModel.TaxpayerDetailsClicked();
+                        setColor(previous, current);
+                    }
+                    else
+                    {
+                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    }
+                }
+                else if (current.pageName == "VAT Return Form")
+                {
+                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    {
+                        viewModel.VATReturnFormClicked();
+                        setColor(previous, current);
+                    }
+                    else
+                    {
+                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    }
+                }
+                else if (current.pageName == "Summary")
+                {
+                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    {
+                        viewModel.SummaryClicked();
+                        setColor(previous, current);
+                    }
+                    else
+                    {
+                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    }
+                }
 
-
-            if(current.pageName== "Instrunction")
-            {
-                viewModel.InstrunctionClicked();
             }
-            else if(current.pageName== "TaxPayer Details")
-            {
-                viewModel.TaxpayerDetailsClicked();
-            }
-            else if (current.pageName == "VAT Return Form")
-            {
-                viewModel.VATReturnFormClicked();
-            }
-            else if (current.pageName == "Summary")
-            {
-                viewModel.SummaryClicked();
-            }
-
-
 
         }
 
@@ -166,6 +204,38 @@ namespace GAZT.Views.NewViews
             else
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGoldLabelStyleForCaptionFont"];
+            }
+        }
+
+        public void setColor(VATDeclarationTabbedPageName previous, VATDeclarationTabbedPageName current)
+        {
+            if (current != null)
+            {
+                current.TextColor = Color.FromHex("#c49b2d");
+            }
+
+            if (previous != null)
+            {
+                //Reset the previous to defaulr color
+                previous.TextColor = Color.FromHex("#FFFFFF");
+            }
+        }
+        private async void onMoreOptionClicked(object sender, EventArgs e)
+        {
+            var action = await DisplayActionSheet("ActionSheet", "Cancel", null,"Notes", "Attachments", "Void");
+            switch (action)
+            {
+                case "Notes":
+                    viewModel.ClickNotes();
+                    break;
+                case "Attachments":
+                    viewModel.ClickAttachment();
+                    break;
+                case "Void":
+                    viewModel.ClickVoid();
+                    break;
+                default:
+                    break;
             }
         }
     }
