@@ -325,14 +325,15 @@ namespace GAZT.ViewModel.NewViewModel
                     //catch (Exception ex)
                     //{
 
-
+<<<<<<< HEAD
                         //}
                         //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
                     }
-
-                    //  }
-                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+=======
+                        }
+                        _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
                    
+>>>>>>> a9fce9b02eb61a3bd7f856203f94e7180aff9ca4
                 }
                 catch (Exception ex)
                 {
@@ -352,10 +353,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () => {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                var _navigation = Application.Current.MainPage.Navigation;
+                await _navigation.PopToRootAsync();
             }
         }
         #endregion
