@@ -1610,10 +1610,10 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String TINStatusResponse = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
+                        String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
 
 
-                        _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(TINStatusResponse);
+                        _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(VATReturn);
 
 
                     }
@@ -1649,7 +1649,7 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration, string Fbguid)
+        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -1732,8 +1732,9 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
-        public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData()
+        public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData(string periodKey, string TxnTp, string status, string FormBundleNumber, string Gpart)
         {
+          
             VATCalculationData vATCalculationData = new VATCalculationData();
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -1741,10 +1742,13 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
+                    char lang = GetLangZParameter();// "E";
+                   
+                    
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber  + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
 
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
@@ -1856,13 +1860,17 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid)//, string returnedFguid
         {
             try
             {
                 AttachmentRootOject _attachment = new AttachmentRootOject();
                 char LangZ = GetLangZParameter();
-                 String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                string Dotyp = "VTA0";
+                string AttBy = "TP";
+                // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + "'" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+               // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -1871,7 +1879,7 @@ namespace GAZT.Manager
                 client.DefaultRequestHeaders.Add("slug", "testdstsdsf.pdf");
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                content.Add(baContent, "File", "filename.pdf");
+                content.Add(baContent, "File", fileName);
                 var response = await client.PostAsync(url, content);
                 var responsestr = response.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);

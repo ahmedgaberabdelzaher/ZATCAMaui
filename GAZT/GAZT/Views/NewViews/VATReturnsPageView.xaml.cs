@@ -1,11 +1,12 @@
-﻿using GAZT.Models;
+﻿using GAZT.Manager;
+using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +18,8 @@ namespace GAZT.Views.NewViews
 
         #region Variable
         public VATReturnsPageViewModel viewModel;
+      
+        
         #endregion
 
         #region Property
@@ -25,11 +28,6 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
-
-           
-            
-
-
             //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
             //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
@@ -52,8 +50,8 @@ namespace GAZT.Views.NewViews
             viewModel.pageLoad();
             viewModel.IsMainButtonEnabled = false;
             viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-           // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
-
+            // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
+            
 
         }
         #endregion

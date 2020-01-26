@@ -39,7 +39,18 @@ namespace GAZT.Models
 
     public class VATRSet
     {
-        public List<object> results { get; set; }
+        public List<VATCalculationDataVATRSet> results { get; set; }
+    }
+
+    public class VATCalculationDataVATRSet
+    {
+        public Metadata3 __metadata { get; set; }
+        public string Mandt { get; set; }
+        public string Fbtyp { get; set; }
+        public string Type { get; set; }
+        public string Penalty { get; set; }
+        public DateTime Begda { get; set; }
+        public DateTime Endda { get; set; }
     }
 
     //public class Metadata3
