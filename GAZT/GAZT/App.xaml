@@ -666,6 +666,16 @@
                 <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
 
+            <Style x:Key="GAZTGreyLabelStyleForOptionMenu" TargetType="Label">
+                <Setter Property="FontSize" Value="Caption"/>
+                <Setter Property="TextColor" Value="{DynamicResource EntryTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+
             <Style x:Key="TabbedPageSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Caption"/>
                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />

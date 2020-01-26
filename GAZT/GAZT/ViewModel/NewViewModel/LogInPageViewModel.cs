@@ -68,7 +68,6 @@ namespace GAZT.ViewModel
             }
             set
             {
-
                 _PreviousUserName = value;
             }
         }

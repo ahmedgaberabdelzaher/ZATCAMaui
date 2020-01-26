@@ -1687,6 +1687,143 @@ namespace GAZT.Manager
         //done internet exception handling
         public static async Task<VATDeclarationD> GAZTGetSavedData(string lang, string IdType, String IdNumber)
         {
+            string NewToken = string.Empty;
+            try
+            {
+                VATDeclarationD vATLookUp = new VATDeclarationD();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.SaveVATDeclarationData;
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                if (GAZTVATLookUp != null)
+                {
+                    HttpHeaders headers = GAZTVATLookUp.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+                    String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
+                    vATLookUp = JsonConvert.DeserializeObject<VATDeclarationD>(TINStatusResponse);
+                }
+                return vATLookUp;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
+        public static async Task<TINStatus> GAZTGetEstimateZakatReturnList()
+        {
+          //  TINStatus tINStatus = new TINStatus();
+            string NewToken = string.Empty;
+            try
+            {
+                string _language = null;
+                if (App.IsArabic)
+                    _language = "A";
+                else
+                    _language = "E";
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3102226654',Auditor='',Lang='EN',UserTin='3102226654')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+                if (GAZTEstimateZakatReturnList != null)
+                {
+                    HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+
+
+                  //  tINStatus = JsonConvert.DeserializeObject<TINStatus>(TINStatusResponse);
+
+
+                }
+                return null;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte)//, string returnedFguid
+        {
+            try
+            {
+                AttachmentRootOject _attachment = new AttachmentRootOject();
+                char LangZ = GetLangZParameter();
+                 String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("slug", "testdstsdsf.pdf");
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                content.Add(baContent, "File", "filename.pdf");
+                var response = await client.PostAsync(url, content);
+                var responsestr = response.Content.ReadAsStringAsync().Result;
+                _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+
+
+                return _attachment;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;

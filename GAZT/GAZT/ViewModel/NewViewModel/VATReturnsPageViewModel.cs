@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
@@ -22,6 +23,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand onOptionClicked { get; set; }
 
+        public ICommand onCreditCarriedForwardClicked { get; set; }
+        
+
 
         #endregion
 
@@ -39,6 +43,35 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _isDeclarationChecked = value;
                 RaisePropertyChanged("IsDeclarationChecked");
+            }
+        }
+
+
+        private VATDeclarationD _vATDeclarationD;
+        public VATDeclarationD VATDeclarationD
+        {
+            get
+            {
+                return _vATDeclarationD;
+            }
+            set
+            {
+                _vATDeclarationD = value;
+                RaisePropertyChanged("VATDeclarationD");
+            }
+        }
+
+        private VATDeclaration _vATDeclarationData;
+        public VATDeclaration VATDeclarationData
+        {
+            get
+            {
+                return _vATDeclarationData;
+            }
+            set
+            {
+                _vATDeclarationData = value;
+                RaisePropertyChanged("VATDeclarationData");
             }
         }
 
@@ -135,6 +168,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private bool _isVisibleCreditCarriedForward = false;
+        public bool IsVisibleCreditCarriedForward
+        {
+            get
+            {
+                return _isVisibleCreditCarriedForward;
+            }
+            set
+            {
+                _isVisibleCreditCarriedForward = value;
+                RaisePropertyChanged("IsVisibleCreditCarriedForward");
+            }
+        }
+
         private bool _isVisibleSummary = false;
         public bool IsVisibleSummary
         {
@@ -178,6 +226,83 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+
+        private bool _isCheckedTaxPayerDetailsInfo = false;
+        public bool IsCheckedTaxPayerDetailsInfo
+        {
+            get
+            {
+                return _isCheckedTaxPayerDetailsInfo;
+            }
+            set
+            {
+                _isCheckedTaxPayerDetailsInfo = value;
+                if (_isCheckedTaxPayerDetailsInfo == true)
+                {
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                }
+                RaisePropertyChanged("IsCheckedTaxPayerDetailsInfo");
+            }
+        }
+
+
+
+        private bool _isDeclarationCheckedForInstruction = false;
+        public bool IsDeclarationCheckedForInstruction
+        {
+            get
+            {
+                return _isDeclarationCheckedForInstruction;
+            }
+            set
+            {
+                _isDeclarationCheckedForInstruction = value;
+                if(_isDeclarationCheckedForInstruction==true)
+                {
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                }
+                RaisePropertyChanged("IsDeclarationCheckedForInstruction");
+            }
+        }
+
+
+        private bool _isMainButtonEnabled = false;
+        public bool IsMainButtonEnabled
+        {
+            get
+            {
+                return _isMainButtonEnabled;
+            }
+            set
+            {
+                _isMainButtonEnabled = value;
+                RaisePropertyChanged("IsMainButtonEnabled");
+            }
+        }
+
+        private bool _isTaxPayerControlEnabled = false;
+        public bool IsTaxPayerControlEnabled
+        {
+            get
+            {
+                return _isTaxPayerControlEnabled;
+            }
+            set
+            {
+                _isTaxPayerControlEnabled = value;
+                RaisePropertyChanged("IsTaxPayerControlEnabled");
+            }
+        }
+
         private bool _isVisibleNotes = false;
         public bool IsVisibleNotes
         {
@@ -206,6 +331,37 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVisibleInstrunction");
             }
         }
+
+
+
+        private bool _isTabbedMenuAvailable = true;
+        public bool IsTabbedMenuAvailable
+        {
+            get
+            {
+                return _isTabbedMenuAvailable;
+            }
+            set
+            {
+                _isTabbedMenuAvailable = value;
+                RaisePropertyChanged("IsTabbedMenuAvailable");
+            }
+        }
+
+        private bool _isVisibleCreditCarriedLabel = false;
+        public bool IsVisibleCreditCarriedLabel
+        {
+            get
+            {
+                return _isVisibleCreditCarriedLabel;
+            }
+            set
+            {
+                _isVisibleCreditCarriedLabel = value;
+                RaisePropertyChanged("IsVisibleCreditCarriedLabel");
+            }
+        }
+
 
 
         private string _pageFontSize="10";
@@ -240,7 +396,145 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private List<Note> _responseNote;
+        public List<Note> ResponseNote
+        {
+            get
+            {
+                return _responseNote;
+            }
+            set
+            {
+                _responseNote = value;
 
+                RaisePropertyChanged("ResponseNote");
+            }
+        }
+
+        private List<Result2> _responseIBANSET;
+        public List<Result2> ResponseIBANSET
+        {
+            get
+            {
+                return _responseIBANSET;
+            }
+            set
+            {
+                _responseIBANSET = value;
+
+                RaisePropertyChanged("ResponseIBANSET");
+            }
+        }
+
+
+        private List<Result3> _responseCFSET;
+        public List<Result3> ResponseCFSET
+        {
+            get
+            {
+                return _responseCFSET;
+            }
+            set
+            {
+                _responseCFSET = value;
+
+                RaisePropertyChanged("ResponseCFSET");
+            }
+        }
+
+        private List<Result4> _responseAttachSet;
+        public List<Result4> ResponseAttachSet
+        {
+            get
+            {
+                return _responseAttachSet;
+            }
+            set
+            {
+                _responseAttachSet = value;
+
+                RaisePropertyChanged("ResponseAttachSet");
+            }
+        }
+
+        private List<Result5> _responseAddressSET;
+        public List<Result5> ResponseAddressSET
+        {
+            get
+            {
+                return _responseAddressSET;
+            }
+            set
+            {
+                _responseAddressSET = value;
+
+                RaisePropertyChanged("ResponseResult5");
+            }
+        }
+
+
+        private List<object> _responseobject;
+        public List<object> Responseobject
+        {
+            get
+            {
+                return _responseobject;
+            }
+            set
+            {
+                _responseobject = value;
+
+                RaisePropertyChanged("Responseobject");
+            }
+        }
+
+        private VATDeclarationD _responseVATDeclarationD;
+        public VATDeclarationD ResponseVATDeclarationD
+        {
+            get
+            {
+                return _responseVATDeclarationD;
+            }
+            set
+            {
+                _responseVATDeclarationD = value;
+
+                RaisePropertyChanged("ResponseVATDeclarationD");
+            }
+        }
+
+        private VATDeclarationTabbedPageName _pageSelectedItems;
+        public VATDeclarationTabbedPageName PageSelectedItems
+        {
+            get
+            {
+                return _pageSelectedItems;
+            }
+            set
+            {
+                _pageSelectedItems = value;
+
+                RaisePropertyChanged("PageSelectedItems");
+            }
+        }
+
+        private VATDeclarationTabbedPageName _pageSelectedItem;
+        public VATDeclarationTabbedPageName PageSelectedItem
+        {
+            get
+            {
+                return _pageSelectedItem;
+            }
+            set
+            {
+                _pageSelectedItem = value;
+
+                RaisePropertyChanged("PageSelectedItem");
+            }
+        }
+
+
+        
 
 
         #endregion
@@ -262,7 +556,7 @@ namespace GAZT.ViewModel.NewViewModel
             _navigationService = navigationService;
             _dialogService = dialogService;
 
-
+            IsMainButtonEnabled = false;
 
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -271,14 +565,23 @@ namespace GAZT.ViewModel.NewViewModel
                     if (ButtonName == AppResources.ZVatStepTwo)
                     {
                         TaxpayerDetailsClicked();
+                        PageSelectedItem = VatTabbledPageList[1];
+                        //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
+
                     }
                     else if (ButtonName == AppResources.ZVatStepThree)
                     {
                         VATReturnFormClicked();
+                        PageSelectedItem = VatTabbledPageList[2];
                     }
                     else if (ButtonName == AppResources.ZVatStepFour)
                     {
                         SummaryClicked();
+                        PageSelectedItem = VatTabbledPageList[3];
+                    }
+                    else if (ButtonName == AppResources.Submit)
+                    {
+                        SubmitClicked();
                     }
                 }
             });
@@ -286,22 +589,33 @@ namespace GAZT.ViewModel.NewViewModel
             onInstructionsClicked = new Xamarin.Forms.Command(async () =>
             {
                 InstrunctionClicked();
+               
             });
 
             onTaxPayerDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
                 TaxpayerDetailsClicked();
+               
             });
 
             onVATReturnFormClicked = new Xamarin.Forms.Command(async () =>
             {
                 VATReturnFormClicked();
+               
             });
 
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
                 SummaryClicked();
+                
             });
+
+
+            onCreditCarriedForwardClicked = new Xamarin.Forms.Command(async () =>
+            {
+                CreditCarriedClicked();
+            });
+
 
             onOptionClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -356,8 +670,44 @@ namespace GAZT.ViewModel.NewViewModel
             ButtonName = AppResources.Submit;
         }
 
+        public void CreditCarriedClicked()
+        {
+            ClearPage();
+            IsTabbedMenuAvailable = false;
+            IsVisibleCreditCarriedLabel = true;
+            IsVisibleCreditCarriedForward = true;
+            ButtonName = AppResources.Submit;
+        }
+        public void SubmitClicked()
+        {
+            ClearPage();
+            IsVisibleAcknowledgment = true;
+            ButtonName = AppResources.Submit;
+        }
+        public void ClickNotes()
+        {
+            ClearPage();
+            IsVisibleNotes = true;
+            ButtonName = AppResources.Submit;
+        }
+        public void ClickAttachment()
+        {
+            ClearPage();
+            IsVisibleAttachments = true;
+            ButtonName = AppResources.Submit;
+        }
+        public void ClickVoid()
+        {
+            
+        }
+
+        
         public void ClearPage()
         {
+            //for Header
+            IsTabbedMenuAvailable = true;
+            IsVisibleCreditCarriedLabel = false;
+            ///
             IsVisibleAcknowledgment = false;
             IsVisibleAttachments = false;
             IsVisibleInstrunction = false;
@@ -365,6 +715,7 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleSummary = false;
             IsVisibleTaxPayerDetails = false;
             IsVisibleVatReturnForm = false;
+            IsVisibleCreditCarriedForward = false;
         }
 
         public void pageLoad()
@@ -391,6 +742,41 @@ namespace GAZT.ViewModel.NewViewModel
 
             VatTabbledPageList = vatTabbedList;
             InstrunctionClicked();
+
+
+            if (VATDeclarationData != null)
+            {
+               if(VATDeclarationData.d!=null)
+                {
+                    ResponseVATDeclarationD = VATDeclarationData.d;
+                }
+                if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count()!=0)
+                {
+                    ResponseNote = VATDeclarationData.d.NOTESSet.results;
+                }
+                if (VATDeclarationData.d.VATR_MSGSet.results != null && VATDeclarationData.d.VATR_MSGSet.results.Count() != 0)
+                {
+                    Responseobject = VATDeclarationData.d.VATR_MSGSet.results;
+                }
+                if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
+                {
+                    ResponseIBANSET = VATDeclarationData.d.IBANSet.results;
+                }
+                if (VATDeclarationData.d.CFSet.results != null && VATDeclarationData.d.CFSet.results.Count() != 0)
+                {
+                    ResponseCFSET = VATDeclarationData.d.CFSet.results;
+                }
+                if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
+                {
+                    ResponseAttachSet = VATDeclarationData.d.ATTACHSet.results;
+                }
+                if (VATDeclarationData.d.ADRSet.results != null && VATDeclarationData.d.ADRSet.results.Count() != 0)
+                {
+                    ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
+                }
+            }
+
+
 
 
             int j = 5;

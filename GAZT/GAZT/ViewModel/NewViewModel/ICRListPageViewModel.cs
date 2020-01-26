@@ -181,11 +181,11 @@ namespace GAZT.ViewModel.NewViewModel
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
-                        {
-                            ICRStatusList = new List<ICRStatus>();
-                            ICRStatusList = icrList.ICR_STATUSSet;
-
-                        }
+                    {
+                        ICRStatusList = new List<ICRStatus>();
+                        ICRStatusList = icrList.ICR_STATUSSet;
+                        SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                    }
 
                         VATDeclaration vATDeclaration = new VATDeclaration();
                     //  vATDeclaration.
@@ -306,21 +306,23 @@ namespace GAZT.ViewModel.NewViewModel
                         vATDeclaration.d.ADRSet = _aDRSet;
                         vATDeclaration.d.ADRSet.results = lst;
 
-                        try
-                        {
-                            // Made changes in the data to test the API
-                            _vATDeclaration.d.StdpurchaseAmt = "3000";
-                            _vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
-                            _vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
-                            _vATDeclaration.d.Operationz = "05";
-                            _vATDeclaration.d.StepNumber = "04";
-                            _vATDeclaration.d.StdsalesAmt = "5400";
-                            _vATDeclaration.d.SalesGccAmt = "5400";
+                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
 
-                            _vATDeclaration.d.StepNumberz = "04";
-                        }
-                        catch (Exception ex)
-                        {
+                    //try
+                    //{
+                    //    // Made changes in the data to test the API
+                    //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
+                    //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
+                    //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
+                    //    //_vATDeclaration.d.Operationz = "05";
+                    //    //_vATDeclaration.d.StepNumber = "04";
+                    //    //_vATDeclaration.d.StdsalesAmt = "5400";
+                    //    //_vATDeclaration.d.SalesGccAmt = "5400";
+
+                    //    //_vATDeclaration.d.StepNumberz = "04";
+                    //}
+                    //catch (Exception ex)
+                    //{
 
                         }
                         _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);

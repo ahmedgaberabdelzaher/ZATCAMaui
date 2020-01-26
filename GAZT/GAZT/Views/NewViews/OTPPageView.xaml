@@ -83,6 +83,12 @@
                         
                             <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
+
+                         <!--<StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">  
+       <Button Text="Pick File" Clicked="Button_Clicked" HorizontalOptions="Center"  
+               VerticalOptions="Center"/>  
+       <Label Text="File Is :" x:Name="lbl"/>  
+   </StackLayout>-->
                     </Grid>
                 </StackLayout>
                 </ScrollView>

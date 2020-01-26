@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GAZT.Helper;
 using GAZT.Manager;
+using Plugin.FilePicker;
 
 namespace GAZT.Views.NewViews
 {
@@ -21,7 +22,7 @@ namespace GAZT.Views.NewViews
         OTPPageViewModel viewModel;
         double DeviceHeight;
         double DeviceWidth;
-    
+        byte[] data;
         #endregion
 
         #region Constructor
@@ -182,6 +183,22 @@ namespace GAZT.Views.NewViews
             //    Navigation.RemovePage(pg);
             //}
         }
-     
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                //var fileData = await CrossFilePicker.Current.PickFile();
+                //data = fileData.DataArray;
+                //lbl.Text = fileData.FileName;
+                //AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
     }
 }

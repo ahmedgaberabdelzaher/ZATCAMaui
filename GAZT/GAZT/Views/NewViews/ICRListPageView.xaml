@@ -12,8 +12,8 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="90*" />
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -35,9 +35,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus, Mode=TwoWay}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
 
                 </Frame>
+
                 <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
@@ -49,7 +50,7 @@
 
 
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
-                    <ListView  x:Name="Bills" 
+                    <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
