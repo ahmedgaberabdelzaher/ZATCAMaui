@@ -647,8 +647,10 @@ namespace GAZT
                                 await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                 ClearEmailData();
                                 App.IsComingFromDashboardToLogOff = false;
-                                var _navigation = Application.Current.MainPage.Navigation;
-                                await _navigation.PopToRootAsync();
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    await _navigation.PopToRootAsync();
+                                });
                             }
                             else
                             {
@@ -703,10 +705,12 @@ namespace GAZT
                                 TaxPayerProfile.Password = NewPassword;
                                 String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
                                 await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
-                                App.IsComingFromDashboardToLogOff = false;
-                                var _navigation = Application.Current.MainPage.Navigation;
+                                App.IsComingFromDashboardToLogOff = false;                               
                                 ClearPasswordData();
-                                await _navigation.PopToRootAsync();
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    await _navigation.PopToRootAsync();
+                                });
                             }
                             else
                             {
@@ -885,8 +889,10 @@ namespace GAZT
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
         }
 

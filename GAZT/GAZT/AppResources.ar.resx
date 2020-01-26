@@ -184,7 +184,7 @@
     <value>تفاصيل فاتورة سداد</value>
   </data>
   <data name="DueAmount" xml:space="preserve">
-    <value>المبلغ المستحق</value>
+    <value>مبلغ الفاتورة</value>
   </data>
   <data name="DueDate" xml:space="preserve">
     <value>تاريخ الاستحقاق</value>
@@ -735,7 +735,7 @@
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
-    <value>رقم فاتورة سداد</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="Pleaseenteryourlogininformation" xml:space="preserve">
     <value>يرجى إدخال معلومات تسجيل الدخول الخاصة بك</value>
@@ -1200,5 +1200,8 @@
   </data>
   <data name="ZTheUndisputedAmount" xml:space="preserve">
     <value>The Undisputed Amount</value>
+  </data>
+  <data name="ZSelectTaxpayerType" xml:space="preserve">
+    <value>Select Taxpayer Type</value>
   </data>
 </root>

@@ -444,12 +444,12 @@ namespace GAZT.ViewModel
 
                             if (BegDate != null)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                             }
                             if (endDate != null)
                             {
-                                EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+                                EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                             }
 

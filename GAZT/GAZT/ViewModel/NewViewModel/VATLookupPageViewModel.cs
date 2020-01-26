@@ -370,9 +370,10 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else if (SelectedParameterType.id.Equals("2"))
                         {
-                            isMendatoryDataEntered = false;
+                           
                             if (LookupNumber.Length != 10)
                             {
+                                isMendatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                    
@@ -385,10 +386,11 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else if (SelectedParameterType.id.Equals("4"))
                         {
-                            isMendatoryDataEntered = false;
+                           
                             if (LookupNumber.Length != 15)
                             {
-                               
+                                isMendatoryDataEntered = false;
+
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                   

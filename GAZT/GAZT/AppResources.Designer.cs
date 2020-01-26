@@ -2269,6 +2269,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Taxpayer Type.
+        /// </summary>
+        public static string ZSelectTaxpayerType {
+            get {
+                return ResourceManager.GetString("ZSelectTaxpayerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show less details.
         /// </summary>
         public static string ZShowlessdetails {

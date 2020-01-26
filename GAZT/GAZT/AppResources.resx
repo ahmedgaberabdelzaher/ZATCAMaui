@@ -1196,4 +1196,7 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZTheUndisputedAmount" xml:space="preserve">
     <value>The Undisputed Amount</value>
   </data>
+  <data name="ZSelectTaxpayerType" xml:space="preserve">
+    <value>Select Taxpayer Type</value>
+  </data>
 </root>

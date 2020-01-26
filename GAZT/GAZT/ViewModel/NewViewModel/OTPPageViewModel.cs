@@ -518,7 +518,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 IsResendOTPEnabled = false;
                                 IsOTPEntryEnable = true;
-                                string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                                string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
                             TimerStart();
                             }
