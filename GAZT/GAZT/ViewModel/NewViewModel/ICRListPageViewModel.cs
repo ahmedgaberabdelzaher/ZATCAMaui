@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -161,21 +163,23 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task onPageLoad()
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                ICRList = null;
-
-                ICR icrList = null;
-                try
+                await Task.Run(() =>
                 {
-                    string lang = UtilityManager.GetLanguageParameter();
-                    icrList = await WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    IsLoading = true;
+                });
+
+                await Task.Run(async () =>
+                {
+                    ICRList = null;
+
+                    ICR icrList = null;
+                    try
+                    {
+                        string lang = UtilityManager.GetLanguageParameter();
+                        icrList = await WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
+                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                     {
@@ -184,93 +188,102 @@ namespace GAZT.ViewModel.NewViewModel
                         SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                     }
 
-                    VATDeclaration vATDeclaration = new VATDeclaration();
+                        VATDeclaration vATDeclaration = new VATDeclaration();
                     //  vATDeclaration.
-                   // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
-                  
+                    // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
+
                     if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
-                    {
-                        ICRList = new List<ICRListSet>();
-                        ICRList = icrList.ICR_LISTSet;
-                        ICRDummyList = ICRList;
-                        SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                        {
+                            ICRList = new List<ICRListSet>();
+                            ICRList = icrList.ICR_LISTSet;
+                            ICRDummyList = ICRList;
+                            SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
 
 
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
                         IsLoading = false;
-                        _navigationService.GoBack();
+                            _navigationService.GoBack();
+                        }
                     }
-                }
-                catch (Exception e)
-                {
+                    catch (Exception e)
+                    {
 
                     // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
                     IsLoading = false;
-                    _navigationService.GoBack();
+                        _navigationService.GoBack();
 
-                }
-            });
+                    }
+                });
 
-            await Task.Run(() =>
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+
+
+
+                //int k = 5;
+                //List<ICRStatus> icrStatus = new List<ICRStatus>();
+                //ICRStatusList = new List<ICRStatus>();
+                //for (k = 0; k < 6; k++)
+                //{
+                //    ICRStatus m = new ICRStatus();
+                //    m.Estat = "Abc";
+                //    m.Ltext = "Abc";
+                //    m.Spras = "Abc";
+                //    m.Txt04 = "Abc";
+                //    m.Txt30 = "Abc";
+
+                //    icrStatus.Add(m);
+                //}
+                //ICRStatusList = icrStatus;
+
+                //int i = 5;
+
+
+
+
+
+
+                //List<ICRListSet> icrList = new List<ICRListSet>();
+                //ICRList = new List<ICRListSet>();
+                //for (i = 0; i < 6; i++)
+                //{
+                //    ICRListSet m = new ICRListSet();
+                //    m.Incotext = "Abc";
+                //    m.Txt50 = "100";
+                //    m.DueDt = "12:02:20";
+                //    m.TaxPeriod = "P";
+
+                //    icrList.Add(m);
+                //}
+
+                //int j = 5;
+                ////S MyBills = new List<MyBills>();
+                //for (j = 0; j < 6; j++)
+                //{
+                //    ICRListSet m = new ICRListSet();
+                //    m.Incotext = "Abc";
+                //    m.Txt50 = "100";
+                //    m.DueDt = "12:02:20";
+                //    m.TaxPeriod = "P";
+
+                //    icrList.Add(m);
+                //}
+                //ICRList = icrList;
+            }
+            catch(InternetException ex)
             {
-                IsLoading = false;
-            });
-
-
-
-
-            //int k = 5;
-            //List<ICRStatus> icrStatus = new List<ICRStatus>();
-            //ICRStatusList = new List<ICRStatus>();
-            //for (k = 0; k < 6; k++)
-            //{
-            //    ICRStatus m = new ICRStatus();
-            //    m.Estat = "Abc";
-            //    m.Ltext = "Abc";
-            //    m.Spras = "Abc";
-            //    m.Txt04 = "Abc";
-            //    m.Txt30 = "Abc";
-
-            //    icrStatus.Add(m);
-            //}
-            //ICRStatusList = icrStatus;
-
-            //int i = 5;
-
-
-
-
-
-
-            //List<ICRListSet> icrList = new List<ICRListSet>();
-            //ICRList = new List<ICRListSet>();
-            //for (i = 0; i < 6; i++)
-            //{
-            //    ICRListSet m = new ICRListSet();
-            //    m.Incotext = "Abc";
-            //    m.Txt50 = "100";
-            //    m.DueDt = "12:02:20";
-            //    m.TaxPeriod = "P";
-
-            //    icrList.Add(m);
-            //}
-
-            //int j = 5;
-            ////S MyBills = new List<MyBills>();
-            //for (j = 0; j < 6; j++)
-            //{
-            //    ICRListSet m = new ICRListSet();
-            //    m.Incotext = "Abc";
-            //    m.Txt50 = "100";
-            //    m.DueDt = "12:02:20";
-            //    m.TaxPeriod = "P";
-
-            //    icrList.Add(m);
-            //}
-            //ICRList = icrList;
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
 
 
@@ -278,19 +291,21 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
-                if (_vATDeclaration != null && _vATDeclaration.d != null)
+                try
                 {
-                    VATDeclaration vATDeclaration = new VATDeclaration();
-                    VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                    Result5 result5 = new Result5();
-                    List<Result5> lst = new List<Result5>();
-                    ADRSet _aDRSet = new ADRSet();
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
+                    if (_vATDeclaration != null && _vATDeclaration.d != null)
+                    {
+                        VATDeclaration vATDeclaration = new VATDeclaration();
+                        VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                        Result5 result5 = new Result5();
+                        List<Result5> lst = new List<Result5>();
+                        ADRSet _aDRSet = new ADRSet();
 
-                    lst.Add(result5);
-                    vATDeclaration.d = vATDeclarationD;
-                    vATDeclaration.d.ADRSet = _aDRSet;
-                    vATDeclaration.d.ADRSet.results = lst;
+                        lst.Add(result5);
+                        vATDeclaration.d = vATDeclarationD;
+                        vATDeclaration.d.ADRSet = _aDRSet;
+                        vATDeclaration.d.ADRSet.results = lst;
 
                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
 
@@ -310,17 +325,26 @@ namespace GAZT.ViewModel.NewViewModel
                     //catch (Exception ex)
                     //{
 
-                    //}
-                  //  _vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+
+                        //}
+                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+                    }
+
+                        //}
+                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+
+                }
+                catch (Exception ex)
+                {
+
+                    //     _vATDeclaration.d.StdpurchaseAmt = "2000";
+                    //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
                 }
             }
-            catch(Exception ex)
+            catch(InternetException ex)
             {
-
-           //     _vATDeclaration.d.StdpurchaseAmt = "2000";
-           //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
-
             
         }
 

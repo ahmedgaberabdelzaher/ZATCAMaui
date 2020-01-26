@@ -719,7 +719,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid OTP, please enter correct OTP.
+        ///   Looks up a localized string similar to The entered code is incorrect.
         /// </summary>
         public static string InvalidOTP {
             get {
@@ -890,7 +890,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The email address is not matching.
+        ///   Looks up a localized string similar to New Email field and Retype Email field must match.
         /// </summary>
         public static string NewEmailandRetypeEmailNotMatch {
             get {
@@ -926,7 +926,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No bills available.
+        ///   Looks up a localized string similar to No invoices available.
         /// </summary>
         public static string NoBillsAvailable {
             get {
@@ -935,7 +935,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No data available.
+        ///   Looks up a localized string similar to No certificate available.
         /// </summary>
         public static string Nodataavailable {
             get {
@@ -2269,6 +2269,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Taxpayer Type.
+        /// </summary>
+        public static string ZSelectTaxpayerType {
+            get {
+                return ResourceManager.GetString("ZSelectTaxpayerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show less details.
         /// </summary>
         public static string ZShowlessdetails {
@@ -3188,7 +3197,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your account has been locked. Please contact our call center at : 19993.
+        ///   Looks up a localized string similar to Login attempt failed because of entering 3 wrong verification codes.
         /// </summary>
         public static string ZYouraccounthasbeenlockedPleasecontactourcallcenter {
             get {

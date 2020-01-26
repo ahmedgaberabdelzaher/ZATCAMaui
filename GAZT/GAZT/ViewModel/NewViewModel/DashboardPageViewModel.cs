@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.Views.NewViews;
@@ -271,6 +272,19 @@ namespace GAZT.ViewModel
             }
         }
 
+        private string _totalPaidAmout;
+        public string TotalPaidAmount
+        {
+            get
+            {
+                return _totalPaidAmout;
+            }
+            set
+            {
+                _totalPaidAmout = value;
+                RaisePropertyChanged("TotalPaidAmount");
+            }
+        }
 
         private Xamarin.Forms.Thickness _paddingForCollectionView = new Xamarin.Forms.Thickness(0, 0, 0, 0);
         public Xamarin.Forms.Thickness PaddingForCollectionView
@@ -377,295 +391,303 @@ namespace GAZT.ViewModel
         {
             try
             {
-                if (App.IsArabic)
+                try
                 {
-                    TaxPayerName = AppResources.Hi + " (" + App.TP.Tin + ") " + App.TP.Name  ;
-                }
-                else
-                {
-                    TaxPayerName = AppResources.Hi + App.TP.Name + " (" + App.TP.Tin + ")";
-                }
-             
-                SetFooterImageVisibility();
-                TinNumber = App.TP.Userid;
-                String TotalCountOfReturn = string.Empty;
-                List<BillReturn> BillReturnList = new List<BillReturn>();
-                List<BillPaid> BillPaidList = new List<BillPaid>();
-                BillReturn = new List<BillReturn>();
-                BillPaid = new List<BillPaid>();
-                string lang = UtilityManager.GetLanguageParameter();
-
-                dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (dashboard != null)
-                {
-                    if (dashboard.results != null)
+                    if (App.IsArabic)
                     {
-                        TotalCountOfReturn = dashboard.results[0].IcrTot;
-
-                        if (string.IsNullOrEmpty(TotalCountOfReturn))
-                        {
-                            TotalCountOfReturn = "0";
-                        }
-                        else
-                        {
-                            TotalCountOfReturn = TotalCountOfReturn.TrimStart(new Char[] { '0' });
-                            if (TotalCountOfReturn.Substring(0, 1) == ".")
-                            {
-                                TotalCountOfReturn = "0" + TotalCountOfReturn;
-                            }
-                        }
-                        TotalNoOfReturns = TotalCountOfReturn;
-
-
-                        //return
-                        //BillReturn = new List<BillReturn>();
-                        DateTime? BegDate = dashboard.results[0].Begda;
-                        DateTime? endDate = dashboard.results[0].Endda;
-
-
-                        if (BegDate != null)
-                        {
-                            StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                        }
-                        if (endDate != null)
-                        {
-                            EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                        }
-
-                        //if (App.IsArabic)
-                        //{
-                        //    //StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                        //    //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                        //    if (BegDate != null)
-                        //    {
-                        //        StartDate = Convert.ToDateTime(BegDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                        //    }
-                        //    if (endDate != null)
-                        //    {
-                        //        EndDate = Convert.ToDateTime(endDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                        //    }
-                        //}
-                        //else
-                        //{
-
-                        //    if (BegDate != null)
-                        //    {
-                        //        StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                        //    }
-                        //    if (endDate != null)
-                        //    {
-                        //        EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                        //    }
-
-
-                        //}
-                        BillReturn objBill1 = new BillReturn();
-                        objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
-                        String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
-
-
-
-                        if (string.IsNullOrEmpty(RtnTotstr))
-                        {
-                            RtnTotstr = "0";
-                        }
-                        else if (RtnTotstr.Substring(0, 1) == ".")
-                        {
-                            RtnTotstr = "0" + RtnTotstr;
-                        }
-
-                        objBill1.ReturnCount = RtnTotstr;
-
-                        BillReturnList.Add(objBill1);
-
-
-                        BillReturn objBill4 = new BillReturn();
-                        objBill4.ReturnTypeProperty = Models.ReturnType.NrtnTot;
-                        String NrtnTotstr = dashboard.results[0].NrtnTot.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(NrtnTotstr))
-                        {
-                            NrtnTotstr = "0";
-                        }
-                        else if (NrtnTotstr.Substring(0, 1) == ".")
-                        {
-                            NrtnTotstr = "0" + NrtnTotstr;
-                        }
-                        objBill4.ReturnCount = NrtnTotstr;
-
-                        BillReturnList.Add(objBill4);
-
-
-                        BillReturn objBill2 = new BillReturn();
-                        objBill2.ReturnTypeProperty = Models.ReturnType.DueIcr;
-                        String DueIcrstr = dashboard.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(DueIcrstr))
-                        {
-                            DueIcrstr = "0";
-                        }
-                        else if (DueIcrstr.Substring(0, 1) == ".")
-                        {
-                            DueIcrstr = "0" + DueIcrstr;
-                        }
-                        objBill2.ReturnCount = DueIcrstr;
-
-                        BillReturnList.Add(objBill2);
-
-                        //BillReturn objBill3 = new BillReturn();
-                        //objBill3.ReturnTypeProperty = Models.ReturnType.PprtnTot;
-                        //String PprtnTotstr = dashboard.results[0].PprtnTot.TrimStart(new Char[] { '0' });
-                        //if (string.IsNullOrEmpty(PprtnTotstr))
-                        //{
-                        //    PprtnTotstr = "0";
-                        //}
-                        //objBill3.ReturnCount = PprtnTotstr;
-
-                        //BillReturnList.Add(objBill3);
-
-                        BillReturn = BillReturnList;
-
-
-                        BillPaid objBillPaid1 = new BillPaid();
-                        objBillPaid1.BillTypeProperty = BillType.PbillsTot;
-                        String PaidBillsstr = dashboard.results[0].PbillsTot.TrimStart(new Char[] { '0' });
-                        String PaidBillsAmountstr = dashboard.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
-
-                        if (string.IsNullOrEmpty(PaidBillsstr))
-                        {
-                            PaidBillsstr = "0";
-                        }
-                        else if (PaidBillsstr.Substring(0, 1) == ".")
-                        {
-                            PaidBillsstr = "0" + PaidBillsstr;
-                        }
-                        if (string.IsNullOrEmpty(PaidBillsAmountstr))
-                        {
-                            PaidBillsAmountstr = "0";
-                        }
-                        else if (PaidBillsAmountstr.Substring(0, 1) == ".")
-                        {
-                            PaidBillsAmountstr = "0" + PaidBillsAmountstr;
-                        }
-                        objBillPaid1.BillCount = PaidBillsstr;
-                        objBillPaid1.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                        BillPaidList.Add(objBillPaid1);
-
-
-                        BillPaid objBillPaid3 = new BillPaid();
-                        objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
-                        String UnpaidBillsstr = dashboard.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
-                        String UnpaidBillsAmountstr = dashboard.results[0].UpbillsBetrw.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(UnpaidBillsstr))
-                        {
-                            UnpaidBillsstr = "0";
-                        }
-                        else if (UnpaidBillsstr.Substring(0, 1) == ".")
-                        {
-                            UnpaidBillsstr = "0" + UnpaidBillsstr;
-                        }
-                        if (string.IsNullOrEmpty(UnpaidBillsAmountstr))
-                        {
-                            UnpaidBillsAmountstr = "0";
-                        }
-                        else if (UnpaidBillsAmountstr.Substring(0, 1) == ".")
-                        {
-                            UnpaidBillsAmountstr = "0" + UnpaidBillsAmountstr;
-                        }
-                        objBillPaid3.BillCount = UnpaidBillsstr;
-                        objBillPaid3.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
-                        BillPaidList.Add(objBillPaid3);
-                        BillPaid = BillPaidList;
-
-
-                        BillPaid objBillPaid2 = new BillPaid();
-                        objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
-                        String PartialPaidBillsstr = dashboard.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
-                        String PartialPaidBillsAmountstr = dashboard.results[0].PrbillsBetrw.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(PartialPaidBillsstr))
-                        {
-                            PartialPaidBillsstr = "0";
-                        }
-                        else if (PartialPaidBillsstr.Substring(0, 1) == ".")
-                        {
-                            PartialPaidBillsstr = "0" + PartialPaidBillsstr;
-                        }
-                        if (string.IsNullOrEmpty(PartialPaidBillsAmountstr))
-                        {
-                            PartialPaidBillsAmountstr = "0";
-                        }
-                        else if (PartialPaidBillsAmountstr.Substring(0, 1) == ".")
-                        {
-                            PartialPaidBillsAmountstr = "0" + PartialPaidBillsAmountstr;
-                        }
-                        objBillPaid2.BillCount = PartialPaidBillsstr;
-                        objBillPaid2.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
-                        BillPaidList.Add(objBillPaid2);
+                        TaxPayerName = AppResources.Hi + " (" + App.TP.Tin + ") " + App.TP.Name;
                     }
-
                     else
                     {
-                        _dialogService.ShowMessageBox("No data available", AppResources.Information);
+                        TaxPayerName = AppResources.Hi + App.TP.Name + " (" + App.TP.Tin + ")";
                     }
 
+                    SetFooterImageVisibility();
+                    TinNumber = App.TP.Userid;
+                    String TotalCountOfReturn = string.Empty;
+                    List<BillReturn> BillReturnList = new List<BillReturn>();
+                    List<BillPaid> BillPaidList = new List<BillPaid>();
+                    BillReturn = new List<BillReturn>();
+                    BillPaid = new List<BillPaid>();
+                    string lang = UtilityManager.GetLanguageParameter();
+
+                    dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    if (dashboard != null)
+                    {
+                        if (dashboard.results != null)
+                        {
+                            TotalCountOfReturn = dashboard.results[0].IcrTot;
+
+                            if (string.IsNullOrEmpty(TotalCountOfReturn))
+                            {
+                                TotalCountOfReturn = "0";
+                            }
+                            else
+                            {
+                                TotalCountOfReturn = TotalCountOfReturn.TrimStart(new Char[] { '0' });
+                                if (TotalCountOfReturn.Substring(0, 1) == ".")
+                                {
+                                    TotalCountOfReturn = "0" + TotalCountOfReturn;
+                                }
+                            }
+                            TotalNoOfReturns = TotalCountOfReturn;
 
 
-                    //BillReturn = new List<BillReturn>();
-
-                    //BillReturn bill = new BillReturn();
-                    //bill.ReturnTypeProperty = ReturnType.RtnTot;
-                    //bill.ReturnCount = "00010";
-
-                    //BillReturn.Add(bill);
-
-                    //BillReturn bill1 = new BillReturn();
-                    //bill1.ReturnTypeProperty = ReturnType.DueIcr;
-                    //bill1.ReturnCount = "00030";
-                    //BillReturn.Add(bill1);
-
-                    //BillReturn bill2 = new BillReturn();
-                    //bill2.ReturnTypeProperty = ReturnType.PrtnTot;
-                    //bill2.ReturnCount = "00015";
-                    //BillReturn.Add(bill2);
-
-                    //BillReturn bill3 = new BillReturn();
-                    //bill3.ReturnTypeProperty = ReturnType.NrtnTot;
-                    //bill3.ReturnCount = "00034";
-                    //BillReturn.Add(bill3);
-
-                    //BillReturn bill4 = new BillReturn();
-                    //bill4.ReturnTypeProperty = ReturnType.UprtnTot;
-                    //bill4.ReturnCount = "00022";
-                    //BillReturn.Add(bill4);
+                            //return
+                            //BillReturn = new List<BillReturn>();
+                            DateTime? BegDate = dashboard.results[0].Begda;
+                            DateTime? endDate = dashboard.results[0].Endda;
 
 
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                    //BillPaid = new List<BillPaid>();
+                            }
+                            if (endDate != null)
+                            {
+                                EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                    //BillPaid billPaid1 = new BillPaid();
-                    //billPaid1.BillTypeProperty = BillType.PbillsTot;
-                    //billPaid1.BillCount = "00010";
-                    //BillPaid.Add(billPaid1);
+                            }
 
-                    //BillPaid billPaid2 = new BillPaid();
-                    //billPaid2.BillTypeProperty = BillType.PrbillsTot;
-                    //billPaid2.BillCount = "00020";
-                    //BillPaid.Add(billPaid2);
+                            //if (App.IsArabic)
+                            //{
+                            //    //StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
+                            //    //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
+                            //    if (BegDate != null)
+                            //    {
+                            //        StartDate = Convert.ToDateTime(BegDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
+                            //    }
+                            //    if (endDate != null)
+                            //    {
+                            //        EndDate = Convert.ToDateTime(endDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
+                            //    }
+                            //}
+                            //else
+                            //{
 
-                    //BillPaid billPaid3 = new BillPaid();
-                    //billPaid3.BillTypeProperty = BillType.UpbillsTot;
-                    //billPaid3.BillCount = "00040";
-                    //BillPaid.Add(billPaid3);
+                            //    if (BegDate != null)
+                            //    {
+                            //        StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+
+                            //    }
+                            //    if (endDate != null)
+                            //    {
+                            //        EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
+
+                            //    }
+
+
+                            //}
+                            BillReturn objBill1 = new BillReturn();
+                            objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
+                            String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
+
+
+
+                            if (string.IsNullOrEmpty(RtnTotstr))
+                            {
+                                RtnTotstr = "0";
+                            }
+                            else if (RtnTotstr.Substring(0, 1) == ".")
+                            {
+                                RtnTotstr = "0" + RtnTotstr;
+                            }
+
+                            objBill1.ReturnCount = RtnTotstr;
+
+                            BillReturnList.Add(objBill1);
+
+
+                            BillReturn objBill4 = new BillReturn();
+                            objBill4.ReturnTypeProperty = Models.ReturnType.NrtnTot;
+                            String NrtnTotstr = dashboard.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(NrtnTotstr))
+                            {
+                                NrtnTotstr = "0";
+                            }
+                            else if (NrtnTotstr.Substring(0, 1) == ".")
+                            {
+                                NrtnTotstr = "0" + NrtnTotstr;
+                            }
+                            objBill4.ReturnCount = NrtnTotstr;
+
+                            BillReturnList.Add(objBill4);
+
+
+                            BillReturn objBill2 = new BillReturn();
+                            objBill2.ReturnTypeProperty = Models.ReturnType.DueIcr;
+                            String DueIcrstr = dashboard.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(DueIcrstr))
+                            {
+                                DueIcrstr = "0";
+                            }
+                            else if (DueIcrstr.Substring(0, 1) == ".")
+                            {
+                                DueIcrstr = "0" + DueIcrstr;
+                            }
+                            objBill2.ReturnCount = DueIcrstr;
+
+                            BillReturnList.Add(objBill2);
+
+                            //BillReturn objBill3 = new BillReturn();
+                            //objBill3.ReturnTypeProperty = Models.ReturnType.PprtnTot;
+                            //String PprtnTotstr = dashboard.results[0].PprtnTot.TrimStart(new Char[] { '0' });
+                            //if (string.IsNullOrEmpty(PprtnTotstr))
+                            //{
+                            //    PprtnTotstr = "0";
+                            //}
+                            //objBill3.ReturnCount = PprtnTotstr;
+
+                            //BillReturnList.Add(objBill3);
+
+                            BillReturn = BillReturnList;
+
+
+                            BillPaid objBillPaid1 = new BillPaid();
+                            objBillPaid1.BillTypeProperty = BillType.PbillsTot;
+                            String PaidBillsstr = dashboard.results[0].PbillsTot.TrimStart(new Char[] { '0' });
+                            String PaidBillsAmountstr = dashboard.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
+
+                            if (string.IsNullOrEmpty(PaidBillsstr))
+                            {
+                                PaidBillsstr = "0";
+                            }
+                            else if (PaidBillsstr.Substring(0, 1) == ".")
+                            {
+                                PaidBillsstr = "0" + PaidBillsstr;
+                            }
+                            if (string.IsNullOrEmpty(PaidBillsAmountstr))
+                            {
+                                PaidBillsAmountstr = "0";
+                            }
+                            else if (PaidBillsAmountstr.Substring(0, 1) == ".")
+                            {
+                                PaidBillsAmountstr = "0" + PaidBillsAmountstr;
+                            }
+                            TotalPaidAmount = PaidBillsAmountstr;
+                            objBillPaid1.BillCount = PaidBillsstr;
+                            objBillPaid1.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+                            BillPaidList.Add(objBillPaid1);
+
+
+                            BillPaid objBillPaid3 = new BillPaid();
+                            objBillPaid3.BillTypeProperty = BillType.UpbillsTot;
+                            String UnpaidBillsstr = dashboard.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
+                            String UnpaidBillsAmountstr = dashboard.results[0].UpbillsBetrw.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(UnpaidBillsstr))
+                            {
+                                UnpaidBillsstr = "0";
+                            }
+                            else if (UnpaidBillsstr.Substring(0, 1) == ".")
+                            {
+                                UnpaidBillsstr = "0" + UnpaidBillsstr;
+                            }
+                            if (string.IsNullOrEmpty(UnpaidBillsAmountstr))
+                            {
+                                UnpaidBillsAmountstr = "0";
+                            }
+                            else if (UnpaidBillsAmountstr.Substring(0, 1) == ".")
+                            {
+                                UnpaidBillsAmountstr = "0" + UnpaidBillsAmountstr;
+                            }
+                            objBillPaid3.BillCount = UnpaidBillsstr;
+                            objBillPaid3.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
+                            BillPaidList.Add(objBillPaid3);
+                            BillPaid = BillPaidList;
+
+
+                            BillPaid objBillPaid2 = new BillPaid();
+                            objBillPaid2.BillTypeProperty = BillType.PrbillsTot;
+                            String PartialPaidBillsstr = dashboard.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
+                            String PartialPaidBillsAmountstr = dashboard.results[0].PrbillsBetrw.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(PartialPaidBillsstr))
+                            {
+                                PartialPaidBillsstr = "0";
+                            }
+                            else if (PartialPaidBillsstr.Substring(0, 1) == ".")
+                            {
+                                PartialPaidBillsstr = "0" + PartialPaidBillsstr;
+                            }
+                            if (string.IsNullOrEmpty(PartialPaidBillsAmountstr))
+                            {
+                                PartialPaidBillsAmountstr = "0";
+                            }
+                            else if (PartialPaidBillsAmountstr.Substring(0, 1) == ".")
+                            {
+                                PartialPaidBillsAmountstr = "0" + PartialPaidBillsAmountstr;
+                            }
+                            objBillPaid2.BillCount = PartialPaidBillsstr;
+                            objBillPaid2.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
+                            BillPaidList.Add(objBillPaid2);
+                        }
+
+                        else
+                        {
+                            _dialogService.ShowMessageBox("No data available", AppResources.Information);
+                        }
+
+
+
+                        //BillReturn = new List<BillReturn>();
+
+                        //BillReturn bill = new BillReturn();
+                        //bill.ReturnTypeProperty = ReturnType.RtnTot;
+                        //bill.ReturnCount = "00010";
+
+                        //BillReturn.Add(bill);
+
+                        //BillReturn bill1 = new BillReturn();
+                        //bill1.ReturnTypeProperty = ReturnType.DueIcr;
+                        //bill1.ReturnCount = "00030";
+                        //BillReturn.Add(bill1);
+
+                        //BillReturn bill2 = new BillReturn();
+                        //bill2.ReturnTypeProperty = ReturnType.PrtnTot;
+                        //bill2.ReturnCount = "00015";
+                        //BillReturn.Add(bill2);
+
+                        //BillReturn bill3 = new BillReturn();
+                        //bill3.ReturnTypeProperty = ReturnType.NrtnTot;
+                        //bill3.ReturnCount = "00034";
+                        //BillReturn.Add(bill3);
+
+                        //BillReturn bill4 = new BillReturn();
+                        //bill4.ReturnTypeProperty = ReturnType.UprtnTot;
+                        //bill4.ReturnCount = "00022";
+                        //BillReturn.Add(bill4);
+
+
+
+                        //BillPaid = new List<BillPaid>();
+
+                        //BillPaid billPaid1 = new BillPaid();
+                        //billPaid1.BillTypeProperty = BillType.PbillsTot;
+                        //billPaid1.BillCount = "00010";
+                        //BillPaid.Add(billPaid1);
+
+                        //BillPaid billPaid2 = new BillPaid();
+                        //billPaid2.BillTypeProperty = BillType.PrbillsTot;
+                        //billPaid2.BillCount = "00020";
+                        //BillPaid.Add(billPaid2);
+
+                        //BillPaid billPaid3 = new BillPaid();
+                        //billPaid3.BillTypeProperty = BillType.UpbillsTot;
+                        //billPaid3.BillCount = "00040";
+                        //BillPaid.Add(billPaid3);
+                    }
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
-            catch(Exception ex)
+            catch(InternetException ex)
             {
-
+                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
            
         }

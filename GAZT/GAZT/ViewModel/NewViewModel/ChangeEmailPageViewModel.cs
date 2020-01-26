@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -223,83 +224,97 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task VarifyEmail()
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
-                String lang = "EN";
-                if (App.IsArabic == true)
-                    lang = "AR";
-                try
+                await Task.Run(() =>
                 {
-                    bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
-                    bool IsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
+                    IsLoading = true;
+                });
 
-
-                    if (IsValidNewEmail && IsValidRetypeEmail)
+                await Task.Run(async () =>
+                {
+                    NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
+                    String lang = "EN";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+                    try
                     {
-                        
-                        bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
-                        PopToRootPage();
-                        
-                        if (response == true)
+                        bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
+                        bool IsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
+
+
+                        if (IsValidNewEmail && IsValidRetypeEmail)
                         {
 
+                            bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
+                            PopToRootPage();
 
-                            IsEnabledRetypeEmail = false;
-                            IsEnabledNewEmail = false;
-                            App.TP.NewEmail = NewEmail;
-                            String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
-                            String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
-                            Device.BeginInvokeOnMainThread(async() => {
-                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
-
-                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
-                            });
+                            if (response == true)
+                            {
 
 
+                                IsEnabledRetypeEmail = false;
+                                IsEnabledNewEmail = false;
+                                App.TP.NewEmail = NewEmail;
+                                String OnAuthenticationSuccess = AppResources.Emailverificationcodesentsuccessfully;
+                                String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
 
-                        }
-                    }
-                    else
-                    {
-                        //ClearEmailData();
-                        IsEnabledRetypeEmail = false;
-                        if (IsValidNewEmail || IsValidRetypeEmail)
-                        {
-                            String OnNotMatchAuthentication = AppResources.InvalidEmail;
-                            Device.BeginInvokeOnMainThread(async() => {
-                                await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
-                            });
+                                    _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
+                                });
+
+
+
+                            }
                         }
                         else
                         {
-                            String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
-                            Device.BeginInvokeOnMainThread(async () => {
-                                await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
-                            });
+                        //ClearEmailData();
+                        IsEnabledRetypeEmail = false;
+                            if (IsValidNewEmail || IsValidRetypeEmail)
+                            {
+                                String OnNotMatchAuthentication = AppResources.InvalidEmail;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                                });
+                            }
+                            else
+                            {
+                                String OnNotMatchAuthentication = AppResources.NewEmailandRetypeEmailNotMatch;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                                });
 
 
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    catch (Exception ex)
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    });
-                }
-            });
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
 
-            await Task.Run(() =>
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(InternetException ex)
             {
-                IsLoading = false;
-            });
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
         }
         public void OnPageLoad()
         {

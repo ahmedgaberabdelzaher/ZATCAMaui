@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using GAZT.Models;
 using GAZT.Manager;
 using System.Threading.Tasks;
+using GAZT.Helper;
 
 namespace GAZT
 {
@@ -270,31 +271,38 @@ namespace GAZT
 
         public async Task OnPageLoad()
         {
-           
-            string lang = UtilityManager.GetLanguageParameter();
-            dashboard =  WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
-            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-            if (dashboard.results != null)
-			{
-				TotalSubmittedReturn = dashboard.results[0].RtnTot;
-				TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
-				TotalPaidReturn = dashboard.results[0].PrtnTot;
-				TotalUnapidReturn = dashboard.results[0].UprtnTot;
-				TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
-				TotalNoofReturns = dashboard.results[0].IcrTot;
-				TotalOverDueReturn = dashboard.results[0].DueIcr;
-				TotalPaidBills = dashboard.results[0].PbillsTot;
-				TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
-				TotalUnpaidBills = dashboard.results[0].UpbillsTot;
-				TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
-				TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
-				TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
-				TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
-			}
-            else
-			{
-				 _dialogService.ShowMessageBox("No data available", AppResources.Information);
-			}
+
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                dashboard = WebServiceManager.GAZTGetDashboardData(lang, App.TP.Userid);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (dashboard.results != null)
+                {
+                    TotalSubmittedReturn = dashboard.results[0].RtnTot;
+                    TotalNonSubmittedReturn = dashboard.results[0].NrtnTot;
+                    TotalPaidReturn = dashboard.results[0].PrtnTot;
+                    TotalUnapidReturn = dashboard.results[0].UprtnTot;
+                    TotalPartialPaidReturn = dashboard.results[0].PprtnTot;
+                    TotalNoofReturns = dashboard.results[0].IcrTot;
+                    TotalOverDueReturn = dashboard.results[0].DueIcr;
+                    TotalPaidBills = dashboard.results[0].PbillsTot;
+                    TotalPaidBillsAmount = dashboard.results[0].PbillsBetrw;
+                    TotalUnpaidBills = dashboard.results[0].UpbillsTot;
+                    TotalUnpaidBillsAmount = dashboard.results[0].UpbillsBetrw;
+                    TotalPartialPaidBills = dashboard.results[0].PrbillsTot;
+                    TotalPartialPaidBillsAmount = dashboard.results[0].PrbillsBetrw;
+                    TotalUnpaidBillAmount = AppResources.TotalOfBillsUnpaid + dashboard.results[0].UpbillsBetrw;
+                }
+                else
+                {
+                    _dialogService.ShowMessageBox("No data available", AppResources.Information);
+                }
+            }
+            catch(InternetException ex)
+            {
+                _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+            }
 
 
 
@@ -306,8 +314,10 @@ namespace GAZT
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
         }
 

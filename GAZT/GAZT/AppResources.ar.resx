@@ -184,7 +184,7 @@
     <value>تفاصيل فاتورة سداد</value>
   </data>
   <data name="DueAmount" xml:space="preserve">
-    <value>المبلغ المستحق</value>
+    <value>مبلغ الفاتورة</value>
   </data>
   <data name="DueDate" xml:space="preserve">
     <value>تاريخ الاستحقاق</value>
@@ -226,7 +226,7 @@
     <value>فواتيري</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>شهاداتي</value>
+    <value>الشهادات</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
@@ -379,7 +379,7 @@
     <value>هل أنت متأكد من تسجيل خروجك</value>
   </data>
   <data name="NewEmailandRetypeEmailNotMatch" xml:space="preserve">
-    <value>لا يوجد تطابق في البريد الإلكتروني</value>
+    <value>يجب تطابق حقل البريد الإلكتروني الجديد مع حقل تأكيد البريد الإلكتروني</value>
   </data>
   <data name="NewPasswordandRetypePasswordNotMatch" xml:space="preserve">
     <value>يجب تطابق حقلي كلمة المرور الجديدة و تأكيد كلمة المرور</value>
@@ -388,7 +388,7 @@
     <value>الرجاء إدخال رمز التحقق المرسل من خلال البريد الإلكتروني</value>
   </data>
   <data name="InvalidOTP" xml:space="preserve">
-    <value>رمز التحقق غير صحيح الرجاء إعادة إدخال رمز التحقق</value>
+    <value>الرمز المدخل غير صحيح</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
@@ -436,7 +436,7 @@
     <value>الزكاة/ضريبة الدخل</value>
   </data>
   <data name="ExciseCertificates" xml:space="preserve">
-    <value>الضريبة الانتقائية</value>
+    <value>ضريبة السلع الإنتقائية</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>رقم</value>
@@ -454,13 +454,13 @@
     <value>زكاة</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>الجميع</value>
+    <value>كل الفواتير</value>
   </data>
   <data name="Paid" xml:space="preserve">
-    <value>المدفوعة</value>
+    <value>مدفوعة</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مسدده جزئياً</value>
+    <value>مدفوع جزئي</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>غير مدفوعة</value>
@@ -514,7 +514,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>الفواتير غير متوفرة</value>
+    <value>لا يوجد فواتير</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
@@ -610,7 +610,7 @@
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>لا تتوفر بيانات</value>
+    <value>لا يوجد شهادة</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
@@ -729,15 +729,13 @@
     <value>تبقت لك محاولة واحدة وبعدها سيتم حجب حسابك</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
-    <value>
-تم حجب الحساب، الرجاء التواصل مع مركز الإتصال الموحد عبر الرقم : 19993
- </value>
+    <value>تم إلغاء محاولة الدخول بسبب الفشل 3 مرات لإدخال رمز التحقق</value>
   </data>
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
-    <value>رقم فاتورة سداد</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="Pleaseenteryourlogininformation" xml:space="preserve">
     <value>يرجى إدخال معلومات تسجيل الدخول الخاصة بك</value>
@@ -1202,5 +1200,8 @@
   </data>
   <data name="ZTheUndisputedAmount" xml:space="preserve">
     <value>The Undisputed Amount</value>
+  </data>
+  <data name="ZSelectTaxpayerType" xml:space="preserve">
+    <value>Select Taxpayer Type</value>
   </data>
 </root>

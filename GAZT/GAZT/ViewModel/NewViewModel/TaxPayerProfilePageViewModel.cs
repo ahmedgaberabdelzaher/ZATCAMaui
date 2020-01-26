@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -183,18 +184,25 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async void SetTP()
         {
-            String lang = "E";
-            if (App.IsArabic == true)
-                lang = "A";
-            String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
-            await PopToRootPage();
+            try
+            {
+                String lang = "E";
+                if (App.IsArabic == true)
+                    lang = "A";
+                String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
+                await PopToRootPage();
 
-            CurrentMobile = mobilenumber;
-            App.TP.Mobile = mobilenumber;
-            TaxPayerProfile.Mobile = mobilenumber;
-            App.TP.NewMobile = string.Empty;
-            TaxPayerProfile.NewMobile = string.Empty;
-            CurrentPassword = TaxPayerProfile.Password;
+                CurrentMobile = mobilenumber;
+                App.TP.Mobile = mobilenumber;
+                TaxPayerProfile.Mobile = mobilenumber;
+                App.TP.NewMobile = string.Empty;
+                TaxPayerProfile.NewMobile = string.Empty;
+                CurrentPassword = TaxPayerProfile.Password;
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
         }
 
         public void ClearData()

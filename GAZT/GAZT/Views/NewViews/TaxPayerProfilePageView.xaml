@@ -70,7 +70,7 @@
                 </Label>
                 <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
-                <custom:GAZTBorderlessEntry IsEnabled="False" IsPassword="True" Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#7D858D"  Grid.Row="9"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
+                <custom:GAZTBorderlessEntry IsEnabled="False" IsPassword="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#7D858D"  Grid.Row="9"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>
                 <Image Source="ic_edit.png" Margin="13,2,13,1" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}" />
