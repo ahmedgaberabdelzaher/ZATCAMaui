@@ -2639,7 +2639,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Corrections from previous period ( between SAR ± 5000.00 ).
+        ///   Looks up a localized string similar to Corrections from previous period ( between SAR ±).
         /// </summary>
         public static string ZVatCorrectionsfrompreviousperiod {
             get {

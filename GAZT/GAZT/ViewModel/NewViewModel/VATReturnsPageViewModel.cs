@@ -40,6 +40,19 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Property
 
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private bool _isDeclarationChecked = false;
         public bool IsDeclarationChecked
@@ -544,7 +557,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _vATRate001="5.00";
+        private string _vATRate001;
         public string VATRate001
         {
             get
@@ -559,7 +572,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _vATRate002="5.00";
+        private string _vATRate002;
         public string VATRate002
         {
             get
@@ -574,10 +587,204 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-      
+        private List<VATCalculationDataVATRSet> _calculationRateSet;
+        public List<VATCalculationDataVATRSet> CalculationRateSet
+        {
+            get
+            {
+                return _calculationRateSet;
+            }
+            set
+            {
+                _calculationRateSet = value;
+
+                RaisePropertyChanged("CalculationRateSet");
+            }
+        }
+
+        private string _correctionPeriodAmount;
+        public string CorrectionPeriodAmount
+        {
+            get
+            {
+                return _correctionPeriodAmount;
+            }
+            set
+            {
+                _correctionPeriodAmount = value;
+
+                RaisePropertyChanged("CorrectionPeriodAmount");
+            }
+        }
 
 
 
+
+        #region NewProperty
+
+        public string _totalsalesAmt;
+        public string TotalsalesAmt
+        {
+            get
+            {
+                return _totalsalesAmt;
+            }
+            set
+            {
+                _totalsalesAmt = value;
+               RaisePropertyChanged("TotalsalesAmt");
+            }
+        }
+
+        public string _totalsalesAdj;
+        public string TotalsalesAdj
+        {
+            get
+            {
+                return _totalsalesAdj;
+            }
+            set
+            {
+                _totalsalesAdj = value;
+                RaisePropertyChanged("TotalsalesAdj");
+            }
+        }
+
+        public string _totalpurchaseAmt;
+        public string TotalpurchaseAmt
+        {
+            get
+            {
+                return _totalpurchaseAmt;
+            }
+            set
+            {
+                _totalpurchaseAmt = value;
+                RaisePropertyChanged("TotalpurchaseAmt");
+            }
+        }
+
+        public string _totalpurchaseAdj;
+        public string TotalpurchaseAdj
+        {
+            get
+            {
+                return _totalpurchaseAdj;
+            }
+            set
+            {
+                _totalpurchaseAdj = value;
+                RaisePropertyChanged("TotalpurchaseAdj");
+            }
+        }
+
+        public string _stdsalesVat;
+        public string StdsalesVat
+        {
+            get
+            {
+                return _stdsalesVat;
+            }
+            set
+            {
+                _stdsalesVat = value;
+                RaisePropertyChanged("StdsalesVat");
+            }
+        }
+
+        public string _totaldueVat;
+        public string TotaldueVat
+        {
+            get
+            {
+                return _totaldueVat;
+            }
+            set
+            {
+                _totaldueVat=value;
+                RaisePropertyChanged("TotaldueVat");
+            }
+        }
+
+        public string _totalsalesVat;
+        public string TotalsalesVat
+        {
+            get
+            {
+                return _totalsalesVat;
+            }
+            set
+            {
+                _totalsalesVat = value;
+                if (!string.IsNullOrEmpty(_totalsalesVat))
+                {
+                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                }
+                RaisePropertyChanged("TotalsalesVat");
+            }
+        }
+
+        public string _stdpurchasesVat;
+        public string StdpurchasesVat
+        {
+            get
+            {
+                return _stdpurchasesVat;
+            }
+            set
+            {
+                _stdpurchasesVat = value;
+                RaisePropertyChanged("StdpurchasesVat");
+            }
+        }
+
+        public string _importspaidVat;
+        public string ImportspaidVat
+        {
+            get
+            {
+                return _importspaidVat;
+            }
+            set
+            {
+                _importspaidVat = value;
+                RaisePropertyChanged("ImportspaidVat");
+            }
+        }
+
+        public string _totalpurchaseVat;
+        public string TotalpurchaseVat
+        {
+            get
+            {
+                return _totalpurchaseVat;
+            }
+            set
+            {
+                _totalpurchaseVat = value;
+                if (!string.IsNullOrEmpty(_totalpurchaseVat))
+                {
+                    ResponseVATDeclarationD.TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                }
+                RaisePropertyChanged("TotalpurchaseVat");
+            }
+        }
+
+
+        public string _importsaccVat;
+        public string ImportsaccVat
+        {
+            get
+            {
+                return _importsaccVat;
+            }
+            set
+            {
+                _importsaccVat= value;
+                RaisePropertyChanged("ImportsaccVat");
+            }
+        }
+        #endregion
 
 
 
@@ -799,105 +1006,219 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleVatReturnForm = false;
             IsVisibleCreditCarriedForward = false;
         }
+        public void RateSetAsPerDate()
+        {
+            if (VATDeclarationData.d != null)
+            {
+                if (VATDeclarationData.d.Abrzu != null && VATDeclarationData.d.Abrzo != null)
+                {
+                    DateTime startDate = VATDeclarationData.d.Abrzu;
+                    DateTime endDate = VATDeclarationData.d.Abrzo;
 
+                    List<VATCalculationDataVATRSet> vATCalculationsforBegin = new List<VATCalculationDataVATRSet>();
+                    List<VATCalculationDataVATRSet> vATCalculationsforEnd = new List<VATCalculationDataVATRSet>();
+                    VATCalculationDataVATRSet vATCalculationDataDummy;
+                    foreach (var item in CalculationRateSet)
+                    {
+                        if (startDate>=item.Begda)
+                        {
+                            vATCalculationDataDummy = new VATCalculationDataVATRSet();
+                            vATCalculationDataDummy = item;
+                            vATCalculationsforBegin.Add(vATCalculationDataDummy);
+                        }
+                    }
+
+                    foreach (var item1 in vATCalculationsforBegin)
+                    {
+                        if (endDate <= item1.Endda)
+                        {
+                            vATCalculationDataDummy = new VATCalculationDataVATRSet();
+                            vATCalculationDataDummy = item1;
+                            vATCalculationsforEnd.Add(vATCalculationDataDummy);
+                        }
+                    }
+
+                    VATCalculationDataVATRSet Rate002 = vATCalculationsforEnd.Where(x =>x.Type == "002").FirstOrDefault();
+                    if (Rate002 != null)
+                    {
+                        VATRate002 = Rate002.Penalty;
+                    }
+
+                    VATCalculationDataVATRSet Rate001 = vATCalculationsforEnd.Where(x => x.Type == "001").FirstOrDefault();
+                    if (Rate001 != null)
+                    {
+                        VATRate001 = Rate001.Penalty;
+                    }
+
+
+                    //VATCalculationDataVATRSet Rate00T1 = CalculationRateSet.Where(x => x.Begda <= startDate && x.Endda >= endDate).FirstOrDefault();
+
+
+
+                    //VATCalculationDataVATRSet Rate002 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type== "002")).FirstOrDefault();
+                    //if (Rate002 != null)
+                    //{
+                    //    VATRate002 = Rate002.Penalty;
+                    //}
+
+                    //VATCalculationDataVATRSet Rate001 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type == "001")).FirstOrDefault();
+                    //if (Rate001 != null)
+                    //{
+                    //    VATRate001 = Rate001.Penalty;
+                    //}
+                }
+            }
+        }
         public async Task  pageLoad()
         {
 
-            string periodKey = VATDeclarationData.d.Periodkeyz;
-            string TxnTp = VATDeclarationData.d.TxnTpz;
-            string status = VATDeclarationData.d.Statusz;
-            string FormBundleNumber = VATDeclarationData.d.Fbnum;
-            string Gpart = VATDeclarationData.d.Gpart;
-            await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = true;
+            //});
 
+            //await Task.Run(async () =>
+            //{
 
-            List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
-            VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
-           
-            VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
-            s.pageName = "Instrunction";
-            vatTabbedList.Add(s);
-            VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
-            s1.pageName = "TaxPayer Details";
-            vatTabbedList.Add(s1);
-            VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
-            s2.pageName = "VAT Return Form";
-            vatTabbedList.Add(s2);
-            VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
-            s3.pageName = "Summary";
-            vatTabbedList.Add(s3);
-
-            VatTabbledPageList = vatTabbedList;
-            InstrunctionClicked();
-
-
-            if (VATDeclarationData != null)
-            {
-               if(VATDeclarationData.d!=null)
+                VATCalculationData vATCalculationData;
+                VTTHSetResult vTTHSetResult;
+                string periodKey = VATDeclarationData.d.Periodkeyz;
+                string TxnTp = VATDeclarationData.d.TxnTpz;
+                string status = VATDeclarationData.d.Statusz;
+                string FormBundleNumber = VATDeclarationData.d.Fbnum;
+                string Gpart = VATDeclarationData.d.Gpart;
+                vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
+                if (vATCalculationData.d != null)
                 {
-                    ResponseVATDeclarationD = VATDeclarationData.d;
+                    if (vATCalculationData.d.VATRSet.results.Count != 0)
+                    {
+                        CalculationRateSet = new List<VATCalculationDataVATRSet>();
+                        CalculationRateSet = vATCalculationData.d.VATRSet.results;
+                      
+
+
+                        RateSetAsPerDate();
+
+
+
+                    }
+
+                    if (vATCalculationData.d.VTTHSet.results.Count != 0)
+                    {
+                        CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                    }
+
+
                 }
-                if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count()!=0)
+
+                List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
+                VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
+
+                VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
+                s.pageName = "Instrunction";
+                vatTabbedList.Add(s);
+                VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
+                s1.pageName = "TaxPayer Details";
+                vatTabbedList.Add(s1);
+                VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
+                s2.pageName = "VAT Return Form";
+                vatTabbedList.Add(s2);
+                VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
+                s3.pageName = "Summary";
+                vatTabbedList.Add(s3);
+
+                VatTabbledPageList = vatTabbedList;
+                InstrunctionClicked();
+
+
+                if (VATDeclarationData != null)
                 {
-                    ResponseNote = VATDeclarationData.d.NOTESSet.results;
+                    if (VATDeclarationData.d != null)
+                    {
+                        ResponseVATDeclarationD = VATDeclarationData.d;
+                        SetData();
+                    }
+                    if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count() != 0)
+                    {
+                        ResponseNote = VATDeclarationData.d.NOTESSet.results;
+                    }
+                    if (VATDeclarationData.d.VATR_MSGSet.results != null && VATDeclarationData.d.VATR_MSGSet.results.Count() != 0)
+                    {
+                        Responseobject = VATDeclarationData.d.VATR_MSGSet.results;
+                    }
+                    if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
+                    {
+                        ResponseIBANSET = VATDeclarationData.d.IBANSet.results;
+                    }
+                    if (VATDeclarationData.d.CFSet.results != null && VATDeclarationData.d.CFSet.results.Count() != 0)
+                    {
+                        ResponseCFSET = VATDeclarationData.d.CFSet.results;
+                    }
+                    if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
+                    {
+                        ResponseAttachSet = VATDeclarationData.d.ATTACHSet.results;
+                    }
+                    if (VATDeclarationData.d.ADRSet.results != null && VATDeclarationData.d.ADRSet.results.Count() != 0)
+                    {
+                        ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
+                    }
                 }
-                if (VATDeclarationData.d.VATR_MSGSet.results != null && VATDeclarationData.d.VATR_MSGSet.results.Count() != 0)
-                {
-                    Responseobject = VATDeclarationData.d.VATR_MSGSet.results;
-                }
-                if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
-                {
-                    ResponseIBANSET = VATDeclarationData.d.IBANSet.results;
-                }
-                if (VATDeclarationData.d.CFSet.results != null && VATDeclarationData.d.CFSet.results.Count() != 0)
-                {
-                    ResponseCFSET = VATDeclarationData.d.CFSet.results;
-                }
-                if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
-                {
-                    ResponseAttachSet = VATDeclarationData.d.ATTACHSet.results;
-                }
-                if (VATDeclarationData.d.ADRSet.results != null && VATDeclarationData.d.ADRSet.results.Count() != 0)
-                {
-                    ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
-                }
-            }
+
+            //});
+
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
+
+            //int j = 5;
+            //List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
+            //CreditCarriedsList = new List<CreditCarried>();
+            //for (j = 0; j < 6; j++)
+            //{
+            //    CreditCarried m = new CreditCarried();
+            //    m.SerialNumber = "0001";
+            //    m.ReturnReferenceNumber = "000000000001";
+            //    m.DocumentNumber = "0102000010202";
+            //    m.Amount = "100000000,00";
+
+            //    creditsCrarriedDummy.Add(m);
+            //}
+            //CreditCarriedsList = creditsCrarriedDummy;
 
 
+            //int k = 5;
+            //List<VATAttachments> vatAttachment = new List<VATAttachments>();
+            //VatAttachmentsList = new List<VATAttachments>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    VATAttachments m = new VATAttachments();
+            //    m.Id = "0001";
+            //    m.DocumentName = "Test-Document.pdf";
+            //    m.Size = "20.00";
 
-
-            int j = 5;
-            List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
-            CreditCarriedsList = new List<CreditCarried>();
-            for (j = 0; j < 6; j++)
-            {
-                CreditCarried m = new CreditCarried();
-                m.SerialNumber = "0001";
-                m.ReturnReferenceNumber = "000000000001";
-                m.DocumentNumber = "0102000010202";
-                m.Amount = "100000000,00";
-
-                creditsCrarriedDummy.Add(m);
-            }
-            CreditCarriedsList = creditsCrarriedDummy;
-
-
-            int k = 5;
-            List<VATAttachments> vatAttachment = new List<VATAttachments>();
-            VatAttachmentsList = new List<VATAttachments>();
-            for (k = 0; k < 6; k++)
-            {
-                VATAttachments m = new VATAttachments();
-                m.Id = "0001";
-                m.DocumentName = "Test-Document.pdf";
-                m.Size = "20.00";
-
-                vatAttachment.Add(m);
-            }
-            VatAttachmentsList = vatAttachment;
+            //    vatAttachment.Add(m);
+            //}
+            //VatAttachmentsList = vatAttachment;
         }
 
         #region CalculationPart
+
+
+        public void SetData()
+        {
+            TotalsalesAmt = ResponseVATDeclarationD.TotalsalesAmt;
+            TotalsalesAdj = ResponseVATDeclarationD.TotalsalesAdj;
+            TotalpurchaseAmt = ResponseVATDeclarationD.TotalpurchaseAmt;
+            TotalpurchaseAdj = ResponseVATDeclarationD.TotalpurchaseAdj;
+            StdsalesVat = ResponseVATDeclarationD.StdsalesAdj;
+            TotalsalesVat = ResponseVATDeclarationD.TotalsalesAdj;
+            StdpurchasesVat = ResponseVATDeclarationD.StdpurchasesVat;
+            ImportspaidVat = ResponseVATDeclarationD.ImportspaidVat;
+            ImportsaccVat = ResponseVATDeclarationD.ImportsaccVat;
+            TotalpurchaseVat = ResponseVATDeclarationD.TotalpurchaseVat;
+            TotaldueVat = ResponseVATDeclarationD.TotaldueVat;
+        }
 
         public string StandardRatedSalesVatAmount(string Amount,string Adjustment)
         {

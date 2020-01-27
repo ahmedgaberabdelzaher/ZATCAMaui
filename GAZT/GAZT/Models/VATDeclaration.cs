@@ -325,6 +325,10 @@ namespace GAZT.Models
             set
             {
                 _totalsalesVat = value;
+                if(!string.IsNullOrEmpty(_totalsalesVat))
+                {
+                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                }
                 OnPropertyChanged("TotalsalesVat");
             }
         }
@@ -382,6 +386,10 @@ namespace GAZT.Models
             set
             {
                 _totalpurchaseVat = value;
+                if (!string.IsNullOrEmpty(_totalpurchaseVat))
+                {
+                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                }
                 OnPropertyChanged("TotalpurchaseVat");
             }
         }

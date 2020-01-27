@@ -95,7 +95,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedICR = value;
                 if(SelectedICR != null)
                 {
-                    GetVATAllReturns();
+                    GetVATAllReturnsAsync();
                 }
                 RaisePropertyChanged("SelectedICR");
             }
@@ -286,7 +286,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
+        public async void GetVATAllReturnsAsync()
+        {
+          await GetVATAllReturns();
+        }
        private async Task GetVATAllReturns()
         {
             try
