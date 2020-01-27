@@ -1127,25 +1127,34 @@
 
                             <Label Text="{x:Static local:AppResources.Name}"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="A.M"  Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding TPName}"  Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <Label Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}"  Grid.Row="3" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="680017182=(please retain this number for future reference and communications)"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding ReturnReferenceNumber}"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <Label Text="{x:Static local:AppResources.ZVatTaxablePeriod}"  Grid.Row="4" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="June 2018"  Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding TaxablePeriod}"  Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZVatReceiptDate}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="2019/11/20"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding ReceiptDate}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+                            <Label Text="{x:Static local:AppResources.ZSadadNumber}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                            <Label Text="{Binding SadadNumber}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                             <Label Text="{x:Static local:AppResources.ZAmountPayable}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                            <Label Text="{Binding AmountPayable}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentWaitingText}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                            <Button Text="{x:Static local:AppResources.ZVatRefresh}" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <Button Text="{x:Static local:AppResources.ZVatRefresh}" Command="{Binding OnVATRefreshButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
                             <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 

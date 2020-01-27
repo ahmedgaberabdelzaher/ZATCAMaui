@@ -27,7 +27,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnSaveAsDraftClicked { get; set; }
         public ICommand onOptionClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
-
+        public ICommand OnVATRefreshButtonClicked { get; set; }
+        bool IsFirstSubmission = true;
+        
         byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
         string StepNumber = "04";
@@ -601,11 +603,109 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _tPName ="";
+        public string TPName
+        {
+            get
+            {
+                return _tPName;
+            }
+            set
+            {
+                _tPName = value;
+
+                RaisePropertyChanged("TPName");
+            }
+        }
+
+        private string _returnReferenceNumber = "";
+        public string ReturnReferenceNumber
+        {
+            get
+            {
+                return _returnReferenceNumber;
+            }
+            set
+            {
+                _returnReferenceNumber = value;
+
+                RaisePropertyChanged("ReturnReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                _taxablePeriod = value;
+
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
 
 
+        private string _receiptDate = "";
+        public string ReceiptDate
+        {
+            get
+            {
+                return _receiptDate;
+            }
+            set
+            {
+                _receiptDate = value;
+                RaisePropertyChanged("ReceiptDate");
+            }
+        }
 
 
+        private string _sadadNumber = "";
+        public string SadadNumber
+        {
+            get
+            {
+                return _sadadNumber;
+            }
+            set
+            {
+                _sadadNumber = value;
+                RaisePropertyChanged("SadadNumber");
+            }
+        }
 
+
+        private string _amountPayable = "2470";
+        public string AmountPayable
+        {
+            get
+            {
+                return _amountPayable;
+            }
+            set
+            {
+                _amountPayable = value;
+                RaisePropertyChanged("AmountPayable");
+            }
+        }
+
+        private bool _isSadadNumberVisible = false;
+        public bool IsSadadNumberVisible
+        {
+            get
+            {
+                return _isSadadNumberVisible;
+            }
+            set
+            {
+                _isSadadNumberVisible = value;
+                RaisePropertyChanged("IsSadadNumberVisible");
+            }
+        }
 
 
 
@@ -687,6 +787,17 @@ namespace GAZT.ViewModel.NewViewModel
                 VATReturnFormClicked();
 
             });
+
+            OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                SadadNumber = "3100032587173001";
+                AmountPayable = "2470.70";
+                IsSadadNumberVisible = true;
+                // Call Sadad number API
+            });
+
+            
+
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 try
@@ -749,12 +860,24 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnSaveAsDraftClicked = new Command(async () =>
             {
+                StepNumber = "4";
                 string operation = "05";// Passed 05 to save the data as a draft
                 VATDeclarationData.d.Operationz = operation;
                 VATDeclarationData.d.StepNumber = StepNumber;
-                await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+               // VATDeclarationData.d.ADRSet.results[0].RegionDesc = "Mumbai";
+             var response =    await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                if(response != null && response.d != null)
+                {
+                    await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+
+                    _navigationService.GoBack();
+                }
+
             });
         }
+
+
+        
 
         #endregion
 
@@ -797,13 +920,32 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public async Task SubmitClicked()
         {
-            ClearPage();
-            IsVisibleAcknowledgment = true;
             ButtonName = AppResources.Submit;
-            string operation = "01";
-            VATDeclarationData.d.StepNumber = StepNumber;
-            VATDeclarationData.d.Operationz = operation;
-            await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+            if(!IsFirstSubmission)
+            {
+                ClearPage();
+                IsVisibleAcknowledgment = true;
+                string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
+                VATDeclarationData.d.StepNumber = StepNumber;
+                VATDeclarationData.d.Operationz = operation;
+             var response =    await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                if (response != null && response.d != null)
+                {
+                    TPName = App.TP.Name;
+                    ReturnReferenceNumber = VATDeclarationData.d.Fbnum;
+                    TaxablePeriod = VATDeclarationData.d.Perslt;
+                    ReceiptDate = VATDeclarationData.d.ReceiptDt;
+                    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+
+                    _navigationService.GoBack();
+                }
+               
+            }
+            else
+            {
+                await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+            }
+           
 
 
         }
@@ -848,7 +990,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task pageLoad()
         {
-
+            IsFirstSubmission = true;
             string periodKey = VATDeclarationData.d.Periodkeyz;
             string TxnTp = VATDeclarationData.d.TxnTpz;
             string status = VATDeclarationData.d.Statusz;
