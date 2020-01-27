@@ -1211,5 +1211,12 @@ GAZT reserves the right to investigate your return form further.</value>
    <data name="DraftSaved" xml:space="preserve">
     <value>VAT Return Form Saved successfully</value>
   </data>
+   <data name="DownloadAcknowlwdgement" xml:space="preserve">
+    <value>Download Acknowledgement</value>
+  </data>
+   <data name="Acknowlwdgement" xml:space="preserve">
+    <value>Acknowledgement</value>
+  </data>
+    
   
 </root>

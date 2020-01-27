@@ -2232,5 +2232,17 @@ namespace GAZT {
                 return ResourceManager.GetString("DraftSaved", resourceCulture);
             }
         }
+        
+        public static string DownloadAcknowlwdgement {
+            get {
+                return ResourceManager.GetString("DownloadAcknowlwdgement", resourceCulture);
+            }
+        }
+        
+        public static string Acknowlwdgement {
+            get {
+                return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
+            }
+        }
     }
 }

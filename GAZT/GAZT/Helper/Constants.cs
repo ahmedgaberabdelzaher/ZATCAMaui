@@ -53,9 +53,10 @@ namespace GAZT.Helper
         public static string SaveVATDeclarationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?saml2=disabled";
         public static string GAZTSaveAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef=";
         public static string GAZTGetVATDeclarationCalculationDataUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
+        public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’";
 
-        
-        
+
+
 
         //public static bool IsValidMobileNumber(string mobileNumber)
         //{

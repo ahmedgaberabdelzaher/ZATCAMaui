@@ -388,6 +388,7 @@ namespace GAZT.ViewModel
                             {
                                 response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
                                 UserId = UserName;
+                             
                             }
                             else
                             {

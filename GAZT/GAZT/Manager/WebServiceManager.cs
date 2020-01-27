@@ -1930,6 +1930,32 @@ namespace GAZT.Manager
         }
 
 
+        public static async Task<SadadNumber> GAZTGetVATDeclarationSADADNumber(string FormBundleID)//, string returnedFguid
+        {
+            try
+            {
+                SadadNumber sadadNumber = new SadadNumber();
+                char LangZ = GetLangZParameter();
+                string lang = UtilityManager.GetLanguageParameter();
+                // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’EN’&$filter=Langu eq'E'and Fbnum eq '65000178680' ";
+                // String url = "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’EN’&$filter=Langu eq'E'and Fbnum eq '65000178680' ";
+                String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$filter=Langu eq'" + LangZ  + "'and Fbnum eq '" + FormBundleID + "'" + "";
+                HttpClient client = new HttpClient();                                                                                                                                                                                                                                       // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                var uri = new Uri(url);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                var response = await client.GetAsync(url);
+                var responsestr = response.Content.ReadAsStringAsync().Result;
+                sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
+
+
+                return sadadNumber;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 
 }

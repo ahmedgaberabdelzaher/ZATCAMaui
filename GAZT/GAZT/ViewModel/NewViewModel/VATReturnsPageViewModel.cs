@@ -1002,8 +1002,9 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                SadadNumber = "3100032587173001";
-                AmountPayable = "2470.70";
+                var response = WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                SadadNumber = response.Result.d.results[0].Vtref;
+                AmountPayable = response.Result.d.results[0].Betrh;
                 IsSadadNumberVisible = true;
                 // Call Sadad number API
             });
@@ -1153,14 +1154,12 @@ namespace GAZT.ViewModel.NewViewModel
                     ReturnReferenceNumber = VATDeclarationData.d.Fbnum;
                     TaxablePeriod = VATDeclarationData.d.Perslt;
                     ReceiptDate = VATDeclarationData.d.ReceiptDt;
-                    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-
-                    _navigationService.GoBack();
                 }
                
             }
             else
             {
+                IsFirstSubmission = false;
                 await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
             }
            
@@ -1278,6 +1277,7 @@ namespace GAZT.ViewModel.NewViewModel
         public async Task pageLoad()
         {
             IsFirstSubmission = true;
+            IsSadadNumberVisible = false;
 
             //await Task.Run(() =>
             //{
