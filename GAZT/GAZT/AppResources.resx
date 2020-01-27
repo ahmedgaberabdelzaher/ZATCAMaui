@@ -954,7 +954,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Kindly confirm that the above information is correct before proceeding.</value>
   </data>
   <data name="ZVatCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>Corrections from previous period ( between SAR ± 5000.00 )</value>
+    <value>Corrections from previous period ( between SAR ±)</value>
   </data>
   <data name="ZVatcreditcarriedforward" xml:space="preserve">
     <value>VAT credit carried forward from previous period(s)</value>
@@ -1209,7 +1209,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Please review the calculation and submit again</value>
   </data>
    <data name="DraftSaved" xml:space="preserve">
-    <value>Draft saved</value>
+    <value>VAT Return Form Saved successfully</value>
   </data>
   
 </root>
