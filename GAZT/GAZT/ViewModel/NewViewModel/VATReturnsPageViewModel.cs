@@ -10,10 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+using System.Collections.ObjectModel;
 namespace GAZT.ViewModel.NewViewModel
 {
-    public class VATReturnsPageViewModel:ViewModelBase
+    public class VATReturnsPageViewModel : ViewModelBase
     {
         #region Variable
 
@@ -26,6 +26,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onSummaryClicked { get; set; }
         public ICommand OnSaveAsDraftClicked { get; set; }
         public ICommand onOptionClicked { get; set; }
+        public ICommand OnAttachmentClick { get; set; }
+
         byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
         string StepNumber = "04";
@@ -112,11 +114,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-       
-
-
-
         private List<VATDeclarationTabbedPageName> _vatTabbledPageList;
         public List<VATDeclarationTabbedPageName> VatTabbledPageList
         {
@@ -131,8 +128,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<VATAttachments> _vatAttachmentsList;
-        public List<VATAttachments> VatAttachmentsList
+        private ObservableCollection<Attachment> _vatAttachmentsList;
+        public ObservableCollection<Attachment> VatAttachmentsList
         {
             get
             {
@@ -284,7 +281,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isDeclarationCheckedForInstruction = value;
-                if(_isDeclarationCheckedForInstruction==true)
+                if (_isDeclarationCheckedForInstruction == true)
                 {
                     IsMainButtonEnabled = true;
                 }
@@ -340,7 +337,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private bool _isVisibleInstrunction=false;
+        private bool _isVisibleInstrunction = false;
         public bool IsVisibleInstrunction
         {
             get
@@ -386,7 +383,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private string _pageFontSize="10";
+        private string _pageFontSize = "10";
         public string PageFontSize
         {
             get
@@ -401,9 +398,24 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _attachmentName = "Attachments";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
+
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
 
 
-        private string _buttonName=AppResources.ZVatStepTwo;
+
+        private string _buttonName = AppResources.ZVatStepTwo;
         public string ButtonName
         {
             get
@@ -413,8 +425,23 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _buttonName = value;
-               
+
                 RaisePropertyChanged("ButtonName");
+            }
+        }
+
+        private string _noteText = "";
+        public string NoteText
+        {
+            get
+            {
+                return _noteText;
+            }
+            set
+            {
+                _noteText = value;
+
+                RaisePropertyChanged("NoteText");
             }
         }
 
@@ -525,7 +552,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-       
+
 
         private VATDeclarationTabbedPageName _pageSelectedItems;
         public VATDeclarationTabbedPageName PageSelectedItems
@@ -835,6 +862,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         SubmitClicked();
                     }
+                    else if (ButtonName == AppResources.ZNote)
+                    {
+                        SetNoteData();
+                    }
                 }
             });
 
@@ -849,25 +880,52 @@ namespace GAZT.ViewModel.NewViewModel
             onInstructionsClicked = new Xamarin.Forms.Command(async () =>
             {
                 InstrunctionClicked();
-               
+
             });
 
             onTaxPayerDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
                 TaxpayerDetailsClicked();
-               
+
             });
 
             onVATReturnFormClicked = new Xamarin.Forms.Command(async () =>
             {
                 VATReturnFormClicked();
-               
+
+            });
+            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    var fileData = await CrossFilePicker.Current.PickFile();
+                    attachment = fileData.DataArray;
+                    AttachmentName = fileData.FileName;
+
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz);
+                    if (_attachment != null && _attachment.d != null)
+                    {
+                        VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                        Device.BeginInvokeOnMainThread(async () => {
+                            VatAttachmentsList = myCollection;
+                        });
+                        VatAttachmentsList = myCollection;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+
             });
 
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
                 SummaryClicked();
-                
+
             });
 
 
@@ -879,7 +937,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             onOptionClicked = new Xamarin.Forms.Command(async () =>
             {
-                if(IsVisibleOptionMenu==true)
+                if (IsVisibleOptionMenu == true)
                 {
                     IsVisibleOptionMenu = false;
                 }
@@ -887,7 +945,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsVisibleOptionMenu = true;
                 }
-               
+
             });
 
 
@@ -960,7 +1018,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleNotes = true;
-            ButtonName = AppResources.Submit;
+            ButtonName = AppResources.ZNote;
         }
         public async void ClickAttachment()
         {
@@ -968,29 +1026,17 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleAttachments = true;
             ButtonName = AppResources.Submit;
 
-            try
-            {
-                var fileData = await CrossFilePicker.Current.PickFile();
-                attachment = fileData.DataArray;
-               string fileName= fileData.FileName;
-                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, fileName, VATDeclarationData.d.ReturnIdz);
-
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-
         }
         public void ClickVoid()
         {
-            
+
         }
 
-        
+        private void AddNote()
+        {
+
+        }
+
         public void ClearPage()
         {
             //for Header
@@ -1130,39 +1176,41 @@ namespace GAZT.ViewModel.NewViewModel
                 VatTabbledPageList = vatTabbedList;
                 InstrunctionClicked();
 
+            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
 
-                if (VATDeclarationData != null)
+            VatAttachmentsList = myCollection;
+
+            if (VATDeclarationData != null)
+            {
+                if (VATDeclarationData.d != null)
                 {
-                    if (VATDeclarationData.d != null)
-                    {
-                        ResponseVATDeclarationD = VATDeclarationData.d;
-                        SetData();
-                    }
-                    if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count() != 0)
-                    {
-                        ResponseNote = VATDeclarationData.d.NOTESSet.results;
-                    }
-                    if (VATDeclarationData.d.VATR_MSGSet.results != null && VATDeclarationData.d.VATR_MSGSet.results.Count() != 0)
-                    {
-                        Responseobject = VATDeclarationData.d.VATR_MSGSet.results;
-                    }
-                    if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
-                    {
-                        ResponseIBANSET = VATDeclarationData.d.IBANSet.results;
-                    }
-                    if (VATDeclarationData.d.CFSet.results != null && VATDeclarationData.d.CFSet.results.Count() != 0)
-                    {
-                        ResponseCFSET = VATDeclarationData.d.CFSet.results;
-                    }
-                    if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
-                    {
-                        ResponseAttachSet = VATDeclarationData.d.ATTACHSet.results;
-                    }
-                    if (VATDeclarationData.d.ADRSet.results != null && VATDeclarationData.d.ADRSet.results.Count() != 0)
-                    {
-                        ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
-                    }
+                    ResponseVATDeclarationD = VATDeclarationData.d;
                 }
+                if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count() != 0)
+                {
+                    ResponseNote = VATDeclarationData.d.NOTESSet.results;
+                }
+                if (VATDeclarationData.d.VATR_MSGSet.results != null && VATDeclarationData.d.VATR_MSGSet.results.Count() != 0)
+                {
+                    Responseobject = VATDeclarationData.d.VATR_MSGSet.results;
+                }
+                if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
+                {
+                    ResponseIBANSET = VATDeclarationData.d.IBANSet.results;
+                }
+                if (VATDeclarationData.d.CFSet.results != null && VATDeclarationData.d.CFSet.results.Count() != 0)
+                {
+                    ResponseCFSET = VATDeclarationData.d.CFSet.results;
+                }
+                if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
+                {
+                    ResponseAttachSet = VATDeclarationData.d.ATTACHSet.results;
+                }
+                if (VATDeclarationData.d.ADRSet.results != null && VATDeclarationData.d.ADRSet.results.Count() != 0)
+                {
+                    ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
+                }
+            }
 
             //});
 
@@ -1218,6 +1266,24 @@ namespace GAZT.ViewModel.NewViewModel
             ImportsaccVat = ResponseVATDeclarationD.ImportsaccVat;
             TotalpurchaseVat = ResponseVATDeclarationD.TotalpurchaseVat;
             TotaldueVat = ResponseVATDeclarationD.TotaldueVat;
+            //int k = 5;
+            //List<Attachment> vatAttachment = new List<Attachment>();
+            //VatAttachmentsList = new List<Attachment>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    Attachment m = new Attachment();
+            //    //m.Id = "0001";
+            //    //m.DocumentName = "Test-Document.pdf";
+            //    //m.Size = "20.00";
+
+            //    vatAttachment.Add(m);
+            //}
+            //VatAttachmentsList = vatAttachment;
+        }
+
+        private void SetNoteData()
+        {
+            VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
         }
 
         public string StandardRatedSalesVatAmount(string Amount,string Adjustment)
@@ -1229,15 +1295,15 @@ namespace GAZT.ViewModel.NewViewModel
                 Double dAdjustment = Convert.ToDouble(Adjustment);
                 Double dVATRate = Convert.ToDouble(VATRate001);
 
-                VATAmount = (((dAmount - dAdjustment) * dVATRate)/100).ToString();
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
             }
             return VATAmount;
         }
 
-        public string TotalAmount(string Amount1,string Amount2,string Amount3,string Amount4,string Amount5)
+        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
             String TotalAmount = string.Empty;
-            if(!String.IsNullOrEmpty(Amount1)&& !String.IsNullOrEmpty(Amount2)&& !String.IsNullOrEmpty(Amount3)&& !String.IsNullOrEmpty(Amount4)&& !String.IsNullOrEmpty(Amount5))
+            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !String.IsNullOrEmpty(Amount4) && !String.IsNullOrEmpty(Amount5))
             {
                 TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3) + Convert.ToDouble(Amount4) + Convert.ToDouble(Amount5)).ToString();
             }
@@ -1288,7 +1354,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Double dVATRate001 = Convert.ToDouble(VATRate001);
                 Double dVATRate002 = Convert.ToDouble(VATRate002);
 
-                VATAmount = (((dAmount* dVATRate001) /100)- ((dAdjustment * dVATRate002) / 100)).ToString();
+                VATAmount = (((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100)).ToString();
             }
             return VATAmount;
         }
@@ -1307,7 +1373,7 @@ namespace GAZT.ViewModel.NewViewModel
             return VATAmount;
         }
 
-        public string NetVatDue(string CurrentPeriod, string PreviousPeriod,string ForwardFromPreviousPeriod)
+        public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
             string NetVatDue = string.Empty;
             if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod))
@@ -1316,13 +1382,13 @@ namespace GAZT.ViewModel.NewViewModel
                 Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
                 Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
 
-                NetVatDue = (dCurrentPeriod+dPreviousPeriod+dForwardFromPreviousPeriod).ToString();
+                NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
             }
             return NetVatDue;
         }
 
         #endregion
 
-        #endregion
-    }
+    
+}
 }

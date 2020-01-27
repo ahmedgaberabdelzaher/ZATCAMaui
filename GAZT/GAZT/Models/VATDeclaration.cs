@@ -124,7 +124,7 @@ namespace GAZT.Models
         public string FileExtn { get; set; }
         public string Mimetype { get; set; }
         public string ByPusr { get; set; }
-        public DateTime Erfdt { get; set; }
+        public string Erfdt { get; set; }
         public string Erftm { get; set; }
         public string DataVersion { get; set; }
         public string DocUrl { get; set; }
@@ -179,7 +179,7 @@ namespace GAZT.Models
     {
         public Attachment d { get; set; }
     }
-    public class VATDeclarationD:INotifyPropertyChanged
+    public class VATDeclarationD
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public VATDeclarationsMetadata __metadata { get; set; }
@@ -192,68 +192,70 @@ namespace GAZT.Models
         public string SubmitFg { get; set; }
         public string IdType { get; set; }
         public string Idnumber { get; set; }
-
-        public string _totalsalesAmt;
-        public string TotalsalesAmt
-        { 
-             get
-            {
-                return _totalsalesAmt;
-            }
-            set
-            {
-                _totalsalesAmt = value;
-                OnPropertyChanged("TotalsalesAmt");
-            }
-        }
+        public string TotalsalesAmt { get; set; }
+        //public string _totalsalesAmt;
+        //public string TotalsalesAmt
+        //{ 
+        //     get
+        //    {
+        //        return _totalsalesAmt;
+        //    }
+        //    set
+        //    {
+        //        _totalsalesAmt = value;
+        //        OnPropertyChanged("TotalsalesAmt");
+        //    }
+        //}
         public string EstimatedFg { get; set; }
 
+        public string TotalsalesAdj { get; set; }
 
-        public string _totalsalesAdj;
-        public string TotalsalesAdj
-        {
-            get
-            {
-                return _totalsalesAdj;
-            }
-            set
-            {
-                _totalsalesAdj = value;
-                OnPropertyChanged("TotalsalesAdj");
-            }
-        }
+        //public string _totalsalesAdj;
+        //public string TotalsalesAdj
+        //{
+        //    get
+        //    {
+        //        return _totalsalesAdj;
+        //    }
+        //    set
+        //    {
+        //        _totalsalesAdj = value;
+        //        OnPropertyChanged("TotalsalesAdj");
+        //    }
+        //}
 
         public string Fbust { get; set; }
+        public string TotalpurchaseAmt { get; set; }
 
-        public string _totalpurchaseAmt;
-        public string TotalpurchaseAmt
-        {
-            get
-            {
-                return _totalpurchaseAmt;
-            }
-            set
-            {
-                _totalpurchaseAmt = value;
-                OnPropertyChanged("TotalpurchaseAmt");
-            }
-        }
+        //public string _totalpurchaseAmt;
+        //public string TotalpurchaseAmt
+        //{
+        //    get
+        //    {
+        //        return _totalpurchaseAmt;
+        //    }
+        //    set
+        //    {
+        //        _totalpurchaseAmt = value;
+        //        OnPropertyChanged("TotalpurchaseAmt");
+        //    }
+        //}
 
 
-
-        public string _totalpurchaseAdj;
-        public string TotalpurchaseAdj
-        {
-            get
-            {
-                return _totalpurchaseAdj;
-            }
-            set
-            {
-                _totalpurchaseAdj = value;
-                OnPropertyChanged("TotalpurchaseAdj");
-            }
-        }
+        public string TotalpurchaseAdj { get; set; }
+        //public string _totalpurchaseAdj;
+        //public string TotalpurchaseAdj
+        //{
+        //    get
+        //    {
+        //        return _totalpurchaseAdj;
+        //    }
+        //    set
+        //    {
+        //        _totalpurchaseAdj = value;
+        //        OnPropertyChanged("TotalpurchaseAdj");
+        //    }
+        //}
 
         public string TpregFg { get; set; }
         public string CreditVatRef { get; set; }
@@ -285,27 +287,29 @@ namespace GAZT.Models
         public string Vrtaxret { get; set; }
         public string Incotyp { get; set; }
         public string Persl { get; set; }
-        public DateTime Abrzu { get; set; }
-        public DateTime Abrzo { get; set; }
+        public string Abrzu { get; set; }
+        public string Abrzo { get; set; }
         public string Fin { get; set; }
         public string Tpnm { get; set; }
         public string TcFg { get; set; }
         public string StdsalesAmt { get; set; }
         public string StdsalesAdj { get; set; }
+        public string StdsalesVat { get; set; }
 
-        public string _stdsalesVat;
-        public string StdsalesVat
-        {
-            get
-            {
-                return _stdsalesVat;
-            }
-            set
-            {
-                _stdsalesVat = value;
-                OnPropertyChanged("StdsalesVat");
-            }
-        }
+        //public string _stdsalesVat;
+        //public string StdsalesVat
+        //{
+        //    get
+        //    {
+        //        return _stdsalesVat;
+        //    }
+        //    set
+        //    {
+        //        _stdsalesVat = value;
+        //        OnPropertyChanged("StdsalesVat");
+        //    }
+        //}
+
         public string SalesGccAmt { get; set; }
         public string SalesGccAdj { get; set; }
         public string ZerosalesAmt { get; set; }
@@ -314,58 +318,57 @@ namespace GAZT.Models
         public string ExportsAdj { get; set; }
         public string ExemptsalesAmt { get; set; }
         public string ExemptsalesAdj { get; set; }
+        public string TotalsalesVat { get; set; }
 
-        public string _totalsalesVat;
-        public string TotalsalesVat
-        {
-            get
-            {
-                return _totalsalesVat;
-            }
-            set
-            {
-                _totalsalesVat = value;
-                if(!string.IsNullOrEmpty(_totalsalesVat))
-                {
-                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
-                }
-                OnPropertyChanged("TotalsalesVat");
-            }
-        }
+        //public string _totalsalesVat;
+        //public string TotalsalesVat
+        //{
+        //    get
+        //    {
+        //        return _totalsalesVat;
+        //    }
+        //    set
+        //    {
+        //        _totalsalesVat = value;
+        //        OnPropertyChanged("TotalsalesVat");
+        //    }
+        //}
 
         public string StdpurchaseAmt { get; set; }
         public string StdpurchaseAdj { get; set; }
+        public string StdpurchasesVat { get; set; }
 
-        public string _stdpurchasesVat;
-        public string StdpurchasesVat
-        {
-            get
-            {
-                return _stdpurchasesVat;
-            }
-            set
-            {
-                _stdpurchasesVat = value;
-                OnPropertyChanged("StdpurchasesVat");
-            }
-        }
+        //public string _stdpurchasesVat;
+        //public string StdpurchasesVat
+        //{
+        //    get
+        //    {
+        //        return _stdpurchasesVat;
+        //    }
+        //    set
+        //    {
+        //        _stdpurchasesVat = value;
+        //        OnPropertyChanged("StdpurchasesVat");
+        //    }
+        //}
 
         public string ImportspaidAmt { get; set; }
         public string ImportspaidAdj { get; set; }
+        public string ImportspaidVat { get; set; }
 
-        public string _importspaidVat;
-        public string ImportspaidVat
-        {
-            get
-            {
-                return _importspaidVat;
-            }
-            set
-            {
-                _importspaidVat = value;
-                OnPropertyChanged("ImportspaidVat");
-            }
-        }
+        //public string _importspaidVat;
+        //public string ImportspaidVat
+        //{
+        //    get
+        //    {
+        //        return _importspaidVat;
+        //    }
+        //    set
+        //    {
+        //        _importspaidVat = value;
+        //        OnPropertyChanged("ImportspaidVat");
+        //    }
+        //}
 
 
         public string ImportsaccAmt { get; set; }
@@ -375,24 +378,21 @@ namespace GAZT.Models
         public string ZeropurchaseAdj { get; set; }
         public string ExemptpurchaseAmt { get; set; }
         public string ExemptpurchaseAdj { get; set; }
+        public string TotalpurchaseVat { get; set; }
 
-        public string _totalpurchaseVat;
-        public string TotalpurchaseVat
-        {
-            get
-            {
-                return _totalpurchaseVat;
-            }
-            set
-            {
-                _totalpurchaseVat = value;
-                if (!string.IsNullOrEmpty(_totalpurchaseVat))
-                {
-                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
-                }
-                OnPropertyChanged("TotalpurchaseVat");
-            }
-        }
+        //public string _totalpurchaseVat;
+        //public string TotalpurchaseVat
+        //{
+        //    get
+        //    {
+        //        return _totalpurchaseVat;
+        //    }
+        //    set
+        //    {
+        //        _totalpurchaseVat = value;
+        //        OnPropertyChanged("TotalpurchaseVat");
+        //    }
+        //}
 
         public string Preperiodcorr { get; set; }
         public string CreditVat { get; set; }
@@ -424,12 +424,12 @@ namespace GAZT.Models
         public ADRSet ADRSet { get; set; }
         public VATRMSGSet VATR_MSGSet { get; set; }
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //protected void OnPropertyChanged(string propertyName)
+        //{
+        //    var handler = PropertyChanged;
+        //    if (handler != null)
+        //        handler(this, new PropertyChangedEventArgs(propertyName));
+        //}
     }
 
     
@@ -465,12 +465,12 @@ namespace GAZT.Models
         Font fontnew;
         
 
-        public VATDeclarationTabbedPageName()
-        {
+        //public VATDeclarationTabbedPageName()
+        //{
            
             
-            //_font.FontFamily=
-        }
+        //    //_font.FontFamily=
+        //}
 
       
         public string pageName { get; set; }
@@ -514,11 +514,6 @@ namespace GAZT.Models
                 return _font;
             }
         }
-
-
-
-
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
