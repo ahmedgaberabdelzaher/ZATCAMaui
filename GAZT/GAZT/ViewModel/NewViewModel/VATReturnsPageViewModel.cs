@@ -659,7 +659,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _totalsalesAmt = value;
-               RaisePropertyChanged("TotalsalesAmt");
+                RaisePropertyChanged("TotalsalesAmt");
             }
         }
 
@@ -728,7 +728,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                _totaldueVat=value;
+                _totaldueVat = value;
                 RaisePropertyChanged("TotaldueVat");
             }
         }
@@ -807,7 +807,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                _importsaccVat= value;
+                _importsaccVat = value;
                 RaisePropertyChanged("ImportsaccVat");
             }
         }
@@ -907,7 +907,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             VatAttachmentsList = myCollection;
                         });
                         VatAttachmentsList = myCollection;
@@ -1004,6 +1005,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public async Task SubmitClicked()
         {
+            CreateDataForPost();
             ClearPage();
             IsVisibleAcknowledgment = true;
             ButtonName = AppResources.Submit;
@@ -1058,15 +1060,22 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (VATDeclarationData.d.Abrzu != null && VATDeclarationData.d.Abrzo != null)
                 {
-                    DateTime startDate = VATDeclarationData.d.Abrzu;
-                    DateTime endDate = VATDeclarationData.d.Abrzo;
+
+
+
+                    DateTime startDate = new DateTime(2017, 1, 18);
+
+                    DateTime endDate = new DateTime(2018, 1, 18);
+
+                    //DateTime startDate = DateTime.Parse(VATDeclarationData.d.Abrzu);
+                    //DateTime endDate = DateTime.Parse(VATDeclarationData.d.Abrzo);
 
                     List<VATCalculationDataVATRSet> vATCalculationsforBegin = new List<VATCalculationDataVATRSet>();
                     List<VATCalculationDataVATRSet> vATCalculationsforEnd = new List<VATCalculationDataVATRSet>();
                     VATCalculationDataVATRSet vATCalculationDataDummy;
                     foreach (var item in CalculationRateSet)
                     {
-                        if (startDate>=item.Begda)
+                        if (startDate >= item.Begda)
                         {
                             vATCalculationDataDummy = new VATCalculationDataVATRSet();
                             vATCalculationDataDummy = item;
@@ -1084,7 +1093,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
 
-                    VATCalculationDataVATRSet Rate002 = vATCalculationsforEnd.Where(x =>x.Type == "002").FirstOrDefault();
+                    VATCalculationDataVATRSet Rate002 = vATCalculationsforEnd.Where(x => x.Type == "002").FirstOrDefault();
                     if (Rate002 != null)
                     {
                         VATRate002 = Rate002.Penalty;
@@ -1115,7 +1124,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             }
         }
-        public async Task  pageLoad()
+        public async Task pageLoad()
         {
 
             //await Task.Run(() =>
@@ -1126,55 +1135,55 @@ namespace GAZT.ViewModel.NewViewModel
             //await Task.Run(async () =>
             //{
 
-                VATCalculationData vATCalculationData;
-                VTTHSetResult vTTHSetResult;
-                string periodKey = VATDeclarationData.d.Periodkeyz;
-                string TxnTp = VATDeclarationData.d.TxnTpz;
-                string status = VATDeclarationData.d.Statusz;
-                string FormBundleNumber = VATDeclarationData.d.Fbnum;
-                string Gpart = VATDeclarationData.d.Gpart;
-                vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
-                if (vATCalculationData.d != null)
+            VATCalculationData vATCalculationData;
+            VTTHSetResult vTTHSetResult;
+            string periodKey = VATDeclarationData.d.Periodkeyz;
+            string TxnTp = VATDeclarationData.d.TxnTpz;
+            string status = VATDeclarationData.d.Statusz;
+            string FormBundleNumber = VATDeclarationData.d.Fbnum;
+            string Gpart = VATDeclarationData.d.Gpart;
+            vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
+            if (vATCalculationData.d != null)
+            {
+                if (vATCalculationData.d.VATRSet.results.Count != 0)
                 {
-                    if (vATCalculationData.d.VATRSet.results.Count != 0)
-                    {
-                        CalculationRateSet = new List<VATCalculationDataVATRSet>();
-                        CalculationRateSet = vATCalculationData.d.VATRSet.results;
-                      
-
-
-                        RateSetAsPerDate();
+                    CalculationRateSet = new List<VATCalculationDataVATRSet>();
+                    CalculationRateSet = vATCalculationData.d.VATRSet.results;
 
 
 
-                    }
+                    RateSetAsPerDate();
 
-                    if (vATCalculationData.d.VTTHSet.results.Count != 0)
-                    {
-                        CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
-                    }
 
 
                 }
 
-                List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
-                VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
+                if (vATCalculationData.d.VTTHSet.results.Count != 0)
+                {
+                    CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                }
 
-                VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
-                s.pageName = "Instrunction";
-                vatTabbedList.Add(s);
-                VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
-                s1.pageName = "TaxPayer Details";
-                vatTabbedList.Add(s1);
-                VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
-                s2.pageName = "VAT Return Form";
-                vatTabbedList.Add(s2);
-                VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
-                s3.pageName = "Summary";
-                vatTabbedList.Add(s3);
 
-                VatTabbledPageList = vatTabbedList;
-                InstrunctionClicked();
+            }
+
+            List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
+            VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
+
+            VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
+            s.pageName = "Instrunction";
+            vatTabbedList.Add(s);
+            VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
+            s1.pageName = "TaxPayer Details";
+            vatTabbedList.Add(s1);
+            VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
+            s2.pageName = "VAT Return Form";
+            vatTabbedList.Add(s2);
+            VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
+            s3.pageName = "Summary";
+            vatTabbedList.Add(s3);
+
+            VatTabbledPageList = vatTabbedList;
+            InstrunctionClicked();
 
             ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
 
@@ -1185,6 +1194,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if (VATDeclarationData.d != null)
                 {
                     ResponseVATDeclarationD = VATDeclarationData.d;
+                    SetData();
                 }
                 if (VATDeclarationData.d.NOTESSet.results != null && VATDeclarationData.d.NOTESSet.results.Count() != 0)
                 {
@@ -1252,6 +1262,31 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region CalculationPart
 
+        public void CreateDataForPost()
+        {
+
+           // VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
+            VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
+            VATDeclarationData.d = vATDeclarationD;
+            
+        }
+
+
+        public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
+        {
+            vATDeclarationD.TotalsalesAmt=TotalsalesAmt;
+             vATDeclarationD.TotalsalesAdj= TotalsalesAdj;
+             vATDeclarationD.TotalpurchaseAmt= TotalpurchaseAmt;
+             vATDeclarationD.TotalpurchaseAdj= TotalpurchaseAdj;
+             vATDeclarationD.StdsalesAdj= StdsalesVat;
+             vATDeclarationD.TotalsalesAdj= TotalsalesVat;
+             vATDeclarationD.StdpurchasesVat = StdpurchasesVat;
+             vATDeclarationD.ImportspaidVat = ImportspaidVat;
+             vATDeclarationD.ImportsaccVat = ImportsaccVat;
+             vATDeclarationD.TotalpurchaseVat= TotalpurchaseVat;
+            vATDeclarationD.TotaldueVat= TotaldueVat;
+            return vATDeclarationD;
+        }
 
         public void SetData()
         {
@@ -1286,7 +1321,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
         }
 
-        public string StandardRatedSalesVatAmount(string Amount,string Adjustment)
+        public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
         {
             string VATAmount = string.Empty;
             if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
@@ -1389,6 +1424,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         #endregion
 
-    
-}
+        #endregion
+
+
+    }
+
 }

@@ -8,7 +8,7 @@
              xmlns:local1="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             FlowDirection="LeftToRight"
+             
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
              
              >

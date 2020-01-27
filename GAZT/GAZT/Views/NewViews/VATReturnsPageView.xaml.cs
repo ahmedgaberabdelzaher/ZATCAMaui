@@ -40,6 +40,7 @@ namespace GAZT.Views.NewViews
            
             viewModel = App.Locator.VATReturnsPageView;
             this.BindingContext = viewModel;
+            SetLTR();
             if (_vATDeclarationInfo.d != null)
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
@@ -66,7 +67,16 @@ namespace GAZT.Views.NewViews
 
         #region Method
 
-       public async void IntilizeAsync()
+        private void SetLTR()
+        {
+
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public async void IntilizeAsync()
         {
            await viewModel.pageLoad();
            //onPageLoadCalculation();
