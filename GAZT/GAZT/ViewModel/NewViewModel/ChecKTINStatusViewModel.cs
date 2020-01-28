@@ -172,8 +172,17 @@ namespace GAZT.ViewModel.NewViewModel
                         TINStatus = ListTINStatus.d.StatusText;
                         if (ListTINStatus.d.Udate != null)
                         {
-                            LastUpdate = Convert.ToDateTime(ListTINStatus.d.Udate).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                          
+                            if (App.IsArabic)
+                            {
+                                LastUpdate = Convert.ToDateTime(ListTINStatus.d.Udate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                LastUpdate = UtilityManager.ToArabicDate(LastUpdate);
+                            }
+                            else
+                            {
+                                LastUpdate = Convert.ToDateTime(ListTINStatus.d.Udate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
+                            }
                         }
 
                         ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
@@ -186,9 +195,16 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     if (itemCR.Udate != null)
                                     {
+                                        if (App.IsArabic)
+                                        {
+                                            itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                            itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                                        }
+                                        else
+                                        {
+                                            itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                        itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-
+                                        }
                                     }
                                 }
                             }
