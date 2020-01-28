@@ -906,17 +906,20 @@ namespace GAZT {
                 return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to New email.
         /// </summary>
-        public static string MyCertificate {
+        public static string NewEmail {
             get {
-                return ResourceManager.GetString("TinEmail", resourceCulture);
+                return ResourceManager.GetString("NewEmail", resourceCulture);
             }
         }
         
-        public static string MobileNumberUpdatedSuccessfully {
+        /// <summary>
+        ///   Looks up a localized string similar to New Email field and Retype Email field must match.
+        /// </summary>
+        public static string NewEmailandRetypeEmailNotMatch {
             get {
                 return ResourceManager.GetString("NewEmailandRetypeEmailNotMatch", resourceCulture);
             }
@@ -1974,17 +1977,20 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Data available to GAZT.
         /// </summary>
         public static string ZDataavailabletoGAZT {
             get {
-                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
+                return ResourceManager.GetString("ZDataavailabletoGAZT", resourceCulture);
             }
         }
         
-        public static string ZError {
+        /// <summary>
+        ///   Looks up a localized string similar to Declarations.
+        /// </summary>
+        public static string ZDeclaration {
             get {
                 return ResourceManager.GetString("ZDeclaration", resourceCulture);
             }
@@ -2017,7 +2023,10 @@ namespace GAZT {
             }
         }
         
-        public static string ZUserNameIncorrect {
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated Sales.
+        /// </summary>
+        public static string ZEstimatedSales {
             get {
                 return ResourceManager.GetString("ZEstimatedSales", resourceCulture);
             }
@@ -2195,17 +2204,29 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPasswordLocked", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The entered information does not exist in the system.
         /// </summary>
         public static string ZPleaseEnterAValidUserID {
             get {
-                return ResourceManager.GetString("Hi", resourceCulture);
+                return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
             }
         }
         
-        public static string EnterVerificationCodeTitle {
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter lookup number.
+        /// </summary>
+        public static string ZPleaseenterlookupnumber {
+            get {
+                return ResourceManager.GetString("ZPleaseenterlookupnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the corresponding number.
+        /// </summary>
+        public static string ZPleaseenterthecorrespondingnumber {
             get {
                 return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
             }
@@ -2547,8 +2568,7 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to User name or password is incorrect.
         /// </summary>
-        public static string ZTaxPayerDetails
-        {
+        public static string ZUserNameIncorrect {
             get {
                 return ResourceManager.GetString("ZUserNameIncorrect", resourceCulture);
             }
@@ -3292,18 +3312,20 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYouraccounthasbeenlockedPleasecontactourcallcenter", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Your Session has expired, Please Login again.
         /// </summary>
         public static string ZYourSessionhasexpiredPleaseLoginagain {
             get {
-                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
-                        "sputedamount", resourceCulture);
+                return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
             }
         }
         
-        public static string ZSADADBillDetails {
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Return Details.
+        /// </summary>
+        public static string ZZakatReturnDetails {
             get {
                 return ResourceManager.GetString("ZZakatReturnDetails", resourceCulture);
             }
