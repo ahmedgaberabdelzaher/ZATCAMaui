@@ -1202,6 +1202,24 @@
   <data name="ZSelectTaxpayerType" xml:space="preserve">
     <value>Select Taxpayer Type</value>
   </data>
+  <data name="ZSadadNumber" xml:space="preserve">
+    <value>Sadad Number</value>
+  </data>
+   <data name="ZAmountPayable" xml:space="preserve">
+    <value>Amount Payable</value>
+  </data>
+   <data name="Pleasereviewthecalculationandsubmitagain" xml:space="preserve">
+    <value>Please review the calculation and submit again</value>
+  </data>
+   <data name="DraftSaved" xml:space="preserve">
+    <value>VAT Return Form Saved successfully </value>
+  </data>
+    <data name="DownloadAcknowlwdgement" xml:space="preserve">
+    <value>Download Acknowledgement</value>
+  </data>
+   <data name="Acknowlwdgement" xml:space="preserve">
+    <value>Acknowledgement</value>
+  </data>
   <data name="ZCRStatus" xml:space="preserve">
     <value>حالة السجل</value>
   </data>

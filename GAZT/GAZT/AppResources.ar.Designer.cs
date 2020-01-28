@@ -2202,5 +2202,47 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTheUndisputedAmount", resourceCulture);
             }
         }
+        
+        public static string ZSelectTaxpayerType {
+            get {
+                return ResourceManager.GetString("ZSelectTaxpayerType", resourceCulture);
+            }
+        }
+        
+        public static string ZSadadNumber {
+            get {
+                return ResourceManager.GetString("ZSadadNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZAmountPayable {
+            get {
+                return ResourceManager.GetString("ZAmountPayable", resourceCulture);
+            }
+        }
+        
+        public static string Pleasereviewthecalculationandsubmitagain {
+            get {
+                return ResourceManager.GetString("Pleasereviewthecalculationandsubmitagain", resourceCulture);
+            }
+        }
+        
+        public static string DraftSaved {
+            get {
+                return ResourceManager.GetString("DraftSaved", resourceCulture);
+            }
+        }
+        
+        public static string DownloadAcknowlwdgement {
+            get {
+                return ResourceManager.GetString("DownloadAcknowlwdgement", resourceCulture);
+            }
+        }
+        
+        public static string Acknowlwdgement {
+            get {
+                return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
+            }
+        }
     }
 }

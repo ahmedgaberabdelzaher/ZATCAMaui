@@ -309,7 +309,7 @@ namespace GAZT.ViewModel.NewViewModel
                         VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
                         if (vatLookUp.d != null)
                         {
-                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
                         {
                                 NameOrNoResultLabel = AppResources.Name;
                                 Name = vatLookUp.d.results[0].Name;

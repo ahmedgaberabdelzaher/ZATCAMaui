@@ -415,8 +415,10 @@
 
                         <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
-
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <!--<custom:GAZTBorderlessEntry.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.onStandardRatedSalesVatAmountTapped}" />
+                            </custom:GAZTBorderlessEntry.GestureRecognizers>-->
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="2"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -426,8 +428,10 @@
 
                         <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="3" Text="{Binding StdsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
-
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="3" Text="{Binding StdsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <!--<custom:GAZTBorderlessEntry.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.onStandardRatedSalesVatAmountTapped}" />
+                            </custom:GAZTBorderlessEntry.GestureRecognizers>-->
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="3"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -437,7 +441,7 @@
 
                         <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="4" Text="{Binding StdsalesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.ColumnSpan="2" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="4" Text="{Binding StdsalesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -453,7 +457,7 @@
 
                         <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="6" Text="{Binding SalesGccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="6" Text="{Binding SalesGccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -466,7 +470,7 @@
 
                         <Frame Grid.Row="7" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="7" Text="{Binding SalesGccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="7" Text="{Binding SalesGccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="7"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -483,7 +487,7 @@
 
                         <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}"  Grid.Row="9" Text="{Binding ZerosalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}"  Grid.Row="9" Text="{Binding ZerosalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="9"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -494,7 +498,7 @@
 
                         <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="10" Text="{Binding ZerosalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="10" Text="{Binding ZerosalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="10"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -509,7 +513,7 @@
 
                         <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="12" Text="{Binding ExportsAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="12" Text="{Binding ExportsAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="12"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -520,7 +524,7 @@
 
                         <Frame Grid.Row="13" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="13" Text="{Binding ExportsAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="13" Text="{Binding ExportsAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="13"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -535,7 +539,7 @@
 
                         <Frame Grid.Row="15" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="15" Text="{Binding ExemptsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="15" Text="{Binding ExemptsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="15"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -546,7 +550,7 @@
 
                         <Frame Grid.Row="16" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="16" Text="{Binding ExemptsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="16" Text="{Binding ExemptsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="16"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -590,7 +594,7 @@
                         </Label>
                         <Frame Grid.Row="20" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2"  Grid.Row="20" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding StdpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Grid.Row="20" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding StdpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="20"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -599,7 +603,7 @@
                         </Image>
                         <Frame Grid.Row="21" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="21" Text="{Binding StdpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="21" Text="{Binding StdpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="21"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -608,7 +612,7 @@
                         </Image>
                         <Frame Grid.Row="22"  Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="22" Text="{Binding StdpurchasesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="22" Text="{Binding StdpurchasesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="22"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -622,7 +626,7 @@
                         </Label>
                         <Frame Grid.Row="24" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Grid.Row="24" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportspaidAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms" Grid.ColumnSpan="2" Grid.Row="24" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportspaidAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="24"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -631,7 +635,7 @@
                         </Image>
                         <Frame Grid.Row="25" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Grid.Row="25" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportspaidAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms" Grid.ColumnSpan="2" Grid.Row="25" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportspaidAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="25"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -640,7 +644,7 @@
                         </Image>
                         <Frame Grid.Row="26" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Grid.Row="26" Text="{Binding ImportspaidVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Grid.Row="26" Text="{Binding ImportspaidVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="26"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -653,7 +657,7 @@
                         </Label>
                         <Frame Grid.Row="28" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Grid.Row="28" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportsaccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="28" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportsaccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="28"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -662,7 +666,7 @@
                         </Image>
                         <Frame Grid.Row="29" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Grid.Row="29" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportsaccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="29" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportsaccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="29"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -672,7 +676,7 @@
 
                         <Frame Grid.Row="30" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Grid.Row="30" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Text="{Binding ImportsaccVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.Row="30" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Text="{Binding ImportsaccVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="30"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -685,7 +689,7 @@
                         </Label>
                         <Frame Grid.Row="32" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="32" Text="{Binding ZeropurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="32" Text="{Binding ZeropurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="32"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -694,7 +698,7 @@
                         </Image>
                         <Frame Grid.Row="33" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="33" Text="{Binding ZeropurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="33" Text="{Binding ZeropurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="33"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -707,7 +711,7 @@
                         </Label>
                         <Frame Grid.Row="35" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="35" Text="{Binding ExemptpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="35" Text="{Binding ExemptpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="35"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -716,7 +720,7 @@
                         </Image>
                         <Frame Grid.Row="36" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="36" Text="{Binding ExemptpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="36" Text="{Binding ExemptpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="36"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -958,13 +962,13 @@
 
                             <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding CurrentPassword}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
-                                <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
+                                <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                            </Image.GestureRecognizers>
                             </Image>
 
 
@@ -1016,7 +1020,7 @@
                                    Grid.Column="0" 
                                    />
 
-                                                                <Label Text="{Binding DocumentName}" 
+                                                                <Label Text="{Binding Filename}" 
                                                                        Margin="3,0,3,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -1045,7 +1049,9 @@
                                                                 </Image>
 
                                                                 <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-
+                                                                     <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                            </Image.GestureRecognizers>
                                                                 </Image>
 
 
@@ -1089,11 +1095,12 @@
                     </ScrollView>
                 </StackLayout>
 
-
                 <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAcknowledgment}" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -1121,30 +1128,38 @@
 
                             <Label Text="{x:Static local:AppResources.Name}"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="A.M"  Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding TPName}"  Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <Label Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}"  Grid.Row="3" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="680017182=(please retain this number for future reference and communications)"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding ReturnReferenceNumber}"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <Label Text="{x:Static local:AppResources.ZVatTaxablePeriod}"  Grid.Row="4" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="June 2018"  Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding TaxablePeriod}"  Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZVatReceiptDate}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                            <Label Text="2019/11/20"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding ReceiptDate}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+
+                            <Label Text="{x:Static local:AppResources.ZSadadNumber}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                            <Label Text="{Binding SadadNumber}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                             <Label Text="{x:Static local:AppResources.ZAmountPayable}"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
+
+                            <Label Text="{Binding AmountPayable}"  Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentWaitingText}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                            <Button Text="{x:Static local:AppResources.ZVatRefresh}" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                            <Button Text="{x:Static local:AppResources.ZVatRefresh}" Command="{Binding OnVATRefreshButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                             <Button Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" Command="{Binding OnVATRefreshButtonClicked}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                             <Button Text="{x:Static local:AppResources.Acknowlwdgement}" Command="{Binding OnVATRefreshButtonClicked}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding IsSadadNumberVisible}"></Button>
 
-                            <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
-
+                            <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                         </Grid>
                     </ScrollView>
@@ -1168,7 +1183,7 @@
 
                         <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RetypePasswordForEmail}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEditor>
 

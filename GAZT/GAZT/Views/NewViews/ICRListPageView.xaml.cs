@@ -29,9 +29,10 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
             SetLTR();
-            viewModel.onPageLoad();
+            IntialiseAsync();
 
-            ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+            ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
@@ -44,6 +45,12 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public async void IntialiseAsync()
+        {
+           await viewModel.onPageLoad();
+        }
+
         private void SetLTR()
         {
             
