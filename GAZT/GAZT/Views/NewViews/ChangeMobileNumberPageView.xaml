@@ -38,7 +38,7 @@
                 <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                           </Frame>
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,0,10,-5" IsVisible="{Binding NewMobileNumberEnglishLayout}">
-                        <Label  Text="+966" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
+                        <Label  Text="+9665" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
                         <custom:GAZTBorderlessEntry  Margin="-10,0,-10,0" Text="{Binding NewMobile}" VerticalTextAlignment="Center"   Placeholder="{x:Static local:AppResources.EnterNewMobileNumber}" PlaceholderColor="#989898"    Keyboard="Numeric"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             <custom:GAZTBorderlessEntry.Behaviors>
                               <custom:MobileNumberValidatorBehaviour/>
@@ -52,9 +52,9 @@
                               <custom:MobileNumberValidatorBehaviour/>
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
-                                                <Label  Text="+966" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
+                                                <Label  Text="+9665" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
                     </StackLayout>
-                <Button Text="{x:Static local:AppResources.Verify}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="{x:Static local:AppResources.ZUpdateMobile}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
             

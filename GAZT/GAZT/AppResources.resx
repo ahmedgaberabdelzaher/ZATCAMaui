@@ -226,7 +226,7 @@
     <value>My Bills</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>My Certificate</value>
+    <value>My Certificates</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
     <value>VAT</value>
@@ -422,7 +422,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please re-verify</value>
   </data>
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
-    <value>It is compulsory to change password</value>
+    <value>If you are changing the Email ID, it is mandatory to change the Password</value>
   </data>
   <data name="TINS" xml:space="preserve">
     <value>Tin Number</value>
@@ -671,7 +671,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>The account will be locked after 3 failed verification code attempt</value>
   </data>
   <data name="PasswordGuidelineText" xml:space="preserve">
-    <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
+    <value>Password did not updated as it does not match password format</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
     <value>Change Email</value>
@@ -683,7 +683,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Tax type</value>
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
-    <value>Username not found! Please contact our Call center at: 19993.</value>
+    <value>The entered information does not exist in the system</value>
   </data>
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
@@ -710,7 +710,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>User is not currently valid</value>
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
-    <value>Your Session has expired,Please Login again</value>
+    <value>Your Session has expired, Please Login again</value>
   </data>
   <data name="ZLogout" xml:space="preserve">
     <value>Logout</value>
@@ -803,7 +803,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Mandatory data not entered</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>The new password must not match the existing password</value>
+    <value>New password field and confirm password field must match</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>Please use the OTP to activate the new mobile number</value>
@@ -839,7 +839,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>The new email must not match the existing email</value>
   </data>
   <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
-    <value>The new mobile number must  match the existing mobile number</value>
+    <value>The new mobile number must not  match the existing mobile number</value>
   </data>
   <data name="ZICR" xml:space="preserve">
     <value>ICR</value>
@@ -1198,5 +1198,23 @@ GAZT reserves the right to investigate your return form further.</value>
   </data>
   <data name="ZSelectTaxpayerType" xml:space="preserve">
     <value>Select Taxpayer Type</value>
+  </data>
+  <data name="ZCRStatus" xml:space="preserve">
+    <value>CR Status</value>
+  </data>
+  <data name="ZCurrentEmail" xml:space="preserve">
+    <value>Current Email</value>
+  </data>
+  <data name="ZCurrentMobileNumber" xml:space="preserve">
+    <value>Current Mobile Number</value>
+  </data>
+  <data name="ZForgetUsernameorPassword" xml:space="preserve">
+    <value>Forget Username or Password</value>
+  </data>
+  <data name="ZUpdateEmail" xml:space="preserve">
+    <value>Update Email</value>
+  </data>
+  <data name="ZUpdateMobile" xml:space="preserve">
+    <value>Update Mobile</value>
   </data>
 </root>

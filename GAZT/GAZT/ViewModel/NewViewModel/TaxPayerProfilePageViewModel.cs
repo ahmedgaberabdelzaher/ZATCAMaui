@@ -161,14 +161,14 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-        public async Task PopToRootPage()
+        public  void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () => {
+             
                     var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                     _navigation.PopToRootAsync();
+               
             }
         }
         public void OnPageLoad()
@@ -176,7 +176,7 @@ namespace GAZT.ViewModel.NewViewModel
             TaxPayerProfile = App.TP;
             TPProfileVisibility = true;
            
-            CurrentMobile = TaxPayerProfile.Mobile;
+            CurrentMobile =TaxPayerProfile.Mobile;
             CurrentPassword = TaxPayerProfile.Password;
             OldEmail = TaxPayerProfile.Email;
             CurrentPasswordForEmail = TaxPayerProfile.Password;
@@ -190,11 +190,15 @@ namespace GAZT.ViewModel.NewViewModel
                 if (App.IsArabic == true)
                     lang = "A";
                 String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
-                await PopToRootPage();
-
-                CurrentMobile = mobilenumber;
-                App.TP.Mobile = mobilenumber;
-                TaxPayerProfile.Mobile = mobilenumber;
+                 PopToRootPage();
+                string MobileNo= "+" + mobilenumber.Substring(2, 12); 
+                if (App.IsArabic)
+                {
+                    MobileNo = mobilenumber.Substring(2, 12)+ "+";
+                }
+                CurrentMobile = MobileNo;
+                App.TP.Mobile = MobileNo;
+                TaxPayerProfile.Mobile = MobileNo;
                 App.TP.NewMobile = string.Empty;
                 TaxPayerProfile.NewMobile = string.Empty;
                 CurrentPassword = TaxPayerProfile.Password;

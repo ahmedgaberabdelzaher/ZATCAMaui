@@ -791,7 +791,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It is compulsory to change password.
+        ///   Looks up a localized string similar to If you are changing the Email ID, it is mandatory to change the Password.
         /// </summary>
         public static string MandatoryPasswordForEmailUpdatation {
             get {
@@ -845,7 +845,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Certificate.
+        ///   Looks up a localized string similar to My Certificates.
         /// </summary>
         public static string MyCertificate {
             get {
@@ -1052,7 +1052,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character..
+        ///   Looks up a localized string similar to Password did not updated as it does not match password format.
         /// </summary>
         public static string PasswordGuidelineText {
             get {
@@ -1907,6 +1907,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Status.
+        /// </summary>
+        public static string ZCRStatus {
+            get {
+                return ResourceManager.GetString("ZCRStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Email.
+        /// </summary>
+        public static string ZCurrentEmail {
+            get {
+                return ResourceManager.GetString("ZCurrentEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Mobile Number.
+        /// </summary>
+        public static string ZCurrentMobileNumber {
+            get {
+                return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data available to GAZT.
         /// </summary>
         public static string ZDataavailabletoGAZT {
@@ -1993,6 +2020,15 @@ namespace GAZT {
         public static string ZFinancialPeriodFrom {
             get {
                 return ResourceManager.GetString("ZFinancialPeriodFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forget Username or Password.
+        /// </summary>
+        public static string ZForgetUsernameorPassword {
+            get {
+                return ResourceManager.GetString("ZForgetUsernameorPassword", resourceCulture);
             }
         }
         
@@ -2125,7 +2161,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username not found! Please contact our Call center at: 19993..
+        ///   Looks up a localized string similar to The entered information does not exist in the system.
         /// </summary>
         public static string ZPleaseEnterAValidUserID {
             get {
@@ -2454,6 +2490,24 @@ namespace GAZT {
         public static string ZTPDetails {
             get {
                 return ResourceManager.GetString("ZTPDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Email.
+        /// </summary>
+        public static string ZUpdateEmail {
+            get {
+                return ResourceManager.GetString("ZUpdateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Mobile.
+        /// </summary>
+        public static string ZUpdateMobile {
+            get {
+                return ResourceManager.GetString("ZUpdateMobile", resourceCulture);
             }
         }
         
@@ -3206,7 +3260,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Session has expired,Please Login again.
+        ///   Looks up a localized string similar to Your Session has expired, Please Login again.
         /// </summary>
         public static string ZYourSessionhasexpiredPleaseLoginagain {
             get {
@@ -3287,7 +3341,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new mobile number must  match the existing mobile number.
+        ///   Looks up a localized string similar to The new mobile number must not  match the existing mobile number.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {
@@ -3296,7 +3350,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new password must not match the existing password.
+        ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {

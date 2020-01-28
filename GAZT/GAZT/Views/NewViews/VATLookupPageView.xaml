@@ -71,7 +71,7 @@
                         <Label Text="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Frame  Grid.Row="4"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}"  Placeholder="{Binding VATACCOrCRNOOrVATCER}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" Keyboard="Numeric" Placeholder="{Binding VATACCOrCRNOOrVATCER}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"></custom:GAZTBorderlessEntry>
 
                        
 

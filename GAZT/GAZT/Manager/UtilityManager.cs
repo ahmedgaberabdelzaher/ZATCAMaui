@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace GAZT.Manager
 {
@@ -206,6 +208,84 @@ namespace GAZT.Manager
                 }
             }
             return FullDate;
+        }
+
+        public static string ToArabicDate(string Date)
+        {
+            string[] SplitDate = Date.Split('-');
+            string Month = SplitDate[1];
+            string Year = ConvertNumerals(SplitDate[2]);
+            string Day= ConvertNumerals(SplitDate[0]);
+            string FinalDate = Date;
+            if (Month =="January")
+            {
+                Month = "يناير";
+            }
+            else if(Month== "February")
+            {
+                Month = "فبراير";
+            }
+            else if (Month == "March")
+            {
+                Month = "مارس";
+            }
+            else if (Month == "April")
+            {
+                Month = "أبريل";
+            }
+            else if (Month == "May")
+            {
+                Month = "مايو";
+            }
+            else if (Month == "June")
+            {
+                Month = "يونيو";
+            }
+            else if (Month == "July")
+            {
+                Month = "يوليو";
+            }
+            else if (Month == "August")
+            {
+                Month = "أغسطس";
+            }
+            else if (Month == "September")
+            {
+                Month = "سبتمبر";
+            }
+            else if (Month == "October")
+            {
+                Month = "أكتوبر";
+            }
+            else if (Month == "November")
+            {
+                Month = "نوفمبر";
+            }
+            else if (Month == "December")
+            {
+                Month = "ديسمبر";
+            }
+            FinalDate = Day + "-" + Month + "-" + Year;
+            return FinalDate;
+        }
+
+        public static string ConvertNumerals(this string input)
+        {
+            if (new string[] { "en-US", "ar-SA" }
+                  .Contains(Thread.CurrentThread.CurrentCulture.Name))
+            {
+                return input.Replace('0', '\u06f0')
+                        .Replace('1', '\u06f1')
+                        .Replace('2', '\u06f2')
+                        .Replace('3', '\u06f3')
+                        .Replace('4', '\u06f4')
+                        .Replace('5', '\u06f5')
+                        .Replace('6', '\u06f6')
+                        .Replace('7', '\u06f7')
+                        .Replace('8', '\u06f8')
+                        .Replace('9', '\u06f9');
+            }
+            else return input;
         }
         #endregion
     }

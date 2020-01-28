@@ -22,7 +22,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Property
 
 
-        private string _NewMobile = "5";
+        private string _NewMobile = string.Empty;
         public string NewMobile
         {
             get
@@ -181,7 +181,12 @@ namespace GAZT.ViewModel.NewViewModel
                     try
                     {
                         bool response = false;
-                        var mobileNumber = "00966" + NewMobile;
+                        var mobileNumber = "+9665" + NewMobile;
+                        if (App.IsArabic)
+                        {
+                            mobileNumber = "9665" + NewMobile + "+";
+                        }
+                       
                         bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
                         bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
                         if (isValidMobileNumber)
@@ -203,17 +208,17 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 await _dialogService.ShowMessageBox(AppResources.EnterValidMobileNumber, AppResources.Information);
                             });
-                            NewMobile = "5";
+                            NewMobile = string.Empty;
                         }
                         if (response == true)
                         {
                             App.TP.NewMobile = mobileNumber;
                         //String OnAuthenticationSuccess = AppResources.MobileNumberVerificationSuccessful;
                         //String OnSuccessfulAuthentication = AppResources.EnterVerificationCode;
-                        Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessageBox(AppResources.ZZPleaseusetheOTPtoactivatethenewnobilenumber, AppResources.Information);
-                            });
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //    {
+                        //        await _dialogService.ShowMessageBox(AppResources.ZZPleaseusetheOTPtoactivatethenewnobilenumber, AppResources.Information);
+                        //    });
                             ClearMobileData();
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -269,7 +274,7 @@ namespace GAZT.ViewModel.NewViewModel
        
         public bool IsValidMobileNumber(string mobileNumber)
         {
-            if (!string.IsNullOrEmpty(mobileNumber) && mobileNumber.Substring(0, 1).Equals("5") && mobileNumber.Length == 9)
+            if (!string.IsNullOrEmpty(mobileNumber)  && mobileNumber.Length == 8)
             {
                 return true;
             }
@@ -291,8 +296,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void ClearMobileData()
         {
-            NewMobile = "5";
-            //  NewMobile = string.Empty;
+           // NewMobile = "";
+              NewMobile = string.Empty;
 
         }
 

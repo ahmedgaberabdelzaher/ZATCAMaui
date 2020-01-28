@@ -21,7 +21,7 @@ namespace GAZT
 
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            if (!string.IsNullOrEmpty(args.NewTextValue) && args.NewTextValue.Length <= 9)
+            if (!string.IsNullOrEmpty(args.NewTextValue) && args.NewTextValue.Length <= 8)
             {
                 bool isValidNumber = false;//= UtilityManager.IsMobileNumberValidValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
