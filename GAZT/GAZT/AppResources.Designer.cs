@@ -538,9 +538,18 @@ namespace GAZT {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
             }
         }
-        
 
-        
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificates.
+        /// </summary>
+        public static string TinEmail
+        {
+            get
+            {
+                return ResourceManager.GetString("TinEmail", resourceCulture);
+            }
+        }
+
         public static string MobileNumberUpdatedSuccessfully {
             get {
                 return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
@@ -1263,16 +1272,16 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Data available to GAZT.
         /// </summary>
-        public static string ZDataavailabletoGAZT {
-            get {
-                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
-            }
-        }
-        
+        //public static string ZEntertherequiredfield {
+        //    get {
+        //        return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
+        //    }
+        //}
+
         public static string ZError {
             get {
                 return ResourceManager.GetString("ZError", resourceCulture);
@@ -1296,6 +1305,15 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
             }
         }
+
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount
+        {
+            get
+            {
+                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount", resourceCulture);
+            }
+        }
+
         
         public static string ZUserNameIncorrect {
             get {
@@ -1419,9 +1437,18 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
-        
-        
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The entered information does not exist in the system.
+        /// </summary>
+        public static string Hi
+        {
+            get
+            {
+                return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+
         public static string EnterVerificationCodeTitle {
             get {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
@@ -1656,7 +1683,15 @@ namespace GAZT {
             }
         }
         
-       
+        /// <summary>
+        ///   Looks up a localized string similar to User name or password is incorrect.
+        /// </summary>
+        public static string ZTaxPayerDetails
+        {
+            get {
+                return ResourceManager.GetString("ZTaxPayerDetails", resourceCulture);
+            }
+        }
         
         public static string ZTaxpayerInformation {
             get {
@@ -2120,7 +2155,11 @@ namespace GAZT {
             }
         }
         
-     
+        public static string ZDataavailabletoGAZT {
+            get {
+                return ResourceManager.GetString("ZDataavailabletoGAZT", resourceCulture);
+            }
+        }
         
         public static string ZEstimatedSales {
             get {
@@ -2218,20 +2257,18 @@ namespace GAZT {
                         "iveyourSADADbillnumber", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your Session has expired, Please Login again.
         /// </summary>
         public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
                         "sputedamount", resourceCulture);
             }
         }
-
-     
-
 
         public static string ZSADADBillDetails {
             get {
@@ -2290,31 +2327,6 @@ namespace GAZT {
         public static string Acknowlwdgement {
             get {
                 return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
-            }
-        }
-
-        public static string Hi
-        {
-            get
-            {
-                return ResourceManager.GetString("Hi", resourceCulture);
-            }
-        }
-
-        public static string TinEmail
-        {
-            get
-            {
-                return ResourceManager.GetString("TinEmail", resourceCulture);
-            }
-        }
-
-        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount
-        {
-            get
-            {
-                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
-                        "sputedamount", resourceCulture);
             }
         }
     }

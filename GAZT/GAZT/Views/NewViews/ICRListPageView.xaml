@@ -62,13 +62,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                               
-                                       Margin="0,0,0,10"
-                                       Padding="0,0,0,0"
-                                       CornerRadius="0"
-                                       
-                               >
+                                        
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
                                                 <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
@@ -166,7 +160,7 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                        </Frame>
+                                       
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>
