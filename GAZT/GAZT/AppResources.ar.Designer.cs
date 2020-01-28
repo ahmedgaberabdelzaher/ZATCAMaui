@@ -2244,5 +2244,8 @@ namespace GAZT {
                 return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
             }
         }
+
+      
+
     }
 }
