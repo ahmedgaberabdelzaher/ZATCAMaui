@@ -539,14 +539,7 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to My Certificates.
-        /// </summary>
-        public static string MyCertificate {
-            get {
-                return ResourceManager.GetString("TinEmail", resourceCulture);
-            }
-        }
+
         
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -1427,14 +1420,7 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to The entered information does not exist in the system.
-        /// </summary>
-        public static string ZPleaseEnterAValidUserID {
-            get {
-                return ResourceManager.GetString("Hi", resourceCulture);
-            }
-        }
+        
         
         public static string EnterVerificationCodeTitle {
             get {
@@ -1670,14 +1656,7 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to User name or password is incorrect.
-        /// </summary>
-        public static string ZUserNameIncorrect {
-            get {
-                return ResourceManager.GetString("ZTaxPayerDetails", resourceCulture);
-            }
-        }
+       
         
         public static string ZTaxpayerInformation {
             get {
@@ -2141,11 +2120,7 @@ namespace GAZT {
             }
         }
         
-        public static string ZDataavailabletoGAZT {
-            get {
-                return ResourceManager.GetString("ZDataavailabletoGAZT", resourceCulture);
-            }
-        }
+     
         
         public static string ZEstimatedSales {
             get {
@@ -2247,13 +2222,17 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to Your Session has expired, Please Login again.
         /// </summary>
-        public static string ZYourSessionhasexpiredPleaseLoginagain {
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi
+        {
             get {
                 return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
                         "sputedamount", resourceCulture);
             }
         }
-        
+
+     
+
+
         public static string ZSADADBillDetails {
             get {
                 return ResourceManager.GetString("ZSADADBillDetails", resourceCulture);
@@ -2311,6 +2290,31 @@ namespace GAZT {
         public static string Acknowlwdgement {
             get {
                 return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
+            }
+        }
+
+        public static string Hi
+        {
+            get
+            {
+                return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+
+        public static string TinEmail
+        {
+            get
+            {
+                return ResourceManager.GetString("TinEmail", resourceCulture);
+            }
+        }
+
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount
+        {
+            get
+            {
+                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
+                        "sputedamount", resourceCulture);
             }
         }
     }
