@@ -442,47 +442,39 @@ namespace GAZT.ViewModel
                             DateTime? endDate = dashboard.results[0].Endda;
 
 
-                            if (BegDate != null)
+
+
+                            if (App.IsArabic)
                             {
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                                if (BegDate != null)
+                                {
+                                    StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    StartDate = UtilityManager.ToArabicDate(StartDate);
+                                }
+                                if (endDate != null)
+                                {
+                                    EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    EndDate = UtilityManager.ToArabicDate(EndDate);
+                                }
                             }
-                            if (endDate != null)
+                            else
                             {
-                                EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
+                                if (BegDate != null)
+                                {
+                                    StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                }
+                                if (endDate != null)
+                                {
+                                    EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                }
                             }
 
-                            //if (App.IsArabic)
-                            //{
-                            //    //StartDate = BegDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                            //    //EndDate = endDate.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                            //    if (BegDate != null)
-                            //    {
-                            //        StartDate = Convert.ToDateTime(BegDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                            //    }
-                            //    if (endDate != null)
-                            //    {
-                            //        EndDate = Convert.ToDateTime(endDate).ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-sa"));
-                            //    }
-                            //}
-                            //else
-                            //{
 
-                            //    if (BegDate != null)
-                            //    {
-                            //        StartDate = Convert.ToDateTime(BegDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                            //    }
-                            //    if (endDate != null)
-                            //    {
-                            //        EndDate = Convert.ToDateTime(endDate).ToString("yyyy,MM,dd", new CultureInfo("en-US"));
-
-                            //    }
-
-
-                            //}
-                            BillReturn objBill1 = new BillReturn();
+                             
+                                BillReturn objBill1 = new BillReturn();
                             objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
                             String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
 

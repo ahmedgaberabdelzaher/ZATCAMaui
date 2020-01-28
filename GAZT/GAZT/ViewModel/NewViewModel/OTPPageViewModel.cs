@@ -200,6 +200,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     IsResendOTPEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
 
@@ -221,6 +223,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isVerifyOTPEnabled = true;
+        public bool IsVerifyOTPEnabled
+        {
+            get
+            {
+                return _isVerifyOTPEnabled;
+            }
+            set
+            {
+                _isVerifyOTPEnabled = value;
+                RaisePropertyChanged("IsVerifyOTPEnabled");
+            }
+        }
+
         private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
         public Color ButtonDisableColor
         {
@@ -232,6 +248,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _buttonDisableColor = value;
                 RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+
+        private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
+        public Color VerifyButtonDisableColor
+        {
+            get
+            {
+                return _verifybuttonDisableColor;
+            }
+            set
+            {
+                _verifybuttonDisableColor = value;
+                RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
 
@@ -452,6 +482,8 @@ namespace GAZT.ViewModel.NewViewModel
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             StopTimer = true;
             TimerStart();
+            IsVerifyOTPEnabled = true;
+            VerifyButtonDisableColor = Color.FromHex("#005e4b");
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {
@@ -481,7 +513,9 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 bool IsNavigatingFromLogin = true;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
                             //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
                             //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
@@ -498,7 +532,9 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 bool IsNavigatingFromLogin = true;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;
@@ -516,7 +552,9 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 bool IsNavigatingFromLogin = true;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
                                 string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;

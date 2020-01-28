@@ -86,7 +86,7 @@
                                                     </Grid.ColumnDefinitions>
                                                 <Label  Text="{x:Static local:AppResources.ZCRNo}" Margin="10,0,10,-15" Grid.Row="0"  Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                <Label  Text="{x:Static local:AppResources.ZTINStatus}" Margin="10,0,10,-15"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                <Label  Text="{x:Static local:AppResources.ZCRStatus}" Margin="10,0,10,-15"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
                                                 <Label  Text="{x:Static local:AppResources.ZLastUpdate}" Grid.Row="2" Grid.Column="0" Margin="10,0,10,5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>

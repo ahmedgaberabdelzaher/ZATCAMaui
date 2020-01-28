@@ -538,13 +538,18 @@ namespace GAZT {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
             }
         }
-        
-        public static string TinEmail {
-            get {
+
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificates.
+        /// </summary>
+        public static string TinEmail
+        {
+            get
+            {
                 return ResourceManager.GetString("TinEmail", resourceCulture);
             }
         }
-        
+
         public static string MobileNumberUpdatedSuccessfully {
             get {
                 return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
@@ -1241,12 +1246,42 @@ namespace GAZT {
             }
         }
         
-        public static string ZEntertherequiredfield {
+        /// <summary>
+        ///   Looks up a localized string similar to CR Status.
+        /// </summary>
+        public static string ZCRStatus {
             get {
-                return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
+                return ResourceManager.GetString("ZCRStatus", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Current Email.
+        /// </summary>
+        public static string ZCurrentEmail {
+            get {
+                return ResourceManager.GetString("ZCurrentEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Mobile Number.
+        /// </summary>
+        public static string ZCurrentMobileNumber {
+            get {
+                return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Data available to GAZT.
+        /// </summary>
+        //public static string ZEntertherequiredfield {
+        //    get {
+        //        return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
+        //    }
+        //}
+
         public static string ZError {
             get {
                 return ResourceManager.GetString("ZError", resourceCulture);
@@ -1270,6 +1305,15 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
             }
         }
+
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount
+        {
+            get
+            {
+                return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount", resourceCulture);
+            }
+        }
+
         
         public static string ZUserNameIncorrect {
             get {
@@ -1298,6 +1342,15 @@ namespace GAZT {
         public static string ZYes {
             get {
                 return ResourceManager.GetString("ZYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forget Username or Password.
+        /// </summary>
+        public static string ZForgetUsernameorPassword {
+            get {
+                return ResourceManager.GetString("ZForgetUsernameorPassword", resourceCulture);
             }
         }
         
@@ -1384,13 +1437,18 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
-        
-        public static string Hi {
-            get {
+
+        /// <summary>
+        ///   Looks up a localized string similar to The entered information does not exist in the system.
+        /// </summary>
+        public static string Hi
+        {
+            get
+            {
                 return ResourceManager.GetString("Hi", resourceCulture);
             }
         }
-        
+
         public static string EnterVerificationCodeTitle {
             get {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
@@ -1607,7 +1665,29 @@ namespace GAZT {
             }
         }
         
-        public static string ZTaxPayerDetails {
+        /// <summary>
+        ///   Looks up a localized string similar to Update Email.
+        /// </summary>
+        public static string ZUpdateEmail {
+            get {
+                return ResourceManager.GetString("ZUpdateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Mobile.
+        /// </summary>
+        public static string ZUpdateMobile {
+            get {
+                return ResourceManager.GetString("ZUpdateMobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name or password is incorrect.
+        /// </summary>
+        public static string ZTaxPayerDetails
+        {
             get {
                 return ResourceManager.GetString("ZTaxPayerDetails", resourceCulture);
             }
@@ -2177,14 +2257,19 @@ namespace GAZT {
                         "iveyourSADADbillnumber", resourceCulture);
             }
         }
-        
-        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount {
-            get {
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Session has expired, Please Login again.
+        /// </summary>
+        public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi
+        {
+            get
+            {
                 return ResourceManager.GetString("ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdi" +
                         "sputedamount", resourceCulture);
             }
         }
-        
+
         public static string ZSADADBillDetails {
             get {
                 return ResourceManager.GetString("ZSADADBillDetails", resourceCulture);

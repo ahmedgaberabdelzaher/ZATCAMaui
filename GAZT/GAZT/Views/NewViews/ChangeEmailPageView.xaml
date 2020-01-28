@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="7*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{x:Static local:AppResources.OldEmail}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <Label Text="{x:Static local:AppResources.ZCurrentEmail}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                 </Label>
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
@@ -60,7 +60,7 @@
                 </custom:GAZTBorderlessEntry>
 
 
-                <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnVerifyEmailButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="{x:Static local:AppResources.ZUpdateEmail}"  Command="{Binding OnVerifyEmailButtonClicked}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
 
             </Grid>

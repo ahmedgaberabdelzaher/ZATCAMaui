@@ -132,6 +132,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedParameterType = value;
                 RaisePropertyChanged("_selectedParameterType");
+                EnteredCaptchaValue = string.Empty;
+                LookupNumber = string.Empty;
+                Name = string.Empty;
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
                 if (SelectedParameterType != null)
                 {
                     SetPlaceholderText();

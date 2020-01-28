@@ -44,7 +44,7 @@ namespace GAZT.Views.NewViews
         {
             base.OnAppearing();
             // Task.Delay(20000);
-            viewModel.NewMobile = "5";
+            viewModel.NewMobile =string.Empty;
             
 
           

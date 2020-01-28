@@ -491,8 +491,8 @@ namespace GAZT
         public void OnPageLoad()
         {
             TaxPayerProfile = App.TP;
-            //CurrentPassword = TaxPayerProfile.Password;
-            CurrentPassword = String.Empty;
+            CurrentPassword = TaxPayerProfile.Password;
+            //CurrentPassword = App;
             OldEmail = TaxPayerProfile.Email;
             NewEmail = TaxPayerProfile.NewEmail;
             NewPasswordForEmail = string.Empty;

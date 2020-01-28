@@ -5,6 +5,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -306,26 +307,27 @@ namespace GAZT.ViewModel
         }
 
 
-        public async Task onPageLoad()
+        public void onPageLoad()
         {
-            try
-            {
-                await Task.Run(() =>
-                {
+           
+                //await Task.Run(() =>
+                //{
                     IsLoading = true;
-                });
+                //});
 
-                await Task.Run(async () =>
-                {
+                //await Task.Run(async () =>
+                //{
                     MyBills = null;
 
                     List<MyBills> myBills = null;
                     try
                     {
+                        try
+                    {
 
                         string lang = UtilityManager.GetLanguageParameter();
-                        myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
 
                     if (myBills != null && myBills.Count != 0)
@@ -337,23 +339,40 @@ namespace GAZT.ViewModel
                         }
                         else
                         {
-                            await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                            _navigationService.GoBack();
+                             _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                           // _navigationService.GoBack();
+                         //   await Task.Run(() =>
+                          //  {
+                                IsLoading = false;
+                          //  });
                         }
                     }
                     catch (Exception e)
                     {
 
-                        await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        _navigationService.GoBack();
+                         _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                     //   _navigationService.GoBack();
+                      //  await Task.Run(() =>
+                     //   {
+                            IsLoading = false;
+                     //   });
 
                     }
-                });
-
-                await Task.Run(() =>
-                {
+                }
+            catch (InternetException ex)
+            {
+                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
+             //   await Task.Run(() =>
+             //   {
                     IsLoading = false;
-                });
+              //  });
+            }
+        //});
+
+               // await Task.Run(() =>
+               // {
+                    IsLoading = false;
+              // });
 
 
                 //int i = 5;
@@ -384,15 +403,7 @@ namespace GAZT.ViewModel
                 //    MyBills.Add(m);
                 //}
                 //MyBillsOriginal = MyBills;
-            }
-            catch(InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-            }
+          
         }
 
         public async Task PopToRootPage()
@@ -434,8 +445,16 @@ namespace GAZT.ViewModel
                 {
                     string[] _dueDate = new String[2];
                     _dueDate = myBills[i].FAEDN.Split('T');
-                 
-                    myBills[i].FAEDN = _dueDate[0];
+                    if (App.IsArabic)
+                    {
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        myBills[i].FAEDN = UtilityManager.ToArabicDate(myBills[i].FAEDN);
+
+                    }
+                    else
+                    {
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); 
+                    }
                 }
 
             }

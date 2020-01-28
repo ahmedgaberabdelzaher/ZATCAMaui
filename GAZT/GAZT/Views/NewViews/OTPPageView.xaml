@@ -80,8 +80,8 @@
                             </Label.FormattedText>
                         </Label>
                         <Button Text="{x:Static local:AppResources.ResendOTP}"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}"></Button>
-                        
-                            <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}"></Button>
+
+                        <Button Text="{x:Static local:AppResources.Verify}"  Command="{Binding OnSubmitClicked}" VerticalOptions="StartAndExpand"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" IsEnabled="{Binding IsVerifyOTPEnabled}"></Button>
 
 
                          <!--<StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">  

@@ -689,7 +689,7 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<List<MyBills>> GAZTGetMyBills(String Tin, string lang)
+        public static List<MyBills> GAZTGetMyBills(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -703,7 +703,7 @@ namespace GAZT.Manager
                     String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json&sap-language=" + lang;
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTMyBillsResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTMyBillsResponse =  client.GetAsync(uri).Result;
                     if (GAZTMyBillsResponse != null)
                     {
                         HttpHeaders headers = GAZTMyBillsResponse.Headers;

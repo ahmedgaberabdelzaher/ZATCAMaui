@@ -28,104 +28,104 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public OTPPageView(NavigateToOtp e)
         {
-           
-                InitializeComponent();
+
+            InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.OTPPageView;
 
-                SetLTR();
+            SetLTR();
             viewModel.OTPValidDuration = "00:00";
             viewModel.OnPageLoad();
-                this.BindingContext = viewModel;
+            this.BindingContext = viewModel;
 
-                viewModel.IsComingFrom = e;
-                if (e == NavigateToOtp.IsMobile)
+            viewModel.IsComingFrom = e;
+            if (e == NavigateToOtp.IsMobile)
+            {
+                if (App.TP != null)
                 {
-                    if (App.TP != null)
-                    {
                     viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
-                        viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                        var MobileNumber = viewModel.OTPSentOnThis;
-                        MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 9);
-                        var firstDigits = MobileNumber.Substring(0, 2);
-                        var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                   MobileNumber = "00966" + MobileNumber;
-                    string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
+                    viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
+                    var MobileNumber = viewModel.OTPSentOnThis;
+                    MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 8);
+                    var firstDigits = MobileNumber.Substring(0, 2);
+                    var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                    MobileNumber = "+9665" + MobileNumber;
+                    string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 3);
                     viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                     var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
-                        var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                        if (App.IsArabic)
-                        {
-                                //if (Device.RuntimePlatform == Device.iOS)
-                                //{
-                                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + lastDigits + "***" + firstDigits;
-                                //}
-                                //else
-                                //{
-                                //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
+                    var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                    var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                    if (App.IsArabic)
+                    {
+                        //if (Device.RuntimePlatform == Device.iOS)
+                        //{
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + lastDigits + "***" + firstDigits;
+                        //}
+                        //else
+                        //{
+                        //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
 
-                                //}
-                         }
-                        else
-                        {
-                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
-                        }
+                        //}
+                    }
+                    else
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
                     }
                 }
-                else if (e == NavigateToOtp.IsEmail)
-                {
-                viewModel.EmailOrMobileNumber = AppResources.Email ;
+            }
+            else if (e == NavigateToOtp.IsEmail)
+            {
+                viewModel.EmailOrMobileNumber = AppResources.Email;
                 if (App.TP != null)
-                    {
+                {
                     string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
                     viewModel.MobileNumber = App.TP.NewEmail;// "XXXXXXXXXX" + _mobileNumber;
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
-                        viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
-                        viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
-                    }
-                }
-                else if (e == NavigateToOtp.IsLogin)
-                {
-                    if (App.TP != null)
-                    {
-                    viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
-                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
-                        viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
-                        viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
-                        var MobileNumber = viewModel.OTPSentOnThis;
-
-                        MobileNumber = MobileNumber.Substring(5, 9);
-                        var firstDigits = MobileNumber.Substring(0, 2);
-                        var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
-                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
-
-                        string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
-                        if (App.IsArabic)
-                        {
-                            //if (Device.RuntimePlatform == Device.iOS)
-                            //{
-                                viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
-                            //}
-                            //else
-                            //{
-                            //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                            //}
-                        }
-                        else
-                        {
-                            viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
-                        }
-                    }
-                    DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
-                    DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+                    viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
+                    viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
                 }
             }
-            
-       
+            else if (e == NavigateToOtp.IsLogin)
+            {
+                if (App.TP != null)
+                {
+                    viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
+                    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
+                    viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
+                    viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
+                    var MobileNumber = viewModel.OTPSentOnThis;
+
+                    MobileNumber = MobileNumber.Substring(5, 9);
+                    var firstDigits = MobileNumber.Substring(0, 2);
+                    var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                    var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                    string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                    var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                    if (App.IsArabic)
+                    {
+                        //if (Device.RuntimePlatform == Device.iOS)
+                        //{
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                        //}
+                        //else
+                        //{
+                        //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                        //}
+                    }
+                    else
+                    {
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                    }
+                }
+                DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
+                DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            }
+        }
+
+
         #endregion
 
         #region Method
@@ -143,7 +143,7 @@ namespace GAZT.Views.NewViews
             {
 
                 Task.Delay(100);
-               
+
             });
         }
         private async void OnOTPEntered(Object sender, EventArgs e)
@@ -174,7 +174,7 @@ namespace GAZT.Views.NewViews
         {
             base.OnDisappearing();
             viewModel.ClearData();
-            viewModel.StopTimer = false; 
+            viewModel.StopTimer = false;
             App.IsOTPiew = false;
 
             //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
@@ -199,6 +199,24 @@ namespace GAZT.Views.NewViews
 
 
             }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            // Begin an asyncronous task on the UI thread because we intend to ask the users permission.
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                if (await DisplayAlert("Exit page?", "Are you sure you want to exit this page? You will not be able to continue it.", "Yes", "No"))
+                {
+                    base.OnBackButtonPressed();
+
+                    //await App.Navigation.PopAsync();
+                }
+            });
+
+            // Always return true because this method is not asynchronous.
+            // We must handle the action ourselves: see above.
+            return true;
         }
     }
 }
