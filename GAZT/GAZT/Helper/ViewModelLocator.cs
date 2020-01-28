@@ -51,7 +51,9 @@ namespace GAZT
             SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
             SimpleIoc.Default.Register<VATReturnsPageViewModel>();
             SimpleIoc.Default.Register<ZakatBillDetailsPageViewModel>();
+            SimpleIoc.Default.Register<AAcknowledgementViewModel>();
 
+            
 
 
 
@@ -546,7 +548,7 @@ namespace GAZT
         }
 
 
-        public VATReturnsPageViewModel VATReturnsPageView
+        public VATReturnsPageViewModel AAcknowledgement
         {
             get
             {
@@ -576,6 +578,22 @@ namespace GAZT
             }
         }
 
+        public AAcknowledgementViewModel AAcknowledgementView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AAcknowledgementViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
 
         private INavigationService CreateNavigationService()
         {
@@ -617,7 +635,9 @@ namespace GAZT
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
             navigationService.Configure(App.ZakatBillDetailsPageView, typeof(ZakatBillDetailsPageView));
+            navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
 
+            
 
 
             return navigationService;

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using GAZT.Helper;
+
 namespace GAZT.ViewModel.NewViewModel
 {
     public class VATReturnsPageViewModel : ViewModelBase
@@ -28,6 +30,10 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onOptionClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnVATRefreshButtonClicked { get; set; }
+        public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
+        public ICommand OnAcknowlwdgementClicked { get; set; }
+
+
         bool IsFirstSubmission = true;
         
         byte[] attachment;
@@ -1000,7 +1006,21 @@ namespace GAZT.ViewModel.NewViewModel
 
             });
 
-            OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
+            OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            {
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=disabled";
+                _navigationService.NavigateTo(App.AAcknowledgementView, url);
+            });
+
+            OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            {
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData + "',Utype='')/$value?saml2=disabled";
+                _navigationService.NavigateTo(App.AAcknowledgementView, url);
+            });
+
+
+           
+        OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 var response = WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
                 SadadNumber = response.Result.d.results[0].Vtref;

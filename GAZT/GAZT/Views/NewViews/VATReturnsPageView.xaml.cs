@@ -38,7 +38,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
 
            
-            viewModel = App.Locator.VATReturnsPageView;
+            viewModel = App.Locator.AAcknowledgement;
             this.BindingContext = viewModel;
             SetLTR();
             if (_vATDeclarationInfo.d != null)
