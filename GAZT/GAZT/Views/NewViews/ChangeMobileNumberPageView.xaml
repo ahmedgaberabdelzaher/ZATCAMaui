@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="14*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <Label Text="{x:Static local:AppResources.ZCurrentMobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
                 </Label>
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3">
                 </Frame>

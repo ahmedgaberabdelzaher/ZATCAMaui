@@ -686,6 +686,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Method
         public async Task OnPageLoad()
         {
+            IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             string lang = UtilityManager.GetLanguageParameter();
             try
             {

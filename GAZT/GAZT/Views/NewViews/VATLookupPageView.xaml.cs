@@ -22,6 +22,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
+            viewModel.MaxDigids = "15";
             SetLTR();
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{

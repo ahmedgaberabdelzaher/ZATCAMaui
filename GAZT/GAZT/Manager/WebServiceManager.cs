@@ -476,7 +476,10 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
+                    NewMobileNumber = NewMobileNumber.Replace("+", "");
+                    CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
+                    NewMobileNumber = "00" + NewMobileNumber;
+                    CurrentMobileNumber = "00" + CurrentMobileNumber;
                     String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);

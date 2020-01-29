@@ -295,7 +295,19 @@ namespace GAZT.ViewModel
                 _paddingForCollectionView = value;
             }
         }
-
+        private string _fiscalDates;
+        public string FiscalDates
+        {
+            get
+            {
+                return _fiscalDates;
+            }
+            set
+            {
+                _fiscalDates = value;
+                RaisePropertyChanged("FiscalDates");
+            }
+        }
 
         #endregion
 
@@ -395,11 +407,11 @@ namespace GAZT.ViewModel
                 {
                     if (App.IsArabic)
                     {
-                        TaxPayerName = AppResources.Hi + " (" + App.TP.Tin + ") " + App.TP.Name;
+                        TaxPayerName = AppResources.Hi  + App.TP.Name;
                     }
                     else
                     {
-                        TaxPayerName = AppResources.Hi + App.TP.Name + " (" + App.TP.Tin + ")";
+                        TaxPayerName = AppResources.Hi + App.TP.Name;
                     }
 
                     SetFooterImageVisibility();
@@ -472,8 +484,10 @@ namespace GAZT.ViewModel
                                 }
                             }
 
+                            FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
 
-                             
+
+
                                 BillReturn objBill1 = new BillReturn();
                             objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
                             String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });

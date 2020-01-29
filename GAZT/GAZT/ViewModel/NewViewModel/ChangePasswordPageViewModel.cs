@@ -366,7 +366,7 @@ namespace GAZT
                             }
                             else
                             {
-                                String OnPasswordMatch = AppResources.NewPasswordandRetypePasswordNotMatch;
+                                String OnPasswordMatch = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
@@ -415,7 +415,7 @@ namespace GAZT
                                 }
                                 else
                                 {
-                                    String OnNotMatchAuthentication = AppResources.NewPasswordandRetypePasswordNotMatch;
+                                    String OnNotMatchAuthentication = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);

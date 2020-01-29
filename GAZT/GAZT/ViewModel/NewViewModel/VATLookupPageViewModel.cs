@@ -172,22 +172,38 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LookupNumber");
             }
         }
+      
+        private string _maxDigids = "15";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
 
         private void SetPlaceholderText()
         {
             if (SelectedParameterType.id.Equals("3"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
-
+                MaxDigids = "15";
 
             }
             else if (SelectedParameterType.id.Equals("2"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheCRcomposedof10digits;
+                MaxDigids = "10";
             }
             else
             {
                 VATACCOrCRNOOrVATCER = AppResources.PleaseentertheVATCertificateNocomposedof15digits;
+                MaxDigids = "15";
             }
 
         }
