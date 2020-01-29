@@ -61,7 +61,7 @@
 
                         <Frame  Grid.Row="2"   Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Style="{StaticResource GAZTFrameStyleForEntry}" >
                         </Frame>
-                    <custom:GAZTBorderlessPicker x:Name="PPicker" Style="{StaticResource GAZTDropdownStyle}"     Grid.Row="2"    Grid.Column="0"     ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}" Title="{x:Static local:AppResources.ZSearchParameter}"></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker  x:Name="PPicker" Style="{StaticResource GAZTDropdownStyle}"     Grid.Row="2"    Grid.Column="0"     ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType, Mode=TwoWay}" ItemDisplayBinding="{Binding ParameterType}" Title="{x:Static local:AppResources.ZSearchParameter}"></custom:GAZTBorderlessPicker>
                     <Image Grid.Row="2"  Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Source="ic_dropdownOne.png" >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />

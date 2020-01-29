@@ -244,7 +244,7 @@
     <value>إقرارات متأخرة</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>كلمة السر</value>
+    <value>الرقم السري</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>السداد من خلال مدى</value>
@@ -355,7 +355,7 @@
     <value>تم التحقق من رقم الجوال بنجاح</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
-    <value>تم تحديث كلمة المرور بنجاح</value>
+    <value>تم تحديث كلمة السر بنجاح</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>لا يوجد شهادات</value>

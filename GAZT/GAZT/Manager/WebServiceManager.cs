@@ -119,6 +119,10 @@ namespace GAZT.Manager
                                     {
                                         throw new Exception(Token);
                                     }
+                                    if((0 == String.Compare(Token, "Taxpayer's account is not active with GAZT.")))
+                                    {
+                                        throw new Exception(Token);
+                                    }
                                     // Password is locked.Invalid attempts
                                     if (!string.IsNullOrEmpty(Token))
                                     {
@@ -141,34 +145,38 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                if (string.Equals(ex.Message, "User does not exist"))
-                {
-                    throw new Exception(AppResources.UserDoesNotExist);
-                }
-                else if (string.Equals(ex.Message, "User authentication failed"))
-                {
-                    throw new Exception(AppResources.UserAuthenticationFailed);
-                }
-                else if (string.Equals(ex.Message, "Authentication failed. Password locked"))
-                {
-                    throw new Exception(AppResources.ZPasswordLocked);
-                }
-                else if (string.Equals(ex.Message, "User is not currently valid"))
-                {
-                    throw new Exception(AppResources.ZUserNotValid);
-                }
-                else if (string.Equals(ex.Message, "User account locked"))
-                {
-                    throw new Exception(AppResources.UserAccountLocked);
-                }
-                else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
-                {
-                    throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
-                }
-                else
-                {
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
-                }
+                    if (string.Equals(ex.Message, "User does not exist"))
+                    {
+                        throw new Exception(AppResources.UserDoesNotExist);
+                    }
+                    else if (string.Equals(ex.Message, "User authentication failed"))
+                    {
+                        throw new Exception(AppResources.UserAuthenticationFailed);
+                    }
+                    else if (string.Equals(ex.Message, "Authentication failed. Password locked"))
+                    {
+                        throw new Exception(AppResources.ZPasswordLocked);
+                    }
+                    else if (string.Equals(ex.Message, "User is not currently valid"))
+                    {
+                        throw new Exception(AppResources.ZUserNotValid);
+                    }
+                    else if (string.Equals(ex.Message, "User account locked"))
+                    {
+                        throw new Exception(AppResources.UserAccountLocked);
+                    }
+                    else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                    {
+                        throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
+                    }
+                    else if ((0 == String.Compare(Token, "Taxpayer's account is not active with GAZT.")))
+                    {
+                        throw new Exception(Token);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
 
 
 
