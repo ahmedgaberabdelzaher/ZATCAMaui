@@ -58,7 +58,7 @@ namespace GAZT.Views.NewViews
 
             viewModel.IsMainButtonEnabled = false;
             
-            viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+            
             // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
             
 
@@ -79,6 +79,14 @@ namespace GAZT.Views.NewViews
         public async void IntilizeAsync()
         {
            await viewModel.pageLoad();
+            onPageLoadCalculation();
+            if (App.ICRStatus != "E0013")
+            {
+                viewModel.IsCheckedTaxPayerDetailsInfo = false;
+                viewModel.IsDeclarationCheckedForInstruction = false;
+                viewModel.IsDeclarationCheckedForSummary = false;
+            }
+            
            //onPageLoadCalculation();
         }
 
@@ -183,39 +191,39 @@ namespace GAZT.Views.NewViews
                 }
                 else if (current.pageName == "TaxPayer Details")
                 {
-                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    if (viewModel.IsDeclarationCheckedForInstruction == true )
                     {
                         viewModel.TaxpayerDetailsClicked();
                         setColor(previous, current);
                     }
-                    else
-                    {
-                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    }
+                    //else
+                    //{
+                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    //}
                 }
                 else if (current.pageName == "VAT Return Form")
                 {
-                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                     {
                         viewModel.VATReturnFormClicked();
                         setColor(previous, current);
                     }
-                    else
-                    {
-                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    }
+                    //else
+                    //{
+                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    //}
                 }
                 else if (current.pageName == "Summary")
                 {
-                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                     {
                         viewModel.SummaryClicked();
                         setColor(previous, current);
                     }
-                    else
-                    {
-                        viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    }
+                    //else
+                    //{
+                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    //}
                 }
 
             }
@@ -271,7 +279,7 @@ namespace GAZT.Views.NewViews
             viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
             viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-            viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
+            viewModel.TotalsalesVat = viewModel.StdsalesVat;
         }
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
@@ -337,27 +345,29 @@ namespace GAZT.Views.NewViews
 
         public async void onPageLoadCalculation()
         {
-            viewModel.ResponseVATDeclarationD.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-            viewModel.ResponseVATDeclarationD.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-            viewModel.ResponseVATDeclarationD.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-            viewModel.ResponseVATDeclarationD.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
-            viewModel.ResponseVATDeclarationD.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-            viewModel.ResponseVATDeclarationD.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-            viewModel.ResponseVATDeclarationD.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+            viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
+            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
             if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
             {
-                viewModel.ResponseVATDeclarationD.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
             }
             else
             {
-                viewModel.ResponseVATDeclarationD.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
 
             }
-            viewModel.ResponseVATDeclarationD.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
-            viewModel.ResponseVATDeclarationD.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
+            viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
+            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
 
         }
 
-       
+      
+        }
+
+     
     }
-}

@@ -9,7 +9,7 @@
              Title="{x:Static local:AppResources.ZDeclaration}"
              x:Class="GAZT.Views.NewViews.ICRListPageView">
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
@@ -49,12 +49,14 @@
 
 
 
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
+                <StackLayout Margin="10,0,10,0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                     <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                              
+                               BackgroundColor="White"
                  SelectedItem="{Binding SelectedICR}"     
             SeparatorVisibility="None"
             >

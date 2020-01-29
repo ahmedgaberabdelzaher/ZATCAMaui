@@ -1668,7 +1668,10 @@ namespace GAZT.Manager
                 {
                     VATDeclaration _vATDeclarationD = new VATDeclaration();
                     char LangZ = GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
                     String url = Constants.SaveVATDeclarationData;
+                    vATDeclaration.d.Langz = lang;
+
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -1950,7 +1953,7 @@ namespace GAZT.Manager
                 string lang = UtilityManager.GetLanguageParameter();
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’EN’&$filter=Langu eq'E'and Fbnum eq '65000178680' ";
                 // String url = "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’EN’&$filter=Langu eq'E'and Fbnum eq '65000178680' ";
-                String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$filter=Langu eq'" + LangZ  + "'and Fbnum eq '" + FormBundleID + "'" + "";
+                String url = Constants.GAZTGetSADADNumber + lang + "'" +"&$format=json&$filter=Langu eq'" + LangZ  + "'and Fbnum eq '" + FormBundleID + "'" + "";
                 HttpClient client = new HttpClient();                                                                                                                                                                                                                                       // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                 var uri = new Uri(url);
                 client.DefaultRequestHeaders.Add("Token", App.Token);

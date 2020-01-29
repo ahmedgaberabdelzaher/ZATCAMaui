@@ -38,7 +38,7 @@ namespace GAZT.ViewModel.NewViewModel
         
         byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
-        string StepNumber = "04";
+        
 
 
         public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
@@ -49,6 +49,22 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+
+
+
+        private String _stepNumber;
+        public String StepNumber
+        {
+            get
+            {
+                return _stepNumber;
+            }
+            set
+            {
+                _stepNumber = value;
+                RaisePropertyChanged("StepNumber");
+            }
+        }
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -274,6 +290,29 @@ namespace GAZT.ViewModel.NewViewModel
                     IsMainButtonEnabled = false;
                 }
                 RaisePropertyChanged("IsCheckedTaxPayerDetailsInfo");
+            }
+        }
+
+
+        private bool _isDeclarationCheckedForSummary = false;
+        public bool IsDeclarationCheckedForSummary
+        {
+            get
+            {
+                return _isDeclarationCheckedForSummary;
+            }
+            set
+            {
+                _isDeclarationCheckedForSummary = value;
+                if (_isDeclarationCheckedForSummary == true)
+                {
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                }
+                RaisePropertyChanged("IsDeclarationCheckedForSummary");
             }
         }
 
@@ -814,9 +853,68 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _totaldueVat = value;
+                if(_totaldueVat!=null)
+                {
+                    NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                }
                 RaisePropertyChanged("TotaldueVat");
             }
         }
+
+        public string _preperiodcorr;
+        public string Preperiodcorr
+        {
+            get
+            {
+                return _preperiodcorr;
+            }
+            set
+            {
+                _preperiodcorr = value;
+                if (_preperiodcorr != null)
+                {
+                    NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                }
+                RaisePropertyChanged("Preperiodcorr");
+            }
+        }
+
+        public string _netdueVat;
+        public string NetdueVat
+        {
+            get
+            {
+                return _netdueVat;
+            }
+            set
+            {
+                _netdueVat = value;
+               
+                RaisePropertyChanged("NetdueVat");
+            }
+        }
+
+
+        
+
+        public string _creditVat;
+        public string CreditVat
+        {
+            get
+            {
+                return _creditVat;
+            }
+            set
+            {
+                _creditVat = value;
+                if(_creditVat!=null)
+                {
+                    NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                }
+                RaisePropertyChanged("CreditVat");
+            }
+        }
+
 
         public string _totalsalesVat;
         public string TotalsalesVat
@@ -876,7 +974,8 @@ namespace GAZT.ViewModel.NewViewModel
                 _totalpurchaseVat = value;
                 if (!string.IsNullOrEmpty(_totalpurchaseVat))
                 {
-                    ResponseVATDeclarationD.TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                    TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                 
                 }
                 RaisePropertyChanged("TotalpurchaseVat");
             }
@@ -924,6 +1023,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsSadadNumberVisible");
             }
         }
+
+       
 
 
 
@@ -977,6 +1078,11 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         SetNoteData();
                     }
+                    else if(ButtonName== "Go to ICR List")
+                    {
+                        _navigationService.GoBack();
+                        _navigationService.NavigateTo(App.ICRListPageView);
+                    }
                 }
             });
 
@@ -1022,10 +1128,20 @@ namespace GAZT.ViewModel.NewViewModel
            
         OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                var response = WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
-                SadadNumber = response.Result.d.results[0].Vtref;
-                AmountPayable = response.Result.d.results[0].Betrh;
-                IsSadadNumberVisible = true;
+                try
+                {
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    SadadNumber = response.d.results[0].Vtref;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
+                    {
+                        IsSadadNumberVisible = true;
+                    }
+                }
+                catch(Exception e)
+                {
+
+                }
                 // Call Sadad number API
             });
 
@@ -1095,17 +1211,33 @@ namespace GAZT.ViewModel.NewViewModel
             OnSaveAsDraftClicked = new Command(async () =>
             {
                 CreateDataForPost();
-                StepNumber = "4";
+                
                 string operation = "05";// Passed 05 to save the data as a draft
                 VATDeclarationData.d.Operationz = operation;
+                StepNumber = "01";
+                if (IsDeclarationCheckedForInstruction==true)
+                {
+                    StepNumber = "02";
+                }
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    StepNumber = "03";
+                }
+                if(IsDeclarationCheckedForSummary==true)
+                {
+                    StepNumber = "04";
+                }
+
                 VATDeclarationData.d.StepNumber = StepNumber;
-               // VATDeclarationData.d.ADRSet.results[0].RegionDesc = "Mumbai";
-             var response =    await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                VATDeclarationData.d.StepNumberz = StepNumber;
+                VATDeclarationData.d.UserTypz = "TP";   
+                // VATDeclarationData.d.ADRSet.results[0].RegionDesc = "Mumbai";
+                var response =    await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 if(response != null && response.d != null)
                 {
                     await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
 
-                    _navigationService.GoBack();
+                  //  _navigationService.GoBack();
                 }
 
             });
@@ -1128,6 +1260,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleTaxPayerDetails = true;
+            IsMainButtonEnabled = false;
             ButtonName = AppResources.ZVatStepThree;
         }
 
@@ -1165,8 +1298,10 @@ namespace GAZT.ViewModel.NewViewModel
                 ClearPage();
                 IsVisibleAcknowledgment = true;
                 string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
-                VATDeclarationData.d.StepNumber = StepNumber;
+                VATDeclarationData.d.StepNumberz = "04";
+                VATDeclarationData.d.UserTypz = "TP";
                 VATDeclarationData.d.Operationz = operation;
+
              var response =    await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 if (response != null && response.d != null)
                 {
@@ -1175,6 +1310,8 @@ namespace GAZT.ViewModel.NewViewModel
                     TaxablePeriod = VATDeclarationData.d.Perslt;
                     ReceiptDate = VATDeclarationData.d.ReceiptDt;
                 }
+                IsTabbedMenuAvailable = false;
+                ButtonName = "Go to ICR List";
                
             }
             else
@@ -1317,6 +1454,8 @@ namespace GAZT.ViewModel.NewViewModel
             vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
             if (vATCalculationData.d != null)
             {
+
+              //      if(vATCalculationData.d.)
                 if (vATCalculationData.d.VATRSet.results.Count != 0)
                 {
                     CalculationRateSet = new List<VATCalculationDataVATRSet>();
@@ -1334,7 +1473,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
                 }
-
+                
 
             }
 
@@ -1353,9 +1492,10 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
             s3.pageName = "Summary";
             vatTabbedList.Add(s3);
-
+           
             VatTabbledPageList = vatTabbedList;
-            InstrunctionClicked();
+            PageSelectedItem = VatTabbledPageList[0];
+          
 
             ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
 
@@ -1363,6 +1503,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (VATDeclarationData != null)
             {
+                SetPageForDraft();
                 if (VATDeclarationData.d != null)
                 {
                     ResponseVATDeclarationD = VATDeclarationData.d;
@@ -1460,8 +1601,58 @@ namespace GAZT.ViewModel.NewViewModel
              vATDeclarationD.ImportsaccVat = ImportsaccVat;
              vATDeclarationD.TotalpurchaseVat= TotalpurchaseVat;
             vATDeclarationD.TotaldueVat= TotaldueVat;
+            vATDeclarationD.Preperiodcorr = Preperiodcorr;
+            vATDeclarationD.CreditVat = CreditVat;
+            vATDeclarationD.NetdueVat = NetdueVat;
             return vATDeclarationD;
         }
+
+          public void SetPageForDraft()
+        {
+            if (!string.IsNullOrEmpty(VATDeclarationData.d.StepNumber))
+            {
+                if (VATDeclarationData.d.StepNumber == "00")
+                {
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = false;
+                    IsVisibleInstrunction = true;
+                    PageSelectedItem = VatTabbledPageList[0];
+                }
+                if (VATDeclarationData.d.StepNumber == "01")
+                {
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = false;
+                    IsVisibleInstrunction = true;
+                    PageSelectedItem = VatTabbledPageList[0];
+                }
+                else if (VATDeclarationData.d.StepNumber == "02")
+                {
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsVisibleTaxPayerDetails = true;
+                    PageSelectedItem = VatTabbledPageList[1];
+                }
+                else if (VATDeclarationData.d.StepNumber == "03")
+                {
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    IsVisibleVatReturnForm = true;
+                    PageSelectedItem = VatTabbledPageList[2];
+                }
+                else if (VATDeclarationData.d.StepNumber == "04")
+                {
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    IsDeclarationCheckedForSummary = true;
+                    IsVisibleVatReturnForm = true;
+                    PageSelectedItem = VatTabbledPageList[3];
+                }
+
+            }
+        }
+
 
         public void SetData()
         {
@@ -1476,6 +1667,9 @@ namespace GAZT.ViewModel.NewViewModel
             ImportsaccVat = ResponseVATDeclarationD.ImportsaccVat;
             TotalpurchaseVat = ResponseVATDeclarationD.TotalpurchaseVat;
             TotaldueVat = ResponseVATDeclarationD.TotaldueVat;
+            Preperiodcorr = ResponseVATDeclarationD.Preperiodcorr;
+            CreditVat = ResponseVATDeclarationD.CreditVat;
+            NetdueVat = ResponseVATDeclarationD.NetdueVat;
             //int k = 5;
             //List<Attachment> vatAttachment = new List<Attachment>();
             //VatAttachmentsList = new List<Attachment>();
@@ -1503,7 +1697,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Double dAmount = Convert.ToDouble(Amount);
                 Double dAdjustment = Convert.ToDouble(Adjustment);
-                Double dVATRate = Convert.ToDouble(VATRate001);
+                Double dVATRate = Convert.ToDouble(VATRate002);
 
                 VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
             }
