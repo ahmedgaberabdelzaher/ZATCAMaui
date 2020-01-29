@@ -96,7 +96,7 @@ namespace GAZT.Views.NewViews
                     viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                     var MobileNumber = viewModel.OTPSentOnThis;
 
-                    MobileNumber = MobileNumber.Substring(5, 9);
+                    MobileNumber = MobileNumber.Substring(MobileNumber.Length - 9);
                     var firstDigits = MobileNumber.Substring(0, 2);
                     var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
 

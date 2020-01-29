@@ -292,10 +292,19 @@ namespace GAZT.ViewModel.NewViewModel
         }
        private async Task GetVATAllReturns()
         {
+            ICRListSet selectedICRForStatus = null;
             try
             {
                 try
                 {
+                    if(SelectedICR!=null)
+                    {
+                        selectedICRForStatus = new ICRListSet();
+                        selectedICRForStatus = SelectedICR;
+                        App.ICRStatus = selectedICRForStatus.Status;
+                    }
+
+             
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
                     {
@@ -309,7 +318,7 @@ namespace GAZT.ViewModel.NewViewModel
                         vATDeclaration.d = vATDeclarationD;
                         vATDeclaration.d.ADRSet = _aDRSet;
                         vATDeclaration.d.ADRSet.results = lst;
-
+                       
                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
 
                     //try

@@ -16,6 +16,7 @@ namespace GAZT.Views.NewViews
 
         #region Variable
         ICRListPageViewModel viewModel;
+        int Count = 0;
         #endregion
 
         #region Property
@@ -29,6 +30,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
             SetLTR();
+            Count = 1;
             IntialiseAsync();
 
             ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
@@ -48,20 +50,30 @@ namespace GAZT.Views.NewViews
 
         public async void IntialiseAsync()
         {
-           await viewModel.onPageLoad();
+
+            await viewModel.onPageLoad();
         }
 
         private void SetLTR()
         {
-            
+
 
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-            
+
         #endregion
+
+        protected virtual void OnAppearing()
+        {
+            if (Count != 1)
+            {
+                IntialiseAsync();
+            }
+            Count++;
+        }
 
         private void onDropdownButtonClicked(object sender, EventArgs e)
         {
