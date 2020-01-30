@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZDeclaration}"
+             xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.ICRListPageView">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -34,10 +35,10 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
+                <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                 </Frame>
+                 <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"  ></custom:GAZTBorderlessPicker>
 
                 <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                     <Image.GestureRecognizers>
@@ -64,9 +65,11 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                        
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
-                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d">
+                                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0,0,0,0"  >
+                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="1*" />
                                                         <ColumnDefinition Width="45*" />
@@ -162,7 +165,10 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                       
+                                       </StackLayout>
+                                                                                   <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="white" HeightRequest="10"/>
+
+                                           </StackLayout>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>

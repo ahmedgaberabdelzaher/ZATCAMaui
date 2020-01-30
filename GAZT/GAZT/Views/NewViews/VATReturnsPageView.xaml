@@ -10,7 +10,6 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              FlowDirection="LeftToRight"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
-             
              >
 
     <ContentPage.ToolbarItems>
