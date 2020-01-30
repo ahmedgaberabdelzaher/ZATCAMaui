@@ -263,10 +263,10 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
-            EnteredCaptchaValue = "";
-            LookupNumber = "";
-            Name = "";
-          
+            EnteredCaptchaValue = string.Empty;
+            LookupNumber = string.Empty;
+            Name = string.Empty;
+            VATACCOrCRNOOrVATCER = string.Empty;
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
