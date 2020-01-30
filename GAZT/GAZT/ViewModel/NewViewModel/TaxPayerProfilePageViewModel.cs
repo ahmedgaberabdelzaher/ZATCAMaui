@@ -196,6 +196,10 @@ namespace GAZT.ViewModel.NewViewModel
                 if (App.IsArabic)
                 {
                     MobileNo = mobilenumber.Substring(mobilenumber.Length - 12) + "+";
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
+                    }
                 }
                 CurrentMobile = MobileNo;
                 App.TP.Mobile = MobileNo;

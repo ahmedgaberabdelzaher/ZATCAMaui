@@ -46,10 +46,6 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-
-
-
-
                 <StackLayout Margin="10,0,10,0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                     <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
@@ -65,7 +61,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                                                              <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                     <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
