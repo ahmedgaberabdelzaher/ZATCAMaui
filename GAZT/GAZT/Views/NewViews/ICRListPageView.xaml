@@ -65,10 +65,11 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d">
-                                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                                                              <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0,0,0,0"  >
+                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
                                                 <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="1*" />
@@ -166,7 +167,6 @@
                                                 </Grid>
                                             </StackLayout>
                                        </StackLayout>
-                                                                                   <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="white" HeightRequest="10"/>
 
                                            </StackLayout>
                                     </ContentView>

@@ -53,7 +53,14 @@ namespace GAZT.Views.NewViews
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
                          firstDigits = MobileNumber.Substring(0, 2);
                          lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                        MobileNumber = "+9665" + MobileNumber;
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            MobileNumber = "9665" + MobileNumber + "+";                           
+                        }
+                        else
+                        {
+                            MobileNumber = "+9665" + MobileNumber;
+                        }
                         string _mobileNumber = App.TP.NewMobile.Substring(8, 4);
                         viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
