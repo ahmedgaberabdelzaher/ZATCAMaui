@@ -123,6 +123,10 @@ namespace GAZT.Manager
                                     {
                                         throw new Exception(Token);
                                     }
+                                    if ((0 == String.Compare(Token, "Incomplete")) || (0 == String.Compare(Token, "Deregister - Death")) || (0 == String.Compare(Token, "Deregister - Bankruptcy")) || (0 == String.Compare(Token, "Deregister - Liquidation")) || (0 == String.Compare(Token, "Deregister - Merger")) || (0 == String.Compare(Token, "Deregister - Acquisition")) || (0 == String.Compare(Token, "Suspension - Bankruptcy")) || (0 == String.Compare(Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(Token, "Deregister - Close")) || (0 == String.Compare(Token, "Deregister - Company-Establish")) || (0 == String.Compare(Token, "Suspension - Est. to Company")))
+                                    {
+                                        throw new Exception("User Deactive");
+                                    }
                                     // Password is locked.Invalid attempts
                                     if (!string.IsNullOrEmpty(Token))
                                     {
@@ -173,6 +177,17 @@ namespace GAZT.Manager
                     {
                         throw new Exception(Token);
                     }
+                    else if ((0 == String.Compare(ex.Message, "User Deactive")))
+                    {
+                        if (App.IsArabic)
+                        {
+                            throw new Exception("حساب المكلف غير مفعل في الهيئة العامة للزكاة والدخل");
+                        }
+                        else
+                        {
+                            throw new Exception("Taxpayer's account is not active with GAZT.");
+                        }
+                    }                    
                     else
                     {
                         throw new Exception(AppResources.NetworkConnectivityIssue);
