@@ -167,7 +167,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (CrossConnectivity.Current.IsConnected)
                     {
                         ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
-
+                        PopToRootPage();
                         TIN = ListTINStatus.d.Tin;
                         TINStatus = ListTINStatus.d.StatusText;
                         if (ListTINStatus.d.Udate != null)
@@ -231,6 +231,16 @@ namespace GAZT.ViewModel.NewViewModel
             catch(InternetException ex)
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information); 
+            }
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+
+                var _navigation = Application.Current.MainPage.Navigation;
+                _navigation.PopToRootAsync();
+
             }
         }
     }

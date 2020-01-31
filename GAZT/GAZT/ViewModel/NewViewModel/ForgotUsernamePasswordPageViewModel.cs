@@ -272,7 +272,9 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_oTPValidDuration.Equals(" 00:00"))
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                     IsResendOTPEnabled = true;
+                    IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
                
@@ -581,6 +583,34 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
+        public Color VerifyButtonDisableColor
+        {
+            get
+            {
+                return _verifybuttonDisableColor;
+            }
+            set
+            {
+                _verifybuttonDisableColor = value;
+                RaisePropertyChanged("VerifyButtonDisableColor");
+            }
+        }
+
+        private bool _isVerifyOTPEnabled = true;
+        public bool IsVerifyOTPEnabled
+        {
+            get
+            {
+                return _isVerifyOTPEnabled;
+            }
+            set
+            {
+                _isVerifyOTPEnabled = value;
+                RaisePropertyChanged("IsVerifyOTPEnabled");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -686,6 +716,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Method
         public async Task OnPageLoad()
         {
+            IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             string lang = UtilityManager.GetLanguageParameter();
             try
             {
@@ -711,7 +742,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
 
             }
-
+            VerifyButtonDisableColor = Color.FromHex("#005e4b");
+            IsVerifyOTPEnabled = true;
 
         }
 
@@ -891,7 +923,9 @@ namespace GAZT.ViewModel.NewViewModel
                             // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
                             OTPLayoutVisibility = true;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
                                 IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;

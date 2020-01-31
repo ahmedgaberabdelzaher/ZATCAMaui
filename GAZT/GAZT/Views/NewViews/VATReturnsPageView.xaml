@@ -10,7 +10,6 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              FlowDirection="LeftToRight"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
-             
              >
 
     <ContentPage.ToolbarItems>
@@ -93,8 +92,8 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="90*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="85*"/>
                             </Grid.ColumnDefinitions>
                             <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                             </Frame>
@@ -206,7 +205,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="90*"/>
                         </Grid.ColumnDefinitions>
 
@@ -315,15 +314,15 @@
 
                         <Label Text="{x:Static local:AppResources.ZVatAddress}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
-                        <Frame Grid.Row="23" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        <Frame Grid.Row="23" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="100">
                         </Frame>
-                        <custom:GAZTBorderlessEditor  Grid.Row="23"  IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTaxPayerControlEnabled}" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RegionDesc}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEditor Placeholder="Enter address here" HeightRequest="100"  Grid.Row="23"  IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTaxPayerControlEnabled}" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding RegionDesc}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3">
 
                         </custom:GAZTBorderlessEditor>
 
 
 
-                        <CheckBox x:Name="chkClearification" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0"></CheckBox>
+                        <CheckBox x:Name="chkClearification" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></CheckBox>
 
                         <Label Text="{x:Static local:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="24" Grid.Column="1"  >
                         </Label>
@@ -828,7 +827,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="90*"/>
                             </Grid.ColumnDefinitions>
                             <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >

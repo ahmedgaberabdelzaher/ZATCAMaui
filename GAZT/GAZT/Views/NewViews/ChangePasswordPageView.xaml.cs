@@ -48,7 +48,9 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+            viewModel.PasswordVisibilityForNewPassword = true;
+            viewModel.PasswordVisibilityForOldPassword = true;
+            viewModel.PasswordVisibilityForRetypePassword =true;
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Page pg = Navigation.NavigationStack[index];

@@ -434,6 +434,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsEmail)
                     {
+                        _dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
                         String OTP = string.Empty;
 
                         OTP = EnteredOTP;

@@ -43,19 +43,48 @@ namespace GAZT.Views.NewViews
             {
                 if (App.TP != null)
                 {
-                    viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
-                    viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                    var MobileNumber = viewModel.OTPSentOnThis;
-                    MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(5, 8);
-                    var firstDigits = MobileNumber.Substring(0, 2);
-                    var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                    MobileNumber = "+9665" + MobileNumber;
-                    string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 3);
-                    viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                    var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+                    var firstDigits = "";
+                    var lastDigits = "";
+                    if (App.IsArabic)
+                    {
+                        viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
+                        viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
+                        var MobileNumber = viewModel.OTPSentOnThis;
+                        MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
+                         firstDigits = MobileNumber.Substring(0, 2);
+                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            MobileNumber = "9665" + MobileNumber + "+";                           
+                        }
+                        else
+                        {
+                            MobileNumber = "+9665" + MobileNumber;
+                        }
+                        string _mobileNumber = App.TP.NewMobile.Substring(8, 4);
+                        viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
 
-                    var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
-                    var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                        var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                    }
+                    else
+                    {
+                        viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
+                        viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
+                        var MobileNumber = viewModel.OTPSentOnThis;
+                        MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(4, 9);
+                         firstDigits = MobileNumber.Substring(1, 2);
+                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                        MobileNumber = "+9665" + MobileNumber;
+                        string _mobileNumber = App.TP.NewMobile.Substring(9, 4);
+                        viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
+
+                        var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
+                        var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
+                    }
+
                     if (App.IsArabic)
                     {
                         //if (Device.RuntimePlatform == Device.iOS)
@@ -95,8 +124,24 @@ namespace GAZT.Views.NewViews
                     viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;
                     viewModel.OTPSentOnThis = viewModel.OTPSentOnThisMobileNumber;
                     var MobileNumber = viewModel.OTPSentOnThis;
+                    //if(MobileNumber.Contains("+"))
+                    //{
+                    //    MobileNumber = MobileNumber.Replace("+", "00");
+                    //}
+                    //else if(MobileNumber.Substring(0,1)=="0")
+                    //{
+                    //    MobileNumber = "00" + MobileNumber.Substring(1, MobileNumber.Length - 1);
+                    //}
+                    //else if(MobileNumber.Substring(0, 2) == "00")
+                    //{
 
-                    MobileNumber = MobileNumber.Substring(MobileNumber.Length - 9);
+                    //}
+                    //else
+                    //{
+                    //    MobileNumber = "00" + MobileNumber;
+                    //}
+                    MobileNumber=MobileNumber.Substring(MobileNumber.Length - 9);
+                   // MobileNumber = MobileNumber.Substring(5, 9);
                     var firstDigits = MobileNumber.Substring(0, 2);
                     var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
 

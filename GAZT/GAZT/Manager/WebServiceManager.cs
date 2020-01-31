@@ -119,6 +119,10 @@ namespace GAZT.Manager
                                     {
                                         throw new Exception(Token);
                                     }
+                                    if((0 == String.Compare(Token, "Taxpayer's account is not active with GAZT.")))
+                                    {
+                                        throw new Exception(Token);
+                                    }
                                     // Password is locked.Invalid attempts
                                     if (!string.IsNullOrEmpty(Token))
                                     {
@@ -141,34 +145,38 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-                if (string.Equals(ex.Message, "User does not exist"))
-                {
-                    throw new Exception(AppResources.UserDoesNotExist);
-                }
-                else if (string.Equals(ex.Message, "User authentication failed"))
-                {
-                    throw new Exception(AppResources.UserAuthenticationFailed);
-                }
-                else if (string.Equals(ex.Message, "Authentication failed. Password locked"))
-                {
-                    throw new Exception(AppResources.ZPasswordLocked);
-                }
-                else if (string.Equals(ex.Message, "User is not currently valid"))
-                {
-                    throw new Exception(AppResources.ZUserNotValid);
-                }
-                else if (string.Equals(ex.Message, "User account locked"))
-                {
-                    throw new Exception(AppResources.UserAccountLocked);
-                }
-                else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
-                {
-                    throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
-                }
-                else
-                {
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
-                }
+                    if (string.Equals(ex.Message, "User does not exist"))
+                    {
+                        throw new Exception(AppResources.UserDoesNotExist);
+                    }
+                    else if (string.Equals(ex.Message, "User authentication failed"))
+                    {
+                        throw new Exception(AppResources.UserAuthenticationFailed);
+                    }
+                    else if (string.Equals(ex.Message, "Authentication failed. Password locked"))
+                    {
+                        throw new Exception(AppResources.ZPasswordLocked);
+                    }
+                    else if (string.Equals(ex.Message, "User is not currently valid"))
+                    {
+                        throw new Exception(AppResources.ZUserNotValid);
+                    }
+                    else if (string.Equals(ex.Message, "User account locked"))
+                    {
+                        throw new Exception(AppResources.UserAccountLocked);
+                    }
+                    else if ((0 == String.Compare(Token, "Password is locked. Invalid attempts")))
+                    {
+                        throw new Exception(AppResources.ZZPasswordislockedInvalidattempts);
+                    }
+                    else if ((0 == String.Compare(Token, "Taxpayer's account is not active with GAZT.")))
+                    {
+                        throw new Exception(Token);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
 
 
 
@@ -476,7 +484,10 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
+                    NewMobileNumber = NewMobileNumber.Replace("+", "");
+                    CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
+                    NewMobileNumber = "00" + NewMobileNumber;
+                    CurrentMobileNumber = "00" + CurrentMobileNumber;
                     String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -1980,8 +1991,6 @@ namespace GAZT.Manager
                 var response = await client.DeleteAsync(url);
                 var responsestr = response.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                 return _attachment;
             }
             catch (Exception ex)
@@ -2007,8 +2016,6 @@ namespace GAZT.Manager
                 var response = await client.GetAsync(url);
                 var responsestr = response.Content.ReadAsStringAsync().Result;
                 sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
-
-
                 return sadadNumber;
             }
             catch (Exception ex)
@@ -2016,6 +2023,67 @@ namespace GAZT.Manager
                 return null;
             }
         }
+
+
+        //public static async Task<ZAKATICRList> GAZTGetEstimateZakatReturnList()
+        //{
+        //    ZAKATICRList zAKATICRList = new ZAKATICRList();
+        //    string NewToken = string.Empty;
+        //    try
+        //    {
+        //        string _language = null;
+        //        if (App.IsArabic)
+        //            _language = "A";
+        //        else
+        //            _language = "E";
+        //        HttpClient client = new HttpClient(App.httpClientHandler);
+        //        //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+        //        String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3102226654',Auditor='',Lang='EN',UserTin='3102226654')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
+
+        //        client.DefaultRequestHeaders.Add("Token", App.Token);
+
+        //        var uri = new Uri(url);
+        //        HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+        //        if (GAZTEstimateZakatReturnList != null)
+        //        {
+        //            HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+        //            IEnumerable<string> values;
+        //            if (headers.TryGetValues("token", out values))
+        //            {
+        //                NewToken = values.First();
+        //            }
+
+        //            if ((!string.IsNullOrEmpty(NewToken)))
+        //            {
+        //                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+        //                {
+        //                    App.IsSessionExpired = true;
+        //                    return null;
+        //                }
+        //                App.Token = NewToken;
+        //            }
+
+        //            String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+        //            zAKATICRList = JsonConvert.DeserializeObject<ZAKATICRList>(EstimateZakatReturnList);
+        //        }
+        //        return zAKATICRList;// tINStatus;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+        //        //{
+        //        //    throw new Exception(AppResources.Nodataavailable);
+        //        //}
+        //        //else
+        //        //{
+        //        //    throw new Exception(AppResources.NetworkConnectivityIssue);
+        //        //}
+        //        return null;
+        //    }
+        //}
+
+
 
     }
 

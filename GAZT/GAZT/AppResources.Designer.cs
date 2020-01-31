@@ -19,7 +19,7 @@ namespace GAZT {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResources {
@@ -359,7 +359,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dashboard.
+        ///   Looks up a localized string similar to Home Page.
         /// </summary>
         public static string Dashoboard {
             get {
@@ -449,7 +449,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Email Address.
         /// </summary>
         public static string Email {
             get {
@@ -503,7 +503,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your 9 digit mobile number.
+        ///   Looks up a localized string similar to Enter your 8 digit mobile number.
         /// </summary>
         public static string EnterNewMobileNumber {
             get {
@@ -683,7 +683,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hi, .
+        ///   Looks up a localized string similar to Hello:.
         /// </summary>
         public static string Hi {
             get {
@@ -881,7 +881,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Taxpayer Name.
         /// </summary>
         public static string Name {
             get {
@@ -1772,7 +1772,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your password has been changed successfully.
+        ///   Looks up a localized string similar to Password has been changed successfully.
         /// </summary>
         public static string YourPasswordhasbeenChangedsuccessfully {
             get {

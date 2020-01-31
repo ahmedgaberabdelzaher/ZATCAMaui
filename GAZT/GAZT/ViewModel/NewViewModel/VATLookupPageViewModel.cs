@@ -172,22 +172,38 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LookupNumber");
             }
         }
+      
+        private string _maxDigids = "15";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
 
         private void SetPlaceholderText()
         {
             if (SelectedParameterType.id.Equals("3"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
-
+                MaxDigids = "15";
 
             }
             else if (SelectedParameterType.id.Equals("2"))
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheCRcomposedof10digits;
+                MaxDigids = "10";
             }
             else
             {
                 VATACCOrCRNOOrVATCER = AppResources.PleaseentertheVATCertificateNocomposedof15digits;
+                MaxDigids = "15";
             }
 
         }
@@ -247,10 +263,10 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
-            EnteredCaptchaValue = "";
-            LookupNumber = "";
-            Name = "";
-          
+            EnteredCaptchaValue = string.Empty;
+            LookupNumber = string.Empty;
+            Name = string.Empty;
+            VATACCOrCRNOOrVATCER = string.Empty;
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},

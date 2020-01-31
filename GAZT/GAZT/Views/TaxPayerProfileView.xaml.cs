@@ -71,10 +71,10 @@ namespace GAZT.Views
             base.OnAppearing();
             viewModel.SetTP();
             Task.Delay(20000);
-            if (viewModel.IscomingFromOTPViewViaEmail)
-            {
-                await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
-            }
+            //if (viewModel.IscomingFromOTPViewViaEmail)
+            //{
+            //    await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+            //}
 
             for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
             {
