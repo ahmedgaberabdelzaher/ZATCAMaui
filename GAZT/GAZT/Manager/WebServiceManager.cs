@@ -1660,12 +1660,20 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
+        public static VATDeclaration SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = new VATDeclaration();
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
+
+                    if(vATDeclaration.d!=null)
+                    {
+                        RequestVATDeclaration = vATDeclaration;
+                        RequestVATDeclaration.d.SubmitFg = "X";
+                    }
+
                     VATDeclaration _vATDeclarationD = new VATDeclaration();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
@@ -1678,11 +1686,61 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var serilized = JsonConvert.SerializeObject(vATDeclaration);
+                    var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var detailJson = res.Content.ReadAsStringAsync().Result;
+
                     _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+
+                    if (_vATDeclarationD != null)
+                    {
+                        
+                        if (_vATDeclarationD.d.NOTESSet == null)
+                        {
+                            NOTESSet nOTEs = new NOTESSet();
+                            nOTEs.results = new List<Note>();
+                            _vATDeclarationD.d.NOTESSet = nOTEs;
+                        }
+
+
+                        if (_vATDeclarationD.d.IBANSet == null)
+                        {
+                            IBANSet iBANSet = new IBANSet();
+                            iBANSet.results = new List<Result2>();
+                            _vATDeclarationD.d.IBANSet = iBANSet;
+                        }
+
+
+                        if (_vATDeclarationD.d.CFSet == null)
+                        {
+                            CFSet cFSet = new CFSet();
+                            cFSet.results = new List<Result3>();
+                            _vATDeclarationD.d.CFSet = cFSet;
+                        }
+
+                        if (_vATDeclarationD.d.ATTACHSet == null)
+                        {
+                            ATTACHSet aTTACHSet = new ATTACHSet();
+                            aTTACHSet.results = new List<Attachment>();
+                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                        }
+
+                        if (_vATDeclarationD.d.ADRSet == null)
+                        {
+                            ADRSet aDRSet = new ADRSet();
+                            aDRSet.results = new List<Result5>();
+                            _vATDeclarationD.d.ADRSet = aDRSet;
+                        }
+                        if (_vATDeclarationD.d.VATR_MSGSet == null)
+                        {
+                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                            vATRMSGSet.results = new List<object>();
+                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                        }
+
+                    }
+
                     return _vATDeclarationD;
                 }
                 catch (Exception ex)
@@ -1933,8 +1991,6 @@ namespace GAZT.Manager
                 var response = await client.DeleteAsync(url);
                 var responsestr = response.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                 return _attachment;
             }
             catch (Exception ex)
@@ -1960,8 +2016,6 @@ namespace GAZT.Manager
                 var response = await client.GetAsync(url);
                 var responsestr = response.Content.ReadAsStringAsync().Result;
                 sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
-
-
                 return sadadNumber;
             }
             catch (Exception ex)
@@ -1969,6 +2023,67 @@ namespace GAZT.Manager
                 return null;
             }
         }
+
+
+        //public static async Task<ZAKATICRList> GAZTGetEstimateZakatReturnList()
+        //{
+        //    ZAKATICRList zAKATICRList = new ZAKATICRList();
+        //    string NewToken = string.Empty;
+        //    try
+        //    {
+        //        string _language = null;
+        //        if (App.IsArabic)
+        //            _language = "A";
+        //        else
+        //            _language = "E";
+        //        HttpClient client = new HttpClient(App.httpClientHandler);
+        //        //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+        //        String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3102226654',Auditor='',Lang='EN',UserTin='3102226654')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
+
+        //        client.DefaultRequestHeaders.Add("Token", App.Token);
+
+        //        var uri = new Uri(url);
+        //        HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+        //        if (GAZTEstimateZakatReturnList != null)
+        //        {
+        //            HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+        //            IEnumerable<string> values;
+        //            if (headers.TryGetValues("token", out values))
+        //            {
+        //                NewToken = values.First();
+        //            }
+
+        //            if ((!string.IsNullOrEmpty(NewToken)))
+        //            {
+        //                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+        //                {
+        //                    App.IsSessionExpired = true;
+        //                    return null;
+        //                }
+        //                App.Token = NewToken;
+        //            }
+
+        //            String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+        //            zAKATICRList = JsonConvert.DeserializeObject<ZAKATICRList>(EstimateZakatReturnList);
+        //        }
+        //        return zAKATICRList;// tINStatus;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+        //        //{
+        //        //    throw new Exception(AppResources.Nodataavailable);
+        //        //}
+        //        //else
+        //        //{
+        //        //    throw new Exception(AppResources.NetworkConnectivityIssue);
+        //        //}
+        //        return null;
+        //    }
+        //}
+
+
 
     }
 
