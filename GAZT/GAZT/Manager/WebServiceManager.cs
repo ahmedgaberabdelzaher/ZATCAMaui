@@ -1649,12 +1649,20 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
+        public static VATDeclaration SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = new VATDeclaration();
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
+
+                    if(vATDeclaration.d!=null)
+                    {
+                        RequestVATDeclaration = vATDeclaration;
+                        RequestVATDeclaration.d.SubmitFg = "X";
+                    }
+
                     VATDeclaration _vATDeclarationD = new VATDeclaration();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
@@ -1667,11 +1675,61 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var serilized = JsonConvert.SerializeObject(vATDeclaration);
+                    var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var detailJson = res.Content.ReadAsStringAsync().Result;
+
                     _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+
+                    if (_vATDeclarationD != null)
+                    {
+                        
+                        if (_vATDeclarationD.d.NOTESSet == null)
+                        {
+                            NOTESSet nOTEs = new NOTESSet();
+                            nOTEs.results = new List<Note>();
+                            _vATDeclarationD.d.NOTESSet = nOTEs;
+                        }
+
+
+                        if (_vATDeclarationD.d.IBANSet == null)
+                        {
+                            IBANSet iBANSet = new IBANSet();
+                            iBANSet.results = new List<Result2>();
+                            _vATDeclarationD.d.IBANSet = iBANSet;
+                        }
+
+
+                        if (_vATDeclarationD.d.CFSet == null)
+                        {
+                            CFSet cFSet = new CFSet();
+                            cFSet.results = new List<Result3>();
+                            _vATDeclarationD.d.CFSet = cFSet;
+                        }
+
+                        if (_vATDeclarationD.d.ATTACHSet == null)
+                        {
+                            ATTACHSet aTTACHSet = new ATTACHSet();
+                            aTTACHSet.results = new List<Attachment>();
+                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                        }
+
+                        if (_vATDeclarationD.d.ADRSet == null)
+                        {
+                            ADRSet aDRSet = new ADRSet();
+                            aDRSet.results = new List<Result5>();
+                            _vATDeclarationD.d.ADRSet = aDRSet;
+                        }
+                        if (_vATDeclarationD.d.VATR_MSGSet == null)
+                        {
+                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                            vATRMSGSet.results = new List<object>();
+                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                        }
+
+                    }
+
                     return _vATDeclarationD;
                 }
                 catch (Exception ex)
