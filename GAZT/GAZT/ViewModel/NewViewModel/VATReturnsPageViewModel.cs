@@ -1372,27 +1372,53 @@ namespace GAZT.ViewModel.NewViewModel
 
 
         }
-        public void ClickNotes()
+
+        public void VATReturnAddNote()
+        {
+            WebServiceManager.GAZTSetVATReturnAddNote(String.Empty);
+            _navigationService.NavigateTo("ICRListPageView");
+
+        }
+
+        public void VATReturnGetNotes()
         {
             ClearPage();
             IsVisibleNotes = true;
             ButtonName = AppResources.ZNote;
+
+            WebServiceManager.GAZTSetVATReturnGetNotes(String.Empty);
+            _navigationService.NavigateTo("ICRListPageView");
+
         }
-        public async void ClickAttachment()
+
+        public  void VATViewAttachments()
         {
             ClearPage();
             IsVisibleAttachments = true;
             ButtonName = AppResources.Submit;
 
         }
-        public void ClickVoid()
+        public void SetVATReturnVoid()
         {
+            WebServiceManager.GAZTSetVATReturnVoid(String.Empty);
+            _navigationService.NavigateTo("ICRListPageView");
+        }
+        
+        public void VATReturnReset()
+        {
+            WebServiceManager.GAZTSetVATReturnReset(String.Empty);
+            _navigationService.NavigateTo("ICRListPageView");
 
         }
-        private void AddNote()
-        {
 
+        public void VATReturnDeleteAttachment()
+        {
+            WebServiceManager.GAZTSetVATReturnDeleteAttachment(String.Empty);
+            _navigationService.NavigateTo("ICRListPageView");
         }
+
+      
+
         public void ClearPage()
         {
             //for Header
