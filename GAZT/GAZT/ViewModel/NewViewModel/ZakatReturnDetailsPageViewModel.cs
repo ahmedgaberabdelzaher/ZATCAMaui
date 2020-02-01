@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -17,6 +18,19 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -52,6 +66,22 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+        public async Task OnPageLoad()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(() =>
+            {
+               
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
         #endregion
     }
 }

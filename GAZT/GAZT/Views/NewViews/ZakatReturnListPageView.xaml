@@ -151,7 +151,12 @@
                                        CornerRadius="0"
                                        
                                >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                             <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+   
                                                 <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="1*" />
@@ -169,7 +174,7 @@
                                                         <RowDefinition Height="Auto" />
                                                     </Grid.RowDefinitions>
 
-                                                    <Label Text="{Binding IDNumber}" Margin="8,0,8,-5" 
+                                                    <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -193,7 +198,7 @@
                                    Grid.Row="1"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding FiscalYear}" 
+                                                    <Label Text="{Binding TaxPeriod}" 
                                                   
                                   Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -209,7 +214,7 @@
                                    Grid.Row="2"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding ReturnPeriod}" 
+                                                    <Label Text="{Binding Period}" 
                                                   
                                   Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -225,7 +230,7 @@
                                    Grid.Row="3"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding DueDate}" 
+                                                    <Label Text="{Binding DueDtC}" 
                                                   
                                   Margin="-7,0,-7,-5"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -241,7 +246,7 @@
                                    Grid.Row="4"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding Status}" 
+                                                    <Label Text="{Binding Due}" 
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -263,6 +268,8 @@
 
                                                 </Grid>
                                             </StackLayout>
+                                           </StackLayout>
+                                                 </StackLayout>
                                         </Frame>
                                     </ContentView>
                                 </ViewCell>

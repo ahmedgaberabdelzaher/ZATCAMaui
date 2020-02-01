@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<ZakatReturns> _myZakatReturns;
-        public List<ZakatReturns> MyZakatReturns
+        private List<EstimatedZakatReturnsResult> _myZakatReturns;
+        public List<EstimatedZakatReturnsResult> MyZakatReturns
         {
             get
             {
@@ -64,6 +65,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnStatus");
             }
         }
+
+        private ZakatReturnStatus _zelectedZakatReturn;
+        public  ZakatReturnStatus SelectedZakatReturn
+        {
+            get
+            {
+                return _zelectedZakatReturn;
+            }
+            set
+            {
+                _zelectedZakatReturn = value;
+                RaisePropertyChanged("SelectedZakatReturn");
+            }
+        }
+
+        
 
         private ZakatReturnStatus _selectedZakatStatus;
         public ZakatReturnStatus SelectedZakatStatus
@@ -117,29 +134,35 @@ namespace GAZT.ViewModel.NewViewModel
         #region Method
 
 
-        public async void OnPageLoad()
+        public async Task OnPageLoad()
         {
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
-            MyZakatReturns = new List<ZakatReturns>();
-            for(int i=0;i<=5;i++)
+            await Task.Run(async() =>
             {
-                ZakatReturns returns1 = new ZakatReturns();
-                returns1.FiscalYear = "2018";
-                returns1.ReturnPeriod = "2018/08/08 - 2017/06/07";
-                returns1.DueDate = "31/01/2020";
-                returns1.IDNumber = "100000988";
-                returns1.Status = "Billed";
-                MyZakatReturns.Add(returns1);
-            }
-            ZakatReturnStatus = new List<ZakatReturnStatus>();
+                EstimatedZakatReturns estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
+                MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
+            });
 
-            ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 1, Value = "ABC1" });
-            ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 2, Value = "ABC2" });
-            ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 3, Value = "ABC3" });
-            ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 4, Value = "ABC4" });
+            //MyZakatReturns = new List<ZakatReturns>();
+            //for(int i=0;i<=5;i++)
+            //{
+            //    ZakatReturns returns1 = new ZakatReturns();
+            //    returns1.FiscalYear = "2018";
+            //    returns1.ReturnPeriod = "2018/08/08 - 2017/06/07";
+            //    returns1.DueDate = "31/01/2020";
+            //    returns1.IDNumber = "100000988";
+            //    returns1.Status = "Billed";
+            //    MyZakatReturns.Add(returns1);
+            //}
+            //ZakatReturnStatus = new List<ZakatReturnStatus>();
+
+            //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 1, Value = "ABC1" });
+            //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 2, Value = "ABC2" });
+            //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 3, Value = "ABC3" });
+            //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 4, Value = "ABC4" });
 
             await Task.Run(() =>
             {
