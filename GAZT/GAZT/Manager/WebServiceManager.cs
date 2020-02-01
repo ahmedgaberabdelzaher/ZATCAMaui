@@ -2083,16 +2083,19 @@ namespace GAZT.Manager
         //    }
         //}
 
-        public static void GAZTSetVATReturnVoid(string FormBundleID)
+        public static VATDeclaration GAZTSetVATReturnVoid(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = null;
             try
             {
-
+                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
 
             }
+
+            return RequestVATDeclaration;
         }
 
         public static void GAZTSetVATReturnReset(string FormBundleID)

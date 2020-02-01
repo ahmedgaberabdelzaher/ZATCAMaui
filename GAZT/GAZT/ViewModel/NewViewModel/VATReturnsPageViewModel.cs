@@ -1398,13 +1398,47 @@ namespace GAZT.ViewModel.NewViewModel
             ButtonName = AppResources.Submit;
 
         }
-        public void SetVATReturnVoid()
+        public async Task SetVATReturnVoidAsync()
         {
-            WebServiceManager.GAZTSetVATReturnVoid(String.Empty);
-            _navigationService.NavigateTo("ICRListPageView");
+            string operation = "04";// Passed 04 to set void
+            VATDeclarationData.d.Operationz = operation;
+            StepNumber = "01";
+            
+            if (IsDeclarationCheckedForInstruction == true)
+            {
+                StepNumber = "02";
+            }
+            if (IsCheckedTaxPayerDetailsInfo == true)
+            {
+                StepNumber = "03";
+            }
+            if (IsDeclarationCheckedForSummary == true)
+            {
+                StepNumber = "04";
+            }
+
+            VATDeclarationData.d.StepNumber = StepNumber;
+            VATDeclarationData.d.UserTypz = "TP";
+            
+            var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
+            if (response != null && response.d != null)
+            {
+
+                await _dialogService.ShowMessage("Return marked as VOID", "VOID Title");
+
+                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.Fbguid);
+
+                if (_vATDeclaration != null && _vATDeclaration.d != null)
+                {
+                    VATDeclarationData = _vATDeclaration;
+                    ResponseVATDeclarationD = VATDeclarationData.d;
+
+                    SetData();
+                }
+            }
         }
-        
-        public void VATReturnReset()
+
+    public void VATReturnReset()
         {
             WebServiceManager.GAZTSetVATReturnReset(String.Empty);
             _navigationService.NavigateTo("ICRListPageView");
