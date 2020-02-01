@@ -270,7 +270,7 @@ namespace GAZT.Views.NewViews
                     viewModel.VATViewAttachments();
                     break;
                 case "Set Return Void":
-                    viewModel.SetVATReturnVoid();
+                    await viewModel.SetVATReturnVoidAsync();
                     break;
                 case "Reset Return":
                     viewModel.VATReturnReset();
