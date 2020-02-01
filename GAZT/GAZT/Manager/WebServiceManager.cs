@@ -249,7 +249,6 @@ namespace GAZT.Manager
             }
         }
 
-
         //done internet exception handling
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId, string currentAttempts)
         {
@@ -2098,16 +2097,19 @@ namespace GAZT.Manager
             return RequestVATDeclaration;
         }
 
-        public static void GAZTSetVATReturnReset(string FormBundleID)
+        public static VATDeclaration GAZTSetVATReturnReset(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = null;
             try
             {
-
+                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
 
             }
+
+            return RequestVATDeclaration;
         }
 
         public static void GAZTSetVATReturnDeleteAttachment(string AttachmentIdentifier)
@@ -2121,8 +2123,7 @@ namespace GAZT.Manager
 
             }
         }
-
-
+        
         public static void GAZTSetVATReturnAddNote(string AttachmentIdentifier)
         {
             try
@@ -2145,6 +2146,72 @@ namespace GAZT.Manager
             {
 
             }
+        }
+
+        public static async Task<List<VATApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
+        {
+            //Fbnum = '65000004030',Lang = 'E',Operation = '',Gpart = '3000493862',Status = 'E0045',TxnTp = 'VTR_AMDT'
+
+            List<VATApplicableButton> VATApplicableButtons = new List<VATApplicableButton>();
+
+            try
+            {
+                char LangZ = GetLangZParameter();
+                
+                // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='65000004030',Lang='E',Operation='',Gpart='3000493862',Status='E0045',TxnTp='VTR_AMDT',Formproc='',Periodkey='18JA')?&$expand=UI_BTNSet&$format=json	
+                
+                HttpClient client = new HttpClient(App.httpClientHandler);
+
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation=''," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey=''" + ")?&$expand=UI_BTNSet&$format=json";
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+
+                HttpResponseMessage VATApplicableButtonsResponse =  await client.GetAsync(uri);
+               
+
+                if (VATApplicableButtonsResponse != null)
+                {
+                    string NewToken = string.Empty;
+                    HttpHeaders headers = VATApplicableButtonsResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String VATApplicableButtonsResponseJSON = VATApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
+
+                    if (!string.IsNullOrEmpty(VATApplicableButtonsResponseJSON))
+                    {
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["d"].ToString();
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["UI_BTNSet"].ToString();
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["results"].ToString();
+
+                        if (string.IsNullOrEmpty(VATApplicableButtonsResponseJSON) != true)
+                        {
+                            VATApplicableButtons = JsonConvert.DeserializeObject<List<VATApplicableButton>>(VATApplicableButtonsResponseJSON);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+          return VATApplicableButtons;
         }
 
     }

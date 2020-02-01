@@ -111,7 +111,7 @@ namespace GAZT.Models
 
     public class Attachment
     {
-      
+
         public Metadata5 __metadata { get; set; }
         public string RetGuid { get; set; }
         public string Seqno { get; set; }
@@ -431,16 +431,12 @@ namespace GAZT.Models
         //        handler(this, new PropertyChangedEventArgs(propertyName));
         //}
     }
-
-    
-
     public class VATAttachments
     {
         public string Id { get; set; }
         public string DocumentName { get; set; }
         public string Size { get; set; }
     }
-
     public class CreditCarried
     {
         public string SerialNumber { get; set; }
@@ -453,26 +449,24 @@ namespace GAZT.Models
     {
         public VATDeclarationD d { get; set; }
     }
-
-
     public class VATDeclarationTabbedPageName : INotifyPropertyChanged
     {
 
         Color textColor = Color.FromHex("#FFFFFF");
-       
+
         Font _font = Font.Default;
 
         Font fontnew;
-        
+
 
         //public VATDeclarationTabbedPageName()
         //{
-           
-            
+
+
         //    //_font.FontFamily=
         //}
 
-      
+
         public string pageName { get; set; }
 
         public Color TextColor
@@ -495,7 +489,7 @@ namespace GAZT.Models
             }
         }
 
-        public Font Font 
+        public Font Font
         {
             set
             {
@@ -515,5 +509,14 @@ namespace GAZT.Models
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
+    }
+    
+    public class VATApplicableButton
+    {
+        public string Fbtyp { get; set; }
+        public string Fbust { get; set; }
+        public string Button { get; set; }
+        public string TransactionType { get; set; }
+        public string UserTyp { get; set; }
     }
 }
