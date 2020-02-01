@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,23 @@ namespace GAZT.Views.NewViews
 
         #region Constructor
 
-        public AcknowledgementDetailsPageView()
+        public AcknowledgementDetailsPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
                 this.BindingContext = viewModel;
+
+                if(vATDeclaration!=null)
+                {
+                    viewModel.VATDeclarationData = vATDeclaration;
+                    viewModel.TPName = App.TP.Name;
+                    viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
+                    viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
+                    viewModel.ReceiptDate = viewModel.VATDeclarationData.d.ReceiptDt;
+                }
+
                 SetLTR();
             }
             catch (Exception ex)

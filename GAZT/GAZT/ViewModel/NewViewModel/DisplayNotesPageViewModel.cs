@@ -1,0 +1,62 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace GAZT.ViewModel.NewViewModel
+{
+    public class DisplayNotesPageViewModel : ViewModelBase
+    {
+        #region Variable
+
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
+        // public ICommand OnSubmitClicked { get; set; }
+
+        #endregion
+
+        #region Property
+
+
+        private List<Note> _noteList ;
+        public List<Note> NoteList
+        {
+            get
+            {
+                return _noteList;
+            }
+            set
+            {
+                _noteList = value;
+                RaisePropertyChanged("NoteList");
+            }
+        }
+
+
+        #endregion
+
+        #region Constructor
+
+        public DisplayNotesPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+        }
+
+        #endregion
+
+        #region Method
+        #endregion
+    }
+}

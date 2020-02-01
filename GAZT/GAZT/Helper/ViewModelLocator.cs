@@ -53,6 +53,7 @@ namespace GAZT
             SimpleIoc.Default.Register<ZakatBillDetailsPageViewModel>();
             SimpleIoc.Default.Register<AAcknowledgementViewModel>();
             SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
+            SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
 
 
 
@@ -609,6 +610,21 @@ namespace GAZT
             }
         }
 
+        public DisplayNotesPageViewModel DisplayNotesPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
         private INavigationService CreateNavigationService()
@@ -653,6 +669,7 @@ namespace GAZT
             navigationService.Configure(App.ZakatBillDetailsPageView, typeof(ZakatBillDetailsPageView));
             navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
             navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
+            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
 
 
 

@@ -42,17 +42,17 @@ namespace GAZT.Models
         public string ByPusrz { get; set; }
         public string ByGpartz { get; set; }
         public string DataVersionz { get; set; }
-        public string Namez { get; set; }
+        public string Namez { get; set; } //Name
         public string Noteno { get; set; }
         public int Lineno { get; set; }
         public int ElemNo { get; set; }
         public string Tdformat { get; set; }
         public string Tdline { get; set; }
-        public string Sect { get; set; }
-        public string Strdt { get; set; }
-        public string Strtime { get; set; }
-        public string Strline { get; set; }
-    }
+        public string Sect { get; set; } //Section
+        public string Strdt { get; set; } //date
+        public string Strtime { get; set; } //time
+        public string Strline { get; set; }   //note
+     }
 
     public class NOTESSet
     {

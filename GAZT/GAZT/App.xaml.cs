@@ -54,6 +54,7 @@ namespace GAZT
         public static string ZakatBillDetailsPageView = "ZakatBillDetailsPageView";
         public static string AAcknowledgementView = "AAcknowledgementView";
         public static string AcknowledgementDetailsPageView = "AcknowledgementDetailsPageView";
+        public static string DisplayNotesPageView = "DisplayNotesPageView";
 
 
         public static TIN CurrentDropdownTIN;
@@ -82,7 +83,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new DisplayNotesPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

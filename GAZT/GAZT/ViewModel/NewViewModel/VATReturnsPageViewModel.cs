@@ -1317,12 +1317,9 @@ namespace GAZT.ViewModel.NewViewModel
             if(!IsFirstSubmission)
             {
                 FirstSubmissionCount = 0;
-                ClearPage();
-                IsVisibleAcknowledgment = true;
-                //if(ResponseVatDeclaration.d==null)
-                //{
-                //    ResponseVatDeclaration = VATDeclarationData;
-                //}
+                //ClearPage();
+                //IsVisibleAcknowledgment = true;
+               
                 string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
                                         //   VATDeclarationData.d.StepNumberz = "04";
               //  VATDeclarationData.d.StepNumberz = "03";
@@ -1333,14 +1330,13 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 if (response != null && response.d != null)
                 {
-                    TPName = App.TP.Name;
-                    ReturnReferenceNumber = response.d.Fbnum;
-                    TaxablePeriod = response.d.Perslt;
-                    ReceiptDate = response.d.ReceiptDt;
+                    //TPName = App.TP.Name;
+                    //ReturnReferenceNumber = response.d.Fbnum;
+                    //TaxablePeriod = response.d.Perslt;
+                    //ReceiptDate = response.d.ReceiptDt;
+                    _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, response);
                 }
-                ResponseVatDeclaration = null;
-                IsTabbedMenuAvailable = false;
-                ButtonName = "Go to ICR List";
+               
                
             }
             else
