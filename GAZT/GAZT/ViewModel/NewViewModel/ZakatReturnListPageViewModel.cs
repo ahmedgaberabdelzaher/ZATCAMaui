@@ -14,14 +14,15 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         #endregion
 
         #region Property
 
 
 
-        private ZakatReturns _selectedZakatReturn;
-        public ZakatReturns SelectedZakatReturn
+        private EstimatedZakatReturnsResult _selectedZakatReturn;
+        public EstimatedZakatReturnsResult SelectedZakatReturn
         {
             get
             {
@@ -30,11 +31,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedZakatReturn = value;
-                if (_selectedZakatReturn != null)
-                {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsPageView);
-                }
                 RaisePropertyChanged("SelectedZakatReturn");
+
+                if (SelectedZakatReturn != null)
+                {
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                }
             }
         }
 
@@ -65,22 +67,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnStatus");
             }
         }
-
-        private ZakatReturnStatus _zelectedZakatReturn;
-        public  ZakatReturnStatus SelectedZakatReturn
-        {
-            get
-            {
-                return _zelectedZakatReturn;
-            }
-            set
-            {
-                _zelectedZakatReturn = value;
-                RaisePropertyChanged("SelectedZakatReturn");
-            }
-        }
-
-        
 
         private ZakatReturnStatus _selectedZakatStatus;
         public ZakatReturnStatus SelectedZakatStatus
@@ -142,7 +128,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-                EstimatedZakatReturns estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
+                 estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
                 MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
             });
 

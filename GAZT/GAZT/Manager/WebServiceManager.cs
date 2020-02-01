@@ -2031,15 +2031,12 @@ namespace GAZT.Manager
             string NewToken = string.Empty;
             try
             {
-                string _language = null;
-                if (App.IsArabic)
-                    _language = "A";
-                else
-                    _language = "E";
+                string _language = UtilityManager.GetLanguageParameter();
+               
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-                String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3101965624',Auditor='',Lang='EN',UserTin='3101965624')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
-
+                // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3101965624',Auditor='',Lang='EN',UserTin='3101965624')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
+                String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=disabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
@@ -2143,6 +2140,68 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
+
+            }
+        }
+
+        public static async Task<ZakatReturnDetails> GAZTGetZAKATReturn(string fbguid)
+        {
+            ZakatReturnDetails zakatReturnDetails = new ZakatReturnDetails();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TaxPayerProfile TP = null;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();// "E";
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+              //  https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='',Langz='EN',Gpartz='3102226654',Euser='3102226654',Fbguid='005056B1F8FB1EEA8FBC3AD61DEA5627',Invflg='',Fsource='TP')?saml2=disabled&sap-language='EN'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json
+                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=disabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
+
+                    }
+
+                   return zakatReturnDetails;
+
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                    {
+                        throw new Exception(AppResources.InvalidEmail);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
 
             }
         }

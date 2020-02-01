@@ -131,7 +131,7 @@
 
 
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
-                    <ListView  x:Name="Bills" 
+                    <ListView  x:Name="ZakatICRList" 
            ItemsSource="{Binding MyZakatReturns}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -144,13 +144,6 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                               
-                                       Margin="0,0,0,10"
-                                       Padding="0,0,0,0"
-                                       CornerRadius="0"
-                                       
-                               >
                                              <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
@@ -270,7 +263,6 @@
                                             </StackLayout>
                                            </StackLayout>
                                                  </StackLayout>
-                                        </Frame>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>

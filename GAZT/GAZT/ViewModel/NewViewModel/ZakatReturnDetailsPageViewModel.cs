@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -66,16 +68,16 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-        public async Task OnPageLoad()
+        public async Task OnPageLoad(string fbguid)
         {
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
 
-            await Task.Run(() =>
+            await Task.Run(async() =>
             {
-               
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
             });
             await Task.Run(() =>
             {
