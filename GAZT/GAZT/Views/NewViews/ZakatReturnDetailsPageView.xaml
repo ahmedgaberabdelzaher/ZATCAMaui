@@ -39,9 +39,6 @@
                     <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="3" >
 
                     </Frame>
-
-
-
                     <Label Text="{x:Static local:AppResources.ZSummaryofZakatcalculation}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
                     </Label>
 
