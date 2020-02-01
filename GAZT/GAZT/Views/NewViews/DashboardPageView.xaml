@@ -246,6 +246,20 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="1">
+                                <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="{x:Static local:AppResources.EstimateZakat}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+
                                 <!--<StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>

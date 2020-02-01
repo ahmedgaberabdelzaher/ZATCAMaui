@@ -304,8 +304,14 @@ namespace GAZT.ViewModel.NewViewModel
                         App.ICRStatus = selectedICRForStatus.Status;
                     }
 
-             
+
+                    //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
+                    // the GUID will be different
+
+                    String SelectedICRGUID = SelectedICR.Fbguid;
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
+                    _vATDeclaration.d.Fbguid = SelectedICRGUID;
+
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
                     {
                         VATDeclaration vATDeclaration = new VATDeclaration();

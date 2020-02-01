@@ -294,7 +294,9 @@ namespace GAZT.Views.NewViews
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("ActionSheet", "Cancel", null,"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return");
+            //"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return", "Amend Return"
+            //viewModel.ListOfActionButtonsApplicable.ToArray()
+            var action = await DisplayActionSheet("ActionSheet", "Cancel", null, "Add Note", "View Notes", "Attachments", "Set Return Void", "Reset Return", "Amend Return");
             switch (action)
             {
                 case "Add Note":
@@ -307,10 +309,13 @@ namespace GAZT.Views.NewViews
                     viewModel.VATViewAttachments();
                     break;
                 case "Set Return Void":
-                    await viewModel.SetVATReturnVoidAsync();
+                    await viewModel.VATSetReturnVoidAsync();
                     break;
                 case "Reset Return":
-                    viewModel.VATReturnReset();
+                    await viewModel.VATReturnResetAsync();
+                    break;
+                case "Amend Return":
+                    await viewModel.VATReturnAmendAsync();
                     break;
                 default:
                     break;

@@ -72,7 +72,7 @@ namespace GAZT
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
-
+        
         public static bool IsComingFromDashboardToLogOff = false;
 
 

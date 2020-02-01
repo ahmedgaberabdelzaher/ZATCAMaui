@@ -23,12 +23,13 @@ namespace GAZT.Views.NewViews
 
         #region Constructor
 
-        public ZakatReturnDetailsPageView()
+        public ZakatReturnDetailsPageView(string fbguid)
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsPageView;
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.OnPageLoad(fbguid);
         }
 
         #endregion

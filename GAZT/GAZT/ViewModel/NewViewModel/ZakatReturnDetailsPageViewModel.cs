@@ -1,8 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -17,6 +20,36 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private ZakatReturnDetailsD _zakatReturnDetail ;
+        public ZakatReturnDetailsD ZakatReturnDetail
+        {
+            get
+            {
+                return _zakatReturnDetail;
+            }
+            set
+            {
+                _zakatReturnDetail = value;
+                RaisePropertyChanged("ZakatReturnDetail");
+            }
+        }
+
+
+        
         #endregion
 
         #region Constructor
@@ -52,6 +85,23 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+        public async Task OnPageLoad(string fbguid)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async() =>
+            {
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                ZakatReturnDetail = zakatReturnDetails.d;
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
         #endregion
     }
 }

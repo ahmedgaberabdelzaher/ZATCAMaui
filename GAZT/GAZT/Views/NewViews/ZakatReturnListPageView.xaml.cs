@@ -31,12 +31,13 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
 
-            //ZakatReturns.ItemTapped += (object sender, ItemTappedEventArgs e) => {
-            //    // don't do anything if we just de-selected the row.
-            //    if (e.Item == null) return;
+            ZakatICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
 
-            //    if (sender is ListView lv) lv.SelectedItem = null;
-            //};
+                if (sender is ListView lv) lv.SelectedItem = null;
+            };
 
         }
 
