@@ -11,10 +11,19 @@
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
              FlowDirection="LeftToRight">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"         >
-                <Grid BindingContext="{Binding ZakatReturnDetail}">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                 <Grid.RowDefinitions>
+                        <RowDefinition Height="88*"/>
+                        <RowDefinition Height="12*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                    </Grid.ColumnDefinitions>
+                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid BindingContext="{Binding ZakatReturnDetail}" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -75,13 +84,22 @@
                     <Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="End"></Image>
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding ZkatAmount}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                    <Label Text="{Binding Zkamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
                     <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="End"></Image>
 
 
 
-                    <StackLayout Orientation="Horizontal"  Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
-                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                    
+
+
+
+
+
+
+                </Grid>
+ </ScrollView>
+                <StackLayout Orientation="Horizontal"  Grid.Row="1" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
+                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
                                 <ColumnDefinition Width="50*" />
@@ -98,15 +116,6 @@
                         </Grid>
                     </StackLayout>
 
-
-
-
-
-
-                </Grid>
-
-
-
                 <!-- Acticity indicator layout start -->
                 <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -119,7 +128,8 @@
                 </StackLayout>
             </Grid>-->
                 <!-- Acticity indicator layout End -->
+                            
             </Grid>
-        </ScrollView>
+       
     </ContentPage.Content>
 </ContentPage>

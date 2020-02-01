@@ -25,8 +25,8 @@ namespace GAZT.Views.NewViews
 
         public ZakatReturnDetailsPageView(string fbguid)
         {
-            InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsPageView;
+            InitializeComponent();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad(fbguid);

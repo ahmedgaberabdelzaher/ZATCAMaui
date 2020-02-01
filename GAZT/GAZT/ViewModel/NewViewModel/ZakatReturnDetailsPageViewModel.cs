@@ -60,23 +60,20 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
+            _dialogService = dialogService;
 
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView);
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             });
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.SalesDetailsPageView);
+                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetail);
             });
 
 

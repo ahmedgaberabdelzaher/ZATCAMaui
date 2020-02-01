@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,10 +14,24 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
+        public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
 
         #endregion
 
         #region Property
+        private ZakatReturnDetailsD _zakatReturnDetail;
+        public ZakatReturnDetailsD ZakatReturnDetail
+        {
+            get
+            {
+                return _zakatReturnDetail;
+            }
+            set
+            {
+                _zakatReturnDetail = value;
+                RaisePropertyChanged("ZakatReturnDetail");
+            }
+        }
         #endregion
 
         #region Constructor

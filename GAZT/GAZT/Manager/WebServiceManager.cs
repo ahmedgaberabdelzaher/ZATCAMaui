@@ -2183,7 +2183,6 @@ namespace GAZT.Manager
                         }
                         String _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
-
                     }
 
                    return zakatReturnDetails;

@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +24,15 @@ namespace GAZT.Views.NewViews
 
         #region Constructor
 
-        public SalesDetailsPageView()
+        public SalesDetailsPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
             viewModel = App.Locator.SalesDetailsPageView;
+            viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.onPageLoad();
-
+            viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;

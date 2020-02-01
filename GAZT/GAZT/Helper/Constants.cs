@@ -56,7 +56,7 @@ namespace GAZT.Helper
         public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-langauge=’";
         public static string GAZTGetZakatReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
         public static string GAZTGetZakatReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='";
-
+        public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet?saml2=disabled";
 
 
         //public static bool IsValidMobileNumber(string mobileNumber)
