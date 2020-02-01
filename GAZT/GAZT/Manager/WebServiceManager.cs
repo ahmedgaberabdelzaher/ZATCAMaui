@@ -1695,48 +1695,50 @@ namespace GAZT.Manager
 
                     if (_vATDeclarationD != null)
                     {
-
-                        if (_vATDeclarationD.d.NOTESSet == null)
+                        if (_vATDeclarationD.d != null)
                         {
-                            NOTESSet nOTEs = new NOTESSet();
-                            nOTEs.results = new List<Note>();
-                            _vATDeclarationD.d.NOTESSet = nOTEs;
-                        }
+                            if (_vATDeclarationD.d.NOTESSet == null)
+                            {
+                                NOTESSet nOTEs = new NOTESSet();
+                                nOTEs.results = new List<Note>();
+                                _vATDeclarationD.d.NOTESSet = nOTEs;
+                            }
 
 
-                        if (_vATDeclarationD.d.IBANSet == null)
-                        {
-                            IBANSet iBANSet = new IBANSet();
-                            iBANSet.results = new List<Result2>();
-                            _vATDeclarationD.d.IBANSet = iBANSet;
-                        }
+                            if (_vATDeclarationD.d.IBANSet == null)
+                            {
+                                IBANSet iBANSet = new IBANSet();
+                                iBANSet.results = new List<Result2>();
+                                _vATDeclarationD.d.IBANSet = iBANSet;
+                            }
 
 
-                        if (_vATDeclarationD.d.CFSet == null)
-                        {
-                            CFSet cFSet = new CFSet();
-                            cFSet.results = new List<Result3>();
-                            _vATDeclarationD.d.CFSet = cFSet;
-                        }
+                            if (_vATDeclarationD.d.CFSet == null)
+                            {
+                                CFSet cFSet = new CFSet();
+                                cFSet.results = new List<Result3>();
+                                _vATDeclarationD.d.CFSet = cFSet;
+                            }
 
-                        if (_vATDeclarationD.d.ATTACHSet == null)
-                        {
-                            ATTACHSet aTTACHSet = new ATTACHSet();
-                            aTTACHSet.results = new List<Attachment>();
-                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
-                        }
+                            if (_vATDeclarationD.d.ATTACHSet == null)
+                            {
+                                ATTACHSet aTTACHSet = new ATTACHSet();
+                                aTTACHSet.results = new List<Attachment>();
+                                _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                            }
 
-                        if (_vATDeclarationD.d.ADRSet == null)
-                        {
-                            ADRSet aDRSet = new ADRSet();
-                            aDRSet.results = new List<Result5>();
-                            _vATDeclarationD.d.ADRSet = aDRSet;
-                        }
-                        if (_vATDeclarationD.d.VATR_MSGSet == null)
-                        {
-                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
-                            vATRMSGSet.results = new List<object>();
-                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            if (_vATDeclarationD.d.ADRSet == null)
+                            {
+                                ADRSet aDRSet = new ADRSet();
+                                aDRSet.results = new List<Result5>();
+                                _vATDeclarationD.d.ADRSet = aDRSet;
+                            }
+                            if (_vATDeclarationD.d.VATR_MSGSet == null)
+                            {
+                                VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                                vATRMSGSet.results = new List<object>();
+                                _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            }
                         }
 
                     }

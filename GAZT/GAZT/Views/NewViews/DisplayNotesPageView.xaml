@@ -4,9 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             FlowDirection="LeftToRight"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.DisplayNotesPageView"
-           
+               
+            FlowDirection="LeftToRight"
              >
     <ContentPage.Content>
         <StackLayout>
@@ -58,7 +60,7 @@
 
 
                                                 <Label Text="{Binding Strline}" 
-                                                       Margin="10,0,10,-5"
+                                                       Margin="10,0,10,-3"
                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -97,7 +99,7 @@
 
                                                 </Label>
 
-                                               
+
 
                                             </Grid>
                                         </StackLayout>

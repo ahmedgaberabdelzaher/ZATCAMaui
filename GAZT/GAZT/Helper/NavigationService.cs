@@ -29,9 +29,11 @@ namespace GAZT
             NavigateTo(pageKey, null);
         }
 
-        
+      
 
-        public void NavigateTo(string pageKey, object parameter)
+
+
+        public void NavigateTo(string pageKey,object parameter)
         {
             lock (_pagesByKey)
             {

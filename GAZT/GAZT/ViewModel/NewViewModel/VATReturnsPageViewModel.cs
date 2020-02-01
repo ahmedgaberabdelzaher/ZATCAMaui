@@ -1371,28 +1371,29 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void VATReturnAddNote()
         {
-            WebServiceManager.GAZTSetVATReturnAddNote(String.Empty);
-            _navigationService.NavigateTo("ICRListPageView");
+            //  WebServiceManager.GAZTSetVATReturnAddNote(String.Empty);
+     
+            _navigationService.NavigateTo(App.AddNotePageView,VATDeclarationData);
 
         }
 
         public void VATReturnGetNotes()
         {
             ClearPage();
-            IsVisibleNotes = true;
-            ButtonName = AppResources.ZNote;
+            //IsVisibleNotes = true;
+            //ButtonName = AppResources.ZNote;
 
-            WebServiceManager.GAZTSetVATReturnGetNotes(String.Empty);
-            _navigationService.NavigateTo("ICRListPageView");
+          //  WebServiceManager.GAZTSetVATReturnGetNotes(String.Empty);
+            _navigationService.NavigateTo(App.DisplayNotesPageView,VATDeclarationData);
 
         }
 
         public  void VATViewAttachments()
         {
             ClearPage();
-            IsVisibleAttachments = true;
-            ButtonName = AppResources.Submit;
-
+            // IsVisibleAttachments = true;
+            //ButtonName = AppResources.Submit;
+            _navigationService.NavigateTo(App.AttachmentPageView, VATDeclarationData);
         }
         public async Task SetVATReturnVoidAsync()
         {

@@ -91,14 +91,7 @@ namespace GAZT.Views
         {
             base.OnAppearing();
           
-            for (int index = 0; index < Navigation.NavigationStack.Count; index++)
-            {
-                Page pg = Navigation.NavigationStack[index];
-                if (pg.GetType() == typeof(OTPPageView))
-                {
-                    Navigation.RemovePage(pg);
-                }
-            }
+            
         }
 
         private async void OnLogoutClicked(Object sender, EventArgs e)
