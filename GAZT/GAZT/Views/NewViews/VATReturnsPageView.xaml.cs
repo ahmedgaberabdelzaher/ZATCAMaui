@@ -257,17 +257,23 @@ namespace GAZT.Views.NewViews
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("ActionSheet", "Cancel", null,"Notes", "Attachments", "Void");
+            var action = await DisplayActionSheet("ActionSheet", "Cancel", null,"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return");
             switch (action)
             {
-                case "Notes":
-                    viewModel.ClickNotes();
+                case "Add Note":
+                    viewModel.VATReturnAddNote();
+                    break;
+                case "View Notes":
+                    viewModel.VATReturnGetNotes();
                     break;
                 case "Attachments":
-                    viewModel.ClickAttachment();
+                    viewModel.VATViewAttachments();
                     break;
-                case "Void":
-                    viewModel.ClickVoid();
+                case "Set Return Void":
+                    viewModel.SetVATReturnVoid();
+                    break;
+                case "Reset Return":
+                    viewModel.VATReturnReset();
                     break;
                 default:
                     break;
