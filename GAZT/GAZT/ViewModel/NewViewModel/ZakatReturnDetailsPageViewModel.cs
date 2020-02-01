@@ -33,6 +33,23 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        private ZakatReturnDetailsD _zakatReturnDetail ;
+        public ZakatReturnDetailsD ZakatReturnDetail
+        {
+            get
+            {
+                return _zakatReturnDetail;
+            }
+            set
+            {
+                _zakatReturnDetail = value;
+                RaisePropertyChanged("ZakatReturnDetail");
+            }
+        }
+
+
+        
         #endregion
 
         #region Constructor
@@ -78,6 +95,7 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async() =>
             {
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                ZakatReturnDetail = zakatReturnDetails.d;
             });
             await Task.Run(() =>
             {

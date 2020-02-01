@@ -2244,8 +2244,53 @@ namespace GAZT {
                 return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
             }
         }
-
-      
-
+        
+        public static string ZCRStatus {
+            get {
+                return ResourceManager.GetString("ZCRStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZCurrentEmail {
+            get {
+                return ResourceManager.GetString("ZCurrentEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZCurrentMobileNumber {
+            get {
+                return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZForgetUsernameorPassword {
+            get {
+                return ResourceManager.GetString("ZForgetUsernameorPassword", resourceCulture);
+            }
+        }
+        
+        public static string ZUpdateEmail {
+            get {
+                return ResourceManager.GetString("ZUpdateEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZUpdateMobile {
+            get {
+                return ResourceManager.GetString("ZUpdateMobile", resourceCulture);
+            }
+        }
+        
+        public static string FinancialPeriodFrom {
+            get {
+                return ResourceManager.GetString("FinancialPeriodFrom", resourceCulture);
+            }
+        }
+        
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
     }
 }
