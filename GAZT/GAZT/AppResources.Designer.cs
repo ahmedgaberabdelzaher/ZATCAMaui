@@ -620,7 +620,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXCISE.
+        ///   Looks up a localized string similar to EXCISE TAX.
         /// </summary>
         public static string ExciseCertificates {
             get {
@@ -656,7 +656,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot password or user name?.
+        ///   Looks up a localized string similar to Forget Username or Password?.
         /// </summary>
         public static string ForgotPasswordORUseName {
             get {
@@ -665,7 +665,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot password or user name.
+        ///   Looks up a localized string similar to Forget Username or Password.
         /// </summary>
         public static string ForgotPasswordOrUserName {
             get {
@@ -1826,7 +1826,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ZAKAT.
+        ///   Looks up a localized string similar to ZAKAT / CIT.
         /// </summary>
         public static string ZakatCertificates {
             get {

@@ -1238,4 +1238,10 @@
   <data name="ZUpdateMobile" xml:space="preserve">
     <value>تحديث رقم الجوال</value>
   </data>
+  <data name="FinancialPeriodFrom" xml:space="preserve">
+    <value>Financial Period From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
 </root>

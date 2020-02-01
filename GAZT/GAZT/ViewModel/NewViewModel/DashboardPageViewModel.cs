@@ -35,6 +35,7 @@ namespace GAZT.ViewModel
         public ICommand OnVatdeclarationClicked { get; set; }
         public ICommand OnTaxevasionClicked { get; set; }
 
+        
         public ICommand OnTINStatusClicked { get; set; }
 
         #endregion

@@ -29,7 +29,7 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-        private string _UserName = "3000493862";
+        private string _UserName = "3101965624";
         // private string _UserName = string.Empty;
         public string UserName
         {
@@ -388,7 +388,6 @@ namespace GAZT.ViewModel
                             {
                                 response = WebServiceManager.GAZTAuthenticateTIN(UserName, Password, DeviceId, _currentAttempts, languag);
                                 UserId = UserName;
-                             
                             }
                             else
                             {
