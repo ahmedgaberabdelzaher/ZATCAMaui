@@ -9,7 +9,15 @@ namespace GAZT.CustomControl
             InitializeComponent();
             BarBackgroundColor = Color.FromHex("#005e4b");
             BarTextColor = Color.White;
-          
+            
+            //if (App.IsArabic)
+            //{
+            //    NavPage.FlowDirection = FlowDirection.RightToLeft;
+            //}
+            //else
+            //{
+            //    NavPage.FlowDirection = FlowDirection.LeftToRight;
+            //}
         }
     }
 }
