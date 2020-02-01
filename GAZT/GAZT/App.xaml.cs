@@ -53,6 +53,7 @@ namespace GAZT
         public static string VATReturnsPageView = "VATReturnsPageView";
         public static string ZakatBillDetailsPageView = "ZakatBillDetailsPageView";
         public static string AAcknowledgementView = "AAcknowledgementView";
+        public static string AcknowledgementDetailsPageView = "AcknowledgementDetailsPageView";
 
 
         public static TIN CurrentDropdownTIN;
