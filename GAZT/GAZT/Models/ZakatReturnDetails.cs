@@ -29,7 +29,7 @@ namespace GAZT.Models
         public string FileExtn { get; set; }
         public string Mimetype { get; set; }
         public string ByPusr { get; set; }
-        public DateTime Erfdt { get; set; }
+        public string Erfdt { get; set; }//Date
         public string Erftm { get; set; }
         public string DataVersion { get; set; }
         public string DocUrl { get; set; }
