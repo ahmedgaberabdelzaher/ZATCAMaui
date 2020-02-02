@@ -705,6 +705,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.Alerts);
             }
+            ClearData();
         }
         #endregion
     }

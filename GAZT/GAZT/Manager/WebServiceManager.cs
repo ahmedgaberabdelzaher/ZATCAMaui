@@ -249,7 +249,6 @@ namespace GAZT.Manager
             }
         }
 
-
         //done internet exception handling
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId, string currentAttempts)
         {
@@ -1695,48 +1694,50 @@ namespace GAZT.Manager
 
                     if (_vATDeclarationD != null)
                     {
-
-                        if (_vATDeclarationD.d.NOTESSet == null)
+                        if (_vATDeclarationD.d != null)
                         {
-                            NOTESSet nOTEs = new NOTESSet();
-                            nOTEs.results = new List<Note>();
-                            _vATDeclarationD.d.NOTESSet = nOTEs;
-                        }
+                            if (_vATDeclarationD.d.NOTESSet == null)
+                            {
+                                NOTESSet nOTEs = new NOTESSet();
+                                nOTEs.results = new List<Note>();
+                                _vATDeclarationD.d.NOTESSet = nOTEs;
+                            }
 
 
-                        if (_vATDeclarationD.d.IBANSet == null)
-                        {
-                            IBANSet iBANSet = new IBANSet();
-                            iBANSet.results = new List<Result2>();
-                            _vATDeclarationD.d.IBANSet = iBANSet;
-                        }
+                            if (_vATDeclarationD.d.IBANSet == null)
+                            {
+                                IBANSet iBANSet = new IBANSet();
+                                iBANSet.results = new List<Result2>();
+                                _vATDeclarationD.d.IBANSet = iBANSet;
+                            }
 
 
-                        if (_vATDeclarationD.d.CFSet == null)
-                        {
-                            CFSet cFSet = new CFSet();
-                            cFSet.results = new List<Result3>();
-                            _vATDeclarationD.d.CFSet = cFSet;
-                        }
+                            if (_vATDeclarationD.d.CFSet == null)
+                            {
+                                CFSet cFSet = new CFSet();
+                                cFSet.results = new List<Result3>();
+                                _vATDeclarationD.d.CFSet = cFSet;
+                            }
 
-                        if (_vATDeclarationD.d.ATTACHSet == null)
-                        {
-                            ATTACHSet aTTACHSet = new ATTACHSet();
-                            aTTACHSet.results = new List<Attachment>();
-                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
-                        }
+                            if (_vATDeclarationD.d.ATTACHSet == null)
+                            {
+                                ATTACHSet aTTACHSet = new ATTACHSet();
+                                aTTACHSet.results = new List<Attachment>();
+                                _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                            }
 
-                        if (_vATDeclarationD.d.ADRSet == null)
-                        {
-                            ADRSet aDRSet = new ADRSet();
-                            aDRSet.results = new List<Result5>();
-                            _vATDeclarationD.d.ADRSet = aDRSet;
-                        }
-                        if (_vATDeclarationD.d.VATR_MSGSet == null)
-                        {
-                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
-                            vATRMSGSet.results = new List<object>();
-                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            if (_vATDeclarationD.d.ADRSet == null)
+                            {
+                                ADRSet aDRSet = new ADRSet();
+                                aDRSet.results = new List<Result5>();
+                                _vATDeclarationD.d.ADRSet = aDRSet;
+                            }
+                            if (_vATDeclarationD.d.VATR_MSGSet == null)
+                            {
+                                VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                                vATRMSGSet.results = new List<object>();
+                                _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            }
                         }
 
                     }
@@ -2098,16 +2099,19 @@ namespace GAZT.Manager
             return RequestVATDeclaration;
         }
 
-        public static void GAZTSetVATReturnReset(string FormBundleID)
+        public static VATDeclaration GAZTSetVATReturnReset(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = null;
             try
             {
-
+                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
 
             }
+
+            return RequestVATDeclaration;
         }
 
         public static void GAZTSetVATReturnDeleteAttachment(string AttachmentIdentifier)
@@ -2121,8 +2125,7 @@ namespace GAZT.Manager
 
             }
         }
-
-
+        
         public static void GAZTSetVATReturnAddNote(string AttachmentIdentifier)
         {
             try
@@ -2218,7 +2221,7 @@ namespace GAZT.Manager
                 char LangZ = GetLangZParameter();
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                 String url = Constants.GAZTSaveEstimatedZaktReturn;
-                                                                                                                                                                                                                                                                 // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient();
                 var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
@@ -2238,6 +2241,71 @@ namespace GAZT.Manager
             {
                 return null;
             }
+        }
+        public static async Task<List<VATApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
+        {
+            //Fbnum = '65000004030',Lang = 'E',Operation = '',Gpart = '3000493862',Status = 'E0045',TxnTp = 'VTR_AMDT'
+
+            List<VATApplicableButton> VATApplicableButtons = new List<VATApplicableButton>();
+
+            try
+            {
+                char LangZ = GetLangZParameter();
+                
+                // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='65000004030',Lang='E',Operation='',Gpart='3000493862',Status='E0045',TxnTp='VTR_AMDT',Formproc='',Periodkey='18JA')?&$expand=UI_BTNSet&$format=json	
+                
+                HttpClient client = new HttpClient(App.httpClientHandler);
+
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation=''," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey=''" + ")?&$expand=UI_BTNSet&$format=json";
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+
+                HttpResponseMessage VATApplicableButtonsResponse =  await client.GetAsync(uri);
+               
+
+                if (VATApplicableButtonsResponse != null)
+                {
+                    string NewToken = string.Empty;
+                    HttpHeaders headers = VATApplicableButtonsResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String VATApplicableButtonsResponseJSON = VATApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
+
+                    if (!string.IsNullOrEmpty(VATApplicableButtonsResponseJSON))
+                    {
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["d"].ToString();
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["UI_BTNSet"].ToString();
+                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["results"].ToString();
+
+                        if (string.IsNullOrEmpty(VATApplicableButtonsResponseJSON) != true)
+                        {
+                            VATApplicableButtons = JsonConvert.DeserializeObject<List<VATApplicableButton>>(VATApplicableButtonsResponseJSON);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+          return VATApplicableButtons;
         }
 
     }

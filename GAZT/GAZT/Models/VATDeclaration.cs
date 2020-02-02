@@ -42,17 +42,17 @@ namespace GAZT.Models
         public string ByPusrz { get; set; }
         public string ByGpartz { get; set; }
         public string DataVersionz { get; set; }
-        public string Namez { get; set; }
+        public string Namez { get; set; } //Name
         public string Noteno { get; set; }
         public int Lineno { get; set; }
         public int ElemNo { get; set; }
         public string Tdformat { get; set; }
         public string Tdline { get; set; }
-        public string Sect { get; set; }
-        public string Strdt { get; set; }
-        public string Strtime { get; set; }
-        public string Strline { get; set; }
-    }
+        public string Sect { get; set; } //Section
+        public string Strdt { get; set; } //date
+        public string Strtime { get; set; } //time
+        public string Strline { get; set; }   //note
+     }
 
     public class NOTESSet
     {
@@ -111,7 +111,7 @@ namespace GAZT.Models
 
     public class Attachment
     {
-      
+
         public Metadata5 __metadata { get; set; }
         public string RetGuid { get; set; }
         public string Seqno { get; set; }
@@ -431,16 +431,12 @@ namespace GAZT.Models
         //        handler(this, new PropertyChangedEventArgs(propertyName));
         //}
     }
-
-    
-
     public class VATAttachments
     {
         public string Id { get; set; }
         public string DocumentName { get; set; }
         public string Size { get; set; }
     }
-
     public class CreditCarried
     {
         public string SerialNumber { get; set; }
@@ -453,26 +449,24 @@ namespace GAZT.Models
     {
         public VATDeclarationD d { get; set; }
     }
-
-
     public class VATDeclarationTabbedPageName : INotifyPropertyChanged
     {
 
         Color textColor = Color.FromHex("#FFFFFF");
-       
+
         Font _font = Font.Default;
 
         Font fontnew;
-        
+
 
         //public VATDeclarationTabbedPageName()
         //{
-           
-            
+
+
         //    //_font.FontFamily=
         //}
 
-      
+
         public string pageName { get; set; }
 
         public Color TextColor
@@ -495,7 +489,7 @@ namespace GAZT.Models
             }
         }
 
-        public Font Font 
+        public Font Font
         {
             set
             {
@@ -515,5 +509,14 @@ namespace GAZT.Models
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
+    }
+    
+    public class VATApplicableButton
+    {
+        public string Fbtyp { get; set; }
+        public string Fbust { get; set; }
+        public string Button { get; set; }
+        public string TransactionType { get; set; }
+        public string UserTyp { get; set; }
     }
 }

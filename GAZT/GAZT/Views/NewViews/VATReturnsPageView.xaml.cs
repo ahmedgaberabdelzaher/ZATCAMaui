@@ -120,7 +120,44 @@ namespace GAZT.Views.NewViews
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             var results =  await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename,  viewModel.VATDeclarationData.d.ReturnIdz);
         }
-        
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+           if (AddNotePageViewModel.IsComingFromNotePage==true && !string.IsNullOrEmpty(AddNotePageViewModel.NoteString))
+            {
+                viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                if(App.ICRStatus == "E0001")
+                {
+                    Note objNote = new Note();
+                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                    objNote.Notenoz = (count + 1).ToString();
+                    objNote.DataVersionz = "00000";
+                    objNote.XInvoicez = String.Empty;
+                    objNote.XObsoletez = string.Empty;
+                    objNote.Rcodez = "VATR";
+                    objNote.Erfusrz = null;
+                    objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
+                    objNote.AttByz = "TP";
+                    objNote.Noteno = (count + 1).ToString();
+                    objNote.Lineno = 1;
+                    objNote.ElemNo = 0;
+                    objNote.Tdline = AddNotePageViewModel.NoteString;
+                    viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+                    AddNotePageViewModel.IsComingFromNotePage = false;
+                }
+                if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                {
+                    Note objNote = new Note();
+                   
+                    foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    {
+                        item.Tdline = AddNotePageViewModel.NoteString;
+                    }
+                }
+            }
+        }
+
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
         {
 
@@ -257,7 +294,9 @@ namespace GAZT.Views.NewViews
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("ActionSheet", "Cancel", null,"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return");
+            //"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return", "Amend Return"
+            //viewModel.ListOfActionButtonsApplicable.ToArray()
+            var action = await DisplayActionSheet("ActionSheet", "Cancel", null, "Add Note", "View Notes", "Attachments", "Set Return Void", "Reset Return", "Amend Return");
             switch (action)
             {
                 case "Add Note":
@@ -270,10 +309,13 @@ namespace GAZT.Views.NewViews
                     viewModel.VATViewAttachments();
                     break;
                 case "Set Return Void":
-                    await viewModel.SetVATReturnVoidAsync();
+                    await viewModel.VATSetReturnVoidAsync();
                     break;
                 case "Reset Return":
-                    viewModel.VATReturnReset();
+                    await viewModel.VATReturnResetAsync();
+                    break;
+                case "Amend Return":
+                    await viewModel.VATReturnAmendAsync();
                     break;
                 default:
                     break;

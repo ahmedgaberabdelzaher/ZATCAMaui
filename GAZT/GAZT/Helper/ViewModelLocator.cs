@@ -52,8 +52,12 @@ namespace GAZT
             SimpleIoc.Default.Register<VATReturnsPageViewModel>();
             SimpleIoc.Default.Register<ZakatBillDetailsPageViewModel>();
             SimpleIoc.Default.Register<AAcknowledgementViewModel>();
+            SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
+            SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
+            SimpleIoc.Default.Register<AttachmentPageViewModel>();
+            SimpleIoc.Default.Register<AddNotePageViewModel>();
 
-            
+
 
 
 
@@ -593,7 +597,67 @@ namespace GAZT
             }
         }
 
-        
+        public AcknowledgementDetailsPageViewModel AcknowledgementDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public DisplayNotesPageViewModel DisplayNotesPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public AttachmentPageViewModel AttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AttachmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public AddNotePageViewModel AddNotePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AddNotePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
         private INavigationService CreateNavigationService()
         {
@@ -636,8 +700,12 @@ namespace GAZT
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
             navigationService.Configure(App.ZakatBillDetailsPageView, typeof(ZakatBillDetailsPageView));
             navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
+            navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
+            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
+            navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
+            navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
 
-            
+
 
 
             return navigationService;

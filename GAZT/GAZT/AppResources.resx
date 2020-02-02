@@ -232,10 +232,10 @@
     <value>VAT</value>
   </data>
   <data name="ZakatCertificates" xml:space="preserve">
-    <value>ZAKAT</value>
+    <value>ZAKAT / CIT</value>
   </data>
   <data name="ExciseCertificates" xml:space="preserve">
-    <value>EXCISE</value>
+    <value>EXCISE TAX</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Taxpayer Name</value>
@@ -434,7 +434,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>App is facing network issue, please try again later</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value>Forgot password or user name?</value>
+    <value>Forget Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
     <value>Individual/Personal business</value>
@@ -503,7 +503,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Unpaid</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>Forgot password or user name</value>
+    <value>Forget Username or Password</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value>Invalid captcha</value>

@@ -47,6 +47,7 @@ namespace GAZT.Views
                 Icon = "ic_language.png",
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
+                
                 Command = new Command(() =>
                 {
                     if (App.IsArabic)

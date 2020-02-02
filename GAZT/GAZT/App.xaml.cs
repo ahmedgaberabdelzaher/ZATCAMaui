@@ -53,6 +53,10 @@ namespace GAZT
         public static string VATReturnsPageView = "VATReturnsPageView";
         public static string ZakatBillDetailsPageView = "ZakatBillDetailsPageView";
         public static string AAcknowledgementView = "AAcknowledgementView";
+        public static string AcknowledgementDetailsPageView = "AcknowledgementDetailsPageView";
+        public static string DisplayNotesPageView = "DisplayNotesPageView";
+        public static string AttachmentPageView = "AttachmentPageView";
+        public static string AddNotePageView = "AddNotePageView";
 
 
         public static TIN CurrentDropdownTIN;
@@ -68,7 +72,7 @@ namespace GAZT
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
-
+        
         public static bool IsComingFromDashboardToLogOff = false;
 
 
@@ -81,6 +85,7 @@ namespace GAZT
             AppResources.Culture = ci;
 
             InitializeComponent();
+            VATDeclaration vAT=null;
             CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
