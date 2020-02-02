@@ -37,6 +37,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="86*"/>
@@ -47,11 +48,23 @@
                             <Label Text="{Binding SalesType}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
 
-                            <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                             <Label Text="{x:Static local:AppResources.OldValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding NewValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding OldValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+
+
+                            <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+                            <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            </Frame>
+                            <custom:GAZTBorderlessEntry  Grid.Row="4" Text="{Binding NewValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -63,11 +76,11 @@
                     </Image>-->
 
 
-                            <Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
-                            <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Grid.Row="6"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -81,25 +94,25 @@
 
 
 
-                            <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
-                            <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="8"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
-                            <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
+                            <Image Grid.Row="8"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
 
                             </Image>
 
-                            <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="7"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="9"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                            <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
-                            <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="12" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                             <!--<Label Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="Start" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" >
@@ -138,7 +151,7 @@
 
 
 
-                            <StackLayout Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                                 <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"
@@ -284,7 +297,7 @@
                  
                 </Grid>
 
-                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="{x:Static local:AppResources.Save}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
         </Grid>
