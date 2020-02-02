@@ -102,6 +102,15 @@ namespace GAZT.Views.NewViews
                         viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
                     }
                 }
+                if (!App.IsArabic)
+                {
+                    viewModel.AccountWillBeBlocked = "The account will be locked after " + App.TP.Attempts + " failed verification code attempts";
+                }
+                else
+                {
+                    viewModel.AccountWillBeBlocked = "محاولات تحقق فاشلة " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + "سيتم قفل الحساب بعد ";
+
+                }
             }
             else if (e == NavigateToOtp.IsEmail)
             {
@@ -113,6 +122,15 @@ namespace GAZT.Views.NewViews
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                     viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
                     viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
+                }
+                if (!App.IsArabic)
+                {
+                   viewModel.AccountWillBeBlocked = "The account will be locked after " + App.TP.Attempts + " failed verification code attempts";
+                }
+                else
+                {
+                    viewModel.AccountWillBeBlocked = "محاولات تحقق فاشلة " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + "سيتم قفل الحساب بعد ";
+
                 }
             }
             else if (e == NavigateToOtp.IsLogin)
@@ -168,6 +186,9 @@ namespace GAZT.Views.NewViews
                 DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
                 DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             }
+
+          
+
         }
 
 

@@ -42,7 +42,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
 
-
+        public ICommand OnDeleteAttachmentClicked { get; set; }
 
 
         #endregion
@@ -1061,6 +1061,8 @@ namespace GAZT.ViewModel.NewViewModel
 
         public VATReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+
+            OnDownloadAcknowlwdgementClicked = new Command(OnDownload);
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -1075,8 +1077,8 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
 
             IsMainButtonEnabled = false;
-
-            OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
+          
+                OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 if (!string.IsNullOrEmpty(ButtonName))
                 {
@@ -1267,7 +1269,18 @@ namespace GAZT.ViewModel.NewViewModel
 
             });
         }
+        private void OnDownload(object Sender)
+        {
+            Image imageItem = (Image)Sender;
+            ItemTappedAsync(Sender);
+        }
+        private async void ItemTappedAsync(object recording)
+        {
+            Image SelectedItem = (Image)recording;
 
+
+
+        }
         #endregion
 
         #region Method
