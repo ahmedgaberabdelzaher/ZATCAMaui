@@ -638,6 +638,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial period from.
+        /// </summary>
+        public static string FinancialPeriodFrom {
+            get {
+                return ResourceManager.GetString("FinancialPeriodFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fiscal year.
         /// </summary>
         public static string FiscalYear {
@@ -1489,6 +1498,15 @@ namespace GAZT {
         public static string TINS {
             get {
                 return ResourceManager.GetString("TINS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         
