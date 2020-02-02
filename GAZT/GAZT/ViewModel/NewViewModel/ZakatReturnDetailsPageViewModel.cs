@@ -34,8 +34,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private ZakatReturnDetailsD _zakatReturnDetail ;
-        public ZakatReturnDetailsD ZakatReturnDetail
+        private ZakatReturnDetails _zakatReturnDetail ;
+        public ZakatReturnDetails ZakatReturnDetail
         {
             get
             {
@@ -60,23 +60,20 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
+            _dialogService = dialogService;
 
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView);
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             });
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.SalesDetailsPageView);
+                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetail);
             });
 
 
@@ -95,7 +92,7 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async() =>
             {
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                ZakatReturnDetail = zakatReturnDetails.d;
+                ZakatReturnDetail = zakatReturnDetails;
             });
             await Task.Run(() =>
             {

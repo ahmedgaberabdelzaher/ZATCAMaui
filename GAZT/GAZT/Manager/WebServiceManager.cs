@@ -1694,48 +1694,50 @@ namespace GAZT.Manager
 
                     if (_vATDeclarationD != null)
                     {
-
-                        if (_vATDeclarationD.d.NOTESSet == null)
+                        if (_vATDeclarationD.d != null)
                         {
-                            NOTESSet nOTEs = new NOTESSet();
-                            nOTEs.results = new List<Note>();
-                            _vATDeclarationD.d.NOTESSet = nOTEs;
-                        }
+                            if (_vATDeclarationD.d.NOTESSet == null)
+                            {
+                                NOTESSet nOTEs = new NOTESSet();
+                                nOTEs.results = new List<Note>();
+                                _vATDeclarationD.d.NOTESSet = nOTEs;
+                            }
 
 
-                        if (_vATDeclarationD.d.IBANSet == null)
-                        {
-                            IBANSet iBANSet = new IBANSet();
-                            iBANSet.results = new List<Result2>();
-                            _vATDeclarationD.d.IBANSet = iBANSet;
-                        }
+                            if (_vATDeclarationD.d.IBANSet == null)
+                            {
+                                IBANSet iBANSet = new IBANSet();
+                                iBANSet.results = new List<Result2>();
+                                _vATDeclarationD.d.IBANSet = iBANSet;
+                            }
 
 
-                        if (_vATDeclarationD.d.CFSet == null)
-                        {
-                            CFSet cFSet = new CFSet();
-                            cFSet.results = new List<Result3>();
-                            _vATDeclarationD.d.CFSet = cFSet;
-                        }
+                            if (_vATDeclarationD.d.CFSet == null)
+                            {
+                                CFSet cFSet = new CFSet();
+                                cFSet.results = new List<Result3>();
+                                _vATDeclarationD.d.CFSet = cFSet;
+                            }
 
-                        if (_vATDeclarationD.d.ATTACHSet == null)
-                        {
-                            ATTACHSet aTTACHSet = new ATTACHSet();
-                            aTTACHSet.results = new List<Attachment>();
-                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
-                        }
+                            if (_vATDeclarationD.d.ATTACHSet == null)
+                            {
+                                ATTACHSet aTTACHSet = new ATTACHSet();
+                                aTTACHSet.results = new List<Attachment>();
+                                _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                            }
 
-                        if (_vATDeclarationD.d.ADRSet == null)
-                        {
-                            ADRSet aDRSet = new ADRSet();
-                            aDRSet.results = new List<Result5>();
-                            _vATDeclarationD.d.ADRSet = aDRSet;
-                        }
-                        if (_vATDeclarationD.d.VATR_MSGSet == null)
-                        {
-                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
-                            vATRMSGSet.results = new List<object>();
-                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            if (_vATDeclarationD.d.ADRSet == null)
+                            {
+                                ADRSet aDRSet = new ADRSet();
+                                aDRSet.results = new List<Result5>();
+                                _vATDeclarationD.d.ADRSet = aDRSet;
+                            }
+                            if (_vATDeclarationD.d.VATR_MSGSet == null)
+                            {
+                                VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                                vATRMSGSet.results = new List<object>();
+                                _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                            }
                         }
 
                     }
@@ -2184,7 +2186,6 @@ namespace GAZT.Manager
                         }
                         String _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
-
                     }
 
                    return zakatReturnDetails;
@@ -2210,6 +2211,37 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<ZakatReturnDetails> GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD)//, string returnedFguid
+        {
+            try
+            {
+                zakatReturnDetailsD.d.Operationz = "59";
+                zakatReturnDetailsD.d.UserTypz = "TP";
+                ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
+                char LangZ = GetLangZParameter();
+                // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                String url = Constants.GAZTSaveEstimatedZaktReturn;
+                // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient();
+                var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
+
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+
+                var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
+                return _zakatReturnDetailsD;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public static async Task<List<VATApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
         {
             //Fbnum = '65000004030',Lang = 'E',Operation = '',Gpart = '3000493862',Status = 'E0045',TxnTp = 'VTR_AMDT'

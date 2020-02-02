@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,13 @@ namespace GAZT.Views.NewViews
        
 
         #region Constructor
-        public BillDetailsPageView()
+        public BillDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
         {
             InitializeComponent();
             viewModel = App.Locator.BillDetailsPageView;
+            viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SetLTR();
+            viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             this.BindingContext = viewModel;
 
           

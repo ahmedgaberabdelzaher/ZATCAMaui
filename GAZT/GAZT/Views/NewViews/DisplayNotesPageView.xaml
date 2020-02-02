@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             x:Class="GAZT.Views.NewViews.DisplayNotesPageView"
+               
+            FlowDirection="LeftToRight"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Margin="10,10,10,0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <ListView  x:Name="DisplayNotes" 
+           ItemsSource="{Binding NoteList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                      
+            SeparatorVisibility="None"
+            >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView>
+                                    <Frame OutlineColor="#C9C9C9"
+                                               
+                                       Margin="0,0,0,10"
+                                       Padding="0,0,0,0"
+                                       CornerRadius="0"
+                                       
+                               >
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+
+                                                </Grid.RowDefinitions>
+
+                                                <Label Text="{Binding Sect}"  
+                                                       Margin="10,0,10,-7"
+                                   Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+
+
+
+                                                <Label Text="{Binding Strline}" 
+                                                       Margin="10,0,10,-3"
+                                   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           
+                                   Grid.Row="1"
+                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+
+
+
+                                                <Label Text="{Binding Namez}" 
+                                                       Margin="10,0,10,-8"
+                                   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+
+
+                                                <Label 
+                                   Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       
+                                                       
+                                                       
+                                   Grid.Row="3"
+                                   Grid.Column="0">
+
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Strdt}" />
+                                                            <Span Text="  "/>
+                                                            <Span Text="{Binding Strtime}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+
+                                                </Label>
+
+
+
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -4,61 +4,56 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
 {
-   public class BillDetailsPageViewModel: ViewModelBase
+    public class DisplayNotesPageViewModel : ViewModelBase
     {
         #region Variable
+
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand OnCopySadadNumberButtonClicked { get; set; }
-        public ZakatReturnDetails zakatReturnDetailsD { get; set; }
+
+        // public ICommand OnSubmitClicked { get; set; }
 
         #endregion
 
         #region Property
-        private ZakatReturnDetails _zakatReturnDetail;
-        public ZakatReturnDetails ZakatReturnDetail
+
+
+        private List<Note> _noteList ;
+        public List<Note> NoteList
         {
             get
             {
-                return _zakatReturnDetail;
+                return _noteList;
             }
             set
             {
-                _zakatReturnDetail = value;
-                RaisePropertyChanged("ZakatReturnDetail");
+                _noteList = value;
+                RaisePropertyChanged("NoteList");
             }
         }
+
+
         #endregion
 
         #region Constructor
-        public BillDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+
+        public DisplayNotesPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-
-            OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
-            {
-               await _dialogService.ShowMessage("It has copied sadad payment number",AppResources.Information);
-            });
-
-
+            _dialogService = dialogService;
         }
+
         #endregion
 
         #region Method

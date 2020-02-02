@@ -1,0 +1,207 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using GAZT.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Input;
+
+namespace GAZT.ViewModel.NewViewModel
+{
+    public class AcknowledgementDetailsPageViewModel : ViewModelBase
+    {
+        #region Variable
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public ICommand OnVATRefreshButtonClicked { get; set; }
+        public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
+        public ICommand OnAcknowlwdgementClicked { get; set; }
+        #endregion
+
+        #region Property
+
+        private string _tPName = "";
+        public string TPName
+        {
+            get
+            {
+                return _tPName;
+            }
+            set
+            {
+                _tPName = value;
+
+                RaisePropertyChanged("TPName");
+            }
+        }
+
+        private string _returnReferenceNumber = "";
+        public string ReturnReferenceNumber
+        {
+            get
+            {
+                return _returnReferenceNumber;
+            }
+            set
+            {
+                _returnReferenceNumber = value;
+
+                RaisePropertyChanged("ReturnReferenceNumber");
+            }
+        }
+
+        private string _taxablePeriod = "";
+        public string TaxablePeriod
+        {
+            get
+            {
+                return _taxablePeriod;
+            }
+            set
+            {
+                _taxablePeriod = value;
+
+                RaisePropertyChanged("TaxablePeriod");
+            }
+        }
+
+
+        private string _receiptDate = "";
+        public string ReceiptDate
+        {
+            get
+            {
+                return _receiptDate;
+            }
+            set
+            {
+                _receiptDate = value;
+                RaisePropertyChanged("ReceiptDate");
+            }
+        }
+
+        private string _sadadNumber = "";
+        public string SadadNumber
+        {
+            get
+            {
+                return _sadadNumber;
+            }
+            set
+            {
+                _sadadNumber = value;
+                RaisePropertyChanged("SadadNumber");
+            }
+        }
+
+        private string _amountPayable = "2470";
+        public string AmountPayable
+        {
+            get
+            {
+                return _amountPayable;
+            }
+            set
+            {
+                _amountPayable = value;
+                RaisePropertyChanged("AmountPayable");
+            }
+        }
+
+        private bool _isSadadNumberVisible = false;
+        public bool IsSadadNumberVisible
+        {
+            get
+            {
+                return _isSadadNumberVisible;
+            }
+            set
+            {
+                _isSadadNumberVisible = value;
+                RaisePropertyChanged("IsSadadNumberVisible");
+            }
+        }
+
+        private VATDeclaration _vATDeclarationData;
+        public VATDeclaration VATDeclarationData
+        {
+            get
+            {
+                return _vATDeclarationData;
+            }
+            set
+            {
+                _vATDeclarationData = value;
+                RaisePropertyChanged("VATDeclarationData");
+            }
+        }
+
+
+        #endregion
+
+        #region Constructor
+        public AcknowledgementDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+
+
+
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+
+
+            OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    SadadNumber = response.d.results[0].Vtref;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
+                    {
+                        IsSadadNumberVisible = true;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+                // Call Sadad number API
+            });
+
+
+            OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            {
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData + "',Utype='')/$value?saml2=disabled";
+                _navigationService.NavigateTo(App.AAcknowledgementView, url);
+            });
+
+          
+            OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            {
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=disabled";
+                _navigationService.NavigateTo(App.AAcknowledgementView, url);
+            });
+
+
+          
+        }
+
+
+
+            #endregion
+
+            #region Method
+
+            #endregion
+        }
+    }

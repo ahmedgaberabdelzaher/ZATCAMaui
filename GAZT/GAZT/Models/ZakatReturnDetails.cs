@@ -15,7 +15,26 @@ namespace GAZT.Models
         public string AmdSource { get; set; }
         public string Description { get; set; }
     }
-
+    public class EstimateZakatAttachment
+    {
+        public Metadata3 __metadata { get; set; }
+        public string RetGuid { get; set; }
+        public string Seqno { get; set; }
+        public string SchGuid { get; set; }
+        public string Dotyp { get; set; }
+        public int Srno { get; set; }
+        public string Doguid { get; set; }
+        public string AttBy { get; set; }
+        public string Filename { get; set; }
+        public string FileExtn { get; set; }
+        public string Mimetype { get; set; }
+        public string ByPusr { get; set; }
+        public string Erfdt { get; set; }//Date
+        public string Erftm { get; set; }
+        public string DataVersion { get; set; }
+        public string DocUrl { get; set; }
+        public string OutletRef { get; set; }
+    }
     public class ReasonSet
     {
         public List<ZakatReturnDetailsReason> results { get; set; }
@@ -23,7 +42,7 @@ namespace GAZT.Models
 
     public class AttachSet
     {
-        public List<object> results { get; set; }
+        public List<EstimateZakatAttachment> results { get; set; }
     }
 
     
