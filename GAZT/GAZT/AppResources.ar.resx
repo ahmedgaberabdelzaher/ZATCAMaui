@@ -193,7 +193,7 @@
     <value>البريد الإلكتروني</value>
   </data>
   <data name="EnterVerificationCode" xml:space="preserve">
-    <value>الرجاء ادخال رمز التحقق الذي تم إرساله على الهاتف الجوال</value>
+    <value>الرجاء ادخال رمز التحقق المرسل عل الجوال رقم</value>
   </data>
   <data name="EstimateSalesForFiscalYear" xml:space="preserve">
     <value>المبيعات المقدرة للسنة المالية</value>
@@ -790,7 +790,7 @@
     <value>أهلا:</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
-    <value>رمز التحقق للبوابة الإلكترونية</value>
+    <value>ادخل رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
     <value>Zakat Return Listing</value>
@@ -1244,10 +1244,10 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-   <data name="Release" xml:space="preserve">
+  <data name="Release" xml:space="preserve">
     <value>Release</value>
   </data>
-    <data name="OldValue" xml:space="preserve">
+  <data name="OldValue" xml:space="preserve">
     <value>Old Value</value>
   </data>
 </root>
