@@ -5,6 +5,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -29,6 +30,21 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private SalesDetails _selectedSalesDetails;
         public SalesDetails SelectedSalesDetails
         {
@@ -229,7 +245,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if(CheckBoxStatus)
                 {
-                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+                    SetUpdatedDataToZAKATEstimated();
+                   await SubmitZakatReturn();
                 }
                 else
                 {
@@ -245,6 +262,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                SetButtonVisibility();
                 ZakatReturnDetail = zakatReturnDetailsD;
                 Persl = ZakatReturnDetail.d.Persl;
                 Abrzu = ZakatReturnDetail.d.Abrzu;
@@ -323,6 +341,77 @@ namespace GAZT.ViewModel.NewViewModel
             
 
           
+        }
+
+        private async Task SubmitZakatReturn()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async() =>
+            {
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+        }
+
+        private void SetUpdatedDataToZAKATEstimated()
+        {
+            try
+            {
+                if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("1"))
+                {
+                    zakatReturnDetailsD.d.TvtslE = SalesDetailsList[0].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("2"))
+                {
+                  zakatReturnDetailsD.d.LabnoE = SalesDetailsList[1].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("3"))
+                {
+                    zakatReturnDetailsD.d.ImpvalE = SalesDetailsList[2].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("4"))
+                {
+                    zakatReturnDetailsD.d.TvtslResn = SalesDetailsList[3].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("5"))
+                {
+                    zakatReturnDetailsD.d.Estsl = SalesDetailsList[4].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("6"))
+                {
+                    zakatReturnDetailsD.d.ExamtI = SalesDetailsList[5].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("7"))
+                {
+                    zakatReturnDetailsD.d.PramtE = SalesDetailsList[6].NewValue;
+                }
+                else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
+                {
+
+                    // Missing need to check and assign the value
+                    ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+
+        private void SetButtonVisibility()
+        {
+            AmedmentButtonVisibility = true;
+            SubmitButtonVisibility = false;
         }
         #endregion
     }

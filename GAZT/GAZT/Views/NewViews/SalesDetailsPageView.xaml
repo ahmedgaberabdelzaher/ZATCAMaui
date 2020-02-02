@@ -181,6 +181,20 @@
                 <Button Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SubmitButtonVisibility}"></Button>
 
             </Grid>
+
+               <!-- Acticity indicator layout start -->
+        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!-- Acticity indicator layout end -->
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

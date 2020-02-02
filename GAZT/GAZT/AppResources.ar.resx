@@ -1247,4 +1247,7 @@
    <data name="Release" xml:space="preserve">
     <value>Release</value>
   </data>
+    <data name="OldValue" xml:space="preserve">
+    <value>Old Value</value>
+  </data>
 </root>

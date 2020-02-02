@@ -55,6 +55,25 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _oldValue = "";
+        public string OldValue
+        {
+            get
+            {
+                return _oldValue;
+            }
+            set
+            {
+                _oldValue = value;
+                if (OldValue != null)
+                {
+                    SelectedSalesDetails.OldValue = _oldValue;
+                }
+                RaisePropertyChanged("OldValue");
+            }
+        }
+
+        
         private string _changeReason = "";
         public string ChangeReason
         {
@@ -169,6 +188,9 @@ namespace GAZT.ViewModel.NewViewModel
         public void OnLoad()
         {
             SalesType = SelectedSalesDetails.SalesType;
+            OldValue = SelectedSalesDetails.EstimateSales;
+            NewValue =SelectedSalesDetails.NewValue;
+
             int k = 5;
             List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();
             ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();

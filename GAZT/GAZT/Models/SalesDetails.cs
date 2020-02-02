@@ -15,6 +15,7 @@ namespace GAZT.Models
         public string AttchamentName { get; set; }
         public string SelectedEditFieldId { get; set; }
         public bool  ComingFromAmendEditMode { get; set; } = false;
+        public string OldValue { get; set; }
 
     }
 
