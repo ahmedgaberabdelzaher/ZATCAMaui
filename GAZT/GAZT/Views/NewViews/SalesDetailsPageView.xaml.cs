@@ -117,6 +117,12 @@ namespace GAZT.Views.NewViews
             
 
         }
+        protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)
+        {
+            checkBox.IsChecked = !checkBox.IsChecked;
+            viewModel.CheckBoxStatus = checkBox.IsChecked;
+        }
+
         #endregion
 
 

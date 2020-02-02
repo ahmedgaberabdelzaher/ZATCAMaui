@@ -17,6 +17,8 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
+        string ReturnStatus = "2";
+
         #endregion
 
         #region Property
@@ -62,7 +64,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _releaseOrBillDetailsButtonText;
+        public string ReleaseOrBillDetailsButtonText
+        {
+            get
+            {
+                return _releaseOrBillDetailsButtonText;
+            }
+            set
+            {
+                _releaseOrBillDetailsButtonText = value;
+                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+            }
+        }
 
+
+        
 
         #endregion
 
@@ -90,29 +107,61 @@ namespace GAZT.ViewModel.NewViewModel
                 _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
             });
 
+           
 
             
+
+
         }
         #endregion
 
         #region Method
         public async Task OnPageLoad(string fbguid)
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
+                SetReleaseOrBillDetailsButtonText();
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
 
-            await Task.Run(async () =>
+                await Task.Run(async () =>
+                {
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                    ZakatReturnDetails = zakatReturnDetails;
+                    ZakatReturnDetail = zakatReturnDetails.d;
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(Exception ex)
             {
-                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-            ZakatReturnDetails = zakatReturnDetails;
-                ZakatReturnDetail = zakatReturnDetails.d;
-            });
-            await Task.Run(() =>
+
+            }
+          
+        }
+
+        private void SetReleaseOrBillDetailsButtonText()
+        {
+            try
             {
-                IsLoading = false;
-            });
+                if (ReturnStatus.Equals("1"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                }
+                else if (ReturnStatus.Equals("2"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.Bill;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
         #endregion
     }

@@ -19,8 +19,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnAcceptReturnButtonClicked { get; set; }
         public ICommand OnAmendReturnButtonClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
+      
 
-        
+
         public ZakatReturnDetails zakatReturnDetailsD { get; set; }
 
 
@@ -172,6 +173,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _checkBoxStatus = false;
+        public bool CheckBoxStatus
+        {
+            get
+            {
+                return _checkBoxStatus;
+            }
+            set
+            {
+                _checkBoxStatus = value;
+                RaisePropertyChanged("CheckBoxStatus");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -212,7 +227,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnSubmitButtonClicked = new Command(async () =>
             {
-                ZakatReturnDetails zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+                if(CheckBoxStatus)
+                {
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+                }
+                else
+                {
+                    // show message
+                }
             });
             
         }
@@ -244,43 +266,43 @@ namespace GAZT.ViewModel.NewViewModel
 
                 SalesDetails salesDetails2 = new SalesDetails();
                 salesDetails2.SalesType = "Average number of labour";
-                salesDetails2.InformationFromPartie = ZakatReturnDetail.d.LabnoI;
-                salesDetails2.EstimateSales = ZakatReturnDetail.d.LabnoE;
+                salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
+                salesDetails2.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoE) ? "0.00" : ZakatReturnDetail.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
                 salesDetails2.SelectedEditFieldId = "2";
                 SalesDetailsDummyList.Add(salesDetails2);
 
                 SalesDetails salesDetails3 = new SalesDetails();
                 salesDetails3.SalesType = "Imports value";
-                salesDetails3.InformationFromPartie = ZakatReturnDetail.d.ImpvalI;
-                salesDetails3.EstimateSales = ZakatReturnDetail.d.ImpvalE;
+                salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
+                salesDetails3.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalE) ? "0.00" : ZakatReturnDetail.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
                 salesDetails3.SelectedEditFieldId = "3";
                 SalesDetailsDummyList.Add(salesDetails3);
 
                 SalesDetails salesDetails4 = new SalesDetails();
                 salesDetails4.SalesType = "Sales form point of sales";
-                salesDetails4.InformationFromPartie = ZakatReturnDetail.d.TvtslResn;
-                salesDetails4.EstimateSales = ZakatReturnDetail.d.TvtslResn;
+                salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.TvtslResn) ? "0.00" : ZakatReturnDetail.d.TvtslResn; // ZakatReturnDetail.d.TvtslResn;
+                salesDetails4.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.TvtslResn) ? "0.00" : ZakatReturnDetail.d.TvtslResn; // ZakatReturnDetail.d.TvtslResn;
                 salesDetails4.SelectedEditFieldId = "4";
                 SalesDetailsDummyList.Add(salesDetails4);
 
                 SalesDetails salesDetails5 = new SalesDetails();
                 salesDetails5.SalesType = "Contracts form ETIMAD system";
-                salesDetails5.InformationFromPartie = ZakatReturnDetail.d.EtimadI;
-                salesDetails5.EstimateSales = ZakatReturnDetail.d.Estsl;
+                salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
+                salesDetails5.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.Estsl) ? "0.00" : ZakatReturnDetail.d.Estsl; //ZakatReturnDetail.d.Estsl;
                 salesDetails5.SelectedEditFieldId = "5";
                 SalesDetailsDummyList.Add(salesDetails5);
 
                 SalesDetails salesDetails6 = new SalesDetails();
                 salesDetails6.SalesType = "Exports value";
-                salesDetails6.InformationFromPartie = ZakatReturnDetail.d.ExamtResn;
-                salesDetails6.EstimateSales = ZakatReturnDetail.d.ExamtI;
+                salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
+                salesDetails6.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtI) ? "0.00" : ZakatReturnDetail.d.ExamtI; // ZakatReturnDetail.d.ExamtI;
                 salesDetails6.SelectedEditFieldId = "6";
                 SalesDetailsDummyList.Add(salesDetails6);
 
                 SalesDetails salesDetails7 = new SalesDetails();
                 salesDetails7.SalesType = "Purchase value";
-                salesDetails7.InformationFromPartie = ZakatReturnDetail.d.PramtI;
-                salesDetails7.EstimateSales = ZakatReturnDetail.d.PramtE;
+                salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
+                salesDetails7.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtE) ? "0.00" : ZakatReturnDetail.d.PramtE; // ZakatReturnDetail.d.PramtE;
                 salesDetails7.SelectedEditFieldId = "7";
 
                 SalesDetailsDummyList.Add(salesDetails7);

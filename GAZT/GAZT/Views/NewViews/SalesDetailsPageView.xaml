@@ -140,7 +140,8 @@
 
                                                 <Label Text="{Binding InformationFromPartie}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <Label Text="{Binding EstimateSales}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                <Image Source="ic_edit_gray.png" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"></Image>
+                                                <Image Source="ic_edit_gray.png" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                                </Image>
 
                                             </Grid>
                                 </Grid>
@@ -159,7 +160,7 @@
                                     <ColumnDefinition Width="90*"/>
                                    
                                 </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Column="0" Grid.Row="0" VerticalOptions="Start"></CheckBox>
+                                <CheckBox x:Name="checkBox" Grid.Column="0" Grid.Row="0" VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}"></CheckBox>
                                 <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0"></Label>
                             </Grid>
                         </Grid>
