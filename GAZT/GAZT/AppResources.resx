@@ -1235,4 +1235,10 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZUpdateMobile" xml:space="preserve">
     <value>Update Mobile</value>
   </data>
+  <data name="FinancialPeriodFrom" xml:space="preserve">
+    <value>Financial period from</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
 </root>
