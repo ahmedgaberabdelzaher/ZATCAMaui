@@ -13,8 +13,13 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public static SalesDetails SelectedSalesDetails = new SalesDetails();
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
+        public ICommand OnZakatReturnDataUpdateClicked { get; set; }
+
+        
+
         #endregion
 
         #region Property
@@ -31,6 +36,96 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
             }
         }
+
+        private string _newValue = "";
+        public string NewValue
+        {
+            get
+            {
+                return _newValue;
+            }
+            set
+            {
+                _newValue = value;
+                if(NewValue != null)
+                {
+                    SelectedSalesDetails.NewValue = NewValue;
+                }
+                RaisePropertyChanged("NewValue");
+            }
+        }
+
+        private string _changeReason = "";
+        public string ChangeReason
+        {
+            get
+            {
+                return _changeReason;
+            }
+            set
+            {
+                _changeReason = value;
+                if (ChangeReason != null)
+                {
+                    SelectedSalesDetails.ChangeReason = ChangeReason;
+                }
+                RaisePropertyChanged("ChangeReason");
+            }
+        }
+
+        
+
+        private string _attachmentName = "";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
+                if (AttachmentName != null)
+                {
+                    SelectedSalesDetails.AttchamentName = AttachmentName;
+                }
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
+
+        private string _attachmentNumber = "";
+        public string AttachmentNumber
+        {
+            get
+            {
+                return _attachmentNumber;
+            }
+            set
+            {
+                _attachmentNumber = value;
+                if (_attachmentNumber != null)
+                {
+                    SelectedSalesDetails.AttchamentNumber = AttachmentNumber;
+                }
+                RaisePropertyChanged("AttachmentNumber");
+            }
+        }
+
+        private string _salesType = "";
+        public string SalesType
+        {
+            get
+            {
+                return _salesType;
+            }
+            set
+            {
+                _salesType = value;
+                if (_attachmentNumber != null)
+                RaisePropertyChanged("SalesType");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -51,11 +146,13 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
 
-            OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
+            OnZakatReturnDataUpdateClicked = new Xamarin.Forms.Command(async () =>
             {
                 try
                 {
-                    _navigationService.NavigateTo(App.ZakatBillDetailsPageView);
+                    _navigationService.GoBack();
+                    // _navigationService.NavigateTo(App.ZakatBillDetailsPageView);
+                 
                 }
                 catch(Exception ex)
                 {
@@ -68,8 +165,10 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+
         public void OnLoad()
         {
+            SalesType = SelectedSalesDetails.SalesType;
             int k = 5;
             List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();
             ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();

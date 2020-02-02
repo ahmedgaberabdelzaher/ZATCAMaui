@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,17 @@ namespace GAZT.Views.NewViews
 
         #region Property
         #endregion
-
+     
         #region Constructor
-        public AmendSalesDetailsPageView()
+        public AmendSalesDetailsPageView(SalesDetails SelectedSalesDetails)
         {
             InitializeComponent();
             try
             {
                 viewModel = App.Locator.AmendSalesDetailsPageView;
+                SelectedSalesDetails.ComingFromAmendEditMode = true;
                 this.BindingContext = viewModel;
+                AmendSalesDetailsPageViewModel.SelectedSalesDetails = SelectedSalesDetails;
                 viewModel.OnLoad();
                 SetLTR();
             }catch (Exception ex)

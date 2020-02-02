@@ -2208,6 +2208,34 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<ZakatReturnDetails> GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD)//, string returnedFguid
+        {
+            try
+            {
+                ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
+                char LangZ = GetLangZParameter();
+                // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                String url = Constants.GAZTSaveEstimatedZaktReturn;
+                                                                                                                                                                                                                                                                 // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+
+                var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
+                return _zakatReturnDetailsD;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 
 }

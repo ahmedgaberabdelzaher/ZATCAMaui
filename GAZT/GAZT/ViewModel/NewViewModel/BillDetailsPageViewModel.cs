@@ -14,13 +14,13 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
-        public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
+        public ZakatReturnDetails zakatReturnDetailsD { get; set; }
 
         #endregion
 
         #region Property
-        private ZakatReturnDetailsD _zakatReturnDetail;
-        public ZakatReturnDetailsD ZakatReturnDetail
+        private ZakatReturnDetails _zakatReturnDetail;
+        public ZakatReturnDetails ZakatReturnDetail
         {
             get
             {

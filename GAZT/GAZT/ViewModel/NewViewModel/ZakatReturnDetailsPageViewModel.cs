@@ -34,8 +34,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private ZakatReturnDetailsD _zakatReturnDetail ;
-        public ZakatReturnDetailsD ZakatReturnDetail
+        private ZakatReturnDetails _zakatReturnDetail ;
+        public ZakatReturnDetails ZakatReturnDetail
         {
             get
             {
@@ -92,7 +92,7 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async() =>
             {
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                ZakatReturnDetail = zakatReturnDetails.d;
+                ZakatReturnDetail = zakatReturnDetails;
             });
             await Task.Run(() =>
             {

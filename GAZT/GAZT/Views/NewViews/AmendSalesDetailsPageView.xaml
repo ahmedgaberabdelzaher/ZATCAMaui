@@ -44,14 +44,14 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Label Text="{x:Static local:AppResources.ZTotalVATSales}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                            <Label Text="{Binding SalesType}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="2"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding NewValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -67,7 +67,7 @@
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Grid.Row="4"   Grid.Column="0"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -85,7 +85,7 @@
                             </Label>
                             <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="6"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
@@ -284,7 +284,7 @@
                  
                 </Grid>
 
-                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnChangeEmailSubmitButtonClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
             </Grid>
         </Grid>
