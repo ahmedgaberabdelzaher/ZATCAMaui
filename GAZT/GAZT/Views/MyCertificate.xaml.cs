@@ -36,14 +36,12 @@ namespace GAZT.Views
                 if (viewModel.allCertificate.ZakatSet != null && viewModel.allCertificate.ZakatSet.results != null && viewModel.allCertificate.ZakatSet.results.Count > 0)
                 {
                     Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-
                     Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                     Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                 }
                 else if (viewModel.allCertificate.VATSet != null && viewModel.allCertificate.VATSet.results != null && viewModel.allCertificate.VATSet.results.Count > 0)
                 {
                     Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-
                     Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                     Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                 }
