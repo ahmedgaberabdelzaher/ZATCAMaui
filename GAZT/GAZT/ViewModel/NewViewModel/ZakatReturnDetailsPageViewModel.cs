@@ -34,8 +34,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private ZakatReturnDetails _zakatReturnDetail ;
-        public ZakatReturnDetails ZakatReturnDetail
+        private ZakatReturnDetailsD _zakatReturnDetail ;
+        public ZakatReturnDetailsD ZakatReturnDetail
         {
             get
             {
@@ -48,8 +48,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ZakatReturnDetails _zakatReturnDetails;
+        public ZakatReturnDetails ZakatReturnDetails
+        {
+            get
+            {
+                return _zakatReturnDetails;
+            }
+            set
+            {
+                _zakatReturnDetails = value;
+                RaisePropertyChanged("ZakatReturnDetails");
+            }
+        }
 
-        
+
+
         #endregion
 
         #region Constructor
@@ -68,12 +82,12 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
             });
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetail);
+                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
             });
 
 
@@ -89,10 +103,11 @@ namespace GAZT.ViewModel.NewViewModel
                 IsLoading = true;
             });
 
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                ZakatReturnDetail = zakatReturnDetails;
+            ZakatReturnDetails = zakatReturnDetails;
+                ZakatReturnDetail = zakatReturnDetails.d;
             });
             await Task.Run(() =>
             {

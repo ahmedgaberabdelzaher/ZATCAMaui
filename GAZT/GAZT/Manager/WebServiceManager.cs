@@ -2151,6 +2151,7 @@ namespace GAZT.Manager
         }
 
         public static async Task<ZakatReturnDetails> GAZTGetZAKATReturn(string fbguid)
+
         {
             ZakatReturnDetails zakatReturnDetails = new ZakatReturnDetails();
             if (CrossConnectivity.Current.IsConnected)
