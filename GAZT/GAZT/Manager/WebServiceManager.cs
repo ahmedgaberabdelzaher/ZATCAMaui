@@ -1993,8 +1993,9 @@ namespace GAZT.Manager
                 //MultipartFormDataContent content = new MultipartFormDataContent();
                 //ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                 // content.Add(baContent, "File", fileName);
-                var response = await client.DeleteAsync(url);
-                var responsestr = response.Content.ReadAsStringAsync().Result;
+               // var response = await client.DeleteAsync(url);
+                HttpResponseMessage res = client.DeleteAsync(url).Result;
+                var responsestr = res.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                 return _attachment;
             }
