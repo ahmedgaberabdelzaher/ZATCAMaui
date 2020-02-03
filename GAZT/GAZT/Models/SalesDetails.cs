@@ -9,6 +9,7 @@ namespace GAZT.Models
         public string SalesType { get; set; }
         public string InformationFromPartie { get; set; }
         public string EstimateSales { get; set; }
+        public string EditImageSource { get; set; } = "";
         public string NewValue { get; set; }
         public string ChangeReason { get; set; }
         public string AttchamentNumber { get; set; }

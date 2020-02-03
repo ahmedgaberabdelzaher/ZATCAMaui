@@ -32,6 +32,7 @@ namespace GAZT.Views.NewViews
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             SetLTR();
             this.BindingContext = viewModel;
+           
             viewModel.onPageLoad();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
