@@ -212,7 +212,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnSubmitButtonClicked = new Command(async () =>
             {
-                ZakatReturnDetails zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+                ZakatReturnDetails zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
             });
             
         }

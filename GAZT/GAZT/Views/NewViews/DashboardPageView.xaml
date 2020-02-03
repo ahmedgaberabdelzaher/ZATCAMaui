@@ -1,15 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              mc:Ignorable="d"
-              xmlns:custom="clr-namespace:GAZT"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.DashboardPageView"
-             Title="{x:Static local:AppResources.Dashoboard}"
-             xmlns:local1="clr-namespace:GAZT"
-             >
+             Title="{x:Static local:AppResources.Dashoboard}">
    
       <!--Title="{x:Static local:AppResources.Dashoboard}"-->
     <ContentPage.ToolbarItems>
@@ -234,7 +231,7 @@
                                 </StackLayout>
 
 
-                            <!--<StackLayout Grid.Row="1" Grid.Column="0">
+                            <StackLayout Grid.Row="1" Grid.Column="0">
                                 <Image Source="ic_vat_declaration_1.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
@@ -245,9 +242,9 @@
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>-->
+                            </StackLayout>
 
-                            <!--<StackLayout Grid.Row="1" Grid.Column="1">
+                            <StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
@@ -258,7 +255,7 @@
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>-->
+                            </StackLayout>
 
                                 <!--<StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">

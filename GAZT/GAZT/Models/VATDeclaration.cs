@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT.Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -511,12 +512,14 @@ namespace GAZT.Models
         public event PropertyChangedEventHandler PropertyChanged;
     }
     
-    public class VATApplicableButton
+    public class ApplicableButton
     {
         public string Fbtyp { get; set; }
         public string Fbust { get; set; }
         public string Button { get; set; }
         public string TransactionType { get; set; }
         public string UserTyp { get; set; }
+        
+        public Buttons buttonEnumId = Buttons.None;
     }
 }

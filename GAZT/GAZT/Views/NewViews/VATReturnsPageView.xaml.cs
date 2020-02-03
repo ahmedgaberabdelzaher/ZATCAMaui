@@ -28,13 +28,7 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
-            //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
-            //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-            //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-
+           
             InitializeComponent();
 
            
@@ -45,7 +39,8 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
-            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
+            {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
@@ -55,12 +50,7 @@ namespace GAZT.Views.NewViews
 
             IntilizeAsync();
 
-
             viewModel.IsMainButtonEnabled = false;
-            
-            
-            // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
-            
 
         }
         #endregion
@@ -78,14 +68,12 @@ namespace GAZT.Views.NewViews
         }
         public async void IntilizeAsync()
         {
-           await viewModel.pageLoad();
+            await viewModel.pageLoad();
+            viewModel.ListOfActionButtonsApplicable = new List<string>();
+            await viewModel.SetButtons(viewModel.VATDeclarationData);
+
             onPageLoadCalculation();
-            if (App.ICRStatus != "E0013")
-            {
-                viewModel.IsCheckedTaxPayerDetailsInfo = false;
-                viewModel.IsDeclarationCheckedForInstruction = false;
-                viewModel.IsDeclarationCheckedForSummary = false;
-            }
+            
             
            //onPageLoadCalculation();
         }
@@ -294,27 +282,31 @@ namespace GAZT.Views.NewViews
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            //"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return", "Amend Return"
-            //viewModel.ListOfActionButtonsApplicable.ToArray()
-            var action = await DisplayActionSheet("ActionSheet", "Cancel", null, "Add Note", "View Notes", "Attachments", "Set Return Void", "Reset Return", "Amend Return");
-            switch (action)
+            
+            String  action = await DisplayActionSheet("ActionSheet", "Cancel", null, viewModel.ListOfActionButtonsApplicable.ToArray());
+
+
+            Buttons buttonId = Buttons.None;
+            Enum.TryParse(action, out buttonId);
+            
+            switch (buttonId)
             {
-                case "Add Note":
+                case Buttons.Createnotes:
                     viewModel.VATReturnAddNote();
                     break;
-                case "View Notes":
+                case Buttons.DisplayNotes:
                     viewModel.VATReturnGetNotes();
                     break;
-                case "Attachments":
+                case Buttons.Attachments:
                     viewModel.VATViewAttachments();
                     break;
-                case "Set Return Void":
+                case Buttons.Void:
                     await viewModel.VATSetReturnVoidAsync();
                     break;
-                case "Reset Return":
+                case Buttons.Reset:
                     await viewModel.VATReturnResetAsync();
                     break;
-                case "Amend Return":
+                case Buttons.Amend:
                     await viewModel.VATReturnAmendAsync();
                     break;
                 default:
