@@ -18,6 +18,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
         string ReturnStatus = "2";
+        public static bool IsAmendButtonPressed = false;
 
         #endregion
 
@@ -99,11 +100,24 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
+                if (ZakatReturnDetails.d.Statusz.Equals("E0001") || ZakatReturnDetails.d.Statusz.Equals("IP011"))
+                {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
+                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                }
+                else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002") || ZakatReturnDetails.d.Statusz.Equals("E0003"))
+                {
+                    IsAmendButtonPressed = true;
+                    _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                }
+                else
+                {
+                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
+                }
             });
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
+                IsAmendButtonPressed = false;
                 _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
             });
 
@@ -120,7 +134,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                SetReleaseOrBillDetailsButtonText();
+                
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -129,8 +143,10 @@ namespace GAZT.ViewModel.NewViewModel
                 await Task.Run(async () =>
                 {
                     ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                    EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                     ZakatReturnDetails = zakatReturnDetails;
                     ZakatReturnDetail = zakatReturnDetails.d;
+                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                 });
                 await Task.Run(() =>
                 {
@@ -144,17 +160,17 @@ namespace GAZT.ViewModel.NewViewModel
           
         }
 
-        private void SetReleaseOrBillDetailsButtonText()
+        private void SetReleaseOrBillDetailsButtonText(string ButtonStatus)
         {
             try
             {
-                if (ReturnStatus.Equals("1"))
+                if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
                 {
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ReturnStatus.Equals("2"))
+                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003"))
                 {
-                    ReleaseOrBillDetailsButtonText = AppResources.Bill;
+                    ReleaseOrBillDetailsButtonText = AppResources.AmendTheReturn;
                 }
             }
             catch(Exception ex)

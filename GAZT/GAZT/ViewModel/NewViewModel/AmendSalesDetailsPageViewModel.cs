@@ -188,8 +188,9 @@ namespace GAZT.ViewModel.NewViewModel
         public void OnLoad()
         {
             SalesType = SelectedSalesDetails.SalesType;
-            OldValue = SelectedSalesDetails.EstimateSales;
+            OldValue = SelectedSalesDetails.InformationFromPartie;
             NewValue =SelectedSalesDetails.NewValue;
+            ChangeReason = SelectedSalesDetails.ChangeReason;
 
             int k = 5;
             List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();

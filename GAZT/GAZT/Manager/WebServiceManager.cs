@@ -1323,19 +1323,19 @@ namespace GAZT.Manager
             {
                 DateTime dt = DateTime.Now;
                 ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+                char lang = GetLangZParameter();
                 string NewToken = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3102164652',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')?Saml2=disabled&$format=json";
-                    string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + "E" + "'" + ")?Saml2=disabled&$format=json";
+                    string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?Saml2=disabled&$format=json";
                     HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
                     if (GAZTFogotPasswordSendOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
                         String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
-                        /// GAZTGetSendOTPResponseJSON = JObject.Parse(GAZTGetSendOTPResponseJSON)["d"].ToString();
-                        forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
+                         forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
                     }
                     return forgotPasswordOTP;
                 }
@@ -2196,14 +2196,15 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    if (string.Equals(ex.Message, AppResources.InvalidOTP))
-                    {
-                        throw new Exception(AppResources.InvalidEmail);
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.NetworkConnectivityIssue);
-                    }
+                    return null;
+                    //if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                    //{
+                    //    throw new Exception(AppResources.InvalidEmail);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
                 }
             }
             else
@@ -2310,6 +2311,68 @@ namespace GAZT.Manager
             }
 
           return VATApplicableButtons;
+        }
+
+        public static async Task<EsimatedZAKATReturnsButtonSets> GAZTGetZAKATReturnButtonSet()
+        {
+            EsimatedZAKATReturnsButtonSets ZAKATReturnApplicableButtons = new EsimatedZAKATReturnsButtonSets();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TaxPayerProfile TP = null;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();// "E";
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FZ12_BS_SRV/UI_HdrSet(Fbtypz='FZ12',UserTypz='TP',Fbnum='94000001174',Gpart='',Status='E0003',TxnTp='',Formproc='FZ12',Lang='EN',Officer='')?&$expand=UI_BtnSet&$format=json&saml2=disabled";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _esimatedZAKATReturnsButtonSets = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        ZAKATReturnApplicableButtons = JsonConvert.DeserializeObject<EsimatedZAKATReturnsButtonSets>(_esimatedZAKATReturnsButtonSets);
+                    }
+
+                    return ZAKATReturnApplicableButtons;
+
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                    //{
+                    //    throw new Exception(AppResources.InvalidEmail);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
         }
 
     }
