@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 FlowDirection="LeftToRight"
+             x:Class="GAZT.Views.NewViews.AddPopPageView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+            <StackLayout  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                <Image  Grid.Row="0" Grid.Column="1" BackgroundColor="Red" HorizontalOptions="End" Source="ic_back.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Margin="0,0,0,0" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                <Label Margin="0,0,0,0" Text="Link" IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+            </StackLayout>
+        </Frame>
+    </Grid>
+</pages:PopupPage>

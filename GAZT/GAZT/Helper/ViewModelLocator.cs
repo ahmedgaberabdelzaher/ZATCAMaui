@@ -56,6 +56,7 @@ namespace GAZT
             SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
             SimpleIoc.Default.Register<AttachmentPageViewModel>();
             SimpleIoc.Default.Register<AddNotePageViewModel>();
+            SimpleIoc.Default.Register<AddPopPageViewModel>();
 
 
 
@@ -657,6 +658,21 @@ namespace GAZT
             }
         }
 
+        public AddPopPageViewModel AddPopPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AddPopPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
         private INavigationService CreateNavigationService()
@@ -704,6 +720,7 @@ namespace GAZT
             navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
             navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
             navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
+            navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
 
 
 

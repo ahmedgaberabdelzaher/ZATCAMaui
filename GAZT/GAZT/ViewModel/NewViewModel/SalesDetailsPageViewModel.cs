@@ -353,7 +353,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
+                ZakatReturnDetails zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD);
 
             });
             await Task.Run(() =>

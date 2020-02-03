@@ -34,8 +34,8 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.DisplayNotesPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
-
-                if(vATDeclaration!=null && vATDeclaration.d!=null)
+                
+                if (vATDeclaration!=null && vATDeclaration.d!=null)
                 {
                     if(vATDeclaration.d.NOTESSet.results.Count!=0)
                     {

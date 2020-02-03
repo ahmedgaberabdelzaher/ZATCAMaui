@@ -2539,6 +2539,16 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total paid amount.
         /// </summary>
         public static string ZTotalPaidAmount {

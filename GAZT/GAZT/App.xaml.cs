@@ -57,6 +57,7 @@ namespace GAZT
         public static string DisplayNotesPageView = "DisplayNotesPageView";
         public static string AttachmentPageView = "AttachmentPageView";
         public static string AddNotePageView = "AddNotePageView";
+        public static string AddPopPageView = "AddPopPageView";
 
 
         public static TIN CurrentDropdownTIN;
