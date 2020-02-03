@@ -1,4 +1,5 @@
-﻿using GAZT.Manager;
+﻿using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
@@ -36,6 +37,8 @@ namespace GAZT.Views.NewViews
             //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
             //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
 
+
+           
             InitializeComponent();
 
            
@@ -46,23 +49,19 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
-            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+          
+            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                //if (sender is ListView lv) lv.SelectedItem = null;
             };
 
 
             IntilizeAsync();
 
-
             viewModel.IsMainButtonEnabled = false;
-            
-            
-            // viewModel.PageSelectedItems = viewModel.VatTabbledPageList[0];
-            
 
         }
         #endregion
@@ -80,14 +79,12 @@ namespace GAZT.Views.NewViews
         }
         public async void IntilizeAsync()
         {
-           await viewModel.pageLoad();
+            await viewModel.pageLoad();
+            viewModel.ListOfActionButtonsApplicable = new List<string>();
+            await viewModel.SetButtons(viewModel.VATDeclarationData);
+
             onPageLoadCalculation();
-            if (App.ICRStatus != "E0013")
-            {
-                viewModel.IsCheckedTaxPayerDetailsInfo = false;
-                viewModel.IsDeclarationCheckedForInstruction = false;
-                viewModel.IsDeclarationCheckedForSummary = false;
-            }
+            
             
            //onPageLoadCalculation();
         }
@@ -128,36 +125,70 @@ namespace GAZT.Views.NewViews
             base.OnAppearing();
            if (AddNotePageViewModel.IsComingFromNotePage==true && !string.IsNullOrEmpty(AddNotePageViewModel.NoteString))
             {
-                viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+               
                 if(App.ICRStatus == "E0001")
                 {
-                    Note objNote = new Note();
-                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                    objNote.Notenoz = (count + 1).ToString();
-                    objNote.DataVersionz = "00000";
-                    objNote.XInvoicez = String.Empty;
-                    objNote.XObsoletez = string.Empty;
-                    objNote.Rcodez = "VATR";
-                    objNote.Erfusrz = null;
-                    objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
-                    objNote.AttByz = "TP";
-                    objNote.Noteno = (count + 1).ToString();
-                    objNote.Lineno = 1;
-                    objNote.ElemNo = 0;
-                    objNote.Tdline = AddNotePageViewModel.NoteString;
-                    viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
-                    AddNotePageViewModel.IsComingFromNotePage = false;
+                    SetNote();
                 }
                 if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                 {
-                    Note objNote = new Note();
-                   
-                    foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    if(note!=null)
                     {
-                        item.Tdline = AddNotePageViewModel.NoteString;
+                        foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        {
+                            item.Strline = AddNotePageViewModel.NoteString;
+                        }
+                        AddNotePageViewModel.IsComingFromNotePage = false;
+                        AddNotePageViewModel.NoteString = string.Empty;
                     }
+                    else
+                    {
+                        SetNote();
+                    }
+
+                    
+                    
                 }
             }
+        }
+
+        public void SetNote()
+        {
+            viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+
+            Note objNote = new Note();
+
+            int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet(00" + (count + 1).ToString() + ")";
+            objNote.__metadata = new Metadata2();
+            objNote.__metadata.id = Url;
+            objNote.__metadata.uri = Url;
+            objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+
+            objNote.Notenoz = "00" + (count + 1).ToString();
+            objNote.DataVersionz = "00000";
+            objNote.Refnamez = String.Empty;
+            objNote.XInvoicez = String.Empty;
+            objNote.XObsoletez = string.Empty;
+            objNote.Rcodez = "VATR";
+            objNote.ByPusrz = string.Empty;
+            objNote.Tdformat = string.Empty;
+            objNote.Tdline = string.Empty;
+            objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
+            objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
+            objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+            objNote.AttByz = "TP";
+            objNote.Noteno = "00" + (count + 1).ToString();
+            objNote.Lineno = 0;
+            objNote.ElemNo = 0;
+            objNote.Strdt = string.Empty;
+            objNote.Strtime = string.Empty;
+            objNote.Sect = "VAT Return General Note";
+            objNote.Strline = AddNotePageViewModel.NoteString;
+            viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+            AddNotePageViewModel.IsComingFromNotePage = false;
+            AddNotePageViewModel.NoteString = string.Empty;
         }
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
@@ -296,27 +327,31 @@ namespace GAZT.Views.NewViews
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            //"Add Note", "View Notes","Attachments", "Set Return Void", "Reset Return", "Amend Return"
-            //viewModel.ListOfActionButtonsApplicable.ToArray()
-            var action = await DisplayActionSheet("ActionSheet", "Cancel", null, "Add Note", "View Notes", "Attachments", "Set Return Void", "Reset Return", "Amend Return");
-            switch (action)
+            
+            String  action = await DisplayActionSheet("ActionSheet", "Cancel", null, viewModel.ListOfActionButtonsApplicable.ToArray());
+
+
+            Buttons buttonId = Buttons.None;
+            Enum.TryParse(action, out buttonId);
+            
+            switch (buttonId)
             {
-                case "Add Note":
+                case Buttons.Createnotes:
                     viewModel.VATReturnAddNote();
                     break;
-                case "View Notes":
+                case Buttons.DisplayNotes:
                     viewModel.VATReturnGetNotes();
                     break;
-                case "Attachments":
+                case Buttons.Attachments:
                     viewModel.VATViewAttachments();
                     break;
-                case "Set Return Void":
+                case Buttons.Void:
                     await viewModel.VATSetReturnVoidAsync();
                     break;
-                case "Reset Return":
+                case Buttons.Reset:
                     await viewModel.VATReturnResetAsync();
                     break;
-                case "Amend Return":
+                case Buttons.Amend:
                     await viewModel.VATReturnAmendAsync();
                     break;
                 default:

@@ -2310,5 +2310,11 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendTheReturn", resourceCulture);
             }
         }
+        
+        public static string ZToolTipStandardRatedSalesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
+            }
+        }
     }
 }

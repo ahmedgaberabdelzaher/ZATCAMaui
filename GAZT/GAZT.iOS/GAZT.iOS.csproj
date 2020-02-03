@@ -211,6 +211,9 @@
     <PackageReference Include="NodaTime">
       <Version>2.4.7</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.2.0.223</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.DeviceOrientation">
       <Version>1.0.1</Version>
     </PackageReference>

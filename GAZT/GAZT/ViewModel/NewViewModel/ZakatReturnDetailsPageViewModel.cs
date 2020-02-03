@@ -102,7 +102,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (ZakatReturnDetails.d.Statusz.Equals("E0001") || ZakatReturnDetails.d.Statusz.Equals("IP011"))
                 {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
-                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                  await  ReleaseEstimateZakatReturn();
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002") || ZakatReturnDetails.d.Statusz.Equals("E0003"))
                 {
@@ -179,6 +179,25 @@ namespace GAZT.ViewModel.NewViewModel
             }
            
         }
+
+        private async Task ReleaseEstimateZakatReturn()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                ZakatReturnDetails zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails);
+
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+        }
+
         #endregion
     }
 }
