@@ -1241,16 +1241,11 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-   <data name="Release" xml:space="preserve">
+  <data name="Release" xml:space="preserve">
     <value>Release</value>
   </data>
   <data name="OldValue" xml:space="preserve">
     <value>Old Value</value>
-  </data>
-  
-  <data name="ZToolTipStandardRatedSalesAdjustment" xml:space="preserve">
-    <value>• Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables</value>
   </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>• Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
