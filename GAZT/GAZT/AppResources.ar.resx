@@ -139,7 +139,7 @@
     <value>التدقيق والمراجعة</value>
   </data>
   <data name="Verify" xml:space="preserve">
-    <value>التحقق</value>
+    <value>تحقق</value>
   </data>
   <data name="AverageNumOfEmployment" xml:space="preserve">
     <value>متوسط عدد العمالة</value>
@@ -667,7 +667,7 @@
     <value>إجمالي الإقرارات الغير مدفوعة (إقرار مفتوح)</value>
   </data>
   <data name="TheAccountwillbelockedwithinTwomin" xml:space="preserve">
-    <value>الوقت المتبقي لصلاحية الرمز المرسل</value>
+    <value>سوف تنتهي صلاحية رمز التحقق خلال</value>
   </data>
   <data name="TheAccountWillBeLockedAfterThreeAttempts" xml:space="preserve">
     <value>سيتم حجب الحساب في حال إدخال رمز التحقق أكثر من 3 مرات بشكل خاطئ</value>

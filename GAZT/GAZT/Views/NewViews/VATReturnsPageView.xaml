@@ -1047,10 +1047,8 @@
 
                                                                 </Image>
 
-                                                                <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"   >
-                                                                    <Image.GestureRecognizers>
-                                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Name=Attachmentlist}, Path=BindingContext.OnDeleteAttachmentClicked}" CommandParameter="{Binding .}"/>
-                                                                    </Image.GestureRecognizers>
+                                                                <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                                  
                                                                 </Image>
 
 
