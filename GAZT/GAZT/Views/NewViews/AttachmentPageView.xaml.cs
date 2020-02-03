@@ -1,4 +1,5 @@
-﻿using GAZT.Models;
+﻿using GAZT.Manager;
+using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,14 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        private void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            Attachment attachment = (Attachment)arrowImage.BindingContext;
+            var results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, viewModel.VATDeclarationData.d.ReturnIdz);
+        }
+
         #endregion
 
 
