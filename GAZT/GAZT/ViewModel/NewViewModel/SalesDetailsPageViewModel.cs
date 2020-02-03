@@ -232,6 +232,7 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                     AmedmentButtonVisibility = false;
+                    ShowEditIcon();
                     SubmitButtonVisibility = true;
                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
                 }
@@ -333,6 +334,7 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails8.SelectedEditFieldId = "8";
 
                 SalesDetailsList = SalesDetailsDummyList;
+                HideEditIcon();
             }
             catch(Exception ex)
             {
@@ -413,6 +415,30 @@ namespace GAZT.ViewModel.NewViewModel
             AmedmentButtonVisibility = true;
             SubmitButtonVisibility = false;
         }
+
+        private void ShowEditIcon()
+        {
+            if (SalesDetailsList != null)
+            {
+                foreach (SalesDetails salesDetails in SalesDetailsList)
+                {
+                    salesDetails.EditImageSource = "ic_edit_gray.png";
+                }
+            }
+        }
+
+        public void HideEditIcon()
+        {
+            if(SalesDetailsList != null)
+            {
+                foreach (SalesDetails salesDetails in SalesDetailsList)
+                {
+                    salesDetails.EditImageSource = "";
+                }
+            }
+            
+        }
+
         #endregion
     }
 }

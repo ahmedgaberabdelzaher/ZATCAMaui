@@ -116,7 +116,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="150">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="200">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -140,7 +140,7 @@
 
                                                 <Label Text="{Binding InformationFromPartie}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <Label Text="{Binding EstimateSales}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                <Image Source="ic_edit_gray.png" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                                <Image Source="{Binding EditImageSource}" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
                                                 </Image>
 
                                             </Grid>
