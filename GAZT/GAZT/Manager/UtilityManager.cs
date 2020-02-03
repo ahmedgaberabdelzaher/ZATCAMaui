@@ -8,6 +8,7 @@ using System.Threading;
 
 namespace GAZT.Manager
 {
+
     public static class UtilityManager
     {
         #region variable
@@ -20,8 +21,7 @@ namespace GAZT.Manager
        
 
         #endregion
-
-
+        
         #region Method
         public static bool IsValidEmailAddress(string EmailAddress)
         {
@@ -288,5 +288,66 @@ namespace GAZT.Manager
             else return input;
         }
         #endregion
+
+    }
+
+    public enum Buttons
+    {
+        None = -01,
+        Submit = 01,
+        Approve = 02,
+        Reject = 03,
+        Void = 04,
+        Save = 05,
+        NotesforER = 06,
+        DisplayNotes = 07,
+        Validate = 08,
+        Forward = 09,
+        Assigntome = 10,
+        Calendar = 11,
+        Confirm = 12,
+        SendforInspection = 13,
+        AssignInspector = 14,
+        Attachments = 15,
+        SendBack = 16,
+        AttachBankGuarantee = 17,
+        ExtendDueDate = 18,
+        Reset = 19,
+        Next = 20,
+        Createnotes = 21,
+        Amend = 22,
+        InspectorSubmit = 23,
+        Closed = 24,
+        ApplicationDownloadforInspector = 25,
+        Reviewed = 26,
+        AssignOfficer = 27,
+        EditaMovementActivity = 28,
+        CancelMovementActivity = 29,
+        AddNewMovementActivity = 30,
+        SavetheDeclaration = 31,
+        CancelDeclaration = 32,
+        SubmittheDeclaration = 33,
+        SendforAudit = 34,
+        SendtoDirector = 35,
+        SubmitInspector = 36,
+        AttachUnloadingDocument = 37,
+        ClearDocument = 38,
+        ExtendApprovalTime = 39,
+        Change = 40,
+        Extend = 41,
+        Revoke = 42,
+        SendtoTaxpayer = 43,
+        SummaryDetails = 44,
+        PrintSDReleaseLetter = 45,
+        ReleaseBankGuarantee = 46,
+        ComplianceAndHistory = 47,
+        Previous = 48,
+        CancelReturn = 49,
+        RequestAdditionalInformation = 50,
+        Salesdetails = 51,
+        Changefromestimatetoaccounting = 52,
+        Invoice = 53,
+        Release = 54,
+        ReviseDownPayment = 55
     }
 }

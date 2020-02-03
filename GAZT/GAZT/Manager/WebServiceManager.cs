@@ -1942,15 +1942,18 @@ namespace GAZT.Manager
                 string Dotyp = "VTA0";
                 string AttBy = "TP";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+            //    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                 String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                                                                                                                                                                                                                                                                  // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Token", App.Token);
+              //  client.DefaultRequestHeaders.Add("Token", App.Token);
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                // client.DefaultRequestHeaders.Add("content-type", "application/pdf");
+                // client.DefaultRequestHeaders.Add("content-type", "multipart/form-data");
                 client.DefaultRequestHeaders.Add("slug", fileName);
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+               
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                 content.Add(baContent, "File", fileName);
@@ -1977,15 +1980,16 @@ namespace GAZT.Manager
                 string Dotyp = "VTA0";
                 string AttBy = "TP";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=disabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                                                                                                                                                                                                                                                                  // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Token", App.Token);
+                //  client.DefaultRequestHeaders.Add("Token", App.Token);
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                // client.DefaultRequestHeaders.Add("content-type", "application/pdf");
+                // client.DefaultRequestHeaders.Add("content-type", "multipart/form-data");
                 client.DefaultRequestHeaders.Add("slug", fileName);
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                 //MultipartFormDataContent content = new MultipartFormDataContent();
                 //ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                 // content.Add(baContent, "File", fileName);
@@ -2033,7 +2037,7 @@ namespace GAZT.Manager
             try
             {
                 string _language = UtilityManager.GetLanguageParameter();
-               
+
                 HttpClient client = new HttpClient(App.httpClientHandler);
                 //String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3101965624',Auditor='',Lang='EN',UserTin='3101965624')?saml2=disabled&sap-language='EN'&$expand=listSet&$format=json";
@@ -2114,40 +2118,19 @@ namespace GAZT.Manager
             return RequestVATDeclaration;
         }
 
-        public static void GAZTSetVATReturnDeleteAttachment(string AttachmentIdentifier)
+        public static VATDeclaration GAZTSetVATReturnAmend(VATDeclaration vATDeclaration)
         {
+            VATDeclaration RequestVATDeclaration = null;
             try
             {
-
+                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
 
             }
-        }
-        
-        public static void GAZTSetVATReturnAddNote(string AttachmentIdentifier)
-        {
-            try
-            {
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        public static void GAZTSetVATReturnGetNotes(string AttachmentIdentifier)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-
-            }
+            return RequestVATDeclaration;
         }
 
         public static async Task<ZakatReturnDetails> GAZTGetZAKATReturn(string fbguid)
@@ -2162,7 +2145,7 @@ namespace GAZT.Manager
                     char lang = GetLangZParameter();// "E";
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-              //  https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='',Langz='EN',Gpartz='3102226654',Euser='3102226654',Fbguid='005056B1F8FB1EEA8FBC3AD61DEA5627',Invflg='',Fsource='TP')?saml2=disabled&sap-language='EN'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json
+                    //  https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='',Langz='EN',Gpartz='3102226654',Euser='3102226654',Fbguid='005056B1F8FB1EEA8FBC3AD61DEA5627',Invflg='',Fsource='TP')?saml2=disabled&sap-language='EN'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json
                     String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=disabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     var uri = new Uri(url);
 
@@ -2188,7 +2171,7 @@ namespace GAZT.Manager
                         zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
                     }
 
-                   return zakatReturnDetails;
+                    return zakatReturnDetails;
 
                 }
                 catch (Exception ex)
@@ -2211,12 +2194,13 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<ZakatReturnDetails> GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD)//, string returnedFguid
+        public static ZakatReturnDetails GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD)//, string returnedFguid
         {
             try
             {
                 zakatReturnDetailsD.d.Operationz = "59";
                 zakatReturnDetailsD.d.UserTypz = "TP";
+                zakatReturnDetailsD.d.Langz = UtilityManager.GetLanguageParameter();
                 ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
                 char LangZ = GetLangZParameter();
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
@@ -2242,33 +2226,33 @@ namespace GAZT.Manager
                 return null;
             }
         }
-        public static async Task<List<VATApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
+        public static async Task<List<ApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
         {
             //Fbnum = '65000004030',Lang = 'E',Operation = '',Gpart = '3000493862',Status = 'E0045',TxnTp = 'VTR_AMDT'
 
-            List<VATApplicableButton> VATApplicableButtons = new List<VATApplicableButton>();
+            List<ApplicableButton> VATApplicableButtons = new List<ApplicableButton>();
 
             try
             {
                 char LangZ = GetLangZParameter();
-                
+
                 // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='65000004030',Lang='E',Operation='',Gpart='3000493862',Status='E0045',TxnTp='VTR_AMDT',Formproc='',Periodkey='18JA')?&$expand=UI_BTNSet&$format=json	
-                
+
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
-                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation=''," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey=''" + ")?&$expand=UI_BTNSet&$format=json";
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation=''," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey=''" + ")?saml2=disabled&$expand=UI_BTNSet&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
 
-                HttpResponseMessage VATApplicableButtonsResponse =  await client.GetAsync(uri);
-               
+                HttpResponseMessage ApplicableButtonsResponse = await client.GetAsync(uri);
 
-                if (VATApplicableButtonsResponse != null)
+
+                if (ApplicableButtonsResponse != null)
                 {
                     string NewToken = string.Empty;
-                    HttpHeaders headers = VATApplicableButtonsResponse.Headers;
+                    HttpHeaders headers = ApplicableButtonsResponse.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
                     {
@@ -2284,17 +2268,17 @@ namespace GAZT.Manager
                         App.Token = NewToken;
                     }
 
-                    String VATApplicableButtonsResponseJSON = VATApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
+                    String ApplicableButtonsResponseJSON = ApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
 
-                    if (!string.IsNullOrEmpty(VATApplicableButtonsResponseJSON))
+                    if (!string.IsNullOrEmpty(ApplicableButtonsResponseJSON))
                     {
-                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["d"].ToString();
-                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["UI_BTNSet"].ToString();
-                        VATApplicableButtonsResponseJSON = JObject.Parse(VATApplicableButtonsResponseJSON)["results"].ToString();
+                        ApplicableButtonsResponseJSON = JObject.Parse(ApplicableButtonsResponseJSON)["d"].ToString();
+                        ApplicableButtonsResponseJSON = JObject.Parse(ApplicableButtonsResponseJSON)["UI_BTNSet"].ToString();
+                        ApplicableButtonsResponseJSON = JObject.Parse(ApplicableButtonsResponseJSON)["results"].ToString();
 
-                        if (string.IsNullOrEmpty(VATApplicableButtonsResponseJSON) != true)
+                        if (string.IsNullOrEmpty(ApplicableButtonsResponseJSON) != true)
                         {
-                            VATApplicableButtons = JsonConvert.DeserializeObject<List<VATApplicableButton>>(VATApplicableButtonsResponseJSON);
+                            VATApplicableButtons = JsonConvert.DeserializeObject<List<ApplicableButton>>(ApplicableButtonsResponseJSON);
                         }
                     }
                 }
@@ -2305,7 +2289,14 @@ namespace GAZT.Manager
 
             }
 
-          return VATApplicableButtons;
+            //beforoe returning buttons we need to sest the value based on Buttons emumeration
+
+            foreach (ApplicableButton button in VATApplicableButtons)
+            {
+                Enum.TryParse(button.Button, out button.buttonEnumId);
+            }
+
+            return VATApplicableButtons;
         }
 
     }

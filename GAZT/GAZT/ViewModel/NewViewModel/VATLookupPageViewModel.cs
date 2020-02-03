@@ -364,6 +364,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
+            StringBuilder captcha = GetCaptcha();
+            Captcha = captcha.ToString();
+            EnteredCaptchaValue = string.Empty;
         }
 
         private void ValidateFormData()
