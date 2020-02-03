@@ -1025,6 +1025,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Old Value.
+        /// </summary>
+        public static string OldValue {
+            get {
+                return ResourceManager.GetString("OldValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overdue.
         /// </summary>
         public static string OverDue {
@@ -1237,6 +1246,15 @@ namespace GAZT {
         public static string RegistrationCertificate {
             get {
                 return ResourceManager.GetString("RegistrationCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release.
+        /// </summary>
+        public static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
             }
         }
         

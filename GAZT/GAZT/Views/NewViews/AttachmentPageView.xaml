@@ -150,9 +150,9 @@
                                                         </Image>
 
                                                         <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-                                                            <!--<Image.GestureRecognizers>
+                                                            <Image.GestureRecognizers>
                                                                 <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
-                                                            </Image.GestureRecognizers>-->
+                                                            </Image.GestureRecognizers>
                                                         </Image>
 
 

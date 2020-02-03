@@ -32,6 +32,7 @@ namespace GAZT.Views.NewViews
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             SetLTR();
             this.BindingContext = viewModel;
+           
             viewModel.onPageLoad();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
@@ -79,33 +80,48 @@ namespace GAZT.Views.NewViews
                 if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("1"))
                 {
                     viewModel.zakatReturnDetailsD.d.TvtslE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[0].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("2"))
                 {
                     viewModel.zakatReturnDetailsD.d.LabnoE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[1].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("3"))
                 {
                     viewModel.zakatReturnDetailsD.d.ImpvalE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[2].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("4"))
                 {
                     viewModel.zakatReturnDetailsD.d.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[3].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("5"))
                 {
                     viewModel.zakatReturnDetailsD.d.Estsl = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[4].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("6"))
                 {
                     viewModel.zakatReturnDetailsD.d.ExamtI = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[5].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("7"))
                 {
                     viewModel.zakatReturnDetailsD.d.PramtE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[6].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
+                    viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+
                     // Missing need to check and assign the value
                     ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                 }
@@ -117,6 +133,11 @@ namespace GAZT.Views.NewViews
             
 
         }
+        protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)
+        {
+            viewModel.CheckBoxStatus = checkBox.IsChecked;
+        }
+
         #endregion
 
 

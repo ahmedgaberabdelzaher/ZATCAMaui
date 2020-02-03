@@ -366,6 +366,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             StringBuilder captcha = GetCaptcha();
             Captcha = captcha.ToString();
+            EnteredCaptchaValue = string.Empty;
         }
 
         private void ValidateFormData()

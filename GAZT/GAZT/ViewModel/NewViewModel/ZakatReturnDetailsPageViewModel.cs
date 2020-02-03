@@ -17,6 +17,8 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
+        string ReturnStatus = "2";
+
         #endregion
 
         #region Property
@@ -34,8 +36,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private ZakatReturnDetails _zakatReturnDetail ;
-        public ZakatReturnDetails ZakatReturnDetail
+        private ZakatReturnDetailsD _zakatReturnDetail ;
+        public ZakatReturnDetailsD ZakatReturnDetail
         {
             get
             {
@@ -48,8 +50,37 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ZakatReturnDetails _zakatReturnDetails;
+        public ZakatReturnDetails ZakatReturnDetails
+        {
+            get
+            {
+                return _zakatReturnDetails;
+            }
+            set
+            {
+                _zakatReturnDetails = value;
+                RaisePropertyChanged("ZakatReturnDetails");
+            }
+        }
+
+        private string _releaseOrBillDetailsButtonText;
+        public string ReleaseOrBillDetailsButtonText
+        {
+            get
+            {
+                return _releaseOrBillDetailsButtonText;
+            }
+            set
+            {
+                _releaseOrBillDetailsButtonText = value;
+                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+            }
+        }
+
 
         
+
         #endregion
 
         #region Constructor
@@ -68,36 +99,69 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
             });
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetail);
+                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
             });
 
+           
 
             
+
+
         }
         #endregion
 
         #region Method
         public async Task OnPageLoad(string fbguid)
         {
-            await Task.Run(() =>
+            try
             {
-                IsLoading = true;
-            });
+                SetReleaseOrBillDetailsButtonText();
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
 
-            await Task.Run(async() =>
+                await Task.Run(async () =>
+                {
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                    ZakatReturnDetails = zakatReturnDetails;
+                    ZakatReturnDetail = zakatReturnDetails.d;
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(Exception ex)
             {
-                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                ZakatReturnDetail = zakatReturnDetails;
-            });
-            await Task.Run(() =>
+
+            }
+          
+        }
+
+        private void SetReleaseOrBillDetailsButtonText()
+        {
+            try
             {
-                IsLoading = false;
-            });
+                if (ReturnStatus.Equals("1"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                }
+                else if (ReturnStatus.Equals("2"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.Bill;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
         #endregion
     }

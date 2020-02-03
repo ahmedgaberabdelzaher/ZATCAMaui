@@ -102,12 +102,12 @@ namespace GAZT.Views.NewViews
 
         //}
 
-        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
-        {
-            Image arrowImage = sender as Image;
-            Attachment attachment = (Attachment)arrowImage.BindingContext;
-            var results =  await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename,  viewModel.VATDeclarationData.d.ReturnIdz);
-        }
+        //private void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        //{
+        //    Image arrowImage = sender as Image;
+        //    Attachment attachment = (Attachment)arrowImage.BindingContext;
+        //    var results =   WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename,  viewModel.VATDeclarationData.d.ReturnIdz);
+        //}
 
         protected override void OnAppearing()
         {

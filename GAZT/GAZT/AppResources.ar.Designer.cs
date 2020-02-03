@@ -2292,5 +2292,17 @@ namespace GAZT {
                 return ResourceManager.GetString("To", resourceCulture);
             }
         }
+        
+        public static string Release {
+            get {
+                return ResourceManager.GetString("Release", resourceCulture);
+            }
+        }
+        
+        public static string OldValue {
+            get {
+                return ResourceManager.GetString("OldValue", resourceCulture);
+            }
+        }
     }
 }

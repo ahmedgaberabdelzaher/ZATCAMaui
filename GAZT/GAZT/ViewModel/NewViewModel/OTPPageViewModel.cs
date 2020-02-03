@@ -265,6 +265,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _accountWillBeBlocked = string.Empty;
+
+        public string AccountWillBeBlocked
+        {
+            get
+            {
+                return _accountWillBeBlocked;
+            }
+            set
+            {
+                _accountWillBeBlocked = value;
+                RaisePropertyChanged("AccountWillBeBlocked");
+            }
+        }
+
+
         #endregion
 
         #region Constructor
@@ -326,6 +342,7 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                     if (IsComingFrom == NavigateToOtp.IsLogin)
                     {
+                       
                         TaxPayerProfile TP = null;
                         try
                         {
@@ -341,6 +358,15 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             currentAttempts++;
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
+                            if (!App.IsArabic)
+                            {
+                                AccountWillBeBlocked = "The account will be locked after " + TP.Attempts + " failed verification code attempts";
+                            }
+                            else
+                            {
+                                AccountWillBeBlocked = "محاولات تحقق فاشلة " + UtilityManager.ConvertNumerals(TP.Attempts.ToString()) + "سيتم قفل الحساب بعد ";
+
+                            }
                             AccountLockedMessage(TP);
                             if (!isValiedOTP)
                             {
@@ -350,6 +376,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 });
                                 return;
                             }
+                           
 
 
 
@@ -389,37 +416,53 @@ namespace GAZT.ViewModel.NewViewModel
                     else if (IsComingFrom == NavigateToOtp.IsMobile)
                     {
                         TaxPayerProfile TP = null;
-
+                        
                         try
                         {
+                           
                             String OTP = string.Empty;
                             String lang = "EN";
                             OTP = EnteredOTP;
+
                             if (App.IsArabic == true)
                             {
                                 lang = "AR";
                             }
-                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
-                            await PopToRootPage();
-
-                            if (TP != null)
+                            currentAttempts++;
+                            if (currentAttempts <= App.TP.Attempts)
                             {
-                                string UpdatedMobile = App.TP.NewMobile;
-                                App.TP.Mobile = UpdatedMobile;
-                                Device.BeginInvokeOnMainThread(async () =>
+                                TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            await PopToRootPage();
+                           
+                           
+                                if (TP != null)
                                 {
-                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
-                                    await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
-                                    _navigationService.NavigateTo(App.TaxPayerProfilePageView);
-                                });
+                                    string UpdatedMobile = App.TP.NewMobile;
+                                    App.TP.Mobile = UpdatedMobile;
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
+                                        await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
+                                        _navigationService.NavigateTo(App.TaxPayerProfilePageView);
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        string isInvalidOtp = AppResources.InvalidOTP;
+                                        await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
+                                        ClearData();
+                                    });
+                                }
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    string isInvalidOtp = AppResources.InvalidOTP;
-                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
-                                    ClearData();
+                                App.TP = null;
+                                ClearData();
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    await _navigation.PopToRootAsync();
                                 });
                             }
                         }
@@ -434,21 +477,35 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (IsComingFrom == NavigateToOtp.IsEmail)
                     {
-                        _dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
-                        String OTP = string.Empty;
-
-                        OTP = EnteredOTP;
-
-                        if (!string.IsNullOrEmpty(OTP))
+                        currentAttempts++;
+                        if (currentAttempts <= App.TP.Attempts)
                         {
-                            App.Otp = OTP;
+                            _dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+                            String OTP = string.Empty;
+
+                            OTP = EnteredOTP;
+
+                            if (!string.IsNullOrEmpty(OTP))
+                            {
+                                App.Otp = OTP;
+                            }
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsEmail);
+                            });
                         }
-                        Device.BeginInvokeOnMainThread(() =>
+                        else
                         {
-                            _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsEmail);
-                        });
+                            App.TP = null;
+                            ClearData();
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                var _navigation = Application.Current.MainPage.Navigation;
+                                await _navigation.PopToRootAsync();
+                            });
+                        }
 
-                    }
+                        }
                     await Task.Run(() =>
                     {
                         IsLoading = false;
@@ -485,6 +542,9 @@ namespace GAZT.ViewModel.NewViewModel
             TimerStart();
             IsVerifyOTPEnabled = true;
             VerifyButtonDisableColor = Color.FromHex("#005e4b");
+            AccountWillBeBlocked = string.Empty;
+           
+
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {

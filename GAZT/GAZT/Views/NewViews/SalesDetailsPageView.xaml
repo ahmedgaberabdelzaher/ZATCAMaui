@@ -116,7 +116,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="150">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="200">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -140,7 +140,8 @@
 
                                                 <Label Text="{Binding InformationFromPartie}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <Label Text="{Binding EstimateSales}" Margin="10,0,10,0"  Grid.Row="5" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                <Image Source="ic_edit_gray.png" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"></Image>
+                                                <Image Source="{Binding EditImageSource}" Grid.Column="2" Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                                </Image>
 
                                             </Grid>
                                 </Grid>
@@ -159,7 +160,7 @@
                                     <ColumnDefinition Width="90*"/>
                                    
                                 </Grid.ColumnDefinitions>
-                                <CheckBox Grid.Column="0" Grid.Row="0" VerticalOptions="Start"></CheckBox>
+                                <CheckBox x:Name="checkBox" Grid.Column="0" Grid.Row="0" VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}"></CheckBox>
                                 <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0"></Label>
                             </Grid>
                         </Grid>
@@ -177,9 +178,23 @@
                 <Button Text="{x:Static local:AppResources.ZAcceptReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding AmedmentButtonVisibility}"></Button>
 
                 <Button Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding AmedmentButtonVisibility}"></Button>
-                <Button Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SubmitButtonVisibility}"></Button>
+                <Button Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SubmitButtonVisibility}"></Button>
 
             </Grid>
+
+               <!-- Acticity indicator layout start -->
+        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!-- Acticity indicator layout end -->
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
