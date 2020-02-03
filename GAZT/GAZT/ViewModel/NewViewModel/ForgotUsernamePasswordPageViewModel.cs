@@ -611,6 +611,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
+
+        private int _maxChar = 60;
+
+        public int MaxChar
+        {
+            get
+            {
+                return _maxChar;
+            }
+            set
+            {
+                _maxChar = value;
+                RaisePropertyChanged("MaxChar");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -661,12 +677,15 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
                 }
-
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
+                EnteredCaptchaValue = string.Empty;
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
+                EnteredCaptchaValue = string.Empty;
             });
 
             OnChangePasswordSubmitClicked = new Command(async () =>
@@ -757,6 +776,7 @@ namespace GAZT.ViewModel.NewViewModel
                 IsTaxPayerTypeEnable = false;
                 SelectedTaxPayerType = null;
                 IsIDTypeVisible = false;
+                
                 //IsForgotPassword = true;
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = false;
@@ -767,6 +787,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
                 IsIDTypeVisible = true;
+                
                 //IsTaxPayerTypeEnable = true;
                 //IsForgotPassword = false;
                 //IsForgotUserNameWithIndividual = true;
@@ -780,6 +801,7 @@ namespace GAZT.ViewModel.NewViewModel
             if (SelectedTaxPayerType.id.Equals("1"))
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                MaxChar = 10;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
             }
@@ -788,6 +810,7 @@ namespace GAZT.ViewModel.NewViewModel
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = true;
                 IDNumberOrCorporateIDOrUserName = AppResources.CorportaeID;
+                MaxChar = 60;
             }
         }
 

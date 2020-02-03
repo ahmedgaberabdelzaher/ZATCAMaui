@@ -226,7 +226,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                 </local1:CustomLabel>
                 <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">

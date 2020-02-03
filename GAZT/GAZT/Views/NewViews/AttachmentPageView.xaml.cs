@@ -65,7 +65,7 @@ namespace GAZT.Views.NewViews
         {
             Image arrowImage = sender as Image;
             Attachment attachment = (Attachment)arrowImage.BindingContext;
-            var results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, viewModel.VATDeclarationData.d.ReturnIdz);
+            var results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
         }
 
         #endregion
