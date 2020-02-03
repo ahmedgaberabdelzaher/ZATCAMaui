@@ -1250,6 +1250,10 @@ GAZT reserves the right to investigate your return form further.</value>
    <data name="AmendTheReturn" xml:space="preserve">
     <value>Amend The Return</value>
   </data>
+    
+  <data name="BillDetails" xml:space="preserve">
+    <value>Bill Details</value>
+  </data>
   
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>• Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.

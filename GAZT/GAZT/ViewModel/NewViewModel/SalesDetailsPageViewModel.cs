@@ -335,23 +335,35 @@ namespace GAZT.ViewModel.NewViewModel
 
                 SalesDetailsList = SalesDetailsDummyList;
 
-                if(ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
-                if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))
-                {
-                  //  ReleaseOrBillDetailsButtonText = AppResources.Release;
-                }
-                else if (ZakatReturnDetail.d.Statusz.Equals("IP014") || ZakatReturnDetail.d.Statusz.Equals("E0002") || ZakatReturnDetail.d.Statusz.Equals("E0003"))
-                {
-                  //  _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
-                }
-                else
-                {
-                   // _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
-                }
+                //if(ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
+                //if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))
+                //{
+                //        //HideAllButton();
+                //}
+                //else if (ZakatReturnDetail.d.Statusz.Equals("IP014") || ZakatReturnDetail.d.Statusz.Equals("E0002") || ZakatReturnDetail.d.Statusz.Equals("E0003"))
+                //{
+                //  //  _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                //}
+                //else
+                //{
+                //   // _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
+                //}
                 if(ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 {
                     ShowSubmitButton();
                     ShowEditIcon();
+                }
+                else if(ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
+                {
+                    HideAllButton();
+                }
+                else if(ZakatReturnDetail.d.Statusz.Equals("E0004"))
+                {
+                    HideAllButton();
+                }
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0008"))
+                {
+                    ShowAcceptAndAmendButton();
                 }
                 else
                 {
@@ -481,6 +493,11 @@ namespace GAZT.ViewModel.NewViewModel
             SubmitButtonVisibility = true;
         }
 
+        private void HideAllButton()
+        {
+            AmedmentButtonVisibility = false;
+            SubmitButtonVisibility = false;
+        }
         #endregion
     }
 }

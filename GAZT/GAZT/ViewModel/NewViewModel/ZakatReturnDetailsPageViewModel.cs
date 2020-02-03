@@ -109,9 +109,17 @@ namespace GAZT.ViewModel.NewViewModel
                     IsAmendButtonPressed = true;
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 }
+                else if(ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
+                {
+                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                }
+                else if (ZakatReturnDetails.d.Statusz.Equals("E0004"))
+                {
+                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                }
                 else
                 {
-                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetails);
+                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
                 }
             });
 
@@ -172,6 +180,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ReleaseOrBillDetailsButtonText = AppResources.AmendTheReturn;
                 }
+                else if (ButtonStatus.Equals("E0004"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
             }
             catch(Exception ex)
             {
@@ -189,6 +201,7 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async () =>
             {
                 ZakatReturnDetails zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails);
+                ReleaseOrBillDetailsButtonText = AppResources.Bill;
 
             });
             await Task.Run(() =>
