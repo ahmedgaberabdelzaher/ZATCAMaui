@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AddNotePageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
+                viewModel.NoteText = string.Empty;
                 AddNotePageViewModel.IsComingFromNotePage = true;
                 if (vATDeclaration != null && vATDeclaration != null)
                 {
@@ -45,7 +46,7 @@ namespace GAZT.Views.NewViews
                     {
                         if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
                         {
-                            viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Tdline).FirstOrDefault();
+                            viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
                         }
                     }
                 }

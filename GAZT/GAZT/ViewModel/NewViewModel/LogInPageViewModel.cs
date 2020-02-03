@@ -3,7 +3,9 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using Plugin.Connectivity;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,7 +31,7 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-        private string _UserName = "3101965624";
+        private string _UserName = "3060210077";
         // private string _UserName = string.Empty;
         public string UserName
         {
@@ -322,10 +324,11 @@ namespace GAZT.ViewModel
                     try
                     {
                         
-                            await Login();
-                        
-                      
-                    }catch(InternetException ex)
+                         await Login();
+
+
+                    }
+                    catch(InternetException ex)
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
                     }

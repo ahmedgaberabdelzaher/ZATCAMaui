@@ -1155,6 +1155,7 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                     var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    PopToRootPage();
                     SadadNumber = response.d.results[0].Vtref;
                     AmountPayable = response.d.results[0].Betrh;
                     if (!string.IsNullOrEmpty(SadadNumber))
@@ -1178,6 +1179,7 @@ namespace GAZT.ViewModel.NewViewModel
                     AttachmentName = fileData.FileName;
 
                     AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz);
+                    PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
                         VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
@@ -1250,6 +1252,7 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.StepNumber = StepNumber;
                 VATDeclarationData.d.UserTypz = "TP";
                 var response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                PopToRootPage();
 
                 if (response != null && response.d != null)
                 {
@@ -1263,6 +1266,8 @@ namespace GAZT.ViewModel.NewViewModel
 
                         SetData();
                     }
+
+                   await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
                 }
 
             });
@@ -1305,7 +1310,16 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleCreditCarriedForward = true;
             ButtonName = AppResources.Submit;
         }
-   
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
         public async Task SubmitClicked()
         {
 
@@ -1346,6 +1360,7 @@ namespace GAZT.ViewModel.NewViewModel
                     VATDeclarationData.d.Operationz = operation;
                     VATDeclaration response = new VATDeclaration();
                     response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                    PopToRootPage();
 
                     await SaveReturnAndGetReturnAndSetButtons();
                 }
@@ -1363,7 +1378,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void VATReturnGetNotes()
         {
-            ClearPage();
+            
             //IsVisibleNotes = true;
             //ButtonName = AppResources.ZNote;
 
@@ -1401,6 +1416,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.UserTypz = "TP";
 
             var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
+            PopToRootPage();
             await SaveReturnAndGetReturnAndSetButtons();
         }
         public async Task VATReturnResetAsync()
@@ -1426,6 +1442,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.UserTypz = "TP";
 
             var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
+            PopToRootPage();
             await SaveReturnAndGetReturnAndSetButtons();
 
         }
@@ -1452,12 +1469,14 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.UserTypz = "TP";
 
             var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
+            PopToRootPage();
             await SaveReturnAndGetReturnAndSetButtons();
 
         }
         public void VATReturnDeleteAttachment()
         {
             WebServiceManager.GAZTSetVATReturnDeleteAttachment(String.Empty);
+            PopToRootPage();
             _navigationService.NavigateTo("ICRListPageView");
         }
         public void ClearPage()
@@ -1566,6 +1585,7 @@ namespace GAZT.ViewModel.NewViewModel
             string FormBundleNumber = VATDeclarationData.d.Fbnum;
             string Gpart = VATDeclarationData.d.Gpart;
             vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
+            PopToRootPage();
             if (vATCalculationData.d != null)
             {
 
@@ -1708,6 +1728,7 @@ namespace GAZT.ViewModel.NewViewModel
         private async Task SaveReturnAndGetReturnAndSetButtons()
         {
             VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+            PopToRootPage();
 
             if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
             {

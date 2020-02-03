@@ -212,8 +212,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
                     // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
-                    IsLoading = false;
-                        _navigationService.GoBack();
+                        IsLoading = false;
+                      //  _navigationService.GoBack();
 
                     }
                 });

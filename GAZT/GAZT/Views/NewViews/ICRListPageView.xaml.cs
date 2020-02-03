@@ -50,8 +50,14 @@ namespace GAZT.Views.NewViews
 
         public async void IntialiseAsync()
         {
+            try
+            {
+                await viewModel.onPageLoad();
+            }
+            catch(Exception e)
+            {
 
-            await viewModel.onPageLoad();
+            }
         }
 
         private void SetLTR()
