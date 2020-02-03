@@ -224,7 +224,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnAcceptReturnButtonClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView);
+                _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD);
             });
 
             OnAmendReturnButtonClicked = new Command(async () =>
@@ -233,8 +233,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                    
                     ShowEditIcon();
-                   
-                   _navigationService.NavigateTo(App.AmendSalesDetailsPageView);
+                    ShowSubmitButton();
+                 //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                 }
                 catch(Exception ex)
                 {
@@ -247,7 +247,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if(CheckBoxStatus)
                 {
                     SetUpdatedDataToZAKATEstimated();
-                   await SubmitZakatReturn();
+                    await SubmitZakatReturn();
                 }
                 else
                 {
