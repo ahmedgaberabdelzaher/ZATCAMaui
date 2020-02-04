@@ -12,6 +12,9 @@ using Xamarin.Forms;
 
 namespace GAZT
 {
+    /// <summary>
+    /// Represesntss a profile
+    /// </summary>
     public class TaxPayerProfileViewModel : ViewModelBase
     {
         #region Variable
@@ -32,7 +35,6 @@ namespace GAZT
         public bool IscomingFromOTPViewViaEmail = false;
 
         #endregion
-
         #region Property
 
         private bool _tPProfileVisibility = true;
