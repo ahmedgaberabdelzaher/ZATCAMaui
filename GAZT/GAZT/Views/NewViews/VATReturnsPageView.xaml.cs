@@ -2,6 +2,7 @@
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -150,7 +151,7 @@ namespace GAZT.Views.NewViews
             Note objNote = new Note();
 
             int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet(00" + (count + 1).ToString() + ")";
+            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
             objNote.__metadata = new Metadata2();
             objNote.__metadata.id = Url;
             objNote.__metadata.uri = Url;
@@ -170,8 +171,8 @@ namespace GAZT.Views.NewViews
             objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
             objNote.AttByz = "TP";
             objNote.Noteno = "00" + (count + 1).ToString();
-            objNote.Lineno = 0;
-            objNote.ElemNo = 0;
+           // objNote.Lineno = 0;
+            //objNote.ElemNo = 0;
             objNote.Strdt = string.Empty;
             objNote.Strtime = string.Empty;
             objNote.Sect = "VAT Return General Note";
@@ -441,8 +442,162 @@ namespace GAZT.Views.NewViews
 
         }
 
-      
+        private void OnStandardRatedSalesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
+
+        private void OnStandardRatedSalesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnPrivateHealthcareAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnPrivateHealthcareAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnZerorateddomesticsalesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnZerorateddomesticsalesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+       
+
+        private void OnExportsAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExportsAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnExportsAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExportsAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnExemptAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnStandardrateddomesticpurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsVatPaidatcustomsAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsVatPaidatcustomsAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatExemptPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatExemptPurchasesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatcreditcarriedforwardClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatNetdueClicked(object sender, EventArgs e)
+        {
+
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipNetVATdue;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnExemptAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptAmount;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnStandardrateddomesticpurchasesAdjustmentClicked(object sender, EventArgs e)
+        {
+
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
+            popUp.IsFaqAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+    }
 
      
     }

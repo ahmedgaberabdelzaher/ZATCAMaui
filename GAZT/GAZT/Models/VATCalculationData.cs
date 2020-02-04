@@ -7,6 +7,19 @@ namespace GAZT.Models
     {
         public VATCalculationDataD d { get; set; }
     }
+
+    public class VATRateDataWithStringDateType
+    {
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+    }
+
+    public class VATRateDataWithDateType
+    {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+    }
+
     public class VATCalculationDataDMetadata
     {
         public string id { get; set; }
@@ -176,5 +189,7 @@ namespace GAZT.Models
         public VTTHSet VTTHSet { get; set; }
         public UIBTNSet UI_BTNSet { get; set; }
     }
+
+   
 
 }

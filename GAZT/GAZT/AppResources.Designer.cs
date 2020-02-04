@@ -2539,12 +2539,242 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than  SAR &lt;5,000&gt; or VAT credit position of greater than SAR &lt;-5,000&gt;, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
+        /// </summary>
+        public static string ZToolTipCorrectionsfrompreviousperiod {
+            get {
+                return ResourceManager.GetString("ZToolTipCorrectionsfrompreviousperiod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of credit in your VAT account from previous returns that have not been used to offset any subsequent liabilities or not been refunded. This amount will be used to offset the VAT liability (if any) for this return..
+        /// </summary>
+        public static string ZToolTipcreditcarriedforwardfrompreviousperiod {
+            get {
+                return ResourceManager.GetString("ZToolTipcreditcarriedforwardfrompreviousperiod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • The total amount made on exempt supplies sold in KSA .
+        ///• For example,  Return of exempted goods, bad debt write-off&quot;.
+        /// </summary>
+        public static string ZToolTipExemptAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services supplied during the current period that were exempted and sold in KSA
+        ///• Please refer to the below FAQ URL for the list of exempted goods and services..
+        /// </summary>
+        public static string ZToolTipExemptAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of purchases adjustments made to goods and services purchased during previous reporting periods that were exempted and either bought in KSA or imported from a country outside of KSA
+        ///• For example: return of exempt purchases to suppliers.
+        /// </summary>
+        public static string ZToolTipExemptpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services purchased during the current period that were exempted and either bought in KSA or imported from a country outside of KSA
+        ///• Please refer to the below FAQ URL for a list of zero rated goods and services..
+        /// </summary>
+        public static string ZToolTipExemptpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptpurchasesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of adjustments on supplies related to all goods and services (to be subject to zero rate) exported to GCC VAT implementing countries or countries outside GCC during the previous reporting periods.
+        ///• For example,write off of bad debt on exports reveivables..
+        /// </summary>
+        public static string ZToolTipExportsAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExportsAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries utside GCC.
+        ///• Please refer to the below FAQ URL for exported goods and services..
+        /// </summary>
+        public static string ZToolTipExportsAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExportsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated and imported and reverse charged..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
+        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under VAT amount display the following:
+        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim.
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedVatAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedVatAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • The total amount of VAT liability or credit for the current return. Any negative amount is VAT credit that can either be refunded or carried forward to offset VAT liability for the subsequent periods..
+        /// </summary>
+        public static string ZToolTipNetVATdue {
+            get {
+                return ResourceManager.GetString("ZToolTipNetVATdue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;Total adjustments to standard rated supplies that were made to Saudi citizens in private healthcare and private education in previous tax periods. Please note that VAT will be borne by the state on these supplies as per Royal Order.
+        /// </summary>
+        public static string ZToolTipPrivateHealthcareAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipPrivateHealthcareAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of standard rated supplies made to Saudi citizens in private healthcare and private education. Please note that VAT will be borne by the state on these supplies as per Royal Order.
+        /// </summary>
+        public static string ZToolTipPrivateHealthcareAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipPrivateHealthcareAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA
+        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
         ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount {
             get {
                 return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of supplies adjustments made to previous reporting periods supplies that were zero rated and sold in KSA
+        ///• For example, returned zero rates sales in Saudi Arabia, write off of bad debt on zero rated domestic receivables.
+        /// </summary>
+        public static string ZToolTipZerorateddomesticsalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of all goods and services supplied during the current period that were zero rated and sold in KSA
+        ///• Please refer to the below FAQ URL for zero rated goods and services..
+        /// </summary>
+        public static string ZToolTipZerorateddomesticsalesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased during previous reporting periods that were either,
+        /// – Zero rated and purchased in KSA or,
+        /// – Zero rated and imported from a country outside of KSA
+        ///• For example: return of zero taxed purchases to suppliers.
+        /// </summary>
+        public static string ZToolTipZeroratedpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipZeroratedpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were either,
+        /// – Zero rated and purchased in KSA or,
+        /// – Zero rated and imported from a country outside of KSA
+        ///• Please refer to below FAQ URL for a list of zero rated goods and services.
+        /// </summary>
+        public static string ZToolTipZeroratedpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipZeroratedpurchasesAmount", resourceCulture);
             }
         }
         
