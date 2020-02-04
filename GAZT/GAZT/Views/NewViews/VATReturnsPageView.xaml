@@ -16,8 +16,8 @@
 
         <ToolbarItem IconImageSource="ic_save.png"  
                 Priority="0" Order="Primary" Command="{Binding OnSaveAsDraftClicked}" />
-        <ToolbarItem IconImageSource="ic_validation.png"  
-                Priority="1" Order="Primary"  />
+        <ToolbarItem IconImageSource="ic_validation.png" x:Name="ICvalidation" 
+                Priority="1" Order="Primary"  Clicked="ICvalidation_Clicked" />
         <ToolbarItem IconImageSource="ic_more_options.png"  
                 Priority="2" Order="Primary" Clicked="onMoreOptionClicked" />
     </ContentPage.ToolbarItems>
@@ -74,7 +74,7 @@
                 </Grid.ColumnDefinitions>
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleInstrunction}"   VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                <StackLayout HorizontalOptions="FillAndExpand" x:Name="TabInstruction" IsVisible="{Binding IsVisibleInstrunction}"   VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -142,7 +142,13 @@
 
 
 
-                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" CheckedChanged="chkDeclaration_CheckedChanged" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0"></CheckBox>
+                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}"  CheckedChanged="chkDeclaration_CheckedChanged" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
 
 
                             <Label  Grid.Row="6" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
@@ -172,7 +178,7 @@
                 </StackLayout>
 
 
-                <ScrollView  Orientation="Vertical" Grid.Row="1" Margin="0,0,0,0"  Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <ScrollView  Orientation="Vertical" Grid.Row="1" Margin="0,0,0,0" x:Name="TabTaxPayerDetails"  Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid BindingContext="{Binding ResponseVATDeclarationD}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -321,7 +327,13 @@
 
 
 
-                        <CheckBox x:Name="chkClearification" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></CheckBox>
+                        <CheckBox x:Name="chkClearification" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <CheckBox.Triggers>
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkClearification}, Path=IsChecked}" Value="false">
+                                    <Setter Property="Color" Value="Red" />
+                                </DataTrigger>
+                            </CheckBox.Triggers>
+                        </CheckBox>
 
                         <Label Text="{x:Static local:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="24" Grid.Column="1"  >
                         </Label>
@@ -353,7 +365,7 @@
                 </ScrollView>
 
 
-                <ScrollView Orientation="Vertical"   Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <ScrollView Orientation="Vertical" x:Name="TabVatReturn"  Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid BindingContext="{Binding ResponseVATDeclarationD}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -412,8 +424,13 @@
                         </Label>
 
                         <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryVatAmount}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             <!--<custom:GAZTBorderlessEntry.GestureRecognizers>
                                 <TapGestureRecognizer  Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.onStandardRatedSalesVatAmountTapped}" />
                             </custom:GAZTBorderlessEntry.GestureRecognizers>-->
@@ -425,8 +442,13 @@
                         </Image>
 
                         <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryVatAdjustmentWithSAR}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="3" Text="{Binding StdsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryVatAdjustmentWithSAR" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="3" Text="{Binding StdsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             <!--<custom:GAZTBorderlessEntry.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.onStandardRatedSalesVatAmountTapped}" />
                             </custom:GAZTBorderlessEntry.GestureRecognizers>-->
@@ -438,8 +460,13 @@
                         </Image>
 
                         <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdsalesVat}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.ColumnSpan="2" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="4" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                        <custom:GAZTBorderlessEntry x:Name="EntryStdsalesVat" Keyboard="Numeric" Grid.ColumnSpan="2" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="4" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -454,8 +481,13 @@
                         </Label>
 
                         <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntrySalesGccAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="6" Text="{Binding SalesGccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntrySalesGccAmt" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="6" Text="{Binding SalesGccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -467,8 +499,13 @@
 
 
                         <Frame Grid.Row="7" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntrySalesGccAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="7" Text="{Binding SalesGccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntrySalesGccAdj" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="7" Text="{Binding SalesGccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="7"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -484,8 +521,13 @@
 
 
                         <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZerosalesAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}"  Grid.Row="9" Text="{Binding ZerosalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryZerosalesAmt" TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}"  Grid.Row="9" Text="{Binding ZerosalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="9"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -495,8 +537,13 @@
                         </Image>
 
                         <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZerosalesAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="10" Text="{Binding ZerosalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryZerosalesAdj" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="10" Text="{Binding ZerosalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="10"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -510,8 +557,13 @@
                         </Label>
 
                         <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExportsAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="12" Text="{Binding ExportsAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExportsAmt" TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="12" Text="{Binding ExportsAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="12"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -521,8 +573,13 @@
                         </Image>
 
                         <Frame Grid.Row="13" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExportsAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="13" Text="{Binding ExportsAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExportsAdj" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="13" Text="{Binding ExportsAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="13"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -536,8 +593,13 @@
                         </Label>
 
                         <Frame Grid.Row="15" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptsalesAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry  TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="15" Text="{Binding ExemptsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExemptsalesAmt" TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="15" Text="{Binding ExemptsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="15"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -547,8 +609,13 @@
                         </Image>
 
                         <Frame Grid.Row="16" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptsalesAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="16" Text="{Binding ExemptsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExemptsalesAdj" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="16" Text="{Binding ExemptsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="16"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
@@ -591,8 +658,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatStandardrateddomesticpurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
                         <Frame Grid.Row="20" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchaseAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Grid.Row="20" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding StdpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryStdpurchaseAmt" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Grid.Row="20" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding StdpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="20"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -600,8 +672,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="21" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchaseAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="21" Text="{Binding StdpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryStdpurchaseAdj" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="21" Text="{Binding StdpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="21"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -609,8 +686,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="22"  Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchasesVat}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="22" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="22" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="22"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -632,8 +714,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="25" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportspaidAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms" Grid.ColumnSpan="2" Grid.Row="25" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportspaidAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryImportspaidAdj" TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms" Grid.ColumnSpan="2" Grid.Row="25" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportspaidAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="25"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -641,8 +728,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="26" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportspaidVat}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Grid.Row="26" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Grid.Row="26" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="26"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -654,8 +746,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
                         <Frame Grid.Row="28" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="28" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportsaccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryImportsaccAmt" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="28" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Text="{Binding ImportsaccAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="28"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -663,8 +760,13 @@
                             </Image.GestureRecognizers>-->
                         </Image>
                         <Frame Grid.Row="29" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="29" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportsaccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryImportsaccAdj" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Grid.Row="29" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Text="{Binding ImportsaccAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="29"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -673,8 +775,13 @@
                         </Image>
 
                         <Frame Grid.Row="30" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccVat}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.Row="30" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat" Grid.ColumnSpan="2" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.Row="30" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="30"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -686,8 +793,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatZeroRatedPurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="31" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
                         <Frame Grid.Row="32" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZeropurchaseAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="32" Text="{Binding ZeropurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryZeropurchaseAmt" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="32" Text="{Binding ZeropurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="32"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -695,8 +807,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="33" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZeropurchaseAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="33" Text="{Binding ZeropurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryZeropurchaseAdj" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="33" Text="{Binding ZeropurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="33"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <!--<Image.GestureRecognizers>
@@ -708,8 +825,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatExemptPurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="34" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
                         <Frame Grid.Row="35" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptpurchaseAmt}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="35" Text="{Binding ExemptpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExemptpurchaseAmt" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.Row="35" Text="{Binding ExemptpurchaseAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="35"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -717,8 +839,13 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="36" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptpurchaseAdj}, Path=Text.Length}" Value="0">
+                                    <Setter Property="BorderColor" Value="Red" />
+                                </DataTrigger>
+                            </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="36" Text="{Binding ExemptpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                        <custom:GAZTBorderlessEntry x:Name="EntryExemptpurchaseAdj" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment" Placeholder="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="36" Text="{Binding ExemptpurchaseAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="36"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                             <Image.GestureRecognizers>
@@ -762,8 +889,13 @@
 
                             <Label Text="{x:Static local:AppResources.ZVatCorrectionsfrompreviousperiod}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
                             <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
+                                        <Setter Property="BorderColor" Value="Red" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr"  Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="5"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <!--<Image.GestureRecognizers>
@@ -779,8 +911,13 @@
                             </Label>
 
                             <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryCreditVat}, Path=Text.Length}" Value="0">
+                                        <Setter Property="BorderColor" Value="Red" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryCreditVat" Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="8"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
@@ -790,8 +927,13 @@
 
                             <Label Text="{x:Static local:AppResources.ZVatNetdue}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"/>
                             <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryNetdueVat}, Path=Text.Length}" Value="0">
+                                        <Setter Property="BorderColor" Value="Red" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="10" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" Grid.Row="10" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="10"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
@@ -1047,6 +1189,7 @@
                                                                 </Image>
 
                                                                 <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                                  
                                                                     <!--<Image.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
                                                                     </Image.GestureRecognizers>-->

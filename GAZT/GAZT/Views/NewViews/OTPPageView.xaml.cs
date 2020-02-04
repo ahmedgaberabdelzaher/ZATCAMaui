@@ -267,22 +267,6 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            // Begin an asyncronous task on the UI thread because we intend to ask the users permission.
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                if (await DisplayAlert("Exit page?", "Are you sure you want to exit this page? You will not be able to continue it.", "Yes", "No"))
-                {
-                    base.OnBackButtonPressed();
-
-                    //await App.Navigation.PopAsync();
-                }
-            });
-
-            // Always return true because this method is not asynchronous.
-            // We must handle the action ourselves: see above.
-            return true;
-        }
+     
     }
 }

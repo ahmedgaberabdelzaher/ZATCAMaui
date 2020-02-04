@@ -30,6 +30,15 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
+            viewModel = App.Locator.AAcknowledgement;
+            //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
+            //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+            //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+
+
            
             InitializeComponent();
 
@@ -41,19 +50,20 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
+          
             Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                //if (sender is ListView lv) lv.SelectedItem = null;
             };
-            
+
 
             IntilizeAsync();
 
             viewModel.IsMainButtonEnabled = false;
-
+           // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
         }
         #endregion
 
@@ -184,7 +194,7 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
         {
-
+            
             Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
@@ -596,6 +606,35 @@ namespace GAZT.Views.NewViews
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
             popUp.IsFaqAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+    }
+        private void ICvalidation_Clicked(object sender, EventArgs e)
+        {
+           //if(TabInstruction.IsVisible==true)
+           // {
+           //     if(chkDeclaration.IsChecked==false)
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+           //     }
+           //     else
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+
+           //     }
+           // }
+           //if(TabTaxPayerDetails.IsVisible==true)
+           // {
+           //     if (chkClearification.IsChecked == false)
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+           //     }
+           //     else
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+
+           //     }
+                
+           // }
         }
     }
 

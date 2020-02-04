@@ -2304,5 +2304,23 @@ namespace GAZT {
                 return ResourceManager.GetString("OldValue", resourceCulture);
             }
         }
+        
+        public static string AmendTheReturn {
+            get {
+                return ResourceManager.GetString("AmendTheReturn", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipStandardRatedSalesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
+            }
+        }
+        
+        public static string BillDetails {
+            get {
+                return ResourceManager.GetString("BillDetails", resourceCulture);
+            }
+        }
     }
 }

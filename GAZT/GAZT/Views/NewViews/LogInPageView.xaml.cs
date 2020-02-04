@@ -67,9 +67,6 @@ namespace GAZT.Views
                 LanguageToolBarCount = 1;
                 this.ToolbarItems.Add(toolbarItem1);
             }
-
-
-          
             
         }
 
