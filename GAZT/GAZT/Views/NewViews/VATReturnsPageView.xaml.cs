@@ -608,35 +608,35 @@ namespace GAZT.Views.NewViews
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
-        private void ICvalidation_Clicked(object sender, EventArgs e)
-        {
-           //if(TabInstruction.IsVisible==true)
-           // {
-           //     if(chkDeclaration.IsChecked==false)
-           //     {
-           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-           //     }
-           //     else
-           //     {
-           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+        //private void ICvalidation_Clicked(object sender, EventArgs e)
+        //{
+        //   //if(TabInstruction.IsVisible==true)
+        //   // {
+        //   //     if(chkDeclaration.IsChecked==false)
+        //   //     {
+        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+        //   //     }
+        //   //     else
+        //   //     {
+        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-           //     }
-           // }
-           //if(TabTaxPayerDetails.IsVisible==true)
-           // {
-           //     if (chkClearification.IsChecked == false)
-           //     {
-           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-           //     }
-           //     else
-           //     {
-           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+        //   //     }
+        //   // }
+        //   //if(TabTaxPayerDetails.IsVisible==true)
+        //   // {
+        //   //     if (chkClearification.IsChecked == false)
+        //   //     {
+        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+        //   //     }
+        //   //     else
+        //   //     {
+        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-           //     }
+        //   //     }
                 
-           // }
-        }
+        //   // }
+        //}
     }
 
      
-    }
+    
