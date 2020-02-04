@@ -430,7 +430,8 @@
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt , Converter={StaticResource DecimalPlacesConverter}}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" MaxLength="16">
+                            
                             <!--<custom:GAZTBorderlessEntry.GestureRecognizers>
                                 <TapGestureRecognizer  Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.onStandardRatedSalesVatAmountTapped}" />
                             </custom:GAZTBorderlessEntry.GestureRecognizers>-->
