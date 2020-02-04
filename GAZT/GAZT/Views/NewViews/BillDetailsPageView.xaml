@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                <Grid >
+                <Grid BindingContext="{Binding EstimatedZAKATSADADNumber}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -40,22 +40,32 @@
                     <Label Text="{x:Static local:AppResources.ZBillDetails}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
 
-                    <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.pn" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
+                    <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.png" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
 
                     <Label Text="{x:Static local:AppResources.ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber}" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
 
 
                     <Label Text="{x:Static local:AppResources.SADADPaymentNumber}"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="SAR 000000000000.00"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <Label Text="{Binding Sopbel}"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <Label Text="{x:Static local:AppResources.ZSADADGAZTId}" Grid.Row="4" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="00000000000.00" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <Label Text="{Binding Sadadid}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="SAR 00000000000.00" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <Label Text="{Binding Stotamt}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+
+                        <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}" />
+                                        <Span Text=" " />
+                                        <Span  Text="{Binding Stotamt}"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                    </Label>
 
                     <Label Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
@@ -93,8 +103,8 @@
 
 
 
-                <!-- Acticity indicator layout start -->
-                <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                 <!--Acticity indicator layout start--> 
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -103,8 +113,8 @@
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-            </Grid>-->
-                <!-- Acticity indicator layout End -->
+            </Grid>
+                 <!--Acticity indicator layout End--> 
             </Grid>
         </ScrollView>
     </ContentPage.Content>

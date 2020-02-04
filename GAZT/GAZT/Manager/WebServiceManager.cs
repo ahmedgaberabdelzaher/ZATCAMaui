@@ -2372,17 +2372,12 @@ namespace GAZT.Manager
                 //string Dotyp = "VTA0";
                 string AttBy = "TP";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                //    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                //  String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='005056B1F8FB1EDA889294AF20DB63C0',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=disabled";                                                                                                                                                                                                                                           // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
-                string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=disabled";
+                              string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=disabled";
 
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient();
-                //  client.DefaultRequestHeaders.Add("Token", App.Token);
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                // client.DefaultRequestHeaders.Add("content-type", "multipart/form-data");
                 client.DefaultRequestHeaders.Add("slug", fileName);
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
 
@@ -2403,16 +2398,15 @@ namespace GAZT.Manager
         }
 
         // Not Completed
-        public static async Task<EstimatedZakatReturns> GAZTGetEstimatedZakatReturnSADADNumber( string FBNumber, string FBGuid)
+        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber( string FBNumber, string FBGuid)
         {
-            //EstimatedZakatReturns zAKATICRList = new EstimatedZakatReturns();
+            EstimatedZAKATReturnsSADADNumber _estimatedZAKATReturnsSADADNumber = new EstimatedZAKATReturnsSADADNumber();
             string NewToken = string.Empty;
             try
             {
-                
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                 String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet";
+                 String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
@@ -2439,7 +2433,64 @@ namespace GAZT.Manager
 
                     String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
 
-                   // zAKATICRList = JsonConvert.DeserializeObject<EstimatedZakatReturns>(EstimateZakatReturnList);
+                     _estimatedZAKATReturnsSADADNumber = JsonConvert.DeserializeObject<EstimatedZAKATReturnsSADADNumber>(EstimateZakatReturnList);
+
+
+                }
+                return _estimatedZAKATReturnsSADADNumber;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
+        // Not Completed
+        public static async Task<EstimatedZakatReturns> GAZTDowmloadEstimatedZakatReturnInvoice(string FBNumber, string FBGuid)
+        {
+            //EstimatedZakatReturns zAKATICRList = new EstimatedZakatReturns();
+            string NewToken = string.Empty;
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+                if (GAZTEstimateZakatReturnList != null)
+                {
+                    HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+
+                    // zAKATICRList = JsonConvert.DeserializeObject<EstimatedZakatReturns>(EstimateZakatReturnList);
 
 
                 }
@@ -2458,6 +2509,7 @@ namespace GAZT.Manager
                 return null;
             }
         }
+
     }
 
 }

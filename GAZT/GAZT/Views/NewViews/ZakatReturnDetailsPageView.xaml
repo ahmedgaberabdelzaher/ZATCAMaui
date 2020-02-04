@@ -11,6 +11,7 @@
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
              FlowDirection="LeftToRight">
     <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                  <Grid.RowDefinitions>
                         <RowDefinition Height="88*"/>
@@ -88,14 +89,6 @@
                     <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="End"></Image>
 
 
-
-                    
-
-
-
-
-
-
                 </Grid>
  </ScrollView>
                 <StackLayout Orientation="Horizontal"  Grid.Row="1" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
@@ -117,7 +110,7 @@
                     </StackLayout>
 
                 <!-- Acticity indicator layout start -->
-                <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -126,10 +119,10 @@
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-            </Grid>-->
+            </Grid>
                 <!-- Acticity indicator layout End -->
                             
             </Grid>
-       
+       </Grid>
     </ContentPage.Content>
 </ContentPage>
