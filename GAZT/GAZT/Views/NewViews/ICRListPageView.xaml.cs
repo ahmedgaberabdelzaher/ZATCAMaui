@@ -72,8 +72,9 @@ namespace GAZT.Views.NewViews
 
         #endregion
 
-        protected virtual void OnAppearing()
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
             if (Count != 1)
             {
                 IntialiseAsync();

@@ -19,8 +19,8 @@
     <ContentPage.ToolbarItems>
 
 
-        <ToolbarItem IconImageSource="ic_save.png"  
-                Priority="0" Order="Primary" Command="{Binding OnSaveAsDraftClicked}" />
+        <!--<ToolbarItem IconImageSource="ic_save.png"  
+                Priority="0" Order="Primary" Command="{Binding OnSaveAsDraftClicked}" />-->
         <ToolbarItem IconImageSource="ic_validation.png" x:Name="ICvalidation" 
                 Priority="1" Order="Primary"   />
         <ToolbarItem IconImageSource="ic_more_options.png"  
@@ -481,11 +481,11 @@
                         <custom:GAZTBorderlessEntry x:Name="EntryStdsalesVat" Keyboard="Numeric" Grid.ColumnSpan="2" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="4" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
 
                         </custom:GAZTBorderlessEntry>
-                        <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
+                        <!--<Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            --><!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
-                        </Image>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>-->
 
 
 
@@ -728,11 +728,11 @@
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsEnabled="False" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}"  Grid.Row="22" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
-                        <Image Grid.Row="22"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
+                        <!--<Image Grid.Row="22"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            --><!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
-                        </Image>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>-->
 
 
 
@@ -803,9 +803,9 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="28"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAmountClicked" />
-                            </Image.GestureRecognizers>-->
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAmountClickedNew" />
+                            </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="29" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -820,9 +820,9 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="29"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAdjustmentClicked" />
-                            </Image.GestureRecognizers>-->
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAdjustmentClickedNew" />
+                            </Image.GestureRecognizers>
                         </Image>
 
                         <Frame Grid.Row="30" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -835,9 +835,9 @@
                         <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat" Grid.ColumnSpan="2" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.Row="30" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="30"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedVatAmountClickedNew" />
+                            </Image.GestureRecognizers>
                         </Image>
 
 
@@ -873,9 +873,9 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
                         <Image Grid.Row="33"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnVatZeroRatedPurchasesAdjustmentClicked" />
-                            </Image.GestureRecognizers>-->
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVatZeroRatedPurchasesAdjustmentClickedNew" />
+                            </Image.GestureRecognizers>
                         </Image>
 
 
@@ -964,9 +964,9 @@
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="5"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                                <!--<Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnVatcreditcarriedforwardFromPreviousPeriodClicked" />
+                            </Image.GestureRecognizers>
                             </Image>
 
                             <Label Text="{x:Static local:AppResources.ZVatcreditcarriedforward}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"/>
