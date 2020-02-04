@@ -29,6 +29,15 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
+            viewModel = App.Locator.AAcknowledgement;
+            //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
+            //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+            //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+
+
            
             InitializeComponent();
 
@@ -40,14 +49,15 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
+          
             Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                //if (sender is ListView lv) lv.SelectedItem = null;
             };
-            
+
 
             IntilizeAsync();
 

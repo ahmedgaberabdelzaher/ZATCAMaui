@@ -22,7 +22,7 @@ namespace GAZT.Views.NewViews
        
 
         #region Constructor
-        public BillDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
+        public BillDetailsPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
             viewModel = App.Locator.BillDetailsPageView;

@@ -1250,8 +1250,16 @@
   <data name="OldValue" xml:space="preserve">
     <value>Old Value</value>
   </data>
+   <data name="AmendTheReturn" xml:space="preserve">
+    <value>Amend The Return</value>
+        </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>'• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
-• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية (5%)</value>
+• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية ()
+ </value> 
+       </data>
+    
+    <data name="BillDetails" xml:space="preserve">
+    <value>Bill Details</value>
   </data>
 </root>
