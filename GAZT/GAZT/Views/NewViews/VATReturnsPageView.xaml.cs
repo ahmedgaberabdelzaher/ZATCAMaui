@@ -666,6 +666,20 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
+
+        private void OnVatcreditcarriedforwardFromPreviousPeriodClicked(object sender, EventArgs e)
+        {
+           // < 5,000 >
+             PopUp popUp = new PopUp();
+
+            popUp.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
+            String MessageWithPositiveValue = popUp.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
+            String MessageWithNegativeValue = popUp.Message.Replace("<-5,000>", MessageWithPositiveValue);
+            popUp.Message = MessageWithNegativeValue;
+
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
