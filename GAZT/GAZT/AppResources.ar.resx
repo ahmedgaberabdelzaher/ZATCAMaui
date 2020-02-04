@@ -1262,4 +1262,7 @@
     <data name="BillDetails" xml:space="preserve">
     <value>Bill Details</value>
   </data>
+    <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
 </root>

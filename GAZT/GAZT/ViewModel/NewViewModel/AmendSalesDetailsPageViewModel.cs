@@ -1,8 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
+using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 
@@ -17,8 +20,10 @@ namespace GAZT.ViewModel.NewViewModel
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnZakatReturnDataUpdateClicked { get; set; }
-
+        public ICommand OnAttachmentClick { get; set; }
+        public RootObject rootObject { get; set; }
         
+        byte[] attachment;
 
         #endregion
 
@@ -179,7 +184,32 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
 
+            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    var fileData = await CrossFilePicker.Current.PickFile();
+                    attachment = fileData.DataArray;
+                    AttachmentName = fileData.FileName;
 
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                   // PopToRootPage();
+                    if (_attachment != null && _attachment.d != null)
+                    {
+                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                        SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+
+            });
         }
         #endregion
 

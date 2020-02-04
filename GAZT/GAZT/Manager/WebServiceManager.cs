@@ -1933,13 +1933,13 @@ namespace GAZT.Manager
         //}
 
 
-        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp)//, string returnedFguid
         {
             try
             {
                 AttachmentRootOject _attachment = new AttachmentRootOject();
                 char LangZ = GetLangZParameter();
-                string Dotyp = "VTA0";
+                //string Dotyp = "VTA0";
                 string AttBy = "TP";
                 // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
             //    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
@@ -2196,11 +2196,11 @@ namespace GAZT.Manager
             }
         }
 
-        public static ZakatReturnDetails GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD)//, string returnedFguid
+        public static ZakatReturnDetails GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD, string  OperationStatus)//, string returnedFguid
         {
             try
             {
-                zakatReturnDetailsD.d.Operationz = "59";
+                zakatReturnDetailsD.d.Operationz = OperationStatus;
                 zakatReturnDetailsD.d.UserTypz = "TP";
                 zakatReturnDetailsD.d.Langz = UtilityManager.GetLanguageParameter();
                 ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
@@ -2362,6 +2362,44 @@ namespace GAZT.Manager
 
             }
         }
+
+        //public static async Task<AttachmentRootOject> GAZTSaveEstimatedZAKATAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp)//, string returnedFguid
+        //{
+        //    try
+        //    {
+        //        AttachmentRootOject _attachment = new AttachmentRootOject();
+        //        char LangZ = GetLangZParameter();
+        //        //string Dotyp = "VTA0";
+        //        string AttBy = "TP";
+        //        // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+        //        //    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+        //        String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+        //        //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='005056B1F8FB1EDA889294AF20DB63C0',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=disabled";                                                                                                                                                                                                                                           // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+        //        var uri = new Uri(url);
+        //        HttpClient client = new HttpClient();
+        //        //  client.DefaultRequestHeaders.Add("Token", App.Token);
+        //        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+        //        client.DefaultRequestHeaders.Add("Accept", "application/json");
+        //        // client.DefaultRequestHeaders.Add("content-type", "multipart/form-data");
+        //        client.DefaultRequestHeaders.Add("slug", fileName);
+        //        client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+        //        MultipartFormDataContent content = new MultipartFormDataContent();
+        //        ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+        //        content.Add(baContent, "File", fileName);
+        //        var response = await client.PostAsync(url, content);
+        //        var responsestr = response.Content.ReadAsStringAsync().Result;
+        //        _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+
+
+        //        return _attachment;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+
 
     }
 

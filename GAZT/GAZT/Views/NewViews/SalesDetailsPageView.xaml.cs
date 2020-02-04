@@ -30,6 +30,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.SalesDetailsPageView;
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+            SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
             SetLTR();
             this.BindingContext = viewModel;
            
@@ -79,48 +80,70 @@ namespace GAZT.Views.NewViews
             {
                 if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("1"))
                 {
-                    viewModel.zakatReturnDetailsD.d.TvtslE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                   // viewModel.zakatReturnDetailsD.d.TvtslE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[0].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[0].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[0].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("2"))
                 {
-                    viewModel.zakatReturnDetailsD.d.LabnoE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                 //   viewModel.zakatReturnDetailsD.d.LabnoE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[1].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[1].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[1].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("3"))
                 {
-                    viewModel.zakatReturnDetailsD.d.ImpvalE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                   // viewModel.zakatReturnDetailsD.d.ImpvalE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[2].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[2].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[2].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("4"))
                 {
-                    viewModel.zakatReturnDetailsD.d.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                   // viewModel.zakatReturnDetailsD.d.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[3].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[3].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[3].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("5"))
                 {
-                    viewModel.zakatReturnDetailsD.d.Estsl = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                  //  viewModel.zakatReturnDetailsD.d.Estsl = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[4].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[4].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[4].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("6"))
                 {
-                    viewModel.zakatReturnDetailsD.d.ExamtI = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                   // viewModel.zakatReturnDetailsD.d.ExamtI = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[5].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[5].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[5].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("7"))
                 {
-                    viewModel.zakatReturnDetailsD.d.PramtE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                   // viewModel.zakatReturnDetailsD.d.PramtE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[6].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[6].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[6].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
                     viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
+                    viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
+
 
                     // Missing need to check and assign the value
                     ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;

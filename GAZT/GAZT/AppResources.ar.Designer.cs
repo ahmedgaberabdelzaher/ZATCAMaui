@@ -2322,5 +2322,11 @@ namespace GAZT {
                 return ResourceManager.GetString("BillDetails", resourceCulture);
             }
         }
+        
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
     }
 }

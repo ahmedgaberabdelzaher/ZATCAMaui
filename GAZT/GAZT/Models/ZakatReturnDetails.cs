@@ -18,12 +18,12 @@ namespace GAZT.Models
     public class EstimateZakatAttachment
     {
         public Metadata3 __metadata { get; set; }
-        public string RetGuid { get; set; }
+        public string RetGuid { get; set; }// Comp
         public string Seqno { get; set; }
         public string SchGuid { get; set; }
         public string Dotyp { get; set; }
         public int Srno { get; set; }
-        public string Doguid { get; set; }
+        public string Doguid { get; set; }// Comp
         public string AttBy { get; set; }
         public string Filename { get; set; }
         public string FileExtn { get; set; }
