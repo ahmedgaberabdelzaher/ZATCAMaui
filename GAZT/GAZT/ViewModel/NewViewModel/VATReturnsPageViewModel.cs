@@ -1262,6 +1262,32 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public async Task OnSaveDraftClicked()
+        {
+            CreateDataForPost();
+
+            string operation = "05";// Passed 05 to save the data as a draft
+            VATDeclarationData.d.Operationz = operation;
+            StepNumber = "01";
+            if (IsDeclarationCheckedForInstruction == true)
+            {
+                StepNumber = "02";
+            }
+            if (IsCheckedTaxPayerDetailsInfo == true)
+            {
+                StepNumber = "03";
+            }
+            if (IsDeclarationCheckedForSummary == true)
+            {
+                StepNumber = "04";
+            }
+
+            VATDeclarationData.d.StepNumber = StepNumber;
+            VATDeclarationData.d.UserTypz = "TP";
+
+            await SaveReturnAndGetReturnAndSetButtons();
+            await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+        }
         public void InstrunctionClicked()
         {
             ClearPage();

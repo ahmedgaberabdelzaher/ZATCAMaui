@@ -355,6 +355,9 @@ namespace GAZT.Views.NewViews
                 case Buttons.Amend:
                     await viewModel.VATReturnAmendAsync();
                     break;
+                case Buttons.Save:
+                    await viewModel.OnSaveDraftClicked();
+                    break;
                 default:
                     break;
             }
