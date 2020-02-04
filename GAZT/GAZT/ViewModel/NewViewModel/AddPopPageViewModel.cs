@@ -41,6 +41,34 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVisibleLink");
             }
         }
+
+        private string _link;
+        public string Link
+        {
+            get
+            {
+                return _link;
+            }
+            set
+            {
+                _link = value;
+                RaisePropertyChanged("Link");
+            }
+        }
+
+        private string _linkMessage;
+        public string LinkMessage
+        {
+            get
+            {
+                return _linkMessage;
+            }
+            set
+            {
+                _linkMessage = value;
+                RaisePropertyChanged("LinkMessage");
+            }
+        }
         #endregion
 
         #region Constructor

@@ -27,7 +27,9 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 InitializeComponent();
                 viewModel.PopMessage = objPopUP.Message;
-                viewModel.IsVisibleLink = objPopUP.IsFaqAvailable;
+                viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
+                viewModel.Link = objPopUP.Link;
+                viewModel.LinkMessage = objPopUP.LinkMessage;
             }
             catch (Exception e)
             {

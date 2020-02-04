@@ -19,13 +19,14 @@
         </Grid.ColumnDefinitions>
         <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
             <StackLayout  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                <Image  Grid.Row="0" Grid.Column="1" BackgroundColor="Red" HorizontalOptions="End" Source="ic_back.png">
+                <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Margin="0,0,0,0" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                 <Label Margin="0,0,0,0" Text="Link" IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                <Label Margin="0,0,0,0" Text="{Binding LinkMessage}" IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
             </StackLayout>
         </Frame>

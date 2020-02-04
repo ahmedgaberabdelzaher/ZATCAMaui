@@ -456,7 +456,11 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
-            popUp.IsFaqAvailable = false;
+            String MessageWithPercent = popUp.Message.Replace("5%",viewModel.VATRate002);
+            popUp.Message = MessageWithPercent;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -464,7 +468,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -472,7 +476,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Link";
+            popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -480,7 +486,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Link";
+            popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -488,7 +496,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -496,7 +506,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -506,7 +516,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -514,7 +526,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -522,7 +534,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -530,7 +542,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -538,7 +552,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -546,15 +562,17 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
-            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -562,7 +580,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -570,7 +590,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -578,7 +598,7 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -587,7 +607,7 @@ namespace GAZT.Views.NewViews
 
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipNetVATdue;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -595,7 +615,9 @@ namespace GAZT.Views.NewViews
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAmount;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -604,7 +626,41 @@ namespace GAZT.Views.NewViews
 
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
-            popUp.IsFaqAvailable = false;
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedAmountClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedAdjustmentClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedVatAmountClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount;
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatZeroRatedPurchasesAdjustmentClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
+            popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
