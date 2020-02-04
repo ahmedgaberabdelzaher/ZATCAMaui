@@ -19,7 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnSalesDetailsClicked { get; set; }
         string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
-        string Fbguid  { get; set; }
+        public static string Fbguid  { get; set; }
 
     #endregion
 
@@ -151,8 +151,9 @@ namespace GAZT.ViewModel.NewViewModel
 
                 await Task.Run(async () =>
                 {
-                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                  //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                   ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
+                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                     ZakatReturnDetails = zakatReturnDetails;
                     ZakatReturnDetail = zakatReturnDetails.d;
                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
