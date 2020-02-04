@@ -52,7 +52,7 @@ namespace GAZT.Views.NewViews
             IntilizeAsync();
 
             viewModel.IsMainButtonEnabled = false;
-
+           // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
         }
         #endregion
 
@@ -183,7 +183,7 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
         {
-
+            
             Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
@@ -441,8 +441,35 @@ namespace GAZT.Views.NewViews
 
         }
 
-      
+        private void ICvalidation_Clicked(object sender, EventArgs e)
+        {
+           //if(TabInstruction.IsVisible==true)
+           // {
+           //     if(chkDeclaration.IsChecked==false)
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+           //     }
+           //     else
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+
+           //     }
+           // }
+           //if(TabTaxPayerDetails.IsVisible==true)
+           // {
+           //     if (chkClearification.IsChecked == false)
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+           //     }
+           //     else
+           //     {
+           //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+
+           //     }
+                
+           // }
         }
+    }
 
      
     }
