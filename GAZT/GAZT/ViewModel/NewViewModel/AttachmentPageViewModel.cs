@@ -135,7 +135,9 @@ namespace GAZT.ViewModel.NewViewModel
                         AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
                         if (_attachment != null && _attachment.d != null)
                         {
-                            AttachmentSize =Math.Round((Convert.ToDecimal(attachment.Length) / 1024),2).ToString();
+                            AttachmentSize = Math.Round((Convert.ToDecimal(attachment.Length) / 1024), 2);
+
+
                             if (Convert.ToInt32(AttachmentSize) <= 20)
                             {
                                 VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
