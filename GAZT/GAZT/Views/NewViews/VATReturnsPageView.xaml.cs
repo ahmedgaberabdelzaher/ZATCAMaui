@@ -258,6 +258,8 @@ namespace GAZT.Views.NewViews
                 if (current.pageName == "Instrunction")
                 {
                     viewModel.InstrunctionClicked();
+                    BtnNextStep.IsEnabled = false;
+                    chkDeclaration.IsChecked = false;
                     setColor(previous, current);
                 }
                 else if (current.pageName == "TaxPayer Details")
@@ -265,7 +267,13 @@ namespace GAZT.Views.NewViews
                     if (viewModel.IsDeclarationCheckedForInstruction == true )
                     {
                         viewModel.TaxpayerDetailsClicked();
+                      
                         setColor(previous, current);
+                    }
+                    else
+                    {
+                        BtnNextStep.IsEnabled = false;
+                        chkClearification.IsChecked = false;
                     }
                     //else
                     //{
@@ -291,6 +299,11 @@ namespace GAZT.Views.NewViews
                         viewModel.SummaryClicked();
                         setColor(previous, current);
                     }
+                    else
+                    {
+                        BtnNextStep.IsEnabled = false;
+                        chkDeclarationForSummary.IsChecked = false;
+                    }
                     //else
                     //{
                     //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
@@ -306,10 +319,12 @@ namespace GAZT.Views.NewViews
             if (viewModel.IsDeclarationChecked == false)
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+                BtnNextStep.IsEnabled = false;
             }
             else
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGoldLabelStyleForCaptionFont"];
+                BtnNextStep.IsEnabled = false;
             }
         }
 
@@ -365,6 +380,7 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
             viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
@@ -373,17 +389,20 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt,viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
         }
 
         private void ClickGestureRecognizer_ClickedForVatAdjustment(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
 
         }
 
         private void ClickGestureRecognizer_ClickedForVatAmountForPurchase(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
             viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
@@ -392,7 +411,8 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
         {
-            if(viewModel.ResponseVATDeclarationD.TpregFg=="X")
+            CheckMandetoryFields();
+            if (viewModel.ResponseVATDeclarationD.TpregFg=="X")
             {
                 viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
             }
@@ -409,6 +429,7 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatAccounted(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
 
             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
@@ -418,17 +439,20 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
 
         }
 
         private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
         }
 
         private void ClickGestureRecognizer_ClickedForAllPurchaseVatAmount(object sender, TextChangedEventArgs e)
         {
+            CheckMandetoryFields();
             viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
         }
 
@@ -680,6 +704,175 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
+
+        public void CheckMandetoryFields()
+        {
+            bool IsAllEntered = true;
+            if (string.IsNullOrEmpty(EntryVatAmount.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryStdsalesVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntrySalesGccAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryZerosalesAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExportsAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExportsAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryImportspaidAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryImportspaidVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryImportsaccAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryImportsaccAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryImportsaccVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryPreperiodcorr.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryCreditVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+            {
+                IsAllEntered = false;
+            }
+            if(IsAllEntered==false)
+            {
+                BtnNextStep.IsEnabled = false;
+            }
+            else
+            {
+                BtnNextStep.IsEnabled = true;
+            }
+        }
+
+        private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryCreditVat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryNetdueVat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void chkDeclarationForSummary_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+           
+            if(TabSummarry.IsVisible==true)
+            {
+                CheckBox CheckSummary = (CheckBox)sender;
+                if(CheckSummary.IsChecked==true)
+                {
+                    BtnNextStep.IsEnabled = true;
+                }
+                else
+                {
+                    BtnNextStep.IsEnabled = false;
+                }
+            }
+        }
+
+        private void chkClearification_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (TabTaxPayerDetails.IsVisible == true)
+            {
+                CheckBox CheckSummary = (CheckBox)sender;
+                if (CheckSummary.IsChecked == true)
+                {
+                    BtnNextStep.IsEnabled = true;
+                }
+                else
+                {
+                    BtnNextStep.IsEnabled = false;
+                }
+            }
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
@@ -709,6 +902,7 @@ namespace GAZT.Views.NewViews
                 
         //   // }
         //}
+       
     }
 
      

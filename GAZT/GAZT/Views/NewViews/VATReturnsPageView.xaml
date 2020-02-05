@@ -150,7 +150,7 @@
                             <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}"  CheckedChanged="chkDeclaration_CheckedChanged" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
-                                        <Setter Property="Color" Value="Red" />
+                                        <Setter Property="Color" Value="#ff0000" />
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -332,10 +332,10 @@
 
 
 
-                        <CheckBox x:Name="chkClearification" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <CheckBox x:Name="chkClearification" CheckedChanged="chkClearification_CheckedChanged" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkClearification}, Path=IsChecked}" Value="false">
-                                    <Setter Property="Color" Value="Red" />
+                                    <Setter Property="Color" Value="#ff0000" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>
@@ -431,10 +431,11 @@
                         <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryVatAmount}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
-                               
+                                
                             </Frame.Triggers>
+                           
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             <custom:GAZTBorderlessEntry.Behaviors>
@@ -453,7 +454,7 @@
                         <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryVatAdjustmentWithSAR}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -474,7 +475,7 @@
                         <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdsalesVat}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>                              
                             </Frame.Triggers>
                         </Frame>
@@ -495,7 +496,7 @@
                         <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntrySalesGccAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -515,7 +516,7 @@
                         <Frame Grid.Row="7" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntrySalesGccAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -539,7 +540,7 @@
                         <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZerosalesAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -557,7 +558,7 @@
                         <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZerosalesAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -579,7 +580,7 @@
                         <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExportsAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -597,7 +598,7 @@
                         <Frame Grid.Row="13" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExportsAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -619,7 +620,7 @@
                         <Frame Grid.Row="15" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptsalesAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -637,7 +638,7 @@
                         <Frame Grid.Row="16" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptsalesAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -688,7 +689,7 @@
                         <Frame Grid.Row="20" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchaseAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -705,7 +706,7 @@
                         <Frame Grid.Row="21" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchaseAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -722,7 +723,7 @@
                         <Frame Grid.Row="22"  Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchasesVat}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -741,7 +742,7 @@
                         <Frame Grid.Row="24" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZVatAmountWithSAR}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -758,7 +759,7 @@
                         <Frame Grid.Row="25" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportspaidAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -775,7 +776,7 @@
                         <Frame Grid.Row="26" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportspaidVat}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -793,7 +794,7 @@
                         <Frame Grid.Row="28" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -810,7 +811,7 @@
                         <Frame Grid.Row="29" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -828,7 +829,7 @@
                         <Frame Grid.Row="30" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryImportsaccVat}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -846,7 +847,7 @@
                         <Frame Grid.Row="32" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZeropurchaseAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -863,7 +864,7 @@
                         <Frame Grid.Row="33" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryZeropurchaseAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -884,7 +885,7 @@
                         <Frame Grid.Row="35" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptpurchaseAmt}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -901,7 +902,7 @@
                         <Frame Grid.Row="36" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryExemptpurchaseAdj}, Path=Text.Length}" Value="0">
-                                    <Setter Property="BorderColor" Value="Red" />
+                                    <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
@@ -954,11 +955,11 @@
                             <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
-                                        <Setter Property="BorderColor" Value="Red" />
+                                        <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr"  Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -979,11 +980,11 @@
                             <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryCreditVat}, Path=Text.Length}" Value="0">
-                                        <Setter Property="BorderColor" Value="Red" />
+                                        <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryCreditVat" Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryCreditVat" TextChanged="EntryCreditVat_TextChanged" Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -998,11 +999,11 @@
                             <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryNetdueVat}, Path=Text.Length}" Value="0">
-                                        <Setter Property="BorderColor" Value="Red" />
+                                        <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" Grid.Row="10" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="10" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -1023,7 +1024,7 @@
                 </ScrollView>
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                <StackLayout HorizontalOptions="FillAndExpand" x:Name="TabSummarry" IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -1091,7 +1092,13 @@
 
 
 
-                            <CheckBox x:Name="chkDeclarationForSummary" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0"></CheckBox>
+                            <CheckBox x:Name="chkDeclarationForSummary" CheckedChanged="chkDeclarationForSummary_CheckedChanged" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclarationForSummary}, Path=IsChecked}" Value="false">
+                                        <Setter Property="Color" Value="#ff0000" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
 
 
                             <Label  Grid.Row="6" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
@@ -1618,9 +1625,9 @@
 
 
 
-
-                <Button Text="{Binding ButtonName}" IsEnabled="{Binding IsMainButtonEnabled}" Command="{Binding OnStepButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Style="{StaticResource GAZTVerifyButton}"></Button>
-
+                <StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">
+                <Button Text="{Binding ButtonName}" IsEnabled="{Binding IsMainButtonEnabled}" Command="{Binding OnStepButtonClicked}"  Style="{StaticResource GAZTVerifyButton}" x:Name="BtnNextStep"></Button>
+                </StackLayout>
             </Grid>
         </Grid>
     </ContentPage.Content>
