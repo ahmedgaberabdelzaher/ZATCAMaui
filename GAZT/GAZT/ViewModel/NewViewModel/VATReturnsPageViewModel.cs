@@ -1308,6 +1308,7 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             IsVisibleInstrunction = true;
             IsMainButtonEnabled = false;
+            IsDeclarationCheckedForInstruction = false;
             ButtonName = AppResources.ZVatStepTwo;
             
         }
@@ -1889,7 +1890,7 @@ namespace GAZT.ViewModel.NewViewModel
                     ClearPage();
                     IsDeclarationCheckedForInstruction = true;
                     IsCheckedTaxPayerDetailsInfo = true;
-                    IsDeclarationCheckedForSummary = true;
+                    IsDeclarationCheckedForSummary = false;
                     IsVisibleVatReturnForm = true;
                     PageSelectedItem = VatTabbledPageList[3];
                 }

@@ -262,6 +262,7 @@ namespace GAZT.Views.NewViews
                     viewModel.InstrunctionClicked();
                     BtnNextStep.IsEnabled = false;
                     chkDeclaration.IsChecked = false;
+                    viewModel.IsDeclarationCheckedForInstruction = false;
                     setColor(previous, current);
                 }
                 else if (current.pageName == "TaxPayer Details")
@@ -341,12 +342,21 @@ namespace GAZT.Views.NewViews
             if (viewModel.IsDeclarationChecked == false)
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-                BtnNextStep.IsEnabled = false;
+               // BtnNextStep.IsEnabled = false;
             }
             else
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGoldLabelStyleForCaptionFont"];
+              //  BtnNextStep.IsEnabled = true;
+            }
+
+            if(chkDeclaration.IsChecked==true)
+            {
                 BtnNextStep.IsEnabled = true;
+            }
+            else
+            {
+                BtnNextStep.IsEnabled = false;
             }
         }
 
