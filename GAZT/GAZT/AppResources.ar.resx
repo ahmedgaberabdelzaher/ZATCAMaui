@@ -1437,4 +1437,32 @@
     <value>إجمالي التصحيح الضريبي المدخل أكبر من الإجمالي الضريبي للفترة ,  يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح</value>
     <comment>VAT Declaration additional Rule 20</comment>
   </data>
+  <data name="ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus" xml:space="preserve">
+    <value>سيتم إعادة النموذج الى قيم وحالات الإقرار المقدم مسبقا</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue" xml:space="preserve">
+    <value>يرجى تقديم نموذج تعديل ذاتي للتعديلات الأكثر من أو تساوي  {0}  ريال  أو أقل من أو تساوي   {1}  ريال</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed" xml:space="preserve">
+    <value>الغرامات من هذا الإقرار أعلى من صافي الضريبة المستعادة وبالتالي غير مسموح لك المطالبة بالاسترداد.</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99" xml:space="preserve">
+    <value>لا يمكن ان تكون الغرامة أكبر من 999,999,999,99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PleaseCompleteHighlightedField" xml:space="preserve">
+    <value>الرجاء إكمال الحقول المحددة كما هو موضح للمتابعة</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99" xml:space="preserve">
+    <value>نطاق القيمة المسموح بها هو من 0 الى 999,999,999,999.99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99" xml:space="preserve">
+    <value>إجمالي (صافي الضريبة المستحقة للفترة الحالية و التعديل من فترة سابقة) لايمكن أن يكون أكبر من 99,999,999,999.99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
 </root>

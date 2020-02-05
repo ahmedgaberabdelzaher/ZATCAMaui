@@ -3644,6 +3644,70 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form will be restored to the values &amp; status of previous Billed return.
+        /// </summary>
+        public static string ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kindly submit a self-amendment form for corrections &gt;= {0} SAR or &lt;= {1} SAR.
+        /// </summary>
+        public static string ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValu" +
+                        "e", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Penalties from this return is higher than Net VAT reclaimed. Hence you are not allowed to claim refund.
+        /// </summary>
+        public static string ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Penalty can not be greater than 999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the highlighted fields as guided to proceed further.
+        /// </summary>
+        public static string ZZGeneralMessage_PleaseCompleteHighlightedField {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PleaseCompleteHighlightedField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range of value allowed is 0 to 999,999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
         public static string ZZInternetConnectionMessage {
