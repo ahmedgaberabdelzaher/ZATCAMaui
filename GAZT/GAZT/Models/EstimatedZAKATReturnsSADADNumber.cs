@@ -3,53 +3,38 @@ using System.Collections.Generic;
 
 namespace GAZT.Models
 {
-    public class ZakatReturnDetails
+    public class EstimatedZAKATReturnsSADADNumber
     {
-        public ZakatReturnDetailsD d { get; set; }
+        public EstimatedZAKATReturnsSADADNumberD d { get; set; }
     }
-    public class ZakatReturnDetailsReason
+
+   
+
+    public class EstimatedZAKATReturnsSADADNumberDeferred
+    {
+        public string uri { get; set; }
+    }
+
+    public class EstimatedZAKATReturnsSADADNumberDeferredReasonSet
+    {
+        public EstimatedZAKATReturnsSADADNumberDeferred __deferred { get; set; }
+    }
+
+    public class EstimatedZAKATReturnsSADADNumberDeferred2
+    {
+        public string uri { get; set; }
+    }
+
+    public class EstimatedZAKATReturnsSADADNumberAttachSet
+    {
+        public EstimatedZAKATReturnsSADADNumberDeferred2 __deferred { get; set; }
+    }
+
+   
+
+    public class EstimatedZAKATReturnsSADADNumberResult
     {
         public Metadata2 __metadata { get; set; }
-        public string Mandt { get; set; }
-        public string Spras { get; set; }
-        public string AmdSource { get; set; }
-        public string Description { get; set; }
-    }
-    public class EstimateZakatAttachment
-    {
-        public Metadata3 __metadata { get; set; }
-        public string RetGuid { get; set; }// Comp
-        public string Seqno { get; set; }
-        public string SchGuid { get; set; }
-        public string Dotyp { get; set; }
-        public int Srno { get; set; }
-        public string Doguid { get; set; }// Comp
-        public string AttBy { get; set; }
-        public string Filename { get; set; }
-        public string FileExtn { get; set; }
-        public string Mimetype { get; set; }
-        public string ByPusr { get; set; }
-        public string Erfdt { get; set; }//Date
-        public string Erftm { get; set; }
-        public string DataVersion { get; set; }
-        public string DocUrl { get; set; }
-        public string OutletRef { get; set; }
-    }
-    public class ReasonSet
-    {
-        public List<ZakatReturnDetailsReason> results { get; set; }
-    }
-
-    public class AttachSet
-    {
-        public List<EstimateZakatAttachment> results { get; set; }
-    }
-
-    
-
-    public class ZakatReturnDetailsInvoice
-    {
-        public Metadata3 __metadata { get; set; }
         public string Undisamt { get; set; }
         public string Disamt { get; set; }
         public string Totamt { get; set; }
@@ -60,31 +45,22 @@ namespace GAZT.Models
         public string Stotamt { get; set; }
     }
 
-    public class InvoiceSet
+    public class EstimatedZAKATReturnsSADADNumberInvoiceSet
     {
-        public List<ZakatReturnDetailsInvoice> results { get; set; }
+        public List<EstimatedZAKATReturnsSADADNumberResult> results { get; set; }
     }
 
-    
-
-    public class ZakatReturnDetailsThresholdSet
+    public class Deferred3
     {
-        public Metadata4 __metadata { get; set; }
-        public string Mandt { get; set; }
-        public string Fbtyp { get; set; }
-        public string Chrnm { get; set; }
-        public String Begda { get; set; }//Date
-        public string Endda { get; set; }//Date
-        public string Value { get; set; }
-        public string Type { get; set; }
+        public string uri { get; set; }
     }
 
-    public class ThresholdSet
+    public class EstimatedZAKATReturnsSADADNumberThresholdSet
     {
-        public List<ZakatReturnDetailsThresholdSet> results { get; set; }
+        public Deferred3 __deferred { get; set; }
     }
 
-    public class ZakatReturnDetailsD
+    public class EstimatedZAKATReturnsSADADNumberD
     {
         public Metadata __metadata { get; set; }
         public string Fsource { get; set; }
@@ -100,8 +76,8 @@ namespace GAZT.Models
         public string TvtslI { get; set; }
         public string TvtslE { get; set; }
         public string Tpstatus { get; set; }
-        public string TimestampCr { get; set; }//date
-        public string TimestampCh { get; set; }//Date
+        public DateTime TimestampCr { get; set; }
+        public DateTime TimestampCh { get; set; }
         public string Tcflg { get; set; }
         public string Sumcnt { get; set; }
         public string StepNumberz { get; set; }
@@ -157,13 +133,16 @@ namespace GAZT.Models
         public object Begdaz { get; set; }
         public string AmdRsn { get; set; }
         public string Amdflg { get; set; }
-        public string Abrzu { get; set; }//Date
-        public string Abrzo { get; set; }// Date
-        public ReasonSet ReasonSet { get; set; }
-        public AttachSet AttachSet { get; set; }
-        public InvoiceSet InvoiceSet { get; set; }
-        public ThresholdSet ThresholdSet { get; set; }
+        public DateTime Abrzu { get; set; }
+        public DateTime Abrzo { get; set; }
+        public EstimatedZAKATReturnsSADADNumberDeferredReasonSet ReasonSet { get; set; }
+        public EstimatedZAKATReturnsSADADNumberAttachSet AttachSet { get; set; }
+        public EstimatedZAKATReturnsSADADNumberInvoiceSet InvoiceSet { get; set; }
+        public EstimatedZAKATReturnsSADADNumberThresholdSet ThresholdSet { get; set; }
     }
 
-    
+    //public class RootObject
+    //{
+    //    public EstimatedZAKATReturnsSADADNumberD d { get; set; }
+    //}
 }

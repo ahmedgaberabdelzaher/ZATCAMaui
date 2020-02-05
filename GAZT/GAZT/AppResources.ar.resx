@@ -1250,17 +1250,19 @@
   <data name="OldValue" xml:space="preserve">
     <value>Old Value</value>
   </data>
-   <data name="AmendTheReturn" xml:space="preserve">
+  <data name="AmendTheReturn" xml:space="preserve">
     <value>Amend The Return</value>
-        </data>
+  </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>'• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
 • يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية ()
- </value> 
-       </data>
-    
-    <data name="BillDetails" xml:space="preserve">
+ </value>
+  </data>
+  <data name="BillDetails" xml:space="preserve">
     <value>Bill Details</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
   </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
     <value>• اذا كانت تصحيحات الإقرار السابق تستلزم تعديل الالتزام الضريبي   أقل من &lt;5,000&gt; ريال أو رصيد دائن  لأكثر من &lt;-5,000&gt; ريال ، يرجى تحديد التعديل الضريبي (وليست مبالغ توريدات أو  مشتريات) في هذا الحقل. لأي تعديلات ضريبية أخرى يرجى تقديم نموذج "تعديل ذاتي"</value>
@@ -1354,5 +1356,85 @@
 أو
  - خاضعة للضريبة بنسبة صفر بالمائة ومستوردة من دولة أخرى
 • يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للضريبة بنسبة صفر.</value>
+  </data>
+  <data name="ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المبيعات المحلية الخاضعة للضريبة بالنسبة الأساسية , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 1</comment>
+  </data>
+  <data name="ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>لقد قمت بإدخال مبلغ التعديل دون إدخال مبلغ المبيعات , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 2</comment>
+  </data>
+  <data name="ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل اكثر من {0}% وذلك اكبر من مبلغ مبيعات للمواطنين (الخدمات الصحية الخاصة، التعليم الأهلي الخاص)، يرجي التأكد من صحه المبلغ المدرج بالإقرار أو المتابعه إذا كان المبلغ المدرج صحيح.</value>
+    <comment>VAT Declaration additional Rule 3</comment>
+  </data>
+  <data name="ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>لقد قمت بادخال مبلغ التعديل دون إدخال مبلغ المبيعات , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 4</comment>
+  </data>
+  <data name="ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>تشير سجلاتنا إلى أنك لا تنتمي للقطاع الخاضع للضريبة بنسبة صفر بالمائة، وأنه لا يوجد مبيعات خاضعة للضريبة بنسبة صفر بالمائة في هذه الفئة.</value>
+    <comment>VAT Declaration additional Rule 5</comment>
+  </data>
+  <data name="ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المبيعات المحلية الخاضعة للضريبة بنسبة صفر بالمائة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 6</comment>
+  </data>
+  <data name="ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>تشير سجلاتنا  بأنك لست مصدّر, وأنه يوجد مبيعات لا تخضع للضريبة بنسبة صفر في حقل الصادرات.</value>
+    <comment>VAT Declaration additional Rule 7</comment>
+  </data>
+  <data name="ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ الصادرات الخاضعة للضريبة بنسبة صفر بالمائة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 8</comment>
+  </data>
+  <data name="ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>تشير سجلاتنا إلى أن أن قطاعك غير معفى من الضريبة  ولكن يوجد مبيعات معفاة من الضريبة في إقرارك.</value>
+    <comment>VAT Declaration additional Rule 9</comment>
+  </data>
+  <data name="ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}%  وذلك أكبر من مبلغ المبيعات المعفاة من الضريبة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 10</comment>
+  </data>
+  <data name="ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من إجمالي مبلغ المبيعات , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 11</comment>
+  </data>
+  <data name="ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>المشتريات المحلية الخاصة بك الخاضعة للضريبة بالنسبة الأساسية  أكبر من إجمالي المبيعات المصرح عنها للفترة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 12</comment>
+  </data>
+  <data name="ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المشتريات المحلية الخاضعة للضريبية بالنسبة الأساسية , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 13</comment>
+  </data>
+  <data name="ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ الاستيرادات الخاضعة للضريبة والتي تم دفعها في منفذ الجمارك , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 14</comment>
+  </data>
+  <data name="ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ الاستيرادات الخاضعة للضريبة المحسوبة من خلال آلية الاحتساب العكسي , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 15</comment>
+  </data>
+  <data name="ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المشتريات الخاضعة لنسبة صفر بالمائة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 16</comment>
+  </data>
+  <data name="ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المشتريات المعفاه من الضريبة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 17</comment>
+  </data>
+  <data name="ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ المشتريات الخاصة بك للفترة الحالية أكبر بكثير من مبلغ المبيعات لنفس الفترة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 18</comment>
+  </data>
+  <data name="ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ إجمالي المشتريات , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <comment>VAT Declaration additional Rule 19</comment>
+  </data>
+  <data name="ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>إجمالي التصحيح الضريبي المدخل أكبر من الإجمالي الضريبي للفترة ,  يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح</value>
+    <comment>VAT Declaration additional Rule 20</comment>
   </data>
 </root>

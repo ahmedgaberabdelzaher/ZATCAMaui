@@ -29,6 +29,7 @@ namespace GAZT.Views.NewViews
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SetLTR();
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+            viewModel.OnPageLoad();
             this.BindingContext = viewModel;
 
           

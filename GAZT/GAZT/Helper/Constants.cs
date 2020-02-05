@@ -62,6 +62,9 @@ namespace GAZT.Helper
         public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet?saml2=disabled";
 
         public static string GAZTVATReturnGetApplicableButtons = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
+        public static string GAZTGetEstimatedZAKATSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
+        public static string GAZTSaveEstimatedZAKATAttachement = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='";
+
 
     }
 }
