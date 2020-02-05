@@ -24,7 +24,7 @@
                         <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Margin="0,0,0,0" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                <Label Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                 <Label Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
             </StackLayout>
