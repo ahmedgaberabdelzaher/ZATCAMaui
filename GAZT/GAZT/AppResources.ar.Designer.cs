@@ -2328,5 +2328,143 @@ namespace GAZT {
                 return ResourceManager.GetString("Confirm", resourceCulture);
             }
         }
+        
+        public static string ZToolTipCorrectionsfrompreviousperiod {
+            get {
+                return ResourceManager.GetString("ZToolTipCorrectionsfrompreviousperiod", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipcreditcarriedforwardfrompreviousperiod {
+            get {
+                return ResourceManager.GetString("ZToolTipcreditcarriedforwardfrompreviousperiod", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExemptAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExemptAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExemptpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExemptpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExemptpurchasesAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExportsAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipExportsAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipExportsAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipExportsAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipImportssubjecttoVATaccountedAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipImportssubjecttoVATaccountedAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipImportssubjecttoVATaccountedVatAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedVatAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipNetVATdue {
+            get {
+                return ResourceManager.GetString("ZToolTipNetVATdue", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipPrivateHealthcareAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipPrivateHealthcareAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipPrivateHealthcareAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipPrivateHealthcareAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipStandardrateddomesticpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipStandardrateddomesticpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipStandardRatedSalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipZerorateddomesticsalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipZerorateddomesticsalesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipZeroratedpurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZToolTipZeroratedpurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZToolTipZeroratedpurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZToolTipZeroratedpurchasesAmount", resourceCulture);
+            }
+        }
     }
 }

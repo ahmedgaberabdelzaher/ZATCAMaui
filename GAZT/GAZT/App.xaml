@@ -55,9 +55,22 @@
 
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-            
-            
-            
+
+            <Style x:Key="MiniNewGrayLabelStyle" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
+                    </Setter.Value>
+
+                </Setter>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
+
+                <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
+            </Style>
+
+
 
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
@@ -464,6 +477,14 @@
                 <Setter Property="Margin" Value="10,2,10,1"/>
             </Style>
 
+            <Style x:Key="GAZTFrameStyleForEntryValidationRed" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="BorderColor" Value="Red" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Margin" Value="10,2,10,1"/>
+            </Style>
+
             <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -688,7 +709,14 @@
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
 
+            <Style x:Key="StyleCheckBoxValidatorRed" TargetType="CheckBox">
+                <Setter Property="Color" Value="Red"/>
+               
+            </Style>
+            <Style x:Key="StyleCheckBoxValidatorGreen" TargetType="CheckBox">
+                <Setter Property="Color" Value="Green"/>
 
+            </Style>
 
             <!--<Style x:Key="GAZTButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Small"/>

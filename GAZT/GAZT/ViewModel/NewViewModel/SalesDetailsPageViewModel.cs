@@ -449,7 +449,7 @@ namespace GAZT.ViewModel.NewViewModel
                 ZakatReturnDetails _zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                 if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    if(PostOperation.Equals("05"))
+                    if(PostOperation.Equals("05")  )
                     {
                         ShowConfirmButton();
                     }

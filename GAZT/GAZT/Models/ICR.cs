@@ -1,6 +1,7 @@
 ﻿using GAZT.Manager;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace GAZT.Models
@@ -40,6 +41,20 @@ namespace GAZT.Models
             }
         }
 
+
+        private string _formatedSingleDueDate;
+        public string FormatedSingleDueDate
+        {
+            get
+            {
+                return _formatedSingleDueDate;
+            }
+            set
+            {
+                _formatedSingleDueDate = value;
+            }
+        }
+
         private string _dueDate;
         public string DueDate
         {
@@ -50,6 +65,18 @@ namespace GAZT.Models
             set
             {
                 _dueDate = value;
+                if (_dueDate != null)
+                {
+                    if (App.IsArabic)
+                    {
+                        string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
+                    }
+                    else
+                    {
+                        FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                }
             }
         }
 

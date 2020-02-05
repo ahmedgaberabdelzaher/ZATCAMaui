@@ -12,6 +12,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using GAZT.Helper;
+using Newtonsoft.Json;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -1253,7 +1254,7 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.UserTypz = "TP";
 
                 await SaveReturnAndGetReturnAndSetButtons();
-
+                await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
             });
         }
 
@@ -1261,11 +1262,38 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public async Task OnSaveDraftClicked()
+        {
+            CreateDataForPost();
+
+            string operation = "05";// Passed 05 to save the data as a draft
+            VATDeclarationData.d.Operationz = operation;
+            StepNumber = "01";
+            if (IsDeclarationCheckedForInstruction == true)
+            {
+                StepNumber = "02";
+            }
+            if (IsCheckedTaxPayerDetailsInfo == true)
+            {
+                StepNumber = "03";
+            }
+            if (IsDeclarationCheckedForSummary == true)
+            {
+                StepNumber = "04";
+            }
+
+            VATDeclarationData.d.StepNumber = StepNumber;
+            VATDeclarationData.d.UserTypz = "TP";
+
+            await SaveReturnAndGetReturnAndSetButtons();
+            await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+        }
         public void InstrunctionClicked()
         {
             ClearPage();
             IsVisibleInstrunction = true;
             ButtonName = AppResources.ZVatStepTwo;
+            
         }
         public void TaxpayerDetailsClicked()
         {
@@ -1298,7 +1326,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () => {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
@@ -1362,7 +1391,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void VATReturnGetNotes()
         {
-            
+
             //IsVisibleNotes = true;
             //ButtonName = AppResources.ZNote;
 
@@ -1458,7 +1487,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void VATReturnDeleteAttachment()
         {
-                       _navigationService.NavigateTo("ICRListPageView");
+            _navigationService.NavigateTo("ICRListPageView");
         }
         public void ClearPage()
         {
@@ -1477,72 +1506,98 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void RateSetAsPerDate()
         {
-            if (VATDeclarationData.d != null)
+            try
+
             {
-                if (VATDeclarationData.d.Abrzu != null && VATDeclarationData.d.Abrzo != null)
+                if (VATDeclarationData.d != null)
                 {
-
-
-
-                    DateTime startDate = new DateTime(2017, 1, 18);
-
-                    DateTime endDate = new DateTime(2018, 1, 18);
-
-                    //DateTime startDate = DateTime.Parse(VATDeclarationData.d.Abrzu);
-                    //DateTime endDate = DateTime.Parse(VATDeclarationData.d.Abrzo);
-
-                    List<VATCalculationDataVATRSet> vATCalculationsforBegin = new List<VATCalculationDataVATRSet>();
-                    List<VATCalculationDataVATRSet> vATCalculationsforEnd = new List<VATCalculationDataVATRSet>();
-                    VATCalculationDataVATRSet vATCalculationDataDummy;
-                    foreach (var item in CalculationRateSet)
+                    if (VATDeclarationData.d.Abrzu != null && VATDeclarationData.d.Abrzo != null)
                     {
-                        if (startDate >= item.Begda)
+
+
+
+                        //DateTime startDate = new DateTime(2017, 1, 18);
+
+                        //DateTime endDate = new DateTime(2018, 1, 18);
+
+                        DateTime startDate = new DateTime();
+
+                        DateTime endDate = new DateTime();
+
+
+                        if (!string.IsNullOrEmpty(VATDeclarationData.d.Abrzu) && !string.IsNullOrEmpty(VATDeclarationData.d.Abrzo))
                         {
-                            vATCalculationDataDummy = new VATCalculationDataVATRSet();
-                            vATCalculationDataDummy = item;
-                            vATCalculationsforBegin.Add(vATCalculationDataDummy);
+                            VATRateDataWithDateType vATRateDataWithDate;
+                            VATRateDataWithStringDateType dataWithStringDateType = new VATRateDataWithStringDateType();
+                            dataWithStringDateType.StartDate = VATDeclarationData.d.Abrzu;
+                            dataWithStringDateType.EndDate = VATDeclarationData.d.Abrzo;
+                            string JsonString = JsonConvert.SerializeObject(dataWithStringDateType);
+                            vATRateDataWithDate = JsonConvert.DeserializeObject<VATRateDataWithDateType>(JsonString);
+                            startDate = vATRateDataWithDate.StartDate;
+                            endDate = vATRateDataWithDate.EndDate;
                         }
-                    }
 
-                    foreach (var item1 in vATCalculationsforBegin)
-                    {
-                        if (endDate <= item1.Endda)
+
+                        //DateTime startDate = DateTime.Parse(VATDeclarationData.d.Abrzu);
+                        //DateTime endDate = DateTime.Parse(VATDeclarationData.d.Abrzo);
+
+                        List<VATCalculationDataVATRSet> vATCalculationsforBegin = new List<VATCalculationDataVATRSet>();
+                        List<VATCalculationDataVATRSet> vATCalculationsforEnd = new List<VATCalculationDataVATRSet>();
+                        VATCalculationDataVATRSet vATCalculationDataDummy;
+                        foreach (var item in CalculationRateSet)
                         {
-                            vATCalculationDataDummy = new VATCalculationDataVATRSet();
-                            vATCalculationDataDummy = item1;
-                            vATCalculationsforEnd.Add(vATCalculationDataDummy);
+                            if (startDate >= item.Begda)
+                            {
+                                vATCalculationDataDummy = new VATCalculationDataVATRSet();
+                                vATCalculationDataDummy = item;
+                                vATCalculationsforBegin.Add(vATCalculationDataDummy);
+                            }
                         }
+
+                        foreach (var item1 in vATCalculationsforBegin)
+                        {
+                            if (endDate <= item1.Endda)
+                            {
+                                vATCalculationDataDummy = new VATCalculationDataVATRSet();
+                                vATCalculationDataDummy = item1;
+                                vATCalculationsforEnd.Add(vATCalculationDataDummy);
+                            }
+                        }
+
+                        VATCalculationDataVATRSet Rate002 = vATCalculationsforEnd.Where(x => x.Type == "002").FirstOrDefault();
+                        if (Rate002 != null)
+                        {
+                            VATRate002 = Rate002.Penalty;
+                        }
+
+                        VATCalculationDataVATRSet Rate001 = vATCalculationsforEnd.Where(x => x.Type == "001").FirstOrDefault();
+                        if (Rate001 != null)
+                        {
+                            VATRate001 = Rate001.Penalty;
+                        }
+
+
+                        //VATCalculationDataVATRSet Rate00T1 = CalculationRateSet.Where(x => x.Begda <= startDate && x.Endda >= endDate).FirstOrDefault();
+
+
+
+                        //VATCalculationDataVATRSet Rate002 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type== "002")).FirstOrDefault();
+                        //if (Rate002 != null)
+                        //{
+                        //    VATRate002 = Rate002.Penalty;
+                        //}
+
+                        //VATCalculationDataVATRSet Rate001 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type == "001")).FirstOrDefault();
+                        //if (Rate001 != null)
+                        //{
+                        //    VATRate001 = Rate001.Penalty;
+                        //}
                     }
-
-                    VATCalculationDataVATRSet Rate002 = vATCalculationsforEnd.Where(x => x.Type == "002").FirstOrDefault();
-                    if (Rate002 != null)
-                    {
-                        VATRate002 = Rate002.Penalty;
-                    }
-
-                    VATCalculationDataVATRSet Rate001 = vATCalculationsforEnd.Where(x => x.Type == "001").FirstOrDefault();
-                    if (Rate001 != null)
-                    {
-                        VATRate001 = Rate001.Penalty;
-                    }
-
-
-                    //VATCalculationDataVATRSet Rate00T1 = CalculationRateSet.Where(x => x.Begda <= startDate && x.Endda >= endDate).FirstOrDefault();
-
-
-
-                    //VATCalculationDataVATRSet Rate002 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type== "002")).FirstOrDefault();
-                    //if (Rate002 != null)
-                    //{
-                    //    VATRate002 = Rate002.Penalty;
-                    //}
-
-                    //VATCalculationDataVATRSet Rate001 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type == "001")).FirstOrDefault();
-                    //if (Rate001 != null)
-                    //{
-                    //    VATRate001 = Rate001.Penalty;
-                    //}
                 }
+            }
+            catch (Exception e)
+            {
+
             }
         }
         public async Task pageLoad()
@@ -1730,236 +1785,236 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-            #region CalculationPart
+        #region CalculationPart
 
-            public void CreateDataForPost()
+        public void CreateDataForPost()
+        {
+            //List<Note> noteList = new List<Note>();
+            //Note Note = new Note();
+            //Note.Strline = NoteText;
+            //noteList.Add(Note);
+            //VATDeclarationData.d.NOTESSet.results = noteList;
+            VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
+
+            VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
+            VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
+            VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
+            VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
+            VATDeclarationData.d.StdsalesAdj = vATDeclarationD.StdsalesAdj;
+            VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
+            VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
+            VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
+            VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
+            VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
+            VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
+            VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
+            VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
+            VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
+
+        }
+
+        public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
+        {
+            vATDeclarationD.TotalsalesAmt = TotalsalesAmt;
+            vATDeclarationD.TotalsalesAdj = TotalsalesAdj;
+            vATDeclarationD.TotalpurchaseAmt = TotalpurchaseAmt;
+            vATDeclarationD.TotalpurchaseAdj = TotalpurchaseAdj;
+            vATDeclarationD.StdsalesAdj = StdsalesVat;
+            vATDeclarationD.TotalsalesAdj = TotalsalesVat;
+            vATDeclarationD.StdpurchasesVat = StdpurchasesVat;
+            vATDeclarationD.ImportspaidVat = ImportspaidVat;
+            vATDeclarationD.ImportsaccVat = ImportsaccVat;
+            vATDeclarationD.TotalpurchaseVat = TotalpurchaseVat;
+            vATDeclarationD.TotaldueVat = TotaldueVat;
+            vATDeclarationD.Preperiodcorr = Preperiodcorr;
+            vATDeclarationD.CreditVat = CreditVat;
+            vATDeclarationD.NetdueVat = NetdueVat;
+            return vATDeclarationD;
+        }
+
+        public void SetPageForDraft()
+        {
+            if (!string.IsNullOrEmpty(VATDeclarationData.d.StepNumber))
             {
-                //List<Note> noteList = new List<Note>();
-                //Note Note = new Note();
-                //Note.Strline = NoteText;
-                //noteList.Add(Note);
-                //VATDeclarationData.d.NOTESSet.results = noteList;
-                VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
-
-                VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
-                VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
-                VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
-                VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
-                VATDeclarationData.d.StdsalesAdj = vATDeclarationD.StdsalesAdj;
-                VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
-                VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
-                VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
-                VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
-                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
-                VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
-                VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
-                VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
-                VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
-
-            }
-
-            public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
-            {
-                vATDeclarationD.TotalsalesAmt = TotalsalesAmt;
-                vATDeclarationD.TotalsalesAdj = TotalsalesAdj;
-                vATDeclarationD.TotalpurchaseAmt = TotalpurchaseAmt;
-                vATDeclarationD.TotalpurchaseAdj = TotalpurchaseAdj;
-                vATDeclarationD.StdsalesAdj = StdsalesVat;
-                vATDeclarationD.TotalsalesAdj = TotalsalesVat;
-                vATDeclarationD.StdpurchasesVat = StdpurchasesVat;
-                vATDeclarationD.ImportspaidVat = ImportspaidVat;
-                vATDeclarationD.ImportsaccVat = ImportsaccVat;
-                vATDeclarationD.TotalpurchaseVat = TotalpurchaseVat;
-                vATDeclarationD.TotaldueVat = TotaldueVat;
-                vATDeclarationD.Preperiodcorr = Preperiodcorr;
-                vATDeclarationD.CreditVat = CreditVat;
-                vATDeclarationD.NetdueVat = NetdueVat;
-                return vATDeclarationD;
-            }
-
-            public void SetPageForDraft()
-            {
-                if (!string.IsNullOrEmpty(VATDeclarationData.d.StepNumber))
+                if (VATDeclarationData.d.StepNumber == "00")
                 {
-                    if (VATDeclarationData.d.StepNumber == "00")
-                    {
-                        ClearPage();
-                        IsDeclarationCheckedForInstruction = false;
-                        IsVisibleInstrunction = true;
-                        PageSelectedItem = VatTabbledPageList[0];
-                    }
-                    if (VATDeclarationData.d.StepNumber == "01")
-                    {
-                        ClearPage();
-                        IsDeclarationCheckedForInstruction = false;
-                        IsVisibleInstrunction = true;
-                        PageSelectedItem = VatTabbledPageList[0];
-                    }
-                    else if (VATDeclarationData.d.StepNumber == "02")
-                    {
-                        ClearPage();
-                        IsDeclarationCheckedForInstruction = true;
-                        IsVisibleTaxPayerDetails = true;
-                        PageSelectedItem = VatTabbledPageList[1];
-                    }
-                    else if (VATDeclarationData.d.StepNumber == "03")
-                    {
-                        ClearPage();
-                        IsDeclarationCheckedForInstruction = true;
-                        IsCheckedTaxPayerDetailsInfo = true;
-                        IsVisibleVatReturnForm = true;
-                        PageSelectedItem = VatTabbledPageList[2];
-                    }
-                    else if (VATDeclarationData.d.StepNumber == "04")
-                    {
-                        ClearPage();
-                        IsDeclarationCheckedForInstruction = true;
-                        IsCheckedTaxPayerDetailsInfo = true;
-                        IsDeclarationCheckedForSummary = true;
-                        IsVisibleVatReturnForm = true;
-                        PageSelectedItem = VatTabbledPageList[3];
-                    }
-
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = false;
+                    IsVisibleInstrunction = true;
+                    PageSelectedItem = VatTabbledPageList[0];
                 }
-            }
-
-            public void SetData()
-            {
-                TotalsalesAmt = ResponseVATDeclarationD.TotalsalesAmt;
-                TotalsalesAdj = ResponseVATDeclarationD.TotalsalesAdj;
-                TotalpurchaseAmt = ResponseVATDeclarationD.TotalpurchaseAmt;
-                TotalpurchaseAdj = ResponseVATDeclarationD.TotalpurchaseAdj;
-                StdsalesVat = ResponseVATDeclarationD.StdsalesAdj;
-                TotalsalesVat = ResponseVATDeclarationD.TotalsalesAdj;
-                StdpurchasesVat = ResponseVATDeclarationD.StdpurchasesVat;
-                ImportspaidVat = ResponseVATDeclarationD.ImportspaidVat;
-                ImportsaccVat = ResponseVATDeclarationD.ImportsaccVat;
-                TotalpurchaseVat = ResponseVATDeclarationD.TotalpurchaseVat;
-                TotaldueVat = ResponseVATDeclarationD.TotaldueVat;
-                Preperiodcorr = ResponseVATDeclarationD.Preperiodcorr;
-                CreditVat = ResponseVATDeclarationD.CreditVat;
-                NetdueVat = ResponseVATDeclarationD.NetdueVat;
-
-            }
-
-            private void SetNoteData()
-            {
-                VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
-            }
-
-            public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
-            {
-                string VATAmount = string.Empty;
-                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
+                if (VATDeclarationData.d.StepNumber == "01")
                 {
-                    Double dAmount = Convert.ToDouble(Amount);
-                    Double dAdjustment = Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = false;
+                    IsVisibleInstrunction = true;
+                    PageSelectedItem = VatTabbledPageList[0];
                 }
-                return VATAmount;
-            }
-
-            public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
-            {
-                String TotalAmount = string.Empty;
-                if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !String.IsNullOrEmpty(Amount4) && !String.IsNullOrEmpty(Amount5))
+                else if (VATDeclarationData.d.StepNumber == "02")
                 {
-                    TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3) + Convert.ToDouble(Amount4) + Convert.ToDouble(Amount5)).ToString();
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsVisibleTaxPayerDetails = true;
+                    PageSelectedItem = VatTabbledPageList[1];
                 }
-                return TotalAmount;
-            }
-
-            public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
-            {
-                String TotalAmount = string.Empty;
-                if (!String.IsNullOrEmpty(Adjustment1) && !String.IsNullOrEmpty(Adjustment2) && !String.IsNullOrEmpty(Adjustment3) && !String.IsNullOrEmpty(Adjustment4) && !String.IsNullOrEmpty(Adjustment5))
+                else if (VATDeclarationData.d.StepNumber == "03")
                 {
-                    TotalAmount = (Convert.ToDouble(Adjustment1) + Convert.ToDouble(Adjustment2) + Convert.ToDouble(Adjustment3) + Convert.ToDouble(Adjustment4) + Convert.ToDouble(Adjustment5)).ToString();
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    IsVisibleVatReturnForm = true;
+                    PageSelectedItem = VatTabbledPageList[2];
                 }
-                return TotalAmount;
-            }
-
-            public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
-            {
-                String TotalAmount = string.Empty;
-                if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
+                else if (VATDeclarationData.d.StepNumber == "04")
                 {
-                    TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3)).ToString();
+                    ClearPage();
+                    IsDeclarationCheckedForInstruction = true;
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    IsDeclarationCheckedForSummary = true;
+                    IsVisibleVatReturnForm = true;
+                    PageSelectedItem = VatTabbledPageList[3];
                 }
-                return TotalAmount;
-            }
 
-            public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
+            }
+        }
+
+        public void SetData()
+        {
+            TotalsalesAmt = ResponseVATDeclarationD.TotalsalesAmt;
+            TotalsalesAdj = ResponseVATDeclarationD.TotalsalesAdj;
+            TotalpurchaseAmt = ResponseVATDeclarationD.TotalpurchaseAmt;
+            TotalpurchaseAdj = ResponseVATDeclarationD.TotalpurchaseAdj;
+            StdsalesVat = ResponseVATDeclarationD.StdsalesAdj;
+            TotalsalesVat = ResponseVATDeclarationD.TotalsalesAdj;
+            StdpurchasesVat = ResponseVATDeclarationD.StdpurchasesVat;
+            ImportspaidVat = ResponseVATDeclarationD.ImportspaidVat;
+            ImportsaccVat = ResponseVATDeclarationD.ImportsaccVat;
+            TotalpurchaseVat = ResponseVATDeclarationD.TotalpurchaseVat;
+            TotaldueVat = ResponseVATDeclarationD.TotaldueVat;
+            Preperiodcorr = ResponseVATDeclarationD.Preperiodcorr;
+            CreditVat = ResponseVATDeclarationD.CreditVat;
+            NetdueVat = ResponseVATDeclarationD.NetdueVat;
+
+        }
+
+        private void SetNoteData()
+        {
+            VATDeclarationData.d.NOTESSet.results[0].Strline = NoteText;
+        }
+
+        public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
             {
-                string VATAmount = string.Empty;
-                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
-                {
-                    Double dAmount = Convert.ToDouble(Amount);
-                    Double dAdjustment = Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate002);
 
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
-                }
-                return VATAmount;
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
             }
+            return VATAmount;
+        }
 
-            //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
-            public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
+        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
+        {
+            String TotalAmount = string.Empty;
+            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !String.IsNullOrEmpty(Amount4) && !String.IsNullOrEmpty(Amount5) && !Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
             {
-                string VATAmount = string.Empty;
-                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
-                {
-                    Double dAmount = Convert.ToDouble(Amount);
-                    Double dAdjustment = Convert.ToDouble(Adjustment);
-                    Double dVATRate001 = Convert.ToDouble(VATRate001);
-                    Double dVATRate002 = Convert.ToDouble(VATRate002);
-
-                    VATAmount = (((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100)).ToString();
-                }
-                return VATAmount;
+                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3) + Convert.ToDouble(Amount4) + Convert.ToDouble(Amount5)).ToString();
             }
+            return TotalAmount;
+        }
 
-            public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
+        public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
+        {
+            String TotalAmount = string.Empty;
+            if (!String.IsNullOrEmpty(Adjustment1) && !String.IsNullOrEmpty(Adjustment2) && !String.IsNullOrEmpty(Adjustment3) && !String.IsNullOrEmpty(Adjustment4) && !String.IsNullOrEmpty(Adjustment5) && !Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
             {
-                string VATAmount = string.Empty;
-                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment))
-                {
-                    Double dAmount = Convert.ToDouble(Amount);
-                    Double dAdjustment = Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
-                }
-                return VATAmount;
+                TotalAmount = (Convert.ToDouble(Adjustment1) + Convert.ToDouble(Adjustment2) + Convert.ToDouble(Adjustment3) + Convert.ToDouble(Adjustment4) + Convert.ToDouble(Adjustment5)).ToString();
             }
+            return TotalAmount;
+        }
 
-            public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
+        public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
+        {
+            String TotalAmount = string.Empty;
+            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-"))
             {
-                string NetVatDue = string.Empty;
-                if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod))
-                {
-                    Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
-                    Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
-                    Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
-
-                    NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
-                }
-                return NetVatDue;
+                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3)).ToString();
             }
+            return TotalAmount;
+        }
 
-            #endregion
+        public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate002);
 
-            #endregion
-        
-        public async Task SetButtons(VATDeclaration vATDeclarationData )
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+            }
+            return VATAmount;
+        }
+
+        //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
+        public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate001 = Convert.ToDouble(VATRate001);
+                Double dVATRate002 = Convert.ToDouble(VATRate002);
+
+                VATAmount = (((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100)).ToString();
+            }
+            return VATAmount;
+        }
+
+        public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
+        {
+            string VATAmount = string.Empty;
+            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            {
+                Double dAmount = Convert.ToDouble(Amount);
+                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dVATRate = Convert.ToDouble(VATRate002);
+
+                VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+            }
+            return VATAmount;
+        }
+
+        public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
+        {
+            string NetVatDue = string.Empty;
+            if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod) && !CurrentPeriod.Contains("-") && !PreviousPeriod.Contains("-") && !ForwardFromPreviousPeriod.Contains("-"))
+            {
+                Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
+                Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
+                Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
+
+                NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
+            }
+            return NetVatDue;
+        }
+
+        #endregion
+
+        #endregion
+
+        public async Task SetButtons(VATDeclaration vATDeclarationData)
         {
 
             List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnum, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz);
 
             ListOfActionButtonsApplicable = new List<string>();
-            
+
             if (VATApplicableButtons != null)
             {
                 ListOfActionButtonsApplicable.Clear();

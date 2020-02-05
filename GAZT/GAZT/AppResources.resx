@@ -1263,4 +1263,96 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>• Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
 • Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
   </data>
+  <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
+    <value>• If corrections to the previous return entail a VAT liability adjustment less than  SAR &lt;5,000&gt; or VAT credit position of greater than SAR &lt;-5,000&gt;, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
+  </data>
+  <data name="ZToolTipcreditcarriedforwardfrompreviousperiod" xml:space="preserve">
+    <value>• Total amount of credit in your VAT account from previous returns that have not been used to offset any subsequent liabilities or not been refunded. This amount will be used to offset the VAT liability (if any) for this return.</value>
+  </data>
+  <data name="ZToolTipExemptAdjustment" xml:space="preserve">
+    <value>• The total amount made on exempt supplies sold in KSA .
+• For example,  Return of exempted goods, bad debt write-off"</value>
+  </data>
+  <data name="ZToolTipExemptAmount" xml:space="preserve">
+    <value>• Total amount of goods and services supplied during the current period that were exempted and sold in KSA
+• Please refer to the below FAQ URL for the list of exempted goods and services.</value>
+  </data>
+  <data name="ZToolTipExemptpurchasesAdjustment" xml:space="preserve">
+    <value>• Total amount of purchases adjustments made to goods and services purchased during previous reporting periods that were exempted and either bought in KSA or imported from a country outside of KSA
+• For example: return of exempt purchases to suppliers</value>
+  </data>
+  <data name="ZToolTipExemptpurchasesAmount" xml:space="preserve">
+    <value>• Total amount of goods and services purchased during the current period that were exempted and either bought in KSA or imported from a country outside of KSA
+• Please refer to the below FAQ URL for a list of zero rated goods and services.</value>
+  </data>
+  <data name="ZToolTipExportsAdjustment" xml:space="preserve">
+    <value>• Total amount of adjustments on supplies related to all goods and services (to be subject to zero rate) exported to GCC VAT implementing countries or countries outside GCC during the previous reporting periods.
+• For example,write off of bad debt on exports reveivables.</value>
+  </data>
+  <data name="ZToolTipExportsAmount" xml:space="preserve">
+    <value>• Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries utside GCC.
+• Please refer to the below FAQ URL for exported goods and services.</value>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAdjustment" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated and imported and reverse charged.</value>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAmount" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
+• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedVatAmount" xml:space="preserve">
+    <value>Under VAT amount display the following:
+• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim</value>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAdjustment" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports.</value>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAmount" xml:space="preserve">
+    <value>• Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+  </data>
+  <data name="ZToolTipNetVATdue" xml:space="preserve">
+    <value>• The total amount of VAT liability or credit for the current return. Any negative amount is VAT credit that can either be refunded or carried forward to offset VAT liability for the subsequent periods.</value>
+  </data>
+  <data name="ZToolTipPrivateHealthcareAdjustment" xml:space="preserve">
+    <value>'Total adjustments to standard rated supplies that were made to Saudi citizens in private healthcare and private education in previous tax periods. Please note that VAT will be borne by the state on these supplies as per Royal Order</value>
+  </data>
+  <data name="ZToolTipPrivateHealthcareAmount" xml:space="preserve">
+    <value>Total amount of standard rated supplies made to Saudi citizens in private healthcare and private education. Please note that VAT will be borne by the state on these supplies as per Royal Order</value>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAdjustment" xml:space="preserve">
+    <value>• Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA
+• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies</value>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAmount" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment" xml:space="preserve">
+    <value>• Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables</value>
+  </data>
+  <data name="ZToolTipZerorateddomesticsalesAdjustment" xml:space="preserve">
+    <value>• Total amount of supplies adjustments made to previous reporting periods supplies that were zero rated and sold in KSA
+• For example, returned zero rates sales in Saudi Arabia, write off of bad debt on zero rated domestic receivables</value>
+  </data>
+  <data name="ZToolTipZerorateddomesticsalesAmount" xml:space="preserve">
+    <value>• Total amount of all goods and services supplied during the current period that were zero rated and sold in KSA
+• Please refer to the below FAQ URL for zero rated goods and services.</value>
+  </data>
+  <data name="ZToolTipZeroratedpurchasesAdjustment" xml:space="preserve">
+    <value>• Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased during previous reporting periods that were either,
+ – Zero rated and purchased in KSA or,
+ – Zero rated and imported from a country outside of KSA
+• For example: return of zero taxed purchases to suppliers</value>
+  </data>
+  <data name="ZToolTipZeroratedpurchasesAmount" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were either,
+ – Zero rated and purchased in KSA or,
+ – Zero rated and imported from a country outside of KSA
+• Please refer to below FAQ URL for a list of zero rated goods and services</value>
+  </data>
 </root>
