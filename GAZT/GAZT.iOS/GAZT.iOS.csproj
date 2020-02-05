@@ -292,6 +292,9 @@
     <BundleResource Include="Resources\ic_qr_code.png" />
     <BundleResource Include="Resources\ic_qr_code%402x.png" />
     <BundleResource Include="Resources\ic_qr_code%403x.png" />
+    <BundleResource Include="Resources\ic_unsubmitted.png" />
+    <BundleResource Include="Resources\ic_unsubmitted%402x.png" />
+    <BundleResource Include="Resources\ic_unsubmitted%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />

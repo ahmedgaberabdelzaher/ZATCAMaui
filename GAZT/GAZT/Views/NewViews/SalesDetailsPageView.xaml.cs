@@ -63,6 +63,7 @@ namespace GAZT.Views.NewViews
                 if (AmendSalesDetailsPageViewModel.SelectedSalesDetails != null && AmendSalesDetailsPageViewModel.SelectedSalesDetails.ComingFromAmendEditMode)
                 {
                     SetUpdatedDataToObject();
+                    viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
                 }
             }
             catch(Exception ex)

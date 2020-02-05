@@ -19,8 +19,8 @@ namespace GAZT.Models
 
     public class ZakatReturnStatus
     {
-        public string Value { get; set; }
-        public int ID { get; set; }
+        public string key { get; set; }
+        public int Value { get; set; }
     }
 
     public class SalesDetailsAttachments
