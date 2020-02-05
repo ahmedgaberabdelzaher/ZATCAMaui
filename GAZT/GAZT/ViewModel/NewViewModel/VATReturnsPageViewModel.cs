@@ -1307,6 +1307,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleInstrunction = true;
+            IsMainButtonEnabled = false;
             ButtonName = AppResources.ZVatStepTwo;
             
         }
@@ -1372,7 +1373,7 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.Operationz = operation;
 
                 await SaveReturnAndGetReturnAndSetButtons();
-
+               _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
             }
             else
             {
