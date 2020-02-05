@@ -179,6 +179,7 @@
 
                 <Button Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding AmedmentButtonVisibility}"></Button>
                 <Button Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SubmitButtonVisibility}"></Button>
+                <Button Text="{x:Static local:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnConfirmButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"  IsVisible="{Binding ConfirmButtonVisibility}"></Button>
 
             </Grid>
 

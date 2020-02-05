@@ -19,11 +19,12 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnSalesDetailsClicked { get; set; }
         string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
+        public static string Fbguid  { get; set; }
 
-        #endregion
+    #endregion
 
-        #region Property
-        private bool _isLoading = false;
+    #region Property
+    private bool _isLoading = false;
         public bool IsLoading
         {
             get
@@ -104,7 +105,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
                   await  ReleaseEstimateZakatReturn();
                 }
-                else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002") || ZakatReturnDetails.d.Statusz.Equals("E0003"))
+                else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002") )
                 {
                     IsAmendButtonPressed = true;
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
@@ -113,7 +114,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
                 }
-                else if (ZakatReturnDetails.d.Statusz.Equals("E0004"))
+                else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
                 }
@@ -142,7 +143,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                
+                Fbguid = fbguid;
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -150,8 +151,9 @@ namespace GAZT.ViewModel.NewViewModel
 
                 await Task.Run(async () =>
                 {
-                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                    EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                   ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                //  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
+                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                     ZakatReturnDetails = zakatReturnDetails;
                     ZakatReturnDetail = zakatReturnDetails.d;
                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
@@ -176,11 +178,16 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003"))
+                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )
                 {
                     ReleaseOrBillDetailsButtonText = AppResources.AmendTheReturn;
                 }
-                else if (ButtonStatus.Equals("E0004"))
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                {
+                    //ButtonStatus.Equals("E0008") This has been varified by using Code
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if(ButtonStatus.Equals("E0005"))//In Processing
                 {
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -200,8 +207,13 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async () =>
             {
-                ZakatReturnDetails zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails);
-                ReleaseOrBillDetailsButtonText = AppResources.Bill;
+                ZakatReturnDetails _zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
+
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                ZakatReturnDetails = zakatReturnDetails;
+                ZakatReturnDetail = zakatReturnDetails.d;
+                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
 
             });
             await Task.Run(() =>

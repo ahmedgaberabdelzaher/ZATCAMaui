@@ -1,9 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -19,6 +21,21 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -32,6 +49,65 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnDetail");
             }
         }
+
+        private EstimatedZAKATReturnsSADADNumberResult _estimatedZAKATSADADNumber;
+        public EstimatedZAKATReturnsSADADNumberResult EstimatedZAKATSADADNumber
+        {
+            get
+            {
+                return _estimatedZAKATSADADNumber;
+            }
+            set
+            {
+                _estimatedZAKATSADADNumber = value;
+                RaisePropertyChanged("EstimatedZAKATSADADNumber");
+            }
+        }
+
+        //private string _sopbel;
+        //public string Sopbel
+        //{
+        //    get
+        //    {
+        //        return _stotamt;
+        //    }
+        //    set
+        //    {
+        //        _stotamt = value;
+        //        RaisePropertyChanged("Sopbel");
+        //    }
+        //}
+
+        //private string _sadadid;
+        //public string Sadadid
+        //{
+        //    get
+        //    {
+        //        return _sadadid;
+        //    }
+        //    set
+        //    {
+        //        _sadadid = value;
+        //        RaisePropertyChanged("Sadadid");
+        //    }
+        //}
+
+        //private string _stotamt;
+        //public string Stotamt
+        //{
+        //    get
+        //    {
+        //        return _sopbel;
+        //    }
+        //    set
+        //    {
+        //        _sopbel = value;
+        //        RaisePropertyChanged("Stotamt");
+        //    }
+        //}
+
+
+
         #endregion
 
         #region Constructor
@@ -61,6 +137,25 @@ namespace GAZT.ViewModel.NewViewModel
         }
         #endregion
 
+        public async Task OnPageLoad()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async() =>
+            {
+                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
+                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+        }
         #region Method
         #endregion
     }

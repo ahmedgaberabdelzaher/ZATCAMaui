@@ -1194,7 +1194,7 @@ namespace GAZT.ViewModel.NewViewModel
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
 
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz);
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
                     PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
