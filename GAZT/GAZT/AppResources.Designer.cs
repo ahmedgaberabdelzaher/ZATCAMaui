@@ -2114,6 +2114,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File size should not be more than 20 MB..
+        /// </summary>
+        public static string ZFilesizeshouldnotbemorethan20MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan20MB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File size should not be more than 5MB.
         /// </summary>
         public static string ZFilesizeshouldnotbemorethan5MB {
@@ -2200,6 +2209,15 @@ namespace GAZT {
         public static string ZMaximumnoof5attachmentscanbeuploaded {
             get {
                 return ResourceManager.GetString("ZMaximumnoof5attachmentscanbeuploaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum no. of allowed attachments are 40..
+        /// </summary>
+        public static string ZMaximumnoofallowedattachmentsare40 {
+            get {
+                return ResourceManager.GetString("ZMaximumnoofallowedattachmentsare40", resourceCulture);
             }
         }
         
