@@ -139,6 +139,7 @@ namespace GAZT.Views.NewViews
                         foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
                         {
                             item.Strline = AddNotePageViewModel.NoteString;
+                            item.Tdline = AddNotePageViewModel.NoteString;
                         }
                         AddNotePageViewModel.IsComingFromNotePage = false;
                         AddNotePageViewModel.NoteString = string.Empty;
@@ -167,7 +168,7 @@ namespace GAZT.Views.NewViews
             objNote.__metadata.uri = Url;
             objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
 
-            objNote.Notenoz = "00" + (count + 1).ToString();
+            objNote.Notenoz = (count + 1).ToString();
             objNote.DataVersionz = "00000";
             objNote.Refnamez = String.Empty;
             objNote.XInvoicez = String.Empty;
@@ -180,13 +181,14 @@ namespace GAZT.Views.NewViews
             objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
             objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
             objNote.AttByz = "TP";
-            objNote.Noteno = "00" + (count + 1).ToString();
-           // objNote.Lineno = 0;
-            //objNote.ElemNo = 0;
+            objNote.Noteno = (count + 1).ToString();
+            objNote.Lineno = 1;
+            objNote.ElemNo = 0;
             objNote.Strdt = string.Empty;
             objNote.Strtime = string.Empty;
             objNote.Sect = "VAT Return General Note";
             objNote.Strline = AddNotePageViewModel.NoteString;
+            objNote.Tdline = AddNotePageViewModel.NoteString;
             viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
             AddNotePageViewModel.IsComingFromNotePage = false;
             AddNotePageViewModel.NoteString = string.Empty;

@@ -1583,7 +1583,7 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<VATDeclaration> GAZTGetVATReturns(string Fbguid)
+        public static async Task<VATDeclaration> GAZTGetVATReturns(string Fbguid,string Fbnumz,string EUser,string PeriodCode)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -1595,7 +1595,7 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
-                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + LangZ + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + ""+"'" + ",Fbnumz='" + "" + "'" + ",Langz='" + LangZ + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
@@ -1670,7 +1670,7 @@ namespace GAZT.Manager
                     if (vATDeclaration.d != null)
                     {
                         RequestVATDeclaration = vATDeclaration;
-                        RequestVATDeclaration.d.SubmitFg = "X";
+                       // RequestVATDeclaration.d.SubmitFg = "X";
                     }
 
                     VATDeclaration _vATDeclarationD = new VATDeclaration();

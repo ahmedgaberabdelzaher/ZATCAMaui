@@ -1400,7 +1400,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void VATViewAttachments()
         {
-            ClearPage();
+           // ClearPage();
             // IsVisibleAttachments = true;
             //ButtonName = AppResources.Submit;
             _navigationService.NavigateTo(App.AttachmentPageView, VATDeclarationData);
@@ -1766,18 +1766,19 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
             {
+
                 if (response != null && response.d != null)
                 {
+                    VATDeclarationData = response;
+                    //VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.ReturnIdz, VATDeclarationData.d.Fbnumz, ICRListPageViewModel.EUser,"");
 
-                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.Fbguid);
+                    //if (_vATDeclaration != null && _vATDeclaration.d != null)
+                    //{
+                    //    VATDeclarationData = _vATDeclaration;
+                    //    ResponseVATDeclarationD = VATDeclarationData.d;
 
-                    if (_vATDeclaration != null && _vATDeclaration.d != null)
-                    {
-                        VATDeclarationData = _vATDeclaration;
-                        ResponseVATDeclarationD = VATDeclarationData.d;
-
-                        SetData();
-                    }
+                    //    SetData();
+                    //}
                 }
 
                 await SetButtons(VATDeclarationData);
