@@ -1474,4 +1474,7 @@
   <data name="ZMaximumnoofallowedattachmentsare40" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 40 ملفات.</value>
   </data>
+  <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
+    <value>Total file sizes should not be more than 300 MB.</value>
+  </data>
 </root>

@@ -71,6 +71,23 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public decimal _totalAttachmentSize = 0;
+
+        public decimal TotalAttachmentSize
+        {
+            get
+            {
+                return _totalAttachmentSize;
+            }
+            set
+            {
+                _totalAttachmentSize = value;
+
+                RaisePropertyChanged("TotalAttachmentSize");
+
+            }
+        }
+
         public int _attachmentCount = 0;
 
         public int AttachmentCount
@@ -135,23 +152,32 @@ namespace GAZT.ViewModel.NewViewModel
                         AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
                         if (_attachment != null && _attachment.d != null)
                         {
-                            AttachmentSize = Math.Round((Convert.ToDecimal(attachment.Length) / 1024), 2);
-
-
-                            if (Convert.ToInt32(AttachmentSize) <= 20)
+                            if (TotalAttachmentSize <= 300)
                             {
-                                VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                                Device.BeginInvokeOnMainThread(async () =>
+                                AttachmentSize = Math.Round((Convert.ToDecimal(attachment.Length) / 1024), 2);
+
+
+                                if (Convert.ToDecimal(AttachmentSize) <= 20)
                                 {
+                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        VatAttachmentsList = myCollection;
+                                    });
                                     VatAttachmentsList = myCollection;
-                                });
-                                VatAttachmentsList = myCollection;
-                                AttachmentCount++;
+                                    AttachmentCount++;
+                                    TotalAttachmentSize = +AttachmentSize;
+                                }
+                                else
+                                {
+                                    _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+
+                                }
                             }
                             else
                             {
-                                _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
 
                             }
                         }

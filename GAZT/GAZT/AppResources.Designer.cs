@@ -2824,6 +2824,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total file sizes should not be more than 300 MB..
+        /// </summary>
+        public static string ZTotalFilesizeshouldnotbemorethan300MB {
+            get {
+                return ResourceManager.GetString("ZTotalFilesizeshouldnotbemorethan300MB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total paid amount.
         /// </summary>
         public static string ZTotalPaidAmount {
