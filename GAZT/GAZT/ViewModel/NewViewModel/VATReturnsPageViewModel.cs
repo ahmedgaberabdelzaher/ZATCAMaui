@@ -1307,6 +1307,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleInstrunction = true;
+            IsMainButtonEnabled = false;
             ButtonName = AppResources.ZVatStepTwo;
             
         }
