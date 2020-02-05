@@ -346,7 +346,7 @@ namespace GAZT.Views.NewViews
             else
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGoldLabelStyleForCaptionFont"];
-                BtnNextStep.IsEnabled = false;
+                BtnNextStep.IsEnabled = true;
             }
         }
 
