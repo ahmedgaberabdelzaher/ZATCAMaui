@@ -28,10 +28,7 @@
                     <ColumnDefinition Width="14*" />
 
 
-                    <!--<ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="55*" />-->
+                 
 
                 </Grid.ColumnDefinitions>
 
@@ -80,31 +77,45 @@
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
 
-                                                </Grid.RowDefinitions>
-
+                                                    
+                                                    
+                                                    
                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,-5" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
+                                                       TextColor="#005e4b"
                                    Grid.Row="0"
                                    Grid.Column="1"/>
 
                                                 <Label Text="{Binding Incotext}" 
                                                   
-                                 Margin="-7,0,-7,-5" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                 Margin="8,0,8,-5"
+                                   Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="2" />
+                                   Grid.Row="1"
+                                   Grid.Column="1" Grid.ColumnSpan="4" />
 
-                                                <Label Text="{x:Static local:AppResources.ZTaxPeriod}" 
+                                                        <Label Text="999999999" 
+                                                  
+                                 Margin="8,0,8,-5"
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1" Grid.ColumnSpan="4" />
+
+                                                        <Label Text="{x:Static local:AppResources.ZTaxPeriod}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                            Margin="8,0,8,-5"
-                                   Grid.Row="1"
+                                   Grid.Row="3"
                                    Grid.Column="1"/>
 
                                                 <Label Text="{Binding TaxPeriod}" 
@@ -113,14 +124,14 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
+                                   Grid.Row="3"
                                    Grid.Column="2" />
 
                                                 <Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,-5" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
+                                   Grid.Row="4"
                                    Grid.Column="1"/>
 
                                                 <Label Text="{Binding FormatedDate}" 
@@ -129,35 +140,35 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
+                                   Grid.Row="4"
                                    Grid.Column="2" />
 
                                                 <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
+                                   Grid.Row="5"
                                    Grid.Column="1"/>
 
-                                                <Label Text="{Binding DueDate}" 
+                                                        <Label Text="{Binding FormatedSingleDueDate}" 
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
+                                   Grid.Row="5"
                                    Grid.Column="2" />
 
 
 
                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                 <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 
 
                                                 <BoxView  
-                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="4" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="6" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
 
 
                                                 </Grid>
