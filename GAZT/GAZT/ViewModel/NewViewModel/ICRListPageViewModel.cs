@@ -19,6 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public static string EUser=string.Empty;
         //  public ICommand OnBillsButtonClicked { get; set; }
         #endregion
 
@@ -65,7 +66,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
                 }
-                RaisePropertyChanged("_selectedICRStatus");
+                RaisePropertyChanged("SelectedICRStatus");
             }
         }
 
@@ -197,7 +198,7 @@ namespace GAZT.ViewModel.NewViewModel
                             ICRList = new List<ICRListSet>();
                             ICRList = icrList.ICR_LISTSet;
                             ICRDummyList = ICRList;
-                            SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                           
 
 
                         }
@@ -220,6 +221,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 await Task.Run(() =>
                 {
+                    
                     IsLoading = false;
                 });
 
@@ -309,7 +311,9 @@ namespace GAZT.ViewModel.NewViewModel
                     // the GUID will be different
 
                     String SelectedICRGUID = SelectedICR.Fbguid;
-                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid);
+                    EUser = SelectedICR.Euser;
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid,SelectedICR.Fbnum, SelectedICR.Euser,SelectedICR.Persl);
+                    await PopToRootPage();
                     _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
                     if (_vATDeclaration != null && _vATDeclaration.d != null)

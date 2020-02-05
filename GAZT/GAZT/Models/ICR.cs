@@ -10,7 +10,55 @@ namespace GAZT.Models
     {
         public string Incotext { get; set; }//VATReturnForm
         public string Persl { get; set; }//TaxPeriodCode
-        public string TaxPeriod { get; set; }//TaxPeriodDescription
+        public string Euser { get; set; }
+        
+        public string _TaxPeriod;
+        public string TaxPeriod
+        {
+            get
+            {
+                return _TaxPeriod;
+            }
+            set
+            {
+                _TaxPeriod = value;
+                if(!string.IsNullOrEmpty(_TaxPeriod))
+                {
+                    if (App.IsArabic)
+                    {
+                        FormatTaxPeriod = UtilityManager.ConvertNumerals(_TaxPeriod);
+                    }
+                    else
+                    {
+                        FormatTaxPeriod = _TaxPeriod;
+                    }
+                }
+            }
+        }//TaxPeriodDescription
+
+        public string FormatTaxPeriod { get; set; }
+
+        public string _Fbnum;
+        public string Fbnum { 
+            get
+            {
+               return _Fbnum;
+            }
+            set
+            {
+                _Fbnum = value;
+                    if(App.IsArabic)
+                    {
+                        FormBundleNumber = UtilityManager.ConvertNumerals(_Fbnum);
+                    }
+                    else
+                    {
+                        FormBundleNumber = _Fbnum;
+                    }
+            }
+        }
+
+        public string FormBundleNumber { get; set; }
 
         private string _txt50;
         public string Txt50 {

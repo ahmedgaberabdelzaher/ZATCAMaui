@@ -305,6 +305,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
         public static string ContractsToBeApproved {
@@ -3437,6 +3446,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form is cancelled. Please initiate the process again to file VAT Return.
+        /// </summary>
+        public static string ZVatSuccessfulVoid {
+            get {
+                return ResourceManager.GetString("ZVatSuccessfulVoid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
         public static string ZVatSummary {
@@ -3635,6 +3653,70 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form will be restored to the values &amp; status of previous Billed return.
+        /// </summary>
+        public static string ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kindly submit a self-amendment form for corrections &gt;= {0} SAR or &lt;= {1} SAR.
+        /// </summary>
+        public static string ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValu" +
+                        "e", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Penalties from this return is higher than Net VAT reclaimed. Hence you are not allowed to claim refund.
+        /// </summary>
+        public static string ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Penalty can not be greater than 999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the highlighted fields as guided to proceed further.
+        /// </summary>
+        public static string ZZGeneralMessage_PleaseCompleteHighlightedField {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PleaseCompleteHighlightedField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range of value allowed is 0 to 999,999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
         public static string ZZInternetConnectionMessage {
@@ -3697,13 +3779,6 @@ namespace GAZT {
             }
         }
         
-        public static string Confirm {
-            get {
-                return ResourceManager.GetString("Confirm", resourceCulture);
-            }
-        }
-        
-        //public static string ZToolTipStandardRatedSalesAmount {
         /// <summary>
         ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
@@ -3711,8 +3786,186 @@ namespace GAZT {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
-
-
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of domestic standard-rated sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of sales to citizens (private healthcare, private education). Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category..
+        /// </summary>
+        public static string ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of zero rated domestic sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
+        /// </summary>
+        public static string ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of zero rated exports. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exempted industry but you reported non-zero exempted sales..
+        /// </summary>
+        public static string ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of exempt sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the total amount of sales. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your standard-rated domestic purchases are greater than your total reported sales for the period. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of standard rated domestic purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT paid at Customs. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT accounted for through reverse charge mechanism. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Zero rated purchase. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of exempt purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount of your purchases for the current period is much more than the amount of sales for the same period. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of total purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The total VAT correction entered is larger than the total VAT for the period. Please verify the correction entered in the return or continue if the correction entered is correct..
+        /// </summary>
+        public static string ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
         }
     }
 }

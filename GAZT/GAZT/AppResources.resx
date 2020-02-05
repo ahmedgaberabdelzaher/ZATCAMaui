@@ -1247,18 +1247,15 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="OldValue" xml:space="preserve">
     <value>Old Value</value>
   </data>
-   <data name="AmendTheReturn" xml:space="preserve">
+  <data name="AmendTheReturn" xml:space="preserve">
     <value>Amend The Return</value>
   </data>
-    
   <data name="BillDetails" xml:space="preserve">
     <value>Bill Details</value>
   </data>
-    
-    <data name="Confirm" xml:space="preserve">
+  <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
-  
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>• Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
 • Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
@@ -1354,5 +1351,116 @@ GAZT reserves the right to investigate your return form further.</value>
  – Zero rated and purchased in KSA or,
  – Zero rated and imported from a country outside of KSA
 • Please refer to below FAQ URL for a list of zero rated goods and services</value>
+  </data>
+  <data name="ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of domestic standard-rated sales. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 1</comment>
+  </data>
+  <data name="ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 2</comment>
+  </data>
+  <data name="ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of sales to citizens (private healthcare, private education). Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 3</comment>
+  </data>
+  <data name="ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 4</comment>
+  </data>
+  <data name="ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category.</value>
+    <comment>VAT Declaration additional Rule 5</comment>
+  </data>
+  <data name="ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of zero rated domestic sales. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 6</comment>
+  </data>
+  <data name="ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports.</value>
+    <comment>VAT Declaration additional Rule 7</comment>
+  </data>
+  <data name="ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of zero rated exports. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 8</comment>
+  </data>
+  <data name="ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>Our records indicate that you are not mainly an exempted industry but you reported non-zero exempted sales.</value>
+    <comment>VAT Declaration additional Rule 9</comment>
+  </data>
+  <data name="ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of exempt sales. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 10</comment>
+  </data>
+  <data name="ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the total amount of sales. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 11</comment>
+  </data>
+  <data name="ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>Your standard-rated domestic purchases are greater than your total reported sales for the period. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 12</comment>
+  </data>
+  <data name="ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of standard rated domestic purchases. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 13</comment>
+  </data>
+  <data name="ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT paid at Customs. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 14</comment>
+  </data>
+  <data name="ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT accounted for through reverse charge mechanism. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 15</comment>
+  </data>
+  <data name="ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of Zero rated purchase. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 16</comment>
+  </data>
+  <data name="ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of exempt purchases. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 17</comment>
+  </data>
+  <data name="ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The amount of your purchases for the current period is much more than the amount of sales for the same period. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 18</comment>
+  </data>
+  <data name="ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The adjustment amount entered is more than {0}% larger than the amount of total purchases. Please verify the amount entered in the return or continue if the amount entered is correct.</value>
+    <comment>VAT Declaration additional Rule 19</comment>
+  </data>
+  <data name="ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
+    <value>The total VAT correction entered is larger than the total VAT for the period. Please verify the correction entered in the return or continue if the correction entered is correct.</value>
+    <comment>VAT Declaration additional Rule 20</comment>
+  </data>
+  <data name="ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus" xml:space="preserve">
+    <value>Form will be restored to the values &amp; status of previous Billed return</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue" xml:space="preserve">
+    <value>Kindly submit a self-amendment form for corrections &gt;= {0} SAR or &lt;= {1} SAR</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed" xml:space="preserve">
+    <value>Penalties from this return is higher than Net VAT reclaimed. Hence you are not allowed to claim refund</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99" xml:space="preserve">
+    <value>Penalty can not be greater than 999,999,999.99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_PleaseCompleteHighlightedField" xml:space="preserve">
+    <value>Please complete the highlighted fields as guided to proceed further</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99" xml:space="preserve">
+    <value>Range of value allowed is 0 to 999,999,999,999.99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99" xml:space="preserve">
+    <value>Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99</value>
+    <comment>VAT Declaration general message</comment>
+  </data>
+  <data name="ZVatSuccessfulVoid" xml:space="preserve">
+    <value>VAT Return Form is cancelled. Please initiate the process again to file VAT Return</value>
   </data>
 </root>
