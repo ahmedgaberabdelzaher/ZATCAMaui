@@ -51,6 +51,7 @@
                 </Setter>
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
 
+                <Setter Property="FontAttributes" Value="Bold" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
 
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -322,6 +323,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
             </Style>
             <Style x:Key="DashboardMiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
