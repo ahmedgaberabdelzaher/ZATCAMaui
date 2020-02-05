@@ -66,6 +66,19 @@ namespace GAZT.Models
         public DateTime Endda { get; set; }
     }
 
+    public class VATCalculationDataVTTHSet
+    {
+        public Metadata5 __metadata { get; set; }
+        public string Mandt { get; set; }
+        public string Fbtyp { get; set; }
+        public string Type { get; set; }
+        public string MinVal { get; set; }
+        public string MaxVal { get; set; }
+        public string Percentage { get; set; }
+        public string Currency { get; set; }
+        public string Description { get; set; }
+    }
+
     //public class Metadata3
     //{
     //    public string id { get; set; }

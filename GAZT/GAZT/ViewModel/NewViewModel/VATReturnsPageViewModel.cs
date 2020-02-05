@@ -781,6 +781,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private List<VTTHSetResult> _calculationRateSetVTTH;
+        public List<VTTHSetResult> CalculationRateSetVTTH
+        {
+            get
+            {
+                return _calculationRateSetVTTH;
+            }
+            set
+            {
+                _calculationRateSetVTTH = value;
+
+                RaisePropertyChanged("CalculationRateSetVTTH");
+            }
+        }
+
         private string _correctionPeriodAmount;
         public string CorrectionPeriodAmount
         {
@@ -1631,6 +1646,8 @@ namespace GAZT.ViewModel.NewViewModel
                     CalculationRateSet = new List<VATCalculationDataVATRSet>();
                     CalculationRateSet = vATCalculationData.d.VATRSet.results;
 
+                    CalculationRateSetVTTH = new List<VTTHSetResult>();
+                    CalculationRateSetVTTH = vATCalculationData.d.VTTHSet.results;
 
 
                     RateSetAsPerDate();

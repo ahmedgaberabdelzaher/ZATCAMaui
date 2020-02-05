@@ -294,6 +294,11 @@ namespace GAZT.Views.NewViews
                 }
                 else if (current.pageName == "Summary")
                 {
+
+                    if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAdj.Text))
+                    {
+                        CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
+                    }
                     if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                     {
                         viewModel.SummaryClicked();
@@ -872,6 +877,227 @@ namespace GAZT.Views.NewViews
                     BtnNextStep.IsEnabled = false;
                 }
             }
+        }
+
+        private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+            {
+                CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+               
+            }
+        }
+
+        private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+            {
+                CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+              
+            }
+        }
+
+        public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
+        {
+           
+
+            if (EntryVatAmount == 0 && EntryVatAdjustmentWithSAR > 0)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+            else
+            {
+
+                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
+
+                if ((PercentageValue * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
+                {
+                    PopUp Pop = new PopUp();
+                    Pop.IsLinkAvailable = false;
+                    Pop.Message = "Hi";
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                }
+            }
+        }
+
+        private void EntrySalesGccAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
+
+            }
+        }
+
+        private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
+
+            }
+        }
+
+
+        public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
+        {
+
+
+            if (EntrySalesGccAmt == 0 && EntrySalesGccAdj > 0)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+            else
+            {
+
+                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
+
+                if ((PercentageValue * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
+                {
+                    PopUp Pop = new PopUp();
+                    Pop.IsLinkAvailable = false;
+                    Pop.Message = "Hi";
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                }
+            }
+        }
+
+        private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
+
+            }
+        }
+
+        private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
+
+            }
+        }
+
+        public void CheckThreeaThreeb(decimal EntryZerosalesAmt, decimal EntryZerosalesAdj)
+        {
+            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+            decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+            if ((PercentageValue * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+
+        }
+
+        private void EntryExportsAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text))
+            {
+                CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text));
+
+            }
+        }
+
+        private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text))
+            {
+                CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text));
+
+            }
+        }
+
+        public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj)
+        {
+            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+            decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
+
+            if ((PercentageValue * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+
+        }
+
+        private void EntryExemptsalesAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+            {
+                CheckFouraFourb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
+
+            }
+        }
+
+        private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+            {
+                CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
+
+            }
+        }
+
+        public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj)
+        {
+            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+            decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+            if ((PercentageValue * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+
+        }
+
+        public void CheckSixaSixb(decimal LabelTotalsalesAmt, decimal LabelTotalsalesAdj)
+        {
+            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+            decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+            if ((PercentageValue * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = "Hi";
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+
+        }
+
+        private void EntryStdpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+
         }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
