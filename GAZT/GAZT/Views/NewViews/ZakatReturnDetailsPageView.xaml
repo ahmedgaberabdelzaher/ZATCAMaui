@@ -107,9 +107,9 @@
                             <Button Text="{Binding ReleaseOrBillDetailsButtonText}" Command="{Binding OnBillsButtonClicked}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
                         </Grid>
-                    </StackLayout>
-
-                <!-- Acticity indicator layout start -->
+                    </StackLayout>   
+            </Grid>
+             <!-- Acticity indicator layout start -->
                 <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
@@ -121,8 +121,6 @@
                 </StackLayout>
             </Grid>
                 <!-- Acticity indicator layout End -->
-                            
-            </Grid>
        </Grid>
     </ContentPage.Content>
 </ContentPage>
