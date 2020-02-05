@@ -1465,4 +1465,7 @@
     <value>إجمالي (صافي الضريبة المستحقة للفترة الحالية و التعديل من فترة سابقة) لايمكن أن يكون أكبر من 99,999,999,999.99</value>
     <comment>VAT Declaration general message</comment>
   </data>
+  <data name="ZVatSuccessfulVoid" xml:space="preserve">
+    <value>نموذج الإقرار غير مقبول. يرجى البدء بالعملية مجددا لتقديم إقرار ضريبي</value>
+  </data>
 </root>

@@ -3446,6 +3446,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form is cancelled. Please initiate the process again to file VAT Return.
+        /// </summary>
+        public static string ZVatSuccessfulVoid {
+            get {
+                return ResourceManager.GetString("ZVatSuccessfulVoid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
         public static string ZVatSummary {

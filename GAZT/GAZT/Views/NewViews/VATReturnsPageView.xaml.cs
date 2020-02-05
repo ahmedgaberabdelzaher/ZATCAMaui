@@ -80,14 +80,24 @@ namespace GAZT.Views.NewViews
         }
         public async void IntilizeAsync()
         {
-            await viewModel.pageLoad();
-            viewModel.ListOfActionButtonsApplicable = new List<string>();
-            await viewModel.SetButtons(viewModel.VATDeclarationData);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            await Task.Run(async() =>
+            {
+                await viewModel.pageLoad();
+                viewModel.ListOfActionButtonsApplicable = new List<string>();
+                await viewModel.SetButtons(viewModel.VATDeclarationData);
 
-            onPageLoadCalculation();
-            
-            
-           //onPageLoadCalculation();
+                onPageLoadCalculation();
+            });
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+            //onPageLoadCalculation();
         }
 
 

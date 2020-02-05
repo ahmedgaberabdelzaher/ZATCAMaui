@@ -1460,4 +1460,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99</value>
     <comment>VAT Declaration general message</comment>
   </data>
+  <data name="ZVatSuccessfulVoid" xml:space="preserve">
+    <value>VAT Return Form is cancelled. Please initiate the process again to file VAT Return</value>
+  </data>
 </root>

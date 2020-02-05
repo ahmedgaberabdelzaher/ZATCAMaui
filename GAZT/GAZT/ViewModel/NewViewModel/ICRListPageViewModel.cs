@@ -313,6 +313,7 @@ namespace GAZT.ViewModel.NewViewModel
                     String SelectedICRGUID = SelectedICR.Fbguid;
                     EUser = SelectedICR.Euser;
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid,SelectedICR.Fbnum, SelectedICR.Euser,SelectedICR.Persl);
+                    await PopToRootPage();
                     _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
