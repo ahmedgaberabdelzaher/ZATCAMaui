@@ -15,11 +15,44 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
+        List<EstimatedZakatReturnsResult> myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
+
         #endregion
 
         #region Property
 
+        private List<ZAKATStatus> _iCRStatusList;
+        public List<ZAKATStatus> ICRStatusList
+        {
+            get
+            {
+                return _iCRStatusList;
+            }
+            set
+            {
+                _iCRStatusList = value;
+                RaisePropertyChanged("ICRStatusList");
+            }
+        }
 
+        private ZAKATStatus _selectedICRStatus;
+        public ZAKATStatus SelectedICRStatus
+        {
+            get
+            {
+                return _selectedICRStatus;
+            }
+            set
+            {
+                _selectedICRStatus = value;
+                if (_selectedICRStatus != null)
+                {
+                    GetFilteredZAKATICRList(SelectedICRStatus);
+
+                }
+                RaisePropertyChanged("SelectedICR");
+            }
+        }
 
         private EstimatedZakatReturnsResult _selectedZakatReturn;
         public EstimatedZakatReturnsResult SelectedZakatReturn
@@ -78,7 +111,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedZakatStatus = value;
-               
+              
                 RaisePropertyChanged("SelectedZakatStatus");
             }
         }
@@ -96,6 +129,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private int _selectedIndex ;
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedIndex;
+            }
+            set
+            {
+                _selectedIndex = value;
+                RaisePropertyChanged("SelectedIndex");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -122,14 +169,19 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
+            GetZAKATICRStatusList();
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
             await Task.Run(async() =>
             {
+               
                  estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
-                MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
+                
+                UpdateICRList();
+                SelectedIndex = 13; 
+                // MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
             });
 
             //MyZakatReturns = new List<ZakatReturns>();
@@ -157,7 +209,121 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
+        private void GetZAKATICRStatusList()
+        {
+            List<ZAKATStatus> ZAKATStatusListEn = new List<ZAKATStatus>()
+            {
+                new ZAKATStatus{ Key ="IP011", Value = "Submitted"},
+                 new ZAKATStatus{ Key ="IP014", Value = "Billed"},
+                  new ZAKATStatus{ Key ="U", Value = "Unsubmitted"},
+                   new ZAKATStatus{ Key ="P", Value = "Paid"},
+                   new ZAKATStatus{ Key ="I", Value = "Partially paid"},
+                 new ZAKATStatus{ Key ="IP015", Value = "In Processing"},
+                  new ZAKATStatus{ Key ="IP017", Value = "Parked"},
+                   new ZAKATStatus{ Key ="IP019", Value = "Rejected"},
+                   new ZAKATStatus{ Key ="IP021", Value = "To Be Approved"},
+                 new ZAKATStatus{ Key ="C0021", Value = "To Be Filled & Parked"},
+                  new ZAKATStatus{ Key ="ZP017", Value = "Parked in Amendment"},
+                   new ZAKATStatus{ Key ="E0089", Value = "GSTC – Escalation In Process"},
+                   new ZAKATStatus{ Key ="E0090", Value = "GSTC – Escalation Completed"},
+                 new ZAKATStatus{ Key ="ALL", Value = "All"},
+                   
+            };
 
+            List<ZAKATStatus> ZAKATStatusListAr = new List<ZAKATStatus>()
+            {
+                new ZAKATStatus{ Key ="IP011", Value = "تم تقديمه"},
+                 new ZAKATStatus{ Key ="IP014", Value = "مفوتر"},
+                  new ZAKATStatus{ Key ="U", Value = "لم يتم تقديمه"},
+                   new ZAKATStatus{ Key ="P", Value = "مسدد"},
+                   new ZAKATStatus{ Key ="I", Value = "مسدد جزئياً"},
+                 new ZAKATStatus{ Key ="IP015", Value = "في طور المعالجة"},
+                  new ZAKATStatus{ Key ="IP017", Value = "محفوظ كمسودة"},
+                   new ZAKATStatus{ Key ="IP019", Value = "مرفوض"},
+                   new ZAKATStatus{ Key ="IP021", Value = "إنتظار الموافقة"},
+                 new ZAKATStatus{ Key ="C0021", Value = "جاهز للتعبئة و الحفظ كمسودة"},
+                  new ZAKATStatus{ Key ="ZP017", Value = "محفوظ كمسودة تعديل"},
+                   new ZAKATStatus{ Key ="E0089", Value = "الأمانة –قيد التصعيد"},
+                   new ZAKATStatus{ Key ="E0090", Value = "الأمانة – انتهاء التصعيد"},
+                 new ZAKATStatus{ Key ="ALL", Value = "الجميع"},
+
+            };
+
+            if(App.IsArabic)
+            {
+                ICRStatusList = ZAKATStatusListAr;
+            }
+            else
+            {
+                ICRStatusList = ZAKATStatusListEn;
+            }
+        }
+
+        private void GetFilteredZAKATICRList(ZAKATStatus selectedICR)
+        {
+            try
+            {
+                List<EstimatedZakatReturnsResult> FilteredCRStatusList = new List<EstimatedZakatReturnsResult>();
+                if (myZakatReturnsList != null)
+                {
+                    if (selectedICR.Key.Equals("ALL"))
+                    {
+                        MyZakatReturns = myZakatReturnsList;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < myZakatReturnsList.Count; i++)
+                        {
+                            if (selectedICR.Key.Equals(myZakatReturnsList[i].Statfg))
+                            {
+                                FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                            }
+                        }
+                        MyZakatReturns = FilteredCRStatusList;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void UpdateICRList()
+        {
+            List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
+            myZakatReturnsListTemp = estimatedZakatReturnsList.d.listSet.results;
+            for (int i= 0; i< myZakatReturnsListTemp.Count; i++)
+            {
+
+                if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                {
+
+                    myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                    myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                }
+                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                {
+                    myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                    myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                }
+                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                {
+                    myZakatReturnsListTemp[i].BorderColour = "#c49b2d";
+                    myZakatReturnsListTemp[i].StatusImage = "ic_loading.png";
+                }
+                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                {
+                    myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                    myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                }
+
+                myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+            }
+           
+            MyZakatReturns = myZakatReturnsList;
+        }
         #endregion
     }
 }

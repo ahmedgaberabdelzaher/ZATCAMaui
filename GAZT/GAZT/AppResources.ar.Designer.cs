@@ -2466,5 +2466,174 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipZeroratedpurchasesAmount", resourceCulture);
             }
         }
+        
+        public static string ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
+            get {
+                return ResourceManager.GetString("ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValu" +
+                        "e", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_PleaseCompleteHighlightedField {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PleaseCompleteHighlightedField", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99 {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        public static string ZVatSuccessfulVoid {
+            get {
+                return ResourceManager.GetString("ZVatSuccessfulVoid", resourceCulture);
+            }
+        }
     }
 }

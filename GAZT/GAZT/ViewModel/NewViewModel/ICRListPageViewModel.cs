@@ -189,7 +189,7 @@ namespace GAZT.ViewModel.NewViewModel
                         SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                     }
 
-                        VATDeclaration vATDeclaration = new VATDeclaration();
+                       VATDeclaration vATDeclaration = new VATDeclaration();
                     //  vATDeclaration.
                     // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
 

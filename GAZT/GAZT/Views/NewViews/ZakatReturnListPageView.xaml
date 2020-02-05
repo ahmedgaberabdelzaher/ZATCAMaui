@@ -91,7 +91,7 @@
             </ListView>
         </StackLayout>-->
 
-         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12*" />
@@ -117,7 +117,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"    ItemsSource="{Binding ZakatReturnStatus}" ItemDisplayBinding="{Binding Value}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"    SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Value}" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
 
                 </Frame>
                 <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
@@ -144,37 +144,38 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                             <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
-   
-                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="1*" />
-                                                        <ColumnDefinition Width="45*" />
-                                                        <ColumnDefinition Width="44*" />
-                                                        <ColumnDefinition Width="3*" />
-                                                        <ColumnDefinition Width="7*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
 
-                                                    <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
+                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="45*" />
+                                                            <ColumnDefinition Width="44*" />
+                                                            <ColumnDefinition Width="3*" />
+                                                            <ColumnDefinition Width="7*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
-                                   Grid.Column="1"/>
+                                   Grid.Column="1"
+                                                           Grid.ColumnSpan="4"/>
 
-                                                    <!--<Label Text="{Binding Incotext}" 
+                                                        <!--<Label Text="{Binding Incotext}" 
                                                   
                                  Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -183,7 +184,7 @@
                                    Grid.Row="0"
                                    Grid.Column="2" />-->
 
-                                                    <Label Text="{x:Static local:AppResources.FiscalYear}" 
+                                                        <Label Text="{x:Static local:AppResources.FiscalYear}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -191,7 +192,7 @@
                                    Grid.Row="1"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding TaxPeriod}" 
+                                                        <Label Text="{Binding TaxPeriod}" 
                                                   
                                   Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -200,14 +201,14 @@
                                    Grid.Row="1"
                                    Grid.Column="2" />
 
-                                                    <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,-5" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding Period}" 
+                                                        <Label Text="{Binding Period}" 
                                                   
                                   Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -216,14 +217,14 @@
                                    Grid.Row="2"
                                    Grid.Column="2" />
 
-                                                    <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,-5" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding DueDtC}" 
+                                                        <Label Text="{Binding DueDtC}" 
                                                   
                                   Margin="-7,0,-7,-5"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -232,14 +233,14 @@
                                    Grid.Row="3"
                                    Grid.Column="2" />
 
-                                                    <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="1"/>
 
-                                                    <Label Text="{Binding Due}" 
+                                                        <Label Text="{Binding Due}" 
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -249,20 +250,20 @@
                                    Grid.Column="2" />
 
 
-                                                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                    <BoxView  
+                                                        <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                        <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                        <BoxView  
                      Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 
 
-                                                    <BoxView  
+                                                        <BoxView  
                      Grid.Row="0" Grid.Column="3" Grid.RowSpan="5" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
 
 
-                                                </Grid>
+                                                    </Grid>
+                                                </StackLayout>
                                             </StackLayout>
-                                           </StackLayout>
-                                                 </StackLayout>
+                                        </StackLayout>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>
@@ -299,8 +300,8 @@
             </Grid>
             <!-- Acticity indicator layout end -->
         </Grid>
-        
-        
-        
+
+
+
     </ContentPage.Content>
 </ContentPage>
