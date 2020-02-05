@@ -81,7 +81,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" x:Name="TabInstruction" IsVisible="{Binding IsVisibleInstrunction}"   VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" IsEnabled="{Binding IsInstrunctionEnabled}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -147,7 +147,7 @@
 
 
 
-                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}"  CheckedChanged="chkDeclaration_CheckedChanged" Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
+                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}"  Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
@@ -183,8 +183,8 @@
                 </StackLayout>
 
 
-                <ScrollView  Orientation="Vertical" Grid.Row="1" Margin="0,0,0,0" x:Name="TabTaxPayerDetails"  Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid BindingContext="{Binding ResponseVATDeclarationD}">
+                <ScrollView  Orientation="Vertical" Grid.Row="1" Margin="0,0,0,0" x:Name="TabTaxPayerDetails"   Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid BindingContext="{Binding ResponseVATDeclarationD}" IsEnabled="{Binding IsTaxPayerDetailsEnabled}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -370,8 +370,8 @@
                 </ScrollView>
 
 
-                <ScrollView Orientation="Vertical" x:Name="TabVatReturn"  Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid BindingContext="{Binding ResponseVATDeclarationD}">
+                <ScrollView Orientation="Vertical" x:Name="TabVatReturn"  Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8"  IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid BindingContext="{Binding ResponseVATDeclarationD}" IsEnabled="{Binding IsVatReturnFormEnabled}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -1024,7 +1024,7 @@
                 </ScrollView>
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" x:Name="TabSummarry" IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                <StackLayout HorizontalOptions="FillAndExpand" x:Name="TabSummarry" IsEnabled="{Binding IsSummaryEnabled}" IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -1128,7 +1128,7 @@
                 </StackLayout>
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}" VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}" IsEnabled="{Binding IsAttachmentEnabled}" VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -1414,7 +1414,7 @@
                     </Grid>
                 </ScrollView>-->
 
-                <StackLayout Margin="10,10,10,0" IsVisible="{Binding IsVisibleCreditCarriedForward}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Grid.ColumnSpan="8">
+                <StackLayout Margin="10,10,10,0" IsVisible="{Binding IsVisibleCreditCarriedForward}" IsEnabled="{Binding IsCredietCarriedForwardEnabled}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Grid.ColumnSpan="8">
                     <ListView  x:Name="CreditCarriedList" 
            ItemsSource="{Binding CreditCarriedsList}"
           HorizontalOptions="FillAndExpand"
@@ -1537,7 +1537,7 @@
                 </StackLayout>
 
 
-                <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" IsVisible="{Binding IsVisibleCreditCarriedLabel}" IsEnabled="{Binding IsCreditCarriedLabelEnabled}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                 </Frame>
                 <Label Text="{x:Static local:AppResources.ZVatcreditcarriedforward}" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" >
                 </Label>
@@ -1545,7 +1545,7 @@
 
 
 
-                <CollectionView  SelectionChanged="OnPageSelected"  SelectedItem="{Binding PageSelectedItem}" IsVisible="{Binding IsTabbedMenuAvailable}"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <CollectionView  SelectionChanged="OnPageSelected" IsEnabled="{Binding IsTabbedEnabled}" SelectedItem="{Binding PageSelectedItem}" IsVisible="{Binding IsTabbedMenuAvailable}"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,0,5,0" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="#005e4b"  HorizontalOptions="Center">
@@ -1559,7 +1559,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <StackLayout Margin="0" Grid.Row="0" Grid.Column="4" IsVisible="{Binding IsVisibleOptionMenu}" Grid.ColumnSpan="4" BackgroundColor="#FFFFFF" >
+                <!--<StackLayout Margin="0" Grid.Row="0" Grid.Column="4" IsVisible="{Binding IsVisibleOptionMenu}" Grid.ColumnSpan="4" BackgroundColor="#FFFFFF" >
 
                     <StackLayout BackgroundColor="#FFFFFF">
                         <Label Text="Notes" FontSize="Caption" Padding="0,5,0,5"  VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GAZTGreyLabelStyleForOptionMenu}" >
@@ -1571,13 +1571,13 @@
                         </Label>
                         <BoxView Style="{StaticResource GAZTBoxViewStyle}" BackgroundColor="#FFFFFF"></BoxView>
                     </StackLayout>
-                    <!--<StackLayout BackgroundColor="#FFFFFF" Margin="0">
+                    --><!--<StackLayout BackgroundColor="#FFFFFF" Margin="0">
                         <Label Text="Validate"  Padding="0,5,0,5" BackgroundColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GAZTGreyLabelStyleForOptionMenu}" >
                         </Label>
                         <BoxView Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
-                    </StackLayout>-->
+                    </StackLayout>--><!--
 
-                </StackLayout>
+                </StackLayout>-->
 
 
                 <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
@@ -1629,6 +1629,18 @@
                 <Button Text="{Binding ButtonName}" IsEnabled="{Binding IsMainButtonEnabled}" Command="{Binding OnStepButtonClicked}"  Style="{StaticResource GAZTVerifyButton}" x:Name="BtnNextStep"></Button>
                 </StackLayout>
             </Grid>
+            <!-- Acticity indicator layout start -->
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout End -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

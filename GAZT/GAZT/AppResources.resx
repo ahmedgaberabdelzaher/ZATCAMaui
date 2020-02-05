@@ -1432,4 +1432,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>The total VAT correction entered is larger than the total VAT for the period. Please verify the correction entered in the return or continue if the correction entered is correct.</value>
     <comment>VAT Declaration additional Rule 20</comment>
   </data>
+  <data name="ZVatSuccessfulVoid" xml:space="preserve">
+    <value>VAT Return Form is cancelled. Please initiate the process again to file VAT Return</value>
+  </data>
 </root>

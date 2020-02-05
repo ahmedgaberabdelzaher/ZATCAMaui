@@ -1067,6 +1067,124 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isInstrunctionEnabled = true;
+        public bool IsInstrunctionEnabled
+        {
+            get
+            {
+                return _isInstrunctionEnabled;
+            }
+            set
+            {
+                _isInstrunctionEnabled = value;
+                RaisePropertyChanged("IsInstrunctionEnabled");
+            }
+        }
+
+        private bool _isTaxPayerDetailsEnabled = true;
+        public bool IsTaxPayerDetailsEnabled
+        {
+            get
+            {
+                return _isTaxPayerDetailsEnabled;
+            }
+            set
+            {
+                _isTaxPayerDetailsEnabled = value;
+                RaisePropertyChanged("IsTaxPayerDetailsEnabled");
+            }
+        }
+
+        private bool _isVatReturnFormEnabled = true;
+        public bool IsVatReturnFormEnabled
+        {
+            get
+            {
+                return _isVatReturnFormEnabled;
+            }
+            set
+            {
+                _isVatReturnFormEnabled = value;
+                RaisePropertyChanged("IsVatReturnFormEnabled");
+            }
+        }
+
+        private bool _isSummaryEnabled = true;
+        public bool IsSummaryEnabled
+        {
+            get
+            {
+                return _isSummaryEnabled;
+            }
+            set
+            {
+                _isSummaryEnabled = value;
+                RaisePropertyChanged("IsSummaryEnabled");
+            }
+        }
+
+        private bool _isAttachmentEnabled = true;
+        public bool IsAttachmentEnabled
+        {
+            get
+            {
+                return _isAttachmentEnabled;
+            }
+            set
+            {
+                _isAttachmentEnabled = value;
+                RaisePropertyChanged("IsAttachmentEnabled");
+            }
+        }
+
+        private bool _isCredietCarriedForwardEnabled = true;
+        public bool IsCredietCarriedForwardEnabled
+        {
+            get
+            {
+                return _isCredietCarriedForwardEnabled;
+            }
+            set
+            {
+                _isCredietCarriedForwardEnabled = value;
+                RaisePropertyChanged("IsCredietCarriedForwardEnabled");
+            }
+        }
+
+        private bool _isCreditCarriedLabelEnabled = true;
+        public bool IsCreditCarriedLabelEnabled
+        {
+            get
+            {
+                return _isCreditCarriedLabelEnabled;
+            }
+            set
+            {
+                _isCreditCarriedLabelEnabled = value;
+                RaisePropertyChanged("IsCreditCarriedLabelEnabled");
+            }
+        }
+
+        private bool _isTabbedEnabled = true;
+        public bool IsTabbedEnabled
+        {
+            get
+            {
+                return _isTabbedEnabled;
+            }
+            set
+            {
+                _isTabbedEnabled = value;
+                RaisePropertyChanged("IsTabbedEnabled");
+            }
+        }
+
+    
+
+
+
+
+
 
 
 
@@ -1091,6 +1209,8 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
 
             IsMainButtonEnabled = false;
+
+            ManageEnabledProperty(true);
 
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -1277,6 +1397,19 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public void ManageEnabledProperty(bool value)
+        {
+            IsInstrunctionEnabled = value;
+            IsTaxPayerDetailsEnabled = value;
+            IsVatReturnFormEnabled = value;
+            IsSummaryEnabled = value;
+            IsAttachmentEnabled = value;
+            IsCredietCarriedForwardEnabled = value;
+            IsCreditCarriedLabelEnabled = value;
+            IsTabbedEnabled = value;
+            IsMainButtonEnabled = value;
+        }
+
         public async Task OnSaveDraftClicked()
         {
             CreateDataForPost();
@@ -1422,6 +1555,7 @@ namespace GAZT.ViewModel.NewViewModel
             //ButtonName = AppResources.Submit;
             _navigationService.NavigateTo(App.AttachmentPageView, VATDeclarationData);
         }
+
         public async Task VATSetReturnVoidAsync()
         {
             string operation = "04";// Passed 04 to set void
@@ -1447,6 +1581,8 @@ namespace GAZT.ViewModel.NewViewModel
             var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
             PopToRootPage();
             await SaveReturnAndGetReturnAndSetButtons();
+            ManageEnabledProperty(false);
+            await _dialogService.ShowMessage(AppResources.ZVatSuccessfulVoid,AppResources.ZInstructions);
         }
         public async Task VATReturnResetAsync()
         {
@@ -1498,6 +1634,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.UserTypz = "TP";
 
             var response = WebServiceManager.GAZTSetVATReturnAmend(VATDeclarationData);
+            PopToRootPage();
             await SaveReturnAndGetReturnAndSetButtons();
 
         }
@@ -2031,7 +2168,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
 
             List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnum, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz);
-
+            PopToRootPage();
             ListOfActionButtonsApplicable = new List<string>();
 
             if (VATApplicableButtons != null)
