@@ -145,12 +145,12 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (AttachmentCount <= 40)
                     {
+
                         var fileData = await CrossFilePicker.Current.PickFile();
                         attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
-
-                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
-                        if (_attachment != null && _attachment.d != null)
+                        string Extention = fileData.FileName.Split('.')[1];
+                        if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                         {
                             if (TotalAttachmentSize <= 300)
                             {
@@ -159,15 +159,24 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 if (Convert.ToDecimal(AttachmentSize) <= 20)
                                 {
-                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                                    Device.BeginInvokeOnMainThread(async () =>
+
+                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                    if (_attachment != null && _attachment.d != null)
                                     {
+
+
+                                        VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            VatAttachmentsList = myCollection;
+                                        });
                                         VatAttachmentsList = myCollection;
-                                    });
-                                    VatAttachmentsList = myCollection;
-                                    AttachmentCount++;
-                                    TotalAttachmentSize = +AttachmentSize;
+                                        AttachmentCount++;
+                                        TotalAttachmentSize = +AttachmentSize;
+
+                                    }
+
                                 }
                                 else
                                 {
@@ -180,12 +189,17 @@ namespace GAZT.ViewModel.NewViewModel
                                 _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
 
                             }
+
                         }
-                       
+                        else
+                        {
+                            _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        }
                     }
                     else
                     {
                         _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+
                     }
                 }
                 catch (Exception ex)
@@ -193,7 +207,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
                 }
-            
+
 
             });
 
