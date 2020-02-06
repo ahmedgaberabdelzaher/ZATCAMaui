@@ -1472,6 +1472,27 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
     <value>Total file sizes should not be more than 300 MB.</value>
   </data>
+  <data name="ZZAmend" xml:space="preserve">
+    <value>Amend</value>
+  </data>
+  <data name="ZZAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="ZZBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ZZClearAndClosed" xml:space="preserve">
+    <value>Clear &amp; Closed</value>
+  </data>
+  <data name="ZZClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ZZCreateNotes" xml:space="preserve">
+    <value>Create Notes</value>
+  </data>
+  <data name="ZZDisplayNotes" xml:space="preserve">
+    <value>Display Notes</value>
+  </data>
   <data name="ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm" xml:space="preserve">
     <value>Current VAT Return form if already saved will be Voided before opening Change of Registration Form. Please confirm.</value>
   </data>
@@ -1523,5 +1544,29 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
     <value>You cannot amend this tax return because it exceeds the permissible amendment period</value>
+  </data>
+  <data name="ZZNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ZZRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ZZReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ZZSavAndClose" xml:space="preserve">
+    <value>Save &amp; Close</value>
+  </data>
+  <data name="ZZSaveAsDraft" xml:space="preserve">
+    <value>Save as Draft</value>
+  </data>
+  <data name="ZZSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="ZZValidate" xml:space="preserve">
+    <value>Validate</value>
+  </data>
+  <data name="ZZVoid" xml:space="preserve">
+    <value>Void</value>
   </data>
 </root>

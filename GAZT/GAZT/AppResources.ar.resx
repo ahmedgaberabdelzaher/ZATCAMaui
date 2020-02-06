@@ -1477,6 +1477,27 @@
   <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
     <value>Total file sizes should not be more than 300 MB.</value>
   </data>
+  <data name="ZZAmend" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="ZZAttachment" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="ZZBack" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="ZZClearAndClosed" xml:space="preserve">
+    <value>مسح وإغلاق</value>
+  </data>
+  <data name="ZZClose" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="ZZCreateNotes" xml:space="preserve">
+    <value>إضافة ملاحظات</value>
+  </data>
+  <data name="ZZDisplayNotes" xml:space="preserve">
+    <value>عرض ملاحظات</value>
+  </data>
   <data name="ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm" xml:space="preserve">
     <value>سيتم إلغاء نموذج إقرار ضريبة القيمة المضافة إذا تم حفظها قبل فتح نموذج تغيير التسجيل. يرجى تأكيد.</value>
   </data>
@@ -1527,5 +1548,29 @@
   </data>
   <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
     <value>الإقرار قيد المراجعة من قبل الهيئة</value>
+  </data>
+  <data name="ZZNext" xml:space="preserve">
+    <value>اعادة تعيين</value>
+  </data>
+  <data name="ZZRefresh" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="ZZReset" xml:space="preserve">
+    <value>عادة تعيين</value>
+  </data>
+  <data name="ZZSavAndClose" xml:space="preserve">
+    <value>حفظ وإغلاق</value>
+  </data>
+  <data name="ZZSaveAsDraft" xml:space="preserve">
+    <value>حفظ كمسودة</value>
+  </data>
+  <data name="ZZSubmit" xml:space="preserve">
+    <value>تسليم</value>
+  </data>
+  <data name="ZZValidate" xml:space="preserve">
+    <value>التحقق</value>
+  </data>
+  <data name="ZZVoid" xml:space="preserve">
+    <value>إبطال</value>
   </data>
 </root>
