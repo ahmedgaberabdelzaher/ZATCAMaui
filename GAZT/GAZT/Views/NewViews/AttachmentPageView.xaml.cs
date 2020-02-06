@@ -64,8 +64,22 @@ namespace GAZT.Views.NewViews
         private void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             Image arrowImage = sender as Image;
+           
             Attachment attachment = (Attachment)arrowImage.BindingContext;
-            var results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+            string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+            if(results == "X")
+            {
+                var item = (Xamarin.Forms.Image)sender;
+                Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                       where itm.Doguid == attachment.Doguid.ToString()
+                                 select itm)
+                                .FirstOrDefault<Attachment>();
+                viewModel.VatAttachmentsList.Remove(listitem);
+
+                viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
+
+            }
+
         }
 
         #endregion

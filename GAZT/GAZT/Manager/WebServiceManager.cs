@@ -123,6 +123,10 @@ namespace GAZT.Manager
                                     {
                                         throw new Exception(Token);
                                     }
+                                    if ((0 == String.Compare(Token, "Incomplete")) || (0 == String.Compare(Token, "Deregister - Death")) || (0 == String.Compare(Token, "Deregister - Bankruptcy")) || (0 == String.Compare(Token, "Deregister - Liquidation")) || (0 == String.Compare(Token, "Deregister - Merger")) || (0 == String.Compare(Token, "Deregister - Acquisition")) || (0 == String.Compare(Token, "Suspension - Bankruptcy")) || (0 == String.Compare(Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(Token, "Deregister - Close")) || (0 == String.Compare(Token, "Deregister - Company-Establish")) || (0 == String.Compare(Token, "Suspension - Est. to Company")))
+                                    {
+                                        throw new Exception("User Deactive");
+                                    }
                                     // Password is locked.Invalid attempts
                                     if (!string.IsNullOrEmpty(Token))
                                     {
@@ -409,6 +413,10 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
+                    NewMobileNumber = NewMobileNumber.Replace("+", "");
+                    CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
+                    NewMobileNumber = "00" + NewMobileNumber;
+                    CurrentMobileNumber = "00" + CurrentMobileNumber;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                     var uri = new Uri(url);
@@ -782,7 +790,7 @@ namespace GAZT.Manager
 
 
         //done internet exception handling
-        public static async Task<ICR> GAZTGetICRs(String Tin, string lang)
+        public static  ICR GAZTGetICRs(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -795,10 +803,11 @@ namespace GAZT.Manager
                     String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='" + Tin + "',Fbguid='" + "',UserTin='" + "'" + ")?&saml2=disabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTMyICRsResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTMyICRsResponse = client.GetAsync(uri).Result;
                     if (GAZTMyICRsResponse != null)
                     {
                         HttpHeaders headers = GAZTMyICRsResponse.Headers;
+                        
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -850,6 +859,8 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    App.IsSessionExpired = true;
+                    return null;
                     if (string.Equals(ex.Message, AppResources.ZNoICRAvailable))
                     {
                         throw new Exception(AppResources.ZNoICRAvailable);
@@ -1971,8 +1982,9 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<AttachmentRootOject> GAZTDeleteVATDeclarationAttachment(string fileName, string RetGuid)//, string returnedFguid
+        public static string GAZTDeleteVATDeclarationAttachment(string fileName, string RetGuid)//, string returnedFguid
         {
+            string DeleteToken = string.Empty;
             try
             {
                 AttachmentRootOject _attachment = new AttachmentRootOject();
@@ -1997,11 +2009,21 @@ namespace GAZT.Manager
                 HttpResponseMessage res = client.DeleteAsync(url).Result;
                 var responsestr = res.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-                return _attachment;
+
+                if (res != null)
+                {
+                    HttpHeaders headers = res.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("delete", out values))
+                    {
+                        DeleteToken = values.First();
+                    }
+                }
+                    return DeleteToken;
             }
             catch (Exception ex)
             {
-                return null;
+                return DeleteToken;
             }
         }
 
@@ -2228,7 +2250,7 @@ namespace GAZT.Manager
                 return null;
             }
         }
-        public static async Task<List<ApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp)
+        public static async Task<List<ApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp,string PeriodKey)
         {
             //Fbnum = '65000004030',Lang = 'E',Operation = '',Gpart = '3000493862',Status = 'E0045',TxnTp = 'VTR_AMDT'
 
@@ -2242,7 +2264,7 @@ namespace GAZT.Manager
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
-                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation=''," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey=''" + ")?saml2=disabled&$expand=UI_BTNSet&$format=json";
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='"+Operation+"',"+"Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='"+ PeriodKey +"'"+ ")?saml2=disabled&$expand=UI_BTNSet&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 

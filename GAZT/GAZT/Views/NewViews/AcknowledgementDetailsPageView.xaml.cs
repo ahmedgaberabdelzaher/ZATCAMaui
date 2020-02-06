@@ -1,7 +1,10 @@
-﻿using GAZT.Models;
+﻿using GAZT.Manager;
+using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +41,16 @@ namespace GAZT.Views.NewViews
                     viewModel.TPName = App.TP.Name;
                     viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
                     viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
-                    viewModel.ReceiptDate = viewModel.VATDeclarationData.d.ReceiptDt;
+                    string ReceiptDate;
+                    if (App.IsArabic)
+                    {
+                        ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        viewModel.ReceiptDate = UtilityManager.ToArabicDate(ReceiptDate);
+                    }
+                    else
+                    {
+                        viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
                 }
 
                 SetLTR();

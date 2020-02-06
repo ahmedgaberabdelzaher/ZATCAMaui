@@ -124,6 +124,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isRefreshButtonVisible = true;
+        public bool IsRefreshButtonVisible
+        {
+            get
+            {
+                return _isRefreshButtonVisible;
+            }
+            set
+            {
+                _isRefreshButtonVisible = value;
+                RaisePropertyChanged("IsRefreshButtonVisible");
+            }
+        }
+
+
         private VATDeclaration _vATDeclarationData;
         public VATDeclaration VATDeclarationData
         {
@@ -169,6 +184,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (!string.IsNullOrEmpty(SadadNumber))
                     {
                         IsSadadNumberVisible = true;
+                        IsRefreshButtonVisible = false;
                     }
                 }
                 catch (Exception e)
