@@ -1472,4 +1472,56 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
     <value>Total file sizes should not be more than 300 MB.</value>
   </data>
+  <data name="ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm" xml:space="preserve">
+    <value>Current VAT Return form if already saved will be Voided before opening Change of Registration Form. Please confirm.</value>
+  </data>
+  <data name="ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost" xml:space="preserve">
+    <value>All the information filled in the form will be lost. Please confirm if you still want to cancel form.</value>
+  </data>
+  <data name="ZZGeneralMessage_ClickHereForDetails" xml:space="preserve">
+    <value>Click here for details</value>
+  </data>
+  <data name="ZZGeneralMessage_FileWithTheSameNameAlreadyExists" xml:space="preserve">
+    <value>File with the same name already exists</value>
+  </data>
+  <data name="ZZGeneralMessage_GetAcknowledgement" xml:space="preserve">
+    <value>Please click here to get Acknowledgement</value>
+  </data>
+  <data name="ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed" xml:space="preserve">
+    <value>You cannot amend this tax return because it exceeds the permissible amendment period</value>
+  </data>
+  <data name="ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange" xml:space="preserve">
+    <value>Not allowed to submit amendment if there is no change compared to previous version</value>
+  </data>
+  <data name="ZZGeneralMessage_PleaseCorrectHighlightedFields" xml:space="preserve">
+    <value>Please correct the highlighted fields</value>
+  </data>
+  <data name="ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion" xml:space="preserve">
+    <value>VAT Return Form successfully restored to the last billed version</value>
+  </data>
+  <data name="ZZGeneralMessage_ReturnUnderReviewWithGAZT" xml:space="preserve">
+    <value>Return under review with GAZT</value>
+  </data>
+  <data name="ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty" xml:space="preserve">
+    <value>Please note that the corrections amount must be at least equal to the amount of tax due and at most can be three times the value of goods or services for which tax evasion took place.
+Click "Ok" to submit re-assessment or "No" to review the correction penalty before submitting re-assessment</value>
+  </data>
+  <data name="ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly" xml:space="preserve">
+    <value>Upload files with allowed extensions only</value>
+  </data>
+  <data name="ZZGeneralMessage_ValueExceededPermittableRange" xml:space="preserve">
+    <value>Value in highlighted display field has exceeded permittable range 0 to 999,999,999,999.99</value>
+  </data>
+  <data name="ZZGeneralMessage_VATReturnFormCancelled" xml:space="preserve">
+    <value>VAT Return Form is cancelled. Please initiate the process again to file VAT Return</value>
+  </data>
+  <data name="ZZGeneralMessage_VATReturnFormSavedSuccessfully" xml:space="preserve">
+    <value>VAT Return Form Saved successfully</value>
+  </data>
+  <data name="ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber" xml:space="preserve">
+    <value>VAT Return Form Submitted successfully, Form Bundle number {0}</value>
+  </data>
+  <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
+    <value>You cannot amend this tax return because it exceeds the permissible amendment period</value>
+  </data>
 </root>

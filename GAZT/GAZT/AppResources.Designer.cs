@@ -3680,11 +3680,47 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All the information filled in the form will be lost. Please confirm if you still want to cancel form..
+        /// </summary>
+        public static string ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here for details.
+        /// </summary>
+        public static string ZZGeneralMessage_ClickHereForDetails {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ClickHereForDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File with the same name already exists.
+        /// </summary>
+        public static string ZZGeneralMessage_FileWithTheSameNameAlreadyExists {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_FileWithTheSameNameAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Form will be restored to the values &amp; status of previous Billed return.
         /// </summary>
         public static string ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus {
             get {
                 return ResourceManager.GetString("ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please click here to get Acknowledgement.
+        /// </summary>
+        public static string ZZGeneralMessage_GetAcknowledgement {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_GetAcknowledgement", resourceCulture);
             }
         }
         
@@ -3695,6 +3731,24 @@ namespace GAZT {
             get {
                 return ResourceManager.GetString("ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValu" +
                         "e", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
+        /// </summary>
+        public static string ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not allowed to submit amendment if there is no change compared to previous version.
+        /// </summary>
+        public static string ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange", resourceCulture);
             }
         }
         
@@ -3726,6 +3780,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please correct the highlighted fields.
+        /// </summary>
+        public static string ZZGeneralMessage_PleaseCorrectHighlightedFields {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PleaseCorrectHighlightedFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Range of value allowed is 0 to 999,999,999,999.99.
         /// </summary>
         public static string ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99 {
@@ -3735,11 +3798,102 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form successfully restored to the last billed version.
+        /// </summary>
+        public static string ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return under review with GAZT.
+        /// </summary>
+        public static string ZZGeneralMessage_ReturnUnderReviewWithGAZT {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ReturnUnderReviewWithGAZT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please note that the corrections amount must be at least equal to the amount of tax due and at most can be three times the value of goods or services for which tax evasion took place.
+        ///Click &quot;Ok&quot; to submit re-assessment or &quot;No&quot; to review the correction penalty before submitting re-assessment.
+        /// </summary>
+        public static string ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99.
         /// </summary>
         public static string ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99 {
             get {
                 return ResourceManager.GetString("ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload files with allowed extensions only.
+        /// </summary>
+        public static string ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value in highlighted display field has exceeded permittable range 0 to 999,999,999,999.99.
+        /// </summary>
+        public static string ZZGeneralMessage_ValueExceededPermittableRange {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ValueExceededPermittableRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form is cancelled. Please initiate the process again to file VAT Return.
+        /// </summary>
+        public static string ZZGeneralMessage_VATReturnFormCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form Saved successfully.
+        /// </summary>
+        public static string ZZGeneralMessage_VATReturnFormSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form Submitted successfully, Form Bundle number {0}.
+        /// </summary>
+        public static string ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
+        /// </summary>
+        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturn_ExceedingPermissibleAmendmentPeriod {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current VAT Return form if already saved will be Voided before opening Change of Registration Form. Please confirm..
+        /// </summary>
+        public static string ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm", resourceCulture);
             }
         }
         
