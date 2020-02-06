@@ -191,22 +191,24 @@ namespace GAZT.ViewModel.NewViewModel
                     lang = "A";
                 String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
                  PopToRootPage();
-
-                string MobileNo= "+" + mobilenumber.Substring(mobilenumber.Length-12); 
-                if (App.IsArabic)
+                if (mobilenumber != null)
                 {
-                    MobileNo = mobilenumber.Substring(mobilenumber.Length - 12) + "+";
-                    if (Device.RuntimePlatform == Device.iOS)
+                    string MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
+                    if (App.IsArabic)
                     {
-                        MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
+                        MobileNo = mobilenumber.Substring(mobilenumber.Length - 12) + "+";
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
+                        }
                     }
+                    CurrentMobile = MobileNo;
+                    App.TP.Mobile = MobileNo;
+                    TaxPayerProfile.Mobile = MobileNo;
+                    App.TP.NewMobile = string.Empty;
+                    TaxPayerProfile.NewMobile = string.Empty;
+                    CurrentPassword = TaxPayerProfile.Password;
                 }
-                CurrentMobile = MobileNo;
-                App.TP.Mobile = MobileNo;
-                TaxPayerProfile.Mobile = MobileNo;
-                App.TP.NewMobile = string.Empty;
-                TaxPayerProfile.NewMobile = string.Empty;
-                CurrentPassword = TaxPayerProfile.Password;
             }
             catch (InternetException ex)
             {

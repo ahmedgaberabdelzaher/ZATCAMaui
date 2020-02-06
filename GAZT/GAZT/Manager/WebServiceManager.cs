@@ -413,6 +413,10 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
+                    NewMobileNumber = NewMobileNumber.Replace("+", "");
+                    CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
+                    NewMobileNumber = "00" + NewMobileNumber;
+                    CurrentMobileNumber = "00" + CurrentMobileNumber;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
                     var uri = new Uri(url);
