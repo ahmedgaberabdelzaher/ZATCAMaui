@@ -30,6 +30,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.SalesDetailsPageView;
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+            viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
             SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
             SetLTR();
             this.BindingContext = viewModel;

@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.SalesDetailsPageView"
              FlowDirection="LeftToRight"
              xmlns:custom="clr-namespace:GAZT"
@@ -158,7 +159,7 @@
                                    
                                 </Grid.ColumnDefinitions>
                                 <CheckBox x:Name="checkBox" Grid.Column="0" Grid.Row="0" VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}"></CheckBox>
-                                <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0"></Label>
+                                <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0" IsVisible="{Binding DesClaimerVisibility}"></Label>
                             </Grid>
                         </Grid>
 
@@ -179,7 +180,79 @@
                 <Button Text="{x:Static local:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding OnConfirmButtonClicked}"   Style="{StaticResource GAZTVerifyButton}"  IsVisible="{Binding ConfirmButtonVisibility}"></Button>
 
             </Grid>
+            
+             <StackLayout   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10,10,10,10"  IsVisible="{Binding InvoicePopUpVisibility}" ><!--IsVisible="{Binding InvoicePopUpVisibility}"-->
+                
+                 
+                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Grid.RowSpan="13"  local1:RoundCornersEffect.CornerRadius="10" Spacing="10"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="1"  BackgroundColor="#c49b2d"  >
 
+                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="13" local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White" Padding="1" >
+                                    <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                    </Frame>
+<Grid BindingContext="{Binding EstimatedZAKATSADADNumber}" Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                         <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{x:Static local:AppResources.ZBillDetails}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                    </Label>
+
+                    <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.png" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
+
+                    <Label Text="{x:Static local:AppResources.ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber}" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
+
+
+                    <Label Text="{x:Static local:AppResources.SADADPaymentNumber}"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                    <Label Text="{Binding Sopbel}"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                    <Label Text="{x:Static local:AppResources.ZSADADGAZTId}" Grid.Row="4" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                    <Label Text="{Binding Sadadid}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                    <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+
+                    <Label Text="{Binding Stotamt}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+
+                        <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}" />
+                                        <Span Text=" " />
+                                        <Span  Text="{Binding Stotamt}"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                    </Label>
+
+                    <!--<Label Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
+
+                    <Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="7" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding RefreshButtonDisableColor}"  IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
+                    <Button Text="Close" Command="{Binding OnCloseButtonClicked}" Grid.Row="7" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>
+
+     </Grid>
+                                </StackLayout>
+                            </StackLayout>
+
+                            
+                       
+                     
+                    </StackLayout>
+               
                <!-- Acticity indicator layout start -->
         <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">

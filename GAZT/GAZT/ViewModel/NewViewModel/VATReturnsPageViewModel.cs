@@ -1462,6 +1462,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleSummary = true;
+            IsMainButtonEnabled = false;
             ButtonName = AppResources.Submit;
         }
         public void CreditCarriedClicked()
