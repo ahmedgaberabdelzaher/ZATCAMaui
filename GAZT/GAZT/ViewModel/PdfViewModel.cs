@@ -129,6 +129,20 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
+
+        private string _localPath = null;
+        public string LocalPath
+        {
+            get
+            {
+                return _localPath;
+            }
+            set
+            {
+                _localPath = value;
+                RaisePropertyChanged("LocalPath");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -241,6 +255,7 @@ namespace GAZT.ViewModel
                         }
                         localPath =
                       Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
+                        LocalPath = localPath;
                     }
                     catch (Exception)
                     {

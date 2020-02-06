@@ -13,4 +13,12 @@ namespace GAZT.Models
         public string Link { get; set; }
 
     }
+
+    public class ForPdfJs
+    {
+        public string Url { get; set; }
+        public bool IsUrl { get; set; }
+
+        public string Base64 { get; set; }
+    }
 }

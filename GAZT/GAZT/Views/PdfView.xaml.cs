@@ -1,10 +1,11 @@
 ﻿using GAZT.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -39,5 +40,48 @@ namespace GAZT.Views
             //    Device.OpenUri(uri);
             //}
         }
+
+        private async void Share_Clicked(object sender, EventArgs e)
+        {
+            //var file = Path.Combine(viewModel.LocalPath);
+            //File.WriteAllText(file, "Hello World");
+
+            //await Share.RequestAsync(new ShareFileRequest
+            //{
+            //    Title = Title,
+            //    File = new ShareFile(file)
+            //});
+            email();
+        }
+
+
+        public async void email()
+        {
+            var message = new EmailMessage
+            {
+                Subject = "Attached Form :" ,
+
+            };
+            var file = Path.Combine(viewModel.LocalPath);
+            //var file = Path.Combine(FileSystem.CacheDirectory);
+
+            MemoryStream ms = (MemoryStream)viewModel.StreamForDownloadURL;
+            byte[] pdfBytes = ms.ToArray();
+
+            var memStream = new MemoryStream(pdfBytes);
+
+            File.WriteAllBytes(file, pdfBytes);
+
+            await Share.RequestAsync(new ShareFileRequest
+            {
+                Title = Title,
+                File = new ShareFile(file)
+            });
+
+            //message.Attachments.Add(new EmailAttachment(file));
+
+            //await Email.ComposeAsync(message);
+        }
+
     }
 }

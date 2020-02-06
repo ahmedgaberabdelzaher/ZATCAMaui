@@ -217,6 +217,9 @@
     <PackageReference Include="Xam.Plugins.Forms.DeviceOrientation">
       <Version>1.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.3.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="SkiaSharp.Views.Forms">
       <Version>1.68.0</Version>
@@ -700,5 +703,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_close%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_share.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_share%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_share%403x.png" />
   </ItemGroup>
 </Project>

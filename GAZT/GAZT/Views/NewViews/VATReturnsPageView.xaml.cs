@@ -86,21 +86,20 @@ namespace GAZT.Views.NewViews
             });
             await Task.Run(async() =>
             {
-                if(App.ICRStatus== "E0045")
+               
+                
+                await viewModel.pageLoad();
+                if (App.ICRStatus == "E0045")
                 {
                     viewModel.ManageEnabledProperty(false);
-                    viewModel.IsDeclarationCheckedForInstruction = true;
-                    viewModel.IsDeclarationCheckedForSummary = true;
                 }
                 else
                 {
                     viewModel.ManageEnabledProperty(true);
                 }
-                
-                await viewModel.pageLoad();
                 viewModel.ListOfActionButtonsApplicable = new List<string>();
                 await viewModel.SetButtons(viewModel.VATDeclarationData);
-
+              
                 onPageLoadCalculation();
             });
             await Task.Run(() =>
@@ -284,8 +283,19 @@ namespace GAZT.Views.NewViews
                    
                     viewModel.IsMainButtonEnabled = false;
                    // BtnNextStep.IsEnabled = false;
-                    chkDeclaration.IsChecked = false;
-                    viewModel.IsDeclarationCheckedForInstruction = false;
+
+                    if (App.ICRStatus == "E0045")
+                    {
+                        viewModel.IsDeclarationCheckedForInstruction = true;
+                        viewModel.IsDeclarationCheckedForSummary = true;
+                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                        chkDeclaration.IsChecked = true;
+                    }
+                    else
+                    {
+                        viewModel.IsDeclarationCheckedForInstruction = false;
+                        chkDeclaration.IsChecked = false;
+                    }
                     setColor(previous, current);
                 }
                 else if (current.pageName == "TaxPayer Details")
