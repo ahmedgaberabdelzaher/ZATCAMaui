@@ -197,17 +197,19 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                String Url = string.Empty;
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                _navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                _dialogService.ShowMessage("Work In Progress", "Instrunction");
+                //String Url = string.Empty;
+                //Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                //_navigationService.NavigateTo(App.AAcknowledgementView, Url);
             });
 
           
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                String Url = string.Empty;
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                _navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                _dialogService.ShowMessage("Work In Progress", "Instrunction");
+                //String Url = string.Empty;
+                //Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+                //_navigationService.NavigateTo(App.AAcknowledgementView, Url);
             });
 
 
