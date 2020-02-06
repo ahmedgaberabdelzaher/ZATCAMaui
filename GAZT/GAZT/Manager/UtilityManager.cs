@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GAZT.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -275,6 +277,21 @@ namespace GAZT.Manager
             String msg = RemoveDigits(value);
             return msg;
         }
+        public static DateTime ConvertTiktoDate(string TikDate)
+        {
+            DateTime date= new DateTime();
+            if (!string.IsNullOrEmpty(TikDate))
+            {
+                VATRateDataWithDateType vATRateDataWithDate;
+                VATRateDataWithStringDateType dataWithStringDateType = new VATRateDataWithStringDateType();
+                dataWithStringDateType.StartDate = TikDate;
+                dataWithStringDateType.EndDate = TikDate;
+                string JsonString = JsonConvert.SerializeObject(dataWithStringDateType);
+                vATRateDataWithDate = JsonConvert.DeserializeObject<VATRateDataWithDateType>(JsonString);
+                date = vATRateDataWithDate.StartDate;
+            }
+            return date;
+        }
         public static string RemoveDigits(string key)
         {
             string CValue=ConvertNumerals(key);
@@ -306,6 +323,9 @@ namespace GAZT.Manager
         #endregion
 
     }
+
+   
+
 
     public enum Buttons
     {

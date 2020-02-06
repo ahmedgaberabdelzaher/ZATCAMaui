@@ -86,6 +86,7 @@ namespace GAZT.Views.NewViews
             });
             await Task.Run(async() =>
             {
+                viewModel.ManageEnabledProperty(true);
                 await viewModel.pageLoad();
                 viewModel.ListOfActionButtonsApplicable = new List<string>();
                 await viewModel.SetButtons(viewModel.VATDeclarationData);
