@@ -198,7 +198,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-                        _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
 
                     }
                 }
