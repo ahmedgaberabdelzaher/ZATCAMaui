@@ -149,12 +149,13 @@ namespace GAZT.ViewModel.NewViewModel
                         var fileData = await CrossFilePicker.Current.PickFile();
                         attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
+                      
                         string Extention = fileData.FileName.Split('.')[1];
                         if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                         {
                             if (TotalAttachmentSize <= 300)
                             {
-                                AttachmentSize = Math.Round((Convert.ToDecimal(attachment.Length) / 1024), 2);
+                                AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)),2);
 
 
                                 if (Convert.ToDecimal(AttachmentSize) <= 20)
@@ -173,19 +174,21 @@ namespace GAZT.ViewModel.NewViewModel
                                         });
                                         VatAttachmentsList = myCollection;
                                         AttachmentCount++;
-                                        TotalAttachmentSize = +AttachmentSize;
-
+                                        TotalAttachmentSize += AttachmentSize;
+                                        AttachmentName = string.Empty;
                                     }
 
                                 }
                                 else
                                 {
+                                    AttachmentName = string.Empty;
                                     _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
 
                                 }
                             }
                             else
                             {
+                                AttachmentName = string.Empty;
                                 _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
 
                             }
@@ -193,12 +196,14 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                            AttachmentName = string.Empty;
+                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }
                     else
                     {
-                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        AttachmentName = string.Empty;
+                        _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
 
                     }
                 }
@@ -215,6 +220,7 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+
         #endregion
     }
 }
