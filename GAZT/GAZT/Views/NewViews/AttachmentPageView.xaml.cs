@@ -82,9 +82,17 @@ namespace GAZT.Views.NewViews
 
         }
 
+
+
         #endregion
 
+        private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
+        {
+            Image arrowImage = sender as Image;
 
-
+            Attachment attachment = (Attachment)arrowImage.BindingContext;
+            //attachment.DocUrl;
+            await Navigation.PushAsync(new PdfView(attachment.DocUrl));
+        }
     }
 }

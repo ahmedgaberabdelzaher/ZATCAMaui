@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -197,19 +198,18 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                _dialogService.ShowMessage("Work In Progress", "Instrunction");
-                //String Url = string.Empty;
-                //Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                //_navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                String Url = string.Empty;
+                Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+               // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                ShowPdf(Url);
             });
 
           
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                _dialogService.ShowMessage("Work In Progress", "Instrunction");
-                //String Url = string.Empty;
-                //Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                //_navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                String Url = string.Empty;
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+                ShowPdf(Url);
             });
 
 
@@ -218,10 +218,44 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-            #endregion
+        #endregion
 
-            #region Method
-
-            #endregion
+        #region Method
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
         }
+        #endregion
+    }
     }

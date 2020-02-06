@@ -73,7 +73,7 @@
                     <Button Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}"  Command="{Binding OnVATRefreshButtonClicked}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
                     <Button Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="{Binding IsSadadNumberVisible}" Command="{Binding OnAcknowlwdgementClicked}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
                     <!--<Button Text="{x:Static local:AppResources.Acknowlwdgement}"  Command="{Binding OnAcknowlwdgementClicked}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding IsSadadNumberVisible}"></Button>-->
-                    <Button Text="Download Form" IsVisible="{Binding IsSadadNumberVisible}" Command="{Binding OnDownloadAcknowlwdgementClicked}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <Button Text="Download Form"  Command="{Binding OnDownloadAcknowlwdgementClicked}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
 
                     <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>

@@ -336,6 +336,8 @@ namespace GAZT.Manager
                 {
                     if (CrossConnectivity.Current.IsConnected)
                     {
+                        String folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+                      //  string completePath = Path.Combine(folderPath, "GAZTeServices");
                         string Url = url;
                         if (!string.IsNullOrEmpty(Url))
                         {
@@ -355,6 +357,11 @@ namespace GAZT.Manager
                                 } while (streams.CanRead && count > 0);
 
                                 Base64String = Convert.ToBase64String(ms.ToArray());
+                                byte[] bytes = System.Convert.FromBase64String(Base64String);
+
+
+
+                                File.WriteAllBytes(folderPath, bytes);
                             }
                         }
                     }
