@@ -21,8 +21,8 @@
 
         <!--<ToolbarItem IconImageSource="ic_save.png"  
                 Priority="0" Order="Primary" Command="{Binding OnSaveAsDraftClicked}" />-->
-        <ToolbarItem IconImageSource="ic_validation.png" x:Name="ICvalidation" 
-                Priority="1" Order="Primary"   />
+        <!--<ToolbarItem IconImageSource="ic_validation.png" x:Name="ICvalidation" 
+                Priority="1" Order="Primary"   />-->
         <ToolbarItem IconImageSource="ic_more_options.png"  
                 Priority="2" Order="Primary" Clicked="onMoreOptionClicked" />
     </ContentPage.ToolbarItems>
