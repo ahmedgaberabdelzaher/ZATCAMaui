@@ -428,9 +428,8 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 lang = "AR";
                             }
-                            currentAttempts++;
-                            if (currentAttempts <= App.TP.Attempts)
-                            {
+                           
+                           
                                 TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                             await PopToRootPage();
                            
@@ -450,26 +449,39 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
+                                        currentAttempts++;
+                                        if (currentAttempts == App.TP.Attempts)
+                                        {
+                                            App.TP = null;
+                                            ClearData();
+                                            Device.BeginInvokeOnMainThread(async () => {
+                                                var _navigation = Application.Current.MainPage.Navigation;
+                                                await _navigation.PopToRootAsync();
+                                            });
+                                        }
                                         string isInvalidOtp = AppResources.InvalidOTP;
                                         await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
                                         ClearData();
+
                                     });
                                 }
-                            }
-                            else
-                            {
-                                App.TP = null;
-                                ClearData();
-                                Device.BeginInvokeOnMainThread(async () => {
-                                    var _navigation = Application.Current.MainPage.Navigation;
-                                    await _navigation.PopToRootAsync();
-                                });
-                            }
+                            
+                           
                         }
                         catch (Exception ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                currentAttempts++;
+                                if (currentAttempts == App.TP.Attempts)
+                                {
+                                    App.TP = null;
+                                    ClearData();
+                                    Device.BeginInvokeOnMainThread(async () => {
+                                        var _navigation = Application.Current.MainPage.Navigation;
+                                        await _navigation.PopToRootAsync();
+                                    });
+                                }
                                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                                 ClearData();
                             });
