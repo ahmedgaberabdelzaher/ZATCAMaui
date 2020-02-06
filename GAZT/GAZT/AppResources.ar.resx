@@ -823,7 +823,7 @@
     <value>رقم الجوال الجديد يجب أن يكون مختلف عن رقم الجوال الحالي</value>
   </data>
   <data name="ZZInternetConnectionMessage" xml:space="preserve">
-    <value>لا يوجد خط إنترنيت</value>
+    <value>تعذر الاتصال بالانترنت</value>
     <comment>ES11,ES13 PensionerProfileView,ES8 BankDetailsView,FAQsView</comment>
   </data>
   <data name="ZClose" xml:space="preserve">
