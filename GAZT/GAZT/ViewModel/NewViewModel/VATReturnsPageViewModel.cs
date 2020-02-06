@@ -1410,7 +1410,10 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             IsVisibleInstrunction = true;
             IsMainButtonEnabled = false;
-            IsDeclarationCheckedForInstruction = false;
+            if (App.ICRStatus != "E0045")
+            {
+                IsDeclarationCheckedForInstruction = false;
+            }
             ButtonName = AppResources.ZVatStepTwo;
 
         }
@@ -1978,6 +1981,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     //    SetData();
                     //}
+                    ManageEnabledProperty(true);
                 }
 
                 await SetButtons(VATDeclarationData);

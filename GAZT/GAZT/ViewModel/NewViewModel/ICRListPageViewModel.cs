@@ -166,21 +166,21 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
 
-                await Task.Run(async () =>
-                {
+                //await Task.Run(async () =>
+                //{
                     ICRList = null;
 
                     ICR icrList = null;
                     try
                     {
                         string lang = UtilityManager.GetLanguageParameter();
-                        icrList = await WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                     {
@@ -217,13 +217,13 @@ namespace GAZT.ViewModel.NewViewModel
                       //  _navigationService.GoBack();
 
                     }
-                });
+                //});
 
-                await Task.Run(() =>
-                {
+                //await Task.Run(() =>
+                //{
                     
-                    IsLoading = false;
-                });
+                //    IsLoading = false;
+                //});
 
 
 
@@ -313,7 +313,7 @@ namespace GAZT.ViewModel.NewViewModel
                     String SelectedICRGUID = SelectedICR.Fbguid;
                     EUser = SelectedICR.Euser;
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid,SelectedICR.Fbnum, SelectedICR.Euser,SelectedICR.Persl);
-                    await PopToRootPage();
+                    PopToRootPage();
                     _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
@@ -370,12 +370,12 @@ namespace GAZT.ViewModel.NewViewModel
             
         }
 
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
                 var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+                _navigation.PopToRootAsync();
             }
         }
         #endregion

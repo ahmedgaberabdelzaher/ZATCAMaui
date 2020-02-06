@@ -86,7 +86,17 @@ namespace GAZT.Views.NewViews
             });
             await Task.Run(async() =>
             {
-                viewModel.ManageEnabledProperty(true);
+                if(App.ICRStatus== "E0045")
+                {
+                    viewModel.ManageEnabledProperty(false);
+                    viewModel.IsDeclarationCheckedForInstruction = true;
+                    viewModel.IsDeclarationCheckedForSummary = true;
+                }
+                else
+                {
+                    viewModel.ManageEnabledProperty(true);
+                }
+                
                 await viewModel.pageLoad();
                 viewModel.ListOfActionButtonsApplicable = new List<string>();
                 await viewModel.SetButtons(viewModel.VATDeclarationData);
