@@ -3680,6 +3680,69 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amend.
+        /// </summary>
+        public static string ZZAmend {
+            get {
+                return ResourceManager.GetString("ZZAmend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment.
+        /// </summary>
+        public static string ZZAttachment {
+            get {
+                return ResourceManager.GetString("ZZAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string ZZBack {
+            get {
+                return ResourceManager.GetString("ZZBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear &amp; Closed.
+        /// </summary>
+        public static string ZZClearAndClosed {
+            get {
+                return ResourceManager.GetString("ZZClearAndClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZZClose {
+            get {
+                return ResourceManager.GetString("ZZClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Notes.
+        /// </summary>
+        public static string ZZCreateNotes {
+            get {
+                return ResourceManager.GetString("ZZCreateNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Notes.
+        /// </summary>
+        public static string ZZDisplayNotes {
+            get {
+                return ResourceManager.GetString("ZZDisplayNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All the information filled in the form will be lost. Please confirm if you still want to cancel form..
         /// </summary>
         public static string ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost {
@@ -3916,6 +3979,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string ZZNext {
+            get {
+                return ResourceManager.GetString("ZZNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
@@ -3943,6 +4015,51 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string ZZRefresh {
+            get {
+                return ResourceManager.GetString("ZZRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string ZZReset {
+            get {
+                return ResourceManager.GetString("ZZReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save &amp; Close.
+        /// </summary>
+        public static string ZZSavAndClose {
+            get {
+                return ResourceManager.GetString("ZZSavAndClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as Draft.
+        /// </summary>
+        public static string ZZSaveAsDraft {
+            get {
+                return ResourceManager.GetString("ZZSaveAsDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string ZZSubmit {
+            get {
+                return ResourceManager.GetString("ZZSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The new email must not match the existing email.
         /// </summary>
         public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
@@ -3966,6 +4083,15 @@ namespace GAZT {
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validate.
+        /// </summary>
+        public static string ZZValidate {
+            get {
+                return ResourceManager.GetString("ZZValidate", resourceCulture);
             }
         }
         
@@ -4146,6 +4272,15 @@ namespace GAZT {
         public static string ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero {
             get {
                 return ResourceManager.GetString("ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Void.
+        /// </summary>
+        public static string ZZVoid {
+            get {
+                return ResourceManager.GetString("ZZVoid", resourceCulture);
             }
         }
     }
