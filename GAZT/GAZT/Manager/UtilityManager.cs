@@ -1,7 +1,12 @@
-﻿using System;
+﻿using GAZT.Models;
+using Newtonsoft.Json;
+using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -18,10 +23,10 @@ namespace GAZT.Manager
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
 
-       
+
 
         #endregion
-        
+
         #region Method
         public static bool IsValidEmailAddress(string EmailAddress)
         {
@@ -46,7 +51,7 @@ namespace GAZT.Manager
             {
                 return "EN";
             }
-         
+
         }
 
         public static bool IsPasswordValid(string password)
@@ -62,7 +67,6 @@ namespace GAZT.Manager
             }
 
         }
-
 
         public static bool IsMobileNumberValidValid(string mobilenumber)
         {
@@ -95,9 +99,9 @@ namespace GAZT.Manager
         public static bool IsUserNameValid(string userName)
         {
             bool isCorrectUserName = false;
-            foreach( char letter in userName.ToCharArray())
+            foreach (char letter in userName.ToCharArray())
             {
-                if(letter <= 127)
+                if (letter <= 127)
                 {
                     isCorrectUserName = true;
                 }
@@ -118,6 +122,7 @@ namespace GAZT.Manager
             }
 
         }
+
         public static string ReverseString(string s)
         {
             char[] arr = s.ToCharArray();
@@ -127,7 +132,7 @@ namespace GAZT.Manager
 
         public static string SingleDateConversion(string Date)
         {
-          
+
             String StartDate = Date;
 
             if (!string.IsNullOrEmpty(StartDate))
@@ -215,13 +220,13 @@ namespace GAZT.Manager
             string[] SplitDate = Date.Split('-');
             string Month = SplitDate[1];
             string Year = ConvertNumerals(SplitDate[2]);
-            string Day= ConvertNumerals(SplitDate[0]);
+            string Day = ConvertNumerals(SplitDate[0]);
             string FinalDate = Date;
-            if (Month =="January")
+            if (Month == "January")
             {
                 Month = "يناير";
             }
-            else if(Month== "February")
+            else if (Month == "February")
             {
                 Month = "فبراير";
             }
@@ -269,40 +274,100 @@ namespace GAZT.Manager
             return FinalDate;
         }
 
-
         public static string getNumberAndConvert(string value)
         {
             String msg = RemoveDigits(value);
             return msg;
         }
+
+        public static DateTime ConvertTiktoDate(string TikDate)
+        {
+            DateTime date = new DateTime();
+            if (!string.IsNullOrEmpty(TikDate))
+            {
+                VATRateDataWithDateType vATRateDataWithDate;
+                VATRateDataWithStringDateType dataWithStringDateType = new VATRateDataWithStringDateType();
+                dataWithStringDateType.StartDate = TikDate;
+                dataWithStringDateType.EndDate = TikDate;
+                string JsonString = JsonConvert.SerializeObject(dataWithStringDateType);
+                vATRateDataWithDate = JsonConvert.DeserializeObject<VATRateDataWithDateType>(JsonString);
+                date = vATRateDataWithDate.StartDate;
+            }
+            return date;
+        }
+
         public static string RemoveDigits(string key)
         {
-            string CValue=ConvertNumerals(key);
-            return Regex.Replace(key, @"\d",CValue);
+            string CValue = ConvertNumerals(key);
+            return Regex.Replace(key, @"\d", CValue);
         }
+
         public static string ConvertNumerals(this string input)
         {
             if (!string.IsNullOrEmpty(input))
             {
-                
-                    return input.Replace('0', '\u06f0')
-                            .Replace('1', '\u06f1')
-                            .Replace('2', '\u06f2')
-                            .Replace('3', '\u06f3')
-                            .Replace('4', '\u06f4')
-                            .Replace('5', '\u06f5')
-                            .Replace('6', '\u06f6')
-                            .Replace('7', '\u06f7')
-                            .Replace('8', '\u06f8')
-                            .Replace('9', '\u06f9');
-                
-               
+
+                return input.Replace('0', '\u06f0')
+                        .Replace('1', '\u06f1')
+                        .Replace('2', '\u06f2')
+                        .Replace('3', '\u06f3')
+                        .Replace('4', '\u06f4')
+                        .Replace('5', '\u06f5')
+                        .Replace('6', '\u06f6')
+                        .Replace('7', '\u06f7')
+                        .Replace('8', '\u06f8')
+                        .Replace('9', '\u06f9');
+
+
             }
             else
             {
                 return input;
             }
         }
+
+        public static string DownloadDataFromLink(string url)
+        {
+            string Base64String = string.Empty;
+
+            using (System.Net.WebClient client = new System.Net.WebClient())
+            {
+                try
+                {
+                    if (CrossConnectivity.Current.IsConnected)
+                    {
+                        string Url = url;
+                        if (!string.IsNullOrEmpty(Url))
+                        {
+                            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(Url);
+                            WebResponse myResp = myReq.GetResponse();
+
+                            using (Stream streams = myResp.GetResponseStream())
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                int count = 0;
+                                do
+                                {
+                                    byte[] buf = new byte[1024];
+                                    count = streams.Read(buf, 0, 1024);
+                                    ms.Write(buf, 0, count);
+
+                                } while (streams.CanRead && count > 0);
+
+                                Base64String = Convert.ToBase64String(ms.ToArray());
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidDataException();
+                }
+
+                return Base64String;
+            }
+        }
+
         #endregion
 
     }
