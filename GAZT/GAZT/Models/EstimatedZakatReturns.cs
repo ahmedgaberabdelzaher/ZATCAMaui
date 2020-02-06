@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace GAZT.Models
 {
@@ -22,7 +23,7 @@ namespace GAZT.Models
         public string type { get; set; }
     }
 
-    public class EstimatedZakatReturnsResult
+    public class EstimatedZakatReturnsResult : INotifyPropertyChanged
     {
         public Metadata2 __metadata { get; set; }
         public string Liveflg { get; set; }
@@ -111,83 +112,93 @@ namespace GAZT.Models
             }
         }//DueDate
 
-        private string _statusImage;
-        public string StatusImage
+        //private string _statusImage;
+        public string StatusImage { get; set; }
+        //{
+        //    get
+        //    {
+        //        return _statusImage;
+        //    }
+        //    set
+        //    {
+        //        _statusImage = value;
+        //    }
+        //}
+        //private string _borderColour ;
+        public string BorderColour { get; set; }
+        //{
+        //    get
+        //    {
+        //        return _borderColour;
+        //    }
+        //    set
+        //    {
+        //        _borderColour = value;
+        //    }
+        //}
+
+
+        //private string _status;//StatusCode
+        //public string Status
+        //{
+        //    get
+        //    {
+        //        return _status;
+        //    }
+        //    set
+        //    {
+        //        _status = value;
+        //        OnPropertyChanged(nameof(Status));
+        //        if (!string.IsNullOrEmpty(_status))
+        //        {
+
+        //            //For Border Colour
+        //            if ((string.Equals(_status, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+        //            {
+                        
+        //                    StatusImage = "ic_attachment.png";
+        //                BorderColour = "#944E22";
+        //            }
+        //            else if (string.Equals(_status, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+        //            {
+        //                BorderColour = "#005e4b";
+        //                StatusImage = "ic_Paid.png";
+        //            }
+        //            else if (string.Equals(_status, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+        //            {
+        //                BorderColour = "#c49b2d"; 
+        //                 StatusImage = "ic_loading.png";
+        //            }
+        //            else if (string.Equals(_status, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+        //            {
+        //                BorderColour = "#005e4b";
+        //                StatusImage = "ic_Paid.png";
+        //            }
+
+        //            //For Image
+        //            if (string.Equals(_status, "ZP017") || string.Equals(_status, "E0089") || string.Equals(_status, "E0090") || string.Equals(_status, "C0021") || string.Equals(_status, "ALL"))
+        //            {
+        //                StatusImage = "ic_Check_Gray.png";
+        //            }
+        //            else if (string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
+        //            {
+        //                StatusImage = "ic_save_Gray.png";
+        //            }
+        //            else if (string.Equals(_status, "E0057"))
+        //            {
+        //                StatusImage = "ic_save_golden.png";
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string propertyname)
         {
-            get
-            {
-                return _statusImage;
-            }
-            set
-            {
-                _statusImage = value;
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
-        private string _borderColour;
-        public string BorderColour
-        {
-            get
-            {
-                return _borderColour;
-            }
-            set
-            {
-                _borderColour = value;
-            }
-        }
-
-
-        private string _status;//StatusCode
-        public string Status
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                _status = value;
-                if (!string.IsNullOrEmpty(_status))
-                {
-
-                    //For Border Colour
-                    if (string.Equals(_status, "E0001") || string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
-                    {
-                        BorderColour = "#bfbebe";
-                    }
-                    else if (string.Equals(_status, "E0006") || string.Equals(_status, "E0045") || string.Equals(_status, "E0090"))
-                    {
-                        BorderColour = "#005e4b";
-                        StatusImage = "ic_Paid.png";
-                    }
-                    else if (string.Equals(_status, "E0020") || string.Equals(_status, "E0055") || string.Equals(_status, "E0057") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089"))
-                    {
-                        BorderColour = "#c49b2d";
-                        StatusImage = "ic_Check_golden.png";
-                    }
-
-                    //For Image
-                    if (string.Equals(_status, "E0001"))
-                    {
-                        StatusImage = "ic_Check_Gray.png";
-                    }
-                    else if (string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
-                    {
-                        StatusImage = "ic_save_Gray.png";
-                    }
-                    else if (string.Equals(_status, "E0057"))
-                    {
-                        StatusImage = "ic_save_golden.png";
-                    }
-
-
-
-                }
-            }
-        }
-
-
-
     }
 
     public class ListSet
@@ -267,5 +278,9 @@ namespace GAZT.Models
         public ListSet listSet { get; set; }
     }
 
-    
+    public class ZAKATStatus
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+    }
 }

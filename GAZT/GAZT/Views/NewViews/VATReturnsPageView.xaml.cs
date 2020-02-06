@@ -271,8 +271,11 @@ namespace GAZT.Views.NewViews
                 if (current.pageName == "Instrunction")
                 {
                     viewModel.InstrunctionClicked();
-                    BtnNextStep.IsEnabled = false;
+                   
+                    viewModel.IsMainButtonEnabled = false;
+                   // BtnNextStep.IsEnabled = false;
                     chkDeclaration.IsChecked = false;
+                    viewModel.IsDeclarationCheckedForInstruction = false;
                     setColor(previous, current);
                 }
                 else if (current.pageName == "TaxPayer Details")
@@ -285,8 +288,10 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        BtnNextStep.IsEnabled = false;
-                        chkClearification.IsChecked = false;
+                        viewModel.IsDeclarationCheckedForInstruction = false;
+                        viewModel.IsMainButtonEnabled = false;
+                       // BtnNextStep.IsEnabled = false;
+                       //  chkClearification.IsChecked = false;
                     }
                     //else
                     //{
@@ -334,7 +339,11 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        BtnNextStep.IsEnabled = false;
+                        //viewModel.IsDeclarationCheckedForInstruction = false;
+                        viewModel.IsMainButtonEnabled = false;
+                      //  BtnNextStep.IsEnabled = false;
+                       
+                        viewModel.IsMainButtonEnabled = false;
                         chkDeclarationForSummary.IsChecked = false;
                     }
                     //else
@@ -352,12 +361,23 @@ namespace GAZT.Views.NewViews
             if (viewModel.IsDeclarationChecked == false)
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-                BtnNextStep.IsEnabled = false;
+               // BtnNextStep.IsEnabled = false;
             }
             else
             {
                 Resources["searchBarStyleForDeclarationChb"] = App.Current.Resources["GAZTGoldLabelStyleForCaptionFont"];
-                BtnNextStep.IsEnabled = true;
+              //  BtnNextStep.IsEnabled = true;
+            }
+
+            if(chkDeclaration.IsChecked==true)
+            {
+               
+                viewModel.IsMainButtonEnabled = false;
+              //  BtnNextStep.IsEnabled = true;
+            }
+            else
+            {
+              //  BtnNextStep.IsEnabled = false;
             }
         }
 
@@ -740,122 +760,129 @@ namespace GAZT.Views.NewViews
 
         public void CheckMandetoryFields()
         {
-            bool IsAllEntered = true;
-            if (string.IsNullOrEmpty(EntryVatAmount.Text))
+            if (TabVatReturn.IsVisible == true)
             {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryStdsalesVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntrySalesGccAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntrySalesGccAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryZerosalesAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryZerosalesAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExportsAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExportsAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryImportspaidAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryImportspaidVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryImportsaccAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryImportsaccAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryImportsaccVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryPreperiodcorr.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryCreditVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if (string.IsNullOrEmpty(EntryNetdueVat.Text))
-            {
-                IsAllEntered = false;
-            }
-            if(IsAllEntered==false)
-            {
-                BtnNextStep.IsEnabled = false;
-            }
-            else
-            {
-                BtnNextStep.IsEnabled = true;
+                bool IsAllEntered = true;
+                if (string.IsNullOrEmpty(EntryVatAmount.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryStdsalesVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntrySalesGccAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryZerosalesAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExportsAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExportsAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportspaidAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportspaidVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportsaccAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportsaccAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportsaccVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryPreperiodcorr.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryCreditVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+                {
+                    IsAllEntered = false;
+                }
+                if (IsAllEntered == false)
+                {
+
+                    viewModel.IsMainButtonEnabled = false;
+                    // BtnNextStep.IsEnabled = false;
+                }
+                else
+                {
+                    // viewModel.IsDeclarationCheckedForInstruction = false;
+                    viewModel.IsMainButtonEnabled = true;
+                    //  BtnNextStep.IsEnabled = true;
+                }
             }
         }
 
@@ -882,11 +909,15 @@ namespace GAZT.Views.NewViews
                 CheckBox CheckSummary = (CheckBox)sender;
                 if(CheckSummary.IsChecked==true)
                 {
-                    BtnNextStep.IsEnabled = true;
+                   
+                    viewModel.IsMainButtonEnabled = true;
+                  //  BtnNextStep.IsEnabled = true;
                 }
                 else
                 {
-                    BtnNextStep.IsEnabled = false;
+                   
+                    viewModel.IsMainButtonEnabled = false;
+                    // BtnNextStep.IsEnabled = false;
                 }
             }
         }
@@ -898,11 +929,15 @@ namespace GAZT.Views.NewViews
                 CheckBox CheckSummary = (CheckBox)sender;
                 if (CheckSummary.IsChecked == true)
                 {
-                    BtnNextStep.IsEnabled = true;
+                   
+                    viewModel.IsMainButtonEnabled = true;
+                  //  BtnNextStep.IsEnabled = true;
                 }
                 else
                 {
-                    BtnNextStep.IsEnabled = false;
+                   
+                    viewModel.IsMainButtonEnabled = false;
+                  //  BtnNextStep.IsEnabled = false;
                 }
             }
         }

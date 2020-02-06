@@ -1468,4 +1468,13 @@
   <data name="ZVatSuccessfulVoid" xml:space="preserve">
     <value>نموذج الإقرار غير مقبول. يرجى البدء بالعملية مجددا لتقديم إقرار ضريبي</value>
   </data>
+  <data name="ZFilesizeshouldnotbemorethan20MB" xml:space="preserve">
+    <value>يجب أن يكون حجم الملف أقل من 20 ميجا بايت.</value>
+  </data>
+  <data name="ZMaximumnoofallowedattachmentsare40" xml:space="preserve">
+    <value>يجب أن لا يزيد عدد المرفقات عن 40 ملفات.</value>
+  </data>
+  <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
+    <value>Total file sizes should not be more than 300 MB.</value>
+  </data>
 </root>

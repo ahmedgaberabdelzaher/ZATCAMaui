@@ -92,6 +92,10 @@ namespace GAZT.ViewModel.NewViewModel
                 if (ChangeReason != null)
                 {
                     SelectedSalesDetails.ChangeReason = ChangeReason;
+                    if (SelectedSalesDetails.IsReasonRequird)
+                    {
+                        SelectedSalesDetails.IsAttachmentRequired = false;
+                    }                   
                 }
                 RaisePropertyChanged("ChangeReason");
             }
@@ -112,6 +116,10 @@ namespace GAZT.ViewModel.NewViewModel
                 if (AttachmentName != null)
                 {
                     SelectedSalesDetails.AttchamentName = AttachmentName;
+                    if(SelectedSalesDetails.IsAttachmentRequired)
+                    {
+                        SelectedSalesDetails.IsAttachmentRequired = false;
+                    }
                 }
                 RaisePropertyChanged("AttachmentName");
             }
@@ -199,6 +207,10 @@ namespace GAZT.ViewModel.NewViewModel
                         EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
                         _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
                         _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                        _estimateZakatAttachment.Dotyp = "FZ01";
+                        _estimateZakatAttachment.Mimetype = "multipart/form-data";
+                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
                         SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
                     }
 

@@ -54,6 +54,56 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public decimal _attachmentSize = 0;
+
+        public decimal AttachmentSize
+        {
+            get
+            {
+                return _attachmentSize;
+            }
+            set
+            {
+                _attachmentSize = value;
+
+                RaisePropertyChanged("AttachmentName");
+
+            }
+        }
+
+        public decimal _totalAttachmentSize = 0;
+
+        public decimal TotalAttachmentSize
+        {
+            get
+            {
+                return _totalAttachmentSize;
+            }
+            set
+            {
+                _totalAttachmentSize = value;
+
+                RaisePropertyChanged("TotalAttachmentSize");
+
+            }
+        }
+
+        public int _attachmentCount = 0;
+
+        public int AttachmentCount
+        {
+            get
+            {
+                return _attachmentCount;
+            }
+            set
+            {
+                _attachmentCount = value;
+
+                RaisePropertyChanged("AttachmentCount");
+
+            }
+        }
         private ObservableCollection<Attachment> _vatAttachmentsList;
         public ObservableCollection<Attachment> VatAttachmentsList
         {
@@ -87,34 +137,63 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
 
-            
+
 
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 try
                 {
-                    var fileData = await CrossFilePicker.Current.PickFile();
-                    attachment = fileData.DataArray;
-                    AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
-                    if (_attachment != null && _attachment.d != null)
+                    if (AttachmentCount <= 40)
                     {
-                        VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            VatAttachmentsList = myCollection;
-                        });
-                        VatAttachmentsList = myCollection;
-                    }
+                        var fileData = await CrossFilePicker.Current.PickFile();
+                        attachment = fileData.DataArray;
+                        AttachmentName = fileData.FileName;
 
+                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                        if (_attachment != null && _attachment.d != null)
+                        {
+                            if (TotalAttachmentSize <= 300)
+                            {
+                                AttachmentSize = Math.Round((Convert.ToDecimal(attachment.Length) / 1024), 2);
+
+
+                                if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                {
+                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        VatAttachmentsList = myCollection;
+                                    });
+                                    VatAttachmentsList = myCollection;
+                                    AttachmentCount++;
+                                    TotalAttachmentSize = +AttachmentSize;
+                                }
+                                else
+                                {
+                                    _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+
+                                }
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+
+                            }
+                        }
+                       
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                    }
                 }
                 catch (Exception ex)
                 {
 
 
                 }
+            
 
             });
 

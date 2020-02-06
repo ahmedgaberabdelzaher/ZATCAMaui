@@ -1463,4 +1463,13 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZVatSuccessfulVoid" xml:space="preserve">
     <value>VAT Return Form is cancelled. Please initiate the process again to file VAT Return</value>
   </data>
+  <data name="ZFilesizeshouldnotbemorethan20MB" xml:space="preserve">
+    <value>File size should not be more than 20 MB.</value>
+  </data>
+  <data name="ZMaximumnoofallowedattachmentsare40" xml:space="preserve">
+    <value>Maximum no. of allowed attachments are 40.</value>
+  </data>
+  <data name="ZTotalFilesizeshouldnotbemorethan300MB" xml:space="preserve">
+    <value>Total file sizes should not be more than 300 MB.</value>
+  </data>
 </root>

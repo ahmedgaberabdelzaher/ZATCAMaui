@@ -1971,8 +1971,9 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<AttachmentRootOject> GAZTDeleteVATDeclarationAttachment(string fileName, string RetGuid)//, string returnedFguid
+        public static string GAZTDeleteVATDeclarationAttachment(string fileName, string RetGuid)//, string returnedFguid
         {
+            string DeleteToken = string.Empty;
             try
             {
                 AttachmentRootOject _attachment = new AttachmentRootOject();
@@ -1997,11 +1998,21 @@ namespace GAZT.Manager
                 HttpResponseMessage res = client.DeleteAsync(url).Result;
                 var responsestr = res.Content.ReadAsStringAsync().Result;
                 _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-                return _attachment;
+
+                if (res != null)
+                {
+                    HttpHeaders headers = res.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("delete", out values))
+                    {
+                        DeleteToken = values.First();
+                    }
+                }
+                    return DeleteToken;
             }
             catch (Exception ex)
             {
-                return null;
+                return DeleteToken;
             }
         }
 

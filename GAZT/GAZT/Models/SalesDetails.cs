@@ -18,6 +18,8 @@ namespace GAZT.Models
         public string SelectedEditFieldId { get; set; }
         public bool  ComingFromAmendEditMode { get; set; } = false;
         public string OldValue { get; set; }
+        public bool IsAttachmentRequired { get; set; } = false;
+        public bool IsReasonRequird{ get; set; } = false;
         public bool IsOldValueChanged { get; set; } = false;
         public EstimateZakatAttachment estimateZakatAttachment { get; set; }
 
