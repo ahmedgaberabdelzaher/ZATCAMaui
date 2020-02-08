@@ -2851,5 +2851,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVoid", resourceCulture);
             }
         }
+        
+        public static string MyCertificates {
+            get {
+                return ResourceManager.GetString("MyCertificates", resourceCulture);
+            }
+        }
+        
+        public static string Nocertificateavailable {
+            get {
+                return ResourceManager.GetString("Nocertificateavailable", resourceCulture);
+            }
+        }
     }
 }
