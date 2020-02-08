@@ -804,7 +804,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (SalesDetailsList[i].IsOldValueChanged )
                 {
-                    if (200 < Convert.ToInt32(SalesDetailsDataList[i].InformationFromPartieToCompare) && (!SalesDetailsList[i].IsReasonRequird || !SalesDetailsList[i].IsOldValueChanged))//Convert.ToInt32(SalesDetailsList[i].InformationFromPartie)
+                    if (200 < Convert.ToInt32(SalesDetailsDataList[i].InformationFromPartieToCompare) && (!SalesDetailsList[i].IsReasonRequird || !SalesDetailsList[i].IsAttachmentRequired))//Convert.ToInt32(SalesDetailsList[i].InformationFromPartie)
                     {
                         SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
                         SalesDetailsList[i].IsAttachmentRequired = true;
