@@ -94,7 +94,7 @@ namespace GAZT.ViewModel.NewViewModel
                     SelectedSalesDetails.ChangeReason = ChangeReason;
                     if (SelectedSalesDetails.IsReasonRequird)
                     {
-                        SelectedSalesDetails.IsAttachmentRequired = false;
+                        SelectedSalesDetails.IsReasonRequird = false;
                     }                   
                 }
                 RaisePropertyChanged("ChangeReason");
@@ -204,13 +204,42 @@ namespace GAZT.ViewModel.NewViewModel
                    // PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
+
+
+                       
+        
+        
+         
+          
+        
                         EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
                         _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                        //Metadata3 _metadata = new Metadata3();
+                        //_metadata.id = "";
+                        //_metadata.uri = "";
+                        //_metadata.type = "";
+                        //_estimateZakatAttachment.__metadata = _metadata;
+                  
+                        _estimateZakatAttachment.Seqno ="";
+                        _estimateZakatAttachment.SchGuid = "";
+                        _estimateZakatAttachment.AttBy = "";
+                        _estimateZakatAttachment.FileExtn = "";
+                        _estimateZakatAttachment.ByPusr = "";
+                        _estimateZakatAttachment.OutletRef = "";
+
+
+                        
                         _estimateZakatAttachment.Filename = _attachment.d.Filename;
                         _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
                         _estimateZakatAttachment.Dotyp = "FZ01";
-                        _estimateZakatAttachment.Mimetype = "multipart/form-data";
+                        _estimateZakatAttachment.Mimetype = "";
                         _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                        _estimateZakatAttachment.DataVersion = "";
+                        DateTime currentDate = DateTime.Now;
+                        //long elapsedTicks = currentDate.Ticks;
+                        //TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+                        _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";
+
                         SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
                     }
 

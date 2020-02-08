@@ -298,6 +298,15 @@
     <BundleResource Include="Resources\ic_unsubmitted.png" />
     <BundleResource Include="Resources\ic_unsubmitted%402x.png" />
     <BundleResource Include="Resources\ic_unsubmitted%403x.png" />
+    <BundleResource Include="Resources\ic_edit_gray.png" />
+    <BundleResource Include="Resources\ic_edit_gray%402x.png" />
+    <BundleResource Include="Resources\ic_edit_gray%403x.png" />
+    <BundleResource Include="Resources\sadad_logo_ar.png" />
+    <BundleResource Include="Resources\sadad_logo_ar%402x.png" />
+    <BundleResource Include="Resources\sadad_logo_ar%403x.png" />
+    <BundleResource Include="Resources\ic_Edit_red.png" />
+    <BundleResource Include="Resources\ic_Edit_red%402x.png" />
+    <BundleResource Include="Resources\ic_Edit_red%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />

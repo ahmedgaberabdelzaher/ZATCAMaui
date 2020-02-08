@@ -95,6 +95,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private String _stepNumberz;
+        public String StepNumberz
+        {
+            get
+            {
+                return _stepNumberz;
+            }
+            set
+            {
+                _stepNumberz = value;
+                RaisePropertyChanged("StepNumberz");
+            }
+        }
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -383,6 +397,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsMainButtonEnabled");
             }
         }
+
+
+        private bool _isFirstTimeGet = false;
+        public bool IsFirstTimeGet
+        {
+            get
+            {
+                return _isFirstTimeGet;
+            }
+            set
+            {
+                _isFirstTimeGet = value;
+                RaisePropertyChanged("IsFirstTimeGet");
+            }
+        }
+
 
         private bool _isTaxPayerControlEnabled = false;
         public bool IsTaxPayerControlEnabled
@@ -1198,6 +1228,13 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         SubmitClicked();
                     }
+                    else if(ButtonName == AppResources.ZVatDownloadForm)
+                    {
+                        String Url = string.Empty;
+                       // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                         Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                        ShowPdf(Url);
+                    }
                     else if (ButtonName == AppResources.ZNote)
                     {
                         SetNoteData();
@@ -1376,21 +1413,23 @@ namespace GAZT.ViewModel.NewViewModel
 
                 string operation = "05";// Passed 05 to save the data as a draft
                 VATDeclarationData.d.Operationz = operation;
-                StepNumber = "01";
+                StepNumber = "00";
+                StepNumberz = "1";
                 if (IsDeclarationCheckedForInstruction == true)
                 {
-                    StepNumber = "02";
+                    StepNumberz = "2";
                 }
                 if (IsCheckedTaxPayerDetailsInfo == true)
                 {
-                    StepNumber = "03";
+                    StepNumberz = "3";
                 }
                 if (IsDeclarationCheckedForSummary == true)
                 {
-                    StepNumber = "04";
+                    StepNumberz = "4";
                 }
 
                 VATDeclarationData.d.StepNumber = StepNumber;
+                VATDeclarationData.d.StepNumberz = StepNumberz;
                 VATDeclarationData.d.UserTypz = "TP";
 
                 await SaveReturnAndGetReturnAndSetButtons();
@@ -1410,19 +1449,41 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             IsVisibleInstrunction = true;
             IsMainButtonEnabled = false;
-            if (App.ICRStatus == "E0045")
-            {
-                IsDeclarationCheckedForInstruction = true;
-            }
             ButtonName = AppResources.ZVatStepTwo;
-
+            if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            {
+                    //If Required
+            }
+            else
+            {
+                if (App.ICRStatus == "E0045")
+                {
+                    IsDeclarationCheckedForInstruction = true;
+                }
+            }
         }
         public void TaxpayerDetailsClicked()
         {
             ClearPage();
             IsVisibleTaxPayerDetails = true;
-            IsMainButtonEnabled = false;
             ButtonName = AppResources.ZVatStepThree;
+            if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            {
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                }
+            }
+            else
+            {
+              
+                IsCheckedTaxPayerDetailsInfo = false;
+                IsMainButtonEnabled = false;
+            }
         }
         public void VATReturnFormClicked()
         {
@@ -1434,8 +1495,27 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleSummary = true;
-            IsMainButtonEnabled = false;
-            ButtonName = AppResources.Submit;
+            if(App.ICRStatus=="E0045")
+            {
+                IsMainButtonEnabled = true;
+                ButtonName = AppResources.ZVatDownloadForm;
+                IsDeclarationCheckedForSummary = true;
+            }
+            else
+            {
+                IsMainButtonEnabled = false;
+                ButtonName = AppResources.Submit;
+                IsDeclarationCheckedForSummary = false;
+            }
+          
+            //if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            //{
+            //    IsDeclarationCheckedForSummary = true;
+            //}
+            //else
+            //{
+            //    IsDeclarationCheckedForSummary = false;
+            //}
         }
         public void CreditCarriedClicked()
         {
@@ -1455,6 +1535,24 @@ namespace GAZT.ViewModel.NewViewModel
                     await _navigation.PopToRootAsync();
                 });
             }
+        }
+        public bool IsTabbedValid(string value)
+        {
+            bool bvalue = false;
+            if(VATDeclarationData.d.StepNumber==value || value=="0"+VATDeclarationData.d.StepNumber)
+            {
+                bvalue = true;
+            }
+            return bvalue;
+        }
+        public bool IsCheckedDraftMode()
+        {
+            bool value=false;
+            if(App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            {
+                value= true;
+            }
+            return value;
         }
         public async Task SubmitClicked()
         {
@@ -1517,6 +1615,42 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    IsLoading = false;
             //});
+        }
+
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
         }
         public void VATReturnAddNote()
         {
@@ -2043,51 +2177,51 @@ namespace GAZT.ViewModel.NewViewModel
             return vATDeclarationD;
         }
 
-        public void SetPageForDraft()
-        {
-            if (!string.IsNullOrEmpty(VATDeclarationData.d.StepNumber))
-            {
-                if (VATDeclarationData.d.StepNumber == "00")
-                {
-                    ClearPage();
-                    IsDeclarationCheckedForInstruction = false;
-                    IsVisibleInstrunction = true;
-                    PageSelectedItem = VatTabbledPageList[0];
-                }
-                if (VATDeclarationData.d.StepNumber == "01")
-                {
-                    ClearPage();
-                    IsDeclarationCheckedForInstruction = false;
-                    IsVisibleInstrunction = true;
-                    PageSelectedItem = VatTabbledPageList[0];
-                }
-                else if (VATDeclarationData.d.StepNumber == "02")
-                {
-                    ClearPage();
-                    IsDeclarationCheckedForInstruction = true;
-                    IsVisibleTaxPayerDetails = true;
-                    PageSelectedItem = VatTabbledPageList[1];
-                }
-                else if (VATDeclarationData.d.StepNumber == "03")
-                {
-                    ClearPage();
-                    IsDeclarationCheckedForInstruction = true;
-                    IsCheckedTaxPayerDetailsInfo = true;
-                    IsVisibleVatReturnForm = true;
-                    PageSelectedItem = VatTabbledPageList[2];
-                }
-                else if (VATDeclarationData.d.StepNumber == "04")
-                {
-                    ClearPage();
-                    IsDeclarationCheckedForInstruction = true;
-                    IsCheckedTaxPayerDetailsInfo = true;
-                    IsDeclarationCheckedForSummary = false;
-                    IsVisibleVatReturnForm = true;
-                    PageSelectedItem = VatTabbledPageList[3];
-                }
+        //public void SetPageForDraft()
+        //{
+        //    if (!string.IsNullOrEmpty(VATDeclarationData.d.StepNumber))
+        //    {
+        //        if (VATDeclarationData.d.StepNumber == "00")
+        //        {
+        //            ClearPage();
+        //            IsDeclarationCheckedForInstruction = false;
+        //            IsVisibleInstrunction = true;
+        //            PageSelectedItem = VatTabbledPageList[0];
+        //        }
+        //        if (VATDeclarationData.d.StepNumber == "01")
+        //        {
+        //            ClearPage();
+        //            IsDeclarationCheckedForInstruction = false;
+        //            IsVisibleInstrunction = true;
+        //            PageSelectedItem = VatTabbledPageList[0];
+        //        }
+        //        else if (VATDeclarationData.d.StepNumber == "02")
+        //        {
+        //            ClearPage();
+        //            IsDeclarationCheckedForInstruction = true;
+        //            IsVisibleTaxPayerDetails = true;
+        //            PageSelectedItem = VatTabbledPageList[1];
+        //        }
+        //        else if (VATDeclarationData.d.StepNumber == "03")
+        //        {
+        //            ClearPage();
+        //            IsDeclarationCheckedForInstruction = true;
+        //            IsCheckedTaxPayerDetailsInfo = true;
+        //            IsVisibleVatReturnForm = true;
+        //            PageSelectedItem = VatTabbledPageList[2];
+        //        }
+        //        else if (VATDeclarationData.d.StepNumber == "04")
+        //        {
+        //            ClearPage();
+        //            IsDeclarationCheckedForInstruction = true;
+        //            IsCheckedTaxPayerDetailsInfo = true;
+        //            IsDeclarationCheckedForSummary = false;
+        //            IsVisibleVatReturnForm = true;
+        //            PageSelectedItem = VatTabbledPageList[3];
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         public void SetData()
         {
@@ -2106,6 +2240,30 @@ namespace GAZT.ViewModel.NewViewModel
             CreditVat = ResponseVATDeclarationD.CreditVat;
             NetdueVat = ResponseVATDeclarationD.NetdueVat;
 
+        }
+
+        public void NavigationSetupForDraft()
+        {
+            if(VATDeclarationData.d.StepNumber=="01"|| VATDeclarationData.d.StepNumber == "1")
+            {
+                //InstrunctionClicked();
+                PageSelectedItem = VatTabbledPageList[0];
+            }
+            else if(VATDeclarationData.d.StepNumber == "02" || VATDeclarationData.d.StepNumber == "2")
+            {
+               // TaxpayerDetailsClicked();
+                PageSelectedItem = VatTabbledPageList[1];
+            }
+            else if(VATDeclarationData.d.StepNumber == "03" || VATDeclarationData.d.StepNumber == "3")
+            {
+                //VATReturnFormClicked();
+                PageSelectedItem = VatTabbledPageList[2];
+            }
+            else if(VATDeclarationData.d.StepNumber == "04" || VATDeclarationData.d.StepNumber == "4")
+            {
+                //SummaryClicked();
+                PageSelectedItem = VatTabbledPageList[3];
+            }
         }
 
         private void SetNoteData()

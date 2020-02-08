@@ -2635,5 +2635,221 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatSuccessfulVoid", resourceCulture);
             }
         }
+        
+        public static string ZFilesizeshouldnotbemorethan20MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan20MB", resourceCulture);
+            }
+        }
+        
+        public static string ZMaximumnoofallowedattachmentsare40 {
+            get {
+                return ResourceManager.GetString("ZMaximumnoofallowedattachmentsare40", resourceCulture);
+            }
+        }
+        
+        public static string ZTotalFilesizeshouldnotbemorethan300MB {
+            get {
+                return ResourceManager.GetString("ZTotalFilesizeshouldnotbemorethan300MB", resourceCulture);
+            }
+        }
+        
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
+        
+        public static string ZZAmend {
+            get {
+                return ResourceManager.GetString("ZZAmend", resourceCulture);
+            }
+        }
+        
+        public static string ZZAttachment {
+            get {
+                return ResourceManager.GetString("ZZAttachment", resourceCulture);
+            }
+        }
+        
+        public static string ZZBack {
+            get {
+                return ResourceManager.GetString("ZZBack", resourceCulture);
+            }
+        }
+        
+        public static string ZZClearAndClosed {
+            get {
+                return ResourceManager.GetString("ZZClearAndClosed", resourceCulture);
+            }
+        }
+        
+        public static string ZZClose {
+            get {
+                return ResourceManager.GetString("ZZClose", resourceCulture);
+            }
+        }
+        
+        public static string ZZCreateNotes {
+            get {
+                return ResourceManager.GetString("ZZCreateNotes", resourceCulture);
+            }
+        }
+        
+        public static string ZZDisplayNotes {
+            get {
+                return ResourceManager.GetString("ZZDisplayNotes", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ClickHereForDetails {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ClickHereForDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_FileWithTheSameNameAlreadyExists {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_FileWithTheSameNameAlreadyExists", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_GetAcknowledgement {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_GetAcknowledgement", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_PleaseCorrectHighlightedFields {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_PleaseCorrectHighlightedFields", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ReturnUnderReviewWithGAZT {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ReturnUnderReviewWithGAZT", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ValueExceededPermittableRange {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ValueExceededPermittableRange", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_VATReturnFormCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormCancelled", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_VATReturnFormSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSavedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturn_ExceedingPermissibleAmendmentPeriod {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZZNext {
+            get {
+                return ResourceManager.GetString("ZZNext", resourceCulture);
+            }
+        }
+        
+        public static string ZZRefresh {
+            get {
+                return ResourceManager.GetString("ZZRefresh", resourceCulture);
+            }
+        }
+        
+        public static string ZZReset {
+            get {
+                return ResourceManager.GetString("ZZReset", resourceCulture);
+            }
+        }
+        
+        public static string ZZSavAndClose {
+            get {
+                return ResourceManager.GetString("ZZSavAndClose", resourceCulture);
+            }
+        }
+        
+        public static string ZZSaveAsDraft {
+            get {
+                return ResourceManager.GetString("ZZSaveAsDraft", resourceCulture);
+            }
+        }
+        
+        public static string ZZSubmit {
+            get {
+                return ResourceManager.GetString("ZZSubmit", resourceCulture);
+            }
+        }
+        
+        public static string ZZValidate {
+            get {
+                return ResourceManager.GetString("ZZValidate", resourceCulture);
+            }
+        }
+        
+        public static string ZZVoid {
+            get {
+                return ResourceManager.GetString("ZZVoid", resourceCulture);
+            }
+        }
     }
 }

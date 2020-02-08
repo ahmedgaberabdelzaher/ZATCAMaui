@@ -46,11 +46,13 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.AAcknowledgement;
             this.BindingContext = viewModel;
             SetLTR();
+            
             if (_vATDeclarationInfo.d != null)
             {
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
-          
+            viewModel.IsFirstTimeGet = true;
+            setAllCheckbox(false);
             Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
             {
                 // don't do anything if we just de-selected the row.
@@ -68,7 +70,12 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+        public void setAllCheckbox(bool bValue)
+        {
+            viewModel.IsDeclarationCheckedForInstruction = bValue;
+            viewModel.IsDeclarationCheckedForSummary = bValue;
+            viewModel.IsCheckedTaxPayerDetailsInfo = bValue;
+        }
         private void SetLTR()
         {
 
@@ -86,21 +93,34 @@ namespace GAZT.Views.NewViews
             });
             await Task.Run(async() =>
             {
-               
+
                 
                 await viewModel.pageLoad();
                 if (App.ICRStatus == "E0045")
                 {
                     viewModel.ManageEnabledProperty(false);
+                    viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                    viewModel.IsMainButtonEnabled = true;
                 }
                 else
                 {
                     viewModel.ManageEnabledProperty(true);
+                    if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                    {
+                        viewModel.NavigationSetupForDraft();
+                    }
+                   
                 }
+
+
+
                 viewModel.ListOfActionButtonsApplicable = new List<string>();
                 await viewModel.SetButtons(viewModel.VATDeclarationData);
-              
-                onPageLoadCalculation();
+                if (App.CheckTINStatusPageView != "0045")
+                {
+                    onPageLoadCalculation();
+                }
+                
             });
             await Task.Run(() =>
             {
@@ -279,32 +299,52 @@ namespace GAZT.Views.NewViews
             {
                 if (current.pageName == "Instrunction")
                 {
+
                     viewModel.InstrunctionClicked();
                    
-                    viewModel.IsMainButtonEnabled = false;
-                   // BtnNextStep.IsEnabled = false;
-
-                    if (App.ICRStatus == "E0045")
+                    if(viewModel.IsDeclarationCheckedForInstruction)
                     {
-                        viewModel.IsDeclarationCheckedForInstruction = true;
-                        viewModel.IsDeclarationCheckedForSummary = true;
-                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                        chkDeclaration.IsChecked = true;
+                        viewModel.IsMainButtonEnabled = true;
                     }
                     else
                     {
-                        viewModel.IsDeclarationCheckedForInstruction = false;
-                        chkDeclaration.IsChecked = false;
+                        viewModel.IsMainButtonEnabled = false;
                     }
+                   // BtnNextStep.IsEnabled = false;
+
+                    //if (App.ICRStatus == "E0045")
+                    //{
+                    //    viewModel.IsDeclarationCheckedForInstruction = true;
+                    //    viewModel.IsDeclarationCheckedForSummary = true;
+                    //    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                    //    chkDeclaration.IsChecked = true;
+                    //}
+                    //else
+                    //{
+                    //    viewModel.IsDeclarationCheckedForInstruction = false;
+                    //    chkDeclaration.IsChecked = false;
+                    //}
                     setColor(previous, current);
+                    viewModel.IsFirstTimeGet = false;
                 }
                 else if (current.pageName == "TaxPayer Details")
                 {
-                    if (viewModel.IsDeclarationCheckedForInstruction == true )
+                    bool value = viewModel.IsCheckedDraftMode();
+                    bool Tvalue = viewModel.IsTabbedValid("02");
+                    if (value && Tvalue)
                     {
-                        viewModel.TaxpayerDetailsClicked();
-                      
-                        setColor(previous, current);
+                        if (viewModel.IsFirstTimeGet)
+                        {
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                        }
+                    }
+                    if (viewModel.IsDeclarationCheckedForInstruction == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                    {
+                        if (viewModel.IsDeclarationCheckedForInstruction == true)
+                        {
+                            viewModel.TaxpayerDetailsClicked();
+                            setColor(previous, current);
+                        }
                     }
                     else
                     {
@@ -313,18 +353,30 @@ namespace GAZT.Views.NewViews
                        // BtnNextStep.IsEnabled = false;
                        //  chkClearification.IsChecked = false;
                     }
-                    //else
-                    //{
-                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    //}
+                    viewModel.IsFirstTimeGet = false;
                 }
                 else if (current.pageName == "VAT Return Form")
                 {
-                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                    
+                    bool value = viewModel.IsCheckedDraftMode();
+                    bool Tvalue = viewModel.IsTabbedValid("03");
+                    if (value && Tvalue)
                     {
-                        viewModel.VATReturnFormClicked();
-                        setColor(previous, current);
+                        if (viewModel.IsFirstTimeGet)
+                        {
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                        }
                     }
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true ||(App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                    {
+                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                        {
+                            viewModel.VATReturnFormClicked();
+                            setColor(previous, current);
+                        }
+                    }
+                    viewModel.IsFirstTimeGet = false;
                     //else
                     //{
                     //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
@@ -352,24 +404,32 @@ namespace GAZT.Views.NewViews
                         CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
                     }
 
-                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true ||(App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
                     {
-                        viewModel.SummaryClicked();
-                        setColor(previous, current);
+                        bool value = viewModel.IsCheckedDraftMode();
+                        bool Tvalue = viewModel.IsTabbedValid("04");
+                        if (value && Tvalue)
+                        {
+                            if (viewModel.IsFirstTimeGet)
+                            {
+                                viewModel.IsDeclarationCheckedForInstruction = true;
+                                viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                            }
+                        }
+                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                        {
+                            viewModel.SummaryClicked();
+                            setColor(previous, current);
+                        }
                     }
                     else
                     {
-                        //viewModel.IsDeclarationCheckedForInstruction = false;
                         viewModel.IsMainButtonEnabled = false;
-                      //  BtnNextStep.IsEnabled = false;
                        
                         viewModel.IsMainButtonEnabled = false;
                         chkDeclarationForSummary.IsChecked = false;
                     }
-                    //else
-                    //{
-                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    //}
+                    viewModel.IsFirstTimeGet = false;
                 }
 
             }

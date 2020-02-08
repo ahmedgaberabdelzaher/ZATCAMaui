@@ -21,7 +21,9 @@ namespace GAZT.Models
         public bool IsAttachmentRequired { get; set; } = false;
         public bool IsReasonRequird{ get; set; } = false;
         public bool IsOldValueChanged { get; set; } = false;
-        public EstimateZakatAttachment estimateZakatAttachment { get; set; }
+        public EstimateZakatAttachment estimateZakatAttachment = new EstimateZakatAttachment();
+       // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
+        
 
     }
 
