@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -21,6 +22,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnZakatReturnDataUpdateClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnDeleteAttachmentClickedTapped { get; set; }
+
+        
         public RootObject rootObject { get; set; }
         
         byte[] attachment;
@@ -28,8 +32,8 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
-        private List<SalesDetailsAttachments> _zakatReturnAttachmentsList;
-        public List<SalesDetailsAttachments> ZakatReturnAttachmentsList
+        private ObservableCollection<EstimateZakatAttachment> _zakatReturnAttachmentsList;
+        public ObservableCollection<EstimateZakatAttachment> ZakatReturnAttachmentsList
         {
             get
             {
@@ -39,6 +43,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _zakatReturnAttachmentsList = value;
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
+            }
+        }
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -94,7 +112,7 @@ namespace GAZT.ViewModel.NewViewModel
                     SelectedSalesDetails.ChangeReason = ChangeReason;
                     if (SelectedSalesDetails.IsReasonRequird)
                     {
-                        SelectedSalesDetails.IsAttachmentRequired = false;
+                        SelectedSalesDetails.IsReasonRequird = false;
                     }                   
                 }
                 RaisePropertyChanged("ChangeReason");
@@ -192,6 +210,19 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
 
+            OnDeleteAttachmentClickedTapped = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    DeleteSelectedAttachment();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            });
+            
+
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 try
@@ -199,20 +230,44 @@ namespace GAZT.ViewModel.NewViewModel
                     var fileData = await CrossFilePicker.Current.PickFile();
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
-                   // PopToRootPage();
-                    if (_attachment != null && _attachment.d != null)
+                    await Task.Run(() =>
                     {
-                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                        _estimateZakatAttachment.Dotyp = "FZ01";
-                        _estimateZakatAttachment.Mimetype = "multipart/form-data";
-                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                        SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
-                    }
+                        IsLoading = true;
+                    });
+                    await Task.Run(async() =>
+                    {
+
+                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                        // PopToRootPage();
+                        if (_attachment != null && _attachment.d != null)
+                        {
+                            EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                            _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                            _estimateZakatAttachment.Seqno = "";
+                            _estimateZakatAttachment.SchGuid = "";
+                            _estimateZakatAttachment.AttBy = "";
+                            _estimateZakatAttachment.FileExtn = "";
+                            _estimateZakatAttachment.ByPusr = "";
+                            _estimateZakatAttachment.OutletRef = "";
+                            _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                            _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                            _estimateZakatAttachment.Dotyp = "FZ01";
+                            _estimateZakatAttachment.Mimetype = "";
+                            _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                            _estimateZakatAttachment.DataVersion = "";
+                            DateTime currentDate = DateTime.Now;
+                            _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to 
+
+                            SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+                            // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                        }
+
+                    });
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                   
 
                 }
                 catch (Exception ex)
@@ -233,20 +288,25 @@ namespace GAZT.ViewModel.NewViewModel
             OldValue = SelectedSalesDetails.InformationFromPartie;
             NewValue =SelectedSalesDetails.NewValue;
             ChangeReason = SelectedSalesDetails.ChangeReason;
+            ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
+            // int k = 5;
+            //ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
+            //ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    SalesDetailsAttachments m = new SalesDetailsAttachments();
+            //    m.Id = "0001";
+            //    m.DocumentName = "Test-Document.pdf";
+            //    m.Size = "20.00";
 
-            int k = 5;
-            List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();
-            ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
-            for (k = 0; k < 6; k++)
-            {
-                SalesDetailsAttachments m = new SalesDetailsAttachments();
-                m.Id = "0001";
-                m.DocumentName = "Test-Document.pdf";
-                m.Size = "20.00";
+            //    ZakatAttachment.Add(m);
+            //}
+           // ZakatReturnAttachmentsList = ZakatAttachment;
+        }
 
-                ZakatAttachment.Add(m);
-            }
-            ZakatReturnAttachmentsList = ZakatAttachment;
+        private void DeleteSelectedAttachment()
+        {
+
         }
         #endregion
     }

@@ -226,7 +226,7 @@
     <value>My Bills</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>My Certificates</value>
+    <value>My Certificate</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
     <value>VAT</value>
@@ -605,7 +605,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Total partial paid bills amount</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>No certificate available</value>
+    <value>No data available</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>Enter captcha</value>
@@ -1565,7 +1565,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>VAT Return Form Submitted successfully, Form Bundle number {0}</value>
     <comment>VAT Declaration general message</comment>
   </data>
-  <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
+  <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod" xml:space="preserve">
     <value>You cannot amend this tax return because it exceeds the permissible amendment period</value>
     <comment>VAT Declaration general message</comment>
   </data>
@@ -1624,5 +1624,11 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>Please select the IBAN ID Number linked to the selected IBAN</value>
+  </data>
+  <data name="MyCertificates" xml:space="preserve">
+    <value>My Certificates</value>
+  </data>
+  <data name="Nocertificateavailable" xml:space="preserve">
+    <value>No certificate available</value>
   </data>
 </root>

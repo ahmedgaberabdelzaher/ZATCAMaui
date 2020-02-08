@@ -207,7 +207,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async () =>
             {
-                ZakatReturnDetails _zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
+                ZakatReturnDetails _zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
 
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                 //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();

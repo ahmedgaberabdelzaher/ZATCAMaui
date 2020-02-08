@@ -226,7 +226,7 @@
     <value>فواتيري</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>الشهادات</value>
+    <value>الشهادة</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>أسم المكلف</value>
@@ -460,7 +460,7 @@
     <value>مدفوعة</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مدفوع جزئي</value>
+    <value>مسدد جزئي</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>غير مدفوعة</value>
@@ -583,7 +583,7 @@
     <value>تأخير</value>
   </data>
   <data name="Partial" xml:space="preserve">
-    <value>مسددة جزئيا</value>
+    <value>مدفوع جزئي</value>
   </data>
   <data name="Returns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -610,7 +610,7 @@
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>لا يوجد شهادة</value>
+    <value>لا تتوفر بيانات</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
@@ -1631,5 +1631,11 @@
   </data>
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
+  </data>
+  <data name="MyCertificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="Nocertificateavailable" xml:space="preserve">
+    <value>لا يوجد شهادة</value>
   </data>
 </root>

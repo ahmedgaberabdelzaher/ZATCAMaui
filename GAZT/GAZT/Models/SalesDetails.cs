@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace GAZT.Models
@@ -21,7 +22,10 @@ namespace GAZT.Models
         public bool IsAttachmentRequired { get; set; } = false;
         public bool IsReasonRequird{ get; set; } = false;
         public bool IsOldValueChanged { get; set; } = false;
-        public EstimateZakatAttachment estimateZakatAttachment { get; set; }
+
+        public ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
+       // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
+        
 
     }
 

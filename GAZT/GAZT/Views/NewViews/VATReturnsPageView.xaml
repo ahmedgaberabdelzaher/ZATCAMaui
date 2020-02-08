@@ -963,7 +963,7 @@
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
