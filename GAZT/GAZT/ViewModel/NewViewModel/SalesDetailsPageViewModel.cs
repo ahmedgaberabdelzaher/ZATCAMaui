@@ -31,7 +31,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static string RetGuid;
 
         public ZakatReturnDetails zakatReturnDetailsD { get; set; }
-      public ZakatReturnDetails zakatReturnDetailsDToCompare { get; set; }
+        public ZakatReturnDetails zakatReturnDetailsDToCompare = new ZakatReturnDetails();
 
 
 
@@ -547,31 +547,43 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async () =>
             {
-                ZakatReturnDetails _zakatReturnDetails = WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    if (PostOperation.Equals("05") )
+                    double existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
+                    if(PostOperation.Equals("05"))
                     {
-                        ShowConfirmButton();
-                    }
-                    else
-                    {
-                        //SetChangedValueToUploadAttachment();
-                        //bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
-                        //if (ISAllRequiredDocumentUploadedwithReason)
-                        //{
-                        //    ShowConfirmButton();
-                        //}
+                        if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > 600)//existingZakatBase
+                        {
+                            ShowConfirmButton();
+                        }
+                        else
+                        {
+                            SetChangedValueToUploadAttachment();
+                            bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
+                            if (ISAllRequiredDocumentUploadedwithReason)
+                            {
+                                ShowEditIcon();
+                                ShowConfirmButton();
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessageBox("Please upload the Required Document and Change reason", AppResources.Information);
+                                });
+                            }
 
+                        }
                     }
+                   
                     if (PostOperation.Equals("66"))
                     {
                         await GetSADADNumber();
                         Device.BeginInvokeOnMainThread(async() => {
                             await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
+                            InvoicePopUpVisibility = true;
 
                         });
-                        InvoicePopUpVisibility = true;
 
                     }
 
@@ -790,11 +802,11 @@ namespace GAZT.ViewModel.NewViewModel
             for (int i = 0; i < SalesDetailsList.Count; i++)
             {
 
-                if (SalesDetailsList[i].IsOldValueChanged)
+                if (SalesDetailsList[i].IsOldValueChanged )
                 {
-                    if (Convert.ToInt32(SalesDetailsList[i].InformationFromPartie) <= Convert.ToInt32(SalesDetailsDataList[i].InformationFromPartieToCompare))
+                    if (200 < Convert.ToInt32(SalesDetailsDataList[i].InformationFromPartieToCompare) && (!SalesDetailsList[i].IsReasonRequird || !SalesDetailsList[i].IsOldValueChanged))//Convert.ToInt32(SalesDetailsList[i].InformationFromPartie)
                     {
-                        SalesDetailsList[i].EditImageSource = "ic_certeficate.png";
+                        SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
                         SalesDetailsList[i].IsAttachmentRequired = true;
                         SalesDetailsList[i].IsReasonRequird = true;
                         _salesDetailsList.Add(SalesDetailsList[i]);
@@ -820,10 +832,14 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired)
                 {
-                    if (!(SalesDetailsList[i].ChangeReason != null && SalesDetailsList[i].estimateZakatAttachment != null))
+                    if (!(SalesDetailsList[i].ChangeReason != null && SalesDetailsList[i].estimateZakatAttachment.Doguid != null))
                     {
                         isAllDocumentUploaded = false;
                     }
+                }
+                if(!isAllDocumentUploaded)
+                {
+                    break;
                 }
 
             }

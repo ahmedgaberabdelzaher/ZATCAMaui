@@ -2218,7 +2218,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static ZakatReturnDetails GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD, string  OperationStatus)//, string returnedFguid
+        public static async Task<ZakatReturnDetails>  GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD, string  OperationStatus)//, string returnedFguid
         {
             try
             {

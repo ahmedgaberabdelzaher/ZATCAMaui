@@ -137,8 +137,8 @@
                                         </Label>
                                                 <Image Source="ic_info.png" Grid.Column="2" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="0,10,0,0"></Image>
 
-                                                <Label Text="{Binding InformationFromPartie}" Margin="10,0,10,0"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                        <Label Text="{Binding EstimateSales}" Margin="10,0,10,0"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                <Label Text="{Binding InformationFromPartie}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <Label Text="{Binding EstimateSales}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                 <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="End" Margin="0,0,0,10">
                                                 </Image>
 
@@ -198,11 +198,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
@@ -241,8 +237,8 @@
 
                     <!--<Label Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
 
-                    <Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="7" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding RefreshButtonDisableColor}"  IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
-                    <Button Text="Close" Command="{Binding OnCloseButtonClicked}" Grid.Row="7" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>
+                    <Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
+                    <Button Text="Close" Command="{Binding OnCloseButtonClicked}" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>
 
      </Grid>
                                 </StackLayout>

@@ -60,11 +60,11 @@
 
 
 
-                            <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="4" Text="{Binding NewValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="4" Text="{Binding NewValue}" Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>

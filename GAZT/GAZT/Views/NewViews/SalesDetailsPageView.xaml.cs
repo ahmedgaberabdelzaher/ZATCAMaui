@@ -34,7 +34,7 @@ namespace GAZT.Views.NewViews
             SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
             SetLTR();
             this.BindingContext = viewModel;
-           
+            viewModel.InvoicePopUpVisibility = false;
             viewModel.onPageLoad();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
@@ -64,7 +64,7 @@ namespace GAZT.Views.NewViews
                 if (AmendSalesDetailsPageViewModel.SelectedSalesDetails != null && AmendSalesDetailsPageViewModel.SelectedSalesDetails.ComingFromAmendEditMode)
                 {
                     SetUpdatedDataToObject();
-                    viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
+                 //   viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
                 }
             }
             catch(Exception ex)
@@ -88,8 +88,9 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[0].InformationFromPartieToCompare = viewModel.SalesDetailsList[0].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[0].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[0].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
-                    viewModel.SalesDetailsList[0].IsOldValueChanged = IsOldValueChanged(index); 
-
+                    viewModel.SalesDetailsList[0].IsOldValueChanged = IsOldValueChanged(index);
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("2"))
                 {
@@ -99,7 +100,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[1].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[1].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[1].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("3"))
@@ -110,7 +112,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[2].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[2].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[2].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("4"))
@@ -121,7 +124,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[3].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[3].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[3].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("5"))
                 {
@@ -131,7 +135,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[4].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[4].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[4].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("6"))
@@ -142,7 +147,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[5].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[5].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[5].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("7"))
@@ -153,7 +159,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[6].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[6].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[6].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
@@ -163,7 +170,8 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[7].IsOldValueChanged = IsOldValueChanged(index);
-
+                    //IsChangeReasonEntered(index);
+                    //IsAttachmentAttached(index);
 
                     // Missing need to check and assign the value
                     ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
@@ -195,6 +203,23 @@ namespace GAZT.Views.NewViews
 
         #endregion
 
+        //public void IsChangeReasonEntered(int SalesDetailIndex)
+        //{
+        //    if(AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsReasonRequird)
+        //    {
+        //        viewModel.SalesDetailsList[SalesDetailIndex].IsReasonRequird = false;
+        //            AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsReasonRequird = false;
+        //    }
+        //}
+
+        //public void IsAttachmentAttached(int SalesDetailIndex)
+        //{
+        //    if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsAttachmentRequired)
+        //    {
+        //        viewModel.SalesDetailsList[SalesDetailIndex].IsAttachmentRequired = false;
+        //        AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsAttachmentRequired = false;
+        //    }
+        //}
 
     }
 }

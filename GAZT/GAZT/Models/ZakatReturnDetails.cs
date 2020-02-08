@@ -17,7 +17,7 @@ namespace GAZT.Models
     }
     public class EstimateZakatAttachment
     {
-        public Metadata3 __metadata { get; set; }
+      //  public Metadata3 __metadata { get; set; }
         public string RetGuid { get; set; }// Comp
         public string Seqno { get; set; }
         public string SchGuid { get; set; }
@@ -30,7 +30,7 @@ namespace GAZT.Models
         public string Mimetype { get; set; }
         public string ByPusr { get; set; }
         public string Erfdt { get; set; }//Date
-        public string Erftm { get; set; }
+      //  public string Erftm { get; set; }
         public string DataVersion { get; set; }
         public string DocUrl { get; set; }
         public string OutletRef { get; set; }
