@@ -177,6 +177,17 @@ namespace GAZT.Manager
                     {
                         throw new Exception(Token);
                     }
+                    else if ((0 == String.Compare(ex.Message, "User Deactive")))
+                    {
+                        if (App.IsArabic)
+                        {
+                            throw new Exception("حساب المكلف غير مفعل في الهيئة العامة للزكاة والدخل");
+                        }
+                        else
+                        {
+                            throw new Exception("Taxpayer's account is not active with GAZT.");
+                        }
+                    }
                     else
                     {
                         throw new Exception(AppResources.NetworkConnectivityIssue);

@@ -226,7 +226,7 @@
     <value>My Bills</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>My Certificates</value>
+    <value>My Certificate</value>
   </data>
   <data name="VATCertificates" xml:space="preserve">
     <value>VAT</value>
@@ -605,7 +605,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Total partial paid bills amount</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>No certificate available</value>
+    <value>No data available</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>Enter captcha</value>
@@ -1600,5 +1600,11 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZZVoid" xml:space="preserve">
     <value>Void</value>
     <comment>VAT Declaration button</comment>
+  </data>
+  <data name="MyCertificates" xml:space="preserve">
+    <value>My Certificates</value>
+  </data>
+  <data name="Nocertificateavailable" xml:space="preserve">
+    <value>No certificate available</value>
   </data>
 </root>

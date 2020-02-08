@@ -219,9 +219,7 @@ namespace GAZT.ViewModel.NewViewModel
                         _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
                         _estimateZakatAttachment.DataVersion = "";
                         DateTime currentDate = DateTime.Now;
-                        //long elapsedTicks = currentDate.Ticks;
-                        //TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
-                        _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";
+                        _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to 
 
                         SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
                         ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);

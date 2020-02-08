@@ -908,11 +908,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Certificates.
+        ///   Looks up a localized string similar to My Certificate.
         /// </summary>
         public static string MyCertificate {
             get {
                 return ResourceManager.GetString("MyCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificates.
+        /// </summary>
+        public static string MyCertificates {
+            get {
+                return ResourceManager.GetString("MyCertificates", resourceCulture);
             }
         }
         
@@ -999,6 +1008,15 @@ namespace GAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to No certificate available.
+        /// </summary>
+        public static string Nocertificateavailable {
+            get {
+                return ResourceManager.GetString("Nocertificateavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data available.
         /// </summary>
         public static string Nodataavailable {
             get {

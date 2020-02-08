@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT" Title="{x:Static local:AppResources.MyCertificate}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT" Title="{x:Static local:AppResources.MyCertificates}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>
@@ -98,7 +98,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            <local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
             </local1:CustomLabel>
 
 
