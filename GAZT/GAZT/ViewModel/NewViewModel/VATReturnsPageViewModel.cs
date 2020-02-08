@@ -1169,8 +1169,199 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _iSSwichButtonEnable = false;
+        public bool IsSwichButtonEnable
+        {
+            get
+            {
+                return _iSSwichButtonEnable;
+            }
+            set
+            {
+                _iSSwichButtonEnable = value;
+                if(_iSSwichButtonEnable==true)
+                {
+                    IsVisibleDropdownForRefund = true;
+                    IsDropdownVisibleForIban = true;
+                }
+                else
+                {
+                    IsVisibleDropdownForRefund = false;
+                    IsDropdownVisibleForIban = false;
+                }
+                RaisePropertyChanged("IsSwichButtonEnable");
+            }
+        }
+
+        private bool _selectedIBAN = true;
+        public bool SelectedIBAN
+        {
+            get
+            {
+                return _selectedIBAN;
+            }
+            set
+            {
+                _selectedIBAN = value;
+                if (_selectedIBAN == true)
+                {
+
+                }
+                RaisePropertyChanged("SelectedIBAN");
+            }
+        }
+
+        private List<Result2> _iBANList;
+        public List<Result2> IBANList
+        {
+            get
+            {
+                return _iBANList;
+            }
+            set
+            {
+                _iBANList = value;
+               
+                RaisePropertyChanged("IBANList");
+            }
+        }
+
+        private bool _isVATRefunCheckedVisible;
+        public bool IsVATRefunCheckedVisible
+        {
+            get
+            {
+                return _isVATRefunCheckedVisible;
+            }
+            set
+            {
+                _isVATRefunCheckedVisible = value;
+
+                RaisePropertyChanged("IsVATRefunCheckedVisible");
+            }
+        }
+
+        private bool _isCheckedRefund;
+        public bool IsCheckedRefund
+        {
+            get
+            {
+                return _isCheckedRefund;
+            }
+            set
+            {
+                _isCheckedRefund = value;
+                if(_isCheckedRefund==true)
+                {
+                    IsTextBoxVisibleForIban = true;
+                    IsDropdownVisibleForIban = false;
+                }
+                else
+                {
+                    IsDropdownVisibleForIban = true;
+                    IsTextBoxVisibleForIban = false;
+                }
+                RaisePropertyChanged("IsCheckedRefund");
+            }
+        }
+
+        private bool _isVisibleDropdownForRefund;
+        public bool IsVisibleDropdownForRefund
+        {
+            get
+            {
+                return _isVisibleDropdownForRefund;
+            }
+            set
+            {
+                _isVisibleDropdownForRefund = value;
+
+                RaisePropertyChanged("IsVisibleDropdownForRefund");
+            }
+        }
+
+        private bool _isTextBoxVisibleForIban;
+        public bool IsTextBoxVisibleForIban
+        {
+            get
+            {
+                return _isTextBoxVisibleForIban;
+            }
+            set
+            {
+                _isTextBoxVisibleForIban = value;
+
+                RaisePropertyChanged("IsTextBoxVisibleForIban");
+            }
+        }
+
+        private bool _isDropdownVisibleForIban;
+        public bool IsDropdownVisibleForIban
+        {
+            get
+            {
+                return _isDropdownVisibleForIban;
+            }
+            set
+            {
+                _isDropdownVisibleForIban = value;
+
+                RaisePropertyChanged("IsDropdownVisibleForIban");
+            }
+        }
 
 
+        private List<IBANType> _iBANTypesList;
+        public List<IBANType> IBANTypesList
+        {
+            get
+            {
+                return _iBANTypesList;
+            }
+            set
+            {
+                _iBANTypesList = value;
+
+                RaisePropertyChanged("IBANTypesList");
+            }
+        }
+        private IBANType _selectedIBANType;
+        public IBANType SelectedIBANType
+        {
+            get
+            {
+                return _selectedIBANType;
+            }
+            set
+            {
+                _selectedIBANType = value;
+                if(_selectedIBANType!=null)
+                {
+                    SetIBANIdNumber();
+                }
+                RaisePropertyChanged("SelectedIBANType");
+            }
+        }
+
+        private List<IBANIDNumber> _iBANIDNumberList;
+        public List<IBANIDNumber> IBANIDNumberList
+        {
+            get
+            {
+                return _iBANIDNumberList;
+            }
+            set
+            {
+                _iBANIDNumberList = value;
+
+                RaisePropertyChanged("IBANIDNumberList");
+            }
+        }
+
+
+
+
+      
 
 
 
@@ -1394,7 +1585,24 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+        public async void SetIBANIdNumber()
+        {
+           
+            try
+            {
+                List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
+                PopToRootPage();
+                if(iBANIDNumbersResponse!=null || iBANIDNumbersResponse.Count()!=0)
+                {
+                    IBANIDNumberList = new List<IBANIDNumber>();
+                    IBANIDNumberList = iBANIDNumbersResponse;
+                }
+            }
+            catch(Exception e)
+            {
 
+            }
+      }
         public void ManageEnabledProperty(bool value)
         {
             IsControlEnabled = value;
@@ -1824,6 +2032,17 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
 
+                        if(VATDeclarationData.d.IBANSet.results!=null && VATDeclarationData.d.IBANSet.results.Count()!=0)
+                        {
+                            IBANList = new List<Result2>();
+                            IBANList = VATDeclarationData.d.IBANSet.results;
+                            IsVATRefunCheckedVisible = false;
+                        }
+                        else
+                        {
+                            IsVATRefunCheckedVisible = true;
+                        }
+                        createIBANType();
 
                         //DateTime startDate = new DateTime(2017, 1, 18);
 
@@ -1909,6 +2128,29 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
         }
+
+        public void createIBANType()
+        {
+            IBANTypesList = new List<IBANType>();
+
+            List<IBANType>  IBANTypesDummyList = new List<IBANType>();
+            IBANType iBANType = new IBANType();
+            iBANType.key = "ZS0001";
+            iBANType.Text = "National ID/ Iqama ID";
+            IBANTypesDummyList.Add(iBANType);
+            IBANType iBANType1 = new IBANType();
+            iBANType1.key = "BUP002";
+            iBANType1.Text = "Commercial Registration ID";
+            IBANTypesDummyList.Add(iBANType1);
+            IBANType iBANType2 = new IBANType();
+            iBANType2.key = "ZS0005";
+            iBANType2.Text = "Company ID";
+            IBANTypesDummyList.Add(iBANType2);
+            IBANTypesList = IBANTypesDummyList;
+
+
+        }
+
         public async Task pageLoad()
         {
             IsFirstSubmission = true;

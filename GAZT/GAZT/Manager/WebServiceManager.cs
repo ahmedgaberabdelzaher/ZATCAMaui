@@ -1681,7 +1681,7 @@ namespace GAZT.Manager
                     if (vATDeclaration.d != null)
                     {
                         RequestVATDeclaration = vATDeclaration;
-                       // RequestVATDeclaration.d.SubmitFg = "X";
+                         RequestVATDeclaration.d.SubmitFg = "X";
                     }
 
                     VATDeclaration _vATDeclarationD = new VATDeclaration();
@@ -1816,6 +1816,68 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
+      
+        public static async Task<List<IBANIDNumber>> GAZTGetIBANIdNumber(string IBANType)
+        {
+            List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                
+                string NewToken = string.Empty;
+                try
+                {
+                    
+                    string lang = UtilityManager.GetLanguageParameter();
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'"+ "&saml2=disabled&sap-langauge='"+lang+"'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+
+                        if (!string.IsNullOrEmpty(IBANIdNumber))
+                        {
+                            IBANIdNumber = JObject.Parse(IBANIdNumber)["d"].ToString();
+                            IBANIdNumber = JObject.Parse(IBANIdNumber)["results"].ToString();
+                            iBANIDNumbers = JsonConvert.DeserializeObject<List<IBANIDNumber>>(IBANIdNumber);
+                        }
+                    }
+
+                    return iBANIDNumbers;
+
+                }
+                catch (Exception ex)
+                {
+                    
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                 
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
         public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData(string periodKey, string TxnTp, string status, string FormBundleNumber, string Gpart)
         {
 

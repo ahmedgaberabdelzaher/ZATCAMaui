@@ -3365,6 +3365,78 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refund Information.
+        /// </summary>
+        public static string ZVatRefundInformation {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you wish to request a refund towards a different IBAN, please select the check box &amp; kindly enter above.
+        /// </summary>
+        public static string ZVatRefundInformationCheckBoxInfo {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationCheckBoxInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: In case the ID information of the selected IBAN is missing or not match with the IBAN information, please update your registration information.
+        /// </summary>
+        public static string ZVatRefundInformationIBANIDNote {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationIBANIDNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you wish to request a refund, kindly click here:.
+        /// </summary>
+        public static string ZVatRefundInformationNoteClick {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your return form information indicate that you are in a credit position, your credit amount will be carried forward for next filing..
+        /// </summary>
+        public static string ZVatRefundInformationNoteOne {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the prefered IBAN from the avaiLabel list.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBAN {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the IBAN ID Type linked to the selected IBAN.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBANID {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the IBAN ID Number linked to the selected IBAN.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBANIDNumber {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
         public static string ZVatReturn {

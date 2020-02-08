@@ -1475,6 +1475,11 @@ namespace GAZT.Views.NewViews
             }
 
         }
+
+        private void SwitchToggled(object sender, ToggledEventArgs e)
+        {
+
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
