@@ -21,6 +21,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnChangeEmailClicked { get; set; }
         public ICommand OnChangePasswordClicked { get; set; }
 
+        public ICommand OnHomeClick { get; set; }
+
         public bool IscomingFromOTPViewViaEmail = false;
         #region Property
 
@@ -155,6 +157,10 @@ namespace GAZT.ViewModel.NewViewModel
             OnChangePasswordClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsLogin);
+            });
+            OnHomeClick = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.DashboardPageView);
             });
         }
 
