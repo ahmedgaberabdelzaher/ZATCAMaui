@@ -28,8 +28,8 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
-        private List<SalesDetailsAttachments> _zakatReturnAttachmentsList;
-        public List<SalesDetailsAttachments> ZakatReturnAttachmentsList
+        private ObservableCollection<EstimateZakatAttachment> _zakatReturnAttachmentsList;
+        public ObservableCollection<EstimateZakatAttachment> ZakatReturnAttachmentsList
         {
             get
             {
@@ -204,31 +204,14 @@ namespace GAZT.ViewModel.NewViewModel
                    // PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
-
-
-                       
-        
-        
-         
-          
-        
                         EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
                         _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                        //Metadata3 _metadata = new Metadata3();
-                        //_metadata.id = "";
-                        //_metadata.uri = "";
-                        //_metadata.type = "";
-                        //_estimateZakatAttachment.__metadata = _metadata;
-                  
                         _estimateZakatAttachment.Seqno ="";
                         _estimateZakatAttachment.SchGuid = "";
                         _estimateZakatAttachment.AttBy = "";
                         _estimateZakatAttachment.FileExtn = "";
                         _estimateZakatAttachment.ByPusr = "";
                         _estimateZakatAttachment.OutletRef = "";
-
-
-                        
                         _estimateZakatAttachment.Filename = _attachment.d.Filename;
                         _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
                         _estimateZakatAttachment.Dotyp = "FZ01";
@@ -241,6 +224,7 @@ namespace GAZT.ViewModel.NewViewModel
                         _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";
 
                         SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
+                        ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
                     }
 
                 }
@@ -263,18 +247,18 @@ namespace GAZT.ViewModel.NewViewModel
             NewValue =SelectedSalesDetails.NewValue;
             ChangeReason = SelectedSalesDetails.ChangeReason;
 
-            int k = 5;
-            List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();
-            ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
-            for (k = 0; k < 6; k++)
-            {
-                SalesDetailsAttachments m = new SalesDetailsAttachments();
-                m.Id = "0001";
-                m.DocumentName = "Test-Document.pdf";
-                m.Size = "20.00";
+            // int k = 5;
+            ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
+            //ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    SalesDetailsAttachments m = new SalesDetailsAttachments();
+            //    m.Id = "0001";
+            //    m.DocumentName = "Test-Document.pdf";
+            //    m.Size = "20.00";
 
-                ZakatAttachment.Add(m);
-            }
+            //    ZakatAttachment.Add(m);
+            //}
             ZakatReturnAttachmentsList = ZakatAttachment;
         }
         #endregion
