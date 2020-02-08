@@ -1565,7 +1565,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>VAT Return Form Submitted successfully, Form Bundle number {0}</value>
     <comment>VAT Declaration general message</comment>
   </data>
-  <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
+  <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod" xml:space="preserve">
     <value>You cannot amend this tax return because it exceeds the permissible amendment period</value>
     <comment>VAT Declaration general message</comment>
   </data>

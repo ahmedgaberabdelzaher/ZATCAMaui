@@ -1772,6 +1772,15 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async () =>
             {
+                string periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                TimeSpan TS = DateTime.Now - Convert.ToDateTime(periodto);
+                double Years = TS.TotalDays / 365.25;
+                if (Years >= 5)
+                {
+                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
+                    return;
+                }
 
                 string operation = "45";// Passed 45 to set for Amendment
                 VATDeclarationData.d.Operationz = operation;
@@ -1935,6 +1944,14 @@ namespace GAZT.ViewModel.NewViewModel
             string periodKey = VATDeclarationData.d.Periodkeyz;
             string TxnTp = VATDeclarationData.d.TxnTpz;
             string status = VATDeclarationData.d.Statusz;
+
+            if(status =="E057" || status == "E0057" || status == "E058"|| status == "E0058")
+            {
+                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
+            }
+
+
+
             string FormBundleNumber = VATDeclarationData.d.Fbnum;
             string Gpart = VATDeclarationData.d.Gpart;
             string periodfrom;
@@ -1946,6 +1963,8 @@ namespace GAZT.ViewModel.NewViewModel
                 periodfrom = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                 periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
+
+
                 TaxpayerPeriodFromDate = UtilityManager.ToArabicDate(periodfrom);
                 TaxpayerPeriodToDate = UtilityManager.ToArabicDate(periodto);
             }
@@ -1956,7 +1975,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
-
+          
 
 
             FullAddress = VATDeclarationData.d.ADRSet.results[0].BuildingNo + " " + VATDeclarationData.d.ADRSet.results[0].Street + " " + VATDeclarationData.d.ADRSet.results[0].Quarter + " " + VATDeclarationData.d.ADRSet.results[0].Region + " " + Environment.NewLine + VATDeclarationData.d.ADRSet.results[0].PostalCd;

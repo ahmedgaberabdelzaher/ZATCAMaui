@@ -511,18 +511,18 @@ namespace GAZT.ViewModel.NewViewModel
                 if (ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 {
                     ShowSubmitButton();
-                    ShowEditIcon();
+                   // ShowEditIcon();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
                 {
                     HideAllButton();
-                    HideDisclaimer();
+                 //   HideDisclaimer();
 
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
                 {
                     HideAllButton();
-                    HideDisclaimer();
+                  //  HideDisclaimer();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0008"))
                 {
@@ -533,13 +533,13 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0005"))// In Processing
                 {
                     HideAllButton();
-                    HideDisclaimer();
+                   // HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
                 else
                 {
                     ShowAcceptAndAmendButton();
-                    HideEditIcon();
+                   // HideEditIcon();
                 }
 
             }
@@ -830,7 +830,7 @@ namespace GAZT.ViewModel.NewViewModel
                         bool IsNewValueLessThanExisting = (Convert.ToDouble(SalesDetailsList[i].InformationFromPartie) > Convert.ToDouble(SalesDetailsDataList[i].InformationFromPartieToCompare));
                         if (IsNewValueLessThanExisting)//
                         {
-                            if(!(SalesDetailsList[i].IsReasonRequird && SalesDetailsList[i].IsAttachmentRequired))
+                            if(!(SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired))
                             {
                                 SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
                                 SalesDetailsList[i].IsAttachmentRequired = true;
@@ -865,7 +865,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired)
                 {
-                    if ((string.IsNullOrEmpty(SalesDetailsList[i].ChangeReason) || SalesDetailsList[i].estimateZakatAttachment.Count == 0))
+                    if (string.IsNullOrEmpty(SalesDetailsList[i].ChangeReason))
+                    {
+                        isAllDocumentUploaded = false;
+                    }
+                    if(SalesDetailsList[i].estimateZakatAttachment.Count == 0)
                     {
                         isAllDocumentUploaded = false;
                     }
