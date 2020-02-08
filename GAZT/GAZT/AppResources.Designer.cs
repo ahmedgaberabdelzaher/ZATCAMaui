@@ -3963,9 +3963,9 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
         /// </summary>
-        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturn_ExceedingPermissibleAmendmentPeriod {
+        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod {
             get {
-                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod", resourceCulture);
+                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod", resourceCulture);
             }
         }
         

@@ -1475,6 +1475,27 @@ namespace GAZT.Views.NewViews
             }
 
         }
+
+        private void EntryPreperiodcorr_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text))
+                {
+                    string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
+                    string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                if(Convert.ToDecimal(EntryPreperiodcorr.Text)<=Convert.ToDecimal(MinValue) || Convert.ToDecimal(EntryPreperiodcorr.Text) >= Convert.ToDecimal(MaxValue))
+                    {
+                        viewModel._dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue, MaxValue, MinValue), AppResources.Information);
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{

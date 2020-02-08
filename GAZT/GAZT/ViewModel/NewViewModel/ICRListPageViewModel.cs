@@ -4,6 +4,7 @@ using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -329,7 +330,9 @@ namespace GAZT.ViewModel.NewViewModel
                         vATDeclaration.d.ADRSet = _aDRSet;
                         vATDeclaration.d.ADRSet.results = lst;
                        
-                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                       
+
+                        _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
 
                     //try
                     //{
