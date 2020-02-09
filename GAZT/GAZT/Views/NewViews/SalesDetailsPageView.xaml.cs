@@ -189,6 +189,27 @@ namespace GAZT.Views.NewViews
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
 
+        protected async void OnRefreshButtonClicked(Object sender, EventArgs e)
+        {
+            //  viewModel.CheckBoxStatus = checkBox.IsChecked;
+            await viewModel.GetSADADNumber();
+        }
+
+        protected async void OnCloseButtonClicked(Object sender, EventArgs e)
+        {
+            viewModel.InvoicePopUpVisibility = false;
+            viewModel._navigationService.GoBack();
+        }
+
+        protected async void OnConfirmButtonClicked(Object sender, EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.Alerts, "Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT", "Ok", "Cancel");
+            if (result)
+            {
+                await viewModel.OnConfirmClicked();
+            }
+        }
+
         private bool IsOldValueChanged(int index)
         {
             if(viewModel.SalesDetailsList[index].InformationFromPartie.Equals(viewModel.SalesDetailsDataList[index].InformationFromPartieToCompare))

@@ -210,17 +210,17 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
 
-            OnDeleteAttachmentClickedTapped = new Xamarin.Forms.Command(async () =>
-            {
-                try
-                {
-                    DeleteSelectedAttachment();
-                }
-                catch (Exception ex)
-                {
+            //OnDeleteAttachmentClickedTapped = new Xamarin.Forms.Command(async () =>
+            //{
+            //    try
+            //    {
+            //        DeleteSelectedAttachment();
+            //    }
+            //    catch (Exception ex)
+            //    {
 
-                }
-            });
+            //    }
+            //});
             
 
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
@@ -281,7 +281,14 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-
+        public void ClearData()
+        {
+            //SalesType = string.Empty;
+            //OldValue = string.Empty;
+            //NewValue = string.Empty;
+            //ChangeReason = string.Empty;
+            //ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
+        }
         public void OnLoad()
         {
             SalesType = SelectedSalesDetails.SalesType;
@@ -304,9 +311,19 @@ namespace GAZT.ViewModel.NewViewModel
            // ZakatReturnAttachmentsList = ZakatAttachment;
         }
 
-        private void DeleteSelectedAttachment()
+        public void  DeleteSelectedAttachment(string filename, string dougUD)
         {
-
+          string res =   WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename,dougUD);
+            if(res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+            {
+                for(int i = 0 ; i < ZakatReturnAttachmentsList.Count ; i++)
+                {
+                    if(ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                    {
+                        ZakatReturnAttachmentsList.RemoveAt(i);
+                    }
+                }
+            }
         }
         #endregion
     }

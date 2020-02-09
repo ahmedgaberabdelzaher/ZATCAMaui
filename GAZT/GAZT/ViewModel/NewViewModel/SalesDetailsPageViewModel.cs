@@ -15,7 +15,7 @@ namespace GAZT.ViewModel.NewViewModel
     public class SalesDetailsPageViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand OnAcceptReturnButtonClicked { get; set; }
@@ -381,31 +381,21 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnConfirmButtonClicked = new Command(async () =>
             {
-                if (CheckBoxStatus)
-                {
-                    //SetUpdatedDataToZAKATEstimated();
-                    //AssignAttachmentToPostDataObject();
-                    string PostOperationID = "66";
-                    await SubmitZakatReturn(PostOperationID);
-                }
-                else
-                {
-                    await _dialogService.ShowMessageBox("Please accept the Desclaimer", AppResources.Alerts);
-                }
+               // OnConfirmClicked(); 
             });
 
 
-            OnRefreshButtonClicked = new Command(async () =>
-            {
-                await GetSADADNumber();
-            });
+            //OnRefreshButtonClicked = new Command(async () =>
+            //{
+            //    await GetSADADNumber();
+            //});
 
 
-            OnCloseButtonClicked = new Command(async () =>
-            {
-                InvoicePopUpVisibility = false;
-                _navigationService.GoBack();
-            });
+            //OnCloseButtonClicked = new Command(async () =>
+            //{
+            //    InvoicePopUpVisibility = false;
+            //    _navigationService.GoBack();
+            //});
 
 
 
@@ -414,6 +404,20 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+
+        public async Task OnConfirmClicked()
+        {
+            if (CheckBoxStatus)
+            {
+
+                string PostOperationID = "66";
+                await SubmitZakatReturn(PostOperationID);
+            }
+            else
+            {
+                await _dialogService.ShowMessageBox("Please select the disclaimer checkbox before submit.", AppResources.Alerts);
+            }
+        }
         public void onPageLoad()
         {
             try
@@ -511,12 +515,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if (ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 {
                     ShowSubmitButton();
-                   // ShowEditIcon();
+                   ShowEditIcon();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
                 {
                     HideAllButton();
-                 //   HideDisclaimer();
+                   HideDisclaimer();
 
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
@@ -905,7 +909,7 @@ namespace GAZT.ViewModel.NewViewModel
             
         //}
 
-        private async Task GetSADADNumber()
+        public async Task GetSADADNumber()
         {
             await Task.Run(() =>
             {
