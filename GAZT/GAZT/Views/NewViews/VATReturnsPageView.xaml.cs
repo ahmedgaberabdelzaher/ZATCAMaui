@@ -1058,9 +1058,9 @@ namespace GAZT.Views.NewViews
 
                 string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
+              //  decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
 
-                if ((PercentageValue * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
+                if (((Convert.ToDecimal(Percentage) / 100) * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
                 {
                     PopUp Pop = new PopUp();
                     Pop.IsLinkAvailable = false;
@@ -1107,9 +1107,9 @@ namespace GAZT.Views.NewViews
 
                 string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
+               // decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
 
-                if ((PercentageValue * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
+                if (((Convert.ToDecimal(Percentage) / 100) * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
                 {
                     PopUp Pop = new PopUp();
                     Pop.IsLinkAvailable = false;
@@ -1141,9 +1141,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1175,9 +1175,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
+           // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1209,9 +1209,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1225,9 +1225,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+         //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1280,9 +1280,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1314,9 +1314,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1348,9 +1348,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1382,9 +1382,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+         //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1416,9 +1416,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1432,9 +1432,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
+            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1448,9 +1448,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
+            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
@@ -1464,9 +1464,9 @@ namespace GAZT.Views.NewViews
         {
             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-            decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
+          //  decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
 
-            if ((PercentageValue * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
+            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
