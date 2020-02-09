@@ -2460,7 +2460,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
             VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
             VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
-            VATDeclarationData.d.StdsalesAdj = vATDeclarationD.StdsalesAdj;
+            VATDeclarationData.d.StdsalesVat = vATDeclarationD.StdsalesVat;
             VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
             VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
             VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
@@ -2479,7 +2479,7 @@ namespace GAZT.ViewModel.NewViewModel
             vATDeclarationD.TotalsalesAdj = TotalsalesAdj;
             vATDeclarationD.TotalpurchaseAmt = TotalpurchaseAmt;
             vATDeclarationD.TotalpurchaseAdj = TotalpurchaseAdj;
-            vATDeclarationD.StdsalesAdj = StdsalesVat;
+            vATDeclarationD.StdsalesVat = StdsalesVat;
             vATDeclarationD.TotalsalesAdj = TotalsalesVat;
             vATDeclarationD.StdpurchasesVat = StdpurchasesVat;
             vATDeclarationD.ImportspaidVat = ImportspaidVat;
@@ -2544,7 +2544,7 @@ namespace GAZT.ViewModel.NewViewModel
             TotalsalesAdj = ResponseVATDeclarationD.TotalsalesAdj;
             TotalpurchaseAmt = ResponseVATDeclarationD.TotalpurchaseAmt;
             TotalpurchaseAdj = ResponseVATDeclarationD.TotalpurchaseAdj;
-            StdsalesVat = ResponseVATDeclarationD.StdsalesAdj;
+            StdsalesVat = ResponseVATDeclarationD.StdsalesVat;
             TotalsalesVat = ResponseVATDeclarationD.TotalsalesAdj;
             StdpurchasesVat = ResponseVATDeclarationD.StdpurchasesVat;
             ImportspaidVat = ResponseVATDeclarationD.ImportspaidVat;
