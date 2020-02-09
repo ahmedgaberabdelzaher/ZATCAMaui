@@ -1377,6 +1377,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public VATReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -1641,7 +1642,11 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.UserTypz = "TP";
 
                 await SaveReturnAndGetReturnAndSetButtons();
-                await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () => {
+                    await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+                });
+
+
             });
             await Task.Run(() =>
             {
@@ -1793,7 +1798,10 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.Operationz = operation;
                 IsLoading = false;
                 await SaveReturnAndGetReturnAndSetButtons();
-                _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
+                });
                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
             }
             else
@@ -1816,7 +1824,7 @@ namespace GAZT.ViewModel.NewViewModel
                     await SaveReturnAndGetReturnAndSetButtons();
                 }
 
-                _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+            await    _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
             }
             // });
             //await Task.Run(() =>
@@ -1887,6 +1895,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task VATSetReturnVoidAsync()
         {
+
             var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
             if (answer)
             {
@@ -1922,7 +1931,11 @@ namespace GAZT.ViewModel.NewViewModel
                     PopToRootPage();
                     await SaveReturnAndGetReturnAndSetButtons();
                     ManageEnabledProperty(false);
-                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+
+                    });
                 });
                 await Task.Run(() =>
                 {
@@ -1961,8 +1974,10 @@ namespace GAZT.ViewModel.NewViewModel
                 var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
                 PopToRootPage();
                 await SaveReturnAndGetReturnAndSetButtons();
-
-                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                });
 
             });
             await Task.Run(() =>
@@ -1980,13 +1995,17 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async () =>
             {
+              
                 string periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+              
                 TimeSpan TS = DateTime.Now - Convert.ToDateTime(periodto);
                 double Years = TS.TotalDays / 365.25;
                 if (Years >= 5)
                 {
-                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                       await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
+                    });
                     return;
                 }
 
@@ -2195,7 +2214,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             if(status =="E057" || status == "E0057" || status == "E058"|| status == "E0058")
             {
-                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
+                });
             }
 
 
@@ -2377,8 +2399,9 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
             {
-
-                if (response != null && response.d != null)
+                try
+                {
+                    if (response != null && response.d != null)
                 {
                     VATDeclarationData = response;
                     //VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.ReturnIdz, VATDeclarationData.d.Fbnumz, ICRListPageViewModel.EUser,"");
@@ -2394,6 +2417,17 @@ namespace GAZT.ViewModel.NewViewModel
                 }
 
                 await SetButtons(VATDeclarationData);
+
+
+                  
+
+
+                   
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
         }
 
