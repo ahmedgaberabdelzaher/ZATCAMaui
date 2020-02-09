@@ -487,6 +487,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isAmendClicked = false;
+        public bool IsAmendClicked
+        {
+            get
+            {
+                return _isAmendClicked;
+            }
+            set
+            {
+                _isAmendClicked = value;
+                RaisePropertyChanged("IsAmendClicked");
+            }
+        }
+
 
 
         private string _pageFontSize = "10";
@@ -1708,7 +1722,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleSummary = true;
-            if(App.ICRStatus=="E0045")
+            if(App.ICRStatus=="E0045" && IsAmendClicked==false)
             {
                 IsMainButtonEnabled = true;
                 ButtonName = AppResources.ZVatDownloadForm;
@@ -2012,16 +2026,16 @@ namespace GAZT.ViewModel.NewViewModel
                 string operation = "45";// Passed 45 to set for Amendment
                 VATDeclarationData.d.Operationz = operation;
                 StepNumber = "01";
-
+                ButtonName = AppResources.ZVatStepTwo;
                 if (IsDeclarationCheckedForInstruction == true)
                 {
                     StepNumber = "02";
-                    ButtonName = AppResources.ZStepTwo;
+                    ButtonName = AppResources.ZVatStepThree;
                 }
                 if (IsCheckedTaxPayerDetailsInfo == true)
                 {
                     StepNumber = "03";
-                    ButtonName = AppResources.ZStepThree;
+                    ButtonName = AppResources.ZVatStepFour;
                 }
                 if (IsDeclarationCheckedForSummary == true)
                 {
@@ -2036,7 +2050,7 @@ namespace GAZT.ViewModel.NewViewModel
                 PopToRootPage();
                 await SaveReturnAndGetReturnAndSetButtons();
                 ManageEnabledProperty(true);
-               
+                IsAmendClicked = true;
                 IsMainButtonEnabled = true;
             });
             await Task.Run(() =>
@@ -2197,7 +2211,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             IsFirstSubmission = true;
             IsSadadNumberVisible = false;
-
+            IsAmendClicked = false;
             //await Task.Run(() =>
             //{
             //    IsLoading = true;
