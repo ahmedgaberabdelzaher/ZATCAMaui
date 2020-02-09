@@ -160,22 +160,38 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 if (Convert.ToDecimal(AttachmentSize) <= 20)
                                 {
-
-                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
-                                    if (_attachment != null && _attachment.d != null)
+                                    bool IsAttachmentPresent = false;
+                                    foreach(Attachment ItemA in VATDeclarationData.d.ATTACHSet.results)
                                     {
-
-
-                                        VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        if(AttachmentName == ItemA.Filename)
                                         {
+                                            IsAttachmentPresent = true;
+                                        }
+                                    }
+                                    if (IsAttachmentPresent == false)
+                                    {
+                                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                        if (_attachment != null && _attachment.d != null)
+                                        {
+
+
+                                            VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                VatAttachmentsList = myCollection;
+                                            });
                                             VatAttachmentsList = myCollection;
-                                        });
-                                        VatAttachmentsList = myCollection;
-                                        AttachmentCount++;
-                                        TotalAttachmentSize += AttachmentSize;
+                                            AttachmentCount++;
+                                            TotalAttachmentSize += AttachmentSize;
+                                            AttachmentName = string.Empty;
+                                        }
+                                    }
+                                    else
+                                    {
                                         AttachmentName = string.Empty;
+                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+
                                     }
 
                                 }

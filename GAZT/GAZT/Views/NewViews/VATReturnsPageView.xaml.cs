@@ -947,10 +947,10 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryNetdueVat.Text))
-                {
-                    IsAllEntered = false;
-                }
+                //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+                //{
+                //    IsAllEntered = false;
+                //}
                 if (IsAllEntered == false)
                 {
 
