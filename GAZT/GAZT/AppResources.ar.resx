@@ -1608,6 +1608,30 @@
     <value>إبطال</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="ZVatRefundInformation" xml:space="preserve">
+    <value>معلومات الاسترداد</value>
+  </data>
+  <data name="ZVatRefundInformationCheckBoxInfo" xml:space="preserve">
+    <value>إذا رغبت بتحويل مبلغ الإسترداد على رقم آيبان مختلف، يرجى وضع علامة على خانة الاختيار وإدخاله أعلاه</value>
+  </data>
+  <data name="ZVatRefundInformationIBANIDNote" xml:space="preserve">
+    <value>ملحوظة:في حالة كانت بيانات الهوية المرتبطة بالحساب البنكي (الايبان) المختار غير متوفرة، الرجاء تحديث بيانات التسجيل</value>
+  </data>
+  <data name="ZVatRefundInformationNoteClick" xml:space="preserve">
+    <value>إذا رغبت بطلب إسترداد يرجى النقر هنا :</value>
+  </data>
+  <data name="ZVatRefundInformationNoteOne" xml:space="preserve">
+    <value>تشير معلومات نموذج الإقرار الضريبي الخاص بك إلى أنه يوجد رصيد بحسابك، وسيتم ترحيل الرصيد الخاص بك للفترة الضريبية القادمة</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBAN" xml:space="preserve">
+    <value>اختر رقم الآيبان المفضل من القائمة الموجودة</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANID" xml:space="preserve">
+    <value>الرجاء إختيار نوع الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
+    <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
+  </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>الشهادات</value>
   </data>
