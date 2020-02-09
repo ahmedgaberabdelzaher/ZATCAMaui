@@ -2542,7 +2542,46 @@ namespace GAZT.Manager
                 return null;
             }
         }
+            public static string GAZTDeleteEstimatedZAKATRAttachment(string fileName, string DocumentID)//, string returnedFguid
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    string Dotyp = "VTA0";
+                    string AttBy = "TP";
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url1 = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=disabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(RetGuid='',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + DocumentID + "',AttBy='TP',OutletRef='')/$value?saml2=disbaled";                                                                                                                                                                                                                                                          // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+                    HttpResponseMessage res = client.DeleteAsync(url).Result;
+                    var responsestr = res.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    if (res != null)
+                    {
+                        HttpHeaders headers = res.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return DeleteToken;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
+                }
+            }
+        }
 
     }
 
-}
+

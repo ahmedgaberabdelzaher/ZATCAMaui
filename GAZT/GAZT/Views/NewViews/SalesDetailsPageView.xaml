@@ -198,6 +198,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -235,7 +236,7 @@
 
                     </Label>
 
-                    <!--<Label Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
+                    <!--<Label Text=0"{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
 
                     <Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
                     <Button Text="Close" Command="{Binding OnCloseButtonClicked}" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>

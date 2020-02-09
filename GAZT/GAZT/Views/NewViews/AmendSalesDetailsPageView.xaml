@@ -229,10 +229,12 @@
                                                             </Image>
 
                                                             <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-
+<Image.GestureRecognizers>
+        <TapGestureRecognizer
+                Command="{Binding OnDeleteAttachmentClickedTapped}"
+                NumberOfTapsRequired="2" />
+  </Image.GestureRecognizers>
                                                             </Image>
-
-
                                                         </Grid>
                                                     </StackLayout>
                                                          </StackLayout>
@@ -243,24 +245,16 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
+                        </Grid>
+                    </ScrollView>
+                </Grid>
 
+                <Button Text="{x:Static local:AppResources.Save}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
+            </Grid>
+             <!-- Acticity indicator layout start -->
 
-
-                            <!--</Grid>
-                                </ScrollView>-->
-                            <!--</StackLayout>
-
-
-
-
-
-                        </Grid>-->
-
-
-                            <!--</ScrollView>-->
-                            <!-- Acticity indicator layout start -->
-                            <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -269,16 +263,8 @@
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-            </Grid>-->
-                            <!-- Acticity indicator layout end -->
-                        </Grid>
-                    </ScrollView>
-
-                </Grid>
-
-                <Button Text="{x:Static local:AppResources.Save}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
-
             </Grid>
+                            <!-- Acticity indicator layout end -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
