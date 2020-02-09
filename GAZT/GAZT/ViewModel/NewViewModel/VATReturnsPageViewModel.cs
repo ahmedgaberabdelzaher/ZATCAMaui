@@ -1207,8 +1207,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private bool _selectedIBAN = true;
-        public bool SelectedIBAN
+        private Result2 _selectedIBAN;
+        public Result2 SelectedIBAN
         {
             get
             {
@@ -1217,10 +1217,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBAN = value;
-                if (_selectedIBAN == true)
-                {
-
-                }
+               
                 RaisePropertyChanged("SelectedIBAN");
             }
         }
@@ -1252,6 +1249,21 @@ namespace GAZT.ViewModel.NewViewModel
                 _isVATRefunCheckedVisible = value;
 
                 RaisePropertyChanged("IsVATRefunCheckedVisible");
+            }
+        }
+
+        private string _ibanNumberText;
+        public string IbanNumberText
+        {
+            get
+            {
+                return _ibanNumberText;
+            }
+            set
+            {
+                _ibanNumberText = value;
+
+                RaisePropertyChanged("IbanNumberText");
             }
         }
 
@@ -1373,9 +1385,39 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+        private IBANIDNumber _selectedIBANIDNumber;
+        public IBANIDNumber SelectedIBANIDNumber
+        {
+            get
+            {
+                return _selectedIBANIDNumber;
+            }
+            set
+            {
+                _selectedIBANIDNumber = value;
+
+                RaisePropertyChanged("SelectedIBANIDNumber");
+            }
+        }
+
+        private bool _isRefundVisible=false;
+        public bool IsRefundVisible
+        {
+            get
+            {
+                return _isRefundVisible;
+            }
+            set
+            {
+                _isRefundVisible = value;
+
+                RaisePropertyChanged("IsRefundVisible");
+            }
+        }
 
 
-      
+
+
 
 
 
@@ -1721,6 +1763,18 @@ namespace GAZT.ViewModel.NewViewModel
         public void SummaryClicked()
         {
             ClearPage();
+            if(!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
+            {
+                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
+                {
+                    IsRefundVisible = true;
+                }
+                else
+                {
+                    IsRefundVisible = false;
+                }
+            }
+            
             IsVisibleSummary = true;
             if(App.ICRStatus=="E0045" && IsAmendClicked==false)
             {
@@ -2471,6 +2525,22 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
             VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
 
+            if(IsRefundVisible==true)
+            {
+                VATDeclarationData.d.RefundFg = "1";
+                if (IsCheckedRefund==true)
+                {
+                    VATDeclarationData.d.Iban = IbanNumberText;
+                    VATDeclarationData.d.IbanCb = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.Iban = SelectedIBAN.Iban;
+                    VATDeclarationData.d.IbanCb = "0";
+                }
+                VATDeclarationData.d.IdType = SelectedIBANType.key;
+                VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+            }
         }
 
         public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
@@ -2623,7 +2693,21 @@ namespace GAZT.ViewModel.NewViewModel
         public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
         {
             String TotalAmount = string.Empty;
-            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-"))
+
+            if(String.IsNullOrEmpty(Amount1))
+            {
+                Amount1 = "0.0";
+            }
+            if (String.IsNullOrEmpty(Amount2))
+            {
+                Amount2 = "0.0";
+            }
+            if (String.IsNullOrEmpty(Amount3))
+            {
+                Amount3 = "0.0";
+            }
+
+            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
             {
                 TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3)).ToString();
             }
@@ -2677,7 +2761,7 @@ namespace GAZT.ViewModel.NewViewModel
         public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
             string NetVatDue = string.Empty;
-            if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod) && !CurrentPeriod.Contains("-") && !PreviousPeriod.Contains("-") && !ForwardFromPreviousPeriod.Contains("-"))
+            if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod) )
             {
                 Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
                 Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);

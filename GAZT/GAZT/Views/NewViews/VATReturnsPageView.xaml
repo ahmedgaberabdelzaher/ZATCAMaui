@@ -1008,9 +1008,7 @@
                                 </Frame.Triggers>-->
                             </Frame>
                             <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" IsEnabled="False" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="10" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
-                                <custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom1:DecimalPlacesConverter/>
-                                </custom:GAZTBorderlessEntry.Behaviors>
+                                
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="10"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
@@ -1048,7 +1046,7 @@
                                 <ColumnDefinition Width="15*"/>
                                 <ColumnDefinition Width="90*"/>
                             </Grid.ColumnDefinitions>
-                            <!--<Grid Grid.Row="0" Grid.ColumnSpan="2">
+                            <!--<Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -1077,6 +1075,7 @@
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationNoteOne}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationNoteClick}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                 <Switch Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand"  IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}"/>
+                               
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBAN}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
                                 <Frame Grid.Row="5"  Margin="10,13,10,0" Padding="20" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
@@ -1100,27 +1099,27 @@
                                 </Frame>
                                 <custom:GAZTBorderlessPicker x:Name="BPicker1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" ItemDisplayBinding="{Binding Text}"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                                 <Image Grid.Row="8"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                                    --><!--<Image.GestureRecognizers>
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                                    </Image.GestureRecognizers>--><!--
+                                    </Image.GestureRecognizers>
                                 </Image>
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"/>
                                 <Frame Grid.Row="10"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
-                                <custom:GAZTBorderlessPicker IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"    SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                                <custom:GAZTBorderlessPicker IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"    SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                                 <Image Grid.Row="10"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                                    --><!--<Image.GestureRecognizers>
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                                    </Image.GestureRecognizers>--><!--
+                                    </Image.GestureRecognizers>
                                 </Image>
                                 <Frame Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
                                 
                                 </Frame>
-                                <custom:GAZTBorderlessEntry x:Name="IbanNumber"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="11" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                                <custom:GAZTBorderlessEntry x:Name="IbanNumber"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="11" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                     
                                 </custom:GAZTBorderlessEntry>
-                                --><!--  <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" >
+                                  --><!--<Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" >
 
                                 </Frame>
                                 <custom:GAZTBorderlessEntry x:Name="IbanIDNumber" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="12" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
