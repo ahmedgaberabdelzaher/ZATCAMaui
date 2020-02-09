@@ -311,19 +311,33 @@ namespace GAZT.ViewModel.NewViewModel
            // ZakatReturnAttachmentsList = ZakatAttachment;
         }
 
-        public void  DeleteSelectedAttachment(string filename, string dougUD)
+        public async Task  DeleteSelectedAttachment(string filename, string dougUD)
         {
-          string res =   WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename,dougUD);
-            if(res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+            await Task.Run(() =>
             {
-                for(int i = 0 ; i < ZakatReturnAttachmentsList.Count ; i++)
+                IsLoading = true;
+            });
+
+            await Task.Run(() =>
+            {
+                string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
                 {
-                    if(ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                    for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
                     {
-                        ZakatReturnAttachmentsList.RemoveAt(i);
+                        if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                        {
+                            ZakatReturnAttachmentsList.RemoveAt(i);
+                        }
                     }
-                }
-            }
+                };
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+           
         }
         #endregion
     }

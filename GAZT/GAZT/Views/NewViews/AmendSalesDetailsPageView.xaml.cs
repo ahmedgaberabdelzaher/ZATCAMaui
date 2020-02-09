@@ -61,7 +61,7 @@ namespace GAZT.Views.NewViews
         {
             Image deleteImage = sender as Image;
             EstimateZakatAttachment estimateZakatAttachment = (EstimateZakatAttachment)deleteImage.BindingContext;
-            if(estimateZakatAttachment != null)
+            if(estimateZakatAttachment != null) 
             {
                 viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename,estimateZakatAttachment.Doguid);
             }

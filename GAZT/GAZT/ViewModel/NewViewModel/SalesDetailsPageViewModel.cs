@@ -31,7 +31,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ZakatReturnDetails zakatReturnDetailsD { get; set; }
         public ZakatReturnDetails zakatReturnDetailsDToCompare = new ZakatReturnDetails();
-
+        public bool IsCurrentZAKATTaxLess = false;
 
 
 
@@ -285,7 +285,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("RefreshButtonDisableColor");
             }
         }
+        
 
+
+            private bool _objectionInvoicePopUpVisibility = false;
+        public bool ObjectionInvoicePopUpVisibility
+        {
+            get
+            {
+                return _objectionInvoicePopUpVisibility;
+            }
+            set
+            {
+                _refreshiButtonDisability = value;
+                RaisePropertyChanged("_objectionInvoicePopUpVisibility");
+            }
+        }
 
         private bool _refreshiButtonDisability = true;
         public bool RefreshiButtonDisability
@@ -355,7 +370,7 @@ namespace GAZT.ViewModel.NewViewModel
                             SetUpdatedDataToZAKATEstimated();
                             // AssignAttachmentToPostDataObject();
                             string PostOperationID = "05";
-                            await SubmitZakatReturn(PostOperationID);
+                            await SubmitZakatReturn(PostOperationID,"");
                         }
                         else
                         {
@@ -405,13 +420,13 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
-        public async Task OnConfirmClicked()
+        public async Task OnConfirmClicked(string InvFlag)
         {
             if (CheckBoxStatus)
             {
 
                 string PostOperationID = "66";
-                await SubmitZakatReturn(PostOperationID);
+                await SubmitZakatReturn(PostOperationID, InvFlag);
             }
             else
             {
@@ -553,7 +568,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private async Task SubmitZakatReturn(String PostOperation)
+        private async Task SubmitZakatReturn(String PostOperation, string InvFlag)
         {
             await Task.Run(() =>
             {
@@ -565,7 +580,8 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     double existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
-                    if(PostOperation.Equals("05"))
+                     IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                    if (PostOperation.Equals("05"))
                     {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
@@ -592,10 +608,22 @@ namespace GAZT.ViewModel.NewViewModel
                    
                     if (PostOperation.Equals("66"))
                     {
-                        await GetSADADNumber();
+                      
+                     
+                        await GetSADADNumber(InvFlag);
                         Device.BeginInvokeOnMainThread(async() => {
                             await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
-                            InvoicePopUpVisibility = true;
+                            if (InvFlag.Equals("S"))
+                            {
+                                InvoicePopUpVisibility = false;
+                                ObjectionInvoicePopUpVisibility = true;
+                            }
+                            else
+                            {
+                                InvoicePopUpVisibility = true;
+                                ObjectionInvoicePopUpVisibility = false;
+                            }
+                            
 
                         });
 
@@ -909,7 +937,7 @@ namespace GAZT.ViewModel.NewViewModel
             
         //}
 
-        public async Task GetSADADNumber()
+        public async Task GetSADADNumber(string InvFlag)
         {
             await Task.Run(() =>
             {
@@ -917,7 +945,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
+                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid, InvFlag); // Method to get the invoice
                 if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                 {
                    // RefreshiButtonDisability = false;
