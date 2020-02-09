@@ -1997,22 +1997,28 @@ namespace GAZT.ViewModel.NewViewModel
                 if (IsDeclarationCheckedForInstruction == true)
                 {
                     StepNumber = "02";
+                    ButtonName = AppResources.ZStepTwo;
                 }
                 if (IsCheckedTaxPayerDetailsInfo == true)
                 {
                     StepNumber = "03";
+                    ButtonName = AppResources.ZStepThree;
                 }
                 if (IsDeclarationCheckedForSummary == true)
                 {
                     StepNumber = "04";
+                    ButtonName = AppResources.Submit;
                 }
 
                 VATDeclarationData.d.StepNumber = StepNumber;
                 VATDeclarationData.d.UserTypz = "TP";
-
+                  
                // var response = WebServiceManager.GAZTSetVATReturnAmend(VATDeclarationData);
                 PopToRootPage();
                 await SaveReturnAndGetReturnAndSetButtons();
+                ManageEnabledProperty(true);
+               
+                IsMainButtonEnabled = true;
             });
             await Task.Run(() =>
             {
