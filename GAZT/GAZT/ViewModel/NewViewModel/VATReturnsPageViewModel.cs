@@ -2798,14 +2798,22 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
+          
             string NetVatDue = string.Empty;
-            if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod) )
+            try
             {
-                Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
-                Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
-                Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
+                if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod))
+                {
+                    Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
+                    Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
+                    Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
 
-                NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
+                    NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
+                }
+            }
+            catch
+            {
+
             }
             return NetVatDue;
         }
