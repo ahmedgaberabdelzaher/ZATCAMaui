@@ -1793,12 +1793,56 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void SummaryClicked()
         {
+            bool value = false;
             ClearPage();
             if(!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
                 if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
                 {
                     IsRefundVisible = true;
+                    value=IsCheckedDraftMode();
+                    if(value)
+                    {
+                        if (VATDeclarationData.d.RefundFg == "1")
+                        {
+                            IsDropdownVisibleForIban = true;
+                            if (VATDeclarationData.d.IbanCb == "1")
+                            {
+                                IsTextBoxVisibleForIban = true;
+                                IsDropdownVisibleForIban = false;
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                {
+                                    IbanNumberText = VATDeclarationData.d.Iban;
+                                }
+                            }
+                            else
+                            {
+                                IsTextBoxVisibleForIban = false;
+                                IsDropdownVisibleForIban = true;
+
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                {
+                                    SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
+                                }
+                            }
+                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
+                            {
+                                SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
+                                SetIBANIdNumber();
+                            }
+                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
+                            {
+                                if (IBANIDNumberList != null && IBANIDNumberList.Count != 0)
+                                {
+                                    SelectedIBANIDNumber = IBANIDNumberList.Where(x => x.Idnumber == VATDeclarationData.d.Idnum).FirstOrDefault();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            IsDropdownVisibleForIban = false;
+                        }
+                    }
                 }
                 else
                 {
