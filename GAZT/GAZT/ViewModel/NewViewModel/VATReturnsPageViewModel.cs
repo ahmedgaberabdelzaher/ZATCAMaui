@@ -1275,6 +1275,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isIBANValid;
+        public bool IsIBANValid
+        {
+            get
+            {
+                return _isIBANValid;
+            }
+            set
+            {
+                _isIBANValid = value;
+
+                RaisePropertyChanged("IsIBANValid");
+            }
+        }
+
         private bool _isCheckedRefund;
         public bool IsCheckedRefund
         {

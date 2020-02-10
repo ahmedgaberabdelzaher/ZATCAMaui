@@ -1513,6 +1513,31 @@ namespace GAZT.Views.NewViews
         {
 
         }
+
+        private void Iban_Changed(object sender, TextChangedEventArgs e)
+        {
+            bool a=false;
+            string allowedchar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            if (!string.IsNullOrEmpty(viewModel.IbanNumberText))
+            {
+                if (!viewModel.IbanNumberText.All(allowedchar.Contains))
+                {
+                    viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
+                }
+                else
+                {
+
+                    if (viewModel.IbanNumberText.Length > 24)
+                    {
+                        viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
+                    }
+
+                    a = UtilityManager.IsIBANValid(viewModel.IbanNumberText);
+                    
+                }
+                viewModel.IsIBANValid = a;
+            }
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
