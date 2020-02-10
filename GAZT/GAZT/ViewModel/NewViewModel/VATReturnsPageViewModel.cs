@@ -2356,6 +2356,18 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
+            if(VATDeclarationData.d.TcFg=="1")
+            {
+                IsDeclarationCheckedForInstruction = true;
+            }
+            if (VATDeclarationData.d.ConfStp2 == "1")
+            {
+                IsCheckedTaxPayerDetailsInfo = true;
+            }
+            if (VATDeclarationData.d.DecFg == "1")
+            {
+                IsDeclarationCheckedForSummary = true;
+            }
             List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
             VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
 
@@ -2544,11 +2556,20 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    VATDeclarationData.d.Iban = SelectedIBAN.Iban;
-                    VATDeclarationData.d.IbanCb = "0";
+                    if (SelectedIBAN != null)
+                    {
+                        VATDeclarationData.d.Iban = SelectedIBAN.Iban;
+                        VATDeclarationData.d.IbanCb = "0";
+                    }
                 }
-                VATDeclarationData.d.IdType = SelectedIBANType.key;
-                VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                if (SelectedIBANType != null)
+                {
+                    VATDeclarationData.d.IdType = SelectedIBANType.key;
+                }
+                if (SelectedIBANIDNumber != null)
+                {
+                    VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                }
             }
         }
 
