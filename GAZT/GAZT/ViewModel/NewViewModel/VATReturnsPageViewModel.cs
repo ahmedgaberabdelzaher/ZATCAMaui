@@ -1372,6 +1372,11 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_selectedIBANType!=null)
                 {
                     SetIBANIdNumber();
+                    
+                }
+                else
+                {
+                    
                 }
                 RaisePropertyChanged("SelectedIBANType");
             }
@@ -1650,6 +1655,9 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+
+        
+
         public async void SetIBANIdNumber()
         {
            
