@@ -91,13 +91,11 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-          
-            
         }
 
         private async void OnLogoutClicked(Object sender, EventArgs e)
         {
-            var result = await this.DisplayAlert(AppResources.Alerts, AppResources.LogoutConfirmationMessage,AppResources.ZYes,AppResources.ZNo);
+            var result = await this.DisplayAlert(AppResources.ZLogout,AppResources.LogoutConfirmationMessage, AppResources.ZYes,AppResources.ZNo);
             if (result)
             {
                 App.TP = null;

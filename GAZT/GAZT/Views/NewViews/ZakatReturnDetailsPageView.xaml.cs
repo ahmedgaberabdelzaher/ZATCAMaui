@@ -42,6 +42,22 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        protected async void OnBillsButtonClicked(object sender, EventArgs e)
+        {
+            if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            {
+                var result = await this.DisplayAlert("Confirmation?", "Do you want to release the declaration?", "Ok", "Cancel");
+                if (result)
+                {
+                    await viewModel.OnReleaseOrBillsClicked();
+                }
+            }
+            else
+            {
+                await viewModel.OnReleaseOrBillsClicked();
+            }
+        }
         #endregion
 
     }

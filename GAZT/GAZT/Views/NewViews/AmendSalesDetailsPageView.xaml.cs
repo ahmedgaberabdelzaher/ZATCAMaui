@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
                 SelectedSalesDetails.ComingFromAmendEditMode = true;
                 this.BindingContext = viewModel;
                 AmendSalesDetailsPageViewModel.SelectedSalesDetails = SelectedSalesDetails;
+                viewModel.ClearData();
                 viewModel.OnLoad();
                 SetLTR();
             }catch (Exception ex)
@@ -54,6 +55,16 @@ namespace GAZT.Views.NewViews
         {
             ((ListView)sender).SelectedItem = null;
             return;
+        }
+
+        private  void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
+        {
+            Image deleteImage = sender as Image;
+            EstimateZakatAttachment estimateZakatAttachment = (EstimateZakatAttachment)deleteImage.BindingContext;
+            if(estimateZakatAttachment != null) 
+            {
+                viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename,estimateZakatAttachment.Doguid);
+            }
         }
     }
 }

@@ -2493,7 +2493,7 @@ namespace GAZT.Manager
         }
 
         // Not Completed
-        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber( string FBNumber, string FBGuid)
+        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber( string FBNumber, string FBGuid, string InvFlag)
         {
             EstimatedZAKATReturnsSADADNumber _estimatedZAKATReturnsSADADNumber = new EstimatedZAKATReturnsSADADNumber();
             string NewToken = string.Empty;
@@ -2501,7 +2501,15 @@ namespace GAZT.Manager
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                 String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                String url;
+                if (InvFlag.Equals("I"))
+                {
+                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                }
+                else
+                {
+                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='S',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                }
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
