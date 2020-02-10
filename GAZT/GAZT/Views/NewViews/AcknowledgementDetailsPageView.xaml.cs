@@ -71,6 +71,11 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        protected async Task OnVATRefreshButtonClicked()
+        {
+            await viewModel.OnRefreshClick();
+        }
         #endregion
 
 

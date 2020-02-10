@@ -6,6 +6,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -177,21 +178,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                try
-                {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
-                    SadadNumber = response.d.results[0].Vtref;
-                    AmountPayable = response.d.results[0].Betrh;
-                    if (!string.IsNullOrEmpty(SadadNumber))
-                    {
-                        IsSadadNumberVisible = true;
-                        IsRefreshButtonVisible = false;
-                    }
-                }
-                catch (Exception e)
-                {
-
-                }
+               
                 // Call Sadad number API
             });
 
@@ -254,6 +241,25 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     });
                 }
+            }
+        }
+
+        public async Task OnRefreshClick()
+        {
+            try
+            {
+                var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                SadadNumber = response.d.results[0].Vtref;
+                AmountPayable = response.d.results[0].Betrh;
+                if (!string.IsNullOrEmpty(SadadNumber))
+                {
+                    IsSadadNumberVisible = true;
+                    IsRefreshButtonVisible = false;
+                }
+            }
+            catch (Exception e)
+            {
+
             }
         }
         #endregion
