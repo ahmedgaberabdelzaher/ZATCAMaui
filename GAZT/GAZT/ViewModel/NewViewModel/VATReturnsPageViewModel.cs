@@ -327,10 +327,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
                     IsMainButtonEnabled = true;
+                    VATDeclarationData.d.ConfStp2 = "1";
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
+                    VATDeclarationData.d.ConfStp2 = "0";
                 }
                 RaisePropertyChanged("IsCheckedTaxPayerDetailsInfo");
             }
@@ -350,10 +352,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_isDeclarationCheckedForSummary == true)
                 {
                     IsMainButtonEnabled = true;
+                    VATDeclarationData.d.DecFg = "1";
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
+                    VATDeclarationData.d.DecFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForSummary");
             }
@@ -374,10 +378,14 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_isDeclarationCheckedForInstruction == true)
                 {
                     IsMainButtonEnabled = true;
+                    VATDeclarationData.d.TcFg = "1";
+
+
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
+                    VATDeclarationData.d.TcFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForInstruction");
             }

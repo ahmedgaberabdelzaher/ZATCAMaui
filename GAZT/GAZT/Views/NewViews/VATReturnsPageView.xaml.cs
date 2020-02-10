@@ -1147,7 +1147,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1181,7 +1181,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1215,7 +1215,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1231,7 +1231,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1286,7 +1286,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1320,7 +1320,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1354,7 +1354,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1388,7 +1388,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1422,7 +1422,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1454,7 +1454,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1470,7 +1470,7 @@ namespace GAZT.Views.NewViews
             {
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero,Percentage);
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
