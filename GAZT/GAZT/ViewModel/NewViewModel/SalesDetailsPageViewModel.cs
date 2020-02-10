@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -576,6 +577,8 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async () =>
             {
+            try
+            {
                 ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
@@ -637,11 +640,15 @@ namespace GAZT.ViewModel.NewViewModel
 
                     });
                 }
-                //ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(zakatReturnDetailsD.d.Fbguid);
-                //zakatReturnDetailsD = zakatReturnDetails; //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                //ZakatReturnDetail = zakatReturnDetailsD;
+                    //ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(zakatReturnDetailsD.d.Fbguid);
+                    //zakatReturnDetailsD = zakatReturnDetails; //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                    //ZakatReturnDetail = zakatReturnDetailsD;
 
-
+                }
+                catch (InternetException ex)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
 
             });
             await Task.Run(() =>
@@ -945,16 +952,26 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid, InvFlag); // Method to get the invoice
-                if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+                try
                 {
-                   // RefreshiButtonDisability = false;
-                    RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
-                    EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                    HideAllButton();
-                    UncheckDisclaimer();
+                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid, InvFlag); // Method to get the invoice
+                    PopToRootPage();
+                    if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+                    {
+                        // RefreshiButtonDisability = false;
+                        RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
+                        EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                        HideAllButton();
+                        UncheckDisclaimer();
+                    }
                 }
-
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
             await Task.Run(() =>
             {
@@ -977,6 +994,18 @@ namespace GAZT.ViewModel.NewViewModel
             for(int i = 0; i< attachmentList.Count; i++)
             {
                 EstimateZakatAttachmentList.Add(SalesDetailsList[index].estimateZakatAttachment[i]); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
         }
         #endregion

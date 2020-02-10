@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Plugin.FilePicker;
@@ -171,6 +172,7 @@ namespace GAZT.ViewModel.NewViewModel
                                     if (IsAttachmentPresent == false)
                                     {
                                         AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                        PopToRootPage();
                                         if (_attachment != null && _attachment.d != null)
                                         {
 
@@ -223,11 +225,11 @@ namespace GAZT.ViewModel.NewViewModel
 
                     }
                 }
-                catch (Exception ex)
+                catch (InternetException ex)
                 {
-
-
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
+
 
 
             });
@@ -236,7 +238,17 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
         #endregion
     }
 }

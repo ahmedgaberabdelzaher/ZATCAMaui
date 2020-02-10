@@ -1,4 +1,5 @@
-﻿using GAZT.Manager;
+﻿using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
@@ -63,11 +64,14 @@ namespace GAZT.Views.NewViews
 
         private void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
-            Image arrowImage = sender as Image;
+            try
+            {
+                Image arrowImage = sender as Image;
            
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-            if(results == "X")
+            PopToRootPage();
+            if (results == "X")
             {
                 var item = (Xamarin.Forms.Image)sender;
                 Attachment listitem = (from itm in viewModel.VatAttachmentsList
@@ -79,9 +83,25 @@ namespace GAZT.Views.NewViews
                 viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
 
             }
+            }
+            catch (InternetException ex)
+            {
+                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
 
         }
 
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
 
 
         #endregion

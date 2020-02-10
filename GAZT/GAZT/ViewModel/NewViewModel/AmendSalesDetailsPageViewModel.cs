@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Plugin.FilePicker;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -236,9 +238,10 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                     await Task.Run(async() =>
                     {
-
+                    try
+                    {
                         AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
-                        // PopToRootPage();
+                         PopToRootPage();
                         if (_attachment != null && _attachment.d != null)
                         {
                             EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
@@ -261,7 +264,11 @@ namespace GAZT.ViewModel.NewViewModel
                             SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
                             // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
                         }
-
+                        }
+                        catch (InternetException ex)
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        }
                     });
                     await Task.Run(() =>
                     {
@@ -281,6 +288,17 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
         public void ClearData()
         {
             //SalesType = string.Empty;
@@ -320,17 +338,28 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(() =>
             {
-                string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
-                if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+                try
                 {
-                    for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
+                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                    PopToRootPage();
+                    if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
                     {
-                        if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                        for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
                         {
-                            ZakatReturnAttachmentsList.RemoveAt(i);
+                            if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                            {
+                                ZakatReturnAttachmentsList.RemoveAt(i);
+                            }
                         }
-                    }
-                };
+                    };
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
 
             await Task.Run(() =>
