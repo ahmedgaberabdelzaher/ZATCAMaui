@@ -988,22 +988,28 @@ namespace GAZT.Views.NewViews
 
         private void chkDeclarationForSummary_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-           
-            if(TabSummarry.IsVisible==true)
+            if (viewModel.IsDeclarationCheckedForSummary != true)
             {
-                CheckBox CheckSummary = (CheckBox)sender;
-                if(CheckSummary.IsChecked==true)
+                if (TabSummarry.IsVisible == true)
                 {
-                   
-                    viewModel.IsMainButtonEnabled = true;
-                  //  BtnNextStep.IsEnabled = true;
+                    CheckBox CheckSummary = (CheckBox)sender;
+                    if (CheckSummary.IsChecked == true)
+                    {
+
+                        viewModel.IsMainButtonEnabled = true;
+                        //  BtnNextStep.IsEnabled = true;
+                    }
+                    else
+                    {
+
+                        viewModel.IsMainButtonEnabled = false;
+                        // BtnNextStep.IsEnabled = false;
+                    }
                 }
-                else
-                {
-                   
-                    viewModel.IsMainButtonEnabled = false;
-                    // BtnNextStep.IsEnabled = false;
-                }
+            }
+            else
+            {
+                ValidationsForVATRefund();
             }
         }
 
@@ -1512,6 +1518,71 @@ namespace GAZT.Views.NewViews
         private void onDropdownButtonClicked(object sender, EventArgs e)
         {
 
+        }
+
+        public void ValidationsForVATRefund()
+        {
+            if(viewModel.IsVisibleSummary == true)
+            {
+                if(viewModel.IsVisibleDropdownForRefund==true)
+                {
+                    if(viewModel.IsCheckedRefund==true)
+                    {
+                        if(!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        {
+                            viewModel.IsMainButtonEnabled = true;
+                        }
+                        else
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+                        }
+                    }
+                    else
+                    {
+                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        {
+                            viewModel.IsMainButtonEnabled = true;
+                        }
+                        else
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BPicker2_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(viewModel.IsVisibleSummary==true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
+        }
+
+        private void BPicker1_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
+        }
+
+        private void BPicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
         }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
