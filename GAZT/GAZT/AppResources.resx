@@ -1601,6 +1601,30 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="ZVatRefundInformation" xml:space="preserve">
+    <value>Refund Information</value>
+  </data>
+  <data name="ZVatRefundInformationCheckBoxInfo" xml:space="preserve">
+    <value>If you wish to request a refund towards a different IBAN, please select the check box &amp; kindly enter above</value>
+  </data>
+  <data name="ZVatRefundInformationIBANIDNote" xml:space="preserve">
+    <value>Note: In case the ID information of the selected IBAN is missing or not match with the IBAN information, please update your registration information</value>
+  </data>
+  <data name="ZVatRefundInformationNoteClick" xml:space="preserve">
+    <value>If you wish to request a refund, kindly click here:</value>
+  </data>
+  <data name="ZVatRefundInformationNoteOne" xml:space="preserve">
+    <value>Your return form information indicate that you are in a credit position, your credit amount will be carried forward for next filing.</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBAN" xml:space="preserve">
+    <value>Select the prefered IBAN from the avaiLabel list</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANID" xml:space="preserve">
+    <value>Please select the IBAN ID Type linked to the selected IBAN</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
+    <value>Please select the IBAN ID Number linked to the selected IBAN</value>
+  </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>My Certificates</value>
   </data>

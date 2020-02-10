@@ -13,7 +13,7 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
+   
     public class VATDeclarationsMetadata
     {
         public string id { get; set; }
@@ -74,6 +74,8 @@ namespace GAZT.Models
         public string Bkvid { get; set; }
         public string Iban { get; set; }
     }
+
+    
 
     public class IBANSet
     {

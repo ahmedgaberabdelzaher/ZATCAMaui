@@ -244,7 +244,7 @@
                                 </Label>
                             </StackLayout>
 
-                            <!--<StackLayout Grid.Row="1" Grid.Column="1">
+                            <StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
@@ -255,7 +255,7 @@
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>-->
+                            </StackLayout>
 
                                 <!--<StackLayout Grid.Row="1" Grid.Column="1">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">

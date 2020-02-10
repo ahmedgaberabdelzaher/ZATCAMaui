@@ -2852,6 +2852,54 @@ namespace GAZT {
             }
         }
         
+        public static string ZVatRefundInformation {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationCheckBoxInfo {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationCheckBoxInfo", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationIBANIDNote {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationIBANIDNote", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationNoteClick {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteClick", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationNoteOne {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteOne", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationSelectIBAN {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBAN", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationSelectIBANID {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANID", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundInformationSelectIBANIDNumber {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANIDNumber", resourceCulture);
+            }
+        }
+        
         public static string MyCertificates {
             get {
                 return ResourceManager.GetString("MyCertificates", resourceCulture);
