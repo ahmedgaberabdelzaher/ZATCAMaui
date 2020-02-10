@@ -1187,7 +1187,7 @@
                             </CheckBox>
 
 
-                            <Label  Grid.Row="12" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                            <Label  Grid.Row="11" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static local:AppResources.ZVatCertifyInformation}"/>
