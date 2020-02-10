@@ -72,7 +72,7 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        protected async Task OnVATRefreshButtonClicked()
+        protected async void OnVATRefreshButtonClicked(Object sender,EventArgs e)
         {
             await viewModel.OnRefreshClick();
         }

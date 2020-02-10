@@ -1115,17 +1115,21 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
-                                
+                                    <Frame.Triggers>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding  IsIBANValid}" Value="false">
+                                            <Setter Property="BorderColor" Value="#ff0000" />
+                                        </DataTrigger>
+                                    </Frame.Triggers>
                                 </Frame>
-                                <custom:GAZTBorderlessEntry x:Name="IbanNumber"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                                <custom:GAZTBorderlessEntry x:Name="IbanNumber" TextChanged="Iban_Changed" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                     
                                 </custom:GAZTBorderlessEntry>
-                                  <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" >
+                                  <!--<Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" >
 
                                 </Frame>
                                 <custom:GAZTBorderlessEntry x:Name="IbanIDNumber" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
-                                </custom:GAZTBorderlessEntry>
+                                </custom:GAZTBorderlessEntry>-->
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationIBANIDNote}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             </Grid>
