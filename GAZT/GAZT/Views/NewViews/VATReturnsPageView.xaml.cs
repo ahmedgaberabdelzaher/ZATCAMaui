@@ -1527,6 +1527,7 @@ namespace GAZT.Views.NewViews
                 else
                 {
 
+
                     if (viewModel.IbanNumberText.Length > 24)
                     {
                         viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
