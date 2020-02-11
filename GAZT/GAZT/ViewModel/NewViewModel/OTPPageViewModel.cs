@@ -631,7 +631,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
-                            TimerStart();
+                                TimerStart();
                             }
 
                         }
@@ -667,7 +667,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void TimerStart()
+        private  void TimerStart()
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
 
