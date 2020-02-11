@@ -1275,6 +1275,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isIBANValid;
+        public bool IsIBANValid
+        {
+            get
+            {
+                return _isIBANValid;
+            }
+            set
+            {
+                _isIBANValid = value;
+
+                RaisePropertyChanged("IsIBANValid");
+            }
+        }
+
         private bool _isCheckedRefund;
         public bool IsCheckedRefund
         {
@@ -1558,9 +1573,9 @@ namespace GAZT.ViewModel.NewViewModel
                         IsSadadNumberVisible = true;
                     }
                 }
-                catch (Exception e)
+                catch (InternetException ex)
                 {
-
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
                 // Call Sadad number API
             });
@@ -1587,11 +1602,11 @@ namespace GAZT.ViewModel.NewViewModel
                     }
 
                 }
-                catch (Exception ex)
+                catch (InternetException ex)
                 {
-
-
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
+
 
             });
 
@@ -1671,11 +1686,11 @@ namespace GAZT.ViewModel.NewViewModel
                     IBANIDNumberList = iBANIDNumbersResponse;
                 }
             }
-            catch(Exception e)
+            catch (InternetException ex)
             {
-
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
-      }
+        }
         public void ManageEnabledProperty(bool value)
         {
             IsControlEnabled = value;
@@ -1853,15 +1868,17 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public async Task SubmitClicked()
         {
+            try
+            {
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = true;
-            //});
-            //await Task.Run(async() =>
-            //{
-            //IsLoading = true;
-            if (FirstSubmissionCount != 1)
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
+                //await Task.Run(async() =>
+                //{
+                //IsLoading = true;
+                if (FirstSubmissionCount != 1)
             {
                 CreateDataForPost();
             }
@@ -1910,11 +1927,16 @@ namespace GAZT.ViewModel.NewViewModel
 
             await    _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
             }
-            // });
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
+                // });
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = false;
+                //});
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
         }
 
         public async void ShowPdf(string pdfUrl)
@@ -1990,7 +2012,8 @@ namespace GAZT.ViewModel.NewViewModel
 
                 await Task.Run(async () =>
                 {
-
+                try
+                {
                     string operation = "04";// Passed 04 to set void
                     VATDeclarationData.d.Operationz = operation;
                     StepNumber = "01";
@@ -2020,6 +2043,11 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
 
                     });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    }
                 });
                 await Task.Run(() =>
                 {
@@ -2034,6 +2062,8 @@ namespace GAZT.ViewModel.NewViewModel
                 IsLoading = true;
             });
             await Task.Run(async () =>
+            {
+            try
             {
                 string operation = "14";// Passed 14 to set RESET
                 VATDeclarationData.d.Operationz = operation;
@@ -2062,7 +2092,14 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
                 });
-
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
             await Task.Run(() =>
             {
@@ -2279,7 +2316,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task pageLoad()
         {
-            IsFirstSubmission = true;
+            try
+            {
+                IsFirstSubmission = true;
             IsSadadNumberVisible = false;
             IsAmendClicked = false;
             //await Task.Run(() =>
@@ -2434,42 +2473,48 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             }
 
-            //});
+                //});
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = false;
+                //});
 
-            //int j = 5;
-            //List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
-            //CreditCarriedsList = new List<CreditCarried>();
-            //for (j = 0; j < 6; j++)
-            //{
-            //    CreditCarried m = new CreditCarried();
-            //    m.SerialNumber = "0001";
-            //    m.ReturnReferenceNumber = "000000000001";
-            //    m.DocumentNumber = "0102000010202";
-            //    m.Amount = "100000000,00";
+                //int j = 5;
+                //List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
+                //CreditCarriedsList = new List<CreditCarried>();
+                //for (j = 0; j < 6; j++)
+                //{
+                //    CreditCarried m = new CreditCarried();
+                //    m.SerialNumber = "0001";
+                //    m.ReturnReferenceNumber = "000000000001";
+                //    m.DocumentNumber = "0102000010202";
+                //    m.Amount = "100000000,00";
 
-            //    creditsCrarriedDummy.Add(m);
-            //}
-            //CreditCarriedsList = creditsCrarriedDummy;
+                //    creditsCrarriedDummy.Add(m);
+                //}
+                //CreditCarriedsList = creditsCrarriedDummy;
 
 
-            //int k = 5;
-            //List<VATAttachments> vatAttachment = new List<VATAttachments>();
-            //VatAttachmentsList = new List<VATAttachments>();
-            //for (k = 0; k < 6; k++)
-            //{
-            //    VATAttachments m = new VATAttachments();
-            //    m.Id = "0001";
-            //    m.DocumentName = "Test-Document.pdf";
-            //    m.Size = "20.00";
+                //int k = 5;
+                //List<VATAttachments> vatAttachment = new List<VATAttachments>();
+                //VatAttachmentsList = new List<VATAttachments>();
+                //for (k = 0; k < 6; k++)
+                //{
+                //    VATAttachments m = new VATAttachments();
+                //    m.Id = "0001";
+                //    m.DocumentName = "Test-Document.pdf";
+                //    m.Size = "20.00";
 
-            //    vatAttachment.Add(m);
-            //}
-            //VatAttachmentsList = vatAttachment;
+                //    vatAttachment.Add(m);
+                //}
+                //VatAttachmentsList = vatAttachment;
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
+
         }
 
 
@@ -2491,7 +2536,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task SaveReturnAndGetReturnAndSetButtons()
         {
-            VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+            try
+            {
+                VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
             PopToRootPage();
 
             if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
@@ -2525,6 +2572,11 @@ namespace GAZT.ViewModel.NewViewModel
                 {
 
                 }
+            }
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
 
@@ -2824,8 +2876,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task SetButtons(VATDeclaration vATDeclarationData)
         {
-
-            List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnumz, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz,vATDeclarationData.d.Periodkeyz);
+            try
+            {
+                List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnumz, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz,vATDeclarationData.d.Periodkeyz);
             PopToRootPage();
             ListOfActionButtonsApplicable = new List<string>();
 
@@ -2836,6 +2889,11 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
                 }
+            }
+            }
+            catch (InternetException ex)
+            {
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
     }

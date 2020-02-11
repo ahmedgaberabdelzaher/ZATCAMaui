@@ -249,6 +249,7 @@ namespace GAZT.ViewModel.NewViewModel
             try
             {
                 var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                PopToRootPage();
                 SadadNumber = response.d.results[0].Vtref;
                 AmountPayable = response.d.results[0].Betrh;
                 if (!string.IsNullOrEmpty(SadadNumber))
@@ -257,9 +258,20 @@ namespace GAZT.ViewModel.NewViewModel
                     IsRefreshButtonVisible = false;
                 }
             }
-            catch (Exception e)
+            catch (InternetException ex)
             {
-
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            }
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
             }
         }
         #endregion

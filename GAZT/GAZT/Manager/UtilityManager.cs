@@ -22,6 +22,7 @@ namespace GAZT.Manager
         public static string numberRegex = "^[0-9]+$";
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
+        public static string IBANValidator = @"^[S][A]\d{22}$";
 
 
 
@@ -31,6 +32,19 @@ namespace GAZT.Manager
         public static bool IsValidEmailAddress(string EmailAddress)
         {
             Match emailMatch = Regex.Match(EmailAddress, emailIdValidation);
+            if (emailMatch.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool IsIBANValid(string IBAN)
+        {
+            Match emailMatch = Regex.Match(IBAN, IBANValidator);
             if (emailMatch.Success)
             {
                 return true;

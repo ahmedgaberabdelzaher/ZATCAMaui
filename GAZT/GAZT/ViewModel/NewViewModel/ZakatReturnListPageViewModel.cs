@@ -1,11 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -176,11 +178,17 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async() =>
             {
-               
-                 estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
-                
+            try
+            {
+                estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
+                PopToRootPage();
                 UpdateICRList();
-                SelectedIndex = 13; 
+                SelectedIndex = 13;
+                }
+                catch (InternetException ex)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
                 // MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
             });
 
@@ -335,6 +343,18 @@ namespace GAZT.ViewModel.NewViewModel
             }
            
             MyZakatReturns = myZakatReturnsList;
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
         }
         #endregion
     }
