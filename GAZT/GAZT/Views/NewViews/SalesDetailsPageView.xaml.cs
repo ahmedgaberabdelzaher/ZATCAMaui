@@ -205,7 +205,7 @@ namespace GAZT.Views.NewViews
         protected async void OnRefreshButtonClicked(Object sender, EventArgs e)
         {
             //  viewModel.CheckBoxStatus = checkBox.IsChecked;
-            await viewModel.GetSADADNumber("S");
+            await viewModel.GetSADADNumber();
         }
 
         protected async void OnCloseButtonClicked(Object sender, EventArgs e)

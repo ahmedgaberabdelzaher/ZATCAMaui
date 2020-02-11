@@ -2580,7 +2580,7 @@ namespace GAZT.Manager
         // Not Completed
         //Seesion expired handled 
         //done internet exception handling
-        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber(string FBNumber, string FBGuid, string InvFlag)
+        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber(string FBNumber, string FBGuid)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
