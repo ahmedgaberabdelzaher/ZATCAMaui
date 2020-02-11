@@ -424,8 +424,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (CheckBoxStatus)
             {
-
-                string PostOperationID = "66";
+                string PostOperationID = GetConfirmOperationId();
+              //  string PostOperationID = "66";
                 await SubmitZakatReturn(PostOperationID, InvFlag);
             }
             else
@@ -535,7 +535,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
                 {
                     HideAllButton();
-                   HideDisclaimer();
+                 //  HideDisclaimer();
 
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
@@ -546,7 +546,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0008"))
                 {
                     HideAllButton();
-                    HideDisclaimer();
+                  //  HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0005"))// In Processing
@@ -579,6 +579,14 @@ namespace GAZT.ViewModel.NewViewModel
                 ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
+                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
+                        });
+                    }
+                     
                     double existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
                      IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                     if (PostOperation.Equals("05"))
@@ -604,29 +612,17 @@ namespace GAZT.ViewModel.NewViewModel
                             }
 
                         }
-                    }
+                         }
                    
-                    if (PostOperation.Equals("66"))
+                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
-                      
-                     
-                        await GetSADADNumber(InvFlag);
-                        Device.BeginInvokeOnMainThread(async() => {
-                            await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
-                            if (InvFlag.Equals("S"))
-                            {
-                                InvoicePopUpVisibility = false;
-                                ObjectionInvoicePopUpVisibility = true;
-                            }
-                            else
-                            {
-                                InvoicePopUpVisibility = true;
-                                ObjectionInvoicePopUpVisibility = false;
-                            }
-                            
 
-                        });
 
+                        await Task.Run(async() =>
+                        {
+                            await GetSADADNumber(InvFlag);
+                            ShowInvoicePopUp(InvFlag);
+                        }); 
                     }
 
                 }
@@ -978,6 +974,46 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 EstimateZakatAttachmentList.Add(SalesDetailsList[index].estimateZakatAttachment[i]); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
             }
+        }
+
+        private string GetConfirmOperationId()
+        {
+            if(IsCurrentZAKATTaxLess)
+            {
+                return "66";// For Amendment
+            }
+            else
+            {
+                return "65";// For Objection
+            }
+        }
+
+        private void ShowInvoicePopUp(string InvFlag)
+        {
+           
+                if (InvFlag.Equals("S") || InvFlag.Equals("C"))
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        InvoicePopUpVisibility = false;
+                        ObjectionInvoicePopUpVisibility = true;
+                    });
+
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        InvoicePopUpVisibility = true;
+                        ObjectionInvoicePopUpVisibility = false;
+                    });
+
+                }
+         
+        }
+
+        public void HideInvoicePopUp()
+        {
+            InvoicePopUpVisibility = false;
+            ObjectionInvoicePopUpVisibility = false;
         }
         #endregion
     }

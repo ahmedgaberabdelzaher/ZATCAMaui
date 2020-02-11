@@ -272,12 +272,24 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
+
                         for (int i = 0; i < myZakatReturnsList.Count; i++)
                         {
-                            if (selectedICR.Key.Equals(myZakatReturnsList[i].Statfg))
+                            if(string.IsNullOrEmpty(myZakatReturnsList[i].Statfg))
                             {
-                                FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                if (selectedICR.Key.Equals(myZakatReturnsList[i].Stat))
+                                {
+                                    FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                }
                             }
+                            else
+                            {
+                                if (selectedICR.Key.Equals(myZakatReturnsList[i].Statfg))
+                                {
+                                    FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                }
+                            }
+                            
                         }
                         MyZakatReturns = FilteredCRStatusList;
                     }
