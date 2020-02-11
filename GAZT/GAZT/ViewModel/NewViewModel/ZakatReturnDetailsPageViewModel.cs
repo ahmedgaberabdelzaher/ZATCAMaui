@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -153,7 +154,8 @@ namespace GAZT.ViewModel.NewViewModel
                 await Task.Run(async () =>
                 {
                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                //  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
+                    PopToRootPage();
+                    //  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
                     //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                     ZakatReturnDetails = zakatReturnDetails;
                     ZakatReturnDetail = zakatReturnDetails.d;
@@ -164,13 +166,26 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch (InternetException ex)
             {
-
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
-          
-        }
 
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
         private void SetReleaseOrBillDetailsButtonText(string ButtonStatus)
         {
             try
@@ -208,6 +223,8 @@ namespace GAZT.ViewModel.NewViewModel
             });
             await Task.Run(async () =>
             {
+            try
+            {
                 ZakatReturnDetails _zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
                 if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
@@ -217,10 +234,19 @@ namespace GAZT.ViewModel.NewViewModel
                     // 
                 }
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                PopToRootPage();
                 //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                 ZakatReturnDetails = zakatReturnDetails;
                 ZakatReturnDetail = zakatReturnDetails.d;
                 SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
             await Task.Run(() =>
             {

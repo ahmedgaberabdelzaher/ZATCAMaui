@@ -360,7 +360,7 @@ namespace GAZT.ViewModel.NewViewModel
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
                             if (!App.IsArabic)
                             {
-                                AccountWillBeBlocked = "The account will be locked after " + TP.Attempts + " failed verification code attempts";
+                                AccountWillBeBlocked = "The account will be locked after entering " + TP.Attempts + " wrong verification codes";
                             }
                             else
                             {

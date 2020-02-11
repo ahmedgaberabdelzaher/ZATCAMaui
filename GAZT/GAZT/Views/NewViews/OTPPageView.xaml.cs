@@ -104,7 +104,7 @@ namespace GAZT.Views.NewViews
                 }
                 if (!App.IsArabic)
                 {
-                    viewModel.AccountWillBeBlocked = "The account will be locked after " + App.TP.Attempts + " failed verification code attempts";
+                    viewModel.AccountWillBeBlocked = "The account will be locked after entering " + App.TP.Attempts + " wrong verification codes";
                 }
                 else
                 {

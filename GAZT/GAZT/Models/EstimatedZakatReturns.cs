@@ -281,6 +281,7 @@ namespace GAZT.Models
     public class ZAKATStatus
     {
         public string Key { get; set; }
+        public string KeyTwo { get; set; }
         public string Value { get; set; }
     }
 }

@@ -183,7 +183,7 @@ namespace GAZT.ViewModel.NewViewModel
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                            if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
@@ -383,8 +383,11 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    _navigation.PopToRootAsync();
+                });
             }
         }
         #endregion

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -146,8 +148,19 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async() =>
             {
-                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid,"I"); // Method to get the invoice
-                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                try
+                {
+                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid, "I"); // Method to get the invoice
+                    PopToRootPage();
+                    EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
 
             await Task.Run(() =>
@@ -157,6 +170,17 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
         #region Method
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
         #endregion
     }
 }
