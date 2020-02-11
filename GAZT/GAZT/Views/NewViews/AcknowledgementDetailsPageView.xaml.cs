@@ -42,6 +42,8 @@ namespace GAZT.Views.NewViews
                     viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
                     viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
                     string ReceiptDate;
+                    viewModel.IsSadadNumberVisible = false;
+                    viewModel.IsRefreshButtonVisible = true;
                     if (App.IsArabic)
                     {
                         ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));

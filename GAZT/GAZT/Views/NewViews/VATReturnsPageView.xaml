@@ -1121,7 +1121,7 @@
                                         </DataTrigger>
                                     </Frame.Triggers>
                                 </Frame>
-                                <custom:GAZTBorderlessEntry x:Name="IbanNumber" TextChanged="Iban_Changed" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                                <custom:GAZTBorderlessEntry x:Name="IbanNumber" TextChanged="Iban_Changed" Unfocused="Unfocused_IBAN" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" Grid.Row="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                     
                                 </custom:GAZTBorderlessEntry>
                                   <!--<Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" >

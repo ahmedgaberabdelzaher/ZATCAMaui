@@ -167,8 +167,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private List<CreditCarried> _creditCarriedsList;
-        public List<CreditCarried> CreditCarriedsList
+        private List<Result3> _creditCarriedsList;
+        public List<Result3> CreditCarriedsList
         {
             get
             {
@@ -1673,12 +1673,12 @@ namespace GAZT.ViewModel.NewViewModel
 
         
 
-        public async void SetIBANIdNumber()
+        public  void SetIBANIdNumber()
         {
            
             try
             {
-                List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
+                List<IBANIDNumber> iBANIDNumbersResponse = WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
                 PopToRootPage();
                 if(iBANIDNumbersResponse!=null || iBANIDNumbersResponse.Count()!=0)
                 {
@@ -1797,11 +1797,12 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             if(!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
-                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
+              
+                value = IsCheckedDraftMode();
+                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat) && (value || App.ICRStatus== "E0001"))
                 {
                     IsRefundVisible = true;
-                    value=IsCheckedDraftMode();
-                    if(value)
+                    if (value)
                     {
                         if (VATDeclarationData.d.RefundFg == "1")
                         {
@@ -1945,6 +1946,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
                 });
+                ManageEnabledProperty(false);
                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
             }
             else
@@ -2363,7 +2365,7 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
 
-
+            
 
             string FormBundleNumber = VATDeclarationData.d.Fbnum;
             string Gpart = VATDeclarationData.d.Gpart;
@@ -2388,7 +2390,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
-
+            if(VATDeclarationData.d.CFSet.results!=null && VATDeclarationData.d.ADRSet.results.Count!=0)
+            {
+                CreditCarriedsList = VATDeclarationData.d.CFSet.results;
+            }
 
             if (VATDeclarationData.d.ADRSet.results.Count > 0)
             {
@@ -2560,16 +2565,17 @@ namespace GAZT.ViewModel.NewViewModel
                     if (response != null && response.d != null)
                 {
                     VATDeclarationData = response;
+                    ResponseVATDeclarationD = VATDeclarationData.d;
                     //VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.ReturnIdz, VATDeclarationData.d.Fbnumz, ICRListPageViewModel.EUser,"");
 
-                    //if (_vATDeclaration != null && _vATDeclaration.d != null)
-                    //{
-                    //    VATDeclarationData = _vATDeclaration;
-                    //    ResponseVATDeclarationD = VATDeclarationData.d;
+                        //if (_vATDeclaration != null && _vATDeclaration.d != null)
+                        //{
+                        //    VATDeclarationData = _vATDeclaration;
+                        //    ResponseVATDeclarationD = VATDeclarationData.d;
 
-                    //    SetData();
-                    //}
-                    ManageEnabledProperty(true);
+                        //    SetData();
+                        //}
+                        ManageEnabledProperty(true);
                 }
 
                 await SetButtons(VATDeclarationData);
@@ -2631,7 +2637,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 if (SelectedIBANType != null)
                 {
-                    VATDeclarationData.d.IdType = SelectedIBANType.key;
+                    VATDeclarationData.d.Idtype = SelectedIBANType.key;
                 }
                 if (SelectedIBANIDNumber != null)
                 {
