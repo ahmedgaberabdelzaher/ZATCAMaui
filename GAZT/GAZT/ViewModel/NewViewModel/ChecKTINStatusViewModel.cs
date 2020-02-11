@@ -175,14 +175,14 @@ namespace GAZT.ViewModel.NewViewModel
                           
                             if (App.IsArabic)
                             {
-                                DateTime dateLU = DateTime.ParseExact(ListTINStatus.d.Udate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
-                                LastUpdate = dateLU.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));                               
+                                string dateLU =UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
+                                LastUpdate = dateLU;                               
                                 LastUpdate = UtilityManager.ToArabicDate(LastUpdate);
                             }
                             else
                             {
-                                DateTime dateLU = DateTime.ParseExact(ListTINStatus.d.Udate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
-                                LastUpdate = dateLU.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
+                                LastUpdate = dateLU;
                               
 
                             }

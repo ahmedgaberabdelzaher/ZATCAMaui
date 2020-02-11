@@ -117,17 +117,12 @@ namespace GAZT.Models
                 {
                     if (App.IsArabic)
                     {
-                        DateTime datedue = DateTime.ParseExact(_dueDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        string date = datedue.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                       
+                        string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
                     }
                     else
                     {
-                        DateTime datedue = DateTime.ParseExact(_dueDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        FormatedSingleDueDate = datedue.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                      
+                        FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     }
                 }
             }

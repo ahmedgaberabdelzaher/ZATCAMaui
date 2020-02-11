@@ -193,16 +193,14 @@ namespace GAZT.Manager
                     if (StartDate != null)
                     {
                         string trimStartDate = StartDate.Trim();
-                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        StartDate = ToArabicDate(StartDate);
+                        string dateStart = FormatAccordingToDeviceForVAT(trimStartDate);
+                        StartDate = ToArabicDate(dateStart);
                     }
                     if (EndDate != null)
                     {
                         string trimEndDate = EndDate.Trim();
-                        DateTime dateEnd = DateTime.ParseExact(trimEndDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        EndDate = ToArabicDate(EndDate);
+                        string dateEnd = FormatAccordingToDeviceForVAT(trimEndDate);
+                        EndDate = ToArabicDate(dateEnd);
                     }
                     //StartDate = ReverseString(StartDate);
                     //EndDate= ReverseString(EndDate);
@@ -214,15 +212,15 @@ namespace GAZT.Manager
                     if (StartDate != null)
                     {
                         string trimStartDate = StartDate.Trim();
-                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        string dateStart = FormatAccordingToDeviceForVAT(trimStartDate);
+                        StartDate = dateStart;
 
                     }
                     if (EndDate != null)
                     {
                         string trimEndDate = EndDate.Trim();
-                        DateTime dateEnd = DateTime.ParseExact(trimEndDate, "dd/MM/yyyy", new CultureInfo("en-US"));
-                        EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        string dateEnd = FormatAccordingToDeviceForVAT(trimEndDate);
+                        EndDate = dateEnd;
                     }
                     FullDate = StartDate + " - " + EndDate;
 
@@ -390,7 +388,93 @@ namespace GAZT.Manager
                 return Base64String;
             }
         }
+        public static string FormatAccordingToDevice(string Date)
+        {
+            string dt = string.Empty;
+            string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            string[] dts = Date.Split('/');
 
+            if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
+               sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
+               sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+            {
+                dt = dts[1] + "-" + GetMonthName(dts[0]) + "-" + dts[2];
+            }
+            else
+            {
+                dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
+            }
+
+            return dt;
+
+        }
+        public static string FormatAccordingToDeviceForVAT(string Date)
+        {
+            string dt = string.Empty;
+           
+            string[] dts = Date.Split('/');
+
+          
+            dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
+           
+
+            return dt;
+
+        }
+        public static string GetMonthName(string Month)
+        {
+           
+            if (Month == "01" || Month == "1")
+            {
+                Month = "January";
+            }
+            else if (Month == "02" || Month == "2")
+            {
+                Month = "February";
+            }
+            else if (Month == "03" || Month == "3")
+            {
+                Month = "March";
+            }
+            else if (Month == "04" || Month == "4")
+            {
+                Month = "April";
+            }
+            else if (Month == "05" || Month == "5")
+            {
+                Month = "May";
+            }
+            else if (Month == "06" || Month == "6")
+            {
+                Month = "June";
+            }
+            else if (Month == "07" || Month == "7")
+            {
+                Month = "July";
+            }
+            else if (Month == "08" || Month == "8")
+            {
+                Month = "August";
+            }
+            else if (Month == "09" || Month == "9")
+            {
+                Month = "September";
+            }
+            else if (Month == "10")
+            {
+                Month = "October";
+            }
+            else if (Month == "11")
+            {
+                Month = "November";
+            }
+            else if (Month == "12")
+            {
+                Month = "December";
+            }
+           
+            return Month;
+        }
         #endregion
 
     }
