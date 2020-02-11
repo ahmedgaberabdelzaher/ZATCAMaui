@@ -1688,7 +1688,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+               _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
         public void ManageEnabledProperty(bool value)
@@ -1848,6 +1848,8 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     IsRefundVisible = false;
+                    IsTextBoxVisibleForIban = false;
+                    IsDropdownVisibleForIban = false;
                 }
             }
             
@@ -2468,7 +2470,7 @@ namespace GAZT.ViewModel.NewViewModel
             VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
 
             VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
-            s.pageName = "Instrunction";
+            s.pageName = "Instruction";
             vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
             s1.pageName = "TaxPayer Details";

@@ -42,8 +42,21 @@ namespace GAZT.Views.NewViews
                     viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
                     viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
                     string ReceiptDate;
-                    viewModel.IsSadadNumberVisible = false;
-                    viewModel.IsRefreshButtonVisible = true;
+                    if (viewModel.VATDeclarationData.d.RefundFg == "1")
+                    {
+                        viewModel.IsSadadNumberVisible = false;
+                        viewModel.IsSadadNoteVisible = false;
+                        viewModel.IsRefreshButtonVisible = false;
+                        viewModel.IsButtonVisible = true;
+                    }
+                    else
+                    {
+                        viewModel.IsSadadNumberVisible = false;
+                        viewModel.IsRefreshButtonVisible = true;
+                        viewModel.IsButtonVisible = false;
+                    }
+                    
+
                     if (App.IsArabic)
                     {
                         ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -66,6 +79,13 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void IsCheckedEnable()
+        {
+            if (App.ICRStatus == "E0006")
+            {
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

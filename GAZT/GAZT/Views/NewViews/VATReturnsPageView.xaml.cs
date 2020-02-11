@@ -96,7 +96,7 @@ namespace GAZT.Views.NewViews
 
                 
                 await viewModel.pageLoad();
-                if (App.ICRStatus == "E0045" && App.ICRStatus=="E0006")
+                if (App.ICRStatus == "E0045" || App.ICRStatus=="E0006")
                 {
                     viewModel.ManageEnabledProperty(false);
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
