@@ -35,9 +35,9 @@ namespace GAZT.ViewModel
         //private string _UserName = "3102226709";
 
        // private string _UserName = "3100278126";
-        private string _UserName = string.Empty;
+      //  private string _UserName = string.Empty;
         // private string _UserName = "3101965624";
-      // private string _UserName = "3100018168";
+       private string _UserName = "3100018168";
         //private string _UserName = string.Empty;
         public string UserName
         {
@@ -81,10 +81,10 @@ namespace GAZT.ViewModel
         }
 
 
-      //  private string _Password = "Init@1234";
+       private string _Password = "Init@1234";
 
-     // private string _Password = string.Empty;
-      private string _Password = string.Empty;
+      //private string _Password = string.Empty;
+      //private string _Password = string.Empty;
         public string Password
         {
             get
