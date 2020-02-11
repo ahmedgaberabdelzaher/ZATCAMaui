@@ -123,6 +123,14 @@ namespace GAZT.Manager
                                     {
                                         throw new Exception(Token);
                                     }
+                                    if ((0 == String.Compare(Token, "Wrong entering for the TIN or the Email")))
+                                    {
+                                        throw new Exception(Token);
+                                    }
+                                    if ((0 == String.Compare(Token, "Wrong password")))
+                                    {
+                                        throw new Exception(Token);
+                                    }                                    
                                     if ((0 == String.Compare(Token, "Incomplete")) || (0 == String.Compare(Token, "Deregister - Death")) || (0 == String.Compare(Token, "Deregister - Bankruptcy")) || (0 == String.Compare(Token, "Deregister - Liquidation")) || (0 == String.Compare(Token, "Deregister - Merger")) || (0 == String.Compare(Token, "Deregister - Acquisition")) || (0 == String.Compare(Token, "Suspension - Bankruptcy")) || (0 == String.Compare(Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(Token, "Deregister - Close")) || (0 == String.Compare(Token, "Deregister - Company-Establish")) || (0 == String.Compare(Token, "Suspension - Est. to Company")))
                                     {
                                         throw new Exception("User Deactive");
@@ -176,6 +184,28 @@ namespace GAZT.Manager
                     else if ((0 == String.Compare(Token, "Taxpayer's account is not active with GAZT.")))
                     {
                         throw new Exception(Token);
+                    }
+                    else if ((0 == String.Compare(ex.Message, "Wrong entering for the TIN or the Email")))
+                    {
+                        if (App.IsArabic)
+                        {
+                            throw new Exception("خطأ في إدخال الرقم المميز أو البريد الإلكتروني");
+                        }
+                        else
+                        {
+                            throw new Exception("Wrong entering for the TIN or the Email");
+                        }
+                    }
+                    else if ((0 == String.Compare(ex.Message, "Wrong password")))
+                    {
+                        if (App.IsArabic)
+                        {
+                            throw new Exception("خطأ في كلمة سر");
+                        }
+                        else
+                        {
+                            throw new Exception("Wrong password");
+                        }
                     }
                     else if ((0 == String.Compare(ex.Message, "User Deactive")))
                     {
@@ -1699,6 +1729,7 @@ namespace GAZT.Manager
                     {
                         RequestVATDeclaration = vATDeclaration;
                         RequestVATDeclaration.d.SubmitFg = "X";
+                        
                     }
 
                     VATDeclaration _vATDeclarationD = new VATDeclaration();
@@ -1833,8 +1864,8 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
-        //Seesion expired handled
-        public static async Task<List<IBANIDNumber>> GAZTGetIBANIdNumber(string IBANType)
+      
+        public static List<IBANIDNumber> GAZTGetIBANIdNumber(string IBANType)
         {
             List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
             if (CrossConnectivity.Current.IsConnected)
@@ -1852,7 +1883,7 @@ namespace GAZT.Manager
                     String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=disabled&sap-langauge='" + lang + "'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
 
-                    HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
+                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
                     if (GAZTValidateOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
@@ -1895,8 +1926,79 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //Seesion expired handled
-        //done internet exception handling
+
+
+        public static string GAZTCheckIBAN(string IBAN)
+        {
+            List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
+            String IbanNumber = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+
+                    string lang = UtilityManager.GetLanguageParameter();
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')"+"?saml2=disabled&sap-langauge=" + lang + "&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
+                    if (GAZTValidateOTPResponse != null)
+                    {
+                        HttpHeaders headers = GAZTValidateOTPResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(IBANIdNumber))
+                            {
+                                IBANIdNumber = JObject.Parse(IBANIdNumber)["d"].ToString();
+                                IBANIdNumber = JObject.Parse(IBANIdNumber)["Iban"].ToString();
+
+                                IbanNumber = IBANIdNumber;
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            return null;
+                        }
+                    }
+
+                    return IbanNumber;
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
         public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData(string periodKey, string TxnTp, string status, string FormBundleNumber, string Gpart)
         {
 

@@ -167,8 +167,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private List<CreditCarried> _creditCarriedsList;
-        public List<CreditCarried> CreditCarriedsList
+        private List<Result3> _creditCarriedsList;
+        public List<Result3> CreditCarriedsList
         {
             get
             {
@@ -1673,12 +1673,12 @@ namespace GAZT.ViewModel.NewViewModel
 
         
 
-        public async void SetIBANIdNumber()
+        public  void SetIBANIdNumber()
         {
            
             try
             {
-                List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
+                List<IBANIDNumber> iBANIDNumbersResponse = WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
                 PopToRootPage();
                 if(iBANIDNumbersResponse!=null || iBANIDNumbersResponse.Count()!=0)
                 {
@@ -1688,7 +1688,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+               _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
         public void ManageEnabledProperty(bool value)
@@ -1793,16 +1793,63 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void SummaryClicked()
         {
+            bool value = false;
             ClearPage();
             if(!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
-                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
+              
+                value = IsCheckedDraftMode();
+                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat) && (value || App.ICRStatus== "E0001"))
                 {
                     IsRefundVisible = true;
+                    if (value)
+                    {
+                        if (VATDeclarationData.d.RefundFg == "1")
+                        {
+                            IsDropdownVisibleForIban = true;
+                            if (VATDeclarationData.d.IbanCb == "1")
+                            {
+                                IsTextBoxVisibleForIban = true;
+                                IsDropdownVisibleForIban = false;
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                {
+                                    IbanNumberText = VATDeclarationData.d.Iban;
+                                }
+                            }
+                            else
+                            {
+                                IsTextBoxVisibleForIban = false;
+                                IsDropdownVisibleForIban = true;
+
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                {
+                                    SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
+                                }
+                            }
+                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
+                            {
+                                SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
+                                SetIBANIdNumber();
+                            }
+                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
+                            {
+                                if (IBANIDNumberList != null && IBANIDNumberList.Count != 0)
+                                {
+                                    SelectedIBANIDNumber = IBANIDNumberList.Where(x => x.Idnumber == VATDeclarationData.d.Idnum).FirstOrDefault();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            IsDropdownVisibleForIban = false;
+                        }
+                    }
                 }
                 else
                 {
                     IsRefundVisible = false;
+                    IsTextBoxVisibleForIban = false;
+                    IsDropdownVisibleForIban = false;
                 }
             }
             
@@ -1894,7 +1941,8 @@ namespace GAZT.ViewModel.NewViewModel
                 string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
                                         //   VATDeclarationData.d.StepNumberz = "04";
 
-                VATDeclarationData.d.StepNumber = "00";
+                //VATDeclarationData.d.StepNumber = "00";
+                VATDeclarationData.d.StepNumberz = "04";
                 VATDeclarationData.d.UserTypz = "TP";
                 VATDeclarationData.d.Operationz = operation;
                 IsLoading = false;
@@ -1903,6 +1951,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
                 });
+                ManageEnabledProperty(false);
                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
             }
             else
@@ -2343,7 +2392,7 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
 
-
+            
 
             string FormBundleNumber = VATDeclarationData.d.Fbnum;
             string Gpart = VATDeclarationData.d.Gpart;
@@ -2368,7 +2417,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
-
+            if(VATDeclarationData.d.CFSet.results!=null && VATDeclarationData.d.ADRSet.results.Count!=0)
+            {
+                CreditCarriedsList = VATDeclarationData.d.CFSet.results;
+            }
 
             if (VATDeclarationData.d.ADRSet.results.Count > 0)
             {
@@ -2419,7 +2471,7 @@ namespace GAZT.ViewModel.NewViewModel
             VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
 
             VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
-            s.pageName = "Instrunction";
+            s.pageName = "Instruction";
             vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
             s1.pageName = "TaxPayer Details";
@@ -2548,16 +2600,17 @@ namespace GAZT.ViewModel.NewViewModel
                     if (response != null && response.d != null)
                 {
                     VATDeclarationData = response;
+                    ResponseVATDeclarationD = VATDeclarationData.d;
                     //VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.ReturnIdz, VATDeclarationData.d.Fbnumz, ICRListPageViewModel.EUser,"");
 
-                    //if (_vATDeclaration != null && _vATDeclaration.d != null)
-                    //{
-                    //    VATDeclarationData = _vATDeclaration;
-                    //    ResponseVATDeclarationD = VATDeclarationData.d;
+                        //if (_vATDeclaration != null && _vATDeclaration.d != null)
+                        //{
+                        //    VATDeclarationData = _vATDeclaration;
+                        //    ResponseVATDeclarationD = VATDeclarationData.d;
 
-                    //    SetData();
-                    //}
-                    ManageEnabledProperty(true);
+                        //    SetData();
+                        //}
+                        ManageEnabledProperty(true);
                 }
 
                 await SetButtons(VATDeclarationData);
@@ -2624,7 +2677,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 if (SelectedIBANType != null)
                 {
-                    VATDeclarationData.d.IdType = SelectedIBANType.key;
+                    VATDeclarationData.d.Idtype = SelectedIBANType.key;
                 }
                 if (SelectedIBANIDNumber != null)
                 {

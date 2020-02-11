@@ -112,6 +112,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+
+        private bool _isSadadNoteVisible = true;
+        public bool IsSadadNoteVisible
+        {
+            get
+            {
+                return _isSadadNoteVisible;
+            }
+            set
+            {
+                _isSadadNoteVisible = value;
+                RaisePropertyChanged("IsSadadNoteVisible");
+            }
+        }
+
         private bool _isSadadNumberVisible = false;
         public bool IsSadadNumberVisible
         {
@@ -122,7 +138,27 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isSadadNumberVisible = value;
+                if (_isSadadNumberVisible == true)
+                {
+                    IsSadadNoteVisible = false;
+                }
+
                 RaisePropertyChanged("IsSadadNumberVisible");
+            }
+        }
+
+
+        private bool _isButtonVisible = false;
+        public bool IsButtonVisible
+        {
+            get
+            {
+                return _isButtonVisible;
+            }
+            set
+            {
+                _isButtonVisible = value;
+                RaisePropertyChanged("IsButtonVisible");
             }
         }
 
@@ -178,7 +214,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               
+
                 // Call Sadad number API
             });
 
@@ -186,12 +222,12 @@ namespace GAZT.ViewModel.NewViewModel
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
-               // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
 
-          
+
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
@@ -200,7 +236,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
 
 
-          
+
         }
 
 
@@ -254,7 +290,17 @@ namespace GAZT.ViewModel.NewViewModel
                 AmountPayable = response.d.results[0].Betrh;
                 if (!string.IsNullOrEmpty(SadadNumber))
                 {
-                    IsSadadNumberVisible = true;
+                    IsSadadNoteVisible = false;
+                    if (VATDeclarationData.d.RefundFg == "1")
+                    {
+                        IsSadadNumberVisible = false;
+                    }
+                    else
+                    {
+                        IsSadadNumberVisible = true;
+                    }
+
+                    IsButtonVisible = true;
                     IsRefreshButtonVisible = false;
                 }
             }
@@ -276,4 +322,4 @@ namespace GAZT.ViewModel.NewViewModel
         }
         #endregion
     }
-    }
+}

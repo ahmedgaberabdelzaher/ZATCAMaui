@@ -189,7 +189,7 @@
 
                                 <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="13" local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White" Padding="1" >
                                    
-<Grid BindingContext="{Binding EstimatedZAKATSADADNumber}" Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+ <Grid BindingContext="{Binding EstimatedZAKATSADADNumber}" Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                          <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>

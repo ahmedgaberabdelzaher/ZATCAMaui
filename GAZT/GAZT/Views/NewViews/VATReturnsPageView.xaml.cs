@@ -96,9 +96,10 @@ namespace GAZT.Views.NewViews
 
                 
                 await viewModel.pageLoad();
-                if (App.ICRStatus == "E0045" && App.ICRStatus=="E0006")
+                if (App.ICRStatus == "E0045" || App.ICRStatus=="E0006")
                 {
                     viewModel.ManageEnabledProperty(false);
+                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
                     viewModel.ButtonName = AppResources.ZVatDownloadForm;
                     viewModel.IsMainButtonEnabled = true;
                 }
@@ -297,7 +298,7 @@ namespace GAZT.Views.NewViews
 
             if (current != null)
             {
-                if (current.pageName == "Instrunction")
+                if (current.pageName == "Instruction")
                 {
 
                     viewModel.InstrunctionClicked();
@@ -1481,10 +1482,10 @@ namespace GAZT.Views.NewViews
 
                 if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    //PopUp Pop = new PopUp();
+                    //Pop.IsLinkAvailable = false;
+                    //Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                 }
             }
             catch
@@ -1623,6 +1624,27 @@ namespace GAZT.Views.NewViews
                     ValidationsForVATRefund();
                 }
             }
+        }
+
+        private void Unfocused_IBAN(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                if(response!=null)
+                {
+                    viewModel.IsIBANValid = true;
+                }
+                else
+                {
+                    viewModel.IsIBANValid = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                viewModel.IsIBANValid = false;
+            }
+
         }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
