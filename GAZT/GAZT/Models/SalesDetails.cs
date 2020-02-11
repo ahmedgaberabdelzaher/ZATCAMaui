@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace GAZT.Models
 {
-    public class SalesDetails
+    public class SalesDetails : INotifyPropertyChanged
     {
         public string SalesType { get; set; }
         public string InformationFromPartie { get; set; }
-        public string InformationFromPartieToCompare { get; set; }
+       // public string InformationFromPartieToCompare { get; set; }
         public string EstimateSales { get; set; }
         public string EditImageSource { get; set; } = "";
         public string NewValue { get; set; } = "";
@@ -17,16 +18,35 @@ namespace GAZT.Models
         public string AttchamentNumber { get; set; }
         public string AttchamentName { get; set; }
         public string SelectedEditFieldId { get; set; }
-        public bool  ComingFromAmendEditMode { get; set; } = false;
+        public bool ComingFromAmendEditMode { get; set; } = false;
         public string OldValue { get; set; }
         public bool IsAttachmentRequired { get; set; } = false;
-        public bool IsReasonRequird{ get; set; } = false;
+        public bool IsReasonRequird { get; set; } = false;
         public bool IsOldValueChanged { get; set; } = false;
 
         public ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
-       // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
-        
+        // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+        private string _informationFromPartieToCompare;
+        public string InformationFromPartieToCompare
+        {
+            get
+            {
+                return _informationFromPartieToCompare;
+            }
+            set
+            {
+                _informationFromPartieToCompare = value;
+                OnPropertyRaised("InformationFromPartieToCompare");
+            }
+        }
     }
-
 }

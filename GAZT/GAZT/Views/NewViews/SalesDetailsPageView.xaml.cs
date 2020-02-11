@@ -18,6 +18,7 @@ namespace GAZT.Views.NewViews
         #region Variable
         SalesDetailsPageViewModel viewModel;
         ZakatReturnDetailsD ZakatReturnDetail = null;
+        int selectedIndex = -1;
         #endregion
 
         #region Property
@@ -65,8 +66,9 @@ namespace GAZT.Views.NewViews
                 {
                     
                     SetUpdatedDataToObject();
-                    viewModel.SetUpdatedDataToZAKATEstimated();
-                    viewModel.SetSalesDetailsData();
+                    viewModel.SetUpdatedDataToZAKATEstimated(selectedIndex);
+                   //viewModel.SetChangedDataToTheList();
+                    //viewModel.SetChangedDataToTheList(selectedIndex);
                     //   viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
                 }
             }
@@ -92,6 +94,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[0].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[0].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[0].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 0;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
                 }
@@ -103,6 +106,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[1].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[1].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[1].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 1;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 
@@ -115,6 +119,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[2].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[2].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[2].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 2;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 
@@ -127,6 +132,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[3].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[3].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[3].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 3;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
                 }
@@ -138,6 +144,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[4].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[4].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[4].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 4;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 
@@ -150,6 +157,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[5].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[5].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[5].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 5;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 
@@ -162,6 +170,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[6].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[6].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[6].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 6;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 
@@ -173,6 +182,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[7].IsOldValueChanged = IsOldValueChanged(index);
+                    selectedIndex = 7;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
 

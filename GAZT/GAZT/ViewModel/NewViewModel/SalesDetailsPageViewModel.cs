@@ -27,7 +27,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCloseButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
 
-        public List<SalesDetails> SalesDetailsDataList { get; set; }// To Store the response data to compare the changed object
+        public ObservableCollection<SalesDetails> SalesDetailsDataList { get; set; }// To Store the response data to compare the changed object
         public static string RetGuid;
 
         public ZakatReturnDetails zakatReturnDetailsD { get; set; }
@@ -87,8 +87,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<SalesDetails> _SalesDetailsList;
-        public List<SalesDetails> SalesDetailsList
+        private ObservableCollection<SalesDetails> _SalesDetailsList;
+        public ObservableCollection<SalesDetails> SalesDetailsList
         {
             get
             {
@@ -602,14 +602,14 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        public void SetUpdatedDataToZAKATEstimated()
+        public void SetUpdatedDataToZAKATEstimated(int selectedIndex)
         {
             try
             {
 
-                for (int i = 0; i < SalesDetailsList.Count; i++)
-                {
-                    if (SalesDetailsList[i].SelectedEditFieldId.Equals("1")) 
+                //for (int i = 0; i < SalesDetailsList.Count; i++)
+                //{
+                    if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("1")) 
                     {
                         zakatReturnDetailsD.d.TvtslI = string.IsNullOrEmpty(SalesDetailsList[0].NewValue) ? "0.00" : SalesDetailsList[0].NewValue;
                         zakatReturnDetailsD.d.TvtslResn = SalesDetailsList[0].ChangeReason;
@@ -620,7 +620,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("2"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("2"))
                     {
                         zakatReturnDetailsD.d.LabnoI = string.IsNullOrEmpty(SalesDetailsList[1].NewValue) ? "0.00" : SalesDetailsList[1].NewValue;
                         zakatReturnDetailsD.d.LabnoResn = SalesDetailsList[1].ChangeReason;
@@ -632,7 +632,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[1].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("3"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("3"))
                     {
                         zakatReturnDetailsD.d.ImpvalI = string.IsNullOrEmpty(SalesDetailsList[2].NewValue) ? "0.00" : SalesDetailsList[2].NewValue;
                         zakatReturnDetailsD.d.ImpvalResn = SalesDetailsList[2].ChangeReason;
@@ -642,7 +642,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[2].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("4"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("4"))
                     {
                         zakatReturnDetailsD.d.PtoslI = string.IsNullOrEmpty(SalesDetailsList[3].NewValue) ? "0.00" : SalesDetailsList[3].NewValue;
                         zakatReturnDetailsD.d.PtoslResn = SalesDetailsList[3].ChangeReason;
@@ -652,7 +652,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[3].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("5"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("5"))
                     {
                         zakatReturnDetailsD.d.EtimadI = string.IsNullOrEmpty(SalesDetailsList[4].NewValue) ? "0.00" : SalesDetailsList[4].NewValue;
                         zakatReturnDetailsD.d.EtimadResn = SalesDetailsList[4].ChangeReason;
@@ -662,7 +662,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[4].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("6"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("6"))
                     {
                         zakatReturnDetailsD.d.ExamtI = string.IsNullOrEmpty(SalesDetailsList[5].NewValue) ? "0.00" : SalesDetailsList[5].NewValue;
                         zakatReturnDetailsD.d.ExamtResn = SalesDetailsList[5].ChangeReason;
@@ -673,7 +673,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[5].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("7"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("7"))
                     {
                         zakatReturnDetailsD.d.PramtI = string.IsNullOrEmpty(SalesDetailsList[6].NewValue) ? "0.00" : SalesDetailsList[6].NewValue;
                         zakatReturnDetailsD.d.PramtResn = SalesDetailsList[6].ChangeReason;
@@ -684,7 +684,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[6].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("8"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("8"))
                     {
                         zakatReturnDetailsD.d.Cpamt = string.IsNullOrEmpty(SalesDetailsList[7].NewValue) ? "0.00" : SalesDetailsList[7].NewValue;
                         zakatReturnDetailsD.d.CpamtResn = SalesDetailsList[7].ChangeReason;
@@ -695,7 +695,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[7].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                }
+               // }
 
 
 
@@ -718,7 +718,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         private void ShowEditIcon()
         {
-            List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+            ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
             {
                 foreach (SalesDetails salesDetails in SalesDetailsList)
@@ -732,7 +732,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void HideEditIcon()
         {
-            List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+            ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
             {
                 foreach (SalesDetails salesDetails in SalesDetailsList)
@@ -803,7 +803,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+                ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
                 bool IsPreviousValueChanged = false;
                 for (int i = 0; i < SalesDetailsList.Count; i++)
                 {
@@ -999,9 +999,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void SetSalesDetailsData()
         {
-            SalesDetailsList = new List<SalesDetails>();
+            SalesDetailsList = new ObservableCollection<SalesDetails>();
 
-            List<SalesDetails> SalesDetailsDummyList = new List<SalesDetails>();
+            ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
 
             SalesDetails salesDetails1 = new SalesDetails();
             salesDetails1.SalesType = "Total VAT Sales";
@@ -1064,8 +1064,17 @@ namespace GAZT.ViewModel.NewViewModel
 
             SalesDetailsList = SalesDetailsDummyList;
             SalesDetailsDataList = SalesDetailsDummyList;
-
         }
+
+        //public void SetChangedDataToTheList()
+        //{
+        //    ObservableCollection<SalesDetails> salesDetailsList = new ObservableCollection<SalesDetails>();
+        //    for (int i = 0; i < SalesDetailsList.Count; i++)
+        //    {
+        //        salesDetailsList.Add(SalesDetailsList[i]);
+        //    }
+        //    SalesDetailsList = salesDetailsList;
+        //}
         #endregion
     }
 }
