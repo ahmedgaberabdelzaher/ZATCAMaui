@@ -34,7 +34,7 @@ namespace GAZT.Views.NewViews
             SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
             SetLTR();
             this.BindingContext = viewModel;
-            viewModel.InvoicePopUpVisibility = false;
+            viewModel.HideInvoicePopUp();
             viewModel.onPageLoad();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {

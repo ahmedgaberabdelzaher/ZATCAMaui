@@ -280,12 +280,24 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
+
                         for (int i = 0; i < myZakatReturnsList.Count; i++)
                         {
-                            if (selectedICR.Key.Equals(myZakatReturnsList[i].Statfg))
+                            if(string.IsNullOrEmpty(myZakatReturnsList[i].Statfg))
                             {
-                                FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                if (selectedICR.Key.Equals(myZakatReturnsList[i].Stat))
+                                {
+                                    FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                }
                             }
+                            else
+                            {
+                                if (selectedICR.Key.Equals(myZakatReturnsList[i].Statfg))
+                                {
+                                    FilteredCRStatusList.Add(myZakatReturnsList[i]);
+                                }
+                            }
+                            
                         }
                         MyZakatReturns = FilteredCRStatusList;
                     }
@@ -304,28 +316,60 @@ namespace GAZT.ViewModel.NewViewModel
             myZakatReturnsListTemp = estimatedZakatReturnsList.d.listSet.results;
             for (int i= 0; i< myZakatReturnsListTemp.Count; i++)
             {
+                if(string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
+                {
+                    if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                    {
 
-                if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                        myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                        myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#c49b2d";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_loading.png";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                    }
+                }
+                else
                 {
+                    if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                    {
 
-                    myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
-                    myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                        myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#c49b2d";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_loading.png";
+                    }
+                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                    {
+                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                    }
                 }
-                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                {
-                    myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                    myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                }
-                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                {
-                    myZakatReturnsListTemp[i].BorderColour = "#c49b2d";
-                    myZakatReturnsListTemp[i].StatusImage = "ic_loading.png";
-                }
-                else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                {
-                    myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                    myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                }
+               
 
                 myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
             }
