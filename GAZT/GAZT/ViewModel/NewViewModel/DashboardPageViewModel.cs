@@ -461,12 +461,14 @@ namespace GAZT.ViewModel
                             {
                                 if (BegDate != null)
                                 {
-                                    StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    DateTime dateStart = DateTime.ParseExact(BegDate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
+                                    StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                     StartDate = UtilityManager.ToArabicDate(StartDate);
                                 }
                                 if (endDate != null)
                                 {
-                                    EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    DateTime dateEnd = DateTime.ParseExact(endDate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
+                                    EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                     EndDate = UtilityManager.ToArabicDate(EndDate);
                                 }
                             }
@@ -475,13 +477,13 @@ namespace GAZT.ViewModel
 
                                 if (BegDate != null)
                                 {
-                                    StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                                    DateTime dateStart = DateTime.ParseExact(BegDate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
+                                    StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 }
                                 if (endDate != null)
                                 {
-                                    EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                                    DateTime dateEnd = DateTime.ParseExact(endDate.ToString(), "dd/MM/yyyy", new CultureInfo("en-US"));
+                                    EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 }
                             }
 

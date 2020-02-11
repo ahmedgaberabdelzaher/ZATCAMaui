@@ -193,14 +193,16 @@ namespace GAZT.Manager
                     if (StartDate != null)
                     {
                         string trimStartDate = StartDate.Trim();
-                        string dateStart = Convert.ToDateTime(trimStartDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        StartDate = ToArabicDate(dateStart);
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        StartDate = ToArabicDate(StartDate);
                     }
                     if (EndDate != null)
                     {
                         string trimEndDate = EndDate.Trim();
-                        string dateEnd = Convert.ToDateTime(trimEndDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        EndDate = ToArabicDate(dateEnd);
+                        DateTime dateEnd = DateTime.ParseExact(trimEndDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        EndDate = dateEnd.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        EndDate = ToArabicDate(EndDate);
                     }
                     //StartDate = ReverseString(StartDate);
                     //EndDate= ReverseString(EndDate);
