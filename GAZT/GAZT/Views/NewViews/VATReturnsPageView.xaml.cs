@@ -298,7 +298,7 @@ namespace GAZT.Views.NewViews
 
             if (current != null)
             {
-                if (current.pageName == "Instrunction")
+                if (current.pageName == "Instruction")
                 {
 
                     viewModel.InstrunctionClicked();

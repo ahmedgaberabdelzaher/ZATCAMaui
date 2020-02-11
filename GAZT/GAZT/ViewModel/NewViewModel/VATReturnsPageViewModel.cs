@@ -1941,7 +1941,8 @@ namespace GAZT.ViewModel.NewViewModel
                 string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
                                         //   VATDeclarationData.d.StepNumberz = "04";
 
-                VATDeclarationData.d.StepNumber = "00";
+                //VATDeclarationData.d.StepNumber = "00";
+                VATDeclarationData.d.StepNumberz = "04";
                 VATDeclarationData.d.UserTypz = "TP";
                 VATDeclarationData.d.Operationz = operation;
                 IsLoading = false;

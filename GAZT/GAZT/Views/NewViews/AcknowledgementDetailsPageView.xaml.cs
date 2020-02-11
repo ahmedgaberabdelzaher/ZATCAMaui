@@ -42,6 +42,9 @@ namespace GAZT.Views.NewViews
                     viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
                     viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
                     string ReceiptDate;
+                    viewModel.IsSadadNumberVisible = false;
+                    viewModel.IsRefreshButtonVisible = true;
+                    viewModel.IsButtonVisible = false;
                     if (viewModel.VATDeclarationData.d.RefundFg == "1")
                     {
                         viewModel.IsSadadNumberVisible = false;
@@ -49,12 +52,9 @@ namespace GAZT.Views.NewViews
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
                     }
-                    else
-                    {
-                        viewModel.IsSadadNumberVisible = false;
-                        viewModel.IsRefreshButtonVisible = true;
-                        viewModel.IsButtonVisible = false;
-                    }
+                    
+                        
+                   
                     
 
                     if (App.IsArabic)
