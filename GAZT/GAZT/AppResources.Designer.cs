@@ -3428,7 +3428,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the prefered IBAN from the avaiLabel list.
+        ///   Looks up a localized string similar to Select the prefered IBAN from the available list.
         /// </summary>
         public static string ZVatRefundInformationSelectIBAN {
             get {

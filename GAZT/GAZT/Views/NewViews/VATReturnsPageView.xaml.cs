@@ -52,6 +52,9 @@ namespace GAZT.Views.NewViews
                 viewModel.VATDeclarationData = _vATDeclarationInfo;
             }
             viewModel.IsFirstTimeGet = true;
+            AddNotePageViewModel.NoteString = string.Empty;
+            viewModel.IsRefundVisible = false;
+            viewModel.IsVisibleDropdownForRefund = false;
             setAllCheckbox(false);
             Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
             {
@@ -232,7 +235,7 @@ namespace GAZT.Views.NewViews
             objNote.Tdline = AddNotePageViewModel.NoteString;
             viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
             AddNotePageViewModel.IsComingFromNotePage = false;
-            AddNotePageViewModel.NoteString = string.Empty;
+            //AddNotePageViewModel.NoteString = string.Empty;
         }
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
@@ -1646,6 +1649,8 @@ namespace GAZT.Views.NewViews
             }
 
         }
+
+        
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{

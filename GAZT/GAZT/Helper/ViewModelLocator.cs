@@ -57,6 +57,7 @@ namespace GAZT
             SimpleIoc.Default.Register<AttachmentPageViewModel>();
             SimpleIoc.Default.Register<AddNotePageViewModel>();
             SimpleIoc.Default.Register<AddPopPageViewModel>();
+            SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
 
 
 
@@ -658,6 +659,21 @@ namespace GAZT
             }
         }
 
+        public CreditCarriedPageViewModel CreditCarriedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CreditCarriedPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         public AddPopPageViewModel AddPopPageView
         {
             get
@@ -721,6 +737,7 @@ namespace GAZT
             navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
             navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
+            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
 
 
 

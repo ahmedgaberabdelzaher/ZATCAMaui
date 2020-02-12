@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local1="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             mc:Ignorable="d"
+             x:Class="GAZT.Views.NewViews.CreditCarriedPageView">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Frame Style="{StaticResource GAZTFrameStyleEntryForLableBackground}" HorizontalOptions="Start" VerticalOptions="StartAndExpand"  >
+                <Label Text="{x:Static local:AppResources.ZVatcreditcarriedforward}" HorizontalTextAlignment="Start" FontSize="Caption"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
+                </Label>
+            </Frame>
+       
+        <StackLayout Margin="10,10,10,0"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Grid.ColumnSpan="8">
+            <ListView  x:Name="NewCreditCarriedList" 
+           ItemsSource="{Binding CreditCarriedsList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                      IsVisible="{Binding IsListViewVisible}" 
+            SeparatorVisibility="None"
+            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView>
+                                <Frame OutlineColor="#C9C9C9"
+                                               
+                                       Margin="0,0,0,10"
+                                       Padding="0,0,0,0"
+                                       CornerRadius="0"
+                                       
+                               >
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                        <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="45*" />
+                                                <ColumnDefinition Width="44*" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+
+                                            </Grid.RowDefinitions>
+
+                                            <Label Text="{x:Static local:AppResources.ZVatSerialNumber}" Margin="8,0,8,-5" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+
+                                            <Label Text="{Binding LineNo}" 
+                                                  
+                                 Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="2" 
+                                   Grid.ColumnSpan="4"/>
+
+                                            <Label Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           Margin="8,0,8,-5"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+
+                                            <Label Text="{Binding Fbnum}" 
+                                                  
+                                  Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="2"
+                                   Grid.ColumnSpan="4"/>
+
+                                            <Label Text="{x:Static local:AppResources.ZVatDocumentNumber}" Margin="8,0,8,-5" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1"/>
+
+                                            <Label Text="{Binding DocNo}" 
+                                                  
+                                  Margin="-7,0,-7,-5" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="2"
+                                   Grid.ColumnSpan="4"/>
+
+                                            <Label Text="{x:Static local:AppResources.ZAmount}" Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="1"/>
+
+                                            <Label Text="{Binding CreditAmt}" 
+                                                  
+                                  Margin="-7,0,-7,0"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="2" 
+                                   Grid.ColumnSpan="4"/>
+
+
+
+                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                <local1:CustomLabel Text="{x:Static local:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                </local1:CustomLabel>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

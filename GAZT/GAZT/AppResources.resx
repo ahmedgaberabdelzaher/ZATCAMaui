@@ -1617,7 +1617,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Your return form information indicate that you are in a credit position, your credit amount will be carried forward for next filing.</value>
   </data>
   <data name="ZVatRefundInformationSelectIBAN" xml:space="preserve">
-    <value>Select the prefered IBAN from the avaiLabel list</value>
+    <value>Select the prefered IBAN from the available list</value>
   </data>
   <data name="ZVatRefundInformationSelectIBANID" xml:space="preserve">
     <value>Please select the IBAN ID Type linked to the selected IBAN</value>

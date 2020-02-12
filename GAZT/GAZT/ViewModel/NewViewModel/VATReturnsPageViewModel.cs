@@ -1240,10 +1240,57 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iBANList = value;
-               
+               if(_iBANList!=null && _iBANList.Count!=0)
+                {
+                    if(App.ICRStatus =="E0045" || App.ICRStatus == "E0006")
+                    {
+                        IsEnableIBAN = false;
+                    }
+                    else
+                    {
+                        IsEnableIBAN = true;
+                    }
+                }
+               else
+                {
+                    IsEnableIBAN = false;
+                }
                 RaisePropertyChanged("IBANList");
             }
         }
+
+        
+
+        private bool _isEnableIBAN;
+        public bool IsEnableIBAN
+        {
+            get
+            {
+                return _isEnableIBAN;
+            }
+            set
+            {
+                _isEnableIBAN = value;
+
+                RaisePropertyChanged("IsEnableIBAN");
+            }
+        }
+
+
+        private bool _isEnableIBANType;
+        public bool IsEnableIBANType
+        {
+            get
+            {
+                return _isEnableIBANType;
+            }
+            set
+            {
+                _isEnableIBANType = value;
+                RaisePropertyChanged("IsEnableIBANType");
+            }
+        }
+
 
         private bool _isVATRefunCheckedVisible;
         public bool IsVATRefunCheckedVisible
@@ -1359,6 +1406,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isEnableIBANIdNumber;
+        public bool IsEnableIBANIdNumber
+        {
+            get
+            {
+                return _isEnableIBANIdNumber;
+            }
+            set
+            {
+                _isEnableIBANIdNumber = value;
+
+                RaisePropertyChanged("IsEnableIBANIdNumber");
+            }
+        }
+
 
         private List<IBANType> _iBANTypesList;
         public List<IBANType> IBANTypesList
@@ -1370,7 +1432,21 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iBANTypesList = value;
-
+                if(_iBANTypesList !=null && _iBANTypesList.Count!=0)
+                {
+                    if(App.ICRStatus=="E0045" || App.ICRStatus=="E0006")
+                    {
+                        IsEnableIBANType = false;
+                    }
+                    else
+                    {
+                        IsEnableIBANType = true;
+                    }
+                }
+                else
+                {
+                    IsEnableIBANType = false;
+                }
                 RaisePropertyChanged("IBANTypesList");
             }
         }
@@ -1407,7 +1483,21 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iBANIDNumberList = value;
-
+                if(_iBANIDNumberList!= null && _iBANIDNumberList.Count()!=0)
+                {
+                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                    {
+                        IsEnableIBANIdNumber = false;
+                    }
+                    else
+                    {
+                        IsEnableIBANIdNumber = true;
+                    }
+                }
+                else
+                {
+                    IsEnableIBANIdNumber = false;
+                }
                 RaisePropertyChanged("IBANIDNumberList");
             }
         }
@@ -1443,6 +1533,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isSwichButtonEnableToTap = true;
+        public bool IsSwichButtonEnableToTap
+        {
+            get
+            {
+                return _isSwichButtonEnableToTap;
+            }
+            set
+            {
+                _isSwichButtonEnableToTap = value;
+
+                RaisePropertyChanged("IsSwichButtonEnableToTap");
+            }
+        }
 
 
 
@@ -1618,7 +1722,8 @@ namespace GAZT.ViewModel.NewViewModel
 
             onCreditCarriedForwardClicked = new Xamarin.Forms.Command(async () =>
             {
-                CreditCarriedClicked();
+                _navigationService.NavigateTo(App.CreditCarriedPageView,VATDeclarationData);
+             //   CreditCarriedClicked();
             });
 
             onOptionClicked = new Xamarin.Forms.Command(async () =>
@@ -1781,8 +1886,8 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
               
-                IsCheckedTaxPayerDetailsInfo = false;
-                IsMainButtonEnabled = false;
+               // IsCheckedTaxPayerDetailsInfo = false;
+               // IsMainButtonEnabled = false;
             }
         }
         public void VATReturnFormClicked()
@@ -1799,14 +1904,17 @@ namespace GAZT.ViewModel.NewViewModel
             {
               
                 value = IsCheckedDraftMode();
-                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat) && (value || App.ICRStatus== "E0001"))
+                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat) || (value || App.ICRStatus== "E0001"))
                 {
                     IsRefundVisible = true;
-                    if (value)
+                    if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                     {
                         if (VATDeclarationData.d.RefundFg == "1")
                         {
-                            IsDropdownVisibleForIban = true;
+                            IsSwichButtonEnableToTap = true;
+                            IsSwichButtonEnable = true;
+                            IsVisibleDropdownForRefund = true;
+                          //  IsDropdownVisibleForIban = true;
                             if (VATDeclarationData.d.IbanCb == "1")
                             {
                                 IsTextBoxVisibleForIban = true;
@@ -1841,15 +1949,20 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else
                         {
+                            IsSwichButtonEnableToTap = true;
+                            IsSwichButtonEnable = false;
                             IsDropdownVisibleForIban = false;
+                            IsVisibleDropdownForRefund = false;
                         }
                     }
                 }
                 else
                 {
+
                     IsRefundVisible = false;
                     IsTextBoxVisibleForIban = false;
                     IsDropdownVisibleForIban = false;
+                    IsVisibleDropdownForRefund = false;
                 }
             }
             

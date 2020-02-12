@@ -37,10 +37,10 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
 
-                    if (App.ICRStatus == "E0001")
-                    {
-                        viewModel.NoteText = string.Empty;
-                    }
+                    //if (App.ICRStatus == "E0001")
+                    //{
+                    //    viewModel.NoteText = string.Empty;
+                    //}
 
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                     {
