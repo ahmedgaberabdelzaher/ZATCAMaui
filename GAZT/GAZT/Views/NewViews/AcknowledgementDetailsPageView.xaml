@@ -8,7 +8,18 @@
               xmlns:custom="clr-namespace:GAZT"
              >
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"  Margin="0,0,0,0"  >
+        <Grid  x:Name="ParentGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+            <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"  Margin="0,0,0,0"  >
+            
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                     <Grid.RowDefinitions>
@@ -81,6 +92,13 @@
                 </Grid>
             </ScrollView>
         </StackLayout>
-
+            <StackLayout Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
+                <Image Source="ic_home.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnHomeClick}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
