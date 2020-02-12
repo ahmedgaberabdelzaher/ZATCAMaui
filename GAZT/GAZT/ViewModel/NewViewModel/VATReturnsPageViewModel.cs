@@ -2802,10 +2802,10 @@ namespace GAZT.ViewModel.NewViewModel
         public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
         {
             string VATAmount = string.Empty;
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            if (!Amount.Contains("-") && !Adjustment.Contains("-"))
             {
-                Double dAmount = Convert.ToDouble(Amount);
-                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                 Double dVATRate = Convert.ToDouble(VATRate002);
 
                 VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
@@ -2816,9 +2816,9 @@ namespace GAZT.ViewModel.NewViewModel
         public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
             String TotalAmount = string.Empty;
-            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3) && !String.IsNullOrEmpty(Amount4) && !String.IsNullOrEmpty(Amount5) && !Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
+            if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
             {
-                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3) + Convert.ToDouble(Amount4) + Convert.ToDouble(Amount5)).ToString();
+                TotalAmount = ((String.IsNullOrEmpty(Amount1) ? 0 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0: Convert.ToDouble(Amount5))).ToString();
             }
             return TotalAmount;
         }
@@ -2826,9 +2826,9 @@ namespace GAZT.ViewModel.NewViewModel
         public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
         {
             String TotalAmount = string.Empty;
-            if (!String.IsNullOrEmpty(Adjustment1) && !String.IsNullOrEmpty(Adjustment2) && !String.IsNullOrEmpty(Adjustment3) && !String.IsNullOrEmpty(Adjustment4) && !String.IsNullOrEmpty(Adjustment5) && !Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
+            if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
             {
-                TotalAmount = (Convert.ToDouble(Adjustment1) + Convert.ToDouble(Adjustment2) + Convert.ToDouble(Adjustment3) + Convert.ToDouble(Adjustment4) + Convert.ToDouble(Adjustment5)).ToString();
+                TotalAmount = ((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) +(String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5))).ToString();
             }
             return TotalAmount;
         }
@@ -2860,10 +2860,10 @@ namespace GAZT.ViewModel.NewViewModel
         public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
         {
             string VATAmount = string.Empty;
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            if (!Amount.Contains("-") && !Adjustment.Contains("-"))
             {
-                Double dAmount = Convert.ToDouble(Amount);
-                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 :Convert.ToDouble(Adjustment);
                 Double dVATRate = Convert.ToDouble(VATRate002);
 
                 VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
@@ -2875,10 +2875,10 @@ namespace GAZT.ViewModel.NewViewModel
         public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
         {
             string VATAmount = string.Empty;
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            if (!Amount.Contains("-") && !Adjustment.Contains("-"))
             {
-                Double dAmount = Convert.ToDouble(Amount);
-                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                 Double dVATRate001 = Convert.ToDouble(VATRate001);
                 Double dVATRate002 = Convert.ToDouble(VATRate002);
 
@@ -2890,10 +2890,10 @@ namespace GAZT.ViewModel.NewViewModel
         public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
         {
             string VATAmount = string.Empty;
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !Amount.Contains("-") && !Adjustment.Contains("-"))
+            if (!Amount.Contains("-") && !Adjustment.Contains("-"))
             {
-                Double dAmount = Convert.ToDouble(Amount);
-                Double dAdjustment = Convert.ToDouble(Adjustment);
+                Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                 Double dVATRate = Convert.ToDouble(VATRate002);
 
                 VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
@@ -2907,14 +2907,13 @@ namespace GAZT.ViewModel.NewViewModel
             string NetVatDue = string.Empty;
             try
             {
-                if (!string.IsNullOrEmpty(CurrentPeriod) && !string.IsNullOrEmpty(PreviousPeriod) && !string.IsNullOrEmpty(ForwardFromPreviousPeriod))
-                {
-                    Double dCurrentPeriod = Convert.ToDouble(CurrentPeriod);
-                    Double dPreviousPeriod = Convert.ToDouble(PreviousPeriod);
-                    Double dForwardFromPreviousPeriod = Convert.ToDouble(ForwardFromPreviousPeriod);
+              
+                    Double dCurrentPeriod = string.IsNullOrEmpty(CurrentPeriod) ? 0 : Convert.ToDouble(CurrentPeriod);
+                    Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
+                    Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
 
                     NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
-                }
+                
             }
             catch
             {

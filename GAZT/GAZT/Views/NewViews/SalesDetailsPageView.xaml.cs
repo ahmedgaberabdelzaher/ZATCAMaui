@@ -264,6 +264,23 @@ namespace GAZT.Views.NewViews
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
+        private void OnEstmatedSalesInfoMessageClicked(object sender, EventArgs e)
+        {
+//            string informationMessage = "TP estimated sales are calculated based on:
+//- VAT Sales if the TP has sales in his VAT returns.
+//- If TP has no VAT sales, system take the greater value of the following:
+// The average number of labor x 6000 SAR
+// The value of imports x 115 %
+// The sum of(sales through points of sale + contracts in ETIMAD platform + the value of exports)
+// The value of purchases based on the VAT returns x 115 % ";
+            PopUp popUp = new PopUp();
+            popUp.Message = "";// informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
+            popUp.IsLinkAvailable = false;
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        
+
         private bool IsOldValueChanged(int index)
         {
             if(viewModel.SalesDetailsList[index].InformationFromPartie.Equals(viewModel.SalesDetailsDataList[index].InformationFromPartieToCompare))

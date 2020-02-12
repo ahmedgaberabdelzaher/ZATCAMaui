@@ -463,6 +463,7 @@ namespace GAZT.ViewModel
                                     if (BegDate != null)
                                     {
                                         StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                       
                                         StartDate = UtilityManager.ToArabicDate(StartDate);
                                     }
                                     if (endDate != null)

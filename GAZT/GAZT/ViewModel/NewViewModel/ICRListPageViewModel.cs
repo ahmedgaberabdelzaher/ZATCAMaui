@@ -183,7 +183,7 @@ namespace GAZT.ViewModel.NewViewModel
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                            if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                        if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
@@ -380,7 +380,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
         public void PopToRootPage()
-        {
+         {
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(async () =>
