@@ -576,11 +576,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
-                                Device.BeginInvokeOnMainThread(async () => {
-                                    _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
-
-                                });
-                                // ShowConfirmButton();
+                              ShowConfirmButton();
 
                             }
                         else

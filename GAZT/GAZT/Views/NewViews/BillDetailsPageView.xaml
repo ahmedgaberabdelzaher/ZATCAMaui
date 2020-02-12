@@ -132,9 +132,9 @@
                                 </Label.FormattedText>-->
 
                     </Label>
-                     <Label Text="25% of the Disputed Amount disputed Amount" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                     <Label Text="25% of the Disputed Amount" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <Label Text="{Binding Sdisamt}" Grid.Row="11" Grid.Column="2"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <Label Text="{Binding Sdisamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
 
                     <Label Text="Total Amount" Grid.Row="12" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>

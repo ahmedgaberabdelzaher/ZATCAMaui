@@ -169,13 +169,13 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <ContentView>
-                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="50">
 
                                                         <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
                                                             <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="White">
 
-                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="0">
+                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="8*" />
                                                                         <ColumnDefinition Width="52*" />
@@ -184,10 +184,6 @@
                                                                         <ColumnDefinition Width="15*" />
                                                                     </Grid.ColumnDefinitions>
                                                                     <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
                                                                         <RowDefinition Height="Auto" />
 
                                                                     </Grid.RowDefinitions>
@@ -207,11 +203,13 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
+                                                                           LineBreakMode="CharacterWrap"
                                    Grid.Row="0"
-                                   Grid.Column="1" 
+                                   Grid.Column="0"
+                                                                           Grid.ColumnSpan="4"
                                    />
 
-                                                                    <Label  
+                                                                    <!--<Label  
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -224,13 +222,13 @@
                                                                                 <Span Text="MB"/>
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
-                                                                    </Label>
+                                                                    </Label>-->
 
                                                                     <!--<Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
 
                                                                     </Image>-->
 
-                                                                    <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                                    <Image Grid.Row="0"  Grid.Column="4" Aspect="AspectFit"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="ic_delete.png"  >
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer
                 Tapped="OnDeleteAttachmentClickedTapped"
