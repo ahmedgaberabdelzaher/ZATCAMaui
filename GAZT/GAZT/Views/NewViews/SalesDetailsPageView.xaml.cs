@@ -29,15 +29,27 @@ namespace GAZT.Views.NewViews
         public SalesDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
         {
             InitializeComponent();
-            viewModel = App.Locator.SalesDetailsPageView;
-            viewModel.zakatReturnDetailsD = ZakatReturnDetail;
-            viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
-            SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
-            SetLTR();
+            try
+            {
+                viewModel = App.Locator.SalesDetailsPageView;
+                viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+                viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
+                SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
+                //viewModel.EstimatedZAKATSADADNumber.ObjectionInvoiceVisibility = false;
+                //viewModel.EstimatedZAKATSADADNumber.AmendInvoiceVisibility = false;
+                SetLTR();
+                viewModel.onPageLoad();
+                viewModel.ClearData();
+                viewModel.ZakatReturnDetail = ZakatReturnDetail;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
             this.BindingContext = viewModel;
-            viewModel.HideInvoicePopUp();
-            viewModel.onPageLoad();
-            viewModel.ZakatReturnDetail = ZakatReturnDetail;
+          //  viewModel.HideInvoicePopUp();
+           
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
@@ -202,11 +214,11 @@ namespace GAZT.Views.NewViews
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
 
-        protected async void OnRefreshButtonClicked(Object sender, EventArgs e)
-        {
-            //  viewModel.CheckBoxStatus = checkBox.IsChecked;
-            await viewModel.GetSADADNumber();
-        }
+        //protected async void OnRefreshButtonClicked(Object sender, EventArgs e)
+        //{
+        //    //  viewModel.CheckBoxStatus = checkBox.IsChecked;
+        //   // await viewModel.GetSADADNumber();
+        //}
 
         protected async void OnCloseButtonClicked(Object sender, EventArgs e)
          {
@@ -220,7 +232,9 @@ namespace GAZT.Views.NewViews
             //viewModel._navigationService.GoBack();
         }
 
-        
+       
+
+
         protected async void OnConfirmButtonClicked(Object sender, EventArgs e)
         {
             if(viewModel.IsCurrentZAKATTaxLess)

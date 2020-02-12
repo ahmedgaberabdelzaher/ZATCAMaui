@@ -31,12 +31,46 @@ namespace GAZT.Views.NewViews
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
+            ToolbarItem Refresh = new ToolbarItem
+            {
+                Icon = "ic_refresh.png",
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(async() =>
+                {
+                   await OnRefreshButtonClicked();
+                   // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(Refresh);
 
-          
+            ToolbarItem Download = new ToolbarItem
+            {
+                Icon = "ic_download.png",
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(() =>
+                {
+                    OnDownLoadInvoiceClicked();
+                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(Download);
+
         }
         #endregion
 
         #region Method
+        protected async Task OnRefreshButtonClicked()
+        {
+           await viewModel.OnPageLoad();
+        }
+
+        protected async void OnDownLoadInvoiceClicked()
+        {
+            //await viewModel.OnPageLoad();
+        }
+        
         private void SetLTR()
         {
             if (!App.IsArabic)

@@ -350,8 +350,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-
+       
 
         #endregion
 
@@ -568,17 +567,18 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            Device.BeginInvokeOnMainThread(async () => {
-                                await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
-                            });
+                            await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
+                            _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
-                    }
-                    if (PostOperation.Equals("05"))
+
+                        }
+                        if (PostOperation.Equals("05"))
                     {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
-                            ShowConfirmButton();
-                        }
+                              ShowConfirmButton();
+
+                            }
                         else
                         {
                             SetChangedValueToUploadAttachment();
@@ -602,11 +602,15 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
 
-                        await Task.Run(async() =>
-                        {
-                            await GetSADADNumber();
-                           // ShowInvoicePopUp(PostOperation);
-                        }); 
+                        //await Task.Run(async() =>
+                        //{
+                        //    await GetSADADNumber();
+                        //    // ShowInvoicePopUp(PostOperation);
+                        //    Device.BeginInvokeOnMainThread(async () => {
+                        //        _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+
+                        //    });
+                        //}); 
                     }
 
                 }
@@ -921,48 +925,48 @@ namespace GAZT.ViewModel.NewViewModel
             
         //}
 
-        public async Task GetSADADNumber()
-        {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            await Task.Run(async() =>
-            {
-                try
-                {
-                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
-                   // PopToRootPage();
-                    if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
-                    {
-                        // RefreshiButtonDisability = false;
-                        RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
-                        EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                        if(Convert.ToDouble(EstimatedZAKATSADADNumber.Undisamt) > 0)
-                        {
-                            ShowObjectionInvoicePopUp();
-                        }
-                        else
-                        {
-                            ShowAmendInvoicePopUp();
-                        }
-                        HideAllButton();
-                        UncheckDisclaimer();
-                    }
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
-        }
+        //public async Task GetSADADNumber()
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = true;
+        //    });
+        //    await Task.Run(async() =>
+        //    {
+        //        try
+        //        {
+        //            EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
+        //           // PopToRootPage();
+        //            if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+        //            {
+        //                // RefreshiButtonDisability = false;
+        //                RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
+        //                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+        //                //if(Convert.ToDouble(EstimatedZAKATSADADNumber.Undisamt) > 0)
+        //                //{
+                           
+        //                //}
+        //                //else
+        //                //{
+        //                //    ShowAmendInvoicePopUp();
+        //                //}
+        //                HideAllButton();
+        //                UncheckDisclaimer();
+        //            }
+        //        }
+        //        catch (InternetException ex)
+        //        {
+        //            Device.BeginInvokeOnMainThread(async () =>
+        //            {
+        //                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //            });
+        //        }
+        //    });
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = false;
+        //    });
+        //}
 
         private void UncheckDisclaimer()
         {
@@ -1009,7 +1013,7 @@ namespace GAZT.ViewModel.NewViewModel
                     ObjectionInvoicePopUpVisibility = true;
         }
 
-
+       
         public void HideInvoicePopUp()
         {
             InvoicePopUpVisibility = false;
@@ -1110,6 +1114,11 @@ namespace GAZT.ViewModel.NewViewModel
         //    }
         //    SalesDetailsList = salesDetailsList;
         //}
+
+        public void ClearData()
+        {
+          
+        }
         #endregion
     }
 }
