@@ -43,6 +43,12 @@ namespace GAZT.Models
         public string Sundisamt { get; set; }
         public string Sdisamt { get; set; }
         public string Stotamt { get; set; }
+        public bool ObjectionInvoiceVisibility { get; set; } = false;
+        public bool AmendInvoiceVisibility { get; set; } = false;
+        public bool InvoiceVisibility { get; set; } = false;
+
+
+
     }
 
     public class EstimatedZAKATReturnsSADADNumberInvoiceSet

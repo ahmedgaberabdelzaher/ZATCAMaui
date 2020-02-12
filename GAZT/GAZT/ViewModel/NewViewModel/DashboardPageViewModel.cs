@@ -456,42 +456,81 @@ namespace GAZT.ViewModel
 
 
 
-
-                            if (App.IsArabic)
+                            if (Device.RuntimePlatform == Device.iOS)
                             {
-                                if (BegDate != null)
+                                if (App.IsArabic)
                                 {
-                                    string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
-                                    StartDate = dateStart;
-                                    StartDate = UtilityManager.ToArabicDate(StartDate);
+                                    if (BegDate != null)
+                                    {
+                                        StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                       
+                                        StartDate = UtilityManager.ToArabicDate(StartDate);
+                                    }
+                                    if (endDate != null)
+                                    {
+                                        EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                        EndDate = UtilityManager.ToArabicDate(EndDate);
+                                    }
                                 }
-                                if (endDate != null)
+                                else
                                 {
-                                    string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
-                                    EndDate = dateEnd;
-                                    EndDate = UtilityManager.ToArabicDate(EndDate);
+                                    if (BegDate != null)
+                                    {
+                                        StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+
+
+                                    }
+                                    if (endDate != null)
+                                    {
+                                        EndDate = Convert.ToDateTime(endDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    }
+
                                 }
+
+                                FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
+
                             }
                             else
                             {
+                                if (App.IsArabic)
+                                {
+                                    if (BegDate != null)
+                                    {
+                                        string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
+                                        StartDate = dateStart;
+                                        StartDate = UtilityManager.ToArabicDate(StartDate);
+                                    }
+                                    if (endDate != null)
+                                    {
+                                        string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
+                                        EndDate = dateEnd;
+                                        EndDate = UtilityManager.ToArabicDate(EndDate);
+                                    }
+                                }
+                                else
+                                {
 
-                                if (BegDate != null)
-                                {
-                                    string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
-                                    StartDate = dateStart;
+                                    if (BegDate != null)
+                                    {
+                                        string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
+                                        StartDate = dateStart;
+                                    }
+                                    if (endDate != null)
+                                    {
+                                        string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
+                                        EndDate = dateEnd;
+                                    }
                                 }
-                                if (endDate != null)
-                                {
-                                    string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
-                                    EndDate = dateEnd;
-                                }
+
+                                FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
+
                             }
 
-                            FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
 
 
 
-                                BillReturn objBill1 = new BillReturn();
+                            BillReturn objBill1 = new BillReturn();
                             objBill1.ReturnTypeProperty = Models.ReturnType.RtnTot;
                             String RtnTotstr = dashboard.results[0].RtnTot.TrimStart(new Char[] { '0' });
 

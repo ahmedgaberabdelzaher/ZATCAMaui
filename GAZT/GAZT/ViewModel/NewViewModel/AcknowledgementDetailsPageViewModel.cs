@@ -20,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnVATRefreshButtonClicked { get; set; }
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
+        public ICommand OnHomeClick { get; set; }
         #endregion
 
         #region Property
@@ -235,7 +236,10 @@ namespace GAZT.ViewModel.NewViewModel
                 ShowPdf(Url);
             });
 
-
+            OnHomeClick = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.DashboardPageView);
+            });
 
         }
 

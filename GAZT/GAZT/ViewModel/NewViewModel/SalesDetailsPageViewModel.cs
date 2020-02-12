@@ -27,11 +27,12 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCloseButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
 
-        public List<SalesDetails> SalesDetailsDataList { get; set; }// To Store the response data to compare the changed object
+        public ObservableCollection<SalesDetails> SalesDetailsDataList { get; set; }// To Store the response data to compare the changed object
         public static string RetGuid;
 
         public ZakatReturnDetails zakatReturnDetailsD { get; set; }
         public ZakatReturnDetails zakatReturnDetailsDToCompare = new ZakatReturnDetails();
+        ZakatReturnDetails _zakatReturnDetails = new ZakatReturnDetails();
         public bool IsCurrentZAKATTaxLess = false;
 
 
@@ -64,11 +65,43 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedSalesDetails = value;
-                if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
+
+                try
                 {
-                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                    double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
+                    double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                    bool IsThresholdGreaterLessVATAmount = d1 < d;
+                    if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                    {
+                        if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
+                        {
+                            if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                            {
+                                _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
+                        {
+                            if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                            {
+                                _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                            }
+                        }
+                    }
                 }
-                RaisePropertyChanged("SelectedSalesDetails");
+                catch(Exception ex)
+                {
+
+                }
+               
+                //if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
+                //{
+                //    _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                //}
+                //RaisePropertyChanged("SelectedSalesDetails");
             }
         }
 
@@ -86,8 +119,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<SalesDetails> _SalesDetailsList;
-        public List<SalesDetails> SalesDetailsList
+        private ObservableCollection<SalesDetails> _SalesDetailsList;
+        public ObservableCollection<SalesDetails> SalesDetailsList
         {
             get
             {
@@ -317,8 +350,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-
+       
 
         #endregion
 
@@ -368,7 +400,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (CheckBoxStatus)
                         {
-                            SetUpdatedDataToZAKATEstimated();
+                           // SetUpdatedDataToZAKATEstimated();
                             // AssignAttachmentToPostDataObject();
                             string PostOperationID = "05";
                             await SubmitZakatReturn(PostOperationID,"");
@@ -443,85 +475,19 @@ namespace GAZT.ViewModel.NewViewModel
                 HideConfirmButton();
                 ZakatReturnDetail = zakatReturnDetailsD;
                 Persl = ZakatReturnDetail.d.Persl;
-                Abrzu = ZakatReturnDetail.d.Abrzu;
-                Abrzo = ZakatReturnDetail.d.Abrzo;
+                //Abrzu = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzu); 
+                //Abrzo = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzo); 
                 Fbnum = ZakatReturnDetail.d.Fbnum;
                 Estsl = ZakatReturnDetail.d.Estsl;
                 RetGuid = zakatReturnDetailsD.d.ReturnId;
-                SalesDetailsList = new List<SalesDetails>();
 
-                List<SalesDetails> SalesDetailsDummyList = new List<SalesDetails>();
-
-                SalesDetails salesDetails1 = new SalesDetails();
-                salesDetails1.SalesType = "Total VAT Sales";
-                salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.TvtslI) ? "0.00" : ZakatReturnDetail.d.TvtslI;
-                salesDetails1.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.TvtslE) ? "0.00" : ZakatReturnDetail.d.TvtslE;
-                salesDetails1.SelectedEditFieldId = "1";
-
-
-                SalesDetailsDummyList.Add(salesDetails1);
-
-                SalesDetails salesDetails2 = new SalesDetails();
-                salesDetails2.SalesType = "Average number of labour";
-                salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
-                salesDetails2.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoE) ? "0.00" : ZakatReturnDetail.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
-                salesDetails2.SelectedEditFieldId = "2";
-                SalesDetailsDummyList.Add(salesDetails2);
-
-                SalesDetails salesDetails3 = new SalesDetails();
-                salesDetails3.SalesType = "Imports value";
-                salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
-                salesDetails3.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalE) ? "0.00" : ZakatReturnDetail.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
-                salesDetails3.SelectedEditFieldId = "3";
-                SalesDetailsDummyList.Add(salesDetails3);
-
-                SalesDetails salesDetails4 = new SalesDetails();
-                salesDetails4.SalesType = "Sales form point of sales";
-                salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
-                salesDetails4.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.Sumcnt) ? "0.00" : ZakatReturnDetail.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
-                salesDetails4.SelectedEditFieldId = "4";
-                SalesDetailsDummyList.Add(salesDetails4);
-
-                SalesDetails salesDetails5 = new SalesDetails();
-                salesDetails5.SalesType = "Contracts form ETIMAD system";
-                salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
-                salesDetails5.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.Sumcnt) ? "0.00" : ZakatReturnDetail.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
-                salesDetails5.SelectedEditFieldId = "5";
-                SalesDetailsDummyList.Add(salesDetails5);
-
-                SalesDetails salesDetails6 = new SalesDetails();
-                salesDetails6.SalesType = "Exports value";
-                salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
-                salesDetails6.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.Sumcnt) ? "0.00" : ZakatReturnDetail.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
-                salesDetails6.SelectedEditFieldId = "6";
-                SalesDetailsDummyList.Add(salesDetails6);
-
-                SalesDetails salesDetails7 = new SalesDetails();
-                salesDetails7.SalesType = "Purchase value";
-                salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
-                salesDetails7.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtE) ? "0.00" : ZakatReturnDetail.d.PramtE; // ZakatReturnDetail.d.PramtE;
-                salesDetails7.SelectedEditFieldId = "7";
-
-                SalesDetailsDummyList.Add(salesDetails7);
-
-                SalesDetails salesDetails8 = new SalesDetails();
-                salesDetails8.SalesType = "Capital amount";
-                salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
-                salesDetails8.EstimateSales = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
-                SalesDetailsDummyList.Add(salesDetails8);
-                salesDetails8.SelectedEditFieldId = "8";
-
-                SalesDetailsList = SalesDetailsDummyList;
-                SalesDetailsDataList = SalesDetailsDummyList;
-
-
+                SetSalesDetailsData();
                 //if(ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 //if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))
                 //{
                 //        //HideAllButton();
                 //}
                 //else if (ZakatReturnDetail.d.Statusz.Equals("IP014") || ZakatReturnDetail.d.Statusz.Equals("E0002") || ZakatReturnDetail.d.Statusz.Equals("E0003"))
-                //{
                 //  //  _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 //}
                 //else
@@ -571,6 +537,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async Task SubmitZakatReturn(String PostOperation, string InvFlag)
         {
+           
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -578,26 +545,40 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async () =>
             {
             try
-            {
-                ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
-                if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
+                    double existingZakatBase = 0.00;
+                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
+                    {
+                         _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                    }
+                    else
+                    {
+                         _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                        if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
+                            IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                            AssignCalculatedValueAfterSubmission();
+                        }
+                    }
+                    if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                    {
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
+                            _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
-                    }
-                     
-                    double existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
-                     IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
-                    if (PostOperation.Equals("05"))
+
+                        }
+                        if (PostOperation.Equals("05"))
                     {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
-                            ShowConfirmButton();
-                        }
+                              ShowConfirmButton();
+
+                            }
                         else
                         {
                             SetChangedValueToUploadAttachment();
@@ -621,11 +602,15 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
 
-                        await Task.Run(async() =>
-                        {
-                            await GetSADADNumber(InvFlag);
-                            ShowInvoicePopUp(InvFlag);
-                        }); 
+                        //await Task.Run(async() =>
+                        //{
+                        //    await GetSADADNumber();
+                        //    // ShowInvoicePopUp(PostOperation);
+                        //    Device.BeginInvokeOnMainThread(async () => {
+                        //        _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+
+                        //    });
+                        //}); 
                     }
 
                 }
@@ -654,14 +639,14 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        private void SetUpdatedDataToZAKATEstimated()
+        public void SetUpdatedDataToZAKATEstimated(int selectedIndex)
         {
             try
             {
 
-                for (int i = 0; i < SalesDetailsList.Count; i++)
-                {
-                    if (SalesDetailsList[i].SelectedEditFieldId.Equals("1"))
+                //for (int i = 0; i < SalesDetailsList.Count; i++)
+                //{
+                    if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("1")) 
                     {
                         zakatReturnDetailsD.d.TvtslI = string.IsNullOrEmpty(SalesDetailsList[0].NewValue) ? "0.00" : SalesDetailsList[0].NewValue;
                         zakatReturnDetailsD.d.TvtslResn = SalesDetailsList[0].ChangeReason;
@@ -672,7 +657,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("2"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("2"))
                     {
                         zakatReturnDetailsD.d.LabnoI = string.IsNullOrEmpty(SalesDetailsList[1].NewValue) ? "0.00" : SalesDetailsList[1].NewValue;
                         zakatReturnDetailsD.d.LabnoResn = SalesDetailsList[1].ChangeReason;
@@ -684,7 +669,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[1].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("3"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("3"))
                     {
                         zakatReturnDetailsD.d.ImpvalI = string.IsNullOrEmpty(SalesDetailsList[2].NewValue) ? "0.00" : SalesDetailsList[2].NewValue;
                         zakatReturnDetailsD.d.ImpvalResn = SalesDetailsList[2].ChangeReason;
@@ -694,7 +679,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[2].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("4"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("4"))
                     {
                         zakatReturnDetailsD.d.PtoslI = string.IsNullOrEmpty(SalesDetailsList[3].NewValue) ? "0.00" : SalesDetailsList[3].NewValue;
                         zakatReturnDetailsD.d.PtoslResn = SalesDetailsList[3].ChangeReason;
@@ -704,7 +689,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[3].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("5"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("5"))
                     {
                         zakatReturnDetailsD.d.EtimadI = string.IsNullOrEmpty(SalesDetailsList[4].NewValue) ? "0.00" : SalesDetailsList[4].NewValue;
                         zakatReturnDetailsD.d.EtimadResn = SalesDetailsList[4].ChangeReason;
@@ -714,7 +699,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[4].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("6"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("6"))
                     {
                         zakatReturnDetailsD.d.ExamtI = string.IsNullOrEmpty(SalesDetailsList[5].NewValue) ? "0.00" : SalesDetailsList[5].NewValue;
                         zakatReturnDetailsD.d.ExamtResn = SalesDetailsList[5].ChangeReason;
@@ -725,7 +710,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[5].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("7"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("7"))
                     {
                         zakatReturnDetailsD.d.PramtI = string.IsNullOrEmpty(SalesDetailsList[6].NewValue) ? "0.00" : SalesDetailsList[6].NewValue;
                         zakatReturnDetailsD.d.PramtResn = SalesDetailsList[6].ChangeReason;
@@ -736,7 +721,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[6].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                    else if (SalesDetailsList[i].SelectedEditFieldId.Equals("8"))
+                    else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("8"))
                     {
                         zakatReturnDetailsD.d.Cpamt = string.IsNullOrEmpty(SalesDetailsList[7].NewValue) ? "0.00" : SalesDetailsList[7].NewValue;
                         zakatReturnDetailsD.d.CpamtResn = SalesDetailsList[7].ChangeReason;
@@ -747,7 +732,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //    EstimateZakatAttachmentList.Add(SalesDetailsList[7].estimateZakatAttachment); //  EstimateZakatAttachmentList.Add(SalesDetailsList[0].estimateZakatAttachment);
                         //}
                     }
-                }
+               // }
 
 
 
@@ -770,7 +755,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         private void ShowEditIcon()
         {
-            List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+            ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
             {
                 foreach (SalesDetails salesDetails in SalesDetailsList)
@@ -784,7 +769,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void HideEditIcon()
         {
-            List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+            ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
             {
                 foreach (SalesDetails salesDetails in SalesDetailsList)
@@ -855,7 +840,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                List<SalesDetails> _salesDetailsList = new List<SalesDetails>();
+                ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
                 bool IsPreviousValueChanged = false;
                 for (int i = 0; i < SalesDetailsList.Count; i++)
                 {
@@ -940,40 +925,48 @@ namespace GAZT.ViewModel.NewViewModel
             
         //}
 
-        public async Task GetSADADNumber(string InvFlag)
-        {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            await Task.Run(async() =>
-            {
-                try
-                {
-                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid, InvFlag); // Method to get the invoice
-                   // PopToRootPage();
-                    if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
-                    {
-                        // RefreshiButtonDisability = false;
-                        RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
-                        EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                        HideAllButton();
-                        UncheckDisclaimer();
-                    }
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
-        }
+        //public async Task GetSADADNumber()
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = true;
+        //    });
+        //    await Task.Run(async() =>
+        //    {
+        //        try
+        //        {
+        //            EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.d.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
+        //           // PopToRootPage();
+        //            if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+        //            {
+        //                // RefreshiButtonDisability = false;
+        //                RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
+        //                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+        //                //if(Convert.ToDouble(EstimatedZAKATSADADNumber.Undisamt) > 0)
+        //                //{
+                           
+        //                //}
+        //                //else
+        //                //{
+        //                //    ShowAmendInvoicePopUp();
+        //                //}
+        //                HideAllButton();
+        //                UncheckDisclaimer();
+        //            }
+        //        }
+        //        catch (InternetException ex)
+        //        {
+        //            Device.BeginInvokeOnMainThread(async () =>
+        //            {
+        //                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //            });
+        //        }
+        //    });
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = false;
+        //    });
+        //}
 
         private void UncheckDisclaimer()
         {
@@ -1005,28 +998,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void ShowInvoicePopUp(string InvFlag)
+        private void ShowAmendInvoicePopUp()
         {
-           
-                if (InvFlag.Equals("S") || InvFlag.Equals("C"))
-                {
-                    Device.BeginInvokeOnMainThread(() => {
-                        InvoicePopUpVisibility = false;
-                        ObjectionInvoicePopUpVisibility = true;
-                    });
-
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(() => {
                         InvoicePopUpVisibility = true;
                         ObjectionInvoicePopUpVisibility = false;
-                    });
-
-                }
-         
+                 
         }
 
+
+        private void ShowObjectionInvoicePopUp()
+        {
+
+                    InvoicePopUpVisibility = false;
+                    ObjectionInvoicePopUpVisibility = true;
+        }
+
+       
         public void HideInvoicePopUp()
         {
             InvoicePopUpVisibility = false;
@@ -1042,6 +1029,95 @@ namespace GAZT.ViewModel.NewViewModel
                     await _navigation.PopToRootAsync();
                 });
             }
+        }
+        private void AssignCalculatedValueAfterSubmission()
+        {
+            zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
+            zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
+        }
+
+        public void SetSalesDetailsData()
+        {
+            SalesDetailsList = new ObservableCollection<SalesDetails>();
+
+            ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
+
+            SalesDetails salesDetails1 = new SalesDetails();
+            salesDetails1.SalesType = "Total VAT Sales";
+            salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
+            salesDetails1.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslE) ? "0.00" : zakatReturnDetailsD.d.TvtslE;
+            salesDetails1.SelectedEditFieldId = "1";
+
+
+            SalesDetailsDummyList.Add(salesDetails1);
+
+            SalesDetails salesDetails2 = new SalesDetails();
+            salesDetails2.SalesType = "Average number of labour";
+            salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
+            salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.LabnoE) ? "0.00" : zakatReturnDetailsD.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
+            salesDetails2.SelectedEditFieldId = "2";
+            SalesDetailsDummyList.Add(salesDetails2);
+
+            SalesDetails salesDetails3 = new SalesDetails();
+            salesDetails3.SalesType = "Imports value";
+            salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
+            salesDetails3.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.ImpvalE) ? "0.00" : zakatReturnDetailsD.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
+            salesDetails3.SelectedEditFieldId = "3";
+            SalesDetailsDummyList.Add(salesDetails3);
+
+            SalesDetails salesDetails4 = new SalesDetails();
+            salesDetails4.SalesType = "Sales form point of sales";
+            salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
+            salesDetails4.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
+            salesDetails4.SelectedEditFieldId = "4";
+            SalesDetailsDummyList.Add(salesDetails4);
+
+            SalesDetails salesDetails5 = new SalesDetails();
+            salesDetails5.SalesType = "Contracts form ETIMAD system";
+            salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
+            salesDetails5.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
+            salesDetails5.SelectedEditFieldId = "5";
+            SalesDetailsDummyList.Add(salesDetails5);
+
+            SalesDetails salesDetails6 = new SalesDetails();
+            salesDetails6.SalesType = "Exports value";
+            salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
+            salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
+            salesDetails6.SelectedEditFieldId = "6";
+            SalesDetailsDummyList.Add(salesDetails6);
+
+            SalesDetails salesDetails7 = new SalesDetails();
+            salesDetails7.SalesType = "Purchase value";
+            salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
+            salesDetails7.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.PramtE) ? "0.00" : zakatReturnDetailsD.d.PramtE; // ZakatReturnDetail.d.PramtE;
+            salesDetails7.SelectedEditFieldId = "7";
+
+            SalesDetailsDummyList.Add(salesDetails7);
+
+            SalesDetails salesDetails8 = new SalesDetails();
+            salesDetails8.SalesType = "Capital amount";
+            salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
+            salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Cpamt) ? "0.00" : zakatReturnDetailsD.d.Cpamt;
+            SalesDetailsDummyList.Add(salesDetails8);
+            salesDetails8.SelectedEditFieldId = "8";
+
+            SalesDetailsList = SalesDetailsDummyList;
+            SalesDetailsDataList = SalesDetailsDummyList;
+        }
+
+        //public void SetChangedDataToTheList()
+        //{
+        //    ObservableCollection<SalesDetails> salesDetailsList = new ObservableCollection<SalesDetails>();
+        //    for (int i = 0; i < SalesDetailsList.Count; i++)
+        //    {
+        //        salesDetailsList.Add(SalesDetailsList[i]);
+        //    }
+        //    SalesDetailsList = salesDetailsList;
+        //}
+
+        public void ClearData()
+        {
+          
         }
         #endregion
     }

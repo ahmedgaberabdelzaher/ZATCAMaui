@@ -130,7 +130,12 @@ namespace GAZT.Manager
                                     if ((0 == String.Compare(Token, "Wrong password")))
                                     {
                                         throw new Exception(Token);
-                                    }                                    
+                                    }
+                                    if ((0 == String.Compare(Token, "The account is locked for 60 minutes after the last login attempt")))
+                                    {
+                                        throw new Exception(Token);
+                                    }
+                                    
                                     if ((0 == String.Compare(Token, "Incomplete")) || (0 == String.Compare(Token, "Deregister - Death")) || (0 == String.Compare(Token, "Deregister - Bankruptcy")) || (0 == String.Compare(Token, "Deregister - Liquidation")) || (0 == String.Compare(Token, "Deregister - Merger")) || (0 == String.Compare(Token, "Deregister - Acquisition")) || (0 == String.Compare(Token, "Suspension - Bankruptcy")) || (0 == String.Compare(Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(Token, "Deregister - Close")) || (0 == String.Compare(Token, "Deregister - Company-Establish")) || (0 == String.Compare(Token, "Suspension - Est. to Company")))
                                     {
                                         throw new Exception("User Deactive");
@@ -205,6 +210,17 @@ namespace GAZT.Manager
                         else
                         {
                             throw new Exception("Wrong password");
+                        }
+                    }
+                    else if ((0 == String.Compare(ex.Message, "The account is locked for 60 minutes after the last login attempt")))
+                    {
+                        if (App.IsArabic)
+                        {
+                            throw new Exception("الحساب معلق لمدة 60 دقيقة من أخر محاولة للدخول");
+                        }
+                        else
+                        {
+                            throw new Exception("The account is locked for 60 minutes after the last login attempt");
                         }
                     }
                     else if ((0 == String.Compare(ex.Message, "User Deactive")))
@@ -2682,7 +2698,7 @@ namespace GAZT.Manager
         // Not Completed
         //Seesion expired handled 
         //done internet exception handling
-        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber(string FBNumber, string FBGuid, string InvFlag)
+        public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber(string FBNumber, string FBGuid)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -2693,14 +2709,14 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url;
-                    if (InvFlag.Equals("I"))
-                    {
+                    //if (InvFlag.Equals("I"))
+                    //{
                         url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
-                    }
-                    else
-                    {
-                        url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='S',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='S',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                    //}
                     client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
