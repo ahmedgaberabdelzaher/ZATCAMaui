@@ -1,5 +1,6 @@
 ﻿using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,8 +250,36 @@ namespace GAZT.Views.NewViews
             {
                 await viewModel.OnConfirmClicked("I");
             }
-           
         }
+
+        private void OnInformationMessageClicked(object sender, EventArgs e)
+        {
+            Image InfoImage = sender as Image;
+            SalesDetails estimateZakatAttachment = (SalesDetails)InfoImage.BindingContext;
+          string informationMessage =   GetInformationMessage(Convert.ToInt32(estimateZakatAttachment.SelectedEditFieldId));
+            PopUp popUp = new PopUp();
+            popUp.Message = informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
+            popUp.IsLinkAvailable = false;
+            
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnEstmatedSalesInfoMessageClicked(object sender, EventArgs e)
+        {
+//            string informationMessage = "TP estimated sales are calculated based on:
+//- VAT Sales if the TP has sales in his VAT returns.
+//- If TP has no VAT sales, system take the greater value of the following:
+// The average number of labor x 6000 SAR
+// The value of imports x 115 %
+// The sum of(sales through points of sale + contracts in ETIMAD platform + the value of exports)
+// The value of purchases based on the VAT returns x 115 % ";
+            PopUp popUp = new PopUp();
+            popUp.Message = "";// informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
+            popUp.IsLinkAvailable = false;
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        
 
         private bool IsOldValueChanged(int index)
         {
@@ -284,5 +313,54 @@ namespace GAZT.Views.NewViews
         //    }
         //}
 
+        private string GetInformationMessage(int selectedId)
+        {
+            string informationMessage = "";
+            switch (selectedId)
+            {
+                case 1:
+                    {
+                        informationMessage = "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
+                        break;
+                    }
+                case 2:
+                    {
+                        informationMessage = "Average number of labors x 6000 SAR";
+                        break;
+                    }
+                case 3:
+                    {
+                        informationMessage = "Imports value x 115%";
+                        break;
+                    }
+                case 4:
+                    {
+                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        break;
+                    }
+                case 5:
+                    {
+                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        break;
+                    }
+                case 6:
+                    {
+                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        break;
+                    }
+                case 7:
+                    {
+                        informationMessage = "Purchases value x 115%";
+
+                        break;
+                    }
+                case 8:
+                    {
+                        informationMessage = "Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount.";
+                        break;
+                    }
+            }
+            return informationMessage;
+        }
     }
 }

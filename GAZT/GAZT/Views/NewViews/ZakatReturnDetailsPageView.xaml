@@ -74,19 +74,44 @@
                     <Label Text="{x:Static local:AppResources.ZEstimateSales}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Estsl}" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End"></Image> 
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End">
+                        <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                Tapped="OnInformationMessageClickedOne"
+                NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                    </Image> 
                     <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Cpamt}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="9" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="9" HorizontalOptions="Start" VerticalOptions="End">
+
+                         <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                Tapped="OnInformationMessageClickedTwo"
+                NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                    </Image>
                     <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zbamt}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="End">
+                         <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                Tapped="OnInformationMessageClickedThree"
+                NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                    </Image>
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zkamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="End"></Image>
+                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="End">
+                         <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                Tapped="OnInformationMessageClickedFour"
+                NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                    </Image>
 
 
                 </Grid>

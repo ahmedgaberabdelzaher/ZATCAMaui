@@ -57,13 +57,21 @@ namespace GAZT.Views.NewViews
             return;
         }
 
-        private  void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
+        private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
             Image deleteImage = sender as Image;
             EstimateZakatAttachment estimateZakatAttachment = (EstimateZakatAttachment)deleteImage.BindingContext;
             if(estimateZakatAttachment != null) 
             {
-                viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename,estimateZakatAttachment.Doguid);
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                 await   viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
+                }
+                else
+                {
+
+                }
             }
         }
     }

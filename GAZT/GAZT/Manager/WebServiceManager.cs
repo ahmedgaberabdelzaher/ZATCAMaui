@@ -2872,6 +2872,63 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public static async Task<string> GAZTEstimatedZAKATReturnInvoicePdf(string Cokey)//, string returnedFguid
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                string DeleteToken = string.Empty;
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=disabled";
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
+
+                    if (GAZTEstimateZakatReturnList != null)
+                    {
+                        HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+
+                         string PdfUrl = JsonConvert.DeserializeObject<string>(EstimateZakatReturnList);
+
+
+                    }
+                    return null;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
     }
 
 }

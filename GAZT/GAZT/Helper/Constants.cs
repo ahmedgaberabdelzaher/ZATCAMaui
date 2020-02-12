@@ -66,6 +66,8 @@ namespace GAZT.Helper
         public static string GAZTSaveEstimatedZAKATAttachement = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='";
         public static string GAZTGetIdNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/IDNUMBERSet?$filter=Partner eq '";
         public static string GAZTCheckIBANNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHECK_IBAN_SRV/HEADERSet('";
+        public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "SAP/ZDP_IT_CORRES_SRV/corr_dataSet(Cokey='";
+
 
     }
 }
