@@ -271,12 +271,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage("You can not upload more than 5 attachment", AppResources.Alerts);
+                                    await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
                                 }
                             }
                             else
                             {
-                                await _dialogService.ShowMessage("File size must be less than 5 MB", AppResources.Alerts);
+                                await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
                             }
 
                         }

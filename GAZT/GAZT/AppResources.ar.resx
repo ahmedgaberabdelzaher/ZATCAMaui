@@ -1638,4 +1638,76 @@
   <data name="Nocertificateavailable" xml:space="preserve">
     <value>لا يوجد شهادة</value>
   </data>
+  <data name="ZZAveragenumberoflabour" xml:space="preserve">
+    <value>Average number of labour</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZCapitalamount" xml:space="preserve">
+    <value>Capital amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZContractsformETIMADsystem" xml:space="preserve">
+    <value>Contracts form ETIMAD system</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZExportsvalue" xml:space="preserve">
+    <value>Exports value</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZFilesizemustbelessthan5MB" xml:space="preserve">
+    <value>File size must be less than 5 MB</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZImportsvalue" xml:space="preserve">
+    <value>Imports value</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZIthascopiedsadadpaymentnumber" xml:space="preserve">
+    <value>It has copied sadad payment number</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZNochangesmadeFormcannotbesubmitted" xml:space="preserve">
+    <value>No changes made, Form cannot be submitted</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
+    <value>Please select the disclaimer checkbox before submit.</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
+    <value>Please upload the Required Document and Change reason</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPurchasevalue" xml:space="preserve">
+    <value>Purchase value</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZReleasedSuccessfully" xml:space="preserve">
+    <value>Released Successfully.</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZReturnSubmittedSuccessfully" xml:space="preserve">
+    <value>Return Submitted Successfully</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSalesformpointofsales" xml:space="preserve">
+    <value>Sales form point of sales</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSomethingwentwrong" xml:space="preserve">
+    <value>Something went wrong</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSUCCESS" xml:space="preserve">
+    <value>SUCCESS</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalVATSales" xml:space="preserve">
+    <value>Total VAT Sales</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">
+    <value>You can not upload more than 5 attachment</value>
+    <comment>Estimated Zakat</comment>
+  </data>
 </root>

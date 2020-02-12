@@ -408,14 +408,14 @@ namespace GAZT.ViewModel.NewViewModel
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () => {
-                                await _dialogService.ShowMessageBox("Please select the disclaimer checkbox before submit.", AppResources.Alerts);
+                                await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
                             });
                         }
                     }
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox("No changes made, Form cannot be submitted", AppResources.Alerts);
+                            await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
                         });
                     }
                 }
@@ -463,7 +463,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-                await _dialogService.ShowMessageBox("Please select the disclaimer checkbox before submit.", AppResources.Alerts);
+                await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
             }
         }
         public void onPageLoad()
@@ -567,7 +567,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox("Return Submitted Successfully", AppResources.Information);
+                            await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
                             _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
 
@@ -591,7 +591,7 @@ namespace GAZT.ViewModel.NewViewModel
                             else
                             {
                                 Device.BeginInvokeOnMainThread(async () => {
-                                    await _dialogService.ShowMessageBox("Please upload the Required Document and Change reason", AppResources.Information);
+                                    await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
                                 });
                             }
 
@@ -617,7 +617,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox("Something went wrong", AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
                     });
                 }
@@ -1043,7 +1043,7 @@ namespace GAZT.ViewModel.NewViewModel
             ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
 
             SalesDetails salesDetails1 = new SalesDetails();
-            salesDetails1.SalesType = "Total VAT Sales";
+            salesDetails1.SalesType = AppResources.ZZTotalVATSales;
             salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
             salesDetails1.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslE) ? "0.00" : zakatReturnDetailsD.d.TvtslE;
             salesDetails1.SelectedEditFieldId = "1";
@@ -1052,42 +1052,42 @@ namespace GAZT.ViewModel.NewViewModel
             SalesDetailsDummyList.Add(salesDetails1);
 
             SalesDetails salesDetails2 = new SalesDetails();
-            salesDetails2.SalesType = "Average number of labour";
+            salesDetails2.SalesType = AppResources.ZZAveragenumberoflabour;
             salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
             salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.LabnoE) ? "0.00" : zakatReturnDetailsD.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
             salesDetails2.SelectedEditFieldId = "2";
             SalesDetailsDummyList.Add(salesDetails2);
 
             SalesDetails salesDetails3 = new SalesDetails();
-            salesDetails3.SalesType = "Imports value";
+            salesDetails3.SalesType = AppResources.ZZImportsvalue;
             salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
             salesDetails3.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.ImpvalE) ? "0.00" : zakatReturnDetailsD.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
             salesDetails3.SelectedEditFieldId = "3";
             SalesDetailsDummyList.Add(salesDetails3);
 
             SalesDetails salesDetails4 = new SalesDetails();
-            salesDetails4.SalesType = "Sales form point of sales";
+            salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
             salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
             salesDetails4.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
             salesDetails4.SelectedEditFieldId = "4";
             SalesDetailsDummyList.Add(salesDetails4);
 
             SalesDetails salesDetails5 = new SalesDetails();
-            salesDetails5.SalesType = "Contracts form ETIMAD system";
+            salesDetails5.SalesType = AppResources.ZZContractsformETIMADsystem;
             salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
             salesDetails5.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
             salesDetails5.SelectedEditFieldId = "5";
             SalesDetailsDummyList.Add(salesDetails5);
 
             SalesDetails salesDetails6 = new SalesDetails();
-            salesDetails6.SalesType = "Exports value";
+            salesDetails6.SalesType = AppResources.ZZExportsvalue;
             salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
             salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
             salesDetails6.SelectedEditFieldId = "6";
             SalesDetailsDummyList.Add(salesDetails6);
 
             SalesDetails salesDetails7 = new SalesDetails();
-            salesDetails7.SalesType = "Purchase value";
+            salesDetails7.SalesType = AppResources.ZZPurchasevalue;
             salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
             salesDetails7.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.PramtE) ? "0.00" : zakatReturnDetailsD.d.PramtE; // ZakatReturnDetail.d.PramtE;
             salesDetails7.SelectedEditFieldId = "7";
@@ -1095,7 +1095,7 @@ namespace GAZT.ViewModel.NewViewModel
             SalesDetailsDummyList.Add(salesDetails7);
 
             SalesDetails salesDetails8 = new SalesDetails();
-            salesDetails8.SalesType = "Capital amount";
+            salesDetails8.SalesType = AppResources.ZZCapitalamount;
             salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
             salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Cpamt) ? "0.00" : zakatReturnDetailsD.d.Cpamt;
             SalesDetailsDummyList.Add(salesDetails8);

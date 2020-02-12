@@ -132,7 +132,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               await _dialogService.ShowMessage("It has copied sadad payment number",AppResources.Information);
+               await _dialogService.ShowMessage(AppResources.ZZIthascopiedsadadpaymentnumber, AppResources.Information);
             });
 
 

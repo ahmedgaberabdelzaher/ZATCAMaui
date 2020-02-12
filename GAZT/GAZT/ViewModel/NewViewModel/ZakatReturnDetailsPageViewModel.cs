@@ -237,7 +237,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox("Released Successfully.", "SUCCESS");
+                        await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZSUCCESS);
                     });
                     // 
                 }
