@@ -108,8 +108,16 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
-                IsAmendButtonPressed = false;
-                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                try
+                {
+                    IsAmendButtonPressed = false;
+                    _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
             });
 
         }

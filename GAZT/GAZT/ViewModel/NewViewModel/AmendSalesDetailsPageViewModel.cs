@@ -240,30 +240,45 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                     try
                     {
-                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
-                         PopToRootPage();
-                        if (_attachment != null && _attachment.d != null)
-                        {
-                            EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                            _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                            _estimateZakatAttachment.Seqno = "";
-                            _estimateZakatAttachment.SchGuid = "";
-                            _estimateZakatAttachment.AttBy = "";
-                            _estimateZakatAttachment.FileExtn = "";
-                            _estimateZakatAttachment.ByPusr = "";
-                            _estimateZakatAttachment.OutletRef = "";
-                            _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                            _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                            _estimateZakatAttachment.Dotyp = "FZ01";
-                            _estimateZakatAttachment.Mimetype = "";
-                            _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                            _estimateZakatAttachment.DataVersion = "";
-                            DateTime currentDate = DateTime.Now;
-                            _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to 
+                            if(attachment.Length < 5242880)
+                            {
+                                if(ZakatReturnAttachmentsList.Count < 5)
+                                {
+                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                                    PopToRootPage();
+                                    if (_attachment != null && _attachment.d != null)
+                                    {
+                                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                                        _estimateZakatAttachment.Seqno = "";
+                                        _estimateZakatAttachment.SchGuid = "";
+                                        _estimateZakatAttachment.AttBy = "";
+                                        _estimateZakatAttachment.FileExtn = "";
+                                        _estimateZakatAttachment.ByPusr = "";
+                                        _estimateZakatAttachment.OutletRef = "";
+                                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                                        _estimateZakatAttachment.Dotyp = "FZ01";
+                                        _estimateZakatAttachment.Mimetype = "";
+                                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                                        _estimateZakatAttachment.DataVersion = "";
+                                        DateTime currentDate = DateTime.Now;
+                                        _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
+                                        SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
 
-                            SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
-                            // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
-                        }
+                                        // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                    }
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage("You can not upload more than 5 attachment", AppResources.Alerts);
+                                }
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage("File size must be less than 5 MB", AppResources.Alerts);
+                            }
+
                         }
                         catch (InternetException ex)
                         {

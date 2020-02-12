@@ -307,6 +307,12 @@
     <BundleResource Include="Resources\ic_Edit_red.png" />
     <BundleResource Include="Resources\ic_Edit_red%402x.png" />
     <BundleResource Include="Resources\ic_Edit_red%403x.png" />
+    <BundleResource Include="Resources\ic_download.png" />
+    <BundleResource Include="Resources\ic_download%402x.png" />
+    <BundleResource Include="Resources\ic_download%403x.png" />
+    <BundleResource Include="Resources\ic_refresh.png" />
+    <BundleResource Include="Resources\ic_refresh%402x.png" />
+    <BundleResource Include="Resources\ic_refresh%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_bell.png" />
