@@ -1,4 +1,6 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +59,35 @@ namespace GAZT.Views.NewViews
             {
                 await viewModel.OnReleaseOrBillsClicked();
             }
+        }
+
+        private void OnInformationMessageClickedOne(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = "";
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        private void OnInformationMessageClickedTwo(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = "Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount.";
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        private void OnInformationMessageClickedThree(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = "Greater value of (((Estimated Sales / 8) + (Estimated Sales x 15%)) or (TP Capital Amount) )";
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        private void OnInformationMessageClickedFour(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = "Zakat Base x 2.5% , and with a lower bound of 500 SAR";
+            popUp.IsLinkAvailable = false;
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion
 

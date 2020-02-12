@@ -232,7 +232,7 @@
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer
                 Tapped="OnDeleteAttachmentClickedTapped"
-                NumberOfTapsRequired="2" />
+                NumberOfTapsRequired="1" />
                                                                         </Image.GestureRecognizers>
                                                                     </Image>
                                                                 </Grid>
