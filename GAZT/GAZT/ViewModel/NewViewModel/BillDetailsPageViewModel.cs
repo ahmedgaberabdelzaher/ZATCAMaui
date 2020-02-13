@@ -20,6 +20,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
+        string Cotyp = "";
+        
         #endregion
 
         #region Property
@@ -152,21 +154,28 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
                     PopToRootPage();
-                    if(Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0)
+                    if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
-                        Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
-                        EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                    }
-                    else
-                    {
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
-                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0)
+                        {
+                            Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
+                            Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                        }
+                        else
+                        {
+                            Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
+                            Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
 
-                        EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                        }
+
                     }
-                   
+
                 }
                 catch (InternetException ex)
                 {
@@ -198,12 +207,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void GetPdfUrl()
         {
-           
-            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=disabled";
+            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=disabled";
             // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
-
-
         }
 
         public async void ShowPdf(string pdfUrl)

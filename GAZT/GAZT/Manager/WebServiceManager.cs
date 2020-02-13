@@ -2490,7 +2490,7 @@ namespace GAZT.Manager
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");  
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
@@ -2711,7 +2711,7 @@ namespace GAZT.Manager
                     String url;
                     //if (InvFlag.Equals("I"))
                     //{
-                        url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                        url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
                     //}
                     //else
                     //{
