@@ -131,5 +131,6 @@ namespace GAZT
         {
             // Handle when your app resumes
         }
+
     }
 }

@@ -4340,7 +4340,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new mobile number must not  match the existing mobile number.
+        ///   Looks up a localized string similar to The New Mobile Number should not be same as the Old Mobile Number.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {

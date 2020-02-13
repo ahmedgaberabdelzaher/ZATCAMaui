@@ -839,7 +839,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>The new email must not match the existing email</value>
   </data>
   <data name="ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber" xml:space="preserve">
-    <value>The new mobile number must not  match the existing mobile number</value>
+    <value>The New Mobile Number should not be same as the Old Mobile Number</value>
   </data>
   <data name="ZICR" xml:space="preserve">
     <value>ICR</value>

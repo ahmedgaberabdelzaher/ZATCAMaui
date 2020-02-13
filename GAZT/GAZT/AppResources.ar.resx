@@ -1639,7 +1639,7 @@
     <value>لا يوجد شهادة</value>
   </data>
   <data name="ZZAveragenumberoflabour" xml:space="preserve">
-    <value>Average number of labour</value>
+    <value>متوسط عدد العمالة</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCapitalamount" xml:space="preserve">
@@ -1711,7 +1711,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZ25oftheDisputedAmount" xml:space="preserve">
-    <value>25% of the Disputed Amount</value>
+    <value>25% من المبلغ المعترض عليه</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
