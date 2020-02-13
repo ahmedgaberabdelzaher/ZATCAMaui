@@ -211,7 +211,6 @@ namespace GAZT.ViewModel.NewViewModel
                     else
                     {
                          Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                          Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
                     }

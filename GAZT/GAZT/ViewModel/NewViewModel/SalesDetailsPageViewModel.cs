@@ -70,29 +70,38 @@ namespace GAZT.ViewModel.NewViewModel
 
                 try
                 {
-                    double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
-                    double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
-                    bool IsThresholdGreaterLessVATAmount = d1 < d;
-                    if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                    if(!ConfirmButtonVisibility)
                     {
-                        if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
+                        double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
+                        double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                        bool IsThresholdGreaterLessVATAmount = d1 < d;
+                        if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
                         {
-                            if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                            if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                                {
+                                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
+                            {
+                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                                {
+                                    _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                                }
                             }
                         }
                     }
                     else
                     {
-                        if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
-                        {
-                            if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
-                            {
-                                _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
-                            }
-                        }
+                        ShowOnlyInfoIcon();
                     }
+
+                   
                 }
                 catch(Exception ex)
                 {
@@ -595,6 +604,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
                               ShowConfirmButton();
+                                ShowOnlyInfoIcon();
 
                             }
                         else
@@ -771,6 +781,19 @@ namespace GAZT.ViewModel.NewViewModel
             SubmitButtonVisibility = false;
         }
 
+        private void ShowOnlyInfoIcon()
+        {
+            ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
+            if (SalesDetailsList != null)
+            {
+                foreach (SalesDetails salesDetails in SalesDetailsList)
+                {
+                    salesDetails.EditImageSource = "";
+                    _salesDetailsList.Add(salesDetails);
+                }
+            }
+            SalesDetailsList = _salesDetailsList;
+        }
         private void ShowEditIcon()
         {
             ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
