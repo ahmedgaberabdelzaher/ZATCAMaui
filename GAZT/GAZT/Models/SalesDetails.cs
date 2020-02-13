@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace GAZT.Models
 {
@@ -35,6 +36,7 @@ namespace GAZT.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
         }
+
         private string _informationFromPartieToCompare;
         public string InformationFromPartieToCompare
         {
@@ -48,5 +50,21 @@ namespace GAZT.Models
                 OnPropertyRaised("InformationFromPartieToCompare");
             }
         }
+
+        private Color _disableItemBackgroundColor = Color.Gray;
+        public Color DisableItemBackgroundColor
+        {
+            get
+            {
+                return _disableItemBackgroundColor;
+            }
+            set
+            {
+                _disableItemBackgroundColor = value;
+                OnPropertyRaised("DisableItemBackgroundColor");
+            }
+        }
+
+        
     }
 }

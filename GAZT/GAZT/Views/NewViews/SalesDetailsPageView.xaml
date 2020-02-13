@@ -124,7 +124,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid RowSpacing="0" ColumnSpacing="5" >
+                                        <Grid RowSpacing="0" ColumnSpacing="5" BackgroundColor="{Binding DisableItemBackgroundColor}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
