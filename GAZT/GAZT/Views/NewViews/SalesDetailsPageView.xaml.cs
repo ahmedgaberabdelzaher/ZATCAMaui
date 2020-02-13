@@ -228,13 +228,18 @@ namespace GAZT.Views.NewViews
             viewModel._navigationService.GoBack();
         }
 
+        
         protected async void OnOnInvoiceClicked(Object sender, EventArgs e)
         {
             //viewModel.InvoicePopUpVisibility = false;
             //viewModel._navigationService.GoBack();
         }
 
-       
+        protected async void OnEditImageClicked(Object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, viewModel.SelectedSalesDetails);
+        }
+
 
 
         protected async void OnConfirmButtonClicked(Object sender, EventArgs e)

@@ -480,14 +480,17 @@ namespace GAZT.ViewModel.NewViewModel
                 if (App.IsArabic)
                 {
                     Abrzu  = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    
                     Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                    Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
                     // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                 }
                 else
                 {
                     Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                  
                     Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
                 }
                 //Abrzu = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzu);
                 //Abrzo = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzo);
@@ -515,7 +518,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
                 {
-                    HideAllButton();
+                   HideAllButton();
                    HideDisclaimer();
 
                 }

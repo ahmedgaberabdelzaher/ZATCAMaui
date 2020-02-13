@@ -24,16 +24,16 @@ namespace GAZT.Views
 
             InitializeComponent();
 
-            if (App.IsArabic)
-            {
-                var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
-            }
-            else
-            {
-                var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+            //if (App.IsArabic)
+            //{
+            //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+            //    // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+            //}
+            //else
+            //{
+            //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-            }
+            //}
            // string date = UtilityManager.SingleDateConversion("/Date(1442102400000)/");
             GetDeviceID();
             NavigationPage.SetBackButtonTitle(this, "");
