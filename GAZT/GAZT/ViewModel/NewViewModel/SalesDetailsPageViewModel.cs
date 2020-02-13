@@ -1083,9 +1083,11 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void SetSalesDetailsData()
         {
+            Color VATBackgroundColor;
+            Color CapitalBackgroundColor;
             double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
             double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
-          //  IsThresholdGreaterLessVATAmount = d1 < d;
+     bool   IsThresholdGreaterLessVATAmount = d < d1;
             SalesDetailsList = new ObservableCollection<SalesDetails>();
 
             ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
@@ -1095,7 +1097,17 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
             salesDetails1.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslE) ? "0.00" : zakatReturnDetailsD.d.TvtslE;
             salesDetails1.SelectedEditFieldId = "1";
-            salesDetails1.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            if(IsThresholdGreaterLessVATAmount)
+            {
+                VATBackgroundColor = Color.FromHex("#EEEDED"); 
+                CapitalBackgroundColor = Color.White;
+            }
+            else
+            {
+                VATBackgroundColor = Color.White;
+                CapitalBackgroundColor = Color.FromHex("#EEEDED");
+            }
+            salesDetails1.DisableItemBackgroundColor = VATBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails1);
 
             SalesDetails salesDetails2 = new SalesDetails();
@@ -1103,7 +1115,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
             salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.LabnoE) ? "0.00" : zakatReturnDetailsD.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
             salesDetails2.SelectedEditFieldId = "2";
-            salesDetails2.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
 
             SalesDetailsDummyList.Add(salesDetails2);
 
@@ -1112,7 +1124,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
             salesDetails3.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.ImpvalE) ? "0.00" : zakatReturnDetailsD.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
             salesDetails3.SelectedEditFieldId = "3";
-            salesDetails3.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails3.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails3);
 
             SalesDetails salesDetails4 = new SalesDetails();
@@ -1120,7 +1132,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
             salesDetails4.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
             salesDetails4.SelectedEditFieldId = "4";
-            salesDetails4.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails4.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails4);
 
             SalesDetails salesDetails5 = new SalesDetails();
@@ -1128,7 +1140,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
             salesDetails5.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
             salesDetails5.SelectedEditFieldId = "5";
-            salesDetails5.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails5.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails5);
 
             SalesDetails salesDetails6 = new SalesDetails();
@@ -1136,7 +1148,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
             salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
             salesDetails6.SelectedEditFieldId = "6";
-            salesDetails6.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails6);
 
             SalesDetails salesDetails7 = new SalesDetails();
@@ -1144,7 +1156,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
             salesDetails7.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.PramtE) ? "0.00" : zakatReturnDetailsD.d.PramtE; // ZakatReturnDetail.d.PramtE;
             salesDetails7.SelectedEditFieldId = "7";
-            salesDetails7.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails7.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsDummyList.Add(salesDetails7);
 
             SalesDetails salesDetails8 = new SalesDetails();
@@ -1153,7 +1165,7 @@ namespace GAZT.ViewModel.NewViewModel
             salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Cpamt) ? "0.00" : zakatReturnDetailsD.d.Cpamt;
             SalesDetailsDummyList.Add(salesDetails8);
             salesDetails8.SelectedEditFieldId = "8";
-            salesDetails8.DisableItemBackgroundColor = d < d1 ? Color.Gray : Color.Transparent;
+            salesDetails8.DisableItemBackgroundColor = CapitalBackgroundColor;
             SalesDetailsList = SalesDetailsDummyList;
             SalesDetailsDataList = SalesDetailsDummyList;
         }
