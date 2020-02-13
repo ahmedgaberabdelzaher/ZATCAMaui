@@ -2978,6 +2978,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Movement Activity.
+        /// </summary>
+        public static string ZVATAddNewMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATAddNewMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string ZVatAddress {
@@ -3001,6 +3010,60 @@ namespace GAZT {
         public static string ZVatAmountWithSAR {
             get {
                 return ResourceManager.GetString("ZVatAmountWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Download for Inspector.
+        /// </summary>
+        public static string ZVATApplicationDownloadforInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATApplicationDownloadforInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        public static string ZVATApproveButton {
+            get {
+                return ResourceManager.GetString("ZVATApproveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign Inspector.
+        /// </summary>
+        public static string ZVATAssignInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign Officer.
+        /// </summary>
+        public static string ZVATAssignOfficerButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignOfficerButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign to me.
+        /// </summary>
+        public static string ZVATAssigntomeButton {
+            get {
+                return ResourceManager.GetString("ZVATAssigntomeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attach Bank Guarantee.
+        /// </summary>
+        public static string ZVATAttachBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachBankGuaranteeButton", resourceCulture);
             }
         }
         
@@ -3041,6 +3104,51 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach Unloading Document.
+        /// </summary>
+        public static string ZVATAttachUnloadingDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachUnloadingDocumentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string ZVATCalendarButton {
+            get {
+                return ResourceManager.GetString("ZVATCalendarButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Declaration.
+        /// </summary>
+        public static string ZVATCancelDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelDeclarationButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Movement Activity.
+        /// </summary>
+        public static string ZVATCancelMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Return.
+        /// </summary>
+        public static string ZVATCancelReturnButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelReturnButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid VAT number provided.
         /// </summary>
         public static string ZVATCerNumberisnotequalto15 {
@@ -3068,6 +3176,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change.
+        /// </summary>
+        public static string ZVATChangeButton {
+            get {
+                return ResourceManager.GetString("ZVATChangeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change from estimate to accounting.
+        /// </summary>
+        public static string ZVATChangefromestimatetoaccountingButton {
+            get {
+                return ResourceManager.GetString("ZVATChangefromestimatetoaccountingButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Document.
+        /// </summary>
+        public static string ZVATClearDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATClearDocumentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open FAQ URL.
         /// </summary>
         public static string ZVatClickFaqInstructions {
@@ -3082,6 +3217,15 @@ namespace GAZT {
         public static string ZVatClickForMoreDetails {
             get {
                 return ResourceManager.GetString("ZVatClickForMoreDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compliance And History.
+        /// </summary>
+        public static string ZVATComplianceAndHistoryButton {
+            get {
+                return ResourceManager.GetString("ZVATComplianceAndHistoryButton", resourceCulture);
             }
         }
         
@@ -3158,6 +3302,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edita Movement Activity.
+        /// </summary>
+        public static string ZVATEditaMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATEditaMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exempt purchases.
         /// </summary>
         public static string ZVatExemptPurchases {
@@ -3185,6 +3338,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extend Approval Time.
+        /// </summary>
+        public static string ZVATExtendApprovalTimeButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendApprovalTimeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extend.
+        /// </summary>
+        public static string ZVATExtendButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extend Due Date.
+        /// </summary>
+        public static string ZVATExtendDueDateButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendDueDateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please refer to the FAQ section before filling out the return form..
         /// </summary>
         public static string ZVatFaqSectionInstructions {
@@ -3199,6 +3379,15 @@ namespace GAZT {
         public static string ZVatFillInstructions {
             get {
                 return ResourceManager.GetString("ZVatFillInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward.
+        /// </summary>
+        public static string ZVATForwardButton {
+            get {
+                return ResourceManager.GetString("ZVATForwardButton", resourceCulture);
             }
         }
         
@@ -3226,6 +3415,24 @@ namespace GAZT {
         public static string ZVatImportsVatPaidatcustoms {
             get {
                 return ResourceManager.GetString("ZVatImportsVatPaidatcustoms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inspector Submit.
+        /// </summary>
+        public static string ZVATInspectorSubmitButton {
+            get {
+                return ResourceManager.GetString("ZVATInspectorSubmitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice.
+        /// </summary>
+        public static string ZVATInvoiceButton {
+            get {
+                return ResourceManager.GetString("ZVATInvoiceButton", resourceCulture);
             }
         }
         
@@ -3293,6 +3500,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes for ER.
+        /// </summary>
+        public static string ZVATNotesforERButton {
+            get {
+                return ResourceManager.GetString("ZVATNotesforERButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save &amp; Close.
         /// </summary>
         public static string ZVatNotesSaveandClose {
@@ -3343,6 +3559,24 @@ namespace GAZT {
         public static string ZVatPeriodTo {
             get {
                 return ResourceManager.GetString("ZVatPeriodTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string ZVATPreviousButton {
+            get {
+                return ResourceManager.GetString("ZVATPreviousButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrintSD Release Letter.
+        /// </summary>
+        public static string ZVATPrintSDReleaseLetterButton {
+            get {
+                return ResourceManager.GetString("ZVATPrintSDReleaseLetterButton", resourceCulture);
             }
         }
         
@@ -3455,6 +3689,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reject.
+        /// </summary>
+        public static string ZVATRejectButton {
+            get {
+                return ResourceManager.GetString("ZVATRejectButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Bank Guarantee.
+        /// </summary>
+        public static string ZVATReleaseBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATReleaseBankGuaranteeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Additional Information.
+        /// </summary>
+        public static string ZVATRequestAdditionalInformationButton {
+            get {
+                return ResourceManager.GetString("ZVATRequestAdditionalInformationButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
         public static string ZVatReturn {
@@ -3496,6 +3757,96 @@ namespace GAZT {
         public static string ZVatReturnType {
             get {
                 return ResourceManager.GetString("ZVatReturnType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewed.
+        /// </summary>
+        public static string ZVATReviewed {
+            get {
+                return ResourceManager.GetString("ZVATReviewed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revise Down Payment.
+        /// </summary>
+        public static string ZVATReviseDownPaymentButton {
+            get {
+                return ResourceManager.GetString("ZVATReviseDownPaymentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revoke.
+        /// </summary>
+        public static string ZVATRevokeButton {
+            get {
+                return ResourceManager.GetString("ZVATRevokeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales details.
+        /// </summary>
+        public static string ZVATSalesdetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSalesdetailsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the Declaration.
+        /// </summary>
+        public static string ZVATSavetheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSavetheDeclarationButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Back.
+        /// </summary>
+        public static string ZVATSendBackButton {
+            get {
+                return ResourceManager.GetString("ZVATSendBackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send for Audit.
+        /// </summary>
+        public static string ZVATSendforAuditButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforAuditButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send for Inspection.
+        /// </summary>
+        public static string ZVATSendforInspectionButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforInspectionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send to Director.
+        /// </summary>
+        public static string ZVATSendtoDirectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoDirectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send to Taxpayer.
+        /// </summary>
+        public static string ZVATSendtoTaxpayerButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoTaxpayerButton", resourceCulture);
             }
         }
         
@@ -3554,11 +3905,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit Inspector.
+        /// </summary>
+        public static string ZVATSubmitInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmitInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The application cannot be successfully submitted until all of the mandatory fields have been completed..
         /// </summary>
         public static string ZVatSubmittedInstructions {
             get {
                 return ResourceManager.GetString("ZVatSubmittedInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit the Declaration.
+        /// </summary>
+        public static string ZVATSubmittheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmittheDeclarationButton", resourceCulture);
             }
         }
         
@@ -3577,6 +3946,15 @@ namespace GAZT {
         public static string ZVatSummary {
             get {
                 return ResourceManager.GetString("ZVatSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary Details.
+        /// </summary>
+        public static string ZVATSummaryDetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
             }
         }
         
