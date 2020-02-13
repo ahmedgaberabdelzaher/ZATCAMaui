@@ -198,12 +198,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void GetPdfUrl()
         {
-           
             String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=disabled";
             // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
-
-
         }
 
         public async void ShowPdf(string pdfUrl)

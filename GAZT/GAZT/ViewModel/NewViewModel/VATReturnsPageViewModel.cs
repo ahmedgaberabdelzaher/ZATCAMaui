@@ -1904,7 +1904,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
               
                 value = IsCheckedDraftMode();
-                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat) || (value || App.ICRStatus== "E0001"))
+                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
                 {
                     IsRefundVisible = true;
                     if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")

@@ -3019,5 +3019,54 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYoucannotuploadmorethan5attachment", resourceCulture);
             }
         }
+        
+        public static string ZZ25oftheDisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZ25oftheDisputedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
+            get {
+                return ResourceManager.GetString("ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25oft" +
+                        "hedisputedamount", resourceCulture);
+            }
+        }
+        
+        public static string ZZSADADBillDetails {
+            get {
+                return ResourceManager.GetString("ZZSADADBillDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZZSADADInvoiceNumber {
+            get {
+                return ResourceManager.GetString("ZZSADADInvoiceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTheUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZTotalAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZTotaldisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotaldisputedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZTotalUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalUndisputedAmount", resourceCulture);
+            }
+        }
     }
 }

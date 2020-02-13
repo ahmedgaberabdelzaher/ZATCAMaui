@@ -3,9 +3,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -475,6 +477,18 @@ namespace GAZT.ViewModel.NewViewModel
                 HideConfirmButton();
                 ZakatReturnDetail = zakatReturnDetailsD;
                 Persl = ZakatReturnDetail.d.Persl;
+                if (App.IsArabic)
+                {
+                    Abrzu  = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                    // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                }
+                else
+                {
+                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                }
                 //Abrzu = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzu);
                 //Abrzo = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzo);
                 Fbnum = ZakatReturnDetail.d.Fbnum;
@@ -550,8 +564,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
                          _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
-                        
-                        HideDisclaimer();
+                         HideDisclaimer();
                     }
                     else
                     {
