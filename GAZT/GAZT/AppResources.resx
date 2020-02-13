@@ -1128,7 +1128,9 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Accept Return</value>
   </data>
   <data name="ZBillDeatilsInfo" xml:space="preserve">
-    <value>By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information.</value>
+    <value>By paying the invoice, GAZT Zakat certificate will be issued to you
+automatically in case there are no other outstanding obligations.Paying the invoice means you confirm the correctness of the return
+information.</value>
   </data>
   <data name="ZChangeReason" xml:space="preserve">
     <value>Change Reason</value>
@@ -1635,16 +1637,36 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>25% of the Disputed Amount</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZAveragenumberoflaborsx6000SAR" xml:space="preserve">
+    <value>Average number of labors x 6000 SAR</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZAveragenumberoflabour" xml:space="preserve">
     <value>Average number of labour</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZCancel" xml:space="preserve">
+    <value>Cancel</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCapitalamount" xml:space="preserve">
     <value>Capital amount</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount" xml:space="preserve">
+    <value>Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount.</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZConfirmation" xml:space="preserve">
+    <value>Confirmation?</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZContractsformETIMADsystem" xml:space="preserve">
     <value>Contracts form ETIMAD system</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
+    <value>Do you want to release the declaration?</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZExportsvalue" xml:space="preserve">
@@ -1655,8 +1677,17 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>File size must be less than 5 MB</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
+    <value>Greater value of ( {(Estimated Sales ÷ 8) + (Estimated Sales ×
+15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } )</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZImportsvalue" xml:space="preserve">
     <value>Imports value</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZImportsvaluex115" xml:space="preserve">
+    <value>Imports value x 115%</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZIthascopiedsadadpaymentnumber" xml:space="preserve">
@@ -1668,7 +1699,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
-    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount</value>
+    <value>لن يتم تقديم طلب االعتراض اال في حال سداد المبلغ غير المعترض عليه باإلضافة “الى 25 %من المبلغ المعترض عليه</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
@@ -1711,6 +1742,10 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>SUCCESS</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
+    <value>The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZTheUndisputedAmount" xml:space="preserve">
     <value>The Undisputed Amount</value>
     <comment>Estimated Zakat</comment>
@@ -1723,6 +1758,10 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Total disputed Amount</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZTotalsalesinVATreturns" xml:space="preserve">
+    <value>Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties)</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZTotalUndisputedAmount" xml:space="preserve">
     <value>Total Undisputed Amount</value>
     <comment>Estimated Zakat</comment>
@@ -1733,6 +1772,10 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">
     <value>You can not upload more than 5 attachment</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZZakatBaseandwithalowerboundof500SAR" xml:space="preserve">
+    <value>Zakat Base × 2.5% , and with a lower bound of 500 SAR</value>
     <comment>Estimated Zakat</comment>
   </data>
 </root>

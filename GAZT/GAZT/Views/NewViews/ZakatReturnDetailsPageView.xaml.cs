@@ -49,7 +49,7 @@ namespace GAZT.Views.NewViews
         {
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {
-                var result = await this.DisplayAlert("Confirmation?", "Do you want to release the declaration?", "Ok", "Cancel");
+                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.OkText, AppResources.ZZCancel);
                 if (result)
                 {
                     await viewModel.OnReleaseOrBillsClicked();
@@ -71,21 +71,21 @@ namespace GAZT.Views.NewViews
         private void OnInformationMessageClickedTwo(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
-            popUp.Message = "Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount.";
+            popUp.Message = AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount;
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedThree(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
-            popUp.Message = "Greater value of (((Estimated Sales / 8) + (Estimated Sales x 15%)) or (TP Capital Amount) )";
+            popUp.Message = AppResources.ZZGreatervalueofEstimatedSales;
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedFour(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
-            popUp.Message = "Zakat Base x 2.5% , and with a lower bound of 500 SAR";
+            popUp.Message = AppResources.ZZZakatBaseandwithalowerboundof500SAR;
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
