@@ -19,7 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
-
+        string Cokey = "";
         #endregion
 
         #region Property
@@ -154,6 +154,7 @@ namespace GAZT.ViewModel.NewViewModel
                     PopToRootPage();
                     if(Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0)
                     {
+                        Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                         estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
                         estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                         EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
@@ -195,10 +196,11 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public async Task GetPdfUrl()
+        public void GetPdfUrl()
         {
-            string Cokey = "";
-         string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
+           
+            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=disabled";
+            // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
 
 
