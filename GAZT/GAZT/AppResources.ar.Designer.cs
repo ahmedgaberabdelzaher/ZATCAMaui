@@ -2911,5 +2911,113 @@ namespace GAZT {
                 return ResourceManager.GetString("Nocertificateavailable", resourceCulture);
             }
         }
+        
+        public static string ZZAveragenumberoflabour {
+            get {
+                return ResourceManager.GetString("ZZAveragenumberoflabour", resourceCulture);
+            }
+        }
+        
+        public static string ZZCapitalamount {
+            get {
+                return ResourceManager.GetString("ZZCapitalamount", resourceCulture);
+            }
+        }
+        
+        public static string ZZContractsformETIMADsystem {
+            get {
+                return ResourceManager.GetString("ZZContractsformETIMADsystem", resourceCulture);
+            }
+        }
+        
+        public static string ZZExportsvalue {
+            get {
+                return ResourceManager.GetString("ZZExportsvalue", resourceCulture);
+            }
+        }
+        
+        public static string ZZFilesizemustbelessthan5MB {
+            get {
+                return ResourceManager.GetString("ZZFilesizemustbelessthan5MB", resourceCulture);
+            }
+        }
+        
+        public static string ZZImportsvalue {
+            get {
+                return ResourceManager.GetString("ZZImportsvalue", resourceCulture);
+            }
+        }
+        
+        public static string ZZIthascopiedsadadpaymentnumber {
+            get {
+                return ResourceManager.GetString("ZZIthascopiedsadadpaymentnumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZNochangesmadeFormcannotbesubmitted {
+            get {
+                return ResourceManager.GetString("ZZNochangesmadeFormcannotbesubmitted", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseselectthedisclaimercheckboxbeforesubmit {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectthedisclaimercheckboxbeforesubmit", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseuploadtheRequiredDocumentandChangereason {
+            get {
+                return ResourceManager.GetString("ZZPleaseuploadtheRequiredDocumentandChangereason", resourceCulture);
+            }
+        }
+        
+        public static string ZZPurchasevalue {
+            get {
+                return ResourceManager.GetString("ZZPurchasevalue", resourceCulture);
+            }
+        }
+        
+        public static string ZZReleasedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZReleasedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZZReturnSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZReturnSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZZSalesformpointofsales {
+            get {
+                return ResourceManager.GetString("ZZSalesformpointofsales", resourceCulture);
+            }
+        }
+        
+        public static string ZZSomethingwentwrong {
+            get {
+                return ResourceManager.GetString("ZZSomethingwentwrong", resourceCulture);
+            }
+        }
+        
+        public static string ZZSUCCESS {
+            get {
+                return ResourceManager.GetString("ZZSUCCESS", resourceCulture);
+            }
+        }
+        
+        public static string ZZTotalVATSales {
+            get {
+                return ResourceManager.GetString("ZZTotalVATSales", resourceCulture);
+            }
+        }
+        
+        public static string ZZYoucannotuploadmorethan5attachment {
+            get {
+                return ResourceManager.GetString("ZZYoucannotuploadmorethan5attachment", resourceCulture);
+            }
+        }
     }
 }

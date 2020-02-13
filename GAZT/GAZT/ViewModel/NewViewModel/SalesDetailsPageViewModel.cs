@@ -475,8 +475,8 @@ namespace GAZT.ViewModel.NewViewModel
                 HideConfirmButton();
                 ZakatReturnDetail = zakatReturnDetailsD;
                 Persl = ZakatReturnDetail.d.Persl;
-                //Abrzu = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzu); 
-                //Abrzo = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzo); 
+                //Abrzu = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzu);
+                //Abrzo = UtilityManager.SingleDateConversion(ZakatReturnDetail.d.Abrzo);
                 Fbnum = ZakatReturnDetail.d.Fbnum;
                 Estsl = ZakatReturnDetail.d.Estsl;
                 RetGuid = zakatReturnDetailsD.d.ReturnId;
@@ -502,7 +502,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))// UnSubmitted
                 {
                     HideAllButton();
-                 //  HideDisclaimer();
+                   HideDisclaimer();
 
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
@@ -519,7 +519,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0005"))// In Processing
                 {
                     HideAllButton();
-                   // HideDisclaimer();
+                    HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
                 else
@@ -550,6 +550,8 @@ namespace GAZT.ViewModel.NewViewModel
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
                          _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                        
+                        HideDisclaimer();
                     }
                     else
                     {
@@ -978,6 +980,10 @@ namespace GAZT.ViewModel.NewViewModel
             DesClaimerVisibility = false;
         }
 
+        private void ShowDisclaimer()
+        {
+            DesClaimerVisibility = true;
+        }
         private void AddAttachmetToPostData(int index, ObservableCollection<EstimateZakatAttachment> attachmentList)
         {
             for(int i = 0; i< attachmentList.Count; i++)
