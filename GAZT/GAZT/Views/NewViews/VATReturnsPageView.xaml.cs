@@ -1039,7 +1039,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
         {
-            if(!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+            if(!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text!="." && EntryVatAdjustmentWithSAR.Text!=".")
             {
                 CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
                
@@ -1048,7 +1048,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text))
+            if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text!="." && EntryVatAdjustmentWithSAR.Text !=".")
             {
                 CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
               
@@ -1058,7 +1058,7 @@ namespace GAZT.Views.NewViews
         public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
         {
            
-
+            
             if (EntryVatAmount == 0 && EntryVatAdjustmentWithSAR > 0)
             {
                 PopUp Pop = new PopUp();
@@ -1089,7 +1089,7 @@ namespace GAZT.Views.NewViews
 
         private void EntrySalesGccAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text!="." && EntrySalesGccAdj.Text!=".")
             {
                 CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
 
@@ -1098,7 +1098,7 @@ namespace GAZT.Views.NewViews
 
         private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text))
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text!="." && EntrySalesGccAdj.Text!=".")
             {
                 CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
 
@@ -1136,7 +1136,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text!="." && EntryZerosalesAdj.Text!=".")
             {
                 CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
 
@@ -1145,7 +1145,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text!="." && EntryZerosalesAdj.Text!=".")
             {
                 CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
 
@@ -1170,7 +1170,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExportsAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text!="." && EntryExportsAdj.Text!=".")
             {
                 CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text));
 
@@ -1179,7 +1179,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text!="." && EntryExportsAdj.Text!=".")
             {
                 CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text));
 
@@ -1204,7 +1204,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExemptsalesAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text!="." && EntryExemptsalesAdj.Text!=".")
             {
                 CheckFouraFourb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
 
@@ -1213,7 +1213,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text!="." && EntryExemptsalesAdj.Text!=".")
             {
                 CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
 
@@ -1254,12 +1254,12 @@ namespace GAZT.Views.NewViews
 
         private void EntryStdpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text))
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text!="." && LabelTotalsalesAmt.Text!=".")
             {
                 CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
 
             }
-            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text!="." && EntryStdpurchaseAdj.Text!=".")
             {
                 CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
 
@@ -1268,7 +1268,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text!="." && EntryStdpurchaseAdj.Text!=".")
             {
                 CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
 
@@ -1309,7 +1309,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryZVatAmountWithSAR_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text!="." && EntryImportspaidAdj.Text!=".")
             {
                 CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
 
@@ -1318,7 +1318,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text!="." && EntryImportspaidAdj.Text!=".")
             {
                 CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
 
@@ -1343,7 +1343,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryImportsaccAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text))
+            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text!="." && EntryImportsaccAdj.Text!=".")
             {
                 CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
 
@@ -1352,7 +1352,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text))
+            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text!="." && EntryImportsaccAdj.Text!=".")
             {
                 CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
 
@@ -1377,7 +1377,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryZeropurchaseAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text!="." && EntryZeropurchaseAdj.Text!=".")
             {
                 CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
 
@@ -1386,7 +1386,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text!="." && EntryZeropurchaseAdj.Text!=".")
             {
                 CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
 
@@ -1411,7 +1411,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExemptpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text!="." && EntryExemptpurchaseAdj.Text!=".")
             {
                 CheckTenaTenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
 
@@ -1420,7 +1420,7 @@ namespace GAZT.Views.NewViews
 
         private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text))
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text!="." && EntryExemptpurchaseAdj.Text!=".")
             {
                 CheckTenaTenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
 
@@ -1502,7 +1502,7 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text))
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text!=".")
                 {
                     string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
                     string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
@@ -1650,7 +1650,7 @@ namespace GAZT.Views.NewViews
 
         }
 
-        
+       
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
