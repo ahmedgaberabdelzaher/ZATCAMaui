@@ -66,9 +66,9 @@ namespace GAZT.Views.NewViews
            await viewModel.OnPageLoad();
         }
 
-        protected async void OnDownLoadInvoiceClicked()
+        protected  void OnDownLoadInvoiceClicked()
         {
-           // viewModel.GetPdfUrl();
+         viewModel.GetPdfUrl();
         }
         
         private void SetLTR()

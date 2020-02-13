@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
         SalesDetailsPageViewModel viewModel;
         ZakatReturnDetailsD ZakatReturnDetail = null;
         int selectedIndex = -1;
+       
         #endregion
 
         #region Property
