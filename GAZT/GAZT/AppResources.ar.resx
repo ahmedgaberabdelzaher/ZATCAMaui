@@ -1710,4 +1710,36 @@
     <value>You can not upload more than 5 attachment</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZ25oftheDisputedAmount" xml:space="preserve">
+    <value>25% of the Disputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
+    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSADADBillDetails" xml:space="preserve">
+    <value>SADAD Bill Details:</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSADADInvoiceNumber" xml:space="preserve">
+    <value>SADAD Invoice Number</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTheUndisputedAmount" xml:space="preserve">
+    <value>The Undisputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalAmount" xml:space="preserve">
+    <value>Total Amount:</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotaldisputedAmount" xml:space="preserve">
+    <value>Total disputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalUndisputedAmount" xml:space="preserve">
+    <value>Total Undisputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
 </root>

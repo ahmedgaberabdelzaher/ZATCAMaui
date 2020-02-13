@@ -3752,6 +3752,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 25% of the Disputed Amount.
+        /// </summary>
+        public static string ZZ25oftheDisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZ25oftheDisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Return Details.
         /// </summary>
         public static string ZZakatReturnDetails {
@@ -4150,6 +4159,16 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
+        /// </summary>
+        public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
+            get {
+                return ResourceManager.GetString("ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25oft" +
+                        "hedisputedamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
@@ -4240,6 +4259,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SADAD Bill Details:.
+        /// </summary>
+        public static string ZZSADADBillDetails {
+            get {
+                return ResourceManager.GetString("ZZSADADBillDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Invoice Number.
+        /// </summary>
+        public static string ZZSADADInvoiceNumber {
+            get {
+                return ResourceManager.GetString("ZZSADADInvoiceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales form point of sales.
         /// </summary>
         public static string ZZSalesformpointofsales {
@@ -4317,6 +4354,42 @@ namespace GAZT {
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Undisputed Amount.
+        /// </summary>
+        public static string ZZTheUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTheUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Amount:.
+        /// </summary>
+        public static string ZZTotalAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total disputed Amount.
+        /// </summary>
+        public static string ZZTotaldisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotaldisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Undisputed Amount.
+        /// </summary>
+        public static string ZZTotalUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalUndisputedAmount", resourceCulture);
             }
         }
         

@@ -1631,6 +1631,10 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="Nocertificateavailable" xml:space="preserve">
     <value>No certificate available</value>
   </data>
+  <data name="ZZ25oftheDisputedAmount" xml:space="preserve">
+    <value>25% of the Disputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZAveragenumberoflabour" xml:space="preserve">
     <value>Average number of labour</value>
     <comment>Estimated Zakat</comment>
@@ -1663,6 +1667,10 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>No changes made, Form cannot be submitted</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
+    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
     <value>Please select the disclaimer checkbox before submit.</value>
     <comment>Estimated Zakat</comment>
@@ -1683,6 +1691,14 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Return Submitted Successfully</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZZSADADBillDetails" xml:space="preserve">
+    <value>SADAD Bill Details:</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSADADInvoiceNumber" xml:space="preserve">
+    <value>SADAD Invoice Number</value>
+    <comment>Estimated Zakat</comment>
+  </data>
   <data name="ZZSalesformpointofsales" xml:space="preserve">
     <value>Sales form point of sales</value>
     <comment>Estimated Zakat</comment>
@@ -1693,6 +1709,22 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZZSUCCESS" xml:space="preserve">
     <value>SUCCESS</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTheUndisputedAmount" xml:space="preserve">
+    <value>The Undisputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalAmount" xml:space="preserve">
+    <value>Total Amount:</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotaldisputedAmount" xml:space="preserve">
+    <value>Total disputed Amount</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalUndisputedAmount" xml:space="preserve">
+    <value>Total Undisputed Amount</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalVATSales" xml:space="preserve">
