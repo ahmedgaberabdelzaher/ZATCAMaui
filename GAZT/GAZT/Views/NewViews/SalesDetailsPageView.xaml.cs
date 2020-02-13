@@ -326,32 +326,32 @@ namespace GAZT.Views.NewViews
             {
                 case 1:
                     {
-                        informationMessage = "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
+                        informationMessage = AppResources.ZZTotalsalesinVATreturns;
                         break;
                     }
                 case 2:
                     {
-                        informationMessage = "Average number of labors x 6000 SAR";
+                        informationMessage = AppResources.ZZAveragenumberoflaborsx6000SAR;
                         break;
                     }
                 case 3:
                     {
-                        informationMessage = "Imports value x 115%";
+                        informationMessage = AppResources.ZZImportsvaluex115;
                         break;
                     }
                 case 4:
                     {
-                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        informationMessage = AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports;
                         break;
                     }
                 case 5:
                     {
-                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        informationMessage = AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports;
                         break;
                     }
                 case 6:
                     {
-                        informationMessage = "sum of (Sales from point of sales + Contracts from ETIMAD system + Exports value)";
+                        informationMessage = AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports;
                         break;
                     }
                 case 7:
@@ -362,7 +362,7 @@ namespace GAZT.Views.NewViews
                     }
                 case 8:
                     {
-                        informationMessage = "Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount.";
+                        informationMessage = AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount;
                         break;
                     }
             }

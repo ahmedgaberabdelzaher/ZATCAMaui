@@ -1961,7 +1961,9 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information..
+        ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you
+        ///automatically in case there are no other outstanding obligations.Paying the invoice means you confirm the correctness of the return
+        ///information..
         /// </summary>
         public static string ZBillDeatilsInfo {
             get {
@@ -3797,6 +3799,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average number of labors x 6000 SAR.
+        /// </summary>
+        public static string ZZAveragenumberoflaborsx6000SAR {
+            get {
+                return ResourceManager.GetString("ZZAveragenumberoflaborsx6000SAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Average number of labour.
         /// </summary>
         public static string ZZAveragenumberoflabour {
@@ -3815,11 +3826,30 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ZZCancel {
+            get {
+                return ResourceManager.GetString("ZZCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Capital amount.
         /// </summary>
         public static string ZZCapitalamount {
             get {
                 return ResourceManager.GetString("ZZCapitalamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount..
+        /// </summary>
+        public static string ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount {
+            get {
+                return ResourceManager.GetString("ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythe" +
+                        "capitalamount", resourceCulture);
             }
         }
         
@@ -3838,6 +3868,15 @@ namespace GAZT {
         public static string ZZClose {
             get {
                 return ResourceManager.GetString("ZZClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation?.
+        /// </summary>
+        public static string ZZConfirmation {
+            get {
+                return ResourceManager.GetString("ZZConfirmation", resourceCulture);
             }
         }
         
@@ -3865,6 +3904,15 @@ namespace GAZT {
         public static string ZZDisplayNotes {
             get {
                 return ResourceManager.GetString("ZZDisplayNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to release the declaration?.
+        /// </summary>
+        public static string ZZDoyouwanttoreleasethedeclaration {
+            get {
+                return ResourceManager.GetString("ZZDoyouwanttoreleasethedeclaration", resourceCulture);
             }
         }
         
@@ -4105,11 +4153,30 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greater value of ( {(Estimated Sales ÷ 8) + (Estimated Sales ×
+        ///15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } ).
+        /// </summary>
+        public static string ZZGreatervalueofEstimatedSales {
+            get {
+                return ResourceManager.GetString("ZZGreatervalueofEstimatedSales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Imports value.
         /// </summary>
         public static string ZZImportsvalue {
             get {
                 return ResourceManager.GetString("ZZImportsvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports value x 115%.
+        /// </summary>
+        public static string ZZImportsvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZImportsvaluex115", resourceCulture);
             }
         }
         
@@ -4159,7 +4226,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
+        ///   Looks up a localized string similar to لن يتم تقديم طلب االعتراض اال في حال سداد المبلغ غير المعترض عليه باإلضافة “الى 25 %من المبلغ المعترض عليه.
         /// </summary>
         public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
             get {
@@ -4340,7 +4407,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new mobile number must not  match the existing mobile number.
+        ///   Looks up a localized string similar to The New Mobile Number should not be same as the Old Mobile Number.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {
@@ -4354,6 +4421,15 @@ namespace GAZT {
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports).
+        /// </summary>
+        public static string ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports {
+            get {
+                return ResourceManager.GetString("ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports", resourceCulture);
             }
         }
         
@@ -4381,6 +4457,15 @@ namespace GAZT {
         public static string ZZTotaldisputedAmount {
             get {
                 return ResourceManager.GetString("ZZTotaldisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties).
+        /// </summary>
+        public static string ZZTotalsalesinVATreturns {
+            get {
+                return ResourceManager.GetString("ZZTotalsalesinVATreturns", resourceCulture);
             }
         }
         
@@ -4606,6 +4691,15 @@ namespace GAZT {
         public static string ZZYoucannotuploadmorethan5attachment {
             get {
                 return ResourceManager.GetString("ZZYoucannotuploadmorethan5attachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Base × 2.5% , and with a lower bound of 500 SAR.
+        /// </summary>
+        public static string ZZZakatBaseandwithalowerboundof500SAR {
+            get {
+                return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
     }
