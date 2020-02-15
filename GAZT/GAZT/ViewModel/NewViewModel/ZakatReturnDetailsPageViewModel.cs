@@ -3,8 +3,10 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,11 +24,12 @@ namespace GAZT.ViewModel.NewViewModel
         string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
         public static string Fbguid  { get; set; }
+      //  public Label DateLabel { get; set; }
 
-    #endregion
+        #endregion
 
-    #region Property
-    private bool _isLoading = false;
+        #region Property
+        private bool _isLoading = false;
         public bool IsLoading
         {
             get
@@ -82,8 +85,35 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _abrzu;
+        public string Abrzu
+        {
+            get
+            {
+                return _abrzu;
+            }
+            set
+            {
+                _abrzu = value;
+                RaisePropertyChanged("Abrzu");
+            }
+        }
 
-        
+        private string _abrzo;
+        public string Abrzo
+        {
+            get
+            {
+                return _abrzo;
+            }
+            set
+            {
+                _abrzo = value;
+                RaisePropertyChanged("Abrzo");
+            }
+        }
+
+
 
         #endregion
 
@@ -170,6 +200,20 @@ namespace GAZT.ViewModel.NewViewModel
                     ZakatReturnDetails = zakatReturnDetails;
                     ZakatReturnDetail = zakatReturnDetails.d;
                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                    if (App.IsArabic)
+                    {
+                        Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                        Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        Abrzu =  Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                        // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                    }
+                    else
+                    {
+                         Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                         Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                    }
                 });
                 await Task.Run(() =>
                 {

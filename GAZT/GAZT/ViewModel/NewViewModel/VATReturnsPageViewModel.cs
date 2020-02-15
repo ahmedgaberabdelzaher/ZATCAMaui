@@ -44,7 +44,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
 
-
+        public ICommand OnGetAcknowledgementLinkClicked { get;set; }
 
 
         #endregion
@@ -326,7 +326,14 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    IsMainButtonEnabled = true;
+                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    {
+                        IsMainButtonEnabled = false;
+                    }
+                    else
+                    {
+                        IsMainButtonEnabled = true;
+                    }
                     VATDeclarationData.d.ConfStp2 = "1";
                 }
                 else
@@ -337,7 +344,21 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsCheckedTaxPayerDetailsInfo");
             }
         }
+        
 
+        private bool _isGetAcknowledgementClicked = false;
+        public bool IsGetAcknowledgementClicked
+        {
+            get
+            {
+                return _isGetAcknowledgementClicked;
+            }
+            set
+            {
+                _isGetAcknowledgementClicked = value;
+                RaisePropertyChanged("IsGetAcknowledgementClicked");
+            }
+        }
 
         private bool _isDeclarationCheckedForSummary = false;
         public bool IsDeclarationCheckedForSummary
@@ -351,7 +372,14 @@ namespace GAZT.ViewModel.NewViewModel
                 _isDeclarationCheckedForSummary = value;
                 if (_isDeclarationCheckedForSummary == true)
                 {
-                    IsMainButtonEnabled = true;
+                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    {
+                        IsMainButtonEnabled = false;
+                    }
+                    else
+                    {
+                        IsMainButtonEnabled = true;
+                    }
                     VATDeclarationData.d.DecFg = "1";
                 }
                 else
@@ -377,7 +405,14 @@ namespace GAZT.ViewModel.NewViewModel
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {
-                    IsMainButtonEnabled = true;
+                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    {
+                        IsMainButtonEnabled = false;
+                    }
+                    else
+                    {
+                        IsMainButtonEnabled = true;
+                    }
                     VATDeclarationData.d.TcFg = "1";
 
 
@@ -1580,7 +1615,7 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
 
             IsMainButtonEnabled = false;
-
+            
             ManageEnabledProperty(true);
 
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
@@ -1608,13 +1643,13 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         SubmitClicked();
                     }
-                    else if(ButtonName == AppResources.ZVatDownloadForm)
-                    {
-                        String Url = string.Empty;
-                       // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                         Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                        ShowPdf(Url);
-                    }
+                    //else if(ButtonName == AppResources.ZVatDownloadForm)
+                    //{
+                    //    String Url = string.Empty;
+                    //   // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                    //     Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                    //   ShowPdf(Url);
+                    //}
                     else if (ButtonName == AppResources.ZNote)
                     {
                         SetNoteData();
@@ -1633,6 +1668,13 @@ namespace GAZT.ViewModel.NewViewModel
                 ResponseVATDeclarationD.StdsalesVat = StandardRatedSalesVatAmount(ResponseVATDeclarationD.StdsalesAmt, ResponseVATDeclarationD.StdsalesAdj);
 
             });
+
+
+             OnGetAcknowledgementLinkClicked = new Xamarin.Forms.Command(async () =>
+             {
+                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+
+             });
 
             onInstructionsClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -1969,9 +2011,11 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleSummary = true;
             if(App.ICRStatus=="E0045" && IsAmendClicked==false)
             {
-                IsMainButtonEnabled = true;
-                ButtonName = AppResources.ZVatDownloadForm;
+               
+                IsGetAcknowledgementClicked = true;
+                ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
+                IsMainButtonEnabled = false;
             }
             else
             {
@@ -2081,8 +2125,8 @@ namespace GAZT.ViewModel.NewViewModel
                     VATDeclarationData.d.UserTypz = "TP";
                     VATDeclarationData.d.Operationz = operation;
                     VATDeclaration response = new VATDeclaration();
-                    response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
-                    PopToRootPage();
+                    //response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                    //PopToRootPage();
                     IsLoading = false;
                     await SaveReturnAndGetReturnAndSetButtons();
                 }
@@ -2295,21 +2339,21 @@ namespace GAZT.ViewModel.NewViewModel
                 string operation = "45";// Passed 45 to set for Amendment
                 VATDeclarationData.d.Operationz = operation;
                 StepNumber = "01";
-                ButtonName = AppResources.ZVatStepTwo;
+               // ButtonName = AppResources.ZVatStepTwo;
                 if (IsDeclarationCheckedForInstruction == true)
                 {
                     StepNumber = "02";
-                    ButtonName = AppResources.ZVatStepThree;
+                   // ButtonName = AppResources.ZVatStepThree;
                 }
                 if (IsCheckedTaxPayerDetailsInfo == true)
                 {
                     StepNumber = "03";
-                    ButtonName = AppResources.ZVatStepFour;
+                   // ButtonName = AppResources.ZVatStepFour;
                 }
                 if (IsDeclarationCheckedForSummary == true)
                 {
                     StepNumber = "04";
-                    ButtonName = AppResources.Submit;
+                //    ButtonName = AppResources.Submit;
                 }
 
                 VATDeclarationData.d.StepNumber = StepNumber;
@@ -2699,6 +2743,36 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private List<String> _DummyListOfActionButtonsApplicable;
+        public List<String> DummyListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _DummyListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _DummyListOfActionButtonsApplicable = value;
+
+                RaisePropertyChanged("DummyListOfActionButtonsApplicable");
+            }
+        }
+
+        private List<String> _ActualListOfActionButtonsApplicable;
+        public List<String> ActualListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _ActualListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _ActualListOfActionButtonsApplicable = value;
+
+                RaisePropertyChanged("ActualListOfActionButtonsApplicable");
+            }
+        }
+
         private async Task SaveReturnAndGetReturnAndSetButtons()
         {
             try
@@ -2726,7 +2800,7 @@ namespace GAZT.ViewModel.NewViewModel
                         ManageEnabledProperty(true);
                 }
 
-                await SetButtons(VATDeclarationData);
+                SetButtons(VATDeclarationData);
 
 
                   
@@ -3057,6 +3131,232 @@ namespace GAZT.ViewModel.NewViewModel
 
         #endregion
 
+        public void SetButtonStrings(String ButtonName) 
+        {
+            if(ButtonName == "Submit")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.Submit);
+            }
+            else if (ButtonName == "Reject")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATRejectButton);
+            }
+            else if (ButtonName == "Void")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
+            else if (ButtonName == "Save")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.Save);
+            }
+            else if (ButtonName == "DisplayNotes")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
+            }
+            else if (ButtonName == "Validate")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
+            }
+            else if (ButtonName == "Attachments")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.Attachment);
+            }
+            else if (ButtonName == "Reset")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
+            }
+            else if (ButtonName == "Createnotes")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZCreateNotes);
+            }
+            else if (ButtonName == "Amend")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);
+            }
+            else if (ButtonName == "Closed")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZClose);
+            }
+            else if (ButtonName == "SavetheDeclaration")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSavetheDeclarationButton);
+            }
+            else if (ButtonName == "CancelDeclaration")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCancelDeclarationButton);
+            }
+            else if (ButtonName == "SubmittheDeclaration")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSubmittheDeclarationButton);
+            }
+            else if (ButtonName == "Release")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.Release);
+            }
+            else if (ButtonName == "Approve")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATApproveButton);
+            }
+            else if (ButtonName == "Forward")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATForwardButton);
+            }
+            //else if (ButtonName == "NotesforER")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATNotesforERButton);
+            //}
+            //else if (ButtonName == "Assigntome")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAssigntomeButton);
+            //}
+            //else if (ButtonName == "Calendar")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCalendarButton);
+            //}
+            //else if (ButtonName == "Confirm")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.Confirm);
+            //}
+            //else if (ButtonName == "SendforInspection")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSendforInspectionButton);
+            //}
+            //else if (ButtonName == "AssignInspector")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAssignInspectorButton);
+            //}
+            //else if (ButtonName == "SendBack")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSendBackButton);
+            //}
+            //else if (ButtonName == "AttachBankGuarantee")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAttachBankGuaranteeButton);
+            //}
+            //else if (ButtonName == "ExtendDueDate")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATExtendDueDateButton);
+            //}
+            //else if (ButtonName == "Next")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZNext);
+            //}
+            //else if (ButtonName == "InspectorSubmit")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATInspectorSubmitButton);
+            //}
+            //else if (ButtonName == "ApplicationDownloadforInspector")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATApplicationDownloadforInspectorButton);
+            //}
+            //else if (ButtonName == "Reviewed")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATReviewed);
+            //}
+            //else if (ButtonName == "AssignOfficer")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAssignOfficerButton);
+            //}
+            //else if (ButtonName == "EditaMovementActivity")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATEditaMovementActivityButton);
+            //}
+            //else if (ButtonName == "CancelMovementActivity")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCancelMovementActivityButton);
+            //}
+            //else if (ButtonName == "AddNewMovementActivity")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAddNewMovementActivityButton);
+            //}
+            //else if (ButtonName == "SendforAudit")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSendforAuditButton);
+            //}
+            //else if (ButtonName == "SendtoDirector")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSendtoDirectorButton);
+            //}
+            //else if (ButtonName == "SubmitInspector")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSubmitInspectorButton);
+            //}
+            //else if (ButtonName == "AttachUnloadingDocument")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATAttachUnloadingDocumentButton);
+            //}
+            //else if (ButtonName == "ClearDocument")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATClearDocumentButton);
+            //}
+            //else if (ButtonName == "ExtendApprovalTime")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATExtendApprovalTimeButton);
+            //}
+            //else if (ButtonName == "Change")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATChangeButton);
+            //}
+            //else if (ButtonName == "Extend")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATExtendButton);
+            //}
+            //else if (ButtonName == "Revoke")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATRevokeButton);
+            //}
+            //else if (ButtonName == "SendtoTaxpayer")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSendtoTaxpayerButton);
+            //}
+            //else if (ButtonName == "SummaryDetails")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSummaryDetailsButton);
+            //}
+            //else if (ButtonName == "PrintSDReleaseLetter")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATPrintSDReleaseLetterButton);
+            //}
+            //else if (ButtonName == "ReleaseBankGuarantee")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATReleaseBankGuaranteeButton);
+            //}
+            //else if (ButtonName == "ComplianceAndHistory")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATComplianceAndHistoryButton);
+            //}
+            //else if (ButtonName == "Previous")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATPreviousButton);
+            //}
+            //else if (ButtonName == "CancelReturn")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCancelReturnButton);
+            //}
+            //else if (ButtonName == "RequestAdditionalInformation")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATRequestAdditionalInformationButton);
+            //}
+            //else if (ButtonName == "Salesdetails")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATSalesdetailsButton);
+            //}
+            //else if (ButtonName == "Changefromestimatetoaccounting")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATChangefromestimatetoaccountingButton);
+            //}
+            //else if (ButtonName == "Invoice")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATInvoiceButton);
+            //}
+
+            //else if (ButtonName == "ReviseDownPayment")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATReviseDownPaymentButton);
+            //}
+
+        }
+
         public async Task SetButtons(VATDeclaration vATDeclarationData)
         {
             try
@@ -3064,15 +3364,19 @@ namespace GAZT.ViewModel.NewViewModel
                 List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnumz, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz,vATDeclarationData.d.Periodkeyz);
             PopToRootPage();
             ListOfActionButtonsApplicable = new List<string>();
-
+            DummyListOfActionButtonsApplicable = new List<string>();
             if (VATApplicableButtons != null)
             {
                 ListOfActionButtonsApplicable.Clear();
+                DummyListOfActionButtonsApplicable.Clear();
                 foreach (ApplicableButton button in VATApplicableButtons)
                 {
-                    ListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
+                    SetButtonStrings(button.buttonEnumId.ToString());
+                        //  DummyListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
+                        
                 }
-            }
+                    ListOfActionButtonsApplicable = DummyListOfActionButtonsApplicable;
+                }
             }
             catch (InternetException ex)
             {

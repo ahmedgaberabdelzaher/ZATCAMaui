@@ -3026,6 +3026,49 @@ namespace GAZT {
             }
         }
         
+        public static string ZZAveragenumberoflaborsx6000SAR {
+            get {
+                return ResourceManager.GetString("ZZAveragenumberoflaborsx6000SAR", resourceCulture);
+            }
+        }
+        
+        public static string ZZCancel {
+            get {
+                return ResourceManager.GetString("ZZCancel", resourceCulture);
+            }
+        }
+        
+        public static string ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount {
+            get {
+                return ResourceManager.GetString("ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythe" +
+                        "capitalamount", resourceCulture);
+            }
+        }
+        
+        public static string ZZConfirmation {
+            get {
+                return ResourceManager.GetString("ZZConfirmation", resourceCulture);
+            }
+        }
+        
+        public static string ZZDoyouwanttoreleasethedeclaration {
+            get {
+                return ResourceManager.GetString("ZZDoyouwanttoreleasethedeclaration", resourceCulture);
+            }
+        }
+        
+        public static string ZZGreatervalueofEstimatedSales {
+            get {
+                return ResourceManager.GetString("ZZGreatervalueofEstimatedSales", resourceCulture);
+            }
+        }
+        
+        public static string ZZImportsvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZImportsvaluex115", resourceCulture);
+            }
+        }
+        
         public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
             get {
                 return ResourceManager.GetString("ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25oft" +
@@ -3042,6 +3085,12 @@ namespace GAZT {
         public static string ZZSADADInvoiceNumber {
             get {
                 return ResourceManager.GetString("ZZSADADInvoiceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports {
+            get {
+                return ResourceManager.GetString("ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports", resourceCulture);
             }
         }
         
@@ -3063,9 +3112,21 @@ namespace GAZT {
             }
         }
         
+        public static string ZZTotalsalesinVATreturns {
+            get {
+                return ResourceManager.GetString("ZZTotalsalesinVATreturns", resourceCulture);
+            }
+        }
+        
         public static string ZZTotalUndisputedAmount {
             get {
                 return ResourceManager.GetString("ZZTotalUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZZakatBaseandwithalowerboundof500SAR {
+            get {
+                return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
     }

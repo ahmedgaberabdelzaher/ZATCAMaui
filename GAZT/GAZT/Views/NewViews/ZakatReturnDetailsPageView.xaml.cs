@@ -24,19 +24,31 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-
+        string Fbguid = "";
         public ZakatReturnDetailsPageView(string fbguid)
         {
             viewModel = App.Locator.ZakatReturnDetailsPageView;
             InitializeComponent();
+            Fbguid = fbguid;
             SetLTR();
             this.BindingContext = viewModel;
-            viewModel.OnPageLoad(fbguid);
+          
+           
+
+
         }
 
         #endregion
 
         #region Method
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+          await viewModel.OnPageLoad(Fbguid);
+            date.Text = viewModel.Abrzu;
+
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

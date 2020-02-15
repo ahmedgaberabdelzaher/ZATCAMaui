@@ -54,6 +54,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsFirstTimeGet = true;
             AddNotePageViewModel.NoteString = string.Empty;
             viewModel.IsRefundVisible = false;
+            viewModel.IsGetAcknowledgementClicked = false;
             viewModel.IsVisibleDropdownForRefund = false;
             setAllCheckbox(false);
             Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) => 
@@ -104,7 +105,7 @@ namespace GAZT.Views.NewViews
                     viewModel.ManageEnabledProperty(false);
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
                     viewModel.ButtonName = AppResources.ZVatDownloadForm;
-                    viewModel.IsMainButtonEnabled = true;
+                    viewModel.IsMainButtonEnabled = false;
                 }
                 else
                 {
@@ -306,7 +307,7 @@ namespace GAZT.Views.NewViews
 
                     viewModel.InstrunctionClicked();
                    
-                    if(viewModel.IsDeclarationCheckedForInstruction)
+                    if(viewModel.IsDeclarationCheckedForInstruction && !((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == false)))
                     {
                         viewModel.IsMainButtonEnabled = true;
                     }

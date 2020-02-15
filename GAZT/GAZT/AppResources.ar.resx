@@ -1783,4 +1783,130 @@
     <value>الوعاء الزكوي × 5.2 , %وبحد أدنى 500 ريال سعودي</value>
     <comment>Estimated Zakat</comment>
   </data>
+  <data name="ZVATAddNewMovementActivityButton" xml:space="preserve">
+    <value>Add New Movement Activity</value>
+  </data>
+  <data name="ZVATApplicationDownloadforInspectorButton" xml:space="preserve">
+    <value>Application Download for Inspector</value>
+  </data>
+  <data name="ZVATApproveButton" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="ZVATAssignInspectorButton" xml:space="preserve">
+    <value>Assign Inspector</value>
+  </data>
+  <data name="ZVATAssignOfficerButton" xml:space="preserve">
+    <value>Assign Officer</value>
+  </data>
+  <data name="ZVATAssigntomeButton" xml:space="preserve">
+    <value>Assign to me</value>
+  </data>
+  <data name="ZVATAttachBankGuaranteeButton" xml:space="preserve">
+    <value>Attach Bank Guarantee</value>
+  </data>
+  <data name="ZVATAttachUnloadingDocumentButton" xml:space="preserve">
+    <value>Attach Unloading Document</value>
+  </data>
+  <data name="ZVATCalendarButton" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="ZVATCancelDeclarationButton" xml:space="preserve">
+    <value>Cancel Declaration</value>
+  </data>
+  <data name="ZVATCancelMovementActivityButton" xml:space="preserve">
+    <value>Cancel Movement Activity</value>
+  </data>
+  <data name="ZVATCancelReturnButton" xml:space="preserve">
+    <value>Cancel Return</value>
+  </data>
+  <data name="ZVATChangeButton" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ZVATChangefromestimatetoaccountingButton" xml:space="preserve">
+    <value>Change from estimate to accounting</value>
+  </data>
+  <data name="ZVATClearDocumentButton" xml:space="preserve">
+    <value>ClearDocument</value>
+  </data>
+  <data name="ZVATComplianceAndHistoryButton" xml:space="preserve">
+    <value>Compliance And History</value>
+  </data>
+  <data name="ZVATEditaMovementActivityButton" xml:space="preserve">
+    <value>Edita Movement Activity</value>
+  </data>
+  <data name="ZVATExtendApprovalTimeButton" xml:space="preserve">
+    <value>Extend Approval Time</value>
+  </data>
+  <data name="ZVATExtendButton" xml:space="preserve">
+    <value>Extend</value>
+  </data>
+  <data name="ZVATExtendDueDateButton" xml:space="preserve">
+    <value>Extend Due Date</value>
+  </data>
+  <data name="ZVATForwardButton" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="ZVATInspectorSubmitButton" xml:space="preserve">
+    <value>Inspect or Submit</value>
+  </data>
+  <data name="ZVATInvoiceButton" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="ZVATNotesforERButton" xml:space="preserve">
+    <value>Notes for ER</value>
+  </data>
+  <data name="ZVATPreviousButton" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ZVATPrintSDReleaseLetterButton" xml:space="preserve">
+    <value>PrintSD Release Letter</value>
+  </data>
+  <data name="ZVATRejectButton" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="ZVATReleaseBankGuaranteeButton" xml:space="preserve">
+    <value>Release Bank Guarantee</value>
+  </data>
+  <data name="ZVATRequestAdditionalInformationButton" xml:space="preserve">
+    <value>Request Additional Information</value>
+  </data>
+  <data name="ZVATReviewed" xml:space="preserve">
+    <value>Reviewed</value>
+  </data>
+  <data name="ZVATReviseDownPaymentButton" xml:space="preserve">
+    <value>Revise Down Payment</value>
+  </data>
+  <data name="ZVATRevokeButton" xml:space="preserve">
+    <value>Revoke</value>
+  </data>
+  <data name="ZVATSalesdetailsButton" xml:space="preserve">
+    <value>Sales details</value>
+  </data>
+  <data name="ZVATSavetheDeclarationButton" xml:space="preserve">
+    <value>Save the Declaration</value>
+  </data>
+  <data name="ZVATSendBackButton" xml:space="preserve">
+    <value>Send Back</value>
+  </data>
+  <data name="ZVATSendforAuditButton" xml:space="preserve">
+    <value>Send for Audit</value>
+  </data>
+  <data name="ZVATSendforInspectionButton" xml:space="preserve">
+    <value>Send for Inspection</value>
+  </data>
+  <data name="ZVATSendtoDirectorButton" xml:space="preserve">
+    <value>Send to Director</value>
+  </data>
+  <data name="ZVATSendtoTaxpayerButton" xml:space="preserve">
+    <value>Send to Taxpayer</value>
+  </data>
+  <data name="ZVATSubmitInspectorButton" xml:space="preserve">
+    <value>Submit Inspector</value>
+  </data>
+  <data name="ZVATSubmittheDeclarationButton" xml:space="preserve">
+    <value>Submit the Declaration</value>
+  </data>
+  <data name="ZVATSummaryDetailsButton" xml:space="preserve">
+    <value>Summary Details</value>
+  </data>
 </root>

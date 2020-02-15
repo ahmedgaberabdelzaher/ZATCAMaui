@@ -290,7 +290,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
                 PopToRootPage();
-                SadadNumber = response.d.results[0].Vtref;
+                SadadNumber = response.d.results[0].Sopbel;
                 AmountPayable = response.d.results[0].Betrh;
                 if (!string.IsNullOrEmpty(SadadNumber))
                 {

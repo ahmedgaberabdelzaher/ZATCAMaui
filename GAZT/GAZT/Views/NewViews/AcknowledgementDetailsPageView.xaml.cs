@@ -42,9 +42,18 @@ namespace GAZT.Views.NewViews
                     viewModel.ReturnReferenceNumber = viewModel.VATDeclarationData.d.Fbnum;
                     viewModel.TaxablePeriod = viewModel.VATDeclarationData.d.Perslt;
                     string ReceiptDate;
+                    viewModel.SadadNumber = string.Empty;
                     viewModel.IsSadadNumberVisible = false;
-                    viewModel.IsRefreshButtonVisible = true;
+                   
                     viewModel.IsButtonVisible = false;
+                    if ((App.ICRStatus== "E0006" || App.ICRStatus== "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
+                    {
+                        viewModel.OnRefreshClick();
+                    }
+                    else
+                    {
+                        viewModel.IsRefreshButtonVisible = true;
+                    }
                     if (viewModel.VATDeclarationData.d.RefundFg == "1")
                     {
                         viewModel.IsSadadNumberVisible = false;
