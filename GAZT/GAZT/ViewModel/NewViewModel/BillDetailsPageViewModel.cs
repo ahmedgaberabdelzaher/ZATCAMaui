@@ -21,7 +21,6 @@ namespace GAZT.ViewModel.NewViewModel
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
         string Cotyp = "";
-        public bool IsSADADNumberGenerated = false;
         
         #endregion
 
@@ -69,7 +68,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _refreshIconImageSource = "ic_refresh.png";
+        private string _refreshIconImageSource = "";
         public string RefreshIconImageSource
         {
             get
@@ -79,11 +78,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _refreshIconImageSource = value;
-                if(!string.IsNullOrEmpty(EstimatedZAKATSADADNumber.Sopbel))
-                {
-                    RefreshIconImageSource = "";
-                    IsSADADNumberGenerated = true;
-                }
+              
                 RaisePropertyChanged("RefreshIconImageSource");
             }
         }
@@ -184,6 +179,11 @@ namespace GAZT.ViewModel.NewViewModel
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                                RefreshIconImageSource = "ic_refresh.png";
+                            else
+                                RefreshIconImageSource = "";
+
                         }
                         else
                         {
@@ -191,8 +191,11 @@ namespace GAZT.ViewModel.NewViewModel
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
-
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                                RefreshIconImageSource = "ic_refresh.png";
+                            else
+                                RefreshIconImageSource = "";
                         }
 
                     }

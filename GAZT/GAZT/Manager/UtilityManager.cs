@@ -282,7 +282,7 @@ namespace GAZT.Manager
             }
             else if (Month == "December")
             {
-                Month = "ديسمبر";
+                Month = "ديسيمبر";
             }
             FinalDate = Day + "-" + Month + "-" + Year;
             return FinalDate;
@@ -419,11 +419,11 @@ namespace GAZT.Manager
                sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
                sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
             {
-                dt = ConvertNumerals(dts[0]) + "-" + dts[1] + "-" + ConvertNumerals(dts[2]);
+                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
             }
             else
             {
-                dt = ConvertNumerals(dts[0]) + "-" + dts[1] + "-" + ConvertNumerals(dts[2]);
+                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
             }
 
             return dt;
@@ -528,7 +528,7 @@ namespace GAZT.Manager
             }
             else if (Month == "جمادى الآخرة")
             {
-                Month = "Junho";
+                Month = "Jumada II";
             }
             else if (Month == "رجب")
             {
@@ -548,7 +548,7 @@ namespace GAZT.Manager
             }
             else if (Month == "ذو القعدة")
             {
-                Month = "Dhu al-Qi'dah";
+                Month = "Dhu al-Qidah";
             }
             else if (Month == "ذو الحجة")
             {
@@ -564,11 +564,34 @@ namespace GAZT.Manager
             }
             else if (Month == "ربيع الأول")
             {
-                Month = "Rabi 'Al-Awwal";
+                Month = "Rabi I";
             }
             else if (Month == "ربيع الآخر")
             {
-                Month = "Rabih Al-Akher";
+                Month = "Rabi II";
+            }
+
+            return Month;
+        }
+
+        public static string GetMonthNameHijriArabic(string Month)
+        {
+
+            if (Month == "جمادى الأولى")
+            {
+                Month = "جمادى أول";
+            }
+            else if (Month == "جمادى الآخرة")
+            {
+                Month = "جمادى ثاني";
+            }           
+            else if (Month == "ربيع الأول")
+            {
+                Month = "ربيع أول";
+            }
+            else if (Month == "ربيع الآخر")
+            {
+                Month = "ربيع ثاني";
             }
 
             return Month;

@@ -803,7 +803,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Mandatory data not entered</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>New password field and confirm password field must match</value>
+    <value>The new password must not match the existing password</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>Please use the OTP to activate the new mobile number</value>
@@ -1906,7 +1906,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Purchases value x 115%</value>
     <comment>Estimated Zakat</comment>
   </data>
-     <data name="ZZEstimatedSalesInformationText" xml:space="preserve">
+  <data name="ZZEstimatedSalesInformationText" xml:space="preserve">
     <value>TP estimated sales are calculated based on:
 - VAT Sales if the TP has sales in his VAT returns.
 - If TP has no VAT sales, system take the greater value of the following:
@@ -1916,20 +1916,20 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
 • The value of purchases based on the VAT returns x 115%</value>
     <comment>Zakat return details</comment>
   </data>
-    
-
-  
-    <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
+  <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
     <value>Are you sure you want to delete </value>
     <comment>Estimated Zakat</comment>
   </data>
-    <data name="ZZDELETEFILE" xml:space="preserve">
+  <data name="ZZDELETEFILE" xml:space="preserve">
     <value>DELETE FILE</value>
     <comment>Estimated Zakat</comment>
   </data>
-   <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
+  <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
     <value>File with the same name already exists </value>
     <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZYourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
+    <value>Your password has been changed successfully</value>
   </data>
    
   <data name="ZVATCreateNote" xml:space="preserve">

@@ -3411,5 +3411,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);
             }
         }
+        
+        public static string ZZYourPasswordhasbeenChangedsuccessfully {
+            get {
+                return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCreateNote {
+            get {
+                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
+            }
+        }
     }
 }
