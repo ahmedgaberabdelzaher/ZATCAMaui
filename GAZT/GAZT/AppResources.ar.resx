@@ -1119,7 +1119,7 @@
     <value>الخطوة3</value>
   </data>
   <data name="ZVatStepTwo" xml:space="preserve">
-    <value>Step2</value>
+    <value>الخطوة 2</value>
   </data>
   <data name="ZVatSubmittedInstructions" xml:space="preserve">
     <value>لايمكن تقديم الطلب بنجاح حتى يتم إكمال جميع الحقول الإلزامية</value>
@@ -1209,7 +1209,7 @@
     <value>Amount Payable</value>
   </data>
   <data name="Pleasereviewthecalculationandsubmitagain" xml:space="preserve">
-    <value>Please review the calculation and submit again</value>
+    <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
     <value>VAT Return Form Saved successfully </value>
@@ -1218,7 +1218,7 @@
     <value>Download Acknowledgement</value>
   </data>
   <data name="Acknowlwdgement" xml:space="preserve">
-    <value>Acknowledgement</value>
+    <value>اشعار استلام</value>
   </data>
   <data name="ZCRStatus" xml:space="preserve">
     <value>حالة السجل</value>
@@ -1937,5 +1937,9 @@
   </data>
   <data name="ZZYourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
     <value>تم تغيير كلمة المرور بنجاح</value>
+  </data>
+   
+  <data name="ZVATCreateNote" xml:space="preserve">
+    <value>إضافة ملاحظات</value>
   </data>
 </root>

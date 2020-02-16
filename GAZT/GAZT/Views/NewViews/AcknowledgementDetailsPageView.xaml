@@ -4,7 +4,7 @@
              x:Class="GAZT.Views.NewViews.AcknowledgementDetailsPageView"
               Title="{x:Static local:AppResources.Acknowlwdgement}"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-              FlowDirection="LeftToRight"
+              
               xmlns:custom="clr-namespace:GAZT"
              >
     <ContentPage.Content>

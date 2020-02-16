@@ -3293,11 +3293,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download Form.
+        ///   Looks up a localized string similar to Create Notes.
         /// </summary>
-        public static string ZVatDownloadForm {
+        public static string ZVATCreateNote {
             get {
-                return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
+                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
+        /// </summary>
+        public static string ZVatcreditcarriedforward {
+            get {
+                return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
             }
         }
         

@@ -1979,7 +1979,10 @@ namespace GAZT.ViewModel.NewViewModel
                             if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
                             {
                                 SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
-                                SetIBANIdNumber();
+                                if (SelectedIBANType != null)
+                                {
+                                    SetIBANIdNumber();
+                                }
                             }
                             if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
                             {
@@ -2116,7 +2119,7 @@ namespace GAZT.ViewModel.NewViewModel
                 IsFirstSubmission = false;
 
                 
-                if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum))
+                if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
                 {
                     CreateDataForPost();
                     FirstSubmissionCount = 1;
@@ -2628,16 +2631,44 @@ namespace GAZT.ViewModel.NewViewModel
             VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
 
             VATDeclarationTabbedPageName s = new VATDeclarationTabbedPageName();
-            s.pageName = "Instruction";
+                if (!App.IsArabic)
+                {
+                    s.pageName = "Instruction";
+                }
+                else
+                {
+                    s.pageName = "التعليمات";
+                }
             vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
-            s1.pageName = "TaxPayer Details";
+                if (!App.IsArabic)
+                {
+                    s1.pageName = "TaxPayer Details";
+                }
+                else
+                {
+                    s1.pageName = "تفاصيل المكلف";
+                }
             vatTabbedList.Add(s1);
             VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
-            s2.pageName = "VAT Return Form";
+                if (!App.IsArabic)
+                {
+                    s2.pageName = "VAT Return Form";
+                }
+                else
+                {
+                    s2.pageName = "نموذج الإقرار الضريبي";
+                }
             vatTabbedList.Add(s2);
             VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
-            s3.pageName = "Summary";
+                if (!App.IsArabic)
+                {
+                    s3.pageName = "Summary";
+                }
+                else
+                {
+                    s3.pageName = "ملخص";
+                }
             vatTabbedList.Add(s3);
 
             VatTabbledPageList = vatTabbedList;
@@ -3165,9 +3196,9 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
             }
-            else if (ButtonName == "Createnotes")
+            else if (ButtonName == "CreateNotes")
             {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZCreateNotes);
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
             }
             else if (ButtonName == "Amend")
             {
@@ -3371,8 +3402,8 @@ namespace GAZT.ViewModel.NewViewModel
                 DummyListOfActionButtonsApplicable.Clear();
                 foreach (ApplicableButton button in VATApplicableButtons)
                 {
-                    SetButtonStrings(button.buttonEnumId.ToString());
-                        //  DummyListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
+                         SetButtonStrings(button.buttonEnumId.ToString());
+                       // ListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
                         
                 }
                     ListOfActionButtonsApplicable = DummyListOfActionButtonsApplicable;
