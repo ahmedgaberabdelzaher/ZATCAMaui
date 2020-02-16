@@ -3423,5 +3423,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
             }
         }
+        
+        public static string ZZDeclarationText {
+            get {
+                return ResourceManager.GetString("ZZDeclarationText", resourceCulture);
+            }
+        }
     }
 }

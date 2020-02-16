@@ -114,7 +114,7 @@
                             <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2">
-                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <local:CustomLabel Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                 </StackLayout>
 
                             <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>

@@ -489,7 +489,7 @@ namespace GAZT.Views.NewViews
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
 
-            String action = await DisplayActionSheet("ActionSheet",AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicable.ToArray());
+            String action = await DisplayActionSheet("",AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicable.ToArray());
 
 
             if (App.IsArabic)
