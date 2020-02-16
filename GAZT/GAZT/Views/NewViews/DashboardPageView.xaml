@@ -237,7 +237,7 @@
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Label Text="{x:Static local:AppResources.VATDeclaration}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                <Label Text="{x:Static local:AppResources.VATDeclaration}" HorizontalOptions="Center" HorizontalTextAlignment="Center"   Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
                                     </Label.GestureRecognizers>

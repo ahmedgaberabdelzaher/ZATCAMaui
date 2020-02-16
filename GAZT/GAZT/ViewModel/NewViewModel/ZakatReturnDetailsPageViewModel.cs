@@ -203,8 +203,9 @@ namespace GAZT.ViewModel.NewViewModel
                     if (App.IsArabic)
                     {
                         Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                        Abrzu = UtilityManager.ToArabicDate(Abrzu);
                         Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        Abrzo = UtilityManager.ToArabicDate(Abrzo);
                         Abrzu =  Abrzu + "  " + AppResources.To + "  " + Abrzo;
                         // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                     }

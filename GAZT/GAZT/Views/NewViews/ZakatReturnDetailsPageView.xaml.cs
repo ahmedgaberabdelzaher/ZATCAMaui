@@ -76,7 +76,7 @@ namespace GAZT.Views.NewViews
         private void OnInformationMessageClickedOne(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
-            popUp.Message = "";
+            popUp.Message = AppResources.ZZEstimatedSalesInformationText;
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }

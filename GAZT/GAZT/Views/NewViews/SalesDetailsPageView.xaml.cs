@@ -104,7 +104,7 @@ namespace GAZT.Views.NewViews
                 {
                      index = 0;
                     // viewModel.zakatReturnDetailsD.d.TvtslE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[0].InformationFromPartieToCompare = viewModel.SalesDetailsList[0].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[0].InformationFromPartieToCompare = viewModel.SalesDetailsList[0].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[0].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[0].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[0].IsOldValueChanged = IsOldValueChanged(index);
@@ -116,7 +116,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 1;
                     //   viewModel.zakatReturnDetailsD.d.LabnoE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[1].InformationFromPartieToCompare = viewModel.SalesDetailsList[1].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[1].InformationFromPartieToCompare = viewModel.SalesDetailsList[1].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[1].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[1].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[1].IsOldValueChanged = IsOldValueChanged(index);
@@ -129,7 +129,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 2;
                     // viewModel.zakatReturnDetailsD.d.ImpvalE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[2].InformationFromPartieToCompare = viewModel.SalesDetailsList[2].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[2].InformationFromPartieToCompare = viewModel.SalesDetailsList[2].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[2].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[2].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[2].IsOldValueChanged = IsOldValueChanged(index);
@@ -142,7 +142,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 3;
                     // viewModel.zakatReturnDetailsD.d.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[3].InformationFromPartieToCompare  = viewModel.SalesDetailsList[3].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[3].InformationFromPartieToCompare  = viewModel.SalesDetailsList[3].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[3].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[3].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[3].IsOldValueChanged = IsOldValueChanged(index);
@@ -154,7 +154,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 4;
                     //  viewModel.zakatReturnDetailsD.d.Estsl = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[4].InformationFromPartieToCompare = viewModel.SalesDetailsList[4].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[4].InformationFromPartieToCompare = viewModel.SalesDetailsList[4].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[4].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[4].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[4].IsOldValueChanged = IsOldValueChanged(index);
@@ -167,7 +167,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 5;
                     // viewModel.zakatReturnDetailsD.d.ExamtI = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[5].InformationFromPartieToCompare = viewModel.SalesDetailsList[5].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[5].InformationFromPartieToCompare = viewModel.SalesDetailsList[5].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue ;
                     viewModel.SalesDetailsList[5].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[5].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[5].IsOldValueChanged = IsOldValueChanged(index);
@@ -180,7 +180,7 @@ namespace GAZT.Views.NewViews
                 {
                     index = 6;
                     // viewModel.zakatReturnDetailsD.d.PramtE = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
-                    viewModel.SalesDetailsList[6].InformationFromPartieToCompare = viewModel.SalesDetailsList[6].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[6].InformationFromPartieToCompare = viewModel.SalesDetailsList[6].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[6].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[6].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[6].IsOldValueChanged = IsOldValueChanged(index);
@@ -192,7 +192,7 @@ namespace GAZT.Views.NewViews
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
                     index = 7;
-                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[7].IsOldValueChanged = IsOldValueChanged(index);
@@ -321,7 +321,7 @@ namespace GAZT.Views.NewViews
 
         private string GetInformationMessage(int selectedId)
         {
-            string informationMessage = "";
+            string informationMessage = AppResources.ZZEstimatedSalesInformationText;
             switch (selectedId)
             {
                 case 1:

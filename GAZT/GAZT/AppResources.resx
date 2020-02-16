@@ -572,7 +572,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>E-Services</value>
   </data>
   <data name="EstimateZakat" xml:space="preserve">
-    <value>Estimate Zakat</value>
+    <value>Estimated Zakat</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
     <value>Non Submitted</value>
@@ -1906,4 +1906,30 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Purchases value x 115%</value>
     <comment>Estimated Zakat</comment>
   </data>
+     <data name="ZZEstimatedSalesInformationText" xml:space="preserve">
+    <value>TP estimated sales are calculated based on:
+- VAT Sales if the TP has sales in his VAT returns.
+- If TP has no VAT sales, system take the greater value of the following:
+• The average number of labor x 6000 SAR
+• The value of imports x 115%
+• The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
+• The value of purchases based on the VAT returns x 115%</value>
+    <comment>Zakat return details</comment>
+  </data>
+    
+
+  
+    <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+    <comment>Estimated Zakat</comment>
+  </data>
+    <data name="ZZDELETEFILE" xml:space="preserve">
+    <value>DELETE FILE</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+   <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
+    <value>File with the same name already exists </value>
+    <comment>Estimated Zakat</comment>
+  </data>
+   
 </root>
