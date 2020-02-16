@@ -796,7 +796,7 @@ namespace GAZT
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (!string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
-                        await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.ZZYourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                         NewPasswordLayoutVisibility = false;
                         _navigationService.GoBack();
                     }
