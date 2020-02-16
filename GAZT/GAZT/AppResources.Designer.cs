@@ -1484,7 +1484,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summary of Zakat calculation.
+        ///   Looks up a localized string similar to Zakat Calculation Summary.
         /// </summary>
         public static string SummaryOfZakatCalculation {
             get {
