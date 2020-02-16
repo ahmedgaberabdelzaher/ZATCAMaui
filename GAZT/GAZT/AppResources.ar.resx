@@ -811,7 +811,7 @@
     <value>تفاصيل تعديل المبيعات</value>
   </data>
   <data name="ZBillDetails" xml:space="preserve">
-    <value>Bill Details</value>
+    <value>تفاصيل الفاتورة</value>
   </data>
   <data name="ZSalesDetails" xml:space="preserve">
     <value>Sales Details</value>
@@ -911,16 +911,16 @@
     <value>Data available to GAZT</value>
   </data>
   <data name="ZEstimatedSales" xml:space="preserve">
-    <value>Estimated Sales</value>
+    <value>المبيعات المقدرة</value>
   </data>
   <data name="ZEstimateSales" xml:space="preserve">
     <value>المبيعات التقديرية</value>
   </data>
   <data name="ZFinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>من المالية ا</value>
   </data>
   <data name="ZInformationfromrelatedparties" xml:space="preserve">
-    <value>Information from related parties</value>
+    <value>المعلومات من الجهات ذات العالقة</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
     <value>القيمة الجديدة</value>
@@ -929,7 +929,7 @@
     <value>رقم المفوتر</value>
   </data>
   <data name="ZSummaryofZakatcalculation" xml:space="preserve">
-    <value>Summary of Zakat calculation</value>
+    <value>ملخص احتساب الزكاة</value>
   </data>
   <data name="ZTotalVATSales" xml:space="preserve">
     <value>Total VAT Sales</value>
@@ -1239,7 +1239,7 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>من المالية ا</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
@@ -1913,6 +1913,29 @@
     <value>قيمة المشتريات * 115%</value>
     <comment>Estimated Zakat</comment>
   </data>
+     <data name="ZZEstimatedSalesInformationText" xml:space="preserve">
+        <value>تقدر المبيعات للسنة المالية بـ:
+- مبلغ المبيعات إذا كان للمكلف مبيعات مسجلة في ضريبة القيمة المضافة.
+- إذ لم يكن للمكلف مبيعات مسجلة فتقدر بالمعايير الآتية أيها أكبر:
+• متوسط عدد العمالة × 6000 ريال سعودي
+• قيمة الاستيرادات × 115%
+• مجموع كلآ من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)
+• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%</value>
+    <comment>Zakat return details</comment>
+  </data>
+  <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+    <comment>Estimated Zakat</comment>
+  </data>
+    <data name="ZZDELETEFILE" xml:space="preserve">
+    <value>حذف الملف</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
+    <value>يوجد ملف بنفس الاسم مرفق مسبقا</value>
+    <comment>Estimated Zakat</comment>
+  </data> 
+   
   <data name="ZVATCreateNote" xml:space="preserve">
     <value>إضافة ملاحظات</value>
   </data>

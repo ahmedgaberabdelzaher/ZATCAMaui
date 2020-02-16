@@ -463,7 +463,7 @@ namespace GAZT.ViewModel
                                     if (BegDate != null)
                                     {
                                         StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                       
+
                                         StartDate = UtilityManager.ToArabicDate(StartDate);
                                     }
                                     if (endDate != null)
@@ -493,37 +493,82 @@ namespace GAZT.ViewModel
                             }
                             else
                             {
-                                if (App.IsArabic)
+                                if (dashboard.results[0].Caltype == "G")
                                 {
-                                    if (BegDate != null)
+                                    if (App.IsArabic)
                                     {
-                                        string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
-                                        StartDate = dateStart;
-                                        StartDate = UtilityManager.ToArabicDate(StartDate);
+                                        if (BegDate != null)
+                                        {
+                                            string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
+                                            StartDate = dateStart;
+                                            StartDate = UtilityManager.ToArabicDate(StartDate);
+                                        }
+                                        if (endDate != null)
+                                        {
+                                            string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
+                                            EndDate = dateEnd;
+                                            EndDate = UtilityManager.ToArabicDate(EndDate);
+                                        }
                                     }
-                                    if (endDate != null)
+                                    else
                                     {
-                                        string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
-                                        EndDate = dateEnd;
-                                        EndDate = UtilityManager.ToArabicDate(EndDate);
+
+                                        if (BegDate != null)
+                                        {
+                                            string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
+                                            StartDate = dateStart;
+
+                                        }
+                                        if (endDate != null)
+                                        {
+                                            string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
+                                            EndDate = dateEnd;
+                                        }
                                     }
+
+                                    FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
                                 }
-                                else
+                                else if(dashboard.results[0].Caltype== "H")
                                 {
+                                    if (App.IsArabic)
+                                    {
+                                        if (BegDate != null)
+                                        {
+                                             string dateStart = Convert.ToDateTime(BegDate.ToString().Split(' ')[0]).ToString("dd/MMMM/yyyy", new CultureInfo("ar-sa"));
+                                             dateStart = UtilityManager.FormatAccordingToDeviceHijriArabic(dateStart);
+                                             StartDate = dateStart;
+                                          //  StartDate = UtilityManager.ToArabicDate(StartDate);
+                                        }
+                                        if (endDate != null)
+                                        {
+                                            string dateEnd = Convert.ToDateTime(endDate.ToString().Split(' ')[0]).ToString("dd/MMMM/yyyy", new CultureInfo("ar-sa"));
 
-                                    if (BegDate != null)
-                                    {
-                                        string dateStart = UtilityManager.FormatAccordingToDevice(BegDate.ToString().Split(' ')[0]);
-                                        StartDate = dateStart;
+                                            dateEnd = UtilityManager.FormatAccordingToDeviceHijriArabic(dateEnd);
+                                            EndDate = dateEnd;
+                                           // EndDate = UtilityManager.ToArabicDate(EndDate);
+                                        }
                                     }
-                                    if (endDate != null)
+                                    else
                                     {
-                                        string dateEnd = UtilityManager.FormatAccordingToDevice(endDate.ToString().Split(' ')[0]);
-                                        EndDate = dateEnd;
+
+                                        if (BegDate != null)
+                                        {
+                                            string dateStart = Convert.ToDateTime(BegDate.ToString().Split(' ')[0]).ToString("dd/MMMM/yyyy", new CultureInfo("ar-sa"));
+                                            dateStart = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateStart.ToString());
+                                            StartDate = dateStart;
+
+                                        }
+                                        if (endDate != null)
+                                        {
+                                            string dateEnd = Convert.ToDateTime(endDate.ToString().Split(' ')[0]).ToString("dd/MMMM/yyyy", new CultureInfo("ar-sa"));
+
+                                            dateEnd = UtilityManager.FormatAccordingToDeviceHijriEnglish(dateEnd.ToString());
+                                            EndDate = dateEnd;
+                                        }
                                     }
+
+                                    FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
                                 }
-
-                                FiscalDates = AppResources.FiscalYear + ": " + StartDate + " - " + EndDate;
 
                             }
 

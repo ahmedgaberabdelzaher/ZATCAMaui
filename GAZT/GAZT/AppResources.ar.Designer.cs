@@ -3381,5 +3381,35 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
             }
         }
+        
+        public static string ZZPurchasesvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZPurchasesvaluex115", resourceCulture);
+            }
+        }
+        
+        public static string ZZEstimatedSalesInformationText {
+            get {
+                return ResourceManager.GetString("ZZEstimatedSalesInformationText", resourceCulture);
+            }
+        }
+        
+        public static string ZZDeleteAttachmentConfirmationText {
+            get {
+                return ResourceManager.GetString("ZZDeleteAttachmentConfirmationText", resourceCulture);
+            }
+        }
+        
+        public static string ZZDELETEFILE {
+            get {
+                return ResourceManager.GetString("ZZDELETEFILE", resourceCulture);
+            }
+        }
+        
+        public static string ZZFileWithTheSameNameAlreadyExists {
+            get {
+                return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);
+            }
+        }
     }
 }

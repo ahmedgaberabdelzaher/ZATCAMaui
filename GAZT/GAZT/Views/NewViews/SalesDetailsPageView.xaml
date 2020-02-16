@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.SalesDetailsPageView"
-             FlowDirection="LeftToRight"
+            FlowDirection="RightToLeft"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              Title="{x:Static local:AppResources.ZSalesDetails}"
@@ -286,8 +286,8 @@
 
                                 <!--<Label Text=0"{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
 
-                                <Button Text="Invoice" Clicked="OnOnInvoiceClicked" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
-                                <Button Text="Close" Clicked="OnCloseButtonClicked" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>
+                                <Button Text="Invoice" Clicked="OnOnInvoiceClicked" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10,0,10,10"></Button>
+                                <Button Text="Close" Clicked="OnCloseButtonClicked" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10,0,10,10"></Button>
 
 
                                 <!--<Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>

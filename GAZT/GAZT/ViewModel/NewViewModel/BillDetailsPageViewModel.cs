@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
         string Cotyp = "";
+        public bool IsSADADNumberGenerated = false;
         
         #endregion
 
@@ -68,6 +69,26 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _refreshIconImageSource = "ic_refresh.png";
+        public string RefreshIconImageSource
+        {
+            get
+            {
+                return _refreshIconImageSource;
+            }
+            set
+            {
+                _refreshIconImageSource = value;
+                if(!string.IsNullOrEmpty(EstimatedZAKATSADADNumber.Sopbel))
+                {
+                    RefreshIconImageSource = "";
+                    IsSADADNumberGenerated = true;
+                }
+                RaisePropertyChanged("RefreshIconImageSource");
+            }
+        }
+
+        
         //private string _sopbel;
         //public string Sopbel
         //{
