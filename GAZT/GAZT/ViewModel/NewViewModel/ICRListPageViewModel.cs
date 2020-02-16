@@ -257,12 +257,13 @@ namespace GAZT.ViewModel.NewViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
 
                         });
                         //   await Task.Run(() =>
                         //   {
-                        IsLoading = false;
-                        _navigationService.GoBack();
+                      
                         //  });
                     }
 
@@ -329,10 +330,12 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    _navigationService.GoBack();
+
                 });
             }
         }
@@ -416,7 +419,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                       // IsLoading = false;
+                        _navigationService.GoBack();
+
                     });
                 }
             }
@@ -424,7 +430,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                  //  IsLoading = false;
+                    _navigationService.GoBack();
+
                 });
 
             }

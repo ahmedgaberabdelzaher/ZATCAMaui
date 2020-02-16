@@ -3159,7 +3159,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else if (ButtonName == "Attachments")
             {
-                DummyListOfActionButtonsApplicable.Add(AppResources.Attachment);
+                DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
             }
             else if (ButtonName == "Reset")
             {

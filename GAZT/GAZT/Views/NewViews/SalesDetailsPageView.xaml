@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.SalesDetailsPageView"
-             FlowDirection="LeftToRight"
+            FlowDirection="RightToLeft"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              Title="{x:Static local:AppResources.ZSalesDetails}"

@@ -9,7 +9,7 @@
               xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
              Title="{x:Static local:AppResources.ZAmendSalesDetails}"
-             FlowDirection="LeftToRight">
+             FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid >

@@ -8,7 +8,7 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView">
     <ContentPage.Content>
         <!--<StackLayout Margin="10,10,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >

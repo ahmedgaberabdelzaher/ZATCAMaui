@@ -9,7 +9,7 @@
              xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.ZakatReturnDetailsPageView"
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
-             FlowDirection="LeftToRight">
+            FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
