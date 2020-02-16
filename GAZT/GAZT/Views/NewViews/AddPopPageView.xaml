@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:local1="clr-namespace:GAZT"
                  
              x:Class="GAZT.Views.NewViews.AddPopPageView">
     <Grid>
@@ -29,7 +29,7 @@
                     </Image>
                 </StackLayout>
                
-                <Label Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                <local1:CustomLabel Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                 <Label Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
             </StackLayout>
