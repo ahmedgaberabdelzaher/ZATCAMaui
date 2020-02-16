@@ -135,11 +135,11 @@
                                                 <ColumnDefinition Width="40*"/>
                                                 <ColumnDefinition Width="10*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label  Text="{Binding SalesType}" Margin="10,0,10,0"  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                            <Label  Text="{Binding SalesType}"   Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                             </Label>
 
-                                            <Label  Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
-                                            </Label>
+                                            <local:CustomLabel  Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+                                            </local:CustomLabel>
                                             <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                             </Label>
                                             <Image Source="ic_info.png" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="0,10,0,10">
@@ -177,7 +177,7 @@
 
                                 </Grid.ColumnDefinitions>
                                 <CheckBox x:Name="checkBox" Grid.Column="0" Grid.Row="0" VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
-                                <Label Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise." Grid.Column="1" Grid.Row="0" IsVisible="{Binding DesClaimerVisibility}"></Label>
+                                <local:CustomLabel Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static local:AppResources.ZZDeclarationText}" Grid.Column="1" Grid.Row="0" IsVisible="{Binding DesClaimerVisibility}"></local:CustomLabel>
                             </Grid>
                         </Grid>
 
@@ -286,7 +286,7 @@
 
                                 <!--<Label Text=0"{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
 
-                                <Button Text="Invoice" Clicked="OnOnInvoiceClicked" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10,0,10,10"></Button>
+                                <Button Text="Invoice" Clicked="OnOnInvoiceClicked" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
                                 <Button Text="Close" Clicked="OnCloseButtonClicked" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10,0,10,10"></Button>
 
 

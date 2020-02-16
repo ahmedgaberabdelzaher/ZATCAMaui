@@ -167,13 +167,7 @@
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
 
-                                                        <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
-                                   Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="1"
-                                                           Grid.ColumnSpan="4"/>
+                                                       
 
                                                         <!--<Label Text="{Binding Incotext}" 
                                                   

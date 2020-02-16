@@ -1942,4 +1942,7 @@
   <data name="ZVATCreateNote" xml:space="preserve">
     <value>إضافة ملاحظات</value>
   </data>
+   <data name="ZZDeclarationText" xml:space="preserve">
+    <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
+  </data>
 </root>
