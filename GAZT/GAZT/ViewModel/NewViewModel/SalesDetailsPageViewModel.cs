@@ -79,7 +79,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                     
@@ -90,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                 }

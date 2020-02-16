@@ -249,9 +249,9 @@ namespace GAZT.Views.NewViews
                 bool IsThresholdGreaterLessVATAmount = d1 < d;
                 if (Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
                 {
-                    if ((viewModel.SelectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
                     {
-                        if (viewModel.SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                        if (selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                         {
                             viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, selectedSalesDetails);
 
@@ -260,9 +260,9 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-                    if ((viewModel.SelectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
                     {
-                        if (viewModel.SelectedSalesDetails != null && !viewModel.SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
+                        if (selectedSalesDetails  != null && !selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                         {
                             viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, selectedSalesDetails);
                         }
