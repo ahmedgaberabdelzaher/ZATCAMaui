@@ -356,7 +356,7 @@ namespace GAZT.Views.NewViews
                     }
                 case 7:
                     {
-                        informationMessage = "Purchases value x 115%";
+                        informationMessage = AppResources.ZZPurchasesvaluex115;
 
                         break;
                     }
