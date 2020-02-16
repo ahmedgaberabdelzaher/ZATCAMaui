@@ -82,6 +82,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales"))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+                                    
                                 }
                             }
                         }
@@ -803,7 +804,7 @@ namespace GAZT.ViewModel.NewViewModel
             SubmitButtonVisibility = false;
         }
 
-        private void ShowOnlyInfoIcon()
+        public void ShowOnlyInfoIcon()
         {
             ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
