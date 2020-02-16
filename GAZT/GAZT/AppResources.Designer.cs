@@ -2180,14 +2180,7 @@ namespace GAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
-        /// </summary>
-        public static string ZVatcreditcarriedforward {
-            get {
-                return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
-            }
-        }
+        
         
         public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount {
             get {
