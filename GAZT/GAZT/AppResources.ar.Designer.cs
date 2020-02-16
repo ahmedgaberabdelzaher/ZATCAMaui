@@ -3129,5 +3129,257 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
+        
+        public static string ZVATAddNewMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATAddNewMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATApplicationDownloadforInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATApplicationDownloadforInspectorButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATApproveButton {
+            get {
+                return ResourceManager.GetString("ZVATApproveButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAssignInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignInspectorButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAssignOfficerButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignOfficerButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAssigntomeButton {
+            get {
+                return ResourceManager.GetString("ZVATAssigntomeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAttachBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachBankGuaranteeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATAttachUnloadingDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachUnloadingDocumentButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCalendarButton {
+            get {
+                return ResourceManager.GetString("ZVATCalendarButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCancelDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelDeclarationButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCancelMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATCancelReturnButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelReturnButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATChangeButton {
+            get {
+                return ResourceManager.GetString("ZVATChangeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATChangefromestimatetoaccountingButton {
+            get {
+                return ResourceManager.GetString("ZVATChangefromestimatetoaccountingButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATClearDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATClearDocumentButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATComplianceAndHistoryButton {
+            get {
+                return ResourceManager.GetString("ZVATComplianceAndHistoryButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATEditaMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATEditaMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATExtendApprovalTimeButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendApprovalTimeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATExtendButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATExtendDueDateButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendDueDateButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATForwardButton {
+            get {
+                return ResourceManager.GetString("ZVATForwardButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATInspectorSubmitButton {
+            get {
+                return ResourceManager.GetString("ZVATInspectorSubmitButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATInvoiceButton {
+            get {
+                return ResourceManager.GetString("ZVATInvoiceButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATNotesforERButton {
+            get {
+                return ResourceManager.GetString("ZVATNotesforERButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATPreviousButton {
+            get {
+                return ResourceManager.GetString("ZVATPreviousButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATPrintSDReleaseLetterButton {
+            get {
+                return ResourceManager.GetString("ZVATPrintSDReleaseLetterButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRejectButton {
+            get {
+                return ResourceManager.GetString("ZVATRejectButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATReleaseBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATReleaseBankGuaranteeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRequestAdditionalInformationButton {
+            get {
+                return ResourceManager.GetString("ZVATRequestAdditionalInformationButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATReviewed {
+            get {
+                return ResourceManager.GetString("ZVATReviewed", resourceCulture);
+            }
+        }
+        
+        public static string ZVATReviseDownPaymentButton {
+            get {
+                return ResourceManager.GetString("ZVATReviseDownPaymentButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRevokeButton {
+            get {
+                return ResourceManager.GetString("ZVATRevokeButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSalesdetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSalesdetailsButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSavetheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSavetheDeclarationButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSendBackButton {
+            get {
+                return ResourceManager.GetString("ZVATSendBackButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSendforAuditButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforAuditButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSendforInspectionButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforInspectionButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSendtoDirectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoDirectorButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSendtoTaxpayerButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoTaxpayerButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSubmitInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmitInspectorButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSubmittheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmittheDeclarationButton", resourceCulture);
+            }
+        }
+        
+        public static string ZVATSummaryDetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
+            }
+        }
     }
 }
