@@ -57,13 +57,19 @@ namespace GAZT.Views.NewViews
             };
             this.ToolbarItems.Add(Download);
 
+        //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+
+
         }
         #endregion
 
         #region Method
         protected async Task OnRefreshButtonClicked()
         {
-           await viewModel.OnPageLoad();
+            //if(!viewModel.IsSADADNumberGenerated)
+            //{
+                await viewModel.OnPageLoad();
+            //}
         }
 
         protected  void OnDownLoadInvoiceClicked()

@@ -242,7 +242,7 @@ namespace GAZT.ViewModel.NewViewModel
                             AttachmentName = fileData.FileName;
 
                             string Extention = AttachmentName.Split('.')[1];
-                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                             {
                                 if (attachment.Length < 5242880)
                                 {

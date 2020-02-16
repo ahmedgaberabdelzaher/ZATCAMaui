@@ -481,6 +481,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                ShowDisclaimer();
                 CheckBoxStatus = false;
                 HideEditIcon();
                 HideConfirmButton();
@@ -534,12 +535,12 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
                 {
                     HideAllButton();
-                  //  HideDisclaimer();
+                 // HideDisclaimer();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0008"))
                 {
                     HideAllButton();
-                  //  HideDisclaimer();
+                    HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0005"))// In Processing
@@ -1019,7 +1020,7 @@ namespace GAZT.ViewModel.NewViewModel
             DesClaimerVisibility = false;
         }
 
-        private void ShowDisclaimer()
+        public void ShowDisclaimer()
         {
             DesClaimerVisibility = true;
         }
@@ -1087,7 +1088,7 @@ namespace GAZT.ViewModel.NewViewModel
             Color CapitalBackgroundColor;
             double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
             double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
-     bool   IsThresholdGreaterLessVATAmount = d < d1;
+            bool   IsThresholdGreaterLessVATAmount = d < d1;
             SalesDetailsList = new ObservableCollection<SalesDetails>();
 
             ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
