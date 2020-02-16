@@ -104,6 +104,8 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.ManageEnabledProperty(false);
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                    viewModel.IsDeclarationCheckedForSummary = true;
+                    viewModel.IsDeclarationCheckedForInstruction = true;
                     viewModel.ButtonName = AppResources.ZVatDownloadForm;
                     viewModel.IsMainButtonEnabled = false;
                 }

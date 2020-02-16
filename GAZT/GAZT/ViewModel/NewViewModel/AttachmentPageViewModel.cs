@@ -40,7 +40,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _attachmentName = "Attachments";
+        private string _attachmentName = "";
         public string AttachmentName
         {
             get
@@ -67,7 +67,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _attachmentSize = value;
 
-                RaisePropertyChanged("AttachmentName");
+                RaisePropertyChanged("AttachmentSize");
 
             }
         }
@@ -267,7 +267,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void OnPageLoad()
         {
-            if (App.ICRStatus == "E0046")
+            if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
             {
                 IsShowAttachmentButton = false;
             }

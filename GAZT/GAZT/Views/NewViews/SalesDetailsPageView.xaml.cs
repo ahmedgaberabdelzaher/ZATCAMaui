@@ -239,7 +239,41 @@ namespace GAZT.Views.NewViews
 
         protected async void OnEditImageClicked(Object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, viewModel.SelectedSalesDetails);
+            Image EditImage = sender as Image;
+            SalesDetails selectedSalesDetails = (SalesDetails)EditImage.BindingContext;
+
+            if (!viewModel.ConfirmButtonVisibility)
+            {
+                double d = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI);
+                double d1 = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                bool IsThresholdGreaterLessVATAmount = d1 < d;
+                if (Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(viewModel.zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                {
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
+                    {
+                        if (selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
+                        {
+                            viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, selectedSalesDetails);
+
+                        }
+                    }
+                }
+                else
+                {
+                    if ((selectedSalesDetails != null) && (viewModel.SubmitButtonVisibility))
+                    {
+                        if (selectedSalesDetails  != null && !selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
+                        {
+                            viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, selectedSalesDetails);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                viewModel.ShowOnlyInfoIcon();
+            }
+
         }
 
 

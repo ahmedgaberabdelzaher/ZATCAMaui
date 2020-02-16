@@ -2012,7 +2012,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             
             IsVisibleSummary = true;
-            if(App.ICRStatus=="E0045" && IsAmendClicked==false)
+            if((App.ICRStatus=="E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
             {
                
                 IsGetAcknowledgementClicked = true;
