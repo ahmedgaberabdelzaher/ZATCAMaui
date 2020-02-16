@@ -291,6 +291,8 @@ namespace GAZT.ViewModel
 
         public LogInPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+           
+           
             List<TIN> tinIds = new List<TIN>();
             if (navigationService == null)
             {
@@ -346,8 +348,7 @@ namespace GAZT.ViewModel
             App.IsComingFromDashboardToLogOff = false;
             String response = string.Empty;
             string UserId = string.Empty;
-
-
+           
 
             await Task.Run(() =>
             {

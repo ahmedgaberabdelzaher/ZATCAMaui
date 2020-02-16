@@ -18,6 +18,7 @@ namespace GAZT.Models
     {
         public DashboardMetadata __metadata { get; set; }
         public string Caltype { get; set; }
+        public string TpType { get; set; }
         public string Tin { get; set; }
         public string Vktyp { get; set; }
         public string RtnTot { get; set; }
