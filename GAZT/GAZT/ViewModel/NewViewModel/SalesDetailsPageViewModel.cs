@@ -384,7 +384,11 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnAcceptReturnButtonClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+                if (CheckBoxStatus)
+                {
+                    _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+                    CheckBoxStatus = false;
+                }
             });
 
             OnAmendReturnButtonClicked = new Command(async () =>
@@ -394,6 +398,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     ShowEditIcon();
                     ShowSubmitButton();
+                    CheckBoxStatus = false;
                     //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                 }
                 catch (Exception ex)
@@ -415,6 +420,7 @@ namespace GAZT.ViewModel.NewViewModel
                             // AssignAttachmentToPostDataObject();
                             string PostOperationID = "05";
                             await SubmitZakatReturn(PostOperationID,"");
+                            CheckBoxStatus = false;
                         }
                         else
                         {
@@ -471,6 +477,7 @@ namespace GAZT.ViewModel.NewViewModel
                 string PostOperationID = GetConfirmOperationId();
               //  string PostOperationID = "66";
                 await SubmitZakatReturn(PostOperationID, InvFlag);
+                CheckBoxStatus = false;
             }
             else
             {
@@ -585,7 +592,8 @@ namespace GAZT.ViewModel.NewViewModel
                          _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                         if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
-                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
+                            existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
+                            Estsl = zakatReturnDetailsDToCompare.d.Estsl;
                             IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
@@ -596,6 +604,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
+                            HideAllButton();
                             await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
                             _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
