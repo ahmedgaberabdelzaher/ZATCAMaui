@@ -3248,6 +3248,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Notes.
+        /// </summary>
+        public static string ZVATCreateNote {
+            get {
+                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
         /// </summary>
         public static string ZVatcreditcarriedforward {

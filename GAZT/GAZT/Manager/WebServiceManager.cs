@@ -1687,12 +1687,12 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        if(NewToken=="")
-                        {
-                            App.IsSessionExpired = true;
-                            return null;
-                            App.Token = NewToken;
-                        }
+                        //if(NewToken=="")
+                        //{
+                        //    App.IsSessionExpired = true;
+                        //    return null;
+                        //    App.Token = NewToken;
+                        //}
 
                         String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
 
