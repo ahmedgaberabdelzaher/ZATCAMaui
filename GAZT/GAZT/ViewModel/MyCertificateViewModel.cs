@@ -546,7 +546,7 @@ namespace GAZT
                 }
             }
             catch(InternetException ex)
-            {
+            {   
                  _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
             }
