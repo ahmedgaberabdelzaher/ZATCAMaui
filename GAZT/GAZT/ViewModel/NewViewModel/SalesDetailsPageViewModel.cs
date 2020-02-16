@@ -389,6 +389,12 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                     CheckBoxStatus = false;
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                    });
+                }
             });
 
             OnAmendReturnButtonClicked = new Command(async () =>
