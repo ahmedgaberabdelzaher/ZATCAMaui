@@ -563,6 +563,12 @@ namespace GAZT.ViewModel.NewViewModel
                     HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0003"))// In Build state but not amended yet
+                {
+                    ShowAcceptAndAmendButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
                 else
                 {
                     ShowAcceptAndAmendButton();

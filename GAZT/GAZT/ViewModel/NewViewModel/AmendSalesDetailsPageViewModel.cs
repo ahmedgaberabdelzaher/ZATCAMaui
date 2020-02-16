@@ -72,7 +72,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _newValue = value;
-                if(NewValue != null)
+                if(!string.IsNullOrEmpty(NewValue))
                 {
                     SelectedSalesDetails.NewValue = NewValue;
                 }
@@ -90,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _oldValue = value;
-                if (OldValue != null)
+                if (!string.IsNullOrEmpty(OldValue))
                 {
                     SelectedSalesDetails.OldValue = _oldValue;
                 }
@@ -109,7 +109,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _changeReason = value;
-                if (ChangeReason != null)
+                if (!string.IsNullOrEmpty(NewValue))
                 {
                     SelectedSalesDetails.ChangeReason = ChangeReason;
                     if (SelectedSalesDetails.IsReasonRequird)
@@ -273,6 +273,8 @@ namespace GAZT.ViewModel.NewViewModel
                                                 DateTime currentDate = DateTime.Now;
                                                 _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
                                                 SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+                                                
+
 
                                                 // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
                                             }
@@ -355,20 +357,30 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void ClearData()
         {
-            //SalesType = string.Empty;
-            //OldValue = string.Empty;
-            //NewValue = string.Empty;
-            //ChangeReason = string.Empty;
-            //ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
+            SalesType = string.Empty;
+            OldValue = string.Empty;
+            NewValue = string.Empty;
+            ChangeReason = string.Empty;
+            ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
         }
         public void OnLoad()
         {
-            SalesType = SelectedSalesDetails.SalesType;
-            OldValue = SelectedSalesDetails.InformationFromPartie;
-            NewValue =SelectedSalesDetails.NewValue;
-            ChangeReason = SelectedSalesDetails.ChangeReason;
-            ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
-            // int k = 5;
+            try
+            {
+                if(SelectedSalesDetails != null)
+                {
+                    SalesType = SelectedSalesDetails.SalesType;
+                    OldValue = SelectedSalesDetails.InformationFromPartie;
+                    NewValue = SelectedSalesDetails.NewValue;
+                    ChangeReason = SelectedSalesDetails.ChangeReason;
+                    ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+                      // int k = 5;
             //ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
             //ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
             //for (k = 0; k < 6; k++)
