@@ -1721,11 +1721,11 @@ namespace GAZT {
             }
         }
         
-        public static string ZVatcreditcarriedforward {
-            get {
-                return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
-            }
-        }
+        //public static string ZVatcreditcarriedforward {
+        //    get {
+        //        return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
+        //    }
+        //}
         
         public static string ZVatDateInstructions {
             get {
@@ -1751,11 +1751,11 @@ namespace GAZT {
             }
         }
         
-        public static string ZVatDownloadForm {
-            get {
-                return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
-            }
-        }
+        //public static string ZVatDownloadForm {
+        //    get {
+        //        return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
+        //    }
+        //}
         
         public static string ZVatExemptPurchases {
             get {
@@ -2105,11 +2105,41 @@ namespace GAZT {
             }
         }
         
-        public static string ZNewValue {
-            get {
+      
+
+             public static string ZNewValue
+        {
+            get
+            {
                 return ResourceManager.GetString("ZNewValue", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Create Notes.
+        /// </summary>
+        public static string ZVATCreateNote {
+            get {
+                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
+        /// </summary>
+        public static string ZVatcreditcarriedforward {
+            get {
+                return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayers should ensure that their existing taxpayer details are complete and up to date before filing their VAT returns..
+        /// </summary>
+        //public static string ZVatDateInstructions {
+        //    get {
+        //        return ResourceManager.GetString("ZVatDateInstructions", resourceCulture);
+        //    }
+        //}
         
         public static string ZSADADGAZTId {
             get {
@@ -2135,9 +2165,19 @@ namespace GAZT {
             }
         }
         
-        public static string ZNote {
-            get {
+        public static string ZNote
+        {
+            get
+            {
                 return ResourceManager.GetString("ZNote", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Download Form.
+        /// </summary>
+        public static string ZVatDownloadForm {
+            get {
+                return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
             }
         }
         
@@ -3412,11 +3452,11 @@ namespace GAZT {
             }
         }
         
-        public static string ZVATCreateNote {
-            get {
-                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
-            }
-        }
+        //public static string ZVATCreateNote {
+        //    get {
+        //        return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
+        //    }
+        //}
         
         public static string ZZDeclarationText {
             get {

@@ -31,8 +31,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
        
-      private string _UserName = "3020184782";
-        //private string _UserName = string.Empty;
+     // private string _UserName = "3020184782";
+        private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -75,9 +75,9 @@ namespace GAZT.ViewModel
         }
 
 
-     private string _Password = "Test@1234";
+     //private string _Password = "Test@1234";
         
-    //  private string _Password = string.Empty;
+      private string _Password = string.Empty;
         public string Password
         {
             get
@@ -291,6 +291,8 @@ namespace GAZT.ViewModel
 
         public LogInPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+           
+           
             List<TIN> tinIds = new List<TIN>();
             if (navigationService == null)
             {
@@ -346,8 +348,7 @@ namespace GAZT.ViewModel
             App.IsComingFromDashboardToLogOff = false;
             String response = string.Empty;
             string UserId = string.Empty;
-
-
+           
 
             await Task.Run(() =>
             {

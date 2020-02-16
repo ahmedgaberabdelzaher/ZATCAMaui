@@ -57,7 +57,7 @@
                           <Label Text="{Binding TaxPayerName}" Padding="0,0,0,-5"  HorizontalOptions="StartAndExpand"  BackgroundColor="#c49b2d" FontSize="Medium" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" >
                         </Label>
                         
-                            <Label Text="{Binding FiscalDates}" Padding="0,0,0,0" Margin="0" HorizontalOptions="StartAndExpand"  BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" >
+                            <Label Text="{Binding FiscalDates}" Padding="0,0,0,0" Margin="0" HorizontalOptions="StartAndExpand"  BackgroundColor="#c49b2d" TextColor="#FFFFFF" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" IsVisible="{Binding IsVisibleFiscal}">
                             </Label>
                         </StackLayout>
                     <!--<StackLayout Grid.Row="1"  Grid.RowSpan="3"  Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#c49b2d" >
