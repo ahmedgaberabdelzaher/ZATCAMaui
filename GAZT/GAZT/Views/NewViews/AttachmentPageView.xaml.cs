@@ -50,7 +50,7 @@ namespace GAZT.Views.NewViews
                     }
 
                 }
-
+                viewModel.OnPageLoad();
 
             }
             catch (Exception e)

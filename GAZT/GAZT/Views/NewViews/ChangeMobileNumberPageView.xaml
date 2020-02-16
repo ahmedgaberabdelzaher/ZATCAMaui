@@ -52,7 +52,7 @@
                               <custom:MobileNumberValidatorBehaviour/>
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
-                                                <Label  Text="+9665" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
+                                                <Label  Text="9665+" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource GAZTTextBoxStyleForEntry}"  ></Label>
                     </StackLayout>
                     <Button Text="{x:Static local:AppResources.ZUpdateMobile}" Command="{Binding OnVerifyButtonClicked}" IsEnabled="True" Grid.Row="4" Grid.Column="0" TextColor="#c49b2d" Grid.ColumnSpan="3" Style="{StaticResource GAZTVerifyButton}"></Button>
 

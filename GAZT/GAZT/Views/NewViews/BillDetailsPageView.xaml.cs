@@ -66,11 +66,7 @@ namespace GAZT.Views.NewViews
         #region Method
         protected async Task OnRefreshButtonClicked()
         {
-            if (!viewModel.IsSADADNumberGenerated)
-            {
-                await viewModel.OnPageLoad();
-                viewModel.RefreshIconImageSource = "";
-            }
+                await viewModel.OnPageLoad();        
         }
 
         protected  void OnDownLoadInvoiceClicked()
