@@ -32,8 +32,7 @@ namespace GAZT.Views.NewViews
             Fbguid = fbguid;
             SetLTR();
             this.BindingContext = viewModel;
-          
-           
+            NavigationPage.SetBackButtonTitle(this, "");
 
 
         }
