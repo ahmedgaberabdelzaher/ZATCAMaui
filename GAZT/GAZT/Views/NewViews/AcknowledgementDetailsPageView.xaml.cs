@@ -34,8 +34,8 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
                 this.BindingContext = viewModel;
-
-                if(vATDeclaration!=null)
+                SetLTR();
+                if (vATDeclaration!=null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
                     viewModel.TPName = App.TP.Name;
@@ -77,7 +77,7 @@ namespace GAZT.Views.NewViews
                     }
                 }
 
-                SetLTR();
+                
             }
             catch (Exception ex)
             {

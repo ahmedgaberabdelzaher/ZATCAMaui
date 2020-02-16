@@ -282,7 +282,7 @@ namespace GAZT.Manager
             }
             else if (Month == "December")
             {
-                Month = "ديسمبر";
+                Month = "ديسيمبر";
             }
             FinalDate = Day + "-" + Month + "-" + Year;
             return FinalDate;
@@ -419,11 +419,11 @@ namespace GAZT.Manager
                sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
                sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
             {
-                dt = ConvertNumerals(dts[0]) + "-" + dts[1] + "-" + ConvertNumerals(dts[2]);
+                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
             }
             else
             {
-                dt = ConvertNumerals(dts[0]) + "-" + dts[1] + "-" + ConvertNumerals(dts[2]);
+                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
             }
 
             return dt;
@@ -528,7 +528,7 @@ namespace GAZT.Manager
             }
             else if (Month == "جمادى الآخرة")
             {
-                Month = "Junho";
+                Month = "Jumada II";
             }
             else if (Month == "رجب")
             {
@@ -548,7 +548,7 @@ namespace GAZT.Manager
             }
             else if (Month == "ذو القعدة")
             {
-                Month = "Dhu al-Qi'dah";
+                Month = "Dhu al-Qidah";
             }
             else if (Month == "ذو الحجة")
             {
@@ -564,11 +564,34 @@ namespace GAZT.Manager
             }
             else if (Month == "ربيع الأول")
             {
-                Month = "Rabi 'Al-Awwal";
+                Month = "Rabi I";
             }
             else if (Month == "ربيع الآخر")
             {
-                Month = "Rabih Al-Akher";
+                Month = "Rabi II";
+            }
+
+            return Month;
+        }
+
+        public static string GetMonthNameHijriArabic(string Month)
+        {
+
+            if (Month == "جمادى الأولى")
+            {
+                Month = "جمادى أول";
+            }
+            else if (Month == "جمادى الآخرة")
+            {
+                Month = "جمادى ثاني";
+            }           
+            else if (Month == "ربيع الأول")
+            {
+                Month = "ربيع أول";
+            }
+            else if (Month == "ربيع الآخر")
+            {
+                Month = "ربيع ثاني";
             }
 
             return Month;
@@ -577,7 +600,65 @@ namespace GAZT.Manager
         #endregion
 
     }
-
+    public enum ArButtons
+    {
+        None = -01,
+        تقديم = 01,
+        Approve = 02,
+        Reject = 03,
+        إبطال = 04,
+        حفظ = 05,
+        NotesforER = 06,
+        عرضملاحظات = 07,
+        التحقق = 08,
+        Forward = 09,
+        Assigntome = 10,
+        Calendar = 11,
+        Confirm = 12,
+        SendforInspection = 13,
+        AssignInspector = 14,
+        المرفقات = 15,
+        SendBack = 16,
+        AttachBankGuarantee = 17,
+        ExtendDueDate = 18,
+        عادةتعيين = 19,
+        Next = 20,
+        إضافةملاحظات = 21,
+        تعديل = 22,
+        InspectorSubmit = 23,
+        إغلاق = 24,
+        ApplicationDownloadforInspector = 25,
+        Reviewed = 26,
+        AssignOfficer = 27,
+        EditaMovementActivity = 28,
+        CancelMovementActivity = 29,
+        AddNewMovementActivity = 30,
+        SavetheDeclaration = 31,
+        CancelDeclaration = 32,
+        SubmittheDeclaration = 33,
+        SendforAudit = 34,
+        SendtoDirector = 35,
+        SubmitInspector = 36,
+        AttachUnloadingDocument = 37,
+        ClearDocument = 38,
+        ExtendApprovalTime = 39,
+        Change = 40,
+        Extend = 41,
+        Revoke = 42,
+        SendtoTaxpayer = 43,
+        SummaryDetails = 44,
+        PrintSDReleaseLetter = 45,
+        ReleaseBankGuarantee = 46,
+        ComplianceAndHistory = 47,
+        Previous = 48,
+        CancelReturn = 49,
+        RequestAdditionalInformation = 50,
+        Salesdetails = 51,
+        Changefromestimatetoaccounting = 52,
+        Invoice = 53,
+        إصدار = 54,
+        ReviseDownPayment = 55
+    }
     public enum Buttons
     {
         None = -01,
@@ -601,7 +682,7 @@ namespace GAZT.Manager
         ExtendDueDate = 18,
         Reset = 19,
         Next = 20,
-        Createnotes = 21,
+        CreateNotes = 21,
         Amend = 22,
         InspectorSubmit = 23,
         Closed = 24,

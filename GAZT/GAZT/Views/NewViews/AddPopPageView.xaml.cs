@@ -26,6 +26,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AddPopPageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
+                SetLTR();
                 viewModel.PopMessage = objPopUP.Message;
                 viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
                 viewModel.Link = objPopUP.Link;
@@ -34,6 +35,15 @@ namespace GAZT.Views.NewViews
             catch (Exception e)
             {
 
+            }
+        }
+        private void SetLTR()
+        {
+
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void OnClose(object sender, EventArgs e)

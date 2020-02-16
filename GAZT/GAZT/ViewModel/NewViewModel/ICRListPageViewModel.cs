@@ -229,6 +229,10 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
+                            if(App.IsArabic)
+                            {
+                              //  ICRStatusList.Where(p => p.Txt30 == "All").();
+                            }
                             SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                         }
 
