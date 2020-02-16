@@ -274,18 +274,18 @@ namespace GAZT
                // await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 if (_isMandatoryFieldEntered)
                 {
-                    bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
-                    if(!_isNewPasswordSameAsOldPasswordSame)
-                    {
+                    //bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
+                    //if(!_isNewPasswordSameAsOldPasswordSame)
+                    //{
                         await ChangePassword();
-                    }
-                    else
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
-                        });
-                    }
+                   // }
+                    //else
+                    //{
+                    //    Device.BeginInvokeOnMainThread(async () =>
+                    //    {
+                    //        await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
+                    //    });
+                    //}
                 }
                 else
                 {

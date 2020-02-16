@@ -252,13 +252,18 @@ namespace GAZT.ViewModel.NewViewModel
                             _navigationService.GoBack();
                         }
                     }
-                    catch (Exception e)
+                    catch (InternetException ex)
                     {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
-                        // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
+                        });
+                        //   await Task.Run(() =>
+                        //   {
                         IsLoading = false;
-                        //  _navigationService.GoBack();
-
+                        _navigationService.GoBack();
+                        //  });
                     }
 
                 });
@@ -344,7 +349,7 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
 
-                   
+
 
                     if (SelectedICR != null)
                     {
@@ -356,67 +361,72 @@ namespace GAZT.ViewModel.NewViewModel
 
                     //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
                     // the GUID will be different
-                    
-                        String SelectedICRGUID = SelectedICR.Fbguid;
-                        EUser = SelectedICR.Euser;
-                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
-                        PopToRootPage();
-                        _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
-                        if (_vATDeclaration != null && _vATDeclaration.d != null)
-                        {
-                            VATDeclaration vATDeclaration = new VATDeclaration();
-                            VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                            Result5 result5 = new Result5();
-                            List<Result5> lst = new List<Result5>();
-                            ADRSet _aDRSet = new ADRSet();
+                    String SelectedICRGUID = SelectedICR.Fbguid;
+                    EUser = SelectedICR.Euser;
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
+                    PopToRootPage();
+                    _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
-                            lst.Add(result5);
-                            vATDeclaration.d = vATDeclarationD;
-                            vATDeclaration.d.ADRSet = _aDRSet;
-                            vATDeclaration.d.ADRSet.results = lst;
-                            IsLoading = false;
+                    if (_vATDeclaration != null && _vATDeclaration.d != null)
+                    {
+                        VATDeclaration vATDeclaration = new VATDeclaration();
+                        VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                        Result5 result5 = new Result5();
+                        List<Result5> lst = new List<Result5>();
+                        ADRSet _aDRSet = new ADRSet();
 
-
-                            _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
-
-                            //try
-                            //{
-                            //    // Made changes in the data to test the API
-                            //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
-                            //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
-                            //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
-                            //    //_vATDeclaration.d.Operationz = "05";
-                            //    //_vATDeclaration.d.StepNumber = "04";
-                            //    //_vATDeclaration.d.StdsalesAmt = "5400";
-                            //    //_vATDeclaration.d.SalesGccAmt = "5400";
-
-                            //    //_vATDeclaration.d.StepNumberz = "04";
-                            //}
-                            //catch (Exception ex)
-                            //{
+                        lst.Add(result5);
+                        vATDeclaration.d = vATDeclarationD;
+                        vATDeclaration.d.ADRSet = _aDRSet;
+                        vATDeclaration.d.ADRSet.results = lst;
+                        IsLoading = false;
 
 
-                            //}
-                            //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
-                        }
-                   
-                    
+                        _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+
+                        //try
+                        //{
+                        //    // Made changes in the data to test the API
+                        //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
+                        //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
+                        //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
+                        //    //_vATDeclaration.d.Operationz = "05";
+                        //    //_vATDeclaration.d.StepNumber = "04";
+                        //    //_vATDeclaration.d.StdsalesAmt = "5400";
+                        //    //_vATDeclaration.d.SalesGccAmt = "5400";
+
+                        //    //_vATDeclaration.d.StepNumberz = "04";
+                        //}
+                        //catch (Exception ex)
+                        //{
+
+
+                        //}
+                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+                    }
+
+
 
                     //}
                     //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
 
                 }
-                catch (Exception ex)
+                catch (InternetException ex)
                 {
-
-                    //     _vATDeclaration.d.StdpurchaseAmt = "2000";
-                    //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+
             }
 
         }
