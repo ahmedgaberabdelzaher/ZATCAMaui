@@ -74,5 +74,13 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
+
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue = viewModel.NewValue;
+        //    AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason = viewModel.ChangeReason;
+
+        //}
     }
 }

@@ -85,7 +85,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
                     {
-                        if (string.Equals(_selectedICRStatus.Txt30, "All"))
+                        if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30,"الجميع"))
                         {
                             ICRList = ICRDummyList;
                         }
@@ -231,7 +231,23 @@ namespace GAZT.ViewModel.NewViewModel
                             ICRStatusList = icrList.ICR_STATUSSet;
                             if(App.IsArabic)
                             {
-                              //  ICRStatusList.Where(p => p.Txt30 == "All").();
+
+                                foreach (var item in ICRStatusList)
+                                {
+                                    if(item.Txt30== "All")
+                                    {
+                                        item.Txt30 = "الجميع";
+                                    }
+                                    if(item.Txt30== "To be filled & In draft")
+                                    {
+                                        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
+                                    }
+                                }
+
+                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
+                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
+
+                                //  ICRStatusList.Where(p => p.Txt30 == "All").();
                             }
                             SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                         }
