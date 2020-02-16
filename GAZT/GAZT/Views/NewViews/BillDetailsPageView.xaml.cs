@@ -33,7 +33,7 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             ToolbarItem Refresh = new ToolbarItem
             {
-                Icon = "ic_refresh.png",
+                
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(async() =>
@@ -57,7 +57,7 @@ namespace GAZT.Views.NewViews
             };
             this.ToolbarItems.Add(Download);
 
-        //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+         Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
 
 
         }
@@ -66,10 +66,11 @@ namespace GAZT.Views.NewViews
         #region Method
         protected async Task OnRefreshButtonClicked()
         {
-            //if(!viewModel.IsSADADNumberGenerated)
-            //{
+            if (!viewModel.IsSADADNumberGenerated)
+            {
                 await viewModel.OnPageLoad();
-            //}
+                viewModel.RefreshIconImageSource = "";
+            }
         }
 
         protected  void OnDownLoadInvoiceClicked()

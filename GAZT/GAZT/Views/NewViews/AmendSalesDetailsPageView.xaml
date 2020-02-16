@@ -41,7 +41,6 @@
                                 <RowDefinition Height="auto"/>
                                      <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="86*"/>
@@ -114,8 +113,9 @@
 
                             <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"  Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2">
+                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                </StackLayout>
 
                             <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
@@ -156,7 +156,7 @@
 
 
 
-                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Start"  >
+                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
                                 <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"

@@ -321,7 +321,7 @@ namespace GAZT.Views.NewViews
 
         private string GetInformationMessage(int selectedId)
         {
-            string informationMessage = "";
+            string informationMessage = AppResources.ZZEstimatedSalesInformationText;
             switch (selectedId)
             {
                 case 1:

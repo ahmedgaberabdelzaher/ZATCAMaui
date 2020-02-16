@@ -546,10 +546,10 @@ namespace GAZT.ViewModel.NewViewModel
                    HideDisclaimer();
 
                 }
-                else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))// Amend without Objection
                 {
                     HideAllButton();
-                 // HideDisclaimer();
+                    HideDisclaimer();
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0008"))
                 {
