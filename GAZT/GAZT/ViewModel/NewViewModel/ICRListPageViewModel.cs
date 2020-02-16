@@ -39,6 +39,37 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isNoDataLabelVisible = false;
+        public bool IsNoDataLabelVisible
+        {
+            get
+            {
+                return _isNoDataLabelVisible;
+            }
+            set
+            {
+                _isNoDataLabelVisible = value;
+                RaisePropertyChanged("IsNoDataLabelVisible");
+            }
+        }
+
+        private bool _isICRListVisible = false;
+        public bool IsICRListVisible
+        {
+            get
+            {
+                return _isICRListVisible;
+            }
+            set
+            {
+                _isICRListVisible = value;
+                RaisePropertyChanged("IsICRListVisible");
+            }
+        }
+
+      
+
+
         private ICRStatus _selectedICRStatus;
         public ICRStatus SelectedICRStatus
         {
@@ -49,6 +80,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
+                RaisePropertyChanged("SelectedICRStatus");
                 if (_selectedICRStatus != null)
                 {
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
@@ -67,7 +99,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
                 }
-                RaisePropertyChanged("SelectedICRStatus");
+                
             }
         }
 
@@ -129,6 +161,16 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iCRList = value;
+                if(_iCRList!=null && _iCRList.Count!=0)
+                {
+                    IsNoDataLabelVisible = false;
+                    IsICRListVisible = true;
+                }
+                else
+                {
+                    IsICRListVisible = false;
+                    IsNoDataLabelVisible = true;
+                }
                 RaisePropertyChanged("ICRList");
             }
         }

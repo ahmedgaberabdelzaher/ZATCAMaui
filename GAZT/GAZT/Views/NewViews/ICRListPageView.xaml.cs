@@ -31,6 +31,8 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             SetLTR();
             Count = 1;
+            viewModel.IsICRListVisible = true;
+            viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
 
             ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
@@ -53,6 +55,10 @@ namespace GAZT.Views.NewViews
             try
             {
                 await viewModel.onPageLoad();
+                if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0)
+                {
+                    BPicker.SelectedIndex = 14;
+                }
             }
             catch(Exception e)
             {
