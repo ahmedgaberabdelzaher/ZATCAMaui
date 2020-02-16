@@ -1961,9 +1961,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you
-        ///automatically in case there are no other outstanding obligations.Paying the invoice means you confirm the correctness of the return
-        ///information..
+        ///   Looks up a localized string similar to By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information..
         /// </summary>
         public static string ZBillDeatilsInfo {
             get {
@@ -2288,7 +2286,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount.
+        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
         public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount {
             get {
@@ -4286,7 +4284,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to release the declaration?.
+        ///   Looks up a localized string similar to Do you want to release the retrun?.
         /// </summary>
         public static string ZZDoyouwanttoreleasethedeclaration {
             get {
@@ -4568,7 +4566,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It has copied sadad payment number.
+        ///   Looks up a localized string similar to It has copied SADAD payment number.
         /// </summary>
         public static string ZZIthascopiedsadadpaymentnumber {
             get {
@@ -4659,6 +4657,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchases value x 115%.
+        /// </summary>
+        public static string ZZPurchasesvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZPurchasesvaluex115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string ZZPurchasevalue {
@@ -4722,7 +4729,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sales form point of sales.
+        ///   Looks up a localized string similar to Sales from point of sales.
         /// </summary>
         public static string ZZSalesformpointofsales {
             get {

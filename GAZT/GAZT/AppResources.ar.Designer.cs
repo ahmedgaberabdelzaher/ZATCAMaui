@@ -3381,5 +3381,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
             }
         }
+        
+        public static string ZZPurchasesvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZPurchasesvaluex115", resourceCulture);
+            }
+        }
     }
 }

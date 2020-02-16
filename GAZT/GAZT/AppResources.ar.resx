@@ -796,7 +796,7 @@
     <value>Zakat Return Listing</value>
   </data>
   <data name="ZZakatReturnDetails" xml:space="preserve">
-    <value>Zakat Return Details</value>
+    <value>تفاصيل الإقرار الزكوي</value>
   </data>
   <data name="ZZMandatorydatanotentered" xml:space="preserve">
     <value>البيانات الإلزامية غير مدخلة</value>
@@ -902,7 +902,7 @@
     <value>Accept Return</value>
   </data>
   <data name="ZBillDeatilsInfo" xml:space="preserve">
-    <value>بسدادكم للفاتورة من خالل نظام سداد سوف يتم إصدار شهادة الزكاة لكم آليًا في حال عدم وجود التزامات أخرى إن سداد الفاتورة يعتبر إقرار بصحة معلومات اإلقرار.</value>
+    <value>بسدادكم للفاتورة من خلال نظام سداد سوف يتم إصدار شهادة الزكاة لكم آليًا في حال عدم وجود التزامات أخرى. إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
   </data>
   <data name="ZChangeReason" xml:space="preserve">
     <value>سبب التعديل</value>
@@ -914,7 +914,7 @@
     <value>Estimated Sales</value>
   </data>
   <data name="ZEstimateSales" xml:space="preserve">
-    <value>Estimate Sales</value>
+    <value>المبيعات التقديرية</value>
   </data>
   <data name="ZFinancialPeriodFrom" xml:space="preserve">
     <value>Financial Period From</value>
@@ -923,7 +923,7 @@
     <value>Information from related parties</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
-    <value>New Value</value>
+    <value>القيمة الجديدة</value>
   </data>
   <data name="ZSADADGAZTId" xml:space="preserve">
     <value>رقم المفوتر</value>
@@ -938,10 +938,10 @@
     <value>Status</value>
   </data>
   <data name="ZNote" xml:space="preserve">
-    <value>Note</value>
+    <value>ملاحظات</value>
   </data>
   <data name="ZReturnReferenceNumber" xml:space="preserve">
-    <value>Return Reference Number</value>
+    <value>الرقم المرجعي للإقرار</value>
   </data>
   <data name="ZAmount" xml:space="preserve">
     <value>المبلغ</value>
@@ -1176,19 +1176,19 @@
     <value>25% of Disputed Amount</value>
   </data>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
-    <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt.</value>
+    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
-    <value>File size should not be more than 5MB</value>
+    <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
-    <value>Maximum no. of 5 attachments can be uploaded.</value>
+    <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
   </data>
   <data name="ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber" xml:space="preserve">
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount</value>
+    <value>لن يتم تقديم طلب االعتراض إلا في حال سداد المبلغ غير المعترض عليه باإلضافة الى 25 %من المبلغ المعترض عليه</value>
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -1248,7 +1248,7 @@
     <value>إصدار</value>
   </data>
   <data name="OldValue" xml:space="preserve">
-    <value>Old Value</value>
+    <value>القيمة السابقة</value>
   </data>
   <data name="AmendTheReturn" xml:space="preserve">
     <value>تعديل الإقرار</value>
@@ -1647,7 +1647,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZContractsformETIMADsystem" xml:space="preserve">
-    <value>العقود في مصة اعتماد</value>
+    <value>العقود في منصة اعتماد</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZExportsvalue" xml:space="preserve">
@@ -1655,7 +1655,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZFilesizemustbelessthan5MB" xml:space="preserve">
-    <value>File size must be less than 5 MB</value>
+    <value>حجم الملف لا يزيد عن 5 ميجا</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvalue" xml:space="preserve">
@@ -1667,7 +1667,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZNochangesmadeFormcannotbesubmitted" xml:space="preserve">
-    <value>No changes made, Form cannot be submitted</value>
+    <value>لا يمكن تقديم الإقرار لعدم وجود تغيير</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
@@ -1675,7 +1675,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
-    <value>Please upload the Required Document and Change reason</value>
+    <value>الرجاء تحميل المستندات المطلوبة وأسباب التغيير</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPurchasevalue" xml:space="preserve">
@@ -1687,11 +1687,11 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZReturnSubmittedSuccessfully" xml:space="preserve">
-    <value>Return Submitted Successfully</value>
+    <value>تم تقديم الإقرار بنجاح</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSalesformpointofsales" xml:space="preserve">
-    <value>Sales form point of sales</value>
+    <value>المبيعات من نقاط التحصيل</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSomethingwentwrong" xml:space="preserve">
@@ -1707,7 +1707,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">
-    <value>You can not upload more than 5 attachment</value>
+    <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZ25oftheDisputedAmount" xml:space="preserve">
@@ -1727,11 +1727,11 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZConfirmation" xml:space="preserve">
-    <value>Confirmation?</value>
+    <value>تأكيد؟</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
-    <value>Do you want to release the declaration?</value>
+    <value>هل تريد إصدار الإقرار</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
@@ -1772,7 +1772,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalsalesinVATreturns" xml:space="preserve">
-    <value>إجمالي مبيعات ضريبة القيمة المضافة بعد التعديل خالل السنة المالية )باستثناء أي مبلغ تحت االعتراض أو إعادة تقييم ولكن ال يزال في الفترة القانونية لالعتراض أو العقوبات والغرامات(</value>
+    <value>إجمالي مبيعات ضريبة القيمة المضافة بعد التعديل خلال السنة المالية (باستثناء أي مبلغ قيد الإعتراض أو إعادة تقييم ما يزال في الفترة القانونية للإعتراض أو العقوبات والغرامات)</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalUndisputedAmount" xml:space="preserve">
@@ -1908,5 +1908,9 @@
   </data>
   <data name="ZVATSummaryDetailsButton" xml:space="preserve">
     <value>Summary Details</value>
+  </data>
+  <data name="ZZPurchasesvaluex115" xml:space="preserve">
+    <value>قيمة المشتريات * 115%</value>
+    <comment>Estimated Zakat</comment>
   </data>
 </root>
