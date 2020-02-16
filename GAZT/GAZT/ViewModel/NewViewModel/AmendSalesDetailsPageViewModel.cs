@@ -231,7 +231,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     var fileData = await CrossFilePicker.Current.PickFile();
                     attachment = fileData.DataArray;
-                    AttachmentName = fileData.FileName;
                     await Task.Run(() =>
                     {
                         IsLoading = true;
@@ -240,45 +239,57 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                     try
                     {
-                            if(attachment.Length < 5242880)
-                            {
-                                if(ZakatReturnAttachmentsList.Count < 5)
-                                {
-                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
-                                    PopToRootPage();
-                                    if (_attachment != null && _attachment.d != null)
-                                    {
-                                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                                        _estimateZakatAttachment.Seqno = "";
-                                        _estimateZakatAttachment.SchGuid = "";
-                                        _estimateZakatAttachment.AttBy = "";
-                                        _estimateZakatAttachment.FileExtn = "";
-                                        _estimateZakatAttachment.ByPusr = "";
-                                        _estimateZakatAttachment.OutletRef = "";
-                                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                                        _estimateZakatAttachment.Dotyp = "FZ01";
-                                        _estimateZakatAttachment.Mimetype = "";
-                                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                                        _estimateZakatAttachment.DataVersion = "";
-                                        DateTime currentDate = DateTime.Now;
-                                        _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
-                                        SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+                            AttachmentName = fileData.FileName;
 
-                                        // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                            string Extention = AttachmentName.Split('.')[1];
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                            {
+                                if (attachment.Length < 5242880)
+                                {
+                                    if (ZakatReturnAttachmentsList.Count < 5)
+                                    {
+                                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                                        PopToRootPage();
+                                        if (_attachment != null && _attachment.d != null)
+                                        {
+                                            AttachmentName = string.Empty;
+                                            EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                                            _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                                            _estimateZakatAttachment.Seqno = "";
+                                            _estimateZakatAttachment.SchGuid = "";
+                                            _estimateZakatAttachment.AttBy = "";
+                                            _estimateZakatAttachment.FileExtn = "";
+                                            _estimateZakatAttachment.ByPusr = "";
+                                            _estimateZakatAttachment.OutletRef = "";
+                                            _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                                            _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                                            _estimateZakatAttachment.Dotyp = "FZ01";
+                                            _estimateZakatAttachment.Mimetype = "";
+                                            _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                                            _estimateZakatAttachment.DataVersion = "";
+                                            DateTime currentDate = DateTime.Now;
+                                            _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
+                                            SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+
+                                            // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
                                     }
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
+                                    await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
                                 }
+
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
+                                AttachmentName = string.Empty;
+                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
-
                         }
                         catch (InternetException ex)
                         {
