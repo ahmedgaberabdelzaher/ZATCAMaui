@@ -797,7 +797,7 @@
                         </Image>-->
 
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" FontAttributes="Bold" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
                         </local1:CustomLabel>
                         <Frame Grid.Row="28" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>

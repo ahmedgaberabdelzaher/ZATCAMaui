@@ -79,6 +79,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsDeclarationCheckedForInstruction = bValue;
             viewModel.IsDeclarationCheckedForSummary = bValue;
             viewModel.IsCheckedTaxPayerDetailsInfo = bValue;
+            viewModel.IschkRefundDeclaration = bValue;
         }
         private void SetLTR()
         {
@@ -106,6 +107,7 @@ namespace GAZT.Views.NewViews
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
                     viewModel.IsDeclarationCheckedForSummary = true;
                     viewModel.IsDeclarationCheckedForInstruction = true;
+                    viewModel.IsVATRefunCheckedVisible = true;
                     viewModel.ButtonName = AppResources.ZVatDownloadForm;
                     viewModel.IsMainButtonEnabled = false;
                 }

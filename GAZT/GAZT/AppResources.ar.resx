@@ -1944,13 +1944,19 @@
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
   </data>
-  <data name="EmailSent" xml:space="preserve">     <value>تم إرسال البريد </value>   </data> 
+  <data name="EmailSent" xml:space="preserve">
+    <value />
+  </data>
   <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
     <value>تشير سجلاتنا  بأنك لست مصدّر, وأنه يوجد مبيعات لا تخضع للضريبة بنسبة صفر في حقل الصادرات.</value>
     <comment>VAT</comment>
   </data>
   <data name="ZZPleasefilltherequestedinformationforeachstep" xml:space="preserve">
     <value>يرجى إكمال المعلومات المطلوبة لكل خطوة</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZIacknowledgethattheabovebankaccount" xml:space="preserve">
+    <value>أقر بأن بيانات الحساب المدخلة أعلاه صحيحة وأتحمل كامل المسؤولية في حال كانت البيانات خاطئة, وفي حالة فشل عملية الإسترداد أوافق على تحويل مبلغ الإسترداد الى رصيد مرحل للفترات القادمة</value>
     <comment>VAT</comment>
   </data>
   <data name="ZDownloadForm" xml:space="preserve">

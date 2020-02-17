@@ -4617,6 +4617,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period.
+        /// </summary>
+        public static string ZZIacknowledgethattheabovebankaccount {
+            get {
+                return ResourceManager.GetString("ZZIacknowledgethattheabovebankaccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Imports value.
         /// </summary>
         public static string ZZImportsvalue {
