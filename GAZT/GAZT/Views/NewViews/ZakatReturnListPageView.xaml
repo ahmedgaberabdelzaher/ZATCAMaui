@@ -232,7 +232,7 @@
                                    Grid.Row="4"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding Due}" 
+                                                        <Label Text="{Binding Status}" 
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
