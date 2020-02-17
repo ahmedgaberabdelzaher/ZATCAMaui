@@ -802,7 +802,7 @@
     <value>البيانات الإلزامية غير مدخلة</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
+    <value>كلمة السر الجديدة لا يمكن أن تكون كلمة السر الحالية</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>يمكنك استخدام رمز التالي للتفعيل رقم الجوال الجديد</value>
@@ -814,7 +814,7 @@
     <value>تفاصيل الفاتورة</value>
   </data>
   <data name="ZSalesDetails" xml:space="preserve">
-    <value>Sales Details</value>
+    <value>تفاصيل المبيعات</value>
   </data>
   <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
     <value>البريد الإلكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
@@ -899,7 +899,7 @@
     <value>بحث</value>
   </data>
   <data name="ZAcceptReturn" xml:space="preserve">
-    <value>Accept Return</value>
+    <value>قبول الإقرار</value>
   </data>
   <data name="ZBillDeatilsInfo" xml:space="preserve">
     <value>بسدادكم للفاتورة من خلال نظام سداد سوف يتم إصدار شهادة الزكاة لكم آليًا في حال عدم وجود التزامات أخرى. إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
@@ -908,7 +908,7 @@
     <value>سبب التعديل</value>
   </data>
   <data name="ZDataavailabletoGAZT" xml:space="preserve">
-    <value>Data available to GAZT</value>
+    <value>البيانات متوفرة في الهيئة</value>
   </data>
   <data name="ZEstimatedSales" xml:space="preserve">
     <value>المبيعات المقدرة</value>
@@ -1699,7 +1699,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSUCCESS" xml:space="preserve">
-    <value>SUCCESS</value>
+    <value>ناجح</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalVATSales" xml:space="preserve">
@@ -1941,7 +1941,7 @@
   <data name="ZVATCreateNote" xml:space="preserve">
     <value>إضافة ملاحظات</value>
   </data>
-   <data name="ZZDeclarationText" xml:space="preserve">
+  <data name="ZZDeclarationText" xml:space="preserve">
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
   </data>
 </root>
