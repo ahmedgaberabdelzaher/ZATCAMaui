@@ -682,6 +682,10 @@ namespace GAZT.ViewModel.NewViewModel
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                     });
                 }
 
