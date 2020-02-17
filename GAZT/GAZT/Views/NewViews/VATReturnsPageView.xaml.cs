@@ -1726,7 +1726,12 @@ namespace GAZT.Views.NewViews
 
         private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
+            ValidationsForVATRefund();
+        }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://www.vat.gov.sa/en/vat-rate"));
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
