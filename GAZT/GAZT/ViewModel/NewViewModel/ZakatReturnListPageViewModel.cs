@@ -449,6 +449,12 @@ namespace GAZT.ViewModel.NewViewModel
         {
             SetNoDataLabelVisibility = false;
         }
+
+        public void ClearData()
+        {
+               MyZakatReturns = new List<EstimatedZakatReturnsResult>();
+            myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
+        }
         #endregion
     }
 }
