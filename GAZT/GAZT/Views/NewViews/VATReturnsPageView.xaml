@@ -140,7 +140,11 @@
                                     <FormattedString>
                                         <Span Text="4."/>
                                         <Span Text="{x:Static local:AppResources.ZVatFaqSectionInstructions}"/>
-                                        <Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}"  />
+                                        <Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}" >
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                            </Span.GestureRecognizers>
+                                        </Span>
                                     </FormattedString>
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
