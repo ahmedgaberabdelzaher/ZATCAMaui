@@ -1043,6 +1043,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
@@ -1202,7 +1203,25 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            <Label Text="{x:Static local:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                            <CheckBox x:Name="chkRefundDeclaration" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkRefundDeclaration_CheckedChanged" IsChecked="{Binding IschkRefundDeclaration}" IsVisible="{Binding IsVisiblechkRefundDeclaration}" VerticalOptions="Start" Grid.Row="12" Margin="10,0,10,0" Grid.Column="0">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkRefundDeclaration}, Path=IsChecked}" Value="false">
+                                        <Setter Property="Color" Value="#ff0000" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+
+                            <local1:CustomLabel  Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
+                                <local1:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZVatCertifyInformation}"/>
+                                    </FormattedString>
+                                </local1:CustomLabel.FormattedText>
+                            </local1:CustomLabel>
+                            
+                            
+                            <Label Text="{x:Static local:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.OnGetAcknowledgementLinkClicked}"></TapGestureRecognizer>
                                 </Label.GestureRecognizers>

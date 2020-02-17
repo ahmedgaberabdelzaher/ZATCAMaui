@@ -577,7 +577,7 @@ namespace GAZT.Views.NewViews
         }
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
-        {
+       {
             CheckMandetoryFields();
             if (viewModel.ResponseVATDeclarationD.ExporterFg == "")
             {
@@ -1635,7 +1635,7 @@ namespace GAZT.Views.NewViews
                 {
                     if (viewModel.IsCheckedRefund == true)
                     {
-                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
                             viewModel.IsMainButtonEnabled = true;
                         }
@@ -1646,7 +1646,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
                             viewModel.IsMainButtonEnabled = true;
                         }
@@ -1724,7 +1724,10 @@ namespace GAZT.Views.NewViews
 
         }
 
+        private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
 
+        }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
     //{

@@ -391,6 +391,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _ischkRefundDeclaration = false;
+        public bool IschkRefundDeclaration
+        {
+            get
+            {
+                return _ischkRefundDeclaration;
+            }
+            set
+            {
+                _ischkRefundDeclaration = value;
+              
+                RaisePropertyChanged("IschkRefundDeclaration");
+            }
+        }
 
 
         private bool _isDeclarationCheckedForInstruction = false;
@@ -1240,16 +1254,32 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsVisibleDropdownForRefund = true;
                     IsDropdownVisibleForIban = true;
+                    IsVisiblechkRefundDeclaration = true;
                 }
                 else
                 {
                     IsVisibleDropdownForRefund = false;
                     IsDropdownVisibleForIban = false;
+                    IsVisiblechkRefundDeclaration = false;
                 }
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
         }
-
+        private bool _IsVisiblechkRefundDeclaration = false;
+        public bool IsVisiblechkRefundDeclaration
+        {
+            get
+            {
+                return _IsVisiblechkRefundDeclaration;
+            }
+            set
+            {
+                _IsVisiblechkRefundDeclaration   = value;
+            
+                RaisePropertyChanged("IsVisiblechkRefundDeclaration");
+            }
+        }
+        
         private Result2 _selectedIBAN;
         public Result2 SelectedIBAN
         {
