@@ -579,6 +579,22 @@ namespace GAZT.Views.NewViews
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
         {
             CheckMandetoryFields();
+            if (viewModel.ResponseVATDeclarationD.ExporterFg == "")
+            {
+               if (viewModel.ResponseVATDeclarationD.ExportsAmt !="." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-"))
+                {
+                    if(Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
+                    
+                       
+                        popUp.IsLinkAvailable = false;
+                     
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    }
+                }
+            }
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
         }
 

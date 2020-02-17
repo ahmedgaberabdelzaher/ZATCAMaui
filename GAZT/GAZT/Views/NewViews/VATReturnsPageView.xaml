@@ -104,7 +104,7 @@
                             <Label Text="{x:Static local:AppResources.ZInstructions}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
 
-                            <Label Text="{x:Static local:AppResources.ZInstructions}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZVatReadInstructions}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
                             <local1:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
@@ -352,16 +352,16 @@
                         </Label-->
 
 
-                        <local1:CustomLabel  Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                        <!--<local1:CustomLabel  Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZVatNote}" FontAttributes="Bold"/>
                                     <Span Text=":" />
                                     <Span Text="{x:Static local:AppResources.ZVatNoteDetail}"/>
-                                    <!--<Span Text="Change of registration form."/>-->
+                                    --><!--<Span Text="Change of registration form."/>--><!--
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
-                        </local1:CustomLabel>
+                        </local1:CustomLabel>-->
 
                     </Grid>
 
@@ -786,11 +786,11 @@
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat" IsEnabled="False" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local:AppResources.ZVatVATAmountWithSAR}" Grid.Row="26" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
-                        <Image Grid.Row="26"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
-                            <!--<Image.GestureRecognizers>
+                        <!--<Image Grid.Row="26"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            --><!--<Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
-                            </Image.GestureRecognizers>-->
-                        </Image>
+                            </Image.GestureRecognizers>--><!--
+                        </Image>-->
 
 
                         <local1:CustomLabel Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
@@ -1177,7 +1177,7 @@
                                     <FormattedString>
                                         <Span Text="4."/>
                                         <Span Text="{x:Static local:AppResources.ZVatTandCfour}"/>
-                                        <Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}"  />
+                                        <!--<Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}"  />-->
                                     </FormattedString>
                                 </local:CustomLabel.FormattedText>
                             </local:CustomLabel>
