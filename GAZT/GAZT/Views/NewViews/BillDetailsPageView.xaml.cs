@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
+            NavigationPage.SetBackButtonTitle(this, "");
             ToolbarItem Refresh = new ToolbarItem
             {
                 

@@ -34,7 +34,9 @@ namespace GAZT.Views.NewViews
                 viewModel.ClearData();
                 viewModel.OnLoad();
                 SetLTR();
-            }catch (Exception ex)
+                NavigationPage.SetBackButtonTitle(this, "");
+            }
+            catch (Exception ex)
             {
 
             }

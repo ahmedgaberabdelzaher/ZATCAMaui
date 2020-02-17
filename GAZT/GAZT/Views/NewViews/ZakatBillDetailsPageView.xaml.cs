@@ -21,6 +21,7 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.ZakatBillDetailsPageView;
                 this.BindingContext = viewModel;
+                NavigationPage.SetBackButtonTitle(this, "");
             }
             catch(Exception ex)
             {
