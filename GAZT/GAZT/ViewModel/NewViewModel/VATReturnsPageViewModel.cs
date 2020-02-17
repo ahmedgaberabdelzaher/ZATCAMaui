@@ -1721,7 +1721,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
                 // Call Sadad number API
             });
@@ -1750,7 +1753,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
 
 
@@ -1835,7 +1841,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-               _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
         }
         public void ManageEnabledProperty(bool value)
@@ -2255,7 +2264,10 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     catch (InternetException ex)
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
                     }
                 });
                 await Task.Run(() =>
@@ -2752,7 +2764,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }
@@ -3411,7 +3426,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
         }
     }

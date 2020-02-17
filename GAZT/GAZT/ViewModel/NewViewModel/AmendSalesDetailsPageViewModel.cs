@@ -323,7 +323,10 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         catch (InternetException ex)
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            });
                         }
                     });
                     await Task.Run(() =>

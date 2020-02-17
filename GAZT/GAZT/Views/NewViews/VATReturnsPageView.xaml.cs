@@ -1680,19 +1680,30 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
-                if (response != null)
+                try
                 {
-                    viewModel.IsIBANValid = true;
+                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                    if (response != null)
+                    {
+                        viewModel.IsIBANValid = true;
+                    }
+                    else
+                    {
+                        viewModel.IsIBANValid = false;
+                    }
                 }
-                else
+                catch(InternetException ex)
                 {
-                    viewModel.IsIBANValid = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                       viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
             }
             catch (Exception ex)
             {
                 viewModel.IsIBANValid = false;
+
             }
 
         }
