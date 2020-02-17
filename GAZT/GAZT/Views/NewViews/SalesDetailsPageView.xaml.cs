@@ -45,6 +45,7 @@ namespace GAZT.Views.NewViews
                 viewModel.ClearData();
                 viewModel.onPageLoad();
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
+                NavigationPage.SetBackButtonTitle(this, "");
             }
             catch(Exception ex)
             {

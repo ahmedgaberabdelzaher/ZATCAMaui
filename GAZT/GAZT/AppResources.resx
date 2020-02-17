@@ -803,7 +803,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Mandatory data not entered</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>The new password must not match the existing password</value>
+    <value>New Password can’t be same as Old Password.</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>Please use the OTP to activate the new mobile number</value>
@@ -1261,7 +1261,7 @@ GAZT reserves the right to investigate your return form further.</value>
 • Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
   </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>• If corrections to the previous return entail a VAT liability adjustment less than  SAR &lt;5,000&gt; or VAT credit position of greater than SAR &lt;-5,000&gt;, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
+    <value>• If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
   </data>
   <data name="ZToolTipcreditcarriedforwardfrompreviousperiod" xml:space="preserve">
     <value>• Total amount of credit in your VAT account from previous returns that have not been used to offset any subsequent liabilities or not been refunded. This amount will be used to offset the VAT liability (if any) for this return.</value>
@@ -1287,7 +1287,7 @@ GAZT reserves the right to investigate your return form further.</value>
 • For example,write off of bad debt on exports reveivables.</value>
   </data>
   <data name="ZToolTipExportsAmount" xml:space="preserve">
-    <value>• Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries utside GCC.
+    <value>• Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries outside GCC.
 • Please refer to the below FAQ URL for exported goods and services.</value>
   </data>
   <data name="ZToolTipImportssubjecttoVATaccountedAdjustment" xml:space="preserve">
@@ -1936,6 +1936,15 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise.</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">     <value>Email Sent</value>   </data>
+  <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
+    <value>Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports.</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZPleasefilltherequestedinformationforeachstep" xml:space="preserve">
+    <value>Please fill the requested information for each step.</value>
+    <comment>VAT</comment>
   </data>
   <data name="ZDownloadForm" xml:space="preserve">
     <value>Download Form</value>

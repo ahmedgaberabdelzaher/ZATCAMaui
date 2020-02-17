@@ -45,7 +45,7 @@ namespace GAZT.Models
         public string TaxPeriod { get; set; } //Date
        // public string DueDt { get; set; }
         public string Fbnum { get; set; }
-       // public string Status { get; set; }
+        public string Status { get; set; }
         public string CalendrTyp { get; set; }
         public string Abrzu { get; set; } //Date
         public string Abrzo { get; set; } //Date

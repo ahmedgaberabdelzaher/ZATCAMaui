@@ -485,6 +485,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EmailSent {
+            get {
+                return ResourceManager.GetString("EmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email verification code sent successfully..
         /// </summary>
         public static string Emailverificationcodesentsuccessfully {
@@ -2078,15 +2087,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download Form.
-        /// </summary>
-        public static string ZDownloadForm {
-            get {
-                return ResourceManager.GetString("ZDownloadForm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Email address has been changed  successfully.
         /// </summary>
         public static string ZEmailUpdatedSuccessfully {
@@ -2611,7 +2611,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than  SAR &lt;5,000&gt; or VAT credit position of greater than SAR &lt;-5,000&gt;, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
+        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
         /// </summary>
         public static string ZToolTipCorrectionsfrompreviousperiod {
             get {
@@ -2679,7 +2679,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries utside GCC.
+        ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries outside GCC.
         ///• Please refer to the below FAQ URL for exported goods and services..
         /// </summary>
         public static string ZToolTipExportsAmount {
@@ -4681,6 +4681,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
+        /// </summary>
+        public static string ZZOurrecordsindicatethatyouarenotmainly {
+            get {
+                return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotmainly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
@@ -4695,6 +4704,15 @@ namespace GAZT {
         public static string ZZPleaseenterthecorrespondingnumber {
             get {
                 return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the requested information for each step..
+        /// </summary>
+        public static string ZZPleasefilltherequestedinformationforeachstep {
+            get {
+                return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
             }
         }
         
@@ -4870,7 +4888,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new password must not match the existing password.
+        ///   Looks up a localized string similar to New Password can’t be same as Old Password..
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {

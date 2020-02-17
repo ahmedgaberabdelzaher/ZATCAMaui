@@ -577,8 +577,24 @@ namespace GAZT.Views.NewViews
         }
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
-        {
+       {
             CheckMandetoryFields();
+            if (viewModel.ResponseVATDeclarationD.ExporterFg == "")
+            {
+               if (viewModel.ResponseVATDeclarationD.ExportsAmt !="." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-"))
+                {
+                    if(Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
+                    
+                       
+                        popUp.IsLinkAvailable = false;
+                     
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    }
+                }
+            }
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
         }
 
@@ -1619,7 +1635,7 @@ namespace GAZT.Views.NewViews
                 {
                     if (viewModel.IsCheckedRefund == true)
                     {
-                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
                             viewModel.IsMainButtonEnabled = true;
                         }
@@ -1630,7 +1646,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false)
+                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
                             viewModel.IsMainButtonEnabled = true;
                         }
@@ -1680,24 +1696,38 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
-                if (response != null)
+                try
                 {
-                    viewModel.IsIBANValid = true;
+                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                    if (response != null)
+                    {
+                        viewModel.IsIBANValid = true;
+                    }
+                    else
+                    {
+                        viewModel.IsIBANValid = false;
+                    }
                 }
-                else
+                catch(InternetException ex)
                 {
-                    viewModel.IsIBANValid = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                       viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
             }
             catch (Exception ex)
             {
                 viewModel.IsIBANValid = false;
+
             }
 
         }
 
+        private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
 
+        }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
     //{

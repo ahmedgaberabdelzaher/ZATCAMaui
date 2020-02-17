@@ -86,7 +86,10 @@ namespace GAZT.Views.NewViews
             }
             catch (InternetException ex)
             {
-                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }

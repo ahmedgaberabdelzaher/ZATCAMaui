@@ -29,8 +29,10 @@ namespace GAZT.Views.NewViews
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SetLTR();
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+            viewModel.ClearData();
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
+            NavigationPage.SetBackButtonTitle(this, "");
             ToolbarItem Refresh = new ToolbarItem
             {
                 
@@ -66,7 +68,14 @@ namespace GAZT.Views.NewViews
         #region Method
         protected async Task OnRefreshButtonClicked()
         {
-                await viewModel.OnPageLoad();        
+            if(viewModel.IsrefreshEnabled)
+            {
+                await viewModel.OnPageLoad();
+            }
+            else
+            {
+// put Mesage already latest SADADID
+            }
         }
 
         protected  void OnDownLoadInvoiceClicked()

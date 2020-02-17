@@ -1943,7 +1943,7 @@ namespace GAZT.Manager
             }
         }
 
-
+        //done internet exception handling
         public static string GAZTCheckIBAN(string IBAN)
         {
             List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
@@ -2014,7 +2014,7 @@ namespace GAZT.Manager
             }
         }
 
-
+        //done internet exception handling
         public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData(string periodKey, string TxnTp, string status, string FormBundleNumber, string Gpart)
         {
 

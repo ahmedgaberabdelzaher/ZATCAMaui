@@ -391,6 +391,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _ischkRefundDeclaration = false;
+        public bool IschkRefundDeclaration
+        {
+            get
+            {
+                return _ischkRefundDeclaration;
+            }
+            set
+            {
+                _ischkRefundDeclaration = value;
+              
+                RaisePropertyChanged("IschkRefundDeclaration");
+            }
+        }
 
 
         private bool _isDeclarationCheckedForInstruction = false;
@@ -1240,16 +1254,32 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsVisibleDropdownForRefund = true;
                     IsDropdownVisibleForIban = true;
+                    IsVisiblechkRefundDeclaration = true;
                 }
                 else
                 {
                     IsVisibleDropdownForRefund = false;
                     IsDropdownVisibleForIban = false;
+                    IsVisiblechkRefundDeclaration = false;
                 }
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
         }
-
+        private bool _IsVisiblechkRefundDeclaration = false;
+        public bool IsVisiblechkRefundDeclaration
+        {
+            get
+            {
+                return _IsVisiblechkRefundDeclaration;
+            }
+            set
+            {
+                _IsVisiblechkRefundDeclaration   = value;
+            
+                RaisePropertyChanged("IsVisiblechkRefundDeclaration");
+            }
+        }
+        
         private Result2 _selectedIBAN;
         public Result2 SelectedIBAN
         {
@@ -1721,7 +1751,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
                 // Call Sadad number API
             });
@@ -1750,7 +1783,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
 
 
@@ -1835,7 +1871,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-               _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
         }
         public void ManageEnabledProperty(bool value)
@@ -2271,7 +2310,10 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     catch (InternetException ex)
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
                     }
                 });
                 await Task.Run(() =>
@@ -2768,7 +2810,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }
@@ -3427,7 +3472,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
         }
     }

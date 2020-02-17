@@ -202,7 +202,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
                 // MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
             });
@@ -445,6 +448,12 @@ namespace GAZT.ViewModel.NewViewModel
         private void HideNoDataMessage()
         {
             SetNoDataLabelVisibility = false;
+        }
+
+        public void ClearData()
+        {
+               MyZakatReturns = new List<EstimatedZakatReturnsResult>();
+            myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
         }
         #endregion
     }
