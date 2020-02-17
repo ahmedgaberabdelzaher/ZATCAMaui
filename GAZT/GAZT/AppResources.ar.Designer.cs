@@ -3435,5 +3435,15 @@ namespace GAZT {
                 return ResourceManager.GetString("EmailSent", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
+        /// </summary>
+        public static string ZZOurrecordsindicatethatyouarenotmainly
+        {
+            get
+            {
+                return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotmainly", resourceCulture);
+            }
+        }
     }
 }
