@@ -5,6 +5,8 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -21,6 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
         string Cotyp = "";
+        public bool IsrefreshEnabled = false;
         
         #endregion
 
@@ -68,7 +71,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _refreshIconImageSource = "";
+        private string _refreshIconImageSource = "ic_refresh.png";
         public string RefreshIconImageSource
         {
             get
@@ -180,9 +183,10 @@ namespace GAZT.ViewModel.NewViewModel
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
                             if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
-                                RefreshIconImageSource = "ic_refresh.png";
-                            else
-                                RefreshIconImageSource = "";
+                                IsrefreshEnabled = true;
+                            //  RefreshIconImageSource = "ic_refresh.png";
+                            //else
+                            //    IsrefreshEnabled = false;
 
                         }
                         else
@@ -193,9 +197,10 @@ namespace GAZT.ViewModel.NewViewModel
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
                             if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
-                                RefreshIconImageSource = "ic_refresh.png";
-                            else
-                                RefreshIconImageSource = "";
+                                IsrefreshEnabled = true;
+                            //    RefreshIconImageSource = "ic_refresh.png";
+                            //else
+                            //    IsrefreshEnabled = false;
                         }
 
                     }
@@ -272,6 +277,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public void ClearData()
+        {
+            IsrefreshEnabled = false;
+        }
         #endregion
     }
 }

@@ -1937,6 +1937,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise.</value>
   </data>
+  <data name="EmailSent" xml:space="preserve">     <value>Email Sent</value>   </data>
   <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
     <value>Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports.</value>
     <comment>VAT</comment>

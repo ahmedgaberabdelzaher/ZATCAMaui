@@ -8,8 +8,8 @@ namespace GAZT
     public class PdfiOSViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
         public string pdfUrl;
         #endregion
 

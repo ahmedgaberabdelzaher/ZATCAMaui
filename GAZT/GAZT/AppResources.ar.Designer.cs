@@ -3429,5 +3429,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDeclarationText", resourceCulture);
             }
         }
+        
+        public static string EmailSent {
+            get {
+                return ResourceManager.GetString("EmailSent", resourceCulture);
+            }
+        }
     }
 }
