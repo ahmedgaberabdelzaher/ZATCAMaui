@@ -2087,6 +2087,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download Form.
+        /// </summary>
+        public static string ZDownloadForm {
+            get {
+                return ResourceManager.GetString("ZDownloadForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address has been changed  successfully.
         /// </summary>
         public static string ZEmailUpdatedSuccessfully {
