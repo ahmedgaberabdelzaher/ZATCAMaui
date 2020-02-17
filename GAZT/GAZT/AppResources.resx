@@ -1937,4 +1937,5 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise.</value>
   </data>
+  <data name="EmailSent" xml:space="preserve">     <value>Email Sent</value>   </data>
 </root>

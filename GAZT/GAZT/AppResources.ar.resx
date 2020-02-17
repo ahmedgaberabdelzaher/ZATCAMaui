@@ -1944,4 +1944,5 @@
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
   </data>
+  <data name="EmailSent" xml:space="preserve">     <value>تم إرسال البريد </value>   </data> 
 </root>
