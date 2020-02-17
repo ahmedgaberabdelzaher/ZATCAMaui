@@ -111,7 +111,7 @@
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="1."/>
-                                        <Span Text="{x:Static local:AppResources.ZVatReadInstructions}"/>
+                                        <Span Text="{x:Static local:AppResources.ZZPleasefilltherequestedinformationforeachstep}"/>
                                     </FormattedString>
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
