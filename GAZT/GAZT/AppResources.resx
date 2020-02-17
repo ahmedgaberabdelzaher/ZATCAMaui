@@ -1937,13 +1937,19 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZZDeclarationText" xml:space="preserve">
     <value>I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise.</value>
   </data>
-  <data name="EmailSent" xml:space="preserve">     <value>Email Sent</value>   </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value />
+  </data>
   <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
     <value>Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports.</value>
     <comment>VAT</comment>
   </data>
   <data name="ZZPleasefilltherequestedinformationforeachstep" xml:space="preserve">
     <value>Please fill the requested information for each step.</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZIacknowledgethattheabovebankaccount" xml:space="preserve">
+    <value>I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period</value>
     <comment>VAT</comment>
   </data>
 </root>
