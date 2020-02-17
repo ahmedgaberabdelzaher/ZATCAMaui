@@ -74,7 +74,7 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-// put Mesage already latest SADADID
+           // put Mesage already latest SADADID available
             }
         }
 
