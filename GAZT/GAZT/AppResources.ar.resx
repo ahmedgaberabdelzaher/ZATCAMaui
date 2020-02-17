@@ -935,7 +935,7 @@
     <value>Total VAT Sales</value>
   </data>
   <data name="ZStatus" xml:space="preserve">
-    <value>Status</value>
+    <value>الحالة</value>
   </data>
   <data name="ZNote" xml:space="preserve">
     <value>ملاحظات</value>

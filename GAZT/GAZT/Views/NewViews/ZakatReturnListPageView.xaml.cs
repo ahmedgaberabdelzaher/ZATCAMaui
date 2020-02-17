@@ -29,6 +29,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ZakatReturnListPageView;
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.ClearData();
             viewModel.OnPageLoad();
 
             ZakatICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
