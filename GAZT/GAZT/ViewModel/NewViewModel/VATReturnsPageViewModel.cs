@@ -1927,9 +1927,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-              
-               // IsCheckedTaxPayerDetailsInfo = false;
-               // IsMainButtonEnabled = false;
+
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                {
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    //IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    if (App.ICRStatus != "E0001")
+                    {
+                        IsCheckedTaxPayerDetailsInfo = false;
+                        IsMainButtonEnabled = false;
+                    }
+                }
             }
         }
         public void VATReturnFormClicked()
@@ -1942,7 +1953,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             bool value = false;
             ClearPage();
-            if(!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
+            IsFirstSubmission = true;
+            if (!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
               
                 value = IsCheckedDraftMode();
@@ -1953,7 +1965,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (VATDeclarationData.d.RefundFg == "1")
                         {
-                            IsSwichButtonEnableToTap = true;
+                            IsSwichButtonEnableToTap = false;
                             IsSwichButtonEnable = true;
                             IsVisibleDropdownForRefund = true;
                           //  IsDropdownVisibleForIban = true;
@@ -2022,9 +2034,13 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-                IsMainButtonEnabled = false;
+               
                 ButtonName = AppResources.Submit;
-                IsDeclarationCheckedForSummary = false;
+                if (App.ICRStatus != "E0001")
+                {
+                    IsMainButtonEnabled = false;
+                    IsDeclarationCheckedForSummary = false;
+                }
             }
           
             //if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")

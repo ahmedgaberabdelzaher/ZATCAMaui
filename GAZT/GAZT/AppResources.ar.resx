@@ -1203,10 +1203,10 @@
     <value>نوع المكلف</value>
   </data>
   <data name="ZSadadNumber" xml:space="preserve">
-    <value>Sadad Number</value>
+    <value>رقم سداد</value>
   </data>
   <data name="ZAmountPayable" xml:space="preserve">
-    <value>Amount Payable</value>
+    <value>المبلغ المستحق</value>
   </data>
   <data name="Pleasereviewthecalculationandsubmitagain" xml:space="preserve">
     <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
@@ -1215,7 +1215,7 @@
     <value>تم حفظ نموذج الإقرار الضريبي بنجاح</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
-    <value>Download Acknowledgement</value>
+    <value>تحميل إشعار الاستلام</value>
   </data>
   <data name="Acknowlwdgement" xml:space="preserve">
     <value>اشعار استلام</value>
@@ -1941,7 +1941,10 @@
   <data name="ZVATCreateNote" xml:space="preserve">
     <value>إضافة ملاحظات</value>
   </data>
-   <data name="ZZDeclarationText" xml:space="preserve">
+  <data name="ZZDeclarationText" xml:space="preserve">
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
+  </data>
+  <data name="ZDownloadForm" xml:space="preserve">
+    <value>تحميل النموذج</value>
   </data>
 </root>

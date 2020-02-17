@@ -1931,11 +1931,13 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZZYourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
     <value>Your password has been changed successfully</value>
   </data>
-   
   <data name="ZVATCreateNote" xml:space="preserve">
     <value>Create Notes</value>
   </data>
-   <data name="ZZDeclarationText" xml:space="preserve">
+  <data name="ZZDeclarationText" xml:space="preserve">
     <value>I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise.</value>
+  </data>
+  <data name="ZDownloadForm" xml:space="preserve">
+    <value>Download Form</value>
   </data>
 </root>

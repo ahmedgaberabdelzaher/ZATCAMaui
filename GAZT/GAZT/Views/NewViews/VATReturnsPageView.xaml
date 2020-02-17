@@ -1043,6 +1043,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
@@ -1177,7 +1178,6 @@
                                     <FormattedString>
                                         <Span Text="4."/>
                                         <Span Text="{x:Static local:AppResources.ZVatTandCfour}"/>
-                                        <Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}"  />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
