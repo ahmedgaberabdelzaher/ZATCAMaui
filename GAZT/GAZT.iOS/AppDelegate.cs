@@ -33,7 +33,7 @@ namespace GAZT.iOS
             Rg.Plugins.Popup.Popup.Init();
             IQKeyboardManager.SharedManager.Enable = true;
             UINavigationBar.Appearance.TintColor = UIColor.Red;
-            
+            App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
             LoadApplication(new App());
 
             //Code for PUSH notification
