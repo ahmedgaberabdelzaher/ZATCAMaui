@@ -4,7 +4,7 @@
              x:Class="GAZT.Views.NewViews.AcknowledgementDetailsPageView"
               Title="{x:Static local:AppResources.Acknowlwdgement}"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-              
+              xmlns:local1="clr-namespace:GAZT"
               xmlns:custom="clr-namespace:GAZT"
              >
     <ContentPage.Content>
@@ -88,7 +88,7 @@
                         <Button Text="{x:Static local:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnDownloadAcknowlwdgementClicked}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
 
-                    <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}" Padding="0"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}" Padding="0"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                 </Grid>
             </ScrollView>
