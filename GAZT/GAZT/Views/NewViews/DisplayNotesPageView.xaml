@@ -6,6 +6,7 @@
              mc:Ignorable="d"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.DisplayNotesPageView"
                
             FlowDirection="LeftToRight"
@@ -19,7 +20,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      
+                      IsVisible="{Binding IsDisplayNoteVisible}"
             SeparatorVisibility="None"
             >
                     <ListView.ItemTemplate>
@@ -109,6 +110,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <local1:CustomLabel Text="{x:Static local:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                </local1:CustomLabel>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

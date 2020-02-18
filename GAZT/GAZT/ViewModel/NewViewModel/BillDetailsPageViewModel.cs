@@ -1,12 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -17,7 +21,10 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
-
+        string Cokey = "";
+        string Cotyp = "";
+        public bool IsrefreshEnabled = false;
+        
         #endregion
 
         #region Property
@@ -64,6 +71,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _refreshIconImageSource = "ic_refresh.png";
+        public string RefreshIconImageSource
+        {
+            get
+            {
+                return _refreshIconImageSource;
+            }
+            set
+            {
+                _refreshIconImageSource = value;
+              
+                RaisePropertyChanged("RefreshIconImageSource");
+            }
+        }
+
+        
         //private string _sopbel;
         //public string Sopbel
         //{
@@ -130,7 +153,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               await _dialogService.ShowMessage("It has copied sadad payment number",AppResources.Information);
+               await _dialogService.ShowMessage(AppResources.ZZIthascopiedsadadpaymentnumber, AppResources.Information);
             });
 
 
@@ -146,8 +169,50 @@ namespace GAZT.ViewModel.NewViewModel
 
             await Task.Run(async() =>
             {
-                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
-                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                try
+                {
+                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZakatReturnDetailsPageViewModel.Fbguid); // Method to get the invoice
+                    PopToRootPage();
+                    if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+                    {
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0)
+                        {
+                            Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
+                            Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                                IsrefreshEnabled = true;
+                            //  RefreshIconImageSource = "ic_refresh.png";
+                            //else
+                            //    IsrefreshEnabled = false;
+
+                        }
+                        else
+                        {
+                            Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
+                            Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
+                            estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                                IsrefreshEnabled = true;
+                            //    RefreshIconImageSource = "ic_refresh.png";
+                            //else
+                            //    IsrefreshEnabled = false;
+                        }
+
+                    }
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             });
 
             await Task.Run(() =>
@@ -157,6 +222,65 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
         #region Method
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+
+        public void GetPdfUrl()
+        {
+            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=disabled";
+            // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
+            ShowPdf(url);
+        }
+
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+        }
+
+        public void ClearData()
+        {
+            IsrefreshEnabled = false;
+        }
         #endregion
     }
 }

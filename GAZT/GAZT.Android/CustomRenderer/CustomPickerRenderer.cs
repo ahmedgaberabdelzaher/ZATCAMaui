@@ -1,7 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Android.Graphics;
-using Android.Content.Res;
 using Android.Content;
 using Android.Text;
 using GAZT;

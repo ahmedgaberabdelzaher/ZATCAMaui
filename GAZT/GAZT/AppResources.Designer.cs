@@ -485,6 +485,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EmailSent {
+            get {
+                return ResourceManager.GetString("EmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email verification code sent successfully..
         /// </summary>
         public static string Emailverificationcodesentsuccessfully {
@@ -629,7 +638,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimate Zakat.
+        ///   Looks up a localized string similar to Estimated Zakat.
         /// </summary>
         public static string EstimateZakat {
             get {
@@ -908,11 +917,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Certificates.
+        ///   Looks up a localized string similar to My Certificate.
         /// </summary>
         public static string MyCertificate {
             get {
                 return ResourceManager.GetString("MyCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificates.
+        /// </summary>
+        public static string MyCertificates {
+            get {
+                return ResourceManager.GetString("MyCertificates", resourceCulture);
             }
         }
         
@@ -999,6 +1017,15 @@ namespace GAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to No certificate available.
+        /// </summary>
+        public static string Nocertificateavailable {
+            get {
+                return ResourceManager.GetString("Nocertificateavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data available.
         /// </summary>
         public static string Nodataavailable {
             get {
@@ -1466,7 +1493,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summary of Zakat calculation.
+        ///   Looks up a localized string similar to Zakat Calculation Summary.
         /// </summary>
         public static string SummaryOfZakatCalculation {
             get {
@@ -2060,6 +2087,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download Form.
+        /// </summary>
+        public static string ZDownloadForm {
+            get {
+                return ResourceManager.GetString("ZDownloadForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address has been changed  successfully.
         /// </summary>
         public static string ZEmailUpdatedSuccessfully {
@@ -2268,7 +2304,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount.
+        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
         public static string ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount {
             get {
@@ -2584,7 +2620,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than  SAR &lt;5,000&gt; or VAT credit position of greater than SAR &lt;-5,000&gt;, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
+        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
         /// </summary>
         public static string ZToolTipCorrectionsfrompreviousperiod {
             get {
@@ -2652,7 +2688,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries utside GCC.
+        ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries outside GCC.
         ///• Please refer to the below FAQ URL for exported goods and services..
         /// </summary>
         public static string ZToolTipExportsAmount {
@@ -2960,6 +2996,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Movement Activity.
+        /// </summary>
+        public static string ZVATAddNewMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATAddNewMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string ZVatAddress {
@@ -2983,6 +3028,60 @@ namespace GAZT {
         public static string ZVatAmountWithSAR {
             get {
                 return ResourceManager.GetString("ZVatAmountWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Download for Inspector.
+        /// </summary>
+        public static string ZVATApplicationDownloadforInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATApplicationDownloadforInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve.
+        /// </summary>
+        public static string ZVATApproveButton {
+            get {
+                return ResourceManager.GetString("ZVATApproveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign Inspector.
+        /// </summary>
+        public static string ZVATAssignInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign Officer.
+        /// </summary>
+        public static string ZVATAssignOfficerButton {
+            get {
+                return ResourceManager.GetString("ZVATAssignOfficerButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign to me.
+        /// </summary>
+        public static string ZVATAssigntomeButton {
+            get {
+                return ResourceManager.GetString("ZVATAssigntomeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attach Bank Guarantee.
+        /// </summary>
+        public static string ZVATAttachBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachBankGuaranteeButton", resourceCulture);
             }
         }
         
@@ -3023,6 +3122,51 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach Unloading Document.
+        /// </summary>
+        public static string ZVATAttachUnloadingDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATAttachUnloadingDocumentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string ZVATCalendarButton {
+            get {
+                return ResourceManager.GetString("ZVATCalendarButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Declaration.
+        /// </summary>
+        public static string ZVATCancelDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelDeclarationButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Movement Activity.
+        /// </summary>
+        public static string ZVATCancelMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Return.
+        /// </summary>
+        public static string ZVATCancelReturnButton {
+            get {
+                return ResourceManager.GetString("ZVATCancelReturnButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid VAT number provided.
         /// </summary>
         public static string ZVATCerNumberisnotequalto15 {
@@ -3050,6 +3194,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change.
+        /// </summary>
+        public static string ZVATChangeButton {
+            get {
+                return ResourceManager.GetString("ZVATChangeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change from estimate to accounting.
+        /// </summary>
+        public static string ZVATChangefromestimatetoaccountingButton {
+            get {
+                return ResourceManager.GetString("ZVATChangefromestimatetoaccountingButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Document.
+        /// </summary>
+        public static string ZVATClearDocumentButton {
+            get {
+                return ResourceManager.GetString("ZVATClearDocumentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open FAQ URL.
         /// </summary>
         public static string ZVatClickFaqInstructions {
@@ -3068,6 +3239,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compliance And History.
+        /// </summary>
+        public static string ZVATComplianceAndHistoryButton {
+            get {
+                return ResourceManager.GetString("ZVATComplianceAndHistoryButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kindly confirm that the above information is correct before proceeding..
         /// </summary>
         public static string ZVatConfirmMessage {
@@ -3082,6 +3262,15 @@ namespace GAZT {
         public static string ZVatCorrectionsfrompreviousperiod {
             get {
                 return ResourceManager.GetString("ZVatCorrectionsfrompreviousperiod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Notes.
+        /// </summary>
+        public static string ZVATCreateNote {
+            get {
+                return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
             }
         }
         
@@ -3140,6 +3329,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edita Movement Activity.
+        /// </summary>
+        public static string ZVATEditaMovementActivityButton {
+            get {
+                return ResourceManager.GetString("ZVATEditaMovementActivityButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exempt purchases.
         /// </summary>
         public static string ZVatExemptPurchases {
@@ -3167,6 +3365,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extend Approval Time.
+        /// </summary>
+        public static string ZVATExtendApprovalTimeButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendApprovalTimeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extend.
+        /// </summary>
+        public static string ZVATExtendButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extend Due Date.
+        /// </summary>
+        public static string ZVATExtendDueDateButton {
+            get {
+                return ResourceManager.GetString("ZVATExtendDueDateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please refer to the FAQ section before filling out the return form..
         /// </summary>
         public static string ZVatFaqSectionInstructions {
@@ -3181,6 +3406,15 @@ namespace GAZT {
         public static string ZVatFillInstructions {
             get {
                 return ResourceManager.GetString("ZVatFillInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward.
+        /// </summary>
+        public static string ZVATForwardButton {
+            get {
+                return ResourceManager.GetString("ZVATForwardButton", resourceCulture);
             }
         }
         
@@ -3208,6 +3442,24 @@ namespace GAZT {
         public static string ZVatImportsVatPaidatcustoms {
             get {
                 return ResourceManager.GetString("ZVatImportsVatPaidatcustoms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inspector Submit.
+        /// </summary>
+        public static string ZVATInspectorSubmitButton {
+            get {
+                return ResourceManager.GetString("ZVATInspectorSubmitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice.
+        /// </summary>
+        public static string ZVATInvoiceButton {
+            get {
+                return ResourceManager.GetString("ZVATInvoiceButton", resourceCulture);
             }
         }
         
@@ -3275,6 +3527,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes for ER.
+        /// </summary>
+        public static string ZVATNotesforERButton {
+            get {
+                return ResourceManager.GetString("ZVATNotesforERButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save &amp; Close.
         /// </summary>
         public static string ZVatNotesSaveandClose {
@@ -3329,6 +3590,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string ZVATPreviousButton {
+            get {
+                return ResourceManager.GetString("ZVATPreviousButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrintSD Release Letter.
+        /// </summary>
+        public static string ZVATPrintSDReleaseLetterButton {
+            get {
+                return ResourceManager.GetString("ZVATPrintSDReleaseLetterButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Private Healthcare / Private Education.
         /// </summary>
         public static string ZVatPrivateHealthcare {
@@ -3361,6 +3640,105 @@ namespace GAZT {
         public static string ZVatRefresh {
             get {
                 return ResourceManager.GetString("ZVatRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund Information.
+        /// </summary>
+        public static string ZVatRefundInformation {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you wish to request a refund towards a different IBAN, please select the check box &amp; kindly enter above.
+        /// </summary>
+        public static string ZVatRefundInformationCheckBoxInfo {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationCheckBoxInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: In case the ID information of the selected IBAN is missing or not match with the IBAN information, please update your registration information.
+        /// </summary>
+        public static string ZVatRefundInformationIBANIDNote {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationIBANIDNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you wish to request a refund, kindly click here:.
+        /// </summary>
+        public static string ZVatRefundInformationNoteClick {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteClick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your return form information indicate that you are in a credit position, your credit amount will be carried forward for next filing..
+        /// </summary>
+        public static string ZVatRefundInformationNoteOne {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationNoteOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the prefered IBAN from the available list.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBAN {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the IBAN ID Type linked to the selected IBAN.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBANID {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the IBAN ID Number linked to the selected IBAN.
+        /// </summary>
+        public static string ZVatRefundInformationSelectIBANIDNumber {
+            get {
+                return ResourceManager.GetString("ZVatRefundInformationSelectIBANIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reject.
+        /// </summary>
+        public static string ZVATRejectButton {
+            get {
+                return ResourceManager.GetString("ZVATRejectButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Bank Guarantee.
+        /// </summary>
+        public static string ZVATReleaseBankGuaranteeButton {
+            get {
+                return ResourceManager.GetString("ZVATReleaseBankGuaranteeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Additional Information.
+        /// </summary>
+        public static string ZVATRequestAdditionalInformationButton {
+            get {
+                return ResourceManager.GetString("ZVATRequestAdditionalInformationButton", resourceCulture);
             }
         }
         
@@ -3406,6 +3784,96 @@ namespace GAZT {
         public static string ZVatReturnType {
             get {
                 return ResourceManager.GetString("ZVatReturnType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewed.
+        /// </summary>
+        public static string ZVATReviewed {
+            get {
+                return ResourceManager.GetString("ZVATReviewed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revise Down Payment.
+        /// </summary>
+        public static string ZVATReviseDownPaymentButton {
+            get {
+                return ResourceManager.GetString("ZVATReviseDownPaymentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revoke.
+        /// </summary>
+        public static string ZVATRevokeButton {
+            get {
+                return ResourceManager.GetString("ZVATRevokeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales details.
+        /// </summary>
+        public static string ZVATSalesdetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSalesdetailsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the Declaration.
+        /// </summary>
+        public static string ZVATSavetheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSavetheDeclarationButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Back.
+        /// </summary>
+        public static string ZVATSendBackButton {
+            get {
+                return ResourceManager.GetString("ZVATSendBackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send for Audit.
+        /// </summary>
+        public static string ZVATSendforAuditButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforAuditButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send for Inspection.
+        /// </summary>
+        public static string ZVATSendforInspectionButton {
+            get {
+                return ResourceManager.GetString("ZVATSendforInspectionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send to Director.
+        /// </summary>
+        public static string ZVATSendtoDirectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoDirectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send to Taxpayer.
+        /// </summary>
+        public static string ZVATSendtoTaxpayerButton {
+            get {
+                return ResourceManager.GetString("ZVATSendtoTaxpayerButton", resourceCulture);
             }
         }
         
@@ -3464,11 +3932,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit Inspector.
+        /// </summary>
+        public static string ZVATSubmitInspectorButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmitInspectorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The application cannot be successfully submitted until all of the mandatory fields have been completed..
         /// </summary>
         public static string ZVatSubmittedInstructions {
             get {
                 return ResourceManager.GetString("ZVatSubmittedInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit the Declaration.
+        /// </summary>
+        public static string ZVATSubmittheDeclarationButton {
+            get {
+                return ResourceManager.GetString("ZVATSubmittheDeclarationButton", resourceCulture);
             }
         }
         
@@ -3487,6 +3973,15 @@ namespace GAZT {
         public static string ZVatSummary {
             get {
                 return ResourceManager.GetString("ZVatSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary Details.
+        /// </summary>
+        public static string ZVATSummaryDetailsButton {
+            get {
+                return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
             }
         }
         
@@ -3662,6 +4157,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 25% of the Disputed Amount.
+        /// </summary>
+        public static string ZZ25oftheDisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZ25oftheDisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Return Details.
         /// </summary>
         public static string ZZakatReturnDetails {
@@ -3698,11 +4202,57 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average number of labors x 6000 SAR.
+        /// </summary>
+        public static string ZZAveragenumberoflaborsx6000SAR {
+            get {
+                return ResourceManager.GetString("ZZAveragenumberoflaborsx6000SAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average number of labour.
+        /// </summary>
+        public static string ZZAveragenumberoflabour {
+            get {
+                return ResourceManager.GetString("ZZAveragenumberoflabour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string ZZBack {
             get {
                 return ResourceManager.GetString("ZZBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ZZCancel {
+            get {
+                return ResourceManager.GetString("ZZCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capital amount.
+        /// </summary>
+        public static string ZZCapitalamount {
+            get {
+                return ResourceManager.GetString("ZZCapitalamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount..
+        /// </summary>
+        public static string ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount {
+            get {
+                return ResourceManager.GetString("ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythe" +
+                        "capitalamount", resourceCulture);
             }
         }
         
@@ -3725,6 +4275,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation?.
+        /// </summary>
+        public static string ZZConfirmation {
+            get {
+                return ResourceManager.GetString("ZZConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contracts form ETIMAD system.
+        /// </summary>
+        public static string ZZContractsformETIMADsystem {
+            get {
+                return ResourceManager.GetString("ZZContractsformETIMADsystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
         public static string ZZCreateNotes {
@@ -3734,11 +4302,89 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise..
+        /// </summary>
+        public static string ZZDeclarationText {
+            get {
+                return ResourceManager.GetString("ZZDeclarationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete .
+        /// </summary>
+        public static string ZZDeleteAttachmentConfirmationText {
+            get {
+                return ResourceManager.GetString("ZZDeleteAttachmentConfirmationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FILE.
+        /// </summary>
+        public static string ZZDELETEFILE {
+            get {
+                return ResourceManager.GetString("ZZDELETEFILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Notes.
         /// </summary>
         public static string ZZDisplayNotes {
             get {
                 return ResourceManager.GetString("ZZDisplayNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to release the retrun?.
+        /// </summary>
+        public static string ZZDoyouwanttoreleasethedeclaration {
+            get {
+                return ResourceManager.GetString("ZZDoyouwanttoreleasethedeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TP estimated sales are calculated based on:
+        ///- VAT Sales if the TP has sales in his VAT returns.
+        ///- If TP has no VAT sales, system take the greater value of the following:
+        ///• The average number of labor x 6000 SAR
+        ///• The value of imports x 115%
+        ///• The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
+        ///• The value of purchases based on the VAT returns x 115%.
+        /// </summary>
+        public static string ZZEstimatedSalesInformationText {
+            get {
+                return ResourceManager.GetString("ZZEstimatedSalesInformationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exports value.
+        /// </summary>
+        public static string ZZExportsvalue {
+            get {
+                return ResourceManager.GetString("ZZExportsvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File size must be less than 5 MB.
+        /// </summary>
+        public static string ZZFilesizemustbelessthan5MB {
+            get {
+                return ResourceManager.GetString("ZZFilesizemustbelessthan5MB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File with the same name already exists .
+        /// </summary>
+        public static string ZZFileWithTheSameNameAlreadyExists {
+            get {
+                return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);
             }
         }
         
@@ -3945,9 +4591,9 @@ namespace GAZT {
         /// <summary>
         ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
         /// </summary>
-        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturn_ExceedingPermissibleAmendmentPeriod {
+        public static string ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod {
             get {
-                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod", resourceCulture);
+                return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod", resourceCulture);
             }
         }
         
@@ -3961,11 +4607,57 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greater value of ( {(Estimated Sales ÷ 8) + (Estimated Sales ×
+        ///15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } ).
+        /// </summary>
+        public static string ZZGreatervalueofEstimatedSales {
+            get {
+                return ResourceManager.GetString("ZZGreatervalueofEstimatedSales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period.
+        /// </summary>
+        public static string ZZIacknowledgethattheabovebankaccount {
+            get {
+                return ResourceManager.GetString("ZZIacknowledgethattheabovebankaccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports value.
+        /// </summary>
+        public static string ZZImportsvalue {
+            get {
+                return ResourceManager.GetString("ZZImportsvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports value x 115%.
+        /// </summary>
+        public static string ZZImportsvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZImportsvaluex115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
         public static string ZZInternetConnectionMessage {
             get {
                 return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It has copied SADAD payment number.
+        /// </summary>
+        public static string ZZIthascopiedsadadpaymentnumber {
+            get {
+                return ResourceManager.GetString("ZZIthascopiedsadadpaymentnumber", resourceCulture);
             }
         }
         
@@ -3988,6 +4680,34 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No changes made, Form cannot be submitted.
+        /// </summary>
+        public static string ZZNochangesmadeFormcannotbesubmitted {
+            get {
+                return ResourceManager.GetString("ZZNochangesmadeFormcannotbesubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لن يتم تقديم طلب االعتراض اال في حال سداد المبلغ غير المعترض عليه باإلضافة “الى 25 %من المبلغ المعترض عليه.
+        /// </summary>
+        public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
+            get {
+                return ResourceManager.GetString("ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25oft" +
+                        "hedisputedamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
+        /// </summary>
+        public static string ZZOurrecordsindicatethatyouarenotmainly {
+            get {
+                return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotmainly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
@@ -4006,11 +4726,56 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill the requested information for each step..
+        /// </summary>
+        public static string ZZPleasefilltherequestedinformationforeachstep {
+            get {
+                return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the disclaimer checkbox before submit..
+        /// </summary>
+        public static string ZZPleaseselectthedisclaimercheckboxbeforesubmit {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectthedisclaimercheckboxbeforesubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please upload the Required Document and Change reason.
+        /// </summary>
+        public static string ZZPleaseuploadtheRequiredDocumentandChangereason {
+            get {
+                return ResourceManager.GetString("ZZPleaseuploadtheRequiredDocumentandChangereason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please use the OTP to activate the new mobile number.
         /// </summary>
         public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
             get {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchases value x 115%.
+        /// </summary>
+        public static string ZZPurchasesvaluex115 {
+            get {
+                return ResourceManager.GetString("ZZPurchasesvaluex115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase value.
+        /// </summary>
+        public static string ZZPurchasevalue {
+            get {
+                return ResourceManager.GetString("ZZPurchasevalue", resourceCulture);
             }
         }
         
@@ -4024,11 +4789,56 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Released Successfully..
+        /// </summary>
+        public static string ZZReleasedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZReleasedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string ZZReset {
             get {
                 return ResourceManager.GetString("ZZReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Submitted Successfully.
+        /// </summary>
+        public static string ZZReturnSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZReturnSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Bill Details:.
+        /// </summary>
+        public static string ZZSADADBillDetails {
+            get {
+                return ResourceManager.GetString("ZZSADADBillDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Invoice Number.
+        /// </summary>
+        public static string ZZSADADInvoiceNumber {
+            get {
+                return ResourceManager.GetString("ZZSADADInvoiceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales from point of sales.
+        /// </summary>
+        public static string ZZSalesformpointofsales {
+            get {
+                return ResourceManager.GetString("ZZSalesformpointofsales", resourceCulture);
             }
         }
         
@@ -4051,11 +4861,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong.
+        /// </summary>
+        public static string ZZSomethingwentwrong {
+            get {
+                return ResourceManager.GetString("ZZSomethingwentwrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string ZZSubmit {
             get {
                 return ResourceManager.GetString("ZZSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUCCESS.
+        /// </summary>
+        public static string ZZSUCCESS {
+            get {
+                return ResourceManager.GetString("ZZSUCCESS", resourceCulture);
             }
         }
         
@@ -4069,7 +4897,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new mobile number must not  match the existing mobile number.
+        ///   Looks up a localized string similar to The New Mobile Number should not be same as the Old Mobile Number.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {
@@ -4078,11 +4906,74 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New password field and confirm password field must match.
+        ///   Looks up a localized string similar to New Password can’t be same as Old Password..
         /// </summary>
         public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
             get {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports).
+        /// </summary>
+        public static string ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports {
+            get {
+                return ResourceManager.GetString("ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Undisputed Amount.
+        /// </summary>
+        public static string ZZTheUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTheUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Amount:.
+        /// </summary>
+        public static string ZZTotalAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total disputed Amount.
+        /// </summary>
+        public static string ZZTotaldisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotaldisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties).
+        /// </summary>
+        public static string ZZTotalsalesinVATreturns {
+            get {
+                return ResourceManager.GetString("ZZTotalsalesinVATreturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Undisputed Amount.
+        /// </summary>
+        public static string ZZTotalUndisputedAmount {
+            get {
+                return ResourceManager.GetString("ZZTotalUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total VAT Sales.
+        /// </summary>
+        public static string ZZTotalVATSales {
+            get {
+                return ResourceManager.GetString("ZZTotalVATSales", resourceCulture);
             }
         }
         
@@ -4281,6 +5172,33 @@ namespace GAZT {
         public static string ZZVoid {
             get {
                 return ResourceManager.GetString("ZZVoid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can not upload more than 5 attachment.
+        /// </summary>
+        public static string ZZYoucannotuploadmorethan5attachment {
+            get {
+                return ResourceManager.GetString("ZZYoucannotuploadmorethan5attachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password has been changed successfully.
+        /// </summary>
+        public static string ZZYourPasswordhasbeenChangedsuccessfully {
+            get {
+                return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Base × 2.5% , and with a lower bound of 500 SAR.
+        /// </summary>
+        public static string ZZZakatBaseandwithalowerboundof500SAR {
+            get {
+                return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
     }

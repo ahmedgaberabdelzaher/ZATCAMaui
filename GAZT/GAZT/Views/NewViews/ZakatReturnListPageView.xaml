@@ -8,7 +8,7 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView">
     <ContentPage.Content>
         <!--<StackLayout Margin="10,10,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
@@ -153,8 +153,8 @@
                                                     <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="1*" />
-                                                            <ColumnDefinition Width="45*" />
-                                                            <ColumnDefinition Width="44*" />
+                                                            <ColumnDefinition Width="40*" />
+                                                            <ColumnDefinition Width="49*" />
                                                             <ColumnDefinition Width="3*" />
                                                             <ColumnDefinition Width="7*" />
                                                         </Grid.ColumnDefinitions>
@@ -175,15 +175,7 @@
                                    Grid.Column="1"
                                                            Grid.ColumnSpan="4"/>
 
-                                                        <!--<Label Text="{Binding Incotext}" 
-                                                  
-                                 Margin="-7,0,-7,-5" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="2" />-->
-
+                                                       
                                                         <Label Text="{x:Static local:AppResources.FiscalYear}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -208,7 +200,7 @@
                                    Grid.Row="2"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding Period}" 
+                                                        <local1:CustomLabel Text="{Binding Period}" 
                                                   
                                   Margin="-7,0,-7,-5" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -240,7 +232,7 @@
                                    Grid.Row="4"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding Due}" 
+                                                        <Label Text="{Binding Status}" 
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -285,8 +277,10 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-
+                  <local1:CustomLabel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                </local1:CustomLabel>
             </Grid>
+            
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">

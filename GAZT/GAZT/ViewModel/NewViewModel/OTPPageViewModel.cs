@@ -360,11 +360,11 @@ namespace GAZT.ViewModel.NewViewModel
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
                             if (!App.IsArabic)
                             {
-                                AccountWillBeBlocked = "The account will be locked after " + TP.Attempts + " failed verification code attempts";
+                                AccountWillBeBlocked = "The account will be locked after entering " + TP.Attempts + " wrong verification codes";
                             }
                             else
                             {
-                                AccountWillBeBlocked = "محاولات تحقق فاشلة " + UtilityManager.ConvertNumerals(TP.Attempts.ToString()) + "سيتم قفل الحساب بعد ";
+                                AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
 
                             }
                             AccountLockedMessage(TP);
@@ -428,9 +428,8 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 lang = "AR";
                             }
-                            currentAttempts++;
-                            if (currentAttempts <= App.TP.Attempts)
-                            {
+                           
+                           
                                 TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
                             await PopToRootPage();
                            
@@ -450,26 +449,39 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
+                                        currentAttempts++;
+                                        if (currentAttempts == App.TP.Attempts)
+                                        {
+                                            App.TP = null;
+                                            ClearData();
+                                            Device.BeginInvokeOnMainThread(async () => {
+                                                var _navigation = Application.Current.MainPage.Navigation;
+                                                await _navigation.PopToRootAsync();
+                                            });
+                                        }
                                         string isInvalidOtp = AppResources.InvalidOTP;
                                         await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
                                         ClearData();
+
                                     });
                                 }
-                            }
-                            else
-                            {
-                                App.TP = null;
-                                ClearData();
-                                Device.BeginInvokeOnMainThread(async () => {
-                                    var _navigation = Application.Current.MainPage.Navigation;
-                                    await _navigation.PopToRootAsync();
-                                });
-                            }
+                            
+                           
                         }
                         catch (Exception ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                currentAttempts++;
+                                if (currentAttempts == App.TP.Attempts)
+                                {
+                                    App.TP = null;
+                                    ClearData();
+                                    Device.BeginInvokeOnMainThread(async () => {
+                                        var _navigation = Application.Current.MainPage.Navigation;
+                                        await _navigation.PopToRootAsync();
+                                    });
+                                }
                                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                                 ClearData();
                             });
@@ -619,7 +631,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
-                            TimerStart();
+                                TimerStart();
                             }
 
                         }
@@ -655,7 +667,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void TimerStart()
+        private  void TimerStart()
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
 

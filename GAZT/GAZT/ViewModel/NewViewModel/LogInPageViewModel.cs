@@ -30,12 +30,9 @@ namespace GAZT.ViewModel
         private DateTime lastTapped;
         #endregion
         #region Property
-
-       // private string _UserName = "3102226654";
-      //  private string _UserName = "3100001671";
-       // private string _UserName = "3102226654";
-       // private string _UserName = "3060210077";
-        private string _UserName = string.Empty;
+       
+      private string _UserName = "3100920599";
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -77,10 +74,26 @@ namespace GAZT.ViewModel
             }
         }
 
+       
 
-        private string _Password = "Init@1234";
+        private string _appVersion = App.AppVersion;
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
 
-      //private string _Password = string.Empty;
+
+        private string _Password = "Test@1234";
+        
+    //  private string _Password = string.Empty;
         public string Password
         {
             get
@@ -294,6 +307,8 @@ namespace GAZT.ViewModel
 
         public LogInPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+           
+           
             List<TIN> tinIds = new List<TIN>();
             if (navigationService == null)
             {
@@ -345,12 +360,12 @@ namespace GAZT.ViewModel
 
         private async Task Login()
         {
+           
             CurrentAttempt++;
             App.IsComingFromDashboardToLogOff = false;
             String response = string.Empty;
             string UserId = string.Empty;
-
-
+           
 
             await Task.Run(() =>
             {

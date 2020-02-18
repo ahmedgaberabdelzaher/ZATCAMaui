@@ -4,6 +4,7 @@ using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,12 +15,12 @@ using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
-   public class ICRListPageViewModel:ViewModelBase
+    public class ICRListPageViewModel : ViewModelBase
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public static string EUser=string.Empty;
+        public static string EUser = string.Empty;
         //  public ICommand OnBillsButtonClicked { get; set; }
         #endregion
 
@@ -38,6 +39,37 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isNoDataLabelVisible = false;
+        public bool IsNoDataLabelVisible
+        {
+            get
+            {
+                return _isNoDataLabelVisible;
+            }
+            set
+            {
+                _isNoDataLabelVisible = value;
+                RaisePropertyChanged("IsNoDataLabelVisible");
+            }
+        }
+
+        private bool _isICRListVisible = false;
+        public bool IsICRListVisible
+        {
+            get
+            {
+                return _isICRListVisible;
+            }
+            set
+            {
+                _isICRListVisible = value;
+                RaisePropertyChanged("IsICRListVisible");
+            }
+        }
+
+      
+
+
         private ICRStatus _selectedICRStatus;
         public ICRStatus SelectedICRStatus
         {
@@ -48,17 +80,18 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
-                if(_selectedICRStatus!=null)
+                RaisePropertyChanged("SelectedICRStatus");
+                if (_selectedICRStatus != null)
                 {
-                    if (ICRDummyList != null && ICRDummyList.Count!=0)
+                    if (ICRDummyList != null && ICRDummyList.Count != 0)
                     {
-                        if (string.Equals(_selectedICRStatus.Txt30, "All"))
+                        if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30,"الجميع"))
                         {
                             ICRList = ICRDummyList;
                         }
                         else if (string.Equals(_selectedICRStatus.Estat, "E01TP"))
                         {
-                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") ||(x.Status== "E0013")).ToList();
+                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).ToList();
                         }
                         else
                         {
@@ -66,7 +99,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
                 }
-                RaisePropertyChanged("SelectedICRStatus");
+                
             }
         }
 
@@ -94,7 +127,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICR = value;
-                if(SelectedICR != null)
+                if (SelectedICR != null)
                 {
                     GetVATAllReturnsAsync();
                 }
@@ -102,7 +135,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
         private List<ICRListSet> _iCRDummyList;
         public List<ICRListSet> ICRDummyList
         {
@@ -128,6 +161,16 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iCRList = value;
+                if(_iCRList!=null && _iCRList.Count!=0)
+                {
+                    IsNoDataLabelVisible = false;
+                    IsICRListVisible = true;
+                }
+                else
+                {
+                    IsICRListVisible = false;
+                    IsNoDataLabelVisible = true;
+                }
                 RaisePropertyChanged("ICRList");
             }
         }
@@ -179,51 +222,78 @@ namespace GAZT.ViewModel.NewViewModel
                     try
                     {
                         string lang = UtilityManager.GetLanguageParameter();
-                        icrList = await WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
-                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                    if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
-                    {
-                        ICRStatusList = new List<ICRStatus>();
-                        ICRStatusList = icrList.ICR_STATUSSet;
-                        SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
-                    }
+                        if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                        {
+                            ICRStatusList = new List<ICRStatus>();
+                            ICRStatusList = icrList.ICR_STATUSSet;
+                            if(App.IsArabic)
+                            {
 
-                       VATDeclaration vATDeclaration = new VATDeclaration();
-                    //  vATDeclaration.
-                    // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
+                                foreach (var item in ICRStatusList)
+                                {
+                                    if(item.Txt30== "All")
+                                    {
+                                        item.Txt30 = "الجميع";
+                                    }
+                                    if(item.Txt30== "To be filled & In draft")
+                                    {
+                                        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
+                                    }
+                                }
 
-                    if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
+                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
+                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
+
+                                //  ICRStatusList.Where(p => p.Txt30 == "All").();
+                            }
+                            SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                        }
+
+                        VATDeclaration vATDeclaration = new VATDeclaration();
+                        //  vATDeclaration.
+                        // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
+
+                        if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRList = new List<ICRListSet>();
                             ICRList = icrList.ICR_LISTSet;
                             ICRDummyList = ICRList;
-                           
+
 
 
                         }
                         else
                         {
-                        // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
-                        IsLoading = false;
+                            // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
+                            IsLoading = false;
                             _navigationService.GoBack();
                         }
                     }
-                    catch (Exception e)
+                    catch (InternetException ex)
                     {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
 
-                    // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
-                        IsLoading = false;
-                      //  _navigationService.GoBack();
-
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                      
+                        //  });
                     }
+
                 });
 
                 await Task.Run(() =>
-                {
-                    
-                    IsLoading = false;
-                });
+                    {
+
+                        IsLoading = false;
+                    });
 
 
 
@@ -278,28 +348,33 @@ namespace GAZT.ViewModel.NewViewModel
                 //}
                 //ICRList = icrList;
             }
-            catch(InternetException ex)
+            catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
+                    _navigationService.GoBack();
+
                 });
             }
         }
 
         public async void GetVATAllReturnsAsync()
         {
-          await GetVATAllReturns();
+            await GetVATAllReturns();
         }
-       private async Task GetVATAllReturns()
+        private async Task GetVATAllReturns()
         {
             ICRListSet selectedICRForStatus = null;
             try
             {
                 try
                 {
-                    if(SelectedICR!=null)
+
+
+
+                    if (SelectedICR != null)
                     {
                         selectedICRForStatus = new ICRListSet();
                         selectedICRForStatus = SelectedICR;
@@ -312,8 +387,8 @@ namespace GAZT.ViewModel.NewViewModel
 
                     String SelectedICRGUID = SelectedICR.Fbguid;
                     EUser = SelectedICR.Euser;
-                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid,SelectedICR.Fbnum, SelectedICR.Euser,SelectedICR.Persl);
-                    await PopToRootPage();
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
+                    PopToRootPage();
                     _vATDeclaration.d.Fbguid = SelectedICRGUID;
 
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
@@ -328,54 +403,72 @@ namespace GAZT.ViewModel.NewViewModel
                         vATDeclaration.d = vATDeclarationD;
                         vATDeclaration.d.ADRSet = _aDRSet;
                         vATDeclaration.d.ADRSet.results = lst;
-                       
-                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                        IsLoading = false;
 
-                    //try
-                    //{
-                    //    // Made changes in the data to test the API
-                    //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
-                    //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
-                    //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
-                    //    //_vATDeclaration.d.Operationz = "05";
-                    //    //_vATDeclaration.d.StepNumber = "04";
-                    //    //_vATDeclaration.d.StdsalesAmt = "5400";
-                    //    //_vATDeclaration.d.SalesGccAmt = "5400";
 
-                    //    //_vATDeclaration.d.StepNumberz = "04";
-                    //}
-                    //catch (Exception ex)
-                    //{
+                        _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+
+                        //try
+                        //{
+                        //    // Made changes in the data to test the API
+                        //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
+                        //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
+                        //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
+                        //    //_vATDeclaration.d.Operationz = "05";
+                        //    //_vATDeclaration.d.StepNumber = "04";
+                        //    //_vATDeclaration.d.StdsalesAmt = "5400";
+                        //    //_vATDeclaration.d.SalesGccAmt = "5400";
+
+                        //    //_vATDeclaration.d.StepNumberz = "04";
+                        //}
+                        //catch (Exception ex)
+                        //{
 
 
                         //}
                         //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
                     }
 
-                        //}
-                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
+
+
+                    //}
+                    //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
 
                 }
-                catch (Exception ex)
+                catch (InternetException ex)
                 {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                       // IsLoading = false;
+                        _navigationService.GoBack();
 
-                    //     _vATDeclaration.d.StdpurchaseAmt = "2000";
-                    //  var response =   await WebServiceManager.SaveVATDeclarationData(_vATDeclaration.d, SelectedICR.Fbguid);
+                    });
                 }
             }
-            catch(InternetException ex)
+            catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                  //  IsLoading = false;
+                    _navigationService.GoBack();
+
+                });
+
             }
-            
+
         }
 
-        public async Task PopToRootPage()
-        {
+        public void PopToRootPage()
+         {
             if (App.IsSessionExpired)
             {
-                var _navigation = Application.Current.MainPage.Navigation;
-                await _navigation.PopToRootAsync();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    _navigation.PopToRootAsync();
+                });
             }
         }
         #endregion

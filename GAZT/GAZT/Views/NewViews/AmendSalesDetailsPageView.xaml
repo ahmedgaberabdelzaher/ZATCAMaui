@@ -6,9 +6,10 @@
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
              Title="{x:Static local:AppResources.ZAmendSalesDetails}"
-             FlowDirection="LeftToRight">
+             FlowDirection="RightToLeft">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid >
@@ -37,7 +38,9 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                     <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="86*"/>
@@ -47,8 +50,7 @@
 
                             <Label Text="{Binding SalesType}" Grid.Row="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-
-                             <Label Text="{x:Static local:AppResources.OldValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label Text="{x:Static local:AppResources.OldValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
@@ -60,11 +62,11 @@
 
 
 
-                            <Label Text="{x:Static local:AppResources.ZNewValue}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="4" Text="{Binding NewValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="4" Text="{Binding NewValue}" Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -96,25 +98,26 @@
 
                             <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
-                            <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="8"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
-                            <Image Grid.Row="8"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
- <Image.GestureRecognizers>
+                            <Image Grid.Row="12"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
+                                <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="9"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="8"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                            <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                            <Label Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2">
+                            <local:CustomLabel Text="{x:Static local:AppResources.ZChooseonlyfilewithextension}"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                </StackLayout>
 
-
-                            <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="12" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                             <!--<Label Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="Start" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" >
@@ -153,7 +156,7 @@
 
 
 
-                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
                                 <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"
@@ -166,34 +169,28 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <ContentView>
-                                                    <Frame OutlineColor="#C9C9C9"
-                                               
-                                       Margin="0,0,0,10"
-                                       Padding="0,0,0,0"
-                                       CornerRadius="0"
-                                       
-                               >
-                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
-                                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="8*" />
-                                                                    <ColumnDefinition Width="52*" />
-                                                                    <ColumnDefinition Width="10*" />
-                                                                    <ColumnDefinition Width="15*" />
-                                                                    <ColumnDefinition Width="15*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition Height="Auto" />
+                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="50">
 
-                                                                </Grid.RowDefinitions>
+                                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="White">
+
+                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="8*" />
+                                                                        <ColumnDefinition Width="52*" />
+                                                                        <ColumnDefinition Width="10*" />
+                                                                        <ColumnDefinition Width="15*" />
+                                                                        <ColumnDefinition Width="15*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto" />
+
+                                                                    </Grid.RowDefinitions>
 
 
 
-                                                                <Label Text="{Binding Id}" 
+                                                                    <Label Text="{Binding aa}" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -201,89 +198,63 @@
                                    Grid.Column="0" 
                                    />
 
-                                                                <Label Text="{Binding DocumentName}" 
+                                                                    <Label Text="{Binding Filename}" 
                                                                        Margin="3,0,3,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
+                                                                           LineBreakMode="CharacterWrap"
                                    Grid.Row="0"
-                                   Grid.Column="1" 
+                                   Grid.Column="0"
+                                                                           Grid.ColumnSpan="4"
                                    />
 
-                                                                <Label  
+                                                                    <!--<Label  
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="2" 
                                    >
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{Binding Size}"/>
-                                                                            <Span Text="MB"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding Size}"/>
+                                                                                <Span Text="MB"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>-->
 
-                                                                <Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+                                                                    <!--<Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
 
-                                                                </Image>
+                                                                    </Image>-->
 
-                                                                <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-
-                                                                </Image>
-
-
-                                                                <!--<Label Text="1" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="3" 
-                                   />
-
-                                                                <Label Text="1" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="4" 
-                                   />-->
-
-
-
-
-
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-
-
-                                                            </Grid>
+                                                                    <Image Grid.Row="0"  Grid.Column="4" Aspect="AspectFit"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="ic_delete.png"  >
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer
+                Tapped="OnDeleteAttachmentClickedTapped"
+                NumberOfTapsRequired="1" />
+                                                                        </Image.GestureRecognizers>
+                                                                    </Image>
+                                                                </Grid>
+                                                            </StackLayout>
                                                         </StackLayout>
-                                                    </Frame>
+                                                    </StackLayout>
                                                 </ContentView>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
+                        </Grid>
+                    </ScrollView>
+                </Grid>
 
+                <Button Text="{x:Static local:AppResources.Save}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
 
+            </Grid>
+            <!-- Acticity indicator layout start -->
 
-
-                            <!--</Grid>
-                                </ScrollView>-->
-                            <!--</StackLayout>
-
-
-
-
-
-                        </Grid>-->
-
-
-                            <!--</ScrollView>-->
-                            <!-- Acticity indicator layout start -->
-                            <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -292,16 +263,8 @@
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-            </Grid>-->
-                            <!-- Acticity indicator layout end -->
-                        </Grid>
-                    </ScrollView>
-                 
-                </Grid>
-
-                <Button Text="{x:Static local:AppResources.Save}" Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}"></Button>
-
             </Grid>
+            <!-- Acticity indicator layout end -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

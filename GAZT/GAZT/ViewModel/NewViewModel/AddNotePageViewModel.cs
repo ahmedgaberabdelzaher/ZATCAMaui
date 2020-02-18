@@ -17,6 +17,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static string NoteString = string.Empty;
         public static bool IsComingFromNotePage = false;
         public ICommand OnAddButtonClicked { get; set; }
+        public ICommand OnClearButtonClicked { get; set; }
         #endregion
 
         #region Property
@@ -75,6 +76,11 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
 
+            OnClearButtonClicked = new Command(() =>
+            {
+                NoteText = string.Empty;
+                _navigationService.GoBack();
+            });
 
             OnAddButtonClicked = new Command(() =>
             {

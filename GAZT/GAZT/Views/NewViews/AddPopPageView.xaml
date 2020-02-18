@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 FlowDirection="LeftToRight"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:local1="clr-namespace:GAZT"
+                 
              x:Class="GAZT.Views.NewViews.AddPopPageView">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,12 +19,17 @@
         </Grid.ColumnDefinitions>
         <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
             <StackLayout  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                <StackLayout Orientation="Horizontal"  BackgroundColor="White"  VerticalOptions="Center">
+                    <Label Margin="0,0,0,0" Text="{x:Static local:AppResources.ZInstructions}"     HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
+
+                    <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+               
+                <local1:CustomLabel Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                 <Label Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
             </StackLayout>

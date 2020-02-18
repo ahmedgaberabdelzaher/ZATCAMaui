@@ -58,6 +58,7 @@ namespace GAZT
         public static string AttachmentPageView = "AttachmentPageView";
         public static string AddNotePageView = "AddNotePageView";
         public static string AddPopPageView = "AddPopPageView";
+        public static string CreditCarriedPageView = "CreditCarriedPageView";
 
 
         public static TIN CurrentDropdownTIN;
@@ -70,6 +71,7 @@ namespace GAZT
         public static string Token = String.Empty;
         public static string Otp = String.Empty;
         public static bool IsSessionExpired = false;
+        public static string AppVersion { get; set; }
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
@@ -130,5 +132,6 @@ namespace GAZT
         {
             // Handle when your app resumes
         }
+
     }
 }

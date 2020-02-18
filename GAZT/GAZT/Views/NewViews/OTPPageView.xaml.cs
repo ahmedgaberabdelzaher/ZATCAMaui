@@ -104,11 +104,11 @@ namespace GAZT.Views.NewViews
                 }
                 if (!App.IsArabic)
                 {
-                    viewModel.AccountWillBeBlocked = "The account will be locked after " + App.TP.Attempts + " failed verification code attempts";
+                    viewModel.AccountWillBeBlocked = "The account will be locked after entering " + App.TP.Attempts + " wrong verification codes";
                 }
                 else
                 {
-                    viewModel.AccountWillBeBlocked = "محاولات تحقق فاشلة " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + "سيتم قفل الحساب بعد ";
+                    viewModel.AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
 
                 }
             }
@@ -117,7 +117,7 @@ namespace GAZT.Views.NewViews
                 viewModel.EmailOrMobileNumber = AppResources.Email;
                 if (App.TP != null)
                 {
-                    string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                   // string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
                     viewModel.MobileNumber = App.TP.NewEmail;// "XXXXXXXXXX" + _mobileNumber;
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                     viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
@@ -129,7 +129,8 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-                    viewModel.AccountWillBeBlocked = "رموز تحقق خاطئة " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + "سيتم قفل الحساب بعد إدخال ";
+                    viewModel.AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
+
 
                 }
             }

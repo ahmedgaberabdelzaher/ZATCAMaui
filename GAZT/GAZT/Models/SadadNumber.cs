@@ -3,6 +3,18 @@ using System.Collections.Generic;
 
 namespace GAZT.Models
 {
+    public class IBANType
+    {
+        public string key { get; set; }
+        public string Text { get; set; }
+    }
+    public class IBANIDNumber
+    {
+        public string Partner { get; set; }
+        public string Idnumber { get; set; }
+        public string Type { get; set; }
+    }
+
     public class SadadNumber
     {
         public SadadNumberD d { get; set; }

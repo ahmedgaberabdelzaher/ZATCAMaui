@@ -40,6 +40,13 @@ namespace GAZT.Views.NewViews
                     if(vATDeclaration.d.NOTESSet.results.Count!=0)
                     {
                         viewModel.NoteList = vATDeclaration.d.NOTESSet.results;
+                        viewModel.IsDisplayNoteVisible = true;
+                        viewModel.IsNoDataLabelVisible = false;
+                    }
+                    else
+                    {
+                        viewModel.IsDisplayNoteVisible = false;
+                        viewModel.IsNoDataLabelVisible = true;
                     }
                 }
 

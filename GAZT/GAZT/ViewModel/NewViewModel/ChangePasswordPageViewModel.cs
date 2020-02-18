@@ -278,15 +278,15 @@ namespace GAZT
                     if(!_isNewPasswordSameAsOldPasswordSame)
                     {
                         await ChangePassword();
-                    }
-                    else
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
-                        });
-                    }
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
+                    });
+                }
+            }
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () =>

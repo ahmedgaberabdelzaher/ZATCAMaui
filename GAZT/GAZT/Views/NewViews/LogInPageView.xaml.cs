@@ -1,4 +1,6 @@
-﻿using GAZT.ViewModel;
+﻿using GAZT.Manager;
+using GAZT.ViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,6 +23,20 @@ namespace GAZT.Views
             viewModel = App.Locator.LogInPageView;
 
             InitializeComponent();
+
+          
+
+            //if (App.IsArabic)
+            //{
+            //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+            //    // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+            //}
+            //else
+            //{
+            //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+            //}
+            // string date = UtilityManager.SingleDateConversion("/Date(1442102400000)/");
             GetDeviceID();
             NavigationPage.SetBackButtonTitle(this, "");
             //long number = 1000000000000;

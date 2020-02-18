@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Plugin.FilePicker;
@@ -7,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -21,6 +24,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnZakatReturnDataUpdateClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnDeleteAttachmentClickedTapped { get; set; }
+
+        
         public RootObject rootObject { get; set; }
         
         byte[] attachment;
@@ -28,8 +34,8 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
-        private List<SalesDetailsAttachments> _zakatReturnAttachmentsList;
-        public List<SalesDetailsAttachments> ZakatReturnAttachmentsList
+        private ObservableCollection<EstimateZakatAttachment> _zakatReturnAttachmentsList;
+        public ObservableCollection<EstimateZakatAttachment> ZakatReturnAttachmentsList
         {
             get
             {
@@ -39,6 +45,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _zakatReturnAttachmentsList = value;
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
+            }
+        }
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -52,7 +72,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _newValue = value;
-                if(NewValue != null)
+                if(!string.IsNullOrEmpty(NewValue))
                 {
                     SelectedSalesDetails.NewValue = NewValue;
                 }
@@ -70,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _oldValue = value;
-                if (OldValue != null)
+                if (!string.IsNullOrEmpty(OldValue))
                 {
                     SelectedSalesDetails.OldValue = _oldValue;
                 }
@@ -89,12 +109,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _changeReason = value;
-                if (ChangeReason != null)
+                if (!string.IsNullOrEmpty(NewValue))
                 {
                     SelectedSalesDetails.ChangeReason = ChangeReason;
                     if (SelectedSalesDetails.IsReasonRequird)
                     {
-                        SelectedSalesDetails.IsAttachmentRequired = false;
+                        SelectedSalesDetails.IsReasonRequird = false;
                     }                   
                 }
                 RaisePropertyChanged("ChangeReason");
@@ -192,27 +212,128 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
 
+            //OnDeleteAttachmentClickedTapped = new Xamarin.Forms.Command(async () =>
+            //{
+            //    try
+            //    {
+            //        DeleteSelectedAttachment();
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //    }
+            //});
+            
+
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 try
                 {
                     var fileData = await CrossFilePicker.Current.PickFile();
                     attachment = fileData.DataArray;
-                    AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
-                   // PopToRootPage();
-                    if (_attachment != null && _attachment.d != null)
+                    await Task.Run(() =>
                     {
-                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                        _estimateZakatAttachment.Dotyp = "FZ01";
-                        _estimateZakatAttachment.Mimetype = "multipart/form-data";
-                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                        SelectedSalesDetails.estimateZakatAttachment = _estimateZakatAttachment;
-                    }
+                        IsLoading = true;
+                    });
+                    await Task.Run(async() =>
+                    {
+                    try
+                    {
+                            AttachmentName = fileData.FileName;
+
+                            string Extention = AttachmentName.Split('.')[1];
+                            bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
+                            if(!isFileAlreayUploaded)
+                            {
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
+                                {
+                                    if (attachment.Length < 5242880)
+                                    {
+                                        if (ZakatReturnAttachmentsList.Count < 5)
+                                        {
+                                            AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                                            PopToRootPage();
+                                            if (_attachment != null && _attachment.d != null)
+                                            {
+                                                AttachmentName = string.Empty;
+                                                EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                                                _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                                                _estimateZakatAttachment.Seqno = "";
+                                                _estimateZakatAttachment.SchGuid = "";
+                                                _estimateZakatAttachment.AttBy = "";
+                                                _estimateZakatAttachment.FileExtn = "";
+                                                _estimateZakatAttachment.ByPusr = "";
+                                                _estimateZakatAttachment.OutletRef = "";
+                                                _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                                                _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                                                _estimateZakatAttachment.Dotyp = "FZ01";
+                                                _estimateZakatAttachment.Mimetype = "";
+                                                _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                                                _estimateZakatAttachment.DataVersion = "";
+                                                DateTime currentDate = DateTime.Now;
+                                                _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
+                                                SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+                                                
+
+
+                                                // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
+                                                IsLoading = false;
+                                            });
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
+                                            IsLoading = false;
+                                        });
+                                    }
+
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        AttachmentName = string.Empty;
+                                      await  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                        IsLoading = false;
+                                    });
+
+                                }
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                                    IsLoading = false;
+                                    AttachmentName = string.Empty;
+                                });
+                              
+                            }
+
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            });
+                        }
+                    });
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                   
 
                 }
                 catch (Exception ex)
@@ -226,27 +347,112 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+        public void ClearData()
+        {
+            SalesType = string.Empty;
+            OldValue = string.Empty;
+            NewValue = string.Empty;
+            ChangeReason = string.Empty;
+            ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
+        }
         public void OnLoad()
         {
-            SalesType = SelectedSalesDetails.SalesType;
-            OldValue = SelectedSalesDetails.InformationFromPartie;
-            NewValue =SelectedSalesDetails.NewValue;
-            ChangeReason = SelectedSalesDetails.ChangeReason;
-
-            int k = 5;
-            List<SalesDetailsAttachments> ZakatAttachment = new List<SalesDetailsAttachments>();
-            ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
-            for (k = 0; k < 6; k++)
+            try
             {
-                SalesDetailsAttachments m = new SalesDetailsAttachments();
-                m.Id = "0001";
-                m.DocumentName = "Test-Document.pdf";
-                m.Size = "20.00";
-
-                ZakatAttachment.Add(m);
+                if(SelectedSalesDetails != null)
+                {
+                    SalesType = SelectedSalesDetails.SalesType;
+                    OldValue = SelectedSalesDetails.InformationFromPartie;
+                    NewValue = SelectedSalesDetails.NewValue;
+                    ChangeReason = SelectedSalesDetails.ChangeReason;
+                    ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
+                }
             }
-            ZakatReturnAttachmentsList = ZakatAttachment;
+            catch (Exception ex)
+            {
+
+            }
+                      // int k = 5;
+            //ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
+            //ZakatReturnAttachmentsList = new List<SalesDetailsAttachments>();
+            //for (k = 0; k < 6; k++)
+            //{
+            //    SalesDetailsAttachments m = new SalesDetailsAttachments();
+            //    m.Id = "0001";
+            //    m.DocumentName = "Test-Document.pdf";
+            //    m.Size = "20.00";
+
+            //    ZakatAttachment.Add(m);
+            //}
+           // ZakatReturnAttachmentsList = ZakatAttachment;
+        }
+
+        public async Task  DeleteSelectedAttachment(string filename, string dougUD)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(() =>
+            {
+                try
+                {
+                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                    PopToRootPage();
+                    if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+                    {
+                        for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
+                        {
+                            if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                            {
+                                ZakatReturnAttachmentsList.RemoveAt(i);
+                            }
+                        }
+                    };
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+           
+        }
+
+        private bool IsFileAlreadyAttached(string FileName)
+        {
+            bool isFileAlreadyAttached = false;
+            if(SelectedSalesDetails.estimateZakatAttachment != null)
+            {
+                for (int i = 0; i < SelectedSalesDetails.estimateZakatAttachment.Count; i++)
+                {
+                    if (SelectedSalesDetails.estimateZakatAttachment[i].Filename.Equals(FileName))
+                        isFileAlreadyAttached = true;
+                    else
+                        isFileAlreadyAttached = false;
+                }
+            }
+            
+            return isFileAlreadyAttached;
         }
         #endregion
     }

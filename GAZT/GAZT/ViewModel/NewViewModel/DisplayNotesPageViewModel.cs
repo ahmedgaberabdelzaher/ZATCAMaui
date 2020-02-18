@@ -35,6 +35,33 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isNoDataLabelVisible;
+        public bool IsNoDataLabelVisible
+        {
+            get
+            {
+                return _isNoDataLabelVisible;
+            }
+            set
+            {
+                _isNoDataLabelVisible = value;
+                RaisePropertyChanged("IsNoDataLabelVisible");
+            }
+        }
+
+        private bool _isDisplayNoteVisible;
+        public bool IsDisplayNoteVisible
+        {
+            get
+            {
+                return _isDisplayNoteVisible;
+            }
+            set
+            {
+                _isDisplayNoteVisible = value;
+                RaisePropertyChanged("IsDisplayNoteVisible");
+            }
+        }
 
         #endregion
 

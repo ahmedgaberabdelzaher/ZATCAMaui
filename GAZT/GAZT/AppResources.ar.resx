@@ -226,7 +226,7 @@
     <value>فواتيري</value>
   </data>
   <data name="MyCertificate" xml:space="preserve">
-    <value>الشهادات</value>
+    <value>الشهادة</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>أسم المكلف</value>
@@ -460,7 +460,7 @@
     <value>مدفوعة</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مدفوع جزئي</value>
+    <value>مسدد جزئي</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>غير مدفوعة</value>
@@ -583,7 +583,7 @@
     <value>تأخير</value>
   </data>
   <data name="Partial" xml:space="preserve">
-    <value>مسددة جزئيا</value>
+    <value>مدفوع جزئي</value>
   </data>
   <data name="Returns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -610,7 +610,7 @@
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>لا يوجد شهادة</value>
+    <value>لا تتوفر بيانات</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
@@ -715,7 +715,7 @@
     <value>Please enter valid user id</value>
   </data>
   <data name="ZLogout" xml:space="preserve">
-    <value>Logout</value>
+    <value>الخروج</value>
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
     <value>لقد انتهت مدة صلاحيتك ، يرجي تسجيل الدخول مرة أخري</value>
@@ -796,25 +796,25 @@
     <value>Zakat Return Listing</value>
   </data>
   <data name="ZZakatReturnDetails" xml:space="preserve">
-    <value>Zakat Return Details</value>
+    <value>تفاصيل الإقرار الزكوي</value>
   </data>
   <data name="ZZMandatorydatanotentered" xml:space="preserve">
     <value>البيانات الإلزامية غير مدخلة</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
+    <value>كلمة السر الجديدة لا يمكن أن تكون كلمة السر الحالية</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>يمكنك استخدام رمز التالي للتفعيل رقم الجوال الجديد</value>
   </data>
   <data name="ZAmendSalesDetails" xml:space="preserve">
-    <value>Amend Sales Details</value>
+    <value>تفاصيل تعديل المبيعات</value>
   </data>
   <data name="ZBillDetails" xml:space="preserve">
-    <value>Bill Details</value>
+    <value>تفاصيل الفاتورة</value>
   </data>
   <data name="ZSalesDetails" xml:space="preserve">
-    <value>Sales Details</value>
+    <value>تفاصيل المبيعات</value>
   </data>
   <data name="ZZTheNewEmailMustNotMatchtheexistingEmail" xml:space="preserve">
     <value>البريد الإلكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
@@ -823,7 +823,7 @@
     <value>رقم الجوال الجديد يجب أن يكون مختلف عن رقم الجوال الحالي</value>
   </data>
   <data name="ZZInternetConnectionMessage" xml:space="preserve">
-    <value>لا يوجد خط إنترنيت</value>
+    <value>تعذر الاتصال بالانترنت</value>
     <comment>ES11,ES13 PensionerProfileView,ES8 BankDetailsView,FAQsView</comment>
   </data>
   <data name="ZClose" xml:space="preserve">
@@ -899,49 +899,49 @@
     <value>بحث</value>
   </data>
   <data name="ZAcceptReturn" xml:space="preserve">
-    <value>Accept Return</value>
+    <value>قبول الإقرار</value>
   </data>
   <data name="ZBillDeatilsInfo" xml:space="preserve">
-    <value>By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information.</value>
+    <value>بسدادكم للفاتورة من خلال نظام سداد سوف يتم إصدار شهادة الزكاة لكم آليًا في حال عدم وجود التزامات أخرى. إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
   </data>
   <data name="ZChangeReason" xml:space="preserve">
-    <value>Change Reason</value>
+    <value>سبب التعديل</value>
   </data>
   <data name="ZDataavailabletoGAZT" xml:space="preserve">
-    <value>Data available to GAZT</value>
+    <value>البيانات متوفرة في الهيئة</value>
   </data>
   <data name="ZEstimatedSales" xml:space="preserve">
-    <value>Estimated Sales</value>
+    <value>المبيعات المقدرة</value>
   </data>
   <data name="ZEstimateSales" xml:space="preserve">
-    <value>Estimate Sales</value>
+    <value>المبيعات التقديرية</value>
   </data>
   <data name="ZFinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>من المالية ا</value>
   </data>
   <data name="ZInformationfromrelatedparties" xml:space="preserve">
-    <value>Information from related parties</value>
+    <value>المعلومات من الجهات ذات العالقة</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
-    <value>New Value</value>
+    <value>القيمة الجديدة</value>
   </data>
   <data name="ZSADADGAZTId" xml:space="preserve">
-    <value>SADAD GAZT Id</value>
+    <value>رقم المفوتر</value>
   </data>
   <data name="ZSummaryofZakatcalculation" xml:space="preserve">
-    <value>Summary of Zakat calculation</value>
+    <value>ملخص احتساب الزكاة</value>
   </data>
   <data name="ZTotalVATSales" xml:space="preserve">
     <value>Total VAT Sales</value>
   </data>
   <data name="ZStatus" xml:space="preserve">
-    <value>Status</value>
+    <value>الحالة</value>
   </data>
   <data name="ZNote" xml:space="preserve">
-    <value>Note</value>
+    <value>ملاحظات</value>
   </data>
   <data name="ZReturnReferenceNumber" xml:space="preserve">
-    <value>Return Reference Number</value>
+    <value>الرقم المرجعي للإقرار</value>
   </data>
   <data name="ZAmount" xml:space="preserve">
     <value>المبلغ</value>
@@ -1119,7 +1119,7 @@
     <value>الخطوة3</value>
   </data>
   <data name="ZVatStepTwo" xml:space="preserve">
-    <value>Step2</value>
+    <value>الخطوة 2</value>
   </data>
   <data name="ZVatSubmittedInstructions" xml:space="preserve">
     <value>لايمكن تقديم الطلب بنجاح حتى يتم إكمال جميع الحقول الإلزامية</value>
@@ -1176,22 +1176,22 @@
     <value>25% of Disputed Amount</value>
   </data>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
-    <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt.</value>
+    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
-    <value>File size should not be more than 5MB</value>
+    <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
-    <value>Maximum no. of 5 attachments can be uploaded.</value>
+    <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
   </data>
   <data name="ZNoteYourcurrenttaxreturnnumberisunderprocessingandpleaseallowupto30minutestoreceiveyourSADADbillnumber" xml:space="preserve">
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of disputed amount</value>
+    <value>لن يتم تقديم طلب االعتراض إلا في حال سداد المبلغ غير المعترض عليه باإلضافة الى 25 %من المبلغ المعترض عليه</value>
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
-    <value>SADAD Bill Details</value>
+    <value>سداد فاتورة تفاصيل</value>
   </data>
   <data name="ZTheDisputedAmount" xml:space="preserve">
     <value>The Disputed Amount</value>
@@ -1203,22 +1203,22 @@
     <value>نوع المكلف</value>
   </data>
   <data name="ZSadadNumber" xml:space="preserve">
-    <value>Sadad Number</value>
+    <value>رقم سداد</value>
   </data>
   <data name="ZAmountPayable" xml:space="preserve">
-    <value>Amount Payable</value>
+    <value>المبلغ المستحق</value>
   </data>
   <data name="Pleasereviewthecalculationandsubmitagain" xml:space="preserve">
-    <value>Please review the calculation and submit again</value>
+    <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
-    <value>VAT Return Form Saved successfully </value>
+    <value>تم حفظ نموذج الإقرار الضريبي بنجاح</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
-    <value>Download Acknowledgement</value>
+    <value>تحميل إشعار الاستلام</value>
   </data>
   <data name="Acknowlwdgement" xml:space="preserve">
-    <value>Acknowledgement</value>
+    <value>اشعار استلام</value>
   </data>
   <data name="ZCRStatus" xml:space="preserve">
     <value>حالة السجل</value>
@@ -1239,19 +1239,19 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>من المالية ا</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
   <data name="Release" xml:space="preserve">
-    <value>Release</value>
+    <value>إصدار</value>
   </data>
   <data name="OldValue" xml:space="preserve">
-    <value>Old Value</value>
+    <value>القيمة السابقة</value>
   </data>
   <data name="AmendTheReturn" xml:space="preserve">
-    <value>Amend The Return</value>
+    <value>تعديل الإقرار</value>
   </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>'• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
@@ -1259,7 +1259,7 @@
  </value>
   </data>
   <data name="BillDetails" xml:space="preserve">
-    <value>Bill Details</value>
+    <value>تفاصيل الفاتورة</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -1607,5 +1607,359 @@
   <data name="ZZVoid" xml:space="preserve">
     <value>إبطال</value>
     <comment>VAT Declaration button</comment>
+  </data>
+  <data name="ZVatRefundInformation" xml:space="preserve">
+    <value>معلومات الاسترداد</value>
+  </data>
+  <data name="ZVatRefundInformationCheckBoxInfo" xml:space="preserve">
+    <value>إذا رغبت بتحويل مبلغ الإسترداد على رقم آيبان مختلف، يرجى وضع علامة على خانة الاختيار وإدخاله أعلاه</value>
+  </data>
+  <data name="ZVatRefundInformationIBANIDNote" xml:space="preserve">
+    <value>ملحوظة:في حالة كانت بيانات الهوية المرتبطة بالحساب البنكي (الايبان) المختار غير متوفرة، الرجاء تحديث بيانات التسجيل</value>
+  </data>
+  <data name="ZVatRefundInformationNoteClick" xml:space="preserve">
+    <value>إذا رغبت بطلب إسترداد يرجى النقر هنا :</value>
+  </data>
+  <data name="ZVatRefundInformationNoteOne" xml:space="preserve">
+    <value>تشير معلومات نموذج الإقرار الضريبي الخاص بك إلى أنه يوجد رصيد بحسابك، وسيتم ترحيل الرصيد الخاص بك للفترة الضريبية القادمة</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBAN" xml:space="preserve">
+    <value>اختر رقم الآيبان المفضل من القائمة الموجودة</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANID" xml:space="preserve">
+    <value>الرجاء إختيار نوع الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
+  </data>
+  <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
+    <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
+  </data>
+  <data name="MyCertificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="Nocertificateavailable" xml:space="preserve">
+    <value>لا يوجد شهادة</value>
+  </data>
+  <data name="ZZAveragenumberoflabour" xml:space="preserve">
+    <value>متوسط عدد العمالة</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZCapitalamount" xml:space="preserve">
+    <value>رأس المال</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZContractsformETIMADsystem" xml:space="preserve">
+    <value>العقود في منصة اعتماد</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZExportsvalue" xml:space="preserve">
+    <value>قيمة الصادرات</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZFilesizemustbelessthan5MB" xml:space="preserve">
+    <value>حجم الملف لا يزيد عن 5 ميجا</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZImportsvalue" xml:space="preserve">
+    <value>قيمة الاستيرادات</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZIthascopiedsadadpaymentnumber" xml:space="preserve">
+    <value>It has copied sadad payment number</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZNochangesmadeFormcannotbesubmitted" xml:space="preserve">
+    <value>لا يمكن تقديم الإقرار لعدم وجود تغيير</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
+    <value>يرجى اختيار مربع إخالء المسؤولية قبل التقديم</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
+    <value>الرجاء تحميل المستندات المطلوبة وأسباب التغيير</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZPurchasevalue" xml:space="preserve">
+    <value>قيمة المشتريات</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZReleasedSuccessfully" xml:space="preserve">
+    <value>تم الإصدار بنجاح</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZReturnSubmittedSuccessfully" xml:space="preserve">
+    <value>تم تقديم الإقرار بنجاح</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSalesformpointofsales" xml:space="preserve">
+    <value>المبيعات من نقاط التحصيل</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSomethingwentwrong" xml:space="preserve">
+    <value>Something went wrong</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSUCCESS" xml:space="preserve">
+    <value>ناجح</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalVATSales" xml:space="preserve">
+    <value>إجمالي مبيعات القيمة المضافة</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">
+    <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZ25oftheDisputedAmount" xml:space="preserve">
+    <value>25% من المبلغ المعترض عليه</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZAveragenumberoflaborsx6000SAR" xml:space="preserve">
+    <value>متوسط عدد العمالة × 6000 ريال سعودي</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZCancel" xml:space="preserve">
+    <value>إلغاء</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount" xml:space="preserve">
+    <value>خرى يمكن من خاللها تحديد رأس المال.رأس المال الوارد في السجل التجاري أو التراخيص الالزمة للنشاط أو أي مستندات</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZConfirmation" xml:space="preserve">
+    <value>تأكيد؟</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
+    <value>هل تريد إصدار الإقرار</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
+    <value>القيمة األكبر من ) {)المبيعات المقدرة ÷ 8( + )المبيعات المقدرة × 15 {)%أو {مبلغ
+رأس المال المسجل} (</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZImportsvaluex115" xml:space="preserve">
+    <value>قيمة االستيرادات × 115 %</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
+    <value>لن يتم تقديم طلب الاعتراض إلا في حال سداد المبلغ غير المعترض عليه بالإضافة الى 25% من المبلغ المعترض عليه</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSADADBillDetails" xml:space="preserve">
+    <value>تفاصيل فاتورة سداد</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZSADADInvoiceNumber" xml:space="preserve">
+    <value>رقم فاتورة سداد</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
+    <value>مجموع كالّ من )المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات(</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTheUndisputedAmount" xml:space="preserve">
+    <value>المبلغ الغير المعترض عليه</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalAmount" xml:space="preserve">
+    <value>إجمالي المبلغ</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotaldisputedAmount" xml:space="preserve">
+    <value>إجمالي المبلغ المعترض عليه</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalsalesinVATreturns" xml:space="preserve">
+    <value>إجمالي مبيعات ضريبة القيمة المضافة بعد التعديل خلال السنة المالية (باستثناء أي مبلغ قيد الإعتراض أو إعادة تقييم ما يزال في الفترة القانونية للإعتراض أو العقوبات والغرامات)</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZTotalUndisputedAmount" xml:space="preserve">
+    <value>إجمالي المبلغ الغير معترض عليه</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZZakatBaseandwithalowerboundof500SAR" xml:space="preserve">
+    <value>الوعاء الزكوي × 5.2 , %وبحد أدنى 500 ريال سعودي</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZVATAddNewMovementActivityButton" xml:space="preserve">
+    <value>Add New Movement Activity</value>
+  </data>
+  <data name="ZVATApplicationDownloadforInspectorButton" xml:space="preserve">
+    <value>Application Download for Inspector</value>
+  </data>
+  <data name="ZVATApproveButton" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="ZVATAssignInspectorButton" xml:space="preserve">
+    <value>Assign Inspector</value>
+  </data>
+  <data name="ZVATAssignOfficerButton" xml:space="preserve">
+    <value>Assign Officer</value>
+  </data>
+  <data name="ZVATAssigntomeButton" xml:space="preserve">
+    <value>Assign to me</value>
+  </data>
+  <data name="ZVATAttachBankGuaranteeButton" xml:space="preserve">
+    <value>Attach Bank Guarantee</value>
+  </data>
+  <data name="ZVATAttachUnloadingDocumentButton" xml:space="preserve">
+    <value>Attach Unloading Document</value>
+  </data>
+  <data name="ZVATCalendarButton" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="ZVATCancelDeclarationButton" xml:space="preserve">
+    <value>Cancel Declaration</value>
+  </data>
+  <data name="ZVATCancelMovementActivityButton" xml:space="preserve">
+    <value>Cancel Movement Activity</value>
+  </data>
+  <data name="ZVATCancelReturnButton" xml:space="preserve">
+    <value>Cancel Return</value>
+  </data>
+  <data name="ZVATChangeButton" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ZVATChangefromestimatetoaccountingButton" xml:space="preserve">
+    <value>Change from estimate to accounting</value>
+  </data>
+  <data name="ZVATClearDocumentButton" xml:space="preserve">
+    <value>ClearDocument</value>
+  </data>
+  <data name="ZVATComplianceAndHistoryButton" xml:space="preserve">
+    <value>Compliance And History</value>
+  </data>
+  <data name="ZVATEditaMovementActivityButton" xml:space="preserve">
+    <value>Edita Movement Activity</value>
+  </data>
+  <data name="ZVATExtendApprovalTimeButton" xml:space="preserve">
+    <value>Extend Approval Time</value>
+  </data>
+  <data name="ZVATExtendButton" xml:space="preserve">
+    <value>Extend</value>
+  </data>
+  <data name="ZVATExtendDueDateButton" xml:space="preserve">
+    <value>Extend Due Date</value>
+  </data>
+  <data name="ZVATForwardButton" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="ZVATInspectorSubmitButton" xml:space="preserve">
+    <value>Inspect or Submit</value>
+  </data>
+  <data name="ZVATInvoiceButton" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="ZVATNotesforERButton" xml:space="preserve">
+    <value>Notes for ER</value>
+  </data>
+  <data name="ZVATPreviousButton" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ZVATPrintSDReleaseLetterButton" xml:space="preserve">
+    <value>PrintSD Release Letter</value>
+  </data>
+  <data name="ZVATRejectButton" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="ZVATReleaseBankGuaranteeButton" xml:space="preserve">
+    <value>Release Bank Guarantee</value>
+  </data>
+  <data name="ZVATRequestAdditionalInformationButton" xml:space="preserve">
+    <value>Request Additional Information</value>
+  </data>
+  <data name="ZVATReviewed" xml:space="preserve">
+    <value>Reviewed</value>
+  </data>
+  <data name="ZVATReviseDownPaymentButton" xml:space="preserve">
+    <value>Revise Down Payment</value>
+  </data>
+  <data name="ZVATRevokeButton" xml:space="preserve">
+    <value>Revoke</value>
+  </data>
+  <data name="ZVATSalesdetailsButton" xml:space="preserve">
+    <value>Sales details</value>
+  </data>
+  <data name="ZVATSavetheDeclarationButton" xml:space="preserve">
+    <value>Save the Declaration</value>
+  </data>
+  <data name="ZVATSendBackButton" xml:space="preserve">
+    <value>Send Back</value>
+  </data>
+  <data name="ZVATSendforAuditButton" xml:space="preserve">
+    <value>Send for Audit</value>
+  </data>
+  <data name="ZVATSendforInspectionButton" xml:space="preserve">
+    <value>Send for Inspection</value>
+  </data>
+  <data name="ZVATSendtoDirectorButton" xml:space="preserve">
+    <value>Send to Director</value>
+  </data>
+  <data name="ZVATSendtoTaxpayerButton" xml:space="preserve">
+    <value>Send to Taxpayer</value>
+  </data>
+  <data name="ZVATSubmitInspectorButton" xml:space="preserve">
+    <value>Submit Inspector</value>
+  </data>
+  <data name="ZVATSubmittheDeclarationButton" xml:space="preserve">
+    <value>Submit the Declaration</value>
+  </data>
+  <data name="ZVATSummaryDetailsButton" xml:space="preserve">
+    <value>Summary Details</value>
+  </data>
+  <data name="ZZPurchasesvaluex115" xml:space="preserve">
+    <value>قيمة المشتريات * 115%</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZEstimatedSalesInformationText" xml:space="preserve">
+    <value>تقدر المبيعات للسنة المالية بـ:
+- مبلغ المبيعات إذا كان للمكلف مبيعات مسجلة في ضريبة القيمة المضافة.
+- إذ لم يكن للمكلف مبيعات مسجلة فتقدر بالمعايير الآتية أيها أكبر:
+• متوسط عدد العمالة × 6000 ريال سعودي
+• قيمة الاستيرادات × 115%
+• مجموع كلآ من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)
+• قيمة المشتريات وفقاً لإقرارات ضريبة القيمة المضافة × 115%</value>
+    <comment>Zakat return details</comment>
+  </data>
+  <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZDELETEFILE" xml:space="preserve">
+    <value>حذف الملف</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
+    <value>يوجد ملف بنفس الاسم مرفق مسبقا</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZYourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
+    <value>تم تغيير كلمة المرور بنجاح</value>
+  </data>
+  <data name="ZVATCreateNote" xml:space="preserve">
+    <value>إضافة ملاحظات</value>
+  </data>
+  <data name="ZZDeclarationText" xml:space="preserve">
+    <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
+    <value>تشير سجلاتنا  بأنك لست مصدّر, وأنه يوجد مبيعات لا تخضع للضريبة بنسبة صفر في حقل الصادرات.</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZPleasefilltherequestedinformationforeachstep" xml:space="preserve">
+    <value>يرجى إكمال المعلومات المطلوبة لكل خطوة</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZIacknowledgethattheabovebankaccount" xml:space="preserve">
+    <value>أقر بأن بيانات الحساب المدخلة أعلاه صحيحة وأتحمل كامل المسؤولية في حال كانت البيانات خاطئة, وفي حالة فشل عملية الإسترداد أوافق على تحويل مبلغ الإسترداد الى رصيد مرحل للفترات القادمة</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZDownloadForm" xml:space="preserve">
+    <value>تحميل النموذج</value>
   </data>
 </root>

@@ -6,7 +6,9 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -18,9 +20,26 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnVATRefreshButtonClicked { get; set; }
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
+        public ICommand OnHomeClick { get; set; }
+        
         #endregion
 
         #region Property
+
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private string _tPName = "";
         public string TPName
@@ -110,6 +129,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+
+        private bool _isSadadNoteVisible = true;
+        public bool IsSadadNoteVisible
+        {
+            get
+            {
+                return _isSadadNoteVisible;
+            }
+            set
+            {
+                _isSadadNoteVisible = value;
+                RaisePropertyChanged("IsSadadNoteVisible");
+            }
+        }
+
         private bool _isSadadNumberVisible = false;
         public bool IsSadadNumberVisible
         {
@@ -120,7 +155,27 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isSadadNumberVisible = value;
+                if (_isSadadNumberVisible == true)
+                {
+                    IsSadadNoteVisible = false;
+                }
+
                 RaisePropertyChanged("IsSadadNumberVisible");
+            }
+        }
+
+
+        private bool _isButtonVisible = false;
+        public bool IsButtonVisible
+        {
+            get
+            {
+                return _isButtonVisible;
+            }
+            set
+            {
+                _isButtonVisible = value;
+                RaisePropertyChanged("IsButtonVisible");
             }
         }
 
@@ -176,21 +231,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                try
-                {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
-                    SadadNumber = response.d.results[0].Vtref;
-                    AmountPayable = response.d.results[0].Betrh;
-                    if (!string.IsNullOrEmpty(SadadNumber))
-                    {
-                        IsSadadNumberVisible = true;
-                        IsRefreshButtonVisible = false;
-                    }
-                }
-                catch (Exception e)
-                {
 
-                }
                 // Call Sadad number API
             });
 
@@ -198,28 +239,123 @@ namespace GAZT.ViewModel.NewViewModel
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
+                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                _navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                ShowPdf(Url);
             });
 
-          
+
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                _navigationService.NavigateTo(App.AAcknowledgementView, Url);
+                ShowPdf(Url);
             });
 
+            OnHomeClick = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.DashboardPageView);
+            });
 
-          
         }
 
 
 
-            #endregion
+        #endregion
 
-            #region Method
-
-            #endregion
+        #region Method
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
         }
+
+        public async Task OnRefreshClick()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async() =>
+                {
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    PopToRootPage();
+                    SadadNumber = response.d.results[0].Sopbel;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
+                    {
+                        IsSadadNoteVisible = false;
+                        if (VATDeclarationData.d.RefundFg == "1")
+                        {
+                            IsSadadNumberVisible = false;
+                        }
+                        else
+                        {
+                            IsSadadNumberVisible = true;
+                        }
+
+                        IsButtonVisible = true;
+                        IsRefreshButtonVisible = false;
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+                
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+        #endregion
     }
+}

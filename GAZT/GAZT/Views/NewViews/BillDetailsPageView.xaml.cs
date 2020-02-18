@@ -29,14 +29,60 @@ namespace GAZT.Views.NewViews
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SetLTR();
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
+            viewModel.ClearData();
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
+            NavigationPage.SetBackButtonTitle(this, "");
+            ToolbarItem Refresh = new ToolbarItem
+            {
+                
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(async() =>
+                {
+                   await OnRefreshButtonClicked();
+                   // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(Refresh);
 
-          
+            ToolbarItem Download = new ToolbarItem
+            {
+                Icon = "ic_download.png",
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(() =>
+                {
+                    OnDownLoadInvoiceClicked();
+                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(Download);
+
+         Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+
+
         }
         #endregion
 
         #region Method
+        protected async Task OnRefreshButtonClicked()
+        {
+            if(viewModel.IsrefreshEnabled)
+            {
+                await viewModel.OnPageLoad();
+            }
+            else
+            {
+           // put Mesage already latest SADADID available
+            }
+        }
+
+        protected  void OnDownLoadInvoiceClicked()
+        {
+         viewModel.GetPdfUrl();
+        }
+        
         private void SetLTR()
         {
             if (!App.IsArabic)

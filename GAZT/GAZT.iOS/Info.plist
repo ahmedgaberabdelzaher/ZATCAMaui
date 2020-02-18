@@ -41,8 +41,6 @@
 	<string>GAZT E-Services</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.GAZT.KSA</string>
-	<key>CFBundleVersion</key>
-	<string>1.9.5</string>
 	<key>CFBundleName</key>
 	<string>GAZT E-Services</string>
 	<key>XSAppIconAssets</key>
@@ -59,5 +57,7 @@
 	<string>To take picture</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
+	<key>CFBundleVersion</key>
+	<string>2.0.1.0</string>
 </dict>
 </plist>
