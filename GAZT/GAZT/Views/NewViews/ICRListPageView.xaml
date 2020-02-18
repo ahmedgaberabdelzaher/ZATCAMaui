@@ -83,10 +83,6 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
-
-
-
-
                                                         <local1:CustomLabel Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,-5" 
                                  
                                                        Style="{StaticResource MiniGoldLabelStyle}"
