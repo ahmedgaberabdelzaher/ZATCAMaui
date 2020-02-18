@@ -45,17 +45,16 @@
                     <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
-                    <local:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2" Keyboard="Numeric" Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  >
+                    <custom:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2" Keyboard="Numeric" Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  >
                                                     <!--<local:GAZTBorderlessEntry.Behaviors>
                               <local:AlphaNumericValidatorBehaviour/>
                             </local:GAZTBorderlessEntry.Behaviors>-->
-                           <local:GAZTBorderlessEntry.Behaviors>
-                              <custom1:DecimalPlacesConverter/>
-                            </local:GAZTBorderlessEntry.Behaviors>
-                        <!--<local:GAZTBorderlessEntry.Behaviors>
-                                <local:DecimalPlacesConverter/>
-                            </local:GAZTBorderlessEntry.Behaviors>-->
-                    </local:GAZTBorderlessEntry>
+
+                         <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:DecimalPlacesConverter/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                    </custom:GAZTBorderlessEntry>
 
 
                     <Label Text="{x:Static local:AppResources.TINS}" IsVisible="{Binding IsVisibleTinIds}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" >
