@@ -1952,4 +1952,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period</value>
     <comment>VAT</comment>
   </data>
+  <data name="ZDownloadForm" xml:space="preserve">
+    <value>Download Form</value>
+  </data>
 </root>
