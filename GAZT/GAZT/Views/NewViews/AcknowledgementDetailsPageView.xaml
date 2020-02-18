@@ -50,9 +50,6 @@
                     </Label>
 
                     <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentReceiptText}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
-
                     <Label Text="{x:Static local:AppResources.Name}"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                     <Label Text="{Binding TPName}"  Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
