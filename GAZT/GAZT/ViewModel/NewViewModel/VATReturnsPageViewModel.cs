@@ -2007,7 +2007,8 @@ namespace GAZT.ViewModel.NewViewModel
                             IsSwichButtonEnableToTap = false;
                             IsSwichButtonEnable = true;
                             IsVisibleDropdownForRefund = true;
-                          //  IsDropdownVisibleForIban = true;
+                            IsVisiblechkRefundDeclaration = true;
+                            //  IsDropdownVisibleForIban = true;
                             if (VATDeclarationData.d.IbanCb == "1")
                             {
                                 IsTextBoxVisibleForIban = true;
@@ -2049,6 +2050,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsSwichButtonEnable = false;
                             IsDropdownVisibleForIban = false;
                             IsVisibleDropdownForRefund = false;
+                            IsVisiblechkRefundDeclaration = false;
                         }
                     }
                 }
@@ -2059,6 +2061,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsTextBoxVisibleForIban = false;
                     IsDropdownVisibleForIban = false;
                     IsVisibleDropdownForRefund = false;
+                    IsVisiblechkRefundDeclaration = false;
                 }
             }
             

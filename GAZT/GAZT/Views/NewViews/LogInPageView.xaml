@@ -7,7 +7,6 @@
             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.LogInPageView"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              FlowDirection="RightToLeft">
     <ContentPage.Content>
          <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -45,15 +44,10 @@
                     <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3"  >
                     </Frame>
 
-                    <custom:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2" Keyboard="Numeric" Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  >
-                                                    <!--<local:GAZTBorderlessEntry.Behaviors>
+                    <custom:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  >
+                                                    <local:GAZTBorderlessEntry.Behaviors>
                               <local:AlphaNumericValidatorBehaviour/>
-                            </local:GAZTBorderlessEntry.Behaviors>-->
-
-                         <custom:GAZTBorderlessEntry.Behaviors>
-                                <custom1:DecimalPlacesConverter/>
-                            </custom:GAZTBorderlessEntry.Behaviors>
-
+                            </local:GAZTBorderlessEntry.Behaviors>
                     </custom:GAZTBorderlessEntry>
 
 
