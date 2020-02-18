@@ -66,7 +66,7 @@ namespace GAZT.Views.NewViews
         }
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
+            base.OnAppearing();// called from here so List have the updated data after amendment or release
            await viewModel.OnPageLoad();
         }
     }
