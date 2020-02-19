@@ -953,7 +953,7 @@
     <value>نموذج الإقرار الضريبي</value>
   </data>
   <data name="ZTotalVat" xml:space="preserve">
-    <value>Total VAT</value>
+    <value>إجمالي ضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatAcknowledgment" xml:space="preserve">
     <value>اشعار استلام</value>
@@ -1152,7 +1152,7 @@
     <value>الشروط والأحكام</value>
   </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
-    <value>Total Adjustment</value>
+    <value>إجمالي التسوية</value>
   </data>
   <data name="ZVatTotalPurchases" xml:space="preserve">
     <value>إجمالي المشتريات</value>

@@ -482,7 +482,7 @@ namespace GAZT.ViewModel
                               
                                 
                             }
-                            IsVisibleFiscal = true;
+                           // IsVisibleFiscal = true;
                             if (IsVisibleFiscal == true)
                             {
                                 if (Device.RuntimePlatform == Device.iOS)

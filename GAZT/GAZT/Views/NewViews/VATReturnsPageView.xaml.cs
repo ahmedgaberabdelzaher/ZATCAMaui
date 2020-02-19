@@ -395,23 +395,62 @@ namespace GAZT.Views.NewViews
                 {
                     try
                     {
+                        StringBuilder Masseges = new StringBuilder();
                         if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAdj.Text))
                         {
-                            CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
+                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                            //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalsalesAdj.Text))
+                            {
+
+                                Masseges.Append(string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+                               
+                            }
+                          //  CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
                         }
 
                         if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text))
                         {
-                            CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
+                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                            //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
+                            {
+
+                                Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                               
+                            }
+                           // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
                         }
 
                         if (!string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAdj.Text))
                         {
-                            CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
+                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                            //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
+                            {
+
+                                Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+                               
+                            }
+                           // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
                         }
                         if (!string.IsNullOrEmpty(LabelTotaldueVat.Text) && !string.IsNullOrEmpty(EntryPreperiodcorr.Text))
                         {
-                            CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
+                            //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
+                        }
+
+                        if(Masseges !=null)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = Masseges.ToString();
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                     catch
@@ -1021,6 +1060,10 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
+                if(viewModel.IsGreaterThanFiveT==true)
+                {
+                    IsAllEntered = false;
+                }
                 //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
                 //{
                 //    IsAllEntered = false;
@@ -1104,10 +1147,13 @@ namespace GAZT.Views.NewViews
 
         private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != ".")
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
-                CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != ".")
+                {
+                    CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
 
+                }
             }
         }
 
@@ -1203,7 +1249,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != ".")
             {
-                CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
+                CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
 
             }
         }
@@ -1212,7 +1258,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != ".")
             {
-                CheckTwoaTwob(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
+                CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text));
 
             }
         }
@@ -1271,7 +1317,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != ".")
             {
-                CheckFouraFourb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
+                CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
 
             }
         }
@@ -1478,7 +1524,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != ".")
             {
-                CheckTenaTenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
+                CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
 
             }
         }
@@ -1487,7 +1533,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != ".")
             {
-                CheckTenaTenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
+                CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
 
             }
         }
@@ -1733,7 +1779,7 @@ namespace GAZT.Views.NewViews
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri("https://www.vat.gov.sa/en/vat-rate"));
+            Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
