@@ -93,6 +93,7 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = false;
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
+
         private void OnInformationMessageClickedFour(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();

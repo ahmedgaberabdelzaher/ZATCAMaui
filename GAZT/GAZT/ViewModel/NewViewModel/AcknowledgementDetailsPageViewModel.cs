@@ -21,9 +21,25 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand OnHomeClick { get; set; }
+        
         #endregion
 
         #region Property
+
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private string _tPName = "";
         public string TPName
@@ -288,25 +304,38 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
-                PopToRootPage();
-                SadadNumber = response.d.results[0].Sopbel;
-                AmountPayable = response.d.results[0].Betrh;
-                if (!string.IsNullOrEmpty(SadadNumber))
+                await Task.Run(() =>
                 {
-                    IsSadadNoteVisible = false;
-                    if (VATDeclarationData.d.RefundFg == "1")
+                    IsLoading = true;
+                });
+                await Task.Run(async() =>
+                {
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    PopToRootPage();
+                    SadadNumber = response.d.results[0].Sopbel;
+                    AmountPayable = response.d.results[0].Betrh;
+                    if (!string.IsNullOrEmpty(SadadNumber))
                     {
-                        IsSadadNumberVisible = false;
-                    }
-                    else
-                    {
-                        IsSadadNumberVisible = true;
-                    }
+                        IsSadadNoteVisible = false;
+                        if (VATDeclarationData.d.RefundFg == "1")
+                        {
+                            IsSadadNumberVisible = false;
+                        }
+                        else
+                        {
+                            IsSadadNumberVisible = true;
+                        }
 
-                    IsButtonVisible = true;
-                    IsRefreshButtonVisible = false;
-                }
+                        IsButtonVisible = true;
+                        IsRefreshButtonVisible = false;
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+                
             }
             catch (InternetException ex)
             {

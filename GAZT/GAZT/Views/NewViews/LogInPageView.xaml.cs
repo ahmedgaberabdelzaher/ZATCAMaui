@@ -24,6 +24,8 @@ namespace GAZT.Views
 
             InitializeComponent();
 
+          
+
             //if (App.IsArabic)
             //{
             //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -34,7 +36,7 @@ namespace GAZT.Views
             //    var dt = JsonConvert.DeserializeObject<DateTime>(@"""" + "/Date(1442102400000)/" + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
             //}
-           // string date = UtilityManager.SingleDateConversion("/Date(1442102400000)/");
+            // string date = UtilityManager.SingleDateConversion("/Date(1442102400000)/");
             GetDeviceID();
             NavigationPage.SetBackButtonTitle(this, "");
             //long number = 1000000000000;
