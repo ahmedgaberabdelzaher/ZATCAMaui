@@ -866,7 +866,7 @@
     <value>Select ICR status</value>
   </data>
   <data name="ZDeclaration" xml:space="preserve">
-    <value>تأكيد صحة البيانات</value>
+    <value>إقرار ضريبة القيمة المضافة</value>
   </data>
   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
     <value>Please enter the corresponding number</value>
@@ -953,7 +953,7 @@
     <value>نموذج الإقرار الضريبي</value>
   </data>
   <data name="ZTotalVat" xml:space="preserve">
-    <value>Total VAT</value>
+    <value>إجمالي ضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatAcknowledgment" xml:space="preserve">
     <value>اشعار استلام</value>
@@ -1152,7 +1152,7 @@
     <value>الشروط والأحكام</value>
   </data>
   <data name="ZVatTotalAdjustment" xml:space="preserve">
-    <value>Total Adjustment</value>
+    <value>إجمالي التسوية</value>
   </data>
   <data name="ZVatTotalPurchases" xml:space="preserve">
     <value>إجمالي المشتريات</value>
@@ -1973,5 +1973,8 @@
   </data>
   <data name="ZIBANNationalID" xml:space="preserve">
     <value>الهوية الوطنية / الإقامة</value>
+  </data>
+  <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
+  <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,PDF,xls,xlsx.</value>
   </data>
 </root>

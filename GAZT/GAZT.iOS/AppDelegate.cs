@@ -54,41 +54,41 @@ namespace GAZT.iOS
         }
 
         //Code for PUSH notification
-        public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
-        {
-            new UIAlertView("Error whie registering for Push Notifications", error.LocalizedDescription, null, "Ok", null).Show();
-        }
+        //public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+        //{
+        //    new UIAlertView("Error whie registering for Push Notifications", error.LocalizedDescription, null, "Ok", null).Show();
+        //}
 
-        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
-        {
-            String DeviceToken = deviceToken.Description;
+        //public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        //{
+        //    String DeviceToken = deviceToken.Description;
             
-            if (!String.IsNullOrWhiteSpace(DeviceToken))
-            {
-                DeviceToken = DeviceToken.Trim('<').Trim('>');
-            }
+        //    if (!String.IsNullOrWhiteSpace(DeviceToken))
+        //    {
+        //        DeviceToken = DeviceToken.Trim('<').Trim('>');
+        //    }
             
-            Console.WriteLine("Device Token: " + DeviceToken);
-            NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
-        }
+        //    Console.WriteLine("Device Token: " + DeviceToken);
+        //    NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
+        //}
 
-        public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
-        {
-            NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
+        //public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
+        //{
+        //    NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
             
-            String alert = string.Empty;
+        //    String alert = string.Empty;
             
-            if (aps.ContainsKey(new NSString("alert")))
-                alert = (aps[new NSString("alert")] as NSString).ToString();
+        //    if (aps.ContainsKey(new NSString("alert")))
+        //        alert = (aps[new NSString("alert")] as NSString).ToString();
             
-            Console.WriteLine(userInfo);
+        //    Console.WriteLine(userInfo);
             
-            //show alert
-            if (!string.IsNullOrEmpty(alert))
-            {
-                UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                avAlert.Show();
-            }
-        }
+        //    //show alert
+        //    if (!string.IsNullOrEmpty(alert))
+        //    {
+        //        UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
+        //        avAlert.Show();
+        //    }
+        //}
     }
 }

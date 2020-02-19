@@ -25,7 +25,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnZakatReturnDataUpdateClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
-
+        public static bool IsSaveButtonPressed = false;
         
         public RootObject rootObject { get; set; }
         
@@ -202,9 +202,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
+                    IsSaveButtonPressed = true;
                     _navigationService.GoBack();
-                    // _navigationService.NavigateTo(App.ZakatBillDetailsPageView);
-                 
                 }
                 catch(Exception ex)
                 {
@@ -364,6 +363,7 @@ namespace GAZT.ViewModel.NewViewModel
             OldValue = string.Empty;
             NewValue = string.Empty;
             ChangeReason = string.Empty;
+            IsLoading = false;
             ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
         }
         public void OnLoad()

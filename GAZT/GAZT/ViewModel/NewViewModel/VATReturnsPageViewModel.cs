@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using GAZT.Helper;
 using Newtonsoft.Json;
 using System.Globalization;
+using Rg.Plugins.Popup.Services;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -546,7 +547,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVisibleCreditCarriedLabel");
             }
         }
-
+        public static bool IsAmend = false;
         private bool _isAmendClicked = false;
         public bool IsAmendClicked
         {
@@ -557,6 +558,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isAmendClicked = value;
+                if (_isAmendClicked == true)
+                {
+                    IsAmend = true;
+                }
+                else
+                {
+                    IsAmend = false;
+                }
                 RaisePropertyChanged("IsAmendClicked");
             }
         }
@@ -1070,8 +1079,34 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_preperiodcorr != null)
                 {
                     NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                    if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-")
+                    {
+                        if(Convert.ToDecimal(_preperiodcorr)> 5000)
+                        {
+                            IsGreaterThanFiveT = true;
+                        }
+                        else
+                        {
+                            IsGreaterThanFiveT = false;
+                        }
+                    }
                 }
                 RaisePropertyChanged("Preperiodcorr");
+            }
+        }
+
+        public bool _isGreaterThanFiveT;
+        public bool IsGreaterThanFiveT
+        {
+            get
+            {
+                return _isGreaterThanFiveT;
+            }
+            set
+            {
+                _isGreaterThanFiveT = value;
+               
+                RaisePropertyChanged("IsGreaterThanFiveT");
             }
         }
 
@@ -1645,15 +1680,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-
-
-
-
-
-
-
-
+       
 
         #endregion
 
@@ -1693,12 +1720,14 @@ namespace GAZT.ViewModel.NewViewModel
                     else if (ButtonName == AppResources.ZVatStepThree)
                     {
                         VATReturnFormClicked();
+
                         PageSelectedItem = VatTabbledPageList[2];
                     }
                     else if (ButtonName == AppResources.ZVatStepFour)
                     {
                         SummaryClicked();
                         PageSelectedItem = VatTabbledPageList[3];
+                       
                     }
                     else if (ButtonName == AppResources.Submit)
                     {
@@ -1721,6 +1750,7 @@ namespace GAZT.ViewModel.NewViewModel
                         _navigationService.NavigateTo(App.ICRListPageView);
                     }
                 }
+               
             });
 
             onStandardRatedSalesVatAmountTapped = new Xamarin.Forms.Command(() =>

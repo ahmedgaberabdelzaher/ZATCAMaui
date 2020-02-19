@@ -447,7 +447,7 @@
                             </Frame.Triggers>
 
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" Unfocused="EntryVatAmount_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry x:Name="EntryVatAmount"  Unfocused="EntryVatAmount_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local:AppResources.ZVatAmountWithSAR}" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding StdsalesAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             <custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>
@@ -971,6 +971,11 @@
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
                                         <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
+                                    <DataTrigger TargetType="Frame"
+                     Binding="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGreaterThanFiveT}"
+                     Value="True">
+                                        <Setter Property="BorderColor" Value="#ff0000" />
+                                    </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
                             <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
@@ -1225,7 +1230,7 @@
                             <local1:CustomLabel  Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static local:AppResources.ZVatCertifyInformation}"/>
+                                        <Span Text="{x:Static local:AppResources.ZZIacknowledgethattheabovebankaccount}"/>
                                     </FormattedString>
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>

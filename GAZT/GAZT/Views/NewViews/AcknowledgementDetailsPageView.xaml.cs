@@ -30,6 +30,7 @@ namespace GAZT.Views.NewViews
         public AcknowledgementDetailsPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;

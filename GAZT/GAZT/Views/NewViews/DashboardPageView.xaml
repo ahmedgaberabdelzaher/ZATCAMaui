@@ -231,7 +231,7 @@
                                 </StackLayout>
 
 
-                            <StackLayout Grid.Row="1" Grid.Column="0">
+                                <StackLayout Grid.Row="1" Grid.Column="{Binding VATColumn}" IsVisible="{Binding IsVATVisible}">
                                 <Image Source="ic_vat_declaration_1.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
@@ -242,9 +242,9 @@
                                         <TapGestureRecognizer Command="{Binding OnVatdeclarationClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>
+                           </StackLayout>
 
-                            <StackLayout Grid.Row="1" Grid.Column="1">
+                                <StackLayout Grid.Row="1" Grid.Column="{Binding ZakatColumn}"  IsVisible="{Binding IsZakatVisible}">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />

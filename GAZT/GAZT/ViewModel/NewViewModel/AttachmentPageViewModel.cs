@@ -272,7 +272,14 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
             {
-                IsShowAttachmentButton = false;
+                if (VATReturnsPageViewModel.IsAmend == true)
+                {
+                    IsShowAttachmentButton = true;
+                }
+                else
+                {
+                    IsShowAttachmentButton = false;
+                }
             }
             else
             {

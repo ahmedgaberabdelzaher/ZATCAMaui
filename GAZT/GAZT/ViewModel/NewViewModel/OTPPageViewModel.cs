@@ -442,7 +442,7 @@ namespace GAZT.ViewModel.NewViewModel
                                     {
                                         string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
                                         await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
-                                        _navigationService.NavigateTo(App.TaxPayerProfilePageView);
+                                        _navigationService.NavigateTo(App.DashboardPageView);
                                     });
                                 }
                                 else

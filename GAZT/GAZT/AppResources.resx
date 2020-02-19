@@ -1967,4 +1967,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZIBANNationalID" xml:space="preserve">
     <value>National ID/ Iqama ID</value>
   </data>
+   <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
+    <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+  </data>
 </root>

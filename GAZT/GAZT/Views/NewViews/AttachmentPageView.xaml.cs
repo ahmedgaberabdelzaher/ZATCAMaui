@@ -36,7 +36,7 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.VatAttachmentsList = null;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
@@ -62,27 +62,34 @@ namespace GAZT.Views.NewViews
 
         #region Method
 
-        private void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             try
             {
                 Image arrowImage = sender as Image;
            
             Attachment attachment = (Attachment)arrowImage.BindingContext;
-            string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-            PopToRootPage();
-            if (results == "X")
-            {
-                var item = (Xamarin.Forms.Image)sender;
-                Attachment listitem = (from itm in viewModel.VatAttachmentsList
-                                       where itm.Doguid == attachment.Doguid.ToString()
-                                 select itm)
-                                .FirstOrDefault<Attachment>();
-                viewModel.VatAttachmentsList.Remove(listitem);
+                if (attachment != null)
+                {
+                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OkText, AppResources.ZZCancel);
+                    if (result)
+                    {
+                        string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                        PopToRootPage();
+                        if (results == "X")
+                        {
+                            var item = (Xamarin.Forms.Image)sender;
+                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
+                                                   where itm.Doguid == attachment.Doguid.ToString()
+                                                   select itm)
+                                            .FirstOrDefault<Attachment>();
+                            viewModel.VatAttachmentsList.Remove(listitem);
 
-                viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
+                            viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
 
-            }
+                        }
+                    }
+                }
             }
             catch (InternetException ex)
             {
