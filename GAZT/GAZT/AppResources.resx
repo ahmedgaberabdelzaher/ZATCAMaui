@@ -1955,4 +1955,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZDownloadForm" xml:space="preserve">
     <value>Download Form</value>
   </data>
+  <data name="ZVatDeclarationTitle" xml:space="preserve">
+    <value>Submit/Display Return</value>
+  </data>
 </root>

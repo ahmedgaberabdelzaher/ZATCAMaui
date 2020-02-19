@@ -35,6 +35,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
 
+        public ICommand onFaqSectionClicked { get; set; }
+
+
         bool IsFirstSubmission = true;
 
         byte[] attachment;
@@ -1612,7 +1615,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsSwichButtonEnableToTap");
             }
         }
+        private bool _isEnableCheckedRefund = true;
+        public bool IsEnableCheckedRefund
+        {
+            get
+            {
+                return _isEnableCheckedRefund;
+            }
+            set
+            {
+                _isEnableCheckedRefund = value;
 
+                RaisePropertyChanged("IsEnableCheckedRefund");
+            }
+        }
 
 
 
@@ -1729,6 +1745,12 @@ namespace GAZT.ViewModel.NewViewModel
                 string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=disabled";
                 _navigationService.NavigateTo(App.AAcknowledgementView, url);
             });
+
+            onFaqSectionClicked = new Xamarin.Forms.Command(async () =>
+            {
+                Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+            });
+
 
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -1951,6 +1973,7 @@ namespace GAZT.ViewModel.NewViewModel
         public void TaxpayerDetailsClicked()
         {
             ClearPage();
+           
             IsVisibleTaxPayerDetails = true;
             ButtonName = AppResources.ZVatStepThree;
             if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
@@ -1979,6 +2002,17 @@ namespace GAZT.ViewModel.NewViewModel
                         IsCheckedTaxPayerDetailsInfo = false;
                         IsMainButtonEnabled = false;
                     }
+                    else
+                    {
+                        if(IsCheckedTaxPayerDetailsInfo==true)
+                        {
+                            IsMainButtonEnabled = true;
+                        }
+                        else
+                        {
+                            IsMainButtonEnabled = false;
+                        }
+                    }
                 }
             }
         }
@@ -2004,7 +2038,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (VATDeclarationData.d.RefundFg == "1")
                         {
-                            IsSwichButtonEnableToTap = false;
+                            
                             IsSwichButtonEnable = true;
                             IsVisibleDropdownForRefund = true;
                             IsVisiblechkRefundDeclaration = true;
@@ -2068,7 +2102,8 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleSummary = true;
             if((App.ICRStatus=="E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
             {
-               
+                IsEnableCheckedRefund = false;
+                IsSwichButtonEnableToTap = false;
                 IsGetAcknowledgementClicked = true;
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;

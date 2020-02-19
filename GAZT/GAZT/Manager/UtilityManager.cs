@@ -204,7 +204,7 @@ namespace GAZT.Manager
                     }
                     //StartDate = ReverseString(StartDate);
                     //EndDate= ReverseString(EndDate);
-                    FullDate = StartDate + " , " + EndDate;
+                    FullDate = StartDate + "،" + EndDate;
                 }
                 else
                 {
