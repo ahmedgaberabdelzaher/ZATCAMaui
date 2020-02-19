@@ -8,7 +8,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              mc:Ignorable="d"
-             
+             Title="{x:Static local:AppResources.ZVatDeclarationTitle}"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
              >
     <ContentPage.Resources>
@@ -94,6 +94,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*"/>
@@ -140,27 +141,32 @@
                                     <FormattedString>
                                         <Span Text="4."/>
                                         <Span Text="{x:Static local:AppResources.ZVatFaqSectionInstructions}"/>
-                                        <Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}" >
+                                        <!--<Span Text="{x:Static local:AppResources.ZVatClickFaqInstructions}" >
                                             <Span.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                             </Span.GestureRecognizers>
-                                        </Span>
+                                        </Span>-->
                                     </FormattedString>
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
+                            <Label Grid.Row="6" Text="{x:Static local:AppResources.ZVatClickFaqInstructions}" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onFaqSectionClicked}"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
 
 
-                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  Grid.Row="6" Margin="10,0,10,0" Grid.Column="0">
+                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
-                                    </DataTrigger>
+                                    </DataTrigger>-->
                                 </CheckBox.Triggers>
                             </CheckBox>
 
 
-                            <local:CustomLabel  Grid.Row="6" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                            <local:CustomLabel  Grid.Row="7" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                 <local:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static local:AppResources.ZVatDeclarationInstructions}"/>
@@ -1100,7 +1106,7 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
-                                    <CheckBox x:Name="chkCheckedRefund"   IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Start" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
+                                    <CheckBox x:Name="chkCheckedRefund"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableCheckedRefund}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Start" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
 
                                     </CheckBox>
                                     <Label Text="{x:Static local:AppResources.ZVatRefundInformationCheckBoxInfo}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>

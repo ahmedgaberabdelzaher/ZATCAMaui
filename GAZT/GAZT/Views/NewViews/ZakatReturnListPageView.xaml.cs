@@ -30,8 +30,6 @@ namespace GAZT.Views.NewViews
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.ClearData();
-            viewModel.OnPageLoad();
-
             ZakatICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
@@ -65,6 +63,11 @@ namespace GAZT.Views.NewViews
         {
             ((ListView)sender).SelectedItem = null;
             return;
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();// called from here so List have the updated data after amendment or release
+           await viewModel.OnPageLoad();
         }
     }
 }

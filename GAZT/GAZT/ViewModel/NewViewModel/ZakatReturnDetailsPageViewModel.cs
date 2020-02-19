@@ -141,6 +141,7 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                     IsAmendButtonPressed = false;
+                    await OnPageLoad(Fbguid);// Called again to get the latest status so buttton visibility can behaves properly as per web 
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 }
                 catch(Exception ex)

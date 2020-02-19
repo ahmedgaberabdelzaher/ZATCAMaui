@@ -16,7 +16,7 @@
            
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="240"/>
+                        <RowDefinition Height="210"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -25,6 +25,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -96,6 +97,11 @@
                                 <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
                             </Label.GestureRecognizers>
                         </Label>
+
+                             <Label   Text="{Binding AppVersion}"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"> 
+                        </Label>
+                   
+       
 
                 </Grid>
           

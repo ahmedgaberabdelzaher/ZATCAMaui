@@ -3302,6 +3302,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit/Display Return.
+        /// </summary>
+        public static string ZVatDeclarationTitle {
+            get {
+                return ResourceManager.GetString("ZVatDeclarationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document Number.
         /// </summary>
         public static string ZVatDocumentNumber {

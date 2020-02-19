@@ -83,14 +83,10 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
-
-
-
-
-                                                        <Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,-5" 
+                                                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,-5" 
                                  
                                                        Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
+                                                       HorizontalOptions="Start"
                                                        VerticalOptions="CenterAndExpand"
                                                        TextColor="#005e4b"
                                    Grid.Row="0"
@@ -122,13 +118,21 @@
                                                             </Label.Triggers>
                                                         </Label>
 
-                                                        <Label Text="{x:Static local:AppResources.ZTaxPeriod}" 
+                                                        <Label 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                           Margin="8,0,8,-5"
+                                                          Margin="8,0,8,-5" 
                                    Grid.Row="3"
-                                   Grid.Column="1"/>
+                                   Grid.Column="1" Grid.ColumnSpan="4">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{x:Static local:AppResources.ZTaxPeriod}"/>
+                                                                    <Span Text="      "/>
+                                                                    <Span Text="{Binding StatusTxt}" TextColor="{Binding BorderColour}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
 
                                                         <Label Text="{Binding FormatTaxPeriod}" 
                                                   

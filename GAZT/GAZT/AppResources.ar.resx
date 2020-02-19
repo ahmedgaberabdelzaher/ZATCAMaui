@@ -1962,4 +1962,7 @@
   <data name="ZDownloadForm" xml:space="preserve">
     <value>تحميل النموذج</value>
   </data>
+  <data name="ZVatDeclarationTitle" xml:space="preserve">
+    <value>تقديم/عرض الإقرارات</value>
+  </data>
 </root>
