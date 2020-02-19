@@ -324,6 +324,66 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsVisibleFiscal");
             }
         }
+
+        private bool _isVATVisible = false;
+        public bool IsVATVisible
+        {
+            get
+            {
+                return _isVATVisible;
+            }
+            set
+            {
+                _isVATVisible = value;
+
+                RaisePropertyChanged("IsVATVisible");
+            }
+        }
+
+        private bool _isZakatVisible = false;
+        public bool IsZakatVisible
+        {
+            get
+            {
+                return _isZakatVisible;
+            }
+            set
+            {
+                _isZakatVisible = value;
+
+                RaisePropertyChanged("IsZakatVisible");
+            }
+        }
+
+        private int _vATColumn = 0;
+        public int VATColumn
+        {
+            get
+            {
+                return _vATColumn;
+            }
+            set
+            {
+                _vATColumn = value;
+
+                RaisePropertyChanged("VATColumn");
+            }
+        }
+
+        private int _zakatColumn = 1;
+        public int ZakatColumn
+        {
+            get
+            {
+                return _zakatColumn;
+            }
+            set
+            {
+                _zakatColumn = value;
+
+                RaisePropertyChanged("ZakatColumn");
+            }
+        }
         #endregion
 
 
@@ -477,11 +537,30 @@ namespace GAZT.ViewModel
                                     if(ItemType =="05")
                                     {
                                         IsVisibleFiscal = true;
-                                    } 
+                                        IsZakatVisible = true;
+                                    }
+                                    if (ItemType == "03" || ItemType == "13")
+                                    {
+                                        IsVATVisible = true;
+                                    }
+                                   
                                 }
                               
                                 
                             }
+                            else
+                            {
+                                IsZakatVisible = true;
+                                IsVATVisible = true;
+                            }
+
+                            if(IsZakatVisible==true && IsVATVisible==false)
+                            {
+                                ZakatColumn = 0;
+                                VATColumn = 1;
+                            }
+
+
                             // IsVisibleFiscal = true;
                             try
                             {

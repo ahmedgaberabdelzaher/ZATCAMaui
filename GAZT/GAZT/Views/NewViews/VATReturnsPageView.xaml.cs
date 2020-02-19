@@ -423,9 +423,16 @@ namespace GAZT.Views.NewViews
 
                             if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
                             {
-
-                                Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
-                               
+                                if (Masseges == null)
+                                {
+                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                                }
+                                else
+                                {
+                                    Masseges.Append(Environment.NewLine);
+                                    Masseges.Append(Environment.NewLine);
+                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                                }
                             }
                            // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
                         }
@@ -438,9 +445,17 @@ namespace GAZT.Views.NewViews
 
                             if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
                             {
+                                if (Masseges == null)
+                                {
+                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+                                }
+                                else
+                                {
+                                    Masseges.Append(Environment.NewLine);
+                                    Masseges.Append(Environment.NewLine);
+                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
 
-                                Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
-                               
+                                }
                             }
                            // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
                         }

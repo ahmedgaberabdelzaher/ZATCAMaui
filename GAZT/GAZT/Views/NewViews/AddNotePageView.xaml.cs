@@ -26,6 +26,8 @@ namespace GAZT.Views.NewViews
         public AddNotePageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
+            SetLTR();
             try
             {
                 viewModel = App.Locator.AddNotePageView;
@@ -61,6 +63,13 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         #endregion
 
     }
