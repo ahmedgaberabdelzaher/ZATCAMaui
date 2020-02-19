@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -11,6 +13,8 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+       public ICommand onLinkClicked { get; set; }
         #endregion
 
         #region Property
@@ -87,6 +91,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
+
+
+            onLinkClicked = new Xamarin.Forms.Command(async () =>
+            {
+                Device.OpenUri(new Uri(Link));
+            });
+
         }
         #endregion
 

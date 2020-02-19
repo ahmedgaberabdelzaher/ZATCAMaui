@@ -1965,4 +1965,13 @@
   <data name="ZVatDeclarationTitle" xml:space="preserve">
     <value>تقديم/عرض الإقرارات</value>
   </data>
+  <data name="ZIBANCommercialRegistrationID" xml:space="preserve">
+    <value>السجل التجاري</value>
+  </data>
+  <data name="ZIBANCompanyID" xml:space="preserve">
+    <value>الشركة</value>
+  </data>
+  <data name="ZIBANNationalID" xml:space="preserve">
+    <value>الهوية الوطنية / الإقامة</value>
+  </data>
 </root>

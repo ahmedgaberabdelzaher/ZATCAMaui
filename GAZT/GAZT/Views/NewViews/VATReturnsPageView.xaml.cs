@@ -385,6 +385,7 @@ namespace GAZT.Views.NewViews
                     {
                         if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                         {
+
                             viewModel.VATReturnFormClicked();
                             setColor(previous, current);
                         }
@@ -437,11 +438,19 @@ namespace GAZT.Views.NewViews
                         if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                         {
                             bool value1 = viewModel.IsCheckedDraftMode();
+                            
                             if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
                             {
 
                             }
                             else
+                            {
+                                viewModel.SummaryClicked();
+                                setColor(previous, current);
+                            }
+
+                            //Add because it will  not navigate in tobefilled and draft mode
+                            if (App.ICRStatus == "E0001" || value1)
                             {
                                 viewModel.SummaryClicked();
                                 setColor(previous, current);
@@ -1643,15 +1652,25 @@ namespace GAZT.Views.NewViews
 
         public void ValidationsForVATRefund()
         {
+            bool resultForBilledOrNot = false;
+            resultForBilledOrNot = viewModel.IsReturnIsBilledOrAmend();
             if (viewModel.IsVisibleSummary == true)
             {
                 if (viewModel.IsVisibleDropdownForRefund == true)
                 {
                     if (viewModel.IsCheckedRefund == true)
                     {
-                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
+                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false && viewModel.IsIBANValid==true)
                         {
-                            viewModel.IsMainButtonEnabled = true;
+
+                            if (!resultForBilledOrNot)
+                            {
+                                viewModel.IsMainButtonEnabled = true;
+                            }
+                            else
+                            {
+                                viewModel.IsMainButtonEnabled = false;
+                            }
                         }
                         else
                         {
@@ -1662,7 +1681,14 @@ namespace GAZT.Views.NewViews
                     {
                         if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
-                            viewModel.IsMainButtonEnabled = true;
+                            if (!resultForBilledOrNot)
+                            {
+                                viewModel.IsMainButtonEnabled = true;
+                            }
+                            else
+                            {
+                                viewModel.IsMainButtonEnabled = false;
+                            }
                         }
                         else
                         {

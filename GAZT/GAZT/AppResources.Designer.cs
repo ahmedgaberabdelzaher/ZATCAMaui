@@ -2186,6 +2186,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commercial Registration ID.
+        /// </summary>
+        public static string ZIBANCommercialRegistrationID {
+            get {
+                return ResourceManager.GetString("ZIBANCommercialRegistrationID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company ID.
+        /// </summary>
+        public static string ZIBANCompanyID {
+            get {
+                return ResourceManager.GetString("ZIBANCompanyID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID/ Iqama ID.
+        /// </summary>
+        public static string ZIBANNationalID {
+            get {
+                return ResourceManager.GetString("ZIBANNationalID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ICR.
         /// </summary>
         public static string ZICR {

@@ -1958,4 +1958,13 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatDeclarationTitle" xml:space="preserve">
     <value>Submit/Display Return</value>
   </data>
+  <data name="ZIBANCommercialRegistrationID" xml:space="preserve">
+    <value>Commercial Registration ID</value>
+  </data>
+  <data name="ZIBANCompanyID" xml:space="preserve">
+    <value>Company ID</value>
+  </data>
+  <data name="ZIBANNationalID" xml:space="preserve">
+    <value>National ID/ Iqama ID</value>
+  </data>
 </root>

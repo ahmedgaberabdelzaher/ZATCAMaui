@@ -1458,6 +1458,21 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsTextBoxVisibleForIban");
             }
         }
+        private bool _isTextBoxEnableForIban;
+        public bool IsTextBoxEnableForIban
+        {
+            get
+            {
+                return _isTextBoxEnableForIban;
+            }
+            set
+            {
+                _isTextBoxEnableForIban = value;
+
+                RaisePropertyChanged("IsTextBoxEnableForIban");
+            }
+        }
+
 
         private bool _isDropdownVisibleForIban;
         public bool IsDropdownVisibleForIban
@@ -2021,11 +2036,61 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             IsVisibleVatReturnForm = true;
             ButtonName = AppResources.ZVatStepFour;
+
+
+            if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            {
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                }
+            }
+            else
+            {
+
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                {
+                    IsCheckedTaxPayerDetailsInfo = true;
+                    //IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    if (App.ICRStatus != "E0001")
+                    {
+                        IsCheckedTaxPayerDetailsInfo = false;
+                        IsMainButtonEnabled = false;
+                    }
+                    else
+                    {
+                        if (IsCheckedTaxPayerDetailsInfo == true)
+                        {
+                            IsMainButtonEnabled = true;
+                        }
+                        else
+                        {
+                            IsMainButtonEnabled = false;
+                        }
+                    }
+                }
+            }
+
         }
         public void SummaryClicked()
         {
             bool value = false;
             ClearPage();
+            DisableForRefund();
+           
+
+
+
+
+
+
             IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
@@ -2103,8 +2168,14 @@ namespace GAZT.ViewModel.NewViewModel
             if((App.ICRStatus=="E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
             {
                 IsEnableCheckedRefund = false;
+                IsTextBoxEnableForIban = false;
                 IsSwichButtonEnableToTap = false;
                 IsGetAcknowledgementClicked = true;
+                IschkRefundDeclaration = true;
+                if(VATDeclarationData.d.IbanCb=="1")
+                {
+                    IsCheckedRefund = true;
+                }
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
                 IsMainButtonEnabled = false;
@@ -2147,6 +2218,16 @@ namespace GAZT.ViewModel.NewViewModel
                     await _navigation.PopToRootAsync();
                 });
             }
+        }
+
+        public bool IsReturnIsBilledOrAmend()
+        {
+            bool result = false;
+            if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+            {
+                result = true;
+            }
+            return result;
         }
         public bool IsTabbedValid(string value)
         {
@@ -2474,6 +2555,21 @@ namespace GAZT.ViewModel.NewViewModel
         {
             _navigationService.NavigateTo("ICRListPageView");
         }
+        public void DisableForRefund()
+        {
+            IsSwichButtonEnable = false;
+            IsVisibleDropdownForRefund = false;
+            IsVisiblechkRefundDeclaration = false;
+            IsDropdownVisibleForIban = false;
+            IbanNumberText = string.Empty;
+            IsTextBoxVisibleForIban = false;
+            SelectedIBAN = null;
+            SelectedIBANType = null;
+            IBANIDNumberList = null;
+            SelectedIBANIDNumber = null;
+            IsRefundVisible = false;
+           
+        }
         public void ClearPage()
         {
             //for Header
@@ -2604,15 +2700,15 @@ namespace GAZT.ViewModel.NewViewModel
             List<IBANType>  IBANTypesDummyList = new List<IBANType>();
             IBANType iBANType = new IBANType();
             iBANType.key = "ZS0001";
-            iBANType.Text = "National ID/ Iqama ID";
+            iBANType.Text = AppResources.ZIBANNationalID;
             IBANTypesDummyList.Add(iBANType);
             IBANType iBANType1 = new IBANType();
             iBANType1.key = "BUP002";
-            iBANType1.Text = "Commercial Registration ID";
+            iBANType1.Text = AppResources.ZIBANCommercialRegistrationID;
             IBANTypesDummyList.Add(iBANType1);
             IBANType iBANType2 = new IBANType();
             iBANType2.key = "ZS0005";
-            iBANType2.Text = "Company ID";
+            iBANType2.Text = AppResources.ZIBANCompanyID;
             IBANTypesDummyList.Add(iBANType2);
             IBANTypesList = IBANTypesDummyList;
 
@@ -2946,7 +3042,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
 
