@@ -363,6 +363,7 @@ namespace GAZT.ViewModel.NewViewModel
             OldValue = string.Empty;
             NewValue = string.Empty;
             ChangeReason = string.Empty;
+            IsLoading = false;
             ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
         }
         public void OnLoad()
