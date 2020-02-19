@@ -35,15 +35,30 @@ namespace GAZT.Views.NewViews
                 viewModel.OnLoad();
                 SetLTR();
                 NavigationPage.SetBackButtonTitle(this, "");
+                SetDynamicBehaviour();
+
+
             }
             catch (Exception ex)
             {
-
+           
             }
         }
         #endregion
 
         #region Method
+
+        private void SetDynamicBehaviour()
+        {
+            if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
+            {
+                NewValue.Behaviors.Add(new NineDotTwoDecimalPlacesAndNoNegativeValue());
+            }
+            else
+            {
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue());
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)
