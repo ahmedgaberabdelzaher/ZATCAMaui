@@ -605,7 +605,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
-                            Estsl = zakatReturnDetailsDToCompare.d.Estsl;
+                            Estsl = _zakatReturnDetails.d.Estsl;
                             IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
