@@ -1958,4 +1958,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatDeclarationTitle" xml:space="preserve">
     <value>Submit/Display Return</value>
   </data>
+   <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
+    <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+  </data>
 </root>

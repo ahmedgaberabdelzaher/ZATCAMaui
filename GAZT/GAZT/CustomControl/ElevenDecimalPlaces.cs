@@ -1,15 +1,11 @@
-﻿using GAZT.Manager;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+﻿using System;
 using Xamarin.Forms;
 
-namespace GAZT.CustomControl
+namespace GAZT
 {
-    public class DecimalPlacesConverter : Behavior<Entry>
+    public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {
-        static int  decimalCount;
+        static int decimalCount;
         protected override void OnAttachedTo(Entry entry)
         {
             entry.TextChanged += OnEntryTextChanged;
@@ -31,14 +27,14 @@ namespace GAZT.CustomControl
                 if (!string.IsNullOrEmpty(args.NewTextValue))
                 {
                     char[] textValue = args.NewTextValue.ToCharArray();
-                     LastChar = textValue[textValue.Length - 1];
+                    LastChar = textValue[textValue.Length - 1];
                 }
 
-                if(LastChar >= 46 && LastChar <= 57)
+                if (LastChar >= 46 && LastChar <= 57)
                 {
 
 
-                    if (DecimalPlacesConverter.decimalCount < 2)
+                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.decimalCount < 2)
                     {
                         if (!string.IsNullOrEmpty(args.NewTextValue))
                         {
@@ -51,7 +47,7 @@ namespace GAZT.CustomControl
                                     string BeforeDecimal = string.Empty;
                                     string AfterDecimal = string.Empty;
 
-                                    if (SplitByDecimal[0].Length > 14)
+                                    if (SplitByDecimal[0].Length > 11)
                                     {
 
                                         BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
@@ -78,7 +74,7 @@ namespace GAZT.CustomControl
                                 {
 
 
-                                    if (args.NewTextValue.Length > 14)
+                                    if (args.NewTextValue.Length > 11)
                                     {
                                         if (args.NewTextValue.Contains("-"))
                                         {
@@ -105,8 +101,8 @@ namespace GAZT.CustomControl
                 }
                 else
                 {
-                    if(!string.IsNullOrEmpty(args.NewTextValue))
-                    ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
+                    if (!string.IsNullOrEmpty(args.NewTextValue))
+                        ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
                 }
             }
             else
@@ -131,7 +127,7 @@ namespace GAZT.CustomControl
                                 string BeforeDecimal = string.Empty;
                                 string AfterDecimal = string.Empty;
 
-                                if (SplitByDecimal[0].Length > 14)
+                                if (SplitByDecimal[0].Length > 11)
                                 {
 
                                     BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
@@ -158,7 +154,7 @@ namespace GAZT.CustomControl
                             {
 
 
-                                if (args.NewTextValue.Length > 14)
+                                if (args.NewTextValue.Length > 11)
                                 {
                                     if (args.NewTextValue.Contains("-"))
                                     {
@@ -191,20 +187,20 @@ namespace GAZT.CustomControl
 
             }
 
-            
+
         }
 
-        private static void GetDecimalCount( string DecimalNumber)
+        private static void GetDecimalCount(string DecimalNumber)
         {
             int _decimalcount = 0;
             char[] decimalNumber = new char[20];
             try
             {
-                if(DecimalNumber != null)
+                if (DecimalNumber != null)
                 {
-                     decimalNumber = DecimalNumber.ToCharArray();
+                    decimalNumber = DecimalNumber.ToCharArray();
                 }
-                
+
                 for (int i = 0; i < decimalNumber.Length; i++)
                 {
                     if (decimalNumber[i].Equals('.'))
@@ -220,11 +216,11 @@ namespace GAZT.CustomControl
                     // message please remove extra decimal number
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
+
         }
     }
 }

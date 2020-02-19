@@ -79,9 +79,9 @@ namespace GAZT.Views.NewViews
             base.OnAppearing();
             try
             {
-                if (AmendSalesDetailsPageViewModel.SelectedSalesDetails != null && AmendSalesDetailsPageViewModel.SelectedSalesDetails.ComingFromAmendEditMode)
+                if (AmendSalesDetailsPageViewModel.SelectedSalesDetails != null && AmendSalesDetailsPageViewModel.SelectedSalesDetails.ComingFromAmendEditMode && AmendSalesDetailsPageViewModel.IsSaveButtonPressed)
                 {
-                    
+                    AmendSalesDetailsPageViewModel.IsSaveButtonPressed = false;
                     SetUpdatedDataToObject();
                     viewModel.SetUpdatedDataToZAKATEstimated(selectedIndex);
                    //viewModel.SetChangedDataToTheList();

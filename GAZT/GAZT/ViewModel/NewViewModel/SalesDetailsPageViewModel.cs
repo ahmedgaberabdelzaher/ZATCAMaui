@@ -605,7 +605,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
-                            Estsl = zakatReturnDetailsDToCompare.d.Estsl;
+                            Estsl = _zakatReturnDetails.d.Estsl;
                             IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
@@ -829,10 +829,36 @@ namespace GAZT.ViewModel.NewViewModel
             ObservableCollection<SalesDetails> _salesDetailsList = new ObservableCollection<SalesDetails>();
             if (SalesDetailsList != null)
             {
+                bool isVATAmountGreaterThanThreshold = IsVATAmountGreaterThanThreshold();
                 foreach (SalesDetails salesDetails in SalesDetailsList)
                 {
-                    salesDetails.EditImageSource = "ic_edit_gray.png";
-                    _salesDetailsList.Add(salesDetails);
+                 
+                    if(isVATAmountGreaterThanThreshold)
+                    {
+
+                        if (salesDetails.SelectedEditFieldId.Equals("1"))
+                        {
+                            salesDetails.EditImageSource = "ic_edit_gray.png";
+                            _salesDetailsList.Add(salesDetails);
+                        }
+                        else
+                        {
+                            _salesDetailsList.Add(salesDetails);
+                        }
+                    }
+                    else
+                    {
+                        if (!salesDetails.SelectedEditFieldId.Equals("1"))
+                        {
+                            salesDetails.EditImageSource = "ic_edit_gray.png";
+                            _salesDetailsList.Add(salesDetails);
+                        }
+                        else
+                        {
+                            _salesDetailsList.Add(salesDetails);
+                        }
+                    }
+                  
                 }
             }
             SalesDetailsList = _salesDetailsList;

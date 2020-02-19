@@ -1965,4 +1965,7 @@
   <data name="ZVatDeclarationTitle" xml:space="preserve">
     <value>تقديم/عرض الإقرارات</value>
   </data>
+  <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
+  <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+  </data>
 </root>

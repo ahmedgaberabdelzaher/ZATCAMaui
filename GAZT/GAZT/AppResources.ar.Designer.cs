@@ -3435,14 +3435,40 @@ namespace GAZT {
                 return ResourceManager.GetString("EmailSent", resourceCulture);
             }
         }
-        /// <summary>
-        ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
-        /// </summary>
-        public static string ZZOurrecordsindicatethatyouarenotmainly
-        {
-            get
-            {
+        
+        public static string ZZOurrecordsindicatethatyouarenotmainly {
+            get {
                 return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotmainly", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleasefilltherequestedinformationforeachstep {
+            get {
+                return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
+            }
+        }
+        
+        public static string ZZIacknowledgethattheabovebankaccount {
+            get {
+                return ResourceManager.GetString("ZZIacknowledgethattheabovebankaccount", resourceCulture);
+            }
+        }
+        
+        public static string ZDownloadForm {
+            get {
+                return ResourceManager.GetString("ZDownloadForm", resourceCulture);
+            }
+        }
+        
+        public static string ZVatDeclarationTitle {
+            get {
+                return ResourceManager.GetString("ZVatDeclarationTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZChooseonlyfilewithextensionForZAKAT {
+            get {
+                return ResourceManager.GetString("ZZChooseonlyfilewithextensionForZAKAT", resourceCulture);
             }
         }
     }
