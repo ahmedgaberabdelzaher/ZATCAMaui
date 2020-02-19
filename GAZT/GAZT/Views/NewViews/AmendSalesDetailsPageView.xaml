@@ -56,7 +56,7 @@
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding OldValue}"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding OldValue}" IsEnabled="False"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
