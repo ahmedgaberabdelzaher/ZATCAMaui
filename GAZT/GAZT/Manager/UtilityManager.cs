@@ -391,20 +391,29 @@ namespace GAZT.Manager
         public static string FormatAccordingToDevice(string Date)
         {
             string dt = string.Empty;
+            string[] dts = null;
             string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            string[] dts = Date.Split('/');
-
-            if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
-               sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
-               sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+            if (Date.Contains("/"))
             {
-                dt = dts[1] + "-" + GetMonthName(dts[0]) + "-" + dts[2];
+                dts = Date.Split('/');
             }
             else
             {
-                dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
+                dts = Date.Split('-');
             }
-
+            if (dts != null)
+            {
+                if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
+                   sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
+                   sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+                {
+                    dt = dts[1] + "-" + GetMonthName(dts[0]) + "-" + dts[2];
+                }
+                else
+                {
+                    dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
+                }
+            }
             return dt;
 
         }
@@ -413,19 +422,28 @@ namespace GAZT.Manager
         {
             string dt = string.Empty;
             string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            string[] dts = Date.Split('/');
-
-            if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
-               sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
-               sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+            string[] dts = null;
+            if (Date.Contains("/"))
             {
-                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
+                dts = Date.Split('/');
             }
             else
             {
-                dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
+                dts = Date.Split('-');
             }
-
+            if (dts != null)
+            {
+                if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
+                   sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
+                   sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+                {
+                    dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
+                }
+                else
+                {
+                    dt = ConvertNumerals(dts[0]) + "-" + GetMonthNameHijriArabic(dts[1]) + "-" + ConvertNumerals(dts[2]);
+                }
+            }
             return dt;
 
         }
@@ -434,19 +452,29 @@ namespace GAZT.Manager
         {
             string dt = string.Empty;
             string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            string[] dts = Date.Split('/');
-
-            if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
-               sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
-               sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+            string[] dts = null;
+            if (Date.Contains("/"))
             {
-                dt = dts[0] + "-" + GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                dts = Date.Split('/');
             }
             else
             {
-                dt = dts[0] + "-" + GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                dts = Date.Split('-');
             }
+            if (dts != null)
+            {
 
+                if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
+               sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
+               sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
+                {
+                    dt = dts[0] + "-" + GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                }
+                else
+                {
+                    dt = dts[0] + "-" + GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                }
+            }
             return dt;
 
         }
@@ -454,12 +482,22 @@ namespace GAZT.Manager
         public static string FormatAccordingToDeviceForVAT(string Date)
         {
             string dt = string.Empty;
-           
-            string[] dts = Date.Split('/');
 
-          
-            dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
-           
+            string[] dts = null;
+            if (Date.Contains("/"))
+            {
+                dts = Date.Split('/');
+            }
+            else
+            {
+                dts = Date.Split('-');
+            }
+            if (dts != null)
+            {
+
+
+                dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
+            }
 
             return dt;
 
