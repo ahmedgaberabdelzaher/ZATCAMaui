@@ -698,7 +698,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Authentication failed. Password locked</value>
   </data>
   <data name="ZSAR" xml:space="preserve">
-    <value>SAR</value>
+    <value> SAR</value>
   </data>
   <data name="ZTotalPaidAmount" xml:space="preserve">
     <value>Total paid amount</value>
