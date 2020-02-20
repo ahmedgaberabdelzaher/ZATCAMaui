@@ -1188,7 +1188,7 @@
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>لن يتم تقديم طلب االعتراض إلا في حال سداد المبلغ غير المعترض عليه باإلضافة الى 25 %من المبلغ المعترض عليه</value>
+    <value>لن يتم تقديم طلب الا عتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة % من المبلغ المعترض عليه25الى</value>
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -1672,7 +1672,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>يرجى اختيار مربع إخالء المسؤولية قبل التقديم</value>
+    <value>يرجى اختيار مربع إخلاء المسؤولية قبل ال</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -1736,8 +1736,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
-    <value>القيمة األكبر من ) {)المبيعات المقدرة ÷ 8( + )المبيعات المقدرة × 15 {)%أو {مبلغ
-رأس المال المسجل} (</value>
+    <value>القيمة الأكبر من ( {( المبيعات المقدرة ÷ 8 ) + ( المبيعات المقدرة × 15% )} أو { مبلغ رأس المال المسجل} )</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
@@ -1925,7 +1924,7 @@
     <comment>Zakat return details</comment>
   </data>
   <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
-    <value>Are you sure you want to delete </value>
+    <value>هل تريد حذف</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDELETEFILE" xml:space="preserve">
@@ -1997,5 +1996,9 @@
   <data name="ZZDeartaxpayerbasedonthesubmittedamendments" xml:space="preserve">
     <value>عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة بالاستمرار، سيتم إنشاء طلب اعترااض لكم لدى الهيئة العامة للزكاة والدخل</value>
     <comment>ZAKAT</comment>
+  </data>
+  <data name="ZDescription" xml:space="preserve">
+    <value>التفاصيل</value>
+    <comment>My Bills</comment>
   </data>
 </root>

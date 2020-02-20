@@ -1082,7 +1082,7 @@ namespace GAZT.ViewModel.NewViewModel
                     NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
                     if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-")
                     {
-                        if(Convert.ToDecimal(_preperiodcorr)> 5000)
+                        if(Convert.ToDecimal(_preperiodcorr)> 4999)
                         {
                             IsGreaterThanFiveT = true;
                         }

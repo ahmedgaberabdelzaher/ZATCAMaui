@@ -2100,6 +2100,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string ZDescription {
+            get {
+                return ResourceManager.GetString("ZDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Form.
         /// </summary>
         public static string ZDownloadForm {
@@ -2597,7 +2606,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summary of Zakat calculation.
+        ///   Looks up a localized string similar to Zakat Calculation Summary.
         /// </summary>
         public static string ZSummaryofZakatcalculation {
             get {
@@ -4251,7 +4260,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Average number of labors x 6000 SAR.
+        ///   Looks up a localized string similar to The average number of labor ×6000 SAR.
         /// </summary>
         public static string ZZAveragenumberoflaborsx6000SAR {
             get {
@@ -4287,7 +4296,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Capital amount.
+        ///   Looks up a localized string similar to Capital Amount.
         /// </summary>
         public static string ZZCapitalamount {
             get {
@@ -4342,7 +4351,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contracts form ETIMAD system.
+        ///   Looks up a localized string similar to Contracts from ETIMAD system.
         /// </summary>
         public static string ZZContractsformETIMADsystem {
             get {
@@ -4702,7 +4711,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Imports value x 115%.
+        ///   Looks up a localized string similar to Imports value × 115%.
         /// </summary>
         public static string ZZImportsvaluex115 {
             get {
@@ -4756,7 +4765,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لن يتم تقديم طلب االعتراض اال في حال سداد المبلغ غير المعترض عليه باإلضافة “الى 25 %من المبلغ المعترض عليه.
+        ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
         public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
             get {
@@ -5009,7 +5018,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total disputed Amount.
+        ///   Looks up a localized string similar to Total Disputed Amount.
         /// </summary>
         public static string ZZTotaldisputedAmount {
             get {
