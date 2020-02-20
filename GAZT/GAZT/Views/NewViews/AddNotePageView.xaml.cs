@@ -16,6 +16,7 @@ namespace GAZT.Views.NewViews
     {
         #region Variable
         AddNotePageViewModel viewModel;
+        
         #endregion
 
         #region Property
@@ -33,16 +34,17 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AddNotePageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
-                viewModel.NoteText = string.Empty;
+              //  viewModel.NoteText = string.Empty;
                 AddNotePageViewModel.IsComingFromNotePage = true;
                 if (vATDeclaration != null && vATDeclaration != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
 
-                    //if (App.ICRStatus == "E0001")
-                    //{
-                    //    viewModel.NoteText = string.Empty;
-                    //}
+                    if (App.ICRStatus == "E0001" && AddNotePageViewModel.NoteCount == 0)
+                    {
+                        viewModel.NoteText = string.Empty;
+                        AddNotePageViewModel.NoteCount++;
+                    }
 
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                     {
