@@ -4224,7 +4224,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Return Listing.
+        ///   Looks up a localized string similar to Returns Of Zakat\Income Tax.
         /// </summary>
         public static string ZZakatReturnListing {
             get {

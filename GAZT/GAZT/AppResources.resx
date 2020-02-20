@@ -794,7 +794,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Enter Verification Code</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
-    <value>Zakat Return Listing</value>
+    <value>Returns Of Zakat\Income Tax</value>
   </data>
   <data name="ZZakatReturnDetails" xml:space="preserve">
     <value>Zakat Return Details</value>
