@@ -15,6 +15,7 @@ using GAZT.Helper;
 using Newtonsoft.Json;
 using System.Globalization;
 using Rg.Plugins.Popup.Services;
+using GAZT.Views.NewViews;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -2337,9 +2338,41 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                     await SaveReturnAndGetReturnAndSetButtons();
                 }
+                    decimal FourteenA = 0;
+                    if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
+                    {
+                        FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
+                    }
 
-            await    _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-            }
+                    if ((FourteenA <0 && IsSwichButtonEnable == false) || (FourteenA < 0 && IsSwichButtonEnable == true))
+                    {
+                        StringBuilder Masseges = new StringBuilder();
+                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(Environment.NewLine);
+                      
+                        Masseges.Append(AppResources.CreditReturnMsg);
+                       
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.IsRed = "#ff0000";
+                        Pop.IsBold = "Bold";
+                        Pop.Message = Masseges.ToString();
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+
+                    }
+
+
+
+
+
+
+                }
                 // });
                 //await Task.Run(() =>
                 //{

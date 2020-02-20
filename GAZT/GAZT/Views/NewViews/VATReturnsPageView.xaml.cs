@@ -424,7 +424,7 @@ namespace GAZT.Views.NewViews
 
                             if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
                             {
-                                if (Masseges == null)
+                                if (Masseges.Length == 0)
                                 {
                                     Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
                                 }
@@ -446,7 +446,7 @@ namespace GAZT.Views.NewViews
 
                             if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
                             {
-                                if (Masseges == null)
+                                if (Masseges.Length == 0)
                                 {
                                     Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
                                 }
@@ -465,7 +465,7 @@ namespace GAZT.Views.NewViews
                             //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
                         }
 
-                        if(Masseges !=null)
+                        if(Masseges.Length > 0 )
                         {
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;

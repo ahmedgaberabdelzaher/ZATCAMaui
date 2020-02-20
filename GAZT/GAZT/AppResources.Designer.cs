@@ -368,6 +368,19 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, 
+        ///Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
+        ///• Trial balance (TB) for the submitted return extracted from the system in PDF format which contains: beginning balances, movement, and ending balance for the return period
+        ///• Trial balance (TB) for the submitted return in MS Excel format which contains: beginning balances, movement, and ending balance for the return period
+        ///• Bank account sta [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string CreditReturnMsg {
+            get {
+                return ResourceManager.GetString("CreditReturnMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Password.
         /// </summary>
         public static string CurrentPassword {
@@ -629,7 +642,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimate sales for fiscal year.
+        ///   Looks up a localized string similar to Estimated Sales for the Fiscal Year.
         /// </summary>
         public static string EstimateSalesForFiscalYear {
             get {
@@ -4343,6 +4356,15 @@ namespace GAZT {
         public static string ZZCreateNotes {
             get {
                 return ResourceManager.GetString("ZZCreateNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT.
+        /// </summary>
+        public static string ZZDeartaxpayerbasedonthesubmittedamendments {
+            get {
+                return ResourceManager.GetString("ZZDeartaxpayerbasedonthesubmittedamendments", resourceCulture);
             }
         }
         

@@ -196,7 +196,7 @@
     <value>Please enter verification code received on mobile</value>
   </data>
   <data name="EstimateSalesForFiscalYear" xml:space="preserve">
-    <value>Estimate sales for fiscal year</value>
+    <value>Estimated Sales for the Fiscal Year</value>
   </data>
   <data name="EstimateZakatReturn" xml:space="preserve">
     <value>Estimate</value>
@@ -1967,7 +1967,26 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZIBANNationalID" xml:space="preserve">
     <value>National ID/ Iqama ID</value>
   </data>
-   <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
+  <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
     <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+  </data>
+  <data name="CreditReturnMsg" xml:space="preserve">
+    <value>Dear Taxpayer, 
+Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
+• Trial balance (TB) for the submitted return extracted from the system in PDF format which contains: beginning balances, movement, and ending balance for the return period
+• Trial balance (TB) for the submitted return in MS Excel format which contains: beginning balances, movement, and ending balance for the return period
+• Bank account statements (for all bank accounts) for the submitted return
+• Detailed sales listing for the submitted return in MS Excel format with break down into standard rated, zero rated and exempt
+• Detailed listing for standard rated purchases for the submitted return in MS Excel format
+Best regards,
+GAZT
+For more information, please call 19993.
+Or visit GAZT website: www.gazt.gov.sa 
+Should we require further information, we would be in contact.</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZDeartaxpayerbasedonthesubmittedamendments" xml:space="preserve">
+    <value>Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT</value>
+    <comment>ZAKAT</comment>
   </data>
 </root>
