@@ -601,7 +601,7 @@ namespace GAZT.ViewModel.NewViewModel
                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
                             Estsl = _zakatReturnDetails.d.Estsl;
                            
-                            IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                            IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
                     }
@@ -619,7 +619,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         if (PostOperation.Equals("05"))
                         {
-                        if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
+                        if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
                             {
                                 SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
