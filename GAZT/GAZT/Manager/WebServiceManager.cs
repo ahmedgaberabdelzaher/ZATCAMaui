@@ -205,7 +205,7 @@ namespace GAZT.Manager
                     {
                         if (App.IsArabic)
                         {
-                            throw new Exception("خطأ في كلمة سر");
+                            throw new Exception("خطا في  كلمة  المرور");
                         }
                         else
                         {

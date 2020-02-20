@@ -9,7 +9,8 @@ namespace GAZT.Models
         public string Message { get; set; }
         public bool IsLinkAvailable { get; set; }
         public string LinkMessage { get; set; }
-
+        public string IsRed { get; set; } = string.Empty;
+        public string IsBold { get; set; } = string.Empty;
         public string Link { get; set; }
 
     }

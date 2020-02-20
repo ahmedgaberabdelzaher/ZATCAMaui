@@ -73,6 +73,34 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LinkMessage");
             }
         }
+
+        private string _iSBold;
+        public string IsBold
+        {
+            get
+            {
+                return _iSBold;
+            }
+            set
+            {
+                _iSBold = value;
+                RaisePropertyChanged("IsBold");
+            }
+        }
+
+        private string _iSRed;
+        public string IsRed
+        {
+            get
+            {
+                return _iSRed;
+            }
+            set
+            {
+                _iSRed = value;
+                RaisePropertyChanged("IsRed");
+            }
+        }
         #endregion
 
         #region Constructor

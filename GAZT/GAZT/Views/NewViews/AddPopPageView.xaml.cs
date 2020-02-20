@@ -31,6 +31,8 @@ namespace GAZT.Views.NewViews
                 viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
                 viewModel.Link = objPopUP.Link;
                 viewModel.LinkMessage = objPopUP.LinkMessage;
+                viewModel.IsBold = objPopUP.IsBold;
+                viewModel.IsRed = objPopUP.IsRed;
             }
             catch (Exception e)
             {
@@ -53,6 +55,8 @@ namespace GAZT.Views.NewViews
 
         private void CloseImage_Tapped(object sender, EventArgs e)
         {
+            viewModel.IsBold = "Bold";
+            viewModel.IsRed = "#7D858D";
             PopupNavigation.Instance.PopAsync();
         }
     }

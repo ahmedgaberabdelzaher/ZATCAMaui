@@ -53,7 +53,7 @@ namespace GAZT.Models
             }
 
         }
-
+        public string Txt30 { get; set; }
         public string FAEDN { get; set; } //DueDate
         public string StatusImage { get; set; }
 

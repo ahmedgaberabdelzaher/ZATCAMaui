@@ -51,7 +51,7 @@ namespace GAZT.CustomControl
                                     string BeforeDecimal = string.Empty;
                                     string AfterDecimal = string.Empty;
 
-                                    if (SplitByDecimal[0].Length > 14)
+                                    if (SplitByDecimal[0].Length > 12)
                                     {
 
                                         BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
@@ -78,7 +78,7 @@ namespace GAZT.CustomControl
                                 {
 
 
-                                    if (args.NewTextValue.Length > 14)
+                                    if (args.NewTextValue.Length > 12)
                                     {
                                         if (args.NewTextValue.Contains("-"))
                                         {
@@ -131,7 +131,7 @@ namespace GAZT.CustomControl
                                 string BeforeDecimal = string.Empty;
                                 string AfterDecimal = string.Empty;
 
-                                if (SplitByDecimal[0].Length > 14)
+                                if (SplitByDecimal[0].Length > 12)
                                 {
 
                                     BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
@@ -158,7 +158,7 @@ namespace GAZT.CustomControl
                             {
 
 
-                                if (args.NewTextValue.Length > 14)
+                                if (args.NewTextValue.Length > 12)
                                 {
                                     if (args.NewTextValue.Contains("-"))
                                     {

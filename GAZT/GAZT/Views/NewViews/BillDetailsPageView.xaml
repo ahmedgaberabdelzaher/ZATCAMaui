@@ -62,11 +62,11 @@
                     <Label Text="{Binding Stotamt}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}">
 
                         <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static local:AppResources.ZSAR}" />
-                                        <Span Text=" " />
-                                        <Span  Text="{Binding Stotamt}"  />
-                                    </FormattedString>
+                             <FormattedString>
+                                <Span  Text="{Binding Stotamt}"  />
+                                <Span Text=" " />                                      
+                                <Span Text="{x:Static local:AppResources.ZSAR}" />
+                            </FormattedString>
                                 </Label.FormattedText>
 
                     </Label>

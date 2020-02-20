@@ -793,7 +793,7 @@
     <value>ادخل رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
-    <value>Zakat Return Listing</value>
+    <value>إقرارات الزكاة/ضريبة الدخل</value>
   </data>
   <data name="ZZakatReturnDetails" xml:space="preserve">
     <value>تفاصيل الإقرار الزكوي</value>
@@ -917,10 +917,10 @@
     <value>المبيعات التقديرية</value>
   </data>
   <data name="ZFinancialPeriodFrom" xml:space="preserve">
-    <value>من المالية ا</value>
+    <value>الفترة المالية من</value>
   </data>
   <data name="ZInformationfromrelatedparties" xml:space="preserve">
-    <value>لمعلومات من الجهات ذات العلاقة</value>
+    <value>المعلومات من الجهات ذات العلاقة</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
     <value>القيمة الجديدة</value>
@@ -1188,7 +1188,7 @@
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>لن يتم تقديم طلب االعتراض إلا في حال سداد المبلغ غير المعترض عليه باإلضافة الى 25 %من المبلغ المعترض عليه</value>
+    <value>لن يتم تقديم طلب الا عتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة % من المبلغ المعترض عليه25الى</value>
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -1239,10 +1239,10 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>من المالية ا</value>
+    <value>الفترة المالية من</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value>To</value>
+    <value>الى</value>
   </data>
   <data name="Release" xml:space="preserve">
     <value>إصدار</value>
@@ -1255,7 +1255,7 @@
   </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>'• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
-• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية ()
+• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية (5%)
  </value>
   </data>
   <data name="BillDetails" xml:space="preserve">
@@ -1272,6 +1272,7 @@
   </data>
   <data name="ZToolTipExemptAdjustment" xml:space="preserve">
     <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات المعفاة التي تم بيعها في المملكة العربية السعودية
+
 • على سبيل المثال، إرجاع السلع المعفاة، شطب الديون المعدومة</value>
   </data>
   <data name="ZToolTipExemptAmount" xml:space="preserve">
@@ -1569,7 +1570,7 @@
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber" xml:space="preserve">
-    <value>تم تقديم نموذج الإقرار الضريبي بنجاح ،نموذج رقم الحزمة</value>
+    <value>تم تقديم نموذج الإقرار الضريبي بنجاح ،نموذج رقم الحزمة{0}</value>
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
@@ -1671,7 +1672,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>يرجى اختيار مربع إخالء المسؤولية قبل التقديم</value>
+    <value>يرجى اختيار مربع إخلاء المسؤولية قبل ال</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -1723,7 +1724,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount" xml:space="preserve">
-    <value>خرى يمكن من خاللها تحديد رأس المال.رأس المال الوارد في السجل التجاري أو التراخيص الالزمة للنشاط أو أي مستندات</value>
+    <value>رأس المال الوارد في السجل التجاري أو التراخيص اللازمة للنشاط أو أي مستندات أخرى يمكن من خلالها تحديد رأس المال.</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZConfirmation" xml:space="preserve">
@@ -1735,8 +1736,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
-    <value>القيمة األكبر من ) {)المبيعات المقدرة ÷ 8( + )المبيعات المقدرة × 15 {)%أو {مبلغ
-رأس المال المسجل} (</value>
+    <value>القيمة الأكبر من ( {( المبيعات المقدرة ÷ 8 ) + ( المبيعات المقدرة × 15% )} أو { مبلغ رأس المال المسجل} )</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
@@ -1764,7 +1764,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalAmount" xml:space="preserve">
-    <value>إجمالي المبلغ</value>
+    <value>المبلغ الإجمالي :</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotaldisputedAmount" xml:space="preserve">
@@ -1780,7 +1780,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZZakatBaseandwithalowerboundof500SAR" xml:space="preserve">
-    <value>الوعاء الزكوي × 5.2 , %وبحد أدنى 500 ريال سعودي</value>
+    <value>الوعاء الزكوي × 2.5 % ، وبحد أدنى 500 ريال سعودي</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZVATAddNewMovementActivityButton" xml:space="preserve">
@@ -1924,7 +1924,7 @@
     <comment>Zakat return details</comment>
   </data>
   <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
-    <value>Are you sure you want to delete </value>
+    <value>هل تريد حذف</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDELETEFILE" xml:space="preserve">
@@ -1975,6 +1975,30 @@
     <value>الهوية الوطنية / الإقامة</value>
   </data>
   <data name="ZZChooseonlyfilewithextensionForZAKAT" xml:space="preserve">
-  <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,PDF,xls,xlsx.</value>
+  </data>
+  <data name="CreditReturnMsg" xml:space="preserve">
+    <value>"عزيزي المكلف،، 
+  
+نشكر لكم التزامكم بتقديم إقراركم الضريبي، كما نأمل منكم تزويدنا بالمعلومات التالية لنتمكن من دراسة طلب استردادكم في أسرع وقت ممكن: 
+•        حركة ميزان المراجعة عن فترة الإقرار المُقدم مستخرجة من النظام بصيغة PDF (موضحاً به: رصيد أول الفترة، والحركة المدينة، والحركة الدائنة، ورصيد نهاية الفترة). 
+•        حركة ميزان المراجعة عن فترة الإقرار بصيغة اكسل Excel، (موضحاً به: رصيد أول الفترة، والحركة المدينة، والحركة الدائنة، ورصيد نهاية الفترة). 
+•        كشف الحساب البنكي (لجميع حساباتكم البنكية) عن فترة الإقرار المُقدم. 
+•        بيان تفصيلي للمبيعات الخاضعة للنسبة الأساسية، والخاضعة للنسبة الصفرية، والمبيعات المعفاة عن فترة الإقرار المُقدم بصيغة اكسل Excel. 
+•        بيان تفصيلي بالمشتريات الخاضعة للنسبة الأساسية عن فترة الإقرار المُقدم بصيغة اكسل Excel. 
+ 
+مع تحياتنا، 
+الهيئة العامة للزكاة والدخل، 
+لمزيد من المعلومات نرجو الاتصال على الرقم 19993.
+او تفضل بزيارة موقع الهيئة الالكتروني "</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZDeartaxpayerbasedonthesubmittedamendments" xml:space="preserve">
+    <value>عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة بالاستمرار، سيتم إنشاء طلب اعترااض لكم لدى الهيئة العامة للزكاة والدخل</value>
+    <comment>ZAKAT</comment>
+  </data>
+  <data name="ZDescription" xml:space="preserve">
+    <value>التفاصيل</value>
+    <comment>My Bills</comment>
   </data>
 </root>

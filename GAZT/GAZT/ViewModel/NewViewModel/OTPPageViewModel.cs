@@ -364,7 +364,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
-                                AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
+                                AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
 
                             }
                             AccountLockedMessage(TP);

@@ -283,7 +283,7 @@ namespace GAZT.Views.NewViews
         {
             if(viewModel.IsCurrentZAKATTaxLess)
             {
-                var result = await this.DisplayAlert(AppResources.Alerts, "Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT", "Ok", "Cancel");
+                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.OkText, AppResources.ZZCancel);
                 if (result)
                 {
                     await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 
