@@ -209,7 +209,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 Abrzu = UtilityManager.ToArabicDate(Abrzu);
                                 Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 Abrzo = UtilityManager.ToArabicDate(Abrzo);
-                                Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                                Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
                             }
                             catch (Exception ex)
                             {
@@ -224,7 +224,7 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                                Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
 
                             }
                             catch (Exception ex)

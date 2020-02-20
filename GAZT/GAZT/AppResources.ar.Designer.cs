@@ -3466,6 +3466,24 @@ namespace GAZT {
             }
         }
         
+        public static string ZIBANCommercialRegistrationID {
+            get {
+                return ResourceManager.GetString("ZIBANCommercialRegistrationID", resourceCulture);
+            }
+        }
+        
+        public static string ZIBANCompanyID {
+            get {
+                return ResourceManager.GetString("ZIBANCompanyID", resourceCulture);
+            }
+        }
+        
+        public static string ZIBANNationalID {
+            get {
+                return ResourceManager.GetString("ZIBANNationalID", resourceCulture);
+            }
+        }
+        
         public static string ZZChooseonlyfilewithextensionForZAKAT {
             get {
                 return ResourceManager.GetString("ZZChooseonlyfilewithextensionForZAKAT", resourceCulture);

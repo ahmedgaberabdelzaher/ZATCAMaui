@@ -31,8 +31,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-       // private string _UserName = "3102116553";
-        private string _UserName = string.Empty;
+        private string _UserName = "3102116553";
+        //private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -91,9 +91,9 @@ namespace GAZT.ViewModel
         }
 
 
-       // private string _Password = "Init@1234";
+        private string _Password = "Init@1234";
         
-        private string _Password = string.Empty;
+       // private string _Password = string.Empty;
         public string Password
         {
             get
