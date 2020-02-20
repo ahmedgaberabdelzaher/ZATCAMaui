@@ -2312,10 +2312,10 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.Operationz = operation;
                 IsLoading = false;
                 await SaveReturnAndGetReturnAndSetButtons();
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
-                });
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
+                //});
                 ManageEnabledProperty(false);
                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
             }

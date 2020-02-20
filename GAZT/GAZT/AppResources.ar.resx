@@ -793,7 +793,7 @@
     <value>ادخل رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
-    <value>Zakat Return Listing</value>
+    <value>إقرارات الزكاة/ضريبة الدخل</value>
   </data>
   <data name="ZZakatReturnDetails" xml:space="preserve">
     <value>تفاصيل الإقرار الزكوي</value>
@@ -1255,7 +1255,7 @@
   </data>
   <data name="ZToolTipStandardRatedSalesAmount" xml:space="preserve">
     <value>'• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
-• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية ()
+• يرجى الرجوع إلى رابط الأسئلة الشائعة  في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية (5%)
  </value>
   </data>
   <data name="BillDetails" xml:space="preserve">
@@ -1272,6 +1272,7 @@
   </data>
   <data name="ZToolTipExemptAdjustment" xml:space="preserve">
     <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات المعفاة التي تم بيعها في المملكة العربية السعودية
+
 • على سبيل المثال، إرجاع السلع المعفاة، شطب الديون المعدومة</value>
   </data>
   <data name="ZToolTipExemptAmount" xml:space="preserve">
@@ -1569,7 +1570,7 @@
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber" xml:space="preserve">
-    <value>تم تقديم نموذج الإقرار الضريبي بنجاح ،نموذج رقم الحزمة</value>
+    <value>تم تقديم نموذج الإقرار الضريبي بنجاح ،نموذج رقم الحزمة{0}</value>
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturn ExceedingPermissibleAmendmentPeriod" xml:space="preserve">
@@ -1994,9 +1995,7 @@
     <comment>VAT</comment>
   </data>
   <data name="ZZDeartaxpayerbasedonthesubmittedamendments" xml:space="preserve">
-    <value>عزيزي المكلف، عند احتساب التعديالت وجد أن تعديالتكم ال تتطابق مع ما تم
-حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة باالستمرار، سيتم إنشاء
-طلب اعتراض لكم لدى الهيئة العامة للزكاة والدخل</value>
+    <value>عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة بالاستمرار، سيتم إنشاء طلب اعترااض لكم لدى الهيئة العامة للزكاة والدخل</value>
     <comment>ZAKAT</comment>
   </data>
 </root>
