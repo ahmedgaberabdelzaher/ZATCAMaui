@@ -376,7 +376,14 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     SalesType = SelectedSalesDetails.SalesType;
                     OldValue = SelectedSalesDetails.InformationFromPartie;
-                    NewValue = SelectedSalesDetails.NewValue;
+                    if(!SelectedSalesDetails.InformationFromPartieToCompare.Equals(SelectedSalesDetails.InformationFromPartie))
+                    {
+                        NewValue = SelectedSalesDetails.InformationFromPartieToCompare;
+                    }
+                    else
+                    {
+                        NewValue ="";
+                    }
                     ChangeReason = SelectedSalesDetails.ChangeReason;
                     ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
                 }

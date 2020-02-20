@@ -600,7 +600,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
                             Estsl = _zakatReturnDetails.d.Estsl;
-                            SetSalesDetailsData(_zakatReturnDetails);
+                           
                             IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
@@ -620,18 +620,20 @@ namespace GAZT.ViewModel.NewViewModel
                         if (PostOperation.Equals("05"))
                         {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
-                        {
-                              ShowConfirmButton();
+                            {
+                                SetSalesDetailsData(_zakatReturnDetails);
+                                ShowConfirmButton();
                                 ShowOnlyInfoIcon();
 
-                            }
+                        }
                         else
                         {
                             SetChangedValueToUploadAttachment();
                             bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
                             if (ISAllRequiredDocumentUploadedwithReason)
                             {
-                                ShowEditIcon();
+                                    SetSalesDetailsData(_zakatReturnDetails);
+                                    ShowEditIcon();
                                 ShowConfirmButton();
                             }
                             else
@@ -942,13 +944,13 @@ namespace GAZT.ViewModel.NewViewModel
                         bool IsNewValueLessThanExisting = (Convert.ToDouble(SalesDetailsList[i].InformationFromPartie) > Convert.ToDouble(SalesDetailsDataList[i].InformationFromPartieToCompare));
                         if (IsNewValueLessThanExisting)//
                         {
-                            if(!(SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired))
-                            {
+                            //if(!(SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired))
+                            //{
                                 SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
                                 SalesDetailsList[i].IsAttachmentRequired = true;
                                 SalesDetailsList[i].IsReasonRequird = true;
                                 _salesDetailsList.Add(SalesDetailsList[i]);
-                            }
+                            //}
                         }
                         else
                         {
@@ -1225,7 +1227,7 @@ namespace GAZT.ViewModel.NewViewModel
             catch(Exception ex)
             {
 
-            }
+            }  
          
         }
 
