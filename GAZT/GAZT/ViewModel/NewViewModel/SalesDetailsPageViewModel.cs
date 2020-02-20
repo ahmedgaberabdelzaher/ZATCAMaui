@@ -944,13 +944,13 @@ namespace GAZT.ViewModel.NewViewModel
                         bool IsNewValueLessThanExisting = (Convert.ToDouble(SalesDetailsList[i].InformationFromPartie) > Convert.ToDouble(SalesDetailsDataList[i].InformationFromPartieToCompare));
                         if (IsNewValueLessThanExisting)//
                         {
-                            if(!(SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired))
-                            {
+                            //if(!(SalesDetailsList[i].IsReasonRequird || SalesDetailsList[i].IsAttachmentRequired))
+                            //{
                                 SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
                                 SalesDetailsList[i].IsAttachmentRequired = true;
                                 SalesDetailsList[i].IsReasonRequird = true;
                                 _salesDetailsList.Add(SalesDetailsList[i]);
-                            }
+                            //}
                         }
                         else
                         {
