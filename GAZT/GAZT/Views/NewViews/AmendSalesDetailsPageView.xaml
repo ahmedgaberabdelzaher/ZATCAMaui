@@ -100,7 +100,7 @@
                             </Label>
                             <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12"  Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="12"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">

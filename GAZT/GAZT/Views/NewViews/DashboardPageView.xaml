@@ -245,7 +245,7 @@
                            </StackLayout>
 
                                 <StackLayout Grid.Row="1" Grid.Column="{Binding ZakatColumn}"  IsVisible="{Binding IsZakatVisible}">
-                                <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
+                                <Image Source="ic_Estimate_zakat1.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnEstimateZakatClicked}" />
                                     </Image.GestureRecognizers>
