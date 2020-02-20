@@ -1705,7 +1705,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
-    <value>يجب اختيار سبب التعديل وارفاق المستندات الداعمة لذلك</value>
+    <value>You have to enter the modifications reasons and attach the supported documents</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPurchasevalue" xml:space="preserve">

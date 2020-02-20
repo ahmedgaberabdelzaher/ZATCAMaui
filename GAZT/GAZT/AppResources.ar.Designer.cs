@@ -3489,5 +3489,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZChooseonlyfilewithextensionForZAKAT", resourceCulture);
             }
         }
+        
+        public static string CreditReturnMsg {
+            get {
+                return ResourceManager.GetString("CreditReturnMsg", resourceCulture);
+            }
+        }
+        
+        public static string ZZDeartaxpayerbasedonthesubmittedamendments {
+            get {
+                return ResourceManager.GetString("ZZDeartaxpayerbasedonthesubmittedamendments", resourceCulture);
+            }
+        }
     }
 }
