@@ -920,7 +920,7 @@
     <value>من المالية ا</value>
   </data>
   <data name="ZInformationfromrelatedparties" xml:space="preserve">
-    <value>المعلومات من الجهات ذات العالقة</value>
+    <value>لمعلومات من الجهات ذات العلاقة</value>
   </data>
   <data name="ZNewValue" xml:space="preserve">
     <value>القيمة الجديدة</value>
@@ -1703,7 +1703,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalVATSales" xml:space="preserve">
-    <value>إجمالي مبيعات القيمة المضافة</value>
+    <value>المبيعات عبر نقاط البيع</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">

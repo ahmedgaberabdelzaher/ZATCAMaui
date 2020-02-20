@@ -282,6 +282,7 @@ namespace GAZT.ViewModel.NewViewModel
                                         {
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
+                                                AttachmentName = string.Empty;
                                                 await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
                                                 IsLoading = false;
                                             });
@@ -291,6 +292,7 @@ namespace GAZT.ViewModel.NewViewModel
                                     {
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
+                                            AttachmentName = string.Empty;
                                             await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
                                             IsLoading = false;
                                         });

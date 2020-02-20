@@ -623,7 +623,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                         }
                         if (PostOperation.Equals("05"))
-                    {
+                        {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
                               ShowConfirmButton();
