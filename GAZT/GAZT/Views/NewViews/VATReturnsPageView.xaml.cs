@@ -102,7 +102,7 @@ namespace GAZT.Views.NewViews
 
 
                 await viewModel.pageLoad();
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus== "E0055")
                 {
                     viewModel.ManageEnabledProperty(false);
                     viewModel.IsCheckedTaxPayerDetailsInfo = true;
@@ -308,22 +308,14 @@ namespace GAZT.Views.NewViews
 
             VATDeclarationTabbedPageName previous = (e.PreviousSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
             VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
+            var senderObject = sender;
 
-            //Set the current to the color you want
-            //if (current != null)
-            //{
-            //    current.TextColor = Color.FromHex("#c49b2d");
-            //}
 
-            //if (previous != null)
-            //{
-            //    //Reset the previous to defaulr color
-            //    previous.TextColor = Color.FromHex("#FFFFFF");
-            //}
+
 
             if (current != null)
             {
-                if (current.pageName == "Instruction" || current.pageName== "التعليمات")
+                if (current.pageName == "Instruction" || current.pageName == "التعليمات")
                 {
 
                     viewModel.InstrunctionClicked();
@@ -350,10 +342,11 @@ namespace GAZT.Views.NewViews
                     //    viewModel.IsDeclarationCheckedForInstruction = false;
                     //    chkDeclaration.IsChecked = false;
                     //}
-                    setColor(previous, current);
+                    //  setColor(previous, current);
+                    NewSetColor(senderObject, current);
                     viewModel.IsFirstTimeGet = false;
                 }
-                else if (current.pageName == "TaxPayer Details" || current.pageName== "تفاصيل المكلف")
+                else if (current.pageName == "TaxPayer Details" || current.pageName == "تفاصيل المكلف")
                 {
                     bool value = viewModel.IsCheckedDraftMode();
                     bool Tvalue = viewModel.IsTabbedValid("02");
@@ -369,7 +362,12 @@ namespace GAZT.Views.NewViews
                         if (viewModel.IsDeclarationCheckedForInstruction == true)
                         {
                             viewModel.TaxpayerDetailsClicked();
-                            setColor(previous, current);
+                            // setColor(previous, current);
+                            NewSetColor(senderObject, current);
+                        }
+                        else
+                        {
+                            ((CollectionView)sender).SelectedItem = null;
                         }
 
                     }
@@ -382,10 +380,11 @@ namespace GAZT.Views.NewViews
                         }
                         // BtnNextStep.IsEnabled = false;
                         //  chkClearification.IsChecked = false;
+                        ((CollectionView)sender).SelectedItem = null;
                     }
                     viewModel.IsFirstTimeGet = false;
                 }
-                else if (current.pageName == "VAT Return Form" || current.pageName== "نموذج الإقرار الضريبي")
+                else if (current.pageName == "VAT Return Form" || current.pageName == "نموذج الإقرار الضريبي")
                 {
 
                     bool value = viewModel.IsCheckedDraftMode();
@@ -404,8 +403,17 @@ namespace GAZT.Views.NewViews
                         {
 
                             viewModel.VATReturnFormClicked();
-                            setColor(previous, current);
+                            //   setColor(previous, current);
+                            NewSetColor(senderObject, current);
                         }
+                        else
+                        {
+                            ((CollectionView)sender).SelectedItem = null;
+                        }
+                    }
+                    else
+                    {
+                        ((CollectionView)sender).SelectedItem = null;
                     }
                     viewModel.IsFirstTimeGet = false;
                     //else
@@ -413,133 +421,155 @@ namespace GAZT.Views.NewViews
                     //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
                     //}
                 }
-                else if (current.pageName == "Summary" || current.pageName== "ملخص")
+                else if (current.pageName == "Summary" || current.pageName == "ملخص")
                 {
-                    try
+                    if (CheckMandetoryFields())
                     {
-                        StringBuilder Masseges = new StringBuilder();
-                        if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAdj.Text))
+                        try
                         {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                            //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalsalesAdj.Text))
+                            StringBuilder Masseges = new StringBuilder();
+                            if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAdj.Text))
                             {
+                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                                Masseges.Append(string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
-                               
-                            }
-                          //  CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
-                        }
+                                //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-                        if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text))
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
-                            {
-                                if (Masseges == null)
+                                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalsalesAdj.Text))
                                 {
-                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+
+                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+
+                                }
+                                //  CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
+                            }
+
+                            if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text))
+                            {
+                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                                //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
+                                {
+                                    if (Masseges == null)
+                                    {
+                                        Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                                    }
+                                    else
+                                    {
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                                    }
+                                }
+                                // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
+                            }
+
+                            if (!string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAdj.Text))
+                            {
+                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                                //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
+                                {
+                                    if (Masseges == null)
+                                    {
+                                        Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+                                    }
+                                    else
+                                    {
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+
+                                    }
+                                }
+                                // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
+                            }
+                            if (!string.IsNullOrEmpty(LabelTotaldueVat.Text) && !string.IsNullOrEmpty(EntryPreperiodcorr.Text))
+                            {
+                                //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
+                            }
+
+                            if (Masseges != null)
+                            {
+                                PopUp Pop = new PopUp();
+                                Pop.IsLinkAvailable = false;
+                                Pop.Message = Masseges.ToString();
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            }
+
+                        }
+                        catch
+                        {
+
+                        }
+                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                        {
+                            bool value = viewModel.IsCheckedDraftMode();
+                            bool Tvalue = viewModel.IsTabbedValid("04");
+                            if (value && Tvalue)
+                            {
+                                if (viewModel.IsFirstTimeGet)
+                                {
+                                    viewModel.IsDeclarationCheckedForInstruction = true;
+                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                                }
+                            }
+                            if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                            {
+                                bool value1 = viewModel.IsCheckedDraftMode();
+
+                                if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
+                                {
+
                                 }
                                 else
                                 {
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                                    viewModel.SummaryClicked();
+                                    // setColor(previous, current);
+                                    NewSetColor(senderObject, current);
                                 }
-                            }
-                           // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
-                        }
 
-                        if (!string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAdj.Text))
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                            //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
-                            {
-                                if (Masseges == null)
+                                //Add because it will  not navigate in tobefilled and draft mode
+                                if (App.ICRStatus == "E0001" || value1)
                                 {
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
+
+                                    viewModel.SummaryClicked();
+                                    //  setColor(previous, current);
+                                    NewSetColor(senderObject, current);
+
                                 }
                                 else
                                 {
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage));
-
+                                    ((CollectionView)sender).SelectedItem = null;
                                 }
-                            }
-                           // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
-                        }
-                        if (!string.IsNullOrEmpty(LabelTotaldueVat.Text) && !string.IsNullOrEmpty(EntryPreperiodcorr.Text))
-                        {
-                            //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
-                        }
-
-                        if(Masseges !=null)
-                        {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = Masseges.ToString();
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
-                    {
-                        bool value = viewModel.IsCheckedDraftMode();
-                        bool Tvalue = viewModel.IsTabbedValid("04");
-                        if (value && Tvalue)
-                        {
-                            if (viewModel.IsFirstTimeGet)
-                            {
-                                viewModel.IsDeclarationCheckedForInstruction = true;
-                                viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                            }
-                        }
-                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
-                        {
-                            bool value1 = viewModel.IsCheckedDraftMode();
-                            
-                            if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
-                            {
-
                             }
                             else
                             {
-                                viewModel.SummaryClicked();
-                                setColor(previous, current);
-                            }
-
-                            //Add because it will  not navigate in tobefilled and draft mode
-                            if (App.ICRStatus == "E0001" || value1)
-                            {
-                                viewModel.SummaryClicked();
-                                setColor(previous, current);
+                                ((CollectionView)sender).SelectedItem = null;
                             }
                         }
+                        else
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+
+                            viewModel.IsMainButtonEnabled = false;
+                            chkDeclarationForSummary.IsChecked = false;
+                        }
+                        viewModel.IsFirstTimeGet = false;
                     }
                     else
                     {
-                        viewModel.IsMainButtonEnabled = false;
-
-                        viewModel.IsMainButtonEnabled = false;
-                        chkDeclarationForSummary.IsChecked = false;
+                        ((CollectionView)sender).SelectedItem = null;
                     }
-                    viewModel.IsFirstTimeGet = false;
                 }
-
             }
-
+        
         }
 
         private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -580,6 +610,25 @@ namespace GAZT.Views.NewViews
                 previous.TextColor = Color.FromHex("#FFFFFF");
             }
         }
+
+        public void NewSetColor(object sender, VATDeclarationTabbedPageName current)
+        {
+            var a = ((CollectionView)sender).ItemsSource;
+
+            foreach (var item in a)
+            {
+                var b = (VATDeclarationTabbedPageName)item;
+                if (b.pageName == current.pageName)
+                {
+                    b.TextColor = Color.FromHex("#c49b2d");
+                }
+                else
+                {
+                    b.TextColor = Color.FromHex("#FFFFFF");
+                }
+            }
+        }
+
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
 
@@ -1004,11 +1053,13 @@ namespace GAZT.Views.NewViews
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
-        public void CheckMandetoryFields()
+        public bool CheckMandetoryFields()
         {
+            bool IsAllEntered = true;
+
             if (TabVatReturn.IsVisible == true)
             {
-                bool IsAllEntered = true;
+               
                 if (string.IsNullOrEmpty(EntryVatAmount.Text))
                 {
                     IsAllEntered = false;
@@ -1134,6 +1185,7 @@ namespace GAZT.Views.NewViews
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
+            return IsAllEntered;
         }
 
         private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
