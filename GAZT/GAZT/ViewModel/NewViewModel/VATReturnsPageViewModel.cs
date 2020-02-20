@@ -3102,7 +3102,7 @@ namespace GAZT.ViewModel.NewViewModel
             VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
             VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
 
-            if(IsRefundVisible==true)
+            if(IsVisibleDropdownForRefund == true)
             {
                 VATDeclarationData.d.RefundFg = "1";
                 if (IsCheckedRefund==true)
@@ -3126,6 +3126,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
                 }
+            }
+            else
+            {
+                VATDeclarationData.d.RefundFg = "0";
             }
         }
 
