@@ -15,6 +15,9 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static string NoteString = string.Empty;
+        public static bool ClearNoteClicked = false;
+        public static int NoteCount = 0;
+        public static bool IsClearAndCloseForDraft = false;
         public static bool IsComingFromNotePage = false;
         public ICommand OnAddButtonClicked { get; set; }
         public ICommand OnClearButtonClicked { get; set; }
@@ -79,6 +82,7 @@ namespace GAZT.ViewModel.NewViewModel
             OnClearButtonClicked = new Command(() =>
             {
                 NoteText = string.Empty;
+                ClearNoteClicked = true;
                 _navigationService.GoBack();
             });
 

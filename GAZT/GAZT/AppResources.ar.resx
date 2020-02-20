@@ -1703,7 +1703,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalVATSales" xml:space="preserve">
-    <value>إجمالي مبيعات القيمة المضافة</value>
+    <value>المبيعات عبر نقاط البيع</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">

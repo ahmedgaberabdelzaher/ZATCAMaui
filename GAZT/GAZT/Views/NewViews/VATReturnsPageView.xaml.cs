@@ -53,6 +53,7 @@ namespace GAZT.Views.NewViews
             }
             viewModel.IsFirstTimeGet = true;
             AddNotePageViewModel.NoteString = string.Empty;
+            AddNotePageViewModel.NoteCount = 0;
             viewModel.IsRefundVisible = false;
             viewModel.IsGetAcknowledgementClicked = false;
             viewModel.IsVisibleDropdownForRefund = false;
@@ -176,6 +177,8 @@ namespace GAZT.Views.NewViews
             if (AddNotePageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(AddNotePageViewModel.NoteString))
             {
 
+               
+
                 if (App.ICRStatus == "E0001")
                 {
                     SetNote();
@@ -200,6 +203,20 @@ namespace GAZT.Views.NewViews
 
 
 
+                }
+                if (AddNotePageViewModel.ClearNoteClicked == true)
+                {
+                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    if (note != null)
+                    {
+                        foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        {
+                            item.Strline = String.Empty;
+                        }
+                        AddNotePageViewModel.IsComingFromNotePage = false;
+                        AddNotePageViewModel.NoteString = string.Empty;
+                    }
+                    AddNotePageViewModel.ClearNoteClicked = false;
                 }
             }
         }

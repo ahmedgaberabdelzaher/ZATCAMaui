@@ -56,7 +56,7 @@
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry  Grid.Row="2" Text="{Binding OldValue}" IsEnabled="False"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry  Grid.Row="2" Placeholder="{Binding OldValue}" IsEnabled="False"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
@@ -228,7 +228,7 @@
 
                                                                     </Image>-->
 
-                                                                    <Image Grid.Row="0"  Grid.Column="4" Aspect="AspectFit"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="ic_delete.png"  >
+                                                                    <Image Grid.Row="0"  Grid.Column="4" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer
                 Tapped="OnDeleteAttachmentClickedTapped"

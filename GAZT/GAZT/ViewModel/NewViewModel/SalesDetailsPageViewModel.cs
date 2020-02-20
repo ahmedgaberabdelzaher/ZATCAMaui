@@ -385,24 +385,16 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnAcceptReturnButtonClicked = new Command(async () =>
             {
-                if (CheckBoxStatus)
-                {
-                    _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+                _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                     CheckBoxStatus = false;
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
-                    });
-                }
+               
             });
 
             OnAmendReturnButtonClicked = new Command(async () =>
             {
                 try
                 {
-
+                    ShowDisclaimer();
                     ShowEditIcon();
                     ShowSubmitButton();
                     CheckBoxStatus = false;
@@ -479,6 +471,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnConfirmClicked(string InvFlag)
         {
+            ShowDisclaimer();
             if (CheckBoxStatus)
             {
                 string PostOperationID = GetConfirmOperationId();
@@ -523,7 +516,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Estsl = ZakatReturnDetail.d.Estsl;
                 RetGuid = zakatReturnDetailsD.d.ReturnId;
 
-                SetSalesDetailsData();
+                SetSalesDetailsData(zakatReturnDetailsD);
                 //if(ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 //if (ZakatReturnDetail.d.Statusz.Equals("E0001") || ZakatReturnDetail.d.Statusz.Equals("IP011"))
                 //{
@@ -567,6 +560,7 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0003"))// In Build state but not amended yet
                 {
                     ShowAcceptAndAmendButton();
+                    HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
                 else
@@ -606,6 +600,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
                             Estsl = _zakatReturnDetails.d.Estsl;
+                            SetSalesDetailsData(_zakatReturnDetails);
                             IsCurrentZAKATTaxLess = existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                             AssignCalculatedValueAfterSubmission();
                         }
@@ -623,7 +618,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                         }
                         if (PostOperation.Equals("05"))
-                    {
+                        {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) > existingZakatBase)//existingZakatBase
                         {
                               ShowConfirmButton();
@@ -1137,93 +1132,101 @@ namespace GAZT.ViewModel.NewViewModel
             zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
 
-        public void SetSalesDetailsData()
+        public void SetSalesDetailsData(ZakatReturnDetails zakatReturnDetails)
         {
-            Color VATBackgroundColor;
-            Color CapitalBackgroundColor;
-            double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
-            double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
-            bool   IsThresholdGreaterLessVATAmount = d < d1;
-            SalesDetailsList = new ObservableCollection<SalesDetails>();
-
-            ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
-            bool isVATAmountGreaterThanThreshold = IsVATAmountGreaterThanThreshold();
-            SalesDetails salesDetails1 = new SalesDetails();
-            salesDetails1.SalesType = AppResources.ZZTotalVATSales;
-            salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
-            salesDetails1.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.TvtslE) ? "0.00" : zakatReturnDetailsD.d.TvtslE;
-            salesDetails1.SelectedEditFieldId = "1";
-            if(IsThresholdGreaterLessVATAmount)
+            try
             {
-                VATBackgroundColor = Color.FromHex("#EEEDED"); 
-                CapitalBackgroundColor = Color.White;
+                Color VATBackgroundColor;
+                Color CapitalBackgroundColor;
+                double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
+                double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                bool IsThresholdGreaterLessVATAmount = d < d1;
+                SalesDetailsList = new ObservableCollection<SalesDetails>();
+
+                ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
+                bool isVATAmountGreaterThanThreshold = IsVATAmountGreaterThanThreshold();
+                SalesDetails salesDetails1 = new SalesDetails();
+                salesDetails1.SalesType = AppResources.ZZTotalVATSales;
+                salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = string.IsNullOrEmpty(zakatReturnDetails.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
+                salesDetails1.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.TvtslE) ? "0.00" : zakatReturnDetails.d.TvtslE;
+                salesDetails1.SelectedEditFieldId = "1";
+                if (IsThresholdGreaterLessVATAmount)
+                {
+                    VATBackgroundColor = Color.FromHex("#EEEDED");
+                    CapitalBackgroundColor = Color.White;
+                }
+                else
+                {
+                    VATBackgroundColor = Color.White;
+                    CapitalBackgroundColor = Color.FromHex("#EEEDED");
+                }
+                salesDetails1.DisableItemBackgroundColor = VATBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails1);
+
+                SalesDetails salesDetails2 = new SalesDetails();
+                salesDetails2.SalesType = AppResources.ZZAveragenumberoflabour;
+                salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
+                salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
+                salesDetails2.SelectedEditFieldId = "2";
+                salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
+
+                SalesDetailsDummyList.Add(salesDetails2);
+
+                SalesDetails salesDetails3 = new SalesDetails();
+                salesDetails3.SalesType = AppResources.ZZImportsvalue;
+                salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
+                salesDetails3.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.ImpvalE) ? "0.00" : zakatReturnDetails.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
+                salesDetails3.SelectedEditFieldId = "3";
+                salesDetails3.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails3);
+
+                SalesDetails salesDetails4 = new SalesDetails();
+                salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
+                salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
+                salesDetails4.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
+                salesDetails4.SelectedEditFieldId = "4";
+                salesDetails4.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails4);
+
+                SalesDetails salesDetails5 = new SalesDetails();
+                salesDetails5.SalesType = AppResources.ZZContractsformETIMADsystem;
+                salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
+                salesDetails5.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
+                salesDetails5.SelectedEditFieldId = "5";
+                salesDetails5.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails5);
+
+                SalesDetails salesDetails6 = new SalesDetails();
+                salesDetails6.SalesType = AppResources.ZZExportsvalue;
+                salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
+                salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
+                salesDetails6.SelectedEditFieldId = "6";
+                salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails6);
+
+                SalesDetails salesDetails7 = new SalesDetails();
+                salesDetails7.SalesType = AppResources.ZZPurchasevalue;
+                salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
+                salesDetails7.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.PramtE) ? "0.00" : zakatReturnDetails.d.PramtE; // ZakatReturnDetail.d.PramtE;
+                salesDetails7.SelectedEditFieldId = "7";
+                salesDetails7.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsDummyList.Add(salesDetails7);
+
+                SalesDetails salesDetails8 = new SalesDetails();
+                salesDetails8.SalesType = AppResources.ZZCapitalamount;
+                salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
+                salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Cpamt) ? "0.00" : zakatReturnDetails.d.Cpamt;
+                SalesDetailsDummyList.Add(salesDetails8);
+                salesDetails8.SelectedEditFieldId = "8";
+                salesDetails8.DisableItemBackgroundColor = CapitalBackgroundColor;
+                SalesDetailsList = SalesDetailsDummyList;
+                SalesDetailsDataList = SalesDetailsDummyList;
             }
-            else
+            catch(Exception ex)
             {
-                VATBackgroundColor = Color.White;
-                CapitalBackgroundColor = Color.FromHex("#EEEDED");
+
             }
-            salesDetails1.DisableItemBackgroundColor = VATBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails1);
-
-            SalesDetails salesDetails2 = new SalesDetails();
-            salesDetails2.SalesType = AppResources.ZZAveragenumberoflabour;
-            salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
-            salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.LabnoE) ? "0.00" : zakatReturnDetailsD.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
-            salesDetails2.SelectedEditFieldId = "2";
-            salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
-
-            SalesDetailsDummyList.Add(salesDetails2);
-
-            SalesDetails salesDetails3 = new SalesDetails();
-            salesDetails3.SalesType = AppResources.ZZImportsvalue;
-            salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
-            salesDetails3.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.ImpvalE) ? "0.00" : zakatReturnDetailsD.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
-            salesDetails3.SelectedEditFieldId = "3";
-            salesDetails3.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails3);
-
-            SalesDetails salesDetails4 = new SalesDetails();
-            salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
-            salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
-            salesDetails4.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
-            salesDetails4.SelectedEditFieldId = "4";
-            salesDetails4.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails4);
-
-            SalesDetails salesDetails5 = new SalesDetails();
-            salesDetails5.SalesType = AppResources.ZZContractsformETIMADsystem;
-            salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
-            salesDetails5.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
-            salesDetails5.SelectedEditFieldId = "5";
-            salesDetails5.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails5);
-
-            SalesDetails salesDetails6 = new SalesDetails();
-            salesDetails6.SalesType = AppResources.ZZExportsvalue;
-            salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
-            salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Sumcnt) ? "0.00" : zakatReturnDetailsD.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
-            salesDetails6.SelectedEditFieldId = "6";
-            salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails6);
-
-            SalesDetails salesDetails7 = new SalesDetails();
-            salesDetails7.SalesType = AppResources.ZZPurchasevalue;
-            salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
-            salesDetails7.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.PramtE) ? "0.00" : zakatReturnDetailsD.d.PramtE; // ZakatReturnDetail.d.PramtE;
-            salesDetails7.SelectedEditFieldId = "7";
-            salesDetails7.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsDummyList.Add(salesDetails7);
-
-            SalesDetails salesDetails8 = new SalesDetails();
-            salesDetails8.SalesType = AppResources.ZZCapitalamount;
-            salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
-            salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetailsD.d.Cpamt) ? "0.00" : zakatReturnDetailsD.d.Cpamt;
-            SalesDetailsDummyList.Add(salesDetails8);
-            salesDetails8.SelectedEditFieldId = "8";
-            salesDetails8.DisableItemBackgroundColor = CapitalBackgroundColor;
-            SalesDetailsList = SalesDetailsDummyList;
-            SalesDetailsDataList = SalesDetailsDummyList;
+         
         }
 
         //public void SetChangedDataToTheList()
