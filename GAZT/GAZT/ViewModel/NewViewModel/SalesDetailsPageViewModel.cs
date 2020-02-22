@@ -36,7 +36,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ZakatReturnDetails zakatReturnDetailsDToCompare = new ZakatReturnDetails();
         ZakatReturnDetails _zakatReturnDetails = new ZakatReturnDetails();
         public bool IsCurrentZAKATTaxLess = false;
-
+        public double existingZakatBase = 0.00;
 
 
         #endregion
@@ -410,6 +410,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
+                  
                     bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
                     if (IsValueChange)
                     {
@@ -471,23 +472,36 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnConfirmClicked(string InvFlag)
         {
-            ShowDisclaimer();
-            if (CheckBoxStatus)
+          //  ShowDisclaimer();
+          if(IsCurrentZAKATTaxLess)
+            {
+
+                if (CheckBoxStatus)
+                {
+                    string PostOperationID = GetConfirmOperationId();
+                    //  string PostOperationID = "66";
+                    await SubmitZakatReturn(PostOperationID, InvFlag);
+                    CheckBoxStatus = false;
+                }
+                else
+                {
+                    await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                }
+            }
+          else
             {
                 string PostOperationID = GetConfirmOperationId();
-              //  string PostOperationID = "66";
+                //  string PostOperationID = "66";
                 await SubmitZakatReturn(PostOperationID, InvFlag);
                 CheckBoxStatus = false;
             }
-            else
-            {
-                await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
-            }
+            
         }
         public void onPageLoad()
         {
             try
             {
+                existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
                 ShowDisclaimer();
                 CheckBoxStatus = false;
                 HideEditIcon();
@@ -587,21 +601,32 @@ namespace GAZT.ViewModel.NewViewModel
             {
             try
                 {
-                    double existingZakatBase = 0.00;
+                
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
                          _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
-                         HideDisclaimer();
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                            HideDisclaimer();
+                        }
                     }
                     else
                     {
                          _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                         if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
-                            existingZakatBase = Convert.ToDouble(zakatReturnDetailsDToCompare.d.Zkamt);
+                            HideDisclaimer();
                             Estsl = _zakatReturnDetails.d.Estsl;
-                           
-                            IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+
+                          //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                            if(existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
+                            {
+                                IsCurrentZAKATTaxLess = true;
+                            }
+                            else
+                            {
+                                IsCurrentZAKATTaxLess = false;
+                            }
                             AssignCalculatedValueAfterSubmission();
                         }
                     }
@@ -624,10 +649,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
                                 ShowOnlyInfoIcon();
+                                HideDisclaimer();
 
                         }
                         else
                         {
+                                ShowDisclaimer();
                             SetChangedValueToUploadAttachment();
                             bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
                             if (ISAllRequiredDocumentUploadedwithReason)

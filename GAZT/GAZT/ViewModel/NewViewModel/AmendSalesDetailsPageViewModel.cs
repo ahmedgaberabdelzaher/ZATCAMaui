@@ -287,8 +287,8 @@ namespace GAZT.ViewModel.NewViewModel
                                                 _estimateZakatAttachment.Mimetype = "";
                                                 _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
                                                 _estimateZakatAttachment.DataVersion = "";
-                                                DateTime currentDate = DateTime.Now;
-                                                _estimateZakatAttachment.UploadedDate = currentDate.ToString();
+                                                //DateTime currentDate = DateTime.Now;
+                                                //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
                                                 _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
                                                 SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
                                                 IsValueChanged();
