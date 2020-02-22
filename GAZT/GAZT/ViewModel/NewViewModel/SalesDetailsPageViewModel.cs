@@ -672,22 +672,6 @@ namespace GAZT.ViewModel.NewViewModel
 
                         }
                          }
-                   
-                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
-                    {
-
-
-                        //await Task.Run(async() =>
-                        //{
-                        //    await GetSADADNumber();
-                        //    // ShowInvoicePopUp(PostOperation);
-                        //    Device.BeginInvokeOnMainThread(async () => {
-                        //        _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
-
-                        //    });
-                        //}); 
-                    }
-
                 }
                 else
                 {
