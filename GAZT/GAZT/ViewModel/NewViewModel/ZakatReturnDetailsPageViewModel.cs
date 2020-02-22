@@ -71,6 +71,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _salesDetailsAndReleaseButtonVisibility = true;
+        public bool SalesDetailsAndReleaseButtonVisibility
+        {
+            get
+            {
+                return _salesDetailsAndReleaseButtonVisibility;
+            }
+            set
+            {
+                _salesDetailsAndReleaseButtonVisibility = value;
+                RaisePropertyChanged("SalesDetailsAndReleaseButtonVisibility");
+            }
+        }
+
+
+        
         private string _releaseOrBillDetailsButtonText;
         public string ReleaseOrBillDetailsButtonText
         {
@@ -175,6 +191,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             }
+            else if(ZakatReturnDetails.d.Statusz.Equals(""))
+            {
+                SalesDetailsAndReleaseButtonVisibility = false;
+            }
             else
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
@@ -266,20 +286,28 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
                 {
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )
+                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT
                 {
-                    ReleaseOrBillDetailsButtonText = AppResources.AmendTheReturn;
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if(ButtonStatus.Equals("E0005"))//In Processing
                 {
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals(""))//In Processing
+                {
+                    SalesDetailsAndReleaseButtonVisibility = false;
                 }
             }
             catch(Exception ex)

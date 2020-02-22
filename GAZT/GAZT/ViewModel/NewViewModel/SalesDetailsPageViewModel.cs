@@ -577,6 +577,18 @@ namespace GAZT.ViewModel.NewViewModel
                     HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0002"))// Status when the return released by GAZT officer
+                {
+                    ShowAcceptAndAmendButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
+                else if (ZakatReturnDetail.d.Statusz.Equals(""))// Status when the return released by GAZT officer
+                {
+                    HideAllButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
                 else
                 {
                     ShowAcceptAndAmendButton();
