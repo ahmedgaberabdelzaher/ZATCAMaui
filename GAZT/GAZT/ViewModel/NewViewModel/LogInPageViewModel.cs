@@ -3,12 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.Views.NewViews;
-using Plugin.Connectivity;
-using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -31,8 +27,8 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-       // private string _UserName = "3020194804";
-        private string _UserName = string.Empty;
+        private string _UserName = "3020115898";
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -91,9 +87,9 @@ namespace GAZT.ViewModel
         }
 
 
-      //  private string _Password = "Init@1234";
+        private string _Password = "Init@1234";
         
-      private string _Password = string.Empty;
+      //private string _Password = string.Empty;
         public string Password
         {
             get
