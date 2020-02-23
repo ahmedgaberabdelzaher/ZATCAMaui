@@ -210,7 +210,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="1" />
-                                                    <Label Text="{x:Static local:AppResources.DueDate}" 
+                                                    <Label Text="{x:Static local:AppResources.ZDescription}" 
                                       
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
