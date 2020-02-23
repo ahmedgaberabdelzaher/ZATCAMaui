@@ -2527,7 +2527,7 @@ namespace GAZT.Manager
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
-                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=disabled&$expand=UI_BTNSet&$format=json";
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=disabled&$expand=UI_BTNSet,IGRTSet&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
