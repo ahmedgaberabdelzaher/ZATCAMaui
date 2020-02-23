@@ -30,36 +30,39 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public VATReturnsPageView(VATDeclaration _vATDeclarationInfo)
         {
-            viewModel = App.Locator.AAcknowledgement;
-            //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
-            //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-            //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-            //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-
-
-
-            InitializeComponent();
-
-
-            viewModel = App.Locator.AAcknowledgement;
-            this.BindingContext = viewModel;
-            SetLTR();
-
-            if (_vATDeclarationInfo.d != null)
+            try
             {
-                viewModel.VATDeclarationData = _vATDeclarationInfo;
-            }
-            viewModel.IsFirstTimeGet = true;
-            AddNotePageViewModel.NoteString = string.Empty;
-            AddNotePageViewModel.NoteCount = 0;
-            viewModel.IsRefundVisible = false;
-            viewModel.IsGetAcknowledgementClicked = false;
-            viewModel.IsVisibleDropdownForRefund = false;
-            setAllCheckbox(false);
-            Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
-            {
+                viewModel = App.Locator.VATReturnsPageView;
+                //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
+                //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+                //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+                //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
+                //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+                //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
+
+
+
+                InitializeComponent();
+
+
+                viewModel = App.Locator.VATReturnsPageView;
+                this.BindingContext = viewModel;
+                SetLTR();
+
+                if (_vATDeclarationInfo.d != null)
+                {
+                    viewModel.VATDeclarationData = _vATDeclarationInfo;
+                }
+                viewModel.IsFirstTimeGet = true;
+                AddNotePageViewModel.NoteString = string.Empty;
+                AddNotePageViewModel.NoteCount = 0;
+                viewModel.IsRefundVisible = false;
+                viewModel.IsGetAcknowledgementClicked = false;
+                viewModel.IsVisibleDropdownForRefund = false;
+                viewModel.IsFirstSubmission = true;
+                setAllCheckbox(false);
+                Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+                {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
@@ -67,10 +70,15 @@ namespace GAZT.Views.NewViews
             };
 
 
-            IntilizeAsync();
+                IntilizeAsync();
 
-            viewModel.IsMainButtonEnabled = false;
-            // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+                viewModel.IsMainButtonEnabled = false;
+                // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+            }
+            catch(Exception e)
+            {
+
+            }
         }
         #endregion
 
@@ -612,19 +620,32 @@ namespace GAZT.Views.NewViews
 
         public void NewSetColor(object sender, VATDeclarationTabbedPageName current)
         {
-            var a = ((CollectionView)sender).ItemsSource;
-
-            foreach (var item in a)
+            try
             {
-                var b = (VATDeclarationTabbedPageName)item;
-                if (b.pageName == current.pageName)
+                if (sender != null && current != null)
                 {
-                    b.TextColor = Color.FromHex("#c49b2d");
+
+                    CollectionView collectionView = new CollectionView();
+                    collectionView.ItemsSource = ((CollectionView)sender).ItemsSource;
+                    //   var a = collectionView.ItemsSource;
+
+                    foreach (var item in collectionView.ItemsSource)
+                    {
+                        var b = (VATDeclarationTabbedPageName)item;
+                        if (b.pageName == current.pageName)
+                        {
+                            b.TextColor = Color.FromHex("#c49b2d");
+                        }
+                        else
+                        {
+                            b.TextColor = Color.FromHex("#FFFFFF");
+                        }
+                    }
                 }
-                else
-                {
-                    b.TextColor = Color.FromHex("#FFFFFF");
-                }
+            }
+            catch(Exception e)
+            {
+
             }
         }
 

@@ -408,26 +408,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                         _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
 
-                        //try
-                        //{
-                        //    // Made changes in the data to test the API
-                        //    //_vATDeclaration.d.StdpurchaseAmt = "3000";
-                        //    //_vATDeclaration.d.ADRSet.results[0].City = "Mumbai";
-                        //    //_vATDeclaration.d.ADRSet.results[0].Street = "Church Gate";
-                        //    //_vATDeclaration.d.Operationz = "05";
-                        //    //_vATDeclaration.d.StepNumber = "04";
-                        //    //_vATDeclaration.d.StdsalesAmt = "5400";
-                        //    //_vATDeclaration.d.SalesGccAmt = "5400";
-
-                        //    //_vATDeclaration.d.StepNumberz = "04";
-                        //}
-                        //catch (Exception ex)
-                        //{
-
-
-                        //}
-                        //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
-                    }
+                   }
 
 
 

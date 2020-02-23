@@ -49,11 +49,21 @@ namespace GAZT.Views.NewViews
                     viewModel.IsButtonVisible = false;
                     if ((App.ICRStatus== "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
                     {
-                        viewModel.OnRefreshClick();
+                        if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                        {
+                            viewModel.IsSadadNumberVisible = false;
+                            viewModel.IsSadadNoteVisible = false;
+                            viewModel.IsRefreshButtonVisible = false;
+                            viewModel.IsButtonVisible = true;
+                        }
+                        else
+                        {
+                            viewModel.OnRefreshClick();
+                        }
                     }
                     else
                     {
-                        if (App.ICRStatus == "E0006")
+                        if (App.ICRStatus == "E0006" || Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat)<=0)
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsSadadNoteVisible = false;
