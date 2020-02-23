@@ -554,7 +554,7 @@ namespace GAZT
         }
 
 
-        public VATReturnsPageViewModel AAcknowledgement
+        public VATReturnsPageViewModel VATReturnsPageView
         {
             get
             {

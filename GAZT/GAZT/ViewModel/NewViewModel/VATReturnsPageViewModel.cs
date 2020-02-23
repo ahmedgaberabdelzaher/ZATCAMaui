@@ -40,7 +40,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onFaqSectionClicked { get; set; }
 
 
-        bool IsFirstSubmission = true;
+       // bool IsFirstSubmission = true;
 
         byte[] attachment;
         public ICommand onCreditCarriedForwardClicked { get; set; }
@@ -125,6 +125,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isFirstSubmission = true;
+        public bool IsFirstSubmission
+        {
+            get
+            {
+                return _isFirstSubmission;
+            }
+            set
+            {
+                _isFirstSubmission = value;
+                RaisePropertyChanged("IsFirstSubmission");
             }
         }
 
@@ -561,6 +575,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isAmendClicked = value;
                 if (_isAmendClicked == true)
                 {
+                    IsGetAcknowledgementClicked = false;
                     IsAmend = true;
                 }
                 else
@@ -939,6 +954,35 @@ namespace GAZT.ViewModel.NewViewModel
                 _isControlEnabled = value;
 
                 RaisePropertyChanged("IsControlEnabled");
+            }
+        }
+
+        private bool _isDeclarationCheckEnabled = false;
+        public bool IsDeclarationCheckEnabled
+        {
+            get
+            {
+                return _isDeclarationCheckEnabled;
+            }
+            set
+            {
+                _isDeclarationCheckEnabled = value;
+
+                RaisePropertyChanged("IsDeclarationCheckEnabled");
+            }
+        }
+        private bool _isTaxPayerCheckEnabled = false;
+        public bool IsTaxPayerCheckEnabled
+        {
+            get
+            {
+                return _isTaxPayerCheckEnabled;
+            }
+            set
+            {
+                _isTaxPayerCheckEnabled = value;
+
+                RaisePropertyChanged("IsTaxPayerCheckEnabled");
             }
         }
 
@@ -1963,6 +2007,8 @@ namespace GAZT.ViewModel.NewViewModel
         public void ManageEnabledProperty(bool value)
         {
             IsControlEnabled = value;
+            IsDeclarationCheckEnabled = value;
+            IsTaxPayerCheckEnabled = value;
             IsMainButtonEnabled = value;
         }
 
@@ -2137,7 +2183,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-            IsFirstSubmission = true;
+          //  IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseVat)&& !string.IsNullOrEmpty(TotalsalesVat))
             {
               
@@ -2305,7 +2351,7 @@ namespace GAZT.ViewModel.NewViewModel
                 //await Task.Run(async() =>
                 //{
                 //IsLoading = true;
-                if (FirstSubmissionCount != 1)
+            if (FirstSubmissionCount != 1)
             {
                 CreateDataForPost();
             }
@@ -2622,6 +2668,8 @@ namespace GAZT.ViewModel.NewViewModel
                 PopToRootPage();
                 await SaveReturnAndGetReturnAndSetButtons();
                 ManageEnabledProperty(true);
+                IsDeclarationCheckEnabled = false;
+                IsTaxPayerCheckEnabled = false;
                 IsAmendClicked = true;
                 IsMainButtonEnabled = true;
             });
@@ -2912,7 +2960,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s.pageName = "التعليمات";
                 }
-            vatTabbedList.Add(s);
+          //  vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2922,7 +2970,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s1.pageName = "تفاصيل المكلف";
                 }
-            vatTabbedList.Add(s1);
+          //  vatTabbedList.Add(s1);
             VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2932,7 +2980,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s2.pageName = "نموذج الإقرار الضريبي";
                 }
-            vatTabbedList.Add(s2);
+          //  vatTabbedList.Add(s2);
             VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2942,7 +2990,22 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s3.pageName = "ملخص";
                 }
-            vatTabbedList.Add(s3);
+           // vatTabbedList.Add(s3);
+            
+            if(App.IsArabic)
+                {
+                    vatTabbedList.Add(s3);
+                    vatTabbedList.Add(s2);
+                    vatTabbedList.Add(s1);
+                    vatTabbedList.Add(s);
+                }
+            else
+                {
+                    vatTabbedList.Add(s);
+                    vatTabbedList.Add(s1);
+                    vatTabbedList.Add(s2);
+                    vatTabbedList.Add(s3);
+                }
 
             VatTabbledPageList = vatTabbedList;
             PageSelectedItem = VatTabbledPageList[0];
@@ -3084,7 +3147,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
+                VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
             PopToRootPage();
 
             if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))

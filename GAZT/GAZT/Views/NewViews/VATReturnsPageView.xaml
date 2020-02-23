@@ -157,7 +157,7 @@
                             </Label>
 
 
-                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
+                            <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDeclarationCheckEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
                                 <CheckBox.Triggers>
                                     <!--<DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
@@ -342,7 +342,7 @@
 
 
 
-                        <CheckBox x:Name="chkClearification" CheckedChanged="chkClearification_CheckedChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <CheckBox x:Name="chkClearification" CheckedChanged="chkClearification_CheckedChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTaxPayerCheckEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkClearification}, Path=IsChecked}" Value="false">
                                     <Setter Property="Color" Value="#ff0000" />
@@ -1678,7 +1678,7 @@
 
 
 
-                <CollectionView  SelectionChanged="OnPageSelected"  SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="{Binding IsTabbedMenuAvailable}"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <CollectionView  SelectionChanged="OnPageSelected"   SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="{Binding IsTabbedMenuAvailable}"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,0,5,0" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="#005e4b"  HorizontalOptions="Center">

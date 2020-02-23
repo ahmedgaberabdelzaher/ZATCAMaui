@@ -1733,7 +1733,7 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static VATDeclaration SaveVATDeclarationData(VATDeclaration vATDeclaration)
+        public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
             VATDeclaration RequestVATDeclaration = new VATDeclaration();
             if (CrossConnectivity.Current.IsConnected)
@@ -1762,7 +1762,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
 
                     _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
@@ -2344,14 +2344,14 @@ namespace GAZT.Manager
         }
         //Seesion expired handled  
         //done internet exception handling
-        public static VATDeclaration GAZTSetVATReturnVoid(VATDeclaration vATDeclaration)
+        public static async Task<VATDeclaration> GAZTSetVATReturnVoid(VATDeclaration vATDeclaration)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeclaration RequestVATDeclaration = null;
             try
             {
-                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
+                RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
@@ -2368,14 +2368,14 @@ namespace GAZT.Manager
         }
         //Seesion expired handled  
         //done internet exception handling
-        public static VATDeclaration GAZTSetVATReturnReset(VATDeclaration vATDeclaration)
+        public static async Task<VATDeclaration> GAZTSetVATReturnReset(VATDeclaration vATDeclaration)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeclaration RequestVATDeclaration = null;
                 try
                 {
-                    RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
+                    RequestVATDeclaration =await SaveVATDeclarationData(vATDeclaration);
                 }
                 catch (Exception ex)
                 {
@@ -2391,12 +2391,12 @@ namespace GAZT.Manager
             }
         }
 
-        public static VATDeclaration GAZTSetVATReturnAmend(VATDeclaration vATDeclaration)
+        public static async Task<VATDeclaration> GAZTSetVATReturnAmend(VATDeclaration vATDeclaration)
         {
             VATDeclaration RequestVATDeclaration = null;
             try
             {
-                RequestVATDeclaration = SaveVATDeclarationData(vATDeclaration);
+                RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
             }
             catch (Exception ex)
             {
