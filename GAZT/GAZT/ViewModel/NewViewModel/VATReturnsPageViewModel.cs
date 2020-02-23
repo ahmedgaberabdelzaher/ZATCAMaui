@@ -2364,7 +2364,8 @@ namespace GAZT.ViewModel.NewViewModel
                     else
                     {
                         await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-
+                        VATReturnFormClicked();
+                        PageSelectedItem = VatTabbledPageList[2];
                     }
 
 
