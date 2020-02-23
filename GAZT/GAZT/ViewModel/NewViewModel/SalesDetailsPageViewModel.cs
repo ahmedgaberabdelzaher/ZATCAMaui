@@ -1223,7 +1223,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 SalesDetails salesDetails6 = new SalesDetails();
                 salesDetails6.SalesType = AppResources.ZZExportsvalue;
-                salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtResn) ? "0.00" : ZakatReturnDetail.d.ExamtResn; //ZakatReturnDetail.d.ExamtResn;
+                salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtI) ? "0.00" : ZakatReturnDetail.d.ExamtI; //ZakatReturnDetail.d.ExamtResn;
                 salesDetails6.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
                 salesDetails6.SelectedEditFieldId = "6";
                 salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
