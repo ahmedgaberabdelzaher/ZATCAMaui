@@ -71,6 +71,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _salesDetailsAndReleaseButtonVisibility = true;
+        public bool SalesDetailsAndReleaseButtonVisibility
+        {
+            get
+            {
+                return _salesDetailsAndReleaseButtonVisibility;
+            }
+            set
+            {
+                _salesDetailsAndReleaseButtonVisibility = value;
+                RaisePropertyChanged("SalesDetailsAndReleaseButtonVisibility");
+            }
+        }
+
+
+        
         private string _releaseOrBillDetailsButtonText;
         public string ReleaseOrBillDetailsButtonText
         {
@@ -175,6 +191,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             }
+            else if(ZakatReturnDetails.d.Statusz.Equals(""))
+            {
+                SalesDetailsAndReleaseButtonVisibility = false;
+            }
             else
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
@@ -194,44 +214,56 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
                     PopToRootPage();
-                    //  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
-                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                    ZakatReturnDetails = zakatReturnDetails;
-                    ZakatReturnDetail = zakatReturnDetails.d;
-                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                    if(zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
+                    if(zakatReturnDetails != null && zakatReturnDetails.d != null)
                     {
-                        if (App.IsArabic)
+                        //  var res =   WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetails.d.Fbnum, fbguid); // Method to get the invoice
+                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                        ZakatReturnDetails = zakatReturnDetails;
+                        ZakatReturnDetail = zakatReturnDetails.d;
+                        SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
                         {
-                            try
+                            if (App.IsArabic)
                             {
-                                Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                Abrzu = UtilityManager.ToArabicDate(Abrzu);
-                                Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                Abrzo = UtilityManager.ToArabicDate(Abrzo);
-                                Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
+                                try
+                                {
+                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    Abrzu = UtilityManager.ToArabicDate(Abrzu);
+                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    Abrzo = UtilityManager.ToArabicDate(Abrzo);
+                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+
+                                // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                             }
-                            catch (Exception ex)
+                            else
                             {
+                                try
+                                {
+                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
 
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
                             }
-
-                            // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                         }
-                        else
-                        {
-                            try
-                            {
-                                Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
 
-                            }
-                            catch (Exception ex)
-                            {
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                           await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        });
 
-                            }
-                        }
+                        IsLoading = false;
                     }
                     
                 });
@@ -244,7 +276,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
 
@@ -266,20 +298,28 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
                 {
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )
+                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT
                 {
-                    ReleaseOrBillDetailsButtonText = AppResources.AmendTheReturn;
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if(ButtonStatus.Equals("E0005"))//In Processing
                 {
+                    SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals(""))//In Processing
+                {
+                    SalesDetailsAndReleaseButtonVisibility = false;
                 }
             }
             catch(Exception ex)

@@ -34,7 +34,6 @@ namespace GAZT.Models
         public string DataVersion { get; set; }
         public string DocUrl { get; set; }
         public string OutletRef { get; set; }
-        public string UploadedDate { get; set; }
     }
     public class ReasonSet
     {

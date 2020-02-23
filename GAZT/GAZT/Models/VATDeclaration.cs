@@ -524,4 +524,5 @@ namespace GAZT.Models
         
         public Buttons buttonEnumId = Buttons.None;
     }
+
 }

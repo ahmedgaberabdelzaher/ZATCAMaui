@@ -2527,7 +2527,7 @@ namespace GAZT.Manager
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
 
-                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=disabled&$expand=UI_BTNSet&$format=json";
+                String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=disabled&$expand=UI_BTNSet,IGRTSet&$format=json";
 
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
@@ -2604,7 +2604,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FZ12_BS_SRV/UI_HdrSet(Fbtypz='FZ12',UserTypz='TP',Fbnum='94000001174',Gpart='',Status='E0003',TxnTp='',Formproc='FZ12',Lang='EN',Officer='')?&$expand=UI_BtnSet&$format=json&saml2=disabled";
+                    //  String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FZ12_BS_SRV/UI_HdrSet(Fbtypz='FZ12',UserTypz='TP',Fbnum='94000001174',Gpart='',Status='E0003',TxnTp='',Formproc='FZ12',Lang='EN',Officer='')?&$expand=UI_BtnSet&$format=json&saml2=disabled";
+                    String url = "";
                     var uri = new Uri(url);
 
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
