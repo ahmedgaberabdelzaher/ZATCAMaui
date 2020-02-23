@@ -79,7 +79,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      
+            ItemTapped="Attachmentlist_ItemTapped"
             SeparatorVisibility="None"
             >
                             <ListView.ItemTemplate>

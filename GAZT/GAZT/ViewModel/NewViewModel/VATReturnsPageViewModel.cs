@@ -1003,6 +1003,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private List<IGRTSetResult> _calculationRateIGRTSet;
+        public List<IGRTSetResult> CalculationRateIGRTSet
+        {
+            get
+            {
+                return _calculationRateIGRTSet;
+            }
+            set
+            {
+                _calculationRateIGRTSet = value;
+
+                RaisePropertyChanged("CalculationRateIGRTSet");
+            }
+        }
+
         private string _correctionPeriodAmount;
         public string CorrectionPeriodAmount
         {
@@ -2901,21 +2916,23 @@ namespace GAZT.ViewModel.NewViewModel
             if (vATCalculationData.d != null)
             {
 
-                //      if(vATCalculationData.d.)
-                if (vATCalculationData.d.VATRSet.results.Count != 0)
-                {
-                    CalculationRateSet = new List<VATCalculationDataVATRSet>();
-                    CalculationRateSet = vATCalculationData.d.VATRSet.results;
+                    //      if(vATCalculationData.d.)
+                    if (vATCalculationData.d.VATRSet.results.Count != 0)
+                    {
+                        CalculationRateSet = new List<VATCalculationDataVATRSet>();
+                        CalculationRateSet = vATCalculationData.d.VATRSet.results;
 
-                    CalculationRateSetVTTH = new List<VTTHSetResult>();
-                    CalculationRateSetVTTH = vATCalculationData.d.VTTHSet.results;
+                        CalculationRateSetVTTH = new List<VTTHSetResult>();
+                        CalculationRateSetVTTH = vATCalculationData.d.VTTHSet.results;
+
+                        CalculationRateIGRTSet = new List<IGRTSetResult>();
+                        CalculationRateIGRTSet = vATCalculationData.d.IGRTSet.results;
+
+                        RateSetAsPerDate();
 
 
-                    RateSetAsPerDate();
 
-
-
-                }
+                    }
 
                 if (vATCalculationData.d.VTTHSet.results.Count != 0)
                 {

@@ -124,5 +124,14 @@ namespace GAZT.Views.NewViews
             //attachment.DocUrl;
             await Navigation.PushAsync(new PdfView(attachment.DocUrl));
         }
+
+        private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ListView Document = sender as ListView;
+
+            Attachment attachment = (Attachment)Document.SelectedItem;
+            //attachment.DocUrl;
+            viewModel.ShowPdf(attachment.DocUrl);
+        }
     }
 }
