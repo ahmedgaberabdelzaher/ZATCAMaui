@@ -2196,6 +2196,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
+                                IsVATRefunCheckedVisible = false;
                                 IsTextBoxVisibleForIban = false;
                                 IsDropdownVisibleForIban = true;
 
@@ -2252,6 +2253,11 @@ namespace GAZT.ViewModel.NewViewModel
                 if(VATDeclarationData.d.IbanCb=="1")
                 {
                     IsCheckedRefund = true;
+                    IsVATRefunCheckedVisible = true;
+                }
+                else
+                {
+                    IsVATRefunCheckedVisible = false;
                 }
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
@@ -2943,7 +2949,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s.pageName = "التعليمات";
                 }
-          //  vatTabbedList.Add(s);
+             vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2953,7 +2959,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s1.pageName = "تفاصيل المكلف";
                 }
-          //  vatTabbedList.Add(s1);
+              vatTabbedList.Add(s1);
             VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2963,7 +2969,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s2.pageName = "نموذج الإقرار الضريبي";
                 }
-          //  vatTabbedList.Add(s2);
+             vatTabbedList.Add(s2);
             VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2973,22 +2979,22 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s3.pageName = "ملخص";
                 }
-           // vatTabbedList.Add(s3);
+             vatTabbedList.Add(s3);
             
-            if(App.IsArabic)
-                {
-                    vatTabbedList.Add(s3);
-                    vatTabbedList.Add(s2);
-                    vatTabbedList.Add(s1);
-                    vatTabbedList.Add(s);
-                }
-            else
-                {
-                    vatTabbedList.Add(s);
-                    vatTabbedList.Add(s1);
-                    vatTabbedList.Add(s2);
-                    vatTabbedList.Add(s3);
-                }
+            //if(App.IsArabic)
+            //    {
+            //        vatTabbedList.Add(s3);
+            //        vatTabbedList.Add(s2);
+            //        vatTabbedList.Add(s1);
+            //        vatTabbedList.Add(s);
+            //    }
+            //else
+            //    {
+            //        vatTabbedList.Add(s);
+            //        vatTabbedList.Add(s1);
+            //        vatTabbedList.Add(s2);
+            //        vatTabbedList.Add(s3);
+            //    }
 
             VatTabbledPageList = vatTabbedList;
             PageSelectedItem = VatTabbledPageList[0];

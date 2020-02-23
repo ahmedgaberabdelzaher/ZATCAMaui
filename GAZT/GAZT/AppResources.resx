@@ -1268,7 +1268,7 @@ GAZT reserves the right to investigate your return form further.</value>
   </data>
   <data name="ZToolTipExemptAdjustment" xml:space="preserve">
     <value>• The total amount made on exempt supplies sold in KSA .
-• For example,  Return of exempted goods, bad debt write-off"</value>
+• For example,  Return of exempted goods, bad debt write-off</value>
   </data>
   <data name="ZToolTipExemptAmount" xml:space="preserve">
     <value>• Total amount of goods and services supplied during the current period that were exempted and sold in KSA
