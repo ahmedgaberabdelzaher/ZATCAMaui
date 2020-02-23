@@ -4775,6 +4775,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category..
+        /// </summary>
+        public static string ZZOurrecordsindicatethatyouarenotapartofthezerorated {
+            get {
+                return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotapartofthezerorated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
         /// </summary>
         public static string ZZOurrecordsindicatethatyouarenotmainly {

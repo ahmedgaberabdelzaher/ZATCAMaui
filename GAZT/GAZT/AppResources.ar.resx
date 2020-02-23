@@ -2001,4 +2001,8 @@
     <value>التفاصيل</value>
     <comment>My Bills</comment>
   </data>
+  <data name="ZZOurrecordsindicatethatyouarenotapartofthezerorated" xml:space="preserve">
+    <value>تشير سجلاتنا إلى أنك لا تنتمي للقطاع الخاضع للضريبة بنسبة صفر بالمائة، وأنه لا يوجد مبيعات خاضعة للضريبة بنسبة صفر بالمائة في هذه الفئة.</value>
+    <comment>VAT declaration</comment>
+  </data>
 </root>

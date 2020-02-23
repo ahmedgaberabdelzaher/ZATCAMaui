@@ -737,6 +737,25 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
+            IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+            if (IGRTSetModel.RateTrtmt != "Z")
+            {
+
+                if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-"))
+                {
+                    if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    }
+                }
+
+            }
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
         }
 
@@ -788,24 +807,7 @@ namespace GAZT.Views.NewViews
         {
             CheckMandetoryFields();
 
-            
-
-            if (viewModel.ResponseVATDeclarationD.ZeropurchaseAmt == "0")
-            {
-                if (viewModel.ResponseVATDeclarationD.ZeropurchaseAmt != "." && !viewModel.ResponseVATDeclarationD.ZeropurchaseAmt.Contains("-"))
-                {
-                    if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
-
-
-                        popUp.IsLinkAvailable = false;
-
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    }
-                }
-            }
+       
             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
 
         }

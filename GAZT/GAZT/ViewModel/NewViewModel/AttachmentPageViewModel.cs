@@ -253,10 +253,48 @@ namespace GAZT.ViewModel.NewViewModel
 
             });
 
+              
+            
+
         }
         #endregion
 
         #region Method
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (pdfUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+        }
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

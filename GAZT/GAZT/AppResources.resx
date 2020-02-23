@@ -1993,4 +1993,8 @@ Should we require further information, we would be in contact.</value>
     <value>Description</value>
     <comment>My Bills</comment>
   </data>
+  <data name="ZZOurrecordsindicatethatyouarenotapartofthezerorated" xml:space="preserve">
+    <value>Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category.</value>
+    <comment>VAT declaration</comment>
+  </data>
 </root>
