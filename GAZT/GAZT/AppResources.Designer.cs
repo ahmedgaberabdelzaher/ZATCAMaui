@@ -2688,7 +2688,7 @@ namespace GAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • The total amount made on exempt supplies sold in KSA .
-        ///• For example,  Return of exempted goods, bad debt write-off&quot;.
+        ///• For example,  Return of exempted goods, bad debt write-off.
         /// </summary>
         public static string ZToolTipExemptAdjustment {
             get {

@@ -2211,6 +2211,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
+                                IsVATRefunCheckedVisible = false;
                                 IsTextBoxVisibleForIban = false;
                                 IsDropdownVisibleForIban = true;
 
@@ -2267,6 +2268,11 @@ namespace GAZT.ViewModel.NewViewModel
                 if(VATDeclarationData.d.IbanCb=="1")
                 {
                     IsCheckedRefund = true;
+                    IsVATRefunCheckedVisible = true;
+                }
+                else
+                {
+                    IsVATRefunCheckedVisible = false;
                 }
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
@@ -2903,7 +2909,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (VATDeclarationData.d.ADRSet.results.Count > 0)
             {
-                FullAddress = VATDeclarationData.d.ADRSet.results[0].BuildingNo + " " + VATDeclarationData.d.ADRSet.results[0].Street + " " + VATDeclarationData.d.ADRSet.results[0].Quarter + " " + VATDeclarationData.d.ADRSet.results[0].Region + " " + Environment.NewLine + VATDeclarationData.d.ADRSet.results[0].PostalCd;
+                FullAddress = VATDeclarationData.d.ADRSet.results[0].BuildingNo + " " + VATDeclarationData.d.ADRSet.results[0].Street + " " + VATDeclarationData.d.ADRSet.results[0].Quarter + " " + VATDeclarationData.d.ADRSet.results[0].RegionDesc + " " + VATDeclarationData.d.ADRSet.results[0].City + " " + Environment.NewLine + VATDeclarationData.d.ADRSet.results[0].PostalCd;
             }
             vATCalculationData = await WebServiceManager.GAZTGetVATDeclaratinCalculationData(periodKey, TxnTp, status, FormBundleNumber, Gpart);
             PopToRootPage();
@@ -2960,7 +2966,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s.pageName = "التعليمات";
                 }
-          //  vatTabbedList.Add(s);
+             vatTabbedList.Add(s);
             VATDeclarationTabbedPageName s1 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2970,7 +2976,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s1.pageName = "تفاصيل المكلف";
                 }
-          //  vatTabbedList.Add(s1);
+              vatTabbedList.Add(s1);
             VATDeclarationTabbedPageName s2 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2980,7 +2986,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s2.pageName = "نموذج الإقرار الضريبي";
                 }
-          //  vatTabbedList.Add(s2);
+             vatTabbedList.Add(s2);
             VATDeclarationTabbedPageName s3 = new VATDeclarationTabbedPageName();
                 if (!App.IsArabic)
                 {
@@ -2990,22 +2996,22 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     s3.pageName = "ملخص";
                 }
-           // vatTabbedList.Add(s3);
+             vatTabbedList.Add(s3);
             
-            if(App.IsArabic)
-                {
-                    vatTabbedList.Add(s3);
-                    vatTabbedList.Add(s2);
-                    vatTabbedList.Add(s1);
-                    vatTabbedList.Add(s);
-                }
-            else
-                {
-                    vatTabbedList.Add(s);
-                    vatTabbedList.Add(s1);
-                    vatTabbedList.Add(s2);
-                    vatTabbedList.Add(s3);
-                }
+            //if(App.IsArabic)
+            //    {
+            //        vatTabbedList.Add(s3);
+            //        vatTabbedList.Add(s2);
+            //        vatTabbedList.Add(s1);
+            //        vatTabbedList.Add(s);
+            //    }
+            //else
+            //    {
+            //        vatTabbedList.Add(s);
+            //        vatTabbedList.Add(s1);
+            //        vatTabbedList.Add(s2);
+            //        vatTabbedList.Add(s3);
+            //    }
 
             VatTabbledPageList = vatTabbedList;
             PageSelectedItem = VatTabbledPageList[0];
