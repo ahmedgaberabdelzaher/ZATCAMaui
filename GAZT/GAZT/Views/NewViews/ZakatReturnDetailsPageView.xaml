@@ -158,9 +158,9 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}"></Button> <!--Command="{Binding OnSalesDetailsClicked}"-->
+                            <Button Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}"  ></Button> <!--Command="{Binding OnSalesDetailsClicked}"-->
 
-                            <Button Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}"></Button> <!--Command="{Binding OnBillsButtonClicked}"-->
+                            <Button Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" ></Button> <!--Command="{Binding OnBillsButtonClicked}"-->
 
                         </Grid>
                     </StackLayout>   

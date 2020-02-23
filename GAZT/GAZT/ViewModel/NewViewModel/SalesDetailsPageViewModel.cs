@@ -577,10 +577,22 @@ namespace GAZT.ViewModel.NewViewModel
                     HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0002"))// Status when the return released by GAZT officer
+                {
+                    ShowAcceptAndAmendButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
+                else if (ZakatReturnDetail.d.Statusz.Equals(""))// Status when the return released by GAZT officer
+                {
+                    HideAllButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
                 else
                 {
                     ShowAcceptAndAmendButton();
-                   // HideEditIcon();
+                   // HideEditIcon();Fwebser
                 }
 
             }
@@ -641,7 +653,7 @@ namespace GAZT.ViewModel.NewViewModel
                             _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
 
-                        }
+                    }
                         if (PostOperation.Equals("05"))
                         {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase

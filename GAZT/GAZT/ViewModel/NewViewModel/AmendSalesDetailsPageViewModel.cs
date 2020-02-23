@@ -388,6 +388,7 @@ namespace GAZT.ViewModel.NewViewModel
             NewValue = string.Empty;
             ChangeReason = string.Empty;
             IsLoading = false;
+            AttachmentName = "";
             ZakatReturnAttachmentsList = new ObservableCollection<EstimateZakatAttachment>();
         }
         public void OnLoad()
@@ -509,7 +510,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsSaveButtonEnable = true;
             }
-            else if(changeReason != NewValue && !string.IsNullOrEmpty(ChangeReason))
+            else if(changeReason != ChangeReason && !string.IsNullOrEmpty(ChangeReason))
             {
                 IsSaveButtonEnable = true;
             }
