@@ -2930,6 +2930,172 @@ namespace GAZT.Manager
             }
         }
 
+
+        public static async Task<CorrespondenceRootObject> GAZTGetZakatCorrespondece()
+        {
+            CorrespondenceRootObject ZakatCorrespondenceList = new CorrespondenceRootObject();
+            string NewToken = string.Empty;
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetCorrespondence + "'"+App.TP.Tin+"' and Langz eq 'EN' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-19T17:38' and ObligFlagz eq '' and Auditor eq ''";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTZakatCorresList = await client.GetAsync(uri);
+
+                if (GAZTZakatCorresList != null)
+                {
+                    HttpHeaders headers = GAZTZakatCorresList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
+
+                    ZakatCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(VAtCorrespondenceList);
+
+
+                }
+                return null;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+        public static async Task<CorrespondenceRootObject> GAZTGetVATCorrespondece()
+        {
+            CorrespondenceRootObject ZakatCorrespondenceList = new CorrespondenceRootObject();
+            string NewToken = string.Empty;
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq 'EN' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-24T17:40' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTZakatCorresList = await client.GetAsync(uri);
+
+                if (GAZTZakatCorresList != null)
+                {
+                    HttpHeaders headers = GAZTZakatCorresList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
+
+                    ZakatCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(VAtCorrespondenceList);
+
+
+                }
+                return null;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+        public static async Task<CorrespondenceRootObject> GAZTGetETCorrespondece()
+        {
+            CorrespondenceRootObject ETReturnCorrespondenceList = new CorrespondenceRootObject();
+            string NewToken = string.Empty;
+            try
+            {
+                string lang = UtilityManager.GetLanguageParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq 'EN' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-24T17:40' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTETCorresList = await client.GetAsync(uri);
+
+                if (GAZTETCorresList != null)
+                {
+                    HttpHeaders headers = GAZTETCorresList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String ETCorrespondenceList = GAZTETCorresList.Content.ReadAsStringAsync().Result;
+
+                    ETReturnCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(ETCorrespondenceList);
+
+
+                }
+                return null;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
     }
 
 }

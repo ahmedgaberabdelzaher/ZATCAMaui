@@ -3390,7 +3390,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
                 {
-                    TotalAmount = ((String.IsNullOrEmpty(Amount1) ? 0 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0 : Convert.ToDouble(Amount5))).ToString();
+                    TotalAmount = ((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5))).ToString();
                 }
             }
             return TotalAmount;
