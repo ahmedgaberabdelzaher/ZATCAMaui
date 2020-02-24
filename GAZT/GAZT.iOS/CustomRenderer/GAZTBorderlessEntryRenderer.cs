@@ -52,6 +52,7 @@ namespace GAZT.iOS.CustomRenderer
 
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
+               // Control.BackgroundColor = UIColor Color.FromHex("#CCE0DC");
             }
 
             //fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));

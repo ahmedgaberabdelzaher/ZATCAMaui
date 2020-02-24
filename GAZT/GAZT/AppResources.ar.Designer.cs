@@ -3501,5 +3501,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDeartaxpayerbasedonthesubmittedamendments", resourceCulture);
             }
         }
+        
+        public static string ZDescription {
+            get {
+                return ResourceManager.GetString("ZDescription", resourceCulture);
+            }
+        }
+        
+        public static string ZZOurrecordsindicatethatyouarenotapartofthezerorated {
+            get {
+                return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotapartofthezerorated", resourceCulture);
+            }
+        }
+        
+        public static string ZZFormFiveTappedMessage {
+            get {
+                return ResourceManager.GetString("ZZFormFiveTappedMessage", resourceCulture);
+            }
+        }
     }
 }
