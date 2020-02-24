@@ -1405,7 +1405,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _iBANList = value;
                if(_iBANList!=null && _iBANList.Count!=0)
                 {
-                    if(App.ICRStatus =="E0045" || App.ICRStatus == "E0006")
+                    if((App.ICRStatus =="E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
                     {
                         IsEnableIBAN = false;
                     }
@@ -1512,12 +1512,17 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedRefund = value;
                 if(_isCheckedRefund==true)
                 {
-                    IsTextBoxVisibleForIban = true;
-                    IsDropdownVisibleForIban = false;
+                    if (!((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false))
+                    {
+                        IsTextBoxVisibleForIban = true;
+                        IsTextBoxEnableForIban = true;
+                        IsDropdownVisibleForIban = false;
+                    }
                 }
                 else
                 {
                     IsDropdownVisibleForIban = true;
+                    IsTextBoxEnableForIban = false;
                     IsTextBoxVisibleForIban = false;
                 }
                 RaisePropertyChanged("IsCheckedRefund");
@@ -1612,7 +1617,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _iBANTypesList = value;
                 if(_iBANTypesList !=null && _iBANTypesList.Count!=0)
                 {
-                    if(App.ICRStatus=="E0045" || App.ICRStatus=="E0006")
+                    if((App.ICRStatus=="E0045" || App.ICRStatus=="E0006") && IsAmendClicked==false)
                     {
                         IsEnableIBANType = false;
                     }
@@ -1663,7 +1668,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _iBANIDNumberList = value;
                 if(_iBANIDNumberList!= null && _iBANIDNumberList.Count()!=0)
                 {
-                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                    if ( (App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
                     {
                         IsEnableIBANIdNumber = false;
                     }
@@ -1785,7 +1790,9 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (ButtonName == AppResources.ZVatStepFour)
                     {
+                      
                         SummaryClicked();
+                        ShowMsgs();
                         PageSelectedItem = VatTabbledPageList[3];
                        
                     }
@@ -1981,7 +1988,81 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
-        
+        public void ShowMsgs()
+        {
+            StringBuilder Masseges = new StringBuilder();
+            if (!string.IsNullOrEmpty(TotalsalesAmt) && !string.IsNullOrEmpty(TotalsalesAdj))
+            {
+                string Percentage = CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(TotalsalesAmt)) + Convert.ToDecimal(TotalsalesAmt) < Convert.ToDecimal(TotalsalesAdj))
+                {
+
+                    Masseges.Append(string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+
+                }
+                //  CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
+            }
+
+            if (!string.IsNullOrEmpty(TotalsalesAmt) && !string.IsNullOrEmpty(TotalpurchaseAmt))
+            {
+                string Percentage = CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(TotalsalesAmt)) + Convert.ToDecimal(TotalsalesAmt) < Convert.ToDecimal(TotalpurchaseAmt))
+                {
+                    if (Masseges.Length == 0)
+                    {
+                        Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                    }
+                    else
+                    {
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
+                    }
+                }
+                // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
+            }
+
+            if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalpurchaseAdj))
+            {
+                string Percentage = CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(TotalpurchaseAmt)) + Convert.ToDecimal(TotalpurchaseAmt) < Convert.ToDecimal(TotalpurchaseAdj))
+                {
+                    if (Masseges.Length == 0)
+                    {
+                        Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+                    }
+                    else
+                    {
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(Environment.NewLine);
+                        Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+
+                    }
+                }
+                // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
+            }
+            if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
+            {
+                //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
+            }
+
+            if (Masseges.Length > 0)
+            {
+                PopUp Pop = new PopUp();
+                Pop.IsLinkAvailable = false;
+                Pop.Message = Masseges.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+            }
+        }
 
         public  void SetIBANIdNumber()
         {
@@ -2128,7 +2209,7 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
             IsVisibleVatReturnForm = true;
             ButtonName = AppResources.ZVatStepFour;
-
+            
 
             if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
             {
@@ -2191,6 +2272,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
                 {
                     IsRefundVisible = true;
+                    IsSwichButtonEnableToTap = true;
                     if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                     {
                         if (VATDeclarationData.d.RefundFg == "1")
@@ -2204,6 +2286,7 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 IsTextBoxVisibleForIban = true;
                                 IsDropdownVisibleForIban = false;
+                                IsCheckedRefund = true;
                                 if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
                                 {
                                     IbanNumberText = VATDeclarationData.d.Iban;
@@ -2260,6 +2343,7 @@ namespace GAZT.ViewModel.NewViewModel
             IsVisibleSummary = true;
             if((App.ICRStatus=="E0045" || App.ICRStatus == "E0006") && IsAmendClicked==false)
             {
+                IsTextBoxEnableForIban = false;
                 IsEnableCheckedRefund = false;
                 IsTextBoxEnableForIban = false;
                 IsSwichButtonEnableToTap = false;
@@ -2280,12 +2364,38 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-               
+
+                if (App.ICRStatus == "E0045" && IsAmendClicked == true)
+                {
+                    if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
+                    {
+                        IBANList = new List<Result2>();
+                        IBANList = VATDeclarationData.d.IBANSet.results;
+                        IsVATRefunCheckedVisible = false;
+                        IsEnableCheckedRefund = false;
+                    }
+                    else
+                    {
+                        IsVATRefunCheckedVisible = true;
+                        IsEnableCheckedRefund = true;
+                    }
+                    createIBANType();
+                    IschkRefundDeclaration = false;
+                }
+
                 ButtonName = AppResources.Submit;
+
                 if (App.ICRStatus != "E0001")
                 {
                     IsMainButtonEnabled = false;
                     IsDeclarationCheckedForSummary = false;
+                    IschkRefundDeclaration = false;
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+                    IsDeclarationCheckedForSummary = false;
+                    IschkRefundDeclaration = false;
                 }
             }
           
@@ -2298,6 +2408,7 @@ namespace GAZT.ViewModel.NewViewModel
             //    IsDeclarationCheckedForSummary = false;
             //}
         }
+
         public void CreditCarriedClicked()
         {
             ClearPage();
@@ -2420,13 +2531,14 @@ namespace GAZT.ViewModel.NewViewModel
                         Masseges.Append(Environment.NewLine);
                       
                         Masseges.Append(AppResources.CreditReturnMsg);
-                       
+                      
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.IsRed = "#ff0000";
                         Pop.IsBold = "Bold";
                         Pop.Message = Masseges.ToString();
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
                     }
                     else
                     {
@@ -2701,7 +2813,8 @@ namespace GAZT.ViewModel.NewViewModel
             IBANIDNumberList = null;
             SelectedIBANIDNumber = null;
             IsRefundVisible = false;
-           
+            IsCheckedRefund = false;
+
         }
         public void ClearPage()
         {
@@ -3164,6 +3277,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     VATDeclarationData = response;
                     ResponseVATDeclarationD = VATDeclarationData.d;
+                            if(VATDeclarationData.d.Operationz== "01" && App.ICRStatus=="E0001")
+                            {
+                                App.ICRStatus = "E0013";
+                            }
                     //VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(VATDeclarationData.d.ReturnIdz, VATDeclarationData.d.Fbnumz, ICRListPageViewModel.EUser,"");
 
                         //if (_vATDeclaration != null && _vATDeclaration.d != null)

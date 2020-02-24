@@ -145,7 +145,7 @@
                                    Grid.Row="4"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>
 
-                                                        <Label Text="Stauts" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,-5" 
                                  
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"

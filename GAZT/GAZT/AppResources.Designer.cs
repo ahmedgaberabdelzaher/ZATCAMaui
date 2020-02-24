@@ -2271,6 +2271,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Link].
+        /// </summary>
+        public static string ZLink {
+            get {
+                return ResourceManager.GetString("ZLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log off.
         /// </summary>
         public static string ZLogoff {
