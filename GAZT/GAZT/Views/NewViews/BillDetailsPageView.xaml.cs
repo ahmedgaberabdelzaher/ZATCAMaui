@@ -107,16 +107,6 @@ namespace GAZT.Views.NewViews
                         break;
                 }
             }
-           
-
-            //foreach (var item in Navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == pageToRemove)
-            //    {
-            //        Navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
 
         }
         #endregion
