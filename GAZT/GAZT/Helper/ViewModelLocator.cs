@@ -58,7 +58,7 @@ namespace GAZT
             SimpleIoc.Default.Register<AddNotePageViewModel>();
             SimpleIoc.Default.Register<AddPopPageViewModel>();
             SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
-
+            SimpleIoc.Default.Register<CorrespondancePageViewModel>();
 
 
 
@@ -689,6 +689,20 @@ namespace GAZT
             }
         }
 
+        public CorrespondancePageViewModel CorrespondancePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CorrespondancePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
         private INavigationService CreateNavigationService()
@@ -738,7 +752,7 @@ namespace GAZT
             navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-
+            navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
 
 
 

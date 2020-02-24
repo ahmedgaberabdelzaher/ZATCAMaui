@@ -1997,6 +1997,10 @@ Should we require further information, we would be in contact.</value>
     <value>Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category.</value>
     <comment>VAT declaration</comment>
   </data>
+  <data name="ZZFormFiveTappedMessage" xml:space="preserve">
+    <value>Please visit GAZT portal to open the selected return.</value>
+    <comment>Estimated ZAKAT Return</comment>
+  </data>
   <data name="ZLink" xml:space="preserve">
     <value>[Link]</value>
   </data>

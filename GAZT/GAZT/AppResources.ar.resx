@@ -2005,6 +2005,10 @@
     <value>تشير سجلاتنا إلى أنك لا تنتمي للقطاع الخاضع للضريبة بنسبة صفر بالمائة، وأنه لا يوجد مبيعات خاضعة للضريبة بنسبة صفر بالمائة في هذه الفئة.</value>
     <comment>VAT declaration</comment>
   </data>
+  <data name="ZZFormFiveTappedMessage" xml:space="preserve">
+    <value>الرجاء الدخول على بوابة الهيئة لفتح الإقرار المختار</value>
+    <comment>Estimated ZAKAT Return</comment>
+  </data>
   <data name="ZLink" xml:space="preserve">
     <value>[رابط]</value>
   </data>

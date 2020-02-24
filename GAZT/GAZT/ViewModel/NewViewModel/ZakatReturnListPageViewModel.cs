@@ -5,6 +5,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -68,9 +69,18 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedZakatReturn = value;
                 RaisePropertyChanged("SelectedZakatReturn");
 
-                if (SelectedZakatReturn != null)
+                if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                    if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+                    }
                 }
             }
         }
@@ -336,7 +346,7 @@ namespace GAZT.ViewModel.NewViewModel
             try
             {
                 List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
-                myZakatReturnsListTemp = estimatedZakatReturnsList.d.listSet.results;
+                myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.listSet.results)); 
                 if (myZakatReturnsListTemp != null && myZakatReturnsListTemp.Count > 0)
                 {
                     for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
@@ -455,6 +465,24 @@ namespace GAZT.ViewModel.NewViewModel
                MyZakatReturns = new List<EstimatedZakatReturnsResult>();
             myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
         }
+
+        public IEnumerable<EstimatedZakatReturnsResult> GetSortedList(IList<EstimatedZakatReturnsResult> ICRList)
+        {
+            try
+            {
+                var SortedList = ICRList.OrderBy(x => Convert.ToDateTime(x.DueDtC).TimeOfDay)
+                              .ThenBy(x => Convert.ToDateTime(x.DueDtC).Date)
+                              .ThenBy(x => Convert.ToDateTime(x.DueDtC).Year);
+                return SortedList;
+            }
+            catch(Exception ex)
+            {
+                return ICRList;
+            }
+
+          
+        }
+
         #endregion
     }
 }
