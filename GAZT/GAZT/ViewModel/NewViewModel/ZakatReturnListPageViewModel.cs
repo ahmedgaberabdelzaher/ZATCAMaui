@@ -68,9 +68,18 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedZakatReturn = value;
                 RaisePropertyChanged("SelectedZakatReturn");
 
-                if (SelectedZakatReturn != null)
+                if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                    if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+                    }
                 }
             }
         }

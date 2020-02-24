@@ -28,7 +28,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnRefreshButtonClicked { get; set; }
         public ICommand OnCloseButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
-
+        public static bool IsComingFromSalesDetailsPage = false;
         public ObservableCollection<SalesDetails> SalesDetailsDataList { get; set; }// To Store the response data to compare the changed object
         public static string RetGuid;
 
@@ -650,6 +650,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             HideAllButton();
                             await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
+                            IsComingFromSalesDetailsPage = true;
                             _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
 

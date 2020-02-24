@@ -90,6 +90,35 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            int RemovedPageCount = 0;
+            if(SalesDetailsPageViewModel.IsComingFromSalesDetailsPage)
+            {
+                SalesDetailsPageViewModel.IsComingFromSalesDetailsPage = false;
+                for (int index = Navigation.NavigationStack.Count - 2; index > 3; index--)
+                {
+                    RemovedPageCount++;
+                    Page pg = Navigation.NavigationStack[index];
+                    Navigation.RemovePage(pg);
+                    if (RemovedPageCount == 2)
+                        break;
+                }
+            }
+           
+
+            //foreach (var item in Navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == pageToRemove)
+            //    {
+            //        Navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
+
+        }
         #endregion
 
     }
