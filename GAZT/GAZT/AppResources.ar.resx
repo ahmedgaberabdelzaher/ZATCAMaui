@@ -1514,7 +1514,7 @@
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost" xml:space="preserve">
-    <value>تم حفظ نموذج الإقرار الضريبي بنجاح</value>
+    <value>سيتم مسح جميع المعلومات في النموذج، يرجى التأكيد اذا كنت تريد إلغاء النموذج</value>
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_ClickHereForDetails" xml:space="preserve">
