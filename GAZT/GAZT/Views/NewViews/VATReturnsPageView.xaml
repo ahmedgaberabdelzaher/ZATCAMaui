@@ -159,9 +159,9 @@
 
                             <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDeclarationCheckEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
                                 <CheckBox.Triggers>
-                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
-                                    </DataTrigger>-->
+                                    </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
 
