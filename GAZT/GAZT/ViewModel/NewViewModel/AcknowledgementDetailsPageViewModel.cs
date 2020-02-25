@@ -115,7 +115,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _amountPayable = "2470";
+        private string _amountPayable = "";
         public string AmountPayable
         {
             get

@@ -2850,10 +2850,12 @@ namespace GAZT.ViewModel.NewViewModel
                             IBANList = new List<Result2>();
                             IBANList = VATDeclarationData.d.IBANSet.results;
                             IsVATRefunCheckedVisible = false;
+                            IsEnableCheckedRefund = false;
                         }
                         else
                         {
                             IsVATRefunCheckedVisible = true;
+                            IsEnableCheckedRefund = true;
                         }
                         createIBANType();
 
@@ -3645,7 +3647,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
             }
-            else if (ButtonName == "Save")
+            else if (ButtonName == "SaveasDraft")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             }
