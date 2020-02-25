@@ -79,7 +79,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة") || SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
+                                if (SelectedSalesDetails.SalesType.Equals(AppResources.ZZTotalVATSales) ||  SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                     
@@ -90,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة") || SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
+                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals(AppResources.ZZTotalVATSales)  || SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                 }
@@ -662,7 +662,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 ShowOnlyInfoIcon();
                                 SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
-                              
                                 HideDisclaimer();
 
                         }
