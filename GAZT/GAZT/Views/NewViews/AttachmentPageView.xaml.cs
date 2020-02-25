@@ -51,7 +51,7 @@ namespace GAZT.Views.NewViews
 
                 }
                 viewModel.OnPageLoad();
-
+                SetLTR();
             }
             catch (Exception e)
             {
@@ -61,7 +61,13 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             try
@@ -131,7 +137,12 @@ namespace GAZT.Views.NewViews
 
             Attachment attachment = (Attachment)Document.SelectedItem;
             //attachment.DocUrl;
-            viewModel.ShowPdf(attachment.DocUrl);
+            if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
+            {
+                viewModel.ShowPdf(attachment.DocUrl);
+            }
+
+            if (sender is ListView lv) lv.SelectedItem = null;
         }
     }
 }

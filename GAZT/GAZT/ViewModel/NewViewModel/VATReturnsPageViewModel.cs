@@ -3647,7 +3647,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else if (ButtonName == "Save")
             {
-                DummyListOfActionButtonsApplicable.Add(AppResources.Save);
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             }
             else if (ButtonName == "DisplayNotes")
             {
