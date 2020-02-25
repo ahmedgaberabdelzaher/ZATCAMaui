@@ -9,5 +9,9 @@ namespace GAZT.Models
         public string Title { get; set; }
         public string RefNumber { get; set; }
         public string DateAndTime { get; set; }
+
+        public bool IsFav { get; set; }
+
+        public string FavImg { get; set; } = "ic_save_Gray.png";
     }
 }
