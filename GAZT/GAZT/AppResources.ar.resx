@@ -592,7 +592,7 @@
     <value>الفواتير</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>تعهد ضريبة القيمة المضافة</value>
+    <value>الإقرارات لضريبة القيمة المضافة</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المدفوعة</value>
@@ -1265,7 +1265,7 @@
     <value>تاكيد</value>
   </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>• اذا كانت تصحيحات الإقرار السابق تستلزم تعديل الالتزام الضريبي   أقل من &lt;5,000&gt; ريال أو رصيد دائن  لأكثر من &lt;-5,000&gt; ريال ، يرجى تحديد التعديل الضريبي (وليست مبالغ توريدات أو  مشتريات) في هذا الحقل. لأي تعديلات ضريبية أخرى يرجى تقديم نموذج "تعديل ذاتي"</value>
+    <value>• اذا كانت تصحيحات الإقرار السابق تستلزم تعديل الالتزام الضريبي   أقل من 5,000 ريال أو رصيد دائن  لأكثر من -5,000 ريال ، يرجى تحديد التعديل الضريبي (وليست مبالغ توريدات أو  مشتريات) في هذا الحقل. لأي تعديلات ضريبية أخرى يرجى تقديم نموذج "تعديل ذاتي"</value>
   </data>
   <data name="ZToolTipcreditcarriedforwardfrompreviousperiod" xml:space="preserve">
     <value>• إجمالي مبلغ الرصيد الدائن في حسابك الضريبي من إقرارات سابقة لم يتم استخدامها لتسوية أي التزامات لاحقة أو لم يتم استردادها. سيتم استخدام هذا المبلغ لتسوية الالتزام الضريبي (إن وجد) لهذا الإقرار.</value>
@@ -1606,7 +1606,7 @@
     <comment>VAT Declaration button</comment>
   </data>
   <data name="ZZVoid" xml:space="preserve">
-    <value>إبطال</value>
+    <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">

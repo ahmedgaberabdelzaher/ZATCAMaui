@@ -73,7 +73,7 @@ namespace GAZT.Views.NewViews
 
 
                 IntilizeAsync();
-
+                NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
                 // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }
