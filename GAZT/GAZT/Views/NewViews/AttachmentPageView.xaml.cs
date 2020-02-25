@@ -2,9 +2,11 @@
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +49,30 @@ namespace GAZT.Views.NewViews
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
 
                         viewModel.VatAttachmentsList = myCollection;
+
+                        //foreach (var item in viewModel.VatAttachmentsList)
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        if (item.Erfdt != null)
+                        //        {
+                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                        //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        if (item.Erfdt != null)
+                        //        {
+                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //        }
+                        //    }
+                        //}
                     }
 
                 }
