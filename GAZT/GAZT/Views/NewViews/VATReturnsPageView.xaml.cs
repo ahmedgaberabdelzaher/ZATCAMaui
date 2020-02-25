@@ -60,6 +60,8 @@ namespace GAZT.Views.NewViews
                 viewModel.IsGetAcknowledgementClicked = false;
                 viewModel.IsVisibleDropdownForRefund = false;
                 viewModel.IsFirstSubmission = true;
+                viewModel.IBANList = null;
+                viewModel.IBANIDNumberList = null;
                 setAllCheckbox(false);
                 Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
                 {
@@ -412,6 +414,7 @@ namespace GAZT.Views.NewViews
 
                             viewModel.VATReturnFormClicked();
                             //   setColor(previous, current);
+                            EntryVatAmount.Focus();
                             NewSetColor(senderObject, current);
                         }
                         else
@@ -437,81 +440,10 @@ namespace GAZT.Views.NewViews
                         {
 
 
-                            StringBuilder Masseges = new StringBuilder();
-                            if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAdj.Text))
-                            {
-                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                                //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                                if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalsalesAdj.Text))
-                                {
-
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
-
-                                }
-                                //  CheckSixaSixb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalsalesAdj.Text));
-                            }
-
-                            if (!string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text))
-                            {
-                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                                //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalsalesAmt.Text)) + Convert.ToDecimal(LabelTotalsalesAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAmt.Text))
-                            {
-                                if (Masseges.Length == 0)
-                                {
-                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
-                                }
-                                else
-                                {
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero);
-                                }
-                            }
-                           // CheckSixaTweveb(Convert.ToDecimal(LabelTotalsalesAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAmt.Text));
                         }
-
-                            if (!string.IsNullOrEmpty(LabelTotalpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalpurchaseAdj.Text))
-                            {
-                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                                //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * Convert.ToDecimal(LabelTotalpurchaseAmt.Text)) + Convert.ToDecimal(LabelTotalpurchaseAmt.Text) < Convert.ToDecimal(LabelTotalpurchaseAdj.Text))
-                            {
-                                if (Masseges.Length == 0)
-                                {
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
-                                }
-                                else
-                                {
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
-
-                                    }
-                                }
-                                // CheckTweveaTweveb(Convert.ToDecimal(LabelTotalpurchaseAmt.Text), Convert.ToDecimal(LabelTotalpurchaseAdj.Text));
-                            }
-                            if (!string.IsNullOrEmpty(LabelTotaldueVat.Text) && !string.IsNullOrEmpty(EntryPreperiodcorr.Text))
-                            {
-                                //CheckThirteenaFouteenb(Convert.ToDecimal(LabelTotaldueVat.Text), Convert.ToDecimal(EntryPreperiodcorr.Text));
-                            }
-
-                        if(Masseges.Length > 0 )
+                        catch
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = Masseges.ToString();
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                        }
-                    }
-                    catch
-                    {
 
                         }
                         if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
@@ -744,7 +676,7 @@ namespace GAZT.Views.NewViews
             CheckMandetoryFields();
             if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
             {
-                if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-"))
+                if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExportsAmt))
                 {
                     if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
                     {
@@ -762,7 +694,7 @@ namespace GAZT.Views.NewViews
             if (IGRTSetModel.RateTrtmt != "Z")
             {
 
-                if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-"))
+                if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
                 {
                     if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
                     {
@@ -875,7 +807,7 @@ namespace GAZT.Views.NewViews
             String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 +"%");
             popUp.Message = MessageWithPercent;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -893,7 +825,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Link";
+            popUp.LinkMessage = AppResources.ZLink;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -903,7 +835,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Link";
+            popUp.LinkMessage = AppResources.ZLink; ;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -913,7 +845,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -933,7 +865,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -959,7 +891,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -969,7 +901,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -987,7 +919,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -997,7 +929,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -1032,7 +964,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
@@ -1051,7 +983,7 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
             popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = "Click here to open FAQ URL";
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }

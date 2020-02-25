@@ -2001,4 +2001,7 @@ Should we require further information, we would be in contact.</value>
     <value>Please visit GAZT portal to open the selected return.</value>
     <comment>Estimated ZAKAT Return</comment>
   </data>
+  <data name="ZLink" xml:space="preserve">
+    <value>[Link]</value>
+  </data>
 </root>

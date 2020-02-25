@@ -2009,4 +2009,7 @@
     <value>الرجاء الدخول على بوابة الهيئة لفتح الإقرار المختار</value>
     <comment>Estimated ZAKAT Return</comment>
   </data>
+  <data name="ZLink" xml:space="preserve">
+    <value>[رابط]</value>
+  </data>
 </root>
