@@ -73,7 +73,7 @@ namespace GAZT.Views.NewViews
 
 
                 IntilizeAsync();
-
+                NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
                 // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }
@@ -127,6 +127,13 @@ namespace GAZT.Views.NewViews
                     viewModel.ManageEnabledProperty(true);
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                     {
+                        if(App.ICRStatus=="E0056")
+                        {
+                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                            viewModel.IsDeclarationCheckEnabled = false;
+                            viewModel.IsTaxPayerCheckEnabled = false;
+                        }
                         viewModel.NavigationSetupForDraft();
                     }
 
@@ -607,7 +614,7 @@ namespace GAZT.Views.NewViews
                     case ArButtons.المرفقات:
                         viewModel.VATViewAttachments();
                         break;
-                    case ArButtons.إبطال:
+                    case ArButtons.إلغاء:
                         await viewModel.VATSetReturnVoidAsync();
                         break;
                     case ArButtons.عادةتعيين:
@@ -616,7 +623,7 @@ namespace GAZT.Views.NewViews
                     case ArButtons.تعديل:
                         await viewModel.VATReturnAmendAsync();
                         break;
-                    case ArButtons.حفظ:
+                    case ArButtons.حفظكمسودة:
                         await viewModel.OnSaveDraftClicked();
                         break;
                     default:

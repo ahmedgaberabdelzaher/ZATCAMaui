@@ -489,7 +489,7 @@ namespace GAZT.ViewModel
                         TaxPayerName = AppResources.Hi + App.TP.Name;
                     }
                    // WebServiceManager.GAZTGetZakatCorrespondece();
-                    WebServiceManager.GAZTGetZakatCorrespondece();
+                  //  WebServiceManager.GAZTGetZakatCorrespondece();
                     SetFooterImageVisibility();
                     TinNumber = App.TP.Userid;
                     String TotalCountOfReturn = string.Empty;
