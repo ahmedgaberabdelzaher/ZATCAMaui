@@ -127,6 +127,13 @@ namespace GAZT.Views.NewViews
                     viewModel.ManageEnabledProperty(true);
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                     {
+                        if(App.ICRStatus=="E0056")
+                        {
+                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                            viewModel.IsDeclarationCheckEnabled = false;
+                            viewModel.IsTaxPayerCheckEnabled = false;
+                        }
                         viewModel.NavigationSetupForDraft();
                     }
 
