@@ -43,7 +43,7 @@ namespace GAZT.Views.NewViews
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
 
-
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         #endregion

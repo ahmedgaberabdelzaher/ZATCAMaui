@@ -21,6 +21,7 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
             SetLTR();
+            NavigationPage.SetBackButtonTitle(this, "");
 
         }
         private void SetLTR()

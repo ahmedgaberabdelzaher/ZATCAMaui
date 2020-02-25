@@ -24,10 +24,11 @@ namespace GAZT.Views.NewViews
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
+            NavigationPage.SetBackButtonTitle(this, "");
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
-              
-            
+
+
             //};
             //if (LanguageToolBarCount == 0)
             //{
