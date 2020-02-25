@@ -635,6 +635,55 @@ namespace GAZT.Manager
             return Month;
         }
 
+        public static string GetCommaSeparatedAmount(string amount)
+        {
+
+            string amountWithComma = "";
+            try
+            {
+                if (amount != null && amount.Length > 0)
+                {
+                    if (amount.Contains("."))
+                    {
+                        string[] Amount = new String[2];
+                        Amount = amount.Split('.');
+                        double testDueAmount = Convert.ToDouble(Amount[0]);
+                        string _testDueAmount = testDueAmount.ToString("#,##0");
+                        if (Amount[1].Length > 0 && Amount[1].Length < 2)
+                        {
+                            _testDueAmount = _testDueAmount + "." + Amount[1].Substring(0, 1) + "0";
+                        }
+                        else if (Amount[1].Length == 0)
+                        {
+                            _testDueAmount = _testDueAmount + "." + "00";
+                        }
+                        else
+                        {
+                            _testDueAmount = _testDueAmount + "." + Amount[1].Substring(0, 2);
+                        }
+                        amountWithComma = _testDueAmount;
+
+                    }
+                    else
+                    {
+                        double testDueAmount = Convert.ToDouble(amount);
+                        string _testDueAmount = testDueAmount.ToString("#,##0");
+                        _testDueAmount = _testDueAmount + "." + "00";
+                        amountWithComma = _testDueAmount;
+                    }
+                }
+                else
+                {
+                    amountWithComma = amount;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return amountWithComma;
+        }
+
         #endregion
 
     }
