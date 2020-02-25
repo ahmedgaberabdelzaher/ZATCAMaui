@@ -3519,5 +3519,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFormFiveTappedMessage", resourceCulture);
             }
         }
+        
+        public static string ZLink {
+            get {
+                return ResourceManager.GetString("ZLink", resourceCulture);
+            }
+        }
     }
 }
