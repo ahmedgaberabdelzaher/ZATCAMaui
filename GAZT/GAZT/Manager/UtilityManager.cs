@@ -753,7 +753,7 @@ namespace GAZT.Manager
         Approve = 02,
         Reject = 03,
         Void = 04,
-        Save = 05,
+        SaveasDraft = 05,
         NotesforER = 06,
         DisplayNotes = 07,
         Validate = 08,

@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel;
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,15 @@ namespace GAZT.Views.NewViews
          
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
-  
+
+        private void ZakatActions_Clicked(object sender, EventArgs e)
+        {
+            var KeywordItem = ((MenuItem)sender).CommandParameter as CorrespondanceModel;
+
+
+
+        }
+
+      
     }
 }

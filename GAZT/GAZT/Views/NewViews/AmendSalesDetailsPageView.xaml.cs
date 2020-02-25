@@ -59,6 +59,16 @@ namespace GAZT.Views.NewViews
             {
                 NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
+
+            //if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
+            //{
+            //    NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+            //}
+            //else
+            //{
+            //    NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+            //}
+
         }
         private void SetLTR()
         {
@@ -101,28 +111,28 @@ namespace GAZT.Views.NewViews
 
         }
 
-        public void OnEntryUnFocussed(object sender, EventArgs args)
-        {
-            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-            {
-                NewValue.Text = UtilityManager.GetCommaSeparatedAmount(NewValue.Text);
-                NewValue.TextColor = Color.Black;
-            }
-            else
-            {
-                // UserName.TextColor = Color.Black;
-            }
-        }
+        //public void OnEntryUnFocussed(object sender, EventArgs args)
+        //{
+        //    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+        //    {
+        //        NewValue.Text = UtilityManager.GetCommaSeparatedAmount(NewValue.Text);
+        //        NewValue.TextColor = Color.Black;
+        //    }
+        //    else
+        //    {
+        //        // UserName.TextColor = Color.Black;
+        //    }
+        //}
 
 
-        public void OnEntryFocussed(object sender, EventArgs args)
-        {
-            if (NewValue.Text.Contains(","))
-            {
-                NewValue.Text = NewValue.Text.Replace(",", "");
-                NewValue.TextColor = Color.Black;
-            }
-        }
+        //public void OnEntryFocussed(object sender, EventArgs args)
+        //{
+        //    if (NewValue.Text.Contains(","))
+        //    {
+        //        NewValue.Text = NewValue.Text.Replace(",", "");
+        //        NewValue.TextColor = Color.Black;
+        //    }
+        //}
 
     }
 }

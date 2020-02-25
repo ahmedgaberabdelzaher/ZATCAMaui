@@ -52,6 +52,7 @@ namespace GAZT.Views.NewViews
                 }
                 viewModel.OnPageLoad();
                 SetLTR();
+                NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception e)
             {
