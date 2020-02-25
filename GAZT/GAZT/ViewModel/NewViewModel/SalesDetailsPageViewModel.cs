@@ -75,11 +75,11 @@ namespace GAZT.ViewModel.NewViewModel
                         double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
                         double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
                         bool IsThresholdGreaterLessVATAmount = d1 < d;
-                        if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslI) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                        if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslE) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
+                                if (SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة") || SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                     
@@ -90,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((_selectedSalesDetails != null) && (SubmitButtonVisibility))
                             {
-                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
+                                if (SelectedSalesDetails != null && !SelectedSalesDetails.SalesType.Equals("Total VAT Sales") || SelectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة") || SelectedSalesDetails.SalesType.Equals(AppResources.ZZCapitalamount))
                                 {
                                     _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                                 }
@@ -659,9 +659,10 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
                             {
+                                ShowOnlyInfoIcon();
                                 SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
-                                ShowOnlyInfoIcon();
+                              
                                 HideDisclaimer();
 
                         }
@@ -673,8 +674,9 @@ namespace GAZT.ViewModel.NewViewModel
                             if (ISAllRequiredDocumentUploadedwithReason)
                             {
                                     SetSalesDetailsData(_zakatReturnDetails);
-                                    ShowEditIcon();
-                                ShowConfirmButton();
+                                    // ShowEditIcon();// Commented 
+                                    ShowOnlyInfoIcon();
+                                    ShowConfirmButton();
                             }
                             else
                             {
@@ -857,7 +859,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if(isVATAmountGreaterThanThreshold)
                     {
 
-                        if (salesDetails.SelectedEditFieldId.Equals("1"))
+                        if (salesDetails.SelectedEditFieldId.Equals("1") || salesDetails.SelectedEditFieldId.Equals("8"))
                         {
                             salesDetails.EditImageSource = "ic_edit_gray.png";
                             _salesDetailsList.Add(salesDetails);
@@ -1244,7 +1246,7 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails8.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.Cpamt) ? "0.00" : zakatReturnDetails.d.Cpamt;
                 SalesDetailsDummyList.Add(salesDetails8);
                 salesDetails8.SelectedEditFieldId = "8";
-                salesDetails8.DisableItemBackgroundColor = CapitalBackgroundColor;
+                salesDetails8.DisableItemBackgroundColor = Color.White;
                 SalesDetailsList = SalesDetailsDummyList;
                 SalesDetailsDataList = SalesDetailsDummyList;
             }
