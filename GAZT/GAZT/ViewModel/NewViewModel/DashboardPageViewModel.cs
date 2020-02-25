@@ -450,8 +450,7 @@ namespace GAZT.ViewModel
             });
             OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
             {
-                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-
+                _navigationService.NavigateTo(App.CorrespondancePageView);
             });
             OnVatdeclarationClicked = new Xamarin.Forms.Command(async () =>
             {

@@ -18,17 +18,12 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="90*" />
+                  
                 </Grid.ColumnDefinitions>
            
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  BackgroundColor="#005e4b">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"   BackgroundColor="#005e4b">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5.08*" />
@@ -62,7 +57,7 @@
                     </Grid>
 
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" IsVisible="{Binding IsZakatVisible}">
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsZakatVisible}">
                     <ListView  
            ItemsSource="{Binding ListZAKATCorrespondance}"
             HorizontalOptions="FillAndExpand"
@@ -74,6 +69,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem x:Name="ZakatActions" Clicked="ZakatActions_Clicked"  CommandParameter="{Binding .}" Text="favorite" IsDestructive="True" />
+                                    </ViewCell.ContextActions>
                                     <ContentView>
                                         <Frame OutlineColor="#C9C9C9"
                                        Margin="0,0,0,10"
@@ -84,9 +82,8 @@
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="48*" />
-                                                        <ColumnDefinition Width="42*" />
-                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="93*" />
+                                                       
                                                         <ColumnDefinition Width="7*" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
@@ -104,7 +101,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="{Binding Title}" 
                                                   
@@ -114,7 +111,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
 
                                                     <Label 
@@ -138,7 +135,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="Date and Time" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
@@ -146,7 +143,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"
+                                                          
                                    />
                                                     <Label  
                                      
@@ -155,12 +152,12 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                        Grid.ColumnSpan="4" Text="{Binding DateAndTime}">
+                                                         Text="{Binding DateAndTime}">
 
                                                        
                                                     </Label>
 
-                                              
+                                                    <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                     <!--<Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                     <BoxView  
@@ -176,7 +173,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" IsVisible="{Binding IsVATVisible}">
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsVATVisible}">
                     <ListView 
            ItemsSource="{Binding ListVATCorrespondance}"
             HorizontalOptions="FillAndExpand"
@@ -198,9 +195,7 @@
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="48*" />
-                                                        <ColumnDefinition Width="42*" />
-                                                        <ColumnDefinition Width="3*" />
+                                                        <ColumnDefinition Width="93*" />
                                                         <ColumnDefinition Width="7*" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
@@ -218,7 +213,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="{Binding Title}" 
                                                   
@@ -228,7 +223,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
 
                                                     <Label 
@@ -239,7 +234,7 @@
                                    Grid.Row="2"
                                              
                                    Grid.Column="0"
-                                                        Grid.ColumnSpan="4"
+                                                       
                                                          Text="Reference Number"
                                    >
 
@@ -252,7 +247,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="Date and Time" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
@@ -260,7 +255,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"
+                                                           
                                    />
                                                     <Label  
                                      
@@ -269,12 +264,12 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                        Grid.ColumnSpan="4" Text="{Binding DateAndTime}">
+                                                         Text="{Binding DateAndTime}">
 
 
                                                     </Label>
 
-
+                                                    <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                     <!--<Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                     <BoxView  
@@ -290,7 +285,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" IsVisible="{Binding IsETVisible}">
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsETVisible}">
                     <ListView 
            ItemsSource="{Binding ListETCorrespondance}"
             HorizontalOptions="FillAndExpand"
@@ -312,10 +307,8 @@
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="48*" />
-                                                        <ColumnDefinition Width="42*" />
-                                                        <ColumnDefinition Width="3*" />
-                                                        <ColumnDefinition Width="7*" />
+                                                        <ColumnDefinition Width="90*" />
+                                                        <ColumnDefinition Width="10*" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />
@@ -332,7 +325,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="{Binding Title}" 
                                                   
@@ -342,7 +335,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
 
                                                     <Label 
@@ -353,7 +346,7 @@
                                    Grid.Row="2"
                                              
                                    Grid.Column="0"
-                                                        Grid.ColumnSpan="4"
+                                                       
                                                          Text="Reference Number"
                                    >
 
@@ -366,7 +359,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"/>
+                                                           />
 
                                                     <Label Text="Date and Time" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
@@ -374,7 +367,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                           Grid.ColumnSpan="4"
+                                                          
                                    />
                                                     <Label  
                                      
@@ -383,15 +376,15 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                        Grid.ColumnSpan="4" Text="{Binding DateAndTime}">
+                                                        Text="{Binding DateAndTime}">
 
 
                                                     </Label>
 
 
                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                    <!--<Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                    <BoxView  
+                                                    <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                                    <!--<BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 
 
@@ -404,7 +397,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
+                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                 </local1:CustomLabel>
                 <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
