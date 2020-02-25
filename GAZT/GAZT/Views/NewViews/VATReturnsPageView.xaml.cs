@@ -614,7 +614,7 @@ namespace GAZT.Views.NewViews
                     case ArButtons.المرفقات:
                         viewModel.VATViewAttachments();
                         break;
-                    case ArButtons.إبطال:
+                    case ArButtons.إلغاء:
                         await viewModel.VATSetReturnVoidAsync();
                         break;
                     case ArButtons.عادةتعيين:
@@ -623,7 +623,7 @@ namespace GAZT.Views.NewViews
                     case ArButtons.تعديل:
                         await viewModel.VATReturnAmendAsync();
                         break;
-                    case ArButtons.حفظ:
+                    case ArButtons.حفظكمسودة:
                         await viewModel.OnSaveDraftClicked();
                         break;
                     default:
