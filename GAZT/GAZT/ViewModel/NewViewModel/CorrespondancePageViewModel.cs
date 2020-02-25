@@ -116,6 +116,48 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsETVisible");
             }
         }
+
+        private string _zakatCountDisplay = string.Empty;
+        public string ZakatCountDisplay
+        {
+            get
+            {
+                return _zakatCountDisplay;
+            }
+            set
+            {
+                _zakatCountDisplay   = value;
+                RaisePropertyChanged("ZakatCountDisplay");
+            }
+        }
+
+        private string _vATCountDisplay = string.Empty;
+        public string VATCountDisplay
+        {
+            get
+            {
+                return _vATCountDisplay;
+            }
+            set
+            {
+                _vATCountDisplay = value;
+                RaisePropertyChanged("VATCountDisplay");
+            }
+        }
+
+        private string _eTCountDisplay = string.Empty;
+        public string ETCountDisplay
+        {
+            get
+            {
+                return _eTCountDisplay;
+            }
+            set
+            {
+                _eTCountDisplay = value;
+                RaisePropertyChanged("ETCountDisplay");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -161,7 +203,8 @@ namespace GAZT.ViewModel.NewViewModel
 
             ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
             List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
-            foreach(CorrespondenceResult itemZakat in ZakatCorres.d.results)
+            ZakatCountDisplay ="Zakat("+ ZakatCorres.d.results.Count+")";
+            foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
             {
                 CorrespondanceModel childZakat = new CorrespondanceModel();
                 childZakat.Title = itemZakat.Descript;
@@ -220,6 +263,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
             List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
+            VATCountDisplay = "VAT(" + VATCorres.d.results.Count + ")";
             foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
             {
                 CorrespondanceModel childVAT = new CorrespondanceModel();
@@ -278,6 +322,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             ETCorres = WebServiceManager.GAZTGetETCorrespondece();
             List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
+            ETCountDisplay = "ET(" + ETCorres.d.results.Count + ")";
             foreach (CorrespondenceResult itemET in ETCorres.d.results)
             {
                 CorrespondanceModel childET = new CorrespondanceModel();

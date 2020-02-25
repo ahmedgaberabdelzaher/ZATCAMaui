@@ -28,6 +28,7 @@ namespace GAZT.Views.NewViews
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
         #endregion
 
