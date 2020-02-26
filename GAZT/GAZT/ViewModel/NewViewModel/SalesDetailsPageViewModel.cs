@@ -1194,7 +1194,7 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails2 = new SalesDetails();
                 salesDetails2.SalesType = AppResources.ZZAveragenumberoflabour;
                 salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
-                salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoI; //ZakatReturnDetail.d.LabnoE;
+                salesDetails2.EstimateSales = string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
                 salesDetails2.SelectedEditFieldId = "2";
                 salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
 
