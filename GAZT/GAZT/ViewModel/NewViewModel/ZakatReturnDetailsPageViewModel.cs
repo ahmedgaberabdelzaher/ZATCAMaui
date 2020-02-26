@@ -220,6 +220,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                         ZakatReturnDetails = zakatReturnDetails;
                         ZakatReturnDetail = zakatReturnDetails.d;
+                        GetUpdatedDataAfterAddingComma();
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
                         {
@@ -349,10 +350,13 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                 PopToRootPage();
-                //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                ZakatReturnDetails = zakatReturnDetails;
+                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                     ZakatReturnDetails = zakatReturnDetails;
+
                 ZakatReturnDetail = zakatReturnDetails.d;
-                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                    GetUpdatedDataAfterAddingComma();
+
+                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                 }
                 catch (InternetException ex)
                 {
@@ -369,7 +373,20 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-      
+      private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()
+        {
+            if(ZakatReturnDetail != null)
+            {
+                ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl);
+                ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt);
+                ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt);
+                ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt);
+            }
+          
+            return ZakatReturnDetail;
+        }
+
+       
 
         #endregion
     }

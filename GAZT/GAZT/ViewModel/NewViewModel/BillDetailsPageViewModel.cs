@@ -202,7 +202,7 @@ namespace GAZT.ViewModel.NewViewModel
                             //else
                             //    IsrefreshEnabled = false;
                         }
-
+                        GetUpdatedDataAfterAddingComma();
                     }
 
                 }
@@ -281,6 +281,30 @@ namespace GAZT.ViewModel.NewViewModel
         {
             IsrefreshEnabled = false;
         }
+
+        private void GetUpdatedDataAfterAddingComma()
+        {
+            
+            if (EstimatedZAKATSADADNumber != null)
+            {
+                try
+                {
+                    EstimatedZAKATSADADNumber.Undisamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Undisamt);
+                    EstimatedZAKATSADADNumber.Disamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Disamt);
+                    EstimatedZAKATSADADNumber.Totamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Totamt);
+                    EstimatedZAKATSADADNumber.Stotamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Stotamt);
+                    EstimatedZAKATSADADNumber.Sdisamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Sdisamt);
+                    EstimatedZAKATSADADNumber.Stotamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Stotamt);
+                }
+                catch(Exception ex)
+                {
+                    // Handle Exception
+                }
+               
+            }
+
+        }
+
         #endregion
     }
 }
