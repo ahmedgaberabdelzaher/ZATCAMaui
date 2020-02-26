@@ -32,7 +32,7 @@ namespace GAZT.ViewModel.NewViewModel
         string newValue="";
         string changeReason = "";
         byte[] attachment;
-
+        //DateTime U
         #endregion
 
         #region Property
@@ -279,19 +279,20 @@ namespace GAZT.ViewModel.NewViewModel
                                                 AttachmentName = string.Empty;
                                                 EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
                                                 _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                                                _estimateZakatAttachment.Seqno = "";
-                                                _estimateZakatAttachment.SchGuid = "";
-                                                _estimateZakatAttachment.AttBy = "";
-                                                _estimateZakatAttachment.FileExtn = "";
-                                                _estimateZakatAttachment.ByPusr = "";
-                                                _estimateZakatAttachment.OutletRef = "";
+                                                _estimateZakatAttachment.Seqno = string.Empty;
+                                                _estimateZakatAttachment.SchGuid = string.Empty;
+                                                _estimateZakatAttachment.AttBy = DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
+                                                _estimateZakatAttachment.FileExtn = string.Empty;
+                                                _estimateZakatAttachment.ByPusr = string.Empty;
+                                                _estimateZakatAttachment.OutletRef = string.Empty;
                                                 _estimateZakatAttachment.Filename = _attachment.d.Filename;
                                                 _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
                                                 _estimateZakatAttachment.Dotyp = "FZ01";
-                                                _estimateZakatAttachment.Mimetype = "";
+                                                _estimateZakatAttachment.Mimetype = string.Empty;
                                                 _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                                                _estimateZakatAttachment.DataVersion = "";
-                                                //DateTime currentDate = DateTime.Now;
+                                                _estimateZakatAttachment.DataVersion = string.Empty;
+                                                DateTime currentDate = DateTime.Now;
+                                                long ticks = currentDate.Ticks;
                                                 //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
                                                 _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
                                                 SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
