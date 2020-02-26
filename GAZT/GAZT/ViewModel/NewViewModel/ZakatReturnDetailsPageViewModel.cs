@@ -226,40 +226,42 @@ namespace GAZT.ViewModel.NewViewModel
                         ZakatReturnDetail = zakatReturnDetails.d;
                         GetUpdatedDataAfterAddingComma();
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                        if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                try
-                                {
-                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzu = UtilityManager.ToArabicDate(Abrzu);
-                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzo = UtilityManager.ToArabicDate(Abrzo);
-                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
-                                }
-                                catch (Exception ex)
-                                {
 
-                                }
+                        Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                        //if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        try
+                        //        {
+                        //            Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzu = UtilityManager.ToArabicDate(Abrzu);
+                        //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzo = UtilityManager.ToArabicDate(Abrzo);
+                        //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                        //        }
+                        //        catch (Exception ex)
+                        //        {
 
-                                // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
+                        //        }
 
-                                }
-                                catch (Exception ex)
-                                {
+                        //        // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                        //    }
+                        //    else
+                        //    {
+                        //        try
+                        //        {
+                        //            Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
 
-                                }
-                            }
-                        }
+                        //        }
+                        //        catch (Exception ex)
+                        //        {
+
+                        //        }
+                        //    }
+                        //}
 
                     }
                     else

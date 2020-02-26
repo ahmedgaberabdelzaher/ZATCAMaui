@@ -19,7 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         public List<EstimatedZakatReturnsResult> myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
-
+        public static String ReturnPeriod = "";
         #endregion
 
         #region Property
@@ -73,6 +73,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
                     {
+                        ReturnPeriod = SelectedZakatReturn.Period;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
                     else
