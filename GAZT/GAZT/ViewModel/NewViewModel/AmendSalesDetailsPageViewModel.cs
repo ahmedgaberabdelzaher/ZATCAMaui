@@ -506,7 +506,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsSaveButtonEnable = true;
             }
-            else if(newValue != NewValue && !string.IsNullOrEmpty(NewValue))
+            else if(newValue != NewValue)
             {
                 IsSaveButtonEnable = true;
             }

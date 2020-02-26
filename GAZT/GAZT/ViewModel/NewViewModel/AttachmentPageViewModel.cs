@@ -3,10 +3,12 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -37,6 +39,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
+            }
+        }
+
+        private string _dateSubmitted;
+        public string DateSubmitted
+        {
+            get
+            {
+                return _dateSubmitted;
+            }
+            set
+            {
+                _dateSubmitted = value;
+                RaisePropertyChanged("DateSubmitted");
             }
         }
 
@@ -199,6 +215,30 @@ namespace GAZT.ViewModel.NewViewModel
                                                     VatAttachmentsList = myCollection;
                                                 });
                                                 VatAttachmentsList = myCollection;
+                                                //foreach (var item in VatAttachmentsList)
+                                                //{
+                                                //    if (App.IsArabic)
+                                                //    {
+                                                //        if (item.Erfdt != null)
+                                                //        {
+                                                //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                                //        }
+                                                //    }
+                                                //    else
+                                                //    {
+                                                //        if (item.Erfdt != null)
+                                                //        {
+                                                //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                //        }
+                                                //    }
+                                                //}
+
                                                 AttachmentCount++;
                                                 TotalAttachmentSize += AttachmentSize;
                                                 AttachmentName = string.Empty;

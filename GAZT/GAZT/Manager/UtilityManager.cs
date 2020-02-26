@@ -661,6 +661,7 @@ namespace GAZT.Manager
                         {
                             _testDueAmount = _testDueAmount + "." + Amount[1].Substring(0, 2);
                         }
+
                         amountWithComma = _testDueAmount;
 
                     }
@@ -681,6 +682,18 @@ namespace GAZT.Manager
             {
 
             }
+            //char[] textValue = amountWithComma.ToCharArray();
+            //if(amountWithComma.Contains(","))
+            //{
+            //    int commaCount = 0;
+            //    for (int i = 0; i < amountWithComma.Length; i++)
+            //    {
+            //        if (amountWithComma[i].Equals(','))
+            //            commaCount++;
+                  
+            //    }
+            //}
+            
             return amountWithComma;
         }
 

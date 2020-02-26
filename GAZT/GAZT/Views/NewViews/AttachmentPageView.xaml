@@ -157,6 +157,15 @@
                                                                 </Image>
 
 
+                                                                <Label Text="{Binding Erfdt}" 
+                                                                       Margin="3,0,3,-5"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="1" Grid.ColumnSpan="2" 
+                                   />
+
                                                                 <!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"

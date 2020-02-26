@@ -473,28 +473,28 @@ namespace GAZT.ViewModel.NewViewModel
         public async Task OnConfirmClicked(string InvFlag)
         {
           //  ShowDisclaimer();
-          if(IsCurrentZAKATTaxLess)
-            {
+          //if(IsCurrentZAKATTaxLess)
+          //  {
 
-                if (CheckBoxStatus)
-                {
-                    string PostOperationID = GetConfirmOperationId();
-                    //  string PostOperationID = "66";
-                    await SubmitZakatReturn(PostOperationID, InvFlag);
-                    CheckBoxStatus = false;
-                }
-                else
-                {
-                    await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
-                }
-            }
-          else
-            {
+          //      if (CheckBoxStatus)
+          //      {
+          //          string PostOperationID = GetConfirmOperationId();
+          //          //  string PostOperationID = "66";
+          //          await SubmitZakatReturn(PostOperationID, InvFlag);
+          //          CheckBoxStatus = false;
+          //      }
+          //      else
+          //      {
+          //          await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+          //      }
+          //  }
+          //else
+          //  {
                 string PostOperationID = GetConfirmOperationId();
                 //  string PostOperationID = "66";
                 await SubmitZakatReturn(PostOperationID, InvFlag);
-                CheckBoxStatus = false;
-            }
+            //    CheckBoxStatus = false;
+            //}
             
         }
         public void onPageLoad()
@@ -667,8 +667,8 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else
                         {
-                                ShowDisclaimer();
-                            SetChangedValueToUploadAttachment();
+                                HideDisclaimer();
+                                SetChangedValueToUploadAttachment();
                             bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
                             if (ISAllRequiredDocumentUploadedwithReason)
                             {
