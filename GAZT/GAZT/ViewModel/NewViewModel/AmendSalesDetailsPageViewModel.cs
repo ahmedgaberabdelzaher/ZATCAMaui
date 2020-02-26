@@ -510,7 +510,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsSaveButtonEnable = true;
             }
-            else if(changeReason != ChangeReason && !string.IsNullOrEmpty(ChangeReason))
+            else if(changeReason != ChangeReason)// && !string.IsNullOrEmpty(ChangeReason)
             {
                 IsSaveButtonEnable = true;
             }

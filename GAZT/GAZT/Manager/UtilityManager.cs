@@ -643,39 +643,12 @@ namespace GAZT.Manager
             {
                 if (amount != null && amount.Length > 0)
                 {
-                    if (amount.Contains("."))
-                    {
-                        string[] Amount = new String[2];
-                        Amount = amount.Split('.');
-                        double testDueAmount = Convert.ToDouble(Amount[0]);
-                        string _testDueAmount = testDueAmount.ToString("#,##0");
-                        if (Amount[1].Length > 0 && Amount[1].Length < 2)
-                        {
-                            _testDueAmount = _testDueAmount + "." + Amount[1].Substring(0, 1) + "0";
-                        }
-                        else if (Amount[1].Length == 0)
-                        {
-                            _testDueAmount = _testDueAmount + "." + "00";
-                        }
-                        else
-                        {
-                            _testDueAmount = _testDueAmount + "." + Amount[1].Substring(0, 2);
-                        }
-
-                        amountWithComma = _testDueAmount;
-
-                    }
-                    else
-                    {
-                        double testDueAmount = Convert.ToDouble(amount);
-                        string _testDueAmount = testDueAmount.ToString("#,##0");
-                        _testDueAmount = _testDueAmount + "." + "00";
-                        amountWithComma = _testDueAmount;
-                    }
-                }
-                else
-                {
-                    amountWithComma = amount;
+                    double testDueAmount = Convert.ToDouble(amount);
+                    CultureInfo ci = new CultureInfo("en-us");
+                    string _testDueAmount;//= testDueAmount.ToString("#,##0");
+                    double floating = Convert.ToDouble(amount);
+                    _testDueAmount = floating.ToString("N02", ci);
+                    amountWithComma = _testDueAmount;
                 }
             }
             catch (Exception ex)
