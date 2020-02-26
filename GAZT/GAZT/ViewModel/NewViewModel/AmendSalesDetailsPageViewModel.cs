@@ -27,6 +27,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
         public static bool IsSaveButtonPressed = false;
         public RootObject rootObject { get; set; }
+        public bool isOnLoad = false;
         int attachmentCount = 0;
         string newValue="";
         string changeReason = "";
@@ -77,7 +78,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         
-        private string _newValue = "";
+        private string _newValue = string.Empty;
         public string NewValue
         {
             get
@@ -97,7 +98,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _oldValue = "";
+        private string _oldValue =string.Empty;
         public string OldValue
         {
             get
@@ -397,7 +398,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if(SelectedSalesDetails != null)
                 {
-                    IsValueChanged();
+                    IsSaveButtonEnable = false;
+                   // IsValueChanged();
                     if (SelectedSalesDetails.estimateZakatAttachment != null)
                     {
                         attachmentCount = SelectedSalesDetails.estimateZakatAttachment.Count;
@@ -422,6 +424,7 @@ namespace GAZT.ViewModel.NewViewModel
                     ChangeReason = SelectedSalesDetails.ChangeReason;
                     ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
                 }
+                isOnLoad = false;
             }
             catch (Exception ex)
             {
@@ -506,11 +509,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsSaveButtonEnable = true;
             }
-            else if(newValue != NewValue)
+            else if(newValue != NewValue && !isOnLoad)
             {
                 IsSaveButtonEnable = true;
             }
-            else if(changeReason != ChangeReason)// && !string.IsNullOrEmpty(ChangeReason)
+            else if(changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
             {
                 IsSaveButtonEnable = true;
             }

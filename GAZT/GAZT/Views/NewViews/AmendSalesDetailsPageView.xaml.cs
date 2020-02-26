@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 AmendSalesDetailsPageViewModel.SelectedSalesDetails = SelectedSalesDetails;
                 viewModel.ClearData();
+                viewModel.isOnLoad = true;
                 viewModel.OnLoad();
                 SetLTR();
                 NavigationPage.SetBackButtonTitle(this, "");
