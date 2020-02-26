@@ -204,6 +204,17 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         GetUpdatedDataAfterAddingComma();
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+
+                        IsLoading = false;
+                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
+                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
+                    }
 
                 }
                 catch (InternetException ex)

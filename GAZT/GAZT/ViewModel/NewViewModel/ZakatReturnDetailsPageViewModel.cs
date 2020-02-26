@@ -178,10 +178,14 @@ namespace GAZT.ViewModel.NewViewModel
             {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
                 await ReleaseEstimateZakatReturn();
             }
-            else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002"))
+            else if (ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
             {
-                IsAmendButtonPressed = true;
-                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                //IsAmendButtonPressed = true;
+                //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+            }
+            else if(ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             }
             else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
             {
@@ -302,7 +306,7 @@ namespace GAZT.ViewModel.NewViewModel
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT
+                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT officer 
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
