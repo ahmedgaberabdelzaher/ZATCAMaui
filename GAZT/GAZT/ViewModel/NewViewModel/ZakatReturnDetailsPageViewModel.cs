@@ -348,6 +348,14 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                     // 
                 }
+                else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                            _navigationService.GoBack();
+                        });
+                       
+                    }
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                 PopToRootPage();
                     //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
