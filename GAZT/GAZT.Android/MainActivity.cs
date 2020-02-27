@@ -40,8 +40,10 @@ namespace GAZT.Droid
             }
             PackageInfo info = this.PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
-
-            LoadApplication(new App());
+            App app = new App();
+            App.appObj = app;
+           LoadApplication(app);
+           
         }
         //public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
         //{

@@ -165,6 +165,7 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
+                                                              <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
 
                                                         <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
@@ -241,15 +242,18 @@
                                    Grid.Row="4"
                                    Grid.Column="2" />
 
+<custom:CustomLabel Text="{x:Static local:AppResources.ZReferenceNumber}"  Grid.Row="5" Grid.Column="1" Margin="8,0,8,0" LineBreakMode="WordWrap" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  Style="{StaticResource MiniGoldLabelStyle}"/>
+
+                    <custom:CustomLabel Text="{Binding Fbnum}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"  Margin="-7,0,-7,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource MiniGrayLabelStyle}"/>
 
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                        <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="4"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                        <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 
 
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="5" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="6" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
 
 
                                                     </Grid>

@@ -5,7 +5,13 @@ namespace GAZT
 {
     public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {
+        static int numberOfDigit = 17;
         static int decimalCount;
+        public static bool iSValiedNumber = true;
+        public  int Max { get; set; }
+        public int IntegerV { get; set; }
+        public int numberOfDigitBeforDecimal { get; set; }
+        public int numberOfDigitAfterDecimal { get; set; }
         protected override void OnAttachedTo(Entry entry)
         {
             entry.TextChanged += OnEntryTextChanged;
@@ -18,178 +24,77 @@ namespace GAZT
             base.OnDetachingFrom(entry);
         }
 
-        private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
+        private  void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            if (Device.RuntimePlatform == Device.iOS)
+            ((Entry)sender).TextColor = Color.Black;
+            //Int16 a = new Int16();
+            //Max = Max;
+            GetDecimalCount(args.NewTextValue);
+            char LastChar = ' ';
+            if (!string.IsNullOrEmpty(args.NewTextValue))
             {
-                GetDecimalCount(args.NewTextValue);
-                char LastChar = ' ';
-                if (!string.IsNullOrEmpty(args.NewTextValue))
+                char[] textValue = args.NewTextValue.ToCharArray();
+                LastChar = textValue[textValue.Length - 1];
+            }
+
+            //   bool IsStringContainsNegativeSign = ISNumberContainsNegativeSign(args.NewTextValue);
+            bool IsStringContainsNegativeSign = args.NewTextValue.Contains("-");
+            if (((Entry)sender).Text.Length < Max)
+            {
+                if (!IsStringContainsNegativeSign)
                 {
-                    char[] textValue = args.NewTextValue.ToCharArray();
-                    LastChar = textValue[textValue.Length - 1];
-                }
-
-                if (LastChar >= 46 && LastChar <= 57)
-                {
-
-
-                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.decimalCount < 2)
+                    if (decimalCount > 1)
                     {
                         if (!string.IsNullOrEmpty(args.NewTextValue))
+                            ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();// need to change later
+                    }
+
+                    foreach (char letter in args.NewTextValue.ToCharArray())
+                    {
+                        if (!((LastChar >= 46 && LastChar <= 57) || LastChar == 44))
                         {
-
-                            if (args.NewTextValue.Substring(args.NewTextValue.Length - 1) != ".")
-                            {
-                                if (args.NewTextValue.Contains("."))
-                                {
-                                    string[] SplitByDecimal = args.NewTextValue.Split('.');
-                                    string BeforeDecimal = string.Empty;
-                                    string AfterDecimal = string.Empty;
-
-                                    if (SplitByDecimal[0].Length > 11)
-                                    {
-
-                                        BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
-                                        if (BeforeDecimal.Contains("-"))
-                                        {
-                                            BeforeDecimal = (Convert.ToInt32(BeforeDecimal) * -1).ToString();
-                                        }
-                                        ((Entry)sender).Text = Math.Round(Convert.ToDecimal(BeforeDecimal + AfterDecimal), 2).ToString();
-
-                                    }
-                                    else
-                                    {
-                                        if (args.NewTextValue.Contains("-"))
-                                        {
-                                            ((Entry)sender).Text = (Math.Round(Convert.ToDecimal(args.NewTextValue), 2) * -1).ToString();
-                                        }
-                                        else
-                                        {
-                                            ((Entry)sender).Text = Math.Round(Convert.ToDecimal(args.NewTextValue), 2).ToString();
-                                        }
-                                    }
-                                }
-                                else
-                                {
-
-
-                                    if (args.NewTextValue.Length > 11)
-                                    {
-                                        if (args.NewTextValue.Contains("-"))
-                                        {
-                                            ((Entry)sender).Text = (Math.Round(Convert.ToDecimal(args.NewTextValue.Remove(args.NewTextValue.Length - 1)), 2) * -1).ToString();
-                                        }
-                                        else
-                                        {
-                                            ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                                        }
-
-
-                                    }
-                                    else
-                                    {
-                                        if (args.NewTextValue.Contains("-"))
-                                        {
-                                            ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
-                                        }
-                                    }
-                                }
-                            }
+                            ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                         }
                     }
+                    if (args.NewTextValue.Length == Max)
+                        ((Entry)sender).Unfocus();
+                    //if ((LastChar >= 46 && LastChar <= 57) || LastChar == 44)
+                    //{
+
+                    //}
+                    //else
+                    //{
+                    //    if (!string.IsNullOrEmpty(args.NewTextValue))
+                    //        ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
+                    //}
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(args.NewTextValue))
-                        ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
+                    ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
                 }
             }
             else
             {
                 if (!string.IsNullOrEmpty(args.NewTextValue))
                 {
-                    char LastChar = ' ';
-                    if (!string.IsNullOrEmpty(args.NewTextValue))
-                    {
-                        char[] textValue = args.NewTextValue.ToCharArray();
-                        LastChar = textValue[textValue.Length - 1];
-                    }
 
-                    if (LastChar >= 46 && LastChar <= 57)
-                    {
-
-                        if (args.NewTextValue.Substring(args.NewTextValue.Length - 1) != ".")
-                        {
-                            if (args.NewTextValue.Contains("."))
-                            {
-                                string[] SplitByDecimal = args.NewTextValue.Split('.');
-                                string BeforeDecimal = string.Empty;
-                                string AfterDecimal = string.Empty;
-
-                                if (SplitByDecimal[0].Length > 11)
-                                {
-
-                                    BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
-                                    if (BeforeDecimal.Contains("-"))
-                                    {
-                                        BeforeDecimal = (Convert.ToInt32(BeforeDecimal) * -1).ToString();
-                                    }
-                                    ((Entry)sender).Text = Math.Round(Convert.ToDecimal(BeforeDecimal + AfterDecimal), 2).ToString();
-
-                                }
-                                else
-                                {
-                                    if (args.NewTextValue.Contains("-"))
-                                    {
-                                        ((Entry)sender).Text = (Math.Round(Convert.ToDecimal(args.NewTextValue), 2) * -1).ToString();
-                                    }
-                                    else
-                                    {
-                                        ((Entry)sender).Text = Math.Round(Convert.ToDecimal(args.NewTextValue), 2).ToString();
-                                    }
-                                }
-                            }
-                            else
-                            {
-
-
-                                if (args.NewTextValue.Length > 11)
-                                {
-                                    if (args.NewTextValue.Contains("-"))
-                                    {
-                                        ((Entry)sender).Text = (Math.Round(Convert.ToDecimal(args.NewTextValue.Remove(args.NewTextValue.Length - 1)), 2) * -1).ToString();
-                                    }
-                                    else
-                                    {
-                                        ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                                    }
-
-
-                                }
-                                else
-                                {
-                                    if (args.NewTextValue.Contains("-"))
-                                    {
-                                        ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(args.NewTextValue))
-                            ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
-                    }
-
+                    if (args.NewTextValue.Length == Max)
+                        ((Entry)sender).Unfocus();
+                    ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
                 }
 
             }
-
+             GetCommaSeparatedAmount(((Entry)sender).Text);
+            if(!iSValiedNumber)
+            {
+                ((Entry)sender).TextColor =  Color.Red;
+            }
+            else
+            {
+                ((Entry)sender).TextColor = Color.Black;
+            }
 
         }
-
         private static void GetDecimalCount(string DecimalNumber)
         {
             int _decimalcount = 0;
@@ -213,6 +118,8 @@ namespace GAZT
                 decimalCount = _decimalcount;
                 if (decimalCount > 1)
                 {
+                    //if (!string.IsNullOrEmpty(args.NewTextValue))
+                    //    ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1)
                     // message please remove extra decimal number
                 }
             }
@@ -221,6 +128,54 @@ namespace GAZT
 
             }
 
+        }
+
+        private  void GetCommaSeparatedAmount(string amount)
+        {
+
+          
+            try
+            {
+                if (amount != null && amount.Length < numberOfDigit && amount.Length > 0)
+                {
+                    if (amount.Contains("."))
+                    {
+                        string[] Amount = new String[2];
+                        Amount = amount.Split('.');
+                     
+                        if (Amount[0].Length > numberOfDigitBeforDecimal || Amount[1].Length > numberOfDigitAfterDecimal)
+                        {
+                            iSValiedNumber = false;
+                        }
+                        else
+                        {
+                            iSValiedNumber = true;
+                        }
+                       
+
+
+                    }
+                    else
+                    {
+                        if (Convert.ToInt32(amount.Length) > numberOfDigitBeforDecimal)
+                        {
+                            iSValiedNumber = false;
+                        }
+                        else
+                        {
+                            iSValiedNumber = true;
+                        }
+                    }
+                }
+                else
+                {
+                    //amountWithComma = amount;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

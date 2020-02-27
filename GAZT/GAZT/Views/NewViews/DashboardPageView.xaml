@@ -111,7 +111,7 @@
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Column="0" Grid.Row="0"  Orientation="Horizontal" HorizontalOptions="Center">
                                             <Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Image>
-                                            <Label Text="{Binding ReturnCount}" Margin="0"   Padding="0" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="#065E49" FontAttributes="Bold"/>
+                                                <Label  Text="{Binding ReturnCount}" Margin="0"   Padding="0" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="#065E49" FontAttributes="Bold"/>
                                             
                                         </StackLayout>
                                         <!--<StackLayout Grid.Column="1" Grid.Row="0" >
@@ -145,14 +145,14 @@
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center">
                                             <Image Source="{Binding ImagePath}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Image>
-                                            <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" FontSize="Title" TextColor="#065E49" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                                <Label Text="{Binding BillCount}" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="Start" Style="{StaticResource forBoldLabel}"  FontSize="Title" TextColor="#065E49" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         </StackLayout>
                                         <!--<StackLayout Grid.Column="1" Grid.Row="0" >
                                             <Label Text="{Binding BillCount}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" FontSize="Title" TextColor="#065E49" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                         </StackLayout>-->
                                         <StackLayout Grid.Row="1" Grid.Column="0" Margin="0,-6,0,0"  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
                                             <Label Text="{Binding BillTypeName}" Margin="0,0,0,-7" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
-                                            <Label Margin="0"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                                <Label Margin="0" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding BillAmount}"/>

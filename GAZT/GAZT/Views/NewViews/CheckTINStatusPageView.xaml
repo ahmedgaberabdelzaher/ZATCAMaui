@@ -84,15 +84,15 @@
                                                         <ColumnDefinition Width="40*"/>
                                                         <ColumnDefinition Width="60*"/>
                                                     </Grid.ColumnDefinitions>
-                                                <Label  Text="{x:Static local:AppResources.ZCRNo}" Margin="10,0,10,-15" Grid.Row="0"  Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                <Label  Text="{x:Static local:AppResources.ZCRNo}" Margin="10,0,10,0" Grid.Row="0"  Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                <Label  Text="{x:Static local:AppResources.ZCRStatus}" Margin="10,0,10,-15"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                <Label  Text="{x:Static local:AppResources.ZCRStatus}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                <Label  Text="{x:Static local:AppResources.ZLastUpdate}" Grid.Row="2" Grid.Column="0" Margin="10,0,10,5" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                <Label  Text="{x:Static local:AppResources.ZLastUpdate}" Grid.Row="2" Grid.Column="0" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                    <Label Text="{Binding Idnumber}" Margin="10,0,10,-10"  Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <Label Text="{Binding StatusText}" Margin="10,0,10,-10"  Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <Label Text="{Binding Udate}" Margin="10,0,10,5"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Idnumber}" Margin="10,0,10,0" Padding="0" Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding StatusText}" Margin="10,0,10,0" Padding="0" Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Udate}" Margin="10,0,10,0"  Grid.Row="2" Padding="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#7D858D" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>-->
                                                     <BoxView Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5" BackgroundColor="#B1B1B1" />
                                                 </Grid>

@@ -2124,10 +2124,21 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.StepNumberz = StepNumberz;
                 VATDeclarationData.d.UserTypz = "TP";
 
-                await SaveReturnAndGetReturnAndSetButtons();
-                Device.BeginInvokeOnMainThread(async () => {
-                    await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
-                });
+                var res=await SaveReturnAndGetReturnAndSetButtons();
+                if (res != null)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
 
 
             });
@@ -2178,7 +2189,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus== "E0055")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2489,19 +2500,23 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.UserTypz = "TP";
                 VATDeclarationData.d.Operationz = operation;
                 IsLoading = false;
-                await SaveReturnAndGetReturnAndSetButtons();
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
-                //});
-                ManageEnabledProperty(false);
-                _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                var res=await SaveReturnAndGetReturnAndSetButtons();
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
+                    //});
+                    if (res != null)
+                    {
+                        ManageEnabledProperty(false);
+                        _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                    }
             }
             else
             {
                 IsFirstSubmission = false;
+                VATDeclaration resNew=null;
 
-                
+
                 if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
                 {
                     CreateDataForPost();
@@ -2514,7 +2529,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                     //PopToRootPage();
                     IsLoading = false;
-                    await SaveReturnAndGetReturnAndSetButtons();
+                    resNew=await SaveReturnAndGetReturnAndSetButtons();
                 }
                     //decimal FourteenA = 0;
                     //if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
@@ -2529,9 +2544,9 @@ namespace GAZT.ViewModel.NewViewModel
                     //    Masseges.Append(Environment.NewLine);
                     //    Masseges.Append(Environment.NewLine);
                     //    Masseges.Append(Environment.NewLine);
-                      
+
                     //    Masseges.Append(AppResources.CreditReturnMsg);
-                      
+
                     //    PopUp Pop = new PopUp();
                     //    Pop.IsLinkAvailable = false;
                     //    Pop.IsRed = "#ff0000";
@@ -2546,10 +2561,19 @@ namespace GAZT.ViewModel.NewViewModel
                     //    VATReturnFormClicked();
                     //    PageSelectedItem = VatTabbledPageList[2];
                     //}
+                    if (resNew != null)
+                    {
+                        await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                        VATReturnFormClicked();
+                        PageSelectedItem = VatTabbledPageList[2];
+                    }
+                    else
+                    {
+                        IsFirstSubmission = true;
+                        FirstSubmissionCount = 0;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
-                    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                    VATReturnFormClicked();
-                    PageSelectedItem = VatTabbledPageList[2];
+                    }
 
 
 
@@ -2665,13 +2689,24 @@ namespace GAZT.ViewModel.NewViewModel
 
                     var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
                     PopToRootPage();
-                    await SaveReturnAndGetReturnAndSetButtons();
-                    ManageEnabledProperty(false);
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+                    var res=await SaveReturnAndGetReturnAndSetButtons();
+                        if (res != null)
+                        {
+                            ManageEnabledProperty(false);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
 
-                    });
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
+
+                            });
+                        }
                     }
                     catch (InternetException ex)
                     {
@@ -2719,11 +2754,22 @@ namespace GAZT.ViewModel.NewViewModel
 
                 var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
                 PopToRootPage();
-                await SaveReturnAndGetReturnAndSetButtons();
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
-                });
+                var res=await SaveReturnAndGetReturnAndSetButtons();
+                    if (res != null)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        });
+                    }
+
                 }
                 catch (InternetException ex)
                 {
@@ -2787,12 +2833,22 @@ namespace GAZT.ViewModel.NewViewModel
                   
                // var response = WebServiceManager.GAZTSetVATReturnAmend(VATDeclarationData);
                 PopToRootPage();
-                await SaveReturnAndGetReturnAndSetButtons();
-                ManageEnabledProperty(true);
-                IsDeclarationCheckEnabled = false;
-                IsTaxPayerCheckEnabled = false;
-                IsAmendClicked = true;
-                IsMainButtonEnabled = true;
+                var res=await SaveReturnAndGetReturnAndSetButtons();
+                if (res != null)
+                {
+                    ManageEnabledProperty(true);
+                    IsDeclarationCheckEnabled = false;
+                    IsTaxPayerCheckEnabled = false;
+                    IsAmendClicked = true;
+                    IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
             });
             await Task.Run(() =>
             {
@@ -2850,10 +2906,12 @@ namespace GAZT.ViewModel.NewViewModel
                             IBANList = new List<Result2>();
                             IBANList = VATDeclarationData.d.IBANSet.results;
                             IsVATRefunCheckedVisible = false;
+                            IsEnableCheckedRefund = false;
                         }
                         else
                         {
                             IsVATRefunCheckedVisible = true;
+                            IsEnableCheckedRefund = true;
                         }
                         createIBANType();
 
@@ -3265,7 +3323,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private async Task SaveReturnAndGetReturnAndSetButtons()
+        private async Task<VATDeclaration> SaveReturnAndGetReturnAndSetButtons()
         {
             try
             {
@@ -3306,9 +3364,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch(Exception ex)
                 {
-
+                        return null;
                 }
             }
+                return response;
             }
             catch (InternetException ex)
             {
@@ -3645,7 +3704,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
             }
-            else if (ButtonName == "Save")
+            else if (ButtonName == "SaveasDraft")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             }

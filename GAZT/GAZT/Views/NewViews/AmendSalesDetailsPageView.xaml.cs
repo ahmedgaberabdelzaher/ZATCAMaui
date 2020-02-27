@@ -1,4 +1,5 @@
-﻿using GAZT.Models;
+﻿using GAZT.Manager;
+using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 AmendSalesDetailsPageViewModel.SelectedSalesDetails = SelectedSalesDetails;
                 viewModel.ClearData();
+                viewModel.isOnLoad = true;
                 viewModel.OnLoad();
                 SetLTR();
                 NavigationPage.SetBackButtonTitle(this, "");
@@ -50,14 +52,16 @@ namespace GAZT.Views.NewViews
 
         private void SetDynamicBehaviour()
         {
+
             if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
             {
-                NewValue.Behaviors.Add(new NineDotTwoDecimalPlacesAndNoNegativeValue());
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
             else
             {
-                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue());
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
+
         }
         private void SetLTR()
         {
@@ -99,5 +103,29 @@ namespace GAZT.Views.NewViews
             AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason = viewModel.ChangeReason;
 
         }
+
+        public void OnEntryUnFocussed(object sender, EventArgs args)
+        {
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                NewValue.Text = UtilityManager.GetCommaSeparatedAmount(NewValue.Text);
+                NewValue.TextColor = Color.Black;
+            }
+            else
+            {
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+
+        public void OnEntryFocussed(object sender, EventArgs args)
+        {
+            if (NewValue.Text.Contains(","))
+            {
+                NewValue.Text = NewValue.Text.Replace(",", "");
+                NewValue.TextColor = Color.Black;
+            }
+        }
+
     }
 }

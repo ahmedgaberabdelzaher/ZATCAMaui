@@ -175,7 +175,7 @@ namespace GAZT.ViewModel.NewViewModel
                     PopToRootPage();
                     if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
-                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0)
+                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Disamt) > 0)
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
@@ -202,7 +202,18 @@ namespace GAZT.ViewModel.NewViewModel
                             //else
                             //    IsrefreshEnabled = false;
                         }
+                        GetUpdatedDataAfterAddingComma();
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
 
+                        IsLoading = false;
+                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
+                        estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                     }
 
                 }
@@ -281,6 +292,30 @@ namespace GAZT.ViewModel.NewViewModel
         {
             IsrefreshEnabled = false;
         }
+
+        private void GetUpdatedDataAfterAddingComma()
+        {
+            
+            if (EstimatedZAKATSADADNumber != null)
+            {
+                try
+                {
+                    EstimatedZAKATSADADNumber.Undisamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Undisamt);
+                    EstimatedZAKATSADADNumber.Disamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Disamt);
+                    EstimatedZAKATSADADNumber.Totamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Totamt);
+                    EstimatedZAKATSADADNumber.Stotamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Stotamt);
+                    EstimatedZAKATSADADNumber.Sdisamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Sdisamt);
+                    EstimatedZAKATSADADNumber.Stotamt = UtilityManager.GetCommaSeparatedAmount(EstimatedZAKATSADADNumber.Stotamt);
+                }
+                catch(Exception ex)
+                {
+                    // Handle Exception
+                }
+               
+            }
+
+        }
+
         #endregion
     }
 }

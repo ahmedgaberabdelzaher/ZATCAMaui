@@ -23,7 +23,7 @@ namespace GAZT.iOS.CustomRenderer
             // this.NavigationBar.BarTintColor = UIColor.Green;
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
-                Font = UIFont.FromName("SSTArabic-Medium", 16),
+                Font = UIFont.FromName("GE_SS_Two_Medium", 16),
                 TextColor = UIColor.White
             });
             //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
