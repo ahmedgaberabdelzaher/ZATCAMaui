@@ -92,11 +92,6 @@ namespace GAZT.Views
             {
 
             }
-            
-
-            //message.Attachments.Add(new EmailAttachment(file));
-
-            //await Email.ComposeAsync(message);
         }
 
     }

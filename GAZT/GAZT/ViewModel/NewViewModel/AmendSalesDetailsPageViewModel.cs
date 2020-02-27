@@ -27,11 +27,12 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
         public static bool IsSaveButtonPressed = false;
         public RootObject rootObject { get; set; }
+        public bool isOnLoad = false;
         int attachmentCount = 0;
         string newValue="";
         string changeReason = "";
         byte[] attachment;
-
+        //DateTime U
         #endregion
 
         #region Property
@@ -77,7 +78,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         
-        private string _newValue = "";
+        private string _newValue = string.Empty;
         public string NewValue
         {
             get
@@ -97,7 +98,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _oldValue = "";
+        private string _oldValue =string.Empty;
         public string OldValue
         {
             get
@@ -278,19 +279,20 @@ namespace GAZT.ViewModel.NewViewModel
                                                 AttachmentName = string.Empty;
                                                 EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
                                                 _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                                                _estimateZakatAttachment.Seqno = "";
-                                                _estimateZakatAttachment.SchGuid = "";
-                                                _estimateZakatAttachment.AttBy = "";
-                                                _estimateZakatAttachment.FileExtn = "";
-                                                _estimateZakatAttachment.ByPusr = "";
-                                                _estimateZakatAttachment.OutletRef = "";
+                                                _estimateZakatAttachment.Seqno = string.Empty;
+                                                _estimateZakatAttachment.SchGuid = string.Empty;
+                                                _estimateZakatAttachment.AttBy = DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
+                                                _estimateZakatAttachment.FileExtn = string.Empty;
+                                                _estimateZakatAttachment.ByPusr = string.Empty;
+                                                _estimateZakatAttachment.OutletRef = string.Empty;
                                                 _estimateZakatAttachment.Filename = _attachment.d.Filename;
                                                 _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
                                                 _estimateZakatAttachment.Dotyp = "FZ01";
-                                                _estimateZakatAttachment.Mimetype = "";
+                                                _estimateZakatAttachment.Mimetype = string.Empty;
                                                 _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                                                _estimateZakatAttachment.DataVersion = "";
-                                                //DateTime currentDate = DateTime.Now;
+                                                _estimateZakatAttachment.DataVersion = string.Empty;
+                                                DateTime currentDate = DateTime.Now;
+                                                long ticks = currentDate.Ticks;
                                                 //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
                                                 _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
                                                 SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
@@ -397,7 +399,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if(SelectedSalesDetails != null)
                 {
-                    IsValueChanged();
+                    IsSaveButtonEnable = false;
+                   // IsValueChanged();
                     if (SelectedSalesDetails.estimateZakatAttachment != null)
                     {
                         attachmentCount = SelectedSalesDetails.estimateZakatAttachment.Count;
@@ -422,6 +425,7 @@ namespace GAZT.ViewModel.NewViewModel
                     ChangeReason = SelectedSalesDetails.ChangeReason;
                     ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
                 }
+                isOnLoad = false;
             }
             catch (Exception ex)
             {
@@ -506,11 +510,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsSaveButtonEnable = true;
             }
-            else if(newValue != NewValue && !string.IsNullOrEmpty(NewValue))
+            else if(newValue != NewValue && !isOnLoad)
             {
                 IsSaveButtonEnable = true;
             }
-            else if(changeReason != ChangeReason && !string.IsNullOrEmpty(ChangeReason))
+            else if(changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
             {
                 IsSaveButtonEnable = true;
             }

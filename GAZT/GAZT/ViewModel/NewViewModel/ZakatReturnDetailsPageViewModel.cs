@@ -178,10 +178,14 @@ namespace GAZT.ViewModel.NewViewModel
             {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
                 await ReleaseEstimateZakatReturn();
             }
-            else if (ZakatReturnDetails.d.Statusz.Equals("IP014") || ZakatReturnDetails.d.Statusz.Equals("E0002"))
+            else if (ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
             {
-                IsAmendButtonPressed = true;
-                _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                //IsAmendButtonPressed = true;
+                //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+            }
+            else if(ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             }
             else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
             {
@@ -220,41 +224,44 @@ namespace GAZT.ViewModel.NewViewModel
                         //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                         ZakatReturnDetails = zakatReturnDetails;
                         ZakatReturnDetail = zakatReturnDetails.d;
+                        GetUpdatedDataAfterAddingComma();
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                        if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                try
-                                {
-                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzu = UtilityManager.ToArabicDate(Abrzu);
-                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzo = UtilityManager.ToArabicDate(Abrzo);
-                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
-                                }
-                                catch (Exception ex)
-                                {
 
-                                }
+                        Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                        //if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        try
+                        //        {
+                        //            Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzu = UtilityManager.ToArabicDate(Abrzu);
+                        //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzo = UtilityManager.ToArabicDate(Abrzo);
+                        //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
+                        //        }
+                        //        catch (Exception ex)
+                        //        {
 
-                                // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    Abrzu = Abrzu + "  " + "-" + "  " + Abrzo;
+                        //        }
 
-                                }
-                                catch (Exception ex)
-                                {
+                        //        // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                        //    }
+                        //    else
+                        //    {
+                        //        try
+                        //        {
+                        //            Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
 
-                                }
-                            }
-                        }
+                        //        }
+                        //        catch (Exception ex)
+                        //        {
+
+                        //        }
+                        //    }
+                        //}
 
                     }
                     else
@@ -301,12 +308,22 @@ namespace GAZT.ViewModel.NewViewModel
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT
+                else if (ButtonStatus.Equals("IP014"))
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
-                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
+                {
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if(ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
+                {
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
                     SalesDetailsAndReleaseButtonVisibility = true;
@@ -339,6 +356,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
             try
             {
+                    GetUpdatedDataAfterRemovingComma();
                 ZakatReturnDetails _zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
                 if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
@@ -347,12 +365,23 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                     // 
                 }
+                else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                            _navigationService.GoBack();
+                        });
+                       
+                    }
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                 PopToRootPage();
-                //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                ZakatReturnDetails = zakatReturnDetails;
+                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                     ZakatReturnDetails = zakatReturnDetails;
+
                 ZakatReturnDetail = zakatReturnDetails.d;
-                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                    GetUpdatedDataAfterAddingComma();
+
+                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                 }
                 catch (InternetException ex)
                 {
@@ -369,7 +398,32 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-      
+      private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()
+        {
+            if(ZakatReturnDetail != null)
+            {
+                ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl);
+                ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt);
+                ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt);
+                ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt);
+            }
+          
+            return ZakatReturnDetail;
+        }
+
+        private void GetUpdatedDataAfterRemovingComma()
+        {
+            if (ZakatReturnDetails != null)
+            {
+                ZakatReturnDetails.d.Estsl = ZakatReturnDetails.d.Estsl.Replace(",", ""); 
+                ZakatReturnDetails.d.Cpamt = ZakatReturnDetails.d.Cpamt.Replace(",", "");
+                ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
+                ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+            }
+
+         
+        }
+        
 
         #endregion
     }

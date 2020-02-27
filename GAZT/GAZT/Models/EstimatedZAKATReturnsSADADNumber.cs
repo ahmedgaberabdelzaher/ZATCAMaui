@@ -82,8 +82,8 @@ namespace GAZT.Models
         public string TvtslI { get; set; }
         public string TvtslE { get; set; }
         public string Tpstatus { get; set; }
-        public DateTime TimestampCr { get; set; }
-        public DateTime TimestampCh { get; set; }
+        //public DateTime TimestampCr { get; set; }
+       // public DateTime TimestampCh { get; set; }
         public string Tcflg { get; set; }
         public string Sumcnt { get; set; }
         public string StepNumberz { get; set; }
@@ -129,18 +129,18 @@ namespace GAZT.Models
         public string EtimadResn { get; set; }
         public string EtimadI { get; set; }
         public string Estsl { get; set; }
-        public object Enddaz { get; set; }
+        //public string Enddaz { get; set; }
         public string Disamt { get; set; }
         public string DataVersion { get; set; }
         public string CpamtResn { get; set; }
         public string Cpamt { get; set; }
         public string Cotyp { get; set; }
         public string Cokey { get; set; }
-        public object Begdaz { get; set; }
+      //  public string Begdaz { get; set; }
         public string AmdRsn { get; set; }
         public string Amdflg { get; set; }
-        public DateTime Abrzu { get; set; }
-        public DateTime Abrzo { get; set; }
+       // public DateTime Abrzu { get; set; }
+        //public DateTime Abrzo { get; set; }
         public EstimatedZAKATReturnsSADADNumberDeferredReasonSet ReasonSet { get; set; }
         public EstimatedZAKATReturnsSADADNumberAttachSet AttachSet { get; set; }
         public EstimatedZAKATReturnsSADADNumberInvoiceSet InvoiceSet { get; set; }

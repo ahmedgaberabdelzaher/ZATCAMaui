@@ -84,6 +84,7 @@ namespace GAZT.Views.NewViews
                     AmendSalesDetailsPageViewModel.IsSaveButtonPressed = false;
                     SetUpdatedDataToObject();
                     viewModel.SetUpdatedDataToZAKATEstimated(selectedIndex);
+                    UpdateTheAttachmentPostData();
                    //viewModel.SetChangedDataToTheList();
                     //viewModel.SetChangedDataToTheList(selectedIndex);
                     //   viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
@@ -398,6 +399,17 @@ namespace GAZT.Views.NewViews
                     }
             }
             return informationMessage;
+        }
+
+        private void UpdateTheAttachmentPostData()
+        {
+            if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment.Count > 0)
+            {
+                for (int i = 0; i < AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment.Count; i++)
+                {
+                    AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment[i].AttBy = String.Empty;
+                }
+            }
         }
     }
 }

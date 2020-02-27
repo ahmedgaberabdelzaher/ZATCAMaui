@@ -2012,4 +2012,7 @@
   <data name="ZLink" xml:space="preserve">
     <value>[رابط]</value>
   </data>
+     <data name="ZReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي للإقرار</value>
+  </data>
 </root>

@@ -3525,5 +3525,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLink", resourceCulture);
             }
         }
+        
+        public static string ZReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZReferenceNumber", resourceCulture);
+            }
+        }
     }
 }

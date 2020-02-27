@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-               xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
@@ -64,12 +64,14 @@
 
 
 
-                            <Label Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label  Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="NewValue" Grid.Row="4" Text="{Binding NewValue}" Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
-
+                            <custom:GAZTBorderlessEntry x:Name="NewValue" Grid.Row="4" Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue/>
+                                </custom:GAZTBorderlessEntry.Behaviors>-->
                             </custom:GAZTBorderlessEntry>
                             <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
@@ -189,7 +191,7 @@
                                                                     </Grid.ColumnDefinitions>
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="Auto" />
-
+                                                                             <RowDefinition Height="Auto" />
                                                                     </Grid.RowDefinitions>
 
 
@@ -239,14 +241,14 @@
                                                                         </Image.GestureRecognizers>
                                                                     </Image>
 
-                                                                    <Label Text="{Binding UploadedDate}" 
+                                                                    <Label Text="{Binding AttBy}" 
                                                                        Margin="3,0,3,0"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
                                                                         HorizontalOptions="StartAndExpand"
                                                                          VerticalOptions="CenterAndExpand"
                                                                          LineBreakMode="CharacterWrap"
                                                                           
-                                                                           Grid.Row="0"
+                                                                           Grid.Row="1"
                                                                            Grid.Column="0"
                                                                            Grid.ColumnSpan="4"
                                    />
