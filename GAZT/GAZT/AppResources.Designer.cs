@@ -4369,11 +4369,56 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correspondence.
+        /// </summary>
+        public static string ZZCorrespondence {
+            get {
+                return ResourceManager.GetString("ZZCorrespondence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correspondence Details.
+        /// </summary>
+        public static string ZZCorrespondenceDetails {
+            get {
+                return ResourceManager.GetString("ZZCorrespondenceDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
         public static string ZZCreateNotes {
             get {
                 return ResourceManager.GetString("ZZCreateNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date and Time.
+        /// </summary>
+        public static string ZZDateandTime {
+            get {
+                return ResourceManager.GetString("ZZDateandTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date(Ascending).
+        /// </summary>
+        public static string ZZDateAscending {
+            get {
+                return ResourceManager.GetString("ZZDateAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date(Descending).
+        /// </summary>
+        public static string ZZDateDescending {
+            get {
+                return ResourceManager.GetString("ZZDateDescending", resourceCulture);
             }
         }
         
@@ -4447,11 +4492,38 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ET.
+        /// </summary>
+        public static string ZZET {
+            get {
+                return ResourceManager.GetString("ZZET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exports value.
         /// </summary>
         public static string ZZExportsvalue {
             get {
                 return ResourceManager.GetString("ZZExportsvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favorite(Ascending).
+        /// </summary>
+        public static string ZZFavoriteAscending {
+            get {
+                return ResourceManager.GetString("ZZFavoriteAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favorite(Descending).
+        /// </summary>
+        public static string ZZFavoriteDescending {
+            get {
+                return ResourceManager.GetString("ZZFavoriteDescending", resourceCulture);
             }
         }
         
@@ -4883,6 +4955,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reference Number.
+        /// </summary>
+        public static string ZZReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZZReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
         public static string ZZRefresh {
@@ -5032,6 +5113,15 @@ namespace GAZT {
         public static string ZZTheUndisputedAmount {
             get {
                 return ResourceManager.GetString("ZZTheUndisputedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string ZZTitle {
+            get {
+                return ResourceManager.GetString("ZZTitle", resourceCulture);
             }
         }
         
@@ -5270,6 +5360,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT.
+        /// </summary>
+        public static string ZZVAT {
+            get {
+                return ResourceManager.GetString("ZZVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Void.
         /// </summary>
         public static string ZZVoid {
@@ -5293,6 +5392,15 @@ namespace GAZT {
         public static string ZZYourPasswordhasbeenChangedsuccessfully {
             get {
                 return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZAKAT.
+        /// </summary>
+        public static string ZZZAKAT {
+            get {
+                return ResourceManager.GetString("ZZZAKAT", resourceCulture);
             }
         }
         

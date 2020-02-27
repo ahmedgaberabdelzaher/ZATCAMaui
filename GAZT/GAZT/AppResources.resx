@@ -2004,4 +2004,52 @@ Should we require further information, we would be in contact.</value>
   <data name="ZLink" xml:space="preserve">
     <value>[Link]</value>
   </data>
+  <data name="ZZCorrespondence" xml:space="preserve">
+    <value>Correspondence</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZCorrespondenceDetails" xml:space="preserve">
+    <value>Correspondence Details</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateandTime" xml:space="preserve">
+    <value>Date and Time</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateAscending" xml:space="preserve">
+    <value>Date(Ascending)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateDescending" xml:space="preserve">
+    <value>Date(Descending)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZET" xml:space="preserve">
+    <value>ET</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZFavoriteAscending" xml:space="preserve">
+    <value>Favorite(Ascending)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZFavoriteDescending" xml:space="preserve">
+    <value>Favorite(Descending)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZTitle" xml:space="preserve">
+    <value>Title</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZVAT" xml:space="preserve">
+    <value>VAT</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZZAKAT" xml:space="preserve">
+    <value>ZAKAT</value>
+    <comment>Correspondence</comment>
+  </data>
 </root>

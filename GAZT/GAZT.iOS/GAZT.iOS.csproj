@@ -734,4 +734,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star_border%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_star_border%403x.png" />
+  </ItemGroup>
 </Project>

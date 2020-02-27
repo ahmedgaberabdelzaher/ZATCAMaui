@@ -21,6 +21,7 @@ namespace GAZT.Views
         public LogInPageView()
         {
             viewModel = App.Locator.LogInPageView;
+           
 
             InitializeComponent();
 

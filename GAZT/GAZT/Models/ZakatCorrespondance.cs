@@ -26,8 +26,8 @@ namespace GAZT.Models
         public string Auditor { get; set; }
         public string Gpartz { get; set; }
         public string Langz { get; set; }
-        public DateTime Begdaz { get; set; }
-        public DateTime Enddaz { get; set; }
+        public string Begdaz { get; set; }
+        public string Enddaz { get; set; }
         public string ObligFlagz { get; set; }
         public DateTime Cdate { get; set; }
         public string Ctime { get; set; }
@@ -57,4 +57,7 @@ namespace GAZT.Models
     {
         public CorrespondenceD d { get; set; }
     }
+
+
+
 }

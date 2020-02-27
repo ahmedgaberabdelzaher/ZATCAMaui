@@ -1672,7 +1672,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>يرجى اختيار مربع إخلاء المسؤولية قبل ال</value>
+    <value>يرجى اختيار مربع إخلاء المسؤولية قبل التقديم</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -2011,5 +2011,53 @@
   </data>
   <data name="ZLink" xml:space="preserve">
     <value>[رابط]</value>
+  </data>
+  <data name="ZZCorrespondence" xml:space="preserve">
+    <value>المراسلات</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZCorrespondenceDetails" xml:space="preserve">
+    <value>تفاصيل المراسلة</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateandTime" xml:space="preserve">
+    <value>التاريخ والوقت</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateAscending" xml:space="preserve">
+    <value>تاريخ (تصاعدي)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZDateDescending" xml:space="preserve">
+    <value>تاريخ (تنازلي)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZET" xml:space="preserve">
+    <value>ضريبة السلع الإنتقائية</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZFavoriteAscending" xml:space="preserve">
+    <value>المفضل (تصاعدي)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZFavoriteDescending" xml:space="preserve">
+    <value>المفضضل (تنازلي)</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZTitle" xml:space="preserve">
+    <value>العنوان</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZVAT" xml:space="preserve">
+    <value>ضريبة القيمة المضافة</value>
+    <comment>Correspondence</comment>
+  </data>
+  <data name="ZZZAKAT" xml:space="preserve">
+    <value>الزكاة و ضريبة الدخل</value>
+    <comment>Correspondence</comment>
   </data>
 </root>

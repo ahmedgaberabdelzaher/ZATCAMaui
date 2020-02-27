@@ -2933,13 +2933,17 @@ namespace GAZT.Manager
 
         public static CorrespondenceRootObject GAZTGetZakatCorrespondece()
         {
-            CorrespondenceRootObject ZakatCorrespondenceList = new CorrespondenceRootObject();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CorrespondenceRootObject ZakatCorrespondenceList = new CorrespondenceRootObject();
             string NewToken = string.Empty;
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetCorrespondence + "'"+App.TP.Tin+"' and Langz eq 'EN' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-19T17:38' and ObligFlagz eq '' and Auditor eq ''";
+                DateTime DateTimeNow = DateTime.Now;
+                string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
+                String url = Constants.GAZTGetCorrespondence + "'"+App.TP.Tin+"' and Langz eq '"+ lang + "' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'"+ CurrentTime + "' and ObligFlagz eq '' and Auditor eq ''";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
@@ -2984,17 +2988,28 @@ namespace GAZT.Manager
                 //}
                 return null;
             }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
         }
 
         public static CorrespondenceRootObject GAZTGetVATCorrespondece()
         {
-            CorrespondenceRootObject VATCorrespondenceList = new CorrespondenceRootObject();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CorrespondenceRootObject VATCorrespondenceList = new CorrespondenceRootObject();
             string NewToken = string.Empty;
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq 'EN' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-24T17:40' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
+                DateTime DateTimeNow = DateTime.Now;
+                string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
+                String url = Constants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq '"+ lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'"+ CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
@@ -3039,17 +3054,28 @@ namespace GAZT.Manager
                 //}
                 return null;
             }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
         }
 
         public static CorrespondenceRootObject GAZTGetETCorrespondece()
         {
-            CorrespondenceRootObject ETReturnCorrespondenceList = new CorrespondenceRootObject();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CorrespondenceRootObject ETReturnCorrespondenceList = new CorrespondenceRootObject();
             string NewToken = string.Empty;
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq 'EN' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-24T17:40' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
+                DateTime DateTimeNow = DateTime.Now;
+                string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
+                String url = Constants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq '"+ lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
@@ -3094,25 +3120,37 @@ namespace GAZT.Manager
                 //}
                 return null;
             }
-        }
+            }
+            else
+            {
 
-        public static CorrespondenceRootObject GAZTSetFavCorrespondece()
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }    
+
+
+        public static CorrespondenceDetailsRootObject GAZTGetCorrespondeceDetails(CorrespondanceModel CorresModel)
         {
-            CorrespondenceRootObject ETReturnCorrespondenceList = new CorrespondenceRootObject();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CorrespondenceDetailsRootObject CorrespondenceDetailsList = new CorrespondenceDetailsRootObject();
             string NewToken = string.Empty;
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq 'EN' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'2020-02-24T17:40' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
+                DateTime DateTimeNow = CorresModel.Txtco;
+                string CurrentTime = DateTimeNow.Year + "/" + DateTimeNow.Day + "/" + DateTimeNow.Month + " - " + DateTimeNow.Hour.ToString("D2") + ":" + DateTimeNow.Minute.ToString("D2") + ":" + DateTimeNow.Second.ToString("D2");
+                String url = Constants.GAZTGetCorrespondenceDetails + "'" + App.TP.Tin + "' and Cotyp eq '" + CorresModel.Cotype + "' and Fbnum eq '' and Cokey eq '" + CorresModel.Cokey + "' and Ltrno eq '' and Txtdo eq '" + CurrentTime + "'and Langu eq '" + lang + "'";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
                 var uri = new Uri(url);
-                HttpResponseMessage GAZTETCorresList = client.GetAsync(uri).Result;
+                HttpResponseMessage GAZTCorresDList = client.GetAsync(uri).Result;
 
-                if (GAZTETCorresList != null)
+                if (GAZTCorresDList != null)
                 {
-                    HttpHeaders headers = GAZTETCorresList.Headers;
+                    HttpHeaders headers = GAZTCorresDList.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
                     {
@@ -3129,13 +3167,13 @@ namespace GAZT.Manager
                         App.Token = NewToken;
                     }
 
-                    String ETCorrespondenceList = GAZTETCorresList.Content.ReadAsStringAsync().Result;
+                    String ETCorrespondenceList = GAZTCorresDList.Content.ReadAsStringAsync().Result;
 
-                    ETReturnCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(ETCorrespondenceList);
+                    CorrespondenceDetailsList = JsonConvert.DeserializeObject<CorrespondenceDetailsRootObject>(ETCorrespondenceList);
 
 
                 }
-                return ETReturnCorrespondenceList;// tINStatus;
+                return CorrespondenceDetailsList;// tINStatus;
             }
             catch (Exception ex)
             {
@@ -3149,8 +3187,47 @@ namespace GAZT.Manager
                 //}
                 return null;
             }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
         }
 
+        public static string GAZTSetFavCorrespondence(CorrespondenceFavoriteModel FavoriteCorrespondence)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                  
+                    string url = Constants.GAZTSetFavCorrespondence;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    var serilized = JsonConvert.SerializeObject(FavoriteCorrespondence);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res =  client.PostAsync(uri, contentPost).Result;
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                 
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
     }
 
 }

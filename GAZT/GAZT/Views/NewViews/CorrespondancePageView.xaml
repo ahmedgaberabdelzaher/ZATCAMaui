@@ -6,14 +6,23 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
+                xmlns:custom="clr-namespace:GAZT"
+             xmlns:local2="clr-namespace:GAZT.CustomControl"
+             Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondancePageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local2:MonthConverter x:Key="MonthConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12*" />
-                    <RowDefinition Height="88*" />
+                    <RowDefinition Height="12*" />
+                    <RowDefinition Height="76*" />
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -27,14 +36,15 @@
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5.08*" />
+                          
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="23*"/>
-                            <ColumnDefinition Width="31*"/>
+                          
                         </Grid.ColumnDefinitions>
-                        <local1:CustomLabel Text="Zakat(03)"   Style="{DynamicResource searchBarStyleForZakat}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <local1:CustomLabel Text="{Binding ZakatCountDisplay}"   Style="{DynamicResource searchBarStyleForZakat}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
 
                             <local1:CustomLabel.GestureRecognizers>
@@ -43,35 +53,49 @@
                             </local1:CustomLabel.GestureRecognizers>
                         </local1:CustomLabel>
 
-                        <local1:CustomLabel Text="VAT(03)"  Style="{DynamicResource searchBarStyleForVAT}" Grid.Row="0" Grid.Column="1"  >
+                        <local1:CustomLabel Text="{Binding VATCountDisplay}"  Style="{DynamicResource searchBarStyleForVAT}" Grid.Row="0" Grid.Column="1"  >
                             <local1:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding onVATLabelClicked}" />
                             </local1:CustomLabel.GestureRecognizers>
                         </local1:CustomLabel>
-                        <local1:CustomLabel Text="ET(03)"  Style="{DynamicResource searchBarStyleForET}" Grid.Row="0" Grid.Column="2"  >
+                        <local1:CustomLabel Text="{Binding ETCountDisplay}"  Style="{DynamicResource searchBarStyleForET}" Grid.Row="0" Grid.Column="2"  >
                             <local1:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForET" Command="{Binding onETLabelClicked}" />
                             </local1:CustomLabel.GestureRecognizers>
                         </local1:CustomLabel>
+
                        
+
+
                     </Grid>
 
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsZakatVisible}">
+
+                <Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleForEntry}"  >
+
+                </Frame>
+                <custom:GAZTBorderlessPicker  x:Name="FPicker" Margin="15,13,15,0" SelectedIndex="{Binding SetSelectedIndex}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" IsEnabled="true" SelectedItem="{Binding SelectedFilter,Mode=TwoWay}" ItemsSource="{Binding CorresFilter}" ItemDisplayBinding="{Binding Filter}" Grid.Row="1" Grid.Column="0" ></custom:GAZTBorderlessPicker>
+
+                <Image Grid.Row="1"  Grid.Column="0"  Margin="10,13,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsZakatVisible}">
                     <ListView  
            ItemsSource="{Binding ListZAKATCorrespondance}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      
+                      ItemTapped="ListView_ItemTapped"
             SeparatorVisibility="None"
             >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem x:Name="ZakatActions" Clicked="ZakatActions_Clicked"  CommandParameter="{Binding .}" Text="favorite" IsDestructive="True" />
-                                    </ViewCell.ContextActions>
+                                  
                                     <ContentView>
                                         <Frame OutlineColor="#C9C9C9"
                                        Margin="0,0,0,10"
@@ -95,7 +119,7 @@
                                                         <RowDefinition Height="Auto" />                                                      
                                                     </Grid.RowDefinitions>
 
-                                                    <Label Text="Title" Margin="0" 
+                                                    <Label Text="{x:Static local:AppResources.ZZTitle}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -123,7 +147,7 @@
                                              
                                    Grid.Column="0"
                                                         Grid.ColumnSpan="4"
-                                                         Text="Reference Number"
+                                                         Text="{x:Static local:AppResources.ZZReferenceNumber}"
                                    >
                                                      
                                                     </Label>
@@ -137,7 +161,7 @@
                                    Grid.Column="0"
                                                            />
 
-                                                    <Label Text="Date and Time" 
+                                                    <Label Text="{x:Static local:AppResources.ZZDateandTime}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -173,14 +197,17 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsVATVisible}">
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsVATVisible}">
                     <ListView 
            ItemsSource="{Binding ListVATCorrespondance}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      
+                      ItemTapped="ListView_ItemTapped_1"
             SeparatorVisibility="None"
+                         GroupDisplayBinding="{Binding DateAndTime, Converter={StaticResource MonthConverter}}"
+        IsGroupingEnabled="True"
+                        
             >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -207,7 +234,7 @@
                                                         <RowDefinition Height="Auto" />
                                                     </Grid.RowDefinitions>
 
-                                                    <Label Text="Title" Margin="0" 
+                                                    <Label Text="{x:Static local:AppResources.ZZTitle}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -235,7 +262,7 @@
                                              
                                    Grid.Column="0"
                                                        
-                                                         Text="Reference Number"
+                                                         Text="{x:Static local:AppResources.ZZReferenceNumber}"
                                    >
 
                                                     </Label>
@@ -249,7 +276,7 @@
                                    Grid.Column="0"
                                                            />
 
-                                                    <Label Text="Date and Time" 
+                                                    <Label Text="{x:Static local:AppResources.ZZDateandTime}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -284,14 +311,16 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    
+                    
                 </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsETVisible}">
+                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsETVisible}">
                     <ListView 
            ItemsSource="{Binding ListETCorrespondance}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                      
+                      ItemTapped="ListView_ItemTapped_2"
             SeparatorVisibility="None"
             >
                         <ListView.ItemTemplate>
@@ -319,7 +348,7 @@
                                                         <RowDefinition Height="Auto" />
                                                     </Grid.RowDefinitions>
 
-                                                    <Label Text="Title" Margin="0" 
+                                                    <Label Text="{x:Static local:AppResources.ZZTitle}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -347,7 +376,7 @@
                                              
                                    Grid.Column="0"
                                                        
-                                                         Text="Reference Number"
+                                                         Text="{x:Static local:AppResources.ZZReferenceNumber}"
                                    >
 
                                                     </Label>
@@ -361,7 +390,7 @@
                                    Grid.Column="0"
                                                            />
 
-                                                    <Label Text="Date and Time" 
+                                                    <Label Text="{x:Static local:AppResources.ZZDateandTime}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -397,7 +426,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
+                <local1:CustomLabel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                 </local1:CustomLabel>
                 <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
             <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">

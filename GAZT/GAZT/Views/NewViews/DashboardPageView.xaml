@@ -257,13 +257,13 @@
                                 </Label>
                             </StackLayout>
 
-                                <!--<StackLayout Grid.Row="1" Grid.Column="1">
+                                <!--<StackLayout Grid.Row="1" Grid.Column="2">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Label Text="{x:Static local:AppResources.Correspondance}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                    <Label Text="{x:Static local:AppResources.ZZCorrespondence}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
                                     </Label.GestureRecognizers>

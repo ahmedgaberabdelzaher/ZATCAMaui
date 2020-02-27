@@ -60,7 +60,7 @@ namespace GAZT
         public static string AddPopPageView = "AddPopPageView";
         public static string CreditCarriedPageView = "CreditCarriedPageView";
         public static string CorrespondancePageView = "CorrespondancePageView";
-
+        public static string CorrespondenceDetailsPageView = "CorrespondenceDetailsPageView";
 
         public static TIN CurrentDropdownTIN;
 

@@ -1,4 +1,5 @@
-﻿using GAZT.Models;
+﻿using GAZT.Helper;
+using GAZT.Models;
 using GAZT.ViewModel;
 using GAZT.ViewModel.NewViewModel;
 using System;
@@ -29,6 +30,8 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.CorrespondancePageView;
             this.BindingContext = viewModel;
             viewModel.onPageLoad();
+           
+            SetLTR();
         }
 
         private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
@@ -61,14 +64,59 @@ namespace GAZT.Views.NewViews
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
 
-        private void ZakatActions_Clicked(object sender, EventArgs e)
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var KeywordItem = ((MenuItem)sender).CommandParameter as CorrespondanceModel;
-
-
+            
+            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            viewModel.ShowCorrespondenceDetails(Correspondence);
 
         }
 
-      
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            FPicker.Focus();
+        }
+
+        private void ListView_ItemTapped_1(object sender, ItemTappedEventArgs e)
+        {
+            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            viewModel.ShowVATPDF(Correspondence);
+        }
+
+        private void ListView_ItemTapped_2(object sender, ItemTappedEventArgs e)
+        {
+            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + Correspondence.Cokey + "',Cotyp='" + Correspondence.Cotype + "')/$value";
+            viewModel.ShowETPDF(Correspondence);
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+            //Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+           
+
+         
+            viewModel.onPageLoad();
+           
+
+        }
+        //private void ZakatActions_Clicked(object sender, EventArgs e)
+        //{
+        //    var KeywordItem = ((MenuItem)sender).CommandParameter as CorrespondanceModel;
+
+
+
+        //}
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
     }
 }
