@@ -61,10 +61,15 @@ namespace GAZT
         public static string CreditCarriedPageView = "CreditCarriedPageView";
         public static string CorrespondancePageView = "CorrespondancePageView";
 
+        public static string fontFamilyBold = null;
+        public static string fontFamilyMedium = null;
+        public static string fontFamilyLight = null;
+
 
         public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
+        public static bool PreviousIsArabic = true;
         public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
@@ -76,7 +81,10 @@ namespace GAZT
 
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
-        
+
+        public static App appObj;
+
+
         public static bool IsComingFromDashboardToLogOff = false;
 
 
@@ -88,8 +96,32 @@ namespace GAZT
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
+
+         
+
+
             InitializeComponent();
-            VATDeclaration vAT=null;
+
+         
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.iOS:
+            //        fontFamilyBold = "GE_SS_Two_Bold";
+            //        fontFamilyMedium = "GE_SS_Two_Medium";
+            //        fontFamilyLight = "GE_SS_Two_Light";
+            //        break;
+            //    case Device.Android:
+            //        fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
+            //        fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+            //        fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
+
+            //        break;
+            //}
+            onFontFamilyChanged();
+
+
+
+             VATDeclaration vAT=null;
             CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
@@ -117,6 +149,108 @@ namespace GAZT
             {
                 return _locator ?? (_locator = new ViewModelLocator());
             }
+        }
+        private static App _Instance;
+        public static App GetInstance()
+        {
+            if (_Instance == null)
+                _Instance = new App();
+            return _Instance;
+        }
+        public static void changeFontFamily(App app)
+        {
+            PreviousIsArabic = App.IsArabic;
+
+            app.onFontFamilyChanged();
+            App.IsArabic = PreviousIsArabic;
+        }
+       
+        public  void onFontFamilyChanged()
+        {
+            if (PreviousIsArabic)
+            {
+                String langName = "ar-AE";//"en-US";// "ar-AE";
+                ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+            }
+            else
+            {
+                String langName = "en-US";//"en-US";// "ar-AE";
+                ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+            }
+            if (PreviousIsArabic)
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.iOS:
+                        fontFamilyBold = "GE_SS_Two_Bold";
+                        fontFamilyMedium = "GE_SS_Two_Medium";
+                        fontFamilyLight = "GE_SS_Two_Light";
+                        break;
+                    case Device.Android:
+                        fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
+                        fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
+
+                        break;
+                }
+                
+            }
+            else
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.iOS:
+                        fontFamilyBold = "SSTArabic-Bold";
+                        fontFamilyMedium = "SSTArabic-Medium";
+                        fontFamilyLight = "SSTArabic-Light";
+                        break;
+                    case Device.Android:
+                        fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
+                        fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
+                        fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
+
+                        break;
+                }
+            }
+
+            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "SSTArabic-Bold" });
+            GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+
+            MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            InformationRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            MandatoryRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            InformationGrayColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            SmallWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            SmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            MyBillsSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            MyBillsMediumMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            MiniGrayLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            MiniBlackLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            PickerStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTSmallGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTGreenLabelStyleForDashboardIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            GAZTCaptionGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            GAZTVerifyButton.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            GAZTGreenLabelStyleForEservicesIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            GAZTGreenLabelStyleForMicro.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTGoldLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTGoldLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTGrayLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTGrayLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTDropdownStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            GAZTSmallGreenLabelStyleForSteps.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            GAZTGreyLabelStyleForOptionMenu.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            TabbedPageSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+            TabbedPageMediumMiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+            forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+
+
+
+
         }
 
         protected override void OnStart()

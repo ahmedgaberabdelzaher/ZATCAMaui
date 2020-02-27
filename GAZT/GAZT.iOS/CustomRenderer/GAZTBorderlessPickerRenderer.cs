@@ -28,9 +28,9 @@ namespace GAZT.iOS.CustomRenderer
 
                 this.Control.BorderStyle = UITextBorderStyle.None;
                 if (App.IsArabic)
-                    this.Control.Font = UIFont.FromName("SSTArabic-Medium", 12);
+                    this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
                 else
-                    this.Control.Font = UIFont.FromName("SSTArabic-Medium", 12);
+                    this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
                
                 // var element = (CustomPicker)this.Element;
                 //if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))

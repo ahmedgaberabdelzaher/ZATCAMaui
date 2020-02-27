@@ -329,6 +329,11 @@ namespace GAZT.ViewModel.NewViewModel
                         IsButtonVisible = true;
                         IsRefreshButtonVisible = false;
                     }
+                    else
+                    {
+                        IsButtonVisible = false;
+                        IsRefreshButtonVisible = true;
+                    }
                 });
                 await Task.Run(() =>
                 {

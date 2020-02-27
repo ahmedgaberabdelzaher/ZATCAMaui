@@ -17,12 +17,20 @@ namespace GAZT.Views
     public partial class LogInPageView : ContentPage
     {
         LogInPageViewModel viewModel;
+        App app;
         int LanguageToolBarCount = 0;
         public LogInPageView()
         {
             viewModel = App.Locator.LogInPageView;
 
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(Exception e)
+                {
+
+            }
 
           
 
@@ -68,13 +76,19 @@ namespace GAZT.Views
                 {
                     if (App.IsArabic)
                     {
+                      
                         App.IsArabic = false;
+                        App.changeFontFamily(App.appObj);
                         SetLTRDirection();
+                       
                     }
                     else
                     {
+                       
                         App.IsArabic = true;
+                        App.changeFontFamily(App.appObj);
                         SetRTLDirection();
+                       
                     }
                 })
             };

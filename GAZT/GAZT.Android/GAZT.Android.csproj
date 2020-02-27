@@ -409,6 +409,9 @@
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-TW\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zu\viewer.properties" />
     <GoogleServicesJson Include="PUSH Notifications\google-services.json" />
+    <AndroidAsset Include="Assets\GE_SS_Two_Light.ttf" />
+    <AndroidAsset Include="Assets\GE_SS_Two_Medium.ttf" />
+    <AndroidAsset Include="Assets\GE_SS_Two_Bold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
