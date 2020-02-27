@@ -86,8 +86,8 @@
                         <Label Text="{x:Static local:AppResources.ZFinancialPeriodFrom}" Margin="10,0,10,-10"  Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                         <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                             <Label Text="{Binding Abrzu}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                  </StackLayout>
-                       
+                        </StackLayout>
+
                         <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Margin="10,0,10,-10" Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                         <Label Text="{Binding Fbnum}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
@@ -100,20 +100,20 @@
                         <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Margin="10,2,10,-5"   Grid.Row="8" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
                         <Label  Margin="10,0,10,-4"   Grid.Row="8" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
-                             <Label.FormattedText>
-                                    <FormattedString>
-                                      <Span Text="{Binding Estsl}"/>
-                                          <Span Text=" "/>
-                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Estsl}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
                         <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="End" Margin="5,0,5,-8">
-                             <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
                 Tapped="OnEstmatedSalesInfoMessageClicked"
                 NumberOfTapsRequired="1" />
-                                                </Image.GestureRecognizers>
+                            </Image.GestureRecognizers>
                         </Image>
 
                         <BoxView  Grid.Row="9" Margin="0,5,0,5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
@@ -127,7 +127,7 @@
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
                       Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
-            SeparatorVisibility="Default"
+            SeparatorVisibility="None"
             >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -137,6 +137,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
+                                                  <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="50*"/>
@@ -148,9 +149,9 @@
 
                                             <local:CustomLabel  Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
                                             </local:CustomLabel>
-                                            <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}">
+                                            <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}">
                                             </Label>
-                                            <Image Source="ic_info.png" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="0,10,0,10">
+                                            <Image Source="ic_info.png" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Margin="0,10,0,10" IsVisible="{Binding InformationIconVisibility}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnInformationMessageClicked"
@@ -159,23 +160,24 @@
                                             </Image>
 
                                             <local:CustomLabel Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <local:CustomLabel  Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                            <local:CustomLabel  Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
                                                 <Label.FormattedText>
-                                    <FormattedString>
-                                      <Span Text="{Binding EstimateSales}"/>
-                                          <Span Text=" "/>
-                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding EstimateSales}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
                                             </local:CustomLabel>
                                             <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="End" Margin="0,10,0,10">
- <Image.GestureRecognizers>
+                                                <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnEditImageClicked"
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
                                             </Image>
 
+                                            <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="0.5" BackgroundColor="Black" IsVisible="{Binding SeparatorVisibility}"/>
                                         </Grid>
                                     </ViewCell>
                                 </DataTemplate>
@@ -216,9 +218,7 @@
 
 
 
-                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10,10,10,10"  IsVisible="{Binding InvoicePopUpVisibility}" >
-                    <!--IsVisible="{Binding InvoicePopUpVisibility}"-->
-
+                <!--<StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10,10,10,10"  IsVisible="{Binding InvoicePopUpVisibility}" >
 
                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Grid.RowSpan="13"  local1:RoundCornersEffect.CornerRadius="10" Spacing="10"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="1"  BackgroundColor="#c49b2d"  >
 
@@ -246,7 +246,6 @@
 
                                 <Label Text="Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount" Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" IsVisible="{Binding AmendInvoiceVisibility}"/>
 
-                                <!--<Label Text="Total Amount" Grid.Row="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"/>-->
 
 
                                 <Label Text="Total Undisputed Amount"  Grid.Row="2" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding AmendInvoiceVisibility}"/>
@@ -300,15 +299,9 @@
 
 
 
-                                <!--<Label Text=0"{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>-->
 
                                 <Button Text="Invoice" Clicked="OnOnInvoiceClicked" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
                                 <Button Text="Close" Clicked="OnCloseButtonClicked" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10,0,10,10"></Button>
-
-
-                                <!--<Button Text="Refresh" Command="{Binding OnRefreshButtonClicked}" Grid.Row="6" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding RefreshiButtonDisability}" Margin="10"></Button>
-                    <Button Text="Close" Command="{Binding OnCloseButtonClicked}" Grid.Row="6" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10"></Button>-->
-
                             </Grid>
                         </StackLayout>
                     </StackLayout>
@@ -316,7 +309,7 @@
 
 
 
-                </StackLayout>
+                </StackLayout>-->
 
 
                 <!--<StackLayout  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10,10,10,10"  IsVisible="{Binding InvoicePopUpVisibility}" >IsVisible="{Binding InvoicePopUpVisibility}"

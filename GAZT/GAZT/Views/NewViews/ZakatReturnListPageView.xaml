@@ -242,7 +242,7 @@
                                    Grid.Row="4"
                                    Grid.Column="2" />
 
-<custom:CustomLabel Text="{x:Static local:AppResources.ZReferenceNumber}"  Grid.Row="5" Grid.Column="1" Margin="8,0,8,0" LineBreakMode="TailTruncation" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  Style="{StaticResource MiniGoldLabelStyle}"/>
+<custom:CustomLabel Text="{x:Static local:AppResources.ZReferenceNumber}"  Grid.Row="5" Grid.Column="1" Margin="8,0,8,0" LineBreakMode="WordWrap" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  Style="{StaticResource MiniGoldLabelStyle}"/>
 
                     <custom:CustomLabel Text="{Binding Fbnum}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"  Margin="-7,0,-7,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource MiniGrayLabelStyle}"/>
 

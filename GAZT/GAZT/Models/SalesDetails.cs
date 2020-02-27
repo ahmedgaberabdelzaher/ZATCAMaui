@@ -24,6 +24,10 @@ namespace GAZT.Models
         public bool IsAttachmentRequired { get; set; } = false;
         public bool IsReasonRequird { get; set; } = false;
         public bool IsOldValueChanged { get; set; } = false;
+        public bool SeparatorVisibility { get; set; } = true;
+        public bool InformationIconVisibility { get; set; } = true;
+
+        
 
         public ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
         // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";

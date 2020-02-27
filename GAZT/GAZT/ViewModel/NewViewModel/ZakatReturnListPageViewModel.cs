@@ -73,7 +73,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
                     {
-                        ReturnPeriod = SelectedZakatReturn.Period;
+                        ReturnPeriod = SelectedZakatReturn.Period.Replace("-"," " + AppResources.To +" ");
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
                     else

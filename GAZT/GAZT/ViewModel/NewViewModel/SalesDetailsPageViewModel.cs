@@ -865,10 +865,14 @@ namespace GAZT.ViewModel.NewViewModel
                         if (salesDetails.SelectedEditFieldId.Equals("1") || salesDetails.SelectedEditFieldId.Equals("8"))
                         {
                             salesDetails.EditImageSource = "ic_edit_gray.png";
+                           
+
                             _salesDetailsList.Add(salesDetails);
                         }
                         else
                         {
+                            salesDetails.InformationIconVisibility = true;
+                            salesDetails.SeparatorVisibility = true;
                             _salesDetailsList.Add(salesDetails);
                         }
                     }
@@ -876,6 +880,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (!salesDetails.SelectedEditFieldId.Equals("1"))
                         {
+                            salesDetails.InformationIconVisibility = true;
+                            salesDetails.SeparatorVisibility = true;
                             salesDetails.EditImageSource = "ic_edit_gray.png";
                             _salesDetailsList.Add(salesDetails);
                         }
@@ -1189,6 +1195,8 @@ namespace GAZT.ViewModel.NewViewModel
                 bool isVATAmountGreaterThanThreshold = IsVATAmountGreaterThanThreshold();
                 SalesDetails salesDetails1 = new SalesDetails();
                 salesDetails1.SalesType = AppResources.ZZTotalVATSales;
+                salesDetails1.SeparatorVisibility = true;
+                salesDetails1.InformationIconVisibility = true;
                 salesDetails1.InformationFromPartieToCompare = salesDetails1.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.TvtslI);// string.IsNullOrEmpty(zakatReturnDetails.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
                 salesDetails1.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.TvtslE);//string.IsNullOrEmpty(zakatReturnDetails.d.TvtslE) ? "0.00" : zakatReturnDetails.d.TvtslE;
                 salesDetails1.SelectedEditFieldId = "1";
@@ -1210,6 +1218,9 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails2.InformationFromPartieToCompare = salesDetails2.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.LabnoI);// string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
                 salesDetails2.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.LabnoE);// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
                 salesDetails2.SelectedEditFieldId = "2";
+                salesDetails2.SeparatorVisibility = true;
+                salesDetails2.InformationIconVisibility = true;
+                
                 salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
 
                 SalesDetailsDummyList.Add(salesDetails2);
@@ -1219,6 +1230,8 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails3.InformationFromPartieToCompare = salesDetails3.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.ImpvalI);//string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
                 salesDetails3.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.ImpvalE);//string.IsNullOrEmpty(zakatReturnDetails.d.ImpvalE) ? "0.00" : zakatReturnDetails.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
                 salesDetails3.SelectedEditFieldId = "3";
+                salesDetails3.SeparatorVisibility = true;
+                salesDetails3.InformationIconVisibility = true;
                 salesDetails3.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails3);
 
@@ -1226,6 +1239,9 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
                 salesDetails4.InformationFromPartieToCompare = salesDetails4.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.PtoslI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
                 salesDetails4.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Sumcnt);//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
+                salesDetails4.SeparatorVisibility = false;
+                salesDetails4.InformationIconVisibility = false;
+
                 salesDetails4.SelectedEditFieldId = "4";
                 salesDetails4.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails4);
@@ -1235,6 +1251,9 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails5.InformationFromPartieToCompare = salesDetails5.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.EtimadI);//string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
                 salesDetails5.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Sumcnt);//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
                 salesDetails5.SelectedEditFieldId = "5";
+                salesDetails5.SeparatorVisibility = false;
+                salesDetails5.InformationIconVisibility = true;
+
                 salesDetails5.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails5);
 
@@ -1243,6 +1262,8 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails6.InformationFromPartieToCompare = salesDetails6.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.ExamtI);//string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtI) ? "0.00" : ZakatReturnDetail.d.ExamtI; //ZakatReturnDetail.d.ExamtResn;
                 salesDetails6.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Sumcnt);//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
                 salesDetails6.SelectedEditFieldId = "6";
+                salesDetails6.SeparatorVisibility = true;
+                salesDetails6.InformationIconVisibility = false;
                 salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails6);
 
@@ -1251,6 +1272,9 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails7.InformationFromPartieToCompare = salesDetails7.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.PramtI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
                 salesDetails7.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.PramtE);//string.IsNullOrEmpty(zakatReturnDetails.d.PramtE) ? "0.00" : zakatReturnDetails.d.PramtE; // ZakatReturnDetail.d.PramtE;
                 salesDetails7.SelectedEditFieldId = "7";
+                salesDetails7.SeparatorVisibility = true;
+                salesDetails7.InformationIconVisibility = true;
+
                 salesDetails7.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails7);
 
@@ -1258,10 +1282,14 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails8.SalesType = AppResources.ZZCapitalamount;
                 salesDetails8.InformationFromPartieToCompare = salesDetails8.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Cpamt);// string.IsNullOrEmpty(ZakatReturnDetail.d.Cpamt) ? "0.00" : ZakatReturnDetail.d.Cpamt;
                 salesDetails8.EstimateSales = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Cpamt);//string.IsNullOrEmpty(zakatReturnDetails.d.Cpamt) ? "0.00" : zakatReturnDetails.d.Cpamt;
-                SalesDetailsDummyList.Add(salesDetails8);
+                //SalesDetailsDummyList.Add(salesDetails8);
                 salesDetails8.SelectedEditFieldId = "8";
+                salesDetails8.SeparatorVisibility = true;
+                salesDetails8.InformationIconVisibility = true;
                 salesDetails8.DisableItemBackgroundColor = Color.White;
+                SalesDetailsDummyList.Add(salesDetails8);
                 SalesDetailsList = SalesDetailsDummyList;
+
                 SalesDetailsDataList = SalesDetailsDummyList;
             }
             catch(Exception ex)
