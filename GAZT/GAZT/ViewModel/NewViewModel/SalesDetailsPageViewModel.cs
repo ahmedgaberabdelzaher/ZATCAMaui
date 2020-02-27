@@ -572,7 +572,7 @@ namespace GAZT.ViewModel.NewViewModel
                     HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
-                else if (ZakatReturnDetail.d.Statusz.Equals("E0003"))// In Build state but not amended yet
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0003"))// In Paid state 
                 {
                     ShowAcceptAndAmendButton();
                     HideDisclaimer();
@@ -662,6 +662,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                         if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
                             {
+                                Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                                 ShowOnlyInfoIcon();
                                 SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
@@ -673,9 +674,9 @@ namespace GAZT.ViewModel.NewViewModel
                                 ShowDisclaimer();
                                 SetChangedValueToUploadAttachment();
                             bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
-                                SetChangedValueToUploadAttachment();
                             if (ISAllRequiredDocumentUploadedwithReason)
-                            {
+                                {
+                                    Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                                     SetSalesDetailsData(_zakatReturnDetails);
                                     // ShowEditIcon();// Commented 
                                     ShowOnlyInfoIcon();

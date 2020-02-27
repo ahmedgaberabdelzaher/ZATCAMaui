@@ -308,12 +308,22 @@ namespace GAZT.ViewModel.NewViewModel
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
-                else if (ButtonStatus.Equals("IP014") || ButtonStatus.Equals("E0002") )// E0002 if return is released by GAZT officer 
+                else if (ButtonStatus.Equals("IP014"))
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
-                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
+                {
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if(ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
+                {
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
                     SalesDetailsAndReleaseButtonVisibility = true;
