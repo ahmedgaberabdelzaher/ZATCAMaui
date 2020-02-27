@@ -2435,6 +2435,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return Reference Number.
+        /// </summary>
+        public static string ZReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return period.
         /// </summary>
         public static string ZReturnPeriod {
