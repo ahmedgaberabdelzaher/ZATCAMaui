@@ -72,9 +72,9 @@
                     </Label>
                   <local1:CustomLabel Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" IsVisible="{Binding InvoiceVisibility}"/>
 
-                     <Button Text="{x:Static local:AppResources.CopySADADPaymentNumber}" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
+                     <Button Text="{x:Static local:AppResources.CopySADADPaymentNumber}" IsEnabled="False" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
 
-                    <Button Text="{x:Static local:AppResources.PayByMADA}" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
+                    <Button Text="{x:Static local:AppResources.PayByMADA}" IsEnabled="False" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
 
 
 

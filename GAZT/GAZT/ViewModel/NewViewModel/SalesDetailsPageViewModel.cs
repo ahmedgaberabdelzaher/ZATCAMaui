@@ -553,7 +553,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                    HideAllButton();
                    HideDisclaimer();
-
+                      
                 }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0004"))// Amend without Objection
                 {

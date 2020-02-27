@@ -346,6 +346,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
             try
             {
+                    GetUpdatedDataAfterRemovingComma();
                 ZakatReturnDetails _zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
                 if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
@@ -400,7 +401,19 @@ namespace GAZT.ViewModel.NewViewModel
             return ZakatReturnDetail;
         }
 
-       
+        private void GetUpdatedDataAfterRemovingComma()
+        {
+            if (ZakatReturnDetails != null)
+            {
+                ZakatReturnDetails.d.Estsl = ZakatReturnDetails.d.Estsl.Replace(",", ""); 
+                ZakatReturnDetails.d.Cpamt = ZakatReturnDetails.d.Cpamt.Replace(",", "");
+                ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
+                ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+            }
+
+         
+        }
+        
 
         #endregion
     }
