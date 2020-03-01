@@ -93,7 +93,7 @@
                     <Label Text="{Binding Cpamt}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                                     <FormattedString>
-                                      <Span Text="{Binding Cpamt}"/>
+                                      <Span Text="{Binding Cpamt}" />
                                           <Span Text=" "/>
                                         <Span Text="{x:Static local:AppResources.ZSAR}"/>
                                     </FormattedString>

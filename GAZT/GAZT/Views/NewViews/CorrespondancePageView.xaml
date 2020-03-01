@@ -11,11 +11,7 @@
              xmlns:local2="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondancePageView">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local2:MonthConverter x:Key="MonthConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
@@ -204,8 +200,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                       ItemTapped="ListView_ItemTapped_1"
-            SeparatorVisibility="None"
-                         GroupDisplayBinding="{Binding DateAndTime, Converter={StaticResource MonthConverter}}"
+          
         IsGroupingEnabled="True"
                         
             >

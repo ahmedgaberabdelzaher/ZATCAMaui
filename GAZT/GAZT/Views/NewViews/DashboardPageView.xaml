@@ -282,8 +282,19 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>-->
-                           
-                        </Grid>
+                                <!--<StackLayout Grid.Row="2" Grid.Column="0">
+                                    <Image Source="ic_vatlookup.png" HeightRequest="80" WidthRequest="80">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnFormbundleClicked}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{x:Static local:AppResources.ZZCorrespondence}"  Style="{StaticResource GAZTGreenLabelStyleForEservicesIcon}" Margin="0,0,0,5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnFormbundleClicked}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>-->
+                            </Grid>
                     </StackLayout>
                 </Grid>
             </ScrollView>

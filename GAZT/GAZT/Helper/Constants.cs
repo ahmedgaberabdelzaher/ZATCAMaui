@@ -76,5 +76,10 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region FormBundleAPIs
+        public static string GAZTGetFormBundleModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/HEADERSet?&$format=json&$filter=Lang eq ";
+        public static string GAZTGetFormBunleAccountNumberModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/ItemSet?&$format=json&$filter=Lang eq ";
+        #endregion
+
     }
 }

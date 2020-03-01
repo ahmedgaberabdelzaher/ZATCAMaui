@@ -61,6 +61,8 @@ namespace GAZT
         public static string CreditCarriedPageView = "CreditCarriedPageView";
         public static string CorrespondancePageView = "CorrespondancePageView";
         public static string CorrespondenceDetailsPageView = "CorrespondenceDetailsPageView";
+        public static string FormBundleStatusPageView = "FormBundleStatusPageView";
+
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;

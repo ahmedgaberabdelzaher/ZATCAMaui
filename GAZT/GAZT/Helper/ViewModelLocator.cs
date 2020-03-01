@@ -60,6 +60,7 @@ namespace GAZT
             SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
             SimpleIoc.Default.Register<CorrespondancePageViewModel>();
             SimpleIoc.Default.Register<CorrespondenceDetailsPageViewModel>();
+            SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
 
 
 
@@ -719,6 +720,20 @@ namespace GAZT
             }
         }
 
+        public FormBundleStatusPageViewModel FormBundleStatusPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FormBundleStatusPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         private INavigationService CreateNavigationService()
         {
@@ -769,6 +784,7 @@ namespace GAZT
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
             navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
+            navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
 
 
 

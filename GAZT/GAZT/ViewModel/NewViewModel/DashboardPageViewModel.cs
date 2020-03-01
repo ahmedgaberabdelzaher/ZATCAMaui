@@ -38,6 +38,7 @@ namespace GAZT.ViewModel
         
         public ICommand OnTINStatusClicked { get; set; }
 
+        public ICommand OnFormbundleClicked { get; set; }
         #endregion
 
         #region Property
@@ -465,7 +466,10 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.CheckTINStatusPageView);
             });
-            
+            OnFormbundleClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.FormBundleStatusPageView);
+            });
         }
 
         #endregion
