@@ -695,10 +695,19 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
                     }
+                    if (App.IsComingFromSleepMode)
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                    }
+                    if (TotalSec < 0)
+                        TotalSec = 119;
+                    TotalSec =  TotalSec - 1;
+                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        TotalSec = TotalSec - 1;
-                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                        
                         OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     });
                     return true;

@@ -86,6 +86,10 @@ namespace GAZT
         public static CultureInfo ci;
 
         public static App appObj;
+        public static DateTime TimeAtSleep { get; set; }
+        public static DateTime TimeAtResume { get; set; }
+        public static double TimeDifference { get; set; }
+        public static bool IsComingFromSleepMode { get; set; } = false;
 
 
         public static bool IsComingFromDashboardToLogOff = false;
@@ -263,11 +267,18 @@ namespace GAZT
 
         protected override void OnSleep()
         {
+             TimeAtSleep = DateTime.Now;
+           
+            //TimeAtSleep = dt.ToLongTimeString();
             // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
+             TimeAtResume = DateTime.Now;
+            TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
+            IsComingFromSleepMode = true;
+            // TimeDifference = TimeAtResume - TimeAtSleep;
             // Handle when your app resumes
         }
 
