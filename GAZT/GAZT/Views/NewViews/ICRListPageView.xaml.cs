@@ -54,11 +54,22 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                await viewModel.onPageLoad();
-                if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0)
+                await Task.Run(() =>
                 {
-                    BPicker.SelectedIndex = 14;
-                }
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    await viewModel.onPageLoad();
+                    if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0)
+                    {
+                        BPicker.SelectedIndex = 14;
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch(Exception e)
             {

@@ -643,7 +643,7 @@
     <value>إجمالي الإقرارات المدفوعة</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
-    <value>VAT-Lookup</value>
+    <value>بحث التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>
@@ -2074,5 +2074,14 @@
   <data name="ZZPleaseselectFormBundleType" xml:space="preserve">
     <value>يرجى اختيار نوع الرقم المرجعي</value>
     <comment>Form Bundle</comment>
+  </data>
+  <data name="ZVATLookupCRNumberType3" xml:space="preserve">
+    <value>رقمالسجلالتجاري</value>
+  </data>
+  <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
+    <value>الرقمالضريبي</value>
+  </data>
+  <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
+    <value>رقمشهادةضريبةالقيمةالمضافة</value>
   </data>
 </root>

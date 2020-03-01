@@ -63,13 +63,13 @@ namespace GAZT.Views.NewViews
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
                 setAllCheckbox(false);
-                Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
-                {
-                // don't do anything if we just de-selected the row.
-                if (e.Item == null) return;
+            //    Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            //    {
+            //    // don't do anything if we just de-selected the row.
+            //    if (e.Item == null) return;
 
-                //if (sender is ListView lv) lv.SelectedItem = null;
-            };
+            //    //if (sender is ListView lv) lv.SelectedItem = null;
+            //};
 
 
                 IntilizeAsync();
