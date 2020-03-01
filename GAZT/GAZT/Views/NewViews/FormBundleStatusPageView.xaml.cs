@@ -36,7 +36,7 @@ namespace GAZT.Views.NewViews
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            ((ListView)sender).SelectedItem = null;
         }
         private void SetLTR()
         {

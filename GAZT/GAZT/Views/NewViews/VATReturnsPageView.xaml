@@ -965,7 +965,7 @@
                             <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalVATdueforcurrentperiod}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0"/>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                            <Label Text="{x:Static local:AppResources.ZVatCorrectionsfrompreviousperiod}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
                             <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
@@ -1261,7 +1261,7 @@
                 </StackLayout>
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}"  VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}"  VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -1402,13 +1402,13 @@
 
                                                                 <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
 
-                                                                    <!--<Image.GestureRecognizers>
+                                                                    --><!--<Image.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
-                                                                    </Image.GestureRecognizers>-->
+                                                                    </Image.GestureRecognizers>--><!--
                                                                 </Image>
 
 
-                                                                <!--<Label Text="1" 
+                                                                --><!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -1428,7 +1428,7 @@
 
 
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
 
 
                                                             </Grid>
@@ -1446,7 +1446,7 @@
 
                         </Grid>
                     </ScrollView>
-                </StackLayout>
+                </StackLayout>-->
 
                 <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAcknowledgment}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >

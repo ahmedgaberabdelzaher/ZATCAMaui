@@ -269,9 +269,9 @@ namespace GAZT.ViewModel.NewViewModel
             VATACCOrCRNOOrVATCER = string.Empty;
             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
-               new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATAccountNumber},
-                new VATParameterType{ id = "2" , ParameterType = AppResources.ZCRNumber},
-                new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATCertificateNumber}
+               new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATLookupIDTaxpayerTinType1},
+                new VATParameterType{ id = "2" , ParameterType = AppResources.ZVATLookupCRNumberType3},
+                new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATLookupIDVatCertificateNumberType2}
             };
 
             StringBuilder captcha = GetCaptcha();

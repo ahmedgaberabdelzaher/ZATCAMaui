@@ -643,7 +643,7 @@
     <value>إجمالي الإقرارات المدفوعة</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
-    <value>VAT-Lookup</value>
+    <value>بحث التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>
@@ -1002,7 +1002,7 @@
     <value>يرجى تأكيد أن المعلومات أعلاه صحيحة قبل المواصلة</value>
   </data>
   <data name="ZVatCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>تصحيحات من الفترات السابقة (بين ± 5000.00 ريال)</value>
+    <value>تصحيحات من الفترات السابقة (بين ±  ريال)</value>
   </data>
   <data name="ZVatcreditcarriedforward" xml:space="preserve">
     <value>ضريبة القيمة المضافة التي تم ترحيلها من الفترة / الفترات السابقة</value>
@@ -2064,15 +2064,24 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Form Bundle Status</value>
+    <value>حاله  الرقم المرجعي</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
-    <value>Please select Form Bundle Number</value>
+    <value>يرجى اختيار الرقم المرجعي</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleType" xml:space="preserve">
-    <value>Please select Form Bundle Type</value>
+    <value>يرجى اختيار نوع الرقم المرجعي</value>
     <comment>Form Bundle</comment>
+  </data>
+  <data name="ZVATLookupCRNumberType3" xml:space="preserve">
+    <value>رقمالسجلالتجاري</value>
+  </data>
+  <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
+    <value>الرقمالضريبي</value>
+  </data>
+  <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
+    <value>رقمشهادةضريبةالقيمةالمضافة</value>
   </data>
 </root>

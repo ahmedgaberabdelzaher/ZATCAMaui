@@ -385,6 +385,21 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("ZakatColumn");
             }
         }
+
+        private int _corresColumn = 2;
+        public int CorresColumn
+        {
+            get
+            {
+                return _corresColumn;
+            }
+            set
+            {
+                _corresColumn = value;
+
+                RaisePropertyChanged("CorresColumn");
+            }
+        }
         #endregion
 
 
@@ -564,9 +579,21 @@ namespace GAZT.ViewModel
                             if(IsZakatVisible==true && IsVATVisible==false)
                             {
                                 ZakatColumn = 0;
-                                VATColumn = 1;
+                                VATColumn = 2;
+                                CorresColumn = 1;
                             }
-
+                            else if (IsZakatVisible == false && IsVATVisible == true)
+                            {
+                                ZakatColumn = 2;
+                                VATColumn = 0;
+                                CorresColumn = 1;
+                            }
+                            else if (IsZakatVisible == false && IsVATVisible == false)
+                            {
+                                ZakatColumn = 2;
+                                VATColumn = 1;
+                                CorresColumn = 0;
+                            }
 
                             // IsVisibleFiscal = true;
                             try

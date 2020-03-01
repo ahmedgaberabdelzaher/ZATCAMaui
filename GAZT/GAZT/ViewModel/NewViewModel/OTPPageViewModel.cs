@@ -701,7 +701,7 @@ namespace GAZT.ViewModel.NewViewModel
                         App.IsComingFromSleepMode = false;
                     }
                     if (TotalSec < 0)
-                        TotalSec = 119;
+                        return false;
                     TotalSec =  TotalSec - 1;
                         TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
 
