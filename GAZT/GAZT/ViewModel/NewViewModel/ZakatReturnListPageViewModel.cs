@@ -73,7 +73,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
                     {
-                        ReturnPeriod = SelectedZakatReturn.Period.Replace("-"," " + AppResources.To +" ");
+                        ReturnPeriod = SelectedZakatReturn.Period;
+                      //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
                     else
@@ -352,6 +353,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
                     {
+                        if(App.IsArabic)
+                        {
+                            myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
+                        }
                         if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
                         {
                             if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 

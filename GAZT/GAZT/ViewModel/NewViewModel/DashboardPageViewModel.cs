@@ -456,7 +456,9 @@ namespace GAZT.ViewModel
 
             OnEstimateZakatClicked = new Xamarin.Forms.Command( () =>
             {
-                _navigationService.NavigateTo(App.ZakatReturnListPageView);
+                Device.BeginInvokeOnMainThread( () => {
+                    _navigationService.NavigateTo(App.ZakatReturnListPageView);
+                });
 
             });
             OnVATLookupClicked = new Xamarin.Forms.Command( () =>

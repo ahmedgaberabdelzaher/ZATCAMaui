@@ -80,7 +80,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
-                RaisePropertyChanged("SelectedICRStatus");
+               
                 if (_selectedICRStatus != null)
                 {
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
@@ -98,8 +98,10 @@ namespace GAZT.ViewModel.NewViewModel
                             ICRList = ICRDummyList.Where(x => x.Status == _selectedICRStatus.Estat).ToList();
                         }
                     }
+                    RaisePropertyChanged("SelectedICRStatus");
                 }
-                
+               
+
             }
         }
 
@@ -146,6 +148,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iCRDummyList = value;
+
             }
         }
 
@@ -165,11 +168,13 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsNoDataLabelVisible = false;
                     IsICRListVisible = true;
+                   // SelectedICRStatus = null;
                 }
                 else
                 {
                     IsICRListVisible = false;
                     IsNoDataLabelVisible = true;
+                  //  SelectedICRStatus = null;
                 }
                 RaisePropertyChanged("ICRList");
             }
@@ -232,17 +237,17 @@ namespace GAZT.ViewModel.NewViewModel
                             if(App.IsArabic)
                             {
 
-                                foreach (var item in ICRStatusList)
-                                {
-                                    if(item.Txt30== "All")
-                                    {
-                                        item.Txt30 = "الجميع";
-                                    }
-                                    if(item.Txt30== "To be filled & In draft")
-                                    {
-                                        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-                                    }
-                                }
+                                //foreach (var item in ICRStatusList)
+                                //{
+                                //    if(item.Txt30== "All")
+                                //    {
+                                //        item.Txt30 = "الجميع";
+                                //    }
+                                //    if(item.Txt30== "To be filled & In draft")
+                                //    {
+                                //        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
+                                //    }
+                                //}
 
                                 //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
                                 //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
@@ -362,15 +367,15 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async void GetVATAllReturnsAsync()
         {
-            await Task.Run(() =>
+
+            Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = true;
             });
-            await Task.Run(async () =>
-            {
-                await GetVATAllReturns();
-            });
-            await Task.Run(() =>
+
+            await GetVATAllReturns();
+
+            Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = false;
             });
@@ -383,15 +388,11 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
 
-
-
                     if (SelectedICR != null)
                     {
                         selectedICRForStatus = new ICRListSet();
                         selectedICRForStatus = SelectedICR;
                         App.ICRStatus = selectedICRForStatus.Status;
-
-
 
 
                         //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
@@ -415,9 +416,8 @@ namespace GAZT.ViewModel.NewViewModel
                             vATDeclaration.d = vATDeclarationD;
                             vATDeclaration.d.ADRSet = _aDRSet;
                             vATDeclaration.d.ADRSet.results = lst;
-                            IsLoading = false;
 
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
                             });
