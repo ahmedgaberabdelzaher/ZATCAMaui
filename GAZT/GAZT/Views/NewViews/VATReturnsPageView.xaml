@@ -681,14 +681,14 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label Text="{x:Static local:AppResources.ZVatTotalSales}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0"/>
-                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
 
                             <Label Text="{x:Static local:AppResources.ZVatTotalAdjustment}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0"/>
-                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
 
 
                             <Label Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
-                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
+                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
                         </Grid>
 
                         <Frame Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
@@ -953,19 +953,19 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalPurchases}"   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0"/>
-                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                             <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalAdjustment}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0"/>
-                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
 
 
                             <local:CustomLabel Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
-                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                             <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalVATdueforcurrentperiod}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0"/>
-                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                            <Label Text="{x:Static local:AppResources.ZVatCorrectionsfrompreviousperiod}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Label Text="{x:Static local:AppResources.ZVatCorrectionsfrompreviousperiod}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
                             <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">

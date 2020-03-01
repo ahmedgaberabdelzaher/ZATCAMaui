@@ -633,7 +633,7 @@
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,-5"/>
+                <Setter Property="Padding" Value="0,0,0,0"/>
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 

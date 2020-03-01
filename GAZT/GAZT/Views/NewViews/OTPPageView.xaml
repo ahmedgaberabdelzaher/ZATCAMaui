@@ -76,7 +76,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
-                                    <Span  Text="{Binding OTPValidDuration}" Style="{StaticResource InformationRedColorLabel}" />
+                                    <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
