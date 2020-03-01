@@ -165,6 +165,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                       ItemTapped="Attachmentlist_ItemTapped"
+                BackgroundColor="White"
             SeparatorVisibility="None"
             >
                                     <ListView.ItemTemplate>
