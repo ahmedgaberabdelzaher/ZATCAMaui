@@ -171,6 +171,7 @@ namespace GAZT.ViewModel
                 onAllLabelClicked = new Command(() =>
                 {
                     // IsUnderlineForAll = "None";
+                    MyBills = null;
                     if (MyBillsOriginal != null)
                     {
                         if (MyBillsOriginal.Count != 0)
@@ -210,6 +211,7 @@ namespace GAZT.ViewModel
                 });
                 onPaidLabelClicked = new Command(() =>
                 {
+                    MyBills = null;
                     if (MyBillsOriginal != null)
                     {
                         if (MyBillsOriginal.Count != 0)
@@ -249,6 +251,7 @@ namespace GAZT.ViewModel
                 });
                 onUnpaidLabelClicked = new Command(() =>
                 {
+                    MyBills = null;
                     if (MyBillsOriginal != null)
                     {
                         if (MyBillsOriginal.Count != 0)
@@ -288,6 +291,7 @@ namespace GAZT.ViewModel
                 });
                 onPartiallyPaidLabelClicked = new Command(() =>
                 {
+                    MyBills = null;
                     if (MyBillsOriginal != null)
                     {
                         if (MyBillsOriginal.Count != 0)

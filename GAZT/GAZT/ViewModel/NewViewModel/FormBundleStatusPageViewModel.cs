@@ -118,6 +118,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsCPickerEnable = true;
                     onSelectedFormBindleFbtyp();
                 }
+                ListFormBudles = null;
                 RaisePropertyChanged("SelectedFormBindleFbtyp");
             }
         }

@@ -22,6 +22,7 @@ namespace GAZT.Views.NewViews
 
             viewModel.onPageLoad();
             viewModel.IsCPickerEnable = false;
+            SetLTR();
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -36,6 +37,13 @@ namespace GAZT.Views.NewViews
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
     }
 }

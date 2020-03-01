@@ -2012,7 +2012,7 @@
   <data name="ZLink" xml:space="preserve">
     <value>[رابط]</value>
   </data>
-     <data name="ZReferenceNumber" xml:space="preserve">
+  <data name="ZReferenceNumber" xml:space="preserve">
     <value>الرقم المرجعي للإقرار</value>
   </data>
   <data name="ZZCorrespondence" xml:space="preserve">
@@ -2062,5 +2062,17 @@
   <data name="ZZZAKAT" xml:space="preserve">
     <value>الزكاة و ضريبة الدخل</value>
     <comment>Correspondence</comment>
+  </data>
+  <data name="ZZFormBundleStatus" xml:space="preserve">
+    <value>Form Bundle Status</value>
+    <comment>Form Bundle</comment>
+  </data>
+  <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
+    <value>Please select Form Bundle Number</value>
+    <comment>Form Bundle</comment>
+  </data>
+  <data name="ZZPleaseselectFormBundleType" xml:space="preserve">
+    <value>Please select Form Bundle Type</value>
+    <comment>Form Bundle</comment>
   </data>
 </root>

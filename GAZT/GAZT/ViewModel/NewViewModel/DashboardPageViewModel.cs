@@ -519,9 +519,12 @@ namespace GAZT.ViewModel
                             else
                             {
                                 TotalCountOfReturn = TotalCountOfReturn.TrimStart(new Char[] { '0' });
-                                if (TotalCountOfReturn.Substring(0, 1) == ".")
+                                if (!string.IsNullOrEmpty(TotalCountOfReturn))
                                 {
-                                    TotalCountOfReturn = "0" + TotalCountOfReturn;
+                                    if (TotalCountOfReturn.Substring(0, 1) == ".")
+                                    {
+                                        TotalCountOfReturn = "0" + TotalCountOfReturn;
+                                    }
                                 }
                             }
                             TotalNoOfReturns = TotalCountOfReturn;

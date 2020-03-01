@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"   
+               xmlns:local="clr-namespace:GAZT"
+             Title="{x:Static local:AppResources.ZZFormBundleStatus}"
              x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
     <ContentPage.Content>
         <StackLayout>
@@ -15,7 +17,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="10*" />
-                        <RowDefinition Height="10*"/>
+                        
                         <RowDefinition Height="70*" />
 
                     </Grid.RowDefinitions>
@@ -37,7 +39,8 @@
                     <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
 
                     </Frame>
-                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   ItemsSource="{Binding FormBundleList}" ItemDisplayBinding="{Binding Fbtyp}"   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" SelectedItem="{Binding SelectedFormBindleFbtyp }" ></custom:GAZTBorderlessPicker>
+
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" Title="{x:Static local:AppResources.ZZPleaseselectFormBundleType}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   ItemsSource="{Binding FormBundleList}" ItemDisplayBinding="{Binding Txt50}"   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" SelectedItem="{Binding SelectedFormBindleFbtyp }" ></custom:GAZTBorderlessPicker>
 
                     <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                         <Image.GestureRecognizers>
@@ -47,7 +50,7 @@
                     <Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                     </Frame>
-                    <custom:GAZTBorderlessPicker x:Name="CPicker" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"  ItemsSource="{Binding FormBundleApplicatioNumberList}" ItemDisplayBinding="{Binding Fbnum}"  SelectedItem="{Binding SelectedFormBindleFbnum}" IsEnabled="{Binding IsCPickerEnable}"></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker x:Name="CPicker" Title="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"  ItemsSource="{Binding FormBundleApplicatioNumberList}" ItemDisplayBinding="{Binding Fbnum}"  SelectedItem="{Binding SelectedFormBindleFbnum}" IsEnabled="{Binding IsCPickerEnable}"></custom:GAZTBorderlessPicker>
 
                     <Image Grid.Row="1"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                         <Image.GestureRecognizers>
@@ -55,7 +58,7 @@
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <ListView  x:Name="fblist" 
+                    <!--<ListView  x:Name="fblist" 
            ItemsSource="{Binding ListFormBudles}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -75,7 +78,7 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
+                    </ListView>-->
 
                     <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="7" >
                         <ListView  
@@ -111,7 +114,7 @@
                                                            
                                                         </Grid.RowDefinitions>
 
-                                                        <Label Text="Status" Margin="0" 
+                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -139,7 +142,7 @@
                                              
                                    Grid.Column="0"
                                                         Grid.ColumnSpan="4"
-                                                         Text="Description"
+                                                         Text="{x:Static local:AppResources.ZDescription}"
                                    >
 
                                                         </Label>
