@@ -22,10 +22,10 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
-
+            CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
-                CorrespondenceDetailsRootObject CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+                CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
                 PopToRootPage();
             }
             catch (InternetException ex)
