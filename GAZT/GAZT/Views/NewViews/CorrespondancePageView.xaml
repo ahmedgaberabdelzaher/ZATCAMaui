@@ -202,7 +202,7 @@
             HasUnevenRows="True"
                       ItemTapped="ListView_ItemTapped_1"
           
-        IsGroupingEnabled="True"
+      
                         
             >
                         <ListView.ItemTemplate>

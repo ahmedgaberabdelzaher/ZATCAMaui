@@ -40,8 +40,8 @@ namespace GAZT.Models
         public string Gpart { get; set; }
         public string Vkont { get; set; }
         public string Vtref { get; set; }
-        public DateTime Copri { get; set; }
-        public DateTime Coidt { get; set; }
+        public string Copri { get; set; }
+        public string Coidt { get; set; }
         public string Coitm { get; set; }
         public string Fbnum { get; set; }
         public string CaseId { get; set; }

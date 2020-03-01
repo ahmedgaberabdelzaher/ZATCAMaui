@@ -486,14 +486,24 @@ namespace GAZT.ViewModel.NewViewModel
                     childZakat.Title = itemZakat.Descript;
                     childZakat.RefNumber = itemZakat.LetterNum;
                     childZakat.Cokey = itemZakat.Cokey;
-                    childZakat.Txtco = itemZakat.Cdate;
-                    childZakat.StartDate = itemZakat.Coidt;
+                    if (itemZakat.Copri != null)
+                    {
+                        childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
+                    }
+                    if (itemZakat.Coidt != null)
+                    {
+                        childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
+                    }
                     childZakat.Cotype = itemZakat.Cotyp;
                     childZakat.Vkont = itemZakat.Vkont;
                     childZakat.Gpart = itemZakat.Gpart;
                     childZakat.Begdaz = itemZakat.Begdaz;
                     childZakat.Enddaz = itemZakat.Enddaz;
-                    DateTime? BegDate = itemZakat.Coidt;
+                    DateTime? BegDate = DateTime.Now;
+                    if (itemZakat.Coidt != null)
+                    {
+                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
+                    }
 
                     if (itemZakat.Zzfav == "1")
                     {
@@ -548,15 +558,24 @@ namespace GAZT.ViewModel.NewViewModel
                     childVAT.Title = itemVAT.Descript;
                     childVAT.RefNumber = itemVAT.LetterNum;
                     childVAT.Cokey = itemVAT.Cokey;
-                    childVAT.Txtco = itemVAT.Copri;
-                    childVAT.StartDate = itemVAT.Coidt;
+                    if (itemVAT.Copri != null)
+                    {
+                        childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
+                    }
+                    if (itemVAT.Coidt != null)
+                    {
+                        childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
+                    }
                     childVAT.Cotype = itemVAT.Cotyp;
                     childVAT.Vkont = itemVAT.Vkont;
                     childVAT.Gpart = itemVAT.Gpart;
                     childVAT.Begdaz = itemVAT.Begdaz;
                     childVAT.Enddaz = itemVAT.Enddaz;
-                    DateTime? BegDate = itemVAT.Coidt;
-
+                    DateTime? BegDate = DateTime.Now;
+                    if (itemVAT.Coidt != null)
+                    {
+                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
+                    }
                     if (itemVAT.Zzfav == "1")
                     {
                         childVAT.IsFav = true;
@@ -611,15 +630,24 @@ namespace GAZT.ViewModel.NewViewModel
                     childET.Title = itemET.Descript;
                     childET.RefNumber = itemET.LetterNum;
                     childET.Cokey = itemET.Cokey;
-                    childET.Txtco = itemET.Copri;
-                    childET.StartDate = itemET.Coidt;
+                    if (itemET.Copri != null)
+                    {
+                        childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
+                    }
+                    if (itemET.Coidt != null)
+                    {
+                        childET.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
+                    }
                     childET.Cotype = itemET.Cotyp;
                     childET.Vkont = itemET.Vkont;
                     childET.Gpart = itemET.Gpart;
                     childET.Begdaz = itemET.Begdaz;
                     childET.Enddaz = itemET.Enddaz;
-                    DateTime? BegDate = itemET.Coidt;
-
+                    DateTime? BegDate = DateTime.Now;
+                    if (itemET.Coidt != null)
+                    {
+                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
+                    }
                     if (itemET.Zzfav == "1")
                     {
                         childET.IsFav = true;
