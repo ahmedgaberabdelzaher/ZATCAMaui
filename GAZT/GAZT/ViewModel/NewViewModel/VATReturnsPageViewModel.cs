@@ -2437,7 +2437,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus== "E0006"))
                     {
-                        IsMainButtonEnabled = true;
+                        IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;
                     }
                     else
@@ -2451,7 +2451,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
                     {
-                        IsMainButtonEnabled = true;
+                        IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;
                     }
                     else
