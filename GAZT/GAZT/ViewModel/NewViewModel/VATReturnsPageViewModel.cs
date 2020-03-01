@@ -2435,13 +2435,29 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (App.ICRStatus != "E0001")
                 {
-                    IsMainButtonEnabled = false;
+                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus== "E0006"))
+                    {
+                        IsMainButtonEnabled = true;
+                        IsDeclarationCheckedForSummary = true;
+                    }
+                    else
+                    {
+                        IsMainButtonEnabled = false;
+                    }
                     IsDeclarationCheckedForSummary = false;
                     IschkRefundDeclaration = false;
                 }
                 else
                 {
-                    IsMainButtonEnabled = false;
+                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
+                    {
+                        IsMainButtonEnabled = true;
+                        IsDeclarationCheckedForSummary = true;
+                    }
+                    else
+                    {
+                        IsMainButtonEnabled = false;
+                    }
                     IsDeclarationCheckedForSummary = false;
                     IschkRefundDeclaration = false;
                 }

@@ -2076,10 +2076,10 @@
     <comment>Form Bundle</comment>
   </data>
   <data name="ZVATLookupCRNumberType3" xml:space="preserve">
-    <value>رقمالسجلالتجاري</value>
+    <value>رقم السجل التجاري</value>
   </data>
   <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
-    <value>الرقمالضريبي</value>
+    <value>الرقم الضريبي</value>
   </data>
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>رقمشهادةضريبةالقيمةالمضافة</value>

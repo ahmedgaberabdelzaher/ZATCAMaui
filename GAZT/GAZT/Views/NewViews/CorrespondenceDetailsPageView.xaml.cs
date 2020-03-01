@@ -1,4 +1,5 @@
-﻿using GAZT.Manager;
+﻿using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
@@ -21,9 +22,19 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
-
-            CorrespondenceDetailsRootObject CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
-
+            CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
+            try
+            {
+                CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+                PopToRootPage();
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
             string HTMLContent = string.Empty;
 
             foreach(CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
@@ -54,7 +65,17 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
 
     }
 }
