@@ -362,7 +362,18 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async void GetVATAllReturnsAsync()
         {
-            await GetVATAllReturns();
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                await GetVATAllReturns();
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
         private async Task GetVATAllReturns()
         {
@@ -379,36 +390,43 @@ namespace GAZT.ViewModel.NewViewModel
                         selectedICRForStatus = new ICRListSet();
                         selectedICRForStatus = SelectedICR;
                         App.ICRStatus = selectedICRForStatus.Status;
+
+
+
+
+                        //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
+                        // the GUID will be different
+
+                        String SelectedICRGUID = SelectedICR.Fbguid;
+                        EUser = SelectedICR.Euser;
+                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
+                        PopToRootPage();
+                        _vATDeclaration.d.Fbguid = SelectedICRGUID;
+
+                        if (_vATDeclaration != null && _vATDeclaration.d != null)
+                        {
+                            VATDeclaration vATDeclaration = new VATDeclaration();
+                            VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                            Result5 result5 = new Result5();
+                            List<Result5> lst = new List<Result5>();
+                            ADRSet _aDRSet = new ADRSet();
+
+                            lst.Add(result5);
+                            vATDeclaration.d = vATDeclarationD;
+                            vATDeclaration.d.ADRSet = _aDRSet;
+                            vATDeclaration.d.ADRSet.results = lst;
+                            IsLoading = false;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                            });
+
+                        }
                     }
 
 
-                    //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
-                    // the GUID will be different
-
-                    String SelectedICRGUID = SelectedICR.Fbguid;
-                    EUser = SelectedICR.Euser;
-                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
-                    PopToRootPage();
-                    _vATDeclaration.d.Fbguid = SelectedICRGUID;
-
-                    if (_vATDeclaration != null && _vATDeclaration.d != null)
-                    {
-                        VATDeclaration vATDeclaration = new VATDeclaration();
-                        VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                        Result5 result5 = new Result5();
-                        List<Result5> lst = new List<Result5>();
-                        ADRSet _aDRSet = new ADRSet();
-
-                        lst.Add(result5);
-                        vATDeclaration.d = vATDeclarationD;
-                        vATDeclaration.d.ADRSet = _aDRSet;
-                        vATDeclaration.d.ADRSet.results = lst;
-                        IsLoading = false;
-
-
-                        _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
-
-                   }
+                   
 
 
 

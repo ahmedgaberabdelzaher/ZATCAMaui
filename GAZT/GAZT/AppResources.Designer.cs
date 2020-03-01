@@ -3540,11 +3540,38 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commercial Registration Number.
+        /// </summary>
+        public static string ZVATLookupCRNumberType3 {
+            get {
+                return ResourceManager.GetString("ZVATLookupCRNumberType3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search result.
         /// </summary>
         public static string ZVATLookupDialogue {
             get {
                 return ResourceManager.GetString("ZVATLookupDialogue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayer TIN.
+        /// </summary>
+        public static string ZVATLookupIDTaxpayerTinType1 {
+            get {
+                return ResourceManager.GetString("ZVATLookupIDTaxpayerTinType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Certificate Number.
+        /// </summary>
+        public static string ZVATLookupIDVatCertificateNumberType2 {
+            get {
+                return ResourceManager.GetString("ZVATLookupIDVatCertificateNumberType2", resourceCulture);
             }
         }
         
