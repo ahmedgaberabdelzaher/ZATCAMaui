@@ -3621,5 +3621,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselectFormBundleType", resourceCulture);
             }
         }
+        
+        public static string ZVATLookupCRNumberType3 {
+            get {
+                return ResourceManager.GetString("ZVATLookupCRNumberType3", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookupIDTaxpayerTinType1 {
+            get {
+                return ResourceManager.GetString("ZVATLookupIDTaxpayerTinType1", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookupIDVatCertificateNumberType2 {
+            get {
+                return ResourceManager.GetString("ZVATLookupIDVatCertificateNumberType2", resourceCulture);
+            }
+        }
     }
 }
