@@ -85,7 +85,8 @@
            ItemsSource="{Binding ListFormBudles}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"                 
+            HasUnevenRows="True"   
+                            ItemTapped="ListView_ItemTapped"
             SeparatorVisibility="None"
             >
                             <ListView.ItemTemplate>

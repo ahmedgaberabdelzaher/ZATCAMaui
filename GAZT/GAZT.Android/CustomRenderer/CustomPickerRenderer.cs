@@ -27,7 +27,6 @@ namespace GAZT.Droid.CustomRenderer
                 Control.SetBackgroundColor(global::Android.Graphics.Color.White);
                 Control.InputType = InputTypes.TextFlagNoSuggestions;
                 Control.SetHintTextColor(Android.Graphics.Color.Black);
-
                 element = (CustomPicker)this.Element;
                 //if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 //    Control.Background = AddPickerStyles(element.Image);
@@ -36,6 +35,7 @@ namespace GAZT.Droid.CustomRenderer
                 {
                     Control.TextDirection = Android.Views.TextDirection.Rtl;
                     Control.Gravity = Android.Views.GravityFlags.CenterVertical;
+                   
                 }
 
             }

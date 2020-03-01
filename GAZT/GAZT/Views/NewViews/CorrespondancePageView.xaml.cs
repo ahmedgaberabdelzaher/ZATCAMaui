@@ -69,7 +69,7 @@ namespace GAZT.Views.NewViews
             
             CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
             viewModel.ShowCorrespondenceDetails(Correspondence);
-
+            ((ListView)sender).SelectedItem = null;
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -81,6 +81,7 @@ namespace GAZT.Views.NewViews
         {
             CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
             viewModel.ShowVATPDF(Correspondence);
+            ((ListView)sender).SelectedItem = null;
         }
 
         private void ListView_ItemTapped_2(object sender, ItemTappedEventArgs e)
@@ -88,6 +89,7 @@ namespace GAZT.Views.NewViews
             CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
             string Url = Constants.GAZTGetCorrespondenceAttach + "'" + Correspondence.Cokey + "',Cotyp='" + Correspondence.Cotype + "')/$value";
             viewModel.ShowETPDF(Correspondence);
+            ((ListView)sender).SelectedItem = null;
         }
         protected override void OnAppearing()
         {

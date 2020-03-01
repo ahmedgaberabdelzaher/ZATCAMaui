@@ -2064,15 +2064,15 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Form Bundle Status</value>
+    <value>حاله  الرقم المرجعي</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
-    <value>Please select Form Bundle Number</value>
+    <value>يرجى اختيار الرقم المرجعي</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleType" xml:space="preserve">
-    <value>Please select Form Bundle Type</value>
+    <value>يرجى اختيار نوع الرقم المرجعي</value>
     <comment>Form Bundle</comment>
   </data>
 </root>

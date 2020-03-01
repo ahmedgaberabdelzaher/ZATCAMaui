@@ -522,7 +522,12 @@ namespace GAZT.ViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
+                            if ((0 == String.Compare(ex.Message, "The account is locked for 60 minutes after the last login attempt")))
+                            {
+                                CurrentAttempt = 0;
+                            }
                             await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+
                         //UserName = string.Empty;
                         //Password = string.Empty;
                     });
