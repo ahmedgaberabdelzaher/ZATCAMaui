@@ -1,16 +1,36 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
     public class FormBundleStatusPageViewModel : ViewModelBase
     {
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
         private List<FormBundleResult> _formBundleList;
+
+        public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+        }
         public List<FormBundleResult> FormBundleList
         {
             get
@@ -161,19 +181,51 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void onPageLoad()
         {
-            FormBundleModel formbundleList = new FormBundleModel();
-            string lang = UtilityManager.GetLanguageParameter();
-            formbundleList = WebServiceManager.GAZTGetFormBundleModel();
-            FormBundleList = formbundleList.d.results;
-         
-        }
+            try
+            {
+                FormBundleModel formbundleList = new FormBundleModel();
+                string lang = UtilityManager.GetLanguageParameter();
+                formbundleList = WebServiceManager.GAZTGetFormBundleModel();
+                PopToRootPage();
+                FormBundleList = formbundleList.d.results;
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
 
+        }
+    
         public void onSelectedFormBindleFbtyp()
         {
-            FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
-            formbundleApplicationNumberList = WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
-            FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
+            try{
+                FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
+                formbundleApplicationNumberList = WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
+                PopToRootPage();
+                  FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
+            }
+            catch(InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
 
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
         }
     }
 }
