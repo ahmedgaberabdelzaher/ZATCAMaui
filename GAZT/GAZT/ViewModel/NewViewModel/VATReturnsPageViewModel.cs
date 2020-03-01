@@ -1033,12 +1033,27 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _correctionNegativePeriodAmount;
+        public string CorrectionNegativePeriodAmount
+        {
+            get
+            {
+                return _correctionNegativePeriodAmount;
+            }
+            set
+            {
+                _correctionNegativePeriodAmount = value;
+
+                RaisePropertyChanged("CorrectionNegativePeriodAmount");
+            }
+        }
+
 
 
 
         #region NewProperty
 
-        public string _totalsalesAmt;
+        public string _totalsalesAmt="0.0";
         public string TotalsalesAmt
         {
             get
@@ -1052,7 +1067,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalsalesAdj;
+        public string _totalsalesAdj="0.0";
         public string TotalsalesAdj
         {
             get
@@ -1066,7 +1081,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseAmt;
+        public string _totalpurchaseAmt="0.0";
         public string TotalpurchaseAmt
         {
             get
@@ -1080,7 +1095,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseAdj;
+        public string _totalpurchaseAdj="0.0";
         public string TotalpurchaseAdj
         {
             get
@@ -1094,7 +1109,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _stdsalesVat;
+        public string _stdsalesVat="0.0";
         public string StdsalesVat
         {
             get
@@ -1108,7 +1123,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totaldueVat;
+        public string _totaldueVat="0.0";
         public string TotaldueVat
         {
             get
@@ -1126,6 +1141,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public string _carriedValueString;
+        public string CarriedValueString
+        {
+            get
+            {
+                return _carriedValueString;
+            }
+            set
+            {
+                _carriedValueString = value;
+                RaisePropertyChanged("CarriedValueString");
+            }
+        }
+
         public string _preperiodcorr;
         public string Preperiodcorr
         {
@@ -1139,9 +1168,9 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_preperiodcorr != null)
                 {
                     NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
-                    if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-")
+                    if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-" && !string.IsNullOrEmpty(CorrectionPeriodAmount) && !string.IsNullOrEmpty(CorrectionNegativePeriodAmount))
                     {
-                        if(Convert.ToDecimal(_preperiodcorr)> 4999)
+                        if((Convert.ToDecimal(_preperiodcorr)>= Convert.ToDecimal(CorrectionPeriodAmount)) || (Convert.ToDecimal(_preperiodcorr)<= Convert.ToDecimal(CorrectionNegativePeriodAmount)))
                         {
                             IsGreaterThanFiveT = true;
                         }
@@ -1170,7 +1199,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _netdueVat;
+        public string _netdueVat="0.0";
         public string NetdueVat
         {
             get
@@ -1228,12 +1257,16 @@ namespace GAZT.ViewModel.NewViewModel
                         TotalpurchaseVat = "0.0";
                     }
                     TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                    if(TotaldueVat=="0")
+                    {
+                        TotaldueVat = "0.0";
+                    }
                 }
                 RaisePropertyChanged("TotalsalesVat");
             }
         }
 
-        public string _stdpurchasesVat;
+        public string _stdpurchasesVat="0.0";
         public string StdpurchasesVat
         {
             get
@@ -1247,7 +1280,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _importspaidVat;
+        public string _importspaidVat="0.0";
         public string ImportspaidVat
         {
             get
@@ -1261,7 +1294,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseVat;
+        public string _totalpurchaseVat="0.0";
         public string TotalpurchaseVat
         {
             get
@@ -1274,6 +1307,10 @@ namespace GAZT.ViewModel.NewViewModel
                 if (!string.IsNullOrEmpty(_totalpurchaseVat))
                 {
                     TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
+                    if(TotaldueVat=="0")
+                    {
+                        TotaldueVat = "0.0";
+                    }
 
                 }
                 RaisePropertyChanged("TotalpurchaseVat");
@@ -1294,7 +1331,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("AmountPayable");
             }
         }
-        public string _importsaccVat;
+        public string _importsaccVat="0.0";
         public string ImportsaccVat
         {
             get
@@ -2897,6 +2934,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (VATDeclarationData.d != null)
                 {
+
                     if (VATDeclarationData.d.Abrzu != null && VATDeclarationData.d.Abrzo != null)
                     {
 
@@ -3111,6 +3149,11 @@ namespace GAZT.ViewModel.NewViewModel
                 if (vATCalculationData.d.VTTHSet.results.Count != 0)
                 {
                     CorrectionPeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                    CorrectionNegativePeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MinVal).FirstOrDefault();
+                        if (!string.IsNullOrEmpty(CorrectionPeriodAmount))
+                        {
+                            CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", "±"+CorrectionPeriodAmount);
+                        }
                 }
 
 
@@ -3547,7 +3590,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
         {
-            string VATAmount = string.Empty;
+            string VATAmount = "0.0";
             if (Amount!="." && Adjustment!=".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -3556,7 +3599,12 @@ namespace GAZT.ViewModel.NewViewModel
                     Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                     Double dVATRate = Convert.ToDouble(VATRate002);
 
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+
+                    if(VATAmount=="0")
+                    {
+                        VATAmount = "0.0";
+                    }
                 }
             }
             return VATAmount;
@@ -3564,12 +3612,16 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
-            String TotalAmount = string.Empty;
+            String TotalAmount = "0.0";
             if (Amount1!="." && Amount2!="." && Amount3!="." && Amount4!="." && Amount5!=".")
             {
                 if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
                 {
-                    TotalAmount = ((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5))).ToString();
+                    TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
+                    if (TotalAmount == "0")
+                    {
+                        TotalAmount = "0.0";
+                    }
                 }
             }
             return TotalAmount;
@@ -3577,12 +3629,16 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
         {
-            String TotalAmount = string.Empty;
+            String TotalAmount = "0.0";
             if (Adjustment1!="." && Adjustment2!="." && Adjustment3!="." && Adjustment4!="." && Adjustment5!=".")
             {
                 if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
                 {
-                    TotalAmount = ((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5))).ToString();
+                    TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
+                    if (TotalAmount == "0")
+                    {
+                        TotalAmount = "0.0";
+                    }
                 }
             }
             return TotalAmount;
@@ -3590,7 +3646,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
         {
-            String TotalAmount = string.Empty;
+            String TotalAmount = "0.0";
 
             if(String.IsNullOrEmpty(Amount1))
             {
@@ -3607,14 +3663,18 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
             {
-                TotalAmount = (Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3)).ToString();
+                TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
+                if (TotalAmount == "0")
+                {
+                    TotalAmount = "0.0";
+                }
             }
             return TotalAmount;
         }
 
         public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
         {
-            string VATAmount = string.Empty;
+            string VATAmount = "0.0";
             if (Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -3623,7 +3683,11 @@ namespace GAZT.ViewModel.NewViewModel
                     Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                     Double dVATRate = Convert.ToDouble(VATRate002);
 
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                    if (VATAmount == "0")
+                    {
+                        VATAmount = "0.0";
+                    }
                 }
             }
             return VATAmount;
@@ -3632,7 +3696,7 @@ namespace GAZT.ViewModel.NewViewModel
         //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
         public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
         {
-            string VATAmount = string.Empty;
+            string VATAmount = "0.0";
             if (Amount!= "." && Adjustment!= ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -3642,7 +3706,11 @@ namespace GAZT.ViewModel.NewViewModel
                     Double dVATRate001 = Convert.ToDouble(VATRate001);
                     Double dVATRate002 = Convert.ToDouble(VATRate002);
 
-                    VATAmount = (((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100)).ToString();
+                    VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
+                    if (VATAmount == "0")
+                    {
+                        VATAmount = "0.0";
+                    }
                 }
             }
             return VATAmount;
@@ -3650,7 +3718,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
         {
-            string VATAmount = string.Empty;
+            string VATAmount = "0.0";
             if (Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -3659,7 +3727,11 @@ namespace GAZT.ViewModel.NewViewModel
                     Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
                     Double dVATRate = Convert.ToDouble(VATRate002);
 
-                    VATAmount = (((dAmount - dAdjustment) * dVATRate) / 100).ToString();
+                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                    if (VATAmount == "0")
+                    {
+                        VATAmount = "0.0";
+                    }
                 }
             }
             return VATAmount;
@@ -3668,7 +3740,7 @@ namespace GAZT.ViewModel.NewViewModel
         public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
           
-            string NetVatDue = string.Empty;
+            string NetVatDue = "0.0";
             try
             {
               
@@ -3676,8 +3748,11 @@ namespace GAZT.ViewModel.NewViewModel
                     Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
                     Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
 
-                    NetVatDue = (dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod).ToString();
-                
+                    NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
+                if (NetVatDue == "0")
+                {
+                    NetVatDue = "0.0";
+                }
             }
             catch
             {

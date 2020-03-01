@@ -698,23 +698,26 @@ namespace GAZT.Views.NewViews
                 }
             }
             IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
-            if (IGRTSetModel.RateTrtmt != "Z")
+            if (IGRTSetModel != null && IGRTSetModel.RateTrtmt!=null)
             {
-
-                if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
+                if (IGRTSetModel.RateTrtmt != "Z")
                 {
-                    if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+
+                    if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
                     {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+                        if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                        {
+                            PopUp popUp = new PopUp();
+                            popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
 
 
-                        popUp.IsLinkAvailable = false;
+                            popUp.IsLinkAvailable = false;
 
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        }
                     }
-                }
 
+                }
             }
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
         }
@@ -738,7 +741,8 @@ namespace GAZT.Views.NewViews
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
         {
             CheckMandetoryFields();
-            if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
+           
+            if (viewModel.ResponseVATDeclarationD!=null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
             {
                 viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
             }
@@ -1402,18 +1406,21 @@ namespace GAZT.Views.NewViews
         public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj)
         {
             try
-            { 
-            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-            // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
-
-            if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
             {
-                PopUp Pop = new PopUp();
-                Pop.IsLinkAvailable = false;
-                Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-            }
+                if (viewModel.CalculationRateSetVTTH != null)
+                {
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
+                }
             }
             catch
             {
@@ -1444,16 +1451,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1467,16 +1477,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1529,16 +1542,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1570,16 +1586,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1611,16 +1630,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1652,18 +1674,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-
-
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1695,16 +1718,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1716,16 +1742,19 @@ namespace GAZT.Views.NewViews
 
         public void CheckSixaTweveb(decimal LabelTotalsalesAmt, decimal LabelTotalpurchaseAmt)
         {
-            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-            //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
+            if (viewModel.CalculationRateSetVTTH != null)
             {
-                PopUp Pop = new PopUp();
-                Pop.IsLinkAvailable = false;
-                Pop.Message = AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
+                {
+                    PopUp Pop = new PopUp();
+                    Pop.IsLinkAvailable = false;
+                    Pop.Message = AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                }
             }
 
         }
@@ -1734,16 +1763,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
@@ -1757,16 +1789,19 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                //  decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
-
-                if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
+                if (viewModel.CalculationRateSetVTTH != null)
                 {
-                    //PopUp Pop = new PopUp();
-                    //Pop.IsLinkAvailable = false;
-                    //Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
-                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
+                    {
+                        //PopUp Pop = new PopUp();
+                        //Pop.IsLinkAvailable = false;
+                        //Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
                 }
             }
             catch
