@@ -43,6 +43,8 @@ namespace GAZT.Views.NewViews
                 if (sender is ListView lv) lv.SelectedItem = null;
             };
 
+            
+
             NavigationPage.SetBackButtonTitle(this, "");
         }
 
@@ -54,22 +56,11 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
                     await viewModel.onPageLoad();
                     if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0)
                     {
                         BPicker.SelectedIndex = 14;
                     }
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
             }
             catch(Exception e)
             {
