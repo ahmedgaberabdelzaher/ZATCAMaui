@@ -340,6 +340,19 @@ namespace GAZT.Manager
             }
         }
 
+        public static string GetTaxPeriodDate(string PeriodDate)
+        {
+            string Date = "";
+            if (PeriodDate.Contains("-"))
+            {
+                string[] date = new String[2];
+                date = PeriodDate.Split('-');
+                Date = ConvertNumerals(date[0]) + " " + AppResources.To + " " + ConvertNumerals(date[1]);
+           }
+            return Date;
+           
+        }
+
         public static string DownloadDataFromLink(string url)
         {
             string Base64String = string.Empty;
