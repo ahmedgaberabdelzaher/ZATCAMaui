@@ -75,7 +75,7 @@
                         <!--
 
                 </StackLayout>-->
-                        <Label Text="{x:Static local:AppResources.FiscalYear}" Margin="10,0,10,-10"  Grid.Row="1" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                        <Label Text="{x:Static local:AppResources.FiscalYear}"  Grid.Row="1" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                         <Label Text="{Binding Persl}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
@@ -83,12 +83,12 @@
 
                 <Label Text="2019-2010" Grid.Row="0"  Grid.Column="1" Margin="10,0,10,0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
 
-                        <Label Text="{x:Static local:AppResources.ZFinancialPeriodFrom}" Margin="10,0,10,-10"  Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                        <Label Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                         <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                             <Label Text="{Binding Abrzu}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                         </StackLayout>
 
-                        <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Margin="10,0,10,-10" Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                        <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}"  Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                         <Label Text="{Binding Fbnum}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
@@ -97,7 +97,7 @@
                         <BoxView  Grid.Row="7" Margin="0,5,0,-5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
 
-                        <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Margin="10,2,10,-5"   Grid.Row="8" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
+                        <Label Text="{x:Static local:AppResources.ZEstimatedSales}"  Grid.Row="8" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
                         <Label  Margin="10,0,10,-4"   Grid.Row="8" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                             <Label.FormattedText>
