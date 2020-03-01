@@ -85,7 +85,7 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
-                                                        <Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
                                  
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"
@@ -96,7 +96,7 @@
 
                                                         <Label Text="{Binding Incotext}" 
                                                   
-                                 Margin="8,0,8,-5"
+                                 Margin="8,0,8,0"
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -105,7 +105,7 @@
 
                                                         <Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
                                                 
-                                 Margin="8,0,8,-5"
+                                 Margin="8,0,8,0"
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -124,7 +124,7 @@
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                          Margin="8,0,8,-5" 
+                                                          Margin="8,0,8,0" 
                                    Grid.Row="3"
                                    Grid.Column="1" Grid.ColumnSpan="4">
                                                             <Label.FormattedText>
@@ -138,14 +138,14 @@
 
                                                         <Label Text="{Binding FormatTaxPeriod}" 
                                                   
-                                  Margin="8,0,8,-5" 
+                                  Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>
 
-                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
                                  
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"
@@ -157,7 +157,7 @@
 
                                                         <Label Text="{Binding StatusTxt}" 
                                                   TextColor="{Binding BorderColour}"
-                                  Margin="8,0,8,-5"
+                                  Margin="8,0,8,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -167,7 +167,7 @@
 
                                                      
 
-                                                        <Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -176,14 +176,14 @@
 
                                                         <Label Text="{Binding FormatedDate}" 
                                                   
-                                  Margin="8,0,8,-5"
+                                  Margin="8,0,8,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="8"
                                    Grid.Column="1" Grid.ColumnSpan="4" />
 
-                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -204,11 +204,11 @@
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                         <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="11"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="11" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="11" Margin="0,0,0,0"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 
 
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="11" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="11" Margin="0,0,0,0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
 
 
                                                     </Grid>

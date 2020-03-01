@@ -168,7 +168,7 @@
                                                               <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
 
-                                                        <Label Text="{Binding FbtText}" Margin="8,0,8,-5" 
+                                                        <Label Text="{Binding FbtText}" Margin="8,0,8,0" 
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -181,20 +181,20 @@
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                           Margin="8,0,8,-5"
+                                                           Margin="8,0,8,0"
                                    Grid.Row="1"
                                    Grid.Column="1"/>
 
                                                         <Label Text="{Binding TaxPeriod}" 
                                                   
-                                  Margin="-7,0,-7,-5" 
+                                  Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="2" />
 
-                                                        <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -203,14 +203,14 @@
 
                                                         <local1:CustomLabel Text="{Binding Period}" 
                                                   
-                                  Margin="-7,0,-7,-5" 
+                                  Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="2" />
 
-                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,-5" 
+                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -219,7 +219,7 @@
 
                                                         <Label Text="{Binding DueDtC}" 
                                                   
-                                  Margin="-7,0,-7,-5"
+                                  Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -249,11 +249,11 @@
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                         <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Margin="0,0,0,-2"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Margin="0,0,0,0"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
 
 
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="6" Margin="0,0,0,-2" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="6" Margin="0,0,0,0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
 
 
                                                     </Grid>
