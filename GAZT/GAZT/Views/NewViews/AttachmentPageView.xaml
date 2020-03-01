@@ -79,6 +79,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                    BackgroundColor="White"
             ItemTapped="Attachmentlist_ItemTapped"
             SeparatorVisibility="None"
             >

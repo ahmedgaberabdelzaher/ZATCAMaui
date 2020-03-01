@@ -22,6 +22,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                        BackgroundColor="White"
                       IsVisible="{Binding IsListViewVisible}" 
             SeparatorVisibility="None"
             >

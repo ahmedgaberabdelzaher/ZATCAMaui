@@ -136,6 +136,8 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+             BackgroundColor="White"
+
                                ItemTapped="Bills_ItemTapped"
                  SelectedItem="{Binding SelectedZakatReturn}"     
             SeparatorVisibility="None"

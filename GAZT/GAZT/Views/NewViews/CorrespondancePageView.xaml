@@ -86,6 +86,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                       ItemTapped="ListView_ItemTapped"
+                        BackgroundColor="White"
             SeparatorVisibility="None"
             >
                         <ListView.ItemTemplate>

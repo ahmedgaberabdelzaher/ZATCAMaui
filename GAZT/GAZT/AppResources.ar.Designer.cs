@@ -3531,5 +3531,95 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReferenceNumber", resourceCulture);
             }
         }
+        
+        public static string ZZCorrespondence {
+            get {
+                return ResourceManager.GetString("ZZCorrespondence", resourceCulture);
+            }
+        }
+        
+        public static string ZZCorrespondenceDetails {
+            get {
+                return ResourceManager.GetString("ZZCorrespondenceDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZZDateandTime {
+            get {
+                return ResourceManager.GetString("ZZDateandTime", resourceCulture);
+            }
+        }
+        
+        public static string ZZDateAscending {
+            get {
+                return ResourceManager.GetString("ZZDateAscending", resourceCulture);
+            }
+        }
+        
+        public static string ZZDateDescending {
+            get {
+                return ResourceManager.GetString("ZZDateDescending", resourceCulture);
+            }
+        }
+        
+        public static string ZZET {
+            get {
+                return ResourceManager.GetString("ZZET", resourceCulture);
+            }
+        }
+        
+        public static string ZZFavoriteAscending {
+            get {
+                return ResourceManager.GetString("ZZFavoriteAscending", resourceCulture);
+            }
+        }
+        
+        public static string ZZFavoriteDescending {
+            get {
+                return ResourceManager.GetString("ZZFavoriteDescending", resourceCulture);
+            }
+        }
+        
+        public static string ZZReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZZReferenceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZTitle {
+            get {
+                return ResourceManager.GetString("ZZTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZVAT {
+            get {
+                return ResourceManager.GetString("ZZVAT", resourceCulture);
+            }
+        }
+        
+        public static string ZZZAKAT {
+            get {
+                return ResourceManager.GetString("ZZZAKAT", resourceCulture);
+            }
+        }
+        
+        public static string ZZFormBundleStatus {
+            get {
+                return ResourceManager.GetString("ZZFormBundleStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseselectFormBundleNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectFormBundleNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseselectFormBundleType {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectFormBundleType", resourceCulture);
+            }
+        }
     }
 }
