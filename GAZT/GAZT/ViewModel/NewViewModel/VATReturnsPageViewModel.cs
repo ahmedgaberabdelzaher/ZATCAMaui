@@ -2614,7 +2614,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //    VATReturnFormClicked();
                     //    PageSelectedItem = VatTabbledPageList[2];
                     //}
-                    if (resNew != null)
+                    if (resNew != null || (!String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) && App.ICRStatus != "E0045"))
                     {
                         await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
                         VATReturnFormClicked();
