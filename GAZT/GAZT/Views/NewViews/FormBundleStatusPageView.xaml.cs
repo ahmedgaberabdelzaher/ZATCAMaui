@@ -1,0 +1,49 @@
+﻿using GAZT.ViewModel.NewViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace GAZT.Views.NewViews
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FormBundleStatusPageView : ContentPage
+    {
+        FormBundleStatusPageViewModel viewModel;
+        public FormBundleStatusPageView()
+        {
+            viewModel = App.Locator.FormBundleStatusPageView;
+            InitializeComponent();
+            this.BindingContext = viewModel;
+
+            viewModel.onPageLoad();
+            viewModel.IsCPickerEnable = false;
+            SetLTR();
+        }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            BPicker.Focus();
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            CPicker.Focus();
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+    }
+}

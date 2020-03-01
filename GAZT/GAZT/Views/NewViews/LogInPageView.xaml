@@ -7,9 +7,9 @@
             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.LogInPageView"
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft"
+             >
     <ContentPage.Content>
-         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
            
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -120,7 +120,6 @@
         <!-- Acticity indicator layout end -->
         
         </Grid>
-              </ScrollView>      
     </ContentPage.Content>
         
 </ContentPage>

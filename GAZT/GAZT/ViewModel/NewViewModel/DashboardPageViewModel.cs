@@ -38,6 +38,7 @@ namespace GAZT.ViewModel
         
         public ICommand OnTINStatusClicked { get; set; }
 
+        public ICommand OnFormbundleClicked { get; set; }
         #endregion
 
         #region Property
@@ -465,7 +466,10 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.CheckTINStatusPageView);
             });
-            
+            OnFormbundleClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.NavigateTo(App.FormBundleStatusPageView);
+            });
         }
 
         #endregion
@@ -515,9 +519,12 @@ namespace GAZT.ViewModel
                             else
                             {
                                 TotalCountOfReturn = TotalCountOfReturn.TrimStart(new Char[] { '0' });
-                                if (TotalCountOfReturn.Substring(0, 1) == ".")
+                                if (!string.IsNullOrEmpty(TotalCountOfReturn))
                                 {
-                                    TotalCountOfReturn = "0" + TotalCountOfReturn;
+                                    if (TotalCountOfReturn.Substring(0, 1) == ".")
+                                    {
+                                        TotalCountOfReturn = "0" + TotalCountOfReturn;
+                                    }
                                 }
                             }
                             TotalNoOfReturns = TotalCountOfReturn;

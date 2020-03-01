@@ -70,6 +70,12 @@ namespace GAZT.Views.NewViews
         {
             viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
         }
+
+        public void OnPasswordFocused(object sender, EventArgs args)
+        {
+            Password.Unfocus();
+        }
+        
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

@@ -3229,6 +3229,121 @@ namespace GAZT.Manager
 
             }
         }
+   
+        public static FormBundleModel GAZTGetFormBundleModel()
+        {
+            FormBundleModel ReturnFormBundleList = new FormBundleModel();
+            string NewToken = string.Empty;
+            try
+            {
+                char lang = GetLangZParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '"+ App.TP.Tin + "'&saml2=disabled";
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTFormBundleList = client.GetAsync(uri).Result;
+
+                if (GAZTFormBundleList != null)
+                {
+                    HttpHeaders headers = GAZTFormBundleList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String FormBundleList = GAZTFormBundleList.Content.ReadAsStringAsync().Result;
+
+                    ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleModel>(FormBundleList);
+
+
+                }
+                return ReturnFormBundleList;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+
+
+
+
+        public static FormBundleApplicationNumberModel GAZTGetFormBundleApplicationNumberModel(string Fbtyp)
+        {
+            FormBundleApplicationNumberModel ReturnFormBundleList = new FormBundleApplicationNumberModel();
+            string NewToken = string.Empty; string ApplicationNumber = Fbtyp;
+            try
+            {
+                char lang = GetLangZParameter();
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                String url = Constants.GAZTGetFormBunleAccountNumberModel + "'"+ lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '"+ ApplicationNumber+ "'&saml2=disabled";
+                //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                var uri = new Uri(url);
+                HttpResponseMessage GAZTFormBundleList = client.GetAsync(uri).Result;
+
+                if (GAZTFormBundleList != null)
+                {
+                    HttpHeaders headers = GAZTFormBundleList.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                    }
+
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        App.Token = NewToken;
+                    }
+
+                    String FormBundleList = GAZTFormBundleList.Content.ReadAsStringAsync().Result;
+
+                    ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleApplicationNumberModel>(FormBundleList);
+
+
+                }
+                return ReturnFormBundleList;// tINStatus;
+            }
+            catch (Exception ex)
+            {
+                //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                //{
+                //    throw new Exception(AppResources.Nodataavailable);
+                //}
+                //else
+                //{
+                //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                //}
+                return null;
+            }
+        }
+    
     }
 
 }

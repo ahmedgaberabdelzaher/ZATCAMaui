@@ -687,7 +687,7 @@
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
 
 
-                            <Label Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
+                            <local1:CustomLabel Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
                         </Grid>
 

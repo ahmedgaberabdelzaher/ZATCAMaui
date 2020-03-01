@@ -4555,6 +4555,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form Bundle Status.
+        /// </summary>
+        public static string ZZFormBundleStatus {
+            get {
+                return ResourceManager.GetString("ZZFormBundleStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please visit GAZT portal to open the selected return..
         /// </summary>
         public static string ZZFormFiveTappedMessage {
@@ -4915,6 +4924,24 @@ namespace GAZT {
         public static string ZZPleasefilltherequestedinformationforeachstep {
             get {
                 return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select Form Bundle Number.
+        /// </summary>
+        public static string ZZPleaseselectFormBundleNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectFormBundleNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select Form Bundle Type.
+        /// </summary>
+        public static string ZZPleaseselectFormBundleType {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectFormBundleType", resourceCulture);
             }
         }
         
