@@ -159,13 +159,13 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
 
-                                            <local:CustomLabel Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <local:CustomLabel  Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
+                                            <local:CustomLabel Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                            <local:CustomLabel  Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding EstimateSales}"/>
-                                                        <Span Text=" "/>
-                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                        <!--<Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>-->
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </local:CustomLabel>

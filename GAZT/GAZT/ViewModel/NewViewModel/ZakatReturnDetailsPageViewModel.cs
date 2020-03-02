@@ -278,7 +278,7 @@ namespace GAZT.ViewModel.NewViewModel
                         else
                         {
                        //     Dear taxpayer, the return is under GAZT review and cannot be amended.
-                       if(WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))
+                       if(WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))// message is always coming in english from the server
                             {
                                 Device.BeginInvokeOnMainThread(async () => {
                                     if (App.IsArabic)
@@ -351,7 +351,7 @@ namespace GAZT.ViewModel.NewViewModel
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
-                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
                     SalesDetailsAndReleaseButtonVisibility = true;
@@ -362,10 +362,16 @@ namespace GAZT.ViewModel.NewViewModel
                     SalesDetailsAndReleaseButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
+                else if (ButtonStatus.Equals("E0011"))//In Processing
+                {
+                    SalesDetailsAndReleaseButtonVisibility = true;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
                 else if (ButtonStatus.Equals(""))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = false;
                 }
+
             }
             catch(Exception ex)
             {

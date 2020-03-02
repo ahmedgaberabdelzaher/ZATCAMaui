@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using MobileCoreServices;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
 using System;
@@ -28,17 +29,17 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Property
 
-        private VATDeclaration _vATDeclarationDataForAttch;
-        public VATDeclaration VATDeclarationDataForAttch
+        private VATDeclaration _vATDeclarationData;
+        public VATDeclaration VATDeclarationData
         {
             get
             {
-                return _vATDeclarationDataForAttch;
+                return _vATDeclarationData;
             }
             set
             {
-                _vATDeclarationDataForAttch = value;
-                RaisePropertyChanged("VATDeclarationDataForAttch");
+                _vATDeclarationData = value;
+                RaisePropertyChanged("VATDeclarationData");
             }
         }
 
@@ -149,7 +150,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-  
+
         #endregion
 
         #region Constructor
@@ -180,7 +181,22 @@ namespace GAZT.ViewModel.NewViewModel
                         string[] filetypes;
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            filetypes = new string[] { "pdf", "doc", "docx", "jpeg", "jpg", "xls", "xlsx", "image/png", "ppt", "pptx", "gif", "txt" };
+                            filetypes = new string[] {
+
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
+                UTType.JPEG,
+                UTType.PNG,
+                UTType.GIF,
+                "com.microsoft.excel.xls",
+                "com.microsoft.powerpoint.​ppt",
+                 UTType.PlainText
+                            };
+
+
                         }
                         else
                         {
@@ -194,96 +210,96 @@ namespace GAZT.ViewModel.NewViewModel
                             AttachmentName = fileData.FileName;
                             //if (fileData.FileName.Contains("."))
                             //{
-                                //string Extention = fileData.FileName.Split('.')[1];
-                                //if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
-                               // {
-                                    if (TotalAttachmentSize <= 300)
+                            //string Extention = fileData.FileName.Split('.')[1];
+                            //if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                            // {
+                            if (TotalAttachmentSize <= 300)
+                            {
+                                AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+
+
+                                if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                {
+                                    bool IsAttachmentPresent = false;
+                                    foreach (Attachment ItemA in VATDeclarationData.d.ATTACHSet.results)
                                     {
-                                        AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-
-
-                                        if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                        if (AttachmentName == ItemA.Filename)
                                         {
-                                            bool IsAttachmentPresent = false;
-                                            foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
-                                            {
-                                                if (AttachmentName == ItemA.Filename)
-                                                {
-                                                    IsAttachmentPresent = true;
-                                                }
-                                            }
-                                            if (IsAttachmentPresent == false)
-                                            {
-                                                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-                                                PopToRootPage();
-                                                if (_attachment != null && _attachment.d != null)
-                                                {
-
-
-                                                    VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
-                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
-                                                    Device.BeginInvokeOnMainThread(async () =>
-                                                    {
-                                                        VatAttachmentsList = myCollection;
-                                                    });
-                                                    VatAttachmentsList = myCollection;
-                                                    //foreach (var item in VatAttachmentsList)
-                                                    //{
-                                                    //    if (App.IsArabic)
-                                                    //    {
-                                                    //        if (item.Erfdt != null)
-                                                    //        {
-                                                    //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                    //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                    //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                                                    //        }
-                                                    //    }
-                                                    //    else
-                                                    //    {
-                                                    //        if (item.Erfdt != null)
-                                                    //        {
-                                                    //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                    //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                    //        }
-                                                    //    }
-                                                    //}
-
-                                                    AttachmentCount++;
-                                                    TotalAttachmentSize += AttachmentSize;
-                                                    AttachmentName = string.Empty;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                AttachmentName = string.Empty;
-                                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-
-                                            }
-
+                                            IsAttachmentPresent = true;
                                         }
-                                        else
+                                    }
+                                    if (IsAttachmentPresent == false)
+                                    {
+                                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                        PopToRootPage();
+                                        if (_attachment != null && _attachment.d != null)
                                         {
-                                            AttachmentName = string.Empty;
-                                            _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
 
+
+                                            VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                VatAttachmentsList = myCollection;
+                                            });
+                                            VatAttachmentsList = myCollection;
+                                            //foreach (var item in VatAttachmentsList)
+                                            //{
+                                            //    if (App.IsArabic)
+                                            //    {
+                                            //        if (item.Erfdt != null)
+                                            //        {
+                                            //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                            //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                            //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                            //        }
+                                            //    }
+                                            //    else
+                                            //    {
+                                            //        if (item.Erfdt != null)
+                                            //        {
+                                            //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                            //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                            //        }
+                                            //    }
+                                            //}
+
+                                            AttachmentCount++;
+                                            TotalAttachmentSize += AttachmentSize;
+                                            AttachmentName = string.Empty;
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
 
                                     }
 
-                                //}
-                                //else
-                                //{
-                                //    AttachmentName = string.Empty;
-                                //    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                //}
+                                }
+                                else
+                                {
+                                    AttachmentName = string.Empty;
+                                    _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+
+                                }
+                            }
+                            else
+                            {
+                                AttachmentName = string.Empty;
+                                _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+
+                            }
+
+                            //}
+                            //else
+                            //{
+                            //    AttachmentName = string.Empty;
+                            //    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            //}
                             //}
                             //else
                             //{
@@ -311,8 +327,8 @@ namespace GAZT.ViewModel.NewViewModel
 
             });
 
-              
-            
+
+
 
         }
         #endregion
@@ -383,6 +399,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-            #endregion
-        }
+        #endregion
+    }
 }

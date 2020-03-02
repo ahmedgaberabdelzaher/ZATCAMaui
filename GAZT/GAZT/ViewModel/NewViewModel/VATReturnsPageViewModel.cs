@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using Rg.Plugins.Popup.Services;
 using GAZT.Views.NewViews;
+using MobileCoreServices;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -1963,7 +1964,32 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-                    var fileData = await CrossFilePicker.Current.PickFile();
+                    string[] filetypes;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        filetypes = new string[] {
+
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
+                UTType.JPEG,
+                UTType.PNG,
+                UTType.GIF,
+                "com.microsoft.excel.xls",
+                "com.microsoft.powerpoint.​ppt",
+                 UTType.PlainText
+                            };
+
+
+                    }
+                    else
+                    {
+                        filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+
+                    }
+                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
 
