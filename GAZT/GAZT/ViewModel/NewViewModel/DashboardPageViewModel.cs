@@ -596,7 +596,12 @@ namespace GAZT.ViewModel
                                 VATColumn = 1;
                                 CorresColumn = 0;
                             }
-
+                            else if (IsZakatVisible == true && IsVATVisible == true)
+                            {
+                                ZakatColumn = 1;
+                                VATColumn = 0;
+                                CorresColumn = 2;
+                            }
                             // IsVisibleFiscal = true;
                             try
                             {
