@@ -72,7 +72,7 @@
 
                     </Label>
 
-                    <Label  Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label  Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Estsl}"/>
@@ -90,7 +90,7 @@
                     </Image> 
                     <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Cpamt}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Cpamt}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Cpamt}" />
@@ -109,7 +109,7 @@
                     </Image>
                     <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Zbamt}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Zbamt}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Zbamt}"/>
@@ -127,7 +127,7 @@
                     </Image>
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Zkamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Zkamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Zkamt}"/>
