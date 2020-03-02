@@ -578,6 +578,12 @@ namespace GAZT.ViewModel.NewViewModel
                     HideDisclaimer();
                     // ShowAcceptAndAmendButton();
                 }
+                else if (ZakatReturnDetail.d.Statusz.Equals("E0011"))// In Paid state 
+                {
+                    ShowAcceptAndAmendButton();
+                    HideDisclaimer();
+                    // ShowAcceptAndAmendButton();
+                }
                 else if (ZakatReturnDetail.d.Statusz.Equals("E0002"))// Status when the return released by GAZT officer
                 {
                     ShowAcceptAndAmendButton();
@@ -681,7 +687,8 @@ namespace GAZT.ViewModel.NewViewModel
                                     // ShowEditIcon();// Commented 
                                     ShowOnlyInfoIcon();
                                     ShowConfirmButton();
-                            }
+                                    HideDisclaimer();
+                                }
                             else
                             {
                                 Device.BeginInvokeOnMainThread(async () => {
