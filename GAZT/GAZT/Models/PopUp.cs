@@ -12,7 +12,7 @@ namespace GAZT.Models
         public string IsRed { get; set; } = string.Empty;
         public string IsBold { get; set; } = string.Empty;
         public string Link { get; set; }
-
+        public string FlowDirections { get; set; }
     }
 
     public class ForPdfJs

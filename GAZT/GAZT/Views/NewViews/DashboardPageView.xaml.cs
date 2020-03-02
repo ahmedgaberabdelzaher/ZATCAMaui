@@ -29,8 +29,7 @@ namespace GAZT.Views
             SetLTR();
            
             this.BindingContext = viewModel;
-
-
+            InitializeViewModel();
             viewModel.onPageLoad();
 
             double deviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
@@ -42,12 +41,38 @@ namespace GAZT.Views
             setHeight();
 
         }
-        #endregion
+
+        public void InitializeViewModel()
+        {
+            viewModel.IsZakatVisible = false;
+            viewModel.IsVATVisible = false;
+            viewModel.BillReturn = null;
+            viewModel.BillPaid = null;
+
+            viewModel.StartDate = string.Empty;
+            viewModel.TinNumber = string.Empty;
+            viewModel.TaxPayerName = string.Empty;
+            viewModel.EndDate = string.Empty;
+            viewModel.HeightRequestForCollectionView = 0;
+            viewModel.HeightRequestForReturnCollectionView = 0;
+            viewModel.TotalNoOfReturns = "0";
+            viewModel.FooterImageInArabic = true;
+            viewModel.FooterImageInEnglish = true;
+            viewModel.TotalPaidAmount = string.Empty;
+            viewModel.PaddingForCollectionView= new Xamarin.Forms.Thickness(0, 0, 0, 0);
+            viewModel.FiscalDates = string.Empty;
+            viewModel.IsVisibleFiscal = false;
+            viewModel.IsVATVisible = false;
+            viewModel.IsZakatVisible = false;
+            viewModel.VATColumn = 0;
+            viewModel.CorresColumn = 1;
+    }
+    #endregion
 
 
-        #region Method
+    #region Method
 
-        private void SetLTR()
+    private void SetLTR()
         {
             if (!App.IsArabic)
             {

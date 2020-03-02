@@ -14,11 +14,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Xamarin.Forms;
+using static GAZT.ErrorMessage;
 
 namespace GAZT.Manager
 {
     public static class WebServiceManager
     {
+        public static string ErrorMessage = string.Empty;
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
@@ -2444,6 +2446,14 @@ namespace GAZT.Manager
                         }
                         String _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
+                        if(zakatReturnDetails == null || zakatReturnDetails.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsJSON);
+                            if(errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
+                        }
                     }
 
                     return zakatReturnDetails;
@@ -3240,7 +3250,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'&saml2=disabled";
+                    String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
@@ -3304,7 +3314,7 @@ namespace GAZT.Manager
             {
                 char lang = GetLangZParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetFormBunleAccountNumberModel + "'"+ lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '"+ ApplicationNumber+ "'&saml2=disabled";
+                String url = Constants.GAZTGetFormBunleAccountNumberModel + "'"+ lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '"+ ApplicationNumber+ "'";
                 //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 

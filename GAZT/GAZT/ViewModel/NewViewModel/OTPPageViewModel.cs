@@ -27,6 +27,7 @@ namespace GAZT.ViewModel.NewViewModel
         public bool StopTimer = false;
         public int currentAttempts = 0;
         bool isValiedOTP = false;
+        public int numberOfSeconds = 120;
 
         #endregion
 
@@ -551,7 +552,7 @@ namespace GAZT.ViewModel.NewViewModel
             string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             StopTimer = true;
-            TimerStart();
+           // TimerStart();
             IsVerifyOTPEnabled = true;
             VerifyButtonDisableColor = Color.FromHex("#005e4b");
             AccountWillBeBlocked = string.Empty;
@@ -590,9 +591,10 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsResendOTPEnabled = false;
                                 IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            TimerStart();
+                                //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                                //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
+                            TimerStart(numberOfSeconds);
 
                             }
 
@@ -611,7 +613,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                TimerStart();
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
                             }
 
 
@@ -631,7 +634,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
-                                TimerStart();
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
                             }
 
                         }
@@ -667,16 +671,35 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private  void TimerStart()
+        public void TimerStart(int Seconds)
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
 
-             TotalSec = 120;
+             TotalSec = Seconds;
 
             CancellationTokenSource CTS = _CancellationTokenSource;
 
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
+                if (App.IsComingFromSleepMode)
+                {
+
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                       // StopTimer = true;
+                    }
+                    else
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                        StopTimer = true;
+                       // TimerStart(TotalSec);
+                    }
+
+                  
+                }
                 if (CTS.IsCancellationRequested)
                 {
                     return false;
@@ -695,19 +718,24 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
                     }
-                    if (App.IsComingFromSleepMode)
-                    {
-                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
-                        App.IsComingFromSleepMode = false;
-                    }
+                    
                     if (TotalSec < 0)
+                    {
+                        OTPValidDuration = " 0:00";
+                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        IsResendOTPEnabled = true;
+                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        IsVerifyOTPEnabled = false;
+                        IsOTPEntryEnable = false;
                         return false;
+
+                    }
                     TotalSec =  TotalSec - 1;
+                    numberOfSeconds = TotalSec;
                         TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        
                         OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     });
                     return true;
