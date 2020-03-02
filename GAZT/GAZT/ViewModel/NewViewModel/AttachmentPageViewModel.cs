@@ -180,7 +180,7 @@ namespace GAZT.ViewModel.NewViewModel
                         string[] filetypes;
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            filetypes = new string[] { "pdf", "doc", "docx", "jpeg", "jpg", "xls", "xlsx", "image/png", "ppt", "pptx", "gif", "txt" };
+                            filetypes = new string[] { ".pdf", ".doc", ".docx", ".jpeg", ".jpg", ".xls", ".xlsx", ".png", ".ppt", ".pptx", ".gif", ".txt" };
                         }
                         else
                         {
