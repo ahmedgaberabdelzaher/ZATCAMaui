@@ -101,6 +101,19 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsRed");
             }
         }
+        private string _flowDirections = "RightToLeft";
+        public string FlowDirections
+        {
+            get
+            {
+                return _flowDirections;
+            }
+            set
+            {
+                _flowDirections = value;
+                RaisePropertyChanged("FlowDirections");
+            }
+        }
         #endregion
 
         #region Constructor

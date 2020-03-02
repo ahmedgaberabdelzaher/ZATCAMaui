@@ -304,7 +304,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
             popUp.IsLinkAvailable = false;
-            
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -314,7 +321,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
             popUp.IsLinkAvailable = false;
-
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         

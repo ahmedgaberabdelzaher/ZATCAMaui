@@ -148,6 +148,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsShowAttachmentButton");
             }
         }
+
+  
         #endregion
 
         #region Constructor
