@@ -412,13 +412,13 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void ShowVATPDF(CorrespondanceModel CorrespondenceD)
         {
-            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value";
+            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
             ShowPdf(Url);
         }
 
         public void ShowETPDF(CorrespondanceModel CorrespondenceD)
         {
-            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value";
+            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
             ShowPdf(Url);
         }
 
@@ -467,12 +467,19 @@ namespace GAZT.ViewModel.NewViewModel
                 ListVATCorrespondance = null;
                 ListETCorrespondance = null;
                 List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-                CorresFilter = Filters;
+                if (IsETVisible == true || IsVATVisible == true)
+                {
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                }
+                else
+                {
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+                }
+                    CorresFilter = Filters;
 
                 CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
 

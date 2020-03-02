@@ -83,7 +83,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
-                string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value";
+                string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
 

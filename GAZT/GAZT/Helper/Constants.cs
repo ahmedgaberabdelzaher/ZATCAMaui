@@ -70,7 +70,7 @@ namespace GAZT.Helper
 
         #region CorrespondenceAPIs
         public static string GAZTGetCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet?$format=json&saml2=disabled&$filter=Gpartz eq ";
-        public static string GAZTSetFavCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet";
+        public static string GAZTSetFavCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet?saml2=disabled";
         public static string GAZTGetCorrespondenceDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/CorrespondanceTextSet?$format=json&saml2=disabled&$filter=Gpart eq ";
         public static string GAZTGetCorrespondenceAttach = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey=";
 
