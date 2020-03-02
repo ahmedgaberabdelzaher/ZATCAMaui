@@ -37,7 +37,7 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception e)
             {
-
+                SetLTR();
             }
         }
         private void SetLTR()

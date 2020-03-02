@@ -31,8 +31,8 @@
                         </Image>
                     </StackLayout>
 
-                    <local1:CustomLabel Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontAttributes="{Binding IsBold}" TextColor="{Binding IsRed}"/>
-                     <Label Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                    <local1:CustomLabel Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontAttributes="{Binding IsBold}" TextColor="{Binding IsRed}"  FlowDirection="{Binding FlowDirections}" />
+                    <Label  FlowDirection="{Binding FlowDirections}"  Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding onLinkClicked}"></TapGestureRecognizer>
                         </Label.GestureRecognizers>
