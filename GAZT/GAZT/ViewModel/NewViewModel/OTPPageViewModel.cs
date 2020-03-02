@@ -591,8 +591,9 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsResendOTPEnabled = false;
                                 IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
-                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                                //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
                             TimerStart(numberOfSeconds);
 
                             }
@@ -612,6 +613,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
                                 TimerStart(numberOfSeconds);
                             }
 
@@ -632,6 +634,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _newEmail = App.TP.NewEmail;
                                 MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
                                 TimerStart(numberOfSeconds);
                             }
 
@@ -691,7 +694,8 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
-                        TimerStart(TotalSec);
+                        StopTimer = true;
+                       // TimerStart(TotalSec);
                     }
 
                   
@@ -716,8 +720,18 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     
                     if (TotalSec < 0)
+                    {
+                        OTPValidDuration = " 0:00";
+                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        IsResendOTPEnabled = true;
+                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        IsVerifyOTPEnabled = false;
+                        IsOTPEntryEnable = false;
                         return false;
+
+                    }
                     TotalSec =  TotalSec - 1;
+                    numberOfSeconds = TotalSec;
                         TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
 
                     Device.BeginInvokeOnMainThread(() =>

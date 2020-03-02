@@ -34,7 +34,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.OTPPageView;
 
             SetLTR();
-            viewModel.OTPValidDuration = "00:00";
+            viewModel.numberOfSeconds = 120;
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
 
@@ -53,6 +53,7 @@ namespace GAZT.Views.NewViews
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
                          firstDigits = MobileNumber.Substring(0, 2);
                          lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                       
                         if (Device.RuntimePlatform == Device.iOS)
                         {
                             MobileNumber = "9665" + MobileNumber + "+";                           
