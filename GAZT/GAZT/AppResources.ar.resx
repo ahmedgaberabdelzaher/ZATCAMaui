@@ -1696,7 +1696,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSomethingwentwrong" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>حدث شئ خطأ</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSUCCESS" xml:space="preserve">
@@ -2086,5 +2086,8 @@
   </data>
    <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
+  </data>
+  <data name="ZNA" xml:space="preserve">
+    <value>لا ينطبق</value>
   </data>
 </root>

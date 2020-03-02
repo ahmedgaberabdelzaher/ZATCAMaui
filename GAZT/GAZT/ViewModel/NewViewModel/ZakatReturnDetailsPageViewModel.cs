@@ -278,7 +278,7 @@ namespace GAZT.ViewModel.NewViewModel
                         else
                         {
                        //     Dear taxpayer, the return is under GAZT review and cannot be amended.
-                       if(WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))
+                       if(WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))// message is always coming in english from the server
                             {
                                 Device.BeginInvokeOnMainThread(async () => {
                                     if (App.IsArabic)

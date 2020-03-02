@@ -164,8 +164,8 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding EstimateSales}"/>
-                                                        <Span Text=" "/>
-                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                        <!--<Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>-->
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </local:CustomLabel>

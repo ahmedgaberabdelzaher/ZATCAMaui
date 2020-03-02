@@ -3645,5 +3645,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended", resourceCulture);
             }
         }
+        
+        public static string ZNA {
+            get {
+                return ResourceManager.GetString("ZNA", resourceCulture);
+            }
+        }
     }
 }
