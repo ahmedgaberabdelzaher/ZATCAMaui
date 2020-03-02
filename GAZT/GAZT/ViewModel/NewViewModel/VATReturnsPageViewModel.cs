@@ -2437,7 +2437,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus== "E0006"))
                     {
-                        IsMainButtonEnabled = true;
+                        IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;
                     }
                     else
@@ -2451,7 +2451,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
                     {
-                        IsMainButtonEnabled = true;
+                        IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;
                     }
                     else
@@ -2614,7 +2614,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //    VATReturnFormClicked();
                     //    PageSelectedItem = VatTabbledPageList[2];
                     //}
-                    if (resNew != null)
+                    if (resNew != null || (!String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) && App.ICRStatus != "E0045"))
                     {
                         await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
                         VATReturnFormClicked();
