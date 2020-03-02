@@ -266,13 +266,41 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
-                           await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        });
-
                         IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+
+                        }
+                        else
+                        {
+                       //     Dear taxpayer, the return is under GAZT review and cannot be amended.
+                       if(WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))
+                            {
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    if (App.IsArabic)
+                                    {
+                                        await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                        _navigationService.GoBack();
+                                        WebServiceManager.ErrorMessage = string.Empty;
+
+                                    }
+                                    else
+                                    {
+                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                        _navigationService.GoBack();
+                                        WebServiceManager.ErrorMessage = string.Empty;
+                                    }
+                                });
+                            }
+                              
+                        }
+                      
                     }
-                    
+
                 });
                 await Task.Run(() =>
                 {

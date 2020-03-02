@@ -3639,5 +3639,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATLookupIDVatCertificateNumberType2", resourceCulture);
             }
         }
+        
+        public static string ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended {
+            get {
+                return ResourceManager.GetString("ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended", resourceCulture);
+            }
+        }
     }
 }
