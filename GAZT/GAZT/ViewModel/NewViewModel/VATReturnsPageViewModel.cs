@@ -2162,7 +2162,7 @@ namespace GAZT.ViewModel.NewViewModel
                 VATDeclarationData.d.UserTypz = "TP";
 
                 var res=await SaveReturnAndGetReturnAndSetButtons();
-                if (res != null)
+                if (res != null && res.d!=null)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
