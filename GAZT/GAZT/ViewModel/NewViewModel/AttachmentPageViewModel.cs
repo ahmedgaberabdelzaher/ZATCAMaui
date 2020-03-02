@@ -29,17 +29,17 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Property
 
-        private VATDeclaration _vATDeclarationData;
-        public VATDeclaration VATDeclarationData
+        private VATDeclaration _vATDeclarationDataForAttch;
+        public VATDeclaration VATDeclarationDataForAttch
         {
             get
             {
-                return _vATDeclarationData;
+                return _vATDeclarationDataForAttch;
             }
             set
             {
-                _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                _vATDeclarationDataForAttch = value;
+                RaisePropertyChanged("VATDeclarationDataForAttch");
             }
         }
 
@@ -236,20 +236,20 @@ namespace GAZT.ViewModel.NewViewModel
                                         {
 
 
-                                            VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
-                                            Device.BeginInvokeOnMainThread(async () =>
-                                            {
-                                                VatAttachmentsList = myCollection;
-                                            });
-                                            VatAttachmentsList = myCollection;
-                                            //foreach (var item in VatAttachmentsList)
-                                            //{
-                                            //    if (App.IsArabic)
-                                            //    {
-                                            //        if (item.Erfdt != null)
-                                            //        {
-                                            //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        VatAttachmentsList = myCollection;
+                                                    });
+                                                    VatAttachmentsList = myCollection;
+                                                    //foreach (var item in VatAttachmentsList)
+                                                    //{
+                                                    //    if (App.IsArabic)
+                                                    //    {
+                                                    //        if (item.Erfdt != null)
+                                                    //        {
+                                                    //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                                             //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
