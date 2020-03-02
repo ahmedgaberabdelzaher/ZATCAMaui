@@ -186,16 +186,14 @@ namespace GAZT.ViewModel.NewViewModel
                 UTType.PDF,
                 "org.openxmlformats.wordprocessingml.document",
                 "com.microsoft.word.doc",
-                 "com.microsoft.word.docx",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
                 UTType.JPEG,
                 UTType.PNG,
                 UTType.GIF,
                 "com.microsoft.excel.xls",
                 "com.microsoft.powerpoint.​ppt",
-                 "com.microsoft.excel.xlsx",
-                "com.microsoft.powerpoint.​pptx",
                  UTType.PlainText
-
                             };
 
 
