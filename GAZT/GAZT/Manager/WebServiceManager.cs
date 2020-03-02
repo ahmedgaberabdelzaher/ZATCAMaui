@@ -1748,7 +1748,9 @@ namespace GAZT.Manager
                     {
                         RequestVATDeclaration = vATDeclaration;
                         RequestVATDeclaration.d.SubmitFg = "X";
-                        
+                        ATTACHSet aTTACHSet = new ATTACHSet();
+                        aTTACHSet.results = new List<Attachment>();
+                        RequestVATDeclaration.d.ATTACHSet = aTTACHSet;
                     }
 
                     VATDeclaration _vATDeclarationD = new VATDeclaration();

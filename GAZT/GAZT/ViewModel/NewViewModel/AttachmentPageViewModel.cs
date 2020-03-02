@@ -28,17 +28,17 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Property
 
-        private VATDeclaration _vATDeclarationData;
-        public VATDeclaration VATDeclarationData
+        private VATDeclaration _vATDeclarationDataForAttch;
+        public VATDeclaration VATDeclarationDataForAttch
         {
             get
             {
-                return _vATDeclarationData;
+                return _vATDeclarationDataForAttch;
             }
             set
             {
-                _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                _vATDeclarationDataForAttch = value;
+                RaisePropertyChanged("VATDeclarationDataForAttch");
             }
         }
 
@@ -205,7 +205,7 @@ namespace GAZT.ViewModel.NewViewModel
                                         if (Convert.ToDecimal(AttachmentSize) <= 20)
                                         {
                                             bool IsAttachmentPresent = false;
-                                            foreach (Attachment ItemA in VATDeclarationData.d.ATTACHSet.results)
+                                            foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
                                             {
                                                 if (AttachmentName == ItemA.Filename)
                                                 {
@@ -214,14 +214,14 @@ namespace GAZT.ViewModel.NewViewModel
                                             }
                                             if (IsAttachmentPresent == false)
                                             {
-                                                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                                AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                 PopToRootPage();
                                                 if (_attachment != null && _attachment.d != null)
                                                 {
 
 
-                                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                                    VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
+                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
                                                     Device.BeginInvokeOnMainThread(async () =>
                                                     {
                                                         VatAttachmentsList = myCollection;

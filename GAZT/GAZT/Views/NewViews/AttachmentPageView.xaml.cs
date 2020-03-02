@@ -41,12 +41,12 @@ namespace GAZT.Views.NewViews
                 viewModel.VatAttachmentsList = null;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
-                    viewModel.VATDeclarationData = vATDeclaration;
+                    viewModel.VATDeclarationDataForAttch = vATDeclaration;
 
 
-                    if (viewModel.VATDeclarationData.d.ATTACHSet.results.Count != 0)
+                    if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
                         viewModel.VatAttachmentsList = myCollection;
 
@@ -118,7 +118,7 @@ namespace GAZT.Views.NewViews
                                             .FirstOrDefault<Attachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
 
-                            viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
+                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
 
                         }
                     }

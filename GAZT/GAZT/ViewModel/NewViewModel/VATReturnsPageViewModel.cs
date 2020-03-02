@@ -186,6 +186,35 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+
+        private List<Attachment> _aTTACHSetsList;
+        public List<Attachment> ATTACHSetsList
+        {
+            get
+            {
+                return _aTTACHSetsList;
+            }
+            set
+            {
+                _aTTACHSetsList = value;
+                RaisePropertyChanged("ATTACHSetsList");
+            }
+        }
+
+        private List<Attachment> _dummyaTTACHSetsList;
+        public List<Attachment> DummyATTACHSetsList
+        {
+            get
+            {
+                return _dummyaTTACHSetsList;
+            }
+            set
+            {
+                _dummyaTTACHSetsList = value;
+                RaisePropertyChanged("DummyATTACHSetsList");
+            }
+        }
+
         private List<Result3> _creditCarriedsList;
         public List<Result3> CreditCarriedsList
         {
@@ -3138,7 +3167,20 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
 
-            if(VATDeclarationData.d.CFSet.results!=null && VATDeclarationData.d.ADRSet.results.Count!=0)
+                if (VATDeclarationData.d.ATTACHSet.results != null && VATDeclarationData.d.ATTACHSet.results.Count != 0)
+                {
+                    ATTACHSetsList = new List<Attachment>();
+
+                    foreach (var item in VATDeclarationData.d.ATTACHSet.results)
+                    {
+                        Attachment a = new Attachment();
+                        a=item;
+                        ATTACHSetsList.Add(a);
+                    }
+                }
+
+
+            if (VATDeclarationData.d.CFSet.results!=null && VATDeclarationData.d.ADRSet.results.Count!=0)
             {
                 CreditCarriedsList = VATDeclarationData.d.CFSet.results;
             }
@@ -3394,6 +3436,16 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                if(VATDeclarationData !=null && VATDeclarationData.d!=null && VATDeclarationData.d.ATTACHSet.results.Count()!=0)
+                {
+                    DummyATTACHSetsList = new List<Attachment>();
+                    DummyATTACHSetsList = VATDeclarationData.d.ATTACHSet.results;
+                }
+
+                if(ATTACHSetsList!=null && ATTACHSetsList.Count()!=0)
+                {
+                    VATDeclarationData.d.ATTACHSet.results = ATTACHSetsList;
+                }
                 VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
             PopToRootPage();
 
@@ -3405,6 +3457,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     VATDeclarationData = response;
                     ResponseVATDeclarationD = VATDeclarationData.d;
+                            if(DummyATTACHSetsList!=null || DummyATTACHSetsList.Count()!=0)
+                            {
+                                VATDeclarationData.d.ATTACHSet.results = DummyATTACHSetsList;
+                            }
                             if(VATDeclarationData.d.Operationz== "01" && App.ICRStatus=="E0001")
                             {
                                 App.ICRStatus = "E0013";
