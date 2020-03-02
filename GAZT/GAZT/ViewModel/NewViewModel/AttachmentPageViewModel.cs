@@ -221,7 +221,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 if (Convert.ToDecimal(AttachmentSize) <= 20)
                                 {
                                     bool IsAttachmentPresent = false;
-                                    foreach (Attachment ItemA in VATDeclarationData.d.ATTACHSet.results)
+                                    foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
                                     {
                                         if (AttachmentName == ItemA.Filename)
                                         {
@@ -230,42 +230,42 @@ namespace GAZT.ViewModel.NewViewModel
                                     }
                                     if (IsAttachmentPresent == false)
                                     {
-                                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                         PopToRootPage();
                                         if (_attachment != null && _attachment.d != null)
                                         {
 
 
-                                                    VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
-                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                                            VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
+                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
                                                     Device.BeginInvokeOnMainThread(async () =>
                                                     {
                                                         VatAttachmentsList = myCollection;
                                                     });
                                                     VatAttachmentsList = myCollection;
-                                                    //foreach (var item in VatAttachmentsList)
-                                                    //{
-                                                    //    if (App.IsArabic)
-                                                    //    {
-                                                    //        if (item.Erfdt != null)
-                                                    //        {
-                                                    //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                            foreach (var item in VatAttachmentsList)
+                                            {
+                                                if (App.IsArabic)
+                                                {
+                                                    if (item.Erfdt != null)
+                                                    {
+                                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                            //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                            //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                                            //        }
-                                            //    }
-                                            //    else
-                                            //    {
-                                            //        if (item.Erfdt != null)
-                                            //        {
-                                            //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                        item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (item.Erfdt != null)
+                                                    {
+                                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                            //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                            //        }
-                                            //    }
-                                            //}
+                                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                    }
+                                                }
+                                            }
 
                                             AttachmentCount++;
                                             TotalAttachmentSize += AttachmentSize;
