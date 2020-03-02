@@ -3240,7 +3240,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'&saml2=disabled";
+                    String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
@@ -3304,7 +3304,7 @@ namespace GAZT.Manager
             {
                 char lang = GetLangZParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetFormBunleAccountNumberModel + "'"+ lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '"+ ApplicationNumber+ "'&saml2=disabled";
+                String url = Constants.GAZTGetFormBunleAccountNumberModel + "'"+ lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '"+ ApplicationNumber+ "'";
                 //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                 client.DefaultRequestHeaders.Add("Token", App.Token);
 
