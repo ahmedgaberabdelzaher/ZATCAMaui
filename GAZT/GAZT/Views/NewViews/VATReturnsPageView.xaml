@@ -336,7 +336,7 @@
                         </Label>
                         <Frame Grid.Row="23" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="100">
                         </Frame>
-                        <custom:GAZTBorderlessEditor Placeholder="Enter address here" HeightRequest="100"  Grid.Row="23"  IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTaxPayerControlEnabled}" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3">
+                        <custom:GAZTBorderlessEditor Placeholder="Enter address here" HeightRequest="100"  Grid.Row="23"  IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTaxPayerControlEnabled}" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3" BackgroundColor="White">
 
                         </custom:GAZTBorderlessEditor>
 
