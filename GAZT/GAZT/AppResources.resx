@@ -2076,4 +2076,8 @@ Should we require further information, we would be in contact.</value>
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>VAT Certificate Number</value>
   </data>
+   <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
+    <value>Dear taxpayer, the return is under GAZT review and cannot be amended.</value>
+  </data>
+    
 </root>

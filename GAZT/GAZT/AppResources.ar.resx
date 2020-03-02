@@ -2084,4 +2084,7 @@
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>رقمشهادةضريبةالقيمةالمضافة</value>
   </data>
+   <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
+    <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
+  </data>
 </root>
