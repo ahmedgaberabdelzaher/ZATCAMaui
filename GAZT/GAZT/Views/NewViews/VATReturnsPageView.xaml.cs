@@ -671,11 +671,29 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
+            bool iSAllNumeric = true;
             CheckMandetoryFields();
-            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-            viewModel.TotalsalesVat = viewModel.StdsalesVat;
+           // char LastChar = ' ';
+            foreach (char letter in EntryVatAmount.Text.ToCharArray())
+            {
+                if (!((letter >= 46 && letter <= 57) || letter == 44))
+                {
+                    iSAllNumeric = false;
+                }
+            }
+
+            if (iSAllNumeric)
+            {
+                viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                viewModel.TotalsalesVat = viewModel.StdsalesVat;
+            }
+            else
+            {
+                if (EntryVatAmount.Text.Length > 0)
+                EntryVatAmount.Text = EntryVatAmount.Text.Substring(0, EntryVatAmount.Text.Length - 1).ToString();
+            }
         }
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
