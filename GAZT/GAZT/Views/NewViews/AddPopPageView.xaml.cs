@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
                 viewModel.LinkMessage = objPopUP.LinkMessage;
                 viewModel.IsBold = objPopUP.IsBold;
                 viewModel.IsRed = objPopUP.IsRed;
+                viewModel.FlowDirections = objPopUP.FlowDirections;
             }
             catch (Exception e)
             {

@@ -699,42 +699,63 @@ namespace GAZT.Views.NewViews
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
         {
             CheckMandetoryFields();
-            if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
+            Entry Ent = (Entry)sender;
+            if (Ent.Id.ToString() == EntryExportsAmt.Id.ToString())
             {
-                if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExportsAmt))
+                if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
                 {
-                    if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
+                    if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExportsAmt))
                     {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
-
-
-                        popUp.IsLinkAvailable = false;
-
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    }
-                }
-            }
-            IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
-            if (IGRTSetModel != null && IGRTSetModel.RateTrtmt!=null)
-            {
-                if (IGRTSetModel.RateTrtmt != "Z")
-                {
-
-                    if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
-                    {
-                        if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                        if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
                         {
                             PopUp popUp = new PopUp();
-                            popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+                            popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
 
 
                             popUp.IsLinkAvailable = false;
-
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         }
                     }
+                }
+            }
+            if (Ent.Id.ToString() == EntryZerosalesAmt.Id.ToString())
+            {
+                IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+                if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                {
+                    if (IGRTSetModel.RateTrtmt != "Z")
+                    {
 
+                        if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
+                        {
+                            if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                            {
+                                PopUp popUp = new PopUp();
+                                popUp.Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+
+
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            }
+                        }
+
+                    }
                 }
             }
             viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
@@ -838,6 +859,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -846,6 +875,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -856,6 +893,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZLink;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -866,6 +911,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZLink; ;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -876,6 +929,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -884,6 +945,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -896,6 +965,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -904,6 +981,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -912,6 +997,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -922,6 +1015,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -932,6 +1033,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -940,6 +1049,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -950,6 +1067,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -960,6 +1085,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -968,6 +1101,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -976,6 +1117,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -985,6 +1134,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipNetVATdue;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -995,6 +1152,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1004,6 +1169,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1014,6 +1187,14 @@ namespace GAZT.Views.NewViews
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1022,6 +1203,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1030,6 +1219,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1038,6 +1235,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1052,6 +1257,14 @@ namespace GAZT.Views.NewViews
             popUp.Message = MessageWithNegativeValue;
 
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -1283,7 +1496,14 @@ namespace GAZT.Views.NewViews
                     Pop.IsLinkAvailable = false;
 
                     Pop.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-
+                    if (App.IsArabic)
+                    {
+                        Pop.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        Pop.FlowDirections = "LeftToRight";
+                    }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                 }
                 else
@@ -1299,7 +1519,14 @@ namespace GAZT.Views.NewViews
                         Pop.IsLinkAvailable = false;
 
                         Pop.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1338,7 +1565,15 @@ namespace GAZT.Views.NewViews
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
                 Pop.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    if (App.IsArabic)
+                    {
+                        Pop.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        Pop.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
             else
             {
@@ -1352,7 +1587,15 @@ namespace GAZT.Views.NewViews
                     PopUp Pop = new PopUp();
                     Pop.IsLinkAvailable = false;
                     Pop.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                 }
             }
             }
@@ -1393,7 +1636,15 @@ namespace GAZT.Views.NewViews
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
                 Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    if (App.IsArabic)
+                    {
+                        Pop.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        Pop.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
             }
             catch
@@ -1436,6 +1687,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1480,6 +1739,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1506,6 +1773,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1551,6 +1826,14 @@ namespace GAZT.Views.NewViews
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
                 Pop.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                if (App.IsArabic)
+                {
+                    Pop.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    Pop.FlowDirections = "LeftToRight";
+                }
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
 
@@ -1571,6 +1854,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1615,6 +1906,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1659,6 +1958,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1703,6 +2010,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1747,6 +2062,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
@@ -1771,6 +2094,14 @@ namespace GAZT.Views.NewViews
                     PopUp Pop = new PopUp();
                     Pop.IsLinkAvailable = false;
                     Pop.Message = AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                    if (App.IsArabic)
+                    {
+                        Pop.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        Pop.FlowDirections = "LeftToRight";
+                    }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                 }
             }
@@ -1792,6 +2123,14 @@ namespace GAZT.Views.NewViews
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }

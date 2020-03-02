@@ -77,6 +77,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZEstimatedSalesInformationText;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedTwo(object sender, EventArgs e)
@@ -84,6 +92,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedThree(object sender, EventArgs e)
@@ -91,6 +107,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZGreatervalueofEstimatedSales;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
@@ -99,6 +123,14 @@ namespace GAZT.Views.NewViews
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZZakatBaseandwithalowerboundof500SAR;
             popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion

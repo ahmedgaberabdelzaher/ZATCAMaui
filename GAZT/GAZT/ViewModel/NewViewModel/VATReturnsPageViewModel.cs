@@ -2097,6 +2097,14 @@ namespace GAZT.ViewModel.NewViewModel
                 PopUp Pop = new PopUp();
                 Pop.IsLinkAvailable = false;
                 Pop.Message = Masseges.ToString();
+                if(App.IsArabic)
+                {
+                    Pop.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    Pop.FlowDirections = "LeftToRight";
+                }
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
             }
         }
