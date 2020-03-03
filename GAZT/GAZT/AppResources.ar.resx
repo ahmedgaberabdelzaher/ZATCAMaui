@@ -592,7 +592,7 @@
     <value>الفواتير</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>الإقرارات لضريبة القيمة المضافة</value>
+    <value>الاقرارات الضريبية</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المدفوعة</value>
@@ -953,7 +953,7 @@
     <value>نموذج الإقرار الضريبي</value>
   </data>
   <data name="ZTotalVat" xml:space="preserve">
-    <value>إجمالي ضريبة القيمة المضافة</value>
+    <value>مبيعات القيمة المضافة</value>
   </data>
   <data name="ZVatAcknowledgment" xml:space="preserve">
     <value>اشعار استلام</value>
@@ -993,7 +993,7 @@
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار على حد علمي دقيقة وصحيحة وكاملة من جميع الجوانب، وأنني الشخص المخول بملء هذا الإقرار أو أنني مخول للتوقيع بالنيابة عن ذلك الشخص، وإننى أيضا على علم بالعقوبات المغلطة الخاصة بادراج معلومات خاطئة.</value>
   </data>
   <data name="ZVatClickFaqInstructions" xml:space="preserve">
-    <value>انقر هنا لفتح صحفة الأسئلة الشائعة</value>
+    <value>انقر هنا لفتح صفحة الاسئلة الشائعة</value>
   </data>
   <data name="ZVatClickForMoreDetails" xml:space="preserve">
     <value>انقر هنا للتفاصيل</value>
@@ -1378,7 +1378,9 @@
     <comment>VAT Declaration additional Rule 5</comment>
   </data>
   <data name="ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
-    <value>مبلغ التعديل المدخل أكثر من {0}% وذلك أكبر من مبلغ المبيعات المحلية الخاضعة للضريبة بنسبة صفر بالمائة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
+    <value>• تشير سجلاتنا إلى أنك لا تنتمي للقطاع الخاضع للضريبة بنسبة صفر بالمائة، وأنه لا يوجد مبيعات خاضعة للضريبة بنسبة صفر بالمائة في هذه الفئة.
+
+•مبلغ التعديل المدخل أكثر من 10 % وذلك أكبر من مبلغ المبيعات المحلية الخاضعة للضريبة بنسبة صفر بالمائة , يرجى التأكد من صحة المبلغ المدرج بالإقرار أو المتابعة إذا كان المبلغ المدرج صحيح .</value>
     <comment>VAT Declaration additional Rule 6</comment>
   </data>
   <data name="ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero" xml:space="preserve">
@@ -1719,7 +1721,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCancel" xml:space="preserve">
-    <value>إلغاء</value>
+    <value>الغاء</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount" xml:space="preserve">
@@ -1771,7 +1773,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalsalesinVATreturns" xml:space="preserve">
-    <value>إجمالي مبيعات ضريبة القيمة المضافة بعد التعديل خلال السنة المالية (باستثناء أي مبلغ قيد الإعتراض أو إعادة تقييم ما يزال في الفترة القانونية للإعتراض أو العقوبات والغرامات)</value>
+    <value>إجمالي مبيعات ضريبة القيمة المضافة بعد التعديل خلال السنة المالية (باستثناء أي مبلغ تحت الاعتراض أو إعادة تقييم ولكن لا يزال في الفترة القانونية للاعتراض أو العقوبات والغرامات)</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalUndisputedAmount" xml:space="preserve">
@@ -2089,9 +2091,9 @@
   <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
-   <data name="ZNegative" xml:space="preserve">
+  <data name="ZNegative" xml:space="preserve">
     <value>سلبي</value>
-    </data>
+  </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
     <comment>PDF viewer</comment>
