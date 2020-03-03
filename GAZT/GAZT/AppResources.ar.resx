@@ -1212,7 +1212,7 @@
     <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
-    <value>تم حفظ نموذج الإقرار الضريبي بنجاح</value>
+    <value>{0}تم حفظ نموذج الإقرار الضريبي بنجاح</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
     <value>تحميل إشعار الاستلام</value>
@@ -2084,7 +2084,7 @@
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>رقمشهادةضريبةالقيمةالمضافة</value>
   </data>
-   <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
+  <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
   </data>
   <data name="ZNA" xml:space="preserve">

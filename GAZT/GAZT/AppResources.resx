@@ -1209,7 +1209,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Please review the calculation and submit again</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
-    <value>VAT Return Form Saved successfully</value>
+    <value>VAT Return Form Saved successfully{0}</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
     <value>Download Acknowledgement</value>
@@ -1562,7 +1562,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber" xml:space="preserve">
-    <value>VAT Return Form Submitted successfully, Form Bundle number {0}</value>
+    <value>VAT Return Form Submitted successfully, Form Bundle number{0}</value>
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod" xml:space="preserve">
@@ -2076,11 +2076,10 @@ Should we require further information, we would be in contact.</value>
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>VAT Certificate Number</value>
   </data>
-   <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
+  <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>Dear taxpayer, the return is under GAZT review and cannot be amended.</value>
   </data>
-   <data name="ZNA" xml:space="preserve">
+  <data name="ZNA" xml:space="preserve">
     <value>N/A</value>
   </data>
-    
 </root>

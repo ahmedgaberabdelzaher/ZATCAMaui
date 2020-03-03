@@ -624,7 +624,7 @@ namespace GAZT.Views.NewViews
                         await viewModel.VATReturnAmendAsync();
                         break;
                     case ArButtons.حفظكمسودة:
-                        await viewModel.OnSaveDraftClicked();
+                       await viewModel.OnSaveDraftClicked();
                         break;
                     default:
                         break;
