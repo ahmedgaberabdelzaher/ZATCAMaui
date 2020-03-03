@@ -1,0 +1,49 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace GAZT.ViewModel.NewViewModel
+{
+    public class SignUpTAndCPageViewModel : ViewModelBase
+    {
+        #region Veriables
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        #endregion
+
+        #region Properties
+        private bool _ischkTAndC = false;
+        public bool IschkTAndC
+        {
+            get
+            {
+                return _ischkTAndC;
+            }
+            set
+            {
+                _ischkTAndC = value;
+                RaisePropertyChanged("IschkTAndC");
+            }
+        }
+        #endregion
+
+        #region Constructor
+        public SignUpTAndCPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }        
+
+        }
+        #endregion
+    }
+}

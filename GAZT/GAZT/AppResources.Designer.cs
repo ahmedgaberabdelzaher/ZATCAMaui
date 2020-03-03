@@ -1830,7 +1830,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Declaration.
+        ///   Looks up a localized string similar to Tax Returns.
         /// </summary>
         public static string VATDeclaration {
             get {
