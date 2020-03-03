@@ -53,7 +53,9 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                 }
+               // viewModel.IsSwitchToggled = false;
                 viewModel.IsFirstTimeGet = true;
+                viewModel.IsSwitchToggled = false;
                 AddNotePageViewModel.NoteString = string.Empty;
                 AddNotePageViewModel.NoteCount = 0;
                 viewModel.IsRefundVisible = false;
@@ -191,6 +193,15 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                viewModel.IsSwitchVisible = true;
+            }
+            else
+            {
+                viewModel.IsSwitchVisible = false;
+            }
             if (AddNotePageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(AddNotePageViewModel.NoteString))
             {
 

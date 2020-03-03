@@ -3651,5 +3651,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNA", resourceCulture);
             }
         }
+        
+        public static string ZNegative {
+            get {
+                return ResourceManager.GetString("ZNegative", resourceCulture);
+            }
+        }
+        
+        public static string ZZThefileisstillloading {
+            get {
+                return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
+            }
+        }
     }
 }
