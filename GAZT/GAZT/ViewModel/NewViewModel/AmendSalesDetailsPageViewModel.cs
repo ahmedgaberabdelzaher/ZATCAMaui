@@ -287,8 +287,9 @@ namespace GAZT.ViewModel.NewViewModel
                     try
                     {
                             AttachmentName = fileData.FileName;
-
-                            string Extention = AttachmentName.Split('.')[1];
+                            if (fileData.FileName.Contains("."))
+                            {
+                                string Extention = AttachmentName.Split('.')[1];
                             bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
                             if(!isFileAlreayUploaded)
                             {
@@ -369,6 +370,17 @@ namespace GAZT.ViewModel.NewViewModel
                                     AttachmentName = string.Empty;
                                 });
                               
+                            }
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    AttachmentName = string.Empty;
+                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    IsLoading = false;
+                                });
+
                             }
 
                         }
