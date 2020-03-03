@@ -260,20 +260,18 @@ namespace GAZT.ViewModel.NewViewModel
                 "org.openxmlformats.wordprocessingml.document",
                 "com.microsoft.word.doc",
     "org.openxmlformats.spreadsheetml.sheet",
-    "org.openxmlformats.presentationml.presentation",
                 UTType.JPEG,
-                UTType.PNG,
-                UTType.GIF,
+              
                 "com.microsoft.excel.xls",
-                "com.microsoft.powerpoint.​ppt",
-                 UTType.PlainText
+             
+               
                             };
 
 
                     }
                     else
                     {
-                        filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+                        filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
 
                     }
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -293,7 +291,7 @@ namespace GAZT.ViewModel.NewViewModel
                             bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
                             if(!isFileAlreayUploaded)
                             {
-                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"  || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                 {
                                     if (attachment.Length < 5242880)
                                     {
