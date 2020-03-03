@@ -193,7 +193,7 @@ namespace GAZT.ViewModel.NewViewModel
                 UTType.GIF,
                 "com.microsoft.excel.xls",
                 "com.microsoft.powerpoint.​ppt",
-                 UTType.PlainText
+                 UTType.Text
                             };
 
 
@@ -208,12 +208,12 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
-                            //if (fileData.FileName.Contains("."))
-                            //{
-                            //string Extention = fileData.FileName.Split('.')[1];
-                            //if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
-                            // {
-                            if (TotalAttachmentSize <= 300)
+                            if (fileData.FileName.Contains("."))
+                            {
+                                string Extention = fileData.FileName.Split('.')[1];
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                                {
+                                    if (TotalAttachmentSize <= 300)
                             {
                                 AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
 
@@ -294,18 +294,18 @@ namespace GAZT.ViewModel.NewViewModel
 
                             }
 
-                            //}
-                            //else
-                            //{
-                            //    AttachmentName = string.Empty;
-                            //    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                            //}
-                            //}
-                            //else
-                            //{
-                            //    AttachmentName = string.Empty;
-                            //    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                            //}
+                                }
+                                else
+                                {
+                                    AttachmentName = string.Empty;
+                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                }
+                            }
+                            else
+                            {
+                                AttachmentName = string.Empty;
+                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
                         }
                     }
                     else
