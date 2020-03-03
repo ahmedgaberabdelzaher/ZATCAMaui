@@ -2071,7 +2071,7 @@ Should we require further information, we would be in contact.</value>
     <value>Commercial Registration Number</value>
   </data>
   <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
-    <value>Taxpayer TIN</value>
+    <value>VAT Account Number</value>
   </data>
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
     <value>VAT Certificate Number</value>
@@ -2084,7 +2084,7 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZNegative" xml:space="preserve">
     <value>Negative</value>
-        </data>
+  </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>The file is still loading</value>
     <comment>PDF viewer</comment>
