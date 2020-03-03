@@ -1224,7 +1224,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryStdsalesVat.Text))
+                if (string.IsNullOrEmpty(EntryStdsalesVat.Placeholder))
                 {
                     IsAllEntered = false;
                 }
@@ -1268,7 +1268,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text))
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Placeholder))
                 {
                     IsAllEntered = false;
                 }
@@ -1280,7 +1280,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryImportspaidVat.Text))
+                if (string.IsNullOrEmpty(EntryImportspaidVat.Placeholder))
                 {
                     IsAllEntered = false;
                 }
@@ -1292,7 +1292,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryImportsaccVat.Text))
+                if (string.IsNullOrEmpty(EntryImportsaccVat.Placeholder))
                 {
                     IsAllEntered = false;
                 }
@@ -1316,7 +1316,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryCreditVat.Text))
+                if (string.IsNullOrEmpty(EntryCreditVat.Placeholder))
                 {
                     IsAllEntered = false;
                 }
