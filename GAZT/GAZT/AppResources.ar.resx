@@ -1721,7 +1721,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCancel" xml:space="preserve">
-    <value>إلغاء</value>
+    <value>الغاء</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount" xml:space="preserve">
@@ -2091,9 +2091,9 @@
   <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
-   <data name="ZNegative" xml:space="preserve">
+  <data name="ZNegative" xml:space="preserve">
     <value>سلبي</value>
-    </data>
+  </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
     <comment>PDF viewer</comment>
