@@ -282,7 +282,7 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>-->
-                                <StackLayout Grid.Row="2" Grid.Column="0">
+                                <StackLayout Grid.Row="{Binding FormBRow}" Grid.Column="{Binding FormBColumn}">
                                     <Image Source="ic_vatlookup.png" HeightRequest="80" WidthRequest="80">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnFormbundleClicked}" />

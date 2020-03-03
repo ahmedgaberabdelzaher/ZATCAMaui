@@ -32,6 +32,11 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel.DownloadUrl = string.Empty;
+            viewModel.LocalPath = string.Empty;
+            viewModel.PdfUrl = string.Empty;
+            viewModel.PathOfPdf = string.Empty;
+            viewModel.StreamForDownloadURL = null;
             await viewModel.OnPageLoad();
             //if (Device.RuntimePlatform == Device.iOS)
             //{
@@ -40,7 +45,15 @@ namespace GAZT.Views
             //    Device.OpenUri(uri);
             //}
         }
-
+        protected async override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.DownloadUrl = string.Empty;
+            viewModel.LocalPath = string.Empty;
+            viewModel.PdfUrl = string.Empty;
+            viewModel.PathOfPdf = string.Empty;
+            viewModel.StreamForDownloadURL = null;
+        }
         private async void Share_Clicked(object sender, EventArgs e)
         {
             //var file = Path.Combine(viewModel.LocalPath);
@@ -62,21 +75,31 @@ namespace GAZT.Views
                 Subject = "Attached Form :" ,
 
             };
-            var file = Path.Combine(viewModel.LocalPath);
-            //var file = Path.Combine(FileSystem.CacheDirectory);
-
-            MemoryStream ms = (MemoryStream)viewModel.StreamForDownloadURL;
-            byte[] pdfBytes = ms.ToArray();
-
-            var memStream = new MemoryStream(pdfBytes);
-
-            File.WriteAllBytes(file, pdfBytes);
-
-            await Share.RequestAsync(new ShareFileRequest
+            if (!string.IsNullOrEmpty(viewModel.LocalPath))
             {
-                Title = Title,
-                File = new ShareFile(file)
-            });
+                var file = Path.Combine(viewModel.LocalPath);
+                //var file = Path.Combine(FileSystem.CacheDirectory);
+
+                MemoryStream ms = (MemoryStream)viewModel.StreamForDownloadURL;
+
+                byte[] pdfBytes = ms.ToArray();
+
+                var memStream = new MemoryStream(pdfBytes);
+
+                File.WriteAllBytes(file, pdfBytes);
+
+                await Share.RequestAsync(new ShareFileRequest
+                {
+                    Title = Title,
+                    File = new ShareFile(file)
+                });
+
+
+            }
+            else
+            {
+                viewModel._dialogService.ShowMessage("File is still loading", AppResources.Information);
+            }
 
             //message.Attachments.Add(new EmailAttachment(file));
 

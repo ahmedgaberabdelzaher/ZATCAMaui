@@ -400,6 +400,34 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("CorresColumn");
             }
         }
+        private int _formBColumn = 0;
+        public int FormBColumn
+        {
+            get
+            {
+                return _formBColumn;
+            }
+            set
+            {
+                _formBColumn = value;
+
+                RaisePropertyChanged("FormBColumn");
+            }
+        }
+        private int _formBRow = 2;
+        public int FormBRow
+        {
+            get
+            {
+                return _formBRow;
+            }
+            set
+            {
+                _formBRow = value;
+
+                RaisePropertyChanged("FormBRow");
+            }
+        }
         #endregion
 
 
@@ -579,24 +607,32 @@ namespace GAZT.ViewModel
                                 ZakatColumn = 0;
                                 VATColumn = 2;
                                 CorresColumn = 1;
+                                FormBColumn = 2;
+                                FormBRow = 1;
                             }
                             else if (IsZakatVisible == false && IsVATVisible == true)
                             {
                                 ZakatColumn = 2;
                                 VATColumn = 0;
                                 CorresColumn = 1;
+                                FormBColumn = 2;
+                                FormBRow = 1;
                             }
                             else if (IsZakatVisible == false && IsVATVisible == false)
                             {
                                 ZakatColumn = 2;
                                 VATColumn = 1;
                                 CorresColumn = 0;
+                                FormBColumn = 1;
+                                FormBRow = 1;
                             }
                             else if (IsZakatVisible == true && IsVATVisible == true)
                             {
                                 ZakatColumn = 1;
                                 VATColumn = 0;
                                 CorresColumn = 2;
+                                FormBColumn = 0;
+                                FormBRow = 2;
                             }
                             // IsVisibleFiscal = true;
                             try

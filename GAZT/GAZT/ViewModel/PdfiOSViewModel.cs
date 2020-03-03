@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 
@@ -56,12 +57,17 @@ namespace GAZT
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
+        public async Task OnPageLoad()
+        {
+      
+          
+          
+        }
+            #endregion
 
-        #endregion
+            #region Constructor
 
-        #region Constructor
-
-        public PdfiOSViewModel(INavigationService navigationService, IDialogService dialogService)
+            public PdfiOSViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

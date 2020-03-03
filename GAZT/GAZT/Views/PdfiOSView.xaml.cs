@@ -35,6 +35,10 @@ namespace GAZT.Views
             {
                 await email();
             }
+            else
+            {
+                viewModel._dialogService.ShowMessage("File is still loading", AppResources.Information);
+            }
      
         }
 
@@ -94,5 +98,26 @@ namespace GAZT.Views
             }
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+         
+            viewModel.LocalPath = string.Empty;
+          
+            viewModel.StreamForDownloadURL = null;
+            await viewModel.OnPageLoad();
+            //if (Device.RuntimePlatform == Device.iOS)
+            //{
+            //    string str = viewModel.DownloadUrl;
+            //    Uri uri = new Uri(str);
+            //    Device.OpenUri(uri);
+            //}
+        }
+        protected async override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.LocalPath = string.Empty;
+            viewModel.StreamForDownloadURL = null;
+        }
     }
 }

@@ -14,8 +14,8 @@ namespace GAZT.ViewModel
     public class PdfViewModel : ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
         public string pdfUrl;
         #endregion
 
@@ -71,7 +71,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private string _PathOfPdf;
+        private string _PathOfPdf = string.Empty;
         public string PathOfPdf
         {
             get
@@ -85,7 +85,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private string _pdfUrl;
+        private string _pdfUrl = string.Empty;
         public string PdfUrl
         {
             get
@@ -130,7 +130,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private string _localPath = null;
+        private string _localPath = string.Empty;
         public string LocalPath
         {
             get
@@ -173,6 +173,7 @@ namespace GAZT.ViewModel
 
         public async Task OnPageLoad()
         {
+           
             await Task.Run(async () =>
              {
                  IsLoading = true;
