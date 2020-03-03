@@ -3473,7 +3473,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     VATDeclarationData.d.ATTACHSet.results = ATTACHSetsList;
                 }
-                VATDeclaration response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData).Result;
+                VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 PopToRootPage();
 
                 if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
