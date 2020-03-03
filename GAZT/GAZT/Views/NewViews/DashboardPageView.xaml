@@ -257,7 +257,7 @@
                                 </Label>
                             </StackLayout>
 
-                                <!--<StackLayout Grid.Row="1" Grid.Column="{Binding CorresColumn}">
+                                <StackLayout Grid.Row="1" Grid.Column="{Binding CorresColumn}">
                                 <Image Source="ic_correspondance.png" HeightRequest="80" WidthRequest="80">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
@@ -268,7 +268,7 @@
                                         <TapGestureRecognizer Command="{Binding OnCorrespondanceClicked}" />
                                     </Label.GestureRecognizers>
                                 </Label>
-                            </StackLayout>-->
+                            </StackLayout>
                            
                             <!--<StackLayout Grid.Row="2" Grid.Column="0">
                                 <Image Source="ic_tax_Evasion.png" HeightRequest="80" WidthRequest="80">
