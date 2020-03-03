@@ -2089,4 +2089,8 @@
   <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
+  <data name="ZZThefileisstillloading" xml:space="preserve">
+    <value>لا يزال الملف قيد التحميل</value>
+    <comment>PDF viewer</comment>
+  </data>
 </root>

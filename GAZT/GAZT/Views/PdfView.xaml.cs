@@ -98,7 +98,7 @@ namespace GAZT.Views
             }
             else
             {
-                viewModel._dialogService.ShowMessage("File is still loading", AppResources.Information);
+                viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
             }
 
             //message.Attachments.Add(new EmailAttachment(file));

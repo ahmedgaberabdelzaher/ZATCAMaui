@@ -5153,6 +5153,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The file is still loading.
+        /// </summary>
+        public static string ZZThefileisstillloading {
+            get {
+                return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The new email must not match the existing email.
         /// </summary>
         public static string ZZTheNewEmailMustNotMatchtheexistingEmail {
