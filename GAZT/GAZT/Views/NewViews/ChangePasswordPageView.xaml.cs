@@ -74,6 +74,11 @@ namespace GAZT.Views.NewViews
         {
             viewModel.PasswordVisibilityForRetypePassword = !viewModel.PasswordVisibilityForRetypePassword;
         }
+
+        public void OnPasswordFocused(object sender, EventArgs args)
+        {
+            Password.Unfocus();
+        }
         #endregion
 
 

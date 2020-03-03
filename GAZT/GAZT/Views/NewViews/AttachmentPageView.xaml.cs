@@ -41,38 +41,38 @@ namespace GAZT.Views.NewViews
                 viewModel.VatAttachmentsList = null;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
-                    viewModel.VATDeclarationData = vATDeclaration;
+                    viewModel.VATDeclarationDataForAttch = vATDeclaration;
 
 
-                    if (viewModel.VATDeclarationData.d.ATTACHSet.results.Count != 0)
+                    if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
                         viewModel.VatAttachmentsList = myCollection;
 
-                        //foreach (var item in viewModel.VatAttachmentsList)
-                        //{
-                        //    if (App.IsArabic)
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        foreach (var item in viewModel.VatAttachmentsList)
+                        {
+                            if (App.IsArabic)
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                }
+                            }
+                            else
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        //        }
-                        //    }
-                        //}
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -118,7 +118,7 @@ namespace GAZT.Views.NewViews
                                             .FirstOrDefault<Attachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
 
-                            viewModel.VATDeclarationData.d.ATTACHSet.results.Remove(listitem);
+                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
 
                         }
                     }
