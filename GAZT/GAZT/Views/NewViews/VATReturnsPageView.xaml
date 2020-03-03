@@ -975,7 +975,7 @@
                                 </Frame.Triggers>
                             </Frame>
 
-                            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding IsSwitchVisible}">
+                            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
                             <local:CustomLabel  Text="{x:Static local:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  />
                               <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  />
 

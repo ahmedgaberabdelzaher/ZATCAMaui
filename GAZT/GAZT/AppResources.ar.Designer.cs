@@ -3657,5 +3657,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNegative", resourceCulture);
             }
         }
+        
+        public static string ZZThefileisstillloading {
+            get {
+                return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
+            }
+        }
     }
 }

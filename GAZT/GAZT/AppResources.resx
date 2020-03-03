@@ -2084,5 +2084,9 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZNegative" xml:space="preserve">
     <value>Negative</value>
+        </data>
+  <data name="ZZThefileisstillloading" xml:space="preserve">
+    <value>The file is still loading</value>
+    <comment>PDF viewer</comment>
   </data>
 </root>
