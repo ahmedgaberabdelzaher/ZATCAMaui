@@ -2082,4 +2082,7 @@ Should we require further information, we would be in contact.</value>
   <data name="ZNA" xml:space="preserve">
     <value>N/A</value>
   </data>
+  <data name="ZNegative" xml:space="preserve">
+    <value>Negative</value>
+  </data>
 </root>

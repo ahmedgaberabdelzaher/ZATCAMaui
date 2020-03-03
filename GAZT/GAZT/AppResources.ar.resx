@@ -2090,4 +2090,7 @@
   <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
+   <data name="ZNegative" xml:space="preserve">
+    <value>سلبي</value>
+  </data>
 </root>
