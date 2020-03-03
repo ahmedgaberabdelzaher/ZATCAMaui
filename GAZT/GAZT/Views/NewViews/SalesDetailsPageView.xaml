@@ -77,7 +77,7 @@
                 </StackLayout>-->
                         <Label Text="{x:Static local:AppResources.FiscalYear}"  Grid.Row="1" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                        <Label Text="{Binding Persl}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <Label Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                         <!--<Label Text="FiscalYear" Grid.Row="0" Margin="10,0,10,-15"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
@@ -85,12 +85,12 @@
 
                         <Label Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                         <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <Label Text="{Binding Abrzu}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Label Text="{Binding Abrzu}" FontFamily="{StaticResource SSTArBold}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                         </StackLayout>
 
                         <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}"  Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                        <Label Text="{Binding Fbnum}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <Label Text="{Binding Fbnum}" FontFamily="{StaticResource SSTArBold}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
 
@@ -99,7 +99,7 @@
 
                         <Label Text="{x:Static local:AppResources.ZEstimatedSales}"  Grid.Row="8" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"/>
 
-                        <Label  Margin="10,0,10,-4"   Grid.Row="8" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                        <Label  Margin="10,0,10,-4"  FontFamily="{StaticResource SSTArBold}" Grid.Row="8" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Estsl}"/>
@@ -159,8 +159,8 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
 
-                                            <local:CustomLabel Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <local:CustomLabel  Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
+                                            <local:CustomLabel FontFamily="{StaticResource SSTArBold}" Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                            <local:CustomLabel FontFamily="{StaticResource SSTArBold}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding EstimateSales}"/>

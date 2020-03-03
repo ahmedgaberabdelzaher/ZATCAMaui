@@ -170,7 +170,7 @@
                                                               <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
 
-                                                        <Label Text="{Binding FbtText}" Margin="8,0,8,0" 
+                                                        <Label Text="{Binding FbtText}" FontFamily="{StaticResource SSTArBold}" Margin="8,0,8,0" 
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -187,7 +187,7 @@
                                    Grid.Row="1"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding TaxPeriod}" 
+                                                        <Label Text="{Binding TaxPeriod}" FontFamily="{StaticResource SSTArBold}"
                                                   
                                   Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -203,7 +203,7 @@
                                    Grid.Row="2"
                                    Grid.Column="1"/>
 
-                                                        <local1:CustomLabel Text="{Binding Period}" 
+                                                        <local1:CustomLabel Text="{Binding Period}" FontFamily="{StaticResource SSTArBold}"
                                                   
                                   Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -219,7 +219,7 @@
                                    Grid.Row="3"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding DueDtC}" 
+                                                        <Label Text="{Binding DueDtC}" FontFamily="{StaticResource SSTArBold}"
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -235,7 +235,7 @@
                                    Grid.Row="4"
                                    Grid.Column="1"/>
 
-                                                        <Label Text="{Binding Status}" 
+                                                        <Label Text="{Binding Status}" FontFamily="{StaticResource SSTArBold}"
                                                   
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -246,7 +246,7 @@
 
 <custom:CustomLabel Text="{x:Static local:AppResources.ZReferenceNumber}"  Grid.Row="5" Grid.Column="1" Margin="8,0,8,0" LineBreakMode="WordWrap" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  Style="{StaticResource MiniGoldLabelStyle}"/>
 
-                    <custom:CustomLabel Text="{Binding Fbnum}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"  Margin="-7,0,-7,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource MiniGrayLabelStyle}"/>
+                    <custom:CustomLabel Text="{Binding Fbnum}" FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"  Margin="-7,0,-7,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource MiniGrayLabelStyle}"/>
 
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                         <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>

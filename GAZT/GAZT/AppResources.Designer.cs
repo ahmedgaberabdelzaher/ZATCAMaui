@@ -1830,7 +1830,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Declaration.
+        ///   Looks up a localized string similar to Tax Returns.
         /// </summary>
         public static string VATDeclaration {
             get {
@@ -2330,6 +2330,15 @@ namespace GAZT {
         public static string ZNA {
             get {
                 return ResourceManager.GetString("ZNA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Negative.
+        /// </summary>
+        public static string ZNegative {
+            get {
+                return ResourceManager.GetString("ZNegative", resourceCulture);
             }
         }
         
@@ -3576,7 +3585,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxpayer TIN.
+        ///   Looks up a localized string similar to VAT Account Number.
         /// </summary>
         public static string ZVATLookupIDTaxpayerTinType1 {
             get {
@@ -5149,6 +5158,15 @@ namespace GAZT {
         public static string ZZSUCCESS {
             get {
                 return ResourceManager.GetString("ZZSUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file is still loading.
+        /// </summary>
+        public static string ZZThefileisstillloading {
+            get {
+                return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
             }
         }
         

@@ -143,6 +143,58 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private bool _isSwitchToggled = false;
+        public bool IsSwitchToggled
+        {
+            get
+            {
+                return _isSwitchToggled;
+            }
+            set
+            {
+                _isSwitchToggled = value;
+                try
+                {
+                    if (IsSwitchToggled)
+                    {
+                        //double d = Convert.ToDouble(Preperiodcorr);
+                        //d = d * (-1);
+                        if (!string.IsNullOrEmpty(Preperiodcorr) && !Preperiodcorr.Contains("-"))
+                            Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                    }
+                    else
+                    {
+                        if (Preperiodcorr != null && Preperiodcorr.Contains("-") && (!string.IsNullOrEmpty(Preperiodcorr)))
+                            Preperiodcorr = Preperiodcorr.Replace("-", "");
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
+               
+                RaisePropertyChanged("IsSwitchToggled");
+            }
+        }
+
+        private bool _isSwitchVisible = false;
+        public bool IsSwitchVisible
+        {
+            get
+            {
+                return _isSwitchVisible;
+            }
+            set
+            {
+                _isSwitchVisible = value;
+               
+                RaisePropertyChanged("IsSwitchVisible");
+            }
+        }
+
+        
+
         private bool _isDeclarationChecked = false;
         public bool IsDeclarationChecked
         {

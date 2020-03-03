@@ -29,7 +29,7 @@ namespace GAZT.Views.NewViews
 
             viewModel = App.Locator.CorrespondancePageView;
             this.BindingContext = viewModel;
-            viewModel.onPageLoad();
+          //  viewModel.onPageLoad();
            
             SetLTR();
         }
@@ -91,7 +91,7 @@ namespace GAZT.Views.NewViews
             viewModel.ShowETPDF(Correspondence);
             ((ListView)sender).SelectedItem = null;
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             //Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
@@ -101,7 +101,7 @@ namespace GAZT.Views.NewViews
            
 
          
-            viewModel.onPageLoad();
+          await  viewModel.onPageLoad();
            
 
         }

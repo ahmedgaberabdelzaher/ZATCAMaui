@@ -930,8 +930,8 @@
 
                         <Grid Style="{DynamicResource GridStyle}" Grid.Row="37"  Grid.Column="0" Grid.ColumnSpan="2" ColumnSpacing="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40*" />
-                                <ColumnDefinition Width="46*" />
+                                <ColumnDefinition Width="42*" />
+                                <ColumnDefinition Width="44*" />
                                 <ColumnDefinition Width="14*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -946,6 +946,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalPurchases}"   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0"/>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
@@ -961,7 +962,7 @@
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
-                            <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                            <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
                                         <Setter Property="BorderColor" Value="#ff0000" />
@@ -973,54 +974,60 @@
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="5" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+
+                            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
+                            <local:CustomLabel  Text="{x:Static local:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  />
+                              <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  />
+
+                            </StackLayout>
+                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="6" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>-->
                             </custom:GAZTBorderlessEntry>
-                            <Image Grid.Row="5"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            <Image Grid.Row="6"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnVatcreditcarriedforwardFromPreviousPeriodClicked" />
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <local1:CustomLabel Text="{x:Static local:AppResources.ZVatcreditcarriedforward}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"/>
-                            <local1:CustomLabel Text="{x:Static local:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                            <local1:CustomLabel Text="{x:Static local:AppResources.ZVatcreditcarriedforward}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <local1:CustomLabel Text="{x:Static local:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
                                 <local1:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onCreditCarriedForwardClicked}"></TapGestureRecognizer>
                                 </local1:CustomLabel.GestureRecognizers>
                             </local1:CustomLabel>
 
-                            <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                            <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryCreditVat}, Path=Text.Length}" Value="0">
                                         <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryCreditVat" IsEnabled="False" TextChanged="EntryCreditVat_TextChanged" Grid.Row="8" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryCreditVat" IsEnabled="False" TextChanged="EntryCreditVat_TextChanged" Grid.Row="9" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>-->
                             </custom:GAZTBorderlessEntry>
-                            <Image Grid.Row="8"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            <Image Grid.Row="9"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnVatcreditcarriedforwardClicked" />
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Label Text="{x:Static local:AppResources.ZVatNetdue}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"/>
-                            <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
+                            <Label Text="{x:Static local:AppResources.ZVatNetdue}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Frame Grid.Row="11" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <!--<Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryNetdueVat}, Path=Text.Length}" Value="0">
                                         <Setter Property="BorderColor" Value="#ff0000" />
                                     </DataTrigger>
                                 </Frame.Triggers>-->
                             </Frame>
-                            <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" IsEnabled="False" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="10" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat" IsEnabled="False" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="11" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                 
                             </custom:GAZTBorderlessEntry>
-                            <Image Grid.Row="10"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
+                            <Image Grid.Row="11"  Grid.Column="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnVatNetdueClicked" />
                                 </Image.GestureRecognizers>

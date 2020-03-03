@@ -61,6 +61,7 @@ namespace GAZT
             SimpleIoc.Default.Register<CorrespondancePageViewModel>();
             SimpleIoc.Default.Register<CorrespondenceDetailsPageViewModel>();
             SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
+            SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
 
 
 
@@ -735,6 +736,20 @@ namespace GAZT
             }
         }
 
+        public SignUpTAndCPageViewModel SignUpTAndCPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SignUpTAndCPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -785,6 +800,7 @@ namespace GAZT
             navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
             navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
             navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
+            navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
 
 
 

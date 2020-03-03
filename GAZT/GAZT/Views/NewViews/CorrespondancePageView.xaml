@@ -94,13 +94,13 @@
                                 <ViewCell>
                                   
                                     <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                       Margin="0,0,0,10"
-                                       Padding="10,5,10,5"
-                                       CornerRadius="5"
-                                       
-                               >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
+                                      <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="93*" />
@@ -187,7 +187,9 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                        </Frame>
+                                       </StackLayout>
+                                                </StackLayout>
+                                          </StackLayout>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>
@@ -209,13 +211,14 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                       Margin="0,0,0,10"
-                                       Padding="10,5,10,5"
-                                       CornerRadius="5"
-                                       
-                               >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
+                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="93*" />
@@ -301,7 +304,9 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                        </Frame>
+                                     </StackLayout>
+                                                </StackLayout>
+                                           </StackLayout>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>
@@ -323,13 +328,14 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                       Margin="0,0,0,10"
-                                       Padding="10,5,10,5"
-                                       CornerRadius="5"
-                                       
-                               >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
+                                       <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                 <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="90*" />
@@ -415,7 +421,9 @@
 
                                                 </Grid>
                                             </StackLayout>
-                                        </Frame>
+                                      </StackLayout>
+                                                </StackLayout>
+                                           </StackLayout>
                                     </ContentView>
                                 </ViewCell>
                             </DataTemplate>
