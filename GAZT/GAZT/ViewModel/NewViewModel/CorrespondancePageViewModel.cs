@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -231,10 +232,12 @@ namespace GAZT.ViewModel.NewViewModel
                             List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                             CorreTosort = ListZAKATCorrespondance;
                             ListZAKATCorrespondance = null;
-                            var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
+                            if (CorreTosort != null)
+                            {
+                                var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
+                                ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
 
-
-                            ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                         }
 
                         if (IsVATVisible == true)
@@ -242,20 +245,23 @@ namespace GAZT.ViewModel.NewViewModel
                             List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                             CorreTosort = ListVATCorrespondance;
                             ListVATCorrespondance = null;
-                            var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
-
-
+                            if(CorreTosort != null)
+                            {
+                                var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
                             ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
                         }
                         if (IsETVisible == true)
                         {
                             List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                             CorreTosort = ListETCorrespondance;
                             ListETCorrespondance = null;
-                            var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
 
-
-                            ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            if (CorreTosort != null)
+                            {
+                                var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
+                                ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
                         }
                     }
                     if (_selectedFilter.ID == 3)
@@ -355,48 +361,72 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-            onZakatLabelClicked = new Xamarin.Forms.Command(async () =>
+            onZakatLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                IsZakatVisible = true;
-                IsVATVisible = false;
-                IsETVisible = false;
-               
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                try
+                {
+                    IsZakatVisible = true;
+                    IsVATVisible = false;
+                    IsETVisible = false;
 
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
 
-                CorresFilter = Filters;
-                SetSelectedIndex = 4;
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+
+                    CorresFilter = Filters;
+                    SetSelectedIndex = 4;
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
             });
-            onVATLabelClicked = new Xamarin.Forms.Command(async () =>
+            onVATLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                IsZakatVisible = false;
-                IsVATVisible = true;
-                IsETVisible = false;
+                try
+                {
+                    IsZakatVisible = false;
+                    IsVATVisible = true;
+                    IsETVisible = false;
 
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+
+                    CorresFilter = Filters;
+                    SetSelectedIndex = 2;
+                }
+                catch (Exception ex)
+                {
+
+                }
                
-                CorresFilter = Filters;
-                SetSelectedIndex = 2;
             });
-            onETLabelClicked = new Xamarin.Forms.Command(async () =>
+            onETLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                IsZakatVisible = false;
-                IsVATVisible = false;
-                IsETVisible = true;
-               
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-               
+                try
+                {
+                    IsZakatVisible = false;
+                    IsVATVisible = false;
+                    IsETVisible = true;
 
-                CorresFilter = Filters;
-                SetSelectedIndex = 2;
+                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+
+
+                    CorresFilter = Filters;
+                    SetSelectedIndex = 2;
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
             });
 
            
@@ -457,249 +487,279 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             }
         }
-        public void onPageLoad()
+        public async Task onPageLoad()
         {
             try
             {
-                CorresFilter = null;
-                SelectedFilter = null;
-                ListZAKATCorrespondance = null;
-                ListVATCorrespondance = null;
-                ListETCorrespondance = null;
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                if (IsETVisible == true || IsVATVisible == true)
+
+                await Task.Run(() =>
                 {
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                }
-                else
+                    IsLoading = true;
+                });
+
+
+                await Task.Run(async() =>
                 {
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-                }
+                    CorresFilter = null;
+                    SelectedFilter = null;
+                    ListZAKATCorrespondance = null;
+                    ListVATCorrespondance = null;
+                    ListETCorrespondance = null;
+                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                    if (IsETVisible == true || IsVATVisible == true)
+                    {
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                    }
+                    else
+                    {
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                        Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+                    }
                     CorresFilter = Filters;
 
-                CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
+                    CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
 
-                ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
-                PopToRootPage();
-                List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
-                ZakatCountDisplay = AppResources.ZZZAKAT + "(" + ZakatCorres.d.results.Count + ")";
-                foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
+                    await Task.Run(() =>
+                    {
+                        ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
+                    });
+                    PopToRootPage();
+                    List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
+                    ZakatCountDisplay = AppResources.ZZZAKAT + "(" + ZakatCorres.d.results.Count + ")";
+                    foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
+                    {
+                        CorrespondanceModel childZakat = new CorrespondanceModel();
+                        childZakat.Title = itemZakat.Descript;
+                        childZakat.RefNumber = itemZakat.LetterNum;
+                        childZakat.Cokey = itemZakat.Cokey;
+                        if (itemZakat.Copri != null)
+                        {
+                            childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
+                        }
+                        if (itemZakat.Coidt != null)
+                        {
+                            childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
+                        }
+                        childZakat.Cotype = itemZakat.Cotyp;
+                        childZakat.Vkont = itemZakat.Vkont;
+                        childZakat.Gpart = itemZakat.Gpart;
+                        childZakat.Begdaz = itemZakat.Begdaz;
+                        childZakat.Enddaz = itemZakat.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemZakat.Coidt != null)
+                        {
+                            BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
+                        }
+
+                        if (itemZakat.Zzfav == "1")
+                        {
+                            childZakat.IsFav = true;
+                            childZakat.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childZakat.IsFav = false;
+                            childZakat.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                StartDate = UtilityManager.ToArabicDate(StartDate);
+                            }
+
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            }
+
+                        }
+                        childZakat.DateAndTime = StartDate;
+                        ZakatCo.Add(childZakat);
+                    }
+
+
+
+                    ListZAKATCorrespondance = ZakatCo;
+
+
+                    CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
+
+                    await Task.Run(() =>
+                    {
+                        VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
+                    });
+
+
+                    PopToRootPage();
+                    List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
+                    VATCountDisplay = AppResources.ZZVAT + "(" + VATCorres.d.results.Count + ")";
+                    foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
+                    {
+                        CorrespondanceModel childVAT = new CorrespondanceModel();
+                        childVAT.Title = itemVAT.Descript;
+                        childVAT.RefNumber = itemVAT.LetterNum;
+                        childVAT.Cokey = itemVAT.Cokey;
+                        if (itemVAT.Copri != null)
+                        {
+                            childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
+                        }
+                        if (itemVAT.Coidt != null)
+                        {
+                            childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
+                        }
+                        childVAT.Cotype = itemVAT.Cotyp;
+                        childVAT.Vkont = itemVAT.Vkont;
+                        childVAT.Gpart = itemVAT.Gpart;
+                        childVAT.Begdaz = itemVAT.Begdaz;
+                        childVAT.Enddaz = itemVAT.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemVAT.Coidt != null)
+                        {
+                            BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
+                        }
+                        if (itemVAT.Zzfav == "1")
+                        {
+                            childVAT.IsFav = true;
+                            childVAT.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childVAT.IsFav = false;
+                            childVAT.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                StartDate = UtilityManager.ToArabicDate(StartDate);
+                            }
+
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+
+
+                            }
+
+                        }
+                        childVAT.DateAndTime = StartDate;
+                        VATCo.Add(childVAT);
+                    }
+
+
+
+                    ListVATCorrespondance = VATCo;
+
+                    CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
+
+                    await Task.Run(() =>
+                    {
+                        ETCorres = WebServiceManager.GAZTGetETCorrespondece();
+                    });
+
+                    PopToRootPage();
+                    List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
+                    ETCountDisplay = AppResources.ZZET + "(" + ETCorres.d.results.Count + ")";
+                    foreach (CorrespondenceResult itemET in ETCorres.d.results)
+                    {
+                        CorrespondanceModel childET = new CorrespondanceModel();
+                        childET.Title = itemET.Descript;
+                        childET.RefNumber = itemET.LetterNum;
+                        childET.Cokey = itemET.Cokey;
+                        if (itemET.Copri != null)
+                        {
+                            childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
+                        }
+                        if (itemET.Coidt != null)
+                        {
+                            childET.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
+                        }
+                        childET.Cotype = itemET.Cotyp;
+                        childET.Vkont = itemET.Vkont;
+                        childET.Gpart = itemET.Gpart;
+                        childET.Begdaz = itemET.Begdaz;
+                        childET.Enddaz = itemET.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemET.Coidt != null)
+                        {
+                            BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
+                        }
+                        if (itemET.Zzfav == "1")
+                        {
+                            childET.IsFav = true;
+                            childET.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childET.IsFav = false;
+                            childET.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                StartDate = UtilityManager.ToArabicDate(StartDate);
+                            }
+
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+
+
+                            }
+
+                        }
+                        childET.DateAndTime = StartDate;
+                        ETCo.Add(childET);
+                    }
+
+
+
+                    ListETCorrespondance = ETCo;
+                    //IsZakatVisible = true;
+                    //IsVATVisible = false;
+                    //IsETVisible = false;
+                    SetSelectedIndex = 4;
+
+                });
+
+
+                await Task.Run(() =>
                 {
-                    CorrespondanceModel childZakat = new CorrespondanceModel();
-                    childZakat.Title = itemZakat.Descript;
-                    childZakat.RefNumber = itemZakat.LetterNum;
-                    childZakat.Cokey = itemZakat.Cokey;
-                    if (itemZakat.Copri != null)
-                    {
-                        childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
-                    }
-                    if (itemZakat.Coidt != null)
-                    {
-                        childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
-                    }
-                    childZakat.Cotype = itemZakat.Cotyp;
-                    childZakat.Vkont = itemZakat.Vkont;
-                    childZakat.Gpart = itemZakat.Gpart;
-                    childZakat.Begdaz = itemZakat.Begdaz;
-                    childZakat.Enddaz = itemZakat.Enddaz;
-                    DateTime? BegDate = DateTime.Now;
-                    if (itemZakat.Coidt != null)
-                    {
-                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
-                    }
+                    IsLoading = false;
+                });
 
-                    if (itemZakat.Zzfav == "1")
-                    {
-                        childZakat.IsFav = true;
-                        childZakat.FavImg = "ic_star.png";
-                    }
-                    else
-                    {
-                        childZakat.IsFav = false;
-                        childZakat.FavImg = "ic_star_border.png";
-                    }
-                    string StartDate = string.Empty;
-
-                    if (App.IsArabic)
-                    {
-                        if (BegDate != null)
-                        {
-
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                            StartDate = UtilityManager.ToArabicDate(StartDate);
-                        }
-
-                    }
-                    else
-                    {
-                        if (BegDate != null)
-                        {
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                        }
-
-                    }
-                    childZakat.DateAndTime = StartDate;
-                    ZakatCo.Add(childZakat);
-                }
-
-
-
-                ListZAKATCorrespondance = ZakatCo;
-
-
-                CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
-
-                VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
-                PopToRootPage();
-                List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
-                VATCountDisplay = AppResources.ZZVAT + "(" + VATCorres.d.results.Count + ")";
-                foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
-                {
-                    CorrespondanceModel childVAT = new CorrespondanceModel();
-                    childVAT.Title = itemVAT.Descript;
-                    childVAT.RefNumber = itemVAT.LetterNum;
-                    childVAT.Cokey = itemVAT.Cokey;
-                    if (itemVAT.Copri != null)
-                    {
-                        childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
-                    }
-                    if (itemVAT.Coidt != null)
-                    {
-                        childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
-                    }
-                    childVAT.Cotype = itemVAT.Cotyp;
-                    childVAT.Vkont = itemVAT.Vkont;
-                    childVAT.Gpart = itemVAT.Gpart;
-                    childVAT.Begdaz = itemVAT.Begdaz;
-                    childVAT.Enddaz = itemVAT.Enddaz;
-                    DateTime? BegDate = DateTime.Now;
-                    if (itemVAT.Coidt != null)
-                    {
-                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
-                    }
-                    if (itemVAT.Zzfav == "1")
-                    {
-                        childVAT.IsFav = true;
-                        childVAT.FavImg = "ic_star.png";
-                    }
-                    else
-                    {
-                        childVAT.IsFav = false;
-                        childVAT.FavImg = "ic_star_border.png";
-                    }
-                    string StartDate = string.Empty;
-
-                    if (App.IsArabic)
-                    {
-                        if (BegDate != null)
-                        {
-
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                            StartDate = UtilityManager.ToArabicDate(StartDate);
-                        }
-
-                    }
-                    else
-                    {
-                        if (BegDate != null)
-                        {
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-
-
-                        }
-
-                    }
-                    childVAT.DateAndTime = StartDate;
-                    VATCo.Add(childVAT);
-                }
-
-
-
-                ListVATCorrespondance = VATCo;
-
-                CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
-
-                ETCorres = WebServiceManager.GAZTGetETCorrespondece();
-                PopToRootPage();
-                List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
-                ETCountDisplay = AppResources.ZZET + "(" + ETCorres.d.results.Count + ")";
-                foreach (CorrespondenceResult itemET in ETCorres.d.results)
-                {
-                    CorrespondanceModel childET = new CorrespondanceModel();
-                    childET.Title = itemET.Descript;
-                    childET.RefNumber = itemET.LetterNum;
-                    childET.Cokey = itemET.Cokey;
-                    if (itemET.Copri != null)
-                    {
-                        childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
-                    }
-                    if (itemET.Coidt != null)
-                    {
-                        childET.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
-                    }
-                    childET.Cotype = itemET.Cotyp;
-                    childET.Vkont = itemET.Vkont;
-                    childET.Gpart = itemET.Gpart;
-                    childET.Begdaz = itemET.Begdaz;
-                    childET.Enddaz = itemET.Enddaz;
-                    DateTime? BegDate = DateTime.Now;
-                    if (itemET.Coidt != null)
-                    {
-                         BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
-                    }
-                    if (itemET.Zzfav == "1")
-                    {
-                        childET.IsFav = true;
-                        childET.FavImg = "ic_star.png";
-                    }
-                    else
-                    {
-                        childET.IsFav = false;
-                        childET.FavImg = "ic_star_border.png";
-                    }
-                    string StartDate = string.Empty;
-
-                    if (App.IsArabic)
-                    {
-                        if (BegDate != null)
-                        {
-
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                            StartDate = UtilityManager.ToArabicDate(StartDate);
-                        }
-
-                    }
-                    else
-                    {
-                        if (BegDate != null)
-                        {
-                            StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-
-
-                        }
-
-                    }
-                    childET.DateAndTime = StartDate;
-                    ETCo.Add(childET);
-                }
-
-
-
-                ListETCorrespondance = ETCo;
-                //IsZakatVisible = true;
-                //IsVATVisible = false;
-                //IsETVisible = false;
-                SetSelectedIndex = 4;
             }
             catch (InternetException ex)
             {

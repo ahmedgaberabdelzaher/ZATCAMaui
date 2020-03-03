@@ -51,15 +51,15 @@
 
                     <Label Text="{x:Static local:AppResources.SADADPaymentNumber}"  Grid.Row="3" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
 
-                    <Label Text="{Binding Sopbel}"  Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
+                    <Label Text="{Binding Sopbel}" FontFamily="{StaticResource SSTArBold}" Grid.Row="3" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
 
                     <Label Text="{x:Static local:AppResources.ZSADADGAZTId}" Grid.Row="4" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
 
-                    <Label Text="{Binding Sadadid}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
+                    <Label Text="{Binding Sadadid}" FontFamily="{StaticResource SSTArBold}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
 
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}"/>
 
-                    <Label Text="{Binding Stotamt}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}">
+                    <Label Text="{Binding Stotamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InvoiceVisibility}">
 
                         <Label.FormattedText>
                              <FormattedString>
@@ -86,15 +86,15 @@
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZTotalUndisputedAmount}"  Grid.Row="4" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Undisamt}"  Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <local1:CustomLabel Text="{Binding Undisamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="4" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZTotaldisputedAmount}" Grid.Row="5" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Disamt}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <local1:CustomLabel Text="{Binding Disamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZTotalAmount}" Grid.Row="6" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Totamt}" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                    <local1:CustomLabel Text="{Binding Totamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="6" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
 
                         <Label.FormattedText>
                                     <FormattedString>
@@ -113,15 +113,15 @@
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZSADADInvoiceNumber}"  Grid.Row="8" Grid.Column="0"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Sopbel}"  Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <local1:CustomLabel Text="{Binding Sopbel}" FontFamily="{StaticResource SSTArBold}" Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZSADADGAZTId}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Sadadid}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <local1:CustomLabel Text="{Binding Sadadid}" FontFamily="{StaticResource SSTArBold}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZTheUndisputedAmount}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Undisamt}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
+                    <local1:CustomLabel Text="{Binding Undisamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}">
 
                         <!--<Label.FormattedText>
                                     <FormattedString>
@@ -134,12 +134,12 @@
                     </local1:CustomLabel>
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZ25oftheDisputedAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Sdisamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
+                    <local1:CustomLabel Text="{Binding Sdisamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
 
                     <local1:CustomLabel Text="{x:Static local:AppResources.ZZTotalAmount}" Grid.Row="12" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
 
-                    <local1:CustomLabel Text="{Binding Stotamt}" Grid.Row="12" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"></local1:CustomLabel>
+                    <local1:CustomLabel Text="{Binding Stotamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="12" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding ObjectionInvoiceVisibility}"></local1:CustomLabel>
 
 
 
