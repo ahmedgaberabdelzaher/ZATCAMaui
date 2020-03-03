@@ -572,11 +572,7 @@ namespace GAZT.ViewModel
                               
                                 
                             }
-                            else
-                            {
-                                IsZakatVisible = true;
-                                IsVATVisible = true;
-                            }
+                           
 
                             if(IsZakatVisible==true && IsVATVisible==false)
                             {

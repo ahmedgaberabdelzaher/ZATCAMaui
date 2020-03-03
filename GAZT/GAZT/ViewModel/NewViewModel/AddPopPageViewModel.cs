@@ -74,7 +74,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _iSBold;
+        private string _iSBold = "Bold";
         public string IsBold
         {
             get
@@ -88,7 +88,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _iSRed;
+        private string _iSRed = "#7D858D";
         public string IsRed
         {
             get

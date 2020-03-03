@@ -31,12 +31,47 @@ namespace GAZT.Views.NewViews
                 viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
                 viewModel.Link = objPopUP.Link;
                 viewModel.LinkMessage = objPopUP.LinkMessage;
-                viewModel.IsBold = objPopUP.IsBold;
-                viewModel.IsRed = objPopUP.IsRed;
+                if (!string.IsNullOrEmpty(objPopUP.IsBold))
+                {
+                    viewModel.IsBold = objPopUP.IsBold;
+                }
+                else
+                {
+                    viewModel.IsBold = "Bold";
+                }
+                if (!string.IsNullOrEmpty(objPopUP.IsRed))
+                {
+                    viewModel.IsRed = objPopUP.IsRed;
+                }
+                else
+                {
+                    viewModel.IsRed = "#7D858D";
+                }
                 viewModel.FlowDirections = objPopUP.FlowDirections;
             }
             catch (Exception e)
             {
+                viewModel.PopMessage = objPopUP.Message;
+                viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
+                viewModel.Link = objPopUP.Link;
+                viewModel.LinkMessage = objPopUP.LinkMessage;
+                if (!string.IsNullOrEmpty(objPopUP.IsBold))
+                {
+                    viewModel.IsBold = objPopUP.IsBold;
+                }
+                else
+                {
+                    viewModel.IsBold = "Bold";
+                }
+                if (!string.IsNullOrEmpty(objPopUP.IsRed))
+                {
+                    viewModel.IsRed = objPopUP.IsRed;
+                }
+                else
+                {
+                    viewModel.IsRed = "#7D858D";
+                }
+                viewModel.FlowDirections = objPopUP.FlowDirections;
                 SetLTR();
             }
         }
