@@ -112,8 +112,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (CorrespondenceD != null)
                 {
-                    string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
-                    ShowPdf(Url);
+                    if(IsAttachmentEnabled)
+                    {
+                        string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
+                        ShowPdf(Url);
+                    }
                 }
             });
 
