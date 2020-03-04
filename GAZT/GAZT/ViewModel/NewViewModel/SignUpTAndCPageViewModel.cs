@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -11,6 +13,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Veriables
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand OnSubmitClicked { get; set; }
         #endregion
 
         #region Properties
@@ -24,7 +27,29 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _ischkTAndC = value;
+                if(_ischkTAndC==true)
+                {
+                    IsButtonEnabled = true;
+                }
+                else
+                {
+                    IsButtonEnabled = false;
+                }
                 RaisePropertyChanged("IschkTAndC");
+            }
+        }
+
+        private bool _isButtonEnabled = false;
+        public bool IsButtonEnabled
+        {
+            get
+            {
+                return _isButtonEnabled;
+            }
+            set
+            {
+                _isButtonEnabled = value;
+                RaisePropertyChanged("IsButtonEnabled");
             }
         }
         #endregion
@@ -41,7 +66,13 @@ namespace GAZT.ViewModel.NewViewModel
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
-            }        
+            }
+            OnSubmitClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.SignUpFormPageView);
+             
+
+            });
 
         }
         #endregion
