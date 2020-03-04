@@ -8,6 +8,7 @@ namespace GAZT
         static int numberOfDigit = 17;
         static int decimalCount;
         public static bool iSValiedNumber = true;
+        public bool isNegativeEnable { get; set; } 
         public  int Max { get; set; }
         public int IntegerV { get; set; }
         public int numberOfDigitBeforDecimal { get; set; }
@@ -70,7 +71,10 @@ namespace GAZT
                 }
                 else
                 {
-                    ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
+                    if (isNegativeEnable == false)
+                    {
+                        ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
+                    }
                 }
             }
             else

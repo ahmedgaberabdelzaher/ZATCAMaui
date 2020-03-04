@@ -1212,7 +1212,7 @@
     <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
-    <value>{0}تم حفظ نموذج الإقرار الضريبي بنجاح</value>
+    <value>{0} تم حفظ نموذج الإقرار الضريبي بنجاح</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
     <value>تحميل إشعار الاستلام</value>
