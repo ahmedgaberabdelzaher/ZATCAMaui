@@ -124,6 +124,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _countryCode = "";
+        public string CountryCode
+        {
+            get
+            {
+                return _countryCode;
+            }
+            set
+            {
+                _countryCode = value;
+
+                RaisePropertyChanged("CountryCode");
+            }
+        }
+
 
 
 
@@ -252,6 +267,21 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void OnPageLoad()
         {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                CountryCode = "+9665";
+            }
+            else
+            {
+                if (App.IsArabic)
+                {
+                    CountryCode = "9665+";
+                }
+                else
+                {
+                    CountryCode = "+9665";
+                }
+            }
             TaxPayerProfile = App.TP;
             CurrentMobile = TaxPayerProfile.Mobile;
             SetNewMobileNumberLayoutVisibility();

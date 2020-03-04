@@ -25,6 +25,10 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onETLabelClicked { get; set; }
         public ICommand onCITLabelClicked { get; set; }
         private List<CorrespondanceModel> _listVATCorrespondance = null;
+        CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
+        CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
+        CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
+
         public List<CorrespondanceModel> ListVATCorrespondance
         {
             get
@@ -108,6 +112,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _setNoDataLabelVisibility = false;
+
+        public bool SetNoDataLabelVisibility
+        {
+            get
+            {
+                return _setNoDataLabelVisibility;
+            }
+            set
+            {
+                _setNoDataLabelVisibility = value;
+                RaisePropertyChanged("SetNoDataLabelVisibility");
+            }
+        }
+
         private bool _isETVisible = false;
         public bool IsETVisible
         {
@@ -164,7 +183,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<CorrespondenceFiltersModel> _corresFilter = null;
+        private List<CorrespondenceFiltersModel> _corresFilter;
 
         public List<CorrespondenceFiltersModel> CorresFilter
         {
@@ -199,6 +218,8 @@ namespace GAZT.ViewModel.NewViewModel
                             CorreTosort = ListZAKATCorrespondance;
                             ListZAKATCorrespondance = null;
                             var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+                            IsVATVisible = false;
+                            IsETVisible = false;
 
 
                             ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
@@ -209,6 +230,8 @@ namespace GAZT.ViewModel.NewViewModel
                             List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                             CorreTosort = ListVATCorrespondance;
                             ListVATCorrespondance = null;
+                            IsZakatVisible = false;
+                            IsETVisible = false;
                             var SortedList = CorreTosort.OrderBy(x => x.StartDate);
 
 
@@ -220,8 +243,8 @@ namespace GAZT.ViewModel.NewViewModel
                             CorreTosort = ListETCorrespondance;
                             ListETCorrespondance = null;
                             var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-
-
+                            IsVATVisible = false;
+                            IsZakatVisible = false;
                             ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                         }
                     }
@@ -363,26 +386,7 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             onZakatLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                try
-                {
-                    IsZakatVisible = true;
-                    IsVATVisible = false;
-                    IsETVisible = false;
-
-                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-
-                    CorresFilter = Filters;
-                    SetSelectedIndex = 4;
-                }
-                catch(Exception ex)
-                {
-
-                }
+                
                 
             });
             onVATLabelClicked = new Xamarin.Forms.Command( () =>
@@ -406,27 +410,9 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                
             });
+
             onETLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                try
-                {
-                    IsZakatVisible = false;
-                    IsVATVisible = false;
-                    IsETVisible = true;
-
-                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-
-
-                    CorresFilter = Filters;
-                    SetSelectedIndex = 2;
-                }
-                catch (Exception ex)
-                {
-
-                }
-               
             });
 
            
@@ -490,44 +476,84 @@ namespace GAZT.ViewModel.NewViewModel
         public async Task onPageLoad()
         {
             try
-            {
-
-                await Task.Run(() =>
+            { await Task.Run(() =>
                 {
                     IsLoading = true;
                 });
-
-
-                await Task.Run(async() =>
+                await Task.Run(() =>
                 {
-                    CorresFilter = null;
-                    SelectedFilter = null;
-                    ListZAKATCorrespondance = null;
-                    ListVATCorrespondance = null;
-                    ListETCorrespondance = null;
-                    List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                    if (IsETVisible == true || IsVATVisible == true)
-                    {
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                    }
-                    else
-                    {
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                        Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-                    }
-                    CorresFilter = Filters;
-
-                    CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
-
-                    await Task.Run(() =>
-                    {
+                    IsVATVisible = false;
+                    IsZakatVisible = true;
+                    IsETVisible = false;
+                    SetNoDataLabelVisibility = false;
+                    SetStatusPickerItem();
                         ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
-                    });
-                    PopToRootPage();
-                    List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
+                        VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
+                        ETCorres = WebServiceManager.GAZTGetETCorrespondece();
+                        PopToRootPage();
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+
+        private void SetStatusPickerItem()
+        {
+            try
+            {
+                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                if (IsETVisible == true || IsVATVisible == true)
+                {
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                }
+                else
+                {
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+                }
+                CorresFilter = Filters;
+            }
+            catch(Exception ex)
+            {
+
+            }
+                
+
+        }
+
+        public void SetData()
+        {
+            try
+            {
+                List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
+
+                // Assigning data in the list
+                if (ZakatCorres != null && ZakatCorres.d != null)
+                {
                     ZakatCountDisplay = AppResources.ZZZAKAT + "(" + ZakatCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
                     {
@@ -590,20 +616,14 @@ namespace GAZT.ViewModel.NewViewModel
                         ZakatCo.Add(childZakat);
                     }
 
-
-
                     ListZAKATCorrespondance = ZakatCo;
+                }
+               
+                PopToRootPage();
 
-
-                    CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
-
-                    await Task.Run(() =>
-                    {
-                        VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
-                    });
-
-
-                    PopToRootPage();
+                // Assigning data in the list
+                if (VATCorres != null && VATCorres.d != null)
+                {
                     List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
                     VATCountDisplay = AppResources.ZZVAT + "(" + VATCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
@@ -651,35 +671,25 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
                             }
-
                         }
                         else
                         {
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-
-
                             }
-
                         }
                         childVAT.DateAndTime = StartDate;
                         VATCo.Add(childVAT);
                     }
-
-
-
                     ListVATCorrespondance = VATCo;
+                }
+               
+                PopToRootPage();
 
-                    CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
-
-                    await Task.Run(() =>
-                    {
-                        ETCorres = WebServiceManager.GAZTGetETCorrespondece();
-                    });
-
-                    PopToRootPage();
+                // Assigning data in the list
+                if(ETCorres != null && ETCorres.d != null)
+                {
                     List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
                     ETCountDisplay = AppResources.ZZET + "(" + ETCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemET in ETCorres.d.results)
@@ -734,51 +744,112 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-
-
                             }
 
                         }
                         childET.DateAndTime = StartDate;
                         ETCo.Add(childET);
                     }
-
-
-
                     ListETCorrespondance = ETCo;
-                    //IsZakatVisible = true;
-                    //IsVATVisible = false;
-                    //IsETVisible = false;
                     SetSelectedIndex = 4;
-
-                });
-
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                }
+               
             }
-            catch (InternetException ex)
+            catch(Exception ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-            }
 
+            }
+            
         }
-        public void PopToRootPage()
+
+        public void OnZAKATClicked()
         {
-            if (App.IsSessionExpired)
+            try
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                IsZakatVisible = true;
+                IsVATVisible = false;
+                IsETVisible = false;
+
+                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+
+                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+
+                CorresFilter = Filters;
+                SetSelectedIndex = 4;
+                if(ListZAKATCorrespondance != null && ListZAKATCorrespondance.Count > 0)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                    SetNoDataLabelVisibility = false;
+                }
+                else
+                {
+                    SetNoDataLabelVisibility = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void OnVATLabelClicked()
+        {
+            try
+            {
+                IsZakatVisible = false;
+                IsVATVisible = true;
+                IsETVisible = false;
+
+                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+
+                CorresFilter = Filters;
+                SetSelectedIndex = 2;
+                if (ListVATCorrespondance != null && ListVATCorrespondance.Count > 0)
+                {
+                    SetNoDataLabelVisibility = false;
+                }
+                else
+                {
+                    SetNoDataLabelVisibility = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void OnEtLabelClicked()
+        {
+            try
+            {
+                IsZakatVisible = false;
+                IsVATVisible = false;
+                IsETVisible = true;
+
+                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+
+
+                CorresFilter = Filters;
+                SetSelectedIndex = 2;
+                if (ListETCorrespondance != null && ListETCorrespondance.Count > 0)
+                {
+                    SetNoDataLabelVisibility = false;
+                }
+                else
+                {
+                    SetNoDataLabelVisibility = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         #endregion
