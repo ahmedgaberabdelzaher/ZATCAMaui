@@ -34,9 +34,9 @@
                
                     <Frame Grid.Row="2" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                     </Frame>
-                <Label Text="{x:Static local:AppResources.Attachment}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsAttachmentEnable}" >
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding OnAttachmentClick}" ></TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
                

@@ -2165,4 +2165,8 @@ Should we require further information, we would be in contact.</value>
     <value>Verifications Code</value>
     <comment>Sign up</comment>
   </data>
+  <data name="ZZCountryCode" xml:space="preserve">
+    <value>+9665</value>
+    <comment>PDF viewer</comment>
+  </data>
 </root>

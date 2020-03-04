@@ -63,11 +63,38 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+
+
+
+        private bool _isAttachmentEnable = false;
+        public bool IsAttachmentEnabled
+        {
+            get
+            {
+                return _isAttachmentEnable;
+            }
+            set
+            {
+                _isAttachmentEnable = value;
+                RaisePropertyChanged("IsAttachmentEnable");
+            }
+        }
         #endregion
 
         #region Constructor
         public CorrespondenceDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
-        {
+        { 
+
+
+
+
+
+
+
+
+
+
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -81,10 +108,13 @@ namespace GAZT.ViewModel.NewViewModel
             _navigationService = navigationService;
             _dialogService = dialogService;
 
-            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            OnAttachmentClick = new Xamarin.Forms.Command(() =>
             {
-                string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
-                ShowPdf(Url);
+                if (CorrespondenceD != null)
+                {
+                    string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
+                    ShowPdf(Url);
+                }
             });
 
             OnFavClicked = new Xamarin.Forms.Command(async () =>
@@ -134,6 +164,14 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Methods
+
+        public void ButtonEnable(string response)
+        { if (response.Equals("X"))
+                { IsAttachmentEnabled = true; }
+            else { IsAttachmentEnabled = false; }
+        }
+
+
         public async void ShowPdf(string pdfUrl)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -143,29 +181,35 @@ namespace GAZT.ViewModel.NewViewModel
                     //Uri uri = new Uri(pdfUrl);
                     //Device.OpenUri(uri);
                     _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    
                 }
                 else
                 {
+                    
                     //pop that certificate is not available
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
+
+                    }); 
                 }
             }
             else
             {
                 if (pdfUrl != null)
                 {
+                    
                     _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
+                    
                     //pop that certificate is not available
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     });
+                    
                 }
             }
         }

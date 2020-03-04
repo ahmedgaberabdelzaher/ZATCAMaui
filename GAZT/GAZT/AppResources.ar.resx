@@ -2098,6 +2098,10 @@
     <value>لا يزال الملف قيد التحميل</value>
     <comment>PDF viewer</comment>
   </data>
+    <data name="ZZCountryCode" xml:space="preserve">
+    <value>+9665</value>
+    <comment>PDF viewer</comment>
+  </data>
   <data name="ZZAlreadyhaveTIN" xml:space="preserve">
     <value>أمـلك رقم مميز</value>
     <comment>Sign up</comment>

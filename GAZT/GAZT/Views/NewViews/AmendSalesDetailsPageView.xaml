@@ -70,7 +70,7 @@
                             </Frame>
                             <custom:GAZTBorderlessEntry x:Name="NewValue" Grid.Row="4" Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                  <!--<custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue/>
+                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue />
                                 </custom:GAZTBorderlessEntry.Behaviors>-->
                             </custom:GAZTBorderlessEntry>
                             <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
