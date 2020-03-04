@@ -55,16 +55,16 @@
 
                     <Label Text="{x:Static local:AppResources.FiscalYear}"  Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="{Binding Persl}" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <Label Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <Label Text="{x:Static local:AppResources.FinancialPeriodFrom}" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                     <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                     <Label x:Name="date"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                     <Label x:Name="date" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                   </StackLayout>
                     <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}"  Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
-                    <Label Text="{Binding Fbnum}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <Label Text="{Binding Fbnum}" FontFamily="{StaticResource SSTArBold}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                     <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
@@ -72,7 +72,7 @@
 
                     </Label>
 
-                    <Label  Grid.Row="8" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label  Grid.Row="8" Grid.Column="1" FontFamily="{StaticResource SSTArBold}"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Estsl}"/>
@@ -90,7 +90,7 @@
                     </Image> 
                     <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Cpamt}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Cpamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Cpamt}" />
@@ -109,7 +109,7 @@
                     </Image>
                     <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Zbamt}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Zbamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Zbamt}"/>
@@ -127,7 +127,7 @@
                     </Image>
                     <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
-                    <Label Text="{Binding Zkamt}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label Text="{Binding Zkamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
                                     <FormattedString>
                                       <Span Text="{Binding Zkamt}"/>

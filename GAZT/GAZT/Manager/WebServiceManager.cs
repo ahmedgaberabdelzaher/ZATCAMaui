@@ -1743,86 +1743,101 @@ namespace GAZT.Manager
             {
                 try
                 {
-
-                    if (vATDeclaration.d != null)
+                    if (vATDeclaration != null && vATDeclaration.d != null)
                     {
-                        RequestVATDeclaration = vATDeclaration;
-                        RequestVATDeclaration.d.SubmitFg = "X";
-                        ATTACHSet aTTACHSet = new ATTACHSet();
-                        aTTACHSet.results = new List<Attachment>();
-                        RequestVATDeclaration.d.ATTACHSet = aTTACHSet;
-                    }
 
-                    VATDeclaration _vATDeclarationD = new VATDeclaration();
-                    char LangZ = GetLangZParameter();
-                    string lang = UtilityManager.GetLanguageParameter();
-                    String url = Constants.SaveVATDeclarationData;
-                    vATDeclaration.d.Langz = lang;
-
-                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
-                    var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    var detailJson = res.Content.ReadAsStringAsync().Result;
-
-                    _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
-
-                    if (_vATDeclarationD != null)
-                    {
-                        if (_vATDeclarationD.d != null)
+                        if (vATDeclaration.d != null)
                         {
-                            if (_vATDeclarationD.d.NOTESSet == null)
+                            RequestVATDeclaration = vATDeclaration;
+                            if (string.IsNullOrEmpty(vATDeclaration.d.Fbnum))
                             {
-                                NOTESSet nOTEs = new NOTESSet();
-                                nOTEs.results = new List<Note>();
-                                _vATDeclarationD.d.NOTESSet = nOTEs;
+                                RequestVATDeclaration.d.SubmitFg = "X";
                             }
-
-
-                            if (_vATDeclarationD.d.IBANSet == null)
+                            else
                             {
-                                IBANSet iBANSet = new IBANSet();
-                                iBANSet.results = new List<Result2>();
-                                _vATDeclarationD.d.IBANSet = iBANSet;
+                                RequestVATDeclaration.d.SubmitFg = string.Empty;
                             }
-
-
-                            if (_vATDeclarationD.d.CFSet == null)
-                            {
-                                CFSet cFSet = new CFSet();
-                                cFSet.results = new List<Result3>();
-                                _vATDeclarationD.d.CFSet = cFSet;
-                            }
-
-                            if (_vATDeclarationD.d.ATTACHSet == null)
-                            {
-                                ATTACHSet aTTACHSet = new ATTACHSet();
-                                aTTACHSet.results = new List<Attachment>();
-                                _vATDeclarationD.d.ATTACHSet = aTTACHSet;
-                            }
-
-                            if (_vATDeclarationD.d.ADRSet == null)
-                            {
-                                ADRSet aDRSet = new ADRSet();
-                                aDRSet.results = new List<Result5>();
-                                _vATDeclarationD.d.ADRSet = aDRSet;
-                            }
-                            if (_vATDeclarationD.d.VATR_MSGSet == null)
-                            {
-                                VATRMSGSet vATRMSGSet = new VATRMSGSet();
-                                vATRMSGSet.results = new List<object>();
-                                _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
-                            }
+                            //RequestVATDeclaration.d.SubmitFg = "";
+                            ATTACHSet aTTACHSet = new ATTACHSet();
+                            aTTACHSet.results = new List<Attachment>();
+                            RequestVATDeclaration.d.ATTACHSet = aTTACHSet;
                         }
 
-                    }
+                        VATDeclaration _vATDeclarationD = new VATDeclaration();
+                        char LangZ = GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.SaveVATDeclarationData;
+                        vATDeclaration.d.Langz = lang;
 
-                    return _vATDeclarationD;
+                        // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+                        client.DefaultRequestHeaders.Add("Token", App.Token);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+
+                        _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+
+                        if (_vATDeclarationD != null)
+                        {
+                            if (_vATDeclarationD.d != null)
+                            {
+                                if (_vATDeclarationD.d.NOTESSet == null)
+                                {
+                                    NOTESSet nOTEs = new NOTESSet();
+                                    nOTEs.results = new List<Note>();
+                                    _vATDeclarationD.d.NOTESSet = nOTEs;
+                                }
+
+
+                                if (_vATDeclarationD.d.IBANSet == null)
+                                {
+                                    IBANSet iBANSet = new IBANSet();
+                                    iBANSet.results = new List<Result2>();
+                                    _vATDeclarationD.d.IBANSet = iBANSet;
+                                }
+
+
+                                if (_vATDeclarationD.d.CFSet == null)
+                                {
+                                    CFSet cFSet = new CFSet();
+                                    cFSet.results = new List<Result3>();
+                                    _vATDeclarationD.d.CFSet = cFSet;
+                                }
+
+                                if (_vATDeclarationD.d.ATTACHSet == null)
+                                {
+                                    ATTACHSet aTTACHSet = new ATTACHSet();
+                                    aTTACHSet.results = new List<Attachment>();
+                                    _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+                                }
+
+                                if (_vATDeclarationD.d.ADRSet == null)
+                                {
+                                    ADRSet aDRSet = new ADRSet();
+                                    aDRSet.results = new List<Result5>();
+                                    _vATDeclarationD.d.ADRSet = aDRSet;
+                                }
+                                if (_vATDeclarationD.d.VATR_MSGSet == null)
+                                {
+                                    VATRMSGSet vATRMSGSet = new VATRMSGSet();
+                                    vATRMSGSet.results = new List<object>();
+                                    _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+                                }
+                            }
+
+                        }
+
+                        return _vATDeclarationD;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 catch (Exception ex)
                 {

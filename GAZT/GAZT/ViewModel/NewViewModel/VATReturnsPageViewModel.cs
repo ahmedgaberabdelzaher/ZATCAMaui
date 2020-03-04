@@ -2665,6 +2665,7 @@ namespace GAZT.ViewModel.NewViewModel
                                             //   VATDeclarationData.d.StepNumberz = "04";
 
                     //VATDeclarationData.d.StepNumber = "00";
+                   // VATDeclarationData.d.Fbguid = string.Empty;
                     VATDeclarationData.d.StepNumberz = "04";
                     VATDeclarationData.d.UserTypz = "TP";
                     VATDeclarationData.d.Operationz = operation;
