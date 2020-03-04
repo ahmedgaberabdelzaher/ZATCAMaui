@@ -2089,4 +2089,84 @@ Should we require further information, we would be in contact.</value>
     <value>The file is still loading</value>
     <comment>PDF viewer</comment>
   </data>
+  <data name="ZZAlreadyhaveTIN" xml:space="preserve">
+    <value>Already have TIN</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCreateYourGAZTAccount" xml:space="preserve">
+    <value>Create Your GAZT Account</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCRNumber" xml:space="preserve">
+    <value>CR Number</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCurrentlytheappsupportsindividualTaxPayerregistration" xml:space="preserve">
+    <value>Currently, the app supports individual Tax Payer registration</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZDateofBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZEmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZEstimatedSalesForFiscalYear" xml:space="preserve">
+    <value>Estimated Sales for Fiscal Year</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZIagreeontermsAndconditions" xml:space="preserve">
+    <value>I agree on terms &amp; conditions</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZIDType" xml:space="preserve">
+    <value>ID Type</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZIssuingCity" xml:space="preserve">
+    <value>Issuing City</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZLicenseNumber" xml:space="preserve">
+    <value>License Number</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZLicenseNumberIssuedBy" xml:space="preserve">
+    <value>License Number Issued By</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZMobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZNationalIQAMAIDisnotvalid" xml:space="preserve">
+    <value>National/IQAMA ID {0} is not valid.</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZPhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow" xml:space="preserve">
+    <value>Select at least one of the fields (Commercial Registration Number or Licence) below</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZTermsAndConditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZTIN" xml:space="preserve">
+    <value>TIN</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZVerificationsCode" xml:space="preserve">
+    <value>Verifications Code</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCountryCode" xml:space="preserve">
+    <value>+9665</value>
+    <comment>PDF viewer</comment>
+  </data>
 </root>

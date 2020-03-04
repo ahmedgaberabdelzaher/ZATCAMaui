@@ -6,52 +6,23 @@
              mc:Ignorable="d"
              FlowDirection="LeftToRight"
              Title="Terms and Conditions"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
     <ContentPage.Content>
         <StackLayout>
-            <!--<Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90*"/>
-                    <RowDefinition Height="10*"/>
-                  
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-              
-                <StackLayout Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-                    <ScrollView>
-                        <WebView x:Name="TCWebView" HeightRequest="1"/>
-                    </ScrollView>
-                </StackLayout>
-
-                <StackLayout Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" >
+            
+                <WebView x:Name="TCWebView" HeightRequest="870" WidthRequest="1000" />
+                <StackLayout HeightRequest="30" WidthRequest="1000" Orientation="Horizontal">
                     <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}" VerticalOptions="Start"  Margin="10,0,0,0" >
 
                     </CheckBox>
-                    <Label Text="I agree on terms and conditions"  HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,10,10,0"/>
+                <Label Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,10,10,0"/>
 
                 </StackLayout>
+            <StackLayout HeightRequest="100" WidthRequest="1000">
+                <Button Text="Submit" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>
 
-            </Grid>-->
-            <AbsoluteLayout>
-
-
-                <WebView x:Name="TCWebView" AbsoluteLayout.LayoutBounds="0,0,1000,.8" AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional" BackgroundColor="Red"/>
-                    
-                
-
-
-
-
-                <!--<StackLayout AbsoluteLayout.LayoutBounds="0,800,1000,200" AbsoluteLayout.LayoutFlags="XProportional" Orientation="Horizontal" BackgroundColor="Black">
-                    <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}" VerticalOptions="Start"  Margin="10,0,0,0" >
-
-                    </CheckBox>
-                    <Label Text="I agree on terms and conditions"  HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,10,10,0"/>
-
-                </StackLayout>-->
-            </AbsoluteLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

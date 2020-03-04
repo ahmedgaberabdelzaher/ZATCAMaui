@@ -167,95 +167,143 @@
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
                                                             <RowDefinition Height="Auto" />
-                                                              <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
                                                         </Grid.RowDefinitions>
 
                                                         <Label Text="{Binding FbtText}" FontFamily="{StaticResource SSTArBold}" Margin="8,0,8,0" 
-                                   Style="{StaticResource GAZTCaptionGreenLabelStyle}"  TextColor="#065E49"
+                                                       Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                       TextColor="#065E49"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="1"
-                                                           Grid.ColumnSpan="4"/>
+                                                       Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Grid.ColumnSpan="4"/>
 
-                                                       
-                                                        <Label Text="{x:Static local:AppResources.FiscalYear}" 
+
+                                                        <!--<Label Text="{x:Static local:AppResources.FiscalYear}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                            Margin="8,0,8,0"
                                    Grid.Row="1"
-                                   Grid.Column="1"/>
+                                   Grid.Column="1"/>-->
 
                                                         <Label Text="{Binding TaxPeriod}" FontFamily="{StaticResource SSTArBold}"
                                                   
-                                  Margin="-7,0,-7,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                  Margin="8,0,8,0"
+                                                               
+                                     Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="2" />
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="4"/>
 
                                                         <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="1"/>
+                                                           Style="{StaticResource MiniGoldLabelStyle}"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
 
                                                         <local1:CustomLabel Text="{Binding Period}" FontFamily="{StaticResource SSTArBold}"
-                                                  
-                                  Margin="-7,0,-7,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="2" />
+                                                                             Margin="8,0,8,0" 
+                                                                             Style="{StaticResource MiniGrayLabelStyle}"
+                                                                             HorizontalOptions="StartAndExpand"
+                                                                             VerticalOptions="CenterAndExpand"
+                                                                             Grid.Row="3"
+                                                                             Grid.Column="1"
+                                                                             Grid.ColumnSpan="4" />
 
                                                         <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="1"/>
+                                                                Style="{StaticResource MiniGoldLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="4"
+                                                                Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
 
                                                         <Label Text="{Binding DueDtC}" FontFamily="{StaticResource SSTArBold}"
                                                   
-                                  Margin="-7,0,-7,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="2" />
+                                                               Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGrayLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="5"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4" />
 
                                                         <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="1"/>
+                                                               Style="{StaticResource MiniGoldLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="6"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4"/>
 
                                                         <Label Text="{Binding Status}" FontFamily="{StaticResource SSTArBold}"
-                                                  
-                                  Margin="-7,0,-7,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="2" />
+                                                                Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGrayLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="7"
+                                                                Grid.Column="1"
+                                                                Grid.ColumnSpan="4" />
 
-<custom:CustomLabel Text="{x:Static local:AppResources.ZReferenceNumber}"  Grid.Row="5" Grid.Column="1" Margin="8,0,8,0" LineBreakMode="WordWrap" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand"  Style="{StaticResource MiniGoldLabelStyle}"/>
+                                                        <custom:CustomLabel
+                                                            Text="{x:Static local:AppResources.ZReferenceNumber}"
+                                                            Grid.Row="8"
+                                                            Margin="8,0,8,0"
+                                                            LineBreakMode="WordWrap"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGoldLabelStyle}"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="4" />
 
-                    <custom:CustomLabel Text="{Binding Fbnum}" FontFamily="{StaticResource SSTArBold}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"  Margin="-7,0,-7,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource MiniGrayLabelStyle}"/>
+                                                        <custom:CustomLabel
+                                                            Text="{Binding Fbnum}"
+                                                            FontFamily="{StaticResource SSTArBold}"
+                                                            Grid.Row="9"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="2"
+                                                             Margin="8,0,8,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGrayLabelStyle}"/>
 
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                        <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="5"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                        <Image  Grid.Row="1"
+                                                                Grid.Column="3"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="10"
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="Center"/>
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Margin="0,0,0,0"  BackgroundColor="{Binding BorderColour}" VerticalOptions="Fill" HorizontalOptions="Fill" WidthRequest="2"/>
+                                                           Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="{Binding BorderColour}"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Fill"
+                                                            WidthRequest="2"/>
 
 
                                                         <BoxView  
-                     Grid.Row="0" Grid.Column="3" Grid.RowSpan="6" Margin="0,0,0,0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Start" WidthRequest="1"/>
+                                                         Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="Gray"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Start"
+                                                            WidthRequest="1"/>
 
 
                                                     </Grid>
@@ -283,10 +331,10 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-                  <local1:CustomLabel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                <local1:CustomLabel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                 </local1:CustomLabel>
             </Grid>
-            
+
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">

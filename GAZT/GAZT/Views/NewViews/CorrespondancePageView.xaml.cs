@@ -39,10 +39,8 @@ namespace GAZT.Views.NewViews
 
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-          
-
-
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+            viewModel.OnZAKATClicked();
         }
 
         private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
@@ -50,18 +48,16 @@ namespace GAZT.Views.NewViews
             
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-           
-
-
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+            viewModel.OnVATLabelClicked();
         }
         private void ClickGestureRecognizer_ClickedForET(object sender, EventArgs e)
         {
             
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-         
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+            viewModel.OnEtLabelClicked();
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -102,7 +98,9 @@ namespace GAZT.Views.NewViews
 
          
           await  viewModel.onPageLoad();
-           
+            viewModel.SetData();
+
+
 
         }
         //private void ZakatActions_Clicked(object sender, EventArgs e)

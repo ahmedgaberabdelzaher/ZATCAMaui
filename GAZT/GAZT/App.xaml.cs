@@ -63,7 +63,9 @@ namespace GAZT
         public static string CorrespondenceDetailsPageView = "CorrespondenceDetailsPageView";
         public static string FormBundleStatusPageView = "FormBundleStatusPageView";
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
-
+        public static string SignUpFormPageView = "SignUpFormPageView";
+        public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
+        
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
