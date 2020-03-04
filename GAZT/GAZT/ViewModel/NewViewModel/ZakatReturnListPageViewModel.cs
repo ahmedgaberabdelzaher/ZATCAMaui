@@ -411,8 +411,10 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                         }
 
-
-                        myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        //if (SelectedZakatReturn.Fbtyp.Equals("FZ12") || SelectedZakatReturn.Fbtyp.Equals("ZKTE"))
+                        //{
+                        //    myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        //}
                     }
 
                     MyZakatReturns = myZakatReturnsList;
