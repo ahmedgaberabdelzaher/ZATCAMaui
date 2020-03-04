@@ -3663,5 +3663,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
             }
         }
+        
+        public static string ZZCountryCode {
+            get {
+                return ResourceManager.GetString("ZZCountryCode", resourceCulture);
+            }
+        }
     }
 }

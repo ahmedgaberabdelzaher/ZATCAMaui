@@ -101,7 +101,6 @@ namespace GAZT.Views.NewViews
             base.OnDisappearing();
             AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue = viewModel.NewValue;
             AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason = viewModel.ChangeReason;
-
         }
 
         public void OnEntryUnFocussed(object sender, EventArgs args)
