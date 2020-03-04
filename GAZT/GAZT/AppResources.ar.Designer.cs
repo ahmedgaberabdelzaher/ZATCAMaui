@@ -3669,5 +3669,20 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCountryCode", resourceCulture);
             }
         }
+        public static string ZZTermsAndConditions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
+            }
+        }
+        public static string ZZIagreeontermsAndconditions
+        {
+            get
+            {
+                return ResourceManager.GetString("ZZIagreeontermsAndconditions", resourceCulture);
+            }
+        }
+        
     }
 }

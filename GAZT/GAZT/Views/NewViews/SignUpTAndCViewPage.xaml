@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              FlowDirection="LeftToRight"
-             Title="{x:Static local:AppResources.ZZTermsAndConditions}"
+             Title="Terms and Conditions"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
     <ContentPage.Content>
         <StackLayout>

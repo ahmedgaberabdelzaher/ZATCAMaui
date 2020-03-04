@@ -55,11 +55,11 @@
                         </Grid.ColumnDefinitions>
                         <Label Text="{x:Static local:AppResources.ZZCurrentlytheappsupportsindividualTaxPayerregistration}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <CheckBox x:Name="chkTAndC"    VerticalOptions="Start"  Margin="10,0,0,0" >
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                            <CheckBox VerticalOptions="Start"  Margin="10,0,0,0" >
 
                             </CheckBox>
-                            <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,10,10,0"/>
+                            <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,10,10,0"/>
 
                         </StackLayout>
 

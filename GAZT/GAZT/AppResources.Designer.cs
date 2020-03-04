@@ -4459,6 +4459,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to +9665.
+        /// </summary>
+        public static string ZZCountryCode {
+            get {
+                return ResourceManager.GetString("ZZCountryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
         public static string ZZCreateNotes {
