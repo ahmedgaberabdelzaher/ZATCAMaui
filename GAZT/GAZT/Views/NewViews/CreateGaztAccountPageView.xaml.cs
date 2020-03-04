@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUpFormPageView : ContentPage
+    public partial class CreateGaztAccountPageView : ContentPage
     {
-        SignUpFormPageViewModel viewModel;
-        public SignUpFormPageView()
+        CreateGaztAccountPageViewModel viewModel;
+        public CreateGaztAccountPageView()
         {
-            viewModel = App.Locator.SignUpFormPageView;
             InitializeComponent();
+            viewModel = App.Locator.CreateGaztAccountPageView;
             this.BindingContext = viewModel;
         }
     }

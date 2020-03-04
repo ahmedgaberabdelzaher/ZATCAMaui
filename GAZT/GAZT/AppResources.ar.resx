@@ -1212,7 +1212,7 @@
     <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>
   </data>
   <data name="DraftSaved" xml:space="preserve">
-    <value>{0}تم حفظ نموذج الإقرار الضريبي بنجاح</value>
+    <value>تم حفظ نموذج الإقرار الضريبي بنجاح{0}</value>
   </data>
   <data name="DownloadAcknowlwdgement" xml:space="preserve">
     <value>تحميل إشعار الاستلام</value>
@@ -1673,7 +1673,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>يرجى اختيار مربع إخلاء المسؤولية قبل التقديم</value>
+    <value>م يتم اي تغييرات ، لا يمكن إصدار الإقرار</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -1705,7 +1705,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTotalVATSales" xml:space="preserve">
-    <value>المبيعات عبر نقاط البيع</value>
+    <value>مبيعات القيمة المضافة</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZYoucannotuploadmorethan5attachment" xml:space="preserve">
@@ -1757,7 +1757,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports" xml:space="preserve">
-    <value>مجموع كالّ من )المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات(</value>
+    <value>مجموع كل من (المبيعات عبر نقاط البيع + العقود في منصة اعتماد + قيمة الصادرات)</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZTheUndisputedAmount" xml:space="preserve">
@@ -2097,5 +2097,81 @@
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
     <comment>PDF viewer</comment>
+  </data>
+  <data name="ZZAlreadyhaveTIN" xml:space="preserve">
+    <value>أمـلك رقم مميز</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCreateYourGAZTAccount" xml:space="preserve">
+    <value>إنشاء حساب في الهيئة العامة للزكاة والدخل</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCRNumber" xml:space="preserve">
+    <value>رقم السجل التجاري</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZCurrentlytheappsupportsindividualTaxPayerregistration" xml:space="preserve">
+    <value>Currently, the app supports individual Tax Payer registration</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZDateofBirth" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZEmailAddress" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZEstimatedSalesForFiscalYear" xml:space="preserve">
+    <value>المبيعات المقدرة للسنة المالية</value>
+    <comment>Estimated Zakat</comment>
+  </data>
+  <data name="ZZIagreeontermsAndconditions" xml:space="preserve">
+    <value>تم الاطلاع على الشروط و الأحكام و أوافق على كل ما تضمنه و يترتب عليها كافة الآثار النظامية على المكلف، علما بأنها قابلة للتحديث ويلزم متابعتها بشكل مستمر.</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZIssuingCity" xml:space="preserve">
+    <value>مدينة الاصدار</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZLicenseNumber" xml:space="preserve">
+    <value>رقم الرخصة</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZLicenseNumberIssuedBy" xml:space="preserve">
+    <value>جهة الإصدار</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZMobileNumber" xml:space="preserve">
+    <value>رقم الجوال</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZNationalIQAMAIDisnotvalid" xml:space="preserve">
+    <value>رقم الهوية/الاقامة {0} غير صحيح</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZPhoneNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow" xml:space="preserve">
+    <value>الرجاء اختيار إدخال رقم الرخصة أو رقم السجل التجاري</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZTermsAndConditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZTIN" xml:space="preserve">
+    <value>الرقم المميز</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZVerificationsCode" xml:space="preserve">
+    <value>رمز التحقق</value>
+    <comment>Sign up</comment>
   </data>
 </root>

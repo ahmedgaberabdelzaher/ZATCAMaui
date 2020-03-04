@@ -64,7 +64,8 @@ namespace GAZT
         public static string FormBundleStatusPageView = "FormBundleStatusPageView";
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
-
+        public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
+        
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
@@ -131,7 +132,7 @@ namespace GAZT
 
 
              VATDeclaration vAT=null;
-            CustomNavigation navigationPage = new CustomNavigation(new SignUpTAndCViewPage()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
