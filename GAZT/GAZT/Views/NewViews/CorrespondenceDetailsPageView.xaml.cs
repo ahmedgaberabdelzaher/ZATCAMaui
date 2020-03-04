@@ -22,10 +22,30 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
-            CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
+            viewModel.IsAttachmentEnabled = false;
+            
+
+           CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
                 CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+
+                if ((CorrespondenceD != null) && (CorrespondenceD.d!=null) && (CorrespondenceD.d.results!=null)) 
+                {
+                    string response = CorrespondenceD.d.results.LastOrDefault().Attfg;
+                    if (response.Equals("X"))
+                    {
+                        viewModel.IsAttachmentEnabled = true;
+                       
+                    }
+                    else
+                    {
+                        Attachment_Label.GestureRecognizers.Clear();
+                        Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
+                        viewModel.IsAttachmentEnabled = false; }
+
+                }
+
                 PopToRootPage();
             }
             catch (InternetException ex)
