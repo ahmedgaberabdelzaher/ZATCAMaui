@@ -56,8 +56,8 @@ namespace GAZT.Views.NewViews
             
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-         
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+            viewModel.OnEtLabelClicked();
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
