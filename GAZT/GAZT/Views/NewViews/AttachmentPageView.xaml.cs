@@ -39,6 +39,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
+                viewModel.TotalAttachmentSize = Convert.ToDecimal(0.00);
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
