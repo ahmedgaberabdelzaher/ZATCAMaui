@@ -81,5 +81,14 @@ namespace GAZT.Helper
         public static string GAZTGetFormBunleAccountNumberModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/ItemSet?&$format=json&saml2=disabled&$filter=Lang eq ";
         #endregion
 
+        #region SignUp
+        public static string GAZTGetCityListForSignUp = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";
+        public static string GAZTSiguupValidateIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet(Tin='',Idtype='ZS0001',Idnum='1334433443',Country='',PassExpDt='',TaxpDob='20200227')?$format=json&Saml2=disabled";
+        public static string GAZTSiguupValidateCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet(Crnum=' 1010078271')?$format=json&saml2=disabled";
+        public static string GAZTSiguupCheckDuplicate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ID_DUPLICAE_CHECK_SRV/permit_detSet(Partner='',Type='BUP002',Idnumber='4030132365',Institute='90702',Country='SA',City='',StartDt='')?$format=json&Saml2=disabled";
+        public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";
+
+        #endregion
+
     }
 }

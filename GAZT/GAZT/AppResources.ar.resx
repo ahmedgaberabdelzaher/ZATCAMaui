@@ -2098,7 +2098,7 @@
     <value>لا يزال الملف قيد التحميل</value>
     <comment>PDF viewer</comment>
   </data>
-    <data name="ZZCountryCode" xml:space="preserve">
+  <data name="ZZCountryCode" xml:space="preserve">
     <value>+9665</value>
     <comment>PDF viewer</comment>
   </data>
@@ -2176,6 +2176,46 @@
   </data>
   <data name="ZZVerificationsCode" xml:space="preserve">
     <value>رمز التحقق</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZConfirmationcodesenttoemailaddress" xml:space="preserve">
+    <value>رمز التحقق المرسل إلى البريد الإلكتروني</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZConfirmationcodesenttoMobileNumber" xml:space="preserve">
+    <value>رمز التحقق المرسل إلى رقم الجوال</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZConfirmpassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZGCCID" xml:space="preserve">
+    <value>هوية مواطني دول الخليج</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZIqamaID" xml:space="preserve">
+    <value>الإقامة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZName" xml:space="preserve">
+    <value>الاسم</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZNationalID" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
+    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZResendtheverificationcode" xml:space="preserve">
+    <value>اعادة ارسال الرمز</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZThecodewillbeexpiredwithin" xml:space="preserve">
+    <value>الوقت المتبقي لصلاحية الرمز المُرسل</value>
     <comment>Sign up</comment>
   </data>
 </root>

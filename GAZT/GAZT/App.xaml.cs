@@ -102,7 +102,7 @@ namespace GAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-            String langName = "ar-AE";//"en-US";// "ar-AE";
+            String langName = "en-US";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
@@ -129,9 +129,17 @@ namespace GAZT
             //}
             onFontFamilyChanged();
 
+            try
+            {
+                httpClientHandler = new HttpClientHandler();
+                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+            }
+            catch (Exception ex)
+            {
 
+            }
 
-             VATDeclaration vAT=null;
+            VATDeclaration vAT=null;
             CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
                //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
@@ -139,15 +147,7 @@ namespace GAZT
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
-            try
-            {
-                httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-            }
-            catch(Exception ex)
-            {
-
-            }
+          
 
             MainPage = navigationPage;
         }
