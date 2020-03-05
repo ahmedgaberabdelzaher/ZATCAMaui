@@ -415,6 +415,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //{
                         //    myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                         //}
+                        myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                     }
 
                     MyZakatReturns = myZakatReturnsList;
