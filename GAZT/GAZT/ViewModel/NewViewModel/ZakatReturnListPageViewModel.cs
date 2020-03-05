@@ -429,9 +429,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
 
             }
-           
-
-          
         }
 
         public void PopToRootPage()
