@@ -10,7 +10,8 @@
                 xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.AttachmentPageView">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  >
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  Grid.Row="0">
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                     <Grid.RowDefinitions>
@@ -206,7 +207,22 @@
 
 
                 </Grid>
+            
             </ScrollView>
         </StackLayout>
+              <!-- Acticity indicator layout start -->
+
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout end -->
+                </Grid>
     </ContentPage.Content>
 </ContentPage>
