@@ -16,7 +16,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
-                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="70*"/>
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -26,11 +26,10 @@
                 </Frame>
                 <Label Text="{Binding CorrespondenceTitle}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 </Label>
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
-                    <ScrollView>
-                    <WebView x:Name="CorWebView" HeightRequest="560"/>
-                    </ScrollView>
-                </StackLayout>
+                
+
+                    <WebView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="CorWebView" HeightRequest="560"/>
+                   
                
                     <Frame Grid.Row="2" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                     </Frame>
@@ -39,7 +38,7 @@
                         <TapGestureRecognizer Command="{Binding OnAttachmentClick}" ></TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-               
+                
             </Grid>
         </StackLayout>
     </ContentPage.Content>
