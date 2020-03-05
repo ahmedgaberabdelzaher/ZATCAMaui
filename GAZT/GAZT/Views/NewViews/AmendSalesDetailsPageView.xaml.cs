@@ -55,11 +55,11 @@ namespace GAZT.Views.NewViews
 
             if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
             {
-                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
             else
             {
-                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
 
         }
@@ -112,6 +112,7 @@ namespace GAZT.Views.NewViews
             }
             else
             {
+               
                 // UserName.TextColor = Color.Black;
             }
         }

@@ -39,6 +39,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
+                viewModel.TotalAttachmentSize = Convert.ToDecimal(0.00);
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
@@ -105,13 +106,37 @@ namespace GAZT.Views.NewViews
                 if (attachment != null)
                 {
                     var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OkText, AppResources.ZZCancel);
+                    DeleteAttachment(result, attachment);
+                }
+            }
+
+
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+
+        }
+        public async Task DeleteAttachment(bool result, Attachment attachment)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+                await Task.Run(() =>
+                {
                     if (result)
                     {
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
                         {
-                            var item = (Xamarin.Forms.Image)sender;
                             Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)
@@ -122,18 +147,20 @@ namespace GAZT.Views.NewViews
 
                         }
                     }
-                }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
+
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+
+               
             }
+            catch(Exception ex)
+            {
 
+            }
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -155,7 +182,40 @@ namespace GAZT.Views.NewViews
 
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             //attachment.DocUrl;
-            await Navigation.PushAsync(new PdfView(attachment.DocUrl));
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (attachment.DocUrl != null)
+                {
+                    //Uri uri = new Uri(pdfUrl);
+                    //Device.OpenUri(uri);
+                    viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+            else
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
+            }
+           // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
         }
 
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -166,7 +226,7 @@ namespace GAZT.Views.NewViews
             //attachment.DocUrl;
             if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
             {
-                viewModel.ShowPdf(attachment.DocUrl);
+                viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
             }
 
             if (sender is ListView lv) lv.SelectedItem = null;

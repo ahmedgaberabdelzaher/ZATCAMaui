@@ -427,7 +427,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -473,7 +473,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isDeclarationCheckedForSummary = value;
                 if (_isDeclarationCheckedForSummary == true)
                 {
-                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -520,7 +520,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {
-                    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false))|| App.ICRStatus=="E0055")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -1356,7 +1356,7 @@ namespace GAZT.ViewModel.NewViewModel
                 return _stdpurchasesVat;
             }
             set
-            {
+           {
                 _stdpurchasesVat = value;
                 RaisePropertyChanged("StdpurchasesVat");
             }
@@ -2389,7 +2389,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2426,7 +2426,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-
+          
 
             //  IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseVat) && !string.IsNullOrEmpty(TotalsalesVat))
@@ -2505,7 +2505,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
             IsVisibleSummary = true;
-            if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+            if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055") && IsAmendClicked == false)
             {
                 IsTextBoxEnableForIban = false;
                 IsEnableCheckedRefund = false;
@@ -2578,7 +2578,11 @@ namespace GAZT.ViewModel.NewViewModel
                     IschkRefundDeclaration = false;
                 }
             }
-
+            if (IsFirstSubmission == false)
+            {
+                IsDeclarationCheckedForSummary = true;
+                IschkRefundDeclaration = true;
+            }
             //if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
             //{
             //    IsDeclarationCheckedForSummary = true;
@@ -2678,6 +2682,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsGetAcknowledgementClicked = true;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                 }
@@ -2687,11 +2692,11 @@ namespace GAZT.ViewModel.NewViewModel
                     VATDeclaration resNew = null;
 
 
-                    if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
-                    {
+                    //if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
+                    //{
                         CreateDataForPost();
                         FirstSubmissionCount = 1;
-                        string operation = "05";
+                        string operation = "01";
                         VATDeclarationData.d.StepNumber = "04";
                         VATDeclarationData.d.UserTypz = "TP";
                         VATDeclarationData.d.Operationz = operation;
@@ -2700,7 +2705,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //PopToRootPage();
                         IsLoading = false;
                         resNew = await SaveReturnAndGetReturnAndSetButtons();
-                    }
+                   // }
                     //decimal FourteenA = 0;
                     //if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
                     //{
@@ -2731,7 +2736,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //    VATReturnFormClicked();
                     //    PageSelectedItem = VatTabbledPageList[2];
                     //}
-                    if (resNew != null || (!String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) && App.ICRStatus != "E0045"))
+                    if (resNew != null)
                     {
                         await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
                         VATReturnFormClicked();

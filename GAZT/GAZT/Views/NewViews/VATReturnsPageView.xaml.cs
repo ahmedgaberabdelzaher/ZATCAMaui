@@ -121,7 +121,7 @@ namespace GAZT.Views.NewViews
                     viewModel.IsDeclarationCheckedForSummary = true;
                     viewModel.IsDeclarationCheckedForInstruction = true;
                     viewModel.IsVATRefunCheckedVisible = true;
-                    viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                    //viewModel.ButtonName = AppResources.ZVatDownloadForm;
                     viewModel.IsMainButtonEnabled = false;
                 }
                 else
@@ -682,6 +682,13 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
+
+            //if (EntryVatAmount.Text.Contains(","))
+            //{
+            //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+            //    EntryVatAmount.TextColor = Color.Black;
+            //}
+
             bool iSAllNumeric = true;
             CheckMandetoryFields();
            // char LastChar = ' ';
@@ -702,7 +709,7 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-                if (EntryVatAmount.Text.Length > 0)
+                if (EntryVatAmount!=null && EntryVatAmount.Text.Length > 0)
                 EntryVatAmount.Text = EntryVatAmount.Text.Substring(0, EntryVatAmount.Text.Length - 1).ToString();
             }
         }
@@ -1235,7 +1242,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryStdsalesVat.Placeholder))
+                if (string.IsNullOrEmpty(EntryStdsalesVat.Text))
                 {
                     IsAllEntered = false;
                 }
@@ -1279,7 +1286,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Placeholder))
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text))
                 {
                     IsAllEntered = false;
                 }
@@ -1291,7 +1298,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryImportspaidVat.Placeholder))
+                if (string.IsNullOrEmpty(EntryImportspaidVat.Text))
                 {
                     IsAllEntered = false;
                 }
@@ -1303,7 +1310,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryImportsaccVat.Placeholder))
+                if (string.IsNullOrEmpty(EntryImportsaccVat.Text))
                 {
                     IsAllEntered = false;
                 }
@@ -1327,7 +1334,7 @@ namespace GAZT.Views.NewViews
                 {
                     IsAllEntered = false;
                 }
-                if (string.IsNullOrEmpty(EntryCreditVat.Placeholder))
+                if (string.IsNullOrEmpty(EntryCreditVat.Text))
                 {
                     IsAllEntered = false;
                 }
@@ -1427,6 +1434,18 @@ namespace GAZT.Views.NewViews
 
                 }
             }
+            //if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            //{
+            //    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount.Text);
+            //    EntryVatAmount.Text = ValueWithComma;
+            //    EntryVatAmount.TextColor = Color.Black;
+            //}
+            //else
+            //{
+            //    viewModel.IsMainButtonEnabled = false;
+            //    CheckMandetoryFields();
+            //    // UserName.TextColor = Color.Black;
+            //}
         }
 
         private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
@@ -2485,6 +2504,17 @@ namespace GAZT.Views.NewViews
         {
             Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
         }
+
+        private void EntryVatAmountFocused(object sender, FocusEventArgs e)
+        {
+            //if (EntryVatAmount.Text.Contains(","))
+            //{
+            //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+            //    EntryVatAmount.TextColor = Color.Black;
+            //}
+        }
+
+       
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
     //{
