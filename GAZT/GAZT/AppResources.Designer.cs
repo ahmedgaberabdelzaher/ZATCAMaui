@@ -4432,6 +4432,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation code sent to email address.
+        /// </summary>
+        public static string ZZConfirmationcodesenttoemailaddress {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoemailaddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation code sent to Mobile Number.
+        /// </summary>
+        public static string ZZConfirmationcodesenttoMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        public static string ZZConfirmpassword {
+            get {
+                return ResourceManager.GetString("ZZConfirmpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts from ETIMAD system.
         /// </summary>
         public static string ZZContractsformETIMADsystem {
@@ -4695,6 +4722,15 @@ namespace GAZT {
         public static string ZZFormFiveTappedMessage {
             get {
                 return ResourceManager.GetString("ZZFormFiveTappedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GCC ID.
+        /// </summary>
+        public static string ZZGCCID {
+            get {
+                return ResourceManager.GetString("ZZGCCID", resourceCulture);
             }
         }
         
@@ -4981,6 +5017,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Iqama ID.
+        /// </summary>
+        public static string ZZIqamaID {
+            get {
+                return ResourceManager.GetString("ZZIqamaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issuing City.
         /// </summary>
         public static string ZZIssuingCity {
@@ -5031,6 +5076,24 @@ namespace GAZT {
         public static string ZZMobileNumber {
             get {
                 return ResourceManager.GetString("ZZMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ZZName {
+            get {
+                return ResourceManager.GetString("ZZName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID.
+        /// </summary>
+        public static string ZZNationalID {
+            get {
+                return ResourceManager.GetString("ZZNationalID", resourceCulture);
             }
         }
         
@@ -5095,6 +5158,15 @@ namespace GAZT {
         public static string ZZPasswordislockedInvalidattempts {
             get {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits..
+        /// </summary>
+        public static string ZZPasswordregulationsforSignup {
+            get {
+                return ResourceManager.GetString("ZZPasswordregulationsforSignup", resourceCulture);
             }
         }
         
@@ -5216,6 +5288,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resend the verification code.
+        /// </summary>
+        public static string ZZResendtheverificationcode {
+            get {
+                return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string ZZReset {
@@ -5320,6 +5401,15 @@ namespace GAZT {
         public static string ZZTermsAndConditions {
             get {
                 return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The code will be expired within.
+        /// </summary>
+        public static string ZZThecodewillbeexpiredwithin {
+            get {
+                return ResourceManager.GetString("ZZThecodewillbeexpiredwithin", resourceCulture);
             }
         }
         

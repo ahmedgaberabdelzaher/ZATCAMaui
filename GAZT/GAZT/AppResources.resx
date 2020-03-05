@@ -2169,4 +2169,44 @@ Should we require further information, we would be in contact.</value>
     <value>+9665</value>
     <comment>PDF viewer</comment>
   </data>
+  <data name="ZZConfirmationcodesenttoemailaddress" xml:space="preserve">
+    <value>Confirmation code sent to email address</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZConfirmationcodesenttoMobileNumber" xml:space="preserve">
+    <value>Confirmation code sent to Mobile Number</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZConfirmpassword" xml:space="preserve">
+    <value>Confirm password</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZGCCID" xml:space="preserve">
+    <value>GCC ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZIqamaID" xml:space="preserve">
+    <value>Iqama ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZName" xml:space="preserve">
+    <value>Name</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZNationalID" xml:space="preserve">
+    <value>National ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
+    <value>Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits.</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZResendtheverificationcode" xml:space="preserve">
+    <value>Resend the verification code</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZThecodewillbeexpiredwithin" xml:space="preserve">
+    <value>The code will be expired within</value>
+    <comment>Sign up</comment>
+  </data>
 </root>

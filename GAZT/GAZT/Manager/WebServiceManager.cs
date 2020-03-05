@@ -3385,7 +3385,142 @@ namespace GAZT.Manager
 
             }
         }
-    
+
+        public static SignupCityRootObject GAZTGetCityListForSignup()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                SignupCityRootObject SignupCityList = new SignupCityRootObject();
+                string NewToken = string.Empty; 
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='"+ lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=disabled&$format=json";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                   // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTSignupCityList = client.GetAsync(uri).Result;
+
+                    if (GAZTSignupCityList != null)
+                    {
+                        HttpHeaders headers = GAZTSignupCityList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String SignUpCityList = GAZTSignupCityList.Content.ReadAsStringAsync().Result;
+
+                        SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
+
+
+                    }
+                    return SignupCityList;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+        public static List<IssuedByResponse> GAZTGetIssuedByList()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IssuedByRootObject SignupIssuedByListRoot = new IssuedByRootObject();
+                List<IssuedByResponse> SignupIssuedByList = new List<IssuedByResponse>();
+
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSiguupIssuedByList+ "'[{\"Lang\":\"E\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTSignupIssuedByList = client.GetAsync(uri).Result;
+
+                    if (GAZTSignupIssuedByList != null)
+                    {
+                        HttpHeaders headers = GAZTSignupIssuedByList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String IssuedByList = GAZTSignupIssuedByList.Content.ReadAsStringAsync().Result;
+
+                        SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
+                        SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
+
+
+
+
+                    }
+                    return SignupIssuedByList;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
     }
 
 }

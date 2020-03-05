@@ -19,6 +19,8 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.SignUpFormPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
+            viewModel.OnPageLoad();
+            UsingDDl.SelectedIndex = 1;
         }
     }
 }
