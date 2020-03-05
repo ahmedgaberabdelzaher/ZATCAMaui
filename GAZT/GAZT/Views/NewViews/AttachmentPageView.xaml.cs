@@ -189,7 +189,7 @@ namespace GAZT.Views.NewViews
                 {
                     //Uri uri = new Uri(pdfUrl);
                     //Device.OpenUri(uri);
-                    viewModel._navigationService.NavigateTo(App.PdfiOSView, attachment.DocUrl);
+                    viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
                 }
                 else
                 {
@@ -226,7 +226,7 @@ namespace GAZT.Views.NewViews
             //attachment.DocUrl;
             if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
             {
-                viewModel.ShowPdf(attachment.DocUrl);
+                viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
             }
 
             if (sender is ListView lv) lv.SelectedItem = null;

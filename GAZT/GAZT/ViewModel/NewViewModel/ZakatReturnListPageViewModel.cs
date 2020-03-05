@@ -411,11 +411,11 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                         }
 
-                        //if (SelectedZakatReturn.Fbtyp.Equals("FZ12") || SelectedZakatReturn.Fbtyp.Equals("ZKTE"))
-                        //{
-                        //    myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
-                        //}
-                        myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12") || myZakatReturnsListTemp[i].Fbtyp.Equals("ZKTE") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A-I") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A-I"))
+                        {
+                            myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        }
+                     //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                     }
 
                     MyZakatReturns = myZakatReturnsList;

@@ -394,7 +394,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             return _attachment;
         }
-        public async void ShowPdf(string pdfUrl)
+        public async void ShowPdf(string pdfUrl, String Doguid)
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -402,7 +402,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     //Uri uri = new Uri(pdfUrl);
                     //Device.OpenUri(uri);
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    _navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='"+ Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
                 }
                 else
                 {
