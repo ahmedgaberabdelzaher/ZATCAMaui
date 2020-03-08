@@ -61,35 +61,28 @@ namespace GAZT.Views.NewViews
 
             foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
             {
-                
+
 
                 //if (0 == string.Compare(ItemC.Attfg, "X"))
                 //{
                 //    HTMLContent += @"<img src = 'webimg2.png'/>";
-                    
+
                 //}
 
                 HTMLContent = HTMLContent + ItemC.Tdline;
 
 
             }
-           
-                string trim1= HTMLContent.Replace("</body>"," ");
+
+            string trim1 = HTMLContent.Replace("</body>", " ");
             string newHTMLContent = trim1.Replace("</html>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br><br><br><br><br><br><br><br></body></html>");
-            //<img src="#" width="50%" height="50%">
-            //string newHTMLContent = HTMLContent.Replace("</body></html>", "<img src = 'webimg2.png' width="25%"/></body></html>");
 
             var htmlSource = new HtmlWebViewSource();
-           
+
             htmlSource.Html = newHTMLContent;
-            
-                htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-                CorWebView.Source = htmlSource;
 
-           
-                DisplayAlert(AppResources.Information, AppResources.Somethingwentwrong,AppResources.OkText);   
-            
-
+            htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+            CorWebView.Source = htmlSource;
 
             viewModel.CorrespondenceTitle = CorrModel.Title;
             viewModel.CorrespondenceD = CorrModel;
