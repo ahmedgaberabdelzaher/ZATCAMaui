@@ -40,7 +40,7 @@
         </OnPlatform.Platforms>
     </OnPlatform>
 
-    <!--<OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
+    <OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold"/>
             <On Platform="iOS" Value="GE_SS_Two_Bold.ttf" />
@@ -135,7 +135,7 @@
             <On Platform="iOS" Value="GE_SS_Two_Bold" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
-    </OnPlatform>-->
+    </OnPlatform>
 
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
