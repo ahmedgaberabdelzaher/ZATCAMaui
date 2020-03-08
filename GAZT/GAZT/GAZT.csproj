@@ -190,7 +190,7 @@
     <None Remove="CustomControl\CustomLabel.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GAZTeServicesMobileApNewUI\GAZTeServicesBusinessLibrary\GAZTeServicesBusinessLibrary.csproj" />
+    <ProjectReference Include="..\GAZTeServicesBusinessLibrary\GAZTeServicesBusinessLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
