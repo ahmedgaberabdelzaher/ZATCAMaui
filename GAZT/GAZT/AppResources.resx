@@ -2417,4 +2417,16 @@ Should we require further information, we would be in contact.</value>
     <value>Your new Email and SMS Validation Code has been resent to you</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZPleaseentervalidCRnumber" xml:space="preserve">
+    <value>Please enter valid CR number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillthemandatoryfields" xml:space="preserve">
+    <value>Please fill the mandatory fields.</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should sign up as new user</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

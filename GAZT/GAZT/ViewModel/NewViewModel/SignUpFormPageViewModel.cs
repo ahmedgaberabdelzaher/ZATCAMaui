@@ -30,6 +30,21 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedSignUpUsing = value;
+                if(_selectedSignUpUsing != null)
+                {
+                    if(_selectedSignUpUsing.ID==1)
+                    {
+                        MaxLengthID = 10;
+                    }
+                    else if(_selectedSignUpUsing.ID==2)
+                    {
+                        MaxLengthID = 10;
+                    }
+                    else if (_selectedSignUpUsing.ID == 3)
+                    {
+                        MaxLengthID = 15;
+                    }
+                }
                 RaisePropertyChanged("SelectedSignUpUsing");
             }
         }
@@ -341,6 +356,48 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Captcha");
             }
         }
+
+        private DateTime? _pkrDBO = new DateTime(1953, 11, 24);
+
+        public DateTime? PkrDBO {
+            get
+            {
+                return _pkrDBO;
+            }
+            set
+            {
+                _pkrDBO = value;
+                RaisePropertyChanged("PkrDBO");
+            }
+        }
+
+        private int _maxLengthID = 10;
+        public int MaxLengthID
+        {
+            get
+            {
+                return _maxLengthID;
+            }
+            set
+            {
+                _maxLengthID = value;
+                RaisePropertyChanged("MaxLengthID");
+            }
+        }
+
+        private IDTypeModelRootObject _iDTypeModelRootObject = null;
+        public IDTypeModelRootObject IDTypeModelRootObject
+        {
+            get
+            {
+                return _iDTypeModelRootObject;
+            }
+            set
+            {
+                _iDTypeModelRootObject = value;
+                RaisePropertyChanged("IDTypeModelRootObject");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -364,7 +421,11 @@ namespace GAZT.ViewModel.NewViewModel
 
                 OnCaptchaRegenerateClicked = new Xamarin.Forms.Command(() =>
                 {
-
+                   
+                        StringBuilder captcha = GetCaptcha();
+                        Captcha = captcha.ToString();
+                        EnteredCaptchaValue = string.Empty;
+                    
 
                 });
 
@@ -382,6 +443,46 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Methods 
+
+        public bool ValidateCaptcha()
+        {
+            bool isValidCaptcha = false;
+            isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
+            if (EnteredCaptchaValue.Equals(Captcha))
+            {
+                isValidCaptcha = true;
+                EnteredCaptchaValue = string.Empty;
+            }
+            else
+            {
+                // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+
+                isValidCaptcha = false;
+            }
+            return isValidCaptcha;
+        }
+        public StringBuilder GetCaptcha()
+        {
+            StringBuilder Captcha;
+
+            try
+            {
+                Random random = new Random();
+                string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                StringBuilder captcha = new StringBuilder();
+                for (int i = 0; i < 6; i++)
+                    captcha.Append(combination[random.Next(combination.Length)]);
+                //Session["captcha"] = captcha.ToString();
+                //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
+                Captcha = captcha;
+            }
+            catch
+            {
+                throw;
+            }
+            return Captcha;
+
+        }
         public void OnPageLoad()
         {
             try
@@ -390,24 +491,26 @@ namespace GAZT.ViewModel.NewViewModel
                 IsCRVisible = true;
                 IsLicenseVisible = false;
                 List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
-
                 ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
                 ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                 ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
-
                 SignUpUsingList = ListSignUpUsing;
-
+                SelectedSignUpUsing.ID = 1;
                 LcTypeList = null;
                 List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
                 LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
                 LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
                 LcTypeList = LIstLcType;
+                SelectLCType.ID = 2;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 IssuedByResponseList = WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = IssuedByResponseList;
                 SignupCityRootObject CityListSignup =  WebServiceManager.GAZTGetCityListForSignup();
-
                 CityList = CityListSignup.d.city_dropdownSet.results;
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
+                IDTypeModelRootObject = null;
+               
 
             }
             catch (Exception ex)

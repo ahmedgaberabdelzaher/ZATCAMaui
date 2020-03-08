@@ -12,8 +12,8 @@
     <ContentPage.Content>
         <StackLayout>
             
-                <WebView x:Name="TCWebView" HeightRequest="870" WidthRequest="1000" />
-                <StackLayout HeightRequest="30" WidthRequest="1000" Orientation="Horizontal">
+                <WebView x:Name="TCWebView" HeightRequest="820" WidthRequest="1000" />
+                <StackLayout HeightRequest="80" WidthRequest="1000" Orientation="Horizontal">
                     <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}" VerticalOptions="Start"  Margin="10,0,0,0" >
 
                     </CheckBox>
@@ -21,7 +21,7 @@
 
                 </StackLayout>
             <StackLayout HeightRequest="100" WidthRequest="1000">
-                <Button Text="Submit" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>
+                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>
 
             </StackLayout>
         </StackLayout>

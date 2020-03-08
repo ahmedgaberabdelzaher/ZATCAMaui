@@ -20,7 +20,15 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.SignUpTAndCPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
-            TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+            if (!App.IsArabic)
+            {
+                TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+            }
+            else
+            {
+                TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
+                
+            }
         }
     }
 }

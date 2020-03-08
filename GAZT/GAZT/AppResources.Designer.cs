@@ -5567,11 +5567,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter valid CR number.
+        /// </summary>
+        public static string ZZPleaseentervalidCRnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentervalidCRnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill all the mandatory fields.
         /// </summary>
         public static string ZZPleasefillallthemandatoryfields {
             get {
                 return ResourceManager.GetString("ZZPleasefillallthemandatoryfields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the mandatory fields..
+        /// </summary>
+        public static string ZZPleasefillthemandatoryfields {
+            get {
+                return ResourceManager.GetString("ZZPleasefillthemandatoryfields", resourceCulture);
             }
         }
         
@@ -6231,6 +6249,15 @@ namespace GAZT {
         public static string ZZYourPasswordhasbeenChangedsuccessfully {
             get {
                 return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You should sign up as new user.
+        /// </summary>
+        public static string ZZYoushouldsignupasnewuser {
+            get {
+                return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
             }
         }
         
