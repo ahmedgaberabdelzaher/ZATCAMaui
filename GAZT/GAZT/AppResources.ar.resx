@@ -2218,131 +2218,224 @@
     <value>الوقت المتبقي لصلاحية الرمز المُرسل</value>
     <comment>Sign up</comment>
   </data>
-  <data name="ZTERChooseReportCategory" xml:space="preserve">
-    <value>الرجاء إختيار نوع الإقرار</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZCommercialReiterationNumberconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم السجل التجاري مكون من أرقام فقط</value>
+    <comment>Sign up</comment>
   </data>
-  <data name="ZTEReportCategorySubmitBtn" xml:space="preserve">
-    <value>تقديم</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZCommercialReiterationNumbershouddbe10digits" xml:space="preserve">
+    <value>رقم السجل التجاري مكون من 10 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategory1" xml:space="preserve">
-    <value>ضريبة لمؤسسة / شركة غير مسجلة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
+    <value>تاريخ الميلاد لا يطابق القيمة المدخلة في وزارة التجارة</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategory2" xml:space="preserve">
-    <value>فاتورة لا تتطابق مع المواصفات الضريبية</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
+    <value>البريد الإلكتروني لا يطابق القيمة المدخلة في وزارة التجارة</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategory3" xml:space="preserve">
-    <value>مبلغ الضريبة غير صحيح</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم هوية مجلس دول التعاون الخليجي مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategory4" xml:space="preserve">
-    <value>The imposition of a contract tax before the entry into force of the system</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
+    <value>طول رقم هوية مجلس دول التعاون الخليجي بين 7 الى 10 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategory5" xml:space="preserve">
-    <value>الاحتيال والتهرب الضريبي</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">
+    <value>يبدأ رقم هوية مجلس دول التعاون الخليجي بالرقم صفر</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailAttachment" xml:space="preserve">
-    <value>المرفقات</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZInvalidcommercialregistrationexpirydate" xml:space="preserve">
+    <value>تاريخ إنتهاء السجل التجاري غير صحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>المدينة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZInvalidLicenseNumber" xml:space="preserve">
+    <value>رقم رخصة غير صحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>أسم المنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZIqamaIDconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم الإقامة مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المقاطعة للمنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZIqamaIDlengthis10digit" xml:space="preserve">
+    <value>رقم الإقامة مكون من 10 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZIqamaIDstartswith2" xml:space="preserve">
+    <value>يبدأ رقم الإقامة بالرقم 2</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZLicensenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم الرخصة مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>أسم مقدم التقرير</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZMobilenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم الجوال مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>رقم الجوال</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
+    <value>رقم الجوال يجب أن يبدأ بالرقم 5</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailRegion" xml:space="preserve">
-    <value>المنطقة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
+    <value>رقم الجوال لا يمكن أن يكون أقل من 9 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
-    <value>موقع التقرير</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZNamecannotbeinnonalphabetcharacters" xml:space="preserve">
+    <value>الأسم لا يجب أن يحتوي على أرقام أو رموز</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل التقرير</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZNationalIDconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم الهوية الوطنية مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailTIN" xml:space="preserve">
-    <value>TIN</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZNationalIDlengthis10digit" xml:space="preserve">
+    <value>رقم الهوية الوطنية مكون من 10 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportDetailVATNumber" xml:space="preserve">
-    <value>رقم حساب ضريبة القيمة المضافة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZNationalIDstartswith1" xml:space="preserve">
+    <value>يبدأ رقم الهوية الوطنية بالرقم 1</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportPageHeadingText" xml:space="preserve">
-    <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZNewpasswordandconfirmpassworddoesnotmatch" xml:space="preserve">
+    <value>كلمة السر الجديدة لا تتطابق مع تأكيد كلمة السر</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZCRName" xml:space="preserve">
-    <value>أسم السجل التجاري </value>
+  <data name="ZZPasswordcannothavecharacterinthepassword" xml:space="preserve">
+    <value>كلمة السر لا يمكن أن تحتوي على حرف '"'</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
-    <value>التالي</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPhonenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>رقم الهاتف مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportCategoryPageTittle" xml:space="preserve">
-    <value>My Reports</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPhonenumberhastostartwithnumber1" xml:space="preserve">
+    <value>رقم الهاتف يجب أن يبدأ بالرقم 1</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterCity" xml:space="preserve">
-    <value>أدخل المدينة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPhonenumberlengthcannotbelessthan9digits" xml:space="preserve">
+    <value>رقم الهاتف لا يمكن أن يكون أقل من 9 أرقام</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterDA" xml:space="preserve">
-    <value>أدخل عنوان المقاطعة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidCompanyID" xml:space="preserve">
+    <value>الرجاء إدخال رقم صحيح لمعرف الشركة</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterFN" xml:space="preserve">
-    <value>أدخل أسم المنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidEmailAddress" xml:space="preserve">
+    <value>الرجاء إدخال بريد إلكتروني صحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterFWT" xml:space="preserve">
-    <value>أدخل نوع عمل المنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidGulfCooperationCouncilGCCID" xml:space="preserve">
+    <value>الرجاء إدخال رقم هوية صحيح في مجلس دول التعاون الخليجي</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterRegion" xml:space="preserve">
-    <value>أدخل المنطقة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidID" xml:space="preserve">
+    <value>الرجاء إدخال رقم المعرف الصحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterSA" xml:space="preserve">
-    <value>أدخل عنوان الشارع</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidIqamaID" xml:space="preserve">
+    <value>الرجاء إدخال رقم إقامة صحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormEnterVATno" xml:space="preserve">
-    <value>أدخل رقم حساب ضريبة القيمة المضافة</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidLicenseNumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم رخصة صحيح</value>
+    <comment>Sign Up</comment>
   </data>
-  <data name="ZTERReportFormPageTittle" xml:space="preserve">
-    <value>تفاصيل التقرير</value>
-    <comment>Tax Evasion Report Service</comment>
+  <data name="ZZPleaseenteravalidMobileNumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم جوال صحيح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidNationalID" xml:space="preserve">
+    <value>الرجاء إدخال رقم هوية صحيح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidPhoneNumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم هاتف صحيح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry" xml:space="preserve">
+    <value>الرجاء إدخال أي من "الرمز المعرف للشركة في بلدك" أو "الرقم المميز في بلدك"</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheBirthDate" xml:space="preserve">
+    <value>الرجاء إدخال تاريخ الميلاد</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterthecommercialregistrationexpirydate" xml:space="preserve">
+    <value>الرجاء إدخال تاريخ إنتهاء السجل التجاري</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheCommercialReiterationNumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم السجل التجاري</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheName" xml:space="preserve">
+    <value>الرجاء إدخال الإسم</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheOrganizationName" xml:space="preserve">
+    <value>الرجاء إدخال إسم المؤسسة / الشركة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheTINNumber" xml:space="preserve">
+    <value>الرجاء إدخال الرقم المميز</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterTINinyourcountry" xml:space="preserve">
+    <value>الرجاء إدخال الرقم المميز في بلدك</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillallthemandatoryfields" xml:space="preserve">
+    <value>الرجاء إدخال القيم في كل الحقول الإلزامية</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseselectlicenseissuer" xml:space="preserve">
+    <value>الرجاء إختيار مصدر الرخصة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseselecttheCity" xml:space="preserve">
+    <value>الرجاء إختيار المدينة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPortaluseralreadyregistered" xml:space="preserve">
+    <value>المستدخم المدخل مسجل مسبقاً في بوابة الهيئة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthevaluesfromMinistryofCommerce" xml:space="preserve">
+    <value>رقم السجل التجاري المدخل غير مرتبط بالهوية المدخلة في سجلات وزارة التجارة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofCommerce" xml:space="preserve">
+    <value>البيانات المدخلة نوع المؤسسة ونوع المكلف لا تتوافق مع البيانات الموجودة في وزارة التجارة</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberconsistsofnumbersonly" xml:space="preserve">
+    <value>الرقم المميز مكون من أرقام فقط</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberhastostartwithnumber3" xml:space="preserve">
+    <value>الرقم المميز يجب أن يبدأ بالرقم 3</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberlengthcannotbelessthan10digits" xml:space="preserve">
+    <value>الرقم المميز لا يمكن أن يكون أقل من 10 أرقام</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYournewEmailandSMSValidationCodehasbeenresenttoyou" xml:space="preserve">
+    <value>تم إعادة إرسال رمز التأكيد للبريد الإلكتروني وللجوال</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentervalidCRnumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم سجل تجاري صحيح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillthemandatoryfields" xml:space="preserve">
+    <value>الرجاء تعبئة الحقول الإلزامية</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should sign up as new user</value>
+    <comment>Sign Up</comment>
   </data>
 </root>

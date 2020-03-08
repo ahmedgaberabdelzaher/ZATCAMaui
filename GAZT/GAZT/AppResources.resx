@@ -2209,6 +2209,226 @@ Should we require further information, we would be in contact.</value>
     <value>The code will be expired within</value>
     <comment>Sign up</comment>
   </data>
+  <data name="ZZCommercialReiterationNumberconsistsofnumbersonly" xml:space="preserve">
+    <value>Commercial Reiteration Number consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZCommercialReiterationNumbershouddbe10digits" xml:space="preserve">
+    <value>Commercial Reiteration Number should be 10 digits</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
+    <value>Date of Birth does not match with value in Ministry of Commerce</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
+    <value>Email Address does not match with value in Ministry of Commerce</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly" xml:space="preserve">
+    <value>Gulf Cooperation Council (GCC) ID consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
+    <value>Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">
+    <value>Gulf Cooperation Council (GCC) ID starts with 0</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZInvalidcommercialregistrationexpirydate" xml:space="preserve">
+    <value>Invalid commercial registration expiry date</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZInvalidLicenseNumber" xml:space="preserve">
+    <value>Invalid License Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZIqamaIDconsistsofnumbersonly" xml:space="preserve">
+    <value>Iqama ID consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZIqamaIDlengthis10digit" xml:space="preserve">
+    <value>Iqama ID length is 10 digit</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZIqamaIDstartswith2" xml:space="preserve">
+    <value>Iqama ID starts with 2</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZLicensenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>License number consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZMobilenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>Mobile number consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
+    <value>Mobile number has to start with number 5</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
+    <value>Mobile number length cannot be less than 9 digits</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNamecannotbeinnonalphabetcharacters" xml:space="preserve">
+    <value>Name cannot be in non-alphabet characters</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNationalIDconsistsofnumbersonly" xml:space="preserve">
+    <value>National ID consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNationalIDlengthis10digit" xml:space="preserve">
+    <value>National ID length is 10 digit</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNationalIDstartswith1" xml:space="preserve">
+    <value>National ID starts with 1</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNewpasswordandconfirmpassworddoesnotmatch" xml:space="preserve">
+    <value>New password and confirm password does not match</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPasswordcannothavecharacterinthepassword" xml:space="preserve">
+    <value>Password cannot have '"' character in the password</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPhonenumberconsistsofnumbersonly" xml:space="preserve">
+    <value>Phone number consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPhonenumberhastostartwithnumber1" xml:space="preserve">
+    <value>Phone number has to start with number 1</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPhonenumberlengthcannotbelessthan9digits" xml:space="preserve">
+    <value>Phone number length cannot be less than 9 digits</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidCompanyID" xml:space="preserve">
+    <value>Please enter a valid Company ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidEmailAddress" xml:space="preserve">
+    <value>Please enter a valid Email Address</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidGulfCooperationCouncilGCCID" xml:space="preserve">
+    <value>Please enter a valid Gulf Cooperation Council (GCC) ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidID" xml:space="preserve">
+    <value>Please enter a valid ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidIqamaID" xml:space="preserve">
+    <value>Please enter a valid Iqama ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidLicenseNumber" xml:space="preserve">
+    <value>Please enter a valid License Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidMobileNumber" xml:space="preserve">
+    <value>Please enter a valid Mobile Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidNationalID" xml:space="preserve">
+    <value>Please enter a valid National ID</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenteravalidPhoneNumber" xml:space="preserve">
+    <value>Please enter a valid Phone Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry" xml:space="preserve">
+    <value>Please enter "Company ID in your country" or "TIN in your country"</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheBirthDate" xml:space="preserve">
+    <value>Please enter the Birth Date</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterthecommercialregistrationexpirydate" xml:space="preserve">
+    <value>Please enter the commercial registration expiry date</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheCommercialReiterationNumber" xml:space="preserve">
+    <value>Please enter the Commercial Reiteration Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheName" xml:space="preserve">
+    <value>Please enter the Name</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheOrganizationName" xml:space="preserve">
+    <value>Please enter the Organization Name</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentertheTINNumber" xml:space="preserve">
+    <value>Please enter the TIN Number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterTINinyourcountry" xml:space="preserve">
+    <value>Please enter TIN in your country</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillallthemandatoryfields" xml:space="preserve">
+    <value>Please fill all the mandatory fields</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseselectlicenseissuer" xml:space="preserve">
+    <value>Please select license issuer</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseselecttheCity" xml:space="preserve">
+    <value>Please select the City</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPortaluseralreadyregistered" xml:space="preserve">
+    <value>Portal user already registered</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthevaluesfromMinistryofCommerce" xml:space="preserve">
+    <value>The entered commercial registration number is not related to the entered ID number as per the values from Ministry of Commerce</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofCommerce" xml:space="preserve">
+    <value>The entered values of Entity type and Taxpayer Type does not match the values from Ministry of Commerce</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberconsistsofnumbersonly" xml:space="preserve">
+    <value>TIN number consists of numbers only</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberhastostartwithnumber3" xml:space="preserve">
+    <value>TIN number has to start with number 3</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZTINnumberlengthcannotbelessthan10digits" xml:space="preserve">
+    <value>TIN number length cannot be less than 10 digits</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYournewEmailandSMSValidationCodehasbeenresenttoyou" xml:space="preserve">
+    <value>Your new Email and SMS Validation Code has been resent to you</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseentervalidCRnumber" xml:space="preserve">
+    <value>Please enter valid CR number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillthemandatoryfields" xml:space="preserve">
+    <value>Please fill the mandatory fields.</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should sign up as new user</value>
+    <comment>Sign Up</comment>
+  </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>Please Choose ReportCategory</value>
     <comment>Tax Evasion Report Service</comment>

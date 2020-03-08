@@ -27,9 +27,12 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-        private string _UserName = "3101589352";
-        //private string _UserName = "3101460718";
-
+        // private string _UserName = "3000028177";// can test count match issue
+        //private string _UserName = "3101591813";Jino provided
+        // private string _UserName = "3101762303";
+       private string _UserName = "3101666784";//data available to Amend
+      //  private string _UserName = "3100023233";
+       
         //private string _UserName = string.Empty;
         public string UserName
         {
@@ -72,7 +75,6 @@ namespace GAZT.ViewModel
             }
         }
 
-       
 
         private string _appVersion = App.AppVersion;
         public string AppVersion
@@ -299,8 +301,56 @@ namespace GAZT.ViewModel
             }
         }
 
-        #endregion
 
+        private bool isInvalidEmail;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the entered email is valid or invalid.
+        /// </summary>
+        public bool IsInvalidEmail
+        {
+            get
+            {
+                return this.isInvalidEmail;
+            }
+
+            set
+            {
+                if (this.isInvalidEmail == value)
+                {
+                    return;
+                }
+
+                this.isInvalidEmail = value;
+                this.RaisePropertyChanged("IsInvalidEmail");
+            }
+        }
+
+
+        private string email;
+        /// <summary>
+        /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.
+        /// </summary>
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                if (this.email == value)
+                {
+                    return;
+                }
+
+                this.email = value;
+                this.RaisePropertyChanged("Email");
+            }
+        }
+
+        #endregion
         #region Constructor
 
         public LogInPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -447,7 +497,20 @@ namespace GAZT.ViewModel
 
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                          _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+
+                                        //SYNCFUSION INTEGRATION
+
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        //App.TP.Tin = UserName;
+
+
+                                        //_navigationService.NavigateTo(App.LandingPageView);
+                                        
+                                        //SYNCFUSION INTEGRATION
+
                                     });
                                 }
                                 else

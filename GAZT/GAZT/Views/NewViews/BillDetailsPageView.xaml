@@ -64,8 +64,7 @@
                         <Label.FormattedText>
                              <FormattedString>
                                 <Span  Text="{Binding Stotamt}"  />
-                                <Span Text=" " />                                      
-                                <Span Text="{x:Static local:AppResources.ZSAR}" />
+                               
                             </FormattedString>
                                 </Label.FormattedText>
 
@@ -98,8 +97,6 @@
 
                         <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static local:AppResources.ZSAR}" />
-                                        <Span Text=" " />
                                         <Span  Text="{Binding Totamt}"  />
                                     </FormattedString>
                                 </Label.FormattedText>
