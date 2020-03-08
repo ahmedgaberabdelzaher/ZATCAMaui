@@ -402,10 +402,11 @@ namespace GAZT.ViewModel.NewViewModel
                         EUser = SelectedICR.Euser;
                         VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
                         PopToRootPage();
-                        _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                       
 
                         if (_vATDeclaration != null && _vATDeclaration.d != null)
                         {
+                            _vATDeclaration.d.Fbguid = SelectedICRGUID;
                             VATDeclaration vATDeclaration = new VATDeclaration();
                             VATDeclarationD vATDeclarationD = new VATDeclarationD();
                             Result5 result5 = new Result5();

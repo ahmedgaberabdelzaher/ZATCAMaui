@@ -382,7 +382,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void OnPageLoad()
         {
-            if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+            if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus== "E0055" || App.ICRStatus== "E0058")
             {
                 if (VATReturnsPageViewModel.IsAmend == true)
                 {
