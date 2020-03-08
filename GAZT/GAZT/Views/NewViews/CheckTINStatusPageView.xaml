@@ -34,20 +34,20 @@
 
                         <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsEnabled="False">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryTIN" Placeholder="{Binding TIN}"  PlaceholderColor= "#7D858D"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
 
 
 
                         <Label Text="{x:Static local:AppResources.ZTINStatus}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-                        <Frame IsEnabled="False"  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
+                        <Frame  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryTINStatus" Placeholder="{Binding TINStatus}"  PlaceholderColor= "#7D858D"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryTINStatus" Text="{Binding TINStatus}"   IsReadOnly="True" TextColor="#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
 
 
                         <Label Text="{x:Static local:AppResources.ZLastUpdate}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
-                        <Frame IsEnabled="False"  Grid.Row="5"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
+                        <Frame  Grid.Row="5"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Placeholder="{Binding LastUpdate}"   PlaceholderColor= "#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Text="{Binding LastUpdate}"    IsReadOnly="True" TextColor="#7D858D" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
 
                         <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.GestureRecognizers>
@@ -66,6 +66,7 @@
                              IsVisible="{Binding IsVisibleListItems}"    
                       Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"
             SeparatorVisibility="None"
+                                       BackgroundColor="White"
                                        HeightRequest="220"
             >
                                 <ListView.ItemTemplate>
