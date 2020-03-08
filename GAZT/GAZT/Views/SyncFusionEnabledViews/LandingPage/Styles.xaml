@@ -204,7 +204,7 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
-    <Style x:Key="GAZT_Font_Medium_Bold_CenterAligned_Style" TargetType="Label">
+    <Style x:Key="GAZT_Font_Medium_Bold_Label_CenterAligned_Style" TargetType="Label">
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="White" />
@@ -214,7 +214,7 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
-    <Style x:Key="GAZT_Font_Regular_Bold_CenterAligned_Style" TargetType="Label">
+    <Style x:Key="GAZT_Font_Regular_Bold_Label_CenterAligned_Style" TargetType="Label">
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="White" />
