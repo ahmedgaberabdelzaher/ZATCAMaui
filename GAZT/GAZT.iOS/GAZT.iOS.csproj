@@ -759,4 +759,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Golden_TES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Golden_TES%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Check_Golden_TES%403x.png" />
+  </ItemGroup>
 </Project>

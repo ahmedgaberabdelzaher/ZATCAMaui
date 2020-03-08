@@ -2218,4 +2218,131 @@
     <value>الوقت المتبقي لصلاحية الرمز المُرسل</value>
     <comment>Sign up</comment>
   </data>
+  <data name="ZTERChooseReportCategory" xml:space="preserve">
+    <value>الرجاء إختيار نوع الإقرار</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportCategorySubmitBtn" xml:space="preserve">
+    <value>تقديم</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategory1" xml:space="preserve">
+    <value>ضريبة لمؤسسة / شركة غير مسجلة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategory2" xml:space="preserve">
+    <value>فاتورة لا تتطابق مع المواصفات الضريبية</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategory3" xml:space="preserve">
+    <value>مبلغ الضريبة غير صحيح</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategory4" xml:space="preserve">
+    <value>The imposition of a contract tax before the entry into force of the system</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategory5" xml:space="preserve">
+    <value>الاحتيال والتهرب الضريبي</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailAttachment" xml:space="preserve">
+    <value>المرفقات</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCity" xml:space="preserve">
+    <value>المدينة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityName" xml:space="preserve">
+    <value>أسم المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFDAddress" xml:space="preserve">
+    <value>عنوان المقاطعة للمنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFSAddress" xml:space="preserve">
+    <value>عنوان الشارع للمنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFWType" xml:space="preserve">
+    <value>نوع عمل المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailName" xml:space="preserve">
+    <value>أسم مقدم التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailNumber" xml:space="preserve">
+    <value>رقم الجوال</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailRegion" xml:space="preserve">
+    <value>المنطقة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
+    <value>موقع التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailReportDetails" xml:space="preserve">
+    <value>تفاصيل التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailTIN" xml:space="preserve">
+    <value>TIN</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailVATNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportPageHeadingText" xml:space="preserve">
+    <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZCRName" xml:space="preserve">
+    <value>أسم السجل التجاري </value>
+  </data>
+  <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
+    <value>التالي</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportCategoryPageTittle" xml:space="preserve">
+    <value>My Reports</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterCity" xml:space="preserve">
+    <value>أدخل المدينة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterDA" xml:space="preserve">
+    <value>أدخل عنوان المقاطعة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterFN" xml:space="preserve">
+    <value>أدخل أسم المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterFWT" xml:space="preserve">
+    <value>أدخل نوع عمل المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterRegion" xml:space="preserve">
+    <value>أدخل المنطقة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterSA" xml:space="preserve">
+    <value>أدخل عنوان الشارع</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormEnterVATno" xml:space="preserve">
+    <value>أدخل رقم حساب ضريبة القيمة المضافة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportFormPageTittle" xml:space="preserve">
+    <value>تفاصيل التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
 </root>
