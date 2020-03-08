@@ -394,11 +394,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
+                    ShowSubmitButton();
+                    SetSalesDetailsData(zakatReturnDetailsD);
                     ShowDisclaimer();
                     ShowEditIcon();
-                    ShowSubmitButton();
+                  
                     CheckBoxStatus = false;
-                    SetSalesDetailsData(zakatReturnDetailsD);
+                   
                     //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                 }
                 catch (Exception ex)
