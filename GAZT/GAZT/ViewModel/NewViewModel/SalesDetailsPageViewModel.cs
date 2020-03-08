@@ -1205,8 +1205,8 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails1.SalesType = AppResources.ZZTotalVATSales;
                 salesDetails1.SeparatorVisibility = true;
                 salesDetails1.InformationIconVisibility = true;
-                salesDetails1.InformationFromPartieToCompare = IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails1.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslI);// string.IsNullOrEmpty(zakatReturnDetails.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
-                salesDetails1.EstimateSales = IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslE) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.TvtslE) ? "0.00" : zakatReturnDetails.d.TvtslE;
+                salesDetails1.InformationFromPartieToCompare =  salesDetails1.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslI);// IsThresholdGreaterLessVATAmount ? AppResources.ZNA ://string.IsNullOrEmpty(zakatReturnDetails.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
+                salesDetails1.EstimateSales =  UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslE) + " " + AppResources.ZSAR;//IsThresholdGreaterLessVATAmount ? AppResources.ZNA ://string.IsNullOrEmpty(zakatReturnDetails.d.TvtslE) ? "0.00" : zakatReturnDetails.d.TvtslE;
                 salesDetails1.SelectedEditFieldId = "1";
                 if (IsThresholdGreaterLessVATAmount)
                 {
