@@ -70,6 +70,10 @@ namespace GAZT
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
+        public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
+        public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
+        public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
+
 
 
         public static string fontFamilyBold = null;
@@ -81,7 +85,7 @@ namespace GAZT
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;
-        public static bool IsArabic = true;
+        public static bool IsArabic = false;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -124,7 +128,7 @@ namespace GAZT
             }
 
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SignUpTAndCViewPage()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

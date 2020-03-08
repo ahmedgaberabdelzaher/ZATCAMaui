@@ -394,10 +394,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
+                    ShowSubmitButton();
+                    SetSalesDetailsData(zakatReturnDetailsD);
                     ShowDisclaimer();
                     ShowEditIcon();
-                    ShowSubmitButton();
+                  
                     CheckBoxStatus = false;
+                   
                     //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                 }
                 catch (Exception ex)
@@ -623,7 +626,7 @@ namespace GAZT.ViewModel.NewViewModel
                 
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
-                         _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                        _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
                             HideDisclaimer();
@@ -670,8 +673,9 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                                 ShowOnlyInfoIcon();
-                                SetSalesDetailsData(_zakatReturnDetails);
                                 ShowConfirmButton();
+                                SetSalesDetailsData(_zakatReturnDetails);
+                               
                                 HideDisclaimer();
 
                         }
@@ -683,10 +687,11 @@ namespace GAZT.ViewModel.NewViewModel
                             if (ISAllRequiredDocumentUploadedwithReason)
                                 {
                                     Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                                    ShowConfirmButton();
                                     SetSalesDetailsData(_zakatReturnDetails);
                                     // ShowEditIcon();// Commented 
                                     ShowOnlyInfoIcon();
-                                    ShowConfirmButton();
+                                  
                                     HideDisclaimer();
                                 }
                             else
@@ -934,6 +939,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         private void ShowConfirmButton()
         {
+            SubmitButtonVisibility = false;
             ConfirmButtonVisibility = true;
         }
 
@@ -1224,7 +1230,14 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails2 = new SalesDetails();
                 salesDetails2.SalesType = AppResources.ZZAveragenumberoflabour;
                 salesDetails2.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails2.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoI);// string.IsNullOrEmpty(ZakatReturnDetail.d.LabnoI) ? "0.00" : ZakatReturnDetail.d.LabnoI; // ZakatReturnDetail.d.LabnoI;
-                salesDetails2.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                if(SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails2.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails2.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
                 salesDetails2.SelectedEditFieldId = "2";
                 salesDetails2.SeparatorVisibility = true;
                 salesDetails2.InformationIconVisibility = true;
@@ -1236,7 +1249,15 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails3 = new SalesDetails();
                 salesDetails3.SalesType = AppResources.ZZImportsvalue;
                 salesDetails3.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails3.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.ImpvalI);//string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
-                salesDetails3.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.ImpvalE) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.ImpvalE) ? "0.00" : zakatReturnDetails.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
+
+                if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails3.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails3.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.ImpvalE) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.ImpvalE) ? "0.00" : zakatReturnDetails.d.ImpvalE; // ZakatReturnDetail.d.ImpvalE;
+                }
                 salesDetails3.SelectedEditFieldId = "3";
                 salesDetails3.SeparatorVisibility = true;
                 salesDetails3.InformationIconVisibility = true;
@@ -1246,7 +1267,14 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails4 = new SalesDetails();
                 salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
                 salesDetails4.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails4.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PtoslI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
-                salesDetails4.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
+                if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails4.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails4.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.TvtslResn;
+                }
                 salesDetails4.SeparatorVisibility = false;
                 salesDetails4.InformationIconVisibility = false;
 
@@ -1257,7 +1285,14 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails5 = new SalesDetails();
                 salesDetails5.SalesType = AppResources.ZZContractsformETIMADsystem;
                 salesDetails5.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails5.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.EtimadI);//string.IsNullOrEmpty(ZakatReturnDetail.d.EtimadI) ? "0.00" : ZakatReturnDetail.d.EtimadI; //ZakatReturnDetail.d.EtimadI;
-                salesDetails5.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
+                if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails5.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails5.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
+                }
                 salesDetails5.SelectedEditFieldId = "5";
                 salesDetails5.SeparatorVisibility = false;
                 salesDetails5.InformationIconVisibility = true;
@@ -1268,7 +1303,14 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails6 = new SalesDetails();
                 salesDetails6.SalesType = AppResources.ZZExportsvalue;
                 salesDetails6.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails6.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.ExamtI);//string.IsNullOrEmpty(ZakatReturnDetail.d.ExamtI) ? "0.00" : ZakatReturnDetail.d.ExamtI; //ZakatReturnDetail.d.ExamtResn;
-                salesDetails6.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
+                if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails6.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails6.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; // ZakatReturnDetail.d.ExamtI;
+                }
                 salesDetails6.SelectedEditFieldId = "6";
                 salesDetails6.SeparatorVisibility = true;
                 salesDetails6.InformationIconVisibility = false;
@@ -1278,7 +1320,14 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails7 = new SalesDetails();
                 salesDetails7.SalesType = AppResources.ZZPurchasevalue;
                 salesDetails7.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails7.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PramtI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
-                salesDetails7.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA :  UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PramtE) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.PramtE) ? "0.00" : zakatReturnDetails.d.PramtE; // ZakatReturnDetail.d.PramtE;
+                if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
+                {
+                    salesDetails7.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
+                }
+                else
+                {
+                    salesDetails7.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PramtE) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.PramtE) ? "0.00" : zakatReturnDetails.d.PramtE; // ZakatReturnDetail.d.PramtE;
+                }
                 salesDetails7.SelectedEditFieldId = "7";
                 salesDetails7.SeparatorVisibility = true;
                 salesDetails7.InformationIconVisibility = true;

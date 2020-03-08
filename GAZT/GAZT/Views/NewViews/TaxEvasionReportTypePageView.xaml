@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
+                xmlns:custom="clr-namespace:GAZT"
+              x:Class="GAZT.Views.NewViews.TaxEvasionReportTypePageView"
+             BackgroundColor="White" Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10"  RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="10*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--<Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center">
+                </Label>
+                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                </Frame>
+                <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />-->
+
+                <ScrollView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" >
+                    <Grid   Margin="0" Padding="0,5,0,5" HorizontalOptions="StartAndExpand" RowSpacing="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{x:Static local:AppResources.ZTERReportCategory1}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"  >
+                        </Label>
+                        <Image Grid.Row="0"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" />
+
+                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        <Label  Text="{x:Static local:AppResources.ZTERReportCategory2}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand">
+                        </Label>
+                        <Image Grid.Row="2"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" />
+
+                        <BoxView BackgroundColor="Gray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        <Label Text="{x:Static local:AppResources.ZTERReportCategory3}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand">
+                        </Label>
+                        <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" />
+
+                        <BoxView BackgroundColor="Gray" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        <Label Text="{x:Static local:AppResources.ZTERReportCategory4}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand">
+                        </Label>
+                        <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" />
+
+                        <BoxView BackgroundColor="Gray" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        <Label Text="{x:Static local:AppResources.ZTERReportCategory5}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand">
+                        </Label>
+                        <Image Grid.Row="8"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" />
+
+                        <BoxView BackgroundColor="Gray" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+
+
+
+                    </Grid>
+
+
+
+
+
+
+
+
+
+                </ScrollView>
+
+
+  
+
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
+                    <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" Command="{Binding OnBClicked}" ></Button>
+
+                </StackLayout>
+                <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
+                </Label>
+                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                </Frame>
+                <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+            </Grid>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+</ContentPage>

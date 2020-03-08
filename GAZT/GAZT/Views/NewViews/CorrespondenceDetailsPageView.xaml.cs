@@ -58,28 +58,25 @@ namespace GAZT.Views.NewViews
                 });
             }
             string HTMLContent = string.Empty;
+            string HTMLContentTest = string.Empty;
 
             foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
             {
 
 
-                //if (0 == string.Compare(ItemC.Attfg, "X"))
-                //{
-                //    HTMLContent += @"<img src = 'webimg2.png'/>";
-
-                //}
 
                 HTMLContent = HTMLContent + ItemC.Tdline;
 
 
             }
 
-            string trim1 = HTMLContent.Replace("</body>", " ");
-            string newHTMLContent = trim1.Replace("</html>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br><br><br><br><br><br><br><br></body></html>");
+            //string trim1 = HTMLContent.Replace("</body>", " ");
+            //string newHTMLContent = trim1.Replace("</html>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br><br><br><br><br><br><br><br></body></html>");
 
             var htmlSource = new HtmlWebViewSource();
 
-            htmlSource.Html = newHTMLContent;
+            /*htmlSource.Html = newHTMLContent*/;
+            htmlSource.Html = HTMLContent;
 
             htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
             CorWebView.Source = htmlSource;
