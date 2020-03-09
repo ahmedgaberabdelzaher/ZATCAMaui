@@ -1830,16 +1830,31 @@ namespace GAZT.Views.NewViews
 
             private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
             {
-                if (viewModel.IsUnFocusedTextBox == false)
+
+            bool isArabicChecked = true;
+            var senderObj = (Entry)sender;
+            if (viewModel.IsUnFocusedTextBox == false)
                 {
-                    //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
-                    //{
-                    //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                    //   // EntryPreperiodcorr.TextColor = Color.Black;
-                    //}
+                //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+                //{
+                //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
+                //   // EntryPreperiodcorr.TextColor = Color.Black;
+                //}
+                if (!string.IsNullOrEmpty(senderObj.Text))
+                {
+                    isArabicChecked = isCheckArabic(senderObj.Text);
+                }
+                if (isArabicChecked)
+                {
                     CheckMandetoryFields();
                 }
                 else
+                {
+                    if (senderObj != null && senderObj.Text.Length > 0)
+                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                }
+            }
+            else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
                     {
