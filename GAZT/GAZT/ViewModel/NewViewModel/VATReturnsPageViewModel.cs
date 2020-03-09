@@ -2525,11 +2525,11 @@ namespace GAZT.ViewModel.NewViewModel
           
 
             //  IsFirstSubmission = true;
-            if (!string.IsNullOrEmpty(TotalpurchaseVat) && !string.IsNullOrEmpty(TotalsalesVat))
+            if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
             {
 
                 value = IsCheckedDraftMode();
-                if (Convert.ToDouble(TotalpurchaseVat) > Convert.ToDouble(TotalsalesVat))
+                if (Convert.ToDouble(NetdueVat) < 0)
                 {
                     IsRefundVisible = true;
                     IsSwichButtonEnableToTap = true;
