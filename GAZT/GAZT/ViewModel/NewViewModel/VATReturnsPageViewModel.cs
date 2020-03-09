@@ -1966,7 +1966,15 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (ButtonName == AppResources.Submit)
                     {
-                        SubmitClicked();
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading = true;
+                        });
+                        await SubmitClicked();
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading = false;
+                        });
                     }
                     //else if(ButtonName == AppResources.ZVatDownloadForm)
                     //{
