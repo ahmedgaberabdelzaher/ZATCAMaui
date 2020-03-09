@@ -1150,7 +1150,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region NewProperty
 
-        public string _totalsalesAmt = "0.0";
+        public string _totalsalesAmt = "0.00";
         public string TotalsalesAmt
         {
             get
@@ -1164,7 +1164,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalsalesAdj = "0.0";
+        public string _totalsalesAdj = "0.00";
         public string TotalsalesAdj
         {
             get
@@ -1178,7 +1178,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseAmt = "0.0";
+        public string _totalpurchaseAmt = "0.00";
         public string TotalpurchaseAmt
         {
             get
@@ -1192,7 +1192,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseAdj = "0.0";
+        public string _totalpurchaseAdj = "0.00";
         public string TotalpurchaseAdj
         {
             get
@@ -1206,7 +1206,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _stdsalesVat = "0.0";
+        public string _stdsalesVat = "0.00";
         public string StdsalesVat
         {
             get
@@ -1220,7 +1220,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totaldueVat = "0.0";
+        public string _totaldueVat = "0.00";
         public string TotaldueVat
         {
             get
@@ -1296,7 +1296,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _netdueVat = "0.0";
+        public string _netdueVat = "0.00";
         public string NetdueVat
         {
             get
@@ -1347,18 +1347,18 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (string.IsNullOrEmpty(TotalsalesVat) || (TotalsalesVat == "0"))
                     {
-                        TotalsalesVat = "0.0";
+                        TotalsalesVat = "0.00";
                     }
                     if (string.IsNullOrEmpty(TotalpurchaseVat) || (TotalpurchaseVat == "0"))
                     {
-                        TotalpurchaseVat = "0.0";
+                        TotalpurchaseVat = "0.00";
                     }
                     TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
                     if (TotaldueVat == "0")
                     {
-                        TotaldueVat = "0.0";
+                        TotaldueVat = "0.00";
                     }
-                    if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat != "0.0")
+                    if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat != "0.00")
                     {
                         TotaldueVat = UtilityManager.GetCommaSeparatedAmount(TotaldueVat);
                     }
@@ -1367,7 +1367,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _stdpurchasesVat = "0.0";
+        public string _stdpurchasesVat = "0.00";
         public string StdpurchasesVat
         {
             get
@@ -1381,7 +1381,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _importspaidVat = "0.0";
+        public string _importspaidVat = "0.00";
         public string ImportspaidVat
         {
             get
@@ -1395,7 +1395,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        public string _totalpurchaseVat = "0.0";
+        public string _totalpurchaseVat = "0.00";
         public string TotalpurchaseVat
         {
             get
@@ -1410,9 +1410,9 @@ namespace GAZT.ViewModel.NewViewModel
                     TotaldueVat = (Convert.ToDouble(TotalsalesVat) - Convert.ToDouble(TotalpurchaseVat)).ToString();
                     if (TotaldueVat == "0")
                     {
-                        TotaldueVat = "0.0";
+                        TotaldueVat = "0.00";
                     }
-                    if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat != "0.0")
+                    if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat != "0.00")
                     {
                         TotaldueVat = UtilityManager.GetCommaSeparatedAmount(TotaldueVat);
                     }
@@ -1436,7 +1436,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("AmountPayable");
             }
         }
-        public string _importsaccVat = "0.0";
+        public string _importsaccVat = "0.00";
         public string ImportsaccVat
         {
             get
@@ -2938,6 +2938,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     try
                     {
+                        CreateDataForPost();
                         string operation = "04";// Passed 04 to set void
                         VATDeclarationData.d.Operationz = operation;
                         StepNumber = "01";
@@ -2961,7 +2962,7 @@ namespace GAZT.ViewModel.NewViewModel
                         var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
                         PopToRootPage();
                         var res = await SaveReturnAndGetReturnAndSetButtons();
-                        if (res != null)
+                        if (res != null && res.d!=null && response!=null)
                         {
                             ManageEnabledProperty(false);
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3003,6 +3004,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
+                    CreateDataForPost();
                     string operation = "14";// Passed 14 to set RESET
                     VATDeclarationData.d.Operationz = operation;
                     StepNumber = "01";
@@ -3026,7 +3028,7 @@ namespace GAZT.ViewModel.NewViewModel
                     var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
                     PopToRootPage();
                     var res = await SaveReturnAndGetReturnAndSetButtons();
-                    if (res != null)
+                    if (res != null && res.d != null && response != null)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -3079,6 +3081,7 @@ namespace GAZT.ViewModel.NewViewModel
                     return;
                 }
 
+                CreateDataForPost();
                 string operation = "45";// Passed 45 to set for Amendment
                 VATDeclarationData.d.Operationz = operation;
                 StepNumber = "01";
@@ -3105,7 +3108,7 @@ namespace GAZT.ViewModel.NewViewModel
                 // var response = WebServiceManager.GAZTSetVATReturnAmend(VATDeclarationData);
                 PopToRootPage();
                 var res = await SaveReturnAndGetReturnAndSetButtons();
-                if (res != null)
+                if (res != null && res.d!=null)
                 {
                     ManageEnabledProperty(true);
                     IsDeclarationCheckEnabled = false;
@@ -3815,6 +3818,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 vATDeclarationD.ExemptpurchaseAdj = vATDeclarationD.ExemptpurchaseAdj.Replace(",", "");
             }
+            if (!String.IsNullOrEmpty(vATDeclarationD.Preperiodcorr) && vATDeclarationD.Preperiodcorr.Contains(","))
+            {
+                vATDeclarationD.Preperiodcorr = vATDeclarationD.Preperiodcorr.Replace(",", "");
+            }
+
 
 
 
@@ -3949,7 +3957,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        public void NavigationSetupForDraft()
+        public async Task NavigationSetupForDraft()
         {
             if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1")
             {
@@ -3990,7 +3998,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Adjustment = Adjustment.Replace(",", "");
             }
 
-            string VATAmount = "0.0";
+            string VATAmount = "0.00";
             if (!String.IsNullOrEmpty(Amount) && !String.IsNullOrEmpty(Adjustment) &&  Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -4003,11 +4011,11 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (VATAmount == "0")
                     {
-                        VATAmount = "0.0";
+                        VATAmount = "0.00";
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.0")
+            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
             {
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
@@ -4038,7 +4046,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Amount5 = Amount5.Replace(",", "");
             }
 
-            String TotalAmount = "0.0";
+            String TotalAmount = "0.00";
             if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
             {
                 if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
@@ -4048,12 +4056,12 @@ namespace GAZT.ViewModel.NewViewModel
                         TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
                         if (TotalAmount == "0")
                         {
-                            TotalAmount = "0.0";
+                            TotalAmount = "0.00";
                         }
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.0")
+            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
             {
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
@@ -4083,7 +4091,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Adjustment5 = Adjustment5.Replace(",", "");
             }
-            String TotalAmount = "0.0";
+            String TotalAmount = "0.00";
             if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5))
             {
                 if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != ".")
@@ -4093,12 +4101,12 @@ namespace GAZT.ViewModel.NewViewModel
                         TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
                         if (TotalAmount == "0")
                         {
-                            TotalAmount = "0.0";
+                            TotalAmount = "0.00";
                         }
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.0")
+            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
             {
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
@@ -4122,19 +4130,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
 
-            String TotalAmount = "0.0";
+            String TotalAmount = "0.00";
 
             if (String.IsNullOrEmpty(Amount1))
             {
-                Amount1 = "0.0";
+                Amount1 = "0.00";
             }
             if (String.IsNullOrEmpty(Amount2))
             {
-                Amount2 = "0.0";
+                Amount2 = "0.00";
             }
             if (String.IsNullOrEmpty(Amount3))
             {
-                Amount3 = "0.0";
+                Amount3 = "0.00";
             }
 
             if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
@@ -4142,10 +4150,10 @@ namespace GAZT.ViewModel.NewViewModel
                 TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
                 if (TotalAmount == "0")
                 {
-                    TotalAmount = "0.0";
+                    TotalAmount = "0.00";
                 }
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.0")
+            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
             {
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
@@ -4163,7 +4171,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Adjustment = Adjustment.Replace(",", "");
             }
-            string VATAmount = "0.0";
+            string VATAmount = "0.00";
             if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -4175,11 +4183,11 @@ namespace GAZT.ViewModel.NewViewModel
                     VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
                     if (VATAmount == "0")
                     {
-                        VATAmount = "0.0";
+                        VATAmount = "0.00";
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.0")
+            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
             {
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
@@ -4198,7 +4206,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Adjustment = Adjustment.Replace(",", "");
             }
-            string VATAmount = "0.0";
+            string VATAmount = "0.00";
             if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -4211,11 +4219,11 @@ namespace GAZT.ViewModel.NewViewModel
                     VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
                     if (VATAmount == "0")
                     {
-                        VATAmount = "0.0";
+                        VATAmount = "0.00";
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.0")
+            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
             {
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
@@ -4233,7 +4241,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Adjustment = Adjustment.Replace(",", "");
             }
-            string VATAmount = "0.0";
+            string VATAmount = "0.00";
             if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
             {
                 if (!Amount.Contains("-") && !Adjustment.Contains("-"))
@@ -4245,11 +4253,11 @@ namespace GAZT.ViewModel.NewViewModel
                     VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
                     if (VATAmount == "0")
                     {
-                        VATAmount = "0.0";
+                        VATAmount = "0.00";
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.0")
+            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
             {
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
@@ -4272,7 +4280,7 @@ namespace GAZT.ViewModel.NewViewModel
                 ForwardFromPreviousPeriod = ForwardFromPreviousPeriod.Replace(",", "");
             }
 
-            string NetVatDue = "0.0";
+            string NetVatDue = "0.00";
             try
             {
 
@@ -4283,14 +4291,14 @@ namespace GAZT.ViewModel.NewViewModel
                 NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
                 if (NetVatDue == "0")
                 {
-                    NetVatDue = "0.0";
+                    NetVatDue = "0.00";
                 }
             }
             catch
             {
 
             }
-            if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.0")
+            if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.00")
             {
                 NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
                 NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);

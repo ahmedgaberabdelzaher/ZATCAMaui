@@ -424,6 +424,10 @@ namespace GAZT.ViewModel.NewViewModel
                             });
 
                         }
+                        else
+                        {
+                           await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        }
                     }
 
 
@@ -439,7 +443,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                      await  _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                        // IsLoading = false;
                         _navigationService.GoBack();
 
@@ -450,7 +454,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                   //  IsLoading = false;
                     _navigationService.GoBack();
 

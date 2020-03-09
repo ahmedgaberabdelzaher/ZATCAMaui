@@ -138,7 +138,7 @@ namespace GAZT.Views.NewViews
                             viewModel.IsDeclarationCheckEnabled = false;
                             viewModel.IsTaxPayerCheckEnabled = false;
                         }
-                        viewModel.NavigationSetupForDraft();
+                       await viewModel.NavigationSetupForDraft();
                     }
 
                 }
