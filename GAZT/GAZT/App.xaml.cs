@@ -73,7 +73,8 @@ namespace GAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
         public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
-
+        public static string AccountCreatedPageView = "AccountCreatedPageView";
+        
 
 
         public static string fontFamilyBold = null;
