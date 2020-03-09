@@ -23,7 +23,8 @@ namespace GAZT
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
-
+      
+        
 
 
 
@@ -310,6 +311,7 @@ namespace GAZT
                 {
                     _navigationService.NavigateTo(App.ForgotUsernamePassword);
                 });
+         
             OnNewLoginUIClicked = new Command(async () =>
             {
                 _navigationService.NavigateTo(App.LogInPageView);

@@ -21,6 +21,7 @@ namespace GAZT.ViewModel
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
+        public ICommand OnSignupClicked { get; set; }
         public string DeviceId { get; set; }
         public int CurrentAttempt = 0;
         private DateTime lastTapped;
@@ -379,7 +380,10 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.DashboardPageView);
             });
-
+            OnSignupClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.SignUpTAndCViewPage);
+            });
             OnLoginButtonClicked = new Command(async () =>
             {
                 if (lastTapped<DateTime.Now.AddSeconds(-4))
@@ -399,6 +403,8 @@ namespace GAZT.ViewModel
               
                
             });
+
+
         }
         #endregion
         #region Method

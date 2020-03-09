@@ -73,7 +73,8 @@ namespace GAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
         public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
-
+        public static string AccountCreatedPageView = "AccountCreatedPageView";
+        
 
 
         public static string fontFamilyBold = null;
@@ -85,7 +86,7 @@ namespace GAZT
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;
-        public static bool IsArabic = false;
+        public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -109,7 +110,7 @@ namespace GAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-            String langName = "en-US";//"en-US";// "ar-AE";
+            String langName = "ar-AE";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 

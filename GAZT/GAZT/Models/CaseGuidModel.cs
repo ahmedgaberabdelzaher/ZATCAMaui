@@ -4,27 +4,28 @@ using System.Text;
 
 namespace GAZT.Models
 {
-    class SignUpModel
+    class CaseGuidModel
     {
     }
-    public class SignUpModelMetadata
+
+    public class CaseGuidModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
 
-    public class SignUpModelD
+    public class CaseGuidModelResult
     {
-        public SignUpModelMetadata __metadata { get; set; }
-        public string AAgreeDt { get; set; }
+        public CaseGuidModelMetadata __metadata { get; set; }
+        public object AAgreeDt { get; set; }
         public string ATinExist { get; set; }
         public string ACityCode { get; set; }
-        public string ABirthdt { get; set; }
+        public object ABirthdt { get; set; }
         public string AExternal { get; set; }
         public string ALang { get; set; }
         public string ACity { get; set; }
-        public string ACrexpdt { get; set; }
+        public object ACrexpdt { get; set; }
         public string AInternal { get; set; }
         public string AIdtype { get; set; }
         public string APassword { get; set; }
@@ -56,8 +57,13 @@ namespace GAZT.Models
         public string AAgreeTm { get; set; }
     }
 
-    public class SignUpModelRootObject
+    public class CaseGuidModelD
     {
-        public SignUpModelD d { get; set; }
+        public List<CaseGuidModelResult> results { get; set; }
+    }
+
+    public class CaseGuidModelRootObject
+    {
+        public CaseGuidModelD d { get; set; }
     }
 }
