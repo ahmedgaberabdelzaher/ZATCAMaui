@@ -20,8 +20,8 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
 
 
         public static string JSONContentType = "application/json";
@@ -79,6 +79,15 @@ namespace GAZT.Helper
         #region FormBundleAPIs
         public static string GAZTGetFormBundleModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/HEADERSet?&$format=json&saml2=disabled&$filter=Lang eq ";
         public static string GAZTGetFormBunleAccountNumberModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/ItemSet?&$format=json&saml2=disabled&$filter=Lang eq ";
+        #endregion
+
+        #region SignUp
+        public static string GAZTGetCityListForSignUp = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";
+        public static string GAZTSiguupValidateIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet";
+        public static string GAZTSiguupValidateCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet";
+        public static string GAZTSiguupCheckDuplicate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ID_DUPLICAE_CHECK_SRV/permit_detSet";
+        public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";
+        public static string GAZTSignUpFirstSubmit = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet";
         #endregion
 
     }

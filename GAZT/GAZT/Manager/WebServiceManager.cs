@@ -3385,7 +3385,382 @@ namespace GAZT.Manager
 
             }
         }
-    
+
+        public static SignupCityRootObject GAZTGetCityListForSignup()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                SignupCityRootObject SignupCityList = new SignupCityRootObject();
+                string NewToken = string.Empty; 
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='"+ lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=disabled&$format=json";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                   // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTSignupCityList = client.GetAsync(uri).Result;
+
+                    if (GAZTSignupCityList != null)
+                    {
+                        HttpHeaders headers = GAZTSignupCityList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String SignUpCityList = GAZTSignupCityList.Content.ReadAsStringAsync().Result;
+
+                        SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
+
+
+                    }
+                    return SignupCityList;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+        public static List<IssuedByResponse> GAZTGetIssuedByList()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IssuedByRootObject SignupIssuedByListRoot = new IssuedByRootObject();
+                List<IssuedByResponse> SignupIssuedByList = new List<IssuedByResponse>();
+
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSiguupIssuedByList+ "'[{\"Lang\":\"E\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTSignupIssuedByList = client.GetAsync(uri).Result;
+
+                    if (GAZTSignupIssuedByList != null)
+                    {
+                        HttpHeaders headers = GAZTSignupIssuedByList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String IssuedByList = GAZTSignupIssuedByList.Content.ReadAsStringAsync().Result;
+
+                        SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
+                        SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
+
+
+
+
+                    }
+                    return SignupIssuedByList;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+        public static string GAZTValidateIDTypes(string IDType, string IDNumber,string DBO)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='"+IDType+"',Idnum='"+IDNumber+"',Country='',PassExpDt='',TaxpDob='"+DBO+"')?$format=json&Saml2=disabled";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage SignupIsIDTypeValidList = client.GetAsync(uri).Result;
+
+                    if (SignupIsIDTypeValidList != null)
+                    {
+                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        IsIDTypeValidList = SignupIsIDTypeValidList.Content.ReadAsStringAsync().Result;
+
+                      //  SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(IsIDTypeValidList);
+                      
+
+
+
+                    }
+                    return IsIDTypeValidList;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+        public static CRValidationModelRootObject GAZTValidateCRNumber(string CRNumber)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CRValidationModelRootObject CRValidationModelValid = new CRValidationModelRootObject();
+
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSiguupValidateCR + "(Crnum='" + CRNumber + "')?$format=json&saml2=disabled";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage CRValidationModelList = client.GetAsync(uri).Result;
+
+                    if (CRValidationModelList != null)
+                    {
+                        HttpHeaders headers = CRValidationModelList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        IsIDTypeValidList = CRValidationModelList.Content.ReadAsStringAsync().Result;
+
+                        CRValidationModelValid = JsonConvert.DeserializeObject<CRValidationModelRootObject>(IsIDTypeValidList);
+
+
+
+
+                    }
+                    return CRValidationModelValid;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+        public static DuplicateSignUpModelRootObject GAZTValidateDuplicate(string IDNum,string IDType, string Institude,string Country)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DuplicateSignUpModelRootObject ValidateDuplicate = new DuplicateSignUpModelRootObject();
+
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='"+IDType+"',Idnumber='"+IDNum+"',Institute='"+Institude+"',Country='"+Country+"',City='',StartDt='')?$format=json&Saml2=disabled";
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage ValidateDuplicateList = client.GetAsync(uri).Result;
+
+                    if (ValidateDuplicateList != null)
+                    {
+                        HttpHeaders headers = ValidateDuplicateList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                       String ValidateDuplicateListResult = ValidateDuplicateList.Content.ReadAsStringAsync().Result;
+
+                        ValidateDuplicate = JsonConvert.DeserializeObject<DuplicateSignUpModelRootObject>(ValidateDuplicateListResult);
+
+
+
+
+                    }
+                    return ValidateDuplicate;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+        public static string GAZTSignUpFirstSubmit(SignUpNextBodyModel SignUpModel)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string FirstSignupSubmit = string.Empty;
+                    string url = Constants.GAZTSignUpFirstSubmit;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    var serilized = JsonConvert.SerializeObject(SignUpModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res =  client.PostAsync(uri, contentPost).Result;
+                    FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
+                   // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
+                    return FirstSignupSubmit;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
     }
 
 }

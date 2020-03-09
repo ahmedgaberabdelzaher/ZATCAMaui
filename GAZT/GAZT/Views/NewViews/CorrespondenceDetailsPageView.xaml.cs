@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
 {
+    public interface IBaseUrl { string Get(); }
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CorrespondenceDetailsPageView : ContentPage
     {
@@ -23,26 +24,27 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
             viewModel.IsAttachmentEnabled = false;
-            
 
-           CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
+
+            CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
                 CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
 
-                if ((CorrespondenceD != null) && (CorrespondenceD.d!=null) && (CorrespondenceD.d.results!=null)) 
+                if ((CorrespondenceD != null) && (CorrespondenceD.d != null) && (CorrespondenceD.d.results != null))
                 {
                     string response = CorrespondenceD.d.results.LastOrDefault().Attfg;
                     if (response.Equals("X"))
                     {
                         viewModel.IsAttachmentEnabled = true;
-                       
+
                     }
                     else
                     {
                         Attachment_Label.GestureRecognizers.Clear();
                         Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
-                        viewModel.IsAttachmentEnabled = false; }
+                        viewModel.IsAttachmentEnabled = false;
+                    }
 
                 }
 
@@ -56,20 +58,34 @@ namespace GAZT.Views.NewViews
                 });
             }
             string HTMLContent = string.Empty;
+            string HTMLContentTest = string.Empty;
 
-            foreach(CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
+            foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
             {
+
+
+
                 HTMLContent = HTMLContent + ItemC.Tdline;
+
+
             }
+
+            //string trim1 = HTMLContent.Replace("</body>", " ");
+            //string newHTMLContent = trim1.Replace("</html>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br><br><br><br><br><br><br><br></body></html>");
+
             var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html =HTMLContent;
+
+            /*htmlSource.Html = newHTMLContent*/;
+            htmlSource.Html = HTMLContent;
+
+            htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
             CorWebView.Source = htmlSource;
 
             viewModel.CorrespondenceTitle = CorrModel.Title;
             viewModel.CorrespondenceD = CorrModel;
-            if(CorrModel.IsFav==true)
+            if (CorrModel.IsFav == true)
             {
-                viewModel.FavIcon = "ic_star.png"; 
+                viewModel.FavIcon = "ic_star.png";
             }
             else
             {

@@ -855,3 +855,4 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
     }
 }
+ 

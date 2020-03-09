@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.App"  
+             xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT">
     <Application.Resources>
         <ResourceDictionary>
+
+
+            <!--SYNCFUSION INTEGRATION-->
+            
+            <ResourceDictionary.MergedDictionaries>
+                <themes:LightTheme />
+            </ResourceDictionary.MergedDictionaries >
+            
+            <!--SYNCFUSION INTEGRATION-->
+            
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
             <Color x:Key="GrayTextColor">#c7c7c7</Color>
             <Color x:Key="DashboardGrayTextColor">#717171</Color>
@@ -720,34 +731,6 @@
                 <Setter Property="Color" Value="Green"/>
 
             </Style>
-
-            <!--<Style x:Key="GAZTButton" TargetType="Button">
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="CornerRadius" Value="9"/>
-                <Setter Property="Margin" Value="10,10,10,1"/>
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />
-                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
-            </Style>-->
-
-
-            <!-- 
-            <Style x:Key ="EditorStyle" TargetType="Editor">
-                <Setter Property="FontSize">
-                    <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20"/>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="TextColor" Value="{DynamicResource LabelTextColor}" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource BarTextColor}" />-->
-            <!-- <Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
-            <!-- </Style>-->
-            <!--<OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
-        <On Platform="Android" Value="Lato-Bold.ttf#Lato" />
-        <On Platform="iOS" Value="Lato-Bold" />
-    </OnPlatform>-->
-
-           
 
         </ResourceDictionary>
     </Application.Resources>

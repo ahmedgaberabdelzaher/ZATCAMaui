@@ -77,7 +77,7 @@ namespace GAZT
                             "No suitable constructor found for page " + pageKey);
                     }
 
-                    var page = constructor.Invoke(parameters) as Page;
+                    var page = constructor.Invoke(parameters) as Page;  
                     _navigation.PushAsync(page);
                 }
                 else

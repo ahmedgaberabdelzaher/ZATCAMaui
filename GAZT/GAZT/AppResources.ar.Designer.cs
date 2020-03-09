@@ -3669,20 +3669,493 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCountryCode", resourceCulture);
             }
         }
-        public static string ZZTermsAndConditions
-        {
-            get
-            {
-                return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
+        
+        public static string ZZAlreadyhaveTIN {
+            get {
+                return ResourceManager.GetString("ZZAlreadyhaveTIN", resourceCulture);
             }
         }
-        public static string ZZIagreeontermsAndconditions
-        {
-            get
-            {
+        
+        public static string ZZCreateYourGAZTAccount {
+            get {
+                return ResourceManager.GetString("ZZCreateYourGAZTAccount", resourceCulture);
+            }
+        }
+        
+        public static string ZZCRNumber {
+            get {
+                return ResourceManager.GetString("ZZCRNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZCurrentlytheappsupportsindividualTaxPayerregistration {
+            get {
+                return ResourceManager.GetString("ZZCurrentlytheappsupportsindividualTaxPayerregistration", resourceCulture);
+            }
+        }
+        
+        public static string ZZDateofBirth {
+            get {
+                return ResourceManager.GetString("ZZDateofBirth", resourceCulture);
+            }
+        }
+        
+        public static string ZZEmailAddress {
+            get {
+                return ResourceManager.GetString("ZZEmailAddress", resourceCulture);
+            }
+        }
+        
+        public static string ZZEstimatedSalesForFiscalYear {
+            get {
+                return ResourceManager.GetString("ZZEstimatedSalesForFiscalYear", resourceCulture);
+            }
+        }
+        
+        public static string ZZIagreeontermsAndconditions {
+            get {
                 return ResourceManager.GetString("ZZIagreeontermsAndconditions", resourceCulture);
             }
         }
         
+        public static string ZZIDType {
+            get {
+                return ResourceManager.GetString("ZZIDType", resourceCulture);
+            }
+        }
+        
+        public static string ZZIssuingCity {
+            get {
+                return ResourceManager.GetString("ZZIssuingCity", resourceCulture);
+            }
+        }
+        
+        public static string ZZLicenseNumber {
+            get {
+                return ResourceManager.GetString("ZZLicenseNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZLicenseNumberIssuedBy {
+            get {
+                return ResourceManager.GetString("ZZLicenseNumberIssuedBy", resourceCulture);
+            }
+        }
+        
+        public static string ZZMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZNationalIQAMAIDisnotvalid {
+            get {
+                return ResourceManager.GetString("ZZNationalIQAMAIDisnotvalid", resourceCulture);
+            }
+        }
+        
+        public static string ZZPhoneNumber {
+            get {
+                return ResourceManager.GetString("ZZPhoneNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow {
+            get {
+                return ResourceManager.GetString("ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow", resourceCulture);
+            }
+        }
+        
+        public static string ZZTermsAndConditions {
+            get {
+                return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
+            }
+        }
+        
+        public static string ZZTIN {
+            get {
+                return ResourceManager.GetString("ZZTIN", resourceCulture);
+            }
+        }
+        
+        public static string ZZVerificationsCode {
+            get {
+                return ResourceManager.GetString("ZZVerificationsCode", resourceCulture);
+            }
+        }
+        
+        public static string ZZConfirmationcodesenttoemailaddress {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoemailaddress", resourceCulture);
+            }
+        }
+        
+        public static string ZZConfirmationcodesenttoMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZConfirmpassword {
+            get {
+                return ResourceManager.GetString("ZZConfirmpassword", resourceCulture);
+            }
+        }
+        
+        public static string ZZGCCID {
+            get {
+                return ResourceManager.GetString("ZZGCCID", resourceCulture);
+            }
+        }
+        
+        public static string ZZIqamaID {
+            get {
+                return ResourceManager.GetString("ZZIqamaID", resourceCulture);
+            }
+        }
+        
+        public static string ZZName {
+            get {
+                return ResourceManager.GetString("ZZName", resourceCulture);
+            }
+        }
+        
+        public static string ZZNationalID {
+            get {
+                return ResourceManager.GetString("ZZNationalID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPasswordregulationsforSignup {
+            get {
+                return ResourceManager.GetString("ZZPasswordregulationsforSignup", resourceCulture);
+            }
+        }
+        
+        public static string ZZResendtheverificationcode {
+            get {
+                return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
+            }
+        }
+        
+        public static string ZZThecodewillbeexpiredwithin {
+            get {
+                return ResourceManager.GetString("ZZThecodewillbeexpiredwithin", resourceCulture);
+            }
+        }
+        
+        public static string ZZCommercialReiterationNumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZCommercialReiterationNumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZCommercialReiterationNumbershouddbe10digits {
+            get {
+                return ResourceManager.GetString("ZZCommercialReiterationNumbershouddbe10digits", resourceCulture);
+            }
+        }
+        
+        public static string ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
+            }
+        }
+        
+        public static string ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
+            }
+        }
+        
+        public static string ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit", resourceCulture);
+            }
+        }
+        
+        public static string ZZGulfCooperationCouncilGCCIDstartswith0 {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDstartswith0", resourceCulture);
+            }
+        }
+        
+        public static string ZZInvalidcommercialregistrationexpirydate {
+            get {
+                return ResourceManager.GetString("ZZInvalidcommercialregistrationexpirydate", resourceCulture);
+            }
+        }
+        
+        public static string ZZInvalidLicenseNumber {
+            get {
+                return ResourceManager.GetString("ZZInvalidLicenseNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZIqamaIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZIqamaIDlengthis10digit {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDlengthis10digit", resourceCulture);
+            }
+        }
+        
+        public static string ZZIqamaIDstartswith2 {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDstartswith2", resourceCulture);
+            }
+        }
+        
+        public static string ZZLicensenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZLicensenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZMobilenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZMobilenumberhastostartwithnumber5 {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber5", resourceCulture);
+            }
+        }
+        
+        public static string ZZMobilenumberlengthcannotbelessthan9digits {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberlengthcannotbelessthan9digits", resourceCulture);
+            }
+        }
+        
+        public static string ZZNamecannotbeinnonalphabetcharacters {
+            get {
+                return ResourceManager.GetString("ZZNamecannotbeinnonalphabetcharacters", resourceCulture);
+            }
+        }
+        
+        public static string ZZNationalIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZNationalIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZNationalIDlengthis10digit {
+            get {
+                return ResourceManager.GetString("ZZNationalIDlengthis10digit", resourceCulture);
+            }
+        }
+        
+        public static string ZZNationalIDstartswith1 {
+            get {
+                return ResourceManager.GetString("ZZNationalIDstartswith1", resourceCulture);
+            }
+        }
+        
+        public static string ZZNewpasswordandconfirmpassworddoesnotmatch {
+            get {
+                return ResourceManager.GetString("ZZNewpasswordandconfirmpassworddoesnotmatch", resourceCulture);
+            }
+        }
+        
+        public static string ZZPasswordcannothavecharacterinthepassword {
+            get {
+                return ResourceManager.GetString("ZZPasswordcannothavecharacterinthepassword", resourceCulture);
+            }
+        }
+        
+        public static string ZZPhonenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZPhonenumberhastostartwithnumber1 {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberhastostartwithnumber1", resourceCulture);
+            }
+        }
+        
+        public static string ZZPhonenumberlengthcannotbelessthan9digits {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberlengthcannotbelessthan9digits", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidCompanyID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidCompanyID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidEmailAddress {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidEmailAddress", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidGulfCooperationCouncilGCCID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidGulfCooperationCouncilGCCID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidIqamaID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidIqamaID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidLicenseNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidLicenseNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidNationalID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidNationalID", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteravalidPhoneNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidPhoneNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseentertheBirthDate {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheBirthDate", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterthecommercialregistrationexpirydate {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterthecommercialregistrationexpirydate", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseentertheCommercialReiterationNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheCommercialReiterationNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseentertheName {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheName", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseentertheOrganizationName {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheOrganizationName", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseentertheTINNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheTINNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterTINinyourcountry {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterTINinyourcountry", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleasefillallthemandatoryfields {
+            get {
+                return ResourceManager.GetString("ZZPleasefillallthemandatoryfields", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseselectlicenseissuer {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectlicenseissuer", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseselecttheCity {
+            get {
+                return ResourceManager.GetString("ZZPleaseselecttheCity", resourceCulture);
+            }
+        }
+        
+        public static string ZZPortaluseralreadyregistered {
+            get {
+                return ResourceManager.GetString("ZZPortaluseralreadyregistered", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthevaluesfromMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthev" +
+                        "aluesfromMinistryofCommerce", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofC" +
+                        "ommerce", resourceCulture);
+            }
+        }
+        
+        public static string ZZTINnumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZTINnumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        public static string ZZTINnumberhastostartwithnumber3 {
+            get {
+                return ResourceManager.GetString("ZZTINnumberhastostartwithnumber3", resourceCulture);
+            }
+        }
+        
+        public static string ZZTINnumberlengthcannotbelessthan10digits {
+            get {
+                return ResourceManager.GetString("ZZTINnumberlengthcannotbelessthan10digits", resourceCulture);
+            }
+        }
+        
+        public static string ZZYournewEmailandSMSValidationCodehasbeenresenttoyou {
+            get {
+                return ResourceManager.GetString("ZZYournewEmailandSMSValidationCodehasbeenresenttoyou", resourceCulture);
+            }
+        }
     }
 }

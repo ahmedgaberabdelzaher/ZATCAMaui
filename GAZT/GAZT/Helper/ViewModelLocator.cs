@@ -6,6 +6,8 @@ using GAZT.ViewModel;
 using GAZT.ViewModel.NewViewModel;
 using GAZT.Views;
 using GAZT.Views.NewViews;
+using GAZTeServicesApp.ViewModels.LandingPage;
+using GAZTeServicesApp.Views.LandingPage;
 
 namespace GAZT
 {
@@ -17,6 +19,14 @@ namespace GAZT
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+
+            //SYNCFUSION INTEGRATION
+
+            SimpleIoc.Default.Register<LandingPageViewModel>();
+
+            //SYNCFUSION INTEGRATION
+
+
             SimpleIoc.Default.Register<LogInViewModel>();
             SimpleIoc.Default.Register<OTPViewModel>();
             SimpleIoc.Default.Register<DashboardViewModel>();
@@ -31,7 +41,6 @@ namespace GAZT
             SimpleIoc.Default.Register<ChangePasswordViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
             SimpleIoc.Default.Register<PdfiOSViewModel>();
-
 
             SimpleIoc.Default.Register<LogInPageViewModel>();
             SimpleIoc.Default.Register<DashboardPageViewModel>();
@@ -64,15 +73,6 @@ namespace GAZT
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
             SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
-
-
-
-
-
-
-
-
-
 
         }
 
@@ -722,7 +722,48 @@ namespace GAZT
                 }
             }
         }
-
+        public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportFormAttachmentPageViewModel TaxEvasionReportFormAttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormAttachmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+ public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public FormBundleStatusPageViewModel FormBundleStatusPageView
         {
             get
@@ -781,9 +822,33 @@ namespace GAZT
                 }
             }
         }
+
+        public LandingPageViewModel LandingPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LandingPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
+
+            //SYNCFUSION INTEGRATION
+
+            navigationService.Configure(App.LandingPageView, typeof(LandingPageView));
+
+            //SYNCFUSION INTEGRATION
+
+
             navigationService.Configure(App.LoginView, typeof(LogInView));
             navigationService.Configure(App.OTPView, typeof(OTPView));
             navigationService.Configure(App.DashboardView, typeof(DashboardView));
@@ -799,8 +864,6 @@ namespace GAZT
             navigationService.Configure(App.ChangePasswordView, typeof(ChangePasswordView));
             navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
             navigationService.Configure(App.PdfiOSView, typeof(PdfiOSView));
-
-            
 
 
             navigationService.Configure(App.LogInPageView, typeof(LogInPageView));
@@ -834,7 +897,6 @@ namespace GAZT
             navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
             navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-
 
 
             return navigationService;

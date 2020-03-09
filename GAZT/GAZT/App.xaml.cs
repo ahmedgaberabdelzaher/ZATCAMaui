@@ -9,12 +9,20 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using System.Net.Http;
 using GAZT.Views.NewViews;
+using GAZTeServicesApp.Themes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
 {
     public partial class App : Application
     {
+        //SYNCFUSION INTEGRATION
+
+        public static string LandingPageView = "LandingPageView";
+
+        //SYNCFUSION INTEGRATION
+
+
         public static string LoginView = "LoginView";
         public static string OTPView = "OTPView";
         public static string DashboardView = "DashboardView";
@@ -24,15 +32,12 @@ namespace GAZT
         public static string UpdateEmailAddress = "UpdateEmailAddress";
         public static string ForgotUsernamePassword = "ForgotUsernamePassword";
 
-
         public static string TPProfileView = "TPProfileView";
         public static string VerifyEmailAddressView = "VerifyEmailAddressView";
         public static string ChangeMobileNumberView = "ChangeMobileNumberView";
         public static string ChangePasswordView = "ChangePasswordView";
         public static string MyBillsView = "MyBillsView";
         public static string PdfiOSView = "PdfiOSView";
-
-        
 
         public static string LogInPageView = "LogInPageView";
         public static string DashboardPageView = "DashboardPageView";
@@ -65,7 +70,11 @@ namespace GAZT
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
-        
+        public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
+        public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
+        public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
+
+
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
@@ -76,7 +85,7 @@ namespace GAZT
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;
-        public static bool IsArabic = true;
+        public static bool IsArabic = false;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -94,60 +103,39 @@ namespace GAZT
         public static double TimeDifference { get; set; }
         public static bool IsComingFromSleepMode { get; set; } = false;
 
-
         public static bool IsComingFromDashboardToLogOff = false;
-
 
         //HttpClientHandlerForSSL Certificate Issue
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-            String langName = "ar-AE";//"en-US";// "ar-AE";
+            String langName = "en-US";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
-
-         
-
-
             InitializeComponent();
 
-         
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.iOS:
-            //        fontFamilyBold = "GE_SS_Two_Bold";
-            //        fontFamilyMedium = "GE_SS_Two_Medium";
-            //        fontFamilyLight = "GE_SS_Two_Light";
-            //        break;
-            //    case Device.Android:
-            //        fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
-            //        fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-            //        fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
-
-            //        break;
-            //}
             onFontFamilyChanged();
 
-
-
-             VATDeclaration vAT=null;
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
-               //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
-
-            var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
-            navigationService.Initialize(navigationPage);
-            var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
-            dialogService.Initialize(navigationPage);
             try
             {
                 httpClientHandler = new HttpClientHandler();
                 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
+
+            VATDeclaration vAT = null;
+            CustomNavigation navigationPage = new CustomNavigation(new SignUpTAndCViewPage()) { BarTextColor = Color.White };
+            //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
+
+            var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+            navigationService.Initialize(navigationPage);
+            var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+            dialogService.Initialize(navigationPage);
+
 
             MainPage = navigationPage;
         }
@@ -174,8 +162,8 @@ namespace GAZT
             app.onFontFamilyChanged();
             App.IsArabic = PreviousIsArabic;
         }
-       
-        public  void onFontFamilyChanged()
+
+        public void onFontFamilyChanged()
         {
             if (PreviousIsArabic)
             {
@@ -205,7 +193,7 @@ namespace GAZT
 
                         break;
                 }
-                
+
             }
             else
             {
@@ -258,8 +246,23 @@ namespace GAZT
             forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
             forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
 
+            //SYNCFUSION INTEGRATION
+
+            if (App.IsArabic)
+            {
+                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
+                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
+                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
+            }
+            else
+            {
+                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
+                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
+                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
+            }
 
 
+            //SYNCFUSION INTEGRATION
 
         }
 
@@ -270,15 +273,15 @@ namespace GAZT
 
         protected override void OnSleep()
         {
-             TimeAtSleep = DateTime.Now;
-           
+            TimeAtSleep = DateTime.Now;
+
             //TimeAtSleep = dt.ToLongTimeString();
             // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-             TimeAtResume = DateTime.Now;
+            TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
             // TimeDifference = TimeAtResume - TimeAtSleep;

@@ -534,6 +534,8 @@ namespace GAZT.ViewModel.NewViewModel
                         isFileAlreadyAttached = true;
                     else
                         isFileAlreadyAttached = false;
+                    if (isFileAlreadyAttached)
+                        break;
                 }
             }
             

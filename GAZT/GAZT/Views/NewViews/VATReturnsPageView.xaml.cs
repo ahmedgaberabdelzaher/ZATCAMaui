@@ -59,7 +59,7 @@ namespace GAZT.Views.NewViews
                 AddNotePageViewModel.NoteString = string.Empty;
                 AddNotePageViewModel.NoteCount = 0;
                 viewModel.IsRefundVisible = false;
-                viewModel.IsGetAcknowledgementClicked = false;
+                 viewModel.IsGetAcknowledgementClicked = false;
                 viewModel.IsVisibleDropdownForRefund = false;
                 viewModel.IsFirstSubmission = true;
                 viewModel.IBANList = null;

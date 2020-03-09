@@ -2028,6 +2028,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Name.
+        /// </summary>
+        public static string ZCRName {
+            get {
+                return ResourceManager.GetString("ZCRName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CR No..
         /// </summary>
         public static string ZCRNo {
@@ -2683,6 +2692,303 @@ namespace GAZT {
         public static string ZTaxPeriod {
             get {
                 return ResourceManager.GetString("ZTaxPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose ReportCategory.
+        /// </summary>
+        public static string ZTERChooseReportCategory {
+            get {
+                return ResourceManager.GetString("ZTERChooseReportCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string ZTEReportCategoryNextBtn {
+            get {
+                return ResourceManager.GetString("ZTEReportCategoryNextBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string ZTEReportCategorySubmitBtn {
+            get {
+                return ResourceManager.GetString("ZTEReportCategorySubmitBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxation by an unregistered Enterprise.
+        /// </summary>
+        public static string ZTERReportCategory1 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invoice that does not meet the tax Specifications.
+        /// </summary>
+        public static string ZTERReportCategory2 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect tax amount .
+        /// </summary>
+        public static string ZTERReportCategory3 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The imposition of a contract tax before the entry into force of the system.
+        /// </summary>
+        public static string ZTERReportCategory4 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fraud and tax evasion.
+        /// </summary>
+        public static string ZTERReportCategory5 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Reports.
+        /// </summary>
+        public static string ZTERReportCategoryPageTittle {
+            get {
+                return ResourceManager.GetString("ZTERReportCategoryPageTittle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment.
+        /// </summary>
+        public static string ZTERReportDetailAttachment {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string ZTERReportDetailCity {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Name.
+        /// </summary>
+        public static string ZTERReportDetailFacilityName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility District Address.
+        /// </summary>
+        public static string ZTERReportDetailFDAddress {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFDAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Street Address.
+        /// </summary>
+        public static string ZTERReportDetailFSAddress {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFSAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Work Type.
+        /// </summary>
+        public static string ZTERReportDetailFWType {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFWType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporter Name.
+        /// </summary>
+        public static string ZTERReportDetailName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Number.
+        /// </summary>
+        public static string ZTERReportDetailNumber {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Region.
+        /// </summary>
+        public static string ZTERReportDetailRegion {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Location .
+        /// </summary>
+        public static string ZTERReportDetailReportDetailRLocation {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailReportDetailRLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Details.
+        /// </summary>
+        public static string ZTERReportDetailReportDetails {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailReportDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN.
+        /// </summary>
+        public static string ZTERReportDetailTIN {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailTIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number.
+        /// </summary>
+        public static string ZTERReportDetailVATNumber {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailVATNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter TIN number.
+        /// </summary>
+        public static string ZTERReportFormEnter_TINno {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnter TINno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter City.
+        /// </summary>
+        public static string ZTERReportFormEnterCity {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter District Address.
+        /// </summary>
+        public static string ZTERReportFormEnterDA {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Facility Name.
+        /// </summary>
+        public static string ZTERReportFormEnterFN {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterFN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Facility Work Type.
+        /// </summary>
+        public static string ZTERReportFormEnterFWT {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterFWT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Report Details.
+        /// </summary>
+        public static string ZTERReportFormEnterRD {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterRD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Region.
+        /// </summary>
+        public static string ZTERReportFormEnterRegion {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Street Address.
+        /// </summary>
+        public static string ZTERReportFormEnterSA {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter VAT Number.
+        /// </summary>
+        public static string ZTERReportFormEnterVATno {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterVATno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Details.
+        /// </summary>
+        public static string ZTERReportFormPageTittle {
+            get {
+                return ResourceManager.GetString("ZTERReportFormPageTittle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Avoid punishments, Please do not Send false Report or Information to GAZT.
+        /// </summary>
+        public static string ZTERReportPageHeadingText {
+            get {
+                return ResourceManager.GetString("ZTERReportPageHeadingText", resourceCulture);
             }
         }
         
@@ -4423,11 +4729,56 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commercial Reiteration Number consists of numbers only.
+        /// </summary>
+        public static string ZZCommercialReiterationNumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZCommercialReiterationNumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commercial Reiteration Number should be 10 digits.
+        /// </summary>
+        public static string ZZCommercialReiterationNumbershouddbe10digits {
+            get {
+                return ResourceManager.GetString("ZZCommercialReiterationNumbershouddbe10digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirmation?.
         /// </summary>
         public static string ZZConfirmation {
             get {
                 return ResourceManager.GetString("ZZConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation code sent to email address.
+        /// </summary>
+        public static string ZZConfirmationcodesenttoemailaddress {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoemailaddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation code sent to Mobile Number.
+        /// </summary>
+        public static string ZZConfirmationcodesenttoMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZConfirmationcodesenttoMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        public static string ZZConfirmpassword {
+            get {
+                return ResourceManager.GetString("ZZConfirmpassword", resourceCulture);
             }
         }
         
@@ -4540,6 +4891,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of Birth does not match with value in Ministry of Commerce.
+        /// </summary>
+        public static string ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT.
         /// </summary>
         public static string ZZDeartaxpayerbasedonthesubmittedamendments {
@@ -4599,6 +4959,15 @@ namespace GAZT {
         public static string ZZEmailAddress {
             get {
                 return ResourceManager.GetString("ZZEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Address does not match with value in Ministry of Commerce.
+        /// </summary>
+        public static string ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
             }
         }
         
@@ -4695,6 +5064,15 @@ namespace GAZT {
         public static string ZZFormFiveTappedMessage {
             get {
                 return ResourceManager.GetString("ZZFormFiveTappedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GCC ID.
+        /// </summary>
+        public static string ZZGCCID {
+            get {
+                return ResourceManager.GetString("ZZGCCID", resourceCulture);
             }
         }
         
@@ -4927,6 +5305,33 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID consists of numbers only.
+        /// </summary>
+        public static string ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit.
+        /// </summary>
+        public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID starts with 0.
+        /// </summary>
+        public static string ZZGulfCooperationCouncilGCCIDstartswith0 {
+            get {
+                return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDstartswith0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period.
         /// </summary>
         public static string ZZIacknowledgethattheabovebankaccount {
@@ -4981,6 +5386,60 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid commercial registration expiry date.
+        /// </summary>
+        public static string ZZInvalidcommercialregistrationexpirydate {
+            get {
+                return ResourceManager.GetString("ZZInvalidcommercialregistrationexpirydate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid License Number.
+        /// </summary>
+        public static string ZZInvalidLicenseNumber {
+            get {
+                return ResourceManager.GetString("ZZInvalidLicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iqama ID.
+        /// </summary>
+        public static string ZZIqamaID {
+            get {
+                return ResourceManager.GetString("ZZIqamaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iqama ID consists of numbers only.
+        /// </summary>
+        public static string ZZIqamaIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iqama ID length is 10 digit.
+        /// </summary>
+        public static string ZZIqamaIDlengthis10digit {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDlengthis10digit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iqama ID starts with 2.
+        /// </summary>
+        public static string ZZIqamaIDstartswith2 {
+            get {
+                return ResourceManager.GetString("ZZIqamaIDstartswith2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issuing City.
         /// </summary>
         public static string ZZIssuingCity {
@@ -5004,6 +5463,15 @@ namespace GAZT {
         public static string ZZLicenseNumber {
             get {
                 return ResourceManager.GetString("ZZLicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License number consists of numbers only.
+        /// </summary>
+        public static string ZZLicensenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZLicensenumberconsistsofnumbersonly", resourceCulture);
             }
         }
         
@@ -5035,11 +5503,101 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile number consists of numbers only.
+        /// </summary>
+        public static string ZZMobilenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number has to start with number 5.
+        /// </summary>
+        public static string ZZMobilenumberhastostartwithnumber5 {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number length cannot be less than 9 digits.
+        /// </summary>
+        public static string ZZMobilenumberlengthcannotbelessthan9digits {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberlengthcannotbelessthan9digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ZZName {
+            get {
+                return ResourceManager.GetString("ZZName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name cannot be in non-alphabet characters.
+        /// </summary>
+        public static string ZZNamecannotbeinnonalphabetcharacters {
+            get {
+                return ResourceManager.GetString("ZZNamecannotbeinnonalphabetcharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID.
+        /// </summary>
+        public static string ZZNationalID {
+            get {
+                return ResourceManager.GetString("ZZNationalID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID consists of numbers only.
+        /// </summary>
+        public static string ZZNationalIDconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZNationalIDconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID length is 10 digit.
+        /// </summary>
+        public static string ZZNationalIDlengthis10digit {
+            get {
+                return ResourceManager.GetString("ZZNationalIDlengthis10digit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National ID starts with 1.
+        /// </summary>
+        public static string ZZNationalIDstartswith1 {
+            get {
+                return ResourceManager.GetString("ZZNationalIDstartswith1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National/IQAMA ID {0} is not valid..
         /// </summary>
         public static string ZZNationalIQAMAIDisnotvalid {
             get {
                 return ResourceManager.GetString("ZZNationalIQAMAIDisnotvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password and confirm password does not match.
+        /// </summary>
+        public static string ZZNewpasswordandconfirmpassworddoesnotmatch {
+            get {
+                return ResourceManager.GetString("ZZNewpasswordandconfirmpassworddoesnotmatch", resourceCulture);
             }
         }
         
@@ -5090,11 +5648,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password cannot have &apos;&quot;&apos; character in the password.
+        /// </summary>
+        public static string ZZPasswordcannothavecharacterinthepassword {
+            get {
+                return ResourceManager.GetString("ZZPasswordcannothavecharacterinthepassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
         public static string ZZPasswordislockedInvalidattempts {
             get {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits..
+        /// </summary>
+        public static string ZZPasswordregulationsforSignup {
+            get {
+                return ResourceManager.GetString("ZZPasswordregulationsforSignup", resourceCulture);
             }
         }
         
@@ -5108,11 +5684,218 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone number consists of numbers only.
+        /// </summary>
+        public static string ZZPhonenumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number has to start with number 1.
+        /// </summary>
+        public static string ZZPhonenumberhastostartwithnumber1 {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberhastostartwithnumber1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number length cannot be less than 9 digits.
+        /// </summary>
+        public static string ZZPhonenumberlengthcannotbelessthan9digits {
+            get {
+                return ResourceManager.GetString("ZZPhonenumberlengthcannotbelessthan9digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Company ID.
+        /// </summary>
+        public static string ZZPleaseenteravalidCompanyID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidCompanyID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Email Address.
+        /// </summary>
+        public static string ZZPleaseenteravalidEmailAddress {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Gulf Cooperation Council (GCC) ID.
+        /// </summary>
+        public static string ZZPleaseenteravalidGulfCooperationCouncilGCCID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidGulfCooperationCouncilGCCID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid ID.
+        /// </summary>
+        public static string ZZPleaseenteravalidID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Iqama ID.
+        /// </summary>
+        public static string ZZPleaseenteravalidIqamaID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidIqamaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid License Number.
+        /// </summary>
+        public static string ZZPleaseenteravalidLicenseNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidLicenseNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Mobile Number.
+        /// </summary>
+        public static string ZZPleaseenteravalidMobileNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid National ID.
+        /// </summary>
+        public static string ZZPleaseenteravalidNationalID {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidNationalID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Phone Number.
+        /// </summary>
+        public static string ZZPleaseenteravalidPhoneNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteravalidPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter &quot;Company ID in your country&quot; or &quot;TIN in your country&quot;.
+        /// </summary>
+        public static string ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the Birth Date.
+        /// </summary>
+        public static string ZZPleaseentertheBirthDate {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheBirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the commercial registration expiry date.
+        /// </summary>
+        public static string ZZPleaseenterthecommercialregistrationexpirydate {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterthecommercialregistrationexpirydate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the Commercial Reiteration Number.
+        /// </summary>
+        public static string ZZPleaseentertheCommercialReiterationNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheCommercialReiterationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter the corresponding number.
         /// </summary>
         public static string ZZPleaseenterthecorrespondingnumber {
             get {
                 return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the Name.
+        /// </summary>
+        public static string ZZPleaseentertheName {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the Organization Name.
+        /// </summary>
+        public static string ZZPleaseentertheOrganizationName {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheOrganizationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the TIN Number.
+        /// </summary>
+        public static string ZZPleaseentertheTINNumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentertheTINNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter TIN in your country.
+        /// </summary>
+        public static string ZZPleaseenterTINinyourcountry {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterTINinyourcountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid CR number.
+        /// </summary>
+        public static string ZZPleaseentervalidCRnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentervalidCRnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill all the mandatory fields.
+        /// </summary>
+        public static string ZZPleasefillallthemandatoryfields {
+            get {
+                return ResourceManager.GetString("ZZPleasefillallthemandatoryfields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the mandatory fields..
+        /// </summary>
+        public static string ZZPleasefillthemandatoryfields {
+            get {
+                return ResourceManager.GetString("ZZPleasefillthemandatoryfields", resourceCulture);
             }
         }
         
@@ -5144,6 +5927,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select license issuer.
+        /// </summary>
+        public static string ZZPleaseselectlicenseissuer {
+            get {
+                return ResourceManager.GetString("ZZPleaseselectlicenseissuer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the City.
+        /// </summary>
+        public static string ZZPleaseselecttheCity {
+            get {
+                return ResourceManager.GetString("ZZPleaseselecttheCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select the disclaimer checkbox before submit..
         /// </summary>
         public static string ZZPleaseselectthedisclaimercheckboxbeforesubmit {
@@ -5167,6 +5968,15 @@ namespace GAZT {
         public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
             get {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portal user already registered.
+        /// </summary>
+        public static string ZZPortaluseralreadyregistered {
+            get {
+                return ResourceManager.GetString("ZZPortaluseralreadyregistered", resourceCulture);
             }
         }
         
@@ -5212,6 +6022,15 @@ namespace GAZT {
         public static string ZZReleasedSuccessfully {
             get {
                 return ResourceManager.GetString("ZZReleasedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resend the verification code.
+        /// </summary>
+        public static string ZZResendtheverificationcode {
+            get {
+                return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
             }
         }
         
@@ -5324,6 +6143,35 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The code will be expired within.
+        /// </summary>
+        public static string ZZThecodewillbeexpiredwithin {
+            get {
+                return ResourceManager.GetString("ZZThecodewillbeexpiredwithin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered commercial registration number is not related to the entered ID number as per the values from Ministry of Commerce.
+        /// </summary>
+        public static string ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthevaluesfromMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZTheenteredcommercialregistrationnumberisnotrelatedtotheenteredIDnumberasperthev" +
+                        "aluesfromMinistryofCommerce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered values of Entity type and Taxpayer Type does not match the values from Ministry of Commerce.
+        /// </summary>
+        public static string ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofCommerce {
+            get {
+                return ResourceManager.GetString("ZZTheenteredvaluesofEntitytypeandTaxpayerTypedoesnotmatchthevaluesfromMinistryofC" +
+                        "ommerce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file is still loading.
         /// </summary>
         public static string ZZThefileisstillloading {
@@ -5383,6 +6231,33 @@ namespace GAZT {
         public static string ZZTIN {
             get {
                 return ResourceManager.GetString("ZZTIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN number consists of numbers only.
+        /// </summary>
+        public static string ZZTINnumberconsistsofnumbersonly {
+            get {
+                return ResourceManager.GetString("ZZTINnumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN number has to start with number 3.
+        /// </summary>
+        public static string ZZTINnumberhastostartwithnumber3 {
+            get {
+                return ResourceManager.GetString("ZZTINnumberhastostartwithnumber3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIN number length cannot be less than 10 digits.
+        /// </summary>
+        public static string ZZTINnumberlengthcannotbelessthan10digits {
+            get {
+                return ResourceManager.GetString("ZZTINnumberlengthcannotbelessthan10digits", resourceCulture);
             }
         }
         
@@ -5666,11 +6541,29 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your new Email and SMS Validation Code has been resent to you.
+        /// </summary>
+        public static string ZZYournewEmailandSMSValidationCodehasbeenresenttoyou {
+            get {
+                return ResourceManager.GetString("ZZYournewEmailandSMSValidationCodehasbeenresenttoyou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your password has been changed successfully.
         /// </summary>
         public static string ZZYourPasswordhasbeenChangedsuccessfully {
             get {
                 return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You should sign up as new user.
+        /// </summary>
+        public static string ZZYoushouldsignupasnewuser {
+            get {
+                return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
             }
         }
         

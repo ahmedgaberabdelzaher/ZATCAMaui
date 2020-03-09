@@ -357,6 +357,11 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
                         }
+                        else
+                        {
+                            if (myZakatReturnsListTemp[i].Period.Contains("-"))
+                                myZakatReturnsListTemp[i].Period.Replace("-", "- ");
+                        }
                         if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
                         {
                             if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
@@ -379,6 +384,16 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 myZakatReturnsListTemp[i].BorderColour = "#005e4b";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                            }
+                            else if (string.Equals(myZakatReturnsListTemp[i].Stat, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                            {
+                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                            }
+                            else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                            {
+                                myZakatReturnsListTemp[i].BorderColour = "#c49b2d";
+                                myZakatReturnsListTemp[i].StatusImage = "ic_loading.png";
                             }
                         }
                         else
@@ -411,11 +426,11 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                         }
 
-                        //if (SelectedZakatReturn.Fbtyp.Equals("FZ12") || SelectedZakatReturn.Fbtyp.Equals("ZKTE"))
-                        //{
-                        //    myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
-                        //}
-                        myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12") || myZakatReturnsListTemp[i].Fbtyp.Equals("ZKTE") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A-I") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A-I"))
+                        {
+                            myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                        }
+                     //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                     }
 
                     MyZakatReturns = myZakatReturnsList;
@@ -429,9 +444,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
 
             }
-           
-
-          
         }
 
         public void PopToRootPage()
