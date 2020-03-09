@@ -112,8 +112,8 @@
 
                 <Label Text="Hello, Abdullah" Style="{DynamicResource GAZT_Font_Small_Bold_Label_CenterAligned_Style}" Grid.Row="1" Grid.Column="0">                   
                 </Label>
-                
-                <Label Text="TIN# 12345679" Grid.Row="2" Grid.Column="0" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" >
+
+                <Label Text="TIN# 12345679" Grid.Row="2" Grid.Column="0" Style="{DynamicResource GAZT_Font_Small_Bold_Label_CenterAligned_Style}"  >
                 </Label>
                 <Button HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Text="Sign In" Grid.Row="2" Grid.Column="0" BackgroundColor="Orange" Clicked="Button_Clicked"/>
             </Grid>

@@ -402,10 +402,11 @@ namespace GAZT.ViewModel.NewViewModel
                         EUser = SelectedICR.Euser;
                         VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
                         PopToRootPage();
-                        _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                       
 
                         if (_vATDeclaration != null && _vATDeclaration.d != null)
                         {
+                            _vATDeclaration.d.Fbguid = SelectedICRGUID;
                             VATDeclaration vATDeclaration = new VATDeclaration();
                             VATDeclarationD vATDeclarationD = new VATDeclarationD();
                             Result5 result5 = new Result5();
@@ -423,6 +424,10 @@ namespace GAZT.ViewModel.NewViewModel
                             });
 
                         }
+                        else
+                        {
+                           await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        }
                     }
 
 
@@ -438,7 +443,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                      await  _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                        // IsLoading = false;
                         _navigationService.GoBack();
 
@@ -449,7 +454,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                   //  IsLoading = false;
                     _navigationService.GoBack();
 

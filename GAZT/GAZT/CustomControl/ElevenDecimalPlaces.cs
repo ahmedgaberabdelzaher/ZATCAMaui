@@ -140,7 +140,7 @@ namespace GAZT
           
             try
             {
-                if (amount != null && amount.Length < numberOfDigit && amount.Length > 0)
+                if (amount != null && amount.Length < Max && amount.Length > 0)
                 {
                     if (amount.Contains("."))
                     {

@@ -26,12 +26,11 @@
                 </Frame>
                 <Label Text="{Binding CorrespondenceTitle}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 </Label>
-                
+                <WebView x:Name="CorWebView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="560" WidthRequest="1000"/>
 
-                    <WebView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="CorWebView" HeightRequest="560"/>
-                   
-               
-                    <Frame Grid.Row="2" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+
+
+                <Frame Grid.Row="2" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                     </Frame>
                 <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsAttachmentEnable}" >
                         <Label.GestureRecognizers>

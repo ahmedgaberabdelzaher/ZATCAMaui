@@ -70,7 +70,10 @@ namespace GAZT
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
-        public static string AccountCreatedPageView = "AccountCreatedPageView";
+        public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
+        public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
+        public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
+
 
 
         public static string fontFamilyBold = null;
