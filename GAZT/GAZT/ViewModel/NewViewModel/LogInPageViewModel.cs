@@ -500,18 +500,18 @@ namespace GAZT.ViewModel
 
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
-                                          _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                        //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
                                         //SYNCFUSION INTEGRATION
 
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
-                                        //App.TP.Tin = UserName;
+                                        GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
+                                        GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        App.TP.Tin = UserName;
 
 
-                                        //_navigationService.NavigateTo(App.LandingPageView);
-                                        
+                                        _navigationService.NavigateTo(App.LandingPageView);
+
                                         //SYNCFUSION INTEGRATION
 
                                     });
