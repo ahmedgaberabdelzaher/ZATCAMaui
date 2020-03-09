@@ -783,4 +783,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Golden_TES%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TermsAndConditionsAR.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TermsAndConditionsEN.html" />
+  </ItemGroup>
 </Project>

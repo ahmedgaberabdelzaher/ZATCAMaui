@@ -73,7 +73,8 @@ namespace GAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
         public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
-
+        public static string AccountCreatedPageView = "AccountCreatedPageView";
+        
 
 
         public static string fontFamilyBold = null;
@@ -85,7 +86,7 @@ namespace GAZT
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;
-        public static bool IsArabic = false;
+        public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
