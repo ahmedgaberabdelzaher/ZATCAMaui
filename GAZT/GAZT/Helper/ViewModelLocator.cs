@@ -722,7 +722,48 @@ namespace GAZT
                 }
             }
         }
-
+        public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportFormAttachmentPageViewModel TaxEvasionReportFormAttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormAttachmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+ public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public FormBundleStatusPageViewModel FormBundleStatusPageView
         {
             get

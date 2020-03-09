@@ -76,7 +76,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static local:AppResources.ZZTIN}"  />
@@ -84,7 +84,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                                 </Frame>
                             </Grid>
                             <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" ></custom:GAZTBorderlessEntry>
@@ -98,10 +98,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame Grid.Row="6"   Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                        <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                         </Frame>
-                        <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                        <custom:GAZTBorderlessPicker x:Name="DDlIDType" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                             <!--<Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
@@ -115,10 +115,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="8"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="8"  x:Name="FrmIDNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtIDNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="EntryIDNumber" TextChanged="GAZTBorderlessEntry_TextChanged" Text="{Binding TxtIDNumber}" Keyboard="Numeric" MaxLength="{Binding MaxLengthID}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -129,10 +129,10 @@
                             </Label.FormattedText>
                         </Label>
 
-                        <Frame  Grid.Row="10"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="10"  x:Name="FrmDBO"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <DatePicker  Grid.Row="10"  Grid.Column="0"   Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
+                        <DatePicker  Grid.Row="10" x:Name="DpDbo" Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
 
                         <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -142,7 +142,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="12"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="12"  x:Name="FrmName"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
                         <custom:GAZTBorderlessEntry  Grid.Row="12"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtName}"></custom:GAZTBorderlessEntry>
@@ -156,7 +156,7 @@
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
-                        <Frame  Grid.Row="15"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="15"  x:Name="FrmLNorCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
                         <custom:GAZTBorderlessPicker x:Name="UsingDDl"  Grid.Row="15"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" SelectedItem="{Binding SelectLCType,Mode=TwoWay}" ItemsSource="{Binding LcTypeList}" ItemDisplayBinding="{Binding LCType}" ></custom:GAZTBorderlessPicker>
@@ -183,10 +183,10 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                <Frame  Grid.Row="1"  x:Name="FrmCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                                 </Frame>
 
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtCRNumber}"></custom:GAZTBorderlessEntry>
+                                <custom:GAZTBorderlessEntry x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" Text="{Binding TxtCRNumber}" MaxLength="10"></custom:GAZTBorderlessEntry>
                             </Grid>
                         </StackLayout>
                         <StackLayout Grid.Row="16"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLicenseVisible}">
@@ -210,10 +210,10 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                <Frame  Grid.Row="1" x:Name="FrmLicenseNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                                 </Frame>
 
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtLicenseNumber}"></custom:GAZTBorderlessEntry>
+                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtLicenseNumber}" MaxLength="20"></custom:GAZTBorderlessEntry>
                                 <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -222,7 +222,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame Grid.Row="3"   Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                <Frame Grid.Row="3"  x:Name="FrmLicenseIssuedBy" Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
                                 <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}" ItemsSource="{Binding IssuedByList}" ItemDisplayBinding="{Binding txt50}"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -239,7 +239,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame Grid.Row="5"   Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                <Frame Grid.Row="5" x:Name="FrmLicenseIssuedCity"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
                                 <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectCityList,Mode=TwoWay}" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding CityName}"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -260,7 +260,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="19"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="19"  x:Name="FrmEmailAddress"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
                         <custom:GAZTBorderlessEntry  Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
@@ -274,23 +274,23 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="21"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="21" x:Name="FrmMobileNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="EntryMobileNumber" MaxLength="10" Keyboard="Numeric" TextChanged="EntryMobileNumber_TextChanged" Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="22"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZZPhoneNumber}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                 
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="23"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="23"  x:Name="FrmPhoneNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" MaxLength="10" Keyboard="Numeric" Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}"></custom:GAZTBorderlessEntry>
 
 
 
@@ -316,7 +316,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame  Grid.Row="1"   Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                            <Frame  Grid.Row="1" x:Name="FrmEnteredCaptcha"  Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
                             </Frame>
                             <Frame  Grid.Row="1"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}">
                             </Frame>
@@ -342,7 +342,7 @@
                     </Grid>
                 </ScrollView>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZZNext}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" Command="{Binding OnNextClicked}"></Button>
+                    <Button Text="{x:Static local:AppResources.ZZNext}" x:Name="btnSubmitNext" Clicked="btnSubmitNext_Clicked" Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" ></Button>
 
                 </StackLayout>
             </Grid>

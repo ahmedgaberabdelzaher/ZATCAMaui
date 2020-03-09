@@ -27,13 +27,11 @@ namespace GAZT.ViewModel
         #endregion
         #region Property
 
-        // private string _UserName = "3000028177";// can test count match issue
-        //private string _UserName = "3101591813";Jino provided
-        // private string _UserName = "3101762303";
-       private string _UserName = "3101593128";//data available to Amend
-      //  private string _UserName = "3100023233";
+
        
-        //private string _UserName = string.Empty;
+        private string _UserName = "3101593128";
+
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -91,9 +89,9 @@ namespace GAZT.ViewModel
         }
 
 
-      private string _Password = "Init@123";
+        private string _Password = "Init@123";
         
-       // private string _Password = string.Empty;
+      //  private string _Password = string.Empty;
         public string Password
         {
             get

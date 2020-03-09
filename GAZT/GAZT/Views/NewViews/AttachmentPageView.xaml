@@ -4,78 +4,77 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-            
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
                 xmlns:custom="clr-namespace:GAZT"
              x:Class="GAZT.Views.NewViews.AttachmentPageView">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  Grid.Row="0">
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="86*"/>
-                        <ColumnDefinition Width="14*"/>
-                    </Grid.ColumnDefinitions>
-                    <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
-                    </Frame>
-                    <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                    </local:CustomLabel>
+            <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  Grid.Row="0">
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="86*"/>
+                            <ColumnDefinition Width="14*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                        </Frame>
+                        <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </local:CustomLabel>
 
-                    <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                         <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
-                        <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
 
-                    <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                    </Frame>
-                    <local:CustomLabel FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="15,0,15,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
-                        <local:CustomLabel.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding TotalAttachmentSize}"  />
-                                <Span Text="     "/>
-                                <Span Text="Of"/>
-                                <Span Text="     "/>
-                                <Span Text="300 MB."/>
-                            </FormattedString>
+                        <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <local:CustomLabel FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="15,0,15,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                            <local:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding TotalAttachmentSize}"  />
+                                    <Span Text="     "/>
+                                    <Span Text="Of"/>
+                                    <Span Text="     "/>
+                                    <Span Text="300 MB."/>
+                                </FormattedString>
                             </local:CustomLabel.FormattedText>
-                    </local:CustomLabel>
+                        </local:CustomLabel>
 
-                    <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
-                    </local:CustomLabel>
+                        <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </local:CustomLabel>
 
-                    <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                    </Frame>
-                    <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
+                        <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
 
-                    </custom:GAZTBorderlessEntry>
-                    <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_add.png" IsVisible="{Binding IsShowAttachmentButton}" >
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                        </custom:GAZTBorderlessEntry>
+                        <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_add.png" IsVisible="{Binding IsShowAttachmentButton}" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
 
-                    <StackLayout Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                        <ListView  x:Name="Attachmentlist" 
+                        <StackLayout Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                            <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding VatAttachmentsList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -84,87 +83,91 @@
             ItemTapped="Attachmentlist_ItemTapped"
             SeparatorVisibility="None"
             >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <ContentView>
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="50">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ContentView>
+                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="50">
 
-                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="0"  BackgroundColor="#BEC2C6">
+                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
-                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="0"  BackgroundColor="White">
+                                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="White">
 
-                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
-                                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="8*" />
-                                                                    <ColumnDefinition Width="52*" />
-                                                                    <ColumnDefinition Width="10*" />
-                                                                    <ColumnDefinition Width="15*" />
-                                                                    <ColumnDefinition Width="15*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto" />
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
+                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="8*" />
+                                                                        <ColumnDefinition Width="52*" />
+                                                                        <ColumnDefinition Width="10*" />
+                                                                        <ColumnDefinition Width="15*" />
+                                                                        <ColumnDefinition Width="15*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto" />
+                                                                        <RowDefinition Height="Auto" />
+                                                                        <RowDefinition Height="Auto" />
+                                                                        <RowDefinition Height="Auto" />
+                                                                        <RowDefinition Height="Auto" />
 
-                                                                </Grid.RowDefinitions>
+                                                                    </Grid.RowDefinitions>
 
 
 
-                                                                <Label Text="{Binding Id}" 
+                                                                    <Label Text="{Binding Id}" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="Center"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0" 
                                    />
 
-                                                                <Label Text="{Binding Filename}" 
+                                                                    <Label Text="{Binding Filename}" 
                                                                        Margin="3,0,3,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="Center"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="1" 
                                    />
 
-                                                                <Label  
+                                                                    <Label  
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="Center"
+                                                   VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="2" 
                                    >
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{Binding Size}"/>
-                                                                            <Span Text="MB"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding Size}"/>
+                                                                                <Span Text="MB"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
 
-                                                                <Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Source="ic_file_download.png"  >
-                                                                    <Image.GestureRecognizers>
-                                                                        <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
-                                                                    </Image.GestureRecognizers>
-                                                                </Image>
+                                                                    <Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
+                                                                        </Image.GestureRecognizers>
+                                                                    </Image>
 
-                                                                <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Source="ic_delete.png"  >
-                                                                    <Image.GestureRecognizers>
-                                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
-                                                                    </Image.GestureRecognizers>
-                                                                </Image>
+                                                                    <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                                        </Image.GestureRecognizers>
+                                                                    </Image>
 
 
-                                                                <!--<Label Text="{Binding Erfdt}" 
+                                                                    <Label Text="{Binding Erfdt}" 
                                                                        Margin="3,0,3,-5"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="2" 
-                                   />-->
+                                   />
 
-                                                                <!--<Label Text="1" 
+                                                                    <!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -184,29 +187,29 @@
 
 
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
 
 
-                                                            </Grid>
+                                                                </Grid>
+                                                            </StackLayout>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </ContentView>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
+                                            </ContentView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
 
 
 
 
-                </Grid>
-            
-            </ScrollView>
-        </StackLayout>
-              <!-- Acticity indicator layout start -->
+                    </Grid>
+
+                </ScrollView>
+            </StackLayout>
+            <!-- Acticity indicator layout start -->
 
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -219,6 +222,6 @@
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->
-                </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

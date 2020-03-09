@@ -2426,4 +2426,16 @@
     <value>تم إعادة إرسال رمز التأكيد للبريد الإلكتروني وللجوال</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZPleaseentervalidCRnumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم سجل تجاري صحيح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleasefillthemandatoryfields" xml:space="preserve">
+    <value>الرجاء تعبئة الحقول الإلزامية</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should sign up as new user</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>
