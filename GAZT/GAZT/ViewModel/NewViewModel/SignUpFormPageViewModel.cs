@@ -357,7 +357,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private DateTime? _pkrDBO = new DateTime(1953, 11, 24);
+        private DateTime? _pkrDBO = DateTime.Now;
 
         public DateTime? PkrDBO {
             get
@@ -398,6 +398,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IDTypeModelRootObject");
             }
         }
+
+        private SignUpModelRootObject _signUpFirstSubmitModel = null;
+        public SignUpModelRootObject SignUpFirstSubmitModel
+        {
+            get
+            {
+                return _signUpFirstSubmitModel;
+            }
+            set
+            {
+                _signUpFirstSubmitModel = value;
+                RaisePropertyChanged("SignUpFirstSubmitModel");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -434,6 +448,8 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigationService.NavigateTo(App.CreateGaztAccountPageView);
 
                 });
+
+
             }
             catch (Exception ex)
             {
@@ -495,13 +511,19 @@ namespace GAZT.ViewModel.NewViewModel
                 ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                 ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
                 SignUpUsingList = ListSignUpUsing;
-                SelectedSignUpUsing.ID = 1;
+                SignUpUsing SignUpUsingM = new SignUpUsing();
+                SignUpUsingM.ID = 1;
+                SignUpUsingM.SUType = AppResources.ZZNationalID;
+                SelectedSignUpUsing = SignUpUsingM;
                 LcTypeList = null;
                 List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
                 LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
                 LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
                 LcTypeList = LIstLcType;
-                SelectLCType.ID = 2;
+                LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
+                LicenseOrCRModelM.ID = 2;
+                LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
+                SelectLCType = LicenseOrCRModelM;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 IssuedByResponseList = WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = IssuedByResponseList;

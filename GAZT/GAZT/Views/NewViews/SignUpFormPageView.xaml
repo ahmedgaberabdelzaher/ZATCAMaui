@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+                FlowDirection="RightToLeft"
               xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              
@@ -59,7 +59,7 @@
                             <CheckBox VerticalOptions="Start" IsChecked="{Binding IsTIN}" Margin="10,0,0,0" >
 
                             </CheckBox>
-                            <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,10,10,0"/>
+                            <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,5,10,0"/>
 
                         </StackLayout>
 
@@ -87,7 +87,7 @@
                                 <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                                 </Frame>
                             </Grid>
-                            <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" ></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Unfocused="EntryTIN_Unfocused" TextChanged="EntryTIN_TextChanged" MaxLength="10" x:Name="EntryTIN" Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" ></custom:GAZTBorderlessEntry>
                         </StackLayout>
 
                         <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
@@ -101,7 +101,7 @@
                         <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                         </Frame>
-                        <custom:GAZTBorderlessPicker x:Name="DDlIDType" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                        <custom:GAZTBorderlessPicker x:Name="DDlIDType" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}" SelectedIndexChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                             <!--<Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
@@ -132,7 +132,7 @@
                         <Frame  Grid.Row="10"  x:Name="FrmDBO"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <DatePicker  Grid.Row="10" x:Name="DpDbo" Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
+                        <DatePicker  Grid.Row="10" x:Name="DpDbo"  Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
 
                         <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -263,7 +263,7 @@
                         <Frame  Grid.Row="19"  x:Name="FrmEmailAddress"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
 
 
                         <Label Grid.Row="20"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
@@ -277,7 +277,7 @@
                         <Frame  Grid.Row="21" x:Name="FrmMobileNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry x:Name="EntryMobileNumber" MaxLength="10" Keyboard="Numeric" TextChanged="EntryMobileNumber_TextChanged" Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry Placeholder="5XXXXXXXX" x:Name="EntryMobileNumber" Unfocused="EntryMobileNumber_Unfocused" MaxLength="10" Keyboard="Numeric" TextChanged="EntryMobileNumber_TextChanged" Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="22"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -290,7 +290,7 @@
                         <Frame  Grid.Row="23"  x:Name="FrmPhoneNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" MaxLength="10" Keyboard="Numeric" Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" Unfocused="EntryPhoneNumber_Unfocused" TextChanged="EntryPhoneNumber_TextChanged" MaxLength="10" Keyboard="Numeric" Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}"></custom:GAZTBorderlessEntry>
 
 
 

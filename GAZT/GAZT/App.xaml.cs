@@ -70,6 +70,7 @@ namespace GAZT
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
+        public static string AccountCreatedPageView = "AccountCreatedPageView";
 
 
         public static string fontFamilyBold = null;
@@ -81,7 +82,7 @@ namespace GAZT
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;
-        public static bool IsArabic = false;
+        public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -105,7 +106,7 @@ namespace GAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-            String langName = "en-US";//"en-US";// "ar-AE";
+            String langName = "ar-AE";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;
 
@@ -124,7 +125,7 @@ namespace GAZT
             }
 
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new SignUpTAndCViewPage()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

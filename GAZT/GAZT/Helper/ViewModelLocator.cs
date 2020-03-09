@@ -73,6 +73,7 @@ namespace GAZT
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
             SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
+            SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
 
         }
 
@@ -797,6 +798,20 @@ namespace GAZT
             }
         }
 
+        public AccountCreatedPageViewModel AccountCreatedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -855,7 +870,8 @@ namespace GAZT
             navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
             navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
             navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
-            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
+            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
 
 
             return navigationService;

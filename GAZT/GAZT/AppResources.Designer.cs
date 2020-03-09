@@ -4296,6 +4296,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account created successfully.
+        /// </summary>
+        public static string ZZAccountCreatedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZAccountCreatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Return Details.
         /// </summary>
         public static string ZZakatReturnDetails {
@@ -5296,6 +5305,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New password field and confirm Password field should match up.
+        /// </summary>
+        public static string ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup {
+            get {
+                return ResourceManager.GetString("ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string ZZNext {
@@ -5491,6 +5509,24 @@ namespace GAZT {
         public static string ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry {
             get {
                 return ResourceManager.GetString("ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter confirmation code sent to your email address.
+        /// </summary>
+        public static string ZZPleaseenterconfirmationcodesenttoyouremailaddress {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyouremailaddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter confirmation code sent to your mobile number.
+        /// </summary>
+        public static string ZZPleaseenterconfirmationcodesenttoyourmobilenumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
             }
         }
         
@@ -5797,6 +5833,15 @@ namespace GAZT {
         public static string ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow {
             get {
                 return ResourceManager.GetString("ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign Up.
+        /// </summary>
+        public static string ZZSignup {
+            get {
+                return ResourceManager.GetString("ZZSignup", resourceCulture);
             }
         }
         

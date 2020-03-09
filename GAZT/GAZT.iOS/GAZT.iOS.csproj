@@ -774,4 +774,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TermsAndConditionsAR.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\TermsAndConditionsEN.html" />
+  </ItemGroup>
 </Project>
