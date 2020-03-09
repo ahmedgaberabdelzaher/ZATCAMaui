@@ -1958,10 +1958,17 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else if (ButtonName == AppResources.ZVatStepFour)
                     {
-
-                        SummaryClicked();
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading = true;
+                        });
+                        await SummaryClicked();
                         ShowMsgs();
                         PageSelectedItem = VatTabbledPageList[3];
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading = false;
+                        });
 
                     }
                     else if (ButtonName == AppResources.Submit)
@@ -2520,7 +2527,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-        public void SummaryClicked()
+        public async Task SummaryClicked()
         {
             bool value = false;
             ClearPage();
