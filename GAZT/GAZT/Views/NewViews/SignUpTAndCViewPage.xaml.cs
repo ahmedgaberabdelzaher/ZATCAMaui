@@ -56,7 +56,7 @@ namespace GAZT.Views.NewViews
             viewModel.IschkTAndC = false;
             viewModel.VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
         }
-            private void SetLTR()
+        private void SetLTR()
         {
 
 

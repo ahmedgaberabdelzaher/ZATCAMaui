@@ -1,11 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -546,17 +548,19 @@ namespace GAZT.ViewModel.NewViewModel
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 IssuedByResponseList = WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = IssuedByResponseList;
-                SignupCityRootObject CityListSignup =  WebServiceManager.GAZTGetCityListForSignup();
+                SignupCityRootObject CityListSignup = WebServiceManager.GAZTGetCityListForSignup();
                 CityList = CityListSignup.d.city_dropdownSet.results;
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
                 IDTypeModelRootObject = null;
-               
 
             }
-            catch (Exception ex)
+            catch (InternetException ex)
             {
-
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }
