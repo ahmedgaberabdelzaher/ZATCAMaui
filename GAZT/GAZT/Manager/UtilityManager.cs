@@ -229,6 +229,21 @@ namespace GAZT.Manager
             return FullDate;
         }
 
+
+
+        public static bool IsEnglishNumber(String arText)
+        {
+            bool isAllNumeric = true;
+            foreach (char letter in arText.ToCharArray())
+            {
+                if (!((letter >= 46 && letter <= 57) || letter == 44))
+                {
+                    isAllNumeric = false;
+                }
+            }
+            return isAllNumeric;
+        }
+
         public static string ToArabicDate(string Date)
         {
             string[] SplitDate = Date.Split('-');
