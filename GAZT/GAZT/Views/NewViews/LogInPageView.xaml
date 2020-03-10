@@ -74,7 +74,6 @@
                               <custom:AlphaNumericValidatorBehaviour/>
                             </custom:GAZTBorderlessEntry.Behaviors>
                     </custom:GAZTBorderlessEntry>
-
                     <Image Grid.Row="6"  Grid.Column="2"  Source="ic_TIN_Status.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnPasswordVisibilityClicked" />

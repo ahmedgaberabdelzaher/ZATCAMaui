@@ -855,37 +855,37 @@ namespace GAZT.Views.NewViews
 
             private void ClickGestureRecognizer_ClickedForVatAmountForPurchase(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+
+            try
+            {
+
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
-                //{
-                //    EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
-                //    EntryStdpurchaseAmt.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
-                //{
-                //    EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
-                //    EntryStdpurchaseAdj.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
+
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+
+                        CheckMandetoryFields();
+                        if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
-                    viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
-                }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -893,6 +893,12 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
 
             }
 
@@ -1557,8 +1563,10 @@ namespace GAZT.Views.NewViews
 
             public bool CheckMandetoryFields()
             {
-                bool IsAllEntered = true;
 
+            bool IsAllEntered = true;
+            try
+            {
                 if (TabVatReturn.IsVisible == true)
                 {
 
@@ -1799,43 +1807,57 @@ namespace GAZT.Views.NewViews
                         //  BtnNextStep.IsEnabled = true;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+               
                 return IsAllEntered;
             }
 
         //Test    
         private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
             {
-
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
-                //{
-                //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                //   // EntryPreperiodcorr.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
+                    //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+                    //{
+                    //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
+                    //   // EntryPreperiodcorr.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
                 else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
-            else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
                     {
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
             }
 
             private void EntryCreditVat_TextChanged(object sender, TextChangedEventArgs e)
@@ -3484,6 +3506,8 @@ namespace GAZT.Views.NewViews
             {
                 CheckMandetoryFields();
             }
+
+       
         }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{

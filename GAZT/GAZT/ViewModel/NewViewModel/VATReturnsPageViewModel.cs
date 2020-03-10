@@ -1261,23 +1261,38 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                _preperiodcorr = value;
-                if (_preperiodcorr != null)
+
+                try
                 {
-                    NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
-                    if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-" && !string.IsNullOrEmpty(CorrectionPeriodAmount) && !string.IsNullOrEmpty(CorrectionNegativePeriodAmount))
+                    _preperiodcorr = value;
+                    if (_preperiodcorr != null)
                     {
-                        if ((Convert.ToDecimal(_preperiodcorr) >= Convert.ToDecimal(CorrectionPeriodAmount)) || (Convert.ToDecimal(_preperiodcorr) <= Convert.ToDecimal(CorrectionNegativePeriodAmount)))
+                        bool isValiedNumber = UtilityManager.IsEnglishNumber(Preperiodcorr);
+                        if(isValiedNumber)
                         {
-                            IsGreaterThanFiveT = true;
+                            NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                            if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-" && !string.IsNullOrEmpty(CorrectionPeriodAmount) && !string.IsNullOrEmpty(CorrectionNegativePeriodAmount))
+                            {
+                                if ((Convert.ToDecimal(_preperiodcorr) >= Convert.ToDecimal(CorrectionPeriodAmount)) || (Convert.ToDecimal(_preperiodcorr) <= Convert.ToDecimal(CorrectionNegativePeriodAmount)))
+                                {
+                                    IsGreaterThanFiveT = true;
+                                }
+                                else
+                                {
+                                    IsGreaterThanFiveT = false;
+                                }
+                            }
                         }
-                        else
-                        {
-                            IsGreaterThanFiveT = false;
-                        }
+                       
                     }
+                  
+                }
+                catch(Exception ex)
+                {
+
                 }
                 RaisePropertyChanged("Preperiodcorr");
+
             }
         }
 
@@ -1937,7 +1952,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             IsMainButtonEnabled = false;
 
-            ManageEnabledProperty(true);
+            ManageEnabledProperty(true); 
 
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -4035,6 +4050,8 @@ namespace GAZT.ViewModel.NewViewModel
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(VATAmount);
+            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
@@ -4081,6 +4098,8 @@ namespace GAZT.ViewModel.NewViewModel
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(TotalAmount);
+            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
@@ -4126,6 +4145,8 @@ namespace GAZT.ViewModel.NewViewModel
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(TotalAmount);
+            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
@@ -4173,6 +4194,8 @@ namespace GAZT.ViewModel.NewViewModel
                 TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
                 TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(TotalAmount);
+            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
@@ -4207,6 +4230,8 @@ namespace GAZT.ViewModel.NewViewModel
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(VATAmount);
+            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
@@ -4243,6 +4268,8 @@ namespace GAZT.ViewModel.NewViewModel
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(VATAmount);
+            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
@@ -4277,6 +4304,8 @@ namespace GAZT.ViewModel.NewViewModel
                 VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
                 VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
             }
+            bool isTrue = IsTextNullOrEmpty(VATAmount);
+            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
@@ -4318,6 +4347,8 @@ namespace GAZT.ViewModel.NewViewModel
                 NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
                 NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);
             }
+            bool isTrue = IsTextNullOrEmpty(NetVatDue);
+            NetVatDue = isTrue ? "0.00" : NetVatDue;
             return NetVatDue;
         }
 
@@ -4579,6 +4610,21 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
+        }
+
+        private bool IsTextNullOrEmpty(string entryText)
+        {
+            bool isEmpty = false;
+            if (string.IsNullOrEmpty(entryText))
+            {
+                isEmpty = true;
+            }
+            else
+            {
+                isEmpty = false;
+            }
+
+            return isEmpty;
         }
     }
 }
