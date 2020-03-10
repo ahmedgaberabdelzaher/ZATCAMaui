@@ -1802,7 +1802,8 @@ namespace GAZT.Views.NewViews
                 return IsAllEntered;
             }
 
-            private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
+        //Test    
+        private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
             {
 
             bool isArabicChecked = true;
