@@ -688,23 +688,26 @@ namespace GAZT.Views.NewViews
                     {
                         if (EntryIDNumber.Text.Substring(0, 1) != "1")
                         {
-                            PopUp popUp = new PopUp();
-                            popUp.Message = AppResources.ZZNationalIDstartswith1;
-
-
-                            popUp.IsLinkAvailable = false;
-
-                            if (App.IsArabic)
+                            if (EntryIDNumber.Text.Length == 1)
                             {
-                                popUp.FlowDirections = "RightToLeft";
+                                PopUp popUp = new PopUp();
+                                popUp.Message = AppResources.ZZNationalIDstartswith1;
+
+
+                                popUp.IsLinkAvailable = false;
+
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                FrmIDNumber.BorderColor = Color.Red;
+                                EntryIDNumber.Text = string.Empty;
                             }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            FrmIDNumber.BorderColor = Color.Red;
-                            EntryIDNumber.Text = string.Empty;
                         }
                         else
                         {
@@ -764,23 +767,26 @@ namespace GAZT.Views.NewViews
                     {
                         if (EntryIDNumber.Text.Substring(0, 1) != "2")
                         {
-                            PopUp popUp = new PopUp();
-                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
-
-
-                            popUp.IsLinkAvailable = false;
-
-                            if (App.IsArabic)
+                            if (EntryIDNumber.Text.Length == 1)
                             {
-                                popUp.FlowDirections = "RightToLeft";
+                                PopUp popUp = new PopUp();
+                                popUp.Message = AppResources.ZZIqamaIDstartswith2;
+
+
+                                popUp.IsLinkAvailable = false;
+
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                FrmIDNumber.BorderColor = Color.Red;
+                                EntryIDNumber.Text = string.Empty;
                             }
-                            else
-                            {
-                                popUp.FlowDirections = "LeftToRight";
-                            }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            FrmIDNumber.BorderColor = Color.Red;
-                            EntryIDNumber.Text = string.Empty;
                         }
                         else
                         {
@@ -850,24 +856,27 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryMobileNumber.Text.Substring(0, 1) != "5")
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber5;
-
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (EntryMobileNumber.Text.Length == 1)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber5;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmMobileNumber.BorderColor = Color.Red;
+                        EntryMobileNumber.Text = string.Empty;
+                        EntryMobileNumber.Focus();
                     }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.BorderColor = Color.Red;
-                    EntryMobileNumber.Text = string.Empty;
-                    EntryMobileNumber.Focus();
                 }
                 else
                 {
@@ -882,24 +891,27 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPhonenumberhastostartwithnumber1;
-
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (EntryPhoneNumber.Text.Length == 1)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZPhonenumberhastostartwithnumber1;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmPhoneNumber.BorderColor = Color.Red;
+                        EntryPhoneNumber.Text = string.Empty;
+                        EntryPhoneNumber.Focus();
                     }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmPhoneNumber.BorderColor = Color.Red;
-                    EntryPhoneNumber.Text = string.Empty;
-                    EntryPhoneNumber.Focus();
                 }
                 else
                 {
@@ -1071,24 +1083,27 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZTINnumberhastostartwithnumber3;
-
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (EntryTIN.Text.Length == 1)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZTINnumberhastostartwithnumber3;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmTIN.BorderColor = Color.Red;
+                        EntryTIN.Text = string.Empty;
+                        EntryTIN.Focus();
                     }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmTIN.BorderColor = Color.Red;
-                    EntryTIN.Text = string.Empty;
-                    EntryTIN.Focus();
                 }
                 else
                 {
