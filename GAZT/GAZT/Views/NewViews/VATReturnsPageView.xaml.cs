@@ -698,6 +698,7 @@ namespace GAZT.Views.NewViews
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
 
+            bool isArabicChecked = true;
             var senderObj = (Entry)sender;
 
             if (viewModel.IsUnFocusedTextBox == false)
@@ -715,33 +716,14 @@ namespace GAZT.Views.NewViews
                 //}
 
 
-                bool iSAllNumeric = true;
+               
                 CheckMandetoryFields();
                 // char LastChar = ' ';
-                if (EntryVatAmount != null && !string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Length > 0)
+                if (!string.IsNullOrEmpty(senderObj.Text))
                 {
-                    foreach (char letter in EntryVatAmount.Text.ToCharArray())
-                    {
-                        if (!((letter >= 46 && letter <= 57) || letter == 44))
-                        {
-                            iSAllNumeric = false;
-                        }
-
-                    }
+                    isArabicChecked = isCheckArabic(senderObj.Text);
                 }
-                if (EntryVatAdjustmentWithSAR != null && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Length > 0)
-                {
-                    foreach (char letter in EntryVatAdjustmentWithSAR.Text.ToCharArray())
-                    {
-                        if (!((letter >= 46 && letter <= 57) || letter == 44))
-                        {
-                            iSAllNumeric = false;
-                        }
-                    }
-                }
-
-
-                if (iSAllNumeric)
+                if (isArabicChecked)
                 {
                     viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
                     viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
@@ -750,16 +732,8 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-                    if (EntryVatAmount.Id == senderObj.Id)
-                    {
-                        if (EntryVatAmount != null && EntryVatAmount.Text.Length > 0)
-                            EntryVatAmount.Text = EntryVatAmount.Text.Substring(0, EntryVatAmount.Text.Length - 1).ToString();
-                    }
-                    else if (EntryVatAdjustmentWithSAR.Id == senderObj.Id)
-                    {
-                        if (EntryVatAdjustmentWithSAR != null && EntryVatAdjustmentWithSAR.Text.Length > 0)
-                            EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Substring(0, EntryVatAdjustmentWithSAR.Text.Length - 1).ToString();
-                    }
+                    if (senderObj != null && senderObj.Text.Length > 0)
+                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                 }
 
 
@@ -1924,7 +1898,7 @@ namespace GAZT.Views.NewViews
             {
                 if (viewModel.IsVisibleVatReturnForm == true)
                 {
-                    if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != ".")
+                    if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
                     {
                         CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
 
