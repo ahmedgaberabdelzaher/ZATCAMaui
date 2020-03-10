@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,11 +26,22 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
-            DDlIDType.SelectedIndex = 1;
-            UsingDDl.SelectedIndex = 0;
-            DpDbo.Date = new DateTime(1953, 11, 24);
-        }
+            DDlIDType.SelectedIndex = 0;
+            UsingDDl.SelectedIndex = 1;
+            
+            SetLTR();
 
+           
+        }
+        private void SetLTR()
+        {
+
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
 
         private void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
@@ -181,11 +193,13 @@ namespace GAZT.Views.NewViews
                     DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber,"ZS0001",string.Empty,string.Empty);
                     if (ResultDuplicate.d.Flag == "X")
                     {
-                        if (viewModel.SelectLCType.ID == 1)
+                        if (viewModel.SelectLCType.ID == 2)
                         {
                             DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
                             if(ResultDuplicateCR.d.Flag=="X")
                             {
+                                CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
                                 SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                                 if (App.IsArabic)
                                 {
@@ -201,42 +215,58 @@ namespace GAZT.Views.NewViews
                                 if (viewModel.IsTIN)
                                 {
                                     SiguupModel.ATin = viewModel.TxtTIN;
+                                    SiguupModel.ATinExist = "X";
                                 }
                                 else
                                 {
                                     SiguupModel.ATin = "";
+                                    SiguupModel.ATinExist = "";
                                 }
                                 SiguupModel.AIdnumber = viewModel.TxtIDNumber;
                                 if(viewModel.SelectLCType.ID==2)
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                    SiguupModel.ALicenceNo = "";
+                                }
+                                else 
+                                {
+                                    SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                    SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                    SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;  
+                                    SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone ="00966"+ viewModel.TxtPhoneNumber;
                                 SiguupModel.AMobile ="00966"+ viewModel.TxtMobileNumber;
-                                SiguupModel.AIssuedBy = "";
+                               
                                 SiguupModel.ACity = "";
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0001";
+                                    SiguupModel.AIdtype = "ZS0001";
                                 }
                                 else if (viewModel.SelectedSignUpUsing.ID == 2)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0002";
+                                    SiguupModel.AIdtype = "ZS0002";
                                 }
                                 else if (viewModel.SelectedSignUpUsing.ID == 3)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0003";
+                                    SiguupModel.AIdtype = "ZS0003";
                                 }
-                                SiguupModel.ABirthdt = null;
-                                SiguupModel.ATinExist = "";
+                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel= JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                                viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
                                 if (ResultFirstSubmitModel.d==null)
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
 
+                                }
+                                else
+                                {
+                                    viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
 
                             }
@@ -247,6 +277,8 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
+                            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
                             SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                             if (App.IsArabic)
                             {
@@ -262,42 +294,57 @@ namespace GAZT.Views.NewViews
                             if (viewModel.IsTIN)
                             {
                                 SiguupModel.ATin = viewModel.TxtTIN;
+                                SiguupModel.ATinExist = "X";
                             }
                             else
                             {
                                 SiguupModel.ATin = "";
+                                SiguupModel.ATinExist = "";
                             }
                             SiguupModel.AIdnumber = viewModel.TxtIDNumber;
                             if (viewModel.SelectLCType.ID == 2)
                             {
                                 SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                SiguupModel.ALicenceNo = "";
+                            }
+                            else
+                            {
+                                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                SiguupModel.ACommId = "";
                             }
                             SiguupModel.AEmail = viewModel.TxtEmailAddress;
                             SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                             SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                            SiguupModel.AIssuedBy = "";
-                            SiguupModel.ACity = "";
+
+                           
                             if (viewModel.SelectedSignUpUsing.ID == 1)
                             {
-                                SiguupModel.AIssuedBy = "ZS0001";
+                                SiguupModel.AIdtype = "ZS0001";
                             }
                             else if (viewModel.SelectedSignUpUsing.ID == 2)
                             {
-                                SiguupModel.AIssuedBy = "ZS0002";
+                                SiguupModel.AIdtype = "ZS0002";
                             }
                             else if (viewModel.SelectedSignUpUsing.ID == 3)
                             {
-                                SiguupModel.AIssuedBy = "ZS0003";
+                                SiguupModel.AIdtype = "ZS0003";
                             }
-                            SiguupModel.ABirthdt = null;
-                            SiguupModel.ATinExist = "";
+                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
                             if (ResultFirstSubmitModel.d == null)
                             {
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                 viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
 
+                            }
+                            else
+                            {
+                                viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
                         }
                     }
@@ -312,11 +359,13 @@ namespace GAZT.Views.NewViews
                     DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
                     if (ResultDuplicate.d.Flag == "X")
                     {
-                        if (viewModel.SelectLCType.ID == 1)
+                        if (viewModel.SelectLCType.ID == 2)
                         {
                             DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
                             if (ResultDuplicateCR.d.Flag == "X")
                             {
+                                CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
                                 SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                                 if (App.IsArabic)
                                 {
@@ -332,42 +381,57 @@ namespace GAZT.Views.NewViews
                                 if (viewModel.IsTIN)
                                 {
                                     SiguupModel.ATin = viewModel.TxtTIN;
+                                    SiguupModel.ATinExist = "X";
                                 }
                                 else
                                 {
                                     SiguupModel.ATin = "";
+                                    SiguupModel.ATinExist = "";
                                 }
                                 SiguupModel.AIdnumber = viewModel.TxtIDNumber;
                                 if (viewModel.SelectLCType.ID == 2)
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                    SiguupModel.ALicenceNo = "";
+                                }
+                                else
+                                {
+                                    SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                    SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                    SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                    SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                 SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                SiguupModel.AIssuedBy = "";
-                                SiguupModel.ACity = "";
+
+                                
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0001";
+                                    SiguupModel.AIdtype = "ZS0001";
                                 }
                                 else if (viewModel.SelectedSignUpUsing.ID == 2)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0002";
+                                    SiguupModel.AIdtype = "ZS0002";
                                 }
                                 else if (viewModel.SelectedSignUpUsing.ID == 3)
                                 {
-                                    SiguupModel.AIssuedBy = "ZS0003";
+                                    SiguupModel.AIdtype = "ZS0003";
                                 }
-                                SiguupModel.ABirthdt = null;
-                                SiguupModel.ATinExist = "";
+                                SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                                viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
                                 if (ResultFirstSubmitModel.d == null)
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
 
+                                }
+                                else
+                                {
+                                    viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
                             else
@@ -377,6 +441,8 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
+                            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
                             SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                             if (App.IsArabic)
                             {
@@ -392,37 +458,48 @@ namespace GAZT.Views.NewViews
                             if (viewModel.IsTIN)
                             {
                                 SiguupModel.ATin = viewModel.TxtTIN;
+                                SiguupModel.ATinExist = "X";
                             }
                             else
                             {
                                 SiguupModel.ATin = "";
+                                SiguupModel.ATinExist = "";
                             }
                             SiguupModel.AIdnumber = viewModel.TxtIDNumber;
                             if (viewModel.SelectLCType.ID == 2)
                             {
                                 SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                SiguupModel.ALicenceNo = "";
+                            }
+                            else
+                            {
+                                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                SiguupModel.ACommId = "";
                             }
                             SiguupModel.AEmail = viewModel.TxtEmailAddress;
                             SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                             SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                            SiguupModel.AIssuedBy = "";
-                            SiguupModel.ACity = "";
+
+                           
                             if (viewModel.SelectedSignUpUsing.ID == 1)
                             {
-                                SiguupModel.AIssuedBy = "ZS0001";
+                                SiguupModel.AIdtype = "ZS0001";
                             }
                             else if (viewModel.SelectedSignUpUsing.ID == 2)
                             {
-                                SiguupModel.AIssuedBy = "ZS0002";
+                                SiguupModel.AIdtype = "ZS0002";
                             }
                             else if (viewModel.SelectedSignUpUsing.ID == 3)
                             {
-                                SiguupModel.AIssuedBy = "ZS0003";
+                                SiguupModel.AIdtype = "ZS0003";
                             }
-                            SiguupModel.ABirthdt = null;
-                            SiguupModel.ATinExist = "";
+                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
                             if (ResultFirstSubmitModel.d == null)
                             {
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
@@ -435,6 +512,165 @@ namespace GAZT.Views.NewViews
                     {
                         viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                     }
+                }
+                if (viewModel.SelectedSignUpUsing.ID == 3)
+                {
+                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty);
+
+
+                    if (viewModel.SelectLCType.ID == 2)
+                    {
+                        DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                        if (ResultDuplicateCR.d.Flag == "X")
+                        {
+                            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
+                            SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                            if (App.IsArabic)
+                            {
+                                SiguupModel.ALang = "A";
+                            }
+                            else
+                            {
+                                SiguupModel.ALang = "E";
+                            }
+                            SiguupModel.AType = "1";
+                            SiguupModel.AFirstname = viewModel.TxtName;
+                            SiguupModel.ALastname = ".";
+                            if (viewModel.IsTIN)
+                            {
+                                SiguupModel.ATin = viewModel.TxtTIN;
+                                SiguupModel.ATinExist = "X";
+                            }
+                            else
+                            {
+                                SiguupModel.ATin = "";
+                                SiguupModel.ATinExist = "";
+                            }
+                            SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+                            if (viewModel.SelectLCType.ID == 2)
+                            {
+                                SiguupModel.ACommId = viewModel.TxtCRNumber;
+                                SiguupModel.ALicenceNo = "";
+                            }
+                            else
+                            {
+                                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                                SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                SiguupModel.ACommId = "";
+                            }
+                            SiguupModel.AEmail = viewModel.TxtEmailAddress;
+                            SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                            SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+
+                            if (viewModel.SelectedSignUpUsing.ID == 1)
+                            {
+                                SiguupModel.AIdtype = "ZS0001";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 2)
+                            {
+                                SiguupModel.AIdtype = "ZS0002";
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 3)
+                            {
+                                SiguupModel.AIdtype = "ZS0003";
+                            }
+                            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                            string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+                            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+
+                            }
+                            else
+                            {
+                                viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                            }
+                        }
+                        else
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                        }
+                    }
+                    else
+                    {
+                        CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+
+                        SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+                        if (App.IsArabic)
+                        {
+                            SiguupModel.ALang = "A";
+                        }
+                        else
+                        {
+                            SiguupModel.ALang = "E";
+                        }
+                        SiguupModel.AType = "1";
+                        SiguupModel.AFirstname = viewModel.TxtName;
+                        SiguupModel.ALastname = ".";
+                        if (viewModel.IsTIN)
+                        {
+                            SiguupModel.ATin = viewModel.TxtTIN;
+                            SiguupModel.ATinExist = "X";
+                        }
+                        else
+                        {
+                            SiguupModel.ATin = "";
+                            SiguupModel.ATinExist = "";
+                        }
+                        SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+                        if (viewModel.SelectLCType.ID == 2)
+                        {
+                            SiguupModel.ACommId = viewModel.TxtCRNumber;
+                            SiguupModel.ALicenceNo = "";
+                        }
+                        else
+                        {
+                            SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                            SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                            SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                            SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                            SiguupModel.ACommId = "";
+                        }
+                        SiguupModel.AEmail = viewModel.TxtEmailAddress;
+                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                        SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+
+                        if (viewModel.SelectedSignUpUsing.ID == 1)
+                        {
+                            SiguupModel.AIdtype = "ZS0001";
+                        }
+                        else if (viewModel.SelectedSignUpUsing.ID == 2)
+                        {
+                            SiguupModel.AIdtype = "ZS0002";
+                        }
+                        else if (viewModel.SelectedSignUpUsing.ID == 3)
+                        {
+                            SiguupModel.AIdtype = "ZS0003";
+                        }
+                        SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                        string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+                        SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                        viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+                        if (ResultFirstSubmitModel.d == null)
+                        {
+                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                            viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+
+                        }
+                        else
+                        {
+                            viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                        }
+                    }
+                   
                 }
             }
 
@@ -488,6 +724,7 @@ namespace GAZT.Views.NewViews
                                         {
                                             FrmIDNumber.BorderColor = Color.Red;
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                            viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
@@ -506,6 +743,7 @@ namespace GAZT.Views.NewViews
                                     {
                                         FrmIDNumber.BorderColor = Color.Red;
                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                        viewModel.TxtIDNumber = string.Empty;
                                     }
                                     else
                                     {
@@ -556,7 +794,9 @@ namespace GAZT.Views.NewViews
                                         if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                         {
                                             FrmIDNumber.BorderColor = Color.Red;
+                                      
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                            viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
@@ -575,6 +815,7 @@ namespace GAZT.Views.NewViews
                                     {
                                         FrmIDNumber.BorderColor = Color.Red;
                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                        viewModel.TxtIDNumber = string.Empty;
                                     }
                                     else
                                     {
@@ -616,6 +857,7 @@ namespace GAZT.Views.NewViews
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmMobileNumber.BorderColor = Color.Red;
                     EntryMobileNumber.Text = string.Empty;
+                    EntryMobileNumber.Focus();
                 }
                 else
                 {
@@ -647,6 +889,7 @@ namespace GAZT.Views.NewViews
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmPhoneNumber.BorderColor = Color.Red;
                     EntryPhoneNumber.Text = string.Empty;
+                    EntryPhoneNumber.Focus();
                 }
                 else
                 {
@@ -660,7 +903,7 @@ namespace GAZT.Views.NewViews
             string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
-                if (viewModel.TxtIDNumber != null)
+                if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
                     {
@@ -704,7 +947,7 @@ namespace GAZT.Views.NewViews
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
             {
-                if (viewModel.TxtIDNumber != null)
+                if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
                     {
@@ -754,19 +997,197 @@ namespace GAZT.Views.NewViews
             {
                 CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                
-                if (Result.d.NotFound=="X")
+                if(Result.d != null)
                 {
-                    FrmCR.BorderColor = Color.Red;
-                    viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
-                }
-                else
-                {
-                    FrmCR.BorderColor = Color.FromHex("#B1B1B1");
-                }
+                    if (Result.d.NotFound == "X")
+                    {
+                        FrmCR.BorderColor = Color.Red;
+                        viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                    }
+                    else
+                    {
+                        FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                    }
+                }                
                
             }
         }
 
-   
+        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZTINnumberhastostartwithnumber3;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmTIN.BorderColor = Color.Red;
+                    EntryTIN.Text = string.Empty;
+                    EntryTIN.Focus();
+                }
+                else
+                {
+                    FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+        }
+
+        private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Length != 10)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmTIN.BorderColor = Color.Red;
+                    EntryTIN.Text = string.Empty;
+                }
+                else
+                {
+                    FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+        }
+
+        private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryEmail.Text))
+            {
+                bool flag = IsValid(EntryEmail.Text);
+                if(!flag)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmEmailAddress.BorderColor = Color.Red;
+                    EntryEmail.Text = string.Empty;
+                }
+                else
+                {
+                    FrmEmailAddress.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+
+        }
+
+        public bool IsValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(EntryMobileNumber.Text))
+            {
+                if (EntryMobileNumber.Text.Length != 9)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmMobileNumber.BorderColor = Color.Red;
+                    EntryMobileNumber.Text = string.Empty;
+                }
+                else
+                {
+                    FrmMobileNumber.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+        }
+
+        private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                if (EntryPhoneNumber.Text.Length != 9)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZPhonenumberlengthcannotbelessthan9digits;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmPhoneNumber.BorderColor = Color.Red;
+                    EntryPhoneNumber.Text = string.Empty;
+                }
+                else
+                {
+                    FrmPhoneNumber.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+        }
+
+        private void DDlIDType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            viewModel.TxtIDNumber = string.Empty;
+        }
     }
 }

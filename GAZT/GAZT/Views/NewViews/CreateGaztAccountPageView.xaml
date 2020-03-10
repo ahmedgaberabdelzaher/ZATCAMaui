@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+                FlowDirection="RightToLeft"
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
               xmlns:local1="clr-namespace:GAZT"
@@ -54,7 +54,7 @@
                         <Frame  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False"  Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -64,10 +64,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="3"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="3" IsEnabled="{Binding IsOTPEntryEnable}" x:Name="frmEmailCode"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailCode}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry Keyboard="Numeric" Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Text="{Binding TxtEmailCode}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -80,7 +80,7 @@
                         <Frame  Grid.Row="5"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -90,10 +90,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="7"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="7" IsEnabled="{Binding IsOTPEntryEnable}"   x:Name="frmMobileCode"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumberCode}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry   Keyboard="Numeric"  Grid.Row="7" IsPassword="True" Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Text="{Binding TxtMobileNumberCode}"></custom:GAZTBorderlessEntry>
 
 
                         <Label Grid.Row="8"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
@@ -113,10 +113,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="10"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="10"  x:Name="frmPass"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="10"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPassword}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  x:Name="EntryPass" Grid.Row="10"  Grid.Column="0" IsPassword="True"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPassword}"></custom:GAZTBorderlessEntry>
 
                         <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -126,15 +126,15 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="12"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="12"   x:Name="frmCfrmPass"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="12"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtConfirmPassword}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="EntryCfrmPass" TextChanged="EntryCfrmPass_TextChanged" Grid.Row="12"  Grid.Column="0" IsPassword="True" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtConfirmPassword}"></custom:GAZTBorderlessEntry>
                         <Label Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand"  Margin="10,0,10,0">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static local:AppResources.ZZThecodewillbeexpiredwithin}"  Style="{StaticResource InformationGrayColorLabel}"   />
-                                    <Span  Text="02:00" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
+                                    <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -143,7 +143,7 @@
                     </Grid>
                 </ScrollView>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZZSubmit}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" Command="{Binding OnSubmitClicked}"></Button>
+                    <Button Text="{x:Static local:AppResources.ZZSubmit}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" x:Name="btnSubmit" Clicked="btnSubmit_Clicked" IsEnabled="{Binding IsVerifyOTPEnabled}" ></Button>
 
                 </StackLayout>
             </Grid>

@@ -2438,4 +2438,24 @@
     <value>You should sign up as new user</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاء اسم المستخدم بنجاح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
+    <value>New password field and confirm Password field should match up</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
+    <value>Please enter confirmation code sent to your email address</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
+    <value>Please enter confirmation code sent to your mobile number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZSignup" xml:space="preserve">
+    <value>تسجيل جديد</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

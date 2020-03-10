@@ -3763,6 +3763,107 @@ namespace GAZT.Manager
 
             }
         }
+
+        public static string GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string FirstSignupSubmit = string.Empty;
+                    string url = Constants.GAZTSignUpFirstSubmit;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    var serilized = JsonConvert.SerializeObject(SignUpModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
+                    // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
+                    return FirstSignupSubmit;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+        public static CaseGuidModelRootObject GAZTGetSignupGuid()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                CaseGuidModelRootObject GaztGuidModel = new CaseGuidModelRootObject();
+
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTSignUpGetGuid;
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTGuidList = client.GetAsync(uri).Result;
+
+                    if (GAZTGuidList != null)
+                    {
+                        HttpHeaders headers = GAZTGuidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String VGAZTGuidListResult = GAZTGuidList.Content.ReadAsStringAsync().Result;
+
+                        GaztGuidModel = JsonConvert.DeserializeObject<CaseGuidModelRootObject>(VGAZTGuidListResult);
+
+
+
+
+                    }
+                    return GaztGuidModel;// tINStatus;
+                }
+                catch (Exception ex)
+                {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
     }
 
 }

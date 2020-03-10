@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
 {
+   
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpTAndCViewPage : ContentPage
     {
@@ -20,14 +21,40 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.SignUpTAndCPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
-            if (!App.IsArabic)
+            SetLTR();
+
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                if (!App.IsArabic)
+                {
+                    TCWebView.Source = "TermsAndConditionsEN.html";
+                }
+                else
+                {
+                    TCWebView.Source = "TermsAndConditionsAR.html";
+
+                }
             }
             else
             {
-                TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
-                
+                if (!App.IsArabic)
+                {
+                    TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                }
+                else
+                {
+                    TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
+
+                }
+            }
+        }
+        private void SetLTR()
+        {
+
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
     }

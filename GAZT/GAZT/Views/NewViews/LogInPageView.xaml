@@ -26,6 +26,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -96,8 +97,12 @@
                                 <TapGestureRecognizer Command="{Binding OnForgotUsernamePasswordClicked}" />
                             </Label.GestureRecognizers>
                         </Label>
-
-                             <Label   Text="{Binding AppVersion}"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"> 
+                    <Label  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.ZZSignup}"  Style="{StaticResource GAZTSmallGoldLabelStyle}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10,-5,10,-5">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnSignupClicked}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label   Text="{Binding AppVersion}"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"> 
                         </Label>
                    
        

@@ -17,14 +17,14 @@ namespace GAZT.Models
     public class SignUpModelD
     {
         public SignUpModelMetadata __metadata { get; set; }
-        public object AAgreeDt { get; set; }
+        public string AAgreeDt { get; set; }
         public string ATinExist { get; set; }
         public string ACityCode { get; set; }
-        public object ABirthdt { get; set; }
+        public string ABirthdt { get; set; }
         public string AExternal { get; set; }
         public string ALang { get; set; }
         public string ACity { get; set; }
-        public object ACrexpdt { get; set; }
+        public string ACrexpdt { get; set; }
         public string AInternal { get; set; }
         public string AIdtype { get; set; }
         public string APassword { get; set; }
