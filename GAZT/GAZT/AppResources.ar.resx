@@ -2131,7 +2131,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZIagreeontermsAndconditions" xml:space="preserve">
-    <value>تم الاطلاع على الشروط و الأحكام و أوافق على كل ما تضمنه و يترتب عليها كافة الآثار النظامية على المكلف، علما بأنها قابلة للتحديث ويلزم متابعتها بشكل مستمر.</value>
+    <value>تم الاطلاع على الشروط و الأحكام و أوافق على كل ما تضمنه و يترتب عليها كافة الآثار النظامية</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZIDType" xml:space="preserve">

@@ -72,15 +72,18 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _SelectedLCType = value;
-                if(_SelectedLCType.ID==2)
+                if (_SelectedLCType != null)
                 {
-                    IsLicenseVisible = false;
-                    IsCRVisible = true;
-                }
-                else if(_SelectedLCType.ID == 1)
-                {
-                    IsLicenseVisible = true;
-                    IsCRVisible = false;
+                    if (_SelectedLCType.ID == 2)
+                    {
+                        IsLicenseVisible = false;
+                        IsCRVisible = true;
+                    }
+                    else if (_SelectedLCType.ID == 1)
+                    {
+                        IsLicenseVisible = true;
+                        IsCRVisible = false;
+                    }
                 }
                 RaisePropertyChanged("SelectLCType");
             }
@@ -169,10 +172,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_isTIN==true)
                 {
                     IsTINVisible = true;
+                    TxtTIN = string.Empty;
                 }
                 else
                 {
                     IsTINVisible = false;
+                    TxtTIN = string.Empty;
                 }
                 RaisePropertyChanged("IsTIN");
             }
@@ -410,6 +415,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _signUpFirstSubmitModel = value;
                 RaisePropertyChanged("SignUpFirstSubmitModel");
+            }
+        }
+
+        private DateTime _maximumxD = DateTime.Now;
+        public DateTime MaximumxD
+        {
+            get
+            {
+                return _maximumxD;
+            }
+            set
+            {
+                _maximumxD = value;
+                RaisePropertyChanged("MaximumxD");
             }
         }
         #endregion

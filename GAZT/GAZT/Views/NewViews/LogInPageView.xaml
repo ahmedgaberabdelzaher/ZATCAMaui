@@ -11,12 +11,12 @@
              >
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           
+            <ScrollView>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
            
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="210"/>
+                        <RowDefinition Height="180"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -110,7 +110,8 @@
                 </Grid>
           
         </Grid>
-         <!-- Acticity indicator layout start -->
+            </ScrollView>
+            <!-- Acticity indicator layout start -->
         <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
             </StackLayout>
@@ -122,7 +123,7 @@
             </StackLayout>
         </Grid>
         <!-- Acticity indicator layout end -->
-        
+          
         </Grid>
     </ContentPage.Content>
         
