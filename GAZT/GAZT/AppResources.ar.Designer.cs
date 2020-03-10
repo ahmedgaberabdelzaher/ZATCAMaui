@@ -4157,5 +4157,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYournewEmailandSMSValidationCodehasbeenresenttoyou", resourceCulture);
             }
         }
+        
+        public static string ZZPleaseentervalidCRnumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseentervalidCRnumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleasefillthemandatoryfields {
+            get {
+                return ResourceManager.GetString("ZZPleasefillthemandatoryfields", resourceCulture);
+            }
+        }
+        
+        public static string ZZYoushouldsignupasnewuser {
+            get {
+                return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
+            }
+        }
     }
 }

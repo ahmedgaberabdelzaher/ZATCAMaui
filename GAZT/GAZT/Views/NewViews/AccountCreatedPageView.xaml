@@ -8,13 +8,13 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              x:Class="GAZT.Views.NewViews.AccountCreatedPageView">
     <ContentPage.Content>
-        <StackLayout>
-            <Image  Source="ic_check_circle_24px" HorizontalOptions="Center" Margin="10"></Image>
-            <Label    Text="{x:Static local:AppResources.ZZAccountCreatedSuccessfully}"  Style="{StaticResource ForgotPasswordTextColor}"    HorizontalTextAlignment="Center" VerticalTextAlignment="Start">
+        <StackLayout x:Name="Mainstack" VerticalOptions="Center" HorizontalOptions="Center">
+            <Image  Source="ic_check_circle_24px" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"></Image>
+            <Label    Text="{x:Static local:AppResources.ZZAccountCreatedSuccessfully}"  Style="{StaticResource ForgotPasswordTextColor}"    HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
             </Label>
-            <Label  Text="{x:Static local:AppResources.Clickhereforlogin}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"   HorizontalTextAlignment="Center" VerticalTextAlignment="Start" >
+            <Label  Text="{x:Static local:AppResources.Clickhereforlogin}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"   HorizontalTextAlignment="Center" VerticalTextAlignment="Start" >
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OnLoginPageLinkClicked}"/>
+                    <TapGestureRecognizer Tapped="Checked" Command="{Binding Source={x:Reference Name=Mainstack}, Path=BindingContext.OnLoginPageLinkClicked}"/>
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>

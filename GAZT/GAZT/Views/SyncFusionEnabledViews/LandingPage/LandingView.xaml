@@ -337,18 +337,7 @@
                             <Span Text="TIN# 123456" TextColor="White"/>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
-                
-                <!--<Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
-                    <Label.FormattedText >
-                        <FormattedString>
-                            <Span Text="Hello, Abdullah" TextColor="White"/>
-                            <Span Text="{x:Static System.Environment.NewLine}"></Span>
-                            <Span Text="TIN# 123456" TextColor="White"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>-->
-                <!--<Button HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Text="Sign In" Grid.Row="3" Grid.Column="0" BackgroundColor="Orange" Clicked="Button_Clicked"/>-->
+                </Label>             
             </Grid>
 
 

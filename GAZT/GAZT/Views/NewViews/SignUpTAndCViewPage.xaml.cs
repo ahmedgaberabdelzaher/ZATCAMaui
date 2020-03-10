@@ -48,7 +48,15 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
-        private void SetLTR()
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.IsButtonEnabled = false;
+            viewModel.IschkTAndC = false;
+            viewModel.VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+        }
+            private void SetLTR()
         {
 
 

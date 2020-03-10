@@ -7,10 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -183,42 +185,51 @@ namespace GAZT.Views.NewViews
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             //attachment.DocUrl;
 
-            if (Device.RuntimePlatform == Device.iOS)
+            if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
             {
-                if (attachment.DocUrl != null)
+                if (Device.RuntimePlatform == Device.iOS)
                 {
-                    //Uri uri = new Uri(pdfUrl);
-                    //Device.OpenUri(uri);
-                    viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
+                    if (attachment.DocUrl != null)
+                    {
+                        //Uri uri = new Uri(pdfUrl);
+                        //Device.OpenUri(uri);
+                        viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
+                    }
+                    else
+                    {
+                        //pop that certificate is not available
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                        });
+                    }
                 }
                 else
                 {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
+                    if (attachment.DocUrl != null)
                     {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    }
+                    else
+                    {
+                        //pop that certificate is not available
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                        });
+                    }
                 }
             }
             else
             {
-                if (attachment.DocUrl != null)
-                {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                }
-                else
-                {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
+                await email(attachment.Doguid, attachment);
             }
+
+               
            // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
         }
 
-        private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ListView Document = sender as ListView;
 
@@ -228,8 +239,59 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
             }
+            else
+            {
+              await  email(attachment.Doguid, attachment);
+            }
 
             if (sender is ListView lv) lv.SelectedItem = null;
         }
+
+        public async Task email(string doguid, Attachment attachment)
+        {
+            try
+            {
+                string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                byte[] PdfBytes;
+                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                WebResponse myResp = myReq.GetResponse();
+                using (Stream streams = myResp.GetResponseStream())
+                using (MemoryStream Ms = new MemoryStream())
+                {
+                    int count = 0;
+                    do
+                    {
+                        byte[] buf = new byte[1024];
+                        count = streams.Read(buf, 0, 1024);
+                        Ms.Write(buf, 0, count);
+                    } while (streams.CanRead && count > 0);
+                    PdfBytes = Ms.ToArray();
+                }
+
+                var message = new EmailMessage
+                {
+                    Subject = "Attached Form :",
+
+                };
+                var fn = attachment.Filename;
+                var file = Path.Combine(FileSystem.CacheDirectory, fn);
+               
+                File.WriteAllBytes(file, PdfBytes);
+
+                await Share.RequestAsync(new ShareFileRequest
+                {
+                    Title = Title,
+                    File = new ShareFile(file)
+                });
+                viewModel._navigationService.GoBack();
+               
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 }

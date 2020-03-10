@@ -775,11 +775,11 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Frame Grid.Row="22"  Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
-                            <Frame.Triggers>
+                            <!--<Frame.Triggers>
                                 <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryStdpurchasesVat}, Path=Text.Length}" Value="0">
                                     <Setter Property="BorderColor" Value="#ff0000" />
                                 </DataTrigger>
-                            </Frame.Triggers>
+                            </Frame.Triggers>-->
                         </Frame>
                         <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat"  Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"   Grid.Row="22"  IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                         </custom:GAZTBorderlessEntry>
@@ -1838,7 +1838,7 @@
 
 
                 <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                <Button  Text="{Binding ButtonName}" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Command="{Binding OnStepButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <Button  Text="{Binding ButtonName}" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Command="{Binding OnStepButtonClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}"></Button>
                 <!--</StackLayout>-->
             </Grid>
             <!-- Acticity indicator layout start -->

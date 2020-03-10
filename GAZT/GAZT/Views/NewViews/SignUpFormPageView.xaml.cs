@@ -680,6 +680,7 @@ namespace GAZT.Views.NewViews
         {
             try
             {
+                EntryIDNumber.IsEnabled = true;
                 string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
                 if (!string.IsNullOrEmpty(EntryIDNumber.Text))
                 {
@@ -724,7 +725,7 @@ namespace GAZT.Views.NewViews
                                         {
                                             FrmIDNumber.BorderColor = Color.Red;
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                            viewModel.TxtIDNumber = string.Empty;
+                                          //  viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
@@ -732,7 +733,11 @@ namespace GAZT.Views.NewViews
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                         }
                                     }
-                                  
+                                    else
+                                    {
+                                        viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                        EntryIDNumber.IsEnabled = false;
+                                    }
                                 }
                                 catch
                                 {
@@ -743,7 +748,7 @@ namespace GAZT.Views.NewViews
                                     {
                                         FrmIDNumber.BorderColor = Color.Red;
                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                        viewModel.TxtIDNumber = string.Empty;
+                                       // viewModel.TxtIDNumber = string.Empty;
                                     }
                                     else
                                     {
@@ -796,13 +801,18 @@ namespace GAZT.Views.NewViews
                                             FrmIDNumber.BorderColor = Color.Red;
                                       
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                            viewModel.TxtIDNumber = string.Empty;
+                                          //  viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
                                             FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                         }
+                                    }
+                                    else
+                                    {
+                                        viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                        EntryIDNumber.IsEnabled = false;
                                     }
 
                                 }
@@ -815,7 +825,7 @@ namespace GAZT.Views.NewViews
                                     {
                                         FrmIDNumber.BorderColor = Color.Red;
                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                        viewModel.TxtIDNumber = string.Empty;
+                                       // viewModel.TxtIDNumber = string.Empty;
                                     }
                                     else
                                     {
@@ -901,12 +911,14 @@ namespace GAZT.Views.NewViews
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
             string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+            EntryIDNumber.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
-                if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
                     {
+                     
                         string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
                         IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         if (SignupIsIDTypeValid.d == null)
@@ -923,7 +935,13 @@ namespace GAZT.Views.NewViews
                             {
                                 FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                              
                             }
+                        }
+                        else
+                        {
+                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 +" " + SignupIsIDTypeValid.d.Name2;
+                            EntryIDNumber.IsEnabled = false;
                         }
 
                     }
@@ -931,23 +949,26 @@ namespace GAZT.Views.NewViews
                     {
                         string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
                         IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                        if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                        {
-                            FrmIDNumber.BorderColor = Color.Red;
-                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                        }
-                        else
-                        {
-                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                        }
+                        
+                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                            {
+                                FrmIDNumber.BorderColor = Color.Red;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        
+                      
                     }
                 }
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
             {
-                if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
+                EntryIDNumber.IsEnabled = true;
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
                     {
@@ -968,6 +989,11 @@ namespace GAZT.Views.NewViews
                                 FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
+                        }
+                        else
+                        {
+                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            EntryIDNumber.IsEnabled = false;
                         }
 
                     }
@@ -993,22 +1019,48 @@ namespace GAZT.Views.NewViews
 
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
+
             if(!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
-                CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
-               
-                if(Result.d != null)
+                if (EntryCRNumber.Text.Length == 10)
                 {
-                    if (Result.d.NotFound == "X")
+                    FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                    CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+
+                    if (Result.d != null)
                     {
-                        FrmCR.BorderColor = Color.Red;
-                        viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                        if (Result.d.NotFound == "X")
+                        {
+                            FrmCR.BorderColor = Color.Red;
+                            viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                        }
+                        else
+                        {
+                            FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                        }
+                    }
+                }
+                else
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
                     }
                     else
                     {
-                        FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                        popUp.FlowDirections = "LeftToRight";
                     }
-                }                
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmCR.BorderColor = Color.Red;
+                    EntryCRNumber.Text = string.Empty;
+                    EntryCRNumber.Focus();
+                }
                
             }
         }
@@ -1188,6 +1240,7 @@ namespace GAZT.Views.NewViews
         private void DDlIDType_SelectedIndexChanged(object sender, EventArgs e)
         {
             viewModel.TxtIDNumber = string.Empty;
+            EntryIDNumber.IsEnabled = true;
         }
     }
 }
