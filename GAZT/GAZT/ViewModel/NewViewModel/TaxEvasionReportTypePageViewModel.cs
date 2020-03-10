@@ -14,8 +14,80 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnNextClicked { get; set; }
-        public ICommand OnBClicked { get; private set; }
+        public ICommand OnBClicked { get;  set; }
+
         #endregion
+
+        private bool _isimgVisiblec1 = false;
+        public bool IsimgVisiblec1
+        {
+            get
+            {
+                return _isimgVisiblec1;
+            }
+            set
+            {
+                _isimgVisiblec1 = value;
+                RaisePropertyChanged("IsimgVisiblec1");
+            }
+        }
+
+        private bool _isimgVisiblec2 = false;
+        public bool IsimgVisiblec2
+        {
+            get
+            {
+                return _isimgVisiblec2;
+            }
+            set
+            {
+                _isimgVisiblec2 = value;
+                RaisePropertyChanged("IsimgVisiblec2");
+            }
+        }
+        private bool _isimgVisiblec3 = false;
+        public bool IsimgVisiblec3
+        {
+            get
+            {
+                return _isimgVisiblec3;
+            }
+            set
+            {
+                _isimgVisiblec3 = value;
+                RaisePropertyChanged("IsimgVisiblec3");
+            }
+        }
+        private bool _isimgVisiblec4 = false;
+        public bool IsimgVisiblec4
+        {
+            get
+            {
+                return _isimgVisiblec4;
+            }
+            set
+            {
+                _isimgVisiblec4 = value;
+                RaisePropertyChanged("IsimgVisiblec4");
+            }
+        }
+        private bool _isimgVisiblec5 = false;
+        public bool IsimgVisiblec5
+        {
+            get
+            {
+                return _isimgVisiblec5;
+            }
+            set
+            {
+                _isimgVisiblec5 = value;
+                RaisePropertyChanged("IsimgVisiblec5");
+            }
+        }
+
+
+
+
 
         public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {

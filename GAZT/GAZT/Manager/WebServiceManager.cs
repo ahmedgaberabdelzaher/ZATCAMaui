@@ -3235,7 +3235,7 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var serilized = JsonConvert.SerializeObject(FavoriteCorrespondence);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
@@ -3760,8 +3760,103 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
 
             }
+     
+        
+        
         }
+        //Sample model
+        public static TERFRegionRootObject GAZTTESFormGetRegion()
+        {
+
+            RegionPost Cred = new RegionPost();
+                Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            TERFRegionRootObject Listobject = new TERFRegionRootObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TERFRegionRootObject terfregion = new TERFRegionRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/RegionRetrieve";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
+                    return terfregion;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+        public static TERFCityRetrieveRootObject GAZTTESFormGetCity(string regioncode)
+        {
+
+            CityPost Cred = new CityPost();
+            Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            Cred.RegionCode = regioncode;
+
+
+
+            TERFCityRetrieveRootObject Listobject = new TERFCityRetrieveRootObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TERFCityRetrieveRootObject terfcity = new TERFCityRetrieveRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/CityRetrieve";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
+                    return terfcity;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+
+
+
+
+
+
     }
+
+
+
 
 }
 

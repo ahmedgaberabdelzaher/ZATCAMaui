@@ -389,8 +389,9 @@ namespace GAZT.ViewModel
                 {
                     try
                     {
-                        
-                         await Login();
+
+                        _navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
+                        //await Login();
 
 
                     }

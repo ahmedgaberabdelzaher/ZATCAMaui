@@ -16,6 +16,13 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         private List<FormBundleResult> _formBundleList;
+        private bool _isCPickerEnable = false;
+        private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum;
+        private List<FormBundleApplicationNumberModelResult> _formBundleApplicationNumberList;
+        private string _fbnumdetail;
+        private FormBundleResult _selectedFormBindleFbtyp;
+        private List<FbnumDetailList> _fbnumDetailList;
+
 
         public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -44,7 +51,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private bool _isCPickerEnable = false;
+       
         public bool IsCPickerEnable
         {
             get
@@ -61,7 +68,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum;
+  
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnum
         {
             get
@@ -94,7 +101,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private string _fbnumdetail;
+        
         public string Fbnumdetail
         {
             get
@@ -109,7 +116,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<FormBundleApplicationNumberModelResult> _formBundleApplicationNumberList;
+        
         public List<FormBundleApplicationNumberModelResult> FormBundleApplicatioNumberList
         {
             get
@@ -123,7 +130,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private FormBundleResult _selectedFormBindleFbtyp;
+        
         public FormBundleResult SelectedFormBindleFbtyp
         {
             get
@@ -145,7 +152,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private List<FbnumDetailList> _fbnumDetailList;
+        
         public List<FbnumDetailList> FbnumDetailList
         {
             get

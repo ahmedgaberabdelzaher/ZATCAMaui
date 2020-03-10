@@ -73,6 +73,9 @@ namespace GAZT
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
             SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
+            
 
         }
 
@@ -897,6 +900,9 @@ namespace GAZT
             navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
             navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
+            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+            navigationService.Configure(App.TaxEvasionReportFormAttachmentPageView, typeof(TaxEvasionReportFormAttachmentPageView));
 
 
             return navigationService;

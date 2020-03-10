@@ -23,7 +23,25 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.TaxEvasionReportFormPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
-            
+            viewModel.onPageLoad();
+            SetLTR();
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            RegionPicker.Focus();
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            CityPicker.Focus();
         }
     }
 }
