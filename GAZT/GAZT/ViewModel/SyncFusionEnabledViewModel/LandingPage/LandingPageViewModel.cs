@@ -291,7 +291,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
                     objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
-                    objReturnInfoRtnTot.iConImagePath = "ic_Submited_Returns_White.png";
+                    objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
                     objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
 
 
@@ -317,7 +317,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
                     objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
-                    objReturnInfoNrtnTot.iConImagePath = "ic_Unsubmited_Returns_White.png";
+                    objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
                     objReturnInfoNrtnTot.ReturnTypeName = AppResources.NonSubmitted;
 
                     ReturnInfoItems.Add(objReturnInfoNrtnTot);
@@ -344,7 +344,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
                     objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
-                    objReturnInfoDueIcr.iConImagePath = "ic_Overdue_Returns_White.png";
+                    objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
                     objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
 
                     ReturnInfoItems.Add(objReturnInfoDueIcr);
@@ -397,7 +397,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objBillInfoPbillsTot.BackgroundGradientStart = "#006450";
                     objBillInfoPbillsTot.BackgroundGradientEnd = "#CCE0DC";
-                    objBillInfoPbillsTot.iConImagePath = "ic_Paid.png";
+                    objBillInfoPbillsTot.iConImagePath = "sf_ic_Paid.png";
                     objBillInfoPbillsTot.BillTypeName = AppResources.Paid;
 
 
@@ -453,7 +453,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objBillInfoPrbillsTot.BackgroundGradientStart = "#D99A29";
                     objBillInfoPrbillsTot.BackgroundGradientEnd = "#F7EBD4";
-                    objBillInfoPrbillsTot.iConImagePath = "ic_Partially_Paid.png";
+                    objBillInfoPrbillsTot.iConImagePath = "sf_ic_Partially_Paid.png";
                     objBillInfoPrbillsTot.BillTypeName = AppResources.Partial;
 
                     BillsInfoItems.Add(objBillInfoPrbillsTot);
@@ -488,7 +488,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     objBillInfoUpbillsTot.BackgroundGradientStart = " #AA0C19";
                     objBillInfoUpbillsTot.BackgroundGradientEnd = "#EECED1";
-                    objBillInfoUpbillsTot.iConImagePath = "ic_Unpaid.png";
+                    objBillInfoUpbillsTot.iConImagePath = "sf_ic_Unpaid.png";
                     objBillInfoUpbillsTot.BillTypeName = AppResources.UnPaid;
 
                     BillsInfoItems.Add(objBillInfoUpbillsTot);
@@ -529,14 +529,14 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
 
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Estimated ZAKAT Returns", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "Estimated_zakat_return.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Declarations", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "Vat_Declaration.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Check FORM Bundle Status", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "My_bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Tax Evasion Reporting", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "My_bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Bills", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "My_bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Certificates", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "My_bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Lookup", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "Estimated_zakat_return.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Correspondence", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "Correspondence.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Estimated ZAKAT Returns", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Declarations", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declarations.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Check FORM Bundle Status", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Tax Evasion Reporting", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Bills", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Certificates", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Lookup", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Correspondence", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
         }
     }
 

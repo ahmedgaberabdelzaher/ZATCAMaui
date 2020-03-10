@@ -77,6 +77,8 @@ namespace GAZT
             SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
             
 
+            SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
+
         }
 
         /// <summary>
@@ -841,6 +843,20 @@ namespace GAZT
             }
         }
 
+        public AccountCreatedPageViewModel AccountCreatedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -903,6 +919,8 @@ namespace GAZT
             navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
             navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
             navigationService.Configure(App.TaxEvasionReportFormAttachmentPageView, typeof(TaxEvasionReportFormAttachmentPageView));
+            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
+            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
 
 
             return navigationService;

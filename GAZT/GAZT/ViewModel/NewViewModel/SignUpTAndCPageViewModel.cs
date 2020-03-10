@@ -30,10 +30,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_ischkTAndC==true)
                 {
                     IsButtonEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
                 }
                 else
                 {
                     IsButtonEnabled = false;
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                 }
                 RaisePropertyChanged("IschkTAndC");
             }
@@ -50,6 +52,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _isButtonEnabled = value;
                 RaisePropertyChanged("IsButtonEnabled");
+            }
+        }
+
+        private Color _verifybuttonDisableColor = Color.FromHex("#9EA4A9");
+        public Color VerifyButtonDisableColor
+        {
+            get
+            {
+                return _verifybuttonDisableColor;
+            }
+            set
+            {
+                _verifybuttonDisableColor = value;
+                RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
         #endregion

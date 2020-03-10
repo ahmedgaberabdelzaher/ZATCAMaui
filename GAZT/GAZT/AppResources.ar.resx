@@ -2131,7 +2131,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZIagreeontermsAndconditions" xml:space="preserve">
-    <value>تم الاطلاع على الشروط و الأحكام و أوافق على كل ما تضمنه و يترتب عليها كافة الآثار النظامية على المكلف، علما بأنها قابلة للتحديث ويلزم متابعتها بشكل مستمر.</value>
+    <value>تم الاطلاع على الشروط و الأحكام و أوافق على كل ما تضمنه و يترتب عليها كافة الآثار النظامية</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZIDType" xml:space="preserve">
@@ -2561,5 +2561,25 @@
   <data name="ZTERReportPageHeadingText" xml:space="preserve">
     <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاء اسم المستخدم بنجاح</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
+    <value>New password field and confirm Password field should match up</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
+    <value>Please enter confirmation code sent to your email address</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
+    <value>Please enter confirmation code sent to your mobile number</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZSignup" xml:space="preserve">
+    <value>تسجيل جديد</value>
+    <comment>Sign Up</comment>
   </data>
 </root>

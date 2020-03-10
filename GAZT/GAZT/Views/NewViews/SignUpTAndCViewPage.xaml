@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
             
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
                Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
@@ -12,16 +12,17 @@
     <ContentPage.Content>
         <StackLayout>
             
-                <WebView x:Name="TCWebView" HeightRequest="820" WidthRequest="1000" />
-                <StackLayout HeightRequest="80" WidthRequest="1000" Orientation="Horizontal">
-                    <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}" VerticalOptions="Start"  Margin="10,0,0,0" >
+                <WebView x:Name="TCWebView" HeightRequest="900" WidthRequest="1000" />
+            <StackLayout HeightRequest="30" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
 
                     </CheckBox>
-                <Label Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,10,10,0"/>
+                <Label Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
 
                 </StackLayout>
-            <StackLayout HeightRequest="100" WidthRequest="1000">
-                <Button Text="{x:Static local:AppResources.Submit}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>
+            <StackLayout HeightRequest="70" WidthRequest="1000">
+                <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
+                <Button  Text="{x:Static local:AppResources.Submit}" IsEnabled="{Binding IsButtonEnabled}"  Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}"></Button>
 
             </StackLayout>
         </StackLayout>

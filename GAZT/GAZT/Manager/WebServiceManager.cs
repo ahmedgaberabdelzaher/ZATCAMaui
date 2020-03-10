@@ -1648,7 +1648,6 @@ namespace GAZT.Manager
             {
 
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
-
             }
         }
 
@@ -1666,7 +1665,10 @@ namespace GAZT.Manager
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
-                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language="+ Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "',SrcAppz='MB'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                   // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=disabled&sap-language="+ Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
@@ -3764,32 +3766,25 @@ namespace GAZT.Manager
         
         
         }
-        //Sample model
-        public static TERFRegionRootObject GAZTTESFormGetRegion()
+
+        public static string GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
         {
-
-            RegionPost Cred = new RegionPost();
-                Cred.WSUserName = "GAZT@CRM";
-            Cred.WSPassword = "gazt@123";
-            TERFRegionRootObject Listobject = new TERFRegionRootObject();
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
-                TERFRegionRootObject terfregion = new TERFRegionRootObject();
                 try
                 {
-
-                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/RegionRetrieve";
+                    string FirstSignupSubmit = string.Empty;
+                    string url = Constants.GAZTSignUpFirstSubmit;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
-                    var serilized = JsonConvert.SerializeObject(Cred);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
-                    terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
-                    return terfregion;
+                    FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
+                    // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
+                    return FirstSignupSubmit;
                 }
                 catch (Exception ex)
                 {
@@ -3803,38 +3798,64 @@ namespace GAZT.Manager
 
             }
         }
-        public static TERFCityRetrieveRootObject GAZTTESFormGetCity(string regioncode)
+        public static CaseGuidModelRootObject GAZTGetSignupGuid()
         {
-
-            CityPost Cred = new CityPost();
-            Cred.WSUserName = "GAZT@CRM";
-            Cred.WSPassword = "gazt@123";
-            Cred.RegionCode = regioncode;
-
-
-
-            TERFCityRetrieveRootObject Listobject = new TERFCityRetrieveRootObject();
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
-                TERFCityRetrieveRootObject terfcity = new TERFCityRetrieveRootObject();
+                CaseGuidModelRootObject GaztGuidModel = new CaseGuidModelRootObject();
+
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
                 try
                 {
-
-                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/CityRetrieve";
-                    var uri = new Uri(url);
+                    char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
-                    var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
-                    terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
-                    return terfcity;
+                    String url = Constants.GAZTSignUpGetGuid;
+                    //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTGuidList = client.GetAsync(uri).Result;
+
+                    if (GAZTGuidList != null)
+                    {
+                        HttpHeaders headers = GAZTGuidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String VGAZTGuidListResult = GAZTGuidList.Content.ReadAsStringAsync().Result;
+
+                        GaztGuidModel = JsonConvert.DeserializeObject<CaseGuidModelRootObject>(VGAZTGuidListResult);
+
+
+
+
+                    }
+                    return GaztGuidModel;// tINStatus;
                 }
                 catch (Exception ex)
                 {
+                    //if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    //{
+                    //    throw new Exception(AppResources.Nodataavailable);
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception(AppResources.NetworkConnectivityIssue);
+                    //}
                     return null;
                 }
             }
@@ -3845,18 +3866,8 @@ namespace GAZT.Manager
 
             }
         }
-
-
-
-
-
-
-
 
     }
-
-
-
 
 }
 

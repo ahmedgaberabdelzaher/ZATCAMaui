@@ -21,19 +21,18 @@ namespace GAZT.ViewModel
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
+        public ICommand OnSignupClicked { get; set; }
         public string DeviceId { get; set; }
         public int CurrentAttempt = 0;
         private DateTime lastTapped;
         #endregion
         #region Property
 
-        // private string _UserName = "3000028177";// can test count match issue
-        //private string _UserName = "3101591813";Jino provided
-        // private string _UserName = "3101762303";
-       private string _UserName = "3101666784";//data available to Amend
-      //  private string _UserName = "3100023233";
+
        
-        //private string _UserName = string.Empty;
+        private string _UserName = "3101589352";
+
+       // private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -91,9 +90,9 @@ namespace GAZT.ViewModel
         }
 
 
-      private string _Password = "Init@123";
+        private string _Password = "Init@123";
         
-       // private string _Password = string.Empty;
+      //  private string _Password = string.Empty;
         public string Password
         {
             get
@@ -382,7 +381,10 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.DashboardPageView);
             });
-
+            OnSignupClicked = new Command(async () =>
+            {
+                _navigationService.NavigateTo(App.SignUpTAndCViewPage);
+            });
             OnLoginButtonClicked = new Command(async () =>
             {
                 if (lastTapped<DateTime.Now.AddSeconds(-4))
@@ -403,6 +405,8 @@ namespace GAZT.ViewModel
               
                
             });
+
+
         }
         #endregion
         #region Method
@@ -509,7 +513,7 @@ namespace GAZT.ViewModel
 
 
                                         //_navigationService.NavigateTo(App.LandingPageView);
-                                        
+
                                         //SYNCFUSION INTEGRATION
 
                                     });
