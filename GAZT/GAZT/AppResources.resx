@@ -2584,4 +2584,8 @@ Should we require further information, we would be in contact.</value>
     <value>Sign Up</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
+    <value>Your Entity type is Individual</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>
