@@ -64,10 +64,10 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="3" IsEnabled="{Binding IsOTPEntryEnable}" x:Name="frmEmailCode"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                        <Frame  Grid.Row="3" IsEnabled="{Binding IsOTPEntryEnable}" x:Name="frmEmailCode"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry Keyboard="Numeric" Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Text="{Binding TxtEmailCode}">
+                        <custom:GAZTBorderlessEntry Keyboard="Numeric" Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsPassword="True" Text="{Binding TxtEmailCode}">
                             <local:GAZTBorderlessEntry.Behaviors>
                                 <local:NumericValidationBehavior/>
                             </local:GAZTBorderlessEntry.Behaviors>

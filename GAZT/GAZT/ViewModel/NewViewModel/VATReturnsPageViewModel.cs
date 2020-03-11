@@ -2831,42 +2831,45 @@ namespace GAZT.ViewModel.NewViewModel
                         //PopToRootPage();
                         IsLoading = false;
                         resNew = await SaveReturnAndGetReturnAndSetButtons();
-                   // }
-                    //decimal FourteenA = 0;
-                    //if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
-                    //{
-                    //    FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
-                    //}
+                    // }
+                
 
-                    //if ((FourteenA <0 && IsSwichButtonEnable == false) || (FourteenA < 0 && IsSwichButtonEnable == true))
-                    //{
-                    //    StringBuilder Masseges = new StringBuilder();
-                    //    Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                    //    Masseges.Append(Environment.NewLine);
-                    //    Masseges.Append(Environment.NewLine);
-                    //    Masseges.Append(Environment.NewLine);
 
-                    //    Masseges.Append(AppResources.CreditReturnMsg);
-
-                    //    PopUp Pop = new PopUp();
-                    //    Pop.IsLinkAvailable = false;
-                    //    Pop.IsRed = "#ff0000";
-                    //    Pop.IsBold = "Bold";
-                    //    Pop.Message = Masseges.ToString();
-                    //    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-
-                    //}
-                    //else
-                    //{
-                    //    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                    //    VATReturnFormClicked();
-                    //    PageSelectedItem = VatTabbledPageList[2];
-                    //}
                     if (resNew != null)
                     {
-                        await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                        VATReturnFormClicked();
-                        PageSelectedItem = VatTabbledPageList[2];
+                        decimal FourteenA = 0;
+                        if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
+                        {
+                            FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
+                        }
+
+                        if ((IsSwichButtonEnable == true && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
+                        {
+                            StringBuilder Masseges = new StringBuilder();
+                            Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(Environment.NewLine);
+
+                            Masseges.Append(AppResources.CreditReturnMsg);
+
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.IsRed = "#ff0000";
+                            Pop.IsBold = "Bold";
+                            Pop.Message = Masseges.ToString();
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                            VATReturnFormClicked();
+                            PageSelectedItem = VatTabbledPageList[2];
+                        }
+                        //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                        //VATReturnFormClicked();
+                        //PageSelectedItem = VatTabbledPageList[2];
                     }
                     else
                     {

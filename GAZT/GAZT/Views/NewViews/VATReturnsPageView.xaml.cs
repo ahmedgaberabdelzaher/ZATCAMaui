@@ -2594,9 +2594,43 @@ namespace GAZT.Views.NewViews
             {
             try
             {
+                string Message = string.Empty;
+                Entry Ent = (Entry)sender;
+                if (Ent.Id.ToString() == EntryExemptsalesAmt.Id.ToString())
+                {
+                    IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+                    if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                    {
+                        if (IGRTSetModel.RateTrtmt != "E")
+                        {
+
+                            if (viewModel.ResponseVATDeclarationD.ExemptsalesAmt != "." && !viewModel.ResponseVATDeclarationD.ExemptsalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExemptsalesAmt))
+                            {
+                                if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExemptsalesAmt) > 0)
+                                {
+                                    //PopUp popUp = new PopUp();
+                                    Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+
+
+                                    //popUp.IsLinkAvailable = false;
+                                    //if (App.IsArabic)
+                                    //{
+                                    //    popUp.FlowDirections = "RightToLeft";
+                                    //}
+                                    //else
+                                    //{
+                                    //    popUp.FlowDirections = "LeftToRight";
+                                    //}
+                                    //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                }
+                            }
+
+                        }
+                    }
+                }
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
                 {
-                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
+                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text), Message);
 
                 }
 
@@ -2628,7 +2662,7 @@ namespace GAZT.Views.NewViews
             {
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
                 {
-                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
+                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text),"");
 
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
@@ -2653,11 +2687,51 @@ namespace GAZT.Views.NewViews
             }
             }
 
-            public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj)
+        public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj, string Message)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                try
                 {
-                    try
+                    StringBuilder Masseges = new StringBuilder();
+
+                    if (!string.IsNullOrEmpty(Message))
+                    {
+                        PopUp Pop = new PopUp();
+                        Masseges.Append(Message);
+                        if (viewModel.CalculationRateSetVTTH != null)
+                        {
+                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                            //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                            if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
+                            {
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+
+
+                            }
+                            if (Masseges.Length > 0)
+                            {
+                                Pop.Message = Masseges.ToString();
+
+                                Pop.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    Pop.FlowDirections = "RightToLeft";
+                                }
+                                else
+                                {
+                                    Pop.FlowDirections = "LeftToRight";
+                                }
+
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            }
+                        }
+                    }
+                    else
                     {
                         if (viewModel.CalculationRateSetVTTH != null)
                         {
@@ -2682,14 +2756,16 @@ namespace GAZT.Views.NewViews
                             }
                         }
                     }
-                    catch
-                    {
 
-                    }
+                }
+                catch
+                {
+
                 }
             }
+        }
 
-            public void CheckSixaSixb(decimal LabelTotalsalesAmt, decimal LabelTotalsalesAdj)
+        public void CheckSixaSixb(decimal LabelTotalsalesAmt, decimal LabelTotalsalesAdj)
             {
                 if (viewModel.IsVisibleVatReturnForm == true)
                 {
