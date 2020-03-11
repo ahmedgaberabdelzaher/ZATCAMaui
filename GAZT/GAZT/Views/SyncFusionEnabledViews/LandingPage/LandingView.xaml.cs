@@ -58,7 +58,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo("OptionsPageView", true);
+            viewModel._navigationService.NavigateTo("OptionsPageView");
         }
     }
 }
