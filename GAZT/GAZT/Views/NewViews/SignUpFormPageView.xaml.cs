@@ -1162,6 +1162,7 @@ namespace GAZT.Views.NewViews
                     FrmCR.BorderColor = Color.FromHex("#B1B1B1");
                     CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                     if (Result != null)
+                    {
                         if (Result.d != null)
                         {
                             if (Result.d.NotFound == "X")
@@ -1174,7 +1175,7 @@ namespace GAZT.Views.NewViews
                                 FrmCR.BorderColor = Color.FromHex("#B1B1B1");
                             }
                         }
-                }
+                    }
                 }
                 else
                 {
