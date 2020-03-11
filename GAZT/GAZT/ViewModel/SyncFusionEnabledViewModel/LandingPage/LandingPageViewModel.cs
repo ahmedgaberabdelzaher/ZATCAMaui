@@ -30,9 +30,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        
-        #endregion
 
+        #endregion
+        
         #region Constructor
         /// <summary>
         /// Initializes a new instance for the <see cref="LandingPageViewModel" /> class.
@@ -116,7 +116,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 throw new ArgumentNullException("dialogService");
             }
 
-            this.MenuCommand = new Command(this.MenuClicked);
+            this.ShowOptionsCommand = new Command(this.ShowOptionsCommandClicked);
             this.ItemSelectedCommand = new Command(this.ItemSelected);
         }
 
@@ -193,6 +193,26 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
+        private GAZT.Models.TaxPayerProfile _TaxPayerProfile = App.TP;
+        public GAZT.Models.TaxPayerProfile TaxPayerProfile
+        {
+            get
+            {
+                return this._TaxPayerProfile;
+            }
+
+            set
+            {
+                if (this._TaxPayerProfile == value)
+                {
+                    return;
+                }
+
+                this._TaxPayerProfile = value;
+                this.RaisePropertyChanged("TaxPayerProfile");
+            }
+        }
+
         #endregion
 
         #region Command
@@ -200,7 +220,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// <summary>
         /// Gets or sets the command that will be executed when the menu button is clicked.
         /// </summary>
-        public Command MenuCommand { get; set; }
+        public Command ShowOptionsCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the command that will be executed when an item is selected.
@@ -229,9 +249,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// Invoked when the menu button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void MenuClicked(object obj)
+        private void ShowOptionsCommandClicked(object obj)
         {
-            // Do something
+            _navigationService.NavigateTo("OptionsPage");
         }
 
         /// <summary>
