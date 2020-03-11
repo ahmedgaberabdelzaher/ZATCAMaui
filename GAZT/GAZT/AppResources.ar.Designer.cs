@@ -4175,5 +4175,53 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
             }
         }
+        
+        public static string ZZAccountCreatedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZAccountCreatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup {
+            get {
+                return ResourceManager.GetString("ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterconfirmationcodesenttoyouremailaddress {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyouremailaddress", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenterconfirmationcodesenttoyourmobilenumber {
+            get {
+                return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZSignup {
+            get {
+                return ResourceManager.GetString("ZZSignup", resourceCulture);
+            }
+        }
+        
+        public static string ZZYourEntitytypeisIndividual {
+            get {
+                return ResourceManager.GetString("ZZYourEntitytypeisIndividual", resourceCulture);
+            }
+        }
+        
+        public static string ZZIBANisincorrect {
+            get {
+                return ResourceManager.GetString("ZZIBANisincorrect", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseretainthisnumberforfuturereferenceandcommunucation {
+            get {
+                return ResourceManager.GetString("ZZPleaseretainthisnumberforfuturereferenceandcommunucation", resourceCulture);
+            }
+        }
     }
 }
