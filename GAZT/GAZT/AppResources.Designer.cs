@@ -6586,6 +6586,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Entity type is Individual.
+        /// </summary>
+        public static string ZZYourEntitytypeisIndividual {
+            get {
+                return ResourceManager.GetString("ZZYourEntitytypeisIndividual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your new Email and SMS Validation Code has been resent to you.
         /// </summary>
         public static string ZZYournewEmailandSMSValidationCodehasbeenresenttoyou {

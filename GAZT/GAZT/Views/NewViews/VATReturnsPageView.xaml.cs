@@ -695,6 +695,20 @@ namespace GAZT.Views.NewViews
             return isAllNumeric;
         }
 
+        public bool isCheckArabicWithMinus(String arText)
+        {
+            bool isAllNumeric = true;
+            foreach (char letter in arText.ToCharArray())
+            {
+                if (!((letter >= 46 && letter <= 57) || letter == 44 || letter == 45))
+                {
+                    isAllNumeric = false;
+                }
+            }
+            return isAllNumeric;
+        }
+
+
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
             try
@@ -1175,15 +1189,15 @@ namespace GAZT.Views.NewViews
                 //}
                 if (!string.IsNullOrEmpty(senderObj.Text))
                 {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
+                    isArabicChecked = isCheckArabicWithMinus(senderObj.Text);
                 }
                 if (isArabicChecked)
                 {
                     CheckMandetoryFields();
-                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                    {
+                    //if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                    //{
                         viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
-                    }
+                    //}
                 }
                 else
                 {
@@ -1910,7 +1924,7 @@ namespace GAZT.Views.NewViews
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
-                        isArabicChecked = isCheckArabic(senderObj.Text);
+                        isArabicChecked = isCheckArabicWithMinus(senderObj.Text);
                     }
                     if (isArabicChecked)
                     {
@@ -1996,6 +2010,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (viewModel.IsVisibleVatReturnForm == true)
                 {
                     if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
@@ -2020,8 +2036,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
                 {
@@ -2043,6 +2066,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
@@ -2102,6 +2130,8 @@ namespace GAZT.Views.NewViews
 
             private void EntrySalesGccAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
                 {
                     CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
@@ -2123,10 +2153,17 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             }
 
             private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
                 {
@@ -2149,11 +2186,17 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
 
+            }
             }
 
 
             public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
+            {
+            try
             {
                 if (viewModel.IsVisibleVatReturnForm == true)
                 {
@@ -2204,8 +2247,15 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 Entry Ent = (Entry)sender;
 
@@ -2263,8 +2313,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
                 {
@@ -2287,6 +2344,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             }
 
@@ -2363,7 +2425,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryExportsAmt_Unfocused(object sender, FocusEventArgs e)
             {
-
+            try
+            {
                 string Message = string.Empty;
                 Entry Ent = (Entry)sender;
                 if (Ent.Id.ToString() == EntryExportsAmt.Id.ToString())
@@ -2415,8 +2478,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
                 {
@@ -2438,6 +2508,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj, string Massege)
@@ -2517,6 +2592,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryExemptsalesAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
                 {
                     CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
@@ -2539,8 +2616,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
                 {
@@ -2562,6 +2646,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj)
@@ -2639,6 +2728,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryStdpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
                 {
                     CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
@@ -2666,8 +2757,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
                 {
@@ -2690,7 +2788,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
 
+            }
 
             }
 
@@ -2755,6 +2857,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryZVatAmountWithSAR_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
                 {
                     CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
@@ -2776,10 +2880,16 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
 
+            }
             }
 
             private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
                 {
@@ -2801,6 +2911,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckEightaEightb(decimal EntryZVatAmountWithSAR, decimal EntryImportspaidAdj)
@@ -2842,6 +2957,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryImportsaccAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
                 {
                     CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
@@ -2863,8 +2980,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
                 {
@@ -2886,6 +3010,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckNineaNineb(decimal EntryImportsaccAmt, decimal EntryImportsaccAdj)
@@ -2926,6 +3055,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryZeropurchaseAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
                 {
                     CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
@@ -2948,8 +3079,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
                 {
@@ -2971,6 +3109,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckTenaTenb(decimal EntryZeropurchaseAmt, decimal EntryZeropurchaseAdj)
@@ -3011,6 +3154,8 @@ namespace GAZT.Views.NewViews
 
             private void EntryExemptpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
                 {
                     CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
@@ -3032,8 +3177,15 @@ namespace GAZT.Views.NewViews
                     // UserName.TextColor = Color.Black;
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+            {
+            try
             {
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
                 {
@@ -3055,6 +3207,11 @@ namespace GAZT.Views.NewViews
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             public void CheckElevenaElevenb(decimal EntryExemptpurchaseAmt, decimal EntryExemptpurchaseAdj)
@@ -3390,11 +3547,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryVatAmountFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
                     EntryVatAmount.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryVatAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3419,11 +3583,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryVatAdjustmentFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
                     EntryVatAdjustmentWithSAR.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntrySalesGccAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3433,11 +3604,18 @@ namespace GAZT.Views.NewViews
 
             private void EntrySalesGccAmtFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
                 {
                     EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
                     EntrySalesGccAmt.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntrySalesGccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3447,11 +3625,18 @@ namespace GAZT.Views.NewViews
 
             private void EntrySalesGccAdjFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
                 {
                     EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
                     EntrySalesGccAdj.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryZerosalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3461,11 +3646,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryZerosalesAmtFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
                 {
                     EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
                     EntryZerosalesAmt.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryZerosalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3475,11 +3667,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryZerosalesAdjFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
                 {
                     EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
                     EntryZerosalesAdj.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryExportsAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3489,11 +3688,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryExportsAmtFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
                 {
                     EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
                     EntryExportsAmt.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryExportsAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3503,11 +3709,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryExportsAdjFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
                 {
                     EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
                     EntryExportsAdj.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryExemptsalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3517,11 +3730,18 @@ namespace GAZT.Views.NewViews
 
             private void EntryExemptsalesAmtFocused(object sender, FocusEventArgs e)
             {
+            try
+            {
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
                 {
                     EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
                     EntryExemptsalesAmt.TextColor = Color.Black;
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void EntryExemptsalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3586,100 +3806,176 @@ namespace GAZT.Views.NewViews
 
         private void EntryStdpurchaseAmtFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
+            try
             {
-                EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
-                EntryStdpurchaseAmt.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
+                {
+                    EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
+                    EntryStdpurchaseAmt.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryStdpurchaseAdjFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
+            try
             {
-                EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
-                EntryStdpurchaseAdj.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
+                {
+                    EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
+                    EntryStdpurchaseAdj.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryZVatAmountWithSARFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+            try
             {
-                EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                EntryZVatAmountWithSAR.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+                {
+                    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
+                    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryImportspaidAdjFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+            try
             {
-                EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                EntryImportspaidAdj.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+                {
+                    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
+                    EntryImportspaidAdj.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            { 
             }
         }
 
         private void EntryImportsaccAmtFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+            try
             {
-                EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                EntryImportsaccAmt.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+                {
+                    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
+                    EntryImportsaccAmt.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryImportsaccAdjFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+            try
             {
-                EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                EntryImportsaccAdj.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+                {
+                    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
+                    EntryImportsaccAdj.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryZeropurchaseAmtFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
+            try
             {
-                EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
-                EntryZeropurchaseAmt.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
+                {
+                    EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
+                    EntryZeropurchaseAmt.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryZeropurchaseAdjFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
+            try
             {
-                EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
-                EntryZeropurchaseAdj.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
+                {
+                    EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
+                    EntryZeropurchaseAdj.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryExemptpurchaseAmtFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
+            try
             {
-                EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
-                EntryExemptpurchaseAmt.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
+                {
+                    EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
+                    EntryExemptpurchaseAmt.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryExemptpurchaseAdjFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
+            try
             {
-                EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
-                EntryExemptpurchaseAdj.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
+                {
+                    EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
+                    EntryExemptpurchaseAdj.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
         private void EntryPreperiodcorrFocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+            try
             {
-                EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                EntryPreperiodcorr.TextColor = Color.Black;
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+                {
+                    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
+                    EntryPreperiodcorr.TextColor = Color.Black;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

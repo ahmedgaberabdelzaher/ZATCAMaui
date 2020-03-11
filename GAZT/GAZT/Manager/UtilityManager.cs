@@ -244,6 +244,19 @@ namespace GAZT.Manager
             return isAllNumeric;
         }
 
+        public static bool IsEnglishNumberWithMinus(String arText)
+        {
+            bool isAllNumeric = true;
+            foreach (char letter in arText.ToCharArray())
+            {
+                if (!((letter >= 46 && letter <= 57) || letter == 44 || letter == 45))
+                {
+                    isAllNumeric = false;
+                }
+            }
+            return isAllNumeric;
+        }
+
         public static string ToArabicDate(string Date)
         {
             string[] SplitDate = Date.Split('-');
@@ -559,7 +572,7 @@ namespace GAZT.Manager
             }
             else if (Extention.ToLower() == "xls")
             {
-                return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return "application/vnd.ms-excel";
             }
             else if (Extention.ToLower() == "png")
             {

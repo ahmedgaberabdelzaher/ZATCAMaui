@@ -1267,7 +1267,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _preperiodcorr = value;
                     if (_preperiodcorr != null)
                     {
-                        bool isValiedNumber = UtilityManager.IsEnglishNumber(Preperiodcorr);
+                        bool isValiedNumber = UtilityManager.IsEnglishNumberWithMinus(Preperiodcorr);
                         if(isValiedNumber)
                         {
                             NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);

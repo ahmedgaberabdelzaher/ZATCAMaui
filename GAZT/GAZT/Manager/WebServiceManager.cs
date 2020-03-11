@@ -2174,25 +2174,17 @@ namespace GAZT.Manager
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
-                    //string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    //    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                     String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                                                                                                                                                                                                                                                                      // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
-                    //  client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    // client.DefaultRequestHeaders.Add("content-type", "multipart/form-data");
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                    // client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");// 201 but file is not properly updated to the server
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", contentType);
-                    MultipartFormDataContent content = new MultipartFormDataContent();
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    content.Add(baContent, "File", fileName);
-                    var response = await client.PostAsync(url, content);
+                    var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
 
@@ -2517,7 +2509,6 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
-
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -3388,7 +3379,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static SignupCityRootObject GAZTGetCityListForSignup()
+        public static async Task<SignupCityRootObject> GAZTGetCityListForSignup()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3403,7 +3394,7 @@ namespace GAZT.Manager
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTSignupCityList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTSignupCityList = await client.GetAsync(uri);
 
                     if (GAZTSignupCityList != null)
                     {
@@ -3424,7 +3415,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String SignUpCityList = GAZTSignupCityList.Content.ReadAsStringAsync().Result;
+                        String SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
 
                         SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
 
@@ -3453,7 +3444,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static List<IssuedByResponse> GAZTGetIssuedByList()
+        public static async Task<List<IssuedByResponse>> GAZTGetIssuedByList()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3470,7 +3461,7 @@ namespace GAZT.Manager
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTSignupIssuedByList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
 
                     if (GAZTSignupIssuedByList != null)
                     {
@@ -3491,7 +3482,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String IssuedByList = GAZTSignupIssuedByList.Content.ReadAsStringAsync().Result;
+                        String IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
 
                         SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
                         SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
