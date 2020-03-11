@@ -3388,7 +3388,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static SignupCityRootObject GAZTGetCityListForSignup()
+        public static async Task<SignupCityRootObject> GAZTGetCityListForSignup()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3403,7 +3403,7 @@ namespace GAZT.Manager
                    // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTSignupCityList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTSignupCityList = await client.GetAsync(uri);
 
                     if (GAZTSignupCityList != null)
                     {
@@ -3424,7 +3424,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String SignUpCityList = GAZTSignupCityList.Content.ReadAsStringAsync().Result;
+                        String SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
 
                         SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
 
@@ -3453,7 +3453,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static List<IssuedByResponse> GAZTGetIssuedByList()
+        public static async Task<List<IssuedByResponse>> GAZTGetIssuedByList()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3470,7 +3470,7 @@ namespace GAZT.Manager
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTSignupIssuedByList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
 
                     if (GAZTSignupIssuedByList != null)
                     {
@@ -3491,7 +3491,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String IssuedByList = GAZTSignupIssuedByList.Content.ReadAsStringAsync().Result;
+                        String IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
 
                         SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
                         SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);

@@ -2115,7 +2115,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZCurrentlytheappsupportsindividualTaxPayerregistration" xml:space="preserve">
-    <value>Currently, the app supports individual Tax Payer registration</value>
+    <value>حاليًا ، يدعم التطبيق تسجيل دافع الضرائب الفردي</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZDateofBirth" xml:space="preserve">
@@ -2456,6 +2456,10 @@
   </data>
   <data name="ZZSignup" xml:space="preserve">
     <value>تسجيل جديد</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
+    <value>نوع الكيان الخاص بك فردي</value>
     <comment>Sign Up</comment>
   </data>
 </root>
