@@ -1261,23 +1261,38 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                _preperiodcorr = value;
-                if (_preperiodcorr != null)
+
+                try
                 {
-                    NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
-                    if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-" && !string.IsNullOrEmpty(CorrectionPeriodAmount) && !string.IsNullOrEmpty(CorrectionNegativePeriodAmount))
+                    _preperiodcorr = value;
+                    if (_preperiodcorr != null)
                     {
-                        if ((Convert.ToDecimal(_preperiodcorr) >= Convert.ToDecimal(CorrectionPeriodAmount)) || (Convert.ToDecimal(_preperiodcorr) <= Convert.ToDecimal(CorrectionNegativePeriodAmount)))
+                        bool isValiedNumber = UtilityManager.IsEnglishNumber(Preperiodcorr);
+                        if(isValiedNumber)
                         {
-                            IsGreaterThanFiveT = true;
+                            NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
+                            if (_preperiodcorr != "." && _preperiodcorr != "" && _preperiodcorr != "-" && !string.IsNullOrEmpty(CorrectionPeriodAmount) && !string.IsNullOrEmpty(CorrectionNegativePeriodAmount))
+                            {
+                                if ((Convert.ToDecimal(_preperiodcorr) >= Convert.ToDecimal(CorrectionPeriodAmount)) || (Convert.ToDecimal(_preperiodcorr) <= Convert.ToDecimal(CorrectionNegativePeriodAmount)))
+                                {
+                                    IsGreaterThanFiveT = true;
+                                }
+                                else
+                                {
+                                    IsGreaterThanFiveT = false;
+                                }
+                            }
                         }
-                        else
-                        {
-                            IsGreaterThanFiveT = false;
-                        }
+                       
                     }
+                  
+                }
+                catch(Exception ex)
+                {
+
                 }
                 RaisePropertyChanged("Preperiodcorr");
+
             }
         }
 
@@ -1937,7 +1952,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             IsMainButtonEnabled = false;
 
-            ManageEnabledProperty(true);
+            ManageEnabledProperty(true); 
 
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -4003,209 +4018,263 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
         {
-
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
-
             string VATAmount = "0.00";
-            if (!String.IsNullOrEmpty(Amount) && !String.IsNullOrEmpty(Adjustment) &&  Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
 
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-
-                    if (VATAmount == "0")
+               
+                if (!String.IsNullOrEmpty(Amount) && !String.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
             return VATAmount;
         }
 
         public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
-            if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
-            {
-                Amount1 = Amount1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
-            {
-                Amount2 = Amount2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
-            {
-                Amount3 = Amount3.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
-            {
-                Amount4 = Amount4.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
-            {
-                Amount5 = Amount5.Replace(",", "");
-            }
-
             String TotalAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
+            try
             {
-                if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
                 {
-                    if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
+                    Amount1 = Amount1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
+                {
+                    Amount4 = Amount4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
+                {
+                    Amount5 = Amount5.Replace(",", "");
+                }
+
+                
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
+                {
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
                     {
-                        TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
-                        if (TotalAmount == "0")
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
                         {
-                            TotalAmount = "0.00";
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
                         }
                     }
                 }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
             return TotalAmount;
         }
 
         public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
         {
-            if (!string.IsNullOrEmpty(Adjustment1) && Adjustment1.Contains(","))
-            {
-                Adjustment1 = Adjustment1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment2) && Adjustment2.Contains(","))
-            {
-                Adjustment2 = Adjustment2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment3) && Adjustment3.Contains(","))
-            {
-                Adjustment3 = Adjustment3.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment4) && Adjustment4.Contains(","))
-            {
-                Adjustment4 = Adjustment4.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment5) && Adjustment5.Contains(","))
-            {
-                Adjustment5 = Adjustment5.Replace(",", "");
-            }
             String TotalAmount = "0.00";
-            if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5))
+            try
             {
-                if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != ".")
+                if (!string.IsNullOrEmpty(Adjustment1) && Adjustment1.Contains(","))
                 {
-                    if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
+                    Adjustment1 = Adjustment1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment2) && Adjustment2.Contains(","))
+                {
+                    Adjustment2 = Adjustment2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment3) && Adjustment3.Contains(","))
+                {
+                    Adjustment3 = Adjustment3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment4) && Adjustment4.Contains(","))
+                {
+                    Adjustment4 = Adjustment4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment5) && Adjustment5.Contains(","))
+                {
+                    Adjustment5 = Adjustment5.Replace(",", "");
+                }
+               
+                if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5))
+                {
+                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != ".")
                     {
-                        TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
-                        if (TotalAmount == "0")
+                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
                         {
-                            TotalAmount = "0.00";
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
                         }
                     }
                 }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
             return TotalAmount;
         }
 
         public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
         {
-            if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
-            {
-                Amount1 = Amount1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
-            {
-                Amount2 = Amount2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
-            {
-                Amount3 = Amount3.Replace(",", "");
-            }
-
-
             String TotalAmount = "0.00";
-
-            if (String.IsNullOrEmpty(Amount1))
+            try
             {
-                Amount1 = "0.00";
-            }
-            if (String.IsNullOrEmpty(Amount2))
-            {
-                Amount2 = "0.00";
-            }
-            if (String.IsNullOrEmpty(Amount3))
-            {
-                Amount3 = "0.00";
-            }
-
-            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
-            {
-                TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
-                if (TotalAmount == "0")
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
                 {
-                    TotalAmount = "0.00";
+                    Amount1 = Amount1.Replace(",", "");
                 }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+
+
+                
+
+                if (String.IsNullOrEmpty(Amount1))
+                {
+                    Amount1 = "0.00";
+                }
+                if (String.IsNullOrEmpty(Amount2))
+                {
+                    Amount2 = "0.00";
+                }
+                if (String.IsNullOrEmpty(Amount3))
+                {
+                    Amount3 = "0.00";
+                }
+
+                if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
+                {
+                    TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
+                    if (TotalAmount == "0")
+                    {
+                        TotalAmount = "0.00";
+                    }
+                }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+               
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
             return TotalAmount;
         }
 
         public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
             return VATAmount;
         }
@@ -4213,110 +4282,143 @@ namespace GAZT.ViewModel.NewViewModel
         //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
         public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate001 = Convert.ToDouble(VATRate001);
-                    Double dVATRate002 = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate001 = Convert.ToDouble(VATRate001);
+                        Double dVATRate002 = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
             return VATAmount;
         }
 
         public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
             return VATAmount;
         }
 
         public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
-            if (!string.IsNullOrEmpty(CurrentPeriod) && CurrentPeriod.Contains(","))
-            {
-                CurrentPeriod = CurrentPeriod.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(PreviousPeriod) && PreviousPeriod.Contains(","))
-            {
-                PreviousPeriod = PreviousPeriod.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(ForwardFromPreviousPeriod) && ForwardFromPreviousPeriod.Contains(","))
-            {
-                ForwardFromPreviousPeriod = ForwardFromPreviousPeriod.Replace(",", "");
-            }
-
             string NetVatDue = "0.00";
             try
             {
-
-                Double dCurrentPeriod = string.IsNullOrEmpty(CurrentPeriod) ? 0 : Convert.ToDouble(CurrentPeriod);
-                Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
-                Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
-
-                NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
-                if (NetVatDue == "0")
+                if (!string.IsNullOrEmpty(CurrentPeriod) && CurrentPeriod.Contains(","))
                 {
-                    NetVatDue = "0.00";
+                    CurrentPeriod = CurrentPeriod.Replace(",", "");
                 }
+                if (!string.IsNullOrEmpty(PreviousPeriod) && PreviousPeriod.Contains(","))
+                {
+                    PreviousPeriod = PreviousPeriod.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(ForwardFromPreviousPeriod) && ForwardFromPreviousPeriod.Contains(","))
+                {
+                    ForwardFromPreviousPeriod = ForwardFromPreviousPeriod.Replace(",", "");
+                }
+
+               
+                try
+                {
+
+                    Double dCurrentPeriod = string.IsNullOrEmpty(CurrentPeriod) ? 0 : Convert.ToDouble(CurrentPeriod);
+                    Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
+                    Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
+
+                    NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
+                    if (NetVatDue == "0")
+                    {
+                        NetVatDue = "0.00";
+                    }
+                }
+                catch
+                {
+
+                }
+                if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.00")
+                {
+                    NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
+                    NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);
+                }
+                bool isTrue = IsTextNullOrEmpty(NetVatDue);
+                NetVatDue = isTrue ? "0.00" : NetVatDue;
+                return NetVatDue;
             }
-            catch
+            catch(Exception ex)
             {
 
-            }
-            if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.00")
-            {
-                NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
-                NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);
             }
             return NetVatDue;
         }
@@ -4579,6 +4681,21 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
+        }
+
+        private bool IsTextNullOrEmpty(string entryText)
+        {
+            bool isEmpty = false;
+            if (string.IsNullOrEmpty(entryText))
+            {
+                isEmpty = true;
+            }
+            else
+            {
+                isEmpty = false;
+            }
+
+            return isEmpty;
         }
     }
 }

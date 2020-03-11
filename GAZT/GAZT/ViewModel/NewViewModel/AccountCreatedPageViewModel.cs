@@ -20,7 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
-            OnLoginPageLinkClicked = new Command(async () =>
+            OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.LogInPageView);
             });

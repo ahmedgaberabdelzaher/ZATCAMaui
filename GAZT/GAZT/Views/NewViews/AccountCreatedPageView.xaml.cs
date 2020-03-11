@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             this.BindingContext = viewModel;
             SetLTR();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
         private void SetLTR()
         {
@@ -29,6 +30,11 @@ namespace GAZT.Views.NewViews
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
+
+        private void Checked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.LogInPageView);
         }
     }
 }

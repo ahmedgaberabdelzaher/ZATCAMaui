@@ -697,151 +697,176 @@ namespace GAZT.Views.NewViews
 
         private void ClickGestureRecognizer_ClickedForVatAmount(object sender, EventArgs e)
         {
-
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
             {
 
-                //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
-                //{
-                //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                //    EntryVatAmount.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
-                //{
-                //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
-                //}
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+
+                    //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
+                    //{
+                    //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+                    //    EntryVatAmount.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
+                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //}
 
 
-               
-                CheckMandetoryFields();
-                // char LastChar = ' ';
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-                    viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-                    viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-                    viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                    viewModel.TotalsalesVat = viewModel.StdsalesVat;
+
+                    CheckMandetoryFields();
+                    // char LastChar = ' ';
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+                            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            viewModel.TotalsalesVat = viewModel.StdsalesVat;
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+
+
                 }
                 else
                 {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
                 }
-
-
             }
-            else
+            catch(Exception ex)
             {
-                if (viewModel.IsUnFocusedTextBox == true)
-                {
-                    viewModel.IsUnFocusedTextBox = false;
-                }
+
             }
         }
 
         private void ClickGestureRecognizer_ClickedForAllAmount(object sender, TextChangedEventArgs e)
         {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
             {
-                //if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
-                //{
-                //    EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
-                //    EntrySalesGccAmt.TextColor = Color.Black;
-                //}
-
-                //if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
-                //{
-                //    EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
-                //    EntryZerosalesAmt.TextColor = Color.Black;
-                //}
-
-                //if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
-                //{
-                //    EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
-                //    EntryExportsAmt.TextColor = Color.Black;
-                //}
-
-                //if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
-                //{
-                //    EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
-                //    EntryExemptsalesAmt.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
-                    viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                    //if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
+                    //{
+                    //    EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
+                    //    EntrySalesGccAmt.TextColor = Color.Black;
+                    //}
+
+                    //if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
+                    //{
+                    //    EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
+                    //    EntryZerosalesAmt.TextColor = Color.Black;
+                    //}
+
+                    //if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
+                    //{
+                    //    EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
+                    //    EntryExportsAmt.TextColor = Color.Black;
+                    //}
+
+                    //if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
+                    //{
+                    //    EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
+                    //    EntryExemptsalesAmt.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
                 else
                 {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                if (viewModel.IsUnFocusedTextBox == true)
-                {
-                    viewModel.IsUnFocusedTextBox = false;
-                }
+
             }
         }
 
         private void ClickGestureRecognizer_ClickedForVatAdjustment(object sender, TextChangedEventArgs e)
         {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
             {
-                //if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
-                //{
-                //    EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
-                //    EntrySalesGccAdj.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
-                //{
-                //    EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
-                //    EntryZerosalesAdj.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
-                //{
-                //    EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
-                //    EntryExportsAdj.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
-                //{
-                //    EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
-                //    EntryExemptsalesAdj.TextColor = Color.Black;
-                //}
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
+                    //{
+                    //    EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
+                    //    EntrySalesGccAdj.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
+                    //{
+                    //    EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
+                    //    EntryZerosalesAdj.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
+                    //{
+                    //    EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
+                    //    EntryExportsAdj.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
+                    //{
+                    //    EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
+                    //    EntryExemptsalesAdj.TextColor = Color.Black;
+                    //}
 
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
 
-                    CheckMandetoryFields();
-                    viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
                 else
                 {
@@ -850,42 +875,47 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             }
 
             private void ClickGestureRecognizer_ClickedForVatAmountForPurchase(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+
+            try
+            {
+
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
-                //{
-                //    EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
-                //    EntryStdpurchaseAmt.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
-                //{
-                //    EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
-                //    EntryStdpurchaseAdj.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
+
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+
+                        CheckMandetoryFields();
+                        if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
-                    viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
-                }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -893,53 +923,62 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
 
             }
 
             private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
             {
-
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
-                //{
-                //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                //    EntryZVatAmountWithSAR.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
-                //{
-                //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                //    EntryImportspaidAdj.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-
-                    CheckMandetoryFields();
-
-                    if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
+                    //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
+                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
+                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
                     {
-                        viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
+                            {
+                                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+                            }
+                            else
+                            {
+                                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+
+                            }
+                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                        }
                     }
                     else
                     {
-                        viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                     }
-                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
                 }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -947,44 +986,54 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
                 //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
             }
 
             private void ClickGestureRecognizer_ClickedForVatAccounted(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
-                //{
-                //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                //    EntryImportsaccAmt.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
-                //{
-                //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                //    EntryImportsaccAdj.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
+                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
+                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
 
-                    CheckMandetoryFields();
-                    viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
 
-                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -992,43 +1041,52 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             }
 
             private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
-                //{
-                //    EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
-                //    EntryZeropurchaseAmt.TextColor = Color.Black;
-                //}
+                    //if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
+                    //{
+                    //    EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
+                    //    EntryZeropurchaseAmt.TextColor = Color.Black;
+                    //}
 
-                //if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
-                //{
-                //    EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
-                //    EntryExemptpurchaseAmt.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
+                    //if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
+                    //{
+                    //    EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
+                    //    EntryExemptpurchaseAmt.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
 
-
-                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -1036,40 +1094,50 @@ namespace GAZT.Views.NewViews
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
             }
 
             private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
-                //{
-                //    EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
-                //    EntryZeropurchaseAdj.TextColor = Color.Black;
-                //}
-                //if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
-                //{
-                //    EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
-                //    EntryExemptpurchaseAdj.TextColor = Color.Black;
-                //}
+                    //if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
+                    //{
+                    //    EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
+                    //    EntryZeropurchaseAdj.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
+                    //{
+                    //    EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
+                    //    EntryExemptpurchaseAdj.TextColor = Color.Black;
+                    //}
 
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
-                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
-                }
-                else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
                 else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
@@ -1078,39 +1146,54 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+            }
 
             private void ClickGestureRecognizer_ClickedForAllPurchaseVatAmount(object sender, TextChangedEventArgs e)
             {
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            //if (!string.IsNullOrEmpty(EntryStdpurchasesVat.Text) && EntryStdpurchasesVat.Text.Contains(","))
-            //{
-            //    EntryStdpurchasesVat.Text = EntryStdpurchasesVat.Text.Replace(",", "");
-            //    EntryStdpurchasesVat.TextColor = Color.Black;
-            //}
-            //if (!string.IsNullOrEmpty(EntryImportspaidVat.Text) && EntryImportspaidVat.Text.Contains(","))
-            //{
-            //    EntryImportspaidVat.Text = EntryImportspaidVat.Text.Replace(",", "");
-            //    EntryImportspaidVat.TextColor = Color.Black;
-            //}
-            //if (!string.IsNullOrEmpty(EntryImportsaccVat.Text) && EntryImportsaccVat.Text.Contains(","))
-            //{
-            //    EntryImportsaccVat.Text = EntryImportsaccVat.Text.Replace(",", "");
-            //    EntryImportsaccVat.TextColor = Color.Black;
-            //}
-            if (!string.IsNullOrEmpty(senderObj.Text))
+            try
             {
-                isArabicChecked = isCheckArabic(senderObj.Text);
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                //if (!string.IsNullOrEmpty(EntryStdpurchasesVat.Text) && EntryStdpurchasesVat.Text.Contains(","))
+                //{
+                //    EntryStdpurchasesVat.Text = EntryStdpurchasesVat.Text.Replace(",", "");
+                //    EntryStdpurchasesVat.TextColor = Color.Black;
+                //}
+                //if (!string.IsNullOrEmpty(EntryImportspaidVat.Text) && EntryImportspaidVat.Text.Contains(","))
+                //{
+                //    EntryImportspaidVat.Text = EntryImportspaidVat.Text.Replace(",", "");
+                //    EntryImportspaidVat.TextColor = Color.Black;
+                //}
+                //if (!string.IsNullOrEmpty(EntryImportsaccVat.Text) && EntryImportsaccVat.Text.Contains(","))
+                //{
+                //    EntryImportsaccVat.Text = EntryImportsaccVat.Text.Replace(",", "");
+                //    EntryImportsaccVat.TextColor = Color.Black;
+                //}
+                if (!string.IsNullOrEmpty(senderObj.Text))
+                {
+                    isArabicChecked = isCheckArabic(senderObj.Text);
+                }
+                if (isArabicChecked)
+                {
+                    CheckMandetoryFields();
+                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                    {
+                        viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
+                    }
+                }
+                else
+                {
+                    if (senderObj != null && senderObj.Text.Length > 0)
+                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                }
             }
-            if (isArabicChecked)
+            catch(Exception ex)
             {
-                CheckMandetoryFields();
-                viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
-            }
-            else
-            {
-                if (senderObj != null && senderObj.Text.Length > 0)
-                    senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+
             }
         }
 
@@ -1557,8 +1640,10 @@ namespace GAZT.Views.NewViews
 
             public bool CheckMandetoryFields()
             {
-                bool IsAllEntered = true;
 
+            bool IsAllEntered = true;
+            try
+            {
                 if (TabVatReturn.IsVisible == true)
                 {
 
@@ -1799,43 +1884,57 @@ namespace GAZT.Views.NewViews
                         //  BtnNextStep.IsEnabled = true;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+               
                 return IsAllEntered;
             }
 
         //Test    
         private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
             {
-
-            bool isArabicChecked = true;
-            var senderObj = (Entry)sender;
-            if (viewModel.IsUnFocusedTextBox == false)
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
                 {
-                //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
-                //{
-                //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                //   // EntryPreperiodcorr.TextColor = Color.Black;
-                //}
-                if (!string.IsNullOrEmpty(senderObj.Text))
-                {
-                    isArabicChecked = isCheckArabic(senderObj.Text);
-                }
-                if (isArabicChecked)
-                {
-                    CheckMandetoryFields();
+                    //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+                    //{
+                    //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
+                    //   // EntryPreperiodcorr.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
                 }
                 else
-                {
-                    if (senderObj != null && senderObj.Text.Length > 0)
-                        senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                }
-            }
-            else
                 {
                     if (viewModel.IsUnFocusedTextBox == true)
                     {
                         viewModel.IsUnFocusedTextBox = false;
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
             }
 
             private void EntryCreditVat_TextChanged(object sender, TextChangedEventArgs e)
@@ -3484,7 +3583,106 @@ namespace GAZT.Views.NewViews
             {
                 CheckMandetoryFields();
             }
+
+        private void EntryStdpurchaseAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
+            {
+                EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
+                EntryStdpurchaseAmt.TextColor = Color.Black;
+            }
         }
+
+        private void EntryStdpurchaseAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
+            {
+                EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
+                EntryStdpurchaseAdj.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryZVatAmountWithSARFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+            {
+                EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
+                EntryZVatAmountWithSAR.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryImportspaidAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+            {
+                EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
+                EntryImportspaidAdj.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryImportsaccAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+            {
+                EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
+                EntryImportsaccAmt.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryImportsaccAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+            {
+                EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
+                EntryImportsaccAdj.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryZeropurchaseAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
+            {
+                EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
+                EntryZeropurchaseAmt.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryZeropurchaseAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
+            {
+                EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
+                EntryZeropurchaseAdj.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryExemptpurchaseAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
+            {
+                EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
+                EntryExemptpurchaseAmt.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryExemptpurchaseAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
+            {
+                EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
+                EntryExemptpurchaseAdj.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryPreperiodcorrFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
+            {
+                EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
+                EntryPreperiodcorr.TextColor = Color.Black;
+            }
+        }
+    }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
         //   //if(TabInstruction.IsVisible==true)

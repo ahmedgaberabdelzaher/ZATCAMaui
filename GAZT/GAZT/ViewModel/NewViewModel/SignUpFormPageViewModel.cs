@@ -1,11 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -72,15 +74,18 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _SelectedLCType = value;
-                if(_SelectedLCType.ID==2)
+                if (_SelectedLCType != null)
                 {
-                    IsLicenseVisible = false;
-                    IsCRVisible = true;
-                }
-                else if(_SelectedLCType.ID == 1)
-                {
-                    IsLicenseVisible = true;
-                    IsCRVisible = false;
+                    if (_SelectedLCType.ID == 2)
+                    {
+                        IsLicenseVisible = false;
+                        IsCRVisible = true;
+                    }
+                    else if (_SelectedLCType.ID == 1)
+                    {
+                        IsLicenseVisible = true;
+                        IsCRVisible = false;
+                    }
                 }
                 RaisePropertyChanged("SelectLCType");
             }
@@ -169,10 +174,12 @@ namespace GAZT.ViewModel.NewViewModel
                 if(_isTIN==true)
                 {
                     IsTINVisible = true;
+                    TxtTIN = string.Empty;
                 }
                 else
                 {
                     IsTINVisible = false;
+                    TxtTIN = string.Empty;
                 }
                 RaisePropertyChanged("IsTIN");
             }
@@ -412,6 +419,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SignUpFirstSubmitModel");
             }
         }
+
+        private DateTime _maximumxD = DateTime.Now;
+        public DateTime MaximumxD
+        {
+            get
+            {
+                return _maximumxD;
+            }
+            set
+            {
+                _maximumxD = value;
+                RaisePropertyChanged("MaximumxD");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -527,17 +548,19 @@ namespace GAZT.ViewModel.NewViewModel
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 IssuedByResponseList = WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = IssuedByResponseList;
-                SignupCityRootObject CityListSignup =  WebServiceManager.GAZTGetCityListForSignup();
+                SignupCityRootObject CityListSignup = WebServiceManager.GAZTGetCityListForSignup();
                 CityList = CityListSignup.d.city_dropdownSet.results;
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
                 IDTypeModelRootObject = null;
-               
 
             }
-            catch (Exception ex)
+            catch (InternetException ex)
             {
-
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }
