@@ -2588,6 +2588,14 @@ Should we require further information, we would be in contact.</value>
     <value>Your Entity type is Individual</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZIBANisincorrect" xml:space="preserve">
+    <value>IBAN is incorrect</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZPleaseretainthisnumberforfuturereferenceandcommunucation" xml:space="preserve">
+    <value>(Please retain this number for future reference and communucation)</value>
+    <comment>VAT Declaration</comment>
+  </data>
   <data name="ZZZReturnUnderReview" xml:space="preserve">
     <value>Return under review with GAZT</value>
   </data>

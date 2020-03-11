@@ -5359,6 +5359,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IBAN is incorrect.
+        /// </summary>
+        public static string ZZIBANisincorrect {
+            get {
+                return ResourceManager.GetString("ZZIBANisincorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID Type.
         /// </summary>
         public static string ZZIDType {
@@ -5941,6 +5950,15 @@ namespace GAZT {
         public static string ZZPleasefilltherequestedinformationforeachstep {
             get {
                 return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Please retain this number for future reference and communucation).
+        /// </summary>
+        public static string ZZPleaseretainthisnumberforfuturereferenceandcommunucation {
+            get {
+                return ResourceManager.GetString("ZZPleaseretainthisnumberforfuturereferenceandcommunucation", resourceCulture);
             }
         }
         
