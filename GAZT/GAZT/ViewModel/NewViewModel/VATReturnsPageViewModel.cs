@@ -427,7 +427,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055")
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -2468,7 +2468,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2515,7 +2515,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2691,7 +2691,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
+                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;

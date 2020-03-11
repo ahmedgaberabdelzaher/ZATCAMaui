@@ -427,7 +427,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatOnSales}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
 
-                        <Label Text="{x:Static local:AppResources.ZVatStandardRatedSales}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="1." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatStandardRatedSales}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
 
                         <Frame Grid.Row="2" x:Name="EntryVatAmountFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -504,7 +510,13 @@
 
 
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatPrivateHealthcare}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="2." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatPrivateHealthcare}"/>
+                                </FormattedString>
+                            </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
 
                         <Frame Grid.Row="6" x:Name="EntrySalesGccAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -555,7 +567,13 @@
                         </Image>
 
 
-                        <Label Text="{x:Static local:AppResources.ZVatZerorateddomesticsales}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="3." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatZerorateddomesticsales}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
 
 
@@ -605,7 +623,13 @@
                         </Image>
 
 
-                        <Label Text="{x:Static local:AppResources.ZVatExports}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="4." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatExports}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
 
                         <Frame Grid.Row="12" x:Name="EntryExportsAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -653,7 +677,13 @@
                         </Image>
 
 
-                        <Label Text="{x:Static local:AppResources.ZVatExemptsales}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="5." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatExemptsales}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
 
                         <Frame Grid.Row="15" x:Name="EntryExemptsalesAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -715,14 +745,35 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Label Text="{x:Static local:AppResources.ZVatTotalSales}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="6." FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatTotalSales}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
 
-                            <Label Text="{x:Static local:AppResources.ZVatTotalAdjustment}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0"/>
+                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatTotalAdjustment}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
 
 
-                            <local1:CustomLabel Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
+                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                <local1:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZTotalVat}"/>
+                                    </FormattedString>
+                                </local1:CustomLabel.FormattedText>
+                            </local1:CustomLabel>
                             <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
                         </Grid>
 
@@ -731,7 +782,13 @@
                         <Label Text="{x:Static local:AppResources.ZVatOnPurchases}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
 
-                        <Label Text="{x:Static local:AppResources.ZVatStandardrateddomesticpurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="7." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatStandardrateddomesticpurchases}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
                         <Frame Grid.Row="20" x:Name="EntryStdpurchaseAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -793,7 +850,13 @@
 
 
 
-                        <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatImportsVatPaidatcustoms}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="23" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel    Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="23" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="8." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatStandardrateddomesticpurchases}"/>
+                                </FormattedString>
+                            </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
                         <Frame Grid.Row="24" x:Name="EntryZVatAmountWithSARFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -852,7 +915,13 @@
                         </Image>-->
 
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" FontAttributes="Bold" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" FontAttributes="Bold" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="9." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatImportsSubjectToVatAccounted}"/>
+                                </FormattedString>
+                            </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
                         <Frame Grid.Row="28" x:Name="EntryImportsaccAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -911,7 +980,13 @@
                         </Image>
 
 
-                        <Label Text="{x:Static local:AppResources.ZVatZeroRatedPurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="31" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="31" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="10." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatZeroRatedPurchases}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
                         <Frame Grid.Row="32" x:Name="EntryZeropurchaseAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -955,7 +1030,13 @@
                         </Image>
 
 
-                        <Label Text="{x:Static local:AppResources.ZVatExemptPurchases}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="34" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="34" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="11." FontFamily="{StaticResource SSTArBold}"/>
+                                    <Span Text="{x:Static local:AppResources.ZVatExemptPurchases}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
                         <Frame Grid.Row="35" x:Name="EntryExemptpurchaseAmtFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             <Frame.Triggers>
@@ -1020,20 +1101,55 @@
                                 <RowDefinition Height="Auto" />
                                  <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalPurchases}"   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+                            <local:CustomLabel Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                                <local:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="12." FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatTotalPurchases}"/>
+                                    </FormattedString>
+                                </local:CustomLabel.FormattedText>
+                            </local:CustomLabel>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                            <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalAdjustment}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0"/>
+                            <local:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0">
+                                <local:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatTotalAdjustment}"/>
+                                    </FormattedString>
+                                </local:CustomLabel.FormattedText>
+                            </local:CustomLabel>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
 
 
-                            <local:CustomLabel Text="{x:Static local:AppResources.ZTotalVat}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0"/>
+                            <local:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                <local:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZTotalVat}"/>
+                                    </FormattedString>
+                                </local:CustomLabel.FormattedText>
+                            </local:CustomLabel>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                            <local:CustomLabel Text="{x:Static local:AppResources.ZVatTotalVATdueforcurrentperiod}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0"/>
+                            <local:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0">
+                                <local:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="13." FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatTotalVATdueforcurrentperiod}"/>
+                                    </FormattedString>
+                                </local:CustomLabel.FormattedText>
+                            </local:CustomLabel>
                             <local:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Label  FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="14." FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Frame Grid.Row="6" x:Name="EntryPreperiodcorrFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
@@ -1066,7 +1182,14 @@
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <local1:CustomLabel Text="{x:Static local:AppResources.ZVatcreditcarriedforward}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                                <local1:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="15." FontFamily="{StaticResource SSTArBold}"/>
+                                        <Span Text="{x:Static local:AppResources.ZVatcreditcarriedforward}"/>
+                                    </FormattedString>
+                                </local1:CustomLabel.FormattedText>
+                            </local1:CustomLabel>
                             <local1:CustomLabel Text="{x:Static local:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
                                 <local1:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onCreditCarriedForwardClicked}"></TapGestureRecognizer>
@@ -1091,7 +1214,14 @@
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Label Text="{x:Static local:AppResources.ZVatNetdue}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"/>
+                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="16."/>
+                                        <Span Text="{x:Static local:AppResources.ZVatNetdue}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Frame Grid.Row="11" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <!--<Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryNetdueVat}, Path=Text.Length}" Value="0">
@@ -1173,10 +1303,10 @@
                                 </Grid.ColumnDefinitions>
                                
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBAN}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                <Frame Grid.Row="1"   Padding="20" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                <Frame Grid.Row="1" Margin="10,13,10,0"  Padding="20" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
-                                <custom:GAZTBorderlessPicker PropertyChanged="BPicker_PropertyChanged" x:Name="BPicker" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" ItemDisplayBinding="{Binding Iban}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                                <custom:GAZTBorderlessPicker Margin="10,13,10,0" PropertyChanged="BPicker_PropertyChanged" x:Name="BPicker" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" ItemDisplayBinding="{Binding Iban}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                                 <Image Grid.Row="1"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
@@ -1190,20 +1320,20 @@
 
                                 </StackLayout>
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBANID}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                <Frame Grid.Row="4" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                <Frame Margin="10,13,10,0" Grid.Row="4" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
-                                <custom:GAZTBorderlessPicker x:Name="BPicker1" PropertyChanged="BPicker1_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" ItemDisplayBinding="{Binding Text}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                                <custom:GAZTBorderlessPicker Margin="10,13,10,0" x:Name="BPicker1" PropertyChanged="BPicker1_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" ItemDisplayBinding="{Binding Text}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                                 <Image Grid.Row="4"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                <Frame Grid.Row="6"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                <Frame Grid.Row="6"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                 </Frame>
-                                <custom:GAZTBorderlessPicker PropertyChanged="BPicker2_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" FontFamily="{StaticResource SSTArBold}"   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                                <custom:GAZTBorderlessPicker Margin="10,13,10,0" PropertyChanged="BPicker2_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" FontFamily="{StaticResource SSTArBold}"   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
                                 <Image Grid.Row="6"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />

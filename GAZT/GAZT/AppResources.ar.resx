@@ -2462,4 +2462,7 @@
     <value>نوع الكيان الخاص بك فردي</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZZReturnUnderReview" xml:space="preserve">
+    <value>الإقرار تحت المراجعة من قبل الهيئة</value>
+  </data>
 </root>
