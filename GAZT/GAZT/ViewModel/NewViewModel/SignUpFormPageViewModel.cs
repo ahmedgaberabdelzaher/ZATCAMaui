@@ -406,7 +406,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private DateTime? _pkrDBO = DateTime.Now;
+        private DateTime? _pkrDBO = null;
 
         public DateTime? PkrDBO {
             get
@@ -602,6 +602,7 @@ namespace GAZT.ViewModel.NewViewModel
                 IDTypeModelRootObject = null;
                 IDTypeIndex = 0;
                 SelectedLOrC = 1;
+                PkrDBO = null;
                 await Task.Run(() =>
                 {
 
