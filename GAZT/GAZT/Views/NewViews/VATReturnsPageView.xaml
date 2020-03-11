@@ -1052,7 +1052,7 @@
                               <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  />
 
                             </StackLayout>
-                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Focused="EntryPreperiodcorrFocused" PropertyChanged="EntryPreperiodcorr_PropertyChanged" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="6" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                            <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Focused="EntryPreperiodcorrFocused" PropertyChanged="EntryPreperiodcorr_PropertyChanged" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="6" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" >
                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>-->
