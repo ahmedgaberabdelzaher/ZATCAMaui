@@ -751,7 +751,7 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -814,7 +814,7 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -876,15 +876,15 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
-            }
+        }
 
-            private void ClickGestureRecognizer_ClickedForVatAmountForPurchase(object sender, TextChangedEventArgs e)
-            {
+        private void ClickGestureRecognizer_ClickedForVatAmountForPurchase(object sender, TextChangedEventArgs e)
+        {
 
             try
             {
@@ -902,7 +902,7 @@ namespace GAZT.Views.NewViews
                     {
 
                         CheckMandetoryFields();
-                        if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
                             viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
                             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
@@ -924,16 +924,16 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
 
-            }
 
-            private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
-            {
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -987,15 +987,15 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-                //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
-            }
+            //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
+        }
 
-            private void ClickGestureRecognizer_ClickedForVatAccounted(object sender, TextChangedEventArgs e)
-            {
+        private void ClickGestureRecognizer_ClickedForVatAccounted(object sender, TextChangedEventArgs e)
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -1042,15 +1042,15 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
-            }
+        }
 
-            private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
-            {
+        private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -1095,14 +1095,14 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            }
+        }
 
-            private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
-            {
+        private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -1146,14 +1146,14 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            }
+        }
 
-            private void ClickGestureRecognizer_ClickedForAllPurchaseVatAmount(object sender, TextChangedEventArgs e)
-            {
+        private void ClickGestureRecognizer_ClickedForAllPurchaseVatAmount(object sender, TextChangedEventArgs e)
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -1191,455 +1191,455 @@ namespace GAZT.Views.NewViews
                         senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
 
-            public async void onPageLoadCalculation()
+        public async void onPageLoadCalculation()
+        {
+            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+            viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
+            viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
+            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+            if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
             {
-                viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                viewModel.TotalsalesVat = viewModel.ResponseVATDeclarationD.StdsalesVat;
-                viewModel.StdpurchasesVat = viewModel.StandardRatedDomesticPurchaseVatAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.StdpurchaseAdj);
-                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
-                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
-                if (viewModel.ResponseVATDeclarationD.TpregFg == "X")
-                {
-                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-                }
-                else
-                {
-                    viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
-
-                }
-                viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
-                viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
+            }
+            else
+            {
+                viewModel.ImportspaidVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportspaidAdj);
 
             }
+            viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
+            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
 
-            private void OnStandardRatedSalesAmountClicked(object sender, EventArgs e)
+        }
+
+        private void OnStandardRatedSalesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
+            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 + "%");
+            popUp.Message = MessageWithPercent;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
-                String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 + "%");
-                popUp.Message = MessageWithPercent;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnStandardRatedSalesAdjustmentClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnPrivateHealthcareAmountClicked(object sender, EventArgs e)
+        private void OnStandardRatedSalesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZLink;
-                popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnPrivateHealthcareAdjustmentClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZLink; ;
-                popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnZerorateddomesticsalesAmountClicked(object sender, EventArgs e)
+        private void OnPrivateHealthcareAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZLink;
+            popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnZerorateddomesticsalesAdjustmentClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-
-
-            private void OnExportsAmountClicked(object sender, EventArgs e)
+        private void OnPrivateHealthcareAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZLink; ;
+            popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExportsAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnExportsAdjustmentClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExportsAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnExemptAdjustmentClicked(object sender, EventArgs e)
+        private void OnZerorateddomesticsalesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExemptAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnStandardrateddomesticpurchasesAmountClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatImportsVatPaidatcustomsAmountClicked(object sender, EventArgs e)
+        private void OnZerorateddomesticsalesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatImportsVatPaidatcustomsAdjustmentClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
+
+
+        private void OnExportsAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExportsAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatExemptPurchasesAmountClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatExemptPurchasesAdjustmentClicked(object sender, EventArgs e)
+        private void OnExportsAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExportsAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatcreditcarriedforwardClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatNetdueClicked(object sender, EventArgs e)
+        private void OnExemptAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
             {
-
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipNetVATdue;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnExemptAmountClicked(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipExemptAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnStandardrateddomesticpurchasesAdjustmentClicked(object sender, EventArgs e)
+        private void OnStandardrateddomesticpurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
-
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatImportsSubjectToVatAccountedAmountClickedNew(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-                popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatImportsSubjectToVatAccountedAdjustmentClickedNew(object sender, EventArgs e)
+        private void OnVatImportsVatPaidatcustomsAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatImportsSubjectToVatAccountedVatAmountClickedNew(object sender, EventArgs e)
+            else
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            private void OnVatZeroRatedPurchasesAdjustmentClickedNew(object sender, EventArgs e)
+        private void OnVatImportsVatPaidatcustomsAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
             {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "RightToLeft";
             }
-
-            private void OnVatcreditcarriedforwardFromPreviousPeriodClicked(object sender, EventArgs e)
+            else
             {
-                // < 5,000 >
-                PopUp popUp = new PopUp();
-
-                popUp.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
-                String MessageWithPositiveValue = popUp.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
-                String MessageWithNegativeValue = popUp.Message.Replace("<-5,000>", MessageWithPositiveValue);
-                popUp.Message = MessageWithNegativeValue;
-
-                popUp.IsLinkAvailable = false;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                popUp.FlowDirections = "LeftToRight";
             }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
 
-            public bool CheckMandetoryFields()
+        private void OnVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
             {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatExemptPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatExemptPurchasesAdjustmentClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatcreditcarriedforwardClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatNetdueClicked(object sender, EventArgs e)
+        {
+
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipNetVATdue;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnExemptAmountClicked(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipExemptAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnStandardrateddomesticpurchasesAdjustmentClicked(object sender, EventArgs e)
+        {
+
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedAmountClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
+            popUp.IsLinkAvailable = true;
+            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedAdjustmentClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatImportsSubjectToVatAccountedVatAmountClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatZeroRatedPurchasesAdjustmentClickedNew(object sender, EventArgs e)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        private void OnVatcreditcarriedforwardFromPreviousPeriodClicked(object sender, EventArgs e)
+        {
+            // < 5,000 >
+            PopUp popUp = new PopUp();
+
+            popUp.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
+            String MessageWithPositiveValue = popUp.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
+            String MessageWithNegativeValue = popUp.Message.Replace("<-5,000>", MessageWithPositiveValue);
+            popUp.Message = MessageWithNegativeValue;
+
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+
+        public bool CheckMandetoryFields()
+        {
 
             bool IsAllEntered = true;
             try
@@ -1885,18 +1885,18 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
-               
-                return IsAllEntered;
-            }
+
+            return IsAllEntered;
+        }
 
         //Test    
         private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
-            {
+        {
             try
             {
                 bool isArabicChecked = true;
@@ -1930,53 +1930,28 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
-            }
 
-            private void EntryCreditVat_TextChanged(object sender, TextChangedEventArgs e)
+        }
+
+        private void EntryCreditVat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryNetdueVat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void chkDeclarationForSummary_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (viewModel.IsDeclarationCheckedForSummary != true)
             {
-                CheckMandetoryFields();
-            }
-
-            private void EntryNetdueVat_TextChanged(object sender, TextChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
-
-            private void chkDeclarationForSummary_CheckedChanged(object sender, CheckedChangedEventArgs e)
-            {
-                if (viewModel.IsDeclarationCheckedForSummary != true)
-                {
-                    if (TabSummarry.IsVisible == true)
-                    {
-                        CheckBox CheckSummary = (CheckBox)sender;
-                        if (CheckSummary.IsChecked == true)
-                        {
-
-                            viewModel.IsMainButtonEnabled = true;
-                            //  BtnNextStep.IsEnabled = true;
-                        }
-                        else
-                        {
-
-                            viewModel.IsMainButtonEnabled = false;
-                            // BtnNextStep.IsEnabled = false;
-                        }
-                    }
-                }
-                else
-                {
-                    ValidationsForVATRefund();
-                }
-            }
-
-            private void chkClearification_CheckedChanged(object sender, CheckedChangedEventArgs e)
-            {
-                if (TabTaxPayerDetails.IsVisible == true)
+                if (TabSummarry.IsVisible == true)
                 {
                     CheckBox CheckSummary = (CheckBox)sender;
                     if (CheckSummary.IsChecked == true)
@@ -1989,74 +1964,122 @@ namespace GAZT.Views.NewViews
                     {
 
                         viewModel.IsMainButtonEnabled = false;
-                        //  BtnNextStep.IsEnabled = false;
+                        // BtnNextStep.IsEnabled = false;
                     }
                 }
             }
-
-            private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
+            else
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
-                    {
-                        CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                ValidationsForVATRefund();
+            }
+        }
 
-                    }
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+        private void chkClearification_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (TabTaxPayerDetails.IsVisible == true)
+            {
+                CheckBox CheckSummary = (CheckBox)sender;
+                if (CheckSummary.IsChecked == true)
                 {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount.Text);
-                    EntryVatAmount.Text = ValueWithComma;
-                    EntryVatAmount.TextColor = Color.Black;
 
+                    viewModel.IsMainButtonEnabled = true;
+                    //  BtnNextStep.IsEnabled = true;
                 }
                 else
                 {
-                    viewModel.IsUnFocusedTextBox = true;
+
                     viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    //  BtnNextStep.IsEnabled = false;
                 }
             }
+        }
 
-            private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
+        private void EntryVatAmount_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
                 if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
                 {
                     CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
 
                 }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR.Text);
-                    EntryVatAdjustmentWithSAR.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
             }
-
-            public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount.Text);
+                EntryVatAmount.Text = ValueWithComma;
+                EntryVatAmount.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryVatAdjustmentWithSAR_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryVatAmount.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAmount.Text != "." && EntryVatAdjustmentWithSAR.Text != "." && EntryVatAmount.Text != "," && EntryVatAdjustmentWithSAR.Text != ",")
+            {
+                CheckOneaOneb(Convert.ToDecimal(EntryVatAmount.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR.Text);
+                EntryVatAdjustmentWithSAR.Text = ValueWithComma;
+                EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
                 {
-                    try
+                    if (EntryVatAmount == 0 && EntryVatAdjustmentWithSAR > 0)
                     {
-                        if (EntryVatAmount == 0 && EntryVatAdjustmentWithSAR > 0)
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+
+                        Pop.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
+                    else
+                    {
+
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
                         {
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
 
-                            Pop.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -2067,103 +2090,102 @@ namespace GAZT.Views.NewViews
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
+                    }
+                }
+                catch
+                {
+
+                }
+
+            }
+        }
+
+        private void EntrySalesGccAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAmt.Text);
+                EntrySalesGccAmt.Text = ValueWithComma;
+                EntrySalesGccAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+
+        }
+
+        private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
+            {
+                CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAdj.Text);
+                EntrySalesGccAdj.Text = ValueWithComma;
+                EntrySalesGccAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+
+        }
+
+
+        public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
+                {
+                    if (EntrySalesGccAmt == 0 && EntrySalesGccAdj > 0)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
                         else
                         {
-
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
+                            Pop.FlowDirections = "LeftToRight";
                         }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                     }
-                    catch
+                    else
                     {
 
-                    }
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                }
-            }
+                        // decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
 
-            private void EntrySalesGccAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
-                {
-                    CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAmt.Text);
-                    EntrySalesGccAmt.Text = ValueWithComma;
-                    EntrySalesGccAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-
-            }
-
-            private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && !string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAmt.Text != "." && EntrySalesGccAdj.Text != "." && EntrySalesGccAmt.Text != "," && EntrySalesGccAdj.Text != ",")
-                {
-                    CheckTwoaTwob(Convert.ToDecimal(EntrySalesGccAmt.Text), Convert.ToDecimal(EntrySalesGccAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAdj.Text);
-                    EntrySalesGccAdj.Text = ValueWithComma;
-                    EntrySalesGccAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-
-            }
-
-
-            public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (EntrySalesGccAmt == 0 && EntrySalesGccAdj > 0)
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
                         {
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
-                            Pop.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -2174,147 +2196,277 @@ namespace GAZT.Views.NewViews
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
-                        else
-                        {
-
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            // decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
                     }
-                    catch
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            Entry Ent = (Entry)sender;
+
+            string Message = string.Empty;
+            if (Ent.Id.ToString() == EntryZerosalesAmt.Id.ToString())
+            {
+                IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+                if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                {
+                    if (IGRTSetModel.RateTrtmt != "Z")
                     {
 
+                        if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
+                        {
+                            if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                            {
+                                //PopUp popUp = new PopUp();
+                                Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+
+
+                                //popUp.IsLinkAvailable = false;
+                                //if (App.IsArabic)
+                                //{
+                                //    popUp.FlowDirections = "RightToLeft";
+                                //}
+                                //else
+                                //{
+                                //    popUp.FlowDirections = "LeftToRight";
+                                //}
+                                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            }
+                        }
+
                     }
                 }
             }
-
-            private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
             {
-                Entry Ent = (Entry)sender;
+                CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), Message);
 
-                string Message = string.Empty;
-                if (Ent.Id.ToString() == EntryZerosalesAmt.Id.ToString())
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAmt.Text);
+                EntryZerosalesAmt.Text = ValueWithComma;
+                EntryZerosalesAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
+            {
+                CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), "");
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAdj.Text);
+                EntryZerosalesAdj.Text = ValueWithComma;
+                EntryZerosalesAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+
+        }
+
+        public void CheckThreeaThreeb(decimal EntryZerosalesAmt, decimal EntryZerosalesAdj, string Massege)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
                 {
-                    IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
-                    if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                    StringBuilder Masseges = new StringBuilder();
+                    if (!string.IsNullOrEmpty(Massege))
                     {
-                        if (IGRTSetModel.RateTrtmt != "Z")
+                        Masseges.Append(Massege);
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
                         {
 
-                            if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+
+                        }
+
+                       
+                        if (Pop.Message.Length > 0)
+                        {
+                            Pop.Message = Masseges.ToString();
+                            if (App.IsArabic)
                             {
-                                if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
-                                {
-                                    //PopUp popUp = new PopUp();
-                                    Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
-
-
-                                    //popUp.IsLinkAvailable = false;
-                                    //if (App.IsArabic)
-                                    //{
-                                    //    popUp.FlowDirections = "RightToLeft";
-                                    //}
-                                    //else
-                                    //{
-                                    //    popUp.FlowDirections = "LeftToRight";
-                                    //}
-                                    //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                }
+                                Pop.FlowDirections = "RightToLeft";
                             }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
 
+                    }
+                    else
+                    {
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
-                if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
+                catch
                 {
-                    CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), Message);
 
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAmt.Text);
-                    EntryZerosalesAmt.Text = ValueWithComma;
-                    EntryZerosalesAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
                 }
             }
 
-            private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
+        }
+
+        private void EntryExportsAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+
+            string Message = string.Empty;
+            Entry Ent = (Entry)sender;
+            if (Ent.Id.ToString() == EntryExportsAmt.Id.ToString())
             {
-                if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
+                if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
                 {
-                    CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), "");
+                    if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExportsAmt))
+                    {
+                        if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
+                        {
+                            // PopUp popUp = new PopUp();
+                            Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
 
-                }
 
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAdj.Text);
-                    EntryZerosalesAdj.Text = ValueWithComma;
-                    EntryZerosalesAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                            //popUp.IsLinkAvailable = false;
+                            //if (App.IsArabic)
+                            //{
+                            //    popUp.FlowDirections = "RightToLeft";
+                            //}
+                            //else
+                            //{
+                            //    popUp.FlowDirections = "LeftToRight";
+                            //}
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        }
+                    }
                 }
 
             }
-
-            public void CheckThreeaThreeb(decimal EntryZerosalesAmt, decimal EntryZerosalesAdj, string Massege)
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), Message);
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAmt.Text);
+                EntryExportsAmt.Text = ValueWithComma;
+                EntryExportsAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
+            {
+                CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), "");
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAdj.Text);
+                EntryExportsAdj.Text = ValueWithComma;
+                EntryExportsAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj, string Massege)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
                 {
-                    try
+                    if (viewModel.CalculationRateSetVTTH != null)
                     {
                         StringBuilder Masseges = new StringBuilder();
                         if (!string.IsNullOrEmpty(Massege))
                         {
-                            Masseges.Append(Massege);
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
+                            Masseges.Append(Massege);
                             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                            //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+                            // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
 
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
+                            if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
                             {
 
                                 Masseges.Append(Environment.NewLine);
                                 Masseges.Append(Environment.NewLine);
-                                Masseges.Append(string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
+                                Masseges.Append(string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
 
                             }
-
                             Pop.Message = Masseges.ToString();
                             if (Pop.Message.Length > 0)
                             {
@@ -2328,19 +2480,19 @@ namespace GAZT.Views.NewViews
                                 }
                                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
-
                         }
                         else
                         {
+
                             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                            //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
+                            // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
 
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
+                            if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
                             {
                                 PopUp Pop = new PopUp();
                                 Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                                Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
                                     Pop.FlowDirections = "RightToLeft";
@@ -2353,29 +2505,35 @@ namespace GAZT.Views.NewViews
                             }
                         }
                     }
-                    catch
-                    {
 
-                    }
+
+
                 }
-
-            }
-
-            private void EntryExportsAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-
-                string Message = string.Empty;
-                Entry Ent = (Entry)sender;
-                if (Ent.Id.ToString() == EntryExportsAmt.Id.ToString())
+                catch
                 {
-                    if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
+
+                }
+            }
+        }
+
+        private void EntryExemptsalesAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            string Message = string.Empty;
+            Entry Ent = (Entry)sender;
+            if (Ent.Id.ToString() == EntryExemptsalesAmt.Id.ToString())
+            {
+                IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+                if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                {
+                    if (IGRTSetModel.RateTrtmt != "E")
                     {
-                        if (viewModel.ResponseVATDeclarationD.ExportsAmt != "." && !viewModel.ResponseVATDeclarationD.ExportsAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExportsAmt))
+
+                        if (viewModel.ResponseVATDeclarationD.ExemptsalesAmt != "." && !viewModel.ResponseVATDeclarationD.ExemptsalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ExemptsalesAmt))
                         {
-                            if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
+                            if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExemptsalesAmt) > 0)
                             {
-                                // PopUp popUp = new PopUp();
-                                Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
+                                //PopUp popUp = new PopUp();
+                                Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
 
 
                                 //popUp.IsLinkAvailable = false;
@@ -2387,188 +2545,107 @@ namespace GAZT.Views.NewViews
                                 //{
                                 //    popUp.FlowDirections = "LeftToRight";
                                 //}
-                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             }
                         }
+
                     }
-
-                }
-                if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
-                {
-                    CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), Message);
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAmt.Text);
-                    EntryExportsAmt.Text = ValueWithComma;
-                    EntryExportsAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
                 }
             }
-
-            private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
             {
-                if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
-                {
-                    CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), "");
+                CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text),Message);
 
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAdj.Text);
-                    EntryExportsAdj.Text = ValueWithComma;
-                    EntryExportsAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
             }
 
-            public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj, string Massege)
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAmt.Text);
+                EntryExemptsalesAmt.Text = ValueWithComma;
+                EntryExemptsalesAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+  
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAdj.Text);
+                EntryExemptsalesAdj.Text = ValueWithComma;
+                EntryExemptsalesAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
+            {
+                CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text),"");
+
+            }
+        }
+
+        public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj,string Message)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
                 {
-                    try
+                    StringBuilder Masseges = new StringBuilder();
+                   
+                    if (!string.IsNullOrEmpty(Message))
                     {
+                        PopUp Pop = new PopUp();
+                        Masseges.Append(Message);
                         if (viewModel.CalculationRateSetVTTH != null)
                         {
-                            StringBuilder Masseges = new StringBuilder();
-                            if (!string.IsNullOrEmpty(Massege))
+                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                            //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                            if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
                             {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Masseges.Append(Massege);
-                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
 
-                                // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
-
-                                if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
-                                {
-
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(Environment.NewLine);
-                                    Masseges.Append(string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
-
-                                }
-                                Pop.Message = Masseges.ToString();
-                                if (Pop.Message.Length > 0)
-                                {
-                                    if (App.IsArabic)
-                                    {
-                                        Pop.FlowDirections = "RightToLeft";
-                                    }
-                                    else
-                                    {
-                                        Pop.FlowDirections = "LeftToRight";
-                                    }
-                                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                                }
+                              
                             }
-                            else
+                            if (Masseges.Length > 0)
                             {
+                                Pop.Message = Masseges.ToString();
 
-                                string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                                // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
-
-                                if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
+                                Pop.IsLinkAvailable = false;
+                                if (App.IsArabic)
                                 {
-                                    PopUp Pop = new PopUp();
-                                    Pop.IsLinkAvailable = false;
-                                    Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                    if (App.IsArabic)
-                                    {
-                                        Pop.FlowDirections = "RightToLeft";
-                                    }
-                                    else
-                                    {
-                                        Pop.FlowDirections = "LeftToRight";
-                                    }
-                                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                    Pop.FlowDirections = "RightToLeft";
                                 }
+                                else
+                                {
+                                    Pop.FlowDirections = "LeftToRight";
+                                }
+
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
-
-
-
                     }
-                    catch
-                    {
-
-                    }
-                }
-            }
-
-            private void EntryExemptsalesAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
-                {
-                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAmt.Text);
-                    EntryExemptsalesAmt.Text = ValueWithComma;
-                    EntryExemptsalesAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
-                {
-                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAdj.Text);
-                    EntryExemptsalesAdj.Text = ValueWithComma;
-                    EntryExemptsalesAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
+                    else
                     {
                         if (viewModel.CalculationRateSetVTTH != null)
                         {
@@ -2593,521 +2670,32 @@ namespace GAZT.Views.NewViews
                             }
                         }
                     }
-                    catch
-                    {
+                       
+                }
+                catch
+                {
 
-                    }
                 }
             }
+        }
 
-            public void CheckSixaSixb(decimal LabelTotalsalesAmt, decimal LabelTotalsalesAdj)
+        public void CheckSixaSixb(decimal LabelTotalsalesAmt, decimal LabelTotalsalesAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-            }
-
-            private void EntryStdpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
-                {
-                    CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
-
-                }
-                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                {
-                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt.Text);
-                    EntryStdpurchaseAmt.Text = ValueWithComma;
-                    EntryStdpurchaseAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                {
-                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj.Text);
-                    EntryStdpurchaseAdj.Text = ValueWithComma;
-                    EntryStdpurchaseAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-
-
-            }
-
-            public void CheckSevenaSixa(decimal EntryStdpurchaseAmt, decimal LabelTotalsalesAmt)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-
-                    if (EntryStdpurchaseAmt > LabelTotalsalesAmt)
-                    {
-                        PopUp Pop = new PopUp();
-                        Pop.IsLinkAvailable = false;
-                        Pop.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                        if (App.IsArabic)
-                        {
-                            Pop.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            Pop.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                    }
-                }
-            }
-
-            public void CheckSevenaSevenb(decimal EntryStdpurchaseAmt, decimal EntryStdpurchaseAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }
-
-            private void EntryZVatAmountWithSAR_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                {
-                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR.Text);
-                    EntryZVatAmountWithSAR.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-
-            }
-
-            private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                {
-                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj.Text);
-                    EntryImportspaidAdj.Text = ValueWithComma;
-                    EntryImportspaidAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            public void CheckEightaEightb(decimal EntryZVatAmountWithSAR, decimal EntryImportspaidAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-            }
-
-            private void EntryImportsaccAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                {
-                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt.Text);
-                    EntryImportsaccAmt.Text = ValueWithComma;
-                    EntryImportsaccAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                {
-                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
-                    EntryImportsaccAdj.Text = ValueWithComma;
-                    EntryImportsaccAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            public void CheckNineaNineb(decimal EntryImportsaccAmt, decimal EntryImportsaccAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }
-
-            private void EntryZeropurchaseAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
-                {
-                    CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
-
-                }
-
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAmt.Text);
-                    EntryZeropurchaseAmt.Text = ValueWithComma;
-                    EntryZeropurchaseAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
-                {
-                    CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAdj.Text);
-                    EntryZeropurchaseAdj.Text = ValueWithComma;
-                    EntryZeropurchaseAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            public void CheckTenaTenb(decimal EntryZeropurchaseAmt, decimal EntryZeropurchaseAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }
-
-            private void EntryExemptpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
-                {
-                    CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAmt.Text);
-                    EntryExemptpurchaseAmt.Text = ValueWithComma;
-                    EntryExemptpurchaseAmt.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
-                {
-                    CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
-
-                }
-                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAdj.Text);
-                    EntryExemptpurchaseAdj.Text = ValueWithComma;
-                    EntryExemptpurchaseAdj.TextColor = Color.Black;
-
-                }
-                else
-                {
-                    viewModel.IsUnFocusedTextBox = true;
-                    viewModel.IsMainButtonEnabled = false;
-                    CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
-                }
-            }
-
-            public void CheckElevenaElevenb(decimal EntryExemptpurchaseAmt, decimal EntryExemptpurchaseAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
-                {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
-
-                            //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }
-
-            public void CheckSixaTweveb(decimal LabelTotalsalesAmt, decimal LabelTotalpurchaseAmt)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                try
                 {
                     if (viewModel.CalculationRateSetVTTH != null)
                     {
                         string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                        //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+                        //   decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
 
-                        if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
+                        if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalsalesAdj)
                         {
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
-                            Pop.Message = AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3120,45 +2708,97 @@ namespace GAZT.Views.NewViews
                         }
                     }
                 }
-            }
-
-            public void CheckTweveaTweveb(decimal LabelTotalpurchaseAmt, decimal LabelTotalpurchaseAdj)
-            {
-                if (viewModel.IsVisibleVatReturnForm == true)
+                catch
                 {
-                    try
-                    {
-                        if (viewModel.CalculationRateSetVTTH != null)
-                        {
-                            string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                            //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
-
-                            if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
-                            {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                if (App.IsArabic)
-                                {
-                                    Pop.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    Pop.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            }
-                        }
-                    }
-                    catch
-                    {
-
-                    }
                 }
             }
 
-            public void CheckThirteenaFouteenb(decimal LabelTotaldueVat, decimal EntryPreperiodcorr)
+        }
+
+        private void EntryStdpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
+            {
+                CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
+
+            }
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+            {
+                CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt.Text);
+                EntryStdpurchaseAmt.Text = ValueWithComma;
+                EntryStdpurchaseAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+            {
+                CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj.Text);
+                EntryStdpurchaseAdj.Text = ValueWithComma;
+                EntryStdpurchaseAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+
+
+        }
+
+        public void CheckSevenaSixa(decimal EntryStdpurchaseAmt, decimal LabelTotalsalesAmt)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+
+                if (EntryStdpurchaseAmt > LabelTotalsalesAmt)
+                {
+                    PopUp Pop = new PopUp();
+                    Pop.IsLinkAvailable = false;
+                    Pop.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                    if (App.IsArabic)
+                    {
+                        Pop.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        Pop.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                }
+            }
+        }
+
+        public void CheckSevenaSevenb(decimal EntryStdpurchaseAmt, decimal EntryStdpurchaseAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
                 try
                 {
@@ -3166,14 +2806,22 @@ namespace GAZT.Views.NewViews
                     {
                         string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                        //  decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
+                        //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
 
-                        if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
                         {
-                            //PopUp Pop = new PopUp();
-                            //Pop.IsLinkAvailable = false;
-                            //Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
-                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3181,36 +2829,86 @@ namespace GAZT.Views.NewViews
                 {
 
                 }
+            }
+        }
+
+        private void EntryZVatAmountWithSAR_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+            {
+                CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
 
             }
 
-            private void EntryPreperiodcorr_Unfocused(object sender, FocusEventArgs e)
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR.Text);
+                EntryZVatAmountWithSAR.Text = ValueWithComma;
+                EntryZVatAmountWithSAR.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+
+        }
+
+        private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+            {
+                CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj.Text);
+                EntryImportspaidAdj.Text = ValueWithComma;
+                EntryImportspaidAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckEightaEightb(decimal EntryZVatAmountWithSAR, decimal EntryImportspaidAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
+                    if (viewModel.CalculationRateSetVTTH != null)
                     {
-                        string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
-                        string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
-                        if (Convert.ToDecimal(EntryPreperiodcorr.Text) <= Convert.ToDecimal(MinValue) || Convert.ToDecimal(EntryPreperiodcorr.Text) >= Convert.ToDecimal(MaxValue))
-                        {
-                            viewModel._dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue, MaxValue, MinValue), AppResources.Information);
-                        }
-                    }
-                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
-                    {
-                        viewModel.IsUnFocusedTextBox = true;
-                        string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryPreperiodcorr.Text);
-                        EntryPreperiodcorr.Text = ValueWithComma;
-                        EntryPreperiodcorr.TextColor = Color.Black;
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
 
-                    }
-                    else
-                    {
-                        viewModel.IsUnFocusedTextBox = true;
-                        viewModel.IsMainButtonEnabled = false;
-                        CheckMandetoryFields();
-                        // UserName.TextColor = Color.Black;
+                        //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
                     }
                 }
                 catch
@@ -3219,72 +2917,448 @@ namespace GAZT.Views.NewViews
                 }
             }
 
+        }
 
-            private void Iban_Changed(object sender, TextChangedEventArgs e)
+        private void EntryImportsaccAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
             {
-                bool a = false;
-                string allowedchar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                if (!string.IsNullOrEmpty(viewModel.IbanNumberText))
+                CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt.Text);
+                EntryImportsaccAmt.Text = ValueWithComma;
+                EntryImportsaccAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
+            {
+                CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
+                EntryImportsaccAdj.Text = ValueWithComma;
+                EntryImportsaccAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckNineaNineb(decimal EntryImportsaccAmt, decimal EntryImportsaccAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
                 {
-                    if (!viewModel.IbanNumberText.All(allowedchar.Contains))
+                    if (viewModel.CalculationRateSetVTTH != null)
+                    {
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void EntryZeropurchaseAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
+            {
+                CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
+
+            }
+
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAmt.Text);
+                EntryZeropurchaseAmt.Text = ValueWithComma;
+                EntryZeropurchaseAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && !string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAmt.Text != "." && EntryZeropurchaseAdj.Text != "." && EntryZeropurchaseAmt.Text != "," && EntryZeropurchaseAdj.Text != ",")
+            {
+                CheckTenaTenb(Convert.ToDecimal(EntryZeropurchaseAmt.Text), Convert.ToDecimal(EntryZeropurchaseAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAdj.Text);
+                EntryZeropurchaseAdj.Text = ValueWithComma;
+                EntryZeropurchaseAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckTenaTenb(decimal EntryZeropurchaseAmt, decimal EntryZeropurchaseAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
+                {
+                    if (viewModel.CalculationRateSetVTTH != null)
+                    {
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void EntryExemptpurchaseAmt_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
+            {
+                CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAmt.Text);
+                EntryExemptpurchaseAmt.Text = ValueWithComma;
+                EntryExemptpurchaseAmt.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAmt.Text != "." && EntryExemptpurchaseAdj.Text != "." && EntryExemptpurchaseAmt.Text != "," && EntryExemptpurchaseAdj.Text != ",")
+            {
+                CheckElevenaElevenb(Convert.ToDecimal(EntryExemptpurchaseAmt.Text), Convert.ToDecimal(EntryExemptpurchaseAdj.Text));
+
+            }
+            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAdj.Text);
+                EntryExemptpurchaseAdj.Text = ValueWithComma;
+                EntryExemptpurchaseAdj.TextColor = Color.Black;
+
+            }
+            else
+            {
+                viewModel.IsUnFocusedTextBox = true;
+                viewModel.IsMainButtonEnabled = false;
+                CheckMandetoryFields();
+                // UserName.TextColor = Color.Black;
+            }
+        }
+
+        public void CheckElevenaElevenb(decimal EntryExemptpurchaseAmt, decimal EntryExemptpurchaseAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
+                {
+                    if (viewModel.CalculationRateSetVTTH != null)
+                    {
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void CheckSixaTweveb(decimal LabelTotalsalesAmt, decimal LabelTotalpurchaseAmt)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                if (viewModel.CalculationRateSetVTTH != null)
+                {
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (LabelTotalsalesAmt / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalsalesAmt) + LabelTotalsalesAmt < LabelTotalpurchaseAmt)
+                    {
+                        PopUp Pop = new PopUp();
+                        Pop.IsLinkAvailable = false;
+                        Pop.Message = AppResources.ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                        if (App.IsArabic)
+                        {
+                            Pop.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            Pop.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
+                }
+            }
+        }
+
+        public void CheckTweveaTweveb(decimal LabelTotalpurchaseAmt, decimal LabelTotalpurchaseAdj)
+        {
+            if (viewModel.IsVisibleVatReturnForm == true)
+            {
+                try
+                {
+                    if (viewModel.CalculationRateSetVTTH != null)
+                    {
+                        string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                        //  decimal PercentageValue = (LabelTotalpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
+
+                        if (((Convert.ToDecimal(Percentage) / 100) * LabelTotalpurchaseAmt) + LabelTotalpurchaseAmt < LabelTotalpurchaseAdj)
+                        {
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.Message = string.Format(AppResources.ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            if (App.IsArabic)
+                            {
+                                Pop.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                Pop.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void CheckThirteenaFouteenb(decimal LabelTotaldueVat, decimal EntryPreperiodcorr)
+        {
+            try
+            {
+                if (viewModel.CalculationRateSetVTTH != null)
+                {
+                    string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
+
+                    //  decimal PercentageValue = (LabelTotaldueVat / 100) * Convert.ToDecimal(Percentage);
+
+                    if (((Convert.ToDecimal(Percentage) / 100) * LabelTotaldueVat) + LabelTotaldueVat < EntryPreperiodcorr)
+                    {
+                        //PopUp Pop = new PopUp();
+                        //Pop.IsLinkAvailable = false;
+                        //Pop.Message = string.Format(AppResources.ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage);
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void EntryPreperiodcorr_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
+                {
+                    string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
+                    string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
+                    if (Convert.ToDecimal(EntryPreperiodcorr.Text) <= Convert.ToDecimal(MinValue) || Convert.ToDecimal(EntryPreperiodcorr.Text) >= Convert.ToDecimal(MaxValue))
+                    {
+                        viewModel._dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_IfCorrectionsGreaterThanEqualToMAxValueAndLessThanEqualToMinValue, MaxValue, MinValue), AppResources.Information);
+                    }
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryPreperiodcorr.Text);
+                    EntryPreperiodcorr.Text = ValueWithComma;
+                    EntryPreperiodcorr.TextColor = Color.Black;
+
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private void Iban_Changed(object sender, TextChangedEventArgs e)
+        {
+            bool a = false;
+            string allowedchar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            if (!string.IsNullOrEmpty(viewModel.IbanNumberText))
+            {
+                if (!viewModel.IbanNumberText.All(allowedchar.Contains))
+                {
+                    viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
+                }
+                else
+                {
+
+
+
+                    if (viewModel.IbanNumberText.Length > 24)
                     {
                         viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
                     }
-                    else
-                    {
 
 
+                    a = UtilityManager.IsIBANValid(viewModel.IbanNumberText);
 
-                        if (viewModel.IbanNumberText.Length > 24)
-                        {
-                            viewModel.IbanNumberText = viewModel.IbanNumberText.Remove(viewModel.IbanNumberText.Length - 1);
-                        }
-
-
-                        a = UtilityManager.IsIBANValid(viewModel.IbanNumberText);
-
-                    }
-                    viewModel.IsIBANValid = a;
                 }
-                if (viewModel.IsVisibleSummary == true)
+                viewModel.IsIBANValid = a;
+            }
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
                 {
-                    if (viewModel.IsVisibleDropdownForRefund == true)
-                    {
-                        ValidationsForVATRefund();
-                    }
+                    ValidationsForVATRefund();
                 }
             }
+        }
 
 
 
 
 
-            private void onDropdownButtonClicked(object sender, EventArgs e)
+        private void onDropdownButtonClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        public void ValidationsForVATRefund()
+        {
+            bool resultForBilledOrNot = false;
+            resultForBilledOrNot = viewModel.IsReturnIsBilledOrAmend();
+            if (viewModel.IsVisibleSummary == true)
             {
-
-            }
-
-            public void ValidationsForVATRefund()
-            {
-                bool resultForBilledOrNot = false;
-                resultForBilledOrNot = viewModel.IsReturnIsBilledOrAmend();
-                if (viewModel.IsVisibleSummary == true)
+                if (viewModel.IsVisibleDropdownForRefund == true)
                 {
-                    if (viewModel.IsVisibleDropdownForRefund == true)
+                    if (viewModel.IsCheckedRefund == true)
                     {
-                        if (viewModel.IsCheckedRefund == true)
+                        if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false && viewModel.IsIBANValid == true)
                         {
-                            if (!string.IsNullOrEmpty(viewModel.IbanNumberText) && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false && viewModel.IsIBANValid == true)
+
+                            if (!resultForBilledOrNot)
                             {
-
-                                if (!resultForBilledOrNot)
-                                {
-                                    viewModel.IsMainButtonEnabled = true;
-                                }
-                                else
-                                {
-                                    viewModel.IsMainButtonEnabled = false;
-                                }
+                                viewModel.IsMainButtonEnabled = true;
                             }
                             else
                             {
@@ -3293,296 +3367,308 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
+                            viewModel.IsMainButtonEnabled = false;
+                        }
+                    }
+                    else
+                    {
+                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
+                        {
+                            if (!resultForBilledOrNot)
                             {
-                                if (!resultForBilledOrNot)
-                                {
-                                    viewModel.IsMainButtonEnabled = true;
-                                }
-                                else
-                                {
-                                    viewModel.IsMainButtonEnabled = false;
-                                }
+                                viewModel.IsMainButtonEnabled = true;
                             }
                             else
                             {
                                 viewModel.IsMainButtonEnabled = false;
                             }
                         }
+                        else
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+                        }
                     }
                 }
             }
+        }
 
-            private void BPicker2_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void BPicker2_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
             {
-                if (viewModel.IsVisibleSummary == true)
+                if (viewModel.IsVisibleDropdownForRefund == true)
                 {
-                    if (viewModel.IsVisibleDropdownForRefund == true)
-                    {
-                        ValidationsForVATRefund();
-                    }
+                    ValidationsForVATRefund();
                 }
             }
+        }
 
-            private void BPicker1_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void BPicker1_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
             {
-                if (viewModel.IsVisibleSummary == true)
+                if (viewModel.IsVisibleDropdownForRefund == true)
                 {
-                    if (viewModel.IsVisibleDropdownForRefund == true)
-                    {
-                        ValidationsForVATRefund();
-                    }
+                    ValidationsForVATRefund();
                 }
             }
+        }
 
-            private void BPicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void BPicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
             {
-                if (viewModel.IsVisibleSummary == true)
+                if (viewModel.IsVisibleDropdownForRefund == true)
                 {
-                    if (viewModel.IsVisibleDropdownForRefund == true)
-                    {
-                        ValidationsForVATRefund();
-                    }
+                    ValidationsForVATRefund();
                 }
             }
+        }
 
-            private void Unfocused_IBAN(object sender, FocusEventArgs e)
+        private void Unfocused_IBAN(object sender, FocusEventArgs e)
+        {
+            try
             {
                 try
                 {
-                    try
+                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                    if (response != null)
                     {
-                        var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
-                        if (response != null)
-                        {
-                            viewModel.IsIBANValid = true;
-                        }
-                        else
-                        {
-                            viewModel.IsIBANValid = false;
-                        }
+                        viewModel.IsIBANValid = true;
                     }
-                    catch (InternetException ex)
+                    else
                     {
+                        viewModel.IsIBANValid = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (InternetException ex)
                 {
-                    viewModel.IsIBANValid = false;
-
-                }
-
-            }
-
-            private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
-            {
-                ValidationsForVATRefund();
-            }
-
-            private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-            {
-                Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
-            }
-
-            private void EntryVatAmountFocused(object sender, FocusEventArgs e)
-            {
-                if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
-                {
-                    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    EntryVatAmount.TextColor = Color.Black;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
                 }
             }
-
-            private void EntryVatAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+            catch (Exception ex)
             {
-                CheckMandetoryFields();
-                //if (EntryVatAmount.TextColor == Color.Red)
-                //{
-                //    viewModel.IsMainButtonEnabled = false;
-                //    EntryVatAmountFrame.BorderColor = Color.Red;
-                //}
-                //else
-                //{
-                //    viewModel.IsMainButtonEnabled = true;
-                //    EntryVatAmountFrame.BorderColor = Color.FromHex("#B1B1B1");
-                //}
-            }
-
-            private void EntryVatAdjustmentWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
-
-            private void EntryVatAdjustmentFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
+                viewModel.IsIBANValid = false;
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
-                }
+                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                });
             }
 
-            private void EntrySalesGccAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        }
 
-            private void EntrySalesGccAmtFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
-                {
-                    EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
-                    EntrySalesGccAmt.TextColor = Color.Black;
-                }
-            }
+        private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            ValidationsForVATRefund();
+        }
 
-            private void EntrySalesGccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+        }
 
-            private void EntrySalesGccAdjFocused(object sender, FocusEventArgs e)
+        private void EntryVatAmountFocused(object sender, FocusEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
             {
-                if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
-                {
-                    EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
-                    EntrySalesGccAdj.TextColor = Color.Black;
-                }
+                EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+                EntryVatAmount.TextColor = Color.Black;
             }
+        }
 
-            private void EntryZerosalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryVatAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+            //if (EntryVatAmount.TextColor == Color.Red)
+            //{
+            //    viewModel.IsMainButtonEnabled = false;
+            //    EntryVatAmountFrame.BorderColor = Color.Red;
+            //}
+            //else
+            //{
+            //    viewModel.IsMainButtonEnabled = true;
+            //    EntryVatAmountFrame.BorderColor = Color.FromHex("#B1B1B1");
+            //}
+        }
 
-            private void EntryZerosalesAmtFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
-                {
-                    EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
-                    EntryZerosalesAmt.TextColor = Color.Black;
-                }
-            }
+        private void EntryVatAdjustmentWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryZerosalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryVatAdjustmentFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
+                EntryVatAdjustmentWithSAR.TextColor = Color.Black;
             }
+        }
 
-            private void EntryZerosalesAdjFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
-                {
-                    EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
-                    EntryZerosalesAdj.TextColor = Color.Black;
-                }
-            }
+        private void EntrySalesGccAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExportsAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntrySalesGccAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
+                EntrySalesGccAmt.TextColor = Color.Black;
             }
+        }
 
-            private void EntryExportsAmtFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
-                {
-                    EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
-                    EntryExportsAmt.TextColor = Color.Black;
-                }
-            }
+        private void EntrySalesGccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExportsAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntrySalesGccAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
+                EntrySalesGccAdj.TextColor = Color.Black;
             }
+        }
 
-            private void EntryExportsAdjFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
-                {
-                    EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
-                    EntryExportsAdj.TextColor = Color.Black;
-                }
-            }
+        private void EntryZerosalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExemptsalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryZerosalesAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
+                EntryZerosalesAmt.TextColor = Color.Black;
             }
+        }
 
-            private void EntryExemptsalesAmtFocused(object sender, FocusEventArgs e)
-            {
-                if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
-                {
-                    EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
-                    EntryExemptsalesAmt.TextColor = Color.Black;
-                }
-            }
+        private void EntryZerosalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExemptsalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryZerosalesAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
+                EntryZerosalesAdj.TextColor = Color.Black;
             }
+        }
 
-            private void EntryStdpurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryExportsAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryStdpurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryExportsAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
+                EntryExportsAmt.TextColor = Color.Black;
             }
+        }
 
-            private void EntryZVatAmountWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryExportsAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryImportspaidAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryExportsAdjFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
+                EntryExportsAdj.TextColor = Color.Black;
             }
+        }
 
-            private void EntryImportsaccAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryExemptsalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryImportsaccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void EntryExemptsalesAmtFocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
             {
-                CheckMandetoryFields();
+                EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
+                EntryExemptsalesAmt.TextColor = Color.Black;
             }
+        }
 
-            private void EntryZeropurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryExemptsalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryZeropurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryStdpurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExemptpurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryStdpurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryPreperiodcorr_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryZVatAmountWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
-            private void EntryExemptpurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                CheckMandetoryFields();
-            }
+        private void EntryImportspaidAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryZeropurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryZeropurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryExemptpurchaseAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryPreperiodcorr_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryExemptpurchaseAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
 
         private void EntryStdpurchaseAmtFocused(object sender, FocusEventArgs e)
         {
@@ -3683,36 +3769,36 @@ namespace GAZT.Views.NewViews
             }
         }
     }
-        //private void ICvalidation_Clicked(object sender, EventArgs e)
-        //{
-        //   //if(TabInstruction.IsVisible==true)
-        //   // {
-        //   //     if(chkDeclaration.IsChecked==false)
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-        //   //     }
-        //   //     else
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+    //private void ICvalidation_Clicked(object sender, EventArgs e)
+    //{
+    //   //if(TabInstruction.IsVisible==true)
+    //   // {
+    //   //     if(chkDeclaration.IsChecked==false)
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+    //   //     }
+    //   //     else
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-        //   //     }
-        //   // }
-        //   //if(TabTaxPayerDetails.IsVisible==true)
-        //   // {
-        //   //     if (chkClearification.IsChecked == false)
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-        //   //     }
-        //   //     else
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+    //   //     }
+    //   // }
+    //   //if(TabTaxPayerDetails.IsVisible==true)
+    //   // {
+    //   //     if (chkClearification.IsChecked == false)
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+    //   //     }
+    //   //     else
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-        //   //     }
+    //   //     }
 
-        //   // }
-        //}
+    //   // }
+    //}
 
-    }
+}
 
 
 

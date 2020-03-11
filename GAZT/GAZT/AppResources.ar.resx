@@ -2462,4 +2462,12 @@
     <value>نوع الكيان الخاص بك فردي</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZIBANisincorrect" xml:space="preserve">
+    <value>إدخال غير صالحَ</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZPleaseretainthisnumberforfuturereferenceandcommunucation" xml:space="preserve">
+    <value>(يرجى الاحتفاظ بهذا الرقم للرجوع إليه في المستقبل)</value>
+    <comment>VAT Declaration</comment>
+  </data>
 </root>
