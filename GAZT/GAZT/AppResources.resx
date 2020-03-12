@@ -2596,4 +2596,7 @@ Should we require further information, we would be in contact.</value>
     <value>(Please retain this number for future reference and communucation)</value>
     <comment>VAT Declaration</comment>
   </data>
+  <data name="ZZZReturnUnderReview" xml:space="preserve">
+    <value>Return under review with GAZT</value>
+  </data>
 </root>

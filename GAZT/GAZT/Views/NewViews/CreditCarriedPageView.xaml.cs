@@ -22,7 +22,8 @@ namespace GAZT.Views.NewViews
                 InitializeComponent();
                 viewModel = App.Locator.CreditCarriedPageView;
                 this.BindingContext = viewModel;
-                if(vATDeclaration.d!=null)
+                SetLTR();
+                if (vATDeclaration.d!=null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
                 }
@@ -45,6 +46,15 @@ namespace GAZT.Views.NewViews
             catch(Exception e)
             {
 
+            }
+        }
+
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
     }

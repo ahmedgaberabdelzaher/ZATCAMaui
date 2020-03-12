@@ -2676,7 +2676,7 @@ namespace GAZT.Manager
         }
         //Seesion expired handled  
         //done internet exception handling
-        public static async Task<AttachmentRootOject> GAZTSaveEstimatedZAKATAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveEstimatedZAKATAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string ContentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -2694,12 +2694,12 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
 
                     MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    content.Add(baContent, "File", fileName);
-                    var response = await client.PostAsync(url, content);
+                    //content.Add(baContent, "File", fileName);
+                    var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
 

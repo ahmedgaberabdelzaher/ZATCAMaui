@@ -4223,5 +4223,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseretainthisnumberforfuturereferenceandcommunucation", resourceCulture);
             }
         }
+        
+        public static string ZZZReturnUnderReview {
+            get {
+                return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
     }
 }
