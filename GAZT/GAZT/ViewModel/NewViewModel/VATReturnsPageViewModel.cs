@@ -2058,7 +2058,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             onFaqSectionClicked = new Xamarin.Forms.Command(async () =>
             {
-                Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                if (App.IsArabic)
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/ar/introduction-to-vat/faq/general-faqs"));
+                }
+                else
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                }
             });
 
 
