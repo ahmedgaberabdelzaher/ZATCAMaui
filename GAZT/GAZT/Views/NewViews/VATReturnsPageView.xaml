@@ -239,7 +239,7 @@
                         </Label>
                         <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="2" Placeholder="{Binding Incotext}"  IsEnabled="False"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Incotext}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -249,7 +249,7 @@
                         </Label>
                         <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="4" Grid.ColumnSpan="2" IsEnabled="False" Grid.Column="0"  Placeholder="{Binding Vrtaxret}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="4" Grid.ColumnSpan="2"  Grid.Column="0"  IsReadOnly="True"  TextColor="#7D858D"  Text="{Binding Vrtaxret}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -257,7 +257,7 @@
                         </Label>
                         <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0" IsEnabled="False" Grid.ColumnSpan="2"  Placeholder="{Binding Fbnum}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True"  TextColor="#7D858D"  Text="{Binding Fbnum}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -265,7 +265,7 @@
                         </Label>
                         <Frame Grid.Row="8" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="8"   Grid.Column="0" IsEnabled="False" Grid.ColumnSpan="2" Placeholder="{Binding Perslt}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="8"   Grid.Column="0"  Grid.ColumnSpan="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Perslt}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -274,7 +274,7 @@
                         </Label>
                         <Frame Grid.Row="10" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="10" IsEnabled="False"  Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -282,7 +282,7 @@
                         </Label>
                         <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="12"  IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="12"   Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -298,7 +298,7 @@
                         </Label>
                         <Frame Grid.Row="15" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="15" IsEnabled="False"  Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Gpart}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="15"  Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Gpart}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -307,7 +307,7 @@
                         </Label>
                         <Frame Grid.Row="17" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="17"  IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Fin}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                        <custom:GAZTBorderlessEntry  Grid.Row="17"   Grid.Column="0" Grid.ColumnSpan="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Fin}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                         </custom:GAZTBorderlessEntry>
 
@@ -332,7 +332,7 @@
                         </Label>
                         <Frame Grid.Row="23" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="100">
                         </Frame>
-                        <custom:GAZTBorderlessEditor  HeightRequest="100"  Grid.Row="23"  IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3" BackgroundColor="White">
+                        <custom:GAZTBorderlessEditor  HeightRequest="100"  Grid.Row="23"  IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3" BackgroundColor="White" VerticalOptions="FillAndExpand" >
 
                         </custom:GAZTBorderlessEditor> <CheckBox x:Name="chkClearification" CheckedChanged="chkClearification_CheckedChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTaxPayerCheckEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="24" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <CheckBox.Triggers>
@@ -497,7 +497,7 @@
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="EntryStdsalesVat" Keyboard="Numeric" Grid.ColumnSpan="2"    Grid.Row="4"  IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat , StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                        <custom:GAZTBorderlessEntry  x:Name="EntryStdsalesVat" Keyboard="Numeric" Grid.ColumnSpan="2"    Grid.Row="4"  IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat , StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" >
 
                         </custom:GAZTBorderlessEntry>
                         <!--<Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_info.png"  >
