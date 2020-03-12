@@ -8,6 +8,10 @@
               xmlns:custom="clr-namespace:GAZT"
              FlowDirection="LeftToRight"
              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png"  
+                Priority="0" Order="Primary" Command="{Binding OnHomeClick}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid  x:Name="ParentGrid">
@@ -101,13 +105,13 @@
                 </Grid>
             </ScrollView>
         </StackLayout>
-            <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+            <!--<StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" BackgroundColor="White">
                 <Image Source="ic_home.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnHomeClick}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">

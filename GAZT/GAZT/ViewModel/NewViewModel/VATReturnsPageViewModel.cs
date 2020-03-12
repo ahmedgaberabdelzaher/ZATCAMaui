@@ -1516,6 +1516,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVisibleDropdownForRefund = false;
                     IsDropdownVisibleForIban = false;
                     IsVisiblechkRefundDeclaration = false;
+                    IsCheckedRefund = false;
+                    IschkRefundDeclaration = false;
+                    switchForMainButton();
                 }
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
@@ -2218,6 +2221,25 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public void switchForMainButton()
+        {
+            if(IsDeclarationCheckedForSummary==true)
+            {
+                if((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
+                {
+                    IsMainButtonEnabled = false;
+                }
+                else
+                {
+                    IsMainButtonEnabled = true;
+                }
+                
+            }
+            else
+            {
+                IsMainButtonEnabled = false;
+            }
+        }
         public void ShowMsgs()
         {
             StringBuilder Masseges = new StringBuilder();
