@@ -542,6 +542,20 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+        private bool _onMoreOptionsEnabled = true;
+        public bool OnMoreOptionsEnabled
+        {
+            get
+            {
+                return _onMoreOptionsEnabled;
+            }
+            set
+            {
+                _onMoreOptionsEnabled = value;
+                RaisePropertyChanged("OnMoreOptionsEnabled");
+            }
+        }
+
         private bool _isMainButtonEnabled = false;
         public bool IsMainButtonEnabled
         {
@@ -2837,6 +2851,10 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsEnableIBAN = false;
+                        IsEnableCheckedRefund = false;
+                        IsEnableIBANType = false;
+                        IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -3644,7 +3662,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _ListOfActionButtonsApplicable = value;
-
+                if(_ListOfActionButtonsApplicable!=null && _ListOfActionButtonsApplicable.Count()!=0)
+                {
+                    OnMoreOptionsEnabled = true;
+                }
+                else
+                {
+                    OnMoreOptionsEnabled = false;
+                }
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
