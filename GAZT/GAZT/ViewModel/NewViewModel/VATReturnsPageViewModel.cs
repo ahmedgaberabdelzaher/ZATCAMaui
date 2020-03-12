@@ -1290,13 +1290,8 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                        
                     }
-                    if (string.IsNullOrEmpty(Preperiodcorr))
+                    if (string.IsNullOrEmpty(Preperiodcorr) || string.IsNullOrEmpty("0.00"))
                         IsSwitchToggled = false;
-
-
-
-
-
                 }
                 catch(Exception ex)
                 {

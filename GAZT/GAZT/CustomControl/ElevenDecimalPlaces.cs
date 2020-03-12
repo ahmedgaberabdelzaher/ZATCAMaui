@@ -71,7 +71,7 @@ namespace GAZT
                 }
                 else
                 {
-                    if (isNegativeEnable == false)
+                    if (isNegativeEnable == false || decimalCount > 1)
                     {
                         ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
                     }

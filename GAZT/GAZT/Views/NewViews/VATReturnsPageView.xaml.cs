@@ -3397,7 +3397,14 @@ namespace GAZT.Views.NewViews
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
+                if (EntryPreperiodcorr.Text.Equals("-.") || EntryPreperiodcorr.Text.Equals("."))
+                {
+                    EntryPreperiodcorr.Text = "0.00";
+                    viewModel.IsSwitchToggled = false;
+                    return;
+                }
+               
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
                     {
                         string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
                         string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
@@ -3421,6 +3428,9 @@ namespace GAZT.Views.NewViews
                         CheckMandetoryFields();
                         // UserName.TextColor = Color.Black;
                     }
+
+
+                
                 }
                 catch
                 {

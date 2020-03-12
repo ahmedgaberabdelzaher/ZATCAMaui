@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
               xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
              >
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
