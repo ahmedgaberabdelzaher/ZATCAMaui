@@ -2133,8 +2133,8 @@ namespace GAZT.ViewModel.NewViewModel
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                    string ContentType = UtilityManager.GetContentType(AttachmentName.Split('.')[1].ToLower());
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0", ContentType);
                     PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {

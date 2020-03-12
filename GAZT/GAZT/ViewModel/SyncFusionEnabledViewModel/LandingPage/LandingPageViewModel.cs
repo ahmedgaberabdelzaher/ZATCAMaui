@@ -423,21 +423,21 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                     DateTime dateTime = new DateTime(2019, 5, 1);
 
-                    objBillInfoPbillsTot.ChartData
-                    = new ObservableCollection<ChartDataPoint>()
-                    {
-                    new ChartDataPoint(dateTime, 15),
-                    new ChartDataPoint(dateTime.AddMonths(1), 20),
-                    new ChartDataPoint(dateTime.AddMonths(2), 30),
-                    new ChartDataPoint(dateTime.AddMonths(3), 17),
-                    new ChartDataPoint(dateTime.AddMonths(4), 13),
-                    new ChartDataPoint(dateTime.AddMonths(5), 25),
-                    new ChartDataPoint(dateTime.AddMonths(6), 19),
-                    new ChartDataPoint(dateTime.AddMonths(7), 43),
-                    new ChartDataPoint(dateTime.AddMonths(8), 43),
-                    new ChartDataPoint(dateTime.AddMonths(9), 43),
-                    new ChartDataPoint(dateTime.AddMonths(10), 43)
-                    };
+                    //objBillInfoPbillsTot.ChartData
+                    //= new ObservableCollection<ChartDataPoint>()
+                    //{
+                    //new ChartDataPoint(dateTime, 15),
+                    //new ChartDataPoint(dateTime.AddMonths(1), 20),
+                    //new ChartDataPoint(dateTime.AddMonths(2), 30),
+                    //new ChartDataPoint(dateTime.AddMonths(3), 17),
+                    //new ChartDataPoint(dateTime.AddMonths(4), 13),
+                    //new ChartDataPoint(dateTime.AddMonths(5), 25),
+                    //new ChartDataPoint(dateTime.AddMonths(6), 19),
+                    //new ChartDataPoint(dateTime.AddMonths(7), 43),
+                    //new ChartDataPoint(dateTime.AddMonths(8), 43),
+                    //new ChartDataPoint(dateTime.AddMonths(9), 43),
+                    //new ChartDataPoint(dateTime.AddMonths(10), 43)
+                    //};
 
                     BillsInfoItems.Add(objBillInfoPbillsTot);
                 }

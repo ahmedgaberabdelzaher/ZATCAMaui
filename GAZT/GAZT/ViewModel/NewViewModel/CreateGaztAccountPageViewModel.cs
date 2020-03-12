@@ -287,11 +287,18 @@ namespace GAZT.ViewModel.NewViewModel
                         if (ResultFirstSubmitModel.d == null)
                         {
                             SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                            _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            });
 
                         }
                         else
                         {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
+                            });
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             VerifyButtonDisableColor = Color.FromHex("#005e4b");
                             IsResendOTPEnabled = false;
@@ -299,7 +306,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsOTPEntryEnable = true;
                             numberOfSeconds = 120;
                             TimerStart(numberOfSeconds);
-                            _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou,AppResources.Information);
+                           
                         }
 
                     }
