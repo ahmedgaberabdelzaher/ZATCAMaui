@@ -244,7 +244,7 @@
     <value>إقرارات متأخرة</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>الرقم السري</value>
+    <value>كلمة السر</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>السداد من خلال مدى</value>
@@ -457,13 +457,13 @@
     <value>كل الفواتير</value>
   </data>
   <data name="Paid" xml:space="preserve">
-    <value>مدفوعة</value>
+    <value>مسدد</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مسدد جزئي</value>
+    <value>مدفوع جزئي</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
-    <value>غير مدفوعة</value>
+    <value>غير مسدد</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
     <value>نسيت كلمة المرور أو اسم المستخدم</value>
@@ -577,10 +577,10 @@
     <value>إقرار زكاة تقديري</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
-    <value>لم يتم تقديمه</value>
+    <value>غير مقدمة</value>
   </data>
   <data name="OverDue" xml:space="preserve">
-    <value>تأخير</value>
+    <value>متأخرة</value>
   </data>
   <data name="Partial" xml:space="preserve">
     <value>مدفوع جزئي</value>
@@ -589,7 +589,7 @@
     <value>الإقرارات</value>
   </data>
   <data name="Submitted" xml:space="preserve">
-    <value>الفواتير</value>
+    <value>مقدمة</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
     <value>الاقرارات الضريبية</value>
@@ -2472,5 +2472,9 @@
   </data>
   <data name="ZZZReturnUnderReview" xml:space="preserve">
     <value>الإقرار تحت المراجعة من قبل الهيئة</value>
+  </data>
+  <data name="ZZVATAmount" xml:space="preserve">
+    <value>مبلغ ضريبة القيمة المضافة</value>
+    <comment>VAT</comment>
   </data>
 </root>

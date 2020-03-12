@@ -25,6 +25,7 @@ namespace GAZT.Views.NewViews
             viewModel.MaxDigids = "15";
             SetLTR();
             NavigationPage.SetBackButtonTitle(this, "");
+          
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
 

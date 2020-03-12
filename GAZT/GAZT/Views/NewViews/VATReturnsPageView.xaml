@@ -8,7 +8,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              mc:Ignorable="d"
-             Title="{x:Static local:AppResources.ZVatDeclarationTitle}"
+             Title="{x:Static local:AppResources.VATDeclaration}"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
              >
     <ContentPage.Resources>
@@ -1126,7 +1126,7 @@
                                 <local:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
-                                        <Span Text="{x:Static local:AppResources.ZTotalVat}"/>
+                                        <Span Text="{x:Static local:AppResources.ZZVATAmount}"/>
                                     </FormattedString>
                                 </local:CustomLabel.FormattedText>
                             </local:CustomLabel>

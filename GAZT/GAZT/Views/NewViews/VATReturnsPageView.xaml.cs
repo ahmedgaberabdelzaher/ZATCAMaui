@@ -3593,7 +3593,11 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.IsIBANValid = false;
-                        }
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                        });
+                    }
                     }
                     catch (InternetException ex)
                     {
@@ -3606,8 +3610,12 @@ namespace GAZT.Views.NewViews
                 catch (Exception ex)
                 {
                     viewModel.IsIBANValid = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                });
 
-                }
+            }
 
             }
 
