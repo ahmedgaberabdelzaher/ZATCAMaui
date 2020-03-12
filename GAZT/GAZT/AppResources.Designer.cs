@@ -6577,6 +6577,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Amount.
+        /// </summary>
+        public static string ZZVATAmount {
+            get {
+                return ResourceManager.GetString("ZZVATAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verifications Code.
         /// </summary>
         public static string ZZVerificationsCode {

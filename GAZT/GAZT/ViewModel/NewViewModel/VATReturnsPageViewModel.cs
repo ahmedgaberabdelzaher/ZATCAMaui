@@ -547,6 +547,20 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+        private bool _onMoreOptionsEnabled = true;
+        public bool OnMoreOptionsEnabled
+        {
+            get
+            {
+                return _onMoreOptionsEnabled;
+            }
+            set
+            {
+                _onMoreOptionsEnabled = value;
+                RaisePropertyChanged("OnMoreOptionsEnabled");
+            }
+        }
+
         private bool _isMainButtonEnabled = false;
         public bool IsMainButtonEnabled
         {
@@ -1522,6 +1536,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVisibleDropdownForRefund = false;
                     IsDropdownVisibleForIban = false;
                     IsVisiblechkRefundDeclaration = false;
+                    IsCheckedRefund = false;
+                    IschkRefundDeclaration = false;
+                    switchForMainButton();
                 }
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
@@ -2224,6 +2241,25 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public void switchForMainButton()
+        {
+            if(IsDeclarationCheckedForSummary==true)
+            {
+                if((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
+                {
+                    IsMainButtonEnabled = false;
+                }
+                else
+                {
+                    IsMainButtonEnabled = true;
+                }
+                
+            }
+            else
+            {
+                IsMainButtonEnabled = false;
+            }
+        }
         public void ShowMsgs()
         {
             StringBuilder Masseges = new StringBuilder();
@@ -2821,6 +2857,10 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsEnableIBAN = false;
+                        IsEnableCheckedRefund = false;
+                        IsEnableIBANType = false;
+                        IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -3630,7 +3670,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _ListOfActionButtonsApplicable = value;
-
+                if(_ListOfActionButtonsApplicable!=null && _ListOfActionButtonsApplicable.Count()!=0)
+                {
+                    OnMoreOptionsEnabled = true;
+                }
+                else
+                {
+                    OnMoreOptionsEnabled = false;
+                }
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }

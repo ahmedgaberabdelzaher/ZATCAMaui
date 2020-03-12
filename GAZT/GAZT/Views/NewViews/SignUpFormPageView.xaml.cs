@@ -1,4 +1,5 @@
-﻿using GAZT.Helper;
+﻿using GAZT.CustomControl;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
@@ -26,6 +27,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.SignUpFormPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
+            ClearFields();
             viewModel.OnPageLoad();
             DDlIDType.SelectedIndex = 0;
             UsingDDl.SelectedIndex = 1;
@@ -33,6 +35,46 @@ namespace GAZT.Views.NewViews
             SetLTR();
 
            
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ClearFields();
+            viewModel.OnPageLoad();
+         
+        }
+        public void ClearFields()
+        {
+            viewModel.IDTypeIndex = 0;
+            viewModel.SelectedLOrC = 1;
+            viewModel.IsLoading = false;
+            viewModel.SelectedSignUpUsing = null;
+            viewModel.SignUpUsingList = null;
+            viewModel.SelectLCType = null;
+            viewModel.LcTypeList = null;
+            viewModel.SelectCityList = null;
+            viewModel.CityList = null;
+            viewModel.IsCRVisible = true;
+            viewModel.IsLicenseVisible = false;
+            viewModel.IsTIN = false;
+            viewModel.IsTINVisible = false;
+            viewModel.SelectedIssuedBy = null;
+            viewModel.IssuedByList = null;
+            viewModel.TxtTIN = string.Empty;
+            viewModel.TxtIDNumber = string.Empty;
+            viewModel.TxtName = string.Empty;
+            viewModel.TxtCRNumber = string.Empty;
+            viewModel.TxtLicenseNumber = string.Empty;
+            viewModel.TxtEmailAddress = string.Empty;
+            viewModel.TxtMobileNumber = string.Empty;
+            viewModel.TxtPhoneNumber = string.Empty;
+            viewModel.EnteredCaptchaValue = string.Empty;
+            viewModel.Captcha = string.Empty;
+            viewModel.PkrDBO = null;
+            viewModel.IDTypeModelRootObject = null;
+            viewModel.SignUpFirstSubmitModel = null;
+            viewModel.MaximumxD = DateTime.Now;
+           // DpDbo.Format = "dd/MM/yyyy";
         }
         private void SetLTR()
         {
@@ -1027,6 +1069,10 @@ namespace GAZT.Views.NewViews
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
             string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+            if(DpDbo.Date.Date==DateTime.Now.Date)
+            {
+                DpDbo.Format = "dd-MM-yyyy";
+            }
             EntryIDNumber.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {

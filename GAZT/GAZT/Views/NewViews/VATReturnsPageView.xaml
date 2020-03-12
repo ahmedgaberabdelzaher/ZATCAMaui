@@ -8,7 +8,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              mc:Ignorable="d"
-             Title="{x:Static local:AppResources.ZVatDeclarationTitle}"
+             Title="{x:Static local:AppResources.VATDeclaration}"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
              >
     <ContentPage.Resources>
@@ -1126,7 +1126,7 @@
                                 <local:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
-                                        <Span Text="{x:Static local:AppResources.ZTotalVat}"/>
+                                        <Span Text="{x:Static local:AppResources.ZZVATAmount}"/>
                                     </FormattedString>
                                 </local:CustomLabel.FormattedText>
                             </local:CustomLabel>
@@ -1307,9 +1307,9 @@
 
                                 </Frame>
                                 <custom:GAZTBorderlessPicker Margin="10,13,10,0" PropertyChanged="BPicker_PropertyChanged" x:Name="BPicker" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" ItemDisplayBinding="{Binding Iban}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                                <Image Grid.Row="1"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                <Image Grid.Row="1"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                                        <TapGestureRecognizer Tapped="onIBANDropdownClicked" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
@@ -1324,9 +1324,9 @@
 
                                 </Frame>
                                 <custom:GAZTBorderlessPicker Margin="10,13,10,0" x:Name="BPicker1" PropertyChanged="BPicker1_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" ItemDisplayBinding="{Binding Text}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                                <Image Grid.Row="4"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                <Image Grid.Row="4"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                                        <TapGestureRecognizer Tapped="onIbanTypeButtonClicked" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Label Text="{x:Static local:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
@@ -1334,9 +1334,9 @@
 
                                 </Frame>
                                 <custom:GAZTBorderlessPicker Margin="10,13,10,0" PropertyChanged="BPicker2_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" FontFamily="{StaticResource SSTArBold}"   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                                <Image Grid.Row="6"  Grid.Column="1" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                <Image Grid.Row="6"  Grid.Column="1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                                        <TapGestureRecognizer Tapped="onIdNumberButtonClicked" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >

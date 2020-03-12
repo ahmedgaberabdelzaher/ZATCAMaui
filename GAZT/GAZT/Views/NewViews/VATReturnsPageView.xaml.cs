@@ -579,82 +579,91 @@ namespace GAZT.Views.NewViews
 
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-
-            String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicable.ToArray());
-
-
-            if (App.IsArabic)
+            try
             {
-                ArButtons buttonId = ArButtons.None;
-                if (!string.IsNullOrEmpty(action))
+                if (viewModel.ListOfActionButtonsApplicable != null && viewModel.ListOfActionButtonsApplicable.Count() != 0)
                 {
-                    action = action.Replace(" ", "");
-                }
-                Enum.TryParse(action, out buttonId);
+                    String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicable.ToArray());
 
-                switch (buttonId)
-                {
-                    case ArButtons.إضافةملاحظات:
-                        viewModel.VATReturnAddNote();
-                        break;
-                    case ArButtons.عرضملاحظات:
-                        viewModel.VATReturnGetNotes();
-                        break;
-                    case ArButtons.المرفقات:
-                        viewModel.VATViewAttachments();
-                        break;
-                    case ArButtons.إلغاء:
-                        await viewModel.VATSetReturnVoidAsync();
-                        break;
-                    case ArButtons.عادةتعيين:
-                        await viewModel.VATReturnResetAsync();
-                        break;
-                    case ArButtons.تعديل:
-                        await viewModel.VATReturnAmendAsync();
-                        break;
-                    case ArButtons.حفظكمسودة:
-                        await viewModel.OnSaveDraftClicked();
-                        break;
-                    default:
-                        break;
+
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+
+                        switch (buttonId)
+                        {
+                            case ArButtons.إضافةملاحظات:
+                                viewModel.VATReturnAddNote();
+                                break;
+                            case ArButtons.عرضملاحظات:
+                                viewModel.VATReturnGetNotes();
+                                break;
+                            case ArButtons.المرفقات:
+                                viewModel.VATViewAttachments();
+                                break;
+                            case ArButtons.إلغاء:
+                                await viewModel.VATSetReturnVoidAsync();
+                                break;
+                            case ArButtons.عادةتعيين:
+                                await viewModel.VATReturnResetAsync();
+                                break;
+                            case ArButtons.تعديل:
+                                await viewModel.VATReturnAmendAsync();
+                                break;
+                            case ArButtons.حفظكمسودة:
+                                await viewModel.OnSaveDraftClicked();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+
+                        switch (buttonId)
+                        {
+                            case Buttons.CreateNotes:
+                                viewModel.VATReturnAddNote();
+                                break;
+                            case Buttons.DisplayNotes:
+                                viewModel.VATReturnGetNotes();
+                                break;
+                            case Buttons.Attachments:
+                                viewModel.VATViewAttachments();
+                                break;
+                            case Buttons.Void:
+                                await viewModel.VATSetReturnVoidAsync();
+                                break;
+                            case Buttons.Reset:
+                                await viewModel.VATReturnResetAsync();
+                                break;
+                            case Buttons.Amend:
+                                await viewModel.VATReturnAmendAsync();
+                                break;
+                            case Buttons.SaveasDraft:
+                                await viewModel.OnSaveDraftClicked();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                 }
             }
-
-            else
+            catch(Exception ex)
             {
-                Buttons buttonId = Buttons.None;
-                if (!string.IsNullOrEmpty(action))
-                {
-                    action = action.Replace(" ", "");
-                }
-                Enum.TryParse(action, out buttonId);
 
-                switch (buttonId)
-                {
-                    case Buttons.CreateNotes:
-                        viewModel.VATReturnAddNote();
-                        break;
-                    case Buttons.DisplayNotes:
-                        viewModel.VATReturnGetNotes();
-                        break;
-                    case Buttons.Attachments:
-                        viewModel.VATViewAttachments();
-                        break;
-                    case Buttons.Void:
-                        await viewModel.VATSetReturnVoidAsync();
-                        break;
-                    case Buttons.Reset:
-                        await viewModel.VATReturnResetAsync();
-                        break;
-                    case Buttons.Amend:
-                        await viewModel.VATReturnAmendAsync();
-                        break;
-                    case Buttons.SaveasDraft:
-                        await viewModel.OnSaveDraftClicked();
-                        break;
-                    default:
-                        break;
-                }
             }
         }
 
@@ -3478,10 +3487,7 @@ namespace GAZT.Views.NewViews
 
 
 
-            private void onDropdownButtonClicked(object sender, EventArgs e)
-            {
-
-            }
+            
 
             public void ValidationsForVATRefund()
             {
@@ -3579,7 +3585,11 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.IsIBANValid = false;
-                        }
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                        });
+                    }
                     }
                     catch (InternetException ex)
                     {
@@ -3592,8 +3602,12 @@ namespace GAZT.Views.NewViews
                 catch (Exception ex)
                 {
                     viewModel.IsIBANValid = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                });
 
-                }
+            }
 
             }
 
@@ -4039,6 +4053,23 @@ namespace GAZT.Views.NewViews
             {
 
             }
+        }
+
+        private void onIBANDropdownClicked(object sender, EventArgs e)
+        {
+
+            BPicker.Focus();
+            // IBANDropdownPicker.Focus;
+        }
+
+        private void onIbanTypeButtonClicked(object sender, EventArgs e)
+        {
+            BPicker1.Focus();
+        }
+
+        private void onIdNumberButtonClicked(object sender, EventArgs e)
+        {
+            BPicker2.Focus();
         }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)

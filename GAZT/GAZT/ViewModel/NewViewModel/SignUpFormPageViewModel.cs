@@ -5,6 +5,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -592,11 +593,16 @@ namespace GAZT.ViewModel.NewViewModel
                 LicenseOrCRModelM.ID = 2;
                 LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
                 SelectLCType = LicenseOrCRModelM;
+                IssuedByList = null;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
-                IssuedByResponseList = await WebServiceManager.GAZTGetIssuedByList();
-                IssuedByList = IssuedByResponseList;
+                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
+                IssuedByList = IssuedBy.OrderBy(a=>a.txt50).ToList<IssuedByResponse>();
+                CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
-                CityList = CityListSignup.d.city_dropdownSet.results;
+                List<SignupCityResult> CityR = new List<SignupCityResult>();
+
+                CityR = CityListSignup.d.city_dropdownSet.results;
+                CityList = CityR.Where(a => !string.IsNullOrEmpty(a.CityCode)).ToList();
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
                 IDTypeModelRootObject = null;

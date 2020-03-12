@@ -3456,7 +3456,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"E\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
+                    String url = Constants.GAZTSiguupIssuedByList+ "'[{\"Lang\":\""+ lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
