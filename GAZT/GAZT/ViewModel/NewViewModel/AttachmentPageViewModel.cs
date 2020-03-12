@@ -116,11 +116,38 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _totalAttachmentSize = value;
+                if(_totalAttachmentSize!=0)
+                {
+                    AttachmentString = _totalAttachmentSize.ToString() + " of 300MB";
+                }
+                else
+                {
+                    AttachmentString = "0.00" + " of 300MB";
+                }
 
                 RaisePropertyChanged("TotalAttachmentSize");
 
             }
         }
+
+
+        public string _attachmentString;
+
+        public string AttachmentString
+        {
+            get
+            {
+                return _attachmentString;
+            }
+            set
+            {
+                _attachmentString = value;
+
+                RaisePropertyChanged("AttachmentString");
+
+            }
+        }
+
 
         public int _attachmentCount = 0;
 
