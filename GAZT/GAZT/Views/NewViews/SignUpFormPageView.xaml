@@ -133,8 +133,8 @@
 
                             <Frame  Grid.Row="10"  x:Name="FrmDBO"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                             </Frame>
-
-                            <DatePicker  Grid.Row="10" x:Name="DpDbo" MaximumDate="{Binding MaximumxD}"  Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
+    
+                            <custom1:MyDatePicker  Grid.Row="10" x:Name="DpDbo"  MaximumDate="{Binding MaximumxD}"  Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom1:MyDatePicker>
 
                             <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                                 <Label.FormattedText>
@@ -232,7 +232,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Frame Grid.Row="3"  x:Name="FrmLicenseIssuedBy" Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                    <Frame Grid.Row="3"  x:Name="FrmLicenseIssuedBy"   VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                     </Frame>
                                     <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}" ItemsSource="{Binding IssuedByList}" ItemDisplayBinding="{Binding txt50}"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -252,7 +252,7 @@
                                     <Frame Grid.Row="5" x:Name="FrmLicenseIssuedCity"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                     </Frame>
-                                    <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectCityList,Mode=TwoWay}" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding CityName}"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="340" >
+                                    <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectCityList,Mode=TwoWay}" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding CityName}"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  >
                                        
                                     </custom:GAZTBorderlessPicker>
                                     <Image Grid.Row="5"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >

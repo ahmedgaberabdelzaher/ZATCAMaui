@@ -27,7 +27,7 @@ namespace GAZT.CustomControl
                 bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
-                    if ((letter >= 48 && letter <= 57) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8))
+                    if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8))
                     {
                         isValidNumber = true;
                     }
