@@ -70,8 +70,8 @@ namespace GAZT.Views.NewViews
 
             }
 
-            string trim1 = HTMLContent.Replace("</body>", " ");
-            string newHTMLContent = trim1.Replace("</html>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br><br><br><br><br><br><br><br></body></html>");
+          //  string trim1 = HTMLContent.Replace("</body>", " ");
+            string newHTMLContent = HTMLContent.Replace("</body>", "<br><img src='ic_GAZT_Logo_Text.png' width='40%'/></<br><br></body>");
 
             var htmlSource = new HtmlWebViewSource();
 
