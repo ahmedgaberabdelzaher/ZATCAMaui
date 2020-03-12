@@ -543,6 +543,68 @@ namespace GAZT.Manager
             return dt;
 
         }
+
+        public static string GetContentType(String Extention)
+        {
+            if (Extention.ToLower() == "doc")
+            {
+                return null;
+            }
+            else if (Extention.ToLower() == "docx")
+            {
+                return null;
+            }
+            else if (Extention.ToLower() == "jpg")
+            {
+                return "application/jpg";
+            }
+            else if (Extention.ToLower() == "jpeg")
+            {
+                return "application/jpeg";
+            }
+            else if (Extention.ToLower() == "pdf")
+            {
+                return "application/pdf";
+            }
+            else if (Extention.ToLower() == "xlsx")
+            {
+                return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            else if (Extention.ToLower() == "xls")
+            {
+                return "application/vnd.ms-excel";
+            }
+            else if (Extention.ToLower() == "png")
+            {
+                return "application/png";
+            }
+            else if (Extention.ToLower() == "ppt")
+            {
+                return null;
+            }
+            else if (Extention.ToLower() == "pptx")
+            {
+                return null;
+            }
+            else if (Extention.ToLower() == "gif")
+            {
+                return "application/gif";
+            }
+            else if (Extention.ToLower() == "txt")
+            {
+                return null;
+            }
+            else if (Extention.ToLower() == "bmp")
+            {
+                return "application/bmp";
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
         public static string GetMonthName(string Month)
         {
            
@@ -652,6 +714,7 @@ namespace GAZT.Manager
 
             return Month;
         }
+
 
         public static string GetMonthNameHijriArabic(string Month)
         {

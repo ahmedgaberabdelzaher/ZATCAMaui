@@ -67,7 +67,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-      
+
 
 
         private ICRStatus _selectedICRStatus;
@@ -80,12 +80,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
-               
+
                 if (_selectedICRStatus != null)
                 {
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
                     {
-                        if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30,"الجميع"))
+                        if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30, "الجميع"))
                         {
                             ICRList = ICRDummyList;
                         }
@@ -100,7 +100,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     RaisePropertyChanged("SelectedICRStatus");
                 }
-               
+
 
             }
         }
@@ -128,12 +128,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                _selectedICR = value;
-                if (SelectedICR != null)
+                try
                 {
-                    GetVATAllReturnsAsync();
+                    _selectedICR = value;
+                    if (SelectedICR != null)
+                    {
+                        GetVATAllReturnsAsync();
+                    }
+                    RaisePropertyChanged("SelectedICR");
                 }
-                RaisePropertyChanged("SelectedICR");
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -164,17 +171,17 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iCRList = value;
-                if(_iCRList!=null && _iCRList.Count!=0)
+                if (_iCRList != null && _iCRList.Count != 0)
                 {
                     IsNoDataLabelVisible = false;
                     IsICRListVisible = true;
-                   // SelectedICRStatus = null;
+                    // SelectedICRStatus = null;
                 }
                 else
                 {
                     IsICRListVisible = false;
                     IsNoDataLabelVisible = true;
-                  //  SelectedICRStatus = null;
+                    //  SelectedICRStatus = null;
                 }
                 RaisePropertyChanged("ICRList");
             }
@@ -234,7 +241,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
-                            if(App.IsArabic)
+                            if (App.IsArabic)
                             {
 
                                 //foreach (var item in ICRStatusList)
@@ -288,7 +295,7 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                         //   await Task.Run(() =>
                         //   {
-                      
+
                         //  });
                     }
 
@@ -390,61 +397,59 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (SelectedICR != null)
                     {
-                        selectedICRForStatus = new ICRListSet();
-                        selectedICRForStatus = SelectedICR;
-                        App.ICRStatus = selectedICRForStatus.Status;
-
-
-                        //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
-                        // the GUID will be different
-
-                        String SelectedICRGUID = SelectedICR.Fbguid;
-                        EUser = SelectedICR.Euser;
-                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
-                        PopToRootPage();
-                       
-
-                        if (_vATDeclaration != null && _vATDeclaration.d != null)
+                        if (isStatusNotValid())
                         {
-                            _vATDeclaration.d.Fbguid = SelectedICRGUID;
-                            VATDeclaration vATDeclaration = new VATDeclaration();
-                            VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                            Result5 result5 = new Result5();
-                            List<Result5> lst = new List<Result5>();
-                            ADRSet _aDRSet = new ADRSet();
+                            selectedICRForStatus = new ICRListSet();
+                            selectedICRForStatus = SelectedICR;
+                            App.ICRStatus = selectedICRForStatus.Status;
 
-                            lst.Add(result5);
-                            vATDeclaration.d = vATDeclarationD;
-                            vATDeclaration.d.ADRSet = _aDRSet;
-                            vATDeclaration.d.ADRSet.results = lst;
 
-                            Device.BeginInvokeOnMainThread(() =>
+                            //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
+                            // the GUID will be different
+
+                            String SelectedICRGUID = SelectedICR.Fbguid;
+                            EUser = SelectedICR.Euser;
+                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
+                            PopToRootPage();
+
+
+                            if (_vATDeclaration != null && _vATDeclaration.d != null)
                             {
-                                _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
-                            });
+                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                VATDeclaration vATDeclaration = new VATDeclaration();
+                                VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                                Result5 result5 = new Result5();
+                                List<Result5> lst = new List<Result5>();
+                                ADRSet _aDRSet = new ADRSet();
 
+                                lst.Add(result5);
+                                vATDeclaration.d = vATDeclarationD;
+                                vATDeclaration.d.ADRSet = _aDRSet;
+                                vATDeclaration.d.ADRSet.results = lst;
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                                });
+
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            }
                         }
                         else
                         {
-                           await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
                         }
                     }
-
-
-                   
-
-
-
-                    //}
-                    //_vATDeclaration = await WebServiceManager.SaveVATDeclarationData(_vATDeclaration, SelectedICR.Fbguid);
-
                 }
                 catch (InternetException ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                      await  _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                       // IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        // IsLoading = false;
                         _navigationService.GoBack();
 
                     });
@@ -454,8 +459,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                  //  IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //  IsLoading = false;
                     _navigationService.GoBack();
 
                 });
@@ -464,6 +469,15 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
+        public bool isStatusNotValid()
+        {
+            bool isValid = true;
+            if (SelectedICR.Status == "E0020" || SelectedICR.Status == "E0057" || SelectedICR.Status == "E0076" || SelectedICR.Status == "E0077" || SelectedICR.Status == "E0078" || SelectedICR.Status == "E0089" || SelectedICR.Status == "E0090")
+            {
+                isValid = false;
+            }
+            return isValid;
+        }
         public void PopToRootPage()
          {
             if (App.IsSessionExpired)

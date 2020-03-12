@@ -427,7 +427,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055")
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -2058,7 +2058,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             onFaqSectionClicked = new Xamarin.Forms.Command(async () =>
             {
-                Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                if (App.IsArabic)
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/ar/introduction-to-vat/faq/general-faqs"));
+                }
+                else
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                }
             });
 
 
@@ -2123,8 +2130,8 @@ namespace GAZT.ViewModel.NewViewModel
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                    string ContentType = UtilityManager.GetContentType(AttachmentName.Split('.')[1].ToLower());
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0", ContentType);
                     PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
@@ -2468,7 +2475,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2515,7 +2522,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2691,7 +2698,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
+                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;

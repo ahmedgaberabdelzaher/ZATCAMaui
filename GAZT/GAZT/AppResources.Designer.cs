@@ -6656,5 +6656,14 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return under review with GAZT.
+        /// </summary>
+        public static string ZZZReturnUnderReview {
+            get {
+                return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
     }
 }
