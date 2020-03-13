@@ -374,7 +374,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     }
 
-                    if (TotalSec < 0)
+                    if (TotalSec == 0)
                     {
                         OTPValidDuration = " 0:00";
                         ButtonDisableColor = Color.FromHex("#005e4b");
@@ -384,6 +384,10 @@ namespace GAZT.ViewModel.NewViewModel
                         IsOTPEntryEnable = false;
                         return false;
 
+                    }
+                    else if(TotalSec <0)
+                    {
+                        TotalSec = 120;
                     }
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;

@@ -608,7 +608,7 @@ namespace GAZT.ViewModel.NewViewModel
                 IDTypeModelRootObject = null;
                 IDTypeIndex = 0;
                 SelectedLOrC = 1;
-                PkrDBO = null;
+               // PkrDBO = null;
                 await Task.Run(() =>
                 {
 
