@@ -122,6 +122,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
         public int _attachmentCount = 0;
 
         public int AttachmentCount

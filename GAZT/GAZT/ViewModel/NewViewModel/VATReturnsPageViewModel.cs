@@ -153,13 +153,18 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
+               
                 _isSwitchToggled = value;
+               
                 try
-                {
+                {   if (string.IsNullOrEmpty(Preperiodcorr) && IsSwitchToggled)
+                    {
+                        IsSwitchToggled = false;
+                        
+                    }
+                      
                     if (IsSwitchToggled)
                     {
-                        //double d = Convert.ToDouble(Preperiodcorr);
-                        //d = d * (-1);
                         if (!string.IsNullOrEmpty(Preperiodcorr) && !Preperiodcorr.Contains("-"))
                             Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
                     }
@@ -1299,7 +1304,8 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                        
                     }
-                  
+                    if (string.IsNullOrEmpty(Preperiodcorr) || string.IsNullOrEmpty("0.00"))
+                        IsSwitchToggled = false;
                 }
                 catch(Exception ex)
                 {
@@ -3419,8 +3425,6 @@ namespace GAZT.ViewModel.NewViewModel
                     periodfrom = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-
-
                     TaxpayerPeriodFromDate = UtilityManager.ToArabicDate(periodfrom);
                     TaxpayerPeriodToDate = UtilityManager.ToArabicDate(periodto);
                 }
@@ -3559,9 +3563,13 @@ namespace GAZT.ViewModel.NewViewModel
                 //        vatTabbedList.Add(s2);
                 //        vatTabbedList.Add(s3);
                 //    }
-
+                
                 VatTabbledPageList = vatTabbedList;
-                PageSelectedItem = VatTabbledPageList[0];
+
+                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
+                    {
+                      PageSelectedItem = VatTabbledPageList[0];
+                }
 
 
                 ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);

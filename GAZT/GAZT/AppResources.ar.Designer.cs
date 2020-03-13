@@ -4229,5 +4229,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
             }
         }
+        
+        public static string ZZVATAmount {
+            get {
+                return ResourceManager.GetString("ZZVATAmount", resourceCulture);
+            }
+        }
     }
 }

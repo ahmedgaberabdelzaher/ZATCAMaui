@@ -33,18 +33,7 @@ namespace GAZT.Views.NewViews
             try
             {
                 viewModel = App.Locator.VATReturnsPageView;
-                //Resources["searchBarStyleForInstructions"] = App.Current.Resources["TabbedPageMediumMiniGoldLabelStyle"];
-                //Resources["searchBarStyleForTPDetails"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-                //Resources["searchBarStyleForVATReturnForm"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-                //Resources["searchBarStyleForSummary"] = App.Current.Resources["TabbedPageSmallMiniWhiteLabelStyle"];
-                //Resources["searchBarStyleForDeclarationChb"]= App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-                //Resources["searchBarStyleForClearificationChb"] = App.Current.Resources["GAZTGrayLabelStyleForCaptionFont"];
-
-
-
                 InitializeComponent();
-
-
                 viewModel = App.Locator.VATReturnsPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
@@ -65,15 +54,6 @@ namespace GAZT.Views.NewViews
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
                 setAllCheckbox(false);
-                //    Attachmentlist.ItemTapped += (object sender, ItemTappedEventArgs e) =>
-                //    {
-                //    // don't do anything if we just de-selected the row.
-                //    if (e.Item == null) return;
-
-                //    //if (sender is ListView lv) lv.SelectedItem = null;
-                //};
-
-
                 IntilizeAsync();
                 NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
@@ -105,7 +85,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        public async void IntilizeAsync()
+        public async Task IntilizeAsync()
         {
             await Task.Run(() =>
             {
@@ -332,10 +312,6 @@ namespace GAZT.Views.NewViews
         public void OnPageSelected(object sender, SelectionChangedEventArgs e)
         {
             // CollectionView pagename =(CollectionView)sender;
-
-
-
-
             VATDeclarationTabbedPageName previous = (e.PreviousSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
             VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
             var senderObject = sender;
@@ -3430,7 +3406,14 @@ namespace GAZT.Views.NewViews
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
+                if (EntryPreperiodcorr.Text.Equals("-.") || EntryPreperiodcorr.Text.Equals("."))
+                {
+                    EntryPreperiodcorr.Text = "0.00";
+                    viewModel.IsSwitchToggled = false;
+                    return;
+                }
+               
+                if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text != "." && EntryPreperiodcorr.Text != "-" && EntryPreperiodcorr.Text != ",")
                     {
                         string MinValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MinVal).FirstOrDefault();
                         string MaxValue = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "001").Select(x => x.MaxVal).FirstOrDefault();
@@ -3454,6 +3437,9 @@ namespace GAZT.Views.NewViews
                         CheckMandetoryFields();
                         // UserName.TextColor = Color.Black;
                     }
+
+
+                
                 }
                 catch
                 {

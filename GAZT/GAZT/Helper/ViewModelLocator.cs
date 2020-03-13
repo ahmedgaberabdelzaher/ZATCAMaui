@@ -889,7 +889,7 @@ namespace GAZT
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
             navigationService.Configure(App.PdfView, typeof(PdfView));
-            navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
+         //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
 
 
             navigationService.Configure(App.TPProfileView, typeof(TPProfileView));

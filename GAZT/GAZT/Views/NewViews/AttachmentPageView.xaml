@@ -126,6 +126,7 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
+                                                                           FontFamily="{StaticResource SSTArBold}"
                                    Grid.Row="0"
                                    Grid.Column="1" 
                                    />
