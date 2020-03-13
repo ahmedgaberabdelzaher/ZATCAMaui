@@ -2477,4 +2477,8 @@
     <value>مبلغ ضريبة القيمة المضافة</value>
     <comment>VAT</comment>
   </data>
+  <data name="ZZCRName" xml:space="preserve">
+    <value>أسم السجل التجاري</value>
+    <comment>Check TIN Status</comment>
+  </data>
 </root>

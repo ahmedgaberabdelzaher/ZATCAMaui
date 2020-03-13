@@ -87,18 +87,18 @@
                                                        
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="45*"/>
-                                                        <ColumnDefinition Width="55*"/>
+                                                        <ColumnDefinition Width="40*"/>
+                                                        <ColumnDefinition Width="60*"/>
                                                     </Grid.ColumnDefinitions>
                                                 <local:CustomLabel  Text="{x:Static local:AppResources.ZCRNo}"  Grid.Row="0"  Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </local:CustomLabel>
                                                 <Label  Text="{x:Static local:AppResources.ZCRStatus}"   Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
-                                                <Label  Text="CR Name" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                                            <Label  Text="{x:Static local:AppResources.ZZCRName}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                     </Label>
                                                     <Label Text="{Binding Idnumber}"  Padding="0" Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <Label Text="{Binding StatusText}" Padding="0" Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <!--<Label Text="{Binding Udate}"   Grid.Row="2" Padding="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+                                                    <Label Text="{Binding Actnm}"   Grid.Row="2" Padding="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#7D858D" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>-->
                                                 </Grid>
                                             </Grid>
