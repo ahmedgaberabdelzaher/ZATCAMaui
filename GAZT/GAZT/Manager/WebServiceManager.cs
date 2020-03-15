@@ -791,11 +791,11 @@ namespace GAZT.Manager
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            //if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            //{
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
                                 App.IsSessionExpired = true;
                                 return null;
-                            //}
+                            }
                             App.Token = NewToken;
                         }
 
