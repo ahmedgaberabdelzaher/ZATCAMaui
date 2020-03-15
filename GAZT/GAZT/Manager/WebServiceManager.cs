@@ -791,11 +791,11 @@ namespace GAZT.Manager
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
+                            //if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            //{
                                 App.IsSessionExpired = true;
                                 return null;
-                            }
+                            //}
                             App.Token = NewToken;
                         }
 
@@ -2181,14 +2181,18 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", "GAZT.docx");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
+
+                  //  MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    var response =  client.PostAsync(url, baContent).Result;
+              //      content.Add(baContent, "File", fileName);
+                    var response = await client.PostAsync(url, baContent);
+
+                   // ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    //var response =  client.PostAsync(url, baContent).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                     return _attachment;
                 }
                 catch (Exception ex)

@@ -5747,6 +5747,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter access Code..
+        /// </summary>
+        public static string ZZPleaseenteraccessCode {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Company ID.
         /// </summary>
         public static string ZZPleaseenteravalidCompanyID {

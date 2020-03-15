@@ -4235,5 +4235,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVATAmount", resourceCulture);
             }
         }
+        
+        public static string ZZCRName {
+            get {
+                return ResourceManager.GetString("ZZCRName", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseenteraccessCode {
+            get {
+                return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);
+            }
+        }
     }
 }

@@ -47,7 +47,18 @@ namespace GAZT.Views.NewViews
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            PPicker.Focus();
+            try
+            {
+                if (viewModel.SelectedParameterType != null)
+                {
+                  
+                    PPicker.Focus();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

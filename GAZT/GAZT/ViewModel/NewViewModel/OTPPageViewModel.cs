@@ -32,6 +32,19 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+        private string _frmColour = "#B1B1B1";
+        public string FrmColour
+        {
+            get
+            {
+                return _frmColour;
+            }
+            set
+            {
+                _frmColour = value;
+                RaisePropertyChanged("FrmColour");
+            }
+        }
         private bool _isLoading;
         public bool IsLoading
         {
@@ -309,12 +322,15 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if(string.IsNullOrEmpty(EnteredOTP))
                 {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZPleaseenteraccessCode, AppResources.Information);
                     });
+                    FrmColour = "Red";
                 }
                 else
                 {
+                    FrmColour = "#B1B1B1";
                     await ValidateOTP();
                 }
 
@@ -547,7 +563,7 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
-
+            FrmColour = "#B1B1B1";
             TinNumber = App.TP.Userid;
             string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;

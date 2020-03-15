@@ -1673,7 +1673,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>م يتم اي تغييرات ، لا يمكن إصدار الإقرار</value>
+    <value>يرجى اختيار مربع إخلاء المسؤولية قبل التقديم</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -2480,5 +2480,9 @@
   <data name="ZZCRName" xml:space="preserve">
     <value>أسم السجل التجاري</value>
     <comment>Check TIN Status</comment>
+  </data>
+  <data name="ZZPleaseenteraccessCode" xml:space="preserve">
+    <value>الرجاء إدخال رمز الدخول</value>
+    <comment>OTP Screen</comment>
   </data>
 </root>
