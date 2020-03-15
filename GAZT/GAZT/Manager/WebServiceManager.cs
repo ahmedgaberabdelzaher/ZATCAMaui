@@ -2181,10 +2181,10 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
+                    client.DefaultRequestHeaders.Add("slug", "GAZT.docx");
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    var response = await client.PostAsync(url, baContent);
+                    var response =  client.PostAsync(url, baContent).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
 
@@ -2694,12 +2694,12 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+                 //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
 
                     MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    //content.Add(baContent, "File", fileName);
-                    var response = await client.PostAsync(url, baContent);
+                    content.Add(baContent, "File", fileName);
+                    var response = await client.PostAsync(url, content);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
 

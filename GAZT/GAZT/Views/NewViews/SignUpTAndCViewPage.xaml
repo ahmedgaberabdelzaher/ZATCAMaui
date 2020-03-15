@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              FlowDirection="RightToLeft"
             
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
                Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
              x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
     <ContentPage.Content>
@@ -17,7 +17,7 @@
                 <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
 
                     </CheckBox>
-                <Label Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
+                <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
 
                 </StackLayout>
             <StackLayout HeightRequest="70" WidthRequest="1000">
