@@ -9,6 +9,7 @@ namespace GAZT.Models
     public class ConsumerRegisteration
     {
       
+        public string Actnm { get; set; }
         public string Tin { get; set; }
         public string Caltyp { get; set; }
         public string Idnumber { get; set; }

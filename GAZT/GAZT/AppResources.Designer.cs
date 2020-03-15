@@ -4846,6 +4846,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Name.
+        /// </summary>
+        public static string ZZCRName {
+            get {
+                return ResourceManager.GetString("ZZCRName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CR Number.
         /// </summary>
         public static string ZZCRNumber {

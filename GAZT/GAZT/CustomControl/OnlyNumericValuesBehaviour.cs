@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace GAZT.CustomControl
 {
-    public class OnlyAlphabatesBehaviour : Xamarin.Forms.Behavior<Entry>
+    class OnlyNumericValuesBehaviour : Xamarin.Forms.Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)
         {
@@ -27,7 +27,7 @@ namespace GAZT.CustomControl
                 bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
-                    if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8) || (letter == 32))
+                    if ((letter >= 48 && letter <= 57)  || (letter == 127) || (letter == 8))
                     {
                         isValidNumber = true;
                     }

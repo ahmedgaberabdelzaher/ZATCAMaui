@@ -25,23 +25,30 @@ namespace GAZT.Views.NewViews
         public SignUpFormPageView()
         {
             viewModel = App.Locator.SignUpFormPageView;
+            
             InitializeComponent();
             this.BindingContext = viewModel;
             ClearFields();
             viewModel.OnPageLoad();
             DDlIDType.SelectedIndex = 0;
             UsingDDl.SelectedIndex = 1;
-            
+
             SetLTR();
 
-           
+
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.PkrDBO = null;
+            DpDbo.NullableDate = null;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             ClearFields();
             viewModel.OnPageLoad();
-         
+
         }
         public void ClearFields()
         {
@@ -70,11 +77,15 @@ namespace GAZT.Views.NewViews
             viewModel.TxtPhoneNumber = string.Empty;
             viewModel.EnteredCaptchaValue = string.Empty;
             viewModel.Captcha = string.Empty;
+           // DpDbo.Date = NullableDateProperty;
+
             viewModel.PkrDBO = null;
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
-           // DpDbo.Format = "dd/MM/yyyy";
+
+            
+            // DpDbo.Format = "        ";
         }
         private void SetLTR()
         {
@@ -119,7 +130,7 @@ namespace GAZT.Views.NewViews
             {
                 FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
             }
-            if (viewModel.PkrDBO==null)
+            if (viewModel.PkrDBO == null)
             {
                 FrmDBO.BorderColor = Color.Red;
                 IsNextValid = false;
@@ -212,7 +223,7 @@ namespace GAZT.Views.NewViews
                 FrmEnteredCaptcha.BorderColor = Color.FromHex("#B1B1B1");
 
                 bool IsCapValid = viewModel.ValidateCaptcha();
-                if(IsCapValid==false)
+                if (IsCapValid == false)
                 {
                     FrmEnteredCaptcha.BorderColor = Color.Red;
                     IsNextValid = false;
@@ -811,26 +822,7 @@ namespace GAZT.Views.NewViews
                     {
                         if (EntryIDNumber.Text.Substring(0, 1) != "1")
                         {
-                            if (EntryIDNumber.Text.Length == 1)
-                            {
-                                PopUp popUp = new PopUp();
-                                popUp.Message = AppResources.ZZNationalIDstartswith1;
-
-
-                                popUp.IsLinkAvailable = false;
-
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                FrmIDNumber.BorderColor = Color.Red;
-                                EntryIDNumber.Text = string.Empty;
-                            }
+                            FrmIDNumber.BorderColor = Color.Red;
                         }
                         else
                         {
@@ -842,16 +834,16 @@ namespace GAZT.Views.NewViews
                                     string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
                                     IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
 
-                                    if(SignupIsIDTypeValid.d==null)
+                                    if (SignupIsIDTypeValid.d == null)
                                     {
-                                      
+
                                         IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
 
                                         if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                         {
                                             FrmIDNumber.BorderColor = Color.Red;
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                          //  viewModel.TxtIDNumber = string.Empty;
+                                            //  viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
@@ -896,30 +888,11 @@ namespace GAZT.Views.NewViews
                         }
 
                     }
-                    else if(viewModel.SelectedSignUpUsing.ID == 2)
+                    else if (viewModel.SelectedSignUpUsing.ID == 2)
                     {
                         if (EntryIDNumber.Text.Substring(0, 1) != "2")
                         {
-                            if (EntryIDNumber.Text.Length == 1)
-                            {
-                                PopUp popUp = new PopUp();
-                                popUp.Message = AppResources.ZZIqamaIDstartswith2;
-
-
-                                popUp.IsLinkAvailable = false;
-
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                FrmIDNumber.BorderColor = Color.Red;
-                                EntryIDNumber.Text = string.Empty;
-                            }
+                            FrmIDNumber.BorderColor = Color.Red;
                         }
                         else
                         {
@@ -938,9 +911,9 @@ namespace GAZT.Views.NewViews
                                         if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                         {
                                             FrmIDNumber.BorderColor = Color.Red;
-                                      
+
                                             viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                          //  viewModel.TxtIDNumber = string.Empty;
+                                            //  viewModel.TxtIDNumber = string.Empty;
                                         }
                                         else
                                         {
@@ -985,6 +958,10 @@ namespace GAZT.Views.NewViews
                             }
                         }
                     }
+                    else
+                    {
+                        FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                    }
                 }
             }
             catch (InternetException ex)
@@ -1002,27 +979,9 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryMobileNumber.Text.Substring(0, 1) != "5")
                 {
-                    if (EntryMobileNumber.Text.Length == 1)
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber5;
-
-
-                        popUp.IsLinkAvailable = false;
-
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                   
                         FrmMobileNumber.BorderColor = Color.Red;
-                        EntryMobileNumber.Text = string.Empty;
-                        EntryMobileNumber.Focus();
-                    }
+                       
                 }
                 else
                 {
@@ -1037,27 +996,9 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                    if (EntryPhoneNumber.Text.Length == 1)
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZPhonenumberhastostartwithnumber1;
-
-
-                        popUp.IsLinkAvailable = false;
-
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                  
                         FrmPhoneNumber.BorderColor = Color.Red;
-                        EntryPhoneNumber.Text = string.Empty;
-                        EntryPhoneNumber.Focus();
-                    }
+                     
                 }
                 else
                 {
@@ -1069,9 +1010,10 @@ namespace GAZT.Views.NewViews
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
             string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
-            if(DpDbo.Date.Date==DateTime.Now.Date)
+            if (DpDbo.Date.Date == DateTime.Now.Date)
             {
                 DpDbo.Format = "dd-MM-yyyy";
+                DpDbo.Date = DateTime.Now;
             }
             EntryIDNumber.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -1080,7 +1022,7 @@ namespace GAZT.Views.NewViews
                 {
                     try
                     {
-                     
+
                         string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
                         IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         if (SignupIsIDTypeValid.d == null)
@@ -1097,12 +1039,12 @@ namespace GAZT.Views.NewViews
                             {
                                 FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                              
+
                             }
                         }
                         else
                         {
-                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 +" " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryIDNumber.IsEnabled = false;
                         }
 
@@ -1201,7 +1143,7 @@ namespace GAZT.Views.NewViews
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
 
-            if(!string.IsNullOrEmpty(EntryCRNumber.Text))
+            if (!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
                 if (EntryCRNumber.Text.Length == 10)
                 {
@@ -1244,7 +1186,7 @@ namespace GAZT.Views.NewViews
                     EntryCRNumber.Text = string.Empty;
                     EntryCRNumber.Focus();
                 }
-               
+
             }
         }
 
@@ -1254,27 +1196,7 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
-                    if (EntryTIN.Text.Length == 1)
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZTINnumberhastostartwithnumber3;
-
-
-                        popUp.IsLinkAvailable = false;
-
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmTIN.BorderColor = Color.Red;
-                        EntryTIN.Text = string.Empty;
-                        EntryTIN.Focus();
-                    }
+                    FrmTIN.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -1285,14 +1207,32 @@ namespace GAZT.Views.NewViews
 
         private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
         {
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(EntryTIN.Text))
             {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+
+                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    FrmTIN.BorderColor = Color.Red;
+                    EntryTIN.Text = string.Empty;
+                    EntryTIN.Focus();
+
+                }
                 if (EntryTIN.Text.Length != 10)
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+                    if (Messages.Length > 0)
+                    {
+                        Messages.Append(Environment.NewLine);
+                      
+                    }
+                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
 
-
+                }
+                if (Messages.Length > 0)
+                {
+                    popUp.Message = Messages.ToString();
                     popUp.IsLinkAvailable = false;
 
                     if (App.IsArabic)
@@ -1311,6 +1251,7 @@ namespace GAZT.Views.NewViews
                 {
                     FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
                 }
+
             }
         }
 
@@ -1319,7 +1260,7 @@ namespace GAZT.Views.NewViews
             if (!string.IsNullOrEmpty(EntryEmail.Text))
             {
                 bool flag = IsValid(EntryEmail.Text);
-                if(!flag)
+                if (!flag)
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;
@@ -1363,14 +1304,34 @@ namespace GAZT.Views.NewViews
 
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
-            if(!string.IsNullOrEmpty(EntryMobileNumber.Text))
+            if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
+                StringBuilder Message = new StringBuilder();
+                PopUp popUp = new PopUp();
+                if (EntryMobileNumber.Text.Substring(0, 1) != "5")
+                {
+                   
+                       
+                        Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+
+
+                    
+                }
                 if (EntryMobileNumber.Text.Length != 9)
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                      
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
 
 
+                    
+                }
+                if(Message.Length>0)
+                {
+                    popUp.Message = Message.ToString();
                     popUp.IsLinkAvailable = false;
 
                     if (App.IsArabic)
@@ -1396,29 +1357,47 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
+                PopUp popUp = new PopUp();
+                StringBuilder Message = new StringBuilder();
+                if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
+                {
+
+
+                    Message.Append(AppResources.ZZPhonenumberhastostartwithnumber1);
+
+
+                }
                 if (EntryPhoneNumber.Text.Length != 9)
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPhonenumberlengthcannotbelessthan9digits;
-
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (Message.Length > 0)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        Message.Append(Environment.NewLine);
+                       
+                    }
+                    Message.Append(AppResources.ZZPhonenumberlengthcannotbelessthan9digits);
+
+                    if (Message.Length > 0)
+                    {
+                        popUp.Message = Message.ToString();
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmPhoneNumber.BorderColor = Color.Red;
+                        EntryPhoneNumber.Text = string.Empty;
+                        EntryPhoneNumber.Focus();
                     }
                     else
                     {
-                        popUp.FlowDirections = "LeftToRight";
+                        FrmPhoneNumber.BorderColor = Color.FromHex("#B1B1B1");
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmPhoneNumber.BorderColor = Color.Red;
-                    EntryPhoneNumber.Text = string.Empty;
-                }
-                else
-                {
-                    FrmPhoneNumber.BorderColor = Color.FromHex("#B1B1B1");
                 }
             }
         }
@@ -1428,5 +1407,65 @@ namespace GAZT.Views.NewViews
             viewModel.TxtIDNumber = string.Empty;
             EntryIDNumber.IsEnabled = true;
         }
+
+        private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryIDNumber.Text))
+            {
+                if (viewModel.SelectedSignUpUsing.ID == 1)
+                {
+                    if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                    {
+
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZNationalIDstartswith1;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmIDNumber.BorderColor = Color.Red;
+                        EntryIDNumber.Text = string.Empty;
+
+                    }
+                }
+                else if (viewModel.SelectedSignUpUsing.ID == 2)
+                {
+                    if (EntryIDNumber.Text.Substring(0, 1) != "2")
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmIDNumber.BorderColor = Color.Red;
+                        EntryIDNumber.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                }
+            }
+        }
+
     }
 }
