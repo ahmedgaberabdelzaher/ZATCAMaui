@@ -548,11 +548,11 @@ namespace GAZT.Manager
         {
             if (Extention.ToLower() == "doc")
             {
-                return null;
+                return "application/msword";
             }
             else if (Extention.ToLower() == "docx")
             {
-                return null;
+                return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
             }
             else if (Extention.ToLower() == "jpg")
             {
@@ -580,11 +580,11 @@ namespace GAZT.Manager
             }
             else if (Extention.ToLower() == "ppt")
             {
-                return null;
+                return "application/vnd.ms-powerpoint";
             }
             else if (Extention.ToLower() == "pptx")
             {
-                return null;
+                return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
             }
             else if (Extention.ToLower() == "gif")
             {
@@ -592,7 +592,7 @@ namespace GAZT.Manager
             }
             else if (Extention.ToLower() == "txt")
             {
-                return null;
+                return "text/plain";
             }
             else if (Extention.ToLower() == "bmp")
             {

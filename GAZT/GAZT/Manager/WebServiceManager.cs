@@ -2180,13 +2180,16 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json"); 
                     client.DefaultRequestHeaders.Add("slug", fileName);
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
 
                   //  MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-              //      content.Add(baContent, "File", fileName);
+                    if(!string.IsNullOrEmpty(contentType))
+                    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+
+                    //      content.Add(baContent, "File", fileName);
                     var response = await client.PostAsync(url, baContent);
 
                    // ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
