@@ -200,6 +200,7 @@ namespace GAZTeServicesBusinessLibrary
         public string BackgroundGradientStart { get; set; }
         public string BackgroundGradientEnd { get; set; }
         public string iConImagePath { get; set; }
+        public string OnClickEvents { get; set; }
     }
 
     /// <summary>
