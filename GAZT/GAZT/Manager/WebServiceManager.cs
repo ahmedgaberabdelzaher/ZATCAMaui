@@ -2703,14 +2703,14 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("slug", fileName);
                  //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
 
-                    MultipartFormDataContent content = new MultipartFormDataContent();
+                    //MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    content.Add(baContent, "File", fileName);
-                    var response = await client.PostAsync(url, content);
+                    if (!string.IsNullOrEmpty(ContentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
+                  //  content.Add(baContent, "File", fileName);
+                    var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                     return _attachment;
                 }
                 catch (Exception ex)

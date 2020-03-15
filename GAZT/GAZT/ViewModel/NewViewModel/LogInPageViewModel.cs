@@ -30,7 +30,7 @@ namespace GAZT.ViewModel
 
 
        
-        private string _UserName = "3102285896";
+        private string _UserName = "3101628639";
      //   private string _UserName = string.Empty;
         public string UserName
         {
