@@ -68,6 +68,16 @@ namespace GAZTeServicesBusinessLibrary
         public static string GAZTCheckIBANNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHECK_IBAN_SRV/HEADERSet('";
         public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORRES_SRV/corr_dataSet(Cokey='";
 
+        //Dashboard - get the set of Unpaid Amounts
+        public static string GAZTGetTheSetOfUnpaidAmounts = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq ";
+        //'E' and Gpartz eq '3300007099'&sap-language=E&saml2=disabled"
+
+        public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq "; 
+            //'E' and Gpartz eq '3300007099'&sap-language=E&saml2=disabled
+
+
+
+
 
     }
 }
