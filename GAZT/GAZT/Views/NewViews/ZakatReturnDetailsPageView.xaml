@@ -53,7 +53,7 @@
                     </Label>
 
 
-                        <Label Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}"  Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                        <Label Text="{x:Static local:AppResources.FiscalYear}"  Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
                     <Label Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
@@ -68,7 +68,7 @@
 
                     <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
-                    <Label Text="{x:Static local:AppResources.ZEstimateSales}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
+                        <Label Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
 
                     </Label>
 
