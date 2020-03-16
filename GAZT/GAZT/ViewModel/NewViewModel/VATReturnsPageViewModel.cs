@@ -3614,7 +3614,7 @@ namespace GAZT.ViewModel.NewViewModel
                 
                 VatTabbledPageList = vatTabbedList;
 
-                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
+                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058" || App.ICRStatus == "E0055")
                     {
                       PageSelectedItem = VatTabbledPageList[0];
                 }
