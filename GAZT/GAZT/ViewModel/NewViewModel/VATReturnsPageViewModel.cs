@@ -169,7 +169,8 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if(App.IsArabic)
                             {
-                                Preperiodcorr =  Preperiodcorr + "-";// d.ToString();
+                              //  Preperiodcorr =  Preperiodcorr + "-";// d.ToString();
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
                             }
                             else
                             {
@@ -4063,7 +4064,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task NavigationSetupForDraft()
         {
-            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1")
+            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1" || VATDeclarationData.d.StepNumber == "0" || VATDeclarationData.d.StepNumber == "00")
             {
                 //InstrunctionClicked();
                 PageSelectedItem = VatTabbledPageList[0];
