@@ -2624,7 +2624,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsVisibleDropdownForRefund = true;
                             IsVisiblechkRefundDeclaration = true;
                             //  IsDropdownVisibleForIban = true;
-                            if (VATDeclarationData.d.IbanCb == "1")
+                            if (VATDeclarationData.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                             {
                                 IsTextBoxVisibleForIban = true;
                                 IsDropdownVisibleForIban = false;
@@ -2636,7 +2636,6 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
-                                IsVATRefunCheckedVisible = false;
                                 IsTextBoxVisibleForIban = false;
                                 IsDropdownVisibleForIban = true;
 
@@ -2644,6 +2643,15 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
                                 }
+                                if(IBANList != null && IBANList.Count > 0)
+                                {
+                                    IsVATRefunCheckedVisible = false;
+                                }
+                                else
+                                {
+                                    IsVATRefunCheckedVisible = true;
+                                }
+
                             }
                             if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
                             {
@@ -2698,8 +2706,16 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    IsVATRefunCheckedVisible = false;
+                    if (IBANList != null && IBANList.Count > 0)
+                    {
+                        IsVATRefunCheckedVisible = false;
+                    }
+                    else
+                    {
+                        IsVATRefunCheckedVisible = true;
+                    }
                 }
+
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
                 IsMainButtonEnabled = false;
@@ -2787,7 +2803,16 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IschkRefundDeclaration = false;
             }
-            
+
+            if (VATDeclarationData.d.IbanCb == "1")
+            {
+                IsCheckedRefund = true;
+            }
+            else
+            {
+                IsCheckedRefund = false;
+            }
+
         }
 
         public void CreditCarriedClicked()
@@ -3753,8 +3778,18 @@ namespace GAZT.ViewModel.NewViewModel
                     VATDeclarationData.d.TcFlg = "1";
                 }
                 else
-                {
+                { 
                     VATDeclarationData.d.TcFlg = "0";
+                }
+
+
+                if (IsCheckedRefund)
+                {
+                    VATDeclarationData.d.IbanCb = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.IbanCb = "0";
                 }
 
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
