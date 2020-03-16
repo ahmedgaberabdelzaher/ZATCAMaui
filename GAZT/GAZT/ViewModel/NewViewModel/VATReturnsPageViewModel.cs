@@ -166,7 +166,17 @@ namespace GAZT.ViewModel.NewViewModel
                     if (IsSwitchToggled)
                     {
                         if (!string.IsNullOrEmpty(Preperiodcorr) && !Preperiodcorr.Contains("-"))
-                            Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                        {
+                            if(App.IsArabic)
+                            {
+                                Preperiodcorr =  Preperiodcorr + "-";// d.ToString();
+                            }
+                            else
+                            {
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                            }
+                        }
+                           
                     }
                     else
                     {
@@ -2596,13 +2606,6 @@ namespace GAZT.ViewModel.NewViewModel
             bool value = false;
             ClearPage();
             DisableForRefund();
-
-
-
-
-
-          
-
             //  IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
             {

@@ -71,9 +71,14 @@ namespace GAZT
                 }
                 else
                 {
-                    if (isNegativeEnable == false || decimalCount > 1)
+                    if (isNegativeEnable == false)
                     {
                         ((Entry)sender).Text = args.NewTextValue.Replace("-", "");
+                    }
+                    if (decimalCount > 1)
+                    {
+                        if (!string.IsNullOrEmpty(args.NewTextValue))
+                            ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();// need to change later
                     }
                 }
             }
