@@ -2481,6 +2481,10 @@
     <value>أسم السجل التجاري</value>
     <comment>Check TIN Status</comment>
   </data>
+  <data name="ZZDescriptionForFormBundle" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>Form bundle status</comment>
+  </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
     <value>الرجاء إدخال رمز الدخول</value>
     <comment>OTP Screen</comment>

@@ -503,7 +503,7 @@ namespace GAZT.ViewModel
                                     {
                                           _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
-                                        //SYNCFUSION INTEGRATION
+                                       // SYNCFUSION INTEGRATION
 
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
@@ -513,7 +513,7 @@ namespace GAZT.ViewModel
 
                                         //_navigationService.NavigateTo(App.LandingPageView);
 
-                                        //SYNCFUSION INTEGRATION
+                                      //  SYNCFUSION INTEGRATION
 
                                     });
                                 }

@@ -4954,6 +4954,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string ZZDescriptionForFormBundle {
+            get {
+                return ResourceManager.GetString("ZZDescriptionForFormBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Notes.
         /// </summary>
         public static string ZZDisplayNotes {
