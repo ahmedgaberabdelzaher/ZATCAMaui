@@ -502,7 +502,6 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     IsMainButtonEnabled = false;
-                    VATDeclarationData.d.DecFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForSummary");
             }
@@ -2192,7 +2191,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
-                SummaryClicked();
+               await SummaryClicked();
 
             });
 
@@ -2770,6 +2769,16 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    IsDeclarationCheckedForSummary = false;
             //}
+
+            if (VATDeclarationData.d.DecFg == "1")
+            {
+                IsDeclarationCheckedForSummary = true;
+
+            }
+            else
+            {
+                IsDeclarationCheckedForSummary = false;
+            }
         }
 
         public void CreditCarriedClicked()
@@ -3721,6 +3730,14 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    VATDeclarationData.d.DecFg = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.DecFg = "0";
+                }
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
                 {
                     DummyATTACHSetsList = new List<Attachment>();
