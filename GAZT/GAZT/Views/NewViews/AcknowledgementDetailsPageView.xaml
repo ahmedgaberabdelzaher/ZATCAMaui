@@ -49,6 +49,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                          <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
@@ -90,7 +91,7 @@
 
                             <Label Text="{Binding AmountPayable}"  Grid.Row="14" Grid.Column="0"  Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
 
-                    <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentWaitingText}"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" Padding="0" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNoteVisible}"/>
+                    <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentWaitingText}"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" Padding="0" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNoteVisible}"/>
 
                     <Button Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Clicked="OnVATRefreshButtonClicked"  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
                     <!--<Button Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Clicked="OnVATRefreshButtonClicked"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>-->
@@ -98,8 +99,9 @@
                     <!--<Button Text="{x:Static local:AppResources.Acknowlwdgement}"  Command="{Binding OnAcknowlwdgementClicked}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding IsSadadNumberVisible}"></Button>-->
                         <Button Text="{x:Static local:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnDownloadAcknowlwdgementClicked}" Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}"></Button>
 
+                                        <local1:CustomLabel Text="{x:Static local:AppResources.BreakDownLabel}"  Grid.Row="20"  Padding="0"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding BreakdownAmountVisibility}"/>
 
-                    <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}" Padding="0"  Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                    <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}" Padding="0"  Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                 </Grid>
             </ScrollView>

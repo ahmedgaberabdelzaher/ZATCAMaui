@@ -4253,5 +4253,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);
             }
         }
+        
+        public static string BreakDownLabel {
+            get {
+                return ResourceManager.GetString("BreakDownLabel", resourceCulture);
+            }
+        }
     }
 }
