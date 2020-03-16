@@ -4242,6 +4242,12 @@ namespace GAZT {
             }
         }
         
+        public static string ZZDescriptionForFormBundle {
+            get {
+                return ResourceManager.GetString("ZZDescriptionForFormBundle", resourceCulture);
+            }
+        }
+        
         public static string ZZPleaseenteraccessCode {
             get {
                 return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);

@@ -29,9 +29,10 @@ namespace GAZT.ViewModel
         #region Property
 
 
-       
-        private string _UserName = "3101628639";
-     //   private string _UserName = string.Empty;
+
+        // private string _UserName = "3101628639";// ZAKAT Data
+        private string _UserName = "3102228781";// VAT Data
+   //   private string _UserName = string.Empty;
         public string UserName
         {
             get

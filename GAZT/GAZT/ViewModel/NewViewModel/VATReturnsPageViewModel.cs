@@ -2827,15 +2827,16 @@ namespace GAZT.ViewModel.NewViewModel
                 //await Task.Run(async() =>
                 //{
                 //IsLoading = true;
-                if (FirstSubmissionCount != 1)
-                {
-                    CreateDataForPost();
-                }
+                //if (FirstSubmissionCount != 1)
+                //{
+                //    CreateDataForPost();
+                //}
 
                 //IsVisibleAcknowledgment = true;
                 ButtonName = AppResources.Submit;
                 if (!IsFirstSubmission)
                 {
+                    CreateDataForPost();
                     FirstSubmissionCount = 0;
                     //ClearPage();
                     //IsVisibleAcknowledgment = true;
@@ -3917,7 +3918,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 vATDeclarationD.Preperiodcorr = vATDeclarationD.Preperiodcorr.Replace(",", "");
             }
-
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt) && vATDeclarationD.StdsalesAmt.Contains(","))
+            {
+                vATDeclarationD.StdsalesAmt = vATDeclarationD.StdsalesAmt.Replace(",", "");
+            }
 
 
 
@@ -3983,6 +3987,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 vATDeclarationD.NetdueVat = NetdueVat.Replace(",", "");
             }
+           
+            
 
             return vATDeclarationD;
         }
