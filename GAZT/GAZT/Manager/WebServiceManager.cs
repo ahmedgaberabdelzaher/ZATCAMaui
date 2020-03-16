@@ -2180,15 +2180,22 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json"); 
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
+
+                  //  MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if(!string.IsNullOrEmpty(contentType))
+                    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+
+                    //      content.Add(baContent, "File", fileName);
                     var response = await client.PostAsync(url, baContent);
+
+                   // ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    //var response =  client.PostAsync(url, baContent).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                     return _attachment;
                 }
                 catch (Exception ex)
@@ -2694,16 +2701,16 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+                 //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
 
-                    MultipartFormDataContent content = new MultipartFormDataContent();
+                    //MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    //content.Add(baContent, "File", fileName);
+                    if (!string.IsNullOrEmpty(ContentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
+                  //  content.Add(baContent, "File", fileName);
                     var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-
-
                     return _attachment;
                 }
                 catch (Exception ex)

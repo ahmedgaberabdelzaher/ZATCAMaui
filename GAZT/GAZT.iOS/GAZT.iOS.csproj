@@ -121,6 +121,7 @@
     <BundleResource Include="Resources\GE_SS_Two_Bold.ttf" />
     <BundleResource Include="Resources\GE_SS_Two_Light.ttf" />
     <BundleResource Include="Resources\GE_SS_Two_Medium.ttf" />
+    <BundleResource Include="Resources\UIFontIcons.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
