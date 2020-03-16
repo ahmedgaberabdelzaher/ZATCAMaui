@@ -2773,12 +2773,21 @@ namespace GAZT.ViewModel.NewViewModel
             if (VATDeclarationData.d.DecFg == "1")
             {
                 IsDeclarationCheckedForSummary = true;
-
             }
             else
             {
                 IsDeclarationCheckedForSummary = false;
             }
+
+            if (VATDeclarationData.d.TcFlg == "1")
+            {
+                IschkRefundDeclaration = true;
+            }
+            else
+            {
+                IschkRefundDeclaration = false;
+            }
+            
         }
 
         public void CreditCarriedClicked()
@@ -3738,6 +3747,16 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     VATDeclarationData.d.DecFg = "0";
                 }
+
+                if (IschkRefundDeclaration)
+                {
+                    VATDeclarationData.d.TcFlg = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.TcFlg = "0";
+                }
+
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
                 {
                     DummyATTACHSetsList = new List<Attachment>();
