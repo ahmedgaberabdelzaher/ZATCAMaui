@@ -1,6 +1,7 @@
 ﻿using GAZT;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using Syncfusion.SfCalendar.XForms;
+using GAZTeServicesBusinessLibrary;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -88,5 +89,108 @@ namespace GAZTeServicesApp.Views.LandingPage
         {
             viewModel._navigationService.NavigateTo("OptionsPageView");
         }
+        private void OnTappedVAT(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.VATReturnsPageView);
+        }
+        private void OnTappedTest(object sender, EventArgs e)
+        {
+            string controltype = sender.GetType().ToString();
+
+            if(controltype== "Xamarin.Forms.Image")
+            {
+                Image arrowImage = sender as Image;
+                eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                if(BModel.eServiceName== AppResources.VATDeclaration)
+                {
+                    viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                }
+                if (BModel.eServiceName == AppResources.EstimateZakat)
+                {
+                    viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                }
+                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                {
+                    viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                }
+               
+                if (BModel.eServiceName == AppResources.MyCertificate)
+                {
+                    viewModel._navigationService.NavigateTo(App.MyCertificate);
+                }
+                if (BModel.eServiceName == AppResources.ZTINStatus)
+                {
+                    viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                }
+                if (BModel.eServiceName == AppResources.ZZCorrespondence)
+                {
+                    viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                }
+                if (BModel.eServiceName == AppResources.MyBills)
+                {
+                    viewModel._navigationService.NavigateTo(App.MyBillsView);
+                }
+
+            }
+            if (controltype == "Xamarin.Forms.Label")
+            {
+                Label arrowImage = sender as Label;
+                eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                if (BModel.eServiceName == AppResources.VATDeclaration)
+                {
+                    viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                }
+                if (BModel.eServiceName == AppResources.EstimateZakat)
+                {
+                    viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                }
+                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                {
+                    viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                }
+
+                if (BModel.eServiceName == AppResources.MyCertificate)
+                {
+                    viewModel._navigationService.NavigateTo(App.MyCertificate);
+                }
+                if (BModel.eServiceName == AppResources.ZTINStatus)
+                {
+                    viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                }
+                if (BModel.eServiceName == AppResources.ZZCorrespondence)
+                {
+                    viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                }
+                if (BModel.eServiceName == AppResources.MyBills)
+                {
+                    viewModel._navigationService.NavigateTo(App.MyBillsView);
+                }
+
+            }
+            // if(sender.BindingContext.eServiceName)
+
+        }
+
+        private void OnTappedBills(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.MyBillsView);
+        }
+        private void OnTappedCertificate(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.MyCertificate);
+        }
+        private void OnTappedCorrespondence(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+        }
+        private void OnTappedTINStatus(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+        }
+        private void OnTappedFormBundle(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+        }
+       
     }
 }

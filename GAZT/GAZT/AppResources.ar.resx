@@ -2481,8 +2481,17 @@
     <value>أسم السجل التجاري</value>
     <comment>Check TIN Status</comment>
   </data>
+  <data name="ZZDescriptionForFormBundle" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>Form bundle status</comment>
+  </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
     <value>الرجاء إدخال رمز الدخول</value>
     <comment>OTP Screen</comment>
   </data>
+   <data name="BreakDownLabel" xml:space="preserve">
+    <value>سوف تستلم تفاصيل المبلغ المستحق على ايميلك المسجل وكذلك في قسم المراسلات الموجود بحسابك على بوابة الهيئة</value>
+    <comment>Acknowledgement</comment>
+  </data>   
+  
 </root>

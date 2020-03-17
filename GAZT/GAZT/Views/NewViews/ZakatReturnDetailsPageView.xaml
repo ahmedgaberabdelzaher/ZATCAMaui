@@ -68,7 +68,7 @@
 
                     <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
-                        <Label Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
+                        <Label Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
 
                     </Label>
 
@@ -88,7 +88,7 @@
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
                     </Image> 
-                    <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Cpamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
@@ -107,7 +107,7 @@
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zbamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
@@ -125,7 +125,7 @@
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zkamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>

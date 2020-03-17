@@ -284,14 +284,21 @@
                                                 </gradient:SfGradientView.BackgroundBrush>
                                             </gradient:SfGradientView>
 
-                                            <StackLayout Margin="10" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                                                <Image Source="{Binding iConImagePath}"></Image>
+                                            <StackLayout Margin="10" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center" >
+                                                <Image Source="{Binding iConImagePath}" >
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnTappedTest"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
                                                 <Label HorizontalTextAlignment="Center" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Micro" >
                                                     <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding eServiceName}"/>
                                                         </FormattedString>
                                                     </Label.FormattedText>
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnTappedTest"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
                                                 </Label>
 
                                             </StackLayout>

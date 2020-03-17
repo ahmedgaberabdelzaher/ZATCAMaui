@@ -121,6 +121,7 @@
     <BundleResource Include="Resources\GE_SS_Two_Bold.ttf" />
     <BundleResource Include="Resources\GE_SS_Two_Light.ttf" />
     <BundleResource Include="Resources\GE_SS_Two_Medium.ttf" />
+    <BundleResource Include="Resources\UIFontIcons.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -237,6 +238,9 @@
       <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">

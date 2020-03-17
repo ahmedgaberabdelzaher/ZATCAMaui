@@ -2607,8 +2607,19 @@ Should we require further information, we would be in contact.</value>
     <value>CR Name</value>
     <comment>Check TIN Status</comment>
   </data>
+  <data name="ZZDescriptionForFormBundle" xml:space="preserve">
+    <value>Description</value>
+    <comment>Form bundle status</comment>
+  </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
     <value>Please enter access Code.</value>
     <comment>OTP Screen</comment>
-  </data>
+  </data> 
+    
+     <data name="BreakDownLabel" xml:space="preserve">
+    <value>You will receive a detailed breakdown of payable amount on your registered email and in correspondence section of your account on GAZT portal</value>
+    <comment>Acknowledgement</comment>
+  </data> 
+    
+  
 </root>

@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -32,12 +33,12 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
         private CalendarEventCollection _BillsAndReturnsSchedule = null;
-        
+        private ICommand EserviceCommand { get; set; }
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
         #endregion
-        
+
         #region Constructor
         /// <summary>
         /// Initializes a new instance for the <see cref="LandingPageViewModel" /> class.
@@ -73,7 +74,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             try
             {
-               GetDashboardDataTask.Wait();
+                GetDashboardDataTask.Wait();
             }
             catch (AggregateException ae)
             {
@@ -113,13 +114,13 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     await _dialogService.ShowMessage("something went wrong", AppResources.Information);
                 });
             }
-      
+
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
         }
-        public  LandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
+        public LandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -135,6 +136,12 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             this.ShowOptionsCommand = new Command(this.ShowOptionsCommandClicked);
             this.ItemSelectedCommand = new Command(this.ItemSelected);
+            //this.EserviceCommand = new Command(this.ItemSelected);
+            EserviceCommand = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.MyCertificate);
+
+            });
         }
 
         #endregion
@@ -322,7 +329,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// <param name="obj">The Object</param>
         private void ItemSelected(object obj)
         {
-            // Do something
+            _navigationService.NavigateTo(App.MyCertificate);
         }
 
         private string ConvertintoCommaSeperated(string strAmount)
@@ -660,15 +667,31 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             //Call the API to get the eSevrices applicable to the TP
 
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
+            if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
+            {
+                string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                foreach (string ItemType in TpTypes)
+                {
+                    if (ItemType == "05")
+                    {
+                        
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declarations.png" ,OnClickEvents= "OnTappedVAT" });
 
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Estimated ZAKAT Returns", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Declarations", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declarations.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Check FORM Bundle Status", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Tax Evasion Reporting", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Bills", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Certificates", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "VAT Lookup", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = "Correspondence", BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
+                    }
+                    if (ItemType == "03" || ItemType == "13")
+                    {
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents = "OnTappedZakat" });
+                    }
+
+                }
+            }
+         
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png", OnClickEvents = "OnTappedBills" });
+           
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png", OnClickEvents = "OnTappedBills" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png",OnClickEvents= "OnTappedCertificate" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName =  AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents = "OnTappedTINStatus" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png", OnClickEvents = "OnTappedCorrespondence" });
         }
     }
 

@@ -29,10 +29,10 @@ namespace GAZT.ViewModel
         #region Property
 
 
-       
-     //  private string _UserName = "3102285896";
 
-        private string _UserName = string.Empty;
+        // private string _UserName = "3101628639";// ZAKAT Data
+      private string _UserName = "3102285896";// VAT Data
+      //private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -90,9 +90,9 @@ namespace GAZT.ViewModel
         }
 
 
-       // private string _Password = "Init@123";
+         private string _Password = "Init@123";
         
-        private string _Password = string.Empty;
+       // private string _Password = string.Empty;
         public string Password
         {
             get
@@ -505,7 +505,7 @@ namespace GAZT.ViewModel
 
                                         //_navigationService.NavigateTo(App.LandingPageView);
 
-                                        //SYNCFUSION INTEGRATION
+                                       // SYNCFUSION INTEGRATION
 
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
@@ -515,7 +515,7 @@ namespace GAZT.ViewModel
 
                                        // _navigationService.NavigateTo(App.LandingPageView);
 
-                                        //SYNCFUSION INTEGRATION
+                                      //  SYNCFUSION INTEGRATION
 
                                     });
                                 }
