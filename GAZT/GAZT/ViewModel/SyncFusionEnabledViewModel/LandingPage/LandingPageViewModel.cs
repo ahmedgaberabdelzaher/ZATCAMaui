@@ -6,8 +6,10 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -23,6 +25,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         #region Fields
 
         private Dashboard DashboardData = null;
+        public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
+        public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
+        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
@@ -41,7 +46,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         public async Task LoadDashboardData()
         {
-            
+
+            listOverduePaymentReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData("E", App.TP.Tin);
+
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -53,7 +60,17 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             {
                 DashboardData = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetDashboardData("EN", App.TP.Tin);
             });
-                
+
+            Task GetUnsubmittedReturnDataTask = Task.Run(() =>
+            {
+                listUnsubmittedReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData("E", App.TP.Tin);
+            });
+
+            Task GetOverduePaymentDataTask = Task.Run(() =>
+            {
+                listOverduePaymentReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData("E", App.TP.Tin);
+            });
+
             try
             {
                GetDashboardDataTask.Wait();
@@ -137,6 +154,51 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 this.RaisePropertyChanged("eServicesAvailableToTheTP");
             }
         }
+
+
+
+        public List<OverduePaymentsAndUnSubmittedReturn> listUnsubmittedReturn
+        {
+            get
+            {
+                return this._listUnsubmittedReturn;
+            }
+
+            set
+            {
+                this._listUnsubmittedReturn = value;
+                this.RaisePropertyChanged("listUnsubmittedReturn");
+            }
+        }
+
+        public List<OverduePaymentsAndUnSubmittedReturn> listOverduePaymentReturn
+        {
+            get
+            {
+                return this._listOverduePaymentReturn;
+            }
+
+            set
+            {
+                this._listOverduePaymentReturn = value;
+                this.RaisePropertyChanged("listOverduePaymentReturn");
+            }
+        }
+
+        public List<OverduePaymentsAndUnSubmittedReturn> listofPaymentReturn
+        {
+            get
+            {
+                return this._listofPaymentReturn;
+            }
+
+            set
+            {
+                this._listofPaymentReturn = value;
+                this.RaisePropertyChanged("listofPaymentReturn");
+            }
+        }
+
 
         /// <summary>
         /// Gets or sets the returninfo items collection.
@@ -519,28 +581,78 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         public void PopulateBillsAndReturnsSchedule()
         {
-            BillsAndReturnsSchedule = new CalendarEventCollection();
-
-            // Create events 
-            CalendarInlineEvent event1 = new CalendarInlineEvent()
+            try
             {
-                StartTime = DateTime.Today.AddHours(9),
-                EndTime = DateTime.Today.AddHours(10),
-                Subject = "Meeting",
-                Color = Color.Green
-            };
+                BillsAndReturnsSchedule = new CalendarEventCollection();
+                
+                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn.Clear();
+                // Create events
 
-            CalendarInlineEvent event2 = new CalendarInlineEvent()
-            {
-                StartTime = DateTime.Today.AddHours(11),
-                EndTime = DateTime.Today.AddHours(12),
-                Subject = "Planning",
-                Color = Color.Fuchsia
-            };
+                foreach (var PaymentReturn in listOverduePaymentReturn)
+                {
+                    listofPaymentReturn.Add(PaymentReturn);
+                }
 
-            // Add events into a CalendarInlineEvents collection
-            BillsAndReturnsSchedule.Add(event1);
-            BillsAndReturnsSchedule.Add(event2);
+                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
+                {
+                    listofPaymentReturn.Add(UnsubmittedReturn);
+                }
+
+               // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
+
+                foreach (var item in listofPaymentReturn)
+                {
+                    CalendarInlineEvent event1 = new CalendarInlineEvent();
+
+                    event1.StartTime = item.DueDt;
+                 //   event1.EndTime = DateTime.Now;
+                    event1.Subject = item.Txt50;
+                    if (item.IcrStatus == "O")
+                    {
+                        event1.Color = Color.FromHex("#ff0000");
+                    }
+                    else
+                    {
+                        event1.Color = Color.FromHex("#7D858D");
+                    }
+                    //{
+                    //    StartTime = item.DueDt,
+                    //    EndTime = DateTime.Now,
+                    //    Subject = item.Txt50,
+                    //    if(item.IcrStatus== "O")
+                    //{
+                    //    color
+                    //}
+                      
+                    //};
+                    BillsAndReturnsSchedule.Add(event1);
+                }
+
+
+                //CalendarInlineEvent event1 = new CalendarInlineEvent()
+                //{
+                //    StartTime = DateTime.Today.AddHours(9),
+                //    EndTime = DateTime.Today.AddHours(10),
+                //    Subject = "Meeting",
+                //    Color = Color.Green
+                //};
+
+                //CalendarInlineEvent event2 = new CalendarInlineEvent()
+                //{
+                //    StartTime = DateTime.Today.AddHours(11),
+                //    EndTime = DateTime.Today.AddHours(12),
+                //    Subject = "Planning",
+                //    Color = Color.Fuchsia
+                //};
+
+                //// Add events into a CalendarInlineEvents collection
+                //BillsAndReturnsSchedule.Add(event1);
+                //BillsAndReturnsSchedule.Add(event2);
+            }
+            catch(Exception ex)
+            { 
+            }
         }
 
         public void PopulateeServicesApplicableToTheTaxPayer()
