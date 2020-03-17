@@ -12,11 +12,16 @@
   <ItemGroup>
     <PackageReference Include="NodaTime" Version="2.4.7" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.53" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.4.0.53" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.4.0.53" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.4.0.53" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="17.4.0.55" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
@@ -129,9 +134,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewViews\DashboardPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ForgotUsernamePassword.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewViews\DisplayNotesPageView.xaml">

@@ -288,16 +288,18 @@ namespace GAZT.ViewModel.NewViewModel
                             if (fileData.FileName.Contains("."))
                             {
                                 string Extention = AttachmentName.Split('.')[1];
-                            bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
+                                string ContentType = UtilityManager.GetContentType(Extention);
+                                bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
                             if(!isFileAlreayUploaded)
                             {
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"  || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                 {
+
                                     if (attachment.Length < 5242880)
                                     {
                                         if (ZakatReturnAttachmentsList.Count < 5)
                                         {
-                                            AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L");
+                                            AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
                                             PopToRootPage();
                                             if (_attachment != null && _attachment.d != null)
                                             {

@@ -19,6 +19,7 @@ namespace GAZT
         //SYNCFUSION INTEGRATION
 
         public static string LandingPageView = "LandingPageView";
+        public static string OptionsPageView = "OptionsPageView";
 
         //SYNCFUSION INTEGRATION
 
@@ -78,10 +79,10 @@ namespace GAZT
 
 
 
+        
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
-
 
         public static TIN CurrentDropdownTIN;
 

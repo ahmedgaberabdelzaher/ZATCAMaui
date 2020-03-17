@@ -145,7 +145,7 @@
                                              
                                    Grid.Column="0"
                                                         Grid.ColumnSpan="4"
-                                                         Text="{x:Static local:AppResources.ZDescription}"
+                                                         Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"
                                    >
 
                                                         </Label>

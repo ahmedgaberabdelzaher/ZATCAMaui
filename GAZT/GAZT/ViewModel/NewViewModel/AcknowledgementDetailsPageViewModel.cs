@@ -71,6 +71,23 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _breakdownAmountVisibility = false;
+        public bool BreakdownAmountVisibility
+        {
+            get
+            {
+                return _breakdownAmountVisibility;
+            }
+            set
+            {
+                _breakdownAmountVisibility = value;
+
+                RaisePropertyChanged("BreakdownAmountVisibility");
+            }
+        }
+
+        
+
         private string _taxablePeriod = "";
         public string TaxablePeriod
         {
@@ -157,7 +174,13 @@ namespace GAZT.ViewModel.NewViewModel
                 _isSadadNumberVisible = value;
                 if (_isSadadNumberVisible == true)
                 {
+
                     IsSadadNoteVisible = false;
+                    BreakdownAmountVisibility = true;
+                }
+                else
+                {
+                    BreakdownAmountVisibility = false;
                 }
 
                 RaisePropertyChanged("IsSadadNumberVisible");

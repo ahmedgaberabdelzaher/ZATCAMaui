@@ -244,6 +244,19 @@ namespace GAZT.Manager
             return isAllNumeric;
         }
 
+        public static bool IsEnglishNumberWithMinus(String arText)
+        {
+            bool isAllNumeric = true;
+            foreach (char letter in arText.ToCharArray())
+            {
+                if (!((letter >= 46 && letter <= 57) || letter == 44 || letter == 45))
+                {
+                    isAllNumeric = false;
+                }
+            }
+            return isAllNumeric;
+        }
+
         public static string ToArabicDate(string Date)
         {
             string[] SplitDate = Date.Split('-');
@@ -530,6 +543,68 @@ namespace GAZT.Manager
             return dt;
 
         }
+
+        public static string GetContentType(String Extention)
+        {
+            if (Extention.ToLower() == "doc")
+            {
+                return "application/msword";
+            }
+            else if (Extention.ToLower() == "docx")
+            {
+                return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            }
+            else if (Extention.ToLower() == "jpg")
+            {
+                return "application/jpg";
+            }
+            else if (Extention.ToLower() == "jpeg")
+            {
+                return "application/jpeg";
+            }
+            else if (Extention.ToLower() == "pdf")
+            {
+                return "application/pdf";
+            }
+            else if (Extention.ToLower() == "xlsx")
+            {
+                return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            else if (Extention.ToLower() == "xls")
+            {
+                return "application/vnd.ms-excel";
+            }
+            else if (Extention.ToLower() == "png")
+            {
+                return "application/png";
+            }
+            else if (Extention.ToLower() == "ppt")
+            {
+                return "application/vnd.ms-powerpoint";
+            }
+            else if (Extention.ToLower() == "pptx")
+            {
+                return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            }
+            else if (Extention.ToLower() == "gif")
+            {
+                return "application/gif";
+            }
+            else if (Extention.ToLower() == "txt")
+            {
+                return "text/plain";
+            }
+            else if (Extention.ToLower() == "bmp")
+            {
+                return "application/bmp";
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
         public static string GetMonthName(string Month)
         {
            
@@ -639,6 +714,7 @@ namespace GAZT.Manager
 
             return Month;
         }
+
 
         public static string GetMonthNameHijriArabic(string Month)
         {

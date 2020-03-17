@@ -5,6 +5,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -263,21 +264,30 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
-            EnteredCaptchaValue = string.Empty;
-            LookupNumber = string.Empty;
-            Name = string.Empty;
-            VATACCOrCRNOOrVATCER = string.Empty;
-            List<VATParameterType> VATParameterList = new List<VATParameterType>
+            try
+            {
+                EnteredCaptchaValue = string.Empty;
+                LookupNumber = string.Empty;
+                Name = string.Empty;
+                VATACCOrCRNOOrVATCER = string.Empty;
+                List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATLookupIDTaxpayerTinType1},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZVATLookupCRNumberType3},
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATLookupIDVatCertificateNumberType2}
             };
 
-            StringBuilder captcha = GetCaptcha();
-            Captcha = captcha.ToString();
-            ParameterTypeList = VATParameterList;
-           
+                StringBuilder captcha = GetCaptcha();
+                Captcha = captcha.ToString();
+                ParameterTypeList = new List<VATParameterType>();
+                ParameterTypeList = VATParameterList;
+                SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
             
         public StringBuilder GetCaptcha()

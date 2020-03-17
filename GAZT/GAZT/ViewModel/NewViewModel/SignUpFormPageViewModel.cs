@@ -1,11 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -20,6 +24,47 @@ namespace GAZT.ViewModel.NewViewModel
 
 
         #region Properties 
+        private int _iDTypeIndex = 0;
+        public int IDTypeIndex
+        {
+            get
+            {
+                return _iDTypeIndex;
+            }
+            set
+            {
+                _iDTypeIndex = value;
+                RaisePropertyChanged("IDTypeIndex");
+            }
+        }
+
+        private int _selectedLOrC = 1;
+        public int SelectedLOrC
+        {
+            get
+            {
+                return _selectedLOrC;
+            }
+            set
+            {
+                _selectedLOrC = value;
+                RaisePropertyChanged("SelectedLOrC");
+            }
+        }
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private SignUpUsing _selectedSignUpUsing = null;
         public SignUpUsing SelectedSignUpUsing
         {
@@ -362,7 +407,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private DateTime? _pkrDBO = DateTime.Now;
+        private DateTime? _pkrDBO = null;
 
         public DateTime? PkrDBO {
             get
@@ -518,10 +563,15 @@ namespace GAZT.ViewModel.NewViewModel
             return Captcha;
 
         }
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
+           
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
                 SignUpUsingList = null;
                 IsCRVisible = true;
                 IsLicenseVisible = false;
@@ -543,20 +593,40 @@ namespace GAZT.ViewModel.NewViewModel
                 LicenseOrCRModelM.ID = 2;
                 LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
                 SelectLCType = LicenseOrCRModelM;
+                IssuedByList = null;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
-                IssuedByResponseList = WebServiceManager.GAZTGetIssuedByList();
-                IssuedByList = IssuedByResponseList;
-                SignupCityRootObject CityListSignup =  WebServiceManager.GAZTGetCityListForSignup();
-                CityList = CityListSignup.d.city_dropdownSet.results;
+                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
+                IssuedByList = IssuedBy.OrderBy(a=>a.txt50).ToList<IssuedByResponse>();
+                CityList = null;
+                SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
+                List<SignupCityResult> CityR = new List<SignupCityResult>();
+
+                CityR = CityListSignup.d.city_dropdownSet.results;
+                CityList = CityR.Where(a => !string.IsNullOrEmpty(a.CityCode)).ToList();
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
                 IDTypeModelRootObject = null;
-               
+                IDTypeIndex = 0;
+                SelectedLOrC = 1;
+               // PkrDBO = null;
+                await Task.Run(() =>
+                {
 
+                    IsLoading = false;
+                });
             }
-            catch (Exception ex)
+            catch (InternetException ex)
             {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
 
+                        IsLoading = false;
+                    });
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
 
         }

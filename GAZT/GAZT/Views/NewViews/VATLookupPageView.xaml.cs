@@ -25,6 +25,7 @@ namespace GAZT.Views.NewViews
             viewModel.MaxDigids = "15";
             SetLTR();
             NavigationPage.SetBackButtonTitle(this, "");
+          
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
 
@@ -46,7 +47,18 @@ namespace GAZT.Views.NewViews
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            PPicker.Focus();
+            try
+            {
+                if (viewModel.SelectedParameterType != null)
+                {
+                  
+                    PPicker.Focus();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

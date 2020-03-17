@@ -2,6 +2,7 @@
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,13 +26,18 @@ namespace GAZT.Views.NewViews
 
             if (Device.RuntimePlatform == Device.iOS)
             {
+                string baseUrl = DependencyService.Get<IBaseUrl>().Get();
+                string path = DependencyService.Get<IBaseUrl>().Get();
+              
                 if (!App.IsArabic)
                 {
-                    TCWebView.Source = "TermsAndConditionsEN.html";
+                    string url = Path.Combine(path, "TermsAndConditionsEN.html");
+                    TCWebView.Source = url;
                 }
                 else
                 {
-                    TCWebView.Source = "TermsAndConditionsAR.html";
+                    string url = Path.Combine(path, "TermsAndConditionsAR.html");
+                    TCWebView.Source = url;
 
                 }
             }
@@ -56,7 +62,7 @@ namespace GAZT.Views.NewViews
             viewModel.IschkTAndC = false;
             viewModel.VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
         }
-            private void SetLTR()
+        private void SetLTR()
         {
 
 

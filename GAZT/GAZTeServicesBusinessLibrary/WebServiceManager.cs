@@ -393,5 +393,82 @@ namespace GAZTeServicesBusinessLibrary
 
             return dashboardData;
         }
+
+        public static Dashboard GAZTGetAdditionalDashboardData(string lang, string TIN)
+        {
+            Dashboard dashboardData = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", Token);
+
+
+                    string uri = Constants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+                    
+                    HttpResponseMessage GAZTGetTheSetOfUnpaidAmountsResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetTheSetOfUnpaidAmountsResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetTheSetOfUnpaidAmountsResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            Token = NewToken;
+                        }
+
+                        string GAZTGetTheSetOfUnpaidAmountsResponseJSON = GAZTGetTheSetOfUnpaidAmountsResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetTheSetOfUnpaidAmountsResponseJSON))
+                        {
+                            GAZTGetTheSetOfUnpaidAmountsResponseJSON = JObject.Parse(GAZTGetTheSetOfUnpaidAmountsResponseJSON)["d"].ToString();
+                            dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetTheSetOfUnpaidAmountsResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return dashboardData;
+        }
+
+
     }
 }

@@ -244,7 +244,7 @@
     <value>إقرارات متأخرة</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>الرقم السري</value>
+    <value>كلمة السر</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>السداد من خلال مدى</value>
@@ -457,13 +457,13 @@
     <value>كل الفواتير</value>
   </data>
   <data name="Paid" xml:space="preserve">
-    <value>مدفوعة</value>
+    <value>مسدد</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مسدد جزئي</value>
+    <value>مدفوع جزئي</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
-    <value>غير مدفوعة</value>
+    <value>غير مسدد</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
     <value>نسيت كلمة المرور أو اسم المستخدم</value>
@@ -577,10 +577,10 @@
     <value>إقرار زكاة تقديري</value>
   </data>
   <data name="NonSubmitted" xml:space="preserve">
-    <value>لم يتم تقديمه</value>
+    <value>غير مقدمة</value>
   </data>
   <data name="OverDue" xml:space="preserve">
-    <value>تأخير</value>
+    <value>متأخرة</value>
   </data>
   <data name="Partial" xml:space="preserve">
     <value>مدفوع جزئي</value>
@@ -589,7 +589,7 @@
     <value>الإقرارات</value>
   </data>
   <data name="Submitted" xml:space="preserve">
-    <value>الفواتير</value>
+    <value>مقدمة</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
     <value>الاقرارات الضريبية</value>
@@ -1673,7 +1673,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseselectthedisclaimercheckboxbeforesubmit" xml:space="preserve">
-    <value>م يتم اي تغييرات ، لا يمكن إصدار الإقرار</value>
+    <value>يرجى اختيار مربع إخلاء المسؤولية قبل التقديم</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPleaseuploadtheRequiredDocumentandChangereason" xml:space="preserve">
@@ -2115,7 +2115,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZCurrentlytheappsupportsindividualTaxPayerregistration" xml:space="preserve">
-    <value>Currently, the app supports individual Tax Payer registration</value>
+    <value>حاليًا ، يدعم التطبيق تسجيل دافع الضرائب الفردي</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZDateofBirth" xml:space="preserve">
@@ -2582,6 +2582,10 @@
     <value>تسجيل جديد</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
+    <value>نوع الكيان الخاص بك فردي</value>
+    <comment>Sign Up</comment>
+  </data>
   <data name="ZTERReportDetailEMail" xml:space="preserve">
     <value>البريد اإللكتروني لمقدم البالغ</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2689,4 +2693,36 @@
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+  <data name="ZZIBANisincorrect" xml:space="preserve">
+    <value>إدخال غير صالحَ</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZPleaseretainthisnumberforfuturereferenceandcommunucation" xml:space="preserve">
+    <value>(يرجى الاحتفاظ بهذا الرقم للرجوع إليه في المستقبل)</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZZReturnUnderReview" xml:space="preserve">
+    <value>الإقرار تحت المراجعة من قبل الهيئة</value>
+  </data>
+  <data name="ZZVATAmount" xml:space="preserve">
+    <value>مبلغ ضريبة القيمة المضافة</value>
+    <comment>VAT</comment>
+  </data>
+  <data name="ZZCRName" xml:space="preserve">
+    <value>أسم السجل التجاري</value>
+    <comment>Check TIN Status</comment>
+  </data>
+  <data name="ZZDescriptionForFormBundle" xml:space="preserve">
+    <value>الوصف</value>
+    <comment>Form bundle status</comment>
+  </data>
+  <data name="ZZPleaseenteraccessCode" xml:space="preserve">
+    <value>الرجاء إدخال رمز الدخول</value>
+    <comment>OTP Screen</comment>
+  </data>
+   <data name="BreakDownLabel" xml:space="preserve">
+    <value>سوف تستلم تفاصيل المبلغ المستحق على ايميلك المسجل وكذلك في قسم المراسلات الموجود بحسابك على بوابة الهيئة</value>
+    <comment>Acknowledgement</comment>
+  </data>   
+  
 </root>

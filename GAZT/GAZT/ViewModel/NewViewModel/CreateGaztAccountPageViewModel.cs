@@ -287,11 +287,18 @@ namespace GAZT.ViewModel.NewViewModel
                         if (ResultFirstSubmitModel.d == null)
                         {
                             SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                            _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            });
 
                         }
                         else
                         {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
+                            });
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
                             VerifyButtonDisableColor = Color.FromHex("#005e4b");
                             IsResendOTPEnabled = false;
@@ -299,13 +306,16 @@ namespace GAZT.ViewModel.NewViewModel
                             IsOTPEntryEnable = true;
                             numberOfSeconds = 120;
                             TimerStart(numberOfSeconds);
-                            _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou,AppResources.Information);
+                           
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (InternetException ex)
                     {
-
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
                     }
                 });
 
@@ -364,7 +374,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     }
 
-                    if (TotalSec < 0)
+                    if (TotalSec == 0)
                     {
                         OTPValidDuration = " 0:00";
                         ButtonDisableColor = Color.FromHex("#005e4b");
@@ -374,6 +384,10 @@ namespace GAZT.ViewModel.NewViewModel
                         IsOTPEntryEnable = false;
                         return false;
 
+                    }
+                    else if(TotalSec <0)
+                    {
+                        TotalSec = 120;
                     }
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
@@ -389,42 +403,52 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void CreateGaZTAccount()
         {
-            CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
-            CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-            CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-            CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-            CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-            CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-            CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-            CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-            CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-            CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-            CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-            CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-            CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-            CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-            CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-            CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-            CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-            CreateModel.AType = SignUpModelRootObjectM.d.AType;
-            CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
-            CreateModel.APassword = TxtPassword;
-            CreateModel.ASmsCode = TxtMobileNumberCode;
-            CreateModel.AEmailCode = TxtEmailCode;
-            CreateModel.ASubmit = "X";
-            CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
-            string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
-            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-
-            if (ResultFirstSubmitModel.d == null)
+            try
             {
-                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
+                CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
+                CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
+                CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
+                CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
+                CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
+                CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
+                CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
+                CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
+                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
+                CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
+                CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
+                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
+                CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
+                CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
+                CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
+                CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
+                CreateModel.AType = SignUpModelRootObjectM.d.AType;
+                CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                CreateModel.APassword = TxtPassword;
+                CreateModel.ASmsCode = TxtMobileNumberCode;
+                CreateModel.AEmailCode = TxtEmailCode;
+                CreateModel.ASubmit = "X";
+                CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
+                SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
 
+                if (ResultFirstSubmitModel.d == null)
+                {
+                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                    _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+
+                }
+                else
+                {
+                    _navigationService.NavigateTo(App.AccountCreatedPageView);
+                }
             }
-            else
+            catch (InternetException ex)
             {
-                _navigationService.NavigateTo(App.AccountCreatedPageView);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
 
         }

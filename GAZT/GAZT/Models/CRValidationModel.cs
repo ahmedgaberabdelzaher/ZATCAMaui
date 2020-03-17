@@ -24,7 +24,7 @@ namespace GAZT.Models
         public string CountryAry { get; set; }
         public object Validto { get; set; }
         public string NotFound { get; set; }
-        public DateTime Issuedt { get; set; }
+        public DateTime? Issuedt { get; set; }
         public object Expdt { get; set; }
         public string Crname { get; set; }
         public string Excption { get; set; }

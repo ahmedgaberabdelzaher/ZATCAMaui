@@ -122,6 +122,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
         public int _attachmentCount = 0;
 
         public int AttachmentCount
@@ -261,8 +262,9 @@ namespace GAZT.ViewModel.NewViewModel
                                                 }
                                             }
                                             if (IsAttachmentPresent == false)
-                                            {
-                                                AttachmentRootOject _attachment =await SaveAttachment(attachment);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                        {
+                                            string attachmentType = UtilityManager.GetContentType(Extention);
+                                                AttachmentRootOject _attachment =await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                 PopToRootPage();
                                                 if (_attachment != null && _attachment.d != null)
                                                 {
@@ -359,7 +361,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData)
+        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
         {
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
@@ -370,7 +372,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                   
+                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0", contentType);
 
                     if (attachment != null)
                     {

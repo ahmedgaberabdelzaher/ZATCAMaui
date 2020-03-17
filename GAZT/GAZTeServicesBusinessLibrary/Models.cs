@@ -1,9 +1,6 @@
-﻿using Syncfusion.SfChart.XForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
-using Xamarin.Forms.Internals;
 
 namespace GAZTeServicesBusinessLibrary
 {
@@ -178,24 +175,24 @@ namespace GAZTeServicesBusinessLibrary
         public string BackgroundGradientStart { get; set; }
         public string BackgroundGradientEnd { get; set; }
 
-        private ObservableCollection<ChartDataPoint> chartData;
-        public ObservableCollection<ChartDataPoint> ChartData
-        {
-            get
-            {
-                return chartData;
-            }
+        //private ObservableCollection<ChartDataPoint> chartData;
+        //public ObservableCollection<ChartDataPoint> ChartData
+        //{
+        //    get
+        //    {
+        //        return chartData;
+        //    }
 
-            set
-            {
-                if (chartData == value)
-                {
-                    return;
-                }
+        //    set
+        //    {
+        //        if (chartData == value)
+        //        {
+        //            return;
+        //        }
 
-                chartData = value;
-            }
-        }
+        //        chartData = value;
+        //    }
+        //}
     }
     public class eServiceInfo
     {
@@ -203,12 +200,13 @@ namespace GAZTeServicesBusinessLibrary
         public string BackgroundGradientStart { get; set; }
         public string BackgroundGradientEnd { get; set; }
         public string iConImagePath { get; set; }
+        public string OnClickEvents { get; set; }
     }
 
     /// <summary>
     /// Model for the FAQ page.
     /// </summary>
-    [Preserve(AllMembers = true)]
+    //[Preserve(AllMembers = true)]
     [DataContract]
     public class FAQ
     {

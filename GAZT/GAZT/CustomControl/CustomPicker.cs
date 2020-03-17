@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace GAZT
 {
-    public class CustomPicker : Picker
+    public  class CustomPicker : Picker
     {
         #region Constructor
         public CustomPicker()
@@ -41,6 +41,56 @@ namespace GAZT
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create<CustomPicker, IList>(p => p.ItemsSource, null, propertyChanged: OnItemsSourcePropertyChanged);
 
+        public string DoneButtonText
+        {
+            get
+            {
+                return (string)GetValue(DoneButtonTextProperty);
+            }
+            set
+            {
+                SetValue(DoneButtonTextProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty DoneButtonTextProperty = BindableProperty.Create(
+                                                          propertyName: "DoneButtonTextProperty",
+                                                          returnType: typeof(string),
+                                                          declaringType: typeof(CustomPicker),
+                                                          defaultValue: string.Empty,
+                                                          defaultBindingMode: BindingMode.TwoWay,
+                                                          propertyChanged: DoneButtonTextPropertyChanged);
+
+        private static void DoneButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            (bindable as CustomPicker).DoneButtonText = newValue.ToString();
+        }
+
+        public string CancelButtonText
+        {
+            get
+            {
+                return (string)GetValue(CancelButtonTextProperty);
+            }
+            set
+            {
+                SetValue(CancelButtonTextProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty CancelButtonTextProperty = BindableProperty.Create(
+                                                          propertyName: "CancelButtonTextProperty",
+                                                          returnType: typeof(string),
+                                                          declaringType: typeof(CustomPicker),
+                                                          defaultValue: string.Empty,
+                                                          defaultBindingMode: BindingMode.TwoWay,
+                                                          propertyChanged: CancelButtonTextPropertyChanged);
+
+        private static void CancelButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            (bindable as CustomPicker).CancelButtonText = newValue.ToString();
+        }
+
         #endregion Fields
 
         #region Properties
@@ -62,7 +112,7 @@ namespace GAZT
             get { return GetValue(DisplayMemberBindingProperty).ToString(); }
             set { SetValue(DisplayMemberBindingProperty, value); }
         }
-
+      
         /// <summary>
         /// Gets or sets the selected item.
         /// </summary>
@@ -75,9 +125,101 @@ namespace GAZT
             set { SetValue(SelectedItemProperty, value); }
         }
 
+
+        //public string DoneButtonText
+
+        //{
+
+        //    get
+
+        //    {
+
+        //        return (string)GetValue(DoneButtonTextProperty);
+
+        //    }
+
+        //    set
+
+        //    {
+
+        //        SetValue(DoneButtonTextProperty, value);
+
+        //    }
+
+        //}
+
+
+
+        //public static readonly BindableProperty DoneButtonTextProperty = BindableProperty.Create(
+
+        //propertyName: "DoneButtonTextProperty",
+
+        //returnType: typeof(string),
+
+        //declaringType: typeof(CustomPicker),
+
+        //defaultValue: string.Empty,
+
+        //defaultBindingMode: BindingMode.TwoWay,
+
+        //propertyChanged: DoneButtonTextPropertyChanged);
+
+
+
+        //public string CancelButtonText
+
+        //{
+
+        //    get
+
+        //    {
+
+        //        return (string)GetValue(CancelButtonTextProperty);
+
+        //    }
+
+        //    set
+
+        //    {
+
+        //        SetValue(CancelButtonTextProperty, value);
+
+        //    }
+
+        //}
+
+
+
+        //public static readonly BindableProperty CancelButtonTextProperty = BindableProperty.Create(
+
+        //propertyName: "CancelButtonTextProperty",
+
+        //returnType: typeof(string),
+
+        //declaringType: typeof(CustomPicker),
+
+        //defaultValue: string.Empty,
+
+        //defaultBindingMode: BindingMode.TwoWay,
+
+        //propertyChanged: CancelButtonTextPropertyChanged);
+
         #endregion Properties
 
         #region Methods
+
+
+        //private static void CancelButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        //{
+        //    (bindable as CustomPicker).CancelButtonText = newValue.ToString();
+        //}
+
+        //private static void DoneButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        //{
+        //    (bindable as CustomPicker).DoneButtonText = newValue.ToString();
+
+        //}
+
 
         /// <summary>
         /// Called when [items source property changed].
@@ -185,14 +327,16 @@ namespace GAZT
             }
         }
 
-        public static readonly BindableProperty ImageProperty =
-            BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomPicker), string.Empty);
 
-        public string Image
-        {
-            get { return (string)GetValue(ImageProperty); }
-            set { SetValue(ImageProperty, value); }
-        }
+
+        //public static readonly BindableProperty ImageProperty =
+        //    BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomPicker), string.Empty);
+
+        //public string Image
+        //{
+        //    get { return (string)GetValue(ImageProperty); }
+        //    set { SetValue(ImageProperty, value); }
+        //}
         #endregion Methods
     }
 }

@@ -7,7 +7,9 @@ using GAZT.ViewModel.NewViewModel;
 using GAZT.Views;
 using GAZT.Views.NewViews;
 using GAZTeServicesApp.ViewModels.LandingPage;
+using GAZTeServicesApp.ViewModels.Options;
 using GAZTeServicesApp.Views.LandingPage;
+using GAZTeServicesApp.Views.Options;
 
 namespace GAZT
 {
@@ -23,6 +25,7 @@ namespace GAZT
             //SYNCFUSION INTEGRATION
 
             SimpleIoc.Default.Register<LandingPageViewModel>();
+            SimpleIoc.Default.Register<OptionsPageViewModel>();
 
             //SYNCFUSION INTEGRATION
 
@@ -401,10 +404,6 @@ namespace GAZT
             }
         }
 
-
-
-
-
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
@@ -440,8 +439,6 @@ namespace GAZT
                 }
             }
         }
-
-
         public VATLookupPageViewModel VATLookupPageView
         {
             get
@@ -563,7 +560,6 @@ namespace GAZT
                 }
             }
         }
-
 
         public VATReturnsPageViewModel VATReturnsPageView
         {
@@ -756,7 +752,7 @@ namespace GAZT
                 }
             }
         }
- public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
+        public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
         {
             get
             {
@@ -843,6 +839,24 @@ namespace GAZT
             }
         }
 
+        public AccountCreatedPageViewModel AccountCreatedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        //SYNC FUSION INTEGRATION
+
         public LandingPageViewModel LandingPageView
         {
             get
@@ -858,13 +872,13 @@ namespace GAZT
             }
         }
 
-        public AccountCreatedPageViewModel AccountCreatedPageView
+        public OptionsPageViewModel OptionsPageView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<OptionsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -872,6 +886,10 @@ namespace GAZT
                 }
             }
         }
+
+        //SYNC FUSION INTEGRATION
+
+
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
@@ -879,6 +897,7 @@ namespace GAZT
             //SYNCFUSION INTEGRATION
 
             navigationService.Configure(App.LandingPageView, typeof(LandingPageView));
+            navigationService.Configure(App.OptionsPageView, typeof(OptionsPageView));
 
             //SYNCFUSION INTEGRATION
 
@@ -889,7 +908,7 @@ namespace GAZT
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.TaxPayerProfileView, typeof(TaxPayerProfileView));
             navigationService.Configure(App.PdfView, typeof(PdfView));
-            navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
+         //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
 
 
             navigationService.Configure(App.TPProfileView, typeof(TPProfileView));

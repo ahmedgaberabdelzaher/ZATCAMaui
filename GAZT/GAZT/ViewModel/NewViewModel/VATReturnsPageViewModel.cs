@@ -153,15 +153,31 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
+               
                 _isSwitchToggled = value;
+               
                 try
-                {
+                {   if (string.IsNullOrEmpty(Preperiodcorr) && IsSwitchToggled)
+                    {
+                        IsSwitchToggled = false;
+                        
+                    }
+                      
                     if (IsSwitchToggled)
                     {
-                        //double d = Convert.ToDouble(Preperiodcorr);
-                        //d = d * (-1);
                         if (!string.IsNullOrEmpty(Preperiodcorr) && !Preperiodcorr.Contains("-"))
-                            Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                        {
+                            if(App.IsArabic)
+                            {
+                              //  Preperiodcorr =  Preperiodcorr + "-";// d.ToString();
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                            }
+                            else
+                            {
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                            }
+                        }
+                           
                     }
                     else
                     {
@@ -427,7 +443,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
-                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055")
+                    if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == false)) || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                     }
@@ -486,7 +502,6 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     IsMainButtonEnabled = false;
-                    VATDeclarationData.d.DecFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForSummary");
             }
@@ -541,6 +556,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private bool _onMoreOptionsEnabled = true;
+        public bool OnMoreOptionsEnabled
+        {
+            get
+            {
+                return _onMoreOptionsEnabled;
+            }
+            set
+            {
+                _onMoreOptionsEnabled = value;
+                RaisePropertyChanged("OnMoreOptionsEnabled");
+            }
+        }
 
         private bool _isMainButtonEnabled = false;
         public bool IsMainButtonEnabled
@@ -1267,7 +1296,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _preperiodcorr = value;
                     if (_preperiodcorr != null)
                     {
-                        bool isValiedNumber = UtilityManager.IsEnglishNumber(Preperiodcorr);
+                        bool isValiedNumber = UtilityManager.IsEnglishNumberWithMinus(Preperiodcorr);
                         if(isValiedNumber)
                         {
                             NetdueVat = NetVatDue(TotaldueVat, Preperiodcorr, CreditVat);
@@ -1285,7 +1314,8 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                        
                     }
-                  
+                    if (string.IsNullOrEmpty(Preperiodcorr) || string.IsNullOrEmpty("0.00"))
+                        IsSwitchToggled = false;
                 }
                 catch(Exception ex)
                 {
@@ -1516,6 +1546,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVisibleDropdownForRefund = false;
                     IsDropdownVisibleForIban = false;
                     IsVisiblechkRefundDeclaration = false;
+                    IsCheckedRefund = false;
+                    IschkRefundDeclaration = false;
+                    switchForMainButton();
                 }
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
@@ -2058,7 +2091,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             onFaqSectionClicked = new Xamarin.Forms.Command(async () =>
             {
-                Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                if (App.IsArabic)
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/ar/introduction-to-vat/faq/general-faqs"));
+                }
+                else
+                {
+                    Device.OpenUri(new Uri("https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs"));
+                }
             });
 
 
@@ -2123,8 +2163,8 @@ namespace GAZT.ViewModel.NewViewModel
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     attachment = fileData.DataArray;
                     AttachmentName = fileData.FileName;
-
-                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0");
+                    string ContentType = UtilityManager.GetContentType(AttachmentName.Split('.')[1].ToLower());
+                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0", ContentType);
                     PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
                     {
@@ -2151,7 +2191,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
-                SummaryClicked();
+               await SummaryClicked();
 
             });
 
@@ -2211,6 +2251,25 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Method
 
+        public void switchForMainButton()
+        {
+            if(IsDeclarationCheckedForSummary==true)
+            {
+                if((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
+                {
+                    IsMainButtonEnabled = false;
+                }
+                else
+                {
+                    IsMainButtonEnabled = true;
+                }
+                
+            }
+            else
+            {
+                IsMainButtonEnabled = false;
+            }
+        }
         public void ShowMsgs()
         {
             StringBuilder Masseges = new StringBuilder();
@@ -2468,7 +2527,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2515,7 +2574,7 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
 
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055")
+                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055" || App.ICRStatus == "E0058")
                 {
                     IsCheckedTaxPayerDetailsInfo = true;
                     //IsMainButtonEnabled = true;
@@ -2547,13 +2606,6 @@ namespace GAZT.ViewModel.NewViewModel
             bool value = false;
             ClearPage();
             DisableForRefund();
-
-
-
-
-
-          
-
             //  IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
             {
@@ -2572,7 +2624,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsVisibleDropdownForRefund = true;
                             IsVisiblechkRefundDeclaration = true;
                             //  IsDropdownVisibleForIban = true;
-                            if (VATDeclarationData.d.IbanCb == "1")
+                            if (VATDeclarationData.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                             {
                                 IsTextBoxVisibleForIban = true;
                                 IsDropdownVisibleForIban = false;
@@ -2584,7 +2636,6 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
-                                IsVATRefunCheckedVisible = false;
                                 IsTextBoxVisibleForIban = false;
                                 IsDropdownVisibleForIban = true;
 
@@ -2592,6 +2643,15 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
                                 }
+                                if(IBANList != null && IBANList.Count > 0)
+                                {
+                                    IsVATRefunCheckedVisible = false;
+                                }
+                                else
+                                {
+                                    IsVATRefunCheckedVisible = true;
+                                }
+
                             }
                             if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
                             {
@@ -2646,8 +2706,16 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    IsVATRefunCheckedVisible = false;
+                    if (IBANList != null && IBANList.Count > 0)
+                    {
+                        IsVATRefunCheckedVisible = false;
+                    }
+                    else
+                    {
+                        IsVATRefunCheckedVisible = true;
+                    }
                 }
+
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
                 IsMainButtonEnabled = false;
@@ -2691,7 +2759,7 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
+                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
                     {
                         IsMainButtonEnabled = false;
                         IsDeclarationCheckedForSummary = true;
@@ -2717,6 +2785,34 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    IsDeclarationCheckedForSummary = false;
             //}
+
+            if (VATDeclarationData.d.DecFg == "1")
+            {
+                IsDeclarationCheckedForSummary = true;
+            }
+            else
+            {
+                IsDeclarationCheckedForSummary = false;
+            }
+
+            if (VATDeclarationData.d.TcFlg == "1")
+            {
+                IschkRefundDeclaration = true;
+            }
+            else
+            {
+                IschkRefundDeclaration = false;
+            }
+
+            if (VATDeclarationData.d.IbanCb == "1")
+            {
+                IsCheckedRefund = true;
+            }
+            else
+            {
+                IsCheckedRefund = false;
+            }
+
         }
 
         public void CreditCarriedClicked()
@@ -2778,15 +2874,16 @@ namespace GAZT.ViewModel.NewViewModel
                 //await Task.Run(async() =>
                 //{
                 //IsLoading = true;
-                if (FirstSubmissionCount != 1)
-                {
-                    CreateDataForPost();
-                }
+                //if (FirstSubmissionCount != 1)
+                //{
+                //    CreateDataForPost();
+                //}
 
                 //IsVisibleAcknowledgment = true;
                 ButtonName = AppResources.Submit;
                 if (!IsFirstSubmission)
                 {
+                    CreateDataForPost();
                     FirstSubmissionCount = 0;
                     //ClearPage();
                     //IsVisibleAcknowledgment = true;
@@ -2808,6 +2905,10 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsEnableIBAN = false;
+                        IsEnableCheckedRefund = false;
+                        IsEnableIBANType = false;
+                        IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -2831,42 +2932,45 @@ namespace GAZT.ViewModel.NewViewModel
                         //PopToRootPage();
                         IsLoading = false;
                         resNew = await SaveReturnAndGetReturnAndSetButtons();
-                   // }
-                    //decimal FourteenA = 0;
-                    //if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
-                    //{
-                    //    FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
-                    //}
+                    // }
+                
 
-                    //if ((FourteenA <0 && IsSwichButtonEnable == false) || (FourteenA < 0 && IsSwichButtonEnable == true))
-                    //{
-                    //    StringBuilder Masseges = new StringBuilder();
-                    //    Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                    //    Masseges.Append(Environment.NewLine);
-                    //    Masseges.Append(Environment.NewLine);
-                    //    Masseges.Append(Environment.NewLine);
 
-                    //    Masseges.Append(AppResources.CreditReturnMsg);
-
-                    //    PopUp Pop = new PopUp();
-                    //    Pop.IsLinkAvailable = false;
-                    //    Pop.IsRed = "#ff0000";
-                    //    Pop.IsBold = "Bold";
-                    //    Pop.Message = Masseges.ToString();
-                    //    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-
-                    //}
-                    //else
-                    //{
-                    //    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                    //    VATReturnFormClicked();
-                    //    PageSelectedItem = VatTabbledPageList[2];
-                    //}
                     if (resNew != null)
                     {
-                        await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                        VATReturnFormClicked();
-                        PageSelectedItem = VatTabbledPageList[2];
+                        decimal FourteenA = 0;
+                        if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
+                        {
+                            FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
+                        }
+
+                        if ((IsSwichButtonEnable == true && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
+                        {
+                            StringBuilder Masseges = new StringBuilder();
+                            Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(Environment.NewLine);
+                            Masseges.Append(Environment.NewLine);
+
+                            Masseges.Append(AppResources.CreditReturnMsg);
+
+                            PopUp Pop = new PopUp();
+                            Pop.IsLinkAvailable = false;
+                            Pop.IsRed = "#ff0000";
+                            Pop.IsBold = "Bold";
+                            Pop.Message = Masseges.ToString();
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                            VATReturnFormClicked();
+                            PageSelectedItem = VatTabbledPageList[2];
+                        }
+                        //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                        //VATReturnFormClicked();
+                        //PageSelectedItem = VatTabbledPageList[2];
                     }
                     else
                     {
@@ -3369,8 +3473,6 @@ namespace GAZT.ViewModel.NewViewModel
                     periodfrom = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     periodto = JsonConvert.DeserializeObject<DateTime>(@"""" + VATDeclarationData.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-
-
                     TaxpayerPeriodFromDate = UtilityManager.ToArabicDate(periodfrom);
                     TaxpayerPeriodToDate = UtilityManager.ToArabicDate(periodto);
                 }
@@ -3509,9 +3611,13 @@ namespace GAZT.ViewModel.NewViewModel
                 //        vatTabbedList.Add(s2);
                 //        vatTabbedList.Add(s3);
                 //    }
-
+                
                 VatTabbledPageList = vatTabbedList;
-                PageSelectedItem = VatTabbledPageList[0];
+
+                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058" || App.ICRStatus == "E0055")
+                    {
+                      PageSelectedItem = VatTabbledPageList[0];
+                }
 
 
                 ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationData.d.ATTACHSet.results as List<Attachment>);
@@ -3612,7 +3718,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _ListOfActionButtonsApplicable = value;
-
+                if(_ListOfActionButtonsApplicable!=null && _ListOfActionButtonsApplicable.Count()!=0)
+                {
+                    OnMoreOptionsEnabled = true;
+                }
+                else
+                {
+                    OnMoreOptionsEnabled = false;
+                }
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
@@ -3651,6 +3764,34 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    VATDeclarationData.d.DecFg = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.DecFg = "0";
+                }
+
+                if (IschkRefundDeclaration)
+                {
+                    VATDeclarationData.d.TcFlg = "1";
+                }
+                else
+                { 
+                    VATDeclarationData.d.TcFlg = "0";
+                }
+
+
+                if (IsCheckedRefund)
+                {
+                    VATDeclarationData.d.IbanCb = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.IbanCb = "0";
+                }
+
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
                 {
                     DummyATTACHSetsList = new List<Attachment>();
@@ -3713,57 +3854,61 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void CreateDataForPost()
         {
-            //List<Note> noteList = new List<Note>();
-            //Note Note = new Note();
-            //Note.Strline = NoteText;
-            //noteList.Add(Note);
-            //VATDeclarationData.d.NOTESSet.results = noteList;
-            VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
-            vATDeclarationD = SetRemainingData(vATDeclarationD);
-            VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
-            VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
-            VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
-            VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
-            VATDeclarationData.d.StdsalesVat = vATDeclarationD.StdsalesVat;
-            VATDeclarationData.d.TotalsalesVat = vATDeclarationD.TotalsalesVat;
-            VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
-            VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
-            VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
-            VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
-            VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
-            VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
-            VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
-            VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
-
-            if (IsVisibleDropdownForRefund == true)
+            try
             {
-                VATDeclarationData.d.RefundFg = "1";
-                if (IsCheckedRefund == true)
+
+                VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
+                vATDeclarationD = SetRemainingData(vATDeclarationD);
+                VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
+                VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
+                VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
+                VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
+                VATDeclarationData.d.StdsalesVat = vATDeclarationD.StdsalesVat;
+                VATDeclarationData.d.TotalsalesVat = vATDeclarationD.TotalsalesVat;
+                VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
+                VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
+                VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
+                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
+                VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
+                VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
+                VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
+                VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
+
+                if (IsVisibleDropdownForRefund == true)
                 {
-                    VATDeclarationData.d.Iban = IbanNumberText;
-                    VATDeclarationData.d.IbanCb = "1";
+                    VATDeclarationData.d.RefundFg = "1";
+                    if (IsCheckedRefund == true)
+                    {
+                        VATDeclarationData.d.Iban = IbanNumberText;
+                        VATDeclarationData.d.IbanCb = "1";
+                    }
+                    else
+                    {
+                        if (SelectedIBAN != null)
+                        {
+                            VATDeclarationData.d.Iban = SelectedIBAN.Iban;
+                            VATDeclarationData.d.IbanCb = "0";
+                        }
+                    }
+                    if (SelectedIBANType != null)
+                    {
+                        VATDeclarationData.d.Idtype = SelectedIBANType.key;
+                    }
+                    if (SelectedIBANIDNumber != null)
+                    {
+                        VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                    }
                 }
                 else
                 {
-                    if (SelectedIBAN != null)
-                    {
-                        VATDeclarationData.d.Iban = SelectedIBAN.Iban;
-                        VATDeclarationData.d.IbanCb = "0";
-                    }
-                }
-                if (SelectedIBANType != null)
-                {
-                    VATDeclarationData.d.Idtype = SelectedIBANType.key;
-                }
-                if (SelectedIBANIDNumber != null)
-                {
-                    VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                    VATDeclarationData.d.RefundFg = "0";
                 }
             }
-            else
+            catch(Exception ex)
             {
-                VATDeclarationData.d.RefundFg = "0";
+
             }
+           
         }
 
         public VATDeclarationD SetRemainingData(VATDeclarationD vATDeclarationD)
@@ -3852,7 +3997,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 vATDeclarationD.Preperiodcorr = vATDeclarationD.Preperiodcorr.Replace(",", "");
             }
-
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt) && vATDeclarationD.StdsalesAmt.Contains(","))
+            {
+                vATDeclarationD.StdsalesAmt = vATDeclarationD.StdsalesAmt.Replace(",", "");
+            }
 
 
 
@@ -3861,64 +4009,72 @@ namespace GAZT.ViewModel.NewViewModel
 
         public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
         {
+            try
+            {
+                
+                if (!String.IsNullOrEmpty(TotalsalesAmt) && TotalsalesAmt.Contains(","))
+                {
 
-            if (!String.IsNullOrEmpty(TotalsalesAmt) && TotalsalesAmt.Contains(","))
-            {
-                vATDeclarationD.TotalsalesAmt = TotalsalesAmt.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalsalesAdj) && TotalsalesAdj.Contains(","))
-            {
-                vATDeclarationD.TotalsalesAdj = TotalsalesAdj.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseAmt) && TotalpurchaseAmt.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseAmt = TotalpurchaseAmt.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseAdj) && TotalpurchaseAdj.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseAdj = TotalpurchaseAdj.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(StdsalesVat) && StdsalesVat.Contains(","))
-            {
-                vATDeclarationD.StdsalesVat = StdsalesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalsalesVat) && TotalsalesVat.Contains(","))
-            {
-                vATDeclarationD.TotalsalesVat = TotalsalesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(StdpurchasesVat) && StdpurchasesVat.Contains(","))
-            {
-                vATDeclarationD.StdpurchasesVat = StdpurchasesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(ImportspaidVat) && ImportspaidVat.Contains(","))
-            {
-                vATDeclarationD.ImportspaidVat = ImportspaidVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(ImportsaccVat) && ImportsaccVat.Contains(","))
-            {
-                vATDeclarationD.ImportsaccVat = ImportsaccVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseVat) && TotalpurchaseVat.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseVat = TotalpurchaseVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat.Contains(","))
-            {
-                vATDeclarationD.TotaldueVat = TotaldueVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(Preperiodcorr) && Preperiodcorr.Contains(","))
-            {
-                vATDeclarationD.Preperiodcorr = Preperiodcorr.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(CreditVat) && CreditVat.Contains(","))
-            {
-                vATDeclarationD.CreditVat = CreditVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(NetdueVat) && NetdueVat.Contains(","))
-            {
-                vATDeclarationD.NetdueVat = NetdueVat.Replace(",", "");
-            }
+                    vATDeclarationD.TotalsalesAmt = !TotalsalesAmt.Contains(",") ? TotalsalesAmt : TotalsalesAmt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalsalesAdj) && TotalsalesAdj.Contains(","))
+                {
+                    vATDeclarationD.TotalsalesAdj = !TotalsalesAdj.Contains(",") ? TotalsalesAdj : TotalsalesAdj.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseAmt) && TotalpurchaseAmt.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseAmt = !TotalpurchaseAmt.Contains(",") ? TotalpurchaseAmt : TotalpurchaseAmt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseAdj) && TotalpurchaseAdj.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseAdj = !TotalpurchaseAdj.Contains(",") ? TotalpurchaseAdj : TotalpurchaseAdj.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(StdsalesVat) && StdsalesVat.Contains(","))
+                {
+                    vATDeclarationD.StdsalesVat = !StdsalesVat.Contains(",") ? StdsalesVat : StdsalesVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(TotalsalesVat) && TotalsalesVat.Contains(","))
+                {
+                    vATDeclarationD.TotalsalesVat = !TotalsalesVat.Contains(",") ? TotalsalesVat : TotalsalesVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(StdpurchasesVat) && StdpurchasesVat.Contains(","))
+                {
+                    vATDeclarationD.StdpurchasesVat = !StdpurchasesVat.Contains(",") ? StdpurchasesVat : StdpurchasesVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(ImportspaidVat) && ImportspaidVat.Contains(","))
+                {
+                    vATDeclarationD.ImportspaidVat = !ImportspaidVat.Contains(",") ? ImportspaidVat : ImportspaidVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(ImportsaccVat) && ImportsaccVat.Contains(","))
+                {
+                    vATDeclarationD.ImportsaccVat = !ImportsaccVat.Contains(",") ? ImportsaccVat : ImportsaccVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseVat) && TotalpurchaseVat.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseVat = !TotalpurchaseVat.Contains(",") ? TotalpurchaseVat : TotalpurchaseVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat.Contains(","))
+                {
+                    vATDeclarationD.TotaldueVat = !TotaldueVat.Contains(",") ? TotaldueVat : TotaldueVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(Preperiodcorr))
+                {
+                    vATDeclarationD.Preperiodcorr = !Preperiodcorr.Contains(",") ? Preperiodcorr : Preperiodcorr.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(CreditVat) )
+                {
+                    vATDeclarationD.CreditVat = !CreditVat.Contains(",") ? CreditVat : CreditVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(NetdueVat) && NetdueVat.Contains(","))
+                {
+                    vATDeclarationD.NetdueVat = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", ""); 
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+            }
             return vATDeclarationD;
         }
 
@@ -3989,7 +4145,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task NavigationSetupForDraft()
         {
-            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1")
+            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1" || VATDeclarationData.d.StepNumber == "0" || VATDeclarationData.d.StepNumber == "00")
             {
                 //InstrunctionClicked();
                 PageSelectedItem = VatTabbledPageList[0];
@@ -4018,337 +4174,408 @@ namespace GAZT.ViewModel.NewViewModel
 
         public string StandardRatedSalesVatAmount(string Amount, string Adjustment)
         {
-
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
-
             string VATAmount = "0.00";
-            if (!String.IsNullOrEmpty(Amount) && !String.IsNullOrEmpty(Adjustment) &&  Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
 
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-
-                    if (VATAmount == "0")
+               
+                if (!String.IsNullOrEmpty(Amount) && !String.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(VATAmount);
-            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
         public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
-            if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
-            {
-                Amount1 = Amount1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
-            {
-                Amount2 = Amount2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
-            {
-                Amount3 = Amount3.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
-            {
-                Amount4 = Amount4.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
-            {
-                Amount5 = Amount5.Replace(",", "");
-            }
-
             String TotalAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
+            try
             {
-                if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
                 {
-                    if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
+                    Amount1 = Amount1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
+                {
+                    Amount4 = Amount4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
+                {
+                    Amount5 = Amount5.Replace(",", "");
+                }
+
+                
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5))
+                {
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != ".")
                     {
-                        TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
-                        if (TotalAmount == "0")
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-"))
                         {
-                            TotalAmount = "0.00";
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
                         }
                     }
                 }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(TotalAmount);
-            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
         public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5)
         {
-            if (!string.IsNullOrEmpty(Adjustment1) && Adjustment1.Contains(","))
-            {
-                Adjustment1 = Adjustment1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment2) && Adjustment2.Contains(","))
-            {
-                Adjustment2 = Adjustment2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment3) && Adjustment3.Contains(","))
-            {
-                Adjustment3 = Adjustment3.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment4) && Adjustment4.Contains(","))
-            {
-                Adjustment4 = Adjustment4.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment5) && Adjustment5.Contains(","))
-            {
-                Adjustment5 = Adjustment5.Replace(",", "");
-            }
             String TotalAmount = "0.00";
-            if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5))
+            try
             {
-                if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != ".")
+                if (!string.IsNullOrEmpty(Adjustment1) && Adjustment1.Contains(","))
                 {
-                    if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
+                    Adjustment1 = Adjustment1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment2) && Adjustment2.Contains(","))
+                {
+                    Adjustment2 = Adjustment2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment3) && Adjustment3.Contains(","))
+                {
+                    Adjustment3 = Adjustment3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment4) && Adjustment4.Contains(","))
+                {
+                    Adjustment4 = Adjustment4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment5) && Adjustment5.Contains(","))
+                {
+                    Adjustment5 = Adjustment5.Replace(",", "");
+                }
+               
+                if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5))
+                {
+                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != ".")
                     {
-                        TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
-                        if (TotalAmount == "0")
+                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-"))
                         {
-                            TotalAmount = "0.00";
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
                         }
                     }
                 }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(TotalAmount);
-            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
         public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
         {
-            if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
-            {
-                Amount1 = Amount1.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
-            {
-                Amount2 = Amount2.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
-            {
-                Amount3 = Amount3.Replace(",", "");
-            }
-
-
             String TotalAmount = "0.00";
-
-            if (String.IsNullOrEmpty(Amount1))
+            try
             {
-                Amount1 = "0.00";
-            }
-            if (String.IsNullOrEmpty(Amount2))
-            {
-                Amount2 = "0.00";
-            }
-            if (String.IsNullOrEmpty(Amount3))
-            {
-                Amount3 = "0.00";
-            }
-
-            if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
-            {
-                TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
-                if (TotalAmount == "0")
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
                 {
-                    TotalAmount = "0.00";
+                    Amount1 = Amount1.Replace(",", "");
                 }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+
+
+                
+
+                if (String.IsNullOrEmpty(Amount1))
+                {
+                    Amount1 = "0.00";
+                }
+                if (String.IsNullOrEmpty(Amount2))
+                {
+                    Amount2 = "0.00";
+                }
+                if (String.IsNullOrEmpty(Amount3))
+                {
+                    Amount3 = "0.00";
+                }
+
+                if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
+                {
+                    TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
+                    if (TotalAmount == "0")
+                    {
+                        TotalAmount = "0.00";
+                    }
+                }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+               
             }
-            if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+            catch(Exception ex)
             {
-                TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
-                TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(TotalAmount);
-            TotalAmount = isTrue ? "0.00" : TotalAmount;
             return TotalAmount;
         }
 
         public string StandardRatedDomesticPurchaseVatAmount(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(VATAmount);
-            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
         //This method is used to calculate  Imports subject to VAT accounted for through the reverse charge mechanism Vat Amount too.
         public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate001 = Convert.ToDouble(VATRate001);
-                    Double dVATRate002 = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate001 = Convert.ToDouble(VATRate001);
+                        Double dVATRate002 = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(VATAmount);
-            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
         public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
         {
-            if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
-            {
-                Amount = Amount.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
-            {
-                Adjustment = Adjustment.Replace(",", "");
-            }
             string VATAmount = "0.00";
-            if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+            try
             {
-                if (!Amount.Contains("-") && !Adjustment.Contains("-"))
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
                 {
-                    Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
-                    Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
-                    Double dVATRate = Convert.ToDouble(VATRate002);
-
-                    VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
-                    if (VATAmount == "0")
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && Amount != "." && Adjustment != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-"))
                     {
-                        VATAmount = "0.00";
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate = Convert.ToDouble(VATRate002);
+
+                        VATAmount = Convert.ToDouble((((dAmount - dAdjustment) * dVATRate) / 100)).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
                     }
                 }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
             }
-            if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+            catch(Exception ex)
             {
-                VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
-                VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+
             }
-            bool isTrue = IsTextNullOrEmpty(VATAmount);
-            VATAmount = isTrue ? "0.00" : VATAmount;
             return VATAmount;
         }
 
         public string NetVatDue(string CurrentPeriod, string PreviousPeriod, string ForwardFromPreviousPeriod)
         {
-            if (!string.IsNullOrEmpty(CurrentPeriod) && CurrentPeriod.Contains(","))
-            {
-                CurrentPeriod = CurrentPeriod.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(PreviousPeriod) && PreviousPeriod.Contains(","))
-            {
-                PreviousPeriod = PreviousPeriod.Replace(",", "");
-            }
-            if (!string.IsNullOrEmpty(ForwardFromPreviousPeriod) && ForwardFromPreviousPeriod.Contains(","))
-            {
-                ForwardFromPreviousPeriod = ForwardFromPreviousPeriod.Replace(",", "");
-            }
-
             string NetVatDue = "0.00";
             try
             {
-
-                Double dCurrentPeriod = string.IsNullOrEmpty(CurrentPeriod) ? 0 : Convert.ToDouble(CurrentPeriod);
-                Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
-                Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
-
-                NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
-                if (NetVatDue == "0")
+                if (!string.IsNullOrEmpty(CurrentPeriod) && CurrentPeriod.Contains(","))
                 {
-                    NetVatDue = "0.00";
+                    CurrentPeriod = CurrentPeriod.Replace(",", "");
                 }
+                if (!string.IsNullOrEmpty(PreviousPeriod) && PreviousPeriod.Contains(","))
+                {
+                    PreviousPeriod = PreviousPeriod.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(ForwardFromPreviousPeriod) && ForwardFromPreviousPeriod.Contains(","))
+                {
+                    ForwardFromPreviousPeriod = ForwardFromPreviousPeriod.Replace(",", "");
+                }
+
+               
+                try
+                {
+
+                    Double dCurrentPeriod = string.IsNullOrEmpty(CurrentPeriod) ? 0 : Convert.ToDouble(CurrentPeriod);
+                    Double dPreviousPeriod = string.IsNullOrEmpty(PreviousPeriod) ? 0 : Convert.ToDouble(PreviousPeriod);
+                    Double dForwardFromPreviousPeriod = string.IsNullOrEmpty(ForwardFromPreviousPeriod) ? 0 : Convert.ToDouble(ForwardFromPreviousPeriod);
+
+                    NetVatDue = Convert.ToDouble((dCurrentPeriod + dPreviousPeriod + dForwardFromPreviousPeriod)).ToString();
+                    if (NetVatDue == "0")
+                    {
+                        NetVatDue = "0.00";
+                    }
+                }
+                catch
+                {
+
+                }
+                if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.00")
+                {
+                    NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
+                    NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);
+                }
+                bool isTrue = IsTextNullOrEmpty(NetVatDue);
+                NetVatDue = isTrue ? "0.00" : NetVatDue;
+                return NetVatDue;
             }
-            catch
+            catch(Exception ex)
             {
 
             }
-            if (!String.IsNullOrEmpty(NetVatDue) && NetVatDue != "0.00")
-            {
-                NetVatDue = Math.Round(Convert.ToDecimal(NetVatDue), 2).ToString();
-                NetVatDue = UtilityManager.GetCommaSeparatedAmount(NetVatDue);
-            }
-            bool isTrue = IsTextNullOrEmpty(NetVatDue);
-            NetVatDue = isTrue ? "0.00" : NetVatDue;
             return NetVatDue;
         }
 

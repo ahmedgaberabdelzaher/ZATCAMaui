@@ -13,343 +13,377 @@
              x:Class="GAZT.Views.NewViews.SignUpFormPageView">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90*" />
-                    <RowDefinition Height="10*" />
-                   
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="{x:Static local:AppResources.ZZCurrentlytheappsupportsindividualTaxPayerregistration}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                        </Label>
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <CheckBox VerticalOptions="Start" IsChecked="{Binding IsTIN}" Margin="10,0,0,0" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90*" />
+                        <RowDefinition Height="10*" />
 
-                            </CheckBox>
-                            <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,5,10,0"/>
-
-                        </StackLayout>
-
-                        <Label Text="Your Entity type is Individual"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
-                        </Label>
-
-                        <StackLayout Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZTIN}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                                </Frame>
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Unfocused="EntryTIN_Unfocused" TextChanged="EntryTIN_TextChanged" MaxLength="10" x:Name="EntryTIN" Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" ></custom:GAZTBorderlessEntry>
-                            </Grid>
-                           
-                        </StackLayout>
-
-                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZIDType}" />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
-
-                        </Frame>
-                        <custom:GAZTBorderlessPicker x:Name="DDlIDType" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}" SelectedIndexChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                        <Image Grid.Row="6"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                            <!--<Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                    </Image.GestureRecognizers>-->
-                        </Image>
-                        <Label Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.IDNumber}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame  Grid.Row="8"  x:Name="FrmIDNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="EntryIDNumber" TextChanged="GAZTBorderlessEntry_TextChanged" Text="{Binding TxtIDNumber}" Keyboard="Numeric" MaxLength="{Binding MaxLengthID}"></custom:GAZTBorderlessEntry>
-
-                        <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZDateofBirth}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <Frame  Grid.Row="10"  x:Name="FrmDBO"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <DatePicker  Grid.Row="10" x:Name="DpDbo" MaximumDate="{Binding MaximumxD}"  Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
-
-                        <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZName}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame  Grid.Row="12"  x:Name="FrmName"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessEntry  Grid.Row="12"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtName}"></custom:GAZTBorderlessEntry>
-
-                        <BoxView  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />
-
-                        <local1:CustomLabel  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                            <local1:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}"/>
-                                </FormattedString>
-                            </local1:CustomLabel.FormattedText>
-                        </local1:CustomLabel>
-                        <Frame  Grid.Row="15"  x:Name="FrmLNorCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessPicker x:Name="UsingDDl"  Grid.Row="15"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" SelectedItem="{Binding SelectLCType,Mode=TwoWay}" ItemsSource="{Binding LcTypeList}" ItemDisplayBinding="{Binding LCType}" ></custom:GAZTBorderlessPicker>
-                        <Image Grid.Row="15"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                            <!--<Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                    </Image.GestureRecognizers>-->
-                        </Image>
-
-                        <StackLayout Grid.Row="16"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsCRVisible}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZCRNumber}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame  Grid.Row="1"  x:Name="FrmCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                                </Frame>
-
-                                <custom:GAZTBorderlessEntry x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" Text="{Binding TxtCRNumber}" MaxLength="10"></custom:GAZTBorderlessEntry>
-                            </Grid>
-                        </StackLayout>
-                        <StackLayout Grid.Row="16"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLicenseVisible}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZLicenseNumber}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame  Grid.Row="1" x:Name="FrmLicenseNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                                </Frame>
-
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtLicenseNumber}" MaxLength="20">
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <custom1:RestrictSpecialCharactorsBehaviour/>
-                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                </custom:GAZTBorderlessEntry>
-                                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame Grid.Row="3"  x:Name="FrmLicenseIssuedBy" Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-
-                                </Frame>
-                                <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}" ItemsSource="{Binding IssuedByList}" ItemDisplayBinding="{Binding txt50}"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                                <Image Grid.Row="3"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                                    <!--<Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                    </Image.GestureRecognizers>-->
-                                </Image>
-                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZIssuingCity}" />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame Grid.Row="5" x:Name="FrmLicenseIssuedCity"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-
-                                </Frame>
-                                <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectCityList,Mode=TwoWay}" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding CityName}"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
-                                <Image Grid.Row="5"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
-                                    <!--<Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
-                    </Image.GestureRecognizers>-->
-                                </Image>
-                            </Grid>
-                        </StackLayout>
-
-                        <BoxView  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />
-                        <Label Grid.Row="18"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZEmailAddress}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame  Grid.Row="19"  x:Name="FrmEmailAddress"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessEntry x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
-
-
-                        <Label Grid.Row="20"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZMobileNumber}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame  Grid.Row="21" x:Name="FrmMobileNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessEntry Placeholder="5XXXXXXXX" x:Name="EntryMobileNumber" Unfocused="EntryMobileNumber_Unfocused" MaxLength="9" Keyboard="Numeric" TextChanged="EntryMobileNumber_TextChanged" Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}"></custom:GAZTBorderlessEntry>
-
-                        <Label Grid.Row="22"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZZPhoneNumber}"  />
-                                 
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame  Grid.Row="23"  x:Name="FrmPhoneNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                        </Frame>
-
-                        <custom:GAZTBorderlessEntry x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" Unfocused="EntryPhoneNumber_Unfocused" TextChanged="EntryPhoneNumber_TextChanged" MaxLength="9" Keyboard="Numeric" Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}"></custom:GAZTBorderlessEntry>
-
-
-
-
-
-
-                        <Grid Grid.Row="24"   Grid.Column="0"  Grid.ColumnSpan="2" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <Label Text="{x:Static local:AppResources.ZZCurrentlytheappsupportsindividualTaxPayerregistration}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                <CheckBox VerticalOptions="Start" IsChecked="{Binding IsTIN}" Margin="10,0,0,0" >
+
+                                </CheckBox>
+                                <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,5,10,0"/>
+
+                            </StackLayout>
+
+                            <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                            </Label>
+
+                            <StackLayout Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local:AppResources.ZZTIN}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                    </Frame>
+                                    <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Unfocused="EntryTIN_Unfocused" TextChanged="EntryTIN_TextChanged" MaxLength="10" x:Name="EntryTIN" Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" >
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
+                                </Grid>
+
+                            </StackLayout>
+
+                            <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static local:AppResources.ZZResendtheverificationcode}"  />
+                                        <Span Text="{x:Static local:AppResources.ZZIDType}" />
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame  Grid.Row="1" x:Name="FrmEnteredCaptcha"  Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                            <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+
                             </Frame>
-                            <Frame  Grid.Row="1"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                            <custom:GAZTBorderlessPicker x:Name="DDlIDType" SelectedIndex="{Binding IDTypeIndex}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}" SelectedIndexChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                            <Image Grid.Row="6"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                <!--<Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>-->
+                            </Image>
+                            <Label Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.IDNumber}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Grid.Row="8"  x:Name="FrmIDNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                             </Frame>
 
-                            <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0" Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  HorizontalTextAlignment="Center" >
+                            <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="EntryIDNumber" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged" Text="{Binding TxtIDNumber}" Keyboard="Numeric" MaxLength="{Binding MaxLengthID}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom:CaptchaValidatorBehaviour/>
+                                    <custom1:OnlyNumericValuesBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
-
                             </custom:GAZTBorderlessEntry>
 
-                            <Label  Grid.Row="1"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" ></Label>
+                            <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZDateofBirth}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
+                            <Frame  Grid.Row="10"  x:Name="FrmDBO"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+    
+                            <custom1:MyDatePicker  Grid.Row="10" x:Name="DpDbo"  MaximumDate="{Binding MaximumxD}"  Grid.Column="0" Unfocused="DatePicker_Unfocused"   Grid.ColumnSpan="2" Date="{Binding PkrDBO}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></custom1:MyDatePicker>
 
-                            <Image Grid.Row="1"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
-                                </Image.GestureRecognizers>
+                            <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZName}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Grid.Row="12"  x:Name="FrmName"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessEntry  Grid.Row="12"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtName}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom1:OnlyAlphabatesBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                            <BoxView  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />
+
+                            <local1:CustomLabel  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                <local1:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}"/>
+                                    </FormattedString>
+                                </local1:CustomLabel.FormattedText>
+                            </local1:CustomLabel>
+                            <Frame  Grid.Row="15"  x:Name="FrmLNorCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessPicker x:Name="UsingDDl" SelectedIndex="{Binding SelectedLOrC}"  Grid.Row="15"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" SelectedItem="{Binding SelectLCType,Mode=TwoWay}" ItemsSource="{Binding LcTypeList}" ItemDisplayBinding="{Binding LCType}" ></custom:GAZTBorderlessPicker>
+                            <Image Grid.Row="15"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                <!--<Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>-->
                             </Image>
 
+                            <StackLayout Grid.Row="16"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsCRVisible}">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local:AppResources.ZZCRNumber}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame  Grid.Row="1"  x:Name="FrmCR"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                    </Frame>
+
+                                    <custom:GAZTBorderlessEntry x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" Text="{Binding TxtCRNumber}" MaxLength="10"></custom:GAZTBorderlessEntry>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Row="16"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLicenseVisible}">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local:AppResources.ZZLicenseNumber}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame  Grid.Row="1" x:Name="FrmLicenseNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                                    </Frame>
+
+                                    <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtLicenseNumber}" MaxLength="20">
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <custom1:RestrictSpecialCharactorsBehaviour/>
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame Grid.Row="3"  x:Name="FrmLicenseIssuedBy"   VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+
+                                    </Frame>
+                                    <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}" ItemsSource="{Binding IssuedByList}" ItemDisplayBinding="{Binding txt50}"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
+                                    <Image Grid.Row="3"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                        <!--<Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>-->
+                                    </Image>
+                                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local:AppResources.ZZIssuingCity}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Frame Grid.Row="5" x:Name="FrmLicenseIssuedCity"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+
+                                    </Frame>
+                                    <custom:GAZTBorderlessPicker  FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectCityList,Mode=TwoWay}" ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding CityName}"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  >
+                                       
+                                    </custom:GAZTBorderlessPicker>
+                                    <Image Grid.Row="5"  Grid.Column="1"  Margin="10,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
+                                        <!--<Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
+                    </Image.GestureRecognizers>-->
+                                    </Image>
+                                </Grid>
+                            </StackLayout>
+
+                            <BoxView  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />
+                            <Label Grid.Row="18"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZEmailAddress}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Grid.Row="19"  x:Name="FrmEmailAddress"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessEntry x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtEmailAddress}"></custom:GAZTBorderlessEntry>
+
+
+                            <Label Grid.Row="20"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZMobileNumber}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Grid.Row="21" x:Name="FrmMobileNumber"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessEntry Placeholder="5XXXXXXXX" x:Name="EntryMobileNumber" Unfocused="EntryMobileNumber_Unfocused" MaxLength="9" Keyboard="Numeric" TextChanged="EntryMobileNumber_TextChanged" Grid.Row="21"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtMobileNumber}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom1:OnlyNumericValuesBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                            <Label Grid.Row="22"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static local:AppResources.ZZPhoneNumber}"  />
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame  Grid.Row="23"  x:Name="FrmPhoneNumber"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessEntry x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" Unfocused="EntryPhoneNumber_Unfocused" TextChanged="EntryPhoneNumber_TextChanged" MaxLength="9" Keyboard="Numeric" Grid.Row="23"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtPhoneNumber}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom1:OnlyNumericValuesBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+
+
+
+
+
+                            <Grid Grid.Row="24"   Grid.Column="0"  Grid.ColumnSpan="2" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static local:AppResources.ZZResendtheverificationcode}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame  Grid.Row="1" x:Name="FrmEnteredCaptcha"  Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                                </Frame>
+                                <Frame  Grid.Row="1"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                                </Frame>
+
+                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0" Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  HorizontalTextAlignment="Center" >
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:CaptchaValidatorBehaviour/>
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+
+                                <Label  Grid.Row="1"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" ></Label>
+
+
+                                <Image Grid.Row="1"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+
                         </Grid>
+                    </ScrollView>
+                    <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
+                        <Button Text="{x:Static local:AppResources.ZZNext}" x:Name="btnSubmitNext" Clicked="btnSubmitNext_Clicked" Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" ></Button>
 
-                    </Grid>
-                </ScrollView>
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZZNext}" x:Name="btnSubmitNext" Clicked="btnSubmitNext_Clicked" Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" ></Button>
-
-                </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                            <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </Grid>
         </StackLayout>
             
