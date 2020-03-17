@@ -3867,6 +3867,212 @@ namespace GAZT.Manager
             }
         }
 
+
+        public static TERFRegionRootObject GAZTTESFormGetRegion()
+        {
+
+            RegionPost Cred = new RegionPost();
+            Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            TERFRegionRootObject Listobject = new TERFRegionRootObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TERFRegionRootObject terfregion = new TERFRegionRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/RegionRetrieve";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
+                    return terfregion;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+        public static TERFCityRetrieveRootObject GAZTTESFormGetCity(string regioncode)
+        {
+
+            CityPost Cred = new CityPost();
+            Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            Cred.RegionCode = regioncode;
+
+
+
+            TERFCityRetrieveRootObject Listobject = new TERFCityRetrieveRootObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TERFCityRetrieveRootObject terfcity = new TERFCityRetrieveRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/CityRetrieve";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
+                    return terfcity;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+        public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TEReport Cred)
+        {
+            UploadedDocumentsList u = new UploadedDocumentsList();
+            u.DocBinaryInBase64 = string.Empty;
+            u.FileNameWithExtension = string.Empty;
+            u.MimeType = string.Empty;
+            Cred.UploadedDocumentsList = u;
+
+
+            //TEReport Cred = new TEReport();
+            //Cred.Channel = "2";
+            //Cred.CityCode = "187";
+            //Cred.CompanyAddress = "Test Address";
+            //Cred.CompanyEmail = "ihussain@test.com";
+            //Cred.CompanyMobileNumber = "0565154482";
+            //Cred.CompanyName = "Test Company Name";
+            //Cred.CompanyOwnerName = "Test Complany Owner Name";
+           // Cred.CompanyType = "1";
+            //Cred.District = "Wizharat";
+            //Cred.HavingTIN = "true";
+            //Cred.ID = "1234567890";
+            //Cred.Latitude = "0.0";
+            //Cred.Longitude = "0.0";
+            //Cred.ReceivedDate = "27/11/2019";
+            //Cred.RegionCode = "1";
+            //Cred.ReportDetails = "test Reporter Details";
+            //Cred.ReporterEmail = "mahemood@infrability.com";
+            //Cred.ReporterMobileNumber = "0565154482";
+            //Cred.ReporterName = "Test Reporter Name";
+            //Cred.TIN = "3000000000";
+            //Cred.TaxType = "1";
+            ////Cred.UploadedDocumentsList.DocBinaryInBase64 = "";
+            ////Cred.UploadedDocumentsList.FileNameWithExtension = "";
+            ////Cred.UploadedDocumentsList.MimeType = "";
+            //Cred.VAT = "012345678978954";
+            //Cred.ViolationType = "1";
+            //Cred.WSUserName = "GAZT@CRM";
+            //Cred.WSPassword = "gazt@123";
+            //Cred.WorkType = "Industry";
+
+
+
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TEReportResponsePostRootObject terfcity = new TEReportResponsePostRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/TaxEvasionReportCreate";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfcity = JsonConvert.DeserializeObject<TEReportResponsePostRootObject>(response);
+                    return terfcity;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+        public static ReportRetriveByMobNoRootObject GAZTTESReportByMobNo(string TPmobno)
+        {
+
+            ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
+            Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            string trimedmob= App.TP.Mobile.Substring(3);
+            Cred.MobileNumber = "0565154482";
+            Cred.Channel = "2";
+
+
+
+            ReportRetriveByMobNoRootObject Listobject = new ReportRetriveByMobNoRootObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/TaxEvasionReportRetrieveByMobileNumber";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
+                    return terfreport;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
+
+
     }
 
 }

@@ -99,7 +99,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                        <Frame Grid.Row="6" x:Name="FrmIDType"  Padding="20"  VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
 
                         </Frame>
                         <custom:GAZTBorderlessPicker x:Name="DDlIDType" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" ItemDisplayBinding="{Binding SUType}" SelectedIndexChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>

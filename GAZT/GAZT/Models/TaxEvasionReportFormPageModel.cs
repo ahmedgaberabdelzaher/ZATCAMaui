@@ -124,65 +124,7 @@ namespace GAZT.Models
     }
 
 
-    public class TETaxEvasionReportList
-    {
-        public string CR { get; set; }
-        public string CityCode { get; set; }
-        public string CityGuid { get; set; }
-        public string CityNameAr { get; set; }
-        public string CityNameEn { get; set; }
-        public string CompanyAddress { get; set; }
-        public string CompanyName { get; set; }
-        public string District { get; set; }
-        public string ExciseNumber { get; set; }
-        public string ID { get; set; }
-        public bool IsNeedReward { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
-        public string ReceivedDate { get; set; }
-        public string RegionCode { get; set; }
-        public string RegionGuid { get; set; }
-        public string RegionNameAr { get; set; }
-        public string RegionNameEn { get; set; }
-        public string ReportCategoryCode { get; set; }
-        public string ReportCategoryGuid { get; set; }
-        public string ReportCategoryNameAr { get; set; }
-        public string ReportCategoryNameEn { get; set; }
-        public string ReportDetails { get; set; }
-        public string ReportNumber { get; set; }
-        public int ReportStatus { get; set; }
-        public string ReportStatusMessage { get; set; }
-        public string ReportSubCategoryCode { get; set; }
-        public string ReportSubCategoryGuid { get; set; }
-        public string ReportSubCategoryNameAr { get; set; }
-        public string ReportSubCategoryNameEn { get; set; }
-        public string ReportTaxTypeCode { get; set; }
-        public string ReportTaxTypeGuid { get; set; }
-        public string ReportTaxTypeNameAr { get; set; }
-        public string ReportTaxTypeNameEn { get; set; }
-        public string ReportTypeCode { get; set; }
-        public string ReportTypeGuid { get; set; }
-        public string ReportTypeNameAr { get; set; }
-        public string ReportTypeNameEn { get; set; }
-        public string ReporterEmail { get; set; }
-        public string ReporterId { get; set; }
-        public string ReporterMobileNumber { get; set; }
-        public string ReporterName { get; set; }
-        public string TIN { get; set; }
-        public int TaxType { get; set; }
-        public string VAT { get; set; }
-        public string VATNumber { get; set; }
-        public string ViolationDate { get; set; }
-        public int ViolationType { get; set; }
-        public string WorkType { get; set; }
-    }
-
-    public class TETaxEvasionReportListRootObject
-    {
-        public List<object> TETaxEvasionResultErrorList { get; set; }
-        public bool TETaxEvasionSuccess { get; set; }
-        public List<TETaxEvasionReportList> TETaxEvasionReportList { get; set; }
-    }
+   
 
 
 
@@ -204,8 +146,83 @@ namespace GAZT.Models
         public string RegionCode { get; set; }
 
     }
+    public class ReportRetriveByMobileNumberPost
+    {
+        public string Channel { get; set; }
+        public string MobileNumber { get; set; }
+        public string WSUserName { get; set; }
+        public string WSPassword { get; set; }
+    }
+    public class TaxEvasionReportList
+    {
+        public string CR { get; set; }
+        public string CityCode { get; set; }
+        public string CityGuid { get; set; }
+        public string CityNameAr { get; set; }
+        public string CityNameEn { get; set; }
+        public string CompanyAddress { get; set; }
+        public string CompanyName { get; set; }
+        public string District { get; set; }
+        public string ID { get; set; }
+        public bool IsNeedReward { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string ReceivedDate { get; set; }
+        public string RegionCode { get; set; }
+        public string RegionGuid { get; set; }
+        public string RegionNameAr { get; set; }
+        public string RegionNameEn { get; set; }
+        public string ReportCategoryCode { get; set; }
+        public string ReportCategoryGuid { get; set; }
+        public string ReportCategoryNameAr { get; set; }
+        public string ReportCategoryNameEn { get; set; }
+        public string ReportDetails { get; set; }
+        public string ReportNumber { get; set; }
+        public string ReportStatus { get; set; }
+        public string ReportStatusMessage { get; set; }
+        public string ReportSubCategoryCode { get; set; }
+        public string ReportSubCategoryGuid { get; set; }
+        public string ReportSubCategoryNameAr { get; set; }
+        public string ReportSubCategoryNameEn { get; set; }
+        public string ReportTaxTypeCode { get; set; }
+        public string ReportTaxTypeGuid { get; set; }
+        public string ReportTaxTypeNameAr { get; set; }
+        public string ReportTaxTypeNameEn { get; set; }
+        public string ReportTypeCode { get; set; }
+        public string ReportTypeGuid { get; set; }
+        public string ReportTypeNameAr { get; set; }
+        public string ReportTypeNameEn { get; set; }
+        public string ReporterEmail { get; set; }
+        public string ReporterId { get; set; }
+        public string ReporterMobileNumber { get; set; }
+        public string ReporterName { get; set; }
+        public string TIN { get; set; }
+        public string TaxType { get; set; }
+        public string VAT { get; set; }
+        public string VATNumber { get; set; }
+        public string ViolationDate { get; set; }
+        public string ViolationType { get; set; }
+        public string WorkType { get; set; }
+    }
 
-    public class CreateReportPost
+    public class ReportRetriveByMobNoRootObject
+    {
+        public List<object> ResultErrorList { get; set; }
+        public bool Success { get; set; }
+        public List<TaxEvasionReportList> TaxEvasionReportList { get; set; }
+    }
+
+
+
+
+    public class UploadedDocumentsList
+    {
+        public string DocBinaryInBase64 { get; set; }
+        public string FileNameWithExtension { get; set; }
+        public string MimeType { get; set; }
+    }
+
+    public class TEReport
     {
         public string Channel { get; set; }
         public string CityCode { get; set; }
@@ -228,9 +245,7 @@ namespace GAZT.Models
         public string ReporterName { get; set; }
         public string TIN { get; set; }
         public string TaxType { get; set; }
-        public string DocBinaryInBase64 { get; set; }
-        public string FileNameWithExtension { get; set; }
-        public string MimeType { get; set; }
+        public UploadedDocumentsList UploadedDocumentsList { get; set; }
         public string VAT { get; set; }
         public string ViolationType { get; set; }
         public string WSUserName { get; set; }
@@ -238,8 +253,29 @@ namespace GAZT.Models
         public string WorkType { get; set; }
     }
 
+    public class FacilityCompanyType
+    {
+        public string Name { get; set; }
+        public string Id { get; set; }
+    }
 
 
+    //TEReportResponse
+    public class ResultErrorList
+    {
+        public string ErrorCode { get; set; }
+        public string ErrorDescription { get; set; }
+        public string ErrorField { get; set; }
+    }
+
+    public class TEReportResponsePostRootObject
+    {
+        public List<object> AttachmentsIds { get; set; }
+        public List<ResultErrorList> ResultErrorList { get; set; }
+        public bool Success { get; set; }
+        public string TaxEvasionGuid { get; set; }
+        public string TaxEvasionNumber { get; set; }
+    }
 
 
 

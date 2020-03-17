@@ -505,7 +505,7 @@ namespace GAZT.ViewModel
             });
             OnTaxevasionClicked = new Xamarin.Forms.Command(async () =>
             {
-                await _dialogService.ShowMessage("Available in future release", AppResources.Information);
+                _navigationService.NavigateTo(App.TaxEvasionReportListPageView);
             });
             OnTINStatusClicked = new Xamarin.Forms.Command(async () =>
             {

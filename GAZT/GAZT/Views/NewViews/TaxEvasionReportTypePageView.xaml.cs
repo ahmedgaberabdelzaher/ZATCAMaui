@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
             this.BindingContext = viewModel;
+
             SetLTR();
             //viewModel.onPageLoad();
         }

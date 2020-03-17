@@ -2463,7 +2463,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategory4" xml:space="preserve">
-    <value>The imposition of a contract tax before the entry into force of the system</value>
+    <value>فرض وتحصيل الضريبة قبل دخولها حيز التنفيذ نظاميا</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategory5" xml:space="preserve">
@@ -2471,7 +2471,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategoryPageTittle" xml:space="preserve">
-    <value>My Reports</value>
+    <value>نوع الإبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailAttachment" xml:space="preserve">
@@ -2519,7 +2519,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
-    <value>TIN</value>
+    <value>الرقم المميز</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailVATNumber" xml:space="preserve">
@@ -2581,5 +2581,112 @@
   <data name="ZZSignup" xml:space="preserve">
     <value>تسجيل جديد</value>
     <comment>Sign Up</comment>
+  </data>
+  <data name="ZTERReportDetailEMail" xml:space="preserve">
+    <value>البريد اإللكتروني لمقدم البالغ</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityEmail" xml:space="preserve">
+    <value>البريد اإللكتروني للمنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityMobNo" xml:space="preserve">
+    <value>هاتف الجوال للمنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityOwnerName" xml:space="preserve">
+    <value>أسم مالك المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityType" xml:space="preserve">
+    <value>نوع المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZZMobilenumberhastostartwithnumber05" xml:space="preserve">
+    <value>رقم الجوال يجب أن يبدأ بالرقم 50</value>
+    <comment>tax Evasion </comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType1" xml:space="preserve">
+    <value>شركة مساهمة عامة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType10" xml:space="preserve">
+    <value>Other Taxable Income from Sources in KSA</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType11" xml:space="preserve">
+    <value>منشأة دائمة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType12" xml:space="preserve">
+    <value>شركة أعمال</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType2" xml:space="preserve">
+    <value>شركه ذات مسئوليه محدوده</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType3" xml:space="preserve">
+    <value>م محدودة شركة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType4" xml:space="preserve">
+    <value>شركة تضامن</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType5" xml:space="preserve">
+    <value>مشروع مشترك</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType6" xml:space="preserve">
+    <value>شراكة محدودة في األسهم</value>
+    <comment>Tax Evasion </comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType7" xml:space="preserve">
+    <value>شركة ذات رأس مال متغير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType8" xml:space="preserve">
+    <value>تعاونية ش</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType9" xml:space="preserve">
+    <value>شركة مشتركة خاصة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportCompanyName" xml:space="preserve">
+    <value>أسم الشركة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportClosed" xml:space="preserve">
+    <value>مغلقة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportDate" xml:space="preserve">
+    <value>تاريخ التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportNumber" xml:space="preserve">
+    <value>رقم التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportOpen" xml:space="preserve">
+    <value>قائمة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportScreenTitle" xml:space="preserve">
+    <value>ي التهرب عن اإلبالغ</value>
+  </data>
+  <data name="ZTEReportReportStatus" xml:space="preserve">
+    <value>حالة التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال 5 أيام عمل</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
+    <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
+    <comment>Tax Evasion Report Service</comment>
   </data>
 </root>

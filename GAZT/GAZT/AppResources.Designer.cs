@@ -2696,7 +2696,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Choose ReportCategory.
+        ///   Looks up a localized string similar to Please choose Report Category.
         /// </summary>
         public static string ZTERChooseReportCategory {
             get {
@@ -2719,6 +2719,87 @@ namespace GAZT {
         public static string ZTEReportCategorySubmitBtn {
             get {
                 return ResourceManager.GetString("ZTEReportCategorySubmitBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        public static string ZTEReportCompanyName {
+            get {
+                return ResourceManager.GetString("ZTEReportCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closed.
+        /// </summary>
+        public static string ZTEReportReportClosed {
+            get {
+                return ResourceManager.GetString("ZTEReportReportClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Date.
+        /// </summary>
+        public static string ZTEReportReportDate {
+            get {
+                return ResourceManager.GetString("ZTEReportReportDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Number.
+        /// </summary>
+        public static string ZTEReportReportNumber {
+            get {
+                return ResourceManager.GetString("ZTEReportReportNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opened.
+        /// </summary>
+        public static string ZTEReportReportOpen {
+            get {
+                return ResourceManager.GetString("ZTEReportReportOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Tax Evasion Reports.
+        /// </summary>
+        public static string ZTEReportReportScreenTitle {
+            get {
+                return ResourceManager.GetString("ZTEReportReportScreenTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Status.
+        /// </summary>
+        public static string ZTEReportReportStatus {
+            get {
+                return ResourceManager.GetString("ZTEReportReportStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number), you will receive GAZT response within 5 working days.
+        /// </summary>
+        public static string ZTEReportReportSuccessResponsep1 {
+            get {
+                return ResourceManager.GetString("ZTEReportReportSuccessResponsep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill all the report details before submit.
+        /// </summary>
+        public static string ZTEReportReportSuccessResponsep2 {
+            get {
+                return ResourceManager.GetString("ZTEReportReportSuccessResponsep2", resourceCulture);
             }
         }
         
@@ -2750,7 +2831,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The imposition of a contract tax before the entry into force of the system.
+        ///   Looks up a localized string similar to Imposition and collection of Tax before its entry into force.
         /// </summary>
         public static string ZTERReportCategory4 {
             get {
@@ -2768,7 +2849,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Reports.
+        ///   Looks up a localized string similar to Report Category.
         /// </summary>
         public static string ZTERReportCategoryPageTittle {
             get {
@@ -2795,11 +2876,164 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Public Joint Company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType1 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Taxable Income from Sources in KSA.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType10 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanent Establishment.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType11 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Professional Company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType12 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limited Liability Company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType2 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Limited by Shares.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType3 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solidarity Company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType4 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Joint Venture.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType5 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limited Partnership in Shares.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType6 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company with variable capital.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType7 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Co-operative company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType8 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private Joint Company.
+        /// </summary>
+        public static string ZTERReportDetailCompanyType9 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporter Email.
+        /// </summary>
+        public static string ZTERReportDetailEMail {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailEMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Email.
+        /// </summary>
+        public static string ZTERReportDetailFacilityEmail {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Mobile Number.
+        /// </summary>
+        public static string ZTERReportDetailFacilityMobNo {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityMobNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Facility Name.
         /// </summary>
         public static string ZTERReportDetailFacilityName {
             get {
                 return ResourceManager.GetString("ZTERReportDetailFacilityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Owner Name.
+        /// </summary>
+        public static string ZTERReportDetailFacilityOwnerName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityOwnerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facility Type.
+        /// </summary>
+        public static string ZTERReportDetailFacilityType {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityType", resourceCulture);
             }
         }
         
@@ -2827,6 +3061,15 @@ namespace GAZT {
         public static string ZTERReportDetailFWType {
             get {
                 return ResourceManager.GetString("ZTERReportDetailFWType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string ZTERReportDetailID {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailID", resourceCulture);
             }
         }
         
@@ -5517,6 +5760,15 @@ namespace GAZT {
         public static string ZZMobilenumberconsistsofnumbersonly {
             get {
                 return ResourceManager.GetString("ZZMobilenumberconsistsofnumbersonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number has to start with number 05.
+        /// </summary>
+        public static string ZZMobilenumberhastostartwithnumber05 {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber05", resourceCulture);
             }
         }
         

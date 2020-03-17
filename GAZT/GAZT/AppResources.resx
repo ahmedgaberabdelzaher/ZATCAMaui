@@ -2430,7 +2430,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
-    <value>Please Choose ReportCategory</value>
+    <value>Please choose Report Category</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportCategorySubmitBtn" xml:space="preserve">
@@ -2450,7 +2450,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategory4" xml:space="preserve">
-    <value>The imposition of a contract tax before the entry into force of the system</value>
+    <value>Imposition and collection of Tax before its entry into force</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategory5" xml:space="preserve">
@@ -2521,7 +2521,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportCategoryPageTittle" xml:space="preserve">
-    <value>My Reports</value>
+    <value>Report Category</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportFormEnter TINno" xml:space="preserve">
@@ -2583,5 +2583,117 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZSignup" xml:space="preserve">
     <value>Sign Up</value>
     <comment>Sign Up</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType1" xml:space="preserve">
+    <value>Public Joint Company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType2" xml:space="preserve">
+    <value>Limited Liability Company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType3" xml:space="preserve">
+    <value>Company Limited by Shares</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType4" xml:space="preserve">
+    <value>Solidarity Company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType5" xml:space="preserve">
+    <value>Joint Venture</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailEMail" xml:space="preserve">
+    <value>Reporter Email</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityEmail" xml:space="preserve">
+    <value>Facility Email</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityMobNo" xml:space="preserve">
+    <value>Facility Mobile Number</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityOwnerName" xml:space="preserve">
+    <value>Facility Owner Name</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailFacilityType" xml:space="preserve">
+    <value>Facility Type</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailID" xml:space="preserve">
+    <value>ID</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZZMobilenumberhastostartwithnumber05" xml:space="preserve">
+    <value>Mobile number has to start with number 05</value>
+    <comment>tax Evasion </comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType10" xml:space="preserve">
+    <value>Other Taxable Income from Sources in KSA</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType11" xml:space="preserve">
+    <value>Permanent Establishment</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType12" xml:space="preserve">
+    <value>Professional Company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType6" xml:space="preserve">
+    <value>Limited Partnership in Shares</value>
+    <comment>Tax Evasion </comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType7" xml:space="preserve">
+    <value>Company with variable capital</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType8" xml:space="preserve">
+    <value>Co-operative company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportDetailCompanyType9" xml:space="preserve">
+    <value>Private Joint Company</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportCompanyName" xml:space="preserve">
+    <value>Company Name</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportClosed" xml:space="preserve">
+    <value>Closed</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportDate" xml:space="preserve">
+    <value>Report Date</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportNumber" xml:space="preserve">
+    <value>Report Number</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportOpen" xml:space="preserve">
+    <value>Opened</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportScreenTitle" xml:space="preserve">
+    <value>VAT Tax Evasion Reports</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportStatus" xml:space="preserve">
+    <value>Report Status</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
+    <value>The report is submitted successfully with reference number (Report Number), you will receive GAZT response within 5 working days</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
+    <value>Please fill all the report details before submit</value>
+    <comment>Tax Evasion Report Service</comment>
   </data>
 </root>

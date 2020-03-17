@@ -20,6 +20,7 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
+
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
 

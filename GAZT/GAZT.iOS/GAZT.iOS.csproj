@@ -789,4 +789,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\TermsAndConditionsEN.html" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add1%403x.png" />
+  </ItemGroup>
 </Project>

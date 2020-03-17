@@ -150,7 +150,7 @@
 
                                                         </Label>
 
-                                                        <Label Text="{Binding FbDesc}" 
+                                                                <Label Text="{Binding FbDesc}" 
                                                  
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -159,14 +159,8 @@
                                    Grid.Column="0"
                                                            />
 
-                                                      
-                                                        <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                        <!--<Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                    <BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 
-
-                                                    </Grid>
+                                                            </Grid>
                                                 </StackLayout>
                                          </StackLayout>
                                                 </StackLayout>

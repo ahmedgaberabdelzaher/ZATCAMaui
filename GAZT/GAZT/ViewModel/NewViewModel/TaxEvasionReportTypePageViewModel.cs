@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -11,12 +12,29 @@ namespace GAZT.ViewModel.NewViewModel
     public class TaxEvasionReportTypePageViewModel : ViewModelBase
     {
         #region Variable
+       public string CategorySelected_Index = "0";
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnNextClicked { get; set; }
         public ICommand OnBClicked { get;  set; }
 
         #endregion
+
+        //IsLoading
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
 
         private bool _isimgVisiblec1 = false;
         public bool IsimgVisiblec1
@@ -85,35 +103,96 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private TaxEvasionReportList _taxEvasionListobj = null;
+        public TaxEvasionReportList TaxEvasionListobj
+        {
+            get
+            {
+                return _taxEvasionListobj;
 
+            }
+            set
+            {
+                _taxEvasionListobj = value;
+                //if (_selectedTaxEvasionListItem != null)
+                //{ passSelectedTaxEvasionItem(); }
+
+                RaisePropertyChanged("TaxEvasionListobj");
+            }
+        }
 
 
 
         public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
-            if (navigationService == null)
+            try
             {
-                throw new ArgumentNullException("navigationService");
+                if (navigationService == null)
+                {
+                    throw new ArgumentNullException("navigationService");
+                }
+
+                _navigationService = navigationService;
+                if (dialogService == null)
+                {
+                    throw new ArgumentNullException("dialogService");
+                }
+                _dialogService = dialogService;
+
+                OnBClicked = new Command(() =>
+                {
+                   
+
+
+                    try
+                    {
+                        if (IsimgVisiblec1 == true)
+                        {
+                            CategorySelected_Index = "1";
+                        }
+                        else if (IsimgVisiblec2 == true)
+                        {
+                            CategorySelected_Index = "2";
+                        }
+                        else if (IsimgVisiblec3 == true)
+                        {
+                            CategorySelected_Index = "3";
+                        }
+                        else if (IsimgVisiblec4 == true)
+                        {
+                            CategorySelected_Index = "4";
+                        }
+                        else if (IsimgVisiblec5 == true)
+                        {
+                            CategorySelected_Index = "5";
+                        }
+
+                        if (CategorySelected_Index != "0")
+                        {
+                            TaxEvasionListobj = new TaxEvasionReportList();
+
+                            TaxEvasionListobj.ViolationType = CategorySelected_Index;
+
+                            //TaxEvasionReportList tax = new TaxEvasionReportList();
+
+                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                            
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                });
             }
-
-            _navigationService = navigationService;
-            if (dialogService == null)
+            catch(Exception ex)
             {
-                throw new ArgumentNullException("dialogService");
+
             }
-            _dialogService = dialogService;
-            OnNextClicked = new Command(() =>
-            {
-                _navigationService.NavigateTo(App.TaxEvasionReportFormPageView);
+        
 
-            });
-            OnBClicked = new Command(() =>
-            {
-                _navigationService.NavigateTo(App.TaxEvasionReportFormPageView);
-
-            });
-
-        }
+    }
 
         public void PopToRootPage()
         {

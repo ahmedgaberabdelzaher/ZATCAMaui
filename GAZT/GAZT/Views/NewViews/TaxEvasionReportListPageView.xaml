@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" 
+             Title="{x:Static local:AppResources.ZTEReportReportScreenTitle}"
+             x:Class="GAZT.Views.NewViews.TaxEvasionReportListPageView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_add1.png"  
+                Priority="2" Order="Primary" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*" />
+                <RowDefinition Height="88*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*" />
+                <ColumnDefinition Width="34*" />
+                <ColumnDefinition Width="33*" />
+            </Grid.ColumnDefinitions>
+            <!--<local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CertificateType}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalOptions="Center">
+            </local1:CustomLabel>-->
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#005e4b">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="34*" />
+                        <ColumnDefinition Width="33*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                        <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
+                    </Image.GestureRecognizers>
+                </Image>-->
+
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZTEReportReportOpen}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_ForOpenReports" Command="{Binding OnOpenClicked_Tapped}" />
+                            </Label.GestureRecognizers>
+                        </local1:CustomLabel>
+
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                        <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
+                    </Image.GestureRecognizers>
+                </Image>-->
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.ZTEReportReportClosed}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_ForClosedReports" Command="{Binding OnCloseClicked_Tapped}" />
+                            </Label.GestureRecognizers>
+                        </local1:CustomLabel>
+                    </StackLayout>
+
+                    <!--<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                        --><!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
+                     <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
+                    </Image.GestureRecognizers>
+                </Image>-->
+                        <!--<local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer   Command="{Binding OnExciseCertificateClicked}" />
+                            </Label.GestureRecognizers>
+                        </local1:CustomLabel>--><!--
+                    </StackLayout>-->
+                </Grid>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
+                <ListView   IsVisible="{Binding IsCertificateAvailable}" ItemsSource ="{Binding TERListReportbymobno}" VerticalOptions="Fill" x:Name="CertificateLst" HasUnevenRows="true" SelectedItem="{Binding SelectedTaxEvasionListItem}" BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <x:Arguments>
+                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                    </x:Arguments>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <ContentView>
+                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+
+                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
+                                                    <Grid ColumnSpacing="10" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="auto" />
+
+
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label Text="{x:Static local:AppResources.ZTEReportReportNumber}" Margin="0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                                           />
+
+                                                        <Label Text="{Binding ReportNumber}" 
+                                                  
+                                  Margin="0" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="EndAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                                           />
+
+
+                                                        <Label 
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                             
+                                   Grid.Column="0"
+                                                        Grid.ColumnSpan="4"
+                                                         Text="{x:Static local:AppResources.ZTEReportReportDate}"
+                                   >
+
+                                                        </Label>
+
+                                                        <Label Text="{Binding ReceivedDate}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                                           />
+                                                        
+
+                                                        <Label 
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                             
+                                   Grid.Column="0"
+                                                        Grid.ColumnSpan="4"
+                                                         Text="{x:Static local:AppResources.ZTEReportCompanyName}"
+                                   >
+
+                                                        </Label>
+
+                                                        <Label Text="{Binding CompanyName}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="1"
+                                                           />
+
+                                                        <Label 
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                             
+                                   Grid.Column="0"
+                                                        Grid.ColumnSpan="4"
+                                                         Text="{x:Static local:AppResources.ZTEReportReportStatus}"
+                                   >
+
+                                                        </Label>
+
+                                                        <Label Text="{Binding ReportStatusMessage}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="1"
+                                                           />
+
+
+
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            </local1:CustomLabel>
+
+
+
+
+
+
+
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
