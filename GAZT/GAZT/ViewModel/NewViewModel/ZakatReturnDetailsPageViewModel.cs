@@ -401,10 +401,30 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
-                            _navigationService.GoBack();
-                        });
+
+                        //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
+                        //{
+                            Device.BeginInvokeOnMainThread(async () => {
+                                //if (App.IsArabic)
+                                //{
+                                //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                //    _navigationService.GoBack();
+                                //    WebServiceManager.ErrorMessage = string.Empty;
+
+                                //}
+                                //else
+                                //{
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                //}
+                            });
+                        //}
+
+                        //Device.BeginInvokeOnMainThread(async () => {
+                        //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                        //    _navigationService.GoBack();
+                        //});
                        
                     }
                 ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);

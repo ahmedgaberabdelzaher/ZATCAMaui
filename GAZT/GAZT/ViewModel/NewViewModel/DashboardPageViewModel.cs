@@ -34,8 +34,8 @@ namespace GAZT.ViewModel
         public ICommand OnCorrespondanceClicked { get; set; }
         public ICommand OnVatdeclarationClicked { get; set; }
         public ICommand OnTaxevasionClicked { get; set; }
+        private DateTime lastTapped;
 
-        
         public ICommand OnTINStatusClicked { get; set; }
 
         public ICommand OnFormbundleClicked { get; set; }
@@ -448,26 +448,41 @@ namespace GAZT.ViewModel
 
             OnMyCertificateClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.MyCertificate);
-
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.MyCertificate);
+                }
             });
           
             OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.TaxPayerProfileView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.TaxPayerProfileView);
+                }
 
             });
 
             OnMyBillsClicked = new Xamarin.Forms.Command( () =>
             {
-                _navigationService.NavigateTo(App.MyBillsView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.MyBillsView);
+                }
+
 
             });
 
             OnMyTaxPayerProfileClicked = new Xamarin.Forms.Command( () =>
             {
-                _navigationService.NavigateTo(App.TaxPayerProfilePageView);
-
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.TaxPayerProfilePageView);
+                }
             });
 
             //OnLogoutClicked = new Xamarin.Forms.Command(async () =>
@@ -484,24 +499,39 @@ namespace GAZT.ViewModel
 
             OnEstimateZakatClicked = new Xamarin.Forms.Command( () =>
             {
-                Device.BeginInvokeOnMainThread( () => {
-                    _navigationService.NavigateTo(App.ZakatReturnListPageView);
-                });
-
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    Device.BeginInvokeOnMainThread(() => {
+                        _navigationService.NavigateTo(App.ZakatReturnListPageView);
+                    });
+                }
             });
             OnVATLookupClicked = new Xamarin.Forms.Command( () =>
             {
                 //await _dialogService.ShowMessage("Available in future release", AppResources.Information);
-                _navigationService.NavigateTo(App.VATLookupPageView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.VATLookupPageView);
+                }
             });
             OnCorrespondanceClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.CorrespondancePageView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.CorrespondancePageView);
+                }
+
             });
             OnVatdeclarationClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.ICRListPageView);
-
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.ICRListPageView);
+                }
             });
             OnTaxevasionClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -509,11 +539,19 @@ namespace GAZT.ViewModel
             });
             OnTINStatusClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.CheckTINStatusPageView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.CheckTINStatusPageView);
+                }
             });
             OnFormbundleClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.NavigateTo(App.FormBundleStatusPageView);
+                if (lastTapped < DateTime.Now.AddSeconds(-2))
+                {
+                    lastTapped = DateTime.Now;
+                    _navigationService.NavigateTo(App.FormBundleStatusPageView);
+                }
             });
         }
 
