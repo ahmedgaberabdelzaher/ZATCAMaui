@@ -71,7 +71,15 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.IsRefreshButtonVisible = true;
+                            if((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
+                            {
+                                viewModel.OnRefreshClick();
+                            }
+                            else
+                            {
+                                viewModel.IsRefreshButtonVisible = true;
+                            }
+
                         }
                     }
                     if (viewModel.VATDeclarationData.d.RefundFg == "1")
