@@ -26,6 +26,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.TaxEvasionReportFormPageView;
             InitializeComponent();
             SetLTR();
+            this.BindingContext = viewModel;
 
 
             viewModel.CreateCompanyTypeList();
@@ -43,6 +44,8 @@ namespace GAZT.Views.NewViews
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                 //viewModel.TFaciMobNo= selectedtaxEList.
                 /*viewModel.SelectedTaxEvasionCompanyType.Id= selectedtaxEList.c*/              ///*viewModel.TFaciOwnerName=selectedtaxEList.*/
+                TFaciOwnerName.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
+                RegionPicker.IsEnabled = false;RegionPickerAR.IsEnabled = false;CityPicker.IsEnabled = false;CityPickerAR.IsEnabled = false;
                 viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
                 viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
                 viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
@@ -92,7 +95,7 @@ namespace GAZT.Views.NewViews
 
 
 
-            this.BindingContext = viewModel;
+            
             // viewModel.SelectedCategory = SelectedCat;
            
 
@@ -232,10 +235,10 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(TMobNumber.Text))
             {
-                if (TMobNumber.Text.Substring(0, 2) != "05")
+                if (TMobNumber.Text.Length<8)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber05;
+                    popUp.Message = AppResources.ZInvalidMobileNoError;
 
 
                     popUp.IsLinkAvailable = false;
@@ -253,12 +256,7 @@ namespace GAZT.Views.NewViews
                     TMobNumber.Text = string.Empty;
                     TMobNumber.Focus();
                 }
-                else if (TMobNumber.Text.Length < 10)
-                {
-                    FrmNumber.BorderColor = Color.Red;
-                    TMobNumber.Text = string.Empty;
-                    TMobNumber.Focus();
-                }
+               
                 else
                 {
                     FrmNumber.BorderColor = Color.FromHex("#B1B1B1");
@@ -271,10 +269,10 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(TFaciMobNo.Text))
             {
-                if (TFaciMobNo.Text.Substring(0, 2) != "05")
+                if (TFaciMobNo.Text.Length< 8)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber05;
+                    popUp.Message = AppResources.ZInvalidMobileNoError;
 
 
                     popUp.IsLinkAvailable = false;
@@ -292,12 +290,7 @@ namespace GAZT.Views.NewViews
                     TFaciMobNo.Text = string.Empty;
                     TFaciMobNo.Focus();
                 }
-                else if (TFaciMobNo.Text.Length < 10)
-                {
-                    FrmNumber.BorderColor = Color.Red;
-                    TMobNumber.Text = string.Empty;
-                    TMobNumber.Focus();
-                }
+
                 else
                 {
                     FrmFMobNo.BorderColor = Color.FromHex("#B1B1B1");
@@ -437,6 +430,26 @@ namespace GAZT.Views.NewViews
             {
                 if (TxtTIN.Text.Length < 10)
                 {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZInvalidTinNumber;
+
+
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmTIN.BorderColor = Color.Red;
+                    TxtTIN.Text = string.Empty;
+                    TxtTIN.Focus();
+
+
                     FrmTIN.BorderColor = Color.Red;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
@@ -486,8 +499,25 @@ namespace GAZT.Views.NewViews
                 {
                     if (TVatNumber.Text.Length < 15)
                     {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidVatNumber;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmVAT.BorderColor = Color.Red;
-                        TID.Focus();
+                        TVatNumber.Text = string.Empty;
+                        
+                       
 
                     }
                     else

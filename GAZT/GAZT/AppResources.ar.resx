@@ -2587,7 +2587,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERReportDetailEMail" xml:space="preserve">
-    <value>البريد اإللكتروني لمقدم البالغ</value>
+    <value>البريد الإلكتروني لمقدم البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityEmail" xml:space="preserve">
@@ -2720,9 +2720,20 @@
     <value>الرجاء إدخال رمز الدخول</value>
     <comment>OTP Screen</comment>
   </data>
-   <data name="BreakDownLabel" xml:space="preserve">
+  <data name="BreakDownLabel" xml:space="preserve">
     <value>سوف تستلم تفاصيل المبلغ المستحق على ايميلك المسجل وكذلك في قسم المراسلات الموجود بحسابك على بوابة الهيئة</value>
     <comment>Acknowledgement</comment>
-  </data>   
-  
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZInvalidMobileNoError" xml:space="preserve">
+    <value>رقم الجوال غير صحيح</value>
+  </data>
+  <data name="ZInvalidTinNumber" xml:space="preserve">
+    <value>الرقم المميز غير صحيح</value>
+  </data>
+  <data name="ZInvalidVatNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
 </root>

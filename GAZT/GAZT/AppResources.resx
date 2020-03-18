@@ -2726,12 +2726,18 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
     <value>Please enter access Code.</value>
     <comment>OTP Screen</comment>
-  </data> 
-    
-     <data name="BreakDownLabel" xml:space="preserve">
+  </data>
+  <data name="BreakDownLabel" xml:space="preserve">
     <value>You will receive a detailed breakdown of payable amount on your registered email and in correspondence section of your account on GAZT portal</value>
     <comment>Acknowledgement</comment>
-  </data> 
-    
-  
+  </data>
+  <data name="ZInvalidMobileNoError" xml:space="preserve">
+    <value>Invalid Mobile Number</value>
+  </data>
+  <data name="ZInvalidTinNumber" xml:space="preserve">
+    <value>Invalid TIN</value>
+  </data>
+  <data name="ZInvalidVatNumber" xml:space="preserve">
+    <value>Number VAT Invalid: "</value>
+  </data>
 </root>

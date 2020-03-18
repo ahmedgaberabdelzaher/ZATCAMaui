@@ -24,7 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         //SelectedCategory SubmitReportClicked
         //TaxEvasionReportList
         //TaxEvasionReportList selectedtaxEList = new TaxEvasionReportList();
-        private TaxEvasionReportList _selectedtaxEList;
+        private TaxEvasionReportList _selectedtaxEList=null;
         public TaxEvasionReportList selectedtaxEList
         {
             get
@@ -41,7 +41,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private List<FacilityCompanyType> _listfacilityCompanyType;
+        private List<FacilityCompanyType> _listfacilityCompanyType = null;
         public List<FacilityCompanyType> ListFacilityCompanyType
         {
             get
@@ -75,7 +75,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private List<FacilityCompanyType> _dlistfacilityCompanyType;
+        private List<FacilityCompanyType> _dlistfacilityCompanyType=null;
         public List<FacilityCompanyType> DListFacilityCompanyType
         {
             get
@@ -101,7 +101,10 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
+                
+                
                 _isSubmitButtonEnable = value;
+
 
                 RaisePropertyChanged("IsSubmitButtonEnable");
             }
@@ -200,7 +203,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedCategory");
             }
         }//TReportDetail
-        private string _tReportDetail;
+        private string _tReportDetail=string.Empty;
         public string TReportDetail
         {
             get
@@ -737,16 +740,22 @@ namespace GAZT.ViewModel.NewViewModel
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
                 response = await WebServiceManager.GAZTTESReportSubmit(_tEReportobj);
                 if (response != null && response.Success == true)
-                {//ZTEReportReportSuccessResponsep1
+                { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
                     _tEReportobj = null;
 
                     _dialogService.ShowMessage(newrm, AppResources.Submitted);
-        
 
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    var _lastPage = _navigation.NavigationStack.LastOrDefault();
+                    //Remove last page
+                    _navigation.RemovePage(_lastPage);
+                    //Go back 
+                    _navigation.PopAsync();
+                    
 
-        _navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
 
                 }
                 else

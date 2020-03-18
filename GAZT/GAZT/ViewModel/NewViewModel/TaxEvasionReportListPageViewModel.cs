@@ -175,10 +175,11 @@ namespace GAZT.ViewModel.NewViewModel
             try
             {
                 _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
+                SelectedTaxEvasionListItem = null;
             }
             catch(Exception ex)
             {
-
+               
             }
 
         }
@@ -201,40 +202,46 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void OnPageLoad()
         {
-          
-           
+            try
+            {
+
                 ReportRetriveByMobNoRootObject rlist = new ReportRetriveByMobNoRootObject();
                 rlist = WebServiceManager.GAZTTESReportByMobNo("0565154482");
 
                 PopToRootPage();
 
-            
 
-            if (rlist != null)
-            {
-                if (rlist.TaxEvasionReportList != null && rlist.TaxEvasionReportList.Count>0 )
+
+                if (rlist != null)
                 {
-                    //CertificateType = AppResources.ZakatCertificates;
-                    //SetCertificateListViewVisibility();
-                    TERListReportbymobnoDummy= rlist.TaxEvasionReportList;
+                    if (rlist.TaxEvasionReportList != null && rlist.TaxEvasionReportList.Count > 0)
+                    {
+                        //CertificateType = AppResources.ZakatCertificates;
+                        //SetCertificateListViewVisibility();
+                        TERListReportbymobnoDummy = rlist.TaxEvasionReportList;
 
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "2")).ToList();
+                        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "2")).ToList();
 
 
+
+                    }
+                    else
+                    {
+
+                        SetNoDataLabelViewVisibility();
+                    }
 
                 }
                 else
                 {
-                    
-                    SetNoDataLabelViewVisibility();
-                }
+                    SetNoDataLabelVisibility = true;
 
+                }
             }
-            else
+            catch(Exception ex)
             {
                 SetNoDataLabelVisibility = true;
-                
-            }
+                _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts); }
         }
         private void SetNoDataLabelViewVisibility()
         {

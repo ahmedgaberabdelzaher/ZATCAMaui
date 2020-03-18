@@ -3955,7 +3955,10 @@ namespace GAZT.Manager
             u.FileNameWithExtension = string.Empty;
             u.MimeType = string.Empty;
             Cred.UploadedDocumentsList = u;
-
+            string mobilenew = Cred.ReporterMobileNumber;
+            Cred.ReporterMobileNumber = "05" + mobilenew;
+            string mobilenew1 = Cred.CompanyMobileNumber;
+            Cred.CompanyMobileNumber = "05" + mobilenew1;
 
             //TEReport Cred = new TEReport();
             //Cred.Channel = "2";
@@ -3965,7 +3968,7 @@ namespace GAZT.Manager
             //Cred.CompanyMobileNumber = "0565154482";
             //Cred.CompanyName = "Test Company Name";
             //Cred.CompanyOwnerName = "Test Complany Owner Name";
-           // Cred.CompanyType = "1";
+            // Cred.CompanyType = "1";
             //Cred.District = "Wizharat";
             //Cred.HavingTIN = "true";
             //Cred.ID = "1234567890";
@@ -4029,7 +4032,7 @@ namespace GAZT.Manager
             ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
             Cred.WSUserName = "GAZT@CRM";
             Cred.WSPassword = "gazt@123";
-            string trimedmob= App.TP.Mobile.Substring(3);
+            //string trimedmob= App.TP.Mobile.Substring(3);
             Cred.MobileNumber = "0565154482";
             Cred.Channel = "2";
 

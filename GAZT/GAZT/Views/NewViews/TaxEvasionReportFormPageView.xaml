@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"  
 xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
               xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
@@ -81,7 +82,11 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame x:Name="FrmName" Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TName" Unfocused="TName_Unfocused" Text="{Binding TName}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TName" Unfocused="TName_Unfocused" Text="{Binding TName}">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:OnlyAlphabatesBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
                         <Label Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
@@ -92,8 +97,15 @@ xmlns:custom="clr-namespace:GAZT"
                         </Label>
                         <Frame  Grid.Row="3"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmNumber">
                         </Frame>
+                        <StackLayout Orientation="Horizontal" Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Spacing="0">
+                        <custom:GAZTBorderlessEntry   Placeholder="+9665"   Keyboard="Telephone" Style="{StaticResource GAZTTextBoxStyleForEntry}"   IsEnabled="False"   HorizontalOptions="Start" WidthRequest="80"/>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"  Keyboard="Telephone" Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TMobNumber" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="10" ></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry      Keyboard="Telephone" Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TMobNumber" Unfocused="TMobNumber_Unfocused"  Text="{Binding TMobNumber}" MaxLength="8">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom1:OnlyNumericValuesBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                        </StackLayout>
 
                         <Label Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -121,7 +133,11 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="8"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmFName">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFaciName}" x:Name="TFaciName" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterFN}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFaciName}" x:Name="TFaciName" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterFN}">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:OnlyAlphabatesBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
                         <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
@@ -133,7 +149,11 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="10"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmFOName">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="10"  Grid.Column="0"  Grid.ColumnSpan="2"  x:Name="TFaciOwnerName" Unfocused="TFaciOwnerName_Unfocused" Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFaciOwnerName}" Placeholder=" "></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="10"  Grid.Column="0"  Grid.ColumnSpan="2"  x:Name="TFaciOwnerName" Unfocused="TFaciOwnerName_Unfocused" Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFaciOwnerName}" Placeholder=" ">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:OnlyAlphabatesBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
 
 
                         <Label Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
@@ -164,7 +184,16 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="14"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmFMobNo">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="14"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TFaciMobNo" Unfocused="TFaciMobNo_Unfocused" Text="{Binding TFaciMobNo}" MaxLength="10" Keyboard="Telephone" Placeholder=" "></custom:GAZTBorderlessEntry>
+                        <StackLayout Grid.Row="14"  Grid.Column="0" Spacing="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <custom:GAZTBorderlessEntry    Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" HorizontalOptions="Start" Placeholder="+9665" IsEnabled="False" WidthRequest="80"  />
+
+                            <custom:GAZTBorderlessEntry     Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TFaciMobNo" Unfocused="TFaciMobNo_Unfocused" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone" Placeholder=" ">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:OnlyNumericValuesBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
+                        </StackLayout>
+
                         <!--ZTERReportDetailFacilityEmail-->
                         <Label Grid.Row="15"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -190,7 +219,9 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="18"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmFDAddress">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="18"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" ></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="18"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" >
+
+                        </custom:GAZTBorderlessEntry>
                         <!--Facility FS Address-->
                         <Label Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
@@ -373,7 +404,11 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="40"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmTFW">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="40"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TFWType" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="40"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom1:OnlyAlphabatesBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors> 
+                        </custom:GAZTBorderlessEntry>
                         
 
 
