@@ -30,8 +30,8 @@ namespace GAZT.ViewModel
 
 
 
-        // private string _UserName = "3101628639";// ZAKAT Data
-      private string _UserName = "3102129725";// VAT Data
+        // private string _UserName = "3101431639";// ZAKAT Data
+      private string _UserName = "3102285896";// VAT Data
       //private string _UserName = string.Empty;
         public string UserName
         {
@@ -90,9 +90,9 @@ namespace GAZT.ViewModel
         }
 
 
-         private string _Password = "Test@123";
+        private string _Password = "Init@123";
         
-       // private string _Password = string.Empty;
+        //private string _Password = string.Empty;
         public string Password
         {
             get
@@ -502,9 +502,11 @@ namespace GAZT.ViewModel
 
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
-                                          _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                        //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
-                                       // SYNCFUSION INTEGRATION
+                                        //_navigationService.NavigateTo(App.LandingPageView);
+
+                                        // SYNCFUSION INTEGRATION
 
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
                                         //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
@@ -512,9 +514,9 @@ namespace GAZT.ViewModel
                                         //App.TP.Tin = UserName;
 
 
-                                        //_navigationService.NavigateTo(App.LandingPageView);
+                                        _navigationService.NavigateTo(App.LandingPageView);
 
-                                      //  SYNCFUSION INTEGRATION
+                                        //  SYNCFUSION INTEGRATION
 
                                     });
                                 }

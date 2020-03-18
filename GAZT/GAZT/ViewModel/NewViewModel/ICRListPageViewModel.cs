@@ -67,6 +67,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ICRStatus _previousSelectedICRStatus;
+        public ICRStatus PreviousSelectedICRStatus
+        {
+            get
+            {
+                return _previousSelectedICRStatus;
+            }
+            set
+            {
+                _previousSelectedICRStatus = value;
+                RaisePropertyChanged("PreviousSelectedICRStatus");
+            }
+        }
+
 
 
 
@@ -83,6 +97,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (_selectedICRStatus != null)
                 {
+                    PreviousSelectedICRStatus = _selectedICRStatus;
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
                     {
                         if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30, "الجميع"))
@@ -237,7 +252,7 @@ namespace GAZT.ViewModel.NewViewModel
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        if (icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                        if (icrList!=null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
@@ -261,14 +276,17 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 //  ICRStatusList.Where(p => p.Txt30 == "All").();
                             }
-                            SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                            if (string.IsNullOrEmpty(App.ICRStatus))
+                            {
+                                SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
+                            }
                         }
 
                         VATDeclaration vATDeclaration = new VATDeclaration();
                         //  vATDeclaration.
                         // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
 
-                        if (icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
+                        if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRList = new List<ICRListSet>();
                             ICRList = icrList.ICR_LISTSet;

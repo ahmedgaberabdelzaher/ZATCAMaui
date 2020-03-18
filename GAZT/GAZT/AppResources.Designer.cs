@@ -6989,5 +6989,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
             }
         }
+        
+        public static string ZZZReturnsNotFound {
+            get {
+                return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
+            }
+        }
+        
+        public static string ZZZPasswordNotMatched {
+            get {
+                return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
+            }
+        }
+        
+        public static string OfText {
+            get {
+                return ResourceManager.GetString("OfText", resourceCulture);
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@
                     <!--  Rotator view  -->
                     <rotator:SfRotator
                         x:Name="Rotator"
-                        BackgroundColor="DarkOliveGreen"
+                        BackgroundColor="White"
                         DotPlacement="Default"
                         DotsBorderColor="Transparent"
                         EnableLooping="False"
@@ -84,10 +84,33 @@
                 </StackLayout>
             </DataTemplate>
 
+            <!--<DataTemplate x:Key="AppointmentTemplate">
+                <Button xmlns="http://xamarin.com/schemas/2014/forms" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                x:Class="AppointmentTemplate" 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" 
+                BackgroundColor="{Binding Color}" 
+                Text="{Binding Subject}" 
+                FontAttributes="Bold" 
+                TextColor="White" />
+            </DataTemplate >
+
+            <DataTemplate x:Key="AllDayAppointmentTemplate">
+                <Button xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Calendar_Sample.AllDayAppointmentTemplate"
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="FillAndExpand" 
+            BackgroundColor="{Binding Color}" 
+            Text="{Binding Subject}" 
+            FontAttributes="Bold" 
+            TextColor="Black" />
+            </DataTemplate>-->
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-
         <Grid x:Name="ParentContainer">
             <Grid.RowDefinitions>
                 <RowDefinition  Height="30*"/>
@@ -97,7 +120,7 @@
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
 
-           <!--<StackLayout>
+            <!--<StackLayout>
                 <syncfusion:SfExpander IconColor="#006450">
                     <syncfusion:SfExpander.Header>
                         <Label Padding="10" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Commitments" VerticalTextAlignment="Center" />
@@ -137,41 +160,50 @@
                     </syncfusion:SfExpander.Content>
                 </syncfusion:SfExpander>
             </StackLayout>-->
-            
+
             <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                
+
                 <StackLayout Padding="5">
 
-                     <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Commitments"></Label>
+                    <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Commitments"></Label>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" >
 
-                        <syncfusionCalendar:SfCalendar.MonthViewSettings>
+                        <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
-                                <syncfusionCalendar:MonthViewSettings 
+                            <syncfusionCalendar:MonthViewSettings 
                                     CurrentMonthBackgroundColor="Transparent" 
                                     DayHeaderBackgroundColor="Transparent" 
                                     DisabledBackgroundColor="Transparent"
                                     InlineBackgroundColor="Transparent" 
-                                    AgendaSelectedDateColor="Green"
-                                    DateSelectionColor="Orange"
+                                    AgendaSelectedDateColor="Red"
+                                    DateSelectionColor="Red"
                                     TodayBorderColor="Green"
                                     TodayTextColor="Green"
                                     TodaySelectionBackgroundColor="Green"
                                     TodaySelectionTextColor="Black"
                                     SelectedDayTextColor="Black"                                
-                                    PreviousMonthBackgroundColor="Transparent"
                                     WeekEndBackgroundColor="Transparent" 
-                                    PreviousMonthTextColor="Green" SelectionShape="Circle" 
+                                    PreviousMonthTextColor="White" SelectionShape="Circle" 
                                     DayHeaderFontSize="15" 
                                     DayLabelTextAlignment="Center" HeaderFontSize="16" SelectionRadius="15" HeaderFontAttributes="Bold" HeaderBackgroundColor="AliceBlue">
+                                
+                                <syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout VerticalOptions="CenterAndExpand">
+                                            <Label TextColor="Red" Text="{Binding Subject}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro"> 
+                                            </Label>
+                                            <!--<Button BackgroundColor="DarkGreen" Text="COPY" TextColor="White" />-->
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
 
-                                </syncfusionCalendar:MonthViewSettings>
-
+                            </syncfusionCalendar:MonthViewSettings>
+                            
+                            
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
-
                     </syncfusionCalendar:SfCalendar>
-                    
+
                     <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Bills"></Label>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}">
@@ -194,7 +226,7 @@
                                                 </StackLayout>
                                                 <Label Text="{Binding BillCount}" FontSize="Title" TextColor="#474747" Padding="0,10,0,15">
                                                 </Label>
-                                                <Label Text="SAR" TextColor="Gray">                                                   
+                                                <Label Text="SAR" TextColor="Gray">
                                                 </Label>
                                                 <Label Text="{Binding BillAmount}" TextColor="{DynamicResource Gray-White}" >
                                                 </Label>
@@ -218,12 +250,12 @@
                     </listView:SfListView>
 
                     <Label Padding="5" TextColor="#006450" Text="My Returns"></Label>
-                    
+
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                    <cards:SfCardView CornerRadius="2" HeightRequest="120" HasShadow="True" ShadowColor="#5d6770">
+                                <cards:SfCardView CornerRadius="2" HeightRequest="120" HasShadow="True" ShadowColor="#5d6770">
                                     <cards:SfCardView.Content>
                                         <Grid>
                                             <gradient:SfGradientView>
@@ -237,15 +269,15 @@
                                                 </gradient:SfGradientView.BackgroundBrush>
                                             </gradient:SfGradientView>
 
-                                                <StackLayout Margin="5" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
-                                                        <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
+                                            <StackLayout Margin="5" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                                    <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
                                                     <Label Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
                                                     </Label>
-                                                    </StackLayout>
+                                                </StackLayout>
                                                 <Label Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}">
                                                 </Label>
-                                                </StackLayout>                                            
+                                            </StackLayout>
                                         </Grid>
                                     </cards:SfCardView.Content>
                                 </cards:SfCardView>
@@ -320,10 +352,10 @@
                     </listView:SfListView>
 
                 </StackLayout>
-            
+
             </ScrollView>
 
-            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" BackgroundColor="Green">
+            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="50*"/>
                     <RowDefinition  Height="30*"/>
@@ -338,7 +370,7 @@
                 <controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}" RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">
                     <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" />
                 </controls:TapAnimationGrid>
-                
+
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
                 <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
                     <Label.FormattedText >
@@ -351,7 +383,7 @@
                             <Span Text="{Binding Tin}" TextColor="White"/>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>             
+                </Label>
             </Grid>
 
 

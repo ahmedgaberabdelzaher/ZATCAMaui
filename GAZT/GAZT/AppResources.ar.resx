@@ -2083,7 +2083,7 @@
     <value>الرقم الضريبي</value>
   </data>
   <data name="ZVATLookupIDVatCertificateNumberType2" xml:space="preserve">
-    <value>رقمشهادةضريبةالقيمةالمضافة</value>
+    <value>رقم شهادة ضريبة القيمة المضافة</value>
   </data>
   <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
@@ -2735,5 +2735,15 @@
   </data>
   <data name="ZInvalidVatNumber" xml:space="preserve">
     <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
+  </data>
+  <data name="ZZZReturnsNotFound" xml:space="preserve">
+    <value>لا توجد اقرارات</value>
+  </data>
+  <data name="ZZZPasswordNotMatched" xml:space="preserve">
+    <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
+  </data>
+    <data name="OfText" xml:space="preserve">
+    <value>من</value>
   </data>
 </root>
