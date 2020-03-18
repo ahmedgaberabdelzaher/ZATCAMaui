@@ -1083,6 +1083,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to of.
+        /// </summary>
+        public static string OfText {
+            get {
+                return ResourceManager.GetString("OfText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string OkText {
@@ -6982,29 +6991,29 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return under review with GAZT.
+        ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
-        public static string ZZZReturnUnderReview {
-            get {
-                return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
-            }
-        }
-        
-        public static string ZZZReturnsNotFound {
-            get {
-                return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
-            }
-        }
-        
         public static string ZZZPasswordNotMatched {
             get {
                 return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
             }
         }
         
-        public static string OfText {
+        /// <summary>
+        ///   Looks up a localized string similar to Returns Not Found.
+        /// </summary>
+        public static string ZZZReturnsNotFound {
             get {
-                return ResourceManager.GetString("OfText", resourceCulture);
+                return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return under review with GAZT.
+        /// </summary>
+        public static string ZZZReturnUnderReview {
+            get {
+                return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
             }
         }
     }

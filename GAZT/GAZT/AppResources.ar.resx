@@ -2736,7 +2736,7 @@
   <data name="ZInvalidVatNumber" xml:space="preserve">
     <value>رقم حساب ضريبة القيمة المضافة</value>
   </data>
-  </data>
+  
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>لا توجد اقرارات</value>
   </data>
