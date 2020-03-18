@@ -6062,6 +6062,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proceed to indivisual Signup.
+        /// </summary>
+        public static string ZZProceedtoindivisualSignup {
+            get {
+                return ResourceManager.GetString("ZZProceedtoindivisualSignup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchases value x 115%.
         /// </summary>
         public static string ZZPurchasesvaluex115 {

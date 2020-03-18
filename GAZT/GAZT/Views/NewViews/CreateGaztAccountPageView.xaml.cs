@@ -44,11 +44,11 @@ namespace GAZT.Views.NewViews
             {
                 if(EntryPass.Text != EntryCfrmPass.Text)
                 {
-                    frmCfrmPass.BorderColor = Color.Red;
+                    frmCfrmPass.HasError = true;
                 }
                 else
                 {
-                    frmCfrmPass.BorderColor = Color.FromHex("#B1B1B1");
+                    frmCfrmPass.HasError = false;
                 }
             }
         }
@@ -59,18 +59,18 @@ namespace GAZT.Views.NewViews
             bool IsAllValid = true;
             if (string.IsNullOrEmpty(viewModel.TxtEmailCode))
             {
-                frmMobileCode.BorderColor = Color.Red;
+                frmMobileCode.HasError = true;
                 PopMsg.Append(AppResources.ZZPleaseenterconfirmationcodesenttoyouremailaddress);
                 IsAllValid = false;
             }
             else
             {
-                frmMobileCode.BorderColor = Color.FromHex("#B1B1B1");
+                frmMobileCode.HasError = false;
             }
 
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumberCode))
             {
-                frmMobileCode.BorderColor = Color.Red;
+                frmMobileCode.HasError = true;
                 if (PopMsg.Length > 0)
                 {
                     PopMsg.Append(Environment.NewLine);
@@ -85,11 +85,11 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-                frmMobileCode.BorderColor = Color.FromHex("#B1B1B1");
+                frmMobileCode.HasError = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtPassword))
             {
-                frmPass.BorderColor = Color.Red;
+                frmPass.HasError = true;
                 if (PopMsg.Length > 0)
                 {
                     PopMsg.Append(Environment.NewLine);
@@ -104,11 +104,11 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-                frmPass.BorderColor = Color.FromHex("#B1B1B1");
+                frmPass.HasError = false;
                 bool IsValidPass = UtilityManager.IsPasswordValid(viewModel.TxtPassword);
                 if (!IsValidPass)
                 {
-                    frmPass.BorderColor = Color.Red;
+                    frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -124,11 +124,11 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-                    frmPass.BorderColor = Color.FromHex("#B1B1B1");
+                    frmPass.HasError = false;
                 }
                 if(viewModel.TxtPassword != viewModel.TxtConfirmPassword)
                 {
-                    frmCfrmPass.BorderColor = Color.Red;
+                    frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -145,7 +145,7 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-                    frmCfrmPass.BorderColor = Color.FromHex("#B1B1B1");
+                    frmCfrmPass.HasError = false;
                 }
             }
             if (IsAllValid == true)

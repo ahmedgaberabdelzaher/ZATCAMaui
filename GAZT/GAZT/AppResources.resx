@@ -2615,4 +2615,8 @@ Should we require further information, we would be in contact.</value>
     <value>Please enter access Code.</value>
     <comment>OTP Screen</comment>
   </data>
+  <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
+    <value>Proceed to indivisual Signup</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

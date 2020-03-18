@@ -331,7 +331,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if (isMendatoryDataEntered)
                     {
                         isMendatoryDataEntered = true;
-                        string _language = UtilityManager.GetLanguageParameter();
+                        string _language = "A"; //UtilityManager.GetLanguageParameter();
                         VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
                         if (vatLookUp.d != null)
                         {

@@ -28,16 +28,16 @@ namespace GAZT
                 Control.Gravity = GravityFlags.CenterVertical | GravityFlags.CenterHorizontal;
                 Control.SetIncludeFontPadding(false);
                 Control.SetMinHeight(0);
-                if (App.IsArabic)
-                {
-                    Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "Cairo-Regular.ttf");
-                    Control.Typeface = font1;
-                }
-                else
-                {
-                    Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "HelveticaNormal.ttf");
-                    Control.Typeface = font1;
-                }
+                //if (App.IsArabic)
+                //{
+                //    Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "Cairo-Regular.ttf");
+                //    Control.Typeface = font1;
+                //}
+                //else
+                //{
+                //    Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "HelveticaNormal.ttf");
+                //    Control.Typeface = font1;
+                //}
             }
 
         }

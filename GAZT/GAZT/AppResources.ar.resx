@@ -2489,4 +2489,8 @@
     <value>الرجاء إدخال رمز الدخول</value>
     <comment>OTP Screen</comment>
   </data>
+  <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
+    <value>Proceed to indivisual Signup</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>
