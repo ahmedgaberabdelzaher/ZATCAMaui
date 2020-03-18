@@ -4242,9 +4242,39 @@ namespace GAZT {
             }
         }
         
+        public static string ZZDescriptionForFormBundle {
+            get {
+                return ResourceManager.GetString("ZZDescriptionForFormBundle", resourceCulture);
+            }
+        }
+        
         public static string ZZPleaseenteraccessCode {
             get {
                 return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);
+            }
+        }
+        
+        public static string BreakDownLabel {
+            get {
+                return ResourceManager.GetString("BreakDownLabel", resourceCulture);
+            }
+        }
+        
+        public static string ZZZReturnsNotFound {
+            get {
+                return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
+            }
+        }
+        
+        public static string ZZZPasswordNotMatched {
+            get {
+                return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
+            }
+        }
+        
+        public static string OfText {
+            get {
+                return ResourceManager.GetString("OfText", resourceCulture);
             }
         }
     }

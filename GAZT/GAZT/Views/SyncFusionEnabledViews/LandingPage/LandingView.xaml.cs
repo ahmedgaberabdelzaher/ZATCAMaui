@@ -1,10 +1,12 @@
 ﻿using GAZT;
 using GAZTeServicesApp.ViewModels.LandingPage;
+using Syncfusion.SfCalendar.XForms;
 using GAZTeServicesBusinessLibrary;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
+using GAZT.Models;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -16,7 +18,7 @@ namespace GAZTeServicesApp.Views.LandingPage
     public partial class LandingPageView : ContentPage
     {
         LandingPageViewModel viewModel;
-
+       //  Calendar appointments;
         /// <summary>
         /// Initializes a new instance of the <see cref="LandingPageView" /> class.
         /// </summary>
@@ -27,11 +29,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                 InitializeComponent();
                 this.BindingContext = viewModel = App.Locator.LandingPageView;
                 ParentContainer.RaiseChild(BusyIndicator);
-
+                calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();
               //  Application.Current.Resources["GAZTFontBold"] = Application.Current.Resources["GAZTBoldArabic"];
             }
-            catch (Exception ex)
+            catch (Exception gex)
             {
                 int i = 0;
             }
@@ -39,14 +41,42 @@ namespace GAZTeServicesApp.Views.LandingPage
         }
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
-            
-            await  viewModel.LoadDashboardData();
+            try
+            {
+                base.OnAppearing();
 
-            viewModel.PopulateReturnsInformation();
-            viewModel.PopulateBillsInformation();
-            viewModel.PopulateBillsAndReturnsSchedule();
-            viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                await viewModel.LoadDashboardData();
+
+                viewModel.PopulateReturnsInformation();
+                viewModel.PopulateBillsInformation();
+                viewModel.PopulateBillsAndReturnsSchedule();
+                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void Calendar_OnMonthCellLoaded(object sender, MonthCellLoadedEventArgs args)
+        {
+
+          //  // As default setting Month cell Background color as Green 
+          ////  args.BackgroundColor = Color.Green;
+          //  viewModel.BillsAndReturnsSchedule = calendar.DataSource as CalendarEventCollection;
+          //  if (viewModel.BillsAndReturnsSchedule != null)
+          //  {
+          //      for (int i = 0; i < viewModel.BillsAndReturnsSchedule.Count; i++)
+          //      {
+
+          //          var appointment = viewModel.BillsAndReturnsSchedule[i];
+          //          if (args.Date.Date == appointment.StartTime.Date)
+          //          {
+          //              // Setting Background color when the appointment available on specific day 
+          //             // args.BackgroundColor = Color.Red;
+          //          }
+          //      }
+          //  }
         }
 
         private void SetLTR()

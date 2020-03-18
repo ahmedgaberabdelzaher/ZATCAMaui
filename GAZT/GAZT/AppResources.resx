@@ -2619,4 +2619,17 @@ Should we require further information, we would be in contact.</value>
     <value>Proceed to indivisual Signup</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="BreakDownLabel" xml:space="preserve">
+    <value>You will receive a detailed breakdown of payable amount on your registered email and in correspondence section of your account on GAZT portal</value>
+    <comment>Acknowledgement</comment>
+  </data>
+  <data name="ZZZReturnsNotFound" xml:space="preserve">
+    <value>Returns Not Found</value>
+  </data>
+  <data name="ZZZPasswordNotMatched" xml:space="preserve">
+    <value>New password field and confirm password field must match</value>
+  </data>
+    <data name="OfText" xml:space="preserve">
+    <value>of</value>
+  </data>
 </root>

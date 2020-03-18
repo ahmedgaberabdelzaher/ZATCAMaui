@@ -126,7 +126,7 @@ namespace GAZTeServicesBusinessLibrary
             }
             set
             {
-                _returnTypeProperty = value;               
+                _returnTypeProperty = value;
             }
         }
         public string ReturnTypeName { get; set; }
@@ -164,7 +164,7 @@ namespace GAZTeServicesBusinessLibrary
             set
             {
                 _billTypeProperty = value;
-                
+
             }
         }
         public string BillTypeName { get; set; }
@@ -227,4 +227,48 @@ namespace GAZTeServicesBusinessLibrary
         #endregion
 
     }
+
+    #region OverduePaymentsAndUnSubmittedReturns
+    public class Metadata
+    {
+        public string id { get; set; }
+        public string uri { get; set; }
+        public string type { get; set; }
+    }
+
+    public class OverduePaymentsAndUnSubmittedReturn
+    {
+        public Metadata __metadata { get; set; }
+        public DateTime Abrzu { get; set; }
+        public string Gpartz { get; set; }
+        public DateTime Abrzo { get; set; }
+        public string Langz { get; set; }
+        public string Incotyp { get; set; }
+        public string Incotext { get; set; }
+        public string IcrStatus { get; set; }
+        public string Sopbel { get; set; }
+        public DateTime DueDt { get; set; }
+        public string Fbnum { get; set; }
+        public string CalendarTyp { get; set; }
+        public string Fbtyp { get; set; }
+        public string FbtText { get; set; }
+        public string Txt50 { get; set; }
+        public string Persl { get; set; }
+        public string Amount { get; set; }
+        public string Waers { get; set; }
+    }
+
+    //public class D
+    //{
+    //    public List<OverduePaymentsAndUnSubmittedReturn> results { get; set; }
+    //}
+
+    //public class RootObject
+    //{
+    //    public D d { get; set; }
+    //}
+    #endregion
+
+
+
 }

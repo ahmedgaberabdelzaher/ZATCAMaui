@@ -10,7 +10,8 @@
              Title="{x:Static local:AppResources.VATLookup}"
              >
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
@@ -25,13 +26,14 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="86*"/>
                                 <ColumnDefinition Width="14*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
-                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}"  Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}" Margin="10,5,10,5" Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
                              <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepOne}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
@@ -109,11 +111,23 @@
                             </Grid>
                             <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
 
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HeightRequest="50">
-                             <Label Text="{x:Static local:AppResources.Name}"  Margin="10,5,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="Center" VerticalTextAlignment="Center">
-                    </Label>
-                        <Label Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HeightRequest="50" Padding="0,10,0,0">
 
+                             <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                                  <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                    </Label>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+
+                                 </Grid>
+                           
                         </StackLayout>
                     </Grid>
       
@@ -128,8 +142,10 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
+              
         <!-- Acticity indicator layout end -->
-               </Grid>      
+               </Grid>
+                  </StackLayout>
        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

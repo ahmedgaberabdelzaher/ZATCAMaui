@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using GAZTeServicesBusinessLibrary;
+using GAZT.Models;
 
 namespace GAZTeServicesApp.Controls
 {

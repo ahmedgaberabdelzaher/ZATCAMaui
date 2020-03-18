@@ -93,22 +93,22 @@ namespace GAZT.Models
         public string ImagePath { get; set; }
     }
 
-    public enum ReturnType
-    {
-        RtnTot = 0,
-        NrtnTot = 1,
-        PrtnTot = 2,
-        UprtnTot = 3,
-        PprtnTot = 4,
-        DueIcr = 5
-    }
+    //public enum ReturnType
+    //{
+    //    RtnTot = 0,
+    //    NrtnTot = 1,
+    //    PrtnTot = 2,
+    //    UprtnTot = 3,
+    //    PprtnTot = 4,
+    //    DueIcr = 5
+    //}
 
-    public enum BillType
-    {
-        PbillsTot = 0,
-        UpbillsTot = 1,
-        PrbillsTot = 2,
-    }
+    //public enum BillType
+    //{
+    //    PbillsTot = 0,
+    //    UpbillsTot = 1,
+    //    PrbillsTot = 2,
+    //}
 
     public class BillPaid
     {

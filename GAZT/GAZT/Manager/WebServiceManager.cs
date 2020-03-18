@@ -1,5 +1,6 @@
 ﻿using GAZT.Helper;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Plugin.Connectivity;
@@ -149,10 +150,16 @@ namespace GAZT.Manager
                                         App.IsSessionExpired = false;
                                     }
                                     Message = node.ChildNodes[1].InnerText;
+                                    if(Message.Equals("5"))
+                                    {
+                                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                                    }
 
                                 }
                                 else
+                                {
                                     throw new Exception(AppResources.NetworkConnectivityIssue);
+                                }
                             }
                         }
                     }
@@ -1313,79 +1320,7 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
-        public static Dashboard GAZTGetDashboardData(String Lang, String Tin)
-        {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                DateTime dt = DateTime.Now;
-                Dashboard dashboardData = null;
-
-                string NewToken = string.Empty;
-                try
-                {
-                    if (false == CrossConnectivity.Current.IsConnected)
-                    {
-                        throw new WebException();
-                    }
-
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
-                    string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
-
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    HttpResponseMessage GAZTGetDashboardResponse = null;
-
-                    GAZTGetDashboardResponse = client.GetAsync(uri).Result;
-
-
-                    if (GAZTGetDashboardResponse != null)
-                    {
-                        HttpHeaders headers = GAZTGetDashboardResponse.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                        }
-
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-                        String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
-                        {
-                            GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
-                            dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
-                        }
-                    }
-                    return dashboardData;
-
-
-                }
-                catch (WebException webException)
-                {
-                    return null;
-                }
-                catch (Exception exception)
-                {
-                    return null;
-                }
-            }
-            else
-            {
-
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-
-            }
-
-        }
-
+      
         //done internet exception handling
         public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(String Lang, String Tin)
         {
@@ -2166,7 +2101,7 @@ namespace GAZT.Manager
 
         //Seesion expired handled       
         //done internet exception handling
-        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp,string contentType)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -2180,19 +2115,19 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json"); 
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("content-type", contentType);
 
-                  //  MultipartFormDataContent content = new MultipartFormDataContent();
+                    //  MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    if(!string.IsNullOrEmpty(contentType))
-                    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
 
                     //      content.Add(baContent, "File", fileName);
                     var response = await client.PostAsync(url, baContent);
 
-                   // ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    // ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     //var response =  client.PostAsync(url, baContent).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
@@ -2525,6 +2460,16 @@ namespace GAZT.Manager
 
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
+
+                    if (_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
+                    {
+                        ErrorMessage = string.Empty;
+                           ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        }
+                    }
                     return _zakatReturnDetailsD;
                 }
                 catch (Exception ex)
@@ -2701,13 +2646,13 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
-                 //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+                    //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
 
                     //MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(ContentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
-                  //  content.Add(baContent, "File", fileName);
+                    //  content.Add(baContent, "File", fileName);
                     var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
@@ -3463,7 +3408,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSiguupIssuedByList+ "'[{\"Lang\":\""+ lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
+                    String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
@@ -3533,7 +3478,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language="+lang+"&$format=json&Saml2=disabled";
+                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&Saml2=disabled";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
@@ -3862,9 +3807,387 @@ namespace GAZT.Manager
             }
         }
 
-      
+
+        #region NEW DASHBOARD
+
+        //public static Dashboard GAZTGetDashboardData(String Lang, String Tin)
+        //{
+        //    if (CrossConnectivity.Current.IsConnected)
+        //    {
+        //        DateTime dt = DateTime.Now;
+        //        Dashboard dashboardData = null;
+
+        //        string NewToken = string.Empty;
+        //        try
+        //        {
+        //            if (false == CrossConnectivity.Current.IsConnected)
+        //            {
+        //                throw new WebException();
+        //            }
+
+        //            HttpClient client = new HttpClient(App.httpClientHandler);
+
+        //            // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '3300036062'&saml2=disabled  ";
+        //            string uri = Constants.GetDashboardData + Tin + "'" + "&saml2=disabled" + "&$format=json";
+
+        //            client.DefaultRequestHeaders.Add("Token", App.Token);
+        //            HttpResponseMessage GAZTGetDashboardResponse = null;
+
+        //            GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+
+
+        //            if (GAZTGetDashboardResponse != null)
+        //            {
+        //                HttpHeaders headers = GAZTGetDashboardResponse.Headers;
+        //                IEnumerable<string> values;
+        //                if (headers.TryGetValues("token", out values))
+        //                {
+        //                    NewToken = values.First();
+        //                }
+
+        //                if ((!string.IsNullOrEmpty(NewToken)))
+        //                {
+        //                    if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+        //                    {
+        //                        App.IsSessionExpired = true;
+        //                        return null;
+        //                    }
+        //                    App.Token = NewToken;
+        //                }
+        //                String GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+        //                if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
+        //                {
+        //                    GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
+        //                    dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
+        //                }
+        //            }
+        //            return dashboardData;
+
+
+        //        }
+        //        catch (WebException webException)
+        //        {
+        //            return null;
+        //        }
+        //        catch (Exception exception)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+
+        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+        //    }
+
+        //}
+
+        public static Dashboard GAZTGetDashboardData(string lang, string TIN)
+        {
+            Dashboard dashboardData = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    string uri = Constants.GetDashboardData + TIN + "'" + "&saml2=disabled" + "&$format=json";
+                    HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetDashboardResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetDashboardResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
+                        {
+                            GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON)["d"].ToString();
+                            dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetDashboardResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return dashboardData;
+        }
+
+        public static Dashboard GAZTGetAdditionalDashboardData(string lang, string TIN)
+        {
+            Dashboard dashboardData = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+
+                    string uri = Constants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+
+                    HttpResponseMessage GAZTGetTheSetOfUnpaidAmountsResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetTheSetOfUnpaidAmountsResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetTheSetOfUnpaidAmountsResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTGetTheSetOfUnpaidAmountsResponseJSON = GAZTGetTheSetOfUnpaidAmountsResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetTheSetOfUnpaidAmountsResponseJSON))
+                        {
+                            GAZTGetTheSetOfUnpaidAmountsResponseJSON = JObject.Parse(GAZTGetTheSetOfUnpaidAmountsResponseJSON)["d"].ToString();
+                            dashboardData = JsonConvert.DeserializeObject<Dashboard>(GAZTGetTheSetOfUnpaidAmountsResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return dashboardData;
+        }
+
+        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
+        {
+            //lang = "E";
+            //TIN = "3311620297";
+            //Token = "051MiJPS7jgPsOOq374UiG!MjAyMDAzMTUxNzM2MTc";
+            List<OverduePaymentsAndUnSubmittedReturn> overduePayments = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+
+                    string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+
+                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetUnSubmittedReturnSetResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetUnSubmittedReturnSetResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTGetUnSubmittedReturnSetResponseJSON = GAZTGetUnSubmittedReturnSetResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetUnSubmittedReturnSetResponseJSON))
+                        {
+                            GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["d"].ToString();
+                            GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["results"].ToString();
+                            overduePayments = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetUnSubmittedReturnSetResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return overduePayments;
+        }
+
+        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
+        {
+            List<OverduePaymentsAndUnSubmittedReturn> paymentOverdueSet = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+
+                    string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+
+                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetPaymentOverdueSetResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetPaymentOverdueSetResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTGetPaymentOverdueSetResponseJSON = GAZTGetPaymentOverdueSetResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetPaymentOverdueSetResponseJSON))
+                        {
+                            GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["d"].ToString();
+                            GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["results"].ToString();
+                            paymentOverdueSet = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetPaymentOverdueSetResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return paymentOverdueSet;
+        }
+
+        #endregion
+
+
     }
-
 }
-
-

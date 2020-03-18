@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             SetLTR();
             Count = 1;
+            App.ICRStatus = string.Empty;
             viewModel.IsICRListVisible = true;
             viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
@@ -68,6 +69,24 @@ namespace GAZT.Views.NewViews
             }
         }
 
+        public async Task IntialiseAsyncForPreviousSelectedFilter()
+        {
+            try
+            {
+                await viewModel.onPageLoad();
+                if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0 && viewModel.PreviousSelectedICRStatus!=null)
+                {
+                    int indexofPreviousSelectedFilter = viewModel.ICRStatusList.FindIndex(x => x.Estat == viewModel.PreviousSelectedICRStatus.Estat);
+                    viewModel.SelectedICRStatus = viewModel.PreviousSelectedICRStatus;
+                    BPicker.SelectedIndex = indexofPreviousSelectedFilter;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
         private void SetLTR()
         {
 
@@ -80,14 +99,32 @@ namespace GAZT.Views.NewViews
 
         #endregion
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            base.OnAppearing();
-            if (Count != 1)
+            try
             {
-                IntialiseAsync();
+                base.OnAppearing();
+                AttachmentPageViewModel.AttachmentUploadedSize = 0;
+                if (Count != 1)
+                {
+                    if (!string.IsNullOrEmpty(App.ICRStatus))
+                    {
+                        if (viewModel.PreviousSelectedICRStatus != null)
+                        {
+                            await IntialiseAsyncForPreviousSelectedFilter();
+                        }
+                    }
+                    else
+                    {
+                        IntialiseAsync();
+                    }
+                }
+                Count++;
             }
-            Count++;
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void onDropdownButtonClicked(object sender, EventArgs e)

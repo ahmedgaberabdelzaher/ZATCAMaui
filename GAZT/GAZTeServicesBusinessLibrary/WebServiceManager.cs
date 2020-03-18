@@ -470,5 +470,162 @@ namespace GAZTeServicesBusinessLibrary
         }
 
 
+
+        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
+        {
+            //lang = "E";
+            //TIN = "3311620297";
+            //Token = "051MiJPS7jgPsOOq374UiG!MjAyMDAzMTUxNzM2MTc";
+            List<OverduePaymentsAndUnSubmittedReturn> overduePayments = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", Token);
+
+
+                    string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+
+                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetUnSubmittedReturnSetResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetUnSubmittedReturnSetResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            Token = NewToken;
+                        }
+
+                        string GAZTGetUnSubmittedReturnSetResponseJSON = GAZTGetUnSubmittedReturnSetResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetUnSubmittedReturnSetResponseJSON))
+                        {
+                            GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["d"].ToString();
+                            GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["results"].ToString();
+                            overduePayments = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetUnSubmittedReturnSetResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return overduePayments;
+        }
+
+
+        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
+        {
+            List<OverduePaymentsAndUnSubmittedReturn> paymentOverdueSet = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", Token);
+
+
+                    string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+
+                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetPaymentOverdueSetResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetPaymentOverdueSetResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            Token = NewToken;
+                        }
+
+                        string GAZTGetPaymentOverdueSetResponseJSON = GAZTGetPaymentOverdueSetResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetPaymentOverdueSetResponseJSON))
+                        {
+                            GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["d"].ToString();
+                            GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["results"].ToString();
+                            paymentOverdueSet = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetPaymentOverdueSetResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return paymentOverdueSet;
+        }
+
     }
 }

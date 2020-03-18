@@ -72,8 +72,13 @@ namespace GAZTeServicesBusinessLibrary
         public static string GAZTGetTheSetOfUnpaidAmounts = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq ";
         //'E' and Gpartz eq '3300007099'&sap-language=E&saml2=disabled"
 
-        public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq "; 
-            //'E' and Gpartz eq '3300007099'&sap-language=E&saml2=disabled
+        public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq ";
+        //'E' and Gpartz eq '3300007099'&sap-language=E&saml2=disabled
+
+        public static string GAZTGetUnSubmittedReturnSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq '";
+
+        public static string GAZTGetPaymentOverdueSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq '";
+
 
 
 

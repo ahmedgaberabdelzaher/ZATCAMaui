@@ -108,6 +108,10 @@ namespace GAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIzNTEwQDMxMzcyZTM0MmUzMEJUZG1sRWtvcDRKQTJYUkpTdm5lcXFHbzAzenUvNS81RTZ3SlBwdlN1Njg9");
+
+
             String langName = "ar-AE";//"en-US";// "ar-AE";
             ci = new CultureInfo(langName);
             AppResources.Culture = ci;

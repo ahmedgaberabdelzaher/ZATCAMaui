@@ -166,7 +166,18 @@ namespace GAZT.ViewModel.NewViewModel
                     if (IsSwitchToggled)
                     {
                         if (!string.IsNullOrEmpty(Preperiodcorr) && !Preperiodcorr.Contains("-"))
-                            Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                        {
+                            if(App.IsArabic)
+                            {
+                              //  Preperiodcorr =  Preperiodcorr + "-";// d.ToString();
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                            }
+                            else
+                            {
+                                Preperiodcorr = "-" + Preperiodcorr;// d.ToString();
+                            }
+                        }
+                           
                     }
                     else
                     {
@@ -491,7 +502,6 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     IsMainButtonEnabled = false;
-                    VATDeclarationData.d.DecFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForSummary");
             }
@@ -2181,7 +2191,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             onSummaryClicked = new Xamarin.Forms.Command(async () =>
             {
-                SummaryClicked();
+               await SummaryClicked();
 
             });
 
@@ -2596,13 +2606,6 @@ namespace GAZT.ViewModel.NewViewModel
             bool value = false;
             ClearPage();
             DisableForRefund();
-
-
-
-
-
-          
-
             //  IsFirstSubmission = true;
             if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
             {
@@ -2621,7 +2624,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsVisibleDropdownForRefund = true;
                             IsVisiblechkRefundDeclaration = true;
                             //  IsDropdownVisibleForIban = true;
-                            if (VATDeclarationData.d.IbanCb == "1")
+                            if (VATDeclarationData.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                             {
                                 IsTextBoxVisibleForIban = true;
                                 IsDropdownVisibleForIban = false;
@@ -2633,7 +2636,6 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             else
                             {
-                                IsVATRefunCheckedVisible = false;
                                 IsTextBoxVisibleForIban = false;
                                 IsDropdownVisibleForIban = true;
 
@@ -2641,6 +2643,15 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
                                 }
+                                if(IBANList != null && IBANList.Count > 0)
+                                {
+                                    IsVATRefunCheckedVisible = false;
+                                }
+                                else
+                                {
+                                    IsVATRefunCheckedVisible = true;
+                                }
+
                             }
                             if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
                             {
@@ -2695,8 +2706,16 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    IsVATRefunCheckedVisible = false;
+                    if (IBANList != null && IBANList.Count > 0)
+                    {
+                        IsVATRefunCheckedVisible = false;
+                    }
+                    else
+                    {
+                        IsVATRefunCheckedVisible = true;
+                    }
                 }
+
                 ButtonName = AppResources.Submit;
                 IsDeclarationCheckedForSummary = true;
                 IsMainButtonEnabled = false;
@@ -2766,6 +2785,34 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    IsDeclarationCheckedForSummary = false;
             //}
+
+            if (VATDeclarationData.d.DecFg == "1")
+            {
+                IsDeclarationCheckedForSummary = true;
+            }
+            else
+            {
+                IsDeclarationCheckedForSummary = false;
+            }
+
+            if (VATDeclarationData.d.TcFlg == "1")
+            {
+                IschkRefundDeclaration = true;
+            }
+            else
+            {
+                IschkRefundDeclaration = false;
+            }
+
+            if (VATDeclarationData.d.IbanCb == "1")
+            {
+                IsCheckedRefund = true;
+            }
+            else
+            {
+                IsCheckedRefund = false;
+            }
+
         }
 
         public void CreditCarriedClicked()
@@ -2827,15 +2874,16 @@ namespace GAZT.ViewModel.NewViewModel
                 //await Task.Run(async() =>
                 //{
                 //IsLoading = true;
-                if (FirstSubmissionCount != 1)
-                {
-                    CreateDataForPost();
-                }
+                //if (FirstSubmissionCount != 1)
+                //{
+                //    CreateDataForPost();
+                //}
 
                 //IsVisibleAcknowledgment = true;
                 ButtonName = AppResources.Submit;
                 if (!IsFirstSubmission)
                 {
+                    CreateDataForPost();
                     FirstSubmissionCount = 0;
                     //ClearPage();
                     //IsVisibleAcknowledgment = true;
@@ -3566,7 +3614,7 @@ namespace GAZT.ViewModel.NewViewModel
                 
                 VatTabbledPageList = vatTabbedList;
 
-                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
+                if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058" || App.ICRStatus == "E0055")
                     {
                       PageSelectedItem = VatTabbledPageList[0];
                 }
@@ -3716,6 +3764,34 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    VATDeclarationData.d.DecFg = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.DecFg = "0";
+                }
+
+                if (IschkRefundDeclaration)
+                {
+                    VATDeclarationData.d.TcFlg = "1";
+                }
+                else
+                { 
+                    VATDeclarationData.d.TcFlg = "0";
+                }
+
+
+                if (IsCheckedRefund)
+                {
+                    VATDeclarationData.d.IbanCb = "1";
+                }
+                else
+                {
+                    VATDeclarationData.d.IbanCb = "0";
+                }
+
                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.ATTACHSet.results.Count() != 0)
                 {
                     DummyATTACHSetsList = new List<Attachment>();
@@ -3778,57 +3854,61 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void CreateDataForPost()
         {
-            //List<Note> noteList = new List<Note>();
-            //Note Note = new Note();
-            //Note.Strline = NoteText;
-            //noteList.Add(Note);
-            //VATDeclarationData.d.NOTESSet.results = noteList;
-            VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
-            vATDeclarationD = SetRemainingData(vATDeclarationD);
-            VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
-            VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
-            VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
-            VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
-            VATDeclarationData.d.StdsalesVat = vATDeclarationD.StdsalesVat;
-            VATDeclarationData.d.TotalsalesVat = vATDeclarationD.TotalsalesVat;
-            VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
-            VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
-            VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
-            VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
-            VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
-            VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
-            VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
-            VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
-
-            if (IsVisibleDropdownForRefund == true)
+            try
             {
-                VATDeclarationData.d.RefundFg = "1";
-                if (IsCheckedRefund == true)
+
+                VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
+                vATDeclarationD = SetRemainingData(vATDeclarationD);
+                VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
+                VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
+                VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
+                VATDeclarationData.d.TotalpurchaseAdj = vATDeclarationD.TotalpurchaseAdj;
+                VATDeclarationData.d.StdsalesVat = vATDeclarationD.StdsalesVat;
+                VATDeclarationData.d.TotalsalesVat = vATDeclarationD.TotalsalesVat;
+                VATDeclarationData.d.StdpurchasesVat = vATDeclarationD.StdpurchasesVat;
+                VATDeclarationData.d.ImportspaidVat = vATDeclarationD.ImportspaidVat;
+                VATDeclarationData.d.ImportsaccVat = vATDeclarationD.ImportsaccVat;
+                VATDeclarationData.d.TotalpurchaseVat = vATDeclarationD.TotalpurchaseVat;
+                VATDeclarationData.d.TotaldueVat = vATDeclarationD.TotaldueVat;
+                VATDeclarationData.d.Preperiodcorr = vATDeclarationD.Preperiodcorr;
+                VATDeclarationData.d.CreditVat = vATDeclarationD.CreditVat;
+                VATDeclarationData.d.NetdueVat = vATDeclarationD.NetdueVat;
+
+                if (IsVisibleDropdownForRefund == true)
                 {
-                    VATDeclarationData.d.Iban = IbanNumberText;
-                    VATDeclarationData.d.IbanCb = "1";
+                    VATDeclarationData.d.RefundFg = "1";
+                    if (IsCheckedRefund == true)
+                    {
+                        VATDeclarationData.d.Iban = IbanNumberText;
+                        VATDeclarationData.d.IbanCb = "1";
+                    }
+                    else
+                    {
+                        if (SelectedIBAN != null)
+                        {
+                            VATDeclarationData.d.Iban = SelectedIBAN.Iban;
+                            VATDeclarationData.d.IbanCb = "0";
+                        }
+                    }
+                    if (SelectedIBANType != null)
+                    {
+                        VATDeclarationData.d.Idtype = SelectedIBANType.key;
+                    }
+                    if (SelectedIBANIDNumber != null)
+                    {
+                        VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                    }
                 }
                 else
                 {
-                    if (SelectedIBAN != null)
-                    {
-                        VATDeclarationData.d.Iban = SelectedIBAN.Iban;
-                        VATDeclarationData.d.IbanCb = "0";
-                    }
-                }
-                if (SelectedIBANType != null)
-                {
-                    VATDeclarationData.d.Idtype = SelectedIBANType.key;
-                }
-                if (SelectedIBANIDNumber != null)
-                {
-                    VATDeclarationData.d.Idnum = SelectedIBANIDNumber.Idnumber;
+                    VATDeclarationData.d.RefundFg = "0";
                 }
             }
-            else
+            catch(Exception ex)
             {
-                VATDeclarationData.d.RefundFg = "0";
+
             }
+           
         }
 
         public VATDeclarationD SetRemainingData(VATDeclarationD vATDeclarationD)
@@ -3917,7 +3997,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 vATDeclarationD.Preperiodcorr = vATDeclarationD.Preperiodcorr.Replace(",", "");
             }
-
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt) && vATDeclarationD.StdsalesAmt.Contains(","))
+            {
+                vATDeclarationD.StdsalesAmt = vATDeclarationD.StdsalesAmt.Replace(",", "");
+            }
 
 
 
@@ -3926,64 +4009,72 @@ namespace GAZT.ViewModel.NewViewModel
 
         public VATDeclarationD SetDataForPost(VATDeclarationD vATDeclarationD)
         {
+            try
+            {
+                
+                if (!String.IsNullOrEmpty(TotalsalesAmt) && TotalsalesAmt.Contains(","))
+                {
 
-            if (!String.IsNullOrEmpty(TotalsalesAmt) && TotalsalesAmt.Contains(","))
-            {
-                vATDeclarationD.TotalsalesAmt = TotalsalesAmt.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalsalesAdj) && TotalsalesAdj.Contains(","))
-            {
-                vATDeclarationD.TotalsalesAdj = TotalsalesAdj.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseAmt) && TotalpurchaseAmt.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseAmt = TotalpurchaseAmt.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseAdj) && TotalpurchaseAdj.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseAdj = TotalpurchaseAdj.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(StdsalesVat) && StdsalesVat.Contains(","))
-            {
-                vATDeclarationD.StdsalesVat = StdsalesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalsalesVat) && TotalsalesVat.Contains(","))
-            {
-                vATDeclarationD.TotalsalesVat = TotalsalesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(StdpurchasesVat) && StdpurchasesVat.Contains(","))
-            {
-                vATDeclarationD.StdpurchasesVat = StdpurchasesVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(ImportspaidVat) && ImportspaidVat.Contains(","))
-            {
-                vATDeclarationD.ImportspaidVat = ImportspaidVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(ImportsaccVat) && ImportsaccVat.Contains(","))
-            {
-                vATDeclarationD.ImportsaccVat = ImportsaccVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotalpurchaseVat) && TotalpurchaseVat.Contains(","))
-            {
-                vATDeclarationD.TotalpurchaseVat = TotalpurchaseVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat.Contains(","))
-            {
-                vATDeclarationD.TotaldueVat = TotaldueVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(Preperiodcorr) && Preperiodcorr.Contains(","))
-            {
-                vATDeclarationD.Preperiodcorr = Preperiodcorr.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(CreditVat) && CreditVat.Contains(","))
-            {
-                vATDeclarationD.CreditVat = CreditVat.Replace(",", "");
-            }
-            if (!String.IsNullOrEmpty(NetdueVat) && NetdueVat.Contains(","))
-            {
-                vATDeclarationD.NetdueVat = NetdueVat.Replace(",", "");
-            }
+                    vATDeclarationD.TotalsalesAmt = !TotalsalesAmt.Contains(",") ? TotalsalesAmt : TotalsalesAmt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalsalesAdj) && TotalsalesAdj.Contains(","))
+                {
+                    vATDeclarationD.TotalsalesAdj = !TotalsalesAdj.Contains(",") ? TotalsalesAdj : TotalsalesAdj.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseAmt) && TotalpurchaseAmt.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseAmt = !TotalpurchaseAmt.Contains(",") ? TotalpurchaseAmt : TotalpurchaseAmt.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseAdj) && TotalpurchaseAdj.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseAdj = !TotalpurchaseAdj.Contains(",") ? TotalpurchaseAdj : TotalpurchaseAdj.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(StdsalesVat) && StdsalesVat.Contains(","))
+                {
+                    vATDeclarationD.StdsalesVat = !StdsalesVat.Contains(",") ? StdsalesVat : StdsalesVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(TotalsalesVat) && TotalsalesVat.Contains(","))
+                {
+                    vATDeclarationD.TotalsalesVat = !TotalsalesVat.Contains(",") ? TotalsalesVat : TotalsalesVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(StdpurchasesVat) && StdpurchasesVat.Contains(","))
+                {
+                    vATDeclarationD.StdpurchasesVat = !StdpurchasesVat.Contains(",") ? StdpurchasesVat : StdpurchasesVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(ImportspaidVat) && ImportspaidVat.Contains(","))
+                {
+                    vATDeclarationD.ImportspaidVat = !ImportspaidVat.Contains(",") ? ImportspaidVat : ImportspaidVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(ImportsaccVat) && ImportsaccVat.Contains(","))
+                {
+                    vATDeclarationD.ImportsaccVat = !ImportsaccVat.Contains(",") ? ImportsaccVat : ImportsaccVat.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(TotalpurchaseVat) && TotalpurchaseVat.Contains(","))
+                {
+                    vATDeclarationD.TotalpurchaseVat = !TotalpurchaseVat.Contains(",") ? TotalpurchaseVat : TotalpurchaseVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat.Contains(","))
+                {
+                    vATDeclarationD.TotaldueVat = !TotaldueVat.Contains(",") ? TotaldueVat : TotaldueVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(Preperiodcorr))
+                {
+                    vATDeclarationD.Preperiodcorr = !Preperiodcorr.Contains(",") ? Preperiodcorr : Preperiodcorr.Replace(",", "");
+                }
+                if (!String.IsNullOrEmpty(CreditVat) )
+                {
+                    vATDeclarationD.CreditVat = !CreditVat.Contains(",") ? CreditVat : CreditVat.Replace(",", ""); 
+                }
+                if (!String.IsNullOrEmpty(NetdueVat) && NetdueVat.Contains(","))
+                {
+                    vATDeclarationD.NetdueVat = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", ""); 
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+            }
             return vATDeclarationD;
         }
 
@@ -4054,7 +4145,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task NavigationSetupForDraft()
         {
-            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1")
+            if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1" || VATDeclarationData.d.StepNumber == "0" || VATDeclarationData.d.StepNumber == "00")
             {
                 //InstrunctionClicked();
                 PageSelectedItem = VatTabbledPageList[0];
