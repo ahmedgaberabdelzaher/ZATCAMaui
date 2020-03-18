@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
+using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Syncfusion.SfCalendar.XForms;
@@ -48,8 +50,6 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         public async Task LoadDashboardData()
         {
 
-            listOverduePaymentReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData("E", App.TP.Tin);
-
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -59,17 +59,17 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             Task GetDashboardDataTask = Task.Run(() =>
             {
-                DashboardData = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetDashboardData("EN", App.TP.Tin);
+                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
             });
 
             Task GetUnsubmittedReturnDataTask = Task.Run(() =>
             {
-                listUnsubmittedReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData("E", App.TP.Tin);
+                listUnsubmittedReturn = WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
             });
 
             Task GetOverduePaymentDataTask = Task.Run(() =>
             {
-                listOverduePaymentReturn = GAZTeServicesBusinessLibrary.WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData("E", App.TP.Tin);
+                listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
             });
 
             try
@@ -363,7 +363,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
                 {
                     ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
-                    objReturnInfoRtnTot.ReturnTypeProperty = GAZTeServicesBusinessLibrary.ReturnType.RtnTot;
+                    objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
 
                     String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
 
@@ -391,7 +391,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
                 {
                     ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
-                    objReturnInfoNrtnTot.ReturnTypeProperty = GAZTeServicesBusinessLibrary.ReturnType.NrtnTot;
+                    objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
 
                     String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
                     if (string.IsNullOrEmpty(NrtnTotstr))
@@ -418,7 +418,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
 
                     ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
-                    objReturnInfoDueIcr.ReturnTypeProperty = GAZTeServicesBusinessLibrary.ReturnType.DueIcr;
+                    objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
 
                     String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
                     if (string.IsNullOrEmpty(DueIcrstr))
@@ -610,30 +610,25 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                 foreach (var item in listofPaymentReturn)
                 {
-                    CalendarInlineEvent event1 = new CalendarInlineEvent();
+                    CalendarInlineEvent BillOrReturnDueEvent = new CalendarInlineEvent();
 
-                    event1.StartTime = item.DueDt;
-                 //   event1.EndTime = DateTime.Now;
-                    event1.Subject = item.Txt50;
+                    BillOrReturnDueEvent.StartTime = item.DueDt;
+                    BillOrReturnDueEvent.EndTime = item.DueDt;
+                   
                     if (item.IcrStatus == "O")
                     {
-                        event1.Color = Color.FromHex("#ff0000");
+                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + item.Fbnum + " | " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount 
+                            + " | " + item.Txt50;
+
+                        BillOrReturnDueEvent.Color = Color.FromHex("#ff0000");
                     }
                     else
                     {
-                        event1.Color = Color.FromHex("#7D858D");
+                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + item.Fbnum + " | " + item.IcrStatus + " | " + item.Txt50;
+                        BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
                     }
-                    //{
-                    //    StartTime = item.DueDt,
-                    //    EndTime = DateTime.Now,
-                    //    Subject = item.Txt50,
-                    //    if(item.IcrStatus== "O")
-                    //{
-                    //    color
-                    //}
-                      
-                    //};
-                    BillsAndReturnsSchedule.Add(event1);
+                    
+                    BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
                 }
 
 

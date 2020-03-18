@@ -6,6 +6,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
+using GAZT.Models;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -60,21 +61,22 @@ namespace GAZTeServicesApp.Views.LandingPage
         private void Calendar_OnMonthCellLoaded(object sender, MonthCellLoadedEventArgs args)
         {
 
-            // As default setting Month cell Background color as Green 
-            args.BackgroundColor = Color.Green;
-            viewModel.BillsAndReturnsSchedule = calendar.DataSource as CalendarEventCollection;
-            if (viewModel.BillsAndReturnsSchedule != null)
-            {
-                for (int i = 0; i < viewModel.BillsAndReturnsSchedule.Count; i++)
-                {
-                    var appointment = viewModel.BillsAndReturnsSchedule[i];
-                    if (args.Date.Date == appointment.StartTime.Date)
-                    {
-                        // Setting Background color when the appointment available on specific day 
-                        args.BackgroundColor = Color.Red;
-                    }
-                }
-            }
+          //  // As default setting Month cell Background color as Green 
+          ////  args.BackgroundColor = Color.Green;
+          //  viewModel.BillsAndReturnsSchedule = calendar.DataSource as CalendarEventCollection;
+          //  if (viewModel.BillsAndReturnsSchedule != null)
+          //  {
+          //      for (int i = 0; i < viewModel.BillsAndReturnsSchedule.Count; i++)
+          //      {
+
+          //          var appointment = viewModel.BillsAndReturnsSchedule[i];
+          //          if (args.Date.Date == appointment.StartTime.Date)
+          //          {
+          //              // Setting Background color when the appointment available on specific day 
+          //             // args.BackgroundColor = Color.Red;
+          //          }
+          //      }
+          //  }
         }
 
         private void SetLTR()

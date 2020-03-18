@@ -9,12 +9,12 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
     {
         public GAZTException()
         {
-            
+
         }
 
-        public GAZTException(string exceptionMessage): base (exceptionMessage)
+        public GAZTException(string exceptionMessage) : base(exceptionMessage)
         {
-            
+
         }
     }
 
