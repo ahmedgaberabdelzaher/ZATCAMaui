@@ -2499,4 +2499,7 @@
   <data name="ZZZPasswordNotMatched" xml:space="preserve">
     <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
   </data>
+    <data name="OfText" xml:space="preserve">
+    <value>من</value>
+  </data>
 </root>

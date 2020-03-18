@@ -2625,4 +2625,7 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZPasswordNotMatched" xml:space="preserve">
     <value>New password field and confirm password field must match</value>
   </data>
+    <data name="OfText" xml:space="preserve">
+    <value>of</value>
+  </data>
 </root>

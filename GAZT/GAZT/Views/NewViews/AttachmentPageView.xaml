@@ -51,7 +51,7 @@
                                 <FormattedString>
                                     <Span Text="{Binding TotalAttachmentSize}"  />
                                     <Span Text="     "/>
-                                    <Span Text="Of"/>
+                                    <Span Text="{x:Static local:AppResources.OfText}"/>
                                     <Span Text="     "/>
                                     <Span Text="300 MB."/>
                                 </FormattedString>

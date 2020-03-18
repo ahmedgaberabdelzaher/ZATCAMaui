@@ -104,6 +104,7 @@ namespace GAZT.Views.NewViews
             try
             {
                 base.OnAppearing();
+                AttachmentPageViewModel.AttachmentUploadedSize = 0;
                 if (Count != 1)
                 {
                     if (!string.IsNullOrEmpty(App.ICRStatus))

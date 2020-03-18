@@ -149,10 +149,16 @@ namespace GAZT.Manager
                                         App.IsSessionExpired = false;
                                     }
                                     Message = node.ChildNodes[1].InnerText;
+                                    if(Message.Equals("5"))
+                                    {
+                                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                                    }
 
                                 }
                                 else
+                                {
                                     throw new Exception(AppResources.NetworkConnectivityIssue);
+                                }
                             }
                         }
                     }
