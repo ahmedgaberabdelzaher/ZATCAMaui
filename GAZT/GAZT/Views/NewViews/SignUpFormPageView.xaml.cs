@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
@@ -24,24 +25,31 @@ namespace GAZT.Views.NewViews
         SignUpFormPageViewModel viewModel;
         public SignUpFormPageView()
         {
-            viewModel = App.Locator.SignUpFormPageView;
-            
-            InitializeComponent();
-            this.BindingContext = viewModel;
-            ClearFields();
-            viewModel.OnPageLoad();
-            DDlIDType.SelectedIndex = 0;
-            UsingDDl.SelectedIndex = 1;
+            try
+            {
+                viewModel = App.Locator.SignUpFormPageView;
 
-            SetLTR();
+                InitializeComponent();
+                this.BindingContext = viewModel;
+                ClearFields();
+                viewModel.OnPageLoad();
+                DDlIDType.SelectedIndex = 0;
+                // UsingDDl.SelectedIndex = 1;
+
+                SetLTR();
+            }
+            catch (Exception ex)
+            {
+
+            }
 
 
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            viewModel.PkrDBO = null;
-            DpDbo.NullableDate = null;
+            // viewModel.PkrDBO = null;
+            // DpDbo.NullableDate = null;
         }
         protected override void OnAppearing()
         {
@@ -75,16 +83,16 @@ namespace GAZT.Views.NewViews
             viewModel.TxtEmailAddress = string.Empty;
             viewModel.TxtMobileNumber = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
-            viewModel.EnteredCaptchaValue = string.Empty;
-            viewModel.Captcha = string.Empty;
-           // DpDbo.Date = NullableDateProperty;
+            //viewModel.EnteredCaptchaValue = string.Empty;
+            //viewModel.Captcha = string.Empty;
+            // DpDbo.Date = NullableDateProperty;
 
-            viewModel.PkrDBO = null;
+            //  viewModel.PkrDBO = null;
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
 
-            
+
             // DpDbo.Format = "        ";
         }
         private void SetLTR()
@@ -104,135 +112,141 @@ namespace GAZT.Views.NewViews
             {
                 if (string.IsNullOrEmpty(viewModel.TxtTIN))
                 {
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                     IsNextValid = false;
                 }
                 else
                 {
-                    FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmTIN.HasError = false;
                 }
             }
             if (viewModel.SelectedSignUpUsing == null)
             {
-                FrmIDType.BorderColor = Color.Red;
+                FrmIDType.HasError = true;
                 IsNextValid = false;
             }
             else
             {
-                FrmIDType.BorderColor = Color.FromHex("#B1B1B1");
+                FrmIDType.HasError = false;
             }
             if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
             {
-                FrmIDNumber.BorderColor = Color.Red;
+                FrmIDNumber.HasError = true;
                 IsNextValid = false;
             }
             else
             {
-                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                FrmIDNumber.HasError = false;
             }
-            if (viewModel.PkrDBO == null)
+            if (string.IsNullOrEmpty(viewModel.PkrDBO))
             {
-                FrmDBO.BorderColor = Color.Red;
+                FrmDBO.HasError = true;
                 IsNextValid = false;
             }
             else
             {
-                FrmDBO.BorderColor = Color.FromHex("#B1B1B1");
+                FrmDBO.HasError = false;
             }
 
             if (string.IsNullOrEmpty(viewModel.TxtName))
             {
-                FrmName.BorderColor = Color.Red;
+                FrmName.HasError = true;
                 IsNextValid = false;
             }
             else
             {
-                FrmName.BorderColor = Color.FromHex("#B1B1B1");
+                FrmName.HasError = false;
             }
-            if (viewModel.SelectLCType != null)
-            {
-                if (viewModel.SelectLCType.ID == 1)
-                {
-                    if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
-                    {
-                        FrmLicenseNumber.BorderColor = Color.Red;
-                        IsNextValid = false;
-                    }
-                    else
-                    {
-                        FrmLicenseNumber.BorderColor = Color.FromHex("#B1B1B1");
-                    }
-                    if (viewModel.SelectedIssuedBy == null)
-                    {
-                        FrmLicenseIssuedBy.BorderColor = Color.Red;
-                        IsNextValid = false;
-                    }
-                    else
-                    {
-                        FrmLicenseIssuedBy.BorderColor = Color.FromHex("#B1B1B1");
-                    }
-                    if (viewModel.SelectCityList == null)
-                    {
-                        FrmLicenseIssuedCity.BorderColor = Color.Red;
-                        IsNextValid = false;
-                    }
-                    else
-                    {
-                        FrmLicenseIssuedCity.BorderColor = Color.FromHex("#B1B1B1");
-                    }
-                }
-                else
-                {
-                    if (string.IsNullOrEmpty(viewModel.TxtCRNumber))
-                    {
-                        FrmCR.BorderColor = Color.Red;
-                        IsNextValid = false;
-                    }
-                    else
-                    {
-                        FrmCR.BorderColor = Color.FromHex("#B1B1B1");
-                    }
 
-                }
-            }
-            if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
+            if (viewModel.IsCRChecked == false)
             {
-                FrmEmailAddress.BorderColor = Color.Red;
-                IsNextValid = false;
-            }
-            else
-            {
-                FrmEmailAddress.BorderColor = Color.FromHex("#B1B1B1");
-            }
-            if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
-            {
-                FrmMobileNumber.BorderColor = Color.Red;
-                IsNextValid = false;
-            }
-            else
-            {
-                FrmMobileNumber.BorderColor = Color.FromHex("#B1B1B1");
-            }
-            if (string.IsNullOrEmpty(viewModel.EnteredCaptchaValue))
-            {
-                FrmEnteredCaptcha.BorderColor = Color.Red;
-                IsNextValid = false;
-            }
-            else
-            {
-                FrmEnteredCaptcha.BorderColor = Color.FromHex("#B1B1B1");
-
-                bool IsCapValid = viewModel.ValidateCaptcha();
-                if (IsCapValid == false)
+                if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
                 {
-                    FrmEnteredCaptcha.BorderColor = Color.Red;
+                    FrmLicenseNumber.HasError = true;
                     IsNextValid = false;
                 }
                 else
                 {
-                    FrmEnteredCaptcha.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmLicenseNumber.HasError = false;
+                }
+                if (viewModel.SelectedIssuedBy == null)
+                {
+                    FrmLicenseIssuedBy.HasError = true;
+                    IsNextValid = false;
+                }
+                else
+                {
+                    FrmLicenseIssuedBy.HasError = false;
+
+                }
+                if (viewModel.SelectCityList == null)
+                {
+                    FrmLicenseIssuedCity.HasError = true;
+                    IsNextValid = false;
+                }
+                else
+                {
+                    FrmLicenseIssuedCity.HasError = false;
+
                 }
             }
+            else
+            {
+                if (string.IsNullOrEmpty(viewModel.TxtCRNumber))
+                {
+                    FrmCR.HasError = true;
+                    IsNextValid = false;
+                }
+                else
+                {
+                    FrmCR.HasError = false;
+                }
+
+            }
+
+            if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
+            {
+                FrmEmailAddress.HasError = true;
+                IsNextValid = false;
+            }
+            else
+            {
+                FrmEmailAddress.HasError = false;
+
+            }
+            if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
+            {
+                FrmMobileNumber.HasError = true;
+                IsNextValid = false;
+            }
+            else
+            {
+                FrmMobileNumber.HasError = false;
+
+            }
+            //if (string.IsNullOrEmpty(viewModel.EnteredCaptchaValue))
+            //{
+            //    FrmEnteredCaptcha.HasError = true;
+            //    IsNextValid = false;
+            //}
+            //else
+            //{
+            //    FrmEnteredCaptcha.HasError = false;
+
+
+            //    bool IsCapValid = viewModel.ValidateCaptcha();
+            //    if (IsCapValid == false)
+            //    {
+            //        FrmEnteredCaptcha.HasError = true;
+
+            //        IsNextValid = false;
+            //    }
+            //    else
+            //    {
+            //        FrmEnteredCaptcha.HasError = false;
+
+            //    }
+            //}
 
 
 
@@ -249,7 +263,7 @@ namespace GAZT.Views.NewViews
                         DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty);
                         if (ResultDuplicate.d.Flag == "X")
                         {
-                            if (viewModel.SelectLCType.ID == 2)
+                            if (viewModel.IsCRChecked == true)
                             {
                                 try
                                 {
@@ -281,7 +295,7 @@ namespace GAZT.Views.NewViews
                                             SiguupModel.ATinExist = "";
                                         }
                                         SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                        if (viewModel.SelectLCType.ID == 2)
+                                        if (viewModel.IsCRChecked == true)
                                         {
                                             SiguupModel.ACommId = viewModel.TxtCRNumber;
                                             SiguupModel.ALicenceNo = "";
@@ -370,7 +384,7 @@ namespace GAZT.Views.NewViews
                                         SiguupModel.ATinExist = "";
                                     }
                                     SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                    if (viewModel.SelectLCType.ID == 2)
+                                    if (viewModel.IsCRChecked == true)
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
@@ -443,7 +457,7 @@ namespace GAZT.Views.NewViews
                     DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
                     if (ResultDuplicate.d.Flag == "X")
                     {
-                        if (viewModel.SelectLCType.ID == 2)
+                        if (viewModel.IsCRChecked == true)
                         {
                             try
                             {
@@ -475,7 +489,7 @@ namespace GAZT.Views.NewViews
                                         SiguupModel.ATinExist = "";
                                     }
                                     SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                    if (viewModel.SelectLCType.ID == 2)
+                                    if (viewModel.IsCRChecked == true)
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
@@ -562,7 +576,7 @@ namespace GAZT.Views.NewViews
                                     SiguupModel.ATinExist = "";
                                 }
                                 SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                if (viewModel.SelectLCType.ID == 2)
+                                if (viewModel.IsCRChecked == true)
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
                                     SiguupModel.ALicenceNo = "";
@@ -625,7 +639,7 @@ namespace GAZT.Views.NewViews
                         DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty);
 
 
-                        if (viewModel.SelectLCType.ID == 2)
+                        if (viewModel.IsCRChecked==true)
                         {
                             try
                             {
@@ -657,7 +671,7 @@ namespace GAZT.Views.NewViews
                                         SiguupModel.ATinExist = "";
                                     }
                                     SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                    if (viewModel.SelectLCType.ID == 2)
+                                    if (viewModel.IsCRChecked == true)
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
@@ -744,7 +758,7 @@ namespace GAZT.Views.NewViews
                                     SiguupModel.ATinExist = "";
                                 }
                                 SiguupModel.AIdnumber = viewModel.TxtIDNumber;
-                                if (viewModel.SelectLCType.ID == 2)
+                                if (viewModel.IsCRChecked == true)
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
                                     SiguupModel.ALicenceNo = "";
@@ -812,164 +826,177 @@ namespace GAZT.Views.NewViews
 
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
+            if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
-                EntryIDNumber.IsEnabled = true;
-                string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
-                if (!string.IsNullOrEmpty(EntryIDNumber.Text))
+                try
                 {
-                    if (viewModel.SelectedSignUpUsing.ID == 1)
+                    EntryIDNumber.IsEnabled = true;
+                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                    if (selectedItem != null && selectedItem[0] != null)
                     {
-                        if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                        string month = selectedItem[0].ToString();
+                        string day = selectedItem[1].ToString();
+                        string year = selectedItem[2].ToString();
+
+                        string DBO = year + month + day;
+                        //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+
+                        if (!string.IsNullOrEmpty(EntryIDNumber.Text))
                         {
-                            FrmIDNumber.BorderColor = Color.Red;
-                        }
-                        else
-                        {
-                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                            if (EntryIDNumber.Text.Length == 10)
+                            if (viewModel.SelectedSignUpUsing.ID == 1)
                             {
-                                try
+                                if (EntryIDNumber.Text.Substring(0, 1) != "1")
                                 {
-                                    string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                    IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-
-                                    if (SignupIsIDTypeValid.d == null)
+                                    FrmIDNumber.HasError = true;
+                                }
+                                else
+                                {
+                                    FrmIDNumber.HasError = false;
+                                    if (EntryIDNumber.Text.Length == 10)
                                     {
-
-                                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                                        try
                                         {
-                                            FrmIDNumber.BorderColor = Color.Red;
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                            //  viewModel.TxtIDNumber = string.Empty;
+                                            string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                                            IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+
+                                            if (SignupIsIDTypeValid.d == null)
+                                            {
+
+                                                IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                                                {
+                                                    FrmIDNumber.HasError = true;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    //  viewModel.TxtIDNumber = string.Empty;
+                                                }
+                                                else
+                                                {
+                                                    FrmIDNumber.HasError = false;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                                EntryIDNumber.IsEnabled = false;
+                                            }
                                         }
-                                        else
+                                        catch
                                         {
-                                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                            try
+                                            {
+                                                string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                                                IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                                                {
+                                                    FrmIDNumber.HasError = true;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    // viewModel.TxtIDNumber = string.Empty;
+                                                }
+                                                else
+                                                {
+                                                    FrmIDNumber.HasError = false;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                }
+                                            }
+                                            catch (InternetException ex)
+                                            {
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                                });
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                        EntryIDNumber.IsEnabled = false;
                                     }
                                 }
-                                catch
-                                {
-                                    try
-                                    {
-                                        string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                        IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
 
-                                        if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                                        {
-                                            FrmIDNumber.BorderColor = Color.Red;
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                            // viewModel.TxtIDNumber = string.Empty;
-                                        }
-                                        else
-                                        {
-                                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                        }
-                                    }
-                                    catch (InternetException ex)
+                            }
+                            else if (viewModel.SelectedSignUpUsing.ID == 2)
+                            {
+                                if (EntryIDNumber.Text.Substring(0, 1) != "2")
+                                {
+                                    FrmIDNumber.HasError = true;
+                                }
+                                else
+                                {
+                                    FrmIDNumber.HasError = false;
+                                    if (EntryIDNumber.Text.Length == 10)
                                     {
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        try
                                         {
-                                            viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                        });
+                                            string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                                            IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+                                            if (SignupIsIDTypeValid.d == null)
+                                            {
+
+                                                IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                                                {
+                                                    FrmIDNumber.HasError = true;
+
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    //  viewModel.TxtIDNumber = string.Empty;
+                                                }
+                                                else
+                                                {
+                                                    FrmIDNumber.HasError = false;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                                EntryIDNumber.IsEnabled = false;
+                                            }
+
+                                        }
+                                        catch
+                                        {
+                                            try
+                                            {
+                                                string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                                                IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                                                {
+                                                    FrmIDNumber.HasError = true;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    // viewModel.TxtIDNumber = string.Empty;
+                                                }
+                                                else
+                                                {
+                                                    FrmIDNumber.HasError = false;
+                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                }
+                                            }
+                                            catch (InternetException ex)
+                                            {
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                                });
+                                            }
+                                        }
                                     }
                                 }
                             }
-                        }
-
-                    }
-                    else if (viewModel.SelectedSignUpUsing.ID == 2)
-                    {
-                        if (EntryIDNumber.Text.Substring(0, 1) != "2")
-                        {
-                            FrmIDNumber.BorderColor = Color.Red;
-                        }
-                        else
-                        {
-                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                            if (EntryIDNumber.Text.Length == 10)
+                            else
                             {
-                                try
-                                {
-                                    string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                    IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                                    if (SignupIsIDTypeValid.d == null)
-                                    {
-
-                                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                                        {
-                                            FrmIDNumber.BorderColor = Color.Red;
-
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                            //  viewModel.TxtIDNumber = string.Empty;
-                                        }
-                                        else
-                                        {
-                                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                        EntryIDNumber.IsEnabled = false;
-                                    }
-
-                                }
-                                catch
-                                {
-                                    try
-                                    {
-                                        string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                        IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                        if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                                        {
-                                            FrmIDNumber.BorderColor = Color.Red;
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                            // viewModel.TxtIDNumber = string.Empty;
-                                        }
-                                        else
-                                        {
-                                            FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
-                                            viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                        }
-                                    }
-                                    catch (InternetException ex)
-                                    {
-                                        Device.BeginInvokeOnMainThread(async () =>
-                                        {
-                                            viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                        });
-                                    }
-                                }
+                                FrmIDNumber.HasError = false;
                             }
                         }
-                    }
-                    else
-                    {
-                        FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
                     }
                 }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                catch (InternetException ex)
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
             }
         }
 
@@ -979,13 +1006,14 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryMobileNumber.Text.Substring(0, 1) != "5")
                 {
-                   
-                        FrmMobileNumber.BorderColor = Color.Red;
-                       
+
+                    FrmMobileNumber.HasError = true;
+
                 }
                 else
                 {
-                    FrmMobileNumber.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmMobileNumber.HasError = false;
+
                 }
             }
         }
@@ -996,25 +1024,28 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                  
-                        FrmPhoneNumber.BorderColor = Color.Red;
-                     
+
+                    FrmPhoneNumber.HasError = true;
+
                 }
                 else
                 {
-                    FrmPhoneNumber.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmPhoneNumber.HasError = false;
                 }
             }
         }
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-            string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
-            if (DpDbo.Date.Date == DateTime.Now.Date)
-            {
-                DpDbo.Format = "dd-MM-yyyy";
-                DpDbo.Date = DateTime.Now;
-            }
+            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+
+            string month = selectedItem[0].ToString();
+            string day = selectedItem[1].ToString();
+            string year = selectedItem[2].ToString();
+
+            string DBO = year + month + day;
+            //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+
             EntryIDNumber.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
@@ -1032,12 +1063,12 @@ namespace GAZT.Views.NewViews
 
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.BorderColor = Color.Red;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
-                                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
 
                             }
@@ -1058,12 +1089,12 @@ namespace GAZT.Views.NewViews
 
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.BorderColor = Color.Red;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
-                                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1094,12 +1125,12 @@ namespace GAZT.Views.NewViews
 
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.BorderColor = Color.Red;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
-                                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1119,12 +1150,12 @@ namespace GAZT.Views.NewViews
 
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
-                                FrmIDNumber.BorderColor = Color.Red;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
-                                FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1147,7 +1178,7 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryCRNumber.Text.Length == 10)
                 {
-                    FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmCR.HasError = false;
                     CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                     if (Result != null)
                     {
@@ -1155,12 +1186,12 @@ namespace GAZT.Views.NewViews
                         {
                             if (Result.d.NotFound == "X")
                             {
-                                FrmCR.BorderColor = Color.Red;
+                                FrmCR.HasError = true;
                                 viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
                             }
                             else
                             {
-                                FrmCR.BorderColor = Color.FromHex("#B1B1B1");
+                                FrmCR.HasError = false;
                             }
                         }
                     }
@@ -1182,7 +1213,7 @@ namespace GAZT.Views.NewViews
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmCR.BorderColor = Color.Red;
+                    FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
                     EntryCRNumber.Focus();
                 }
@@ -1196,11 +1227,11 @@ namespace GAZT.Views.NewViews
             {
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                 }
                 else
                 {
-                    FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmTIN.HasError = false;
                 }
             }
         }
@@ -1215,7 +1246,7 @@ namespace GAZT.Views.NewViews
                 {
 
                     Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                     EntryTIN.Text = string.Empty;
                     EntryTIN.Focus();
 
@@ -1225,7 +1256,7 @@ namespace GAZT.Views.NewViews
                     if (Messages.Length > 0)
                     {
                         Messages.Append(Environment.NewLine);
-                      
+
                     }
                     Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
 
@@ -1244,12 +1275,12 @@ namespace GAZT.Views.NewViews
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                     EntryTIN.Text = string.Empty;
                 }
                 else
                 {
-                    FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmTIN.HasError = false;
                 }
 
             }
@@ -1277,12 +1308,12 @@ namespace GAZT.Views.NewViews
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmEmailAddress.BorderColor = Color.Red;
+                    FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
                 }
                 else
                 {
-                    FrmEmailAddress.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmEmailAddress.HasError = false;
                 }
             }
 
@@ -1310,26 +1341,26 @@ namespace GAZT.Views.NewViews
                 PopUp popUp = new PopUp();
                 if (EntryMobileNumber.Text.Substring(0, 1) != "5")
                 {
-                   
-                       
-                        Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
 
 
-                    
+                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+
+
+
                 }
                 if (EntryMobileNumber.Text.Length != 9)
                 {
                     if (Message.Length > 0)
                     {
                         Message.Append(Environment.NewLine);
-                      
+
                     }
                     Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
 
 
-                    
+
                 }
-                if(Message.Length>0)
+                if (Message.Length > 0)
                 {
                     popUp.Message = Message.ToString();
                     popUp.IsLinkAvailable = false;
@@ -1343,12 +1374,12 @@ namespace GAZT.Views.NewViews
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.BorderColor = Color.Red;
+                    FrmMobileNumber.HasError = true;
                     EntryMobileNumber.Text = string.Empty;
                 }
                 else
                 {
-                    FrmMobileNumber.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmMobileNumber.HasError = false;
                 }
             }
         }
@@ -1372,7 +1403,7 @@ namespace GAZT.Views.NewViews
                     if (Message.Length > 0)
                     {
                         Message.Append(Environment.NewLine);
-                       
+
                     }
                     Message.Append(AppResources.ZZPhonenumberlengthcannotbelessthan9digits);
 
@@ -1390,13 +1421,13 @@ namespace GAZT.Views.NewViews
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmPhoneNumber.BorderColor = Color.Red;
+                        FrmPhoneNumber.HasError = true;
                         EntryPhoneNumber.Text = string.Empty;
                         EntryPhoneNumber.Focus();
                     }
                     else
                     {
-                        FrmPhoneNumber.BorderColor = Color.FromHex("#B1B1B1");
+                        FrmPhoneNumber.HasError = false;
                     }
                 }
             }
@@ -1432,7 +1463,7 @@ namespace GAZT.Views.NewViews
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.BorderColor = Color.Red;
+                        FrmIDNumber.HasError = true;
                         EntryIDNumber.Text = string.Empty;
 
                     }
@@ -1456,16 +1487,56 @@ namespace GAZT.Views.NewViews
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.BorderColor = Color.Red;
+                        FrmIDNumber.HasError = true;
                         EntryIDNumber.Text = string.Empty;
                     }
                 }
                 else
                 {
-                    FrmIDNumber.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmIDNumber.HasError = false;
                 }
             }
         }
 
+        private void btn1_Clicked(object sender, EventArgs e)
+        {
+            DDlIDType.IsOpen = true;
+        }
+
+        private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+
+            string month = selectedItem[0].ToString();
+            string day = selectedItem[1].ToString();
+            string year = selectedItem[2].ToString();
+
+            viewModel.PkrDBO = year + "/" + month + "/" + day;
+        }
+
+        private void btnDate_Clicked(object sender, EventArgs e)
+        {
+            DpDbo.IsOpen = true;
+        }
+
+        //private void LOrCSelect_Clicked(object sender, EventArgs e)
+        //{
+        //    UsingDDl.IsOpen = true;
+        //}
+
+        private void LIssuedBy_Clicked(object sender, EventArgs e)
+        {
+            ddlLIssuedBy.IsOpen = true;
+        }
+
+        private void LIssuedByCity_Clicked(object sender, EventArgs e)
+        {
+            ddlLIssuedByCity.IsOpen = true;
+        }
+
+        private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

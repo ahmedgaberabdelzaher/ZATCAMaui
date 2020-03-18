@@ -2746,4 +2746,8 @@
     <data name="OfText" xml:space="preserve">
     <value>من</value>
   </data>
+  <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
+    <value>Proceed to indivisual Signup</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

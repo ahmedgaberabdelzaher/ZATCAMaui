@@ -2865,5 +2865,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\ic_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\drawable\date.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

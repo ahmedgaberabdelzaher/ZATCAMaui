@@ -24,6 +24,48 @@ namespace GAZT.ViewModel.NewViewModel
 
 
         #region Properties 
+        private bool _isCRChecked = false;
+        public bool IsCRChecked
+        {
+            get
+            {
+                return _isCRChecked;
+            }
+            set
+            {
+                _isCRChecked = value;
+                if (_isCRChecked == true)
+                {
+                    IsCRVisible = true;
+                }
+                else
+                {
+                    IsCRVisible = false;
+                }
+                RaisePropertyChanged("IsCRChecked");
+            }
+        }
+        private bool _isLNChecked = false;
+        public bool IsLNChecked
+        {
+            get
+            {
+                return _isLNChecked;
+            }
+            set
+            {
+                _isLNChecked = value;
+                if(_isLNChecked==true)
+                {
+                    IsLicenseVisible = true;
+                }
+                else
+                {
+                    IsLicenseVisible = false;
+                }
+                RaisePropertyChanged("IsLNChecked");
+            }
+        }
         private int _iDTypeIndex = 0;
         public int IDTypeIndex
         {
@@ -48,6 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedLOrC = value;
+               
                 RaisePropertyChanged("SelectedLOrC");
             }
         }
@@ -89,6 +132,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         MaxLengthID = 15;
                     }
+                    TxtIDType = _selectedSignUpUsing.SUType;
                 }
                 RaisePropertyChanged("SelectedSignUpUsing");
             }
@@ -129,6 +173,7 @@ namespace GAZT.ViewModel.NewViewModel
                         IsLicenseVisible = true;
                         IsCRVisible = false;
                     }
+                    TxtLOrC = _SelectedLCType.LCType;
                 }
                 RaisePropertyChanged("SelectLCType");
             }
@@ -144,6 +189,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _lcTypeList = value;
+              
                 RaisePropertyChanged("LcTypeList");
             }
         }
@@ -159,6 +205,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectCityList = value;
+                if(_selectCityList!=null)
+                {
+                    TxtLOrCIssuedByCity = _selectCityList.CityName;
+                }
                 RaisePropertyChanged("SelectCityList");
             }
         }
@@ -250,6 +300,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIssuedBy = value;
+                if (_selectedIssuedBy != null)
+                {
+                    TxtLOrCIssuedBy = _selectedIssuedBy.txt50;
+                }
                 RaisePropertyChanged("SelectedIssuedBy");
             }
         }
@@ -379,37 +433,37 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private string _enteredCaptchaValue = string.Empty;
-        public string EnteredCaptchaValue
-        {
-            get
-            {
-                return _enteredCaptchaValue;
-            }
-            set
-            {
-                _enteredCaptchaValue = value;
-                RaisePropertyChanged("EnteredCaptchaValue");
-            }
-        }
+        //private string _enteredCaptchaValue = string.Empty;
+        //public string EnteredCaptchaValue
+        //{
+        //    get
+        //    {
+        //        return _enteredCaptchaValue;
+        //    }
+        //    set
+        //    {
+        //        _enteredCaptchaValue = value;
+        //        RaisePropertyChanged("EnteredCaptchaValue");
+        //    }
+        //}
 
-        private string _captcha = string.Empty;
-        public string Captcha
-        {
-            get
-            {
-                return _captcha;
-            }
-            set
-            {
-                _captcha = value;
-                RaisePropertyChanged("Captcha");
-            }
-        }
+        //private string _captcha = string.Empty;
+        //public string Captcha
+        //{
+        //    get
+        //    {
+        //        return _captcha;
+        //    }
+        //    set
+        //    {
+        //        _captcha = value;
+        //        RaisePropertyChanged("Captcha");
+        //    }
+        //}
 
-        private DateTime? _pkrDBO = null;
+        private string _pkrDBO = string.Empty;
 
-        public DateTime? PkrDBO {
+        public string PkrDBO {
             get
             {
                 return _pkrDBO;
@@ -476,6 +530,61 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MaximumxD");
             }
         }
+
+        private string _txtIDType = string.Empty;
+        public string TxtIDType
+        {
+            get
+            {
+                return _txtIDType;
+            }
+            set
+            {
+                _txtIDType = value;
+                RaisePropertyChanged("TxtIDType");
+            }
+        }
+
+        private string _txtLOrC = string.Empty;
+        public string TxtLOrC
+        {
+            get
+            {
+                return _txtLOrC;
+            }
+            set
+            {
+                _txtLOrC = value;
+                RaisePropertyChanged("TxtLOrC");
+            }
+        }
+
+        private string _txtLOrCIssuedBy = string.Empty;
+        public string TxtLOrCIssuedBy
+        {
+            get
+            {
+                return _txtLOrCIssuedBy;
+            }
+            set
+            {
+                _txtLOrCIssuedBy = value;
+                RaisePropertyChanged("TxtLOrCIssuedBy");
+            }
+        }
+        private string _txtLOrCIssuedByCity = string.Empty;
+        public string TxtLOrCIssuedByCity
+        {
+            get
+            {
+                return _txtLOrCIssuedByCity;
+            }
+            set
+            {
+                _txtLOrCIssuedByCity = value;
+                RaisePropertyChanged("TxtLOrCIssuedByCity");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -497,15 +606,15 @@ namespace GAZT.ViewModel.NewViewModel
                     throw new ArgumentNullException("dialogService");
                 }
 
-                OnCaptchaRegenerateClicked = new Xamarin.Forms.Command(() =>
-                {
+                //OnCaptchaRegenerateClicked = new Xamarin.Forms.Command(() =>
+                //{
                    
-                        StringBuilder captcha = GetCaptcha();
-                        Captcha = captcha.ToString();
-                        EnteredCaptchaValue = string.Empty;
+                //        StringBuilder captcha = GetCaptcha();
+                //        Captcha = captcha.ToString();
+                //        EnteredCaptchaValue = string.Empty;
                     
 
-                });
+                //});
 
                 OnNextClicked = new Xamarin.Forms.Command(() =>
                 {
@@ -524,45 +633,45 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Methods 
 
-        public bool ValidateCaptcha()
-        {
-            bool isValidCaptcha = false;
-            isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
-            if (EnteredCaptchaValue.Equals(Captcha))
-            {
-                isValidCaptcha = true;
-                EnteredCaptchaValue = string.Empty;
-            }
-            else
-            {
-                // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
+        //public bool ValidateCaptcha()
+        //{
+        //    bool isValidCaptcha = false;
+        //    isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
+        //    if (EnteredCaptchaValue.Equals(Captcha))
+        //    {
+        //        isValidCaptcha = true;
+        //        EnteredCaptchaValue = string.Empty;
+        //    }
+        //    else
+        //    {
+        //        // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
 
-                isValidCaptcha = false;
-            }
-            return isValidCaptcha;
-        }
-        public StringBuilder GetCaptcha()
-        {
-            StringBuilder Captcha;
+        //        isValidCaptcha = false;
+        //    }
+        //    return isValidCaptcha;
+        //}
+        //public StringBuilder GetCaptcha()
+        //{
+        //    StringBuilder Captcha;
 
-            try
-            {
-                Random random = new Random();
-                string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-                StringBuilder captcha = new StringBuilder();
-                for (int i = 0; i < 6; i++)
-                    captcha.Append(combination[random.Next(combination.Length)]);
-                //Session["captcha"] = captcha.ToString();
-                //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
-                Captcha = captcha;
-            }
-            catch
-            {
-                throw;
-            }
-            return Captcha;
+        //    try
+        //    {
+        //        Random random = new Random();
+        //        string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        //        StringBuilder captcha = new StringBuilder();
+        //        for (int i = 0; i < 6; i++)
+        //            captcha.Append(combination[random.Next(combination.Length)]);
+        //        //Session["captcha"] = captcha.ToString();
+        //        //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
+        //        Captcha = captcha;
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //    return Captcha;
 
-        }
+        //}
         public async Task OnPageLoad()
         {
            
@@ -584,11 +693,11 @@ namespace GAZT.ViewModel.NewViewModel
                 SignUpUsingM.ID = 1;
                 SignUpUsingM.SUType = AppResources.ZZNationalID;
                 SelectedSignUpUsing = SignUpUsingM;
-                LcTypeList = null;
-                List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
-                LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
-                LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
-                LcTypeList = LIstLcType;
+                //LcTypeList = null;
+                //List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
+                //LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
+                //LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
+                //LcTypeList = LIstLcType;
                 LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
                 LicenseOrCRModelM.ID = 2;
                 LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
@@ -600,11 +709,13 @@ namespace GAZT.ViewModel.NewViewModel
                 CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
+                IsCRChecked = true;
 
+                IsLNChecked = false;
                 CityR = CityListSignup.d.city_dropdownSet.results;
-                CityList = CityR.Where(a => !string.IsNullOrEmpty(a.CityCode)).ToList();
-                StringBuilder captcha = GetCaptcha();
-                Captcha = captcha.ToString();
+                CityList = CityR;
+                //StringBuilder captcha = GetCaptcha();
+                //Captcha = captcha.ToString();
                 IDTypeModelRootObject = null;
                 IDTypeIndex = 0;
                 SelectedLOrC = 1;

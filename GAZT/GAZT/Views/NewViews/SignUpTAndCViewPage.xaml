@@ -7,22 +7,25 @@
              FlowDirection="RightToLeft"
             
               xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
-               Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
              x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
     <ContentPage.Content>
         <StackLayout>
             
-                <WebView x:Name="TCWebView" HeightRequest="900" WidthRequest="1000" />
-            <StackLayout HeightRequest="30" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <WebView x:Name="TCWebView" HeightRequest="860" WidthRequest="1000" />
+            <StackLayout HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
+
                 <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
 
                     </CheckBox>
                 <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
 
                 </StackLayout>
-            <StackLayout HeightRequest="70" WidthRequest="1000">
+            <StackLayout HeightRequest="56" WidthRequest="1000">
                 <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
-                <Button  Text="{x:Static local:AppResources.Submit}" IsEnabled="{Binding IsButtonEnabled}"  Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}"></Button>
+                <Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>
 
             </StackLayout>
         </StackLayout>
