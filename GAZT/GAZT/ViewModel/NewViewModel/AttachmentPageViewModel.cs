@@ -24,6 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
+        public static Decimal AttachmentUploadedSize;
         byte[] attachment;
 
         #endregion
@@ -249,9 +250,8 @@ namespace GAZT.ViewModel.NewViewModel
                                     if (TotalAttachmentSize <= 300)
                                     {
                                         AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-
-
-                                        if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                    
+                                    if (Convert.ToDecimal(AttachmentSize) <= 20)
                                         {
                                             bool IsAttachmentPresent = false;
                                             foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
@@ -302,7 +302,7 @@ namespace GAZT.ViewModel.NewViewModel
                                                     }
 
                                                     AttachmentCount++;
-                                                    TotalAttachmentSize += AttachmentSize;
+                                                   // TotalAttachmentSize += AttachmentSize;
                                                     AttachmentName = string.Empty;
                                                 }
                                             }
@@ -377,6 +377,8 @@ namespace GAZT.ViewModel.NewViewModel
 
                     if (attachment != null)
                     {
+                        AttachmentUploadedSize = AttachmentUploadedSize + AttachmentSize;
+                        TotalAttachmentSize = AttachmentUploadedSize;
                         _attachment = attachment;
                     }
                     else

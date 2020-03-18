@@ -85,12 +85,6 @@ namespace GAZT.Views
                     Title = Title,
                     File = new ShareFile(file)
                 });
-                viewModel._navigationService.GoBack();
-                //Device.BeginInvokeOnMainThread(async () => {
-                //    await viewModel._dialogService.ShowMessageBox(AppResources.EmailSent, AppResources.ZZSUCCESS);
-                //    viewModel._navigationService.GoBack();
-                //});
-
             }
             catch(Exception ex)
             {
