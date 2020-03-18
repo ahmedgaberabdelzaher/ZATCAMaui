@@ -33,7 +33,7 @@
                                 <ColumnDefinition Width="14*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
-                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}"  Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}" Margin="10,5,10,5" Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
                              <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepOne}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                              </custom:CustomLabel>
