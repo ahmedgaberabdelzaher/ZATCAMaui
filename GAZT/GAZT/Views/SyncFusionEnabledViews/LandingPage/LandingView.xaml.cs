@@ -33,7 +33,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 SetLTR();
               //  Application.Current.Resources["GAZTFontBold"] = Application.Current.Resources["GAZTBoldArabic"];
             }
-            catch (Exception ex)
+            catch (Exception gex)
             {
                 int i = 0;
             }

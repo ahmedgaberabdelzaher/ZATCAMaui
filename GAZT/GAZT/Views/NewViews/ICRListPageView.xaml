@@ -238,7 +238,7 @@
             </Image>-->
 
 
-                <local1:CustomLabel Text="{x:Static local:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                <local1:CustomLabel Text="{x:Static local:AppResources.ZZZReturnsNotFound}" IsVisible="{Binding IsNoDataLabelVisible}" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
                 </local1:CustomLabel>
             </Grid>
             <!-- Acticity indicator layout start -->

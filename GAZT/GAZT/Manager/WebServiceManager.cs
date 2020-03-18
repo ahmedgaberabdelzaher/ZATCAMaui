@@ -150,10 +150,16 @@ namespace GAZT.Manager
                                         App.IsSessionExpired = false;
                                     }
                                     Message = node.ChildNodes[1].InnerText;
+                                    if(Message.Equals("5"))
+                                    {
+                                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                                    }
 
                                 }
                                 else
+                                {
                                     throw new Exception(AppResources.NetworkConnectivityIssue);
+                                }
                             }
                         }
                     }
@@ -2454,6 +2460,16 @@ namespace GAZT.Manager
 
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
+
+                    if (_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
+                    {
+                        ErrorMessage = string.Empty;
+                           ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        }
+                    }
                     return _zakatReturnDetailsD;
                 }
                 catch (Exception ex)

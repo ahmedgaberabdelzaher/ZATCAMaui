@@ -274,19 +274,31 @@ namespace GAZT
                // await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 if (_isMandatoryFieldEntered)
                 {
-                    bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
-                    if(!_isNewPasswordSameAsOldPasswordSame)
+                    bool _isConfirmPasswordandNewPasswordMatch = IsNewPasswordSameAsConfirmPassword();
+                    if (_isConfirmPasswordandNewPasswordMatch)
                     {
-                        await ChangePassword();
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
+                        bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
+
+                        if (!_isNewPasswordSameAsOldPasswordSame)
+                        {
+                            await ChangePassword();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
+                            });
+                        }
+                    }
+                    else
                     {
-                        await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
-                    });
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.ZZZPasswordNotMatched, AppResources.Alerts);
+                        });
+                    }
                 }
-            }
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -569,6 +581,18 @@ namespace GAZT
         private bool IsNewPasswordSameAsOldPasswordSame()
         {
             if(NewPasswordForEmail.Equals(App.TP.Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsNewPasswordSameAsConfirmPassword()
+        {
+            if (NewPasswordForEmail.Equals(RetypePasswordForEmail))
             {
                 return true;
             }
