@@ -68,44 +68,44 @@
                         <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" Margin="10,0,10,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                         </Label>
                         <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
 
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
 
 
-                            <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   CharMaxLength="10" Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   CharMaxLength="10" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZTIN}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <Entry TextChanged="EntryTIN_TextChanged" x:Name="EntryTIN" FontSize="Small" Unfocused="EntryTIN_Unfocused">
-                                    <Entry.Behaviors>
+                                    <custom:BorderlessEntry TextChanged="EntryTIN_TextChanged" x:Name="EntryTIN" FontSize="Small" Unfocused="EntryTIN_Unfocused">
+                                        <custom:BorderlessEntry.Behaviors>
 
-                                        <custom1:OnlyNumericValuesBehaviour/>
+                                            <custom1:OnlyNumericValuesBehaviour/>
 
-                                    </Entry.Behaviors>
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
 
-                        </Grid>
+                            </Grid>
 
                         </StackLayout>
-                      
 
-                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+
+                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
     Hint="{x:Static local:AppResources.ZZIDType}" 
     ContainerType="Outlined" x:Name="FrmIDType" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <Entry Text="{Binding TxtIDType}" FontSize="Small">
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                            <custom:CustomButton x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
-                            </custom:CustomButton>
-                            <syncfusion:SfPicker x:Name="DDlIDType"
+                            <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small">
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomButton x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                        </custom:CustomButton>
+                        <syncfusion:SfPicker x:Name="DDlIDType"
                    
                     HeaderHeight="40"
                     ShowHeader="true"
@@ -120,34 +120,34 @@
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
-                                <syncfusion:SfPicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
 
                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  CharMaxLength="{Binding MaxLengthID}"
     Hint="{x:Static local:AppResources.IDNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" FontSize="Small" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
+                            <custom:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" FontSize="Small" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
                                 <Entry.Behaviors>
 
                                     <custom1:OnlyNumericValuesBehaviour/>
 
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        
-                            <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
-                            </Button>
-                            <inputLayout:SfTextInputLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+
+                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                        </Button>
+                        <inputLayout:SfTextInputLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZDateofBirth}" 
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                            <custom1:CustomDatePicker 
+                            <custom:BorderlessEntry Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 
 								BorderColor="Gray"
@@ -159,10 +159,10 @@
 								x:Name="DpDbo" 
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
 								ItemHeight="45" ShowFooter="True"  >
-                                <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </custom1:CustomDatePicker.Behaviors>
-                            </custom1:CustomDatePicker>
+                            <custom1:CustomDatePicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </custom1:CustomDatePicker.Behaviors>
+                        </custom1:CustomDatePicker>
 
 
 
@@ -170,16 +170,16 @@
     Hint="{x:Static local:AppResources.ZZName}" 
     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtName}" FontSize="Small" >
+                            <custom:BorderlessEntry Text="{Binding TxtName}" FontSize="Small" >
                                 <Entry.Behaviors>
 
                                     <custom1:OnlyAlphabatesBehaviour/>
 
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                       
+
                         <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
@@ -199,7 +199,7 @@
                             <Entry Text="{Binding TxtLOrC}">
                                 </Entry>
                             </inputLayout:SfTextInputLayout>-->
-                            <!--<custom:CustomButton x:Name="LOrCSelected" Clicked="LOrCSelect_Clicked" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                        <!--<custom:CustomButton x:Name="LOrCSelected" Clicked="LOrCSelect_Clicked" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                             </custom:CustomButton>
                             <syncfusion:SfPicker x:Name="UsingDDl"
                    
@@ -222,63 +222,63 @@
                             </syncfusion:SfPicker>-->
 
                         <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"  IsVisible="{Binding IsCRVisible}">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
 
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <inputLayout:SfTextInputLayout CharMaxLength="10" x:Name="FrmCR"   Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout CharMaxLength="10" x:Name="FrmCR"   Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZCRNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <Entry Text="{Binding TxtCRNumber}" x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused" FontSize="Small">
-                                    <Entry.Behaviors>
+                                    <custom:BorderlessEntry Text="{Binding TxtCRNumber}" x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused" FontSize="Small">
+                                        <Entry.Behaviors>
 
-                                        <custom1:OnlyNumericValuesBehaviour/>
+                                            <custom1:OnlyNumericValuesBehaviour/>
 
-                                    </Entry.Behaviors>
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                        </Grid>
+                                        </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </Grid>
                         </StackLayout>
                         <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6" IsVisible="{Binding IsLicenseVisible}">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <inputLayout:SfTextInputLayout CharMaxLength="20"    Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,-6,10,-6"
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <inputLayout:SfTextInputLayout CharMaxLength="20"    Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZLicenseNumber}" 
     ContainerType="Outlined" x:Name="FrmLicenseNumber" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <Entry Text="{Binding TxtLicenseNumber}" FontSize="Small">
-                                    <Entry.Behaviors>
+                                    <custom:BorderlessEntry Text="{Binding TxtLicenseNumber}" FontSize="Small">
+                                        <Entry.Behaviors>
 
-                                        <custom1:RestrictSpecialCharactorsBehaviour/>
+                                            <custom1:RestrictSpecialCharactorsBehaviour/>
 
-                                    </Entry.Behaviors>
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
+                                        </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
 
-                            <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" 
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <Entry Text="{Binding TxtLOrCIssuedBy}" FontSize="Small">
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                            <custom:CustomButton x:Name="LIssuedBy" Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
-                            </custom:CustomButton>
-                            <!--</StackLayout>-->
-                            <syncfusion:SfPicker 
+                                    <custom:BorderlessEntry Text="{Binding TxtLOrCIssuedBy}" FontSize="Small">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                                <custom:CustomButton x:Name="LIssuedBy" Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                                </custom:CustomButton>
+                                <!--</StackLayout>-->
+                                <syncfusion:SfPicker 
                    
                     HeaderHeight="40"
                     ShowHeader="true"
@@ -293,24 +293,24 @@
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
-                                   
-                                <syncfusion:SfPicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>
-                            
-                            
-                            <inputLayout:SfTextInputLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+
+                                    <syncfusion:SfPicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </syncfusion:SfPicker.Behaviors>
+                                </syncfusion:SfPicker>
+
+
+                                <inputLayout:SfTextInputLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZIssuingCity}" 
     ContainerType="Outlined" x:Name="FrmLicenseIssuedCity" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <Entry Text="{Binding TxtLOrCIssuedByCity}" FontSize="Small">
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                            <custom:CustomButton x:Name="LIssuedByCity" Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
-                            </custom:CustomButton>
+                                    <custom:BorderlessEntry Text="{Binding TxtLOrCIssuedByCity}" FontSize="Small">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                                <custom:CustomButton x:Name="LIssuedByCity" Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                                </custom:CustomButton>
 
-                            <syncfusion:SfPicker 
+                                <syncfusion:SfPicker 
                    
                     HeaderHeight="40"
                     ShowHeader="true"
@@ -325,31 +325,31 @@
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
-                                <syncfusion:SfPicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>
+                                    <syncfusion:SfPicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </syncfusion:SfPicker.Behaviors>
+                                </syncfusion:SfPicker>
 
-                        </Grid>
+                            </Grid>
                         </StackLayout>
-                       
+
                         <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.ZZEmailAddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtEmailAddress}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small">
+                            <custom:BorderlessEntry Text="{Binding TxtEmailAddress}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small">
 
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" CharMaxLength="9" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtMobileNumber}" Placeholder="5XXXXXXXX" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small">
+                            <custom:BorderlessEntry Text="{Binding TxtMobileNumber}" Placeholder="5XXXXXXXX" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout    x:Name="FrmPhoneNumber" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" CharMaxLength="9" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZPhoneNumber}" 
@@ -401,7 +401,7 @@
                         <!--<Button Text="{x:Static local:AppResources.ZZNext}" x:Name="btnSubmitNext" Clicked="btnSubmitNext_Clicked"  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" ></Button>-->
 
 
-          
+
                     </Grid>
                 </Grid>
             </ScrollView>
@@ -420,6 +420,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-       
+
     </ContentPage.Content>
 </ContentPage>
