@@ -1,77 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-
-
-    <key>UIDeviceFamily</key>
-    <array>
-      <integer>1</integer>
-      <integer>2</integer>
-    </array>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-    </array>
-    <key>UIAppFonts</key>
-    <array>
-      <string>fa-brands-400.ttf</string>
-      <string>SST Arabic Bold.ttf</string>
-      <string>SST Arabic Light.ttf</string>
-      <string>SST Arabic Medium.ttf</string>
-      <string>SSTArabic-Bold.ttf</string>
-      <string>SSTArabic-Light.ttf</string>
-      <string>SSTArabic-Medium.ttf</string>
-      <string>GE_SS_Two_Bold.ttf</string>
-      <string>GE_SS_Two_Light.ttf</string>
-      <string>GE_SS_Two_Medium.ttf</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleLocalizations</key>
-    <array>
-      <string>en</string>
-      <string>ar</string>
-    </array>
-    <key>MinimumOSVersion</key>
-    <string>8.0</string>
-    <key>CFBundleDisplayName</key>
-    <string>GAZT E-Services</string>
-    <key>CFBundleIdentifier</key>
-    <string>com.GAZT.KSA</string>
-    <key>CFBundleName</key>
-    <string>GAZT E-Services</string>
-    <key>XSAppIconAssets</key>
-    <string>Assets.xcassets/AppIcon.appiconset</string>
-    <key>XSLaunchImageAssets</key>
-    <string>Assets.xcassets/LaunchImage.launchimage</string>
-    <key>Custom Property</key>
-    <string></string>
-    <key>Custom Property1</key>
-    <string></string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Picking Media</string>
-    <key>NSCameraUsageDescription</key>
-    <string>To take picture</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>To select date</string>
-    <key>CFBundleVersion</key>
-    <string>2.0.2.1</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Fill in a reason why your app needs access to location.</string>
-
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Can we use your location at all times?</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Can we use your location when your application is being used?</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Can we use your location at all times?</string>
-  </dict>
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fa-brands-400.ttf</string>
+		<string>SST Arabic Bold.ttf</string>
+		<string>SST Arabic Light.ttf</string>
+		<string>SST Arabic Medium.ttf</string>
+		<string>SSTArabic-Bold.ttf</string>
+		<string>SSTArabic-Light.ttf</string>
+		<string>SSTArabic-Medium.ttf</string>
+		<string>GE_SS_Two_Bold.ttf</string>
+		<string>GE_SS_Two_Light.ttf</string>
+		<string>GE_SS_Two_Medium.ttf</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>GAZT E-Services</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.GAZT.KSA</string>
+	<key>CFBundleName</key>
+	<string>GAZT E-Services</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>Custom Property</key>
+	<string></string>
+	<key>Custom Property1</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Picking Media</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To take picture</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>To select date</string>
+	<key>CFBundleVersion</key>
+	<string>2.0.2.2</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Can we use your location when your application is being used?</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Can we use your location at all times?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Can we use your location at all times?</string>
+</dict>
 </plist>
