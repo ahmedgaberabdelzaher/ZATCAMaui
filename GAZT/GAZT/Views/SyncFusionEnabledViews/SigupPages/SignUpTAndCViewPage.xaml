@@ -81,7 +81,6 @@
                     FontFamily="{StaticResource Montserrat-SemiBold}"
                     HeightRequest="56"
                     HorizontalOptions="EndAndExpand"
-                    Style="{StaticResource RoundButtonStyle}"
                     Text="{x:Static local:AppResources.ZZProceedtoindividualSignup}"
                     TextColor="{DynamicResource Gray-White}"
                     IsEnabled="{Binding IsButtonEnabled}"
