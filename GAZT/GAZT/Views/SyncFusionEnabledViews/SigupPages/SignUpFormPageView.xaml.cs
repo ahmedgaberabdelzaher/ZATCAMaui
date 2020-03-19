@@ -1538,5 +1538,10 @@ namespace GAZT.Views.NewViews
         {
 
         }
+
+        private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
+        {
+
+        }
     }
 }

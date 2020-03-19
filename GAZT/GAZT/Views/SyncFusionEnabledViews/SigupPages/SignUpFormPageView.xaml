@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
-                FlowDirection="LeftToRight"
+                FlowDirection="RightToLeft"
               xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"

@@ -2736,18 +2736,21 @@
   <data name="ZInvalidVatNumber" xml:space="preserve">
     <value>رقم حساب ضريبة القيمة المضافة</value>
   </data>
-  
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>لا توجد اقرارات</value>
   </data>
   <data name="ZZZPasswordNotMatched" xml:space="preserve">
     <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
   </data>
-    <data name="OfText" xml:space="preserve">
+  <data name="OfText" xml:space="preserve">
     <value>من</value>
   </data>
   <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
     <value>Proceed to indivisual Signup</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="ZZProceedtoindividualSignup" xml:space="preserve">
+    <value>Proceed to individual Signup</value>
     <comment>Sign Up</comment>
   </data>
 </root>

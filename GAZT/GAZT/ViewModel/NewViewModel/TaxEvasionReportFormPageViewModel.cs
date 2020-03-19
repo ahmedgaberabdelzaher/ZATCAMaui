@@ -24,7 +24,50 @@ namespace GAZT.ViewModel.NewViewModel
         //SelectedCategory SubmitReportClicked
         //TaxEvasionReportList
         //TaxEvasionReportList selectedtaxEList = new TaxEvasionReportList();
-        private TaxEvasionReportList _selectedtaxEList=null;
+        private string _txtFType = string.Empty;
+        public string TxtFType
+        {
+            get
+            {
+                return _txtFType;
+            }
+            set
+            {
+                _txtFType = value;
+                RaisePropertyChanged("TxtFType");
+            }
+        }
+        private string _txtReportDetailCity = string.Empty;
+        public string TxtReportDetailCity
+        {
+            get
+            {
+                return _txtReportDetailCity;
+
+            }
+            set
+            {
+                _txtReportDetailCity = value;
+                RaisePropertyChanged("TxtReportDetailCity");
+
+            }
+        }
+        private string _txtReportDetailRegion = string.Empty;
+        public string TxtReportDetailRegion
+        {
+            get
+            {
+                return _txtReportDetailRegion;
+            }
+            set
+            {
+                _txtReportDetailRegion = value;
+                RaisePropertyChanged("TxtReportDetailRegion");
+
+            }
+        }
+
+        private TaxEvasionReportList _selectedtaxEList = null;
         public TaxEvasionReportList selectedtaxEList
         {
             get
@@ -37,6 +80,32 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedtaxEList = value;
 
                 RaisePropertyChanged("selectedtaxEList");
+            }
+        }
+        private double _latitude = 00.00;
+        public double Latitude
+        {
+            get
+            {
+                return _latitude;
+            }
+            set
+            {
+                _latitude = value;
+                RaisePropertyChanged("Latitude");
+            }
+        }
+        private double _longitude = 00.00;
+        public double Longitude
+        {
+            get
+            {
+                return _longitude;
+            }
+            set
+            {
+                _longitude = value;
+                RaisePropertyChanged("Longitude");
             }
         }
 
@@ -75,7 +144,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private List<FacilityCompanyType> _dlistfacilityCompanyType=null;
+        private List<FacilityCompanyType> _dlistfacilityCompanyType = null;
         public List<FacilityCompanyType> DListFacilityCompanyType
         {
             get
@@ -101,8 +170,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
             set
             {
-                
-                
+
+
                 _isSubmitButtonEnable = value;
 
 
@@ -177,7 +246,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedTaxEvasionCompanyType = value;
 
-
+                if (_selectedTaxEvasionCompanyType != null)
+                {
+                    TxtFType = _selectedTaxEvasionCompanyType.Name;
+                }
 
                 RaisePropertyChanged("SelectedTaxEvasionCompanyType");
             }
@@ -203,7 +275,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedCategory");
             }
         }//TReportDetail
-        private string _tReportDetail=string.Empty;
+        private string _tReportDetail = string.Empty;
         public string TReportDetail
         {
             get
@@ -495,9 +567,15 @@ namespace GAZT.ViewModel.NewViewModel
                     //IsCPickerEnable = true;
                     //string v= SelectedTaxEvasionRegion.RegionCode;
                     onSelectedTaxEvasionRegion();
+                    if (App.IsArabic)
+                    {
+                        TxtReportDetailRegion = _selectedTaxEvasionRegion.RegionNameAR;
+                    }
+                    else
+                    {
+                        TxtReportDetailRegion = _selectedTaxEvasionRegion.RegionNameEN;
 
-
-
+                    }
                     //TEReportobj.RegionCode = v;
                 }
                 //ListFormBudles = null;
@@ -545,7 +623,17 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 { _tEReportobj.Longitude = _selectLCType.Longitude; }
 
-
+                if (_selectLCType != null)
+                {
+                    if (App.IsArabic)
+                    {
+                        TxtReportDetailCity = _selectLCType.CityNameAR;
+                    }
+                    else
+                    {
+                        TxtReportDetailCity = _selectLCType.CityNameEN;
+                    }
+                }
 
 
 
@@ -673,8 +761,8 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void onPageLoad()
         {
-            
-         //   SelectedTaxEvasionCompanyType = ListFacilityCompanyType.Where(x => x.Id == "1").FirstOrDefault();
+
+            //   SelectedTaxEvasionCompanyType = ListFacilityCompanyType.Where(x => x.Id == "1").FirstOrDefault();
             //_tEReportobj.ViolationType = _selectedCategory;
             //_tEReportobj.Channel = "2";
             //_tEReportobj.WSPassword = "gazt@123";
@@ -734,7 +822,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _tEReportobj.WSPassword = "gazt@123";
                 _tEReportobj.WSUserName = "GAZT@CRM";
                 _tEReportobj.TaxType = "1";
-                
+
 
 
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
@@ -753,14 +841,14 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigation.RemovePage(_lastPage);
                     //Go back 
                     _navigation.PopAsync();
-                    
+
 
                     //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
 
                 }
                 else
                 {//ZTEReportReportSuccessResponsep2
-                    _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2," ");
+                    _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
                 }
 
             }
@@ -779,7 +867,7 @@ namespace GAZT.ViewModel.NewViewModel
                 DListFacilityCompanyType = new List<FacilityCompanyType>();
                 ListFacilityCompanyType.Clear();
                 DListFacilityCompanyType.Clear();
-                
+
                 //  FacilityCompanyType cct = new FacilityCompanyType();
 
                 ListFacilityCompanyType.Add(new FacilityCompanyType() { Id = "1", Name = AppResources.ZTERReportDetailCompanyType1 });
@@ -797,7 +885,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 DListFacilityCompanyType = ListFacilityCompanyType;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -806,7 +894,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-    public void PopToRootPage()
+        public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {

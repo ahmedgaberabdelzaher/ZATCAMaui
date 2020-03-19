@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FlowDirection="RightToLeft"
+            
+              xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
+             x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+       
+                <StackLayout>
+            <!--<StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="auto"/>
+                       
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
+
+                    <controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" />
+                    </controls:TapAnimationGrid>
+
+                    <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
+                    <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"  TextColor="White">
+                        <Label.FormattedText >
+                            <FormattedString>
+                                <Span Text="Hello," TextColor="White"/>
+                                <Span Text="Hi" TextColor="White"/>
+                                --><!--<Span Text="&#10;"/>
+                            <Span Text="{Binding Email}" TextColor="White"/>--><!--
+                                <Span Text="&#10;"/>
+                                <Span Text="Hi" TextColor="White"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </StackLayout>-->
+            
+            
+                <WebView x:Name="TCWebView" HeightRequest="860" WidthRequest="1000" />
+            <StackLayout HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
+
+                <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
+
+                    </CheckBox>
+                <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
+
+                </StackLayout>
+            <StackLayout HeightRequest="56" WidthRequest="1000">
+                <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
+                <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
+                <buttons:SfButton
+                    Margin="0"
+                    BackgroundColor="{DynamicResource PrimaryColor}"
+                    BorderColor="{DynamicResource PrimaryColor}"
+                    BorderWidth="1"
+                    FontFamily="{StaticResource Montserrat-SemiBold}"
+                    HeightRequest="56"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource RoundButtonStyle}"
+                    Text="{x:Static local:AppResources.ZZProceedtoindividualSignup}"
+                    TextColor="{DynamicResource Gray-White}"
+                    IsEnabled="{Binding IsButtonEnabled}"
+                    Command="{Binding OnSubmitClicked}"  
+                     />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

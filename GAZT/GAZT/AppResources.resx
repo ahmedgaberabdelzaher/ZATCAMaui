@@ -2744,14 +2744,17 @@ Should we require further information, we would be in contact.</value>
   <data name="ZInvalidVatNumber" xml:space="preserve">
     <value>Number VAT Invalid: "</value>
   </data>
-  
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>Returns Not Found</value>
   </data>
   <data name="ZZZPasswordNotMatched" xml:space="preserve">
     <value>New password field and confirm password field must match</value>
   </data>
-    <data name="OfText" xml:space="preserve">
+  <data name="OfText" xml:space="preserve">
     <value>of</value>
+  </data>
+  <data name="ZZProceedtoindividualSignup" xml:space="preserve">
+    <value>Proceed to individual Signup</value>
+    <comment>Sign Up</comment>
   </data>
 </root>
