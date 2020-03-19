@@ -194,7 +194,18 @@ namespace GAZT.ViewModel.NewViewModel
                 string lang = UtilityManager.GetLanguageParameter();
                 formbundleList = WebServiceManager.GAZTGetFormBundleModel();
                 PopToRootPage();
-                FormBundleList = formbundleList.d.results;
+
+                if (formbundleList != null && formbundleList.d != null)
+                {
+                    List<FormBundleResult> FormBundleResultList = GetUpdatedFormBundleTypeList(formbundleList.d.results);
+                    FormBundleList = FormBundleResultList;
+                }
+                else
+                {
+                    // provide data not available message
+                }
+
+          //      FormBundleList = formbundleList.d.results;
             }
             catch (InternetException ex)
             {
@@ -234,5 +245,43 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
+
+        private List<FormBundleResult> GetUpdatedFormBundleTypeList(List<FormBundleResult> FormBundleTypeList)
+        {
+            try
+            {
+                List<FormBundleResult> list = new List<FormBundleResult>();
+
+                if (App.IsArabic)
+                {
+                    foreach (FormBundleResult Object in FormBundleTypeList)
+                    {
+                        if (Object.Fbtyp.Equals("NREG") || Object.Fbtyp.Equals("ZREG"))
+                        {
+                            Object.Txt50 = Object.Fbtyp + " - " + Object.Txt50;
+                        }
+                        else
+                        {
+                            Object.Txt50 = Object.Txt50;
+                        }
+
+                        list.Add(Object);
+                    }
+                }
+                else
+                {
+                    return FormBundleTypeList;
+                }
+                    
+               
+                return list;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
     }
 }
