@@ -27,7 +27,7 @@ namespace GAZT.iOS
             ServicePointManager
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
-
+            Xamarin.FormsMaps.Init();
             Xamarin.Forms.Forms.Init();
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init();
