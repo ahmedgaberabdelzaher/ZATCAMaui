@@ -26,7 +26,8 @@
     <x:String x:Key="Help">&#xe72c;</x:String>
     <x:String x:Key="Close">&#xe724;</x:String>
     <x:String x:Key="Edit">&#xe727;</x:String>
-
+    <x:String x:Key="Menu">&#xe72e;</x:String>
+    <Color x:Key="Green">#7ed321</Color>
 
     <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
 
@@ -289,6 +290,20 @@
                 </graphics:SfLinearGradientBrush>
             </Setter.Value>
         </Setter>
+    </Style>
+
+
+ 
+
+  
+
+
+
+    <Style x:Key="LabelStyleCardView" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
+        <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}"/>
     </Style>
 
 </ResourceDictionary>

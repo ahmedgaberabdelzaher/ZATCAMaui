@@ -582,9 +582,9 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedTaxEvasionRegion");
             }
         }
-        private DateTime _datePick = DateTime.Now;
+        private string _datePick = string.Empty;
 
-        public DateTime DatePick
+        public string DatePick
         {
             get
             {
@@ -814,8 +814,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                var date = DatePick.Date;
-                _tEReportobj.ReceivedDate = date.ToString("dd/MM/yyyy");
+                string date = DatePick;
+                _tEReportobj.ReceivedDate = date;
                 _tEReportobj.CompanyType = SelectedTaxEvasionCompanyType.Id;
                 _tEReportobj.ViolationType = _selectedCategory;
                 _tEReportobj.Channel = "2";

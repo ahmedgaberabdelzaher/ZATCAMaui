@@ -86,7 +86,7 @@ namespace GAZT
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
-
+        public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
@@ -195,12 +195,13 @@ namespace GAZT
                         fontFamilyBold = "GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light";
+                        fontFamilyRoman = "SSTArabic-Roman";
                         break;
                     case Device.Android:
                         fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
-
+                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
                         break;
                 }
 
@@ -213,11 +214,13 @@ namespace GAZT
                         fontFamilyBold = "SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light";
+                        fontFamilyRoman = "SSTArabic-Roman";
                         break;
                     case Device.Android:
                         fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
+                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
 
                         break;
                 }
@@ -255,7 +258,8 @@ namespace GAZT
             TabbedPageMediumMiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
             forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-
+            MicroGrayLabelStyleNew.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
+            MicroGrayLabelStyleNewEn.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
             //SYNCFUSION INTEGRATION
 
             if (App.IsArabic)

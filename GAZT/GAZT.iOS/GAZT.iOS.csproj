@@ -122,6 +122,7 @@
     <BundleResource Include="Resources\GE_SS_Two_Light.ttf" />
     <BundleResource Include="Resources\GE_SS_Two_Medium.ttf" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
+    <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -454,7 +455,6 @@
     <BundleResource Include="Resources\ic_edit.png" />
     <BundleResource Include="Resources\ic_edit%402x.png" />
     <BundleResource Include="Resources\ic_edit%403x.png" />
-    <BundleResource Include="Resources\acd.jpg" />
     <BundleResource Include="Resources\fa-brands-400.ttf" />
     <BundleResource Include="Resources\Mada-Regular.ttf" />
     <BundleResource Include="Resources\SST Arabic Bold.ttf" />
@@ -822,5 +822,149 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_add1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file_2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file_2%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_bg_green_full_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_correspondance_1 copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Correspondence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Correspondence%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Correspondence%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Return%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Return%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Form_Bundle_Status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Form_Bundle_Status%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Form_Bundle_Status%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Menu%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Menu%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Paid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Paid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Partially_Paid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Submited_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Submited_Returns_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Submited_Returns_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unsubmited_Returns_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Bills%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Bills%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Certificate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Certificate%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_My_Certificate%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_VAT_Declaration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_VAT_Declaration%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_VAT_Declaration%403x.png" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@ using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -680,7 +681,13 @@ namespace GAZT.Views.NewViews
 
         private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
 
+            string month = selectedItem[0].ToString();
+            string day = selectedItem[1].ToString();
+            string year = selectedItem[2].ToString();
+
+            viewModel.DatePick = day + "/" + month + "/" + year;
         }
 
         private void btn4_Clicked(object sender, EventArgs e)
