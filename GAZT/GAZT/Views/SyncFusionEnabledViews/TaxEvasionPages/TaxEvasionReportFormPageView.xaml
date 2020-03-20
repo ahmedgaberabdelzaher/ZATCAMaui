@@ -13,6 +13,7 @@ xmlns:custom="clr-namespace:GAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="GAZT.Views.NewViews.TaxEvasionReportFormPageView" BackgroundColor="White" >
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -442,7 +443,7 @@ xmlns:custom="clr-namespace:GAZT"
                     PickerMode="Dialog"
                                                
                    ItemHeight="40"
-                   x:Name="RegionPickerAR"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR" SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR" SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
@@ -530,25 +531,26 @@ xmlns:custom="clr-namespace:GAZT"
 
 
                         <!--tin have-->
-                        <StackLayout Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
+
+                        <!--<StackLayout Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                             <CheckBox VerticalOptions="Start" IsChecked="{Binding IsTIN}" Margin="10,0,0,0" x:Name="IsTIN" >
 
                             </CheckBox>
                             <Label Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"    HorizontalOptions="Start" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="0,5,10,0"/>
 
-                        </StackLayout>
+                        </StackLayout>-->
                         <!--if thin available-->
-                        <StackLayout Grid.Row="27"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTin">
+                        <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTIN">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
+                                <!--<Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static local:AppResources.ZZTIN}"  />
@@ -558,12 +560,20 @@ xmlns:custom="clr-namespace:GAZT"
                                 </Label>
                                 <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
                                 </Frame>
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
+                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>-->
+
+                                <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZZTIN}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
                             </Grid>
 
                         </StackLayout>
 
-                        <Label Grid.Row="28"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <!--<Label Grid.Row="28"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailID}"  />
@@ -574,8 +584,18 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="29"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmID">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="29"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TID}" x:Name="TID" Placeholder=" " Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
-                        <Label Grid.Row="30"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <custom:GAZTBorderlessEntry  Grid.Row="29"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TID}" x:Name="TID" Placeholder=" " Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>-->
+
+                        <inputLayout:SfTextInputLayout x:Name="FrmID"   Grid.Row="14"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailID}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry  Grid.Row="14"  Grid.Column="0"  Grid.ColumnSpan="2"  Text="{Binding TID}" x:Name="TID"  Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--<Label Grid.Row="30"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.Date}"  />
@@ -588,9 +608,39 @@ xmlns:custom="clr-namespace:GAZT"
                         </Frame>
 
                         <DatePicker Format="dd/MM/yyyy"  Grid.Row="31" x:Name="DpDbo"   Grid.Column="0"  Grid.ColumnSpan="2"  Date="{Binding DatePick}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
-                        <custom:GAZTBorderlessEntry  Grid.Row="31"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  x:Name="DateLabel" MaxLength="15"  Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+-->
+                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                        </Button>
+                        
+                        <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.Date}" 
+    ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                           
+                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"   Unfocused="DatePicker_Unfocused" Placeholder="dd/MM/yyyy" FontSize="Small"></custom:GAZTBorderlessEntry>
 
-                        <Label Grid.Row="32"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        </inputLayout:SfTextInputLayout>
+                        <custom1:CustomDatePicker 
+								ShowHeader="false"
+								Margin="2" 
+								BorderColor="Gray"
+								ShowColumnHeader="true"
+								ColumnHeaderHeight="50"
+                                PickerMode="Dialog"
+								HeaderText="Date of Birth"
+								Grid.Row="15" Grid.Column="0"    Grid.ColumnSpan="2"
+								x:Name="DpDbo" 
+                                OkButtonClicked="DpDbo_OkButtonClicked"
+								ItemHeight="45" ShowFooter="True"  >
+                            <custom1:CustomDatePicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </custom1:CustomDatePicker.Behaviors>
+                        </custom1:CustomDatePicker>
+
+
+                        <!--<custom:GAZTBorderlessEntry  Grid.Row="31"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  x:Name="DateLabel" MaxLength="15"  Keyboard="Numeric"></custom:GAZTBorderlessEntry>-->
+
+                        <!--<Label Grid.Row="32"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailVATNumber}"  />
@@ -601,11 +651,21 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="33"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmVAT">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="33"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry  Grid.Row="33"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>-->
+
+                        <inputLayout:SfTextInputLayout x:Name="FrmVAT"   Grid.Row="16"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailVATNumber}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry   Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+
+                        </inputLayout:SfTextInputLayout>
+
+
                         <!--Box View-->
-                        <BoxView  Grid.Row="34" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />
+                        <!--<BoxView  Grid.Row="34" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />-->
                         <!--Attachment-->
-                        <Label Grid.Row="35"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <Label Grid.Row="17"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
@@ -613,18 +673,21 @@ xmlns:custom="clr-namespace:GAZT"
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame Grid.Row="36" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        <Frame Grid.Row="17" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="36" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
+                        <custom:GAZTBorderlessEntry  Grid.Row="17" Text="{Binding AttachmentName}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
 
                         </custom:GAZTBorderlessEntry>
-                        <Image Grid.Row="36"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_add.png" IsVisible="{Binding IsShowAttachmentButton}" >
+                        
+                        
+                        
+                        <Image Grid.Row="17"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_add.png" IsVisible="{Binding IsShowAttachmentButton}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <!--report box detail-->
-                        <Label Grid.Row="37"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <!--<Label Grid.Row="37"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetails}"  />
@@ -635,8 +698,17 @@ xmlns:custom="clr-namespace:GAZT"
                         <Frame  Grid.Row="38"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportDetail">
                         </Frame>
 
-                        <custom:GAZTBorderlessEntry  Grid.Row="38"  Grid.Column="0" HeightRequest="100"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" MaxLength="500" Text="{Binding TReportDetail}" x:Name="TReportDetail" Unfocused="TReportDetail_Unfocused"></custom:GAZTBorderlessEntry>
-                        <Label Grid.Row="39"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <custom:GAZTBorderlessEntry  Grid.Row="38"  Grid.Column="0" HeightRequest="100"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" MaxLength="500" Text="{Binding TReportDetail}" x:Name="TReportDetail" Unfocused="TReportDetail_Unfocused"></custom:GAZTBorderlessEntry>-->
+
+                        <inputLayout:SfTextInputLayout x:Name="FrmReportDetail"   Grid.Row="18"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailReportDetails}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry  MaxLength="500" Text="{Binding TReportDetail}" x:Name="TReportDetail" Unfocused="TReportDetail_Unfocused"></custom:GAZTBorderlessEntry>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--<Label Grid.Row="39"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailFWType}"  />
@@ -651,17 +723,30 @@ xmlns:custom="clr-namespace:GAZT"
                             <custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:OnlyAlphabatesBehaviour/>
                             </custom:GAZTBorderlessEntry.Behaviors> 
-                        </custom:GAZTBorderlessEntry>
+                        </custom:GAZTBorderlessEntry>-->
+
+                        <inputLayout:SfTextInputLayout x:Name="FrmTFW"   Grid.Row="19"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailFWType}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry   x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom1:OnlyAlphabatesBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+
                         <!--Report Location-->
-                        <Label Grid.Row="41"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <Label Grid.Row="20"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetailRLocation}"  />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Frame  Grid.Row="42"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
-                            <maps:Map Grid.Row="42"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Frame  Grid.Row="21"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
+                            <maps:Map Grid.Row="21"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                         </Frame>
                        
 
@@ -873,7 +958,7 @@ xmlns:custom="clr-namespace:GAZT"
                 </Frame>
                 <!--<Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                 <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked"></Button>
+                    <Button Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource GAZTVerifyButton}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked"></Button>
                     
 
                 </StackLayout>

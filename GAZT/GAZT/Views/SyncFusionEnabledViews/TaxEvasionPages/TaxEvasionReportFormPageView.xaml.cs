@@ -23,12 +23,18 @@ namespace GAZT.Views.NewViews
 
         public TaxEvasionReportFormPageView(TaxEvasionReportList SelectedTaxEvasionListItem)
         {
+            try
+            {
+                viewModel = App.Locator.TaxEvasionReportFormPageView;
+                InitializeComponent();
+                SetLTR();
+                this.BindingContext = viewModel;
+                clearFields();
+            }
+            catch(Exception ex)
+            {
 
-            viewModel = App.Locator.TaxEvasionReportFormPageView;
-            InitializeComponent();
-            SetLTR();
-            this.BindingContext = viewModel;
-            clearFields();
+            }
             mapset();
 
             viewModel.CreateCompanyTypeList();
@@ -47,7 +53,7 @@ namespace GAZT.Views.NewViews
                 viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                 //viewModel.TFaciMobNo= selectedtaxEList.
-                DateLabel.IsVisible = true; DateLabel.IsEnabled = false; DateLabel.Text = viewModel.selectedtaxEList.ReceivedDate; DpDbo.IsEnabled = false; DpDbo.IsVisible = false;
+               // DateLabel.IsVisible = true; DateLabel.IsEnabled = false; DateLabel.Text = viewModel.selectedtaxEList.ReceivedDate; DpDbo.IsEnabled = false; DpDbo.IsVisible = false;
 
                 /*viewModel.SelectedTaxEvasionCompanyType.Id= selectedtaxEList.c*/              ///*viewModel.TFaciOwnerName=selectedtaxEList.*/
                 TFaciOwnerName.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
@@ -450,17 +456,17 @@ namespace GAZT.Views.NewViews
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
 
 
-                    FrmTIN.BorderColor = Color.Red;
+                    FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
 
                 }
-                else { FrmTIN.BorderColor = Color.FromHex("#B1B1B1"); }
+                else { FrmTIN.HasError = false; }
             }
 
 
@@ -472,13 +478,13 @@ namespace GAZT.Views.NewViews
                 if (!string.IsNullOrEmpty(TID.Text))
                 { if (TID.Text.Length < 10)
                     {
-                        FrmID.BorderColor = Color.Red;
+                        FrmID.HasError = true;
                         TID.Focus();
 
                     }
                     else
                     {
-                        FrmTIN.BorderColor = Color.FromHex("#B1B1B1");
+                        FrmTIN.HasError = false;
 
                     }
 
@@ -491,7 +497,7 @@ namespace GAZT.Views.NewViews
             else
             {
 
-                FrmID.BorderColor = Color.FromHex("#B1B1B1");
+                FrmID.HasError = false;
 
             }
 
@@ -519,7 +525,7 @@ namespace GAZT.Views.NewViews
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmVAT.BorderColor = Color.Red;
+                        FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                         
                        
@@ -527,7 +533,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        FrmVAT.BorderColor = Color.FromHex("#B1B1B1");
+                        FrmVAT.HasError = false;
 
                     }
 
@@ -540,11 +546,11 @@ namespace GAZT.Views.NewViews
             private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
             {
                 if (string.IsNullOrEmpty(TReportDetail.Text))
-                { FrmReportDetail.BorderColor = Color.Red; }
+                { FrmReportDetail.HasError = true; }
                 else {
 
 
-                    FrmReportDetail.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmReportDetail.HasError = false;
                 }
 
             }
@@ -552,12 +558,12 @@ namespace GAZT.Views.NewViews
             private void TFWType_Unfocused(object sender, FocusEventArgs e)
             {
                 if (string.IsNullOrEmpty(TFWType.Text))
-                { FrmTFW.BorderColor = Color.Red;
+                { FrmTFW.HasError = true;
                     TFWType.Focus();
                 }
                 else
                 {
-                    FrmTFW.BorderColor = Color.FromHex("#B1B1B1");
+                    FrmTFW.HasError = false;
                 }
 
 
@@ -571,7 +577,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsTIN = true; viewModel.IsTINVisible = true;
             TReportDetail.Text = string.Empty; TFWType.Text = string.Empty;
             TFDAdress.Text = string.Empty; TFSAddress.Text = string.Empty;
-            DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
+           // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
         }
 
         private void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
@@ -670,6 +676,21 @@ namespace GAZT.Views.NewViews
                 CityPicker.IsOpen = true;
 
             }
+        }
+
+        private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btn4_Clicked(object sender, EventArgs e)
+        {
+            DpDbo.IsOpen = true;
+        }
+
+        private void DatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+
         }
     }
     } 
