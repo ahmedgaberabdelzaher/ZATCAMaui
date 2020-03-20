@@ -1,4 +1,5 @@
-﻿using GAZT;
+﻿using System;
+using GAZT;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
@@ -15,17 +16,25 @@ namespace GAZT
         {
             base.OnElementChanged(e);
             var button = Control;
-            if (button != null)
+            try
             {
-                //SetColors();
-                fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
-                button.Layer.CornerRadius = 10;
-                button.VerticalAlignment = UIControlContentVerticalAlignment.Center;
-                if (App.IsArabic)
-                    button.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
-                else
-                    button.Font = UIFont.FromName("Helvetica-Normal", (float)fontSize);
+                if (button != null)
+                {
+                    //SetColors();
+                    fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                    button.Layer.CornerRadius = 10;
+                    button.VerticalAlignment = UIControlContentVerticalAlignment.Center;
+                    if (App.IsArabic)
+                        button.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
+                    else
+                        button.Font = UIFont.FromName("Helvetica-Normal", (float)fontSize);
+                }
             }
+            catch(Exception gex)
+            {
+
+            }
+            
         }
     }
 }

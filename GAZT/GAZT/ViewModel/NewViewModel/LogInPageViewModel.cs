@@ -31,7 +31,7 @@ namespace GAZT.ViewModel
 
 
         // private string _UserName = "3101431639";// ZAKAT Data
-      private string _UserName = "3102285896";// VAT Data
+      private string _UserName = "3004396021";// VAT Data
       //private string _UserName = string.Empty;
         public string UserName
         {
@@ -392,7 +392,8 @@ namespace GAZT.ViewModel
                     try
                     {
 
-                     // _navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    // _navigationService.NavigateTo(App.OptionsPageView);
+                     //Test B1
                        await Login();
 
 
@@ -502,7 +503,7 @@ namespace GAZT.ViewModel
 
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                         _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
                                         //_navigationService.NavigateTo(App.LandingPageView);
 
@@ -514,7 +515,7 @@ namespace GAZT.ViewModel
                                         //App.TP.Tin = UserName;
 
 
-                                        _navigationService.NavigateTo(App.LandingPageView);
+                                      //  _navigationService.NavigateTo(App.LandingPageView);
 
                                         //  SYNCFUSION INTEGRATION
 

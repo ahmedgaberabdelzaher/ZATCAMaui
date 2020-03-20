@@ -28,6 +28,15 @@ namespace GAZTeServicesApp.Views.Options
         {
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.OptionsPageView;
+            SetLTR();
+        }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
     }
 }

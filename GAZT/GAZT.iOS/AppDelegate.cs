@@ -3,6 +3,9 @@ using System;
 using System.Net;
 using DeviceOrientation.Forms.Plugin.iOS;
 using Foundation;
+using Syncfusion.SfPicker.XForms.iOS;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using Syncfusion.XForms.Pickers.iOS;
 using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
@@ -36,6 +39,11 @@ namespace GAZT.iOS
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
             App iosapp = new App();
             App.appObj = iosapp;
+            SfTextInputLayoutRenderer.Init();
+            Syncfusion.XForms.iOS.Buttons.SfCheckBoxRenderer.Init();
+            Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
+            SfDatePickerRenderer.Init();
+            SfPickerRenderer.Init();
             LoadApplication(iosapp);
 
             //Code for PUSH notification
