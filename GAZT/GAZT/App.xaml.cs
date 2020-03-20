@@ -18,8 +18,11 @@ namespace GAZT
     {
         //SYNCFUSION INTEGRATION
 
-        public static string LandingPageView = "LandingPageView";
-        public static string OptionsPageView = "OptionsPageView";
+        public static string SFLandingPageView = "SFLandingPageView";
+      //  public static string OptionsPageView = "OptionsPageView";
+        public static string SFOptionsPageView = "SFOptionsPageView";
+        public static string SFLoginPageView = "SFLoginPageView";
+
 
         //SYNCFUSION INTEGRATION
 

@@ -1,4 +1,5 @@
-﻿using GAZTeServicesApp.ViewModels.LoginPage;
+﻿using GAZT;
+using GAZTeServicesApp.ViewModels.LoginPage;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -9,17 +10,17 @@ namespace GAZTeServicesApp.Views.LoginPage
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage
+    public partial class SFLoginPageView
     {
-        LoginPageViewModel viewModel;
+        SFLoginPageViewModel viewModel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
         /// </summary>
-        public LoginPage()
+        public SFLoginPageView()
         {
             InitializeComponent();
-            this.BindingContext = viewModel = App.Locator.LoginPageView;
+            this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             ParentContainer.RaiseChild(BusyIndicator);
         }
     }

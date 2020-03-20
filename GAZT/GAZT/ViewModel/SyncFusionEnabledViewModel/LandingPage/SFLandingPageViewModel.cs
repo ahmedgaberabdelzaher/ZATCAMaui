@@ -23,7 +23,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
     /// ViewModel for article list page.
     /// </summary> 
     [Preserve(AllMembers = true)]
-    public class LandingPageViewModel : ViewModelBase
+    public class SFLandingPageViewModel : ViewModelBase
     {
         #region Fields
 
@@ -120,7 +120,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 IsLoading = false;
             });
         }
-        public LandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
+        public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -320,7 +320,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// <param name="obj">The Object</param>
         private void ShowOptionsCommandClicked(object obj)
         {
-            _navigationService.NavigateTo(App.OptionsPageView);
+            _navigationService.NavigateTo(App.SFOptionsPageView);
         }
 
         /// <summary>

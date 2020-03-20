@@ -7,6 +7,7 @@ using GAZTeServicesApp.Controls;
 using GAZT;
 using BorderlessEntry = GAZTeServicesApp.Controls.BorderlessEntry;
 using GAZT.ViewModel;
+using GAZTeServicesApp.ViewModels.LoginPage;
 
 namespace GAZTeServicesApp.Converters
 {
@@ -37,7 +38,7 @@ namespace GAZTeServicesApp.Converters
             {
                 var emailEntry = parameter as BorderlessEntry;
 
-                if (!(emailEntry.BindingContext is LogInPageViewModel bindingContext))
+                if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext))
                 {
                     return Color.Transparent;
                 }
@@ -58,7 +59,7 @@ namespace GAZTeServicesApp.Converters
             {
                 var emailEntry = parameter as BorderlessEntry;
 
-                if (!(emailEntry.BindingContext is LogInPageViewModel bindingContext)) return Color.FromHex("#ced2d9");
+                if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext)) return Color.FromHex("#ced2d9");
 
                 var isFocused1 = (bool)value;
                 bindingContext.IsInvalidEmail = !isFocused1 && !CheckValidEmail(bindingContext.Email);

@@ -7,8 +7,10 @@ using GAZT.ViewModel.NewViewModel;
 using GAZT.Views;
 using GAZT.Views.NewViews;
 using GAZTeServicesApp.ViewModels.LandingPage;
+using GAZTeServicesApp.ViewModels.LoginPage;
 using GAZTeServicesApp.ViewModels.Options;
 using GAZTeServicesApp.Views.LandingPage;
+using GAZTeServicesApp.Views.LoginPage;
 using GAZTeServicesApp.Views.Options;
 
 namespace GAZT
@@ -24,8 +26,9 @@ namespace GAZT
 
             //SYNCFUSION INTEGRATION
 
-            SimpleIoc.Default.Register<LandingPageViewModel>();
-            SimpleIoc.Default.Register<OptionsPageViewModel>();
+            SimpleIoc.Default.Register<SFLandingPageViewModel>();
+            SimpleIoc.Default.Register<SFLoginPageViewModel>();
+            SimpleIoc.Default.Register<SFOptionsPageViewModel>();
 
             //SYNCFUSION INTEGRATION
 
@@ -857,13 +860,13 @@ namespace GAZT
 
         //SYNC FUSION INTEGRATION
 
-        public LandingPageViewModel LandingPageView
+        public SFLandingPageViewModel SFLandingPageView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<LandingPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<SFLandingPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -872,13 +875,13 @@ namespace GAZT
             }
         }
 
-        public OptionsPageViewModel OptionsPageView
+        public SFOptionsPageViewModel OptionsPageView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OptionsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<SFOptionsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -886,6 +889,24 @@ namespace GAZT
                 }
             }
         }
+
+        public SFLoginPageViewModel SFLoginPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SFLoginPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
 
         //SYNC FUSION INTEGRATION
 
@@ -896,8 +917,9 @@ namespace GAZT
 
             //SYNCFUSION INTEGRATION
 
-            navigationService.Configure(App.LandingPageView, typeof(LandingPageView));
-            navigationService.Configure(App.OptionsPageView, typeof(OptionsPageView));
+            navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
+            navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
+            navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
 
             //SYNCFUSION INTEGRATION
 
