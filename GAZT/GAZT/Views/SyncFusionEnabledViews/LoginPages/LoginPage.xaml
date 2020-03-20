@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GAZTeServicesApp.Views.LoginPage.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:GAZTeServicesApp.Views.Common"
+    BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=LoginBackground.png,
+                                                                  iOSPhoneLandscape=LoginBackground-Landscape.png,
+                                                                  iOSTabletLandscape=LoginBackground-Landscape.png}"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid x:Name="ParentContainer">
+            <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+
+                <StackLayout
+                    Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+
+                    <Grid RowSpacing="0" VerticalOptions="CenterAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Log In" />
+
+                        <!--  Label to display the description of this page  -->
+                        <Label
+                            Grid.Row="1"
+                            Margin="0,8"
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Let's get to work" />
+
+                          <!--Entry to get email ID from user-->  
+                        <local:EmailEntry Grid.Row="2" Padding="0,24" />
+
+                        <!--  Entry to get password from user  -->
+                        <border:SfBorder
+                            Grid.Row="3"
+                            BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="PasswordEntry"
+                                IsPassword="True"
+                                Placeholder="Password"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding Password}" />
+                        </border:SfBorder>
+
+                        <!--  Forgot password link  -->
+                        <Label
+                            x:Name="ForgotPasswordLabel"
+                            Grid.Row="4"
+                            Margin="0,16"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="12"
+                            HorizontalOptions="End"
+                            Text="FORGOT PASSWORD?"
+                            TextColor="White">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <!--  Login button  -->
+                        <buttons:SfButton
+                            Grid.Row="5"
+                            Margin="0,16"
+                            Command="{Binding LoginCommand}"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="LOG IN" />
+
+
+                       
+                    </Grid>
+
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+
+                        <!--<StackLayout.Padding>
+                            <OnIdiom x:DataType="Thickness" Default="0, 48, 0, 0" Phone="0" />
+                        </StackLayout.Padding>-->
+
+                        <Label
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Don't have an account with GAZT?"
+                            VerticalTextAlignment="Center" />
+
+                        <!--  Sign-up button  -->
+                        <buttons:SfButton
+                            Command="{Binding SignUpCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource SfFlatButtonStyle}"
+                            Text="Sign Up" />
+
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+            <busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
+                                       AnimationType="HorizontalPulsingBox" 
+                                       ViewBoxWidth = "150" 
+                                       ViewBoxHeight="150" 
+                                       TextColor="DarkGreen" 
+                                       IsBusy="{Binding IsLoading}"/>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
