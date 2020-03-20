@@ -76,6 +76,21 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TERListReportbymobno");
             }
         }
+        private List<TaxEvasionReportList> _taxEvasionReportListClosed;
+        public List<TaxEvasionReportList> TERListReportbymobnoClosed
+        {
+            get
+            {
+                return _taxEvasionReportListClosed;
+
+            }
+            set
+            {
+                _taxEvasionReportListClosed = value;
+
+                RaisePropertyChanged("TERListReportbymobnoClosed");
+            }
+        }
         private List<TaxEvasionReportList> _tERListReportbymobnoDummy;
         public List<TaxEvasionReportList> TERListReportbymobnoDummy
         {
@@ -116,6 +131,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     TERListReportbymobno.Clear();
                       TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3") ).ToList();
+                    TERListReportbymobnoClosed.Clear();
+                    TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -221,6 +238,7 @@ namespace GAZT.ViewModel.NewViewModel
                         TERListReportbymobnoDummy = rlist.TaxEvasionReportList;
 
                         TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "2")).ToList();
+                        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
 
 
 
