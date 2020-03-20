@@ -15,7 +15,7 @@ namespace GAZTeServicesApp.ViewModels.Options
     /// ViewModel for Setting page 
     /// </summary> 
     [Preserve(AllMembers = true)]
-    public class OptionsPageViewModel : ViewModelBase
+    public class SFOptionsPageViewModel : ViewModelBase
     {
 
         public readonly INavigationService _navigationService;
@@ -26,7 +26,7 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageViewModel" /> class
         /// </summary>
-        public OptionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public SFOptionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

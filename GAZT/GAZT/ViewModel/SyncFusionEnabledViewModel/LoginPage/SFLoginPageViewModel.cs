@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using GAZTeServicesApp.Resources;
-using GAZTeServicesBusinessLibrary;
+using GAZT;
+using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -13,12 +15,12 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     /// ViewModel for login page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class LoginPageViewModel : LoginViewModel
+    public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
 
         private string password;
-
+        public int CurrentAttempt = 0;
         #endregion
 
         #region Constructor
@@ -27,7 +29,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <summary>
         /// Initializes a new instance for the <see cref="LoginPageViewModel" /> class.
         /// </summary>
-        public LoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             this.LoginCommand = new Command(async () =>
             {
@@ -41,7 +43,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #endregion
 
         #region property
-
+        public string DeviceId { get; set; }
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
         /// </summary>
@@ -60,7 +62,131 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 }
 
                 this.password = value;
-                this.NotifyPropertyChanged();
+                this.RaisePropertyChanged("Password");
+            }
+        }
+
+        private List<TIN> _tINs;
+        public List<TIN> TINs
+        {
+            get
+            {
+                return _tINs;
+            }
+            set
+            {
+                _tINs = value;
+                RaisePropertyChanged("TINs");
+            }
+        }
+
+
+        private TIN _selectedTinId;
+        public TIN SelectedTinId
+        {
+            get
+            {
+                return _selectedTinId;
+            }
+            set
+            {
+                _selectedTinId = value;
+                if (_selectedTinId != null)
+                {
+                    App.CurrentDropdownTIN = SelectedTinId;
+                    Password = string.Empty;
+                }
+                RaisePropertyChanged("SelectedTinId");
+            }
+        }
+
+        private bool _isVisibleTinIds = false;
+        public bool IsVisibleTinIds
+        {
+            get
+            {
+                return _isVisibleTinIds;
+            }
+            set
+            {
+                _isVisibleTinIds = value;
+                if (_isVisibleTinIds == true)
+                {
+
+
+                    TINs = new List<TIN>();
+
+                    Task.Run(async () =>
+                    {
+                        try
+                        {
+                            try
+                            {
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = true;
+                                });
+
+                                TINs = WebServiceManager.SFGAZTGetAllTINs(Email);
+                                if ((TINs != null) && (TINs.Count != 0) && (SelectedTinId == null))
+                                {
+                                    SelectedTinId = TINs[0];
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsVisibleTinIds = false;
+                                        await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                    });
+                                    IsVisibleTinIds = false;
+                                }
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                            }
+                            catch (Exception e)
+                            {
+                                IsVisibleTinIds = false;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    IsVisibleTinIds = false;
+                                    await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                                });
+
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            IsLoading = false;
+
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if(gex is GAZTException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            });
+                        }
+                    });
+                }
+                RaisePropertyChanged("IsVisibleTinIds");
             }
         }
 
@@ -98,22 +224,59 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private async Task LoginClicked()
         {
+            CurrentAttempt++;
+
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
 
             string response = string.Empty;
-
+            string UserId = string.Empty;
             await Task.Run(() =>
             {
-                response = WebServiceManager.GAZTAuthenticateTIN(this.Email, this.Password, "DeviceId", "0", "EN");
+                string language = UtilityManager.GetLanguageParameter();
+                String lang = "E";
+                if (App.IsArabic == true)
+                    lang = "AR";
+                string _currentAttempts = CurrentAttempt.ToString();
+                string languag = UtilityManager.GetLanguageParameter();
+                if (SelectedTinId != null && IsVisibleTinIds == true)
+                {
+                    bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
+                    if (isValidEmail == true)
+                    {
 
+                        response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
+                        UserId = SelectedTinId.Tin;
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.ZUserNameIncorrect);
+                    }
+                }
+                else
+                {
+                    bool isValidTin = UtilityManager.IsOTPNumberValid(Email);
+                    if (isValidTin == true)
+
+                    {
+                        response = WebServiceManager.GAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
+                        UserId = Email;
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.ZUserNameIncorrect);
+                    }
+                }
+
+
+                response = WebServiceManager.GAZTAuthenticateTIN(this.Email, this.Password, DeviceId, _currentAttempts, languag);
                 try
                 {
                     if (0 == String.Compare("success", response, true))
                     {
-                        TaxPayerProfile TPProfile = WebServiceManager.GAZTGetTaxPayerProfile(this.Email, "EN");
+                        TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(this.Email, "EN");
                         if (TPProfile != null)
                         {
                             TPProfile.Tin = Email;

@@ -17,14 +17,14 @@ namespace GAZTeServicesApp.Views.Options
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OptionsPageView : ContentPage
+    public partial class SFOptionsPageView : ContentPage
     {
-        OptionsPageViewModel viewModel;
+        SFOptionsPageViewModel viewModel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageView" /> class.
         /// </summary>
-        public OptionsPageView()
+        public SFOptionsPageView()
         {
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.OptionsPageView;

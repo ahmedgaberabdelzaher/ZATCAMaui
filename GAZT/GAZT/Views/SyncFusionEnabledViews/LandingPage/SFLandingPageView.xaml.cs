@@ -15,19 +15,19 @@ namespace GAZTeServicesApp.Views.LandingPage
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LandingPageView : ContentPage
+    public partial class SFLandingPageView : ContentPage
     {
-        LandingPageViewModel viewModel;
+        SFLandingPageViewModel viewModel;
        //  Calendar appointments;
         /// <summary>
         /// Initializes a new instance of the <see cref="LandingPageView" /> class.
         /// </summary>
-        public LandingPageView()
+        public SFLandingPageView()
         {
             try
             {
                 InitializeComponent();
-                this.BindingContext = viewModel = App.Locator.LandingPageView;
+                this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 ParentContainer.RaiseChild(BusyIndicator);
                 calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();

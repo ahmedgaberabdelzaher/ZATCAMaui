@@ -56,6 +56,7 @@
     <Folder Include="Connected Services\" />
     <Folder Include="Effect\" />
     <Folder Include="SyncFusionEnabledBehaviors\" />
+    <Folder Include="Views\SyncFusionEnabledViews\Common\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -69,8 +70,14 @@
     <Compile Update="AppResources.ar.Designer.cs">
       <DependentUpon>AppResources.ar.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\LandingView.xaml.cs">
-      <DependentUpon>LandingView.xaml</DependentUpon>
+    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
+      <DependentUpon>SFLandingPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\LoginPages\SFLoginPageView.xaml.cs">
+      <DependentUpon>SFLoginPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
+      <DependentUpon>SFOptionsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

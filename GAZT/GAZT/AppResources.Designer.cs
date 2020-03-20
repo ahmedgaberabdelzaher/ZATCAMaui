@@ -7018,11 +7018,38 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MyProfile.
+        ///   Looks up a localized string similar to FAQs.
+        /// </summary>
+        public static string ZZZFaq {
+            get {
+                return ResourceManager.GetString("ZZZFaq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string ZZZHelp {
+            get {
+                return ResourceManager.GetString("ZZZHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Profile.
         /// </summary>
         public static string ZZZMyProfile {
             get {
                 return ResourceManager.GetString("ZZZMyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string ZZZOptions {
+            get {
+                return ResourceManager.GetString("ZZZOptions", resourceCulture);
             }
         }
         
@@ -7032,6 +7059,15 @@ namespace GAZT {
         public static string ZZZPasswordNotMatched {
             get {
                 return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy and Policy.
+        /// </summary>
+        public static string ZZZPrivacyandPolicy {
+            get {
+                return ResourceManager.GetString("ZZZPrivacyandPolicy", resourceCulture);
             }
         }
         
@@ -7050,6 +7086,24 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support.
+        /// </summary>
+        public static string ZZZSupport {
+            get {
+                return ResourceManager.GetString("ZZZSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms of Service.
+        /// </summary>
+        public static string ZZZTermsAndService {
+            get {
+                return ResourceManager.GetString("ZZZTermsAndService", resourceCulture);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
@@ -10,10 +11,23 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     /// ViewModel for login page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class LoginViewModel : ViewModelBase
+    public class SFLoginViewModel : ViewModelBase
     {
-        public LoginViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public SFLoginViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
         }
 
         #region Fields
@@ -25,6 +39,21 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #endregion
 
         #region Property
+
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                this.RaisePropertyChanged("IsLoading");
+            }
+        }
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.
@@ -44,7 +73,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 }
 
                 this.email = value;
-                this.NotifyPropertyChanged();
+                this.RaisePropertyChanged("Email");
             }
         }
 
@@ -66,7 +95,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 }
 
                 this.isInvalidEmail = value;
-                this.NotifyPropertyChanged();
+                this.RaisePropertyChanged("IsInvalidEmail");
             }
         }
 

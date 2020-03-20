@@ -14,6 +14,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.XPath;
 using Xamarin.Forms;
 using static GAZT.ErrorMessage;
 
@@ -150,7 +151,7 @@ namespace GAZT.Manager
                                         App.IsSessionExpired = false;
                                     }
                                     Message = node.ChildNodes[1].InnerText;
-                                    if(Message.Equals("5"))
+                                    if (Message.Equals("5"))
                                     {
                                         throw new Exception(AppResources.NetworkConnectivityIssue);
                                     }
@@ -4013,7 +4014,7 @@ namespace GAZT.Manager
         }
 
 
-        #region NEW DASHBOARD
+        #region SYNFUSION INTEGRATION
 
         //public static Dashboard GAZTGetDashboardData(String Lang, String Tin)
         //{
@@ -4391,7 +4392,289 @@ namespace GAZT.Manager
             return paymentOverdueSet;
         }
 
+
+
+        public static string SFGAZTAuthenticateTIN(string UserName, string Password, string DeviceId, string CurrentAttempt, string lang)
+        {
+           
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string AuthenticationResult = String.Empty;
+                string Message = string.Empty;
+                try
+                {
+                    HttpWebRequest SOAPRequest = CreateGAZTSOAPWebRequestForAuthenticationService();
+                    if (SOAPRequest != null)
+                    {
+                        XmlDocument SOAPReqBody = new XmlDocument();
+
+                        SOAPReqBody.LoadXml(@"<?xml version=""1.0"" encoding=""utf-8""?>  
+                        <soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-   instance"" xmlns:gazt=""http://gazt.gov.sa/""  xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" >  
+                        <soap:Body>
+                            <gazt:loginValidation>
+                                <userId>" + UserName + @"</userId>
+                                   <lang>" + lang + @"</lang> 
+                                <password>" + Password + @"</password>
+                                 <deviceId>" + DeviceId + @"</deviceId>
+                                        <count>" + CurrentAttempt + @"</count>
+
+                            </gazt:loginValidation>  
+                        </soap:Body>  
+                        </soap:Envelope>");
+
+                        using (Stream stream = SOAPRequest.GetRequestStream())
+                        {
+                            SOAPReqBody.Save(stream);
+                        }
+                        //Geting response from request  
+                        using (WebResponse SOAPRequestResponse = SOAPRequest.GetResponse())
+                        {
+                            using (StreamReader rd = new StreamReader(SOAPRequestResponse.GetResponseStream()))
+                            {
+                                if (rd != null)
+                                {
+                                    //reading stream  
+                                    var ServiceResult = rd.ReadToEnd();
+
+                                    XmlDocument xmlDoc = new XmlDocument();
+                                    xmlDoc.LoadXml(ServiceResult);
+
+                                    XmlNamespaceManager xmlnsManager = new System.Xml.XmlNamespaceManager(xmlDoc.NameTable);
+
+                                    xmlnsManager.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
+                                    xmlnsManager.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+                                    xmlnsManager.AddNamespace("xsd", "http://www.w3.org/2001/XMLSchema");
+                                    xmlnsManager.AddNamespace("ns2", "http://gazt.gov.sa/");
+
+                                    XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
+                                    App.Token = node.ChildNodes[0].InnerText;
+
+                                    if ((0 == String.Compare(App.Token, "User does not exist")))
+                                    {
+                                        throw new GAZTUserDoesNotExistException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "User authentication failed")))
+                                    {
+                                        throw new GAZTUserAuthenticationFailedException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "Authentication failed. Password locked")))
+                                    {
+                                        throw new GAZTPasswordLockedException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "User is not currently valid")))
+                                    {
+                                        throw new GAZTUserCurrentlyInvalidException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "User account locked")))
+                                    {
+                                        throw new GAZTUserAccountLockedException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "Password is locked. Invalid attempts")))
+                                    {
+                                        throw new GAZTPasswordIsLockedDueToInvalidAttemptsException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "Taxpayer's account is not active with GAZT.")))
+                                    {
+                                        throw new GAZTTaxpayersAccountInActiveWithGAZTException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "Wrong entering for the TIN or the Email")))
+                                    {
+                                        throw new GAZTWrongTINOrEmailException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "Wrong password")))
+                                    {
+                                        throw new GAZTWrongPasswordException();
+                                    }
+                                    if ((0 == String.Compare(App.Token, "The account is locked for 60 minutes after the last login attempt")))
+                                    {
+                                        throw new GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException("test");
+                                    }
+
+                                    if ((0 == String.Compare(App.Token, "Incomplete")) || (0 == String.Compare(App.Token, "Deregister - Death")) || (0 == String.Compare(App.Token, "Deregister - Bankruptcy")) || (0 == String.Compare(App.Token, "Deregister - Liquidation")) || (0 == String.Compare(App.Token, "Deregister - Merger")) || (0 == String.Compare(App.Token, "Deregister - Acquisition")) || (0 == String.Compare(App.Token, "Suspension - Bankruptcy")) || (0 == String.Compare(App.Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(App.Token, "Deregister - Close")) || (0 == String.Compare(App.Token, "Deregister - Company-Establish")) || (0 == String.Compare(App.Token, "Suspension - Est. to Company")))
+                                    {
+                                        throw new GAZTTaxpayersAccountNotActiveWithGAZTException();
+                                    }
+
+                                    Message = node.ChildNodes[1].InnerText;
+                                }
+                                else
+                                    throw new GAZTNetworkConnectivityIssueException("Network Connectivity Issue");
+                            }
+                        }
+                    }
+                    else
+                        throw new GAZTNetworkConnectivityIssueException("Network Connectivity Issue");
+
+                    return Message;
+
+                }
+                catch (XPathException xex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException("Network Issue");
+            }
+        }
+
+
+
+        public static List<TIN> SFGAZTGetAllTINs(string UserName)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                String GAZTGetTINsResponseResult = String.Empty;
+                List<TIN> TINs = null;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string url = Constants.GetAllTin + UserName;
+                    Uri uri = new Uri(url);
+                    HttpResponseMessage GAZTGetTINsResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetTINsResponse != null)
+                    {
+                        GAZTGetTINsResponseResult = GAZTGetTINsResponse.Content.ReadAsStringAsync().Result;
+                    }
+
+                    if (!string.IsNullOrEmpty(GAZTGetTINsResponseResult))
+                    {
+                        GAZTGetTINsResponseResult = JObject.Parse(GAZTGetTINsResponseResult)["tinData"].ToString();
+                        TINs = JsonConvert.DeserializeObject<List<TIN>>(GAZTGetTINsResponseResult);
+
+                        if (TINs == null)
+                        {
+                            throw new GAZTNoTINsAvailableException(string.Empty);
+                        }
+                    }
+
+                    return TINs;
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException(String.Empty);
+            }
+        }
+
+        public static TaxPayerProfile SFGAZTGetTaxPayerProfile(string TIN, string Lang)
+        {
+            TaxPayerProfile profile = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string MobileNumber = string.Empty;
+                string PdfUrl = string.Empty;
+                string NewToken = string.Empty;
+
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    Uri uri = new Uri(url);
+
+                    HttpResponseMessage GAZTGetTaxPayerProfileResponseJSON = client.GetAsync(uri).Result;
+
+                    if (GAZTGetTaxPayerProfileResponseJSON != null)
+                    {
+                        HttpHeaders headers = GAZTGetTaxPayerProfileResponseJSON.Headers;
+                        IEnumerable<string> values;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException(string.Empty);
+                            }
+
+                            App.Token = NewToken;
+                        }
+
+                        String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetTaxPayerProfileResponseJSON.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
+                        {
+                            GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
+
+                            profile = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTGetTaxPayerProfileResponseJSONString);
+
+                            if (profile == null)
+                                throw new GAZTTaxPayerProfileDataException();
+                        }
+                        else
+                        {
+                            throw new GAZTTaxPayerProfileDataException();
+                        }
+                    }
+                    else
+                        throw new GAZTTaxPayerProfileDataException();
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException(String.Empty);
+            }
+
+            return profile;
+        }
+
         #endregion
+
+
+
+
 
 
     }

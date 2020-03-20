@@ -2757,6 +2757,24 @@
     <value>Edit Profile</value>
   </data>
   <data name="ZZZMyProfile" xml:space="preserve">
-    <value>MyProfile</value>
+    <value>My Profile</value>
+  </data>
+  <data name="ZZZFaq" xml:space="preserve">
+    <value>FAQs</value>
+  </data>
+  <data name="ZZZHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ZZZOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ZZZPrivacyandPolicy" xml:space="preserve">
+    <value>Privacy and Policy</value>
+  </data>
+  <data name="ZZZSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="ZZZTermsAndService" xml:space="preserve">
+    <value>Terms of Service</value>
   </data>
 </root>

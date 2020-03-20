@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="GAZTeServicesApp.Views.Options.OptionsPageView"
+    x:Class="GAZTeServicesApp.Views.Options.SFOptionsPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -20,7 +20,7 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="Options" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZOptions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -201,7 +201,7 @@
                     HorizontalOptions="FillAndExpand"
                     LineHeight="{OnPlatform Default=-1,
                                             Android=1.25}"
-                    Text="SUPPORT"
+                    Text="{x:Static local:AppResources.ZZZSupport}"
                     TextColor="{DynamicResource Gray-800}"
                     VerticalOptions="Center"
                     VerticalTextAlignment="Center" />
@@ -229,7 +229,7 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
-                        Text="Help" />
+                        Text="{x:Static local:AppResources.ZZZHelp}" />
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
@@ -261,7 +261,7 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
-                        Text="Terms of Service" />
+                        Text="{x:Static local:AppResources.ZZZTermsAndService}" />
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
@@ -293,7 +293,7 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
-                        Text="Privacy and Policy" />
+                        Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}" />
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
@@ -325,7 +325,7 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
-                        Text="FAQs" />
+                        Text="{x:Static local:AppResources.ZZZFaq}" />
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
@@ -352,7 +352,7 @@
                     CornerRadius="0"
                    
                     
-                    Text="LOGOUT"
+                    Text="{x:Static local:AppResources.ZLogout}"
                     TextColor="{DynamicResource Gray-White}"
                      />
 
