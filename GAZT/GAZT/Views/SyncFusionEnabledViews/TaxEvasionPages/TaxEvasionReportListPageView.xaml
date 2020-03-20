@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" 
+              xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              Title="{x:Static local:AppResources.ZTEReportReportScreenTitle}"
+              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="GAZT.Views.NewViews.TaxEvasionReportListPageView">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_add1.png"  
@@ -81,7 +83,7 @@
                 </Grid>
             </StackLayout>
 
-
+           
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
                 <ListView   IsVisible="{Binding IsCertificateAvailable}" ItemsSource ="{Binding TERListReportbymobno}" VerticalOptions="Fill" x:Name="CertificateLst" HasUnevenRows="true" SelectedItem="{Binding SelectedTaxEvasionListItem}" BackgroundColor="Transparent" SeparatorVisibility="None">
                     <x:Arguments>
