@@ -320,7 +320,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// <param name="obj">The Object</param>
         private void ShowOptionsCommandClicked(object obj)
         {
-            _navigationService.NavigateTo("OptionsPage");
+            _navigationService.NavigateTo(App.OptionsPageView);
         }
 
         /// <summary>

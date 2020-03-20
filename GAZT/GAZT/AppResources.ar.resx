@@ -2753,4 +2753,10 @@
     <value>Proceed to individual Signup</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZZZEditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="ZZZMyProfile" xml:space="preserve">
+    <value>MyProfile</value>
+  </data>
 </root>
