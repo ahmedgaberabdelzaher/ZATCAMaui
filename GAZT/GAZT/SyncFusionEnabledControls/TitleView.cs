@@ -227,10 +227,10 @@ namespace GAZTeServicesApp.Controls
                     FontSize = 16,
                     Margin = new Thickness(0, 8),
                     FontFamily = Device.RuntimePlatform == Device.Android
-                            ? "Montserrat-Medium.ttf#Montserrat-Medium"
+                            ? "GAZT_FONT_BOLD"
                             : Device.RuntimePlatform == Device.iOS
-                                ? "Montserrat-Medium"
-                                : "Assets/Montserrat-Medium.ttf#Montserrat-Medium",
+                                ? "GAZT_FONT_BOLD"
+                                : "Assets/SSTArabic-Bold.ttf#SSTArabic-Bold",
                     HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.Center,
                     VerticalOptions = LayoutOptions.Center,

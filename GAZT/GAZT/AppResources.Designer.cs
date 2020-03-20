@@ -7009,6 +7009,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        public static string ZZZEditProfile {
+            get {
+                return ResourceManager.GetString("ZZZEditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MyProfile.
+        /// </summary>
+        public static string ZZZMyProfile {
+            get {
+                return ResourceManager.GetString("ZZZMyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
         public static string ZZZPasswordNotMatched {

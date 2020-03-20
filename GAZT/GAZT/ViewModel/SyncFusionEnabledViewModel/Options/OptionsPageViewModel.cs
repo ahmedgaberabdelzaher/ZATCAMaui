@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
 using GAZTeServicesApp.Views.Options;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,29 @@ namespace GAZTeServicesApp.ViewModels.Options
     [Preserve(AllMembers = true)]
     public class OptionsPageViewModel : ViewModelBase
     {
+
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
         #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageViewModel" /> class
         /// </summary>
-        public OptionsPageViewModel()
+        public OptionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+
             this.BackButtonCommand = new Command(this.BackButtonClicked);
             this.EditProfileCommand = new Command(this.EditProfileClicked);
             this.ChangePasswordCommand = new Command(this.ChangePasswordClicked);
@@ -31,11 +48,26 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.TermsCommand = new Command(this.TermsServiceClicked);
             this.PolicyCommand = new Command(this.PrivacyPolicyClicked);
             this.FAQCommand = new Command(this.FAQClicked);
+            this.CloseButtonClicked = new Command(this.CloseClicked);
+
+
+
+            this.MyProfileCommand = new Command(this.MyProfileCommandClicked);
+            this.EditMobileNumberCommand = new Command(this.EditMobileNumberClicked);
+            this.EditPasswordCommand = new Command(this.EditPasswordClicked);
+            this.EditEmailCommand = new Command(this.EditEmailClicked);
+
+
         }
 
         #endregion
 
         #region Commands
+
+        public Command MyProfileCommand { get; set; }
+        public Command EditMobileNumberCommand { get; set; }
+        public Command EditPasswordCommand { get; set; }
+        public Command EditEmailCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the command is executed when the favourite button is clicked.
@@ -77,6 +109,8 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// </summary>
         public Command FAQCommand { get; set; }
 
+        public Command CloseButtonClicked { get; set; }
+
         #endregion
 
         #region Methods
@@ -87,6 +121,7 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// <param name="obj">The object</param>
         private void BackButtonClicked(object obj)
         {
+            _navigationService.GoBack();
             // Do something
         }
 
@@ -146,11 +181,38 @@ namespace GAZTeServicesApp.ViewModels.Options
             // Do something
         }
 
+        private void CloseClicked(object obj)
+        {
+            _navigationService.GoBack();
+            // Do something
+        }
+
         /// <summary>
         /// Invoked when the help option is clicked
         /// </summary>
         /// <param name="obj">The object</param>
         private void HelpClicked(object obj)
+        {
+            // Do something
+        }
+
+
+        private void MyProfileCommandClicked(object obj)
+        {
+            // Do something
+        }
+
+        private void EditMobileNumberClicked(object obj)
+        {
+            // Do something
+        }
+
+        private void EditPasswordClicked(object obj)
+        {
+            // Do something
+        }
+
+        private void EditEmailClicked(object obj)
         {
             // Do something
         }
