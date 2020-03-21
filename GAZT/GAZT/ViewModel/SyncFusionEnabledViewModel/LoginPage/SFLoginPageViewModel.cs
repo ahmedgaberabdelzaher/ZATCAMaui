@@ -20,6 +20,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #region Fields
 
         private string password;
+        private string email;
         public int CurrentAttempt = 0;
         #endregion
 
@@ -66,6 +67,128 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             }
         }
 
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                if (this.email == value)
+                {
+                    return;
+                }
+                PreviousUserName = Email;
+                this.email = value;
+                if (PreviousUserName != this.email)
+                {
+                    IsVisibleTinIds = false;
+                }
+                if (string.IsNullOrEmpty(this.email))
+                {
+                    IsLoginEnabled = false;
+                    Password = string.Empty;
+                    IsVisibleTinIds = false;
+                }
+                if (!string.IsNullOrEmpty(this.email) && !string.IsNullOrEmpty(Password))
+                {
+                    IsLoginEnabled = true;
+                }
+                RaisePropertyChanged("Email");
+            }
+        }
+
+        private bool _IsFocused = false;
+        public bool IsFocused
+        {
+            get
+            {
+                return _IsFocused;
+            }
+            set
+            {
+                _IsFocused = value;
+                if (_IsFocused == true)
+                {
+                    if (!string.IsNullOrEmpty(email))
+                    {
+                        bool Test = UtilityManager.IsValidEmailAddress(email);
+                        if (Test == true)
+                        {
+                            if (IsVisibleTinIds == false)
+                            {
+                                IsVisibleTinIds = true;
+                            }
+                        }
+                        else
+                        {
+                            IsVisibleTinIds = false;
+                        }
+                    }
+                }
+                RaisePropertyChanged("IsFocused");
+            }
+        }
+
+
+        private string _PreviousUserName = String.Empty;
+        public string PreviousUserName
+        {
+            get
+            {
+                return _PreviousUserName;
+            }
+            set
+            {
+                _PreviousUserName = value;
+            }
+        }
+
+        private string _tINID = string.Empty;
+        public string TINID
+        {
+            get
+            {
+                return _tINID;
+            }
+            set
+            {
+                _tINID = value;
+                RaisePropertyChanged("TINID");
+            }
+        }
+
+        private bool _isLoginEnabled = false;
+        public bool IsLoginEnabled
+        {
+            get
+            {
+                return _isLoginEnabled;
+            }
+            set
+            {
+                _isLoginEnabled = value;
+                RaisePropertyChanged("IsLoginEnabled");
+            }
+        }
+
+        private int _tINIndex = 0;
+        public int TINIndex
+        {
+            get
+            {
+                return _tINIndex;
+            }
+            set
+            {
+                _tINIndex = value;
+                RaisePropertyChanged("TINIndex");
+            }
+        }
+
+
         private List<TIN> _tINs;
         public List<TIN> TINs
         {
@@ -94,6 +217,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 if (_selectedTinId != null)
                 {
                     App.CurrentDropdownTIN = SelectedTinId;
+                    TINID = _selectedTinId.Tin;
                     Password = string.Empty;
                 }
                 RaisePropertyChanged("SelectedTinId");
@@ -128,9 +252,12 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                 });
 
                                 TINs = WebServiceManager.SFGAZTGetAllTINs(Email);
-                                if ((TINs != null) && (TINs.Count != 0) && (SelectedTinId == null))
+                                if ((TINs != null) && (TINs.Count != 0))
                                 {
-                                    SelectedTinId = TINs[0];
+                                    if (SelectedTinId == null)
+                                    {
+                                        SelectedTinId = TINs[0];
+                                    }
                                 }
                                 else
                                 {
@@ -175,7 +302,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                             {
                                 MessageForTheUser = AppResources.ZZInternetConnectionMessage;
                             }
-                            else if(gex is GAZTException)
+                            else if (gex is GAZTException)
                             {
                                 MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             }
@@ -224,6 +351,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private async Task LoginClicked()
         {
+
             CurrentAttempt++;
 
             await Task.Run(() =>
@@ -235,54 +363,63 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             string UserId = string.Empty;
             await Task.Run(() =>
             {
-                string language = UtilityManager.GetLanguageParameter();
-                String lang = "E";
-                if (App.IsArabic == true)
-                    lang = "AR";
-                string _currentAttempts = CurrentAttempt.ToString();
-                string languag = UtilityManager.GetLanguageParameter();
-                if (SelectedTinId != null && IsVisibleTinIds == true)
-                {
-                    bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
-                    if (isValidEmail == true)
-                    {
-
-                        response = WebServiceManager.GAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
-                        UserId = SelectedTinId.Tin;
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.ZUserNameIncorrect);
-                    }
-                }
-                else
-                {
-                    bool isValidTin = UtilityManager.IsOTPNumberValid(Email);
-                    if (isValidTin == true)
-
-                    {
-                        response = WebServiceManager.GAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
-                        UserId = Email;
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.ZUserNameIncorrect);
-                    }
-                }
-
-
-                response = WebServiceManager.GAZTAuthenticateTIN(this.Email, this.Password, DeviceId, _currentAttempts, languag);
                 try
                 {
+                    string language = UtilityManager.GetLanguageParameter();
+                    String lang = "E";
+                    if (App.IsArabic == true)
+                        lang = "AR";
+                    if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+                    {
+                        throw new GAZTLoginDetailsException();
+                    }
+                    string _currentAttempts = CurrentAttempt.ToString();
+                    string languag = UtilityManager.GetLanguageParameter();
+                    if (SelectedTinId != null && IsVisibleTinIds == true)
+                    {
+                        bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
+                        if (isValidEmail == true)
+                        {
+
+                            response = WebServiceManager.SFGAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
+                            UserId = SelectedTinId.Tin;
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.ZUserNameIncorrect);
+                        }
+                    }
+                    else
+                    {
+                        bool isValidTin = UtilityManager.IsOTPNumberValid(Email);
+                        if (isValidTin == true)
+
+                        {
+                            response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
+                            UserId = Email;
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.ZUserNameIncorrect);
+                        }
+                    }
+
+
+
                     if (0 == String.Compare("success", response, true))
                     {
-                        TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(this.Email, "EN");
+                        TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
                         if (TPProfile != null)
                         {
                             TPProfile.Tin = Email;
                             App.TP = TPProfile;
                         }
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.SFLandingPageView);
+                        });
                     }
+
                 }
                 catch (GAZTException gex)
                 {
@@ -342,21 +479,16 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                     {
                         MessageForTheUser = gex.Message;
                     }
+                    else if(gex is GAZTLoginDetailsException)
+                    {
+                        MessageForTheUser = AppResources.Pleaseenteryourlogininformation;
+                    }
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     });
                 }
-                catch (Exception ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage("something went wrong", AppResources.Information);
-                    });
-                }
-
             });
 
             await Task.Run(() =>
@@ -364,7 +496,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 IsLoading = false;
             });
 
-            base._navigationService.NavigateTo("LandingPageView");
+
 
         }
 

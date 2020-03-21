@@ -7009,6 +7009,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an account?.
+        /// </summary>
+        public static string ZZZDontHaveAccount {
+            get {
+                return ResourceManager.GetString("ZZZDontHaveAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
         public static string ZZZEditProfile {
@@ -7032,6 +7041,15 @@ namespace GAZT {
         public static string ZZZHelp {
             get {
                 return ResourceManager.GetString("ZZZHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter Your Credentials to Login.
+        /// </summary>
+        public static string ZZZLoginLabel {
+            get {
+                return ResourceManager.GetString("ZZZLoginLabel", resourceCulture);
             }
         }
         
@@ -7104,6 +7122,15 @@ namespace GAZT {
         public static string ZZZTermsAndService {
             get {
                 return ResourceManager.GetString("ZZZTermsAndService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string ZZZWelcome {
+            get {
+                return ResourceManager.GetString("ZZZWelcome", resourceCulture);
             }
         }
     }

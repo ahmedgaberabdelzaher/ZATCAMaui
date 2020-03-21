@@ -32,7 +32,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
 
         #region Fields
 
-        private string email;
+        
 
         private bool isInvalidEmail;
 
@@ -58,24 +58,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.
         /// </summary>
-        public string Email
-        {
-            get
-            {
-                return this.email;
-            }
-
-            set
-            {
-                if (this.email == value)
-                {
-                    return;
-                }
-
-                this.email = value;
-                this.RaisePropertyChanged("Email");
-            }
-        }
+       
 
         /// <summary>
         /// Gets or sets a value indicating whether the entered email is valid or invalid.

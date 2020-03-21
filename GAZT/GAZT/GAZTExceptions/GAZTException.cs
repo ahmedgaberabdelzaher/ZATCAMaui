@@ -214,4 +214,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         }
     }
 
+    public class GAZTLoginDetailsException : GAZTException
+    {
+        public GAZTLoginDetailsException()
+        { }
+
+        public GAZTLoginDetailsException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
+
 }

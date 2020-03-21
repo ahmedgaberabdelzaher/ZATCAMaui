@@ -2777,4 +2777,16 @@
   <data name="ZZZTermsAndService" xml:space="preserve">
     <value>Terms of Service</value>
   </data>
+  <data name="ZZZDontHaveAccount" xml:space="preserve">
+    <value>Don't have an account?</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZLoginLabel" xml:space="preserve">
+    <value>Please Enter Your Credentials to Login</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZWelcome" xml:space="preserve">
+    <value>Welcome</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
 </root>
