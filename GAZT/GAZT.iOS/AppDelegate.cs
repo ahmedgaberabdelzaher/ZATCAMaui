@@ -10,6 +10,7 @@ using Syncfusion.XForms.Pickers.iOS;
 using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 
 namespace GAZT.iOS
 {
@@ -45,6 +46,8 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             SfDatePickerRenderer.Init();
             SfPickerRenderer.Init();
+            new SfBusyIndicatorRenderer();
+            Syncfusion.XForms.iOS.Graphics.SfGradientViewRenderer.Init();
             LoadApplication(iosapp);
 
             //Code for PUSH notification

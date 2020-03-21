@@ -1,9 +1,9 @@
-﻿using GAZT.ViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
-
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -130,5 +130,19 @@ namespace GAZT.Views
             viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
 
         }
+
+        private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var dataItem = e.Item as MyBills;
+            await Clipboard.SetTextAsync(dataItem.VTRE2);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
+
+                //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
+            }
+        }
+
     }
-}
+    }

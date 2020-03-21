@@ -56,7 +56,7 @@ namespace GAZT.Models
         public string Txt30 { get; set; }
         public string FAEDN { get; set; } //DueDate
         public string StatusImage { get; set; }
-
+        public string Colorcode { get; set; }
 
         private string _status = string.Empty;
         public string Status {
@@ -70,14 +70,17 @@ namespace GAZT.Models
                 if(_status==Enum.GetName(typeof(BillStatus),0))
                 {
                     StatusImage = "ic_check_circle.png";
+                    Colorcode = "#006450";
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 1))
                 {
                     StatusImage = "ic_loading.png";
+                    Colorcode = "#F36C21";
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
+                    Colorcode = "#944E23";
                 }
             }
         }

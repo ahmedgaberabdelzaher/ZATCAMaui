@@ -26,7 +26,7 @@ namespace GAZTeServicesApp.Views.LoginPage
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             
             viewModel.TINIndex = 0;
-            ParentContainer.RaiseChild(BusyIndicator);
+           // ParentContainer.RaiseChild(BusyIndicator);
         }
 
         public void SetLTRDirection()

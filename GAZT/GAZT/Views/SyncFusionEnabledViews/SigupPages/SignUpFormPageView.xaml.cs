@@ -1441,6 +1441,9 @@ namespace GAZT.Views.NewViews
 
         private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
         {
+
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder(); ;
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -1448,7 +1451,6 @@ namespace GAZT.Views.NewViews
                     if (EntryIDNumber.Text.Substring(0, 1) != "1")
                     {
 
-                        PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZZNationalIDstartswith1;
 
 
@@ -1472,7 +1474,7 @@ namespace GAZT.Views.NewViews
                 {
                     if (EntryIDNumber.Text.Substring(0, 1) != "2")
                     {
-                        PopUp popUp = new PopUp();
+                        
                         popUp.Message = AppResources.ZZIqamaIDstartswith2;
 
 
@@ -1490,7 +1492,92 @@ namespace GAZT.Views.NewViews
                         FrmIDNumber.HasError = true;
                         EntryIDNumber.Text = string.Empty;
                     }
+                    if (EntryIDNumber.Text.Length != 10)
+                    {
+                       
+                        if (Messages.Length > 0)
+                        {
+                            Messages.Append(Environment.NewLine);
+
+                        }
+                        Messages.Append(AppResources.ZZPleaseEnterValidId);
+
+                    }
+                    if (Messages.Length > 0)
+                    {
+                        popUp.Message = Messages.ToString();
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmTIN.HasError = true;
+                        EntryTIN.Text = string.Empty;
+                    }
+                    else
+                    {
+                        FrmTIN.HasError = false;
+                    }
+
+
                 }
+                else if (viewModel.SelectedSignUpUsing.ID == 3)
+                {
+                    if(EntryIDNumber.Text.Substring(0, 1) == "0")
+                    {
+                        //Have to change to neww error message
+                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
+
+
+                        popUp.IsLinkAvailable = false;
+
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmIDNumber.HasError = true;
+                        EntryIDNumber.Text = string.Empty;
+                    }
+                    if(!(EntryIDNumber.Text.Length<15 && EntryIDNumber.Text.Length>7))
+                    {
+                        popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+
+
+                        popUp.IsLinkAvailable = false;
+
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+
+                        FrmIDNumber.HasError = true;
+                        EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                    }
+
+
+
+                }
+
+
                 else
                 {
                     FrmIDNumber.HasError = false;

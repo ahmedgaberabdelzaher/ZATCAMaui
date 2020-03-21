@@ -1579,7 +1579,7 @@
     <comment>VAT Declaration general message</comment>
   </data>
   <data name="ZZNext" xml:space="preserve">
-    <value>اعادة تعيين</value>
+    <value>التالي</value>
     <comment>VAT Declaration button</comment>
   </data>
   <data name="ZZRefresh" xml:space="preserve">
@@ -2788,6 +2788,10 @@
   <data name="ZZZWelcome" xml:space="preserve">
     <value>Welcome</value>
     <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZPleaseEnterValidId" xml:space="preserve">
+    <value>الرجاء إدخال رقم المعرف الصحيح</value>
+    <comment>signup</comment>
   </data>
   <data name="ZZZWrongEnterTin" xml:space="preserve">
     <value>خطأ في إدخال الرقم المميز أو البريد الإلكتروني</value>
