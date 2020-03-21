@@ -2797,4 +2797,11 @@ Should we require further information, we would be in contact.</value>
     <value>Please enter a valid ID</value>
     <comment>signup</comment>
   </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
+    <value>GCC ID should not start with 0</value>
+    <comment>signup</comment>
+  </data>
 </root>

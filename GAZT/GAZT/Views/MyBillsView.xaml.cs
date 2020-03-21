@@ -138,7 +138,8 @@ namespace GAZT.Views
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
+                //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
+                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
 
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
             }

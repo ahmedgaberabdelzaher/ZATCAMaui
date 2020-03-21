@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
     {
 
         TaxEvasionReportFormPageViewModel viewModel;
+        Pin pin = new Pin();
         
 
         public TaxEvasionReportFormPageView(TaxEvasionReportList SelectedTaxEvasionListItem)
@@ -66,6 +67,18 @@ namespace GAZT.Views.NewViews
                 viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
                 RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
+                double lat = Convert.ToDouble(viewModel.selectedtaxEList.Latitude);
+                double lon = Convert.ToDouble(viewModel.selectedtaxEList.Longitude);
+                Position position = new Position(lat, lon);
+                mapView.IsEnabled = false;
+               MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                mapView.MoveToRegion(mapSpan);
+                pin.Label = "Report Location";
+                pin.Type = PinType.Place;
+                pin.Position = new Position(lat, lon);
+                mapView.Pins.Clear();
+                mapView.Pins.Add(pin);
+
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
                     viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == SelectedTaxEvasionListItem.RegionCode).FirstOrDefault();
@@ -617,7 +630,7 @@ namespace GAZT.Views.NewViews
 
         private void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            Pin pin = new Pin();
+           // Pin pin = new Pin();
             pin.Label = "Your Location";
             pin.Type = PinType.Place;
             pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);

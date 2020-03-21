@@ -2793,4 +2793,11 @@
     <value>الرجاء إدخال رقم المعرف الصحيح</value>
     <comment>signup</comment>
   </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
+    <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يبدأ بـ 0</value>
+    <comment>signup</comment>
+  </data>
 </root>
