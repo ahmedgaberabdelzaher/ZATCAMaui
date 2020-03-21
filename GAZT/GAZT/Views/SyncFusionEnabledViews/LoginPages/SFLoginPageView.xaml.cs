@@ -1,5 +1,7 @@
 ﻿using GAZT;
 using GAZTeServicesApp.ViewModels.LoginPage;
+using System;
+using System.Globalization;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -19,12 +21,23 @@ namespace GAZTeServicesApp.Views.LoginPage
         /// </summary>
         public SFLoginPageView()
         {
+            SetLTRDirection();
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            
             viewModel.TINIndex = 0;
             ParentContainer.RaiseChild(BusyIndicator);
         }
 
+        public void SetLTRDirection()
+        {
+            App.IsArabic = false;
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            //InitializeComponent();
+           // this.FlowDirection = FlowDirection.LeftToRight;
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();

@@ -564,7 +564,7 @@ namespace GAZT.ViewModel.NewViewModel
         public void OnPageLoad()
         {
             FrmColour = "#B1B1B1";
-            TinNumber = App.TP.Userid;
+            TinNumber = App.TP.Tin;
             string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             StopTimer = true;

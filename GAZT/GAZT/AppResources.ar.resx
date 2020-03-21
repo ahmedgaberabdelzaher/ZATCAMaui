@@ -2789,4 +2789,7 @@
     <value>Welcome</value>
     <comment>SynfusionUILabel</comment>
   </data>
+  <data name="ZZZWrongEnterTin" xml:space="preserve">
+    <value>خطأ في إدخال الرقم المميز أو البريد الإلكتروني</value>
+  </data>
 </root>

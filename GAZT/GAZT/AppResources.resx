@@ -2793,4 +2793,7 @@ Should we require further information, we would be in contact.</value>
     <value>Welcome</value>
     <comment>SynfusionUILabel</comment>
   </data>
+  <data name="ZZZWrongEnterTin" xml:space="preserve">
+    <value>Wrong entering for the TIN or the Email</value>
+  </data>
 </root>

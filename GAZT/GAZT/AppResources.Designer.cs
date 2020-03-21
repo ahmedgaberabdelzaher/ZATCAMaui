@@ -7133,5 +7133,14 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZWelcome", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong entering for the TIN or the Email.
+        /// </summary>
+        public static string ZZZWrongEnterTin {
+            get {
+                return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
+            }
+        }
     }
 }

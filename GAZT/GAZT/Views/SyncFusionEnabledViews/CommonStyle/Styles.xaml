@@ -189,7 +189,7 @@
     <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
-        <Setter Property="FontFamily" Value="GE_SS_Two-Regular" />
+        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
 
@@ -300,7 +300,7 @@
 
 
     <Style x:Key="LabelStyleCardView" TargetType="Label">
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
         <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}"/>

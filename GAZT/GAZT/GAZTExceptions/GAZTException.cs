@@ -224,4 +224,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         }
     }
 
+    public class GAZTUserNameIncorrectException : GAZTException
+    {
+        public GAZTUserNameIncorrectException()
+        { }
+
+        public GAZTUserNameIncorrectException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
+
 }
