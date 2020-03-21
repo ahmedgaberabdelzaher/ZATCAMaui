@@ -2804,4 +2804,7 @@ Should we require further information, we would be in contact.</value>
     <value>GCC ID should not start with 0</value>
     <comment>signup</comment>
   </data>
+  <data name="ZZZWrongEnterTin" xml:space="preserve">
+    <value>Wrong entering for the TIN or the Email</value>
+  </data>
 </root>

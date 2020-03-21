@@ -358,138 +358,162 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 IsLoading = true;
             });
-
-            string response = string.Empty;
-            string UserId = string.Empty;
-            await Task.Run(() =>
+            try
             {
-                try
+                string response = string.Empty;
+                string UserId = string.Empty;
+                await Task.Run(() =>
                 {
-                    string language = UtilityManager.GetLanguageParameter();
-                    String lang = "E";
-                    if (App.IsArabic == true)
-                        lang = "AR";
-                    if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-                    {
-                        throw new GAZTLoginDetailsException();
-                    }
-                    string _currentAttempts = CurrentAttempt.ToString();
-                    string languag = UtilityManager.GetLanguageParameter();
-                    if (SelectedTinId != null && IsVisibleTinIds == true)
-                    {
-                        bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
-                        if (isValidEmail == true)
-                        {
 
-                            response = WebServiceManager.SFGAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
-                            UserId = SelectedTinId.Tin;
+                    try
+                    {
+                        string language = UtilityManager.GetLanguageParameter();
+                        String lang = "E";
+                        if (App.IsArabic == true)
+                            lang = "AR";
+                        if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+                        {
+                            throw new GAZTLoginDetailsException();
+                        }
+                        string _currentAttempts = CurrentAttempt.ToString();
+                        string languag = UtilityManager.GetLanguageParameter();
+                        if (SelectedTinId != null && IsVisibleTinIds == true)
+                        {
+                            bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
+                            if (isValidEmail == true)
+                            {
+
+                                response = WebServiceManager.SFGAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
+                                UserId = SelectedTinId.Tin;
+                            }
+                            else
+                            {
+                                throw new GAZTUserNameIncorrectException();
+                            }
                         }
                         else
                         {
-                            throw new Exception(AppResources.ZUserNameIncorrect);
+                            bool isValidTin = UtilityManager.IsOTPNumberValid(Email);
+                            if (isValidTin == true)
+
+                            {
+                                response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
+                                UserId = Email;
+
+                            }
+                            else
+                            {
+                                throw new GAZTUserNameIncorrectException();
+                            }
                         }
+
+
+
+                        if (0 == String.Compare("success", response, true))
+                        {
+                            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+                            if (TPProfile != null)
+                            {
+                                App.TP = new TaxPayerProfile();
+                                TPProfile.Tin = Email;
+                                App.TP.Userid = UserId;
+                                App.TP = TPProfile;
+                            }
+                            NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                            });
+                        }
+
                     }
-                    else
+                    catch (GAZTException gex)
                     {
-                        bool isValidTin = UtilityManager.IsOTPNumberValid(Email);
-                        if (isValidTin == true)
+                        IsLoading = false;
 
+                        string MessageForTheUser = gex.Message;
+
+                        if (gex is GAZTUserDoesNotExistException)
                         {
-                            response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
-                            UserId = Email;
+                            MessageForTheUser = AppResources.UserDoesNotExist;
                         }
-                        else
+                        else if (gex is GAZTUserAuthenticationFailedException)
                         {
-                            throw new Exception(AppResources.ZUserNameIncorrect);
+                            MessageForTheUser = AppResources.UserAuthenticationFailed;
                         }
-                    }
-
-
-
-                    if (0 == String.Compare("success", response, true))
-                    {
-                        TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
-                        if (TPProfile != null)
+                        else if (gex is GAZTNetworkConnectivityIssueException)
                         {
-                            TPProfile.Tin = Email;
-                            App.TP = TPProfile;
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
                         }
-                        Device.BeginInvokeOnMainThread(() =>
+                        else if (gex is GAZTInternetException)
                         {
-                            _navigationService.NavigateTo(App.SFLandingPageView);
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTPasswordLockedException)
+                        {
+                            MessageForTheUser = AppResources.ZPasswordLocked;
+                        }
+                        else if (gex is GAZTUserCurrentlyInvalidException)
+                        {
+                            MessageForTheUser = gex.Message;
+                        }
+                        else if (gex is GAZTUserAccountLockedException)
+                        {
+                            MessageForTheUser = AppResources.ZAccountLocked;
+                        }
+                        else if (gex is GAZTPasswordIsLockedDueToInvalidAttemptsException)
+                        {
+                            MessageForTheUser = AppResources.ZZPasswordislockedInvalidattempts;
+                        }
+                        else if (gex is GAZTTaxpayersAccountInActiveWithGAZTException)
+                        {
+                            MessageForTheUser = gex.Message;
+                        }
+                        else if (gex is GAZTWrongTINOrEmailException)
+                        {
+                            MessageForTheUser = gex.Message;
+                        }
+                        else if (gex is GAZTWrongPasswordException)
+                        {
+                            MessageForTheUser = AppResources.InvalidPassword;
+                        }
+                        else if (gex is GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException)
+                        {
+                            MessageForTheUser = AppResources.ZAccountLocked;
+                        }
+                        else if (gex is GAZTTaxpayersAccountNotActiveWithGAZTException)
+                        {
+                            MessageForTheUser = gex.Message;
+                        }
+                        else if (gex is GAZTLoginDetailsException)
+                        {
+                            MessageForTheUser = AppResources.Pleaseenteryourlogininformation;
+                        }
+                        else if (gex is GAZTWrongTINOrEmailException)
+                        {
+                            MessageForTheUser = AppResources.ZZZWrongEnterTin;
+                        }
+                        else if (gex is GAZTUserNameIncorrectException)
+                        {
+                            MessageForTheUser = AppResources.ZUserNameIncorrect;
+                        }
+
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                         });
                     }
-
-                }
-                catch (GAZTException gex)
+                });
+            }
+            catch (Exception ex)
+            {
+                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await Task.Run(() =>
                 {
                     IsLoading = false;
-
-                    string MessageForTheUser = gex.Message;
-
-                    if (gex is GAZTUserDoesNotExistException)
-                    {
-                        MessageForTheUser = AppResources.UserDoesNotExist;
-                    }
-                    else if (gex is GAZTUserAuthenticationFailedException)
-                    {
-                        MessageForTheUser = AppResources.UserAuthenticationFailed;
-                    }
-                    else if (gex is GAZTNetworkConnectivityIssueException)
-                    {
-                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                    }
-                    else if (gex is GAZTInternetException)
-                    {
-                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                    }
-                    else if (gex is GAZTPasswordLockedException)
-                    {
-                        MessageForTheUser = AppResources.ZPasswordLocked;
-                    }
-                    else if (gex is GAZTUserCurrentlyInvalidException)
-                    {
-                        MessageForTheUser = gex.Message;
-                    }
-                    else if (gex is GAZTUserAccountLockedException)
-                    {
-                        MessageForTheUser = AppResources.ZAccountLocked;
-                    }
-                    else if (gex is GAZTPasswordIsLockedDueToInvalidAttemptsException)
-                    {
-                        MessageForTheUser = AppResources.ZZPasswordislockedInvalidattempts;
-                    }
-                    else if (gex is GAZTTaxpayersAccountInActiveWithGAZTException)
-                    {
-                        MessageForTheUser = gex.Message;
-                    }
-                    else if (gex is GAZTWrongTINOrEmailException)
-                    {
-                        MessageForTheUser = gex.Message;
-                    }
-                    else if (gex is GAZTWrongPasswordException)
-                    {
-                        MessageForTheUser = AppResources.InvalidPassword;
-                    }
-                    else if (gex is GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException)
-                    {
-                        MessageForTheUser = AppResources.ZAccountLocked;
-                    }
-                    else if (gex is GAZTTaxpayersAccountNotActiveWithGAZTException)
-                    {
-                        MessageForTheUser = gex.Message;
-                    }
-                    else if(gex is GAZTLoginDetailsException)
-                    {
-                        MessageForTheUser = AppResources.Pleaseenteryourlogininformation;
-                    }
-
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    });
-                }
-            });
+                });
+            }
 
             await Task.Run(() =>
             {
@@ -506,6 +530,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private void SignUpClicked(object obj)
         {
+            _navigationService.NavigateTo(App.SignUpFormPageView);
             // Do something
         }
 

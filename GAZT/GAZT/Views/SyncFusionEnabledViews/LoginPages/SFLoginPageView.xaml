@@ -14,6 +14,7 @@
     xmlns:local1="clr-namespace:GAZT;assembly:GAZT"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    FlowDirection="LeftToRight"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
@@ -119,7 +120,7 @@
                             Margin="0,16"
                             FontFamily="{StaticResource GAZT_FONT_BOLD}"
                             FontSize="12"
-                            HorizontalOptions="End"
+                            HorizontalOptions="CenterAndExpand"
                             Text="{x:Static local1:AppResources.ForgotPasswordORUseName}"
                             TextColor="White">
                             <Label.GestureRecognizers>
@@ -129,8 +130,11 @@
 
                         <!--  Login button  -->
                         <buttons:SfButton
+                          
                             Grid.Row="5"
-                            Margin="0,16"
+                            Margin="10,16,10,16"
+                            BackgroundColor="#D99A29"
+                            Opacity="0.7"
                             Command="{Binding LoginCommand}"
                             Style="{StaticResource SfButtonStyle}"
                             Text="{x:Static local1:AppResources.LogIn}" />
@@ -161,6 +165,7 @@
                         <buttons:SfButton
                             Command="{Binding SignUpCommand}"
                             CornerRadius="4"
+                            
                             Style="{StaticResource SfFlatButtonStyle}"
                             Text="{x:Static local1:AppResources.ZZSignup}" />
 
@@ -168,12 +173,12 @@
 
                 </StackLayout>
             </ScrollView>
-            <busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
+            <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
                                        AnimationType="HorizontalPulsingBox" 
                                        ViewBoxWidth = "150" 
                                        ViewBoxHeight="150" 
                                        TextColor="DarkGreen" 
-                                       IsBusy="{Binding IsLoading}"/>
+                                       IsBusy="{Binding IsLoading}"/>-->
         </Grid>
     </ContentPage.Content>
 
