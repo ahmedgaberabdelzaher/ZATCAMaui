@@ -35,7 +35,7 @@ namespace GAZT.Views.NewViews
             {
 
             }
-            mapset();
+            //mapset();
 
             viewModel.CreateCompanyTypeList();
             //selectedtaxEList
@@ -103,23 +103,11 @@ namespace GAZT.Views.NewViews
             {
 
             }
-
-
-
-            
+     
             // viewModel.SelectedCategory = SelectedCat;
-           
-
-
-
-
-           
         }
 
-        public void clearData()
-        {
-
-        }
+       
 
         private void SetLTR()
         {
@@ -580,21 +568,14 @@ namespace GAZT.Views.NewViews
            // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
         }
 
-        private void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
-        {
-            Pin pin = new Pin();
-            pin.Label = "Your Location";
-            pin.Type = PinType.Place;
-            pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-            viewModel.TEReportobj.Latitude = e.Position.Latitude.ToString();
-            viewModel.TEReportobj.Longitude = e.Position.Longitude.ToString();
-            mapView.Pins.Clear();
-            mapView.Pins.Add(pin);
-        }
 
-        private async void mapset()
+
+        protected override async void OnAppearing()
         {
-            double lat=00.00, lon=00.00;
+            base.OnAppearing();
+            //your code here;
+
+            double lat = 00.00, lon = 00.00;
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
@@ -629,23 +610,76 @@ namespace GAZT.Views.NewViews
             {
                 // Unable to get location
             }
-            //Pin pin = new Pin
-            //{
-            //    Label = "Your Location",
 
-            //    Type = PinType.Place,
-            //    Position = new Position(lat, lon)
-            //};
+        }
+
+
+        private void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        {
+            Pin pin = new Pin();
+            pin.Label = "Your Location";
+            pin.Type = PinType.Place;
+            pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
+            viewModel.TEReportobj.Latitude = e.Position.Latitude.ToString();
+            viewModel.TEReportobj.Longitude = e.Position.Longitude.ToString();
+            mapView.Pins.Clear();
+            mapView.Pins.Add(pin);
+        }
+
+    //    private async void mapset()
+    //    {
+    //        double lat=00.00, lon=00.00;
+    //        try
+    //        {
+    //            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+    //            var location = await Geolocation.GetLocationAsync(request);
+
+    //            if (location != null)
+    //            {
+    //                lat = location.Latitude;
+    //                lon = location.Longitude;
+    //            }
+
+
+    //            Position position = new Position(lat, lon);
+    //            MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+    //            mapView.MoveToRegion(mapSpan);
+    //            viewModel.TEReportobj.Latitude = lat.ToString();
+    //            viewModel.TEReportobj.Longitude = lon.ToString();
+    //        }
+    //        catch (FeatureNotSupportedException fnsEx)
+    //        {
+    //            // Handle not supported on device exception
+    //        }
+    //        catch (FeatureNotEnabledException fneEx)
+    //        {
+    //            // Handle not enabled on device exception
+    //        }
+    //        catch (PermissionException pEx)
+    //        {
+    //            // Handle permission exception
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            // Unable to get location
+    //        }
+    //        //Pin pin = new Pin
+    //        //{
+    //        //    Label = "Your Location",
+
+    //        //    Type = PinType.Place,
+    //        //    Position = new Position(lat, lon)
+    //        //};
 
 
             
 
-            // Map map = new Map(mapSpan);
+    //        // Map map = new Map(mapSpan);
 
 
         
 
-    }
+    //}
 
         private void btnFacilityType_Clicked(object sender, EventArgs e)
         {

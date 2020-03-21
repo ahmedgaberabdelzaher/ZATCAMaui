@@ -515,7 +515,7 @@ namespace GAZT.ViewModel
                                         //App.TP.Tin = UserName;
 
 
-                                        _navigationService.NavigateTo(App.SFLandingPageView);
+                                       // _navigationService.NavigateTo(App.SFLandingPageView);
 
                                         //  SYNCFUSION INTEGRATION
 

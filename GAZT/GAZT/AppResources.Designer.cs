@@ -6251,6 +6251,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid ID.
+        /// </summary>
+        public static string ZZPleaseEnterValidId {
+            get {
+                return ResourceManager.GetString("ZZPleaseEnterValidId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill all the mandatory fields.
         /// </summary>
         public static string ZZPleasefillallthemandatoryfields {
