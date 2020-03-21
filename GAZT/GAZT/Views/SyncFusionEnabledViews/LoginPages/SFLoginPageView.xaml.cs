@@ -22,7 +22,7 @@ namespace GAZTeServicesApp.Views.LoginPage
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             viewModel.TINIndex = 0;
-            ParentContainer.RaiseChild(BusyIndicator);
+           // ParentContainer.RaiseChild(BusyIndicator);
         }
 
         protected async override void OnAppearing()

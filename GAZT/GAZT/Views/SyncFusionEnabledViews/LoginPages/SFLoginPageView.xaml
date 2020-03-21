@@ -168,12 +168,12 @@
 
                 </StackLayout>
             </ScrollView>
-            <busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
+            <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
                                        AnimationType="HorizontalPulsingBox" 
                                        ViewBoxWidth = "150" 
                                        ViewBoxHeight="150" 
                                        TextColor="DarkGreen" 
-                                       IsBusy="{Binding IsLoading}"/>
+                                       IsBusy="{Binding IsLoading}"/>-->
         </Grid>
     </ContentPage.Content>
 

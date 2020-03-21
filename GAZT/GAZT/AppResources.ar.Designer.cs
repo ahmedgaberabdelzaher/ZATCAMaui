@@ -4176,6 +4176,192 @@ namespace GAZT {
             }
         }
         
+        public static string ZTERChooseReportCategory {
+            get {
+                return ResourceManager.GetString("ZTERChooseReportCategory", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportCategoryNextBtn {
+            get {
+                return ResourceManager.GetString("ZTEReportCategoryNextBtn", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportCategorySubmitBtn {
+            get {
+                return ResourceManager.GetString("ZTEReportCategorySubmitBtn", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategory1 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory1", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategory2 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory2", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategory3 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory3", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategory4 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory4", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategory5 {
+            get {
+                return ResourceManager.GetString("ZTERReportCategory5", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportCategoryPageTittle {
+            get {
+                return ResourceManager.GetString("ZTERReportCategoryPageTittle", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailAttachment {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailAttachment", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCity {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCity", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFacilityName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityName", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFDAddress {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFDAddress", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFSAddress {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFSAddress", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFWType {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFWType", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailName", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailNumber {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailRegion {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailRegion", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailReportDetailRLocation {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailReportDetailRLocation", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailReportDetails {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailReportDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailTIN {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailTIN", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailVATNumber {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailVATNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterCity {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterCity", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterDA {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterDA", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterFN {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterFN", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterFWT {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterFWT", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterRegion {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterRegion", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterSA {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterSA", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormEnterVATno {
+            get {
+                return ResourceManager.GetString("ZTERReportFormEnterVATno", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportFormPageTittle {
+            get {
+                return ResourceManager.GetString("ZTERReportFormPageTittle", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportPageHeadingText {
+            get {
+                return ResourceManager.GetString("ZTERReportPageHeadingText", resourceCulture);
+            }
+        }
+        
         public static string ZZAccountCreatedSuccessfully {
             get {
                 return ResourceManager.GetString("ZZAccountCreatedSuccessfully", resourceCulture);
@@ -4209,6 +4395,168 @@ namespace GAZT {
         public static string ZZYourEntitytypeisIndividual {
             get {
                 return ResourceManager.GetString("ZZYourEntitytypeisIndividual", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailEMail {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailEMail", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFacilityEmail {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFacilityMobNo {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityMobNo", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFacilityOwnerName {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityOwnerName", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailFacilityType {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailFacilityType", resourceCulture);
+            }
+        }
+        
+        public static string ZZMobilenumberhastostartwithnumber05 {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber05", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType1 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType1", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType10 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType10", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType11 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType11", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType12 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType12", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType2 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType2", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType3 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType3", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType4 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType4", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType5 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType5", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType6 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType6", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType7 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType7", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType8 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType8", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailCompanyType9 {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailCompanyType9", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportCompanyName {
+            get {
+                return ResourceManager.GetString("ZTEReportCompanyName", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportClosed {
+            get {
+                return ResourceManager.GetString("ZTEReportReportClosed", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportDate {
+            get {
+                return ResourceManager.GetString("ZTEReportReportDate", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportNumber {
+            get {
+                return ResourceManager.GetString("ZTEReportReportNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportOpen {
+            get {
+                return ResourceManager.GetString("ZTEReportReportOpen", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportScreenTitle {
+            get {
+                return ResourceManager.GetString("ZTEReportReportScreenTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportStatus {
+            get {
+                return ResourceManager.GetString("ZTEReportReportStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportSuccessResponsep1 {
+            get {
+                return ResourceManager.GetString("ZTEReportReportSuccessResponsep1", resourceCulture);
+            }
+        }
+        
+        public static string ZTEReportReportSuccessResponsep2 {
+            get {
+                return ResourceManager.GetString("ZTEReportReportSuccessResponsep2", resourceCulture);
             }
         }
         
@@ -4260,6 +4608,30 @@ namespace GAZT {
             }
         }
         
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        public static string ZInvalidMobileNoError {
+            get {
+                return ResourceManager.GetString("ZInvalidMobileNoError", resourceCulture);
+            }
+        }
+        
+        public static string ZInvalidTinNumber {
+            get {
+                return ResourceManager.GetString("ZInvalidTinNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZInvalidVatNumber {
+            get {
+                return ResourceManager.GetString("ZInvalidVatNumber", resourceCulture);
+            }
+        }
+        
         public static string ZZZReturnsNotFound {
             get {
                 return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
@@ -4275,6 +4647,90 @@ namespace GAZT {
         public static string OfText {
             get {
                 return ResourceManager.GetString("OfText", resourceCulture);
+            }
+        }
+        
+        public static string ZZProceedtoindivisualSignup {
+            get {
+                return ResourceManager.GetString("ZZProceedtoindivisualSignup", resourceCulture);
+            }
+        }
+        
+        public static string ZZProceedtoindividualSignup {
+            get {
+                return ResourceManager.GetString("ZZProceedtoindividualSignup", resourceCulture);
+            }
+        }
+        
+        public static string ZZZEditProfile {
+            get {
+                return ResourceManager.GetString("ZZZEditProfile", resourceCulture);
+            }
+        }
+        
+        public static string ZZZMyProfile {
+            get {
+                return ResourceManager.GetString("ZZZMyProfile", resourceCulture);
+            }
+        }
+        
+        public static string ZZZFaq {
+            get {
+                return ResourceManager.GetString("ZZZFaq", resourceCulture);
+            }
+        }
+        
+        public static string ZZZHelp {
+            get {
+                return ResourceManager.GetString("ZZZHelp", resourceCulture);
+            }
+        }
+        
+        public static string ZZZOptions {
+            get {
+                return ResourceManager.GetString("ZZZOptions", resourceCulture);
+            }
+        }
+        
+        public static string ZZZPrivacyandPolicy {
+            get {
+                return ResourceManager.GetString("ZZZPrivacyandPolicy", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSupport {
+            get {
+                return ResourceManager.GetString("ZZZSupport", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTermsAndService {
+            get {
+                return ResourceManager.GetString("ZZZTermsAndService", resourceCulture);
+            }
+        }
+        
+        public static string ZZZDontHaveAccount {
+            get {
+                return ResourceManager.GetString("ZZZDontHaveAccount", resourceCulture);
+            }
+        }
+        
+        public static string ZZZLoginLabel {
+            get {
+                return ResourceManager.GetString("ZZZLoginLabel", resourceCulture);
+            }
+        }
+        
+        public static string ZZZWelcome {
+            get {
+                return ResourceManager.GetString("ZZZWelcome", resourceCulture);
+            }
+        }
+        
+        public static string ZZPleaseEnterValidId {
+            get {
+                return ResourceManager.GetString("ZZPleaseEnterValidId", resourceCulture);
             }
         }
     }
