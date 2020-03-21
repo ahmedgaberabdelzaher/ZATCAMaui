@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms.Internals;
+﻿using System;
+using System.Text.RegularExpressions;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace GAZTeServicesApp.Views.Common
@@ -17,5 +19,65 @@ namespace GAZTeServicesApp.Views.Common
         {
             InitializeComponent();
         }
+
+        private void TINs_Clicked(object sender, System.EventArgs e)
+        {
+            TinsPicker.IsOpen = true;
+        }
+
+        private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            bool isNumber=false;
+            bool isEmailValid=false;
+            isNumber = IsEnglishNumber(Email.Text);
+            if(!isNumber)
+            {
+               isEmailValid = CheckValidEmail(Email.Text);
+                if (!isEmailValid)
+                {
+                    EmailInputLayout.HasError = true;
+                    //EmailInputLayout.ShowHint = true;
+                }
+                else
+                {
+                    EmailInputLayout.HasError = false;
+                    //EmailInputLayout.ShowHint = false;
+                }
+            }
+            else
+            {
+                EmailInputLayout.HasError = false;
+                //EmailInputLayout.ShowHint = false;
+            }
+           
+        }
+
+        private static bool CheckValidEmail(string email)
+        {
+            bool isEmailValid = false;
+            if (!string.IsNullOrEmpty(email))
+            {
+                var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+                isEmailValid= regex.IsMatch(email) && !email.EndsWith(".");
+            }
+            return isEmailValid;
+        }
+
+        public static bool IsEnglishNumber(String arText)
+        {
+            bool isAllNumeric = true;
+            if (!string.IsNullOrEmpty(arText))
+            {
+                foreach (char letter in arText.ToCharArray())
+                {
+                    if (!(letter >= 48 && letter <= 57))
+                    {
+                        isAllNumeric = false;
+                    }
+                }
+            }
+            return isAllNumeric;
+        }
+
     }
 }

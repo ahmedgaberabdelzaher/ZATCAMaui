@@ -17,12 +17,30 @@ namespace GAZT.ViewModel
     public class MyBillsViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
+        public readonly IDialogService _dialogService; 
         public ICommand onAllLabelClicked { get; set; }
         public ICommand onPaidLabelClicked { get; set; }
         public ICommand onUnpaidLabelClicked { get; set; }
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
+
+        private MyBills _myBillsObj;
+        public MyBills MyBillsObj
+        {
+            get
+            {
+                return _myBillsObj;
+            }
+            set
+            {
+                _myBillsObj = value;
+                RaisePropertyChanged("MyBillsObj");
+            }
+        }
+
+
+
+
         private List<MyBills> _myBills;
         public List<MyBills> MyBills
         {

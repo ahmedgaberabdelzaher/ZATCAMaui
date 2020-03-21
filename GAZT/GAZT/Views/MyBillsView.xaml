@@ -790,7 +790,7 @@
                 </StackLayout>
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                     <ListView  x:Name="Bills" 
-           ItemsSource="{Binding MyBills}"
+           ItemsSource="{Binding MyBills}" ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"

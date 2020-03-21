@@ -10,6 +10,7 @@ using GAZT.Models;
 using System.Net.Http;
 using GAZT.Views.NewViews;
 using GAZTeServicesApp.Themes;
+using GAZTeServicesApp.Views.LoginPage;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -138,7 +139,7 @@ namespace GAZT
             }
 
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

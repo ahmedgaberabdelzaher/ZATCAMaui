@@ -8,6 +8,7 @@ using GAZT;
 using BorderlessEntry = GAZTeServicesApp.Controls.BorderlessEntry;
 using GAZT.ViewModel;
 using GAZTeServicesApp.ViewModels.LoginPage;
+using GAZT.Manager;
 
 namespace GAZTeServicesApp.Converters
 {
@@ -94,13 +95,41 @@ namespace GAZTeServicesApp.Converters
         /// <returns>Returns the boolean value.</returns>
         private static bool CheckValidEmail(string email)
         {
+
+            bool isNumber;
+
             if (string.IsNullOrEmpty(email))
             {
                 return true;
             }
+            else
+            {
+               isNumber = IsEnglishNumber(email);
+            }
 
-            var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
-            return regex.IsMatch(email) && !email.EndsWith(".");
+            if (!isNumber)
+            {
+                var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+                return regex.IsMatch(email) && !email.EndsWith(".");
+            }
+            else
+            {
+                return true;
+            }
+            return true;
+        }
+
+        public static bool IsEnglishNumber(String arText)
+        {
+            bool isAllNumeric = true;
+            foreach (char letter in arText.ToCharArray())
+            {
+                if (!(letter >= 48 && letter <= 57))
+                {
+                    isAllNumeric = false;
+                }
+            }
+            return isAllNumeric;
         }
     }
 }
