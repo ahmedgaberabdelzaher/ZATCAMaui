@@ -23,8 +23,11 @@
         <Setter Property="BackgroundImageSource">
             <OnPlatform
                 x:TypeArguments="ImageSource"
-                Android="LoginBackground.png"
-                WinPhone="LoginBackground.png" />
+                Android="sf_LoginBackground.png"
+                WinPhone="sf_LoginBackground.png" 
+                iOS="sf_LoginBackground.png"
+                />
+         
         </Setter>
     </Style>
 
@@ -87,7 +90,7 @@
 
     <!--  Common style for gradient view  -->
     <Style x:Key="SfGradientViewStyle" TargetType="graphics:SfGradientView">
-        <Setter Property="Opacity" Value="0.82" />
+        <Setter Property="Opacity" Value="0" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="BackgroundBrush">

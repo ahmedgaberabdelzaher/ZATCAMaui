@@ -10,6 +10,7 @@ using GAZT.Models;
 using System.Net.Http;
 using GAZT.Views.NewViews;
 using GAZTeServicesApp.Themes;
+using GAZTeServicesApp.Views.LoginPage;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -86,12 +87,12 @@ namespace GAZT
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
-
+        public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = false;
-        public static bool IsArabic = false;
+        public static bool PreviousIsArabic = true;
+        public static bool IsArabic = true;
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -138,8 +139,7 @@ namespace GAZT
             }
 
             VATDeclaration vAT = null;
-            //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportListPageView()) { BarTextColor = Color.White };
-            CustomNavigation navigationPage = new CustomNavigation(new LogInPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
@@ -196,12 +196,13 @@ namespace GAZT
                         fontFamilyBold = "GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light";
+                        fontFamilyRoman = "SSTArabic-Roman";
                         break;
                     case Device.Android:
                         fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
-
+                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
                         break;
                 }
 
@@ -214,11 +215,13 @@ namespace GAZT
                         fontFamilyBold = "SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light";
+                        fontFamilyRoman = "SSTArabic-Roman";
                         break;
                     case Device.Android:
                         fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
+                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
 
                         break;
                 }
@@ -256,7 +259,8 @@ namespace GAZT
             TabbedPageMediumMiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
             forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-
+            MicroGrayLabelStyleNew.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
+            MicroGrayLabelStyleNewEn.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
             //SYNCFUSION INTEGRATION
 
             if (App.IsArabic)

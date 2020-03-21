@@ -47,9 +47,9 @@
                     </Frame>
 
                     <custom:GAZTBorderlessEntry Text="{Binding UserName}"  Grid.Row="2"  Grid.Column="1"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"  >
-                            <local:GAZTBorderlessEntry.Behaviors>
-                                <local:AlphaNumericValidatorBehaviour/>
-                            </local:GAZTBorderlessEntry.Behaviors>
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <custom:AlphaNumericValidatorBehaviour/>
+                            </custom:GAZTBorderlessEntry.Behaviors>
                     </custom:GAZTBorderlessEntry>
 
 

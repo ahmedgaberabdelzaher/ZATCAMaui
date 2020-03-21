@@ -80,5 +80,19 @@ namespace GAZT.Views.NewViews
             viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
 
         }
+
+        private void CertificateLstClosed_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+             ((ListView)sender).SelectedItem = null;
+
+            return;
+        }
+
+        private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+
+            return;
+        }
     }
 }

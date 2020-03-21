@@ -716,6 +716,33 @@
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
 
+            
+            <!-- new styles -->
+
+            <Style x:Key="MicroGrayLabelStyleNew" x:Name="MicroGrayLabelStyleNew" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="MicroGrayLabelStyleNewEn" x:Name="MicroGrayLabelStyleNewEn" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="10.75" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+              
+            </Style>
+
+            <!-- new styles -->
+
+
+
             <Style x:Key="forBoldLabel" x:Name="forBoldLabel" TargetType="Label">
                
             </Style>

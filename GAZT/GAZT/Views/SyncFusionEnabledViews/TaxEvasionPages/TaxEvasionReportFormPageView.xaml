@@ -609,7 +609,7 @@ xmlns:custom="clr-namespace:GAZT"
 
                         <DatePicker Format="dd/MM/yyyy"  Grid.Row="31" x:Name="DpDbo"   Grid.Column="0"  Grid.ColumnSpan="2"  Date="{Binding DatePick}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" ></DatePicker>
 -->
-                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
                         </Button>
                         
                         <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
