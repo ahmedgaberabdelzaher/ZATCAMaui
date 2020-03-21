@@ -967,4 +967,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_VAT_Declaration%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_image %402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_image%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackground%403x.png" />
+  </ItemGroup>
 </Project>
