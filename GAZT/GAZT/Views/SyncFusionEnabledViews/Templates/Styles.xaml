@@ -6,7 +6,8 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms">
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:converter="clr-namespace:GAZTeServicesApp.Converters">
 
     <Color x:Key="Gold">#fcbc0f</Color>
     <x:String x:Key="Rating">&#xe70c;</x:String>
@@ -138,5 +139,8 @@
         <Setter Property="FontFamily" Value="Montserrat-Regular" />
         <Setter Property="FontSize" Value="16" />
     </Style>
+
+    
+
 
 </ResourceDictionary>

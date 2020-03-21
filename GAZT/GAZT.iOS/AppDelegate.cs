@@ -1,4 +1,5 @@
-﻿
+using Syncfusion.XForms.iOS.Cards;
+
 using System;
 using System.Net;
 using DeviceOrientation.Forms.Plugin.iOS;

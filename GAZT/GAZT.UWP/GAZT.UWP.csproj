@@ -147,7 +147,7 @@
       <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>18.1.0.36-beta</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />

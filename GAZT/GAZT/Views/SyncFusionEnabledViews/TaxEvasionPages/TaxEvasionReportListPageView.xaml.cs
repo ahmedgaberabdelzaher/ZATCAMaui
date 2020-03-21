@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             this.BindingContext = viewModel;
             this.CertificateLst.SelectedItem = null;
+            this.CertificateLstClosed.SelectedItem = null;
             NavigationPage.SetBackButtonTitle(this, "");
 
             SetLTR();
@@ -27,6 +28,13 @@ namespace GAZT.Views.NewViews
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
             CertificateLst.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
+            CertificateLstClosed.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {
@@ -71,6 +79,20 @@ namespace GAZT.Views.NewViews
         {
             viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
 
+        }
+
+        private void CertificateLstClosed_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+             ((ListView)sender).SelectedItem = null;
+
+            return;
+        }
+
+        private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+
+            return;
         }
     }
 }

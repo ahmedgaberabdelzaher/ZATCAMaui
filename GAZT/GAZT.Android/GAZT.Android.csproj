@@ -455,6 +455,7 @@
     <AndroidAsset Include="Assets\GE_SS_Two_Medium.ttf" />
     <AndroidAsset Include="Assets\GE_SS_Two_Bold.ttf" />
     <AndroidAsset Include="Assets\UIFontIcons.ttf" />
+    <AndroidAsset Include="Assets\SSTArabic-Roman.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -2876,6 +2877,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\drawable\date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Bg_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Bg_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Bg_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\Bg_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Bg_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

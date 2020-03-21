@@ -37,6 +37,49 @@ namespace GAZT.ViewModel
             }
         }
 
+        private List<MyBills> _myBillsPaid;
+        public List<MyBills> MyBillsPaid
+        {
+            get
+            {
+                return _myBillsPaid;
+            }
+            set
+            {
+                _myBillsPaid = value;
+                RaisePropertyChanged("MyBillsPaid");
+            }
+        }
+
+        private List<MyBills> _myBillsUnPaid;
+        public List<MyBills> MyBillsUnPaid
+        {
+            get
+            {
+                return _myBillsUnPaid;
+            }
+            set
+            {
+                _myBillsUnPaid = value;
+                RaisePropertyChanged("MyBillsUnPaid");
+            }
+        }
+
+        private List<MyBills> _myBillsPartiallyPaid;
+        public List<MyBills> MyBillsPartiallyPaid
+        {
+            get
+            {
+                return _myBillsPartiallyPaid;
+            }
+            set
+            {
+                _myBillsPartiallyPaid = value;
+                RaisePropertyChanged("MyBillsPartiallyPaid");
+            }
+        }
+
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -371,8 +414,12 @@ namespace GAZT.ViewModel
                             MyBills = new List<MyBills>();
                             MyBills = myBills;
                             MyBillsOriginal = myBills;
-                        }
-                        else
+                        MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
+                        MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
+                        MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+
+                    }
+                    else
                         {
                            //  _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
                            // _navigationService.GoBack();
@@ -382,8 +429,12 @@ namespace GAZT.ViewModel
                         //  });
                         MyBills = null;
                         SetNoDataLabelVisibility = true;
+                        MyBillsPaid = null;
+                        MyBillsUnPaid =null;
+                        MyBillsPartiallyPaid =null;
+
                     }
-                    }
+                }
                     catch (Exception e)
                     {
 

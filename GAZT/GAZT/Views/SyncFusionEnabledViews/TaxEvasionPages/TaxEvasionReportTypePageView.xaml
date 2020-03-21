@@ -7,11 +7,13 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
                 xmlns:custom="clr-namespace:GAZT"
-              x:Class="GAZT.Views.NewViews.TaxEvasionReportTypePageView"
+             xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             x:Class="GAZT.Views.NewViews.TaxEvasionReportTypePageView"
              BackgroundColor="White" Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}">
 
     <ContentPage.Content>
         <StackLayout>
+         
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10"  RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
@@ -109,7 +111,7 @@
   
 
                 <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="Center" Command="{Binding OnBClicked}" ></Button>
+                    <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnBClicked}" ></Button>
 
                 </StackLayout>
                 <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
