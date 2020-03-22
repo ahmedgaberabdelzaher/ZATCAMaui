@@ -854,7 +854,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task AddAttachment()
         {
-            if (AttachmentCount <= 3)
+            if (AttachmentCount < 3)
             {
                 string[] filetypes;
                 if (Device.RuntimePlatform == Device.iOS)
