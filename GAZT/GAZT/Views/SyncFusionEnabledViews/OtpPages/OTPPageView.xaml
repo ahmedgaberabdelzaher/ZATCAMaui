@@ -46,7 +46,7 @@
                         </Grid.ColumnDefinitions>
 
 
-                       <Label  Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   >
+                       <Label  Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             </Label>
 
                         <!--<Label
