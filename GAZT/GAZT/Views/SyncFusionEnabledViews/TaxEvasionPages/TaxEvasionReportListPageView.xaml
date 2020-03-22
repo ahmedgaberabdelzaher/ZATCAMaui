@@ -11,9 +11,6 @@
               xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
-             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=Bg_image.png,
-                                                                  iOSPhoneLandscape=Bg_image-Landscape.png,
-                                                                  iOSTabletLandscape=Bg_image.-Landscape.png}"
              x:Class="GAZT.Views.NewViews.TaxEvasionReportListPageView">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_add1.png"  
