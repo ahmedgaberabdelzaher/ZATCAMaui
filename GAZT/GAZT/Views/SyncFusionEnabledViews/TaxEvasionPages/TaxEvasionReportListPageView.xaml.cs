@@ -88,6 +88,13 @@ namespace GAZT.Views.NewViews
             return;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.SelectedTaxEvasionListItem = null;
+        }
+
+
         private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;

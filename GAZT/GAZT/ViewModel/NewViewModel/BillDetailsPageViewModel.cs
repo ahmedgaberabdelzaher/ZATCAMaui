@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -153,7 +154,16 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               await _dialogService.ShowMessage(AppResources.ZZIthascopiedsadadpaymentnumber, AppResources.Information);
+                
+                await Clipboard.SetTextAsync(EstimatedZAKATSADADNumber.Sopbel);
+                if (Clipboard.HasText)
+                {
+                    var text = await Clipboard.GetTextAsync();
+                   await _dialogService.ShowMessageBox(AppResources.ZZIthascopiedsadadpaymentnumber + Environment.NewLine + " " + text, AppResources.Information);
+
+                    //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
+                }
+                //await _dialogService.ShowMessage(AppResources.ZZIthascopiedsadadpaymentnumber, AppResources.Information);
             });
 
 
