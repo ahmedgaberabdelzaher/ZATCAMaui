@@ -24,6 +24,21 @@ namespace GAZT.ViewModel
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
 
+        private List<MyBillsChartModel> _listMyBillsChaetModel = null;
+        public List<MyBillsChartModel> ListMyBillsChaetModel
+        {
+            get
+            {
+                return _listMyBillsChaetModel;
+            }
+            set
+            {
+                _listMyBillsChaetModel = value;
+                RaisePropertyChanged("ListMyBillsChaetModel");
+            }
+        }
+
+
         private MyBills _myBillsObj;
         public MyBills MyBillsObj
         {
@@ -436,6 +451,12 @@ namespace GAZT.ViewModel
                         MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
                         MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
 
+                        List<MyBillsChartModel> myBillsChartModels = new List<MyBillsChartModel>();
+
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count, BillType = "Paid" });
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count, BillType = "UnPaid" });
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count, BillType = "Partially Paid" });
+                        ListMyBillsChaetModel = myBillsChartModels;
                     }
                     else
                         {
