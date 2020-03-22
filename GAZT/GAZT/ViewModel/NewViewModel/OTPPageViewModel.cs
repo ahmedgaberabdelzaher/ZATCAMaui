@@ -405,7 +405,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 App.TP.Password = Password;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.DashboardPageView);
+                                    _navigationService.NavigateTo(App.SFLandingPageView);
                                 });
 
                             }

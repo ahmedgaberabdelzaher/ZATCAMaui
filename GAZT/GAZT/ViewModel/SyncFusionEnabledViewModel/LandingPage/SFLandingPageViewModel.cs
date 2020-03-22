@@ -120,6 +120,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 IsLoading = false;
             });
         }
+
         public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -356,6 +357,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         public void PopulateReturnsInformation()
         {
+            ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();
             ReturnInfoItems = new ObservableCollection<ReturnInfo>();
 
             if (DashboardData.results != null && DashboardData.results.Count > 0)
@@ -371,10 +373,18 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     {
                         RtnTotstr = "0";
                     }
-                    else if (RtnTotstr.Substring(0, 1) == ".")
+                    else
                     {
-                        RtnTotstr = "0" + RtnTotstr;
+                        string returnToString =  RtnTotstr.Substring(0, 1);
+                         if (returnToString.Equals("."))
+                        {
+                            RtnTotstr = "0" + RtnTotstr;
+                        }
+                         else
+                        {
+                        }
                     }
+                  
 
                     objReturnInfoRtnTot.ReturnCount = RtnTotstr;
 
@@ -382,10 +392,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
                     objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
                     objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
-
-
-                    ReturnInfoItems.Add(objReturnInfoRtnTot);
-
+                    _returnInfoItems.Add(objReturnInfoRtnTot);
+                    ReturnInfoItems = _returnInfoItems;
+                   // ReturnInfoItems.Add(objReturnInfoRtnTot);
                 }
 
                 if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)

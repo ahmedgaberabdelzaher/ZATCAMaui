@@ -350,7 +350,7 @@
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="56"
                     CornerRadius="0"
-                   
+                   Clicked="OnLogoutClicked"
                     
                     Text="{x:Static local:AppResources.ZLogout}"
                     TextColor="{DynamicResource Gray-White}"

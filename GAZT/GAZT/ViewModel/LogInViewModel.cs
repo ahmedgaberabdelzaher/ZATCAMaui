@@ -23,16 +23,16 @@ namespace GAZT
         public ICommand OnForgotUsernamePasswordClicked { get; set; }
         public ICommand OnNewLoginUIClicked { get; set; }
         public ICommand OnNewDashboardUIClicked { get; set; }
-      
-        
+
+
 
 
 
         #endregion
         #region Property
 
-       // private string _UserName = "3102210215";
-       private string _UserName = string.Empty;
+         private string _UserName = "3102285896";
+      //  private string _UserName = string.Empty;
         public string UserName
         {
             get
@@ -75,9 +75,9 @@ namespace GAZT
         }
 
 
-      // private string _Password = "Init@4321";
+       private string _Password = "Init@123";
        
-    private string _Password = string.Empty;
+    //private string _Password = string.Empty;
         public string Password
         {
             get

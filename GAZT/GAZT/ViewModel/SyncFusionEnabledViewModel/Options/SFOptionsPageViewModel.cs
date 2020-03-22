@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT;
 using GAZTeServicesApp.Views.Options;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace GAZTeServicesApp.ViewModels.Options
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        private DateTime lastTapped;
 
         #region Constructor
 
@@ -199,7 +201,11 @@ namespace GAZTeServicesApp.ViewModels.Options
 
         private void MyProfileCommandClicked(object obj)
         {
-            // Do something
+            if (lastTapped < DateTime.Now.AddSeconds(-2))
+            {
+                lastTapped = DateTime.Now;
+                _navigationService.NavigateTo(App.TaxPayerProfilePageView);
+            }
         }
 
         private void EditMobileNumberClicked(object obj)
@@ -217,6 +223,12 @@ namespace GAZTeServicesApp.ViewModels.Options
             // Do something
         }
 
+        public void LogOut()
+        {
+
+            var _navigation = Application.Current.MainPage.Navigation;
+            _navigation.PopToRootAsync();
+        }
         #endregion
     }
 }
