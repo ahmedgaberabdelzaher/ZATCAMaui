@@ -362,7 +362,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 string response = string.Empty;
                 string UserId = string.Empty;
-                await Task.Run(() =>
+                await Task.Run(async () =>
                 {
 
                     try
@@ -419,12 +419,112 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                 App.TP.Userid = UserId;
                                 App.TP = TPProfile;
                             }
-                            NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
-                            Device.BeginInvokeOnMainThread(() =>
+
+                            String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+                            String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
+                            await Task.Run(async () =>
                             {
-                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                string currentAttempts = "1";
+                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                                {
+                                    if (App.TP == null)
+                                        App.TP = new GAZT.Models.TaxPayerProfile();
+
+                                    App.TP.Userid = UserId;
+                                    App.TP.Password = Password;
+                                    bool IsNavigatingFromLogin = true;
+                                    NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+
+                                        //_navigationService.NavigateTo(App.LandingPageView);
+
+                                        // SYNCFUSION INTEGRATION
+
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                        //App.TP.Tin = UserName;
+
+
+                                        //  _navigationService.NavigateTo(App.SFLandingPageView);
+
+                                        //  SYNCFUSION INTEGRATION
+
+                                    });
+                                }
+                                else
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                    });
+                                }
                             });
                         }
+                        else
+                        {
+                            if (App.IsArabic)
+                            {
+                                string tin = Email;
+                                tin = tin + " - " + "User does not exist";
+                                if (response.Equals("User authentication failed"))
+                                {
+                                    response = AppResources.UserAuthenticationFailed;
+                                }
+                                else if (response.Equals(tin))
+                                {
+                                    response = AppResources.UserDoesNotExist;
+                                }
+                                else if (0 == String.Compare("Authentication failed. Password locked", response, true))
+                                {
+                                    response = AppResources.UserAccountLocked;
+                                }
+                                else if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                                {
+                                    response = AppResources.NetworkConnectivityIssue;
+                                }
+                                else
+                                {
+                                    response = AppResources.UserAccountLocked;
+                                }
+                            }
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            if (0 == String.Compare("Error: NameResolutionFailure", response, true))
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                                });
+                            }
+                            else
+                            {
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                });
+                            }
+                        }
+
+
+
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
 
                     }
                     catch (GAZTException gex)
