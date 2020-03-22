@@ -3890,17 +3890,17 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TEReport Cred)
+        public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TEReport Cred, List<UploadedDocumentsList> UploadedDocumentsListObj)
         {
-            UploadedDocumentsList u = new UploadedDocumentsList();
-            u.DocBinaryInBase64 = string.Empty;
-            u.FileNameWithExtension = string.Empty;
-            u.MimeType = string.Empty;
-            Cred.UploadedDocumentsList = u;
+            //UploadedDocumentsList u = new UploadedDocumentsList();
+            //u.DocBinaryInBase64 = string.Empty;
+            //u.FileNameWithExtension = string.Empty;
+            //u.MimeType = string.Empty;
+            Cred.UploadedDocumentsList = UploadedDocumentsListObj;
             string mobilenew = Cred.ReporterMobileNumber;
-            Cred.ReporterMobileNumber = "05" + mobilenew;
+            Cred.ReporterMobileNumber = "05"+Cred.ReporterMobileNumber;
             string mobilenew1 = Cred.CompanyMobileNumber;
-            Cred.CompanyMobileNumber = "05" + mobilenew1;
+            Cred.CompanyMobileNumber = "05" + Cred.CompanyMobileNumber;
 
             //TEReport Cred = new TEReport();
             //Cred.Channel = "2";

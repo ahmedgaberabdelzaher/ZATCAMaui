@@ -245,7 +245,7 @@ namespace GAZT.Models
         public string ReporterName { get; set; }
         public string TIN { get; set; }
         public string TaxType { get; set; }
-        public UploadedDocumentsList UploadedDocumentsList { get; set; }
+        public List<UploadedDocumentsList> UploadedDocumentsList { get; set; }
         public string VAT { get; set; }
         public string ViolationType { get; set; }
         public string WSUserName { get; set; }
