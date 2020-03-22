@@ -75,12 +75,12 @@ namespace GAZT.Models
                 else if (_status == Enum.GetName(typeof(BillStatus), 1))
                 {
                     StatusImage = "ic_loading.png";
-                    Colorcode = "#F36C21";
+                    Colorcode = "#D99A29";
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
-                    Colorcode = "#944E23";
+                    Colorcode = " #AA0C19";
                 }
             }
         }
