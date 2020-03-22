@@ -109,6 +109,7 @@
 
                             <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills}"
+                                       ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -256,6 +257,7 @@
                             <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <ListView  x:Name="BillsPaid" 
            ItemsSource="{Binding MyBillsPaid}"
+                                            ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -403,6 +405,7 @@
                             <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <ListView  x:Name="BillsUnPaid" 
            ItemsSource="{Binding MyBillsUnPaid}"
+                                            ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -552,6 +555,8 @@
            ItemsSource="{Binding MyBillsPartiallyPaid}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
+                                            ItemTapped="Bills_ItemTapped"
+                                           
             HasUnevenRows="True"
                  BackgroundColor="White"     
             SeparatorVisibility="None"
