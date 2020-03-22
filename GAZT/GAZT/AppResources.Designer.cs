@@ -332,6 +332,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copied.
+        /// </summary>
+        public static string Copied {
+            get {
+                return ResourceManager.GetString("Copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SADAD payment number copied.
         /// </summary>
         public static string CopiedSADADPaymentNumber {
@@ -5388,6 +5397,15 @@ namespace GAZT {
         public static string ZZGCCID {
             get {
                 return ResourceManager.GetString("ZZGCCID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GCC ID should not start with 0.
+        /// </summary>
+        public static string ZZGCCIDdonotstartwith0 {
+            get {
+                return ResourceManager.GetString("ZZGCCIDdonotstartwith0", resourceCulture);
             }
         }
         

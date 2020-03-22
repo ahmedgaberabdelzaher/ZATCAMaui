@@ -1532,7 +1532,7 @@ namespace GAZT.Views.NewViews
                     if(EntryIDNumber.Text.Substring(0, 1) == "0")
                     {
                         //Have to change to neww error message
-                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                        popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
 
 
                         popUp.IsLinkAvailable = false;

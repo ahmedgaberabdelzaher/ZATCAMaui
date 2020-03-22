@@ -4733,5 +4733,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseEnterValidId", resourceCulture);
             }
         }
+        
+        public static string Copied {
+            get {
+                return ResourceManager.GetString("Copied", resourceCulture);
+            }
+        }
+        
+        public static string ZZGCCIDdonotstartwith0 {
+            get {
+                return ResourceManager.GetString("ZZGCCIDdonotstartwith0", resourceCulture);
+            }
+        }
+        
+        public static string ZZZWrongEnterTin {
+            get {
+                return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
+            }
+        }
     }
 }
