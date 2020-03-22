@@ -8,9 +8,13 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
              x:Class="GAZT.Views.NewViews.OTPPageView"
              Title="{x:Static local:AppResources.EnterVerificationCodeTitle}"
-            
+             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
+                                                                  iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"
+              Style="{StaticResource ContentPageStyle}"
              FlowDirection="RightToLeft">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -46,16 +50,9 @@
                         </Grid.ColumnDefinitions>
 
 
-                       <Label  Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            </Label>
+                        <Label  Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                        <!--<Label
-                           Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                            Margin="0,8"
-                            FontFamily="{StaticResource SSTArBold}"
-                            HorizontalTextAlignment="Center"
-                            Style="{StaticResource LabelStyle}"
-                            Text="{Binding OTPSentOnThisText}" />-->
+
 
 
                         <!--<Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.UserName}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
