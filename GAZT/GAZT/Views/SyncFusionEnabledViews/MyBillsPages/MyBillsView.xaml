@@ -5,6 +5,7 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.MyBills}"
              x:Class="GAZT.Views.MyBillsView">
@@ -28,9 +29,17 @@
                              TitleFontColor="Gray">
 
                     <tabview:SfTabItem.Content>
-                       
-                            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <ListView  x:Name="Bills" 
+                    
+                        <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <chart:SfChart>
+
+                                <chart:SfChart.Series>
+                                    <chart:PieSeries ItemsSource="{Binding ListMyBillsChaetModel}" XBindingPath="BillType" YBindingPath="BillCount"/>
+                                </chart:SfChart.Series>
+
+                            </chart:SfChart>
+
+                            <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
