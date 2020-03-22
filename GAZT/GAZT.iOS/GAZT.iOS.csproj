@@ -1030,4 +1030,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_LoginBackground%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Sadad_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Sadad_logo%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Sadad_logo%403x.png" />
+  </ItemGroup>
 </Project>

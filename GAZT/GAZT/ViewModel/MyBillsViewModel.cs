@@ -24,6 +24,20 @@ namespace GAZT.ViewModel
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
 
+        private int _groupValue = 0;
+        public int GroupValue
+        {
+            get
+            {
+                return _groupValue;
+            }
+            set
+            {
+                _groupValue = value;
+                RaisePropertyChanged("GroupValue");
+            }
+        }
+
         private List<MyBillsChartModel> _listMyBillsChaetModel = null;
         public List<MyBillsChartModel> ListMyBillsChaetModel
         {
@@ -442,35 +456,35 @@ namespace GAZT.ViewModel
 
 
                     if (myBills != null && myBills.Count != 0)
-                        {
-                            myBills = UpdateDueAmount(myBills);
-                            MyBills = new List<MyBills>();
-                            MyBills = myBills;
-                            MyBillsOriginal = myBills;
+                    {
+                        myBills = UpdateDueAmount(myBills);
+                        MyBills = new List<MyBills>();
+                        MyBills = myBills;
+                        MyBillsOriginal = myBills;
                         MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
                         MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
                         MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
 
                         List<MyBillsChartModel> myBillsChartModels = new List<MyBillsChartModel>();
-
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count, BillType = "Paid" });
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count, BillType = "UnPaid" });
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count, BillType = "Partially Paid" });
+                        GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count, BillType = AppResources.Paid,BillColor=Xamarin.Forms.Color.FromHex("#006450") });
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count, BillType = AppResources.UnPaid,BillColor= Xamarin.Forms.Color.FromHex("#944E23") });
+                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count, BillType = AppResources.PartiallyPaid ,BillColor= Xamarin.Forms.Color.FromHex("#F36C21") });
                         ListMyBillsChaetModel = myBillsChartModels;
                     }
                     else
-                        {
-                           //  _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                           // _navigationService.GoBack();
-                         //   await Task.Run(() =>
-                          //  {
-                                IsLoading = false;
+                    {
+                        //  _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
+                        // _navigationService.GoBack();
+                        //   await Task.Run(() =>
+                        //  {
+                        IsLoading = false;
                         //  });
                         MyBills = null;
                         SetNoDataLabelVisibility = true;
                         MyBillsPaid = null;
-                        MyBillsUnPaid =null;
-                        MyBillsPartiallyPaid =null;
+                        MyBillsUnPaid = null;
+                        MyBillsPartiallyPaid = null;
 
                     }
                 }
