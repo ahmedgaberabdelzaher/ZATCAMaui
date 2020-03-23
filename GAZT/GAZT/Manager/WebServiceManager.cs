@@ -3974,8 +3974,9 @@ namespace GAZT.Manager
             ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
             Cred.WSUserName = "GAZT@CRM";
             Cred.WSPassword = "gazt@123";
-            //string trimedmob= App.TP.Mobile.Substring(3);
-            Cred.MobileNumber = "0565154482";
+            string trimedmob = App.TP.Mobile;
+            string trimedmob1 = trimedmob.Substring(5);
+            Cred.MobileNumber = "0"+ trimedmob1;
             Cred.Channel = "2";
 
 
