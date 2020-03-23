@@ -173,7 +173,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.ReturnsPageView);
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                 }
 
             }
