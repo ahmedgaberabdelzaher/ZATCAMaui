@@ -217,9 +217,10 @@
                                         <Entry.Behaviors>
 
                                             <custom1:RestrictSpecialCharactorsBehaviour/>
+                                            <!--<custom1:OnlyNumericValuesBehaviour/>-->
 
                                         </Entry.Behaviors>
-                                    </custom:BorderlessEntry>
+                                      </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
