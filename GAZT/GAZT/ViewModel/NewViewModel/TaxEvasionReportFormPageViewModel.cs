@@ -33,7 +33,44 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnAttachmentClick { get; set; }
         public static Decimal AttachmentUploadedSize;
         byte[] attachment;
-        
+
+        public decimal _attachmentSize = 0;
+
+        public decimal AttachmentSize
+        {
+            get
+            {
+                return _attachmentSize;
+            }
+            set
+            {
+                _attachmentSize = value;
+
+                RaisePropertyChanged("AttachmentSize");
+
+            }
+        }
+
+
+
+        public decimal _totalAttachmentSize = 0;
+
+        public decimal TotalAttachmentSize
+        {
+            get
+            {
+                return _totalAttachmentSize;
+            }
+            set
+            {
+                _totalAttachmentSize = value;
+
+                RaisePropertyChanged("TotalAttachmentSize");
+
+            }
+        }
+
+
         private UploadedDocumentsList _uploadedDocumentsList ;
         public UploadedDocumentsList UploadedDocumentsList
         {
@@ -64,23 +101,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         
-
-        public float _attachmentSize = 0f;
-
-        public float AttachmentSize
-        {
-            get
-            {
-                return _attachmentSize;
-            }
-            set
-            {
-                _attachmentSize = value;
-
-                RaisePropertyChanged("AttachmentSize");
-
-            }
-        }
 
         private ObservableCollection<UploadedDocumentsList> _uploadedDocumentsListObj=new ObservableCollection<UploadedDocumentsList>();
         public ObservableCollection<UploadedDocumentsList> UploadedDocumentsListObj
@@ -891,14 +911,20 @@ namespace GAZT.ViewModel.NewViewModel
                         string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
                         AttachmentName = fileData.FileName;
 
-                        float sizemb = (attachment.Length / 1024f) / 1024f;
-                        AttachmentSize = AttachmentSize + sizemb;
+                        //float sizemb = (attachment.Length / 1024f) / 1024f;
+                        //AttachmentSize = AttachmentSize + sizemb;
                        
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = fileData.FileName.Split('.')[1];
-                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
+                                string Extention = fileData.FileName.Split('.')[1];//pdf
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                        {
+                            if (TotalAttachmentSize <= 30)
+                            {
+                                AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                                if (Convert.ToDecimal(AttachmentSize) <= 10)
                                 {
+
                                     try
                                     {
                                         UploadedDocumentsList a = new UploadedDocumentsList();
@@ -915,8 +941,10 @@ namespace GAZT.ViewModel.NewViewModel
                                     }
                                     catch (Exception ex)
                                     {
-                                    }
 
+                                    }
+                                }
+                            }
 
                                 }
 
