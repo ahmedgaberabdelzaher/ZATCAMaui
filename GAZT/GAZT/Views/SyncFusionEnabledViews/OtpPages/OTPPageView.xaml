@@ -28,7 +28,7 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
           
-                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="White" >
+                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="White" Padding="0,10,0,0">
                     <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -76,7 +76,7 @@
     Hint="{x:Static local:AppResources.UserName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Text="{Binding TinNumber}" x:Name="Username"  FontSize="Small" IsEnabled="False" >
+                                <custom:GAZTBorderlessEntry Text="{Binding TinNumber}" IsReadOnly="True"  TextColor="#7D858D" x:Name="Username"  FontSize="Small" >
 
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
@@ -94,7 +94,7 @@
     Hint="{Binding EmailOrMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Text="{Binding MobileNumber}" x:Name="EmailOrMobile"  FontSize="Small" IsEnabled="False" >
+                                <custom:GAZTBorderlessEntry Text="{Binding MobileNumber}" x:Name="EmailOrMobile" IsReadOnly="True"  TextColor="#7D858D" FontSize="Small"  >
 
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
@@ -112,7 +112,7 @@
     Hint="{x:Static local:AppResources.VarificationCode}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Text="{Binding EnteredOTP}" x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}"  FontSize="Small" IsPassword="True" IsEnabled="{Binding IsOTPEntryEnable}" >
+                                <custom:GAZTBorderlessEntry Text="{Binding EnteredOTP}"  x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}"  FontSize="Small" IsPassword="True" IsEnabled="{Binding IsOTPEntryEnable}" >
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </custom:GAZTBorderlessEntry.Behaviors>

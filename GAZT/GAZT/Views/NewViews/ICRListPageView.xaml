@@ -8,6 +8,7 @@
              xmlns:custom="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZDeclaration}"
              xmlns:local1="clr-namespace:GAZT"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="GAZT.Views.NewViews.ICRListPageView">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -57,7 +58,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <ContentView>
+                                    <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                        
                                         <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
                                             <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
@@ -216,7 +218,7 @@
                                             </StackLayout>
 
                                         </StackLayout>
-                                    </ContentView>
+                                    </cards:SfCardView>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

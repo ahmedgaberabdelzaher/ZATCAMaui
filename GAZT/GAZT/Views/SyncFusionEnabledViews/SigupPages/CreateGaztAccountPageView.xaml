@@ -107,17 +107,17 @@
                             </Entry>
                         </inputLayout:SfTextInputLayout>
 
-                     
 
-                       
-                           <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand"  Margin="10,0,10,0">
+                        <!--ZZZVerificationsCode-->
+
+                        <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand"  Margin="10,0,10,0">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static local:AppResources.ZZThecodewillbeexpiredwithin}"  Style="{StaticResource InformationGrayColorLabel}"   />
                                     <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
-                        </Label>
+                        </Label> <!--ZZResendtheverificationcode-->
                         <Button Text="{x:Static local:AppResources.ZZResendtheverificationcode}" HeightRequest="56"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand" Margin="0" CornerRadius="0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}"></Button>
 
                     </Grid>

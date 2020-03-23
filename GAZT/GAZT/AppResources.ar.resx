@@ -2187,7 +2187,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZConfirmpassword" xml:space="preserve">
-    <value>تأكيد كلمة المرور</value>
+    <value>تأكيد كلمة السر</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZGCCID" xml:space="preserve">
@@ -2810,5 +2810,13 @@
   <data name="ZZMyCommitments" xml:space="preserve">
     <value>My Commitments</value>
     <comment>New Landing Page</comment>
+  </data>
+  <data name="ZZZInvalidEmailAddressMessage" xml:space="preserve">
+    <value>الرجاء إدخال بريد إلكتروني صحيح</value>
+    <comment>Sf Sign up</comment>
+  </data>
+  <data name="ZZZVerificationsCode" xml:space="preserve">
+    <value>رمز التحقق</value>
+    <comment>Sf Sign up</comment>
   </data>
 </root>

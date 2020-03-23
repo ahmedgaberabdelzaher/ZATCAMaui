@@ -644,6 +644,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             label.BackgroundColor = Color.FromHex("#70FFFFFF");
             await Task.Delay(100);
             label.BackgroundColor = Color.Transparent;
+            _navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
         }
 
         /// <summary>

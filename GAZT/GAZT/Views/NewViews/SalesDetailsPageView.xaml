@@ -13,12 +13,12 @@
              >
 
     <ContentPage.Content>
-
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="88*"/>
-                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -206,9 +206,9 @@
 
                 </ScrollView>
 
-                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,40,0,40" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,0,10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-                </StackLayout>
+                </StackLayout>-->
                 <Button Text="{x:Static local:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding AmedmentButtonVisibility}"></Button>
 
                 <Button Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding AmedmentButtonVisibility}"></Button>
@@ -392,5 +392,6 @@
             <!-- Acticity indicator layout end -->
 
         </Grid>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
