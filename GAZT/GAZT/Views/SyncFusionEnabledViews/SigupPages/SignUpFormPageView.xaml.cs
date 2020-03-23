@@ -110,7 +110,7 @@ namespace GAZT.Views.NewViews
             bool IsNextValid = true;
             if (viewModel.IsTIN == true)
             {
-                if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                if (string.IsNullOrEmpty(viewModel.TxtTIN) || FrmTIN.HasError==true)
                 {
                     FrmTIN.HasError = true;
                     IsNextValid = false;
@@ -120,7 +120,7 @@ namespace GAZT.Views.NewViews
                     FrmTIN.HasError = false;
                 }
             }
-            if (viewModel.SelectedSignUpUsing == null)
+            if ((viewModel.SelectedSignUpUsing == null )|| (FrmIDType.HasError == true))
             {
                 FrmIDType.HasError = true;
                 IsNextValid = false;
@@ -129,7 +129,7 @@ namespace GAZT.Views.NewViews
             {
                 FrmIDType.HasError = false;
             }
-            if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
+            if (string.IsNullOrEmpty(viewModel.TxtIDNumber) || (FrmIDNumber.HasError == true))
             {
                 FrmIDNumber.HasError = true;
                 IsNextValid = false;
@@ -138,9 +138,9 @@ namespace GAZT.Views.NewViews
             {
                 FrmIDNumber.HasError = false;
             }
-            if (string.IsNullOrEmpty(viewModel.PkrDBO))
+            if (string.IsNullOrEmpty(viewModel.PkrDBO) || (FrmDBO.HasError == true ))
             {
-                FrmDBO.HasError = true;
+               // FrmDBO.HasError = true;
                 IsNextValid = false;
             }
             else
@@ -148,7 +148,7 @@ namespace GAZT.Views.NewViews
                 FrmDBO.HasError = false;
             }
 
-            if (string.IsNullOrEmpty(viewModel.TxtName))
+            if (string.IsNullOrEmpty(viewModel.TxtName) || FrmName.HasError == true)
             {
                 FrmName.HasError = true;
                 IsNextValid = false;
@@ -160,7 +160,7 @@ namespace GAZT.Views.NewViews
 
             if (viewModel.IsCRChecked == false)
             {
-                if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
+                if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber) || FrmLicenseNumber.HasError == true)
                 {
                     FrmLicenseNumber.HasError = true;
                     IsNextValid = false;
@@ -169,7 +169,7 @@ namespace GAZT.Views.NewViews
                 {
                     FrmLicenseNumber.HasError = false;
                 }
-                if (viewModel.SelectedIssuedBy == null)
+                if (viewModel.SelectedIssuedBy == null || FrmLicenseIssuedBy.HasError == true)
                 {
                     FrmLicenseIssuedBy.HasError = true;
                     IsNextValid = false;
@@ -179,7 +179,7 @@ namespace GAZT.Views.NewViews
                     FrmLicenseIssuedBy.HasError = false;
 
                 }
-                if (viewModel.SelectCityList == null)
+                if (viewModel.SelectCityList == null || FrmLicenseIssuedCity.HasError == true)
                 {
                     FrmLicenseIssuedCity.HasError = true;
                     IsNextValid = false;
@@ -192,7 +192,7 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-                if (string.IsNullOrEmpty(viewModel.TxtCRNumber))
+                if (string.IsNullOrEmpty(viewModel.TxtCRNumber) || FrmCR.HasError == true)
                 {
                     FrmCR.HasError = true;
                     IsNextValid = false;
@@ -204,7 +204,7 @@ namespace GAZT.Views.NewViews
 
             }
 
-            if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
+            if (string.IsNullOrEmpty(viewModel.TxtEmailAddress)|| FrmEmailAddress.HasError == true)
             {
                 FrmEmailAddress.HasError = true;
                 IsNextValid = false;
@@ -214,7 +214,7 @@ namespace GAZT.Views.NewViews
                 FrmEmailAddress.HasError = false;
 
             }
-            if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
+            if (string.IsNullOrEmpty(viewModel.TxtMobileNumber)|| FrmMobileNumber.HasError == true)
             {
                 FrmMobileNumber.HasError = true;
                 IsNextValid = false;
@@ -884,7 +884,7 @@ namespace GAZT.Views.NewViews
                                             }
                                             else
                                             {
-                                                viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                                viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                 EntryIDNumber.IsEnabled = false;
                                             }
                                         }
@@ -954,7 +954,7 @@ namespace GAZT.Views.NewViews
                                             }
                                             else
                                             {
-                                                viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                                viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                 EntryIDNumber.IsEnabled = false;
                                             }
 
