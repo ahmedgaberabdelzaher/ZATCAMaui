@@ -11,6 +11,7 @@
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
             FlowDirection="RightToLeft">
     <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                  <Grid.RowDefinitions>
@@ -178,5 +179,6 @@
             </Grid>
                 <!-- Acticity indicator layout End -->
        </Grid>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
