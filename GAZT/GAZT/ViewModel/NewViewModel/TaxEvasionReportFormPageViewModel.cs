@@ -3,8 +3,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using MobileCoreServices;
+using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +27,78 @@ namespace GAZT.ViewModel.NewViewModel
         //SelectedCategory SubmitReportClicked
         //TaxEvasionReportList
         //TaxEvasionReportList selectedtaxEList = new TaxEvasionReportList();
+        //UploadedDocumentsList
+
+            
+        public ICommand OnAttachmentClick { get; set; }
+        public static Decimal AttachmentUploadedSize;
+        byte[] attachment;
+        
+        private UploadedDocumentsList _uploadedDocumentsList ;
+        public UploadedDocumentsList UploadedDocumentsList
+        {
+            get
+            {
+                return _uploadedDocumentsList;
+            }
+            set
+            {
+                _uploadedDocumentsList = value;
+                RaisePropertyChanged("UploadedDocumentsList");
+            }
+        }
+        public int _attachmentCount = 0;
+
+        public int AttachmentCount
+        {
+            get
+            {
+                return _attachmentCount;
+            }
+            set
+            {
+                _attachmentCount = value;
+
+                RaisePropertyChanged("AttachmentCount");
+
+            }
+        }
+        
+
+        public float _attachmentSize = 0f;
+
+        public float AttachmentSize
+        {
+            get
+            {
+                return _attachmentSize;
+            }
+            set
+            {
+                _attachmentSize = value;
+
+                RaisePropertyChanged("AttachmentSize");
+
+            }
+        }
+
+        private ObservableCollection<UploadedDocumentsList> _uploadedDocumentsListObj=new ObservableCollection<UploadedDocumentsList>();
+        public ObservableCollection<UploadedDocumentsList> UploadedDocumentsListObj
+        {
+            get
+            {
+                return _uploadedDocumentsListObj;
+            }
+            set
+            {
+                _uploadedDocumentsListObj = value;
+                RaisePropertyChanged("UploadedDocumentsListObj");
+            }
+        }
+
+
+
+
         private string _txtFType = string.Empty;
         public string TxtFType
         {
@@ -406,7 +481,23 @@ namespace GAZT.ViewModel.NewViewModel
 
                 RaisePropertyChanged("TFaciOwnerName");
             }
-        }//TFaciMobNo
+        }
+        private string _attachmentName = "";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
+
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
+
+        //TFaciMobNo
         private string _tFaciMobNo = string.Empty;
         public string TFaciMobNo
         {
@@ -754,12 +845,100 @@ namespace GAZT.ViewModel.NewViewModel
                 //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView);
 
             });
+            OnAttachmentClick = new Xamarin.Forms.Command(async () =>
+            {
+                await AddAttachment();
+            });
+}
 
 
+        public async Task AddAttachment()
+        {
+            if (AttachmentCount < 3)
+            {
+                string[] filetypes;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    filetypes = new string[] {
+
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
+                UTType.JPEG,
+                UTType.PNG,
+                UTType.GIF,
+                "com.microsoft.excel.xls",
+                "com.microsoft.powerpoint.​ppt",
+                 UTType.Text
+                            };
+    }
+                else
+                {
+                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+
+                }
+                
+                var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                //if (AttachmentSize < 10)
+                //{
+                    if (fileData != null)
+                    {
+
+
+                        attachment = fileData.DataArray;
+                        string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
+                        AttachmentName = fileData.FileName;
+
+                        float sizemb = (attachment.Length / 1024f) / 1024f;
+                        AttachmentSize = AttachmentSize + sizemb;
+                       
+                            if (fileData.FileName.Contains("."))
+                            {
+                                string Extention = fileData.FileName.Split('.')[1];
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
+                                {
+                                    try
+                                    {
+                                        UploadedDocumentsList a = new UploadedDocumentsList();
+                                        a.FileNameWithExtension = AttachmentName;
+                                        a.DocBinaryInBase64 = base64String;
+                                        AttachmentCount++;
+                                        string attachmentType = UtilityManager.GetContentType(Extention);
+                                        //UploadedDocumentsList.DocBinaryInBase64 = base64String;
+                                        //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
+                                        a.MimeType = attachmentType;
+                                        //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
+                                        UploadedDocumentsListObj.Add(a);
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+
+
+                                }
+
+
+
+                            }
+
+
+                    }
+                //}
+                //else
+                //{ _dialogService.ShowMessage("Attachment size Cannot exceed 10MB", AppResources.Information); }
+
+
+
+            }
 
 
         }
-        public void onPageLoad()
+
+
+            public void onPageLoad()
         {
 
             //   SelectedTaxEvasionCompanyType = ListFacilityCompanyType.Where(x => x.Id == "1").FirstOrDefault();
@@ -823,10 +1002,11 @@ namespace GAZT.ViewModel.NewViewModel
                 _tEReportobj.WSUserName = "GAZT@CRM";
                 _tEReportobj.TaxType = "1";
 
-
-
+                
+                List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
+                
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
-                response = await WebServiceManager.GAZTTESReportSubmit(_tEReportobj);
+                response = await WebServiceManager.GAZTTESReportSubmit(_tEReportobj, newList);
                 if (response != null && response.Success == true)
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;

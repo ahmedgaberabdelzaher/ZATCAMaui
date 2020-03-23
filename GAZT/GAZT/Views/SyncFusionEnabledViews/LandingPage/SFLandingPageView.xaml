@@ -14,6 +14,8 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+   xmlns:local="clr-namespace:GAZT;assembly:GAZT"
     x:Name="articleTilePage"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False">
@@ -165,7 +167,7 @@
 
                 <StackLayout Padding="5">
 
-                    <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Commitments"></Label>
+                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></Label>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" >
 
@@ -176,7 +178,7 @@
                                     DayHeaderBackgroundColor="Transparent" 
                                     DisabledBackgroundColor="Transparent"
                                     InlineBackgroundColor="Transparent" 
-                                    AgendaSelectedDateColor="Red"
+                                    AgendaSelectedDateColor="#D99A29"
                                     DateSelectionColor="Red"
                                     TodayBorderColor="Green"
                                     TodayTextColor="Green"
@@ -186,7 +188,7 @@
                                     WeekEndBackgroundColor="Transparent" 
                                     PreviousMonthTextColor="White" SelectionShape="Circle" 
                                     DayHeaderFontSize="15" 
-                                    DayLabelTextAlignment="Center" HeaderFontSize="16" SelectionRadius="15" HeaderFontAttributes="Bold" HeaderBackgroundColor="AliceBlue">
+                                    DayLabelTextAlignment="Center" HeaderFontSize="16" SelectionRadius="15" HeaderFontAttributes="Bold" HeaderBackgroundColor="Transparent">
                                 
                                 <syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
                                     <DataTemplate>
@@ -204,7 +206,7 @@
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>
 
-                    <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="My Bills"></Label>
+                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}"></Label>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}">
 
@@ -226,9 +228,9 @@
                                                 </StackLayout>
                                                 <Label Text="{Binding BillCount}" FontSize="Title" TextColor="#474747" Padding="0,10,0,15">
                                                 </Label>
-                                                <Label Text="SAR" TextColor="Gray">
+                                                <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray">
                                                 </Label>
-                                                <Label Text="{Binding BillAmount}" TextColor="{DynamicResource Gray-White}" >
+                                                <Label Text="{Binding BillAmount}" TextColor="#006450" >
                                                 </Label>
                                             </StackLayout>
                                         </Grid>
@@ -248,7 +250,7 @@
 
                     </listView:SfListView>
 
-                    <Label Padding="5" TextColor="#006450" Text="My Returns"></Label>
+                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"></Label>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
@@ -294,7 +296,7 @@
 
                     </listView:SfListView>
 
-                    <Label Padding="5" TextColor="#006450" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontFamily="{StaticResource Montserrat-Regular}" FontSize="Small" Text="e-Services"></Label>
+                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}"></Label>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 
@@ -373,11 +375,11 @@
                 <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
                     <Label.FormattedText >
                         <FormattedString>
-                            <Span Text="Hello," TextColor="White"/>
+                            <Span Text="{x:Static local:AppResources.Hi}" TextColor="White"/>
                             <Span Text="{Binding Name}" TextColor="White"/>
                             <!--<Span Text="&#10;"/>
                             <Span Text="{Binding Email}" TextColor="White"/>-->
-                            <Span Text="&#10;"/>
+                            <Span Text="&#10;&#10;"/>
                             <Span Text="{Binding Tin}" TextColor="White"/>
                         </FormattedString>
                     </Label.FormattedText>

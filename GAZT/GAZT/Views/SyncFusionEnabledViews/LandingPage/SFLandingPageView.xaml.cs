@@ -132,6 +132,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 {
                     viewModel._navigationService.NavigateTo(App.MyBillsView);
                 }
+                if(BModel.eServiceName== AppResources.ZTEReportReportScreenTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                }
 
             }
             if (controltype == "Xamarin.Forms.Label")
@@ -166,6 +170,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (BModel.eServiceName == AppResources.MyBills)
                 {
                     viewModel._navigationService.NavigateTo(App.MyBillsView);
+                }
+                if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                 }
 
             }

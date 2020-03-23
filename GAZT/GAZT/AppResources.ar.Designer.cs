@@ -4751,5 +4751,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
             }
         }
+        
+        public static string ZZeServices {
+            get {
+                return ResourceManager.GetString("ZZeServices", resourceCulture);
+            }
+        }
+        
+        public static string ZZMyCommitments {
+            get {
+                return ResourceManager.GetString("ZZMyCommitments", resourceCulture);
+            }
+        }
     }
 }

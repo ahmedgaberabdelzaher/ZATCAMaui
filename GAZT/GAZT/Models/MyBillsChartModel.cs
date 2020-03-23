@@ -8,5 +8,6 @@ namespace GAZT.Models
     {
         public string BillType { get; set; }
         public int BillCount { get; set; }
+        public Xamarin.Forms.Color BillColor { get; set; }
     }
 }

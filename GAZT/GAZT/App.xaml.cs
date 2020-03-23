@@ -91,8 +91,8 @@ namespace GAZT
         public static TIN CurrentDropdownTIN;
 
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = true;
-        public static bool IsArabic = true;
+        public static bool PreviousIsArabic = false;//true
+        public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static TaxPayerProfile TP = null;
@@ -139,6 +139,8 @@ namespace GAZT
             }
 
             VATDeclaration vAT = null;
+
+            //CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
             CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 

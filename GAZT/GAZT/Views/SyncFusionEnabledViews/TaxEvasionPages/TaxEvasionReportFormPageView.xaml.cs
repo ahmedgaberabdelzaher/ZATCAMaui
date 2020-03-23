@@ -20,8 +20,7 @@ namespace GAZT.Views.NewViews
     {
 
         TaxEvasionReportFormPageViewModel viewModel;
-        Pin pin = new Pin();
-        
+
 
         public TaxEvasionReportFormPageView(TaxEvasionReportList SelectedTaxEvasionListItem)
         {
@@ -33,7 +32,7 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 clearFields();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -43,7 +42,7 @@ namespace GAZT.Views.NewViews
             //selectedtaxEList
             viewModel.onPageLoad();
             viewModel.selectedtaxEList = SelectedTaxEvasionListItem;
-            viewModel.SelectedCategory =SelectedTaxEvasionListItem.ViolationType;
+            viewModel.SelectedCategory = SelectedTaxEvasionListItem.ViolationType;
 
 
             //TName.Text = selectedtaxEList.ReporterName;
@@ -55,11 +54,11 @@ namespace GAZT.Views.NewViews
                 viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                 //viewModel.TFaciMobNo= selectedtaxEList.
-               // DateLabel.IsVisible = true; DateLabel.IsEnabled = false; DateLabel.Text = viewModel.selectedtaxEList.ReceivedDate; DpDbo.IsEnabled = false; DpDbo.IsVisible = false;
+                // DateLabel.IsVisible = true; DateLabel.IsEnabled = false; DateLabel.Text = viewModel.selectedtaxEList.ReceivedDate; DpDbo.IsEnabled = false; DpDbo.IsVisible = false;
 
                 /*viewModel.SelectedTaxEvasionCompanyType.Id= selectedtaxEList.c*/              ///*viewModel.TFaciOwnerName=selectedtaxEList.*/
                 TFaciOwnerName.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
-                RegionPicker.IsEnabled = false;RegionPickerAR.IsEnabled = false;CityPicker.IsEnabled = false;CityPickerAR.IsEnabled = false;
+                RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
                 viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
                 viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
                 viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
@@ -67,27 +66,15 @@ namespace GAZT.Views.NewViews
                 viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
                 RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
-                double lat = Convert.ToDouble(viewModel.selectedtaxEList.Latitude);
-                double lon = Convert.ToDouble(viewModel.selectedtaxEList.Longitude);
-                Position position = new Position(lat, lon);
-                mapView.IsEnabled = false;
-               MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                mapView.MoveToRegion(mapSpan);
-                pin.Label = "Report Location";
-                pin.Type = PinType.Place;
-                pin.Position = new Position(lat, lon);
-                mapView.Pins.Clear();
-                mapView.Pins.Add(pin);
-
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
                     viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == SelectedTaxEvasionListItem.RegionCode).FirstOrDefault();
                     viewModel.onSelectedTaxEvasionRegion();
                     if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.CityCode))
                     { viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == SelectedTaxEvasionListItem.CityCode).FirstOrDefault(); }
-                
+
                 }
-                
+
                 //viewModel.SelectedTaxEvasionRegion = selectedtaxEList;
                 //viewModel.SelectLCType.CityCode = selectedtaxEList.CityCode;
                 //viewModel.SelectLCType.Latitude = selectedtaxEList.Latitude;
@@ -100,7 +87,8 @@ namespace GAZT.Views.NewViews
 
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TIN))
                 { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.TIN; viewModel.IsTINVisible = true; }
-                else {
+                else
+                {
                     viewModel.IsTIN = false;
                 }
                 TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
@@ -117,11 +105,11 @@ namespace GAZT.Views.NewViews
             {
 
             }
-     
+
             // viewModel.SelectedCategory = SelectedCat;
         }
 
-       
+
 
         private void SetLTR()
         {
@@ -150,13 +138,15 @@ namespace GAZT.Views.NewViews
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             if (App.IsArabic)
-            { RegionPickerAR.Focus();
+            {
+                RegionPickerAR.Focus();
 
 
 
             }
             else
-            { RegionPicker.Focus();
+            {
+                RegionPicker.Focus();
 
             }
 
@@ -168,12 +158,14 @@ namespace GAZT.Views.NewViews
         {
 
             if (App.IsArabic)
-            { CityPickerAR.Focus();
+            {
+                CityPickerAR.Focus();
                 viewModel.IsVisiblePickerAr = true;
                 viewModel.IsVisiblePickerEn = false;
             }
             else
-            { CityPicker.Focus();
+            {
+                CityPicker.Focus();
 
             }
 
@@ -221,10 +213,10 @@ namespace GAZT.Views.NewViews
                 else if (string.IsNullOrEmpty(TFaciOwnerName.Text))
                 { flag = false; FrmFOName.Focus(); }
                 else if (string.IsNullOrEmpty(TFaciMobNo.Text))
-                { flag = false; FrmFMobNo.Focus(); }
-                else if (string.IsNullOrEmpty(TFaciEmail.Text))
-                { flag = false; FrmFEmail.Focus(); }
-                else if (string.IsNullOrEmpty(TFDAdress.Text))
+                //{ flag = false; FrmFMobNo.Focus(); }
+                //else if (string.IsNullOrEmpty(TFaciEmail.Text))
+                //{ flag = false; FrmFEmail.Focus(); }
+                //else if (string.IsNullOrEmpty(TFDAdress.Text))
                 { flag = false; FrmFDAddress.Focus(); }
                 else if (string.IsNullOrEmpty(TFSAddress.Text))
                 { flag = false; FrmFSAddress.Focus(); }
@@ -248,7 +240,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(TMobNumber.Text))
             {
-                if (TMobNumber.Text.Length<8)
+                if (TMobNumber.Text.Length < 8)
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -269,7 +261,7 @@ namespace GAZT.Views.NewViews
                     TMobNumber.Text = string.Empty;
                     TMobNumber.Focus();
                 }
-               
+
                 else
                 {
                     FrmNumber.HasError = false;
@@ -282,7 +274,7 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(TFaciMobNo.Text))
             {
-                if (TFaciMobNo.Text.Length< 8)
+                if (TFaciMobNo.Text.Length < 8)
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -313,8 +305,10 @@ namespace GAZT.Views.NewViews
         }
 
         private void TName_Unfocused(object sender, FocusEventArgs e)
-        { if (string.IsNullOrEmpty(TName.Text))
-            { FrmName.HasError =true;
+        {
+            if (string.IsNullOrEmpty(TName.Text))
+            {
+                FrmName.HasError = true;
 
                 TName.Text = string.Empty;
             }
@@ -372,7 +366,8 @@ namespace GAZT.Views.NewViews
         }
 
         private void TFaciOwnerName_Unfocused(object sender, FocusEventArgs e)
-        { if (string.IsNullOrEmpty(TFaciOwnerName.Text))
+        {
+            if (string.IsNullOrEmpty(TFaciOwnerName.Text))
             {
                 FrmFOName.HasError = true;
                 TFaciOwnerName.Text = string.Empty;
@@ -439,7 +434,8 @@ namespace GAZT.Views.NewViews
         }
 
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
-        { if (!string.IsNullOrEmpty(TxtTIN.Text))
+        {
+            if (!string.IsNullOrEmpty(TxtTIN.Text))
             {
                 if (TxtTIN.Text.Length < 10)
                 {
@@ -475,10 +471,12 @@ namespace GAZT.Views.NewViews
         }
 
         private void TID_Unfocused(object sender, FocusEventArgs e)
-        { if (string.IsNullOrEmpty(TxtTIN.Text))
+        {
+            if (string.IsNullOrEmpty(TxtTIN.Text))
             {
                 if (!string.IsNullOrEmpty(TID.Text))
-                { if (TID.Text.Length < 10)
+                {
+                    if (TID.Text.Length < 10)
                     {
                         FrmID.HasError = true;
                         TID.Focus();
@@ -529,8 +527,8 @@ namespace GAZT.Views.NewViews
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
-                        
-                       
+
+
 
                     }
                     else
@@ -545,31 +543,33 @@ namespace GAZT.Views.NewViews
             }
         }
 
-            private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
+        private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TReportDetail.Text))
+            { FrmReportDetail.HasError = true; }
+            else
             {
-                if (string.IsNullOrEmpty(TReportDetail.Text))
-                { FrmReportDetail.HasError = true; }
-                else {
 
 
-                    FrmReportDetail.HasError = false;
-                }
-
+                FrmReportDetail.HasError = false;
             }
 
-            private void TFWType_Unfocused(object sender, FocusEventArgs e)
+        }
+
+        private void TFWType_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TFWType.Text))
             {
-                if (string.IsNullOrEmpty(TFWType.Text))
-                { FrmTFW.HasError = true;
-                    TFWType.Focus();
-                }
-                else
-                {
-                    FrmTFW.HasError = false;
-                }
-
-
+                FrmTFW.HasError = true;
+                TFWType.Focus();
             }
+            else
+            {
+                FrmTFW.HasError = false;
+            }
+
+
+        }
         public void clearFields()
         {
             TName.Text = string.Empty; TFaciName.Text = string.Empty; TFaciOwnerName.Text = string.Empty;
@@ -579,7 +579,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsTIN = true; viewModel.IsTINVisible = true;
             TReportDetail.Text = string.Empty; TFWType.Text = string.Empty;
             TFDAdress.Text = string.Empty; TFSAddress.Text = string.Empty;
-           // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
+            // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
         }
 
 
@@ -630,7 +630,7 @@ namespace GAZT.Views.NewViews
 
         private void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-           // Pin pin = new Pin();
+            Pin pin = new Pin();
             pin.Label = "Your Location";
             pin.Type = PinType.Place;
             pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
@@ -640,60 +640,60 @@ namespace GAZT.Views.NewViews
             mapView.Pins.Add(pin);
         }
 
-    //    private async void mapset()
-    //    {
-    //        double lat=00.00, lon=00.00;
-    //        try
-    //        {
-    //            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-    //            var location = await Geolocation.GetLocationAsync(request);
+        //    private async void mapset()
+        //    {
+        //        double lat=00.00, lon=00.00;
+        //        try
+        //        {
+        //            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+        //            var location = await Geolocation.GetLocationAsync(request);
 
-    //            if (location != null)
-    //            {
-    //                lat = location.Latitude;
-    //                lon = location.Longitude;
-    //            }
-
-
-    //            Position position = new Position(lat, lon);
-    //            MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-    //            mapView.MoveToRegion(mapSpan);
-    //            viewModel.TEReportobj.Latitude = lat.ToString();
-    //            viewModel.TEReportobj.Longitude = lon.ToString();
-    //        }
-    //        catch (FeatureNotSupportedException fnsEx)
-    //        {
-    //            // Handle not supported on device exception
-    //        }
-    //        catch (FeatureNotEnabledException fneEx)
-    //        {
-    //            // Handle not enabled on device exception
-    //        }
-    //        catch (PermissionException pEx)
-    //        {
-    //            // Handle permission exception
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            // Unable to get location
-    //        }
-    //        //Pin pin = new Pin
-    //        //{
-    //        //    Label = "Your Location",
-
-    //        //    Type = PinType.Place,
-    //        //    Position = new Position(lat, lon)
-    //        //};
+        //            if (location != null)
+        //            {
+        //                lat = location.Latitude;
+        //                lon = location.Longitude;
+        //            }
 
 
-            
+        //            Position position = new Position(lat, lon);
+        //            MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+        //            mapView.MoveToRegion(mapSpan);
+        //            viewModel.TEReportobj.Latitude = lat.ToString();
+        //            viewModel.TEReportobj.Longitude = lon.ToString();
+        //        }
+        //        catch (FeatureNotSupportedException fnsEx)
+        //        {
+        //            // Handle not supported on device exception
+        //        }
+        //        catch (FeatureNotEnabledException fneEx)
+        //        {
+        //            // Handle not enabled on device exception
+        //        }
+        //        catch (PermissionException pEx)
+        //        {
+        //            // Handle permission exception
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Unable to get location
+        //        }
+        //        //Pin pin = new Pin
+        //        //{
+        //        //    Label = "Your Location",
 
-    //        // Map map = new Map(mapSpan);
+        //        //    Type = PinType.Place,
+        //        //    Position = new Position(lat, lon)
+        //        //};
 
 
-        
 
-    //}
+
+        //        // Map map = new Map(mapSpan);
+
+
+
+
+        //}
 
         private void btnFacilityType_Clicked(object sender, EventArgs e)
         {
@@ -715,7 +715,7 @@ namespace GAZT.Views.NewViews
 
         private void btnReportDetailCity_Clicked(object sender, EventArgs e)
         {
-            if(App.IsArabic)
+            if (App.IsArabic)
             {
                 CityPickerAR.IsOpen = true;
             }
@@ -747,4 +747,4 @@ namespace GAZT.Views.NewViews
 
         }
     }
-    } 
+}

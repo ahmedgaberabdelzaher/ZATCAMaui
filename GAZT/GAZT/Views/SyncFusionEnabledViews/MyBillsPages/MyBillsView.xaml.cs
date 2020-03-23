@@ -2,7 +2,10 @@
 using GAZT.ViewModel;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using Syncfusion.SfChart.XForms;
 using System;
+using System.Collections;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -145,5 +148,47 @@ namespace GAZT.Views
             }
         }
 
+        private void Chart_AnnotationClicked(object sender, Syncfusion.SfChart.XForms.ChartAnnotationClickedEventArgs e)
+        {
+
+        }
+
+        private void Chart_LegendItemClicked(object sender, Syncfusion.SfChart.XForms.ChartLegendItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Chart_SelectionChanged(object sender, Syncfusion.SfChart.XForms.ChartSelectionEventArgs e)
+        {
+            SfChart SfChartM = sender as SfChart;
+            //MyBillsChartModel KeywordSelect = (MyBillsChartModel)SfChartM.BindingContext;
+
+            if (e.SelectedDataPointIndex > -1)
+            {
+                IList items = e.SelectedSeries.ItemsSource as IList;
+                MyBillsChartModel selectedDatapoint = items[e.SelectedDataPointIndex] as MyBillsChartModel;
+                viewModel.MyBills = null;
+                if (selectedDatapoint.BillType == AppResources.Paid)
+                {
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
+                }
+                if (selectedDatapoint.BillType == AppResources.UnPaid)
+                {
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
+                }
+                if (selectedDatapoint.BillType == AppResources.PartiallyPaid)
+                {
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+                }
+                //await Navigation.PushModalAsync(new SecondaryPage(selectedDatapoint));
+            }
+            else
+            {
+                viewModel.MyBills = viewModel.MyBillsOriginal;
+
+            }
+
+
+        }
     }
     }
