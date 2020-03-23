@@ -5656,7 +5656,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit.
+        ///   Looks up a localized string similar to GCC ID should be between 7-15 digit.
         /// </summary>
         public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
             get {

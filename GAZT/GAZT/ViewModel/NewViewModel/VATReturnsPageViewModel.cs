@@ -3695,6 +3695,8 @@ namespace GAZT.ViewModel.NewViewModel
                 //    vatAttachment.Add(m);
                 //}
                 //VatAttachmentsList = vatAttachment;
+
+                ManageThePreperiodcorrSwitch();
             }
             catch (InternetException ex)
             {
@@ -4852,6 +4854,27 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
             return isEmpty;
+        }
+
+        private void ManageThePreperiodcorrSwitch()
+        {
+            if(Convert.ToDouble(Preperiodcorr) < 0)
+            {
+                ShowThePreperiodcorrSwitch();
+            }
+            else
+            {
+                HideThePreperiodcorrSwitch();
+            }
+        }
+        private void ShowThePreperiodcorrSwitch()
+        {
+            IsSwitchToggled = true;
+        }
+
+        private void HideThePreperiodcorrSwitch()
+        {
+            IsSwitchToggled = false;
         }
     }
 }
