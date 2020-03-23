@@ -120,6 +120,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 IsLoading = false;
             });
         }
+
         public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -356,6 +357,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         public void PopulateReturnsInformation()
         {
+            ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();
             ReturnInfoItems = new ObservableCollection<ReturnInfo>();
 
             if (DashboardData.results != null && DashboardData.results.Count > 0)
@@ -371,10 +373,18 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     {
                         RtnTotstr = "0";
                     }
-                    else if (RtnTotstr.Substring(0, 1) == ".")
+                    else
                     {
-                        RtnTotstr = "0" + RtnTotstr;
+                        string returnToString =  RtnTotstr.Substring(0, 1);
+                         if (returnToString.Equals("."))
+                        {
+                            RtnTotstr = "0" + RtnTotstr;
+                        }
+                         else
+                        {
+                        }
                     }
+                  
 
                     objReturnInfoRtnTot.ReturnCount = RtnTotstr;
 
@@ -382,10 +392,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
                     objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
                     objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
-
-
-                    ReturnInfoItems.Add(objReturnInfoRtnTot);
-
+                    _returnInfoItems.Add(objReturnInfoRtnTot);
+                    ReturnInfoItems = _returnInfoItems;
+                   // ReturnInfoItems.Add(objReturnInfoRtnTot);
                 }
 
                 if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
@@ -670,23 +679,24 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     if (ItemType == "05")
                     {
                         
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declarations.png" ,OnClickEvents= "OnTappedVAT" });
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents= "OnTappedVAT" });
 
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents = "OnTappedZakat" });
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png", OnClickEvents = "OnTappedZakat" });
                     }
 
                 }
             }
          
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png", OnClickEvents = "OnTappedBills" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png", OnClickEvents = "OnTappedBills" });
            
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png", OnClickEvents = "OnTappedBills" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png",OnClickEvents= "OnTappedCertificate" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png", OnClickEvents= "OnTappedCertificate" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName =  AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents = "OnTappedTINStatus" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png", OnClickEvents = "OnTappedCorrespondence" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png", OnClickEvents = "OnTappedCorrespondence" });
         }
     }
 

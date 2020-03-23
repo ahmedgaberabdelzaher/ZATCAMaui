@@ -11,6 +11,13 @@ using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfRotator.iOS;
+using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.Cards;
+using Syncfusion.XForms.Graphics;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.XForms.iOS.EffectsView;
+using Syncfusion.SfCalendar.XForms.iOS;
 
 namespace GAZT.iOS
 {
@@ -46,8 +53,15 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             SfDatePickerRenderer.Init();
             SfPickerRenderer.Init();
+            SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
+            SfCardLayoutRenderer.Init();
+            new SfRotator();
+            SfListViewRenderer.Init();
+            SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.
+            new SfCardView();
             Syncfusion.XForms.iOS.Graphics.SfGradientViewRenderer.Init();
+           new SfLinearGradientBrush();
             LoadApplication(iosapp);
 
             //Code for PUSH notification

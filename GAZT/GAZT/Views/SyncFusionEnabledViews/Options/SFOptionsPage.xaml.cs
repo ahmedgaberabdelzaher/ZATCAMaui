@@ -38,5 +38,14 @@ namespace GAZTeServicesApp.Views.Options
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        private async void OnLogoutClicked(Object sender, EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+            if (result)
+            {
+                App.TP = null;
+                viewModel.LogOut();
+            }
+        }
     }
 }

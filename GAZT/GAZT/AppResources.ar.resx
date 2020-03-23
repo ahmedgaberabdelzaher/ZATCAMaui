@@ -2803,4 +2803,12 @@
   <data name="ZZZWrongEnterTin" xml:space="preserve">
     <value>خطأ في إدخال الرقم المميز أو البريد الإلكتروني</value>
   </data>
+  <data name="ZZeServices" xml:space="preserve">
+    <value>e-Services</value>
+    <comment>New Landing Page</comment>
+  </data>
+  <data name="ZZMyCommitments" xml:space="preserve">
+    <value>My Commitments</value>
+    <comment>New Landing Page</comment>
+  </data>
 </root>

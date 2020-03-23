@@ -28,7 +28,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 InitializeComponent();
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
-                ParentContainer.RaiseChild(BusyIndicator);
+              //  ParentContainer.RaiseChild(BusyIndicator);
                 calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();
               //  Application.Current.Resources["GAZTFontBold"] = Application.Current.Resources["GAZTBoldArabic"];
@@ -132,6 +132,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 {
                     viewModel._navigationService.NavigateTo(App.MyBillsView);
                 }
+                if(BModel.eServiceName== AppResources.ZTEReportReportScreenTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                }
 
             }
             if (controltype == "Xamarin.Forms.Label")
@@ -166,6 +170,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (BModel.eServiceName == AppResources.MyBills)
                 {
                     viewModel._navigationService.NavigateTo(App.MyBillsView);
+                }
+                if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                 }
 
             }

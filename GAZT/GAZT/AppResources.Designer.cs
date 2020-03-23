@@ -759,7 +759,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello:.
+        ///   Looks up a localized string similar to Hello,.
         /// </summary>
         public static string Hi {
             get {
@@ -1389,7 +1389,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Returns.
+        ///   Looks up a localized string similar to My Returns.
         /// </summary>
         public static string Returns {
             get {
@@ -5296,6 +5296,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to e-Services.
+        /// </summary>
+        public static string ZZeServices {
+            get {
+                return ResourceManager.GetString("ZZeServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimated Sales for Fiscal Year.
         /// </summary>
         public static string ZZEstimatedSalesForFiscalYear {
@@ -5877,6 +5886,15 @@ namespace GAZT {
         public static string ZZMobilenumberlengthcannotbelessthan9digits {
             get {
                 return ResourceManager.GetString("ZZMobilenumberlengthcannotbelessthan9digits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Commitments.
+        /// </summary>
+        public static string ZZMyCommitments {
+            get {
+                return ResourceManager.GetString("ZZMyCommitments", resourceCulture);
             }
         }
         

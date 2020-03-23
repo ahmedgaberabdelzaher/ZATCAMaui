@@ -584,7 +584,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Partial</value>
   </data>
   <data name="Returns" xml:space="preserve">
-    <value>Returns</value>
+    <value>My Returns</value>
   </data>
   <data name="Submitted" xml:space="preserve">
     <value>Submitted</value>
@@ -788,7 +788,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Entered number must be 15 digit</value>
   </data>
   <data name="Hi" xml:space="preserve">
-    <value>Hello:</value>
+    <value>Hello,</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>Enter Verification Code</value>
@@ -2806,5 +2806,13 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZZWrongEnterTin" xml:space="preserve">
     <value>Wrong entering for the TIN or the Email</value>
+  </data>
+  <data name="ZZeServices" xml:space="preserve">
+    <value>e-Services</value>
+    <comment>New Landing Page</comment>
+  </data>
+  <data name="ZZMyCommitments" xml:space="preserve">
+    <value>My Commitments</value>
+    <comment>New Landing Page</comment>
   </data>
 </root>
