@@ -8,6 +8,7 @@
              FlowDirection="RightToLeft"
                xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              Title="{x:Static local:AppResources.ZZFormBundleStatus}"
              x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
     <ContentPage.Content>

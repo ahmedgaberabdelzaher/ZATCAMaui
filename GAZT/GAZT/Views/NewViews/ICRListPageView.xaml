@@ -8,6 +8,7 @@
              xmlns:custom="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZDeclaration}"
              xmlns:local1="clr-namespace:GAZT"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="GAZT.Views.NewViews.ICRListPageView">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
