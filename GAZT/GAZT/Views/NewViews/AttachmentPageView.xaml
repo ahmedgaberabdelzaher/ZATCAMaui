@@ -131,20 +131,6 @@
                                    Grid.Column="1" 
                                    />
 
-                                                                    <Label  
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="2" 
-                                   >
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{Binding Size}"/>
-                                                                                <Span Text="MB"/>
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
 
                                                                     <Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                                         <Image.GestureRecognizers>

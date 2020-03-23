@@ -1,118 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
-             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             xmlns:local2="clr-namespace:GAZT.CustomControl"
-             FlowDirection="LeftToRight"
-             Title="{x:Static local:AppResources.MyBills}"
-             x:Class="GAZT.Views.MyBillsView">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
-    </ContentPage.ToolbarItems>-->
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local2:DataMarkerConverter x:Key="converter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             mc:Ignorable="d"
+             x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
-            <tabview:SfTabView.SelectionIndicatorSettings>
-                <tabview:SelectionIndicatorSettings
+            <!--<ScrollView>
+                <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
+                    <tabview:SfTabView.SelectionIndicatorSettings>
+                        <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
                     Position="Bottom" 
                     StrokeThickness="2"/>
-            </tabview:SfTabView.SelectionIndicatorSettings>
-            <tabview:SfTabView.Items>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.All}"   
+                    </tabview:SfTabView.SelectionIndicatorSettings>
+                    <tabview:SfTabView.Items>
+                        <tabview:SfTabItem Title="{x:Static local:AppResources.All}"   
                              TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
 
-                    <tabview:SfTabItem.Content>
-                    
-                        <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                          
-                            <!--<chart:SfChart HeightRequest="160">
+                            <tabview:SfTabItem.Content>
+
+                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                                    --><!--<chart:SfChart HeightRequest="160">
 
                                 <chart:SfChart.Series>
                                     <chart:PieSeries ItemsSource="{Binding ListMyBillsChaetModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
                                 </chart:SfChart.Series>
-                            </chart:SfChart>-->
+                            </chart:SfChart>--><!--
 
-                            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"  HeightRequest="250">
-                                <chart:SfChart.Title>
-                                            <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"  />
-                                </chart:SfChart.Title>
-                                <!--<chart:SfChart.BindingContext>
-                                    <sampleBrowser:PieSeriesViewModel />
-                                </chart:SfChart.BindingContext>-->
-                                <!--<chart:SfChart.ChartBehaviors>
-                                    <chart:ChartTooltipBehavior />
-                                </chart:SfChart.ChartBehaviors>-->
-                                <chart:SfChart.Legend>
-                                    <chart:ChartLegend IconHeight="14" IconWidth="14" OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False"/>
-                                </chart:SfChart.Legend>
-                                <chart:SfChart.Series>
+                                  
 
-                                            <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel}" XBindingPath="BillType" YBindingPath="BillCount">
-                                                
-                                                <chart:PieSeries.ColorModel>
-
-                                                    <chart:ChartColorModel Palette="Custom">
-                                                        <chart:ChartColorModel.CustomBrushes>
-                                                            <Color>
-
-                                                                #006450
-
-                                                            </Color>
-
-                                                            <Color>
-
-                                                                #AA0C19
-                                                            </Color>
-
-                                                            <Color>
-
-                                                                #D99A29
-
-                                                            </Color>
-
-                                                        </chart:ChartColorModel.CustomBrushes>
-                                                    </chart:ChartColorModel>
-
-                                                </chart:PieSeries.ColorModel>
-                                                
-                                                <chart:PieSeries.DataMarker>
-                                            <chart:ChartDataMarker >
-                                                <chart:ChartDataMarker.LabelTemplate>
-                                                    <DataTemplate>
-                                                        <StackLayout Orientation="Vertical">
-                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
-                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand" Text="{Binding Converter={StaticResource converter}}"/>
-                                                        </StackLayout>
-                                                    </DataTemplate>
-                                                </chart:ChartDataMarker.LabelTemplate>
-                                                        <chart:ChartDataMarker.LabelStyle>
-
-                                                            <chart:DataMarkerLabelStyle LabelPosition="Auto"/>
-
-                                                        </chart:ChartDataMarker.LabelStyle>
-                                                    </chart:ChartDataMarker>
-                                        </chart:PieSeries.DataMarker>
-                                    </chart:PieSeries>
-                                </chart:SfChart.Series>
-                            </chart:SfChart>
-
-
-                            <ListView  x:Name="Bills" 
+                                    <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills}"
                                        ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
@@ -121,31 +48,31 @@
                  BackgroundColor="White"     
             SeparatorVisibility="None"
             >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
 
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
-                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="39*" />
-                                                            <ColumnDefinition Width="39*" />
-                                                            <ColumnDefinition Width="15*" />
-                                                            <ColumnDefinition Width="7*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                            <RowDefinition Height="Auto" />
-                                                        </Grid.RowDefinitions>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
+                                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="48*" />
+                                                                    <ColumnDefinition Width="42*" />
+                                                                    <ColumnDefinition Width="3*" />
+                                                                    <ColumnDefinition Width="7*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                </Grid.RowDefinitions>
                                                                 <Label Text="{Binding Txt30}" 
                                        
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -186,7 +113,7 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </Label>
-                                                             
+
 
 
                                                                 <Label  Margin="0" 
@@ -209,7 +136,7 @@
                                                                     </Label.FormattedText>
                                                                 </Label>
 
-                                                              
+
 
 
                                                                 <Label  Margin="0" 
@@ -231,36 +158,36 @@
 
 
 
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                <Image  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                        <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-                                                        <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
+                                                                --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
+                                                                <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                --><!--<BoxView  
+                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>--><!--
 
 
-                                                    </Grid>
-                                                </StackLayout>
-                                            </cards1:SfCardView>
-                                        </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                           
-                        </StackLayout>                      
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.Paid}"   
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </cards1:SfCardView>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+                                </StackLayout>
+                            </tabview:SfTabItem.Content>
+                        </tabview:SfTabItem>
+                        <tabview:SfTabItem Title="{x:Static local:AppResources.Paid}"   
                              TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
 
-                    <tabview:SfTabItem.Content>
-                      
-                            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <ListView  x:Name="BillsPaid" 
+                            <tabview:SfTabItem.Content>
+
+                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <ListView  x:Name="BillsPaid" 
            ItemsSource="{Binding MyBillsPaid}"
                                             ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
@@ -269,17 +196,17 @@
                  BackgroundColor="White"     
             SeparatorVisibility="None"
             >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
                                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="15*" />
+                                                                    <ColumnDefinition Width="48*" />
+                                                                    <ColumnDefinition Width="42*" />
+                                                                    <ColumnDefinition Width="3*" />
                                                                     <ColumnDefinition Width="7*" />
                                                                 </Grid.ColumnDefinitions>
                                                                 <Grid.RowDefinitions>
@@ -379,36 +306,36 @@
 
 
 
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                <Image  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-                                                                <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
+                                                                --><!--<BoxView  
+                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>--><!--
 
 
                                                             </Grid>
                                                         </StackLayout>
                                                     </cards1:SfCardView>
                                                 </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackLayout>
-                       
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.UnPaid}"   
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+
+                            </tabview:SfTabItem.Content>
+                        </tabview:SfTabItem>
+                        <tabview:SfTabItem Title="{x:Static local:AppResources.UnPaid}"   
                              TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
 
-                    <tabview:SfTabItem.Content>
-                        
-                            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <ListView  x:Name="BillsUnPaid" 
+                            <tabview:SfTabItem.Content>
+
+                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <ListView  x:Name="BillsUnPaid" 
            ItemsSource="{Binding MyBillsUnPaid}"
                                             ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
@@ -417,17 +344,17 @@
                  BackgroundColor="White"     
             SeparatorVisibility="None"
             >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
                                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="15*" />
+                                                                    <ColumnDefinition Width="48*" />
+                                                                    <ColumnDefinition Width="42*" />
+                                                                    <ColumnDefinition Width="3*" />
                                                                     <ColumnDefinition Width="7*" />
                                                                 </Grid.ColumnDefinitions>
                                                                 <Grid.RowDefinitions>
@@ -527,36 +454,36 @@
 
 
 
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                <Image  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-                                                                <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
+                                                                --><!--<BoxView  
+                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>--><!--
 
 
                                                             </Grid>
                                                         </StackLayout>
                                                     </cards1:SfCardView>
                                                 </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackLayout>
-                       
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.PartiallyPaid}"   
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+
+                            </tabview:SfTabItem.Content>
+                        </tabview:SfTabItem>
+                        <tabview:SfTabItem Title="{x:Static local:AppResources.PartiallyPaid}"   
                              TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
 
-                    <tabview:SfTabItem.Content>
-                      
-                            <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <ListView  x:Name="BillsPartiallyPaid" 
+                            <tabview:SfTabItem.Content>
+
+                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <ListView  x:Name="BillsPartiallyPaid" 
            ItemsSource="{Binding MyBillsPartiallyPaid}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -566,17 +493,17 @@
                  BackgroundColor="White"     
             SeparatorVisibility="None"
             >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
                                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="39*" />
-                                                                    <ColumnDefinition Width="15*" />
+                                                                    <ColumnDefinition Width="48*" />
+                                                                    <ColumnDefinition Width="42*" />
+                                                                    <ColumnDefinition Width="3*" />
                                                                     <ColumnDefinition Width="7*" />
                                                                 </Grid.ColumnDefinitions>
                                                                 <Grid.RowDefinitions>
@@ -676,304 +603,27 @@
 
 
 
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
-
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                <Image  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-                                                                <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
+                                                                --><!--<BoxView  
+                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>--><!--
 
 
                                                             </Grid>
                                                         </StackLayout>
                                                     </cards1:SfCardView>
                                                 </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackLayout>
-                     
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-            </tabview:SfTabView.Items>
-        </tabview:SfTabView>
-            </ScrollView>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+
+                            </tabview:SfTabItem.Content>
+                        </tabview:SfTabItem>
+                    </tabview:SfTabView.Items>
+                </tabview:SfTabView>
+            </ScrollView>-->
         </StackLayout>
-        <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="12*" />
-                    <RowDefinition Height="88*" />
-
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="2*" />
-
-
-                    --><!--<ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="55*" />--><!--
-
-                </Grid.ColumnDefinitions>
-                --><!--<skia:SKCanvasView Margin="0,-2,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="7" PaintSurface="OnCanvasViewPaintSurface" />
-            <local1:CustomLabel Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource SmallMiniWhiteLabelStyle}" Grid.Row="1" Grid.ColumnSpan="7" HorizontalOptions="Center" VerticalOptions="Center" >
-            </local1:CustomLabel>-->
-                <!--<StackLayout  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <cards:CarouselView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CardView">
-                    <cards:CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <Frame  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" HasShadow="true" IsClippedToBounds="true" CornerRadius="4" BorderColor="#B1B1B1" BackgroundColor="White">
-                                    <Image Source="{Binding Source}" />
-                                </Frame>
-                            </ContentView>
-                        </DataTemplate>
-                    </cards:CarouselView.ItemTemplate>
-                </cards:CarouselView>
-            </StackLayout>--><!--
-
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  BackgroundColor="#005e4b">
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5.08*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="23*"/>
-                            <ColumnDefinition Width="23*"/>
-                            <ColumnDefinition Width="23*"/>
-                            <ColumnDefinition Width="31*"/>
-                        </Grid.ColumnDefinitions>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.All}"   Style="{DynamicResource searchBarStyleForAll}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-
-                            <local1:CustomLabel.GestureRecognizers>
-
-                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForAll" Command="{Binding onAllLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
-
-                        <local1:CustomLabel Text="{x:Static local:AppResources.Paid}"  Style="{DynamicResource searchBarStyleForPaid}" Grid.Row="0" Grid.Column="1"  >
-                            <local1:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPaid" Command="{Binding onPaidLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.UnPaid}"  Style="{DynamicResource searchBarStyleForUnPaid}" Grid.Row="0" Grid.Column="2"  >
-                            <local1:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForUnPaid" Command="{Binding onUnpaidLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.PartiallyPaid}"   Style="{DynamicResource searchBarStyleForPartiallyPaid}" Grid.Row="0" Grid.Column="3"  Margin="5,0,5,0" VerticalTextAlignment="Start">
-                            <local1:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForPartiallyPaid" Command="{Binding onPartiallyPaidLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
-                    </Grid>
-
-                </StackLayout>
-                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
-                    <ListView  x:Name="Bills" 
-           ItemsSource="{Binding MyBills}" ItemTapped="Bills_ItemTapped"
-          HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                 BackgroundColor="White"     
-            SeparatorVisibility="None"
-            >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ContentView>
-                                        <Frame OutlineColor="#C9C9C9"
-                                       Margin="0,0,0,10"
-                                       Padding="10,5,10,5"
-                                       CornerRadius="5"
-                                               BackgroundColor="White"
-                                       
-                               >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
-                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="48*" />
-                                                        <ColumnDefinition Width="42*" />
-                                                        <ColumnDefinition Width="3*" />
-                                                        <ColumnDefinition Width="7*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <Label Text="{x:Static local:AppResources.TaxType}" Margin="0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"/>
-
-                                                    <Label Text="{Binding Abtypt}" 
-                                                  
-                                  Margin="0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"/>
-
-
-                                                    <Label 
-                                                 Style="{StaticResource MiniGoldLabelStyle}"
-                                  
-                                                HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                             
-                                   Grid.Column="0"
-                                                        Grid.ColumnSpan="2"
-                                   >
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span   Text="{x:Static local:AppResources.ZSadadInvoiceNumber}"  />
-
-                                                                --><!--<Span Text="{x:Static local:AppResources.Number}" Style="{StaticResource MiniGoldLabelStyle}" />--><!--
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-
-                                                    <Label Text="{Binding VTRE2}" 
-                                                 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"/>
-
-                                                    <Label Text="{x:Static local:AppResources.DueAmount}" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"
-                                   />
-                                                    <Label  
-                                     
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                                        Grid.ColumnSpan="2">
-
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                              
-                                                                <Span  Text="{Binding TestDueAmount}"  />
-                                                                <Span Text=" "/>
-                                                                <Span    Text="{x:Static local:AppResources.ZSAR} "/>
-
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-
-                                                    </Label>
-
-                                                    <Label Text="{x:Static local:AppResources.DueDate}" 
-                                      
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"
-                                   />
-                                                    <Label Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}" 
-                                       
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="7"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"/>
-                                                    <Label Text="{x:Static local:AppResources.ZDescription}" 
-                                      
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="8"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"
-                                   />
-                                                    <Label Text="{Binding Txt30}" 
-                                       
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="9"
-                                   Grid.Column="0"
-                                                           Grid.ColumnSpan="2"/>
-
-                                                    --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
-                                                    <Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                    <BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>
-
-
-                                                </Grid>
-                                            </StackLayout>
-                                        </Frame>
-                                    </ContentView>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
-                </local1:CustomLabel>
-                --><!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
-                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
-                </Image.GestureRecognizers>
-            </Image>--><!--
-
-
-            </Grid>
-            --><!-- Acticity indicator layout start --><!--
-            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-            --><!-- Acticity indicator layout end --><!--
-        </Grid>-->
     </ContentPage.Content>
 </ContentPage>

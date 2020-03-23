@@ -4071,6 +4071,8 @@ namespace GAZT.Views.NewViews
         {
             BPicker2.Focus();
         }
+
+
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
