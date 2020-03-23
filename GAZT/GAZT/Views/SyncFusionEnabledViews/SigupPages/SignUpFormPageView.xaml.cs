@@ -311,6 +311,7 @@ namespace GAZT.Views.NewViews
                                         SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                         SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                         SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                        //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
                                         SiguupModel.ACity = "";
                                         if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -400,6 +401,7 @@ namespace GAZT.Views.NewViews
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                     SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                     SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                   // SiguupModel.ABirthdt = viewModel.PkrDBO;
 
 
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -505,6 +507,7 @@ namespace GAZT.Views.NewViews
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                     SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                     SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                    //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
 
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -592,6 +595,7 @@ namespace GAZT.Views.NewViews
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                 SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
 
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -687,6 +691,7 @@ namespace GAZT.Views.NewViews
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                     SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                     SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                    //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
 
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -774,6 +779,7 @@ namespace GAZT.Views.NewViews
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
                                 SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
 
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -1294,7 +1300,7 @@ namespace GAZT.Views.NewViews
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
 
 
                     popUp.IsLinkAvailable = false;
@@ -1549,8 +1555,9 @@ namespace GAZT.Views.NewViews
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
                         EntryIDNumber.Text = string.Empty;
-                    }
-                    if(!(EntryIDNumber.Text.Length<15 && EntryIDNumber.Text.Length>7))
+
+                        }
+                    else if (!(EntryIDNumber.Text.Length <=15 && EntryIDNumber.Text.Length >= 7))
                     {
                         popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
 
@@ -1571,10 +1578,10 @@ namespace GAZT.Views.NewViews
 
                         FrmIDNumber.HasError = true;
                         EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+
+
                     }
-
-
-
+                    
                 }
 
 
@@ -1628,6 +1635,8 @@ namespace GAZT.Views.NewViews
 
         private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
         {
+
+
 
         }
     }

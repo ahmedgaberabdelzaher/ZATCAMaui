@@ -2815,4 +2815,12 @@ Should we require further information, we would be in contact.</value>
     <value>My Commitments</value>
     <comment>New Landing Page</comment>
   </data>
+  <data name="ZZZInvalidEmailAddressMessage" xml:space="preserve">
+    <value>Please enter a valid Email Address</value>
+    <comment>Sf Sign up</comment>
+  </data>
+  <data name="ZZZVerificationsCode" xml:space="preserve">
+    <value>Verifications Code</value>
+    <comment>Sf Sign up</comment>
+  </data>
 </root>

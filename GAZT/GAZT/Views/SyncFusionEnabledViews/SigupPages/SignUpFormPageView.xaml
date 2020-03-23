@@ -152,11 +152,11 @@
     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtName}" FontSize="Small" >
-                                <Entry.Behaviors>
+                                <!--<Entry.Behaviors>
 
                                     <custom1:OnlyAlphabatesBehaviour/>
 
-                                </Entry.Behaviors>
+                                </Entry.Behaviors>-->
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
