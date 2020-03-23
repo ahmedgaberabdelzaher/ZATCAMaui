@@ -62,6 +62,10 @@ namespace GAZT.iOS
             new SfCardView();
             Syncfusion.XForms.iOS.Graphics.SfGradientViewRenderer.Init();
            new SfLinearGradientBrush();
+            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+
+
             LoadApplication(iosapp);
 
             //Code for PUSH notification
