@@ -239,7 +239,6 @@
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
-                        <!--  Layout to customize number of columns in SfListView  -->
 
                         <listView:SfListView.LayoutManager>
                             <listView:GridLayout SpanCount="3"/>
@@ -286,7 +285,6 @@
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
-                        <!--  Layout to customize number of columns in SfListView  -->
 
                         <listView:SfListView.LayoutManager>
                             <listView:GridLayout SpanCount="3" />
@@ -307,7 +305,7 @@
                                 <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
                                     <cards:SfCardView.Content>
                                         <Grid>
-                                            <gradient:SfGradientView>
+                                            <!--<gradient:SfGradientView>
                                                 <gradient:SfGradientView.BackgroundBrush>
                                                     <gradient:SfLinearGradientBrush>
                                                         <gradient:SfLinearGradientBrush.GradientStops>
@@ -316,7 +314,7 @@
                                                         </gradient:SfLinearGradientBrush.GradientStops>
                                                     </gradient:SfLinearGradientBrush>
                                                 </gradient:SfGradientView.BackgroundBrush>
-                                            </gradient:SfGradientView>
+                                            </gradient:SfGradientView>-->
 
                                             <StackLayout Margin="10" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center" >
                                                 <Image Source="{Binding iConImagePath}" >
@@ -389,7 +387,7 @@
             </Grid>
 
 
-            <busyindicator:SfBusyIndicator x:Name="BusyIndicator" AnimationType="HorizontalPulsingBox" ViewBoxWidth = "150" ViewBoxHeight="150" TextColor="DarkGreen" IsBusy="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"/>
+            <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" AnimationType="HorizontalPulsingBox" ViewBoxWidth = "150" ViewBoxHeight="150" TextColor="DarkGreen" IsBusy="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"/>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

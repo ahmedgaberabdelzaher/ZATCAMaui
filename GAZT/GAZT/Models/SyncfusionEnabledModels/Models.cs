@@ -7,6 +7,11 @@ namespace GAZT.Models
 {
     public class ReturnInfo
     {
+        public string ReturnTypeName { get; set; }
+        public string ReturnCount { get; set; }
+        public string iConImagePath { get; set; }
+        public string BackgroundGradientStart { get; set; }
+        public string BackgroundGradientEnd { get; set; }
         private ReturnType _returnTypeProperty;
         public ReturnType ReturnTypeProperty
         {
@@ -19,11 +24,7 @@ namespace GAZT.Models
                 _returnTypeProperty = value;
             }
         }
-        public string ReturnTypeName { get; set; }
-        public string ReturnCount { get; set; }
-        public string iConImagePath { get; set; }
-        public string BackgroundGradientStart { get; set; }
-        public string BackgroundGradientEnd { get; set; }
+        
 
     }
     public class BillInfo

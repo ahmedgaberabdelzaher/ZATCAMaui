@@ -2239,7 +2239,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
-    <value>طول رقم هوية مجلس دول التعاون الخليجي بين 7 الى 10 أرقام</value>
+    <value>رقم هوية دول مجلس يجب أن يكون بين 7 الى 15 أرقام</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">

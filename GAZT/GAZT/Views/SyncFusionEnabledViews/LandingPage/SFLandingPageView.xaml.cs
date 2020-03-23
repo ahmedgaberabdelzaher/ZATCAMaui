@@ -28,7 +28,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 InitializeComponent();
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
-                ParentContainer.RaiseChild(BusyIndicator);
+              //  ParentContainer.RaiseChild(BusyIndicator);
                 calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();
               //  Application.Current.Resources["GAZTFontBold"] = Application.Current.Resources["GAZTBoldArabic"];

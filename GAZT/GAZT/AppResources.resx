@@ -2230,7 +2230,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
-    <value>Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit</value>
+    <value>GCC ID should be between 7-15 digit</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">
