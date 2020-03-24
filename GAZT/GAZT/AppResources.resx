@@ -2823,4 +2823,16 @@ Should we require further information, we would be in contact.</value>
     <value>Verifications Code</value>
     <comment>Sf Sign up</comment>
   </data>
+  <data name="ZZZLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZSetToArabic" xml:space="preserve">
+    <value>Set To Arabic</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZSetToEnglish" xml:space="preserve">
+    <value>Set To English</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
 </root>

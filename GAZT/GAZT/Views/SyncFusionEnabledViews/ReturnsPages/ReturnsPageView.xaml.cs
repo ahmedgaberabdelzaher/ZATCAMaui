@@ -14,13 +14,14 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
     public partial class ReturnsPageView : ContentPage
     {
         ReturnsPageViewModel viewModel;
-        public ReturnsPageView()
+        public ReturnsPageView(int Index)
         {
             try
             {
                 InitializeComponent();
                 this.BindingContext = viewModel = App.Locator.ReturnsPageView;
                 viewModel.onPageLoad();
+                viewModel.TabIndexStatus = Index;
             }
             catch (Exception ex)
             {
@@ -28,5 +29,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             }
         }
 
+        private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
     }
 }

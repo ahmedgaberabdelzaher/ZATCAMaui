@@ -14,9 +14,9 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90*"/>
-                    <RowDefinition Height="10*"/>
-
+                    <RowDefinition Height="88*"/>
+                    <RowDefinition Height="12*"/>
+ 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -234,7 +234,7 @@
 
                                                                     </Image>-->
 
-                                                                    <Image Grid.Row="0"  Grid.Column="4" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
+                                                                    <Image Grid.Row="0"  Grid.Column="4" Grid.RowSpan="2" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer
                                                                                 Tapped="OnDeleteAttachmentClickedTapped"
@@ -242,7 +242,7 @@
                                                                         </Image.GestureRecognizers>
                                                                     </Image>
 
-                                                                    <Label Text="{Binding AttBy}" 
+                                                                    <Label Text="{Binding UploadededDateToShow}" 
                                                                        Margin="3,0,3,0"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
                                                                         HorizontalOptions="StartAndExpand"
@@ -269,7 +269,7 @@
                 </Grid>
 
                 <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}"></Button>
-
+            
             </Grid>
             <!-- Acticity indicator layout start -->
 
@@ -284,6 +284,7 @@
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->
+               
         </Grid>
     </ContentPage.Content>
 </ContentPage>

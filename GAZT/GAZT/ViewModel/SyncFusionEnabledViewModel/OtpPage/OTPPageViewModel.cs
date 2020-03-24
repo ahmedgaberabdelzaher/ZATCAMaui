@@ -602,9 +602,10 @@ namespace GAZT.ViewModel.NewViewModel
                         if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                             {
                                 bool IsNavigatingFromLogin = true;
+                                IsResendOTPEnabled = false;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                                IsResendOTPEnabled = false;
+                               
                                 IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
                                 //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);

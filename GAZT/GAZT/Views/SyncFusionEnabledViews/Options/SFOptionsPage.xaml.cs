@@ -3,6 +3,7 @@ using GAZTeServicesApp.ViewModels.LandingPage;
 using GAZTeServicesApp.ViewModels.Options;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,25 @@ namespace GAZTeServicesApp.Views.Options
         {
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.OptionsPageView;
+            if(App.IsArabic)
+            {
+                viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+            }
+            else
+            {
+                viewModel.TranslateText = AppResources.ZZZSetToArabic;
+            }
             SetLTR();
         }
-
+        //public void AddTapGestures()
+        //{
+        //    var tap1 = new TapGestureRecognizer();
+        //    var tap2 = new TapGestureRecognizer();
+        //    tap1.Tapped += (s, e) => LanguageChanged();
+        //    tap2.Tapped += (s, e) => LanguageChanged();
+        //    lblLanguage1.GestureRecognizers.Add(tap1);
+        //    lblLanguage2.GestureRecognizers.Add(tap2);
+        //}
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -45,6 +62,65 @@ namespace GAZTeServicesApp.Views.Options
             {
                 App.TP = null;
                 viewModel.LogOut();
+            }
+        }
+      
+        public void SetRTLDirection()
+        {
+            String langName = "ar-AE";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            InitializeComponent();
+            this.FlowDirection = FlowDirection.RightToLeft;
+            viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+        }
+        public void SetLTRDirection()
+        {
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            InitializeComponent();
+            this.FlowDirection = FlowDirection.LeftToRight;
+            viewModel.TranslateText = AppResources.ZZZSetToArabic;
+        }
+
+        //private void LanguageChanged()
+        //{
+        //    if (App.IsArabic)
+        //    {
+
+        //        App.IsArabic = false;
+        //        App.changeFontFamily(App.appObj);
+        //        SetLTRDirection();
+
+        //    }
+        //    else
+        //    {
+
+        //        App.IsArabic = true;
+        //        App.changeFontFamily(App.appObj);
+        //        SetRTLDirection();
+
+        //    }
+        //}
+
+        private void LanguageClicked(object sender, EventArgs e)
+        {
+            if (App.IsArabic)
+            {
+
+                App.IsArabic = false;
+                App.changeFontFamily(App.appObj);
+                SetLTRDirection();
+
+            }
+            else
+            {
+
+                App.IsArabic = true;
+                App.changeFontFamily(App.appObj);
+                SetRTLDirection();
+
             }
         }
     }
