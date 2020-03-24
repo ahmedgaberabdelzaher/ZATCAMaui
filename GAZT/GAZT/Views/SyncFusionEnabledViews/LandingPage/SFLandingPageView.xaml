@@ -298,6 +298,9 @@
 
                                             <StackLayout Margin="5" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
                                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
                                                     <Label Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
                                                     </Label>

@@ -98,6 +98,8 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="4" />
+                                                                            
+                                                                            
 
                                                                             <Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
                                                 
@@ -235,7 +237,7 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                            <cards1:SfCardView HasShadow="True"  Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" VerticalOptions="FillAndExpand">
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
 
@@ -621,7 +623,7 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" VerticalOptions="FillAndExpand">
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 
@@ -1006,9 +1008,9 @@
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <ViewCell>
-                                                                <cards1:SfCardView HeightRequest="280" HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" VerticalOptions="FillAndExpand">
 
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" >
 
                                                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                                                                             <Grid.ColumnDefinitions>
