@@ -146,13 +146,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                    <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
                                         
-                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
-
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
-
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 
                                                     <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                         <Grid.ColumnDefinitions>
@@ -279,14 +275,14 @@
                                                             Style="{StaticResource MiniGrayLabelStyle}"/>
 
                                                         <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                        <Image  Grid.Row="1"
+                                                        <Image  Grid.Row="0"
                                                                 Grid.Column="3"
                                                                 Grid.ColumnSpan="2"
                                                                 Grid.RowSpan="10"
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
-                                                                VerticalOptions="Center"/>
-                                                        <BoxView  
+                                                                VerticalOptions="StartAndExpand"/>
+                                                        <!--<BoxView  
                                                            Grid.Row="0"
                                                             Grid.Column="0"
                                                             Grid.RowSpan="10"
@@ -294,10 +290,10 @@
                                                             BackgroundColor="{Binding BorderColour}"
                                                             VerticalOptions="Fill"
                                                             HorizontalOptions="Fill"
-                                                            WidthRequest="2"/>
+                                                            WidthRequest="2"/>-->
 
 
-                                                        <BoxView  
+                                                        <!--<BoxView  
                                                          Grid.Row="0"
                                                             Grid.Column="3"
                                                             Grid.RowSpan="10"
@@ -305,13 +301,12 @@
                                                             BackgroundColor="Gray"
                                                             VerticalOptions="Fill"
                                                             HorizontalOptions="Start"
-                                                            WidthRequest="1"/>
+                                                            WidthRequest="1"/>-->
 
 
                                                     </Grid>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </StackLayout>
+                                          
                                     </cards:SfCardView>
                                 </ViewCell>
                             </DataTemplate>

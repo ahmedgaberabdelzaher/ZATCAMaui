@@ -22,13 +22,18 @@ namespace GAZT.Views
         public LogInPageView()
         {
             viewModel = App.Locator.LogInPageView;
-           
 
+            
             try
             {
                 InitializeComponent();
+                //double unixTime = 1584987294.32348;
+                //DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                //long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+                //DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+
             }
-            catch(Exception e)
+            catch (Exception e)
                 {
 
             }

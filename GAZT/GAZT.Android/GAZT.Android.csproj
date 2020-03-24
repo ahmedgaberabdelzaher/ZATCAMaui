@@ -62,6 +62,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Cards">
       <Version>17.4.0.55</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Expander">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
       <Version>17.4.0.55</Version>
     </PackageReference>

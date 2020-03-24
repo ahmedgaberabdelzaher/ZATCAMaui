@@ -4,8 +4,10 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT.ViewModel;
 using GAZT.ViewModel.NewViewModel;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
 using GAZT.Views;
 using GAZT.Views.NewViews;
+using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using GAZTeServicesApp.ViewModels.LoginPage;
 using GAZTeServicesApp.ViewModels.Options;
@@ -85,6 +87,9 @@ namespace GAZT
             
 
             SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
+            SimpleIoc.Default.Register<ReturnsPageViewModel>();
+
+
 
         }
 
@@ -905,7 +910,20 @@ namespace GAZT
             }
         }
 
-
+        public ReturnsPageViewModel ReturnsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
         //SYNC FUSION INTEGRATION
@@ -978,6 +996,7 @@ namespace GAZT
             navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
             navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
             navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
+            navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
 
 
             return navigationService;

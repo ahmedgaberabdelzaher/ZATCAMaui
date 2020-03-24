@@ -4763,5 +4763,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMyCommitments", resourceCulture);
             }
         }
+        
+        public static string ZZZInvalidEmailAddressMessage {
+            get {
+                return ResourceManager.GetString("ZZZInvalidEmailAddressMessage", resourceCulture);
+            }
+        }
+        
+        public static string ZZZVerificationsCode {
+            get {
+                return ResourceManager.GetString("ZZZVerificationsCode", resourceCulture);
+            }
+        }
     }
 }

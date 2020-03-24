@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.MyCertificate" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT" FlowDirection="RightToLeft" xmlns:controls="clr-namespace:pdfjs.Controls" xmlns:RC="clr-namespace:Tavant.XToolkit.RoundedCornerView;assembly=Tavant.XToolkit.RoundedCornerView"  xmlns:effects="clr-namespace:GAZT;assembly:GAZT" Title="{x:Static local:AppResources.MyCertificates}">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
-    </ContentPage.ToolbarItems>-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GAZT"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             x:Class="GAZT.Views.MyCertificate" FlowDirection="RightToLeft"
+             Title="{x:Static local:AppResources.MyCertificates}">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10">
             <Grid.RowDefinitions>
@@ -14,64 +16,45 @@
                 <ColumnDefinition Width="34*" />
                 <ColumnDefinition Width="33*" />
             </Grid.ColumnDefinitions>
-             <!--<local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding CertificateType}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalOptions="Center">
-            </local1:CustomLabel>-->
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#005e4b">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" RowSpacing="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="33*" />
-                <ColumnDefinition Width="34*" />
-                <ColumnDefinition Width="33*" />
-            </Grid.ColumnDefinitions>
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="34*" />
+                        <ColumnDefinition Width="33*" />
+                    </Grid.ColumnDefinitions>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center" >
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnVATCertificateClicked}" />
-                    </Image.GestureRecognizers>
-                </Image>-->
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                    <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                       <local:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForZakat" Command="{Binding OnZakatCertificateClicked}" />
                             </Label.GestureRecognizers>
-                        </local1:CustomLabel>
+                        </local:CustomLabel>
 
-                     
-            </StackLayout>
 
-            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnZakatCertificateClicked}" />
-                    </Image.GestureRecognizers>
-                </Image>-->
-                        <local1:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                        <local:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding OnVATCertificateClicked}" />
                             </Label.GestureRecognizers>
-                        </local1:CustomLabel>
+                        </local:CustomLabel>
                     </StackLayout>
 
-            <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
-                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnExciseCertificateClicked}" />
-                    </Image.GestureRecognizers>
-                </Image>-->
-                        <local1:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
-                    <Label.GestureRecognizers>
+                    <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
+                        <local:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer  Tapped="ClickGestureRecognizer_ClickedForExcise" Command="{Binding OnExciseCertificateClicked}" />
-                    </Label.GestureRecognizers>
-                </local1:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </local:CustomLabel>
+                    </StackLayout>
+                </Grid>
             </StackLayout>
- </Grid>
-            </StackLayout>
-            
 
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
                 <ListView   IsVisible="{Binding IsCertificateAvailable}" ItemsSource ="{Binding CertificateList}" VerticalOptions="Fill" x:Name="CertificateLst" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
@@ -81,35 +64,21 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,2,0,8">
-                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#c49b2d"  HeightRequest="50">
-
-                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="1" Spacing="0"  BackgroundColor="White" HeightRequest="50">
-
-                                            <local1:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
-                                            </local1:CustomLabel>
-                                            <Image Grid.Row="0" Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
-                                            </Image>
-                                        </StackLayout>
+                                <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <local:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                        </local:CustomLabel>
+                                        <Image Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                        </Image>
                                     </StackLayout>
-                                </StackLayout>
+                                </cards:SfCardView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <local1:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
-            </local1:CustomLabel>
-
-
-
-
-          
-
-
+            <local:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            </local:CustomLabel>
         </Grid>
-        
-        
-        
     </ContentPage.Content>
 </ContentPage>

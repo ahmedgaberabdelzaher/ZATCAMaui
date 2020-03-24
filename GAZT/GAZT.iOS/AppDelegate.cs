@@ -64,6 +64,8 @@ namespace GAZT.iOS
            new SfLinearGradientBrush();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+
 
 
             LoadApplication(iosapp);
