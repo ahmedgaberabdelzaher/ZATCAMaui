@@ -45,6 +45,8 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 base.OnAppearing();
 
+                SetLTR();
+
                 await viewModel.LoadDashboardData();
 
                 viewModel.PopulateReturnsInformation();
