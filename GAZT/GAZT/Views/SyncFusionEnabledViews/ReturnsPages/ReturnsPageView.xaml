@@ -11,7 +11,7 @@
              Title="My Returns"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
              xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
     <ContentPage.Content>
 

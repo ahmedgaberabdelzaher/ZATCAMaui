@@ -7,7 +7,7 @@
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:local2="clr-namespace:GAZT.CustomControl"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.MyBills}"
              x:Class="GAZT.Views.MyBillsView">
     <!--<ContentPage.ToolbarItems>

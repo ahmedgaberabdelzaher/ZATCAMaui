@@ -23,6 +23,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 this.BindingContext = viewModel;
                 viewModel.onPageLoad();
                 viewModel.TabIndexStatus = Index;
+                SetLTR();
             }
             catch (Exception ex)
             {
@@ -39,5 +40,12 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
         //    base.OnDisappearing();
         //    this.Content = null;
         //}
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
     }
 }
