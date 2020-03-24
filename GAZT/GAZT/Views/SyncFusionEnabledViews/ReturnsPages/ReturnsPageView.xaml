@@ -11,12 +11,12 @@
              Title="My Returns"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
              xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
     <ContentPage.Content>
-      
 
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" TabIndex="{Binding TabIndexStatus}" >
+
+        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" SelectedIndex="{Binding TabIndexStatus}" >
                     <tabview:SfTabView.SelectionIndicatorSettings>
                         <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
@@ -50,7 +50,7 @@
             HasUnevenRows="True"
                               
                                BackgroundColor="White"
-                 SelectedItem="{Binding SelectedICRVATSubmitted}"     
+                
             SeparatorVisibility="None"
             >
                         <ListView.ItemTemplate>
@@ -229,7 +229,7 @@
              BackgroundColor="White"
 
                                ItemTapped="Bills_ItemTapped"
-                 SelectedItem="{Binding SelectedZakatReturn}"     
+                    
             SeparatorVisibility="None"
             >
                                                 <ListView.ItemTemplate>
@@ -437,7 +437,7 @@
             HasUnevenRows="True"
                               
                                BackgroundColor="White"
-                 SelectedItem="{Binding SelectedICRVATSubmitted}"     
+               
             SeparatorVisibility="None"
             >
                                                     <ListView.ItemTemplate>
@@ -615,7 +615,7 @@
              BackgroundColor="White"
 
                                ItemTapped="Bills_ItemTapped"
-                 SelectedItem="{Binding SelectedZakatReturn}"     
+                  
             SeparatorVisibility="None"
             >
                                                 <ListView.ItemTemplate>
@@ -822,7 +822,7 @@
             HasUnevenRows="True"
                               
                                BackgroundColor="White"
-                 SelectedItem="{Binding SelectedICRVATSubmitted}"     
+               
             SeparatorVisibility="None"
             >
                         <ListView.ItemTemplate>

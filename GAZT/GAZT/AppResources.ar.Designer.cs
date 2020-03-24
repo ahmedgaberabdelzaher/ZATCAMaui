@@ -4775,5 +4775,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVerificationsCode", resourceCulture);
             }
         }
+        
+        public static string ZZZLanguage {
+            get {
+                return ResourceManager.GetString("ZZZLanguage", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSetToArabic {
+            get {
+                return ResourceManager.GetString("ZZZSetToArabic", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSetToEnglish {
+            get {
+                return ResourceManager.GetString("ZZZSetToEnglish", resourceCulture);
+            }
+        }
     }
 }

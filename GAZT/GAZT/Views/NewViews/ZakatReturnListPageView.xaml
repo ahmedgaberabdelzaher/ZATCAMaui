@@ -148,7 +148,7 @@
                                 <ViewCell>
                                     <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  HeightRequest="250" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
                                         
-                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
 
                                                     <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                         <Grid.ColumnDefinitions>

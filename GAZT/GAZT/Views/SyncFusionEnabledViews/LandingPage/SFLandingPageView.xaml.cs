@@ -115,6 +115,29 @@ namespace GAZTeServicesApp.Views.LandingPage
         {
             viewModel._navigationService.NavigateTo("OptionsPageView");
         }
+
+        private void OnImageClicked(object sender, EventArgs e)
+        {
+            Image img = sender as Image;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+        }
+        private void OnLabelClicked(object sender, EventArgs e)
+        {
+            Label img = sender as Label;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+        }
+
+        private void OnStackLayoutClicked(object sender, EventArgs e)
+        {
+            StackLayout img = sender as StackLayout;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+        }
+
+        
+
         private void OnTappedVAT(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.VATReturnsPageView);
@@ -154,7 +177,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 if (BModel.eServiceName == AppResources.MyBills)
                 {
-                    viewModel._navigationService.NavigateTo(App.MyBillsView);
+                    viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                 }
                 if(BModel.eServiceName== AppResources.ZTEReportReportScreenTitle)
                 {
@@ -193,7 +216,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 if (BModel.eServiceName == AppResources.MyBills)
                 {
-                    viewModel._navigationService.NavigateTo(App.MyBillsView);
+                    viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
@@ -205,15 +228,17 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         }
 
+        
+       
 
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
 
-            if (controltype == "Xamarin.Forms.Image")
+            if (controltype == "Xamarin.Forms.StackLayout")
             {
-                Image arrowImage = sender as Image;
+                StackLayout arrowImage = sender as StackLayout;
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
