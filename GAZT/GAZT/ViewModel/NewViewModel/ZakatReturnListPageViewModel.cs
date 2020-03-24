@@ -74,8 +74,8 @@ namespace GAZT.ViewModel.NewViewModel
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
                     {
                         ReturnPeriod = SelectedZakatReturn.Period;
-                      //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                        //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
+                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
                     else
                     {

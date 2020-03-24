@@ -158,6 +158,7 @@
     <Compile Include="CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
     <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
     <Compile Include="CustomRenderer\PdfWebViewRenderer.cs" />
+    <Compile Include="DependencyServices\StatusBarImplementation.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PUSH Notifications\MyFirebaseIidService.cs" />
     <Compile Include="PUSH Notifications\MyFirebaseMessagingService.cs" />

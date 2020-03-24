@@ -14,13 +14,16 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
     public partial class ReturnsPageView : ContentPage
     {
         ReturnsPageViewModel viewModel;
-        public ReturnsPageView()
+        public ReturnsPageView(int Index)
         {
             try
             {
                 InitializeComponent();
-                this.BindingContext = viewModel = App.Locator.ReturnsPageView;
+                viewModel = App.Locator.ReturnsPageView;
+                this.BindingContext = viewModel;
                 viewModel.onPageLoad();
+                viewModel.TabIndexStatus = Index;
+                SetLTR();
             }
             catch (Exception ex)
             {
@@ -28,5 +31,21 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             }
         }
 
+        private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    this.Content = null;
+        //}
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
     }
 }

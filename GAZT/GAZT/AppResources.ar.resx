@@ -2045,7 +2045,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFavoriteDescending" xml:space="preserve">
-    <value>المفضضل (تنازلي)</value>
+    <value>المفضل (تنازلي)</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZReferenceNumber" xml:space="preserve">
@@ -2065,7 +2065,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>حاله  الرقم المرجعي</value>
+    <value>Return Status</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
@@ -2818,5 +2818,17 @@
   <data name="ZZZVerificationsCode" xml:space="preserve">
     <value>رمز التحقق</value>
     <comment>Sf Sign up</comment>
+  </data>
+  <data name="ZZZLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZSetToArabic" xml:space="preserve">
+    <value>Set To Arabic</value>
+    <comment>SynfusionUILabel</comment>
+  </data>
+  <data name="ZZZSetToEnglish" xml:space="preserve">
+    <value>Set To English</value>
+    <comment>SynfusionUILabel</comment>
   </data>
 </root>

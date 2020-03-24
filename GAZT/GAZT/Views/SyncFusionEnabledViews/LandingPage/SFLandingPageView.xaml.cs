@@ -45,6 +45,8 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 base.OnAppearing();
 
+                SetLTR();
+
                 await viewModel.LoadDashboardData();
 
                 viewModel.PopulateReturnsInformation();
@@ -157,7 +159,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 if(BModel.eServiceName== AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView);
                 }
 
             }
@@ -196,7 +198,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView);
                 }
 
             }
@@ -204,26 +206,50 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         }
 
-        private void OnTappedBills(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.MyBillsView,new BillInfo());
-        }
-        private void OnTappedCertificate(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.MyCertificate);
-        }
-        private void OnTappedCorrespondence(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
-        }
-        private void OnTappedTINStatus(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
-        }
-        private void OnTappedFormBundle(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
-        }
+        
        
+
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            string controltype = sender.GetType().ToString();
+
+            if (controltype == "Xamarin.Forms.StackLayout")
+            {
+                StackLayout arrowImage = sender as StackLayout;
+                ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
+                if (BModel.ReturnTypeName == AppResources.Submitted)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
+                }
+                if (BModel.ReturnTypeName == AppResources.NonSubmitted)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
+                }
+                if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
+                }
+
+            }
+            if (controltype == "Xamarin.Forms.Label")
+            {
+                Label arrowImage = sender as Label;
+                ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
+                if (BModel.ReturnTypeName == AppResources.Submitted)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
+                }
+                if (BModel.ReturnTypeName == AppResources.NonSubmitted)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
+                }
+                if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                    viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
+                }
+
+            }
+        }
     }
 }

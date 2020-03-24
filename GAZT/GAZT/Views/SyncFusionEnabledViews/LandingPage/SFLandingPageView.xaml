@@ -222,6 +222,9 @@
                                                         <TapGestureRecognizer Tapped="OnImageClicked"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                     </Image>
+                                                    <!--<Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
+
+                                                    </Image>-->
                                                     <Label TextColor="#5d6770" LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
                                                         <Label.FormattedText >
                                                             <FormattedString>

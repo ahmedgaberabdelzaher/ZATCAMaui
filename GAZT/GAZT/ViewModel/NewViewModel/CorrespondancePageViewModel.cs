@@ -591,15 +591,21 @@ namespace GAZT.ViewModel.NewViewModel
                             childZakat.FavImg = "ic_star_border.png";
                         }
                         string StartDate = string.Empty;
+                        string time = string.Empty;
 
                         if (App.IsArabic)
                         {
                             if (BegDate != null)
                             {
 
+                                //StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                //dd MMMM yyyy hh:mm:ss tt
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time= Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+
 
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = StartDate + "  " + time;
                             }
 
                         }
@@ -608,6 +614,22 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                StartDate = StartDate + "  " + time;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                             }
 
@@ -661,15 +683,16 @@ namespace GAZT.ViewModel.NewViewModel
                             childVAT.FavImg = "ic_star_border.png";
                         }
                         string StartDate = string.Empty;
-
+                        string time = string.Empty;
                         if (App.IsArabic)
                         {
                             if (BegDate != null)
                             {
 
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = StartDate + "  " + time;
                             }
                         }
                         else
@@ -677,6 +700,8 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                StartDate = StartDate + "  " + time;
                             }
                         }
                         childVAT.DateAndTime = StartDate;
@@ -727,15 +752,17 @@ namespace GAZT.ViewModel.NewViewModel
                             childET.FavImg = "ic_star_border.png";
                         }
                         string StartDate = string.Empty;
-
+                        string time = string.Empty;
                         if (App.IsArabic)
                         {
                             if (BegDate != null)
                             {
 
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
 
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = StartDate + time;
                             }
 
                         }
@@ -744,6 +771,8 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                StartDate = StartDate + time;
                             }
 
                         }

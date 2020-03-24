@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -58,6 +59,7 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.EditMobileNumberCommand = new Command(this.EditMobileNumberClicked);
             this.EditPasswordCommand = new Command(this.EditPasswordClicked);
             this.EditEmailCommand = new Command(this.EditEmailClicked);
+            
 
 
         }
@@ -70,6 +72,21 @@ namespace GAZTeServicesApp.ViewModels.Options
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
         public Command EditEmailCommand { get; set; }
+
+
+        private string _translateText;
+        public string TranslateText
+        {
+            get
+            {
+                return _translateText;
+            }
+            set
+            {
+                _translateText = value;
+                RaisePropertyChanged("TranslateText");
+            }
+        }
 
         /// <summary>
         /// Gets or sets the command is executed when the favourite button is clicked.
@@ -223,12 +240,18 @@ namespace GAZTeServicesApp.ViewModels.Options
             // Do something
         }
 
+       
+
         public void LogOut()
         {
 
             var _navigation = Application.Current.MainPage.Navigation;
             _navigation.PopToRootAsync();
         }
+
+
+
+      
         #endregion
     }
 }

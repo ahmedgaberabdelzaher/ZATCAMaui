@@ -5383,7 +5383,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Form Bundle Status.
+        ///   Looks up a localized string similar to Return Status.
         /// </summary>
         public static string ZZFormBundleStatus {
             get {
@@ -7099,6 +7099,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string ZZZLanguage {
+            get {
+                return ResourceManager.GetString("ZZZLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Enter Your Credentials to Login.
         /// </summary>
         public static string ZZZLoginLabel {
@@ -7158,6 +7167,24 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set To Arabic.
+        /// </summary>
+        public static string ZZZSetToArabic {
+            get {
+                return ResourceManager.GetString("ZZZSetToArabic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set To English.
+        /// </summary>
+        public static string ZZZSetToEnglish {
+            get {
+                return ResourceManager.GetString("ZZZSetToEnglish", resourceCulture);
             }
         }
         

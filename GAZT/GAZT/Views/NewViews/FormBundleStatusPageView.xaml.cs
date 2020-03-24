@@ -19,7 +19,13 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
             this.BindingContext = viewModel;
+            //CPicker_imgtap.IsEnabled = false;
+            //tapImg.Tapped += Gesture_Tapped;
 
+            //void Gesture_Tapped(object sender, EventArgs e)
+            //{
+            //    tapImg.Tapped -= Gesture_Tapped;
+            //}
             viewModel.onPageLoad();
             viewModel.IsCPickerEnable = false;
             SetLTR();
@@ -30,8 +36,11 @@ namespace GAZT.Views.NewViews
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        {
-            CPicker.Focus();
+        {if (viewModel.SelectedFormBindleFbtyp != null)
+            { 
+                CPicker.Focus();
+            }
+            
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
