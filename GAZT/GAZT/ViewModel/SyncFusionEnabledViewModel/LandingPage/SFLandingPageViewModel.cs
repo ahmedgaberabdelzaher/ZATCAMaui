@@ -311,15 +311,33 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
-        #endregion
 
-        #region Methods
+        //private BillInfo _selectedBillsType;
+        //public BillInfo SelectedBillsType
+        //{
+        //    get
+        //    {
+        //        return _selectedBillsType;
+        //    }
+        //    set
+        //    {
+        //        _selectedBillsType = value;
+        //        if(SelectedBillsType != null)
+        //        {
+        //         //   NavigateToMyBills();
+        //        }
+        //        RaisePropertyChanged("SelectedBillsType");
+        //    }
+        //}
+#endregion
 
-        /// <summary>
-        /// Invoked when the menu button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void ShowOptionsCommandClicked(object obj)
+#region Methods
+
+/// <summary>
+/// Invoked when the menu button is clicked.
+/// </summary>
+/// <param name="obj">The Object</param>
+private void ShowOptionsCommandClicked(object obj)
         {
             _navigationService.NavigateTo(App.SFOptionsPageView);
         }
@@ -698,8 +716,14 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png", OnClickEvents = "OnTappedCorrespondence" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png", OnClickEvents = "OnTappedCorrespondence" });
         }
+
+        public void NavigateToMyBills(BillInfo billInfo)
+        {
+            _navigationService.NavigateTo(App.MyBillsView, billInfo);
+        }
     }
 
+   
     #endregion
 }
 

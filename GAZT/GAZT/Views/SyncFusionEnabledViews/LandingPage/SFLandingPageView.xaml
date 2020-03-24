@@ -208,7 +208,7 @@
 
                     <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}"></Label>
 
-                    <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}">
+                    <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -217,21 +217,43 @@
                                         <Grid>
                                             <StackLayout Margin="5" Spacing="5">
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
+                                                    <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
+                                                        <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnImageClicked"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                    </Image>
                                                     <Label TextColor="#5d6770" LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
                                                         <Label.FormattedText >
                                                             <FormattedString>
                                                                 <Span  Text="{Binding BillTypeName}"  Style="{DynamicResource GAZTFontBoldStyle}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
+                                                         <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
                                                     </Label>
+                                                      <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnStackLayoutClicked"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <Label Text="{Binding BillCount}" FontSize="Title" TextColor="#474747" Padding="0,10,0,15">
+ <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
                                                 </Label>
                                                 <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray">
+ <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
                                                 </Label>
                                                 <Label Text="{Binding BillAmount}" TextColor="#006450" >
+ <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
                                                 </Label>
+                                                <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnStackLayoutClicked"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView.Content>
