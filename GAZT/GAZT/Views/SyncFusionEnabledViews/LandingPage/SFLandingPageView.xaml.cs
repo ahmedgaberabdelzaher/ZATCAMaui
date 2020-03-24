@@ -28,17 +28,35 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 InitializeComponent();
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
-              //  ParentContainer.RaiseChild(BusyIndicator);
+                
+                LoadData();
+
+                //  ParentContainer.RaiseChild(BusyIndicator);
                 calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
+
                 SetLTR();
-              //  Application.Current.Resources["GAZTFontBold"] = Application.Current.Resources["GAZTBoldArabic"];
+                viewModel.TaxPayerProfile = App.TP;
+
+
             }
             catch (Exception gex)
             {
+                viewModel.TaxPayerProfile = App.TP;
                 int i = 0;
             }
             
         }
+
+        private async void LoadData()
+        {
+            await viewModel.LoadDashboardData();
+
+            viewModel.PopulateReturnsInformation();
+            viewModel.PopulateBillsInformation();
+            viewModel.PopulateBillsAndReturnsSchedule();
+            viewModel.PopulateeServicesApplicableToTheTaxPayer();
+        }
+
         protected async override void OnAppearing()
         {
             try
@@ -46,13 +64,13 @@ namespace GAZTeServicesApp.Views.LandingPage
                 base.OnAppearing();
 
                 SetLTR();
+                viewModel.TaxPayerProfile = App.TP;
+                //await viewModel.LoadDashboardData();
 
-                await viewModel.LoadDashboardData();
-
-                viewModel.PopulateReturnsInformation();
-                viewModel.PopulateBillsInformation();
-                viewModel.PopulateBillsAndReturnsSchedule();
-                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                //viewModel.PopulateReturnsInformation();
+                //viewModel.PopulateBillsInformation();
+                //viewModel.PopulateBillsAndReturnsSchedule();
+                //viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch(Exception ex)
             {
@@ -83,10 +101,14 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)

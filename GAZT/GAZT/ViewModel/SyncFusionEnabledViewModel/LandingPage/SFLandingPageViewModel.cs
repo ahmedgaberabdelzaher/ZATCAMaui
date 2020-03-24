@@ -273,11 +273,6 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             set
             {
-                if (this._TaxPayerProfile == value)
-                {
-                    return;
-                }
-
                 this._TaxPayerProfile = value;
                 this.RaisePropertyChanged("TaxPayerProfile");
             }

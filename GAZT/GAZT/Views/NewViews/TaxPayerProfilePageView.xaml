@@ -90,13 +90,13 @@
 
                 </Grid>
             </ScrollView>
-            <StackLayout Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
+            <!--<StackLayout Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
                 <Image Source="ic_home.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnHomeClick}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
