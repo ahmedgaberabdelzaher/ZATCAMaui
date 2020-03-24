@@ -187,9 +187,9 @@ namespace GAZTeServicesApp.Views.LandingPage
         {
             string controltype = sender.GetType().ToString();
 
-            if (controltype == "Xamarin.Forms.Image")
+            if (controltype == "Xamarin.Forms.StackLayout")
             {
-                Image arrowImage = sender as Image;
+                StackLayout arrowImage = sender as StackLayout;
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {

@@ -298,7 +298,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         {
                             ICRListVATSubmitted = new List<ICRListSet>();
                             ICRListVATSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0055").ToList<ICRListSet>();
-                            ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001").ToList<ICRListSet>();
+                            ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001" || a.Status== "E0013").ToList<ICRListSet>();
                             DateTime Today = DateTime.Now;
                             ICRListVATOverDue = icrList.ICR_LISTSet.Where(a => a.Status != "E0045" && a.Status != "E0055" && a.DueDateDateTime < Today).ToList<ICRListSet>();
                             // ICRDummyList = ICRList;
@@ -335,64 +335,67 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         {
                             for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
                             {
-                                if (App.IsArabic)
+                                if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12"))
                                 {
-                                    myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
-                                }
-                                else
-                                {
-                                    if (myZakatReturnsListTemp[i].Period.Contains("-"))
-                                        myZakatReturnsListTemp[i].Period.Replace("-", "- ");
-                                }
-                                if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
-                                {
-                                    if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                                    if (App.IsArabic)
                                     {
+                                        myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
+                                    }
+                                    else
+                                    {
+                                        if (myZakatReturnsListTemp[i].Period.Contains("-"))
+                                            myZakatReturnsListTemp[i].Period.Replace("-", "- ");
+                                    }
+                                    if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
+                                    {
+                                        if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                                        {
 
-                                        myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
-                                        myZakatReturnsListTemp[i].BorderColour = "#944E22";
-                                        MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                    }
-                                    else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                                    {
-                                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                        MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                    }
-                                    if (!string.Equals(myZakatReturnsListTemp[i].Stat, "P") && !string.Equals(myZakatReturnsListTemp[i].Stat, "IP014")  && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC)< TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                                    {
-                                        MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
-                                    }
-                                   
-                                }
-                                else
-                                {
-                                    if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
-                                    {
-
-                                        myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
-                                        myZakatReturnsListTemp[i].BorderColour = "#944E22";
-                                        MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                    }
-                                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                                    {
-                                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                        MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                            myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                                            myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                                            MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                        }
+                                        else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                        {
+                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                            MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                        }
+                                        if (!string.Equals(myZakatReturnsListTemp[i].Stat, "P") && !string.Equals(myZakatReturnsListTemp[i].Stat, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                                        {
+                                            MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
+                                        }
 
                                     }
-                                    else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                    else
                                     {
-                                        myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                        myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                    }
-                                    if (!string.Equals(myZakatReturnsListTemp[i].Statfg, "P") && !string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                                    {
-                                        MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
-                                    }
-                                }
+                                        if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                                        {
 
-                                //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                                            myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                                            myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                                            MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                        }
+                                        else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                        {
+                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                            MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
+
+                                        }
+                                        else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                        {
+                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                        }
+                                        if (!string.Equals(myZakatReturnsListTemp[i].Statfg, "P") && !string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                                        {
+                                            MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
+                                        }
+                                    }
+
+                                    //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                                }
                             }
 
                            

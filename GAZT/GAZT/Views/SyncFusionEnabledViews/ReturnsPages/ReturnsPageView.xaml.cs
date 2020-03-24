@@ -19,7 +19,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             try
             {
                 InitializeComponent();
-                this.BindingContext = viewModel = App.Locator.ReturnsPageView;
+                viewModel = App.Locator.ReturnsPageView;
+                this.BindingContext = viewModel;
                 viewModel.onPageLoad();
                 viewModel.TabIndexStatus = Index;
             }
@@ -33,5 +34,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
         {
 
         }
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    this.Content = null;
+        //}
     }
 }

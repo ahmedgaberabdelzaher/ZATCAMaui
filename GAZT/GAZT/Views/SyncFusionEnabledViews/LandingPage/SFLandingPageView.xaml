@@ -275,22 +275,25 @@
                                             </gradient:SfGradientView>
 
                                             <StackLayout Margin="5" Spacing="5" VerticalOptions="Center" HorizontalOptions="Center">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
                                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
-                                                        <Image.GestureRecognizers>
+                                                        <!--<Image.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                        </Image.GestureRecognizers>
+                                                        </Image.GestureRecognizers>-->
                                                     </Image>
                                                     <Label Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
-                                                        <Label.GestureRecognizers>
+                                                        <!--<Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                        </Label.GestureRecognizers>
+                                                        </Label.GestureRecognizers>-->
                                                     </Label>
                                                 </StackLayout>
                                                 <Label Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}">
-                                                    <Label.GestureRecognizers>
+                                                    <!--<Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                    </Label.GestureRecognizers>
+                                                    </Label.GestureRecognizers>-->
                                                 </Label>
                                             </StackLayout>
                                         </Grid>
