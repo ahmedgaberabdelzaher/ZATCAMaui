@@ -308,7 +308,7 @@ namespace GAZT.ViewModel.NewViewModel
                                                 _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
                                                 _estimateZakatAttachment.Seqno = string.Empty;
                                                 _estimateZakatAttachment.SchGuid = string.Empty;
-                                                _estimateZakatAttachment.AttBy = DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
+                                                _estimateZakatAttachment.AttBy = string.Empty; DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
                                                 _estimateZakatAttachment.FileExtn = string.Empty;
                                                 _estimateZakatAttachment.ByPusr = string.Empty;
                                                 _estimateZakatAttachment.OutletRef = string.Empty;
@@ -320,14 +320,16 @@ namespace GAZT.ViewModel.NewViewModel
                                                 _estimateZakatAttachment.DataVersion = string.Empty;
                                                 DateTime currentDate = DateTime.Now;
                                                 long ticks = currentDate.Ticks;
-                                                //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
-                                                _estimateZakatAttachment.Erfdt = "/Date(1546300800000)/";// need to
+                                                    //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
+                                                    TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                                    double unixTime = span.TotalSeconds;
+                                                    _estimateZakatAttachment.Erfdt = "/Date(" + "1584987294" + ")/";// need to
                                                 SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
-                                                IsValueChanged();
+                                                IsValueChanged();// 1584987294.32348//1584987210.06955
 
 
-                                                // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
-                                            }
+                                                    // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                                }
                                         }
                                         else
                                         {
@@ -461,10 +463,12 @@ namespace GAZT.ViewModel.NewViewModel
                     newValue = SelectedSalesDetails.InformationFromPartieToCompare;
                     changeReason = SelectedSalesDetails.ChangeReason;
                     ChangeReason = SelectedSalesDetails.ChangeReason;
-                    ZakatReturnAttachmentsList = SelectedSalesDetails.estimateZakatAttachment;
+                    ZakatReturnAttachmentsList =  SelectedSalesDetails.estimateZakatAttachment;// SetAttachmentListData(SelectedSalesDetails.estimateZakatAttachment);//
                 }
                 isOnLoad = false;
             }
+
+            
             catch (Exception ex)
             {
 
@@ -484,6 +488,10 @@ namespace GAZT.ViewModel.NewViewModel
            // ZakatReturnAttachmentsList = ZakatAttachment;
         }
 
+        //public ObservableCollection<EstimateZakatAttachment>  SetAttachmentListData(ObservableCollection<EstimateZakatAttachment> )
+        //{
+        //    foreach()
+        //}
         public async Task  DeleteSelectedAttachment(string filename, string dougUD)
         {
             await Task.Run(() =>

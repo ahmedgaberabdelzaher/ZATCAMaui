@@ -26,7 +26,7 @@ namespace GAZT
                 bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
-                    if (letter <= 127)
+                    if (letter <= 127)//  ||(letter >= 1536 && letter <= 1791)
                     {
                         isValidNumber = true;
                     }

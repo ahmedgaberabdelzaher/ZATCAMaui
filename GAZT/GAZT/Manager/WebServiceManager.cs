@@ -2462,7 +2462,7 @@ namespace GAZT.Manager
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
 
-                    if (_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
+                    if(_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
                     {
                         ErrorMessage = string.Empty;
                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
