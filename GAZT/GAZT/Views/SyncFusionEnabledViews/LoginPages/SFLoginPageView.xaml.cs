@@ -1,7 +1,9 @@
 ﻿using GAZT;
+using GAZT.Helper;
 using GAZTeServicesApp.ViewModels.LoginPage;
 using System;
 using System.Globalization;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -24,7 +26,10 @@ namespace GAZTeServicesApp.Views.LoginPage
             SetLTRDirection();
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
-            
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                DependencyService.Get<IStatusBar>().HideStatusBar();
+            }
             viewModel.TINIndex = 0;
             // ParentContainer.RaiseChild(BusyIndicator);
         }

@@ -6,7 +6,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
      xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-    x:Name="settingPage"
+    xmlns:local1="clr-namespace:GAZT"
     BackgroundColor="{DynamicResource Gray-100}"
     NavigationPage.HasNavigationBar="False">
 
@@ -98,7 +98,7 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
-                    <controls:TapAnimationGrid
+                    <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
                     Command="{Binding EditMobileNumberCommand}"
@@ -109,23 +109,23 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  Edit profile icon  -->
+                        --><!--  Edit profile icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource Edit}" />
-                        <!--  Edit profile label  -->
+                        --><!--  Edit profile label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
                          Text="{x:Static local:AppResources.ChangeMobileNumber}" />
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
@@ -140,27 +140,27 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  Edit profile icon  -->
+                        --><!--  Edit profile icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource Edit}" />
-                        <!--  Edit profile label  -->
+                        --><!--  Edit profile label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
                          Text="{x:Static local:AppResources.ChangePassword}" />
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
-                    <!--  Grid for Change password label and navigation bar icon  -->
+                    --><!--  Grid for Change password label and navigation bar icon  --><!--
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
@@ -172,25 +172,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  Change password icon  -->
+                        --><!--  Change password icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource Edit}" />
-                        <!--  Change password label  -->
+                        --><!--  Change password label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
                          Text="{x:Static local:AppResources.ChangeEmail}"/>
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <BoxView Style="{StaticResource SeparatorStyle}" />-->
 
                     <!--  Header label for Support setting  -->
                     <Label
@@ -238,6 +238,41 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
+
+                    <!--  Grid for FAQs label and navigation bar icon  -->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding FAQCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  FAQs icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" />
+                        <!--  FAQs text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyle}"
+                        Text="{x:Static local:AppResources.ZZZFaq}" />
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
+
+
                     <!--  Grid for Terms of service label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -256,7 +291,7 @@
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
-                        Text="{StaticResource Account}" />
+                        Text="{StaticResource More}" />
                         <!--  Terms of service label  -->
                         <Label
                         Grid.Column="1"
@@ -288,7 +323,7 @@
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
-                        Text="{StaticResource Account}" />
+                        Text="{StaticResource More}" />
                         <!--  Privacy policy text label  -->
                         <Label
                         Grid.Column="1"
@@ -302,11 +337,14 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
+                  
+
+
                     <!--  Grid for FAQs label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
-                    Command="{Binding FAQCommand}"
+                
                     RowSpacing="0"
                     Tapped="False">
                         <Grid.ColumnDefinitions>
@@ -315,22 +353,34 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <!--  FAQs icon  -->
-                        <Label
+                        <Image
+                            Source="ic_language.png"
                         Grid.Column="0"
                         Margin="16,0,16,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#005e4b"
-                        Text="{StaticResource Account}" />
+                        Style="{StaticResource IconImageStyle}"
+                        >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
                         <!--  FAQs text label  -->
-                        <Label
+                        <local1:CustomLabel
+                            
                         Grid.Column="1"
                         Style="{StaticResource LabelStyle}"
-                        Text="{x:Static local:AppResources.ZZZFaq}" />
+                        Text="{Binding TranslateText}" >
+                            <local1:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>
+                            </local1:CustomLabel.GestureRecognizers>
+                        </local1:CustomLabel>
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
                         Text="{StaticResource Next}" />-->
+                        <controls:TapAnimationGrid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>
+                        </controls:TapAnimationGrid.GestureRecognizers>
                     </controls:TapAnimationGrid>
 
                     <!--  Logout button  -->
@@ -344,9 +394,9 @@
                     Margin="0"
                     VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
-                    BackgroundColor="{DynamicResource PrimaryColor}"
-                    BorderColor="{DynamicResource PrimaryColor}"
-                    BorderWidth="1"
+                  BackgroundColor="#D99A29"
+                 
+                   
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="56"
                     CornerRadius="0"

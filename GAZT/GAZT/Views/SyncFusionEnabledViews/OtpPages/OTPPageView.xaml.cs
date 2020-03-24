@@ -37,6 +37,10 @@ namespace GAZT.Views.NewViews
             viewModel.numberOfSeconds = 120;
             viewModel.OnPageLoad();
             this.BindingContext = viewModel;
+            if(Device.RuntimePlatform==Device.Android)
+            {
+                DependencyService.Get<IStatusBar>().HideStatusBar();
+            }
 
             viewModel.IsComingFrom = e;
             if (e == NavigateToOtp.IsMobile)
