@@ -16,7 +16,7 @@ namespace GAZT.Views
     public partial class MyBillsView : ContentPage
     {
         MyBillsViewModel viewModel;
-        public MyBillsView()
+        public MyBillsView(BillInfo billInfo = null)
         {
             Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
@@ -38,7 +38,7 @@ namespace GAZT.Views
                 SetLTR();
                 this.BindingContext = viewModel;
 
-                viewModel.onPageLoad();
+                viewModel.onPageLoad(billInfo);
 
             }
             catch (Exception ex)
@@ -188,6 +188,11 @@ namespace GAZT.Views
 
             }
 
+
+        }
+
+        private void ShowSelectedBillsType()
+        {
 
         }
     }
