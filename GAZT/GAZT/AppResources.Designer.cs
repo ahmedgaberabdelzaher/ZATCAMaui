@@ -5383,7 +5383,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Form Bundle Status.
+        ///   Looks up a localized string similar to Return Status.
         /// </summary>
         public static string ZZFormBundleStatus {
             get {
