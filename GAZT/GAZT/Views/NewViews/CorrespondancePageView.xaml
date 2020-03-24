@@ -4,30 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             xmlns:local1="clr-namespace:GAZT"
              FlowDirection="RightToLeft"
-                xmlns:custom="clr-namespace:GAZT"
-             xmlns:local2="clr-namespace:GAZT.CustomControl"
+             xmlns:custom="clr-namespace:GAZT;clr-namespace:GAZT.CustomControl"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:local="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondancePageView">
-
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12*" />
                     <RowDefinition Height="12*" />
                     <RowDefinition Height="76*" />
 
                 </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
 
                     <ColumnDefinition Width="90*" />
 
                 </Grid.ColumnDefinitions>
-
 
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"   BackgroundColor="#005e4b">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.ColumnSpan="7"    Margin="10,10,10,0" >
@@ -39,27 +38,25 @@
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="23*"/>
-
                         </Grid.ColumnDefinitions>
-                        <local1:CustomLabel Text="{Binding ZakatCountDisplay}"   Style="{DynamicResource searchBarStyleForZakat}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <local:CustomLabel Text="{Binding ZakatCountDisplay}"   Style="{DynamicResource searchBarStyleForZakat}"  Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-
-                            <local1:CustomLabel.GestureRecognizers>
+                            <local:CustomLabel.GestureRecognizers>
 
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForZakat" Command="{Binding onZakatLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
+                            </local:CustomLabel.GestureRecognizers>
+                        </local:CustomLabel>
 
-                        <local1:CustomLabel Text="{Binding VATCountDisplay}"  Style="{DynamicResource searchBarStyleForVAT}" Grid.Row="0" Grid.Column="1"  >
-                            <local1:CustomLabel.GestureRecognizers>
+                        <local:CustomLabel Text="{Binding VATCountDisplay}"  Style="{DynamicResource searchBarStyleForVAT}" Grid.Row="0" Grid.Column="1"  >
+                            <local:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding onVATLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
-                        <local1:CustomLabel Text="{Binding ETCountDisplay}"  Style="{DynamicResource searchBarStyleForET}" Grid.Row="0" Grid.Column="2"  >
-                            <local1:CustomLabel.GestureRecognizers>
+                            </local:CustomLabel.GestureRecognizers>
+                        </local:CustomLabel>
+                        <local:CustomLabel Text="{Binding ETCountDisplay}"  Style="{DynamicResource searchBarStyleForET}" Grid.Row="0" Grid.Column="2"  >
+                            <local:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForET" Command="{Binding onETLabelClicked}" />
-                            </local1:CustomLabel.GestureRecognizers>
-                        </local1:CustomLabel>
+                            </local:CustomLabel.GestureRecognizers>
+                        </local:CustomLabel>
 
 
 
@@ -71,7 +68,8 @@
                 <Frame Grid.Row="1"  Margin="10,5,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleForEntry}"  >
 
                 </Frame>
-                <custom:GAZTBorderlessPicker  x:Name="FPicker" Margin="15,5,15,0" SelectedIndex="{Binding SetSelectedIndex}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" IsEnabled="true" SelectedItem="{Binding SelectedFilter,Mode=TwoWay}" ItemsSource="{Binding CorresFilter}" ItemDisplayBinding="{Binding Filter}" Grid.Row="1" Grid.Column="0" ></custom:GAZTBorderlessPicker>
+
+                <local:GAZTBorderlessPicker  x:Name="FPicker" Margin="15,5,15,0" SelectedIndex="{Binding SetSelectedIndex}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" IsEnabled="true" SelectedItem="{Binding SelectedFilter,Mode=TwoWay}" ItemsSource="{Binding CorresFilter}" ItemDisplayBinding="{Binding Filter}" Grid.Row="1" Grid.Column="0" ></local:GAZTBorderlessPicker>
 
                 <Image Grid.Row="1"  Grid.Column="0"  Margin="10,5,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                     <Image.GestureRecognizers>
@@ -79,34 +77,23 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsZakatVisible}">
-                    <ListView  
-           ItemsSource="{Binding ListZAKATCorrespondance}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                      ItemTapped="ListView_ItemTapped"
-                        BackgroundColor="White"
-            SeparatorVisibility="None"
-            >
+
+                    <ListView  ItemsSource="{Binding ListZAKATCorrespondance}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" BackgroundColor="White" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-
                                     <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                        <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                            <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
-
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local:RoundCornersEffect.CornerRadius="10">
 
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                         <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="93*" />
-
                                                                 <ColumnDefinition Width="7*" />
                                                             </Grid.ColumnDefinitions>
                                                             <Grid.RowDefinitions>
@@ -118,13 +105,7 @@
                                                                 <RowDefinition Height="Auto" />
                                                             </Grid.RowDefinitions>
 
-                                                            <Label Text="{x:Static local:AppResources.ZZTitle}" Margin="0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                                           />
+                                                            <Label Text="{x:Static local:AppResources.ZZTitle}" Margin="0" Style="{StaticResource MiniGoldLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" />
 
                                                             <Label Text="{Binding Title}" 
                                                   
@@ -135,7 +116,6 @@
                                    Grid.Row="1"
                                    Grid.Column="0"
                                                            />
-
 
                                                             <Label 
                                                  Style="{StaticResource MiniGoldLabelStyle}"
@@ -168,6 +148,7 @@
                                    Grid.Column="0"
                                                           
                                    />
+
                                                             <Label  
                                      
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -181,14 +162,10 @@
                                                             </Label>
 
                                                             <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
-                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <!--<Image  Grid.Row="1"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                    <BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
-
 
                                                         </Grid>
                                                     </StackLayout>
+
                                                 </StackLayout>
                                             </StackLayout>
                                         </StackLayout>
@@ -197,6 +174,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
                 </StackLayout>
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsVATVisible}">
                     <ListView 
@@ -216,13 +194,11 @@
                                 <ViewCell>
                                     <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
 
-                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                        <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+                                            <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
-
-
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local:RoundCornersEffect.CornerRadius="10">
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                         <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                             <Grid.ColumnDefinitions>
@@ -334,13 +310,12 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
-                                        
-                                        <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+                                        <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+                                            <StackLayout local:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local:RoundCornersEffect.CornerRadius="10">
 
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                         <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
@@ -437,39 +412,29 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <local1:CustomLabel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
-                </local1:CustomLabel>
-                <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
-            <Image Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Source="ic_home.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OnHomeIconClicked}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Source="ic_question.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
-            <Image Grid.Row="6" Grid.RowSpan="2" Grid.Column="5" Source="ic_user_2.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center">
-                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
-                </Image.GestureRecognizers>
-            </Image>-->
 
+                <local:CustomLabel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
+                </local:CustomLabel>
 
             </Grid>
-
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
+
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
+
             </Grid>
             <!-- Acticity indicator layout end -->
-
-            <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatNoData}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
-            </local1:CustomLabel>
+            <local:CustomLabel  Text="{x:Static local:AppResources.ZVatNoData}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            </local:CustomLabel>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
