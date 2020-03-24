@@ -10,12 +10,13 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              Title="My Returns"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
+             xmlns:custom="clr-namespace:GAZT"
              FlowDirection="LeftToRight"
              x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
     <ContentPage.Content>
       
 
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
+        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" TabIndex="{Binding TabIndexStatus}" >
                     <tabview:SfTabView.SelectionIndicatorSettings>
                         <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
@@ -220,7 +221,186 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <Grid >
-                                            <Label TextColor="#303030" Text="Non-veg pizza is prepared by including the meat and animal tissue products." HeightRequest="50" VerticalTextAlignment="Center"/>
+                                            <ListView  x:Name="ZakatICRListSubmitted" 
+           ItemsSource="{Binding MyZakatReturnsSubmitted}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+
+                               ItemTapped="Bills_ItemTapped"
+                 SelectedItem="{Binding SelectedZakatReturn}"     
+            SeparatorVisibility="None"
+            >
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <cards1:SfCardView HasShadow="True" HeightRequest="250" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+
+                                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="1*" />
+                                                                            <ColumnDefinition Width="40*" />
+                                                                            <ColumnDefinition Width="49*" />
+                                                                            <ColumnDefinition Width="3*" />
+                                                                            <ColumnDefinition Width="7*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                        </Grid.RowDefinitions>
+
+                                                                        <Label Text="{Binding FbtText}" FontFamily="{StaticResource SSTArBold}" Margin="8,0,8,0" 
+                                                       Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                       TextColor="#065E49"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Grid.ColumnSpan="4"/>
+
+
+                                                                        <!--<Label Text="{x:Static local:AppResources.FiscalYear}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           Margin="8,0,8,0"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>-->
+
+                                                                        <Label Text="{Binding TaxPeriod}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                  Margin="8,0,8,0"
+                                                               
+                                     Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,0" 
+                                                           Style="{StaticResource MiniGoldLabelStyle}"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                        <custom:CustomLabel Text="{Binding Period}" FontFamily="{StaticResource SSTArBold}"
+                                                                             Margin="8,0,8,0" 
+                                                                             Style="{StaticResource MiniGrayLabelStyle}"
+                                                                             HorizontalOptions="StartAndExpand"
+                                                                             VerticalOptions="CenterAndExpand"
+                                                                             Grid.Row="3"
+                                                                             Grid.Column="1"
+                                                                             Grid.ColumnSpan="4" />
+
+                                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGoldLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="4"
+                                                                Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{Binding DueDtC}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                                               Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGrayLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="5"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4" />
+
+                                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGoldLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="6"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{Binding Status}" FontFamily="{StaticResource SSTArBold}"
+                                                                Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGrayLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="7"
+                                                                Grid.Column="1"
+                                                                Grid.ColumnSpan="4" />
+
+                                                                        <custom:CustomLabel
+                                                            Text="{x:Static local:AppResources.ZReferenceNumber}"
+                                                            Grid.Row="8"
+                                                            Margin="8,0,8,0"
+                                                            LineBreakMode="WordWrap"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGoldLabelStyle}"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="4" />
+
+                                                                        <custom:CustomLabel
+                                                            Text="{Binding Fbnum}"
+                                                            FontFamily="{StaticResource SSTArBold}"
+                                                            Grid.Row="9"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="2"
+                                                             Margin="8,0,8,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGrayLabelStyle}"/>
+
+                                                                        <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                        <Image  Grid.Row="0"
+                                                                Grid.Column="3"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="10"
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="StartAndExpand"/>
+                                                                        <!--<BoxView  
+                                                           Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="{Binding BorderColour}"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Fill"
+                                                            WidthRequest="2"/>-->
+
+
+                                                                        <!--<BoxView  
+                                                         Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="Gray"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Start"
+                                                            WidthRequest="1"/>-->
+
+
+                                                                    </Grid>
+                                                                </StackLayout>
+
+                                                            </cards1:SfCardView>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
                                         </Grid>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
@@ -427,7 +607,186 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <Grid >
-                                            <Label TextColor="#303030" Text="Non-veg pizza is prepared by including the meat and animal tissue products." HeightRequest="50" VerticalTextAlignment="Center"/>
+                                            <ListView  x:Name="ZakatICRListNonSubmitted" 
+           ItemsSource="{Binding MyZakatReturnsNonSubmitted}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+
+                               ItemTapped="Bills_ItemTapped"
+                 SelectedItem="{Binding SelectedZakatReturn}"     
+            SeparatorVisibility="None"
+            >
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <cards1:SfCardView HasShadow="True" HeightRequest="250" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+
+                                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="1*" />
+                                                                            <ColumnDefinition Width="40*" />
+                                                                            <ColumnDefinition Width="49*" />
+                                                                            <ColumnDefinition Width="3*" />
+                                                                            <ColumnDefinition Width="7*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                        </Grid.RowDefinitions>
+
+                                                                        <Label Text="{Binding FbtText}" FontFamily="{StaticResource SSTArBold}" Margin="8,0,8,0" 
+                                                       Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                       TextColor="#065E49"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Grid.ColumnSpan="4"/>
+
+
+                                                                        <!--<Label Text="{x:Static local:AppResources.FiscalYear}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           Margin="8,0,8,0"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>-->
+
+                                                                        <Label Text="{Binding TaxPeriod}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                  Margin="8,0,8,0"
+                                                               
+                                     Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,0" 
+                                                           Style="{StaticResource MiniGoldLabelStyle}"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                        <custom:CustomLabel Text="{Binding Period}" FontFamily="{StaticResource SSTArBold}"
+                                                                             Margin="8,0,8,0" 
+                                                                             Style="{StaticResource MiniGrayLabelStyle}"
+                                                                             HorizontalOptions="StartAndExpand"
+                                                                             VerticalOptions="CenterAndExpand"
+                                                                             Grid.Row="3"
+                                                                             Grid.Column="1"
+                                                                             Grid.ColumnSpan="4" />
+
+                                                                        <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGoldLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="4"
+                                                                Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{Binding DueDtC}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                                               Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGrayLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="5"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4" />
+
+                                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGoldLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="6"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4"/>
+
+                                                                        <Label Text="{Binding Status}" FontFamily="{StaticResource SSTArBold}"
+                                                                Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGrayLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="7"
+                                                                Grid.Column="1"
+                                                                Grid.ColumnSpan="4" />
+
+                                                                        <custom:CustomLabel
+                                                            Text="{x:Static local:AppResources.ZReferenceNumber}"
+                                                            Grid.Row="8"
+                                                            Margin="8,0,8,0"
+                                                            LineBreakMode="WordWrap"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGoldLabelStyle}"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="4" />
+
+                                                                        <custom:CustomLabel
+                                                            Text="{Binding Fbnum}"
+                                                            FontFamily="{StaticResource SSTArBold}"
+                                                            Grid.Row="9"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="2"
+                                                             Margin="8,0,8,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGrayLabelStyle}"/>
+
+                                                                        <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                        <Image  Grid.Row="0"
+                                                                Grid.Column="3"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="10"
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="StartAndExpand"/>
+                                                                        <!--<BoxView  
+                                                           Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="{Binding BorderColour}"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Fill"
+                                                            WidthRequest="2"/>-->
+
+
+                                                                        <!--<BoxView  
+                                                         Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="Gray"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Start"
+                                                            WidthRequest="1"/>-->
+
+
+                                                                    </Grid>
+                                                                </StackLayout>
+
+                                                            </cards1:SfCardView>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
                                         </Grid>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
@@ -632,10 +991,189 @@
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
-                                        <Grid >
-                                            <Label TextColor="#303030" Text="Non-veg pizza is prepared by including the meat and animal tissue products." HeightRequest="50" VerticalTextAlignment="Center"/>
-                                        </Grid>
-                                    </syncfusion:SfExpander.Content>
+                                            <Grid >
+                                                <ListView  x:Name="ZakatICRListOverDue" 
+           ItemsSource="{Binding MyZakatReturnsOverDue}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+
+                               ItemTapped="Bills_ItemTapped"
+                
+            SeparatorVisibility="None"
+            >
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ViewCell>
+                                                                <cards1:SfCardView HeightRequest="250" HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+
+                                                                        <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="40*" />
+                                                                                <ColumnDefinition Width="49*" />
+                                                                                <ColumnDefinition Width="3*" />
+                                                                                <ColumnDefinition Width="7*" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                            </Grid.RowDefinitions>
+
+                                                                            <Label Text="{Binding FbtText}" FontFamily="{StaticResource SSTArBold}" Margin="8,0,8,0" 
+                                                       Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                       TextColor="#065E49"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Grid.ColumnSpan="4"/>
+
+
+                                                                            <!--<Label Text="{x:Static local:AppResources.FiscalYear}" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                           Margin="8,0,8,0"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>-->
+
+                                                                            <Label Text="{Binding TaxPeriod}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                  Margin="8,0,8,0"
+                                                               
+                                     Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="4"/>
+
+                                                                            <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="8,0,8,0" 
+                                                           Style="{StaticResource MiniGoldLabelStyle}"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                            <custom:CustomLabel Text="{Binding Period}" FontFamily="{StaticResource SSTArBold}"
+                                                                             Margin="8,0,8,0" 
+                                                                             Style="{StaticResource MiniGrayLabelStyle}"
+                                                                             HorizontalOptions="StartAndExpand"
+                                                                             VerticalOptions="CenterAndExpand"
+                                                                             Grid.Row="3"
+                                                                             Grid.Column="1"
+                                                                             Grid.ColumnSpan="4" />
+
+                                                                            <Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGoldLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="4"
+                                                                Grid.Column="1"
+                                                                 Grid.ColumnSpan="4"/>
+
+                                                                            <Label Text="{Binding DueDtC}" FontFamily="{StaticResource SSTArBold}"
+                                                  
+                                                               Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGrayLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="5"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4" />
+
+                                                                            <Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                                               Style="{StaticResource MiniGoldLabelStyle}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               Grid.Row="6"
+                                                               Grid.Column="1"
+                                                               Grid.ColumnSpan="4"/>
+
+                                                                            <Label Text="{Binding Status}" FontFamily="{StaticResource SSTArBold}"
+                                                                Margin="8,0,8,0" 
+                                                                Style="{StaticResource MiniGrayLabelStyle}"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                Grid.Row="7"
+                                                                Grid.Column="1"
+                                                                Grid.ColumnSpan="4" />
+
+                                                                            <custom:CustomLabel
+                                                            Text="{x:Static local:AppResources.ZReferenceNumber}"
+                                                            Grid.Row="8"
+                                                            Margin="8,0,8,0"
+                                                            LineBreakMode="WordWrap"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGoldLabelStyle}"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="4" />
+
+                                                                            <custom:CustomLabel
+                                                            Text="{Binding Fbnum}"
+                                                            FontFamily="{StaticResource SSTArBold}"
+                                                            Grid.Row="9"
+                                                            Grid.Column="1"
+                                                            Grid.ColumnSpan="2"
+                                                             Margin="8,0,8,0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            Style="{StaticResource MiniGrayLabelStyle}"/>
+
+                                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                                                                            <Image  Grid.Row="0"
+                                                                Grid.Column="3"
+                                                                Grid.ColumnSpan="2"
+                                                                Grid.RowSpan="10"
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="StartAndExpand"/>
+                                                                            <!--<BoxView  
+                                                           Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="{Binding BorderColour}"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Fill"
+                                                            WidthRequest="2"/>-->
+
+
+                                                                            <!--<BoxView  
+                                                         Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Grid.RowSpan="10"
+                                                            Margin="0,0,0,0"
+                                                            BackgroundColor="Gray"
+                                                            VerticalOptions="Fill"
+                                                            HorizontalOptions="Start"
+                                                            WidthRequest="1"/>-->
+
+
+                                                                        </Grid>
+                                                                    </StackLayout>
+
+                                                                </cards1:SfCardView>
+                                                            </ViewCell>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </Grid>
+                                        </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
                         </ScrollView>
