@@ -122,6 +122,8 @@ namespace GAZTeServicesApp.Views.Options
                 SetRTLDirection();
 
             }
+
+            viewModel._navigationService.NavigateTo(App.SFLandingPageView);
         }
     }
 }

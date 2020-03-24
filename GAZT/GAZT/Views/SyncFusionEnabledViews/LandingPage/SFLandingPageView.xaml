@@ -16,7 +16,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
    xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-    x:Name="articleTilePage"
+    x:Name="LandingPage"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -27,13 +27,13 @@
 
             <!--<converter:BooleanToStringConverter x:Key="BoolToStringConverter" />-->
 
-            <DataTemplate x:Key="HorizontalArticleView">
-                <template:ArticleTileTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference articleTilePage}}" />
+            <!--<DataTemplate x:Key="HorizontalArticleView">
+                <template:ArticleTileTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference LandingPage}}" />
             </DataTemplate>
 
             <DataTemplate x:Key="HeaderView">
                 <StackLayout Spacing="8">
-                    <!--  Rotator view  -->
+                    --><!--  Rotator view  --><!--
                     <rotator:SfRotator
                         x:Name="Rotator"
                         BackgroundColor="White"
@@ -84,7 +84,7 @@
                         </rotator:SfRotator.ItemTemplate>
                     </rotator:SfRotator>
                 </StackLayout>
-            </DataTemplate>
+            </DataTemplate>-->
 
             <!--<DataTemplate x:Key="AppointmentTemplate">
                 <Button xmlns="http://xamarin.com/schemas/2014/forms" 
@@ -169,7 +169,7 @@
 
                     <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></Label>
 
-                    <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" >
+                    <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
@@ -228,7 +228,7 @@
                                                     <Label TextColor="#5d6770" LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
                                                         <Label.FormattedText >
                                                             <FormattedString>
-                                                                <Span  Text="{Binding BillTypeName}"  Style="{DynamicResource GAZTFontBoldStyle}" />
+                                                                <Span  Text="{Binding BillTypeName}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                          <Label.GestureRecognizers>
@@ -244,7 +244,8 @@
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
                                                 </Label>
-                                                <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray">
+
+                                                <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray" FontFamily="{StaticResource SSTArabicMedium}">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
@@ -397,15 +398,15 @@
                 </controls:TapAnimationGrid>
 
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
-                <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
+                <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
                     <Label.FormattedText >
                         <FormattedString>
-                            <Span Text="{x:Static local:AppResources.Hi}" TextColor="White"/>
-                            <Span Text="{Binding Name}" TextColor="White"/>
+                            <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
+                            <Span Text="{Binding Name}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
                             <!--<Span Text="&#10;"/>
                             <Span Text="{Binding Email}" TextColor="White"/>-->
-                            <Span Text="&#10;&#10;"/>
-                            <Span Text="{Binding Tin}" TextColor="White"/>
+                            <Span Text="&#10;"/>
+                            <Span Text="{Binding Tin}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>

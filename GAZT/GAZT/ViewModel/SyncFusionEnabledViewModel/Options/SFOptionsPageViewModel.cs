@@ -140,7 +140,7 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// <param name="obj">The object</param>
         private void BackButtonClicked(object obj)
         {
-            _navigationService.GoBack();
+            _navigationService.NavigateTo(App.SFLandingPageView);
             // Do something
         }
 
@@ -202,7 +202,7 @@ namespace GAZTeServicesApp.ViewModels.Options
 
         private void CloseClicked(object obj)
         {
-            _navigationService.GoBack();
+            _navigationService.NavigateTo(App.SFLandingPageView);
             // Do something
         }
 
@@ -221,6 +221,7 @@ namespace GAZTeServicesApp.ViewModels.Options
             if (lastTapped < DateTime.Now.AddSeconds(-2))
             {
                 lastTapped = DateTime.Now;
+              
                 _navigationService.NavigateTo(App.TaxPayerProfilePageView);
             }
         }
