@@ -154,7 +154,7 @@
                             <custom:BorderlessEntry Text="{Binding TxtName}" FontSize="Small" >
                                 <Entry.Behaviors>
 
-                                    <custom1:OnlyAlphabatesBehaviour/>
+                                    <custom1:AlphabetandArabicCharacters/>
 
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,20 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReturnsPageView : ContentPage
     {
+        ReturnsPageViewModel viewModel;
         public ReturnsPageView()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                this.BindingContext = viewModel = App.Locator.ReturnsPageView;
+                viewModel.onPageLoad();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
+
     }
 }

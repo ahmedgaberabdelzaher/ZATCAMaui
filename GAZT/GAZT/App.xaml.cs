@@ -11,6 +11,7 @@ using System.Net.Http;
 using GAZT.Views.NewViews;
 using GAZTeServicesApp.Themes;
 using GAZTeServicesApp.Views.LoginPage;
+using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -80,6 +81,7 @@ namespace GAZT
         public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
+        public static string ReturnsPageView = "ReturnsPageView";
 
 
 

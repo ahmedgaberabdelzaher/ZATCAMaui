@@ -7090,6 +7090,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Email Address.
+        /// </summary>
+        public static string ZZZInvalidEmailAddressMessage {
+            get {
+                return ResourceManager.GetString("ZZZInvalidEmailAddressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Enter Your Credentials to Login.
         /// </summary>
         public static string ZZZLoginLabel {
@@ -7167,6 +7176,15 @@ namespace GAZT {
         public static string ZZZTermsAndService {
             get {
                 return ResourceManager.GetString("ZZZTermsAndService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verifications Code.
+        /// </summary>
+        public static string ZZZVerificationsCode {
+            get {
+                return ResourceManager.GetString("ZZZVerificationsCode", resourceCulture);
             }
         }
         

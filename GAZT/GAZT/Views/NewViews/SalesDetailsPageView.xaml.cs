@@ -84,7 +84,7 @@ namespace GAZT.Views.NewViews
                     AmendSalesDetailsPageViewModel.IsSaveButtonPressed = false;
                     SetUpdatedDataToObject();
                     viewModel.SetUpdatedDataToZAKATEstimated(selectedIndex);
-                    UpdateTheAttachmentPostData();
+                   // UpdateTheAttachmentPostData();
                    //viewModel.SetChangedDataToTheList();
                     //viewModel.SetChangedDataToTheList(selectedIndex);
                     //   viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document

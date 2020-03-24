@@ -140,7 +140,7 @@ namespace GAZT.CustomControl
             }
 
             //populate year
-            for (int i = 1990; i < 2050; i++)
+            for (int i = 1950; i < 2050; i++)
             {
                 Year.Add(i.ToString());
             }

@@ -119,15 +119,29 @@ namespace GAZT.Models
                     {
                         string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
+                        DueDateDateTime = Convert.ToDateTime(_dueDate);
                     }
                     else
                     {
                         FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        DueDateDateTime = Convert.ToDateTime(_dueDate);
                     }
                 }
             }
         }
-
+        private DateTime _dueDateDateTime;
+        public DateTime DueDateDateTime
+        {
+            get
+            {
+                return _dueDateDateTime;
+            }
+            set
+            {
+                _dueDateDateTime = value;
+               
+            }
+        }
 
         public string _dueDT;
         public string DueDt {
