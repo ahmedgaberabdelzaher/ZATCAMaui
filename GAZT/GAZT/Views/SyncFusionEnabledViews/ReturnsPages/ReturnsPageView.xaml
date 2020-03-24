@@ -235,7 +235,7 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                            <cards1:SfCardView HasShadow="True"  Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
 
@@ -621,7 +621,7 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                            <cards1:SfCardView HasShadow="True"  Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 
@@ -1006,7 +1006,7 @@
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <ViewCell>
-                                                                <cards1:SfCardView HeightRequest="280" HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                                <cards1:SfCardView  HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
 
