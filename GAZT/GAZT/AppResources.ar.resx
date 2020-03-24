@@ -2045,7 +2045,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFavoriteDescending" xml:space="preserve">
-    <value>المفضضل (تنازلي)</value>
+    <value>المفضل (تنازلي)</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZReferenceNumber" xml:space="preserve">
@@ -2065,7 +2065,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>حاله  الرقم المرجعي</value>
+    <value>Return Status</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">

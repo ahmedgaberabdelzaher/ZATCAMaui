@@ -2056,7 +2056,7 @@ Should we require further information, we would be in contact.</value>
     <value>Return Reference Number</value>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Form Bundle Status</value>
+    <value>Return Status</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">

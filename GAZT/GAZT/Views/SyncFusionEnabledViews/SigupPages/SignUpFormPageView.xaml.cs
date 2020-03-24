@@ -1081,7 +1081,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryIDNumber.IsEnabled = false;
                         }
 
@@ -1142,7 +1142,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryIDNumber.IsEnabled = false;
                         }
 
@@ -1644,7 +1644,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryIDNumber.IsEnabled = false;
                         }
 
@@ -1705,7 +1705,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.TxtIDNumber = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryIDNumber.IsEnabled = false;
                         }
 
