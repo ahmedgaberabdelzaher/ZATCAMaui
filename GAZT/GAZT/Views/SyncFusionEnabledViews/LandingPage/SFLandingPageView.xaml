@@ -244,7 +244,8 @@
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
                                                 </Label>
-                                                <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray">
+
+                                                <Label Text="{x:Static local:AppResources.ZSAR}" TextColor="Gray" FontFamily="{StaticResource SSTArabicMedium}">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
