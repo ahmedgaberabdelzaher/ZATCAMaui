@@ -235,9 +235,9 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="250" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" Padding="5">
+                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
 
                                                                     <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                                         <Grid.ColumnDefinitions>
@@ -621,11 +621,11 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" HeightRequest="250" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" Padding="5">
+                                                            <cards1:SfCardView HasShadow="True" HeightRequest="280" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 
-                                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                    <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Padding="10">
                                                                         <Grid.ColumnDefinitions>
                                                                             <ColumnDefinition Width="1*" />
                                                                             <ColumnDefinition Width="40*" />
@@ -1006,9 +1006,9 @@
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <ViewCell>
-                                                                <cards1:SfCardView HeightRequest="250" HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" Padding="5">
+                                                                <cards1:SfCardView HeightRequest="280" HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5" >
 
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
 
                                                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                                                                             <Grid.ColumnDefinitions>
