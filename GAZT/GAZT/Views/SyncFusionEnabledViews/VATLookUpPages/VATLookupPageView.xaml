@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GAZT.Views.NewViews.VATLookupPageView"
+             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             Title="{x:Static local:AppResources.VATLookup}"
+             >
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="86*"/>
+                            <ColumnDefinition Width="14*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+                            <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyle}" Margin="10,5,10,5" Text="{x:Static local:AppResources.ZStepsTitle}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            </custom:CustomLabel>
+                            <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepOne}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            </custom:CustomLabel>
+                            <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepTwo}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            </custom:CustomLabel>
+                            <custom:CustomLabel  Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}" Text="{x:Static local:AppResources.ZStepThree}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            </custom:CustomLabel>
+                        </StackLayout>
+
+                        <Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static local:AppResources.ZSearchParameter}" />
+                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static local:AppResources.Captcha}" />
+                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Frame  Grid.Row="2"   Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Style="{StaticResource GAZTFrameStyleForEntry}" >
+                        </Frame>
+                        <custom:GAZTBorderlessPicker  x:Name="PPicker" Style="{StaticResource GAZTDropdownStyle}"     Grid.Row="2"    Grid.Column="0"     ItemsSource="{Binding ParameterTypeList}" SelectedItem="{Binding SelectedParameterType}" ItemDisplayBinding="{Binding ParameterType}" Title="{x:Static local:AppResources.ZSearchParameter}"></custom:GAZTBorderlessPicker>
+                        <Image Grid.Row="2"  Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Source="ic_dropdownOne.png" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Text="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Frame  Grid.Row="4"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
+                        </Frame>
+                        <custom:GAZTBorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" Keyboard="Numeric" Placeholder="{Binding VATACCOrCRNOOrVATCER}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MaxLength="{Binding MaxDigids}">
+
+                        </custom:GAZTBorderlessEntry>
+
+
+
+                        <Grid Grid.Row="6"   Grid.Column="0"  Grid.ColumnSpan="2" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame  Grid.Row="0"   Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+                            <Frame  Grid.Row="0"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}">
+                            </Frame>
+
+                            <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0" Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  HorizontalTextAlignment="Center" >
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:CaptchaValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+                            <Label  Grid.Row="0"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" VerticalOptions="CenterAndExpand" ></Label>
+                            <Image Grid.Row="0"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                        <Button Text="{x:Static local:AppResources.ZSearch}" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" ></Button>
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HeightRequest="50" Padding="0,10,0,0">
+
+                            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+
+                            </Grid>
+
+                        </StackLayout>
+                    </Grid>
+
+                    <!-- Acticity indicator layout start -->
+                    <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                                <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+
+                    <!-- Acticity indicator layout end -->
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
