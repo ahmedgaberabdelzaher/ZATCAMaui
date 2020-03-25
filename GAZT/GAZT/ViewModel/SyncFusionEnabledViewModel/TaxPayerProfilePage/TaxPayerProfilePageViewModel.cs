@@ -23,6 +23,8 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand OnHomeClick { get; set; }
 
+        public ICommand BackButtonClicked { get; set; }
+
         public bool IscomingFromOTPViewViaEmail = false;
         #region Property
 
@@ -162,6 +164,15 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.DashboardPageView);
             });
+
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+            
+
+
         }
 
         #endregion
