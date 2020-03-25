@@ -17,12 +17,39 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         private List<FormBundleResult> _formBundleList;
         private bool _isCPickerEnable = false;
-        private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum;
+        private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum = null;
         private List<FormBundleApplicationNumberModelResult> _formBundleApplicationNumberList;
         private string _fbnumdetail;
-        private FormBundleResult _selectedFormBindleFbtyp;
+        private FormBundleResult _selectedFormBindleFbtyp = null;
         private List<FbnumDetailList> _fbnumDetailList;
 
+
+        private string _txtFBtype = string.Empty;
+        public string TxtFBtype
+        {
+            get
+            {
+                return _txtFBtype;
+            }
+            set
+            {
+                _txtFBtype = value;
+                RaisePropertyChanged("TxtFBtype");
+            }
+        }
+        private string _txtFBnum = string.Empty;
+        public string TxtFBnum
+        {
+            get
+            {
+                return _txtFBnum;
+            }
+            set
+            {
+                _txtFBnum = value;
+                RaisePropertyChanged("TxtFBnum");
+            }
+        }
 
         public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -80,19 +107,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedFormBindleFbnum = value;
                 if (_selectedFormBindleFbnum != null)
                 {
-                    Fbnumdetail = _selectedFormBindleFbnum.Fbsta;
-                    List<FormBundleApplicationNumberModelResult> Formbundle = FormBundleApplicatioNumberList.Where(a => a.Fbnum == _selectedFormBindleFbnum.Fbnum).ToList();
-                    List<FbnumDetailList> Child = new List<FbnumDetailList>();
-                    foreach (FormBundleApplicationNumberModelResult itemF in Formbundle)
-                    {
-                        FbnumDetailList Item = new FbnumDetailList();
-                        Item.Fbnum = itemF.Fbnum;
-                        Item.Fbsta = itemF.Fbsta;
-                        Item.FbDesc = itemF.Txt50;
-                        Item.FbStatus = itemF.Fbstatus;
-                        Child.Add(Item);
-                    }
-                    ListFormBudles = Child;
+                    //populate();
 
                 }
                 RaisePropertyChanged("SelectedFormBindleFbnum");
@@ -142,6 +157,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedFormBindleFbtyp = value;
                 if (_selectedFormBindleFbtyp != null)
                 {
+                    TxtFBtype = _selectedFormBindleFbtyp.Txt50;
                     IsCPickerEnable = true;
                     onSelectedFormBindleFbtyp();
                 }
@@ -281,6 +297,24 @@ namespace GAZT.ViewModel.NewViewModel
                 return null;
             }
 
+        }
+        public void populate()
+        {
+            TxtFBnum = _selectedFormBindleFbnum.Fbnum;
+
+            Fbnumdetail = _selectedFormBindleFbnum.Fbsta;
+            List<FormBundleApplicationNumberModelResult> Formbundle = FormBundleApplicatioNumberList.Where(a => a.Fbnum == _selectedFormBindleFbnum.Fbnum).ToList();
+            List<FbnumDetailList> Child = new List<FbnumDetailList>();
+            foreach (FormBundleApplicationNumberModelResult itemF in Formbundle)
+            {
+                FbnumDetailList Item = new FbnumDetailList();
+                Item.Fbnum = itemF.Fbnum;
+                Item.Fbsta = itemF.Fbsta;
+                Item.FbDesc = itemF.Txt50;
+                Item.FbStatus = itemF.Fbstatus;
+                Child.Add(Item);
+            }
+            ListFormBudles = Child;
         }
 
     }

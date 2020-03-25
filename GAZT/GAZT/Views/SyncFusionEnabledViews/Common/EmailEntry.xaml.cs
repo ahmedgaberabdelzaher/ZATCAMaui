@@ -18,6 +18,7 @@ namespace GAZTeServicesApp.Views.Common
         public EmailEntry()
         {
             InitializeComponent();
+
         }
 
         private void TINs_Clicked(object sender, System.EventArgs e)
@@ -27,12 +28,12 @@ namespace GAZTeServicesApp.Views.Common
 
         private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            bool isNumber=false;
-            bool isEmailValid=false;
+            bool isNumber = false;
+            bool isEmailValid = false;
             isNumber = IsEnglishNumber(Email.Text);
-            if(!isNumber)
+            if (!isNumber)
             {
-               isEmailValid = CheckValidEmail(Email.Text);
+                isEmailValid = CheckValidEmail(Email.Text);
                 if (!isEmailValid)
                 {
                     EmailInputLayout.HasError = true;
@@ -49,7 +50,7 @@ namespace GAZTeServicesApp.Views.Common
                 EmailInputLayout.HasError = false;
                 //EmailInputLayout.ShowHint = false;
             }
-           
+
         }
 
         private static bool CheckValidEmail(string email)
@@ -58,7 +59,7 @@ namespace GAZTeServicesApp.Views.Common
             if (!string.IsNullOrEmpty(email))
             {
                 var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
-                isEmailValid= regex.IsMatch(email) && !email.EndsWith(".");
+                isEmailValid = regex.IsMatch(email) && !email.EndsWith(".");
             }
             return isEmailValid;
         }
@@ -78,6 +79,7 @@ namespace GAZTeServicesApp.Views.Common
             }
             return isAllNumeric;
         }
+    
 
     }
 }

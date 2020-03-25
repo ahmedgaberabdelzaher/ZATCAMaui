@@ -2831,4 +2831,11 @@
     <value>Set To English</value>
     <comment>SynfusionUILabel</comment>
   </data>
+  <data name="ZNoDataAvailable" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+  <data name="ZZZRequired" xml:space="preserve">
+    <value>Required *</value>
+    <comment>Mendatory fields </comment>
+  </data>
 </root>

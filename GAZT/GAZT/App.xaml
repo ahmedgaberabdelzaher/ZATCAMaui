@@ -46,6 +46,12 @@
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
 
+            <OnPlatform x:TypeArguments="x:String" x:Key="GESSTwoBold">
+                <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+
+                <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            </OnPlatform>
+
 
             <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">

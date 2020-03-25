@@ -788,7 +788,7 @@ ItemHeight="45" ShowFooter="True"  >
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
 
-                                                                    <Label Text="{x:Static local:AppResources.ZStatus}" Margin="0" 
+                                                                    <Label Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"

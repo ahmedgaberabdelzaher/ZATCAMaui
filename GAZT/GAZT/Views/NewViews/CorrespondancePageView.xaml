@@ -426,7 +426,7 @@
 
             </Grid>
             <!-- Acticity indicator layout end -->
-            <local:CustomLabel  Text="{x:Static local:AppResources.ZVatNoData}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            <local:CustomLabel  Text="{x:Static local:AppResources.ZNoDataAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
             </local:CustomLabel>
         </Grid>
     </ContentPage.Content>

@@ -10,6 +10,10 @@
                xmlns:local="clr-namespace:GAZT"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              Title="{x:Static local:AppResources.ZZFormBundleStatus}"
+                          xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
     <ContentPage.Content>
         <StackLayout>
@@ -38,7 +42,43 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
+                    <!--SelectedIndex="{Binding IDTypeIndex}"-->
+                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"   Padding="13"
+    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
+    ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                        <custom:BorderlessEntry Text="{Binding TxtFBtype}" FontSize="Small">
+                        </custom:BorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
+                    <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
+                    </custom:CustomButton>
+                    <syncfusion:SfPicker x:Name="DDlIDType"
+                    HeaderHeight="40"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"
+                    ShowColumnHeader="True"
+                    
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                                               
+                   ItemHeight="40"
+                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged"
+                    PickerHeight="280"
+                    PickerWidth="270"
+                    ShowFooter="True" FooterHeight="46">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                    <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
+
+
+
+
+
+                    <!--pickere 1 new-->
+
+                        <!--<Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
 
                     </Frame>
 
@@ -48,8 +88,52 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Image.GestureRecognizers>
-                    </Image>
-                    <Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                    </Image>-->
+
+
+ 
+
+
+
+
+                    <!--HDHBHFBDBV-->
+                    
+                    
+                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"   Padding="13"
+    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
+    ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                        <custom:BorderlessEntry Text="{Binding TxtFBnum}" FontSize="Small">
+                        </custom:BorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
+                    <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
+                    </custom:CustomButton>
+                    <syncfusion:SfPicker x:Name="CPicker"
+                    HeaderHeight="40"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"
+                    ShowColumnHeader="True"
+                    
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                                               
+                   ItemHeight="40"
+                   SelectedItem="{Binding SelectedFormBindleFbnum}" DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0"
+                    PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked"
+                    PickerWidth="270" IsEnabled="True"
+                    ShowFooter="True" FooterHeight="46">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!--<Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                     </Frame>
                     <custom:GAZTBorderlessPicker x:Name="CPicker" Title="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"  ItemsSource="{Binding FormBundleApplicatioNumberList}" ItemDisplayBinding="{Binding Fbnum}"  SelectedItem="{Binding SelectedFormBindleFbnum}" IsEnabled="{Binding IsCPickerEnable}"></custom:GAZTBorderlessPicker>
@@ -58,7 +142,7 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped_1" />
                         </Image.GestureRecognizers>
-                    </Image>
+                    </Image>-->
 
                     <!--<ListView  x:Name="fblist" 
            ItemsSource="{Binding ListFormBudles}"
@@ -97,11 +181,6 @@
                                     <ViewCell>
 
                                         <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
-                                            
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
-
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
-
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
 
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
@@ -165,8 +244,6 @@
                                                             </Grid>
                                                 </StackLayout>
                                          </StackLayout>
-                                                </StackLayout>
-                                             </StackLayout>
                                         
                                         </cards:SfCardView>
                                     </ViewCell>
