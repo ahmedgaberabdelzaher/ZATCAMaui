@@ -321,7 +321,6 @@
             </ScrollView>
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="0,0,0,-15">
                 <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#c49b2d" BackgroundColor="#005e4b" />
-
             </StackLayout>
             <Grid  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
