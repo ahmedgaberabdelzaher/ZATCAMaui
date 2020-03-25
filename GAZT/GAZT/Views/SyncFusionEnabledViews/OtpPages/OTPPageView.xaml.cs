@@ -218,6 +218,7 @@ namespace GAZT.Views.NewViews
                 Task.Delay(100);
 
             });
+            EnteredOTP.Focus();
         }
         private async void OnOTPEntered(Object sender, EventArgs e)
         {

@@ -163,10 +163,12 @@
                             Margin="10,16,10,50"
                             BackgroundColor="#D99A29"
                             Opacity="0.7"
-                            Command="{Binding OnResendOTPClicked}"
-                            IsEnabled="{Binding IsResendOTPEnabled}"
+                                     Command="{Binding OnSubmitClicked}"
+                    IsEnabled="{Binding IsVerifyOTPEnabled}"
+                    Text="{x:Static local:AppResources.Verify}"
+                           
                             Style="{StaticResource SfButtonStyle}"
-                            Text="{x:Static local:AppResources.ResendOTP}" />
+                           />
 
 
                            
@@ -193,9 +195,10 @@
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="56"
                     CornerRadius="0"
-                  Command="{Binding OnSubmitClicked}"
-                    IsEnabled="{Binding IsVerifyOTPEnabled}"
-                    Text="{x:Static local:AppResources.Verify}"
+                Command="{Binding OnResendOTPClicked}"
+                            IsEnabled="{Binding IsResendOTPEnabled}"
+                           
+                            Text="{x:Static local:AppResources.ResendOTP}"
                     TextColor="{DynamicResource Gray-White}"
                      />
             </StackLayout>

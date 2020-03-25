@@ -168,10 +168,10 @@
     <EmbeddedResource Update="Views\NewViews\TaxEvasionReportFormAttachmentPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\TaxPayerProfilePageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\TaxPayerProfilePages\TaxPayerProfilePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\VATLookupPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATLookUpPages\VATLookupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewViews\VATReturnsPageView.xaml">
