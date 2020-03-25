@@ -32,15 +32,14 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
-
-
-
             InitializeComponent();
             try
             {
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
+                if(vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
+                viewModel.NumberOfAttachmentComingFromServer = vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
@@ -52,7 +51,6 @@ namespace GAZT.Views.NewViews
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
                         viewModel.VatAttachmentsList = myCollection;
-
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
                             if (App.IsArabic)
@@ -135,6 +133,8 @@ namespace GAZT.Views.NewViews
                 {
                     if (result)
                     {
+                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
@@ -147,6 +147,8 @@ namespace GAZT.Views.NewViews
 
                             viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
 
+                            if(indexToReduceTheSize != -1)
+                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
                     }
                 });

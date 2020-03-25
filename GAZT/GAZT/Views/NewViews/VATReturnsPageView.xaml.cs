@@ -184,6 +184,7 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.IsSwitchVisible = false;
             }
+            AttachmentPageViewModel.attachmentSizeVisibility = false;
             if (AddNotePageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(AddNotePageViewModel.NoteString))
             {
 
