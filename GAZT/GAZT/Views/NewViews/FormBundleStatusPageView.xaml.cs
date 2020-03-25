@@ -1,6 +1,7 @@
 ﻿using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,18 +28,20 @@ namespace GAZT.Views.NewViews
             //    tapImg.Tapped -= Gesture_Tapped;
             //}
             viewModel.onPageLoad();
-            viewModel.IsCPickerEnable = false;
+          
             SetLTR();
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            BPicker.Focus();
+            DDlIDType.IsOpen = true;
+            //BPicker.Focus();
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {if (viewModel.SelectedFormBindleFbtyp != null)
-            { 
-                CPicker.Focus();
+            {
+               CPicker.IsOpen = true;
+                //CPicker.Focus();
             }
             
         }
@@ -53,6 +56,39 @@ namespace GAZT.Views.NewViews
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
+
+        private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            
+            //EntryIDNumber.IsEnabled = true;
+            
+          
+        }
+
+        private void CPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+          
+
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //your code here;
+            viewModel.SelectedFormBindleFbnum = null;
+            viewModel.SelectedFormBindleFbtyp = null;
+            viewModel.TxtFBnum = string.Empty;
+            viewModel.TxtFBtype = string.Empty;
+
+        }
+
+        private void CPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //var item = sender as Picker;
+            //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
+            viewModel.populate();
+
+
         }
     }
 }

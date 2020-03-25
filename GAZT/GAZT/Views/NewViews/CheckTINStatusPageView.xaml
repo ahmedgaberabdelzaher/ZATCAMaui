@@ -6,14 +6,20 @@
              mc:Ignorable="d"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:local1="clr-namespace:GAZT"
+               xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
             
+                         xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{x:Static local:AppResources.ZTINStatus}"
              x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
     <ContentPage.Content>
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="10,20,10,0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -29,34 +35,204 @@
                             <ColumnDefinition Width="50*" />
                             <ColumnDefinition Width="50*" />
                         </Grid.ColumnDefinitions>
+                        
+                        <!--tin field-->
+                        <inputLayout:SfTextInputLayout x:Name="FrmentryTIN"    Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.TIN}"
+    
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
-                        <Label Text="{x:Static local:AppResources.TIN}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        
+                        <!--tin field-->
+                      
+                        
+                        
+
+                        <!--<Label Text="{x:Static local:AppResources.TIN}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 
                         <Frame  Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsEnabled="False">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>-->
+                        <!--tin status-->
+                        <inputLayout:SfTextInputLayout x:Name="FrmentryTINStatus"    Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZTINStatus}"
+    
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <!--tin status-->
 
 
 
-                        <Label Text="{x:Static local:AppResources.ZTINStatus}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                        <!--<Label Text="{x:Static local:AppResources.ZTINStatus}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Frame  Grid.Row="3"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryTINStatus" Text="{Binding TINStatus}"   IsReadOnly="True" TextColor="#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryTINStatus" Text="{Binding TINStatus}"   IsReadOnly="True" TextColor="#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>-->
+                        <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdate"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
+    
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
 
 
-                        <Label Text="{x:Static local:AppResources.ZLastUpdate}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                        <!--<Label Text="{x:Static local:AppResources.ZLastUpdate}" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Frame  Grid.Row="5"   Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding IsIDTypeVisible}">
                         </Frame>
-                        <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Text="{Binding LastUpdate}"    IsReadOnly="True" TextColor="#7D858D" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>
+                        <custom:GAZTBorderlessEntry x:Name="entryLastUpdate" Text="{Binding LastUpdate}"    IsReadOnly="True" TextColor="#7D858D" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False"></custom:GAZTBorderlessEntry>-->
 
-                        <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
+                        <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnClickLessOrMore}"></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </custom:CustomLabel>
+                        <!--new card view-->
+                        <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsVisibleListItems}">
+                            <ListView  
+           
+                                x:Name="ListTINStatus" 
+           ItemsSource="{Binding ConsumerRegisteration}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                                       
+                                       ItemTapped="ListTINStatus_ItemTapped"
+                               BackgroundColor="White"
+            SeparatorVisibility="None"
+            >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+
+                                            <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
+                                                        <Grid ColumnSpacing="0" RowSpacing="4"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+
+
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+
+                                                            </Grid.RowDefinitions>
+
+                                                            <Label Text="{x:Static local:AppResources.ZCRNo}" Margin="0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                                           />
+
+                                                            <Label Text="{Binding Idnumber}" 
+                                                  
+                                  Margin="0" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="2"
+                                                           />
+
+
+                                                            <Label 
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                             
+                                   Grid.Column="0"
+                                                        Grid.ColumnSpan="4"
+                                                         Text="{x:Static local:AppResources.ZCRStatus}"
+                                   >
+
+                                                            </Label>
+
+                                                            <Label Text="{Binding StatusText}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="2"
+                                                           />
+
+                                                            <Label 
+                                                 Style="{StaticResource MiniGoldLabelStyle}"
+                                  
+                                                HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                             
+                                   Grid.Column="0"
+                                                        Grid.ColumnSpan="4"
+                                                         Text="{x:Static local:AppResources.ZZCRName}"
+                                   >
+
+                                                            </Label>
+
+                                                            <Label Text="{Binding Actnm}" 
+                                                 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="2"
+                                                           />
+                                                            
+
+
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                            </cards:SfCardView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+
+                        <!--new card view--> 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
 
                      
-                            <ListView  x:Name="ListTINStatus" 
+                            <!--<ListView  x:Name="ListTINStatus" 
            ItemsSource="{Binding ConsumerRegisteration}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -64,7 +240,7 @@
                                        Margin="10,0,10,0"
                                        ItemTapped="ListTINStatus_ItemTapped"
                              IsVisible="{Binding IsVisibleListItems}"    
-                      Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"
+                      Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
             SeparatorVisibility="None"
                                        BackgroundColor="White"
             >
@@ -98,9 +274,13 @@
                                                     </Label>
                                                     <Label Text="{Binding Idnumber}"  Padding="0" Grid.Row="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                                     <Label Text="{Binding StatusText}" Padding="0" Grid.Row="1" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                    <Label Text="{Binding Actnm}"   Grid.Row="2" Padding="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <Label Text="{Binding Actnm}"   Grid.Row="2" Padding="0" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+                        
+                        
+                        
+                        
                                                     <!--<BoxView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#7D858D" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>-->
-                                                </Grid>
+                                                <!--</Grid>
                                             </Grid>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -108,7 +288,7 @@
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                            </ListView>
+                            </ListView>-->
                     </Grid>
             
                 </ScrollView>

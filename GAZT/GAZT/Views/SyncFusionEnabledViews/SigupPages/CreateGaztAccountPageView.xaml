@@ -50,7 +50,7 @@
                         </Label>
                      
                         <inputLayout:SfTextInputLayout   x:Name="frmPass"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.Password}" 
+    Hint="{x:Static local:AppResources.Password}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry Text="{Binding TxtPassword}"  x:Name="EntryPass"  FontSize="Small" IsPassword="True">
@@ -60,7 +60,7 @@
 
 
                         <inputLayout:SfTextInputLayout   x:Name="frmCfrmPass"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZConfirmpassword}" 
+    Hint="{x:Static local:AppResources.ZZConfirmpassword}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry TextChanged="EntryCfrmPass_TextChanged" Text="{Binding TxtConfirmPassword}" IsPassword="True"  x:Name="EntryCfrmPass"  FontSize="Small">
@@ -68,7 +68,7 @@
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZEmailAddress}" 
+    Hint="{x:Static local:AppResources.ZZEmailAddress}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtEmailAddress}"  IsEnabled="False" FontSize="Small">
@@ -79,7 +79,7 @@
 
                         <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" x:Name="frmEmailCode"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoemailaddress}" 
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtEmailCode}" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">
                                 <Entry.Behaviors>
@@ -89,7 +89,7 @@
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZMobileNumber}" 
+    Hint="{x:Static local:AppResources.ZZMobileNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtMobileNumber}"  IsEnabled="False" FontSize="Small">
@@ -97,7 +97,7 @@
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Grid.Row="6" Grid.Column="0" x:Name="frmMobileCode"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoMobileNumber}" 
+    Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoMobileNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtMobileNumberCode}" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">

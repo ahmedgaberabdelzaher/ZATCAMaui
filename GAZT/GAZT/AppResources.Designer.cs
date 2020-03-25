@@ -2424,6 +2424,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No data found.
+        /// </summary>
+        public static string ZNoDataAvailable {
+            get {
+                return ResourceManager.GetString("ZNoDataAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No ICRs available.
         /// </summary>
         public static string ZNoICRAvailable {
@@ -7149,6 +7158,15 @@ namespace GAZT {
         public static string ZZZPrivacyandPolicy {
             get {
                 return ResourceManager.GetString("ZZZPrivacyandPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required *.
+        /// </summary>
+        public static string ZZZRequired {
+            get {
+                return ResourceManager.GetString("ZZZRequired", resourceCulture);
             }
         }
         

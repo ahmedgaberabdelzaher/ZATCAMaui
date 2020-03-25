@@ -15,7 +15,7 @@
              x:Class="GAZT.Views.NewViews.SignUpFormPageView">
 
     <ContentPage.Content>
-
+        <!--ZZZRequired-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
@@ -28,7 +28,7 @@
             <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="15">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -63,9 +63,9 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   CharMaxLength="10" Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZTIN}" 
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                <inputLayout:SfTextInputLayout HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"  CharMaxLength="10" Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZZTIN}"  
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry TextChanged="EntryTIN_TextChanged" x:Name="EntryTIN" FontSize="Small" Unfocused="EntryTIN_Unfocused">
                                         <custom:BorderlessEntry.Behaviors>
@@ -79,7 +79,7 @@
                             </Grid>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
-    Hint="{x:Static local:AppResources.ZZIDType}" 
+    Hint="{x:Static local:AppResources.ZZIDType}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmIDType" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small">
@@ -109,7 +109,7 @@
                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  CharMaxLength="{Binding MaxLengthID}"
     Hint="{x:Static local:AppResources.IDNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
                             <custom:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" FontSize="Small" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
                                 <Entry.Behaviors>
 
@@ -122,7 +122,7 @@
                         <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
                         </Button>
                         <inputLayout:SfTextInputLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZDateofBirth}" 
+    Hint="{x:Static local:AppResources.ZZDateofBirth}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
@@ -148,7 +148,7 @@
 
 
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
-    Hint="{x:Static local:AppResources.ZZName}" 
+    Hint="{x:Static local:AppResources.ZZName}"  HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtName}" FontSize="Small" >
@@ -169,7 +169,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <buttons:SfRadioGroup x:Name="radioGroup" Orientation="Vertical"  Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2">
+                        <buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Vertical"  Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" >
                             <buttons:SfRadioButton x:Name="radioButton" Text="{x:Static local:AppResources.ZZCRNumber}" IsChecked="{Binding IsCRChecked}" UncheckedColor="#B1B1B1"/>
                             <buttons:SfRadioButton x:Name="radioButton2" Text="{x:Static local:AppResources.ZZLicenseNumber}" IsChecked="{Binding IsLNChecked}" UncheckedColor="#B1B1B1"/>
                         </buttons:SfRadioGroup>
@@ -186,7 +186,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <inputLayout:SfTextInputLayout CharMaxLength="10" x:Name="FrmCR"   Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZCRNumber}" 
+    Hint="{x:Static local:AppResources.ZZCRNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry Text="{Binding TxtCRNumber}" x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused" FontSize="Small">
@@ -200,7 +200,7 @@
                             </Grid>
                         </StackLayout>
                         <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6" IsVisible="{Binding IsLicenseVisible}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10"  RowSpacing="15">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
@@ -209,8 +209,8 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <inputLayout:SfTextInputLayout CharMaxLength="20"    Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZLicenseNumber}" 
+                                <inputLayout:SfTextInputLayout CharMaxLength="20"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZZLicenseNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" x:Name="FrmLicenseNumber" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry Text="{Binding TxtLicenseNumber}" FontSize="Small">
@@ -221,10 +221,11 @@
 
                                         </Entry.Behaviors>
                                       </custom:BorderlessEntry>
+                                  
                                 </inputLayout:SfTextInputLayout>
 
                                 <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" 
+    Hint="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry Text="{Binding TxtLOrCIssuedBy}" FontSize="Small">
@@ -287,7 +288,7 @@
                             </Grid>
                         </StackLayout>
 
-                        <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"
+                        <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HelperText="{x:Static local:AppResources.ZZZRequired}"
     Hint="{x:Static local:AppResources.ZZEmailAddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -295,7 +296,7 @@
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" CharMaxLength="9" Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" CharMaxLength="9" Margin="10,-6,10,-6" HelperText="{x:Static local:AppResources.ZZZRequired}"
     Hint="{x:Static local:AppResources.ZZMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
