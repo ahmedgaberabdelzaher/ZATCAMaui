@@ -1392,6 +1392,14 @@ namespace GAZT.Views.NewViews
 
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                FrmPhoneNumber.HasError = false;
+            }
+
+
+
+
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
                 PopUp popUp = new PopUp();
