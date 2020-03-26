@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,8 +17,8 @@ namespace GAZT.ViewModel.NewViewModel
     public class OTPPageViewModel: ViewModelBase
     {
         #region Variable
-        private readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
         public NavigateToOtp IsComingFrom { get; set; }
@@ -563,15 +564,31 @@ namespace GAZT.ViewModel.NewViewModel
         
         public void OnPageLoad()
         {
-            FrmColour = "#B1B1B1";
-            TinNumber = App.TP.Tin;
-            string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-            StopTimer = true;
-           // TimerStart();
-            IsVerifyOTPEnabled = true;
-            VerifyButtonDisableColor = Color.FromHex("#005e4b");
-            AccountWillBeBlocked = string.Empty;
+            try
+            {
+                FrmColour = "#B1B1B1";
+                TinNumber = App.TP.Tin;
+                if(App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
+                {
+                    string mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                    MobileNumber = "XXXXXXXXXX" + mobileNumber;
+                    StopTimer = true;
+                    IsVerifyOTPEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                    AccountWillBeBlocked = string.Empty;
+                }
+                else
+                {
+                    throw new GAZTMobileNumberInProfileEmptyException();
+                }
+               
+
+            }
+            catch (Exception gex)
+            {
+              
+                throw new GAZTMobileNumberInProfileEmptyException();
+            }
            
 
         }

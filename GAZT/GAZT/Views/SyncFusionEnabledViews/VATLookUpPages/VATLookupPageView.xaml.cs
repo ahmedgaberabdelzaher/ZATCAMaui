@@ -1,4 +1,7 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Helper;
+using GAZT.Manager;
+using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,6 +17,7 @@ namespace GAZT.Views.NewViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookupPageView : ContentPage
     {
+        bool isMendatoryDataEntered = true;
         VATLookupPageViewModel viewModel;
         int LanguageToolBarCount = 0;
         public VATLookupPageView()
@@ -45,20 +49,186 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (viewModel.SelectedParameterType != null)
+        //        {
+                  
+        //            PPicker.Focus();
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+
+        //    }
+        //}
+
+        private void btn1_Clicked(object sender, EventArgs e)
+        {
+            PPicker.IsOpen = true;
+        }
+
+        private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
             try
             {
+                isMendatoryDataEntered = true;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    ValidateFormData();//isMendatoryDataEntered
+                    if (isMendatoryDataEntered)
+                    {
+                        isMendatoryDataEntered = true;
+                        string _language = "A"; //UtilityManager.GetLanguageParameter();
+                        VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, viewModel.SelectedParameterType.id, viewModel.LookupNumber);
+                        if (vatLookUp.d != null)
+                        {
+                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                            {
+                                viewModel.NameOrNoResultLabel = AppResources.Name;
+                                viewModel.Name = vatLookUp.d.results[0].Name;
+                            }
+                            else
+                            {
+                                viewModel.NameOrNoResultLabel = "";
+                                viewModel.Name = "";
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                });
+                            }
+
+                        }
+                        else
+                        {
+                            viewModel.Name = vatLookUp.d.results[0].Name;
+                            viewModel.NameOrNoResultLabel = AppResources.Nodataavailable;
+                        }
+
+                    }
+
+                    // IsLoading = true;
+                });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                await viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+
+        }
+        private void ValidateFormData()
+        {
+
+            try
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    frmLookupNumner.HasError = false;
+                    frmSearchParameter.HasError = false;
+                });
                 if (viewModel.SelectedParameterType != null)
                 {
+                    if (viewModel.LookupNumber != null && viewModel.LookupNumber != "")
+                    {
+                        if (viewModel.SelectedParameterType.id.Equals("3"))
+                        {
+                            if (viewModel.LookupNumber.Length != 15)
+                            {
+                                isMendatoryDataEntered = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+
+                                    viewModel._dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
+                                    frmLookupNumner.HasError = true;
+                                });
+                              
+                                return;
+                            }
+
+                        }
+                        else if (viewModel.SelectedParameterType.id.Equals("2"))
+                        {
+
+                            if (viewModel.LookupNumber.Length != 10)
+                            {
+                                isMendatoryDataEntered = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+
+                                    viewModel._dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
+                                    frmLookupNumner.HasError = true;
+                                });
+                               
+                                return;
+                            }
+
+                        }
+                        else if (viewModel.SelectedParameterType.id.Equals("4"))
+                        {
+
+                            if (viewModel.LookupNumber.Length != 15)
+                            {
+                                isMendatoryDataEntered = false;
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+
+                                    viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                    frmLookupNumner.HasError = true;
+                                });
+                               
+                                return;
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        isMendatoryDataEntered = false;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            isMendatoryDataEntered = false;
+                            viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
+                            frmLookupNumner.HasError = true;
+
+                        });
                   
-                    PPicker.Focus();
+                        return;
+                    }
+                }
+                else
+                {
+                    isMendatoryDataEntered = false;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
+                        frmSearchParameter.HasError = true;
+
+                    });
+                   
+                    return;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                isMendatoryDataEntered = false;
             }
+
         }
     }
 }

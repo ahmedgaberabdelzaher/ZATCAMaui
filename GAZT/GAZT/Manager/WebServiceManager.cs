@@ -323,6 +323,7 @@ namespace GAZT.Manager
         //done internet exception handling
         public static async Task<String> GAZTSendAndReceiveOTP(String Lang, String UserId, string currentAttempts)
         {
+            
             if (CrossConnectivity.Current.IsConnected)
             {
                 String OTPSentConfirmation = String.Empty;
