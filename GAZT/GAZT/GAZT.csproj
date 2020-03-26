@@ -123,7 +123,7 @@
     <EmbeddedResource Update="Views\NewViews\ChangeEmailPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\ChangeMobileNumberPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ChangeMobileNumberPages\ChangeMobileNumberPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewViews\ChangePasswordPageView.xaml">
