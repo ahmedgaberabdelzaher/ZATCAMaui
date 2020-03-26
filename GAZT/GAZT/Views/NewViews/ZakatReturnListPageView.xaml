@@ -166,7 +166,7 @@
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
-                                                       Grid.ColumnSpan="0"/>
+                                                       />
 
                                             <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -175,7 +175,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
-                                                       Grid.ColumnSpan="0"/>
+                                                     />
 
 
 
@@ -185,7 +185,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        Grid.ColumnSpan="0"
+                                                                       
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -201,7 +201,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        Grid.ColumnSpan="0"
+                                                                       
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -217,7 +217,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        Grid.ColumnSpan="0"
+                                                                        
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -233,7 +233,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        Grid.ColumnSpan="0"
+                                                                        
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -247,8 +247,6 @@
 
                                             <Image  Grid.Row="0"
                                                                 Grid.Column="1"
-                                                                Grid.ColumnSpan="0"
-                                                                Grid.RowSpan="0"
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="StartAndExpand"/>
