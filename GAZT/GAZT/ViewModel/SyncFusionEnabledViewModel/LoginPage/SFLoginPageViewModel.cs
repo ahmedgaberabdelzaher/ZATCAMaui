@@ -19,10 +19,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        private string password = "Init@123";
-        private string email = "3102285896";
-        //private string password;
-        //private string email;
+        //private string password = "Init@123";
+        //private string email = "3102285896";
+        private string password;
+        private string email;
         public int CurrentAttempt = 0;
         #endregion
 
@@ -632,7 +632,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private void SignUpClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SignUpFormPageView);
+            _navigationService.NavigateTo(App.SignUpTAndCViewPage);
             // Do something
         }
 
