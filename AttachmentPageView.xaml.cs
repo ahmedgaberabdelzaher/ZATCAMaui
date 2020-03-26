@@ -32,14 +32,15 @@ namespace GAZT.Views.NewViews
         #region Constructor
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
+
+
+
             InitializeComponent();
             try
             {
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
-                if(vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
-                viewModel.NumberOfAttachmentComingFromServer = vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
@@ -50,30 +51,31 @@ namespace GAZT.Views.NewViews
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
-                        viewModel.VatAttachmentsList = viewModel.CloneAttachmmentListInLocalList(myCollection);
-                        //foreach (var item in viewModel.VatAttachmentsList)
-                        //{
-                        //    if (App.IsArabic)
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        viewModel.VatAttachmentsList = myCollection;
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        foreach (var item in viewModel.VatAttachmentsList)
+                        {
+                            if (App.IsArabic)
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        //        }
-                        //    }
-                        //}
+                                    item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                }
+                            }
+                            else
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -133,22 +135,18 @@ namespace GAZT.Views.NewViews
                 {
                     if (result)
                     {
-                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
                         {
-                            ZakatAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)
-                                            .FirstOrDefault<ZakatAttachment>();
+                                            .FirstOrDefault<Attachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
 
-                           // viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            if (indexToReduceTheSize != -1)
-                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+
                         }
                     }
                 });

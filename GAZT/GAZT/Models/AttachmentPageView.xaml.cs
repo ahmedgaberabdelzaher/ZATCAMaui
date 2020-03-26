@@ -50,7 +50,7 @@ namespace GAZT.Views.NewViews
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
-                        viewModel.VatAttachmentsList = viewModel.CloneAttachmmentListInLocalList(myCollection);
+                        viewModel.VatAttachmentsList = viewModel.CloneAttachmmentListInLocalList(myCollection) ;
                         //foreach (var item in viewModel.VatAttachmentsList)
                         //{
                         //    if (App.IsArabic)
@@ -145,9 +145,9 @@ namespace GAZT.Views.NewViews
                                             .FirstOrDefault<ZakatAttachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
 
-                           // viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
                             viewModel.VatAttachmentsList.Remove(listitem);
-                            if (indexToReduceTheSize != -1)
+
+                            if(indexToReduceTheSize != -1)
                             viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
                     }

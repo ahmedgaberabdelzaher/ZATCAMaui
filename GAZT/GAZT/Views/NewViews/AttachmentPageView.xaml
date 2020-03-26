@@ -40,13 +40,13 @@
                         <local:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
 
-                        <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        <Frame Grid.Row="4" IsVisible="{Binding AttachmentSizeVisibility}" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <local:CustomLabel FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="15,0,15,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                        <local:CustomLabel IsVisible="{Binding AttachmentSizeVisibility}" FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="15,0,15,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                             <local:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding TotalAttachmentSize}"  />
@@ -93,8 +93,8 @@
 
                                                         <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="White">
 
-                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
-                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" HeightRequest="45">
+                                                                <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="8*" />
                                                                         <ColumnDefinition Width="52*" />
@@ -110,9 +110,6 @@
                                                                         <RowDefinition Height="Auto" />
 
                                                                     </Grid.RowDefinitions>
-
-
-
                                                                     <Label Text="{Binding Id}" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -126,6 +123,7 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
+                                                                           LineBreakMode="TailTruncation"
                                                                            FontFamily="{StaticResource SSTArBold}"
                                    Grid.Row="0"
                                    Grid.Column="1" 
@@ -145,14 +143,14 @@
                                                                     </Image>
 
 
-                                                                    <Label Text="{Binding Erfdt}" 
+                                                                    <!--<Label Text="{Binding Erfdt}" 
                                                                        Margin="3,0,3,-5"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="2" 
-                                   />
+                                   />-->
 
                                                                     <!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"

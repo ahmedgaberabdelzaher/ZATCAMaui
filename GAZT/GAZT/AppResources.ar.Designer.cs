@@ -4793,5 +4793,17 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSetToEnglish", resourceCulture);
             }
         }
+        
+        public static string ZNoDataAvailable {
+            get {
+                return ResourceManager.GetString("ZNoDataAvailable", resourceCulture);
+            }
+        }
+        
+        public static string ZZZRequired {
+            get {
+                return ResourceManager.GetString("ZZZRequired", resourceCulture);
+            }
+        }
     }
 }
