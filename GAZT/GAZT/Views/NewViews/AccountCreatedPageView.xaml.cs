@@ -24,8 +24,6 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
@@ -34,7 +32,7 @@ namespace GAZT.Views.NewViews
 
         private void Checked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.LogInPageView);
+            viewModel._navigationService.NavigateTo(App.SFLoginPageView);
         }
     }
 }

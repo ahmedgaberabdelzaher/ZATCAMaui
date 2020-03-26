@@ -5,66 +5,97 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
-             FlowDirection="RightToLeft"
+           
                xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT"
+               xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+              
              Title="{x:Static local:AppResources.ZZFormBundleStatus}"
                           xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+              NavigationPage.HasNavigationBar="False"
              x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary Source="..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="{x:Static local:AppResources.ZZFormBundleStatus}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}"
+                            
+                            
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
     <ContentPage.Content>
+        
+        
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
-
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  ColumnSpacing="10" RowSpacing="10" Margin="0" Padding="0,0,0,10" >
+                <!--Padding="10,20,10,0"-->
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"    Margin="0" Padding="10,20,10,10" >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="10*" />
-                        
-                        <RowDefinition Height="70*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+
+                        <RowDefinition Height="auto" />
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
 
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="30*" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="30*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="18*" />
-                        <ColumnDefinition Width="14*" />
+                        <ColumnDefinition Width="auto" />
 
 
 
 
                     </Grid.ColumnDefinitions>
 
-                    <!--SelectedIndex="{Binding IDTypeIndex}"-->
-                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"   Padding="13"
-    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"
+                    <!--SelectedIndex="{Binding IDTypeIndex}" Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Padding="10,20,10,0"-->
+                    
+                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
+    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                         <custom:BorderlessEntry Text="{Binding TxtFBtype}" FontSize="Small">
                         </custom:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
-                    <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
+                    <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                     </custom:CustomButton>
                     <syncfusion:SfPicker x:Name="DDlIDType"
-                    HeaderHeight="40"
+                    HeaderHeight="50"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"
                     ShowColumnHeader="True"
                     
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                                SelectedItemFontSize="15"               
                    ItemHeight="40"
-                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged"
+                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"    Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
                     PickerHeight="280"
-                    PickerWidth="270"
+                    PickerWidth="350"
                     ShowFooter="True" FooterHeight="46">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
@@ -99,14 +130,14 @@
                     <!--HDHBHFBDBV-->
                     
                     
-                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"   Padding="13"
-    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
+                    <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
+    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
     ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                         <custom:BorderlessEntry Text="{Binding TxtFBnum}" FontSize="Small">
                         </custom:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
-                    <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
+                    <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" >
                     </custom:CustomButton>
                     <syncfusion:SfPicker x:Name="CPicker"
                     HeaderHeight="40"
@@ -118,9 +149,9 @@
                     PickerMode="Dialog"
                                                
                    ItemHeight="40"
-                   SelectedItem="{Binding SelectedFormBindleFbnum}" DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0"
+                   SelectedItem="{Binding SelectedFormBindleFbnum}" DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Margin="10,0,10,0"
                     PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked"
-                    PickerWidth="270" IsEnabled="True"
+                    PickerWidth="350" IsEnabled="True"
                     ShowFooter="True" FooterHeight="46">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
@@ -166,11 +197,11 @@
                         </ListView.ItemTemplate>
                     </ListView>-->
 
-                    <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="7" >
-                        <ListView  
+                    <!--<StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="7" >-->
+                        <ListView    Grid.Row="2"  Grid.Column="0"
            ItemsSource="{Binding ListFormBudles}"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
+            VerticalOptions="Start"
             HasUnevenRows="True"
                                BackgroundColor="White"
                             ItemTapped="ListView_ItemTapped"
@@ -181,10 +212,9 @@
                                     <ViewCell>
 
                                         <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
-
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
-                                                    <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+                                                
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0" Padding="10" >
+                                                    <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="auto" />
 
@@ -193,12 +223,30 @@
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
+
                                                            
                                                         </Grid.RowDefinitions>
 
-                                                        <Label Text="{x:Static local:AppResources.ZStatus}" Margin="0" 
+                                                        <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="0"
+                                   Grid.Column="0" 
+                                                           >
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FbStatus}"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+
+
+
+
+                                                        <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -214,10 +262,28 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="0"
-                                                           />
+                                                           />-->
 
 
-                                                        <Label 
+                                                        <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="0" 
+                                                           >
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FbDesc}"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+
+
+
+                                                        <!--<Label 
                                                  Style="{StaticResource MiniGoldLabelStyle}"
                                   
                                                 HorizontalOptions="StartAndExpand"
@@ -238,19 +304,18 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                           />
+                                                           />-->
 
 
                                                             </Grid>
                                                 </StackLayout>
-                                         </StackLayout>
-                                        
+                                     
                                         </cards:SfCardView>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
+                    <!--</StackLayout>-->
 
                 </Grid>
 
