@@ -143,7 +143,7 @@
                             </local:GAZTBorderlessEntry.Behaviors>
                             </local:GAZTBorderlessEntry>-->
 
-                            <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29" Text="{Binding AccountWillBeBlocked}"  Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="Start" Margin="10,0,10,0">
+                            <Label x:Name="NumberOfAttemptsText" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29" Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="Start" Margin="10,0,10,0" IsVisible="True">
                             </Label>
 
                             <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">

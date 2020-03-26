@@ -33,8 +33,9 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.OTPPageView;
+            NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
 
-            SetLTR();
+SetLTR();
             viewModel.numberOfSeconds = 120;
             try
             {

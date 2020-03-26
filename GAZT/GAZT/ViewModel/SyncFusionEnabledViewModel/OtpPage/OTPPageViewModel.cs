@@ -376,15 +376,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             currentAttempts++;
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
-                            if (!App.IsArabic)
-                            {
-                                AccountWillBeBlocked = "The account will be locked after entering " + TP.Attempts + " wrong verification codes";
-                            }
-                            else
-                            {
-                                AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
-
-                            }
+                           
                             AccountLockedMessage(TP);
                             if (!isValiedOTP)
                             {
@@ -566,6 +558,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                ShowAccountWIllBeLockedMessage();
                 FrmColour = "#B1B1B1";
                 TinNumber = App.TP.Tin;
                 if(App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
@@ -831,25 +824,75 @@ namespace GAZT.ViewModel.NewViewModel
 
             if(tp != null && tp.Result.Equals("User locked successfully") || tp.Result.Equals("*** لا توجد أية رسالة فيT100 ***"))
             {
-                await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                string remainingAttempts = (Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) - currentAttempts).ToString();
+                string message = ShowAlertPopUpMessage(remainingAttempts);
+                await _dialogService.ShowMessageBox(message, AppResources.ZError);
                 isValiedOTP = false;
+                //await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
                 _navigationService.GoBack();
             }
             else if (tp != null && tp.Result.Equals("Valid OTP") || tp.Result.Equals("كلمة مرور صالحة لمرة واحدة"))
             {
                 isValiedOTP = true;
             }
-            else if(tp != null && currentAttempts == 1 &&  (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            else if((tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
             {
-                await _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.ZError);
+                string remainingAttempts = (Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) - currentAttempts).ToString();
+               string message =  ShowAlertPopUpMessage(remainingAttempts);
+                await _dialogService.ShowMessageBox(message, AppResources.ZError);
                 isValiedOTP = false;
             }
-            else if(tp != null && currentAttempts == 2 && (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
-            {
-                await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.Alerts);
-            }
+            //else if(tp != null && currentAttempts == 2 && (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            //{
+            //    await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.Alerts);
+            //}
             ClearData();
         }
+
+        public string ShowAccountWIllBeLockedMessage()
+        {
+            string str = string.Empty;
+
+            if (!App.IsArabic)
+            {
+                str = "The account will be locked after entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
+            }
+            else
+            {
+                str = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(WebServiceManager.NumberOfValiedAttempts) + " " + "رموز تحقق خاطئة";
+
+            }
+            return str;
+        }
+
+        public string ShowAlertPopUpMessage(string remainingAttempts)
+        {
+            string str = string.Empty;
+
+            if (!App.IsArabic)
+            {
+                if(currentAttempts == 1)
+                {
+                    str = AppResources.InvalidOTP;
+
+                }
+                else if(currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) )
+                {
+                    str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
+                }
+                else
+                {
+                    str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+                }
+                //str = "You have " + remainingAttempts + "remaining attempt then the account will be locked";
+            }
+            else
+            {
+                str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+            }
+            return str;
+        }
+
         #endregion
     }
 }

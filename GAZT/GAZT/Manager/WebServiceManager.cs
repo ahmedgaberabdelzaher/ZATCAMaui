@@ -23,6 +23,7 @@ namespace GAZT.Manager
     public static class WebServiceManager
     {
         public static string ErrorMessage = string.Empty;
+        public static string NumberOfValiedAttempts = string.Empty;
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
@@ -99,6 +100,7 @@ namespace GAZT.Manager
 
                                     XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
                                     Token = node.ChildNodes[0].InnerText;
+                                    NumberOfValiedAttempts = "3";// node.ChildNodes[2].InnerText;
                                     if ((0 == String.Compare(Token, "User does not exist")))
                                     {
                                         throw new Exception(Token);
@@ -4451,6 +4453,7 @@ namespace GAZT.Manager
 
                                     XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
                                     App.Token = node.ChildNodes[0].InnerText;
+                                    NumberOfValiedAttempts = "3";// node.ChildNodes[2].InnerText;
 
                                     if ((0 == String.Compare(App.Token, "User does not exist")))
                                     {
