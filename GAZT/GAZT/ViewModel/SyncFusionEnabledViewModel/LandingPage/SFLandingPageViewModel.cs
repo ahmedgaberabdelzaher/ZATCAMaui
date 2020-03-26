@@ -106,12 +106,12 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage("something went wrong", AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 });
             }
 
