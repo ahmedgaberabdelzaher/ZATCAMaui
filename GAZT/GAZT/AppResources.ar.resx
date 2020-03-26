@@ -2838,4 +2838,8 @@
     <value>Required *</value>
     <comment>Mendatory fields </comment>
   </data>
+   <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
+    <value>Mobile number is missing for entered TIN *</value>
+    <comment>Mendatory fields </comment>
+  </data>
 </root>

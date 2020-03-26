@@ -234,4 +234,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         }
     }
 
+    public class GAZTMobileNumberInProfileEmptyException : GAZTException
+    {
+        public GAZTMobileNumberInProfileEmptyException()
+        { }
+
+        public GAZTMobileNumberInProfileEmptyException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
+
 }

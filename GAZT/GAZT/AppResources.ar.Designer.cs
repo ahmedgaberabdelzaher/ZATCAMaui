@@ -4805,5 +4805,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZRequired", resourceCulture);
             }
         }
+        
+        public static string MobileNumberIsMissingForEnteredTIN {
+            get {
+                return ResourceManager.GetString("MobileNumberIsMissingForEnteredTIN", resourceCulture);
+            }
+        }
     }
 }

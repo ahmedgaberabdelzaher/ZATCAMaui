@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 using GAZT.Helper;
 using GAZT.Manager;
 using Plugin.FilePicker;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 
 namespace GAZT.Views.NewViews
 {
@@ -35,7 +36,25 @@ namespace GAZT.Views.NewViews
 
             SetLTR();
             viewModel.numberOfSeconds = 120;
-            viewModel.OnPageLoad();
+            try
+            {
+                viewModel.OnPageLoad();
+            }
+            catch (GAZTException gex)
+            {
+                if (gex is GAZTMobileNumberInProfileEmptyException)
+                {
+                    viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                viewModel._navigationService.GoBack();
+                return;
+            }
             this.BindingContext = viewModel;
             if(Device.RuntimePlatform==Device.Android)
             {
@@ -164,8 +183,12 @@ namespace GAZT.Views.NewViews
                     //{
                     //    MobileNumber = "00" + MobileNumber;
                     //}
-                    MobileNumber=MobileNumber.Substring(MobileNumber.Length - 9);
-                   // MobileNumber = MobileNumber.Substring(5, 9);
+                    if (App.TP != null && !string.IsNullOrEmpty(MobileNumber))
+                        MobileNumber =MobileNumber.Substring(MobileNumber.Length - 9);
+                    else
+                        throw new GAZTMobileNumberInProfileEmptyException();
+
+                    // MobileNumber = MobileNumber.Substring(5, 9);
                     var firstDigits = MobileNumber.Substring(0, 2);
                     var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
 
