@@ -630,7 +630,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private void SignUpClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SignUpFormPageView);
+            _navigationService.NavigateTo(App.SignUpTAndCViewPage);
             // Do something
         }
 

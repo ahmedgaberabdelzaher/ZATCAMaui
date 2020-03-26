@@ -157,9 +157,22 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedFormBindleFbtyp = value;
                 if (_selectedFormBindleFbtyp != null)
                 {
-                    TxtFBtype = _selectedFormBindleFbtyp.Txt50;
-                    IsCPickerEnable = true;
-                    onSelectedFormBindleFbtyp();
+                    try
+                    {
+                        _formBundleApplicationNumberList = null;
+                        //FormBundleApplicatioNumberList = null;
+                        //SelectedFormBindleFbnum = null;
+                        TxtFBnum = string.Empty;
+                        TxtFBtype = _selectedFormBindleFbtyp.Txt50;
+                        IsCPickerEnable = true;
+                        onSelectedFormBindleFbtyp();
+                    }
+                    catch (Exception ex) 
+                    { 
+                    }
+                   
+
+                    
                 }
                 ListFormBudles = null;
                 RaisePropertyChanged("SelectedFormBindleFbtyp");

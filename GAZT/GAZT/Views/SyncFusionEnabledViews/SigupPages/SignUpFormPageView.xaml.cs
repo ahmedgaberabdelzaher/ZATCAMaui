@@ -148,7 +148,7 @@ namespace GAZT.Views.NewViews
                 FrmDBO.HasError = false;
             }
 
-            if (string.IsNullOrEmpty(viewModel.TxtName) || FrmName.HasError == true)
+            if (string.IsNullOrEmpty(viewModel.TxtName) )
             {
                 FrmName.HasError = true;
                 IsNextValid = false;
@@ -1773,6 +1773,11 @@ namespace GAZT.Views.NewViews
         {
 
 
+
+        }
+
+        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
+        {
 
         }
     }
