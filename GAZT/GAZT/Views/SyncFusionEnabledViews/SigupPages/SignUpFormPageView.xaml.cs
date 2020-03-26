@@ -37,6 +37,7 @@ namespace GAZT.Views.NewViews
                 // UsingDDl.SelectedIndex = 1;
 
                 SetLTR();
+            
             }
             catch (Exception ex)
             {

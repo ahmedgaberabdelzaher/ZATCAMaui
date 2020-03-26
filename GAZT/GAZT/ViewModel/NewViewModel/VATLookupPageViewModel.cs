@@ -122,7 +122,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private VATParameterType _selectedParameterType;
+        private VATParameterType _selectedParameterType = null;
         public VATParameterType SelectedParameterType
         {
             get
@@ -140,6 +140,7 @@ namespace GAZT.ViewModel.NewViewModel
                 Captcha = captcha.ToString();
                 if (SelectedParameterType != null)
                 {
+                    TxtSearchParameter = SelectedParameterType.ParameterType;
                     SetPlaceholderText();
                 }
             }
@@ -187,7 +188,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MaxDigids");
             }
         }
+        private string _txtSearchParameter = string.Empty;
+        public string TxtSearchParameter
+        {
+            get
+            {
+                return _txtSearchParameter;
+            }
+            set
+            {
+                _txtSearchParameter = value;
+                RaisePropertyChanged("TxtSearchParameter");
 
+            }
+        }
         private void SetPlaceholderText()
         {
             if (SelectedParameterType.id.Equals("3"))
