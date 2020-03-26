@@ -559,13 +559,13 @@ namespace GAZT.ViewModel.NewViewModel
                     _zakatAttachment.DataVersion = obj.DataVersion;
                     _zakatAttachment.DocUrl = obj.DocUrl;
                     _zakatAttachment.OutletRef = obj.OutletRef;
-                    string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
-                    double unixTime = Convert.ToDouble(unixDate);
-                    DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-                    long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
-                    DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+                    //string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
+                    //double unixTime = Convert.ToDouble(unixDate);
+                    //DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                    //long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+                 //   DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
 
-                    _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
+                   // _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
                 catch (Exception ex)
