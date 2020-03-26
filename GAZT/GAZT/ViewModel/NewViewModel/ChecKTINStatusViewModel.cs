@@ -19,6 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand BackButtonClicked { get; set; }
         public ICommand OnCloseClick { get; set; }
 
         public ICommand OnClickLessOrMore { get; set; }
@@ -153,6 +154,10 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVisibleListItems = false;
                     ShowLessOrMore = AppResources.ZShowmoredetails;
                 }
+            });
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
             });
         }
 

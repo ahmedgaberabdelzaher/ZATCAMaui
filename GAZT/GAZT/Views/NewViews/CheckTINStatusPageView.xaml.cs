@@ -19,6 +19,8 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             viewModel = App.Locator.CheckTINStatusPageView;
             this.BindingContext = viewModel;
+
+            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
             NavigationPage.SetBackButtonTitle(this, "");

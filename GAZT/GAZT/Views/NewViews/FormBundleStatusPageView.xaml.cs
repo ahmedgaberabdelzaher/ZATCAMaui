@@ -19,6 +19,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
             //CPicker_imgtap.IsEnabled = false;
             //tapImg.Tapped += Gesture_Tapped;

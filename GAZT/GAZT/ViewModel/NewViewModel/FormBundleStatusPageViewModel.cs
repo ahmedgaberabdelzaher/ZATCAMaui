@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -22,7 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         private string _fbnumdetail;
         private FormBundleResult _selectedFormBindleFbtyp = null;
         private List<FbnumDetailList> _fbnumDetailList;
-
+        public ICommand BackButtonClicked { get; set; }
 
         private string _txtFBtype = string.Empty;
         public string TxtFBtype
@@ -64,7 +65,16 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
         }
+
+
+
+
         public List<FormBundleResult> FormBundleList
         {
             get
