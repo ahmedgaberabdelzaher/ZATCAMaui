@@ -19,8 +19,8 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        private string password = "";
-        private string email = "";
+        private string password = "Init@123";
+        private string email = "3102285896";
         //private string password;
         //private string email;
         public int CurrentAttempt = 0;

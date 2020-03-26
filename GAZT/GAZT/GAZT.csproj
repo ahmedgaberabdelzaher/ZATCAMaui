@@ -52,6 +52,7 @@
     <Compile Remove="Views\BorderlessEntry.xaml.cs" />
     <Compile Remove="Helper\IHTTPClientHandlerCreationService.cs" />
     <Compile Remove="Views\NewViews\MyPage.cs" />
+    <Compile Remove="Models\AttachmentPageView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Connected Services\" />
