@@ -2842,4 +2842,8 @@
     <value>Mobile number is missing for the entered TIN.</value>
     <comment>Mendatory fields </comment>
   </data>
+  <data name="RegistrationIsPending" xml:space="preserve">
+    <value>Registration is pending</value>
+    <comment>Mendatory fields </comment>
+  </data>
 </root>

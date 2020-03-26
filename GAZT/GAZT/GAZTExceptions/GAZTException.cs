@@ -244,4 +244,13 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         }
     }
 
+    public class GAZTRegistrationPendingException : GAZTException
+    {
+        public GAZTRegistrationPendingException()
+        { }
+
+        public GAZTRegistrationPendingException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
 }

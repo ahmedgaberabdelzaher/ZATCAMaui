@@ -18,7 +18,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-
+        
         private string password = "";
         private string email = "skorada-c@gazt.gov.sa";
         //private string password;
@@ -34,9 +34,61 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// </summary>
         public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            this.LoginCommand = new Command(async () =>
+           
+            this.LoginCommand = new Command(() =>
             {
-                await this.LoginClicked();
+                Task LoginClickedTask = Task.Run(async () =>
+                {
+                    await this.LoginClicked();
+                });
+                try
+                {
+                    LoginClickedTask.Wait();
+                }
+                catch (AggregateException ae)
+                {
+                    IsLoading = false;
+                    foreach (var gex in ae.InnerExceptions)
+                    {
+                        // Handle the GAZT custom exception.
+                        if (gex is GAZTException)
+                        {
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTRegistrationPendingException)
+                            {
+                                MessageForTheUser = AppResources.RegistrationIsPending;
+                            }
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            });
+                        }
+                        // Rethrow any other exception.
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    IsLoading = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+
+
             });
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
@@ -416,7 +468,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                       TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
                             if (TPProfile != null)
                             {
-                                App.TP = new TaxPayerProfile();
+                                if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                                {
+                                    throw new GAZTRegistrationPendingException();
+                                }
+                                  App.TP = new TaxPayerProfile();
                                 TPProfile.Tin = Email;
                                 TPProfile.Userid = UserId;
                                 App.TP = TPProfile;
@@ -605,6 +661,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         else if (gex is GAZTUserNameIncorrectException)
                         {
                             MessageForTheUser = AppResources.ZUserNameIncorrect;
+                        }
+                        else if (gex is GAZTRegistrationPendingException)
+                        {
+                            MessageForTheUser = AppResources.RegistrationIsPending;
                         }
 
 

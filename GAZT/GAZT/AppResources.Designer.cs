@@ -4823,5 +4823,11 @@ namespace GAZT {
                 return ResourceManager.GetString("MobileNumberIsMissingForEnteredTIN", resourceCulture);
             }
         }
+        
+        public static string RegistrationIsPending {
+            get {
+                return ResourceManager.GetString("RegistrationIsPending", resourceCulture);
+            }
+        }
     }
 }

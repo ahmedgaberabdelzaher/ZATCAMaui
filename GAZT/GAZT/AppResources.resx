@@ -2844,6 +2844,10 @@ Should we require further information, we would be in contact.</value>
   </data>
    <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
     <value>Mobile number is missing for the entered TIN</value>
-    <comment>Mendatory fields </comment>
+    <comment>OTP Page</comment>
+  </data>
+   <data name="RegistrationIsPending" xml:space="preserve">
+    <value>Registration is pending</value>
+    <comment>LogIn Page </comment>
   </data>
 </root>
