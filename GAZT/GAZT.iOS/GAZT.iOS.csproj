@@ -126,6 +126,15 @@
     <BundleResource Include="Resources\sf_BannerImage.png" />
     <BundleResource Include="Resources\sf_BannerImage%402x.png" />
     <BundleResource Include="Resources\sf_BannerImage%403x.png" />
+    <BundleResource Include="Resources\sf_Tax_Evasion.png" />
+    <BundleResource Include="Resources\sf_Tax_Evasion%402x.png" />
+    <BundleResource Include="Resources\sf_Tax_Evasion%403x.png" />
+    <BundleResource Include="Resources\sf_TIN_Status.png" />
+    <BundleResource Include="Resources\sf_TIN_Status%402x.png" />
+    <BundleResource Include="Resources\sf_TIN_Status%403x.png" />
+    <BundleResource Include="Resources\sf_VAT_Lookup.png" />
+    <BundleResource Include="Resources\sf_VAT_Lookup%402x.png" />
+    <BundleResource Include="Resources\sf_VAT_Lookup%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
