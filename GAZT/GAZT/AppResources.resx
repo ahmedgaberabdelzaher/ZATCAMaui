@@ -2843,7 +2843,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Mendatory fields </comment>
   </data>
    <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
-    <value>Mobile number is missing for entered TIN *</value>
+    <value>Mobile number is missing for the entered TIN</value>
     <comment>Mendatory fields </comment>
   </data>
 </root>

@@ -44,15 +44,22 @@ namespace GAZT.Views.NewViews
             {
                 if (gex is GAZTMobileNumberInProfileEmptyException)
                 {
-                    viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Information);
-                    viewModel._navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                      await  viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Alerts);
+                        viewModel._navigationService.GoBack();
+                    });
+                  
                     return;
                 }
             }
             catch (Exception)
             {
-                viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                viewModel._navigationService.GoBack();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Alerts);
+                    viewModel._navigationService.GoBack();
+                });
                 return;
             }
             this.BindingContext = viewModel;
