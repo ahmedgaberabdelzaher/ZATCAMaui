@@ -15,7 +15,7 @@ namespace GAZT.Models
         public int Minutes { get; set; }
         public string Result { get; set; }
         public string Otp { get; set; }
-
+        public string TpType { get; set; }
         public String Name
         {
             get

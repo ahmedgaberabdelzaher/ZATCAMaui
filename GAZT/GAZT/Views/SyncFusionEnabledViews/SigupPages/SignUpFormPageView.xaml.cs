@@ -37,6 +37,7 @@ namespace GAZT.Views.NewViews
                 // UsingDDl.SelectedIndex = 1;
 
                 SetLTR();
+            
             }
             catch (Exception ex)
             {
@@ -148,7 +149,7 @@ namespace GAZT.Views.NewViews
                 FrmDBO.HasError = false;
             }
 
-            if (string.IsNullOrEmpty(viewModel.TxtName) || FrmName.HasError == true)
+            if (string.IsNullOrEmpty(viewModel.TxtName) )
             {
                 FrmName.HasError = true;
                 IsNextValid = false;
@@ -1392,6 +1393,14 @@ namespace GAZT.Views.NewViews
 
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                FrmPhoneNumber.HasError = false;
+            }
+
+
+
+
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
                 PopUp popUp = new PopUp();
@@ -1773,6 +1782,11 @@ namespace GAZT.Views.NewViews
         {
 
 
+
+        }
+
+        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
+        {
 
         }
     }

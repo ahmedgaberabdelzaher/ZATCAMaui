@@ -14,7 +14,7 @@
              x:Class="GAZT.Views.NewViews.CreateGaztAccountPageView">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" RowSpacing="10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90*" />
                     <RowDefinition Height="10*" />
@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  Margin="0" Padding="0,10,0,10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />

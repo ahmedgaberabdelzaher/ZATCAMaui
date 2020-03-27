@@ -18,15 +18,15 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-
-        //private string password = "Init@123";
-        //private string email = "3102285896";
-        private string password;
-        private string email;
+        
+        private string password = "Init@123";
+        private string email = "3102285896";
+        //private string password;
+        //private string email;
         public int CurrentAttempt = 0;
         #endregion
 
-        #region Constructor
+        #region ConstructorF
 
 
         /// <summary>
@@ -34,9 +34,61 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// </summary>
         public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            this.LoginCommand = new Command(async () =>
+           
+            this.LoginCommand = new Command(() =>
             {
-                await this.LoginClicked();
+                Task LoginClickedTask = Task.Run(async () =>
+                {
+                    await this.LoginClicked();
+                });
+                try
+                {
+                    LoginClickedTask.Wait();
+                }
+                catch (AggregateException ae)
+                {
+                    IsLoading = false;
+                    foreach (var gex in ae.InnerExceptions)
+                    {
+                        // Handle the GAZT custom exception.
+                        if (gex is GAZTException)
+                        {
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTRegistrationPendingException)
+                            {
+                                MessageForTheUser = AppResources.RegistrationIsPending;
+                            }
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            });
+                        }
+                        // Rethrow any other exception.
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    IsLoading = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+
+
             });
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
@@ -427,12 +479,16 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
 
                         if (0 == String.Compare("success", response, true))
                         {
-                            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+                                      TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
                             if (TPProfile != null)
                             {
-                                App.TP = new TaxPayerProfile();
+                                if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                                {
+                                    throw new GAZTRegistrationPendingException();
+                                }
+                                  App.TP = new TaxPayerProfile();
                                 TPProfile.Tin = Email;
-                                App.TP.Userid = UserId;
+                                TPProfile.Userid = UserId;
                                 App.TP = TPProfile;
                             }
 
@@ -440,49 +496,52 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                             await Task.Run(async () =>
                             {
-                                string currentAttempts = "1";
-                                response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
-                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                                try
                                 {
-                                    if (App.TP == null)
-                                        App.TP = new GAZT.Models.TaxPayerProfile();
-
-                                    App.TP.Userid = UserId;
-                                    App.TP.Password = Password;
-                                    bool IsNavigatingFromLogin = true;
-                                    NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
-
-                                    Device.BeginInvokeOnMainThread(() =>
+                                    string currentAttempts = "1";
+                                    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                     {
-                                        _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                        bool IsNavigatingFromLogin = true;
+                                        NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 
-                                        //_navigationService.NavigateTo(App.LandingPageView);
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
-                                        // SYNCFUSION INTEGRATION
+                                            //_navigationService.NavigateTo(App.LandingPageView);
 
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
-                                        //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
-                                        //App.TP.Tin = UserName;
+                                            // SYNCFUSION INTEGRATION
+
+                                            //GAZTeServicesBusinessLibrary.WebServiceManager.InitialiseWebServiceManager();
+                                            //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                            //GAZTeServicesBusinessLibrary.WebServiceManager.Token = App.Token;
+                                            //App.TP.Tin = UserName;
 
 
-                                        //  _navigationService.NavigateTo(App.SFLandingPageView);
+                                            //  _navigationService.NavigateTo(App.SFLandingPageView);
 
-                                        //  SYNCFUSION INTEGRATION
+                                            //  SYNCFUSION INTEGRATION
 
-                                    });
+                                        });
+                                    }
+                                    else
+                                    {
+                                        await Task.Run(() =>
+                                        {
+                                            IsLoading = false;
+                                        });
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                        });
+                                    }
                                 }
-                                else
+                                catch(Exception gex)
                                 {
-                                    await Task.Run(() =>
-                                    {
-                                        IsLoading = false;
-                                    });
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        await _dialogService.ShowMessageBox(response, AppResources.Information);
-                                    });
+
                                 }
+                                
                             });
                         }
                         else
@@ -613,6 +672,14 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         {
                             MessageForTheUser = AppResources.ZUserNameIncorrect;
                         }
+                        else if (gex is GAZTUserNameIncorrectException)
+                        {
+                            MessageForTheUser = AppResources.ZUserNameIncorrect;
+                        }
+                        else if (gex is GAZTRegistrationPendingException)
+                        {
+                            MessageForTheUser = AppResources.RegistrationIsPending;
+                        }
 
 
                         Device.BeginInvokeOnMainThread(async () =>
@@ -635,9 +702,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 IsLoading = false;
             });
-
-
-
         }
 
         /// <summary>
@@ -646,7 +710,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private void SignUpClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SignUpFormPageView);
+            _navigationService.NavigateTo(App.SignUpTAndCViewPage);
             // Do something
         }
 
