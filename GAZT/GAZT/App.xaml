@@ -26,6 +26,9 @@
              <Color x:Key="EntryTextColor">#5D6770</Color>
             <Color x:Key="LightGreenColor">#CCE0DC</Color>
 
+            <x:String x:Key="Back">&#xe709;</x:String>
+            <x:String x:Key="ReverseBack">&#xe71a;</x:String>
+
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />

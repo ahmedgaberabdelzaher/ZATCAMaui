@@ -35,7 +35,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.OTPPageView;
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
 
-SetLTR();
+            SetLTR();
             viewModel.numberOfSeconds = 120;
             try
             {

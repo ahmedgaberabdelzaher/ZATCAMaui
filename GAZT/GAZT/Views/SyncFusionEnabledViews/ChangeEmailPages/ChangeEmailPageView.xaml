@@ -11,6 +11,7 @@
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:local1="clr-namespace:GAZT.SyncFusionEnabledConverters"
              x:Class="GAZT.Views.NewViews.ChangeEmailPageView"
              Title="{x:Static local:AppResources.ChangeEmail}"
                Style="{StaticResource ContentPageStyle}"
@@ -22,6 +23,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <local1:BooleanToForwardArrowIconStringConverter x:Key="forwardConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -29,6 +31,26 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForEmail">
+
+
+
+
+            <custom:CustomLabel
+                x:Name="BackLabel"
+                       VerticalOptions="StartAndExpand"
+                HorizontalOptions="StartAndExpand"
+                        Margin="8,10,8,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#ffffff"
+                        Text="{DynamicResource StyleReverseBack}"
+               
+                >
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+
+
             <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
 
 
@@ -79,7 +101,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Placeholder="{Binding OldEmail}" IsEnabled="False" x:Name="CurrentEmail"     FontSize="Small" TextColor="White"  >
+                                <custom:GAZTBorderlessEntry Placeholder="{Binding OldEmail}" PlaceholderColor="White" IsEnabled="False" x:Name="CurrentEmail"     FontSize="Small" TextColor="White"  >
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </custom:GAZTBorderlessEntry.Behaviors>
@@ -103,8 +125,8 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding NewEmail}"  x:Name="NewEmail" IsEnabled="{Binding IsEnabledNewEmail}"    FontSize="Small" TextColor="White"  >
                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                        <custom:NumericValidationBehavior/>
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
@@ -124,8 +146,8 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding RetypeEmail}"  x:Name="RetypeEmail" IsEnabled="{Binding IsEnabledRetypeEmail}"    FontSize="Small" TextColor="White"  >
                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                        <custom:NumericValidationBehavior/>
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 

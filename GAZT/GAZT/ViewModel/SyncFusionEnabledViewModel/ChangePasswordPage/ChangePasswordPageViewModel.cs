@@ -19,6 +19,7 @@ namespace GAZT
         public readonly IDialogService _dialogService;
 
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
         #region Property
 
         private string _NewPasswordForEmail = string.Empty;
@@ -268,6 +269,11 @@ namespace GAZT
             }
             _dialogService = dialogService;
 
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
@@ -502,15 +508,22 @@ namespace GAZT
         }
         public void OnPageLoad()
         {
-            TaxPayerProfile = App.TP;
-            CurrentPassword = TaxPayerProfile.Password;
-            //CurrentPassword = App;
-            OldEmail = TaxPayerProfile.Email;
-            NewEmail = TaxPayerProfile.NewEmail;
-            NewPasswordForEmail = string.Empty;
-            RetypePasswordForEmail = string.Empty;
-            IsEnabledNewPasswordForEmail = true;
-            IsEnabledRetypePasswordForEmail = true;
+            try
+            {
+                TaxPayerProfile = App.TP;
+                CurrentPassword = TaxPayerProfile.Password;
+                //CurrentPassword = App;
+                OldEmail = TaxPayerProfile.Email;
+                NewEmail = TaxPayerProfile.NewEmail;
+                NewPasswordForEmail = string.Empty;
+                RetypePasswordForEmail = string.Empty;
+                IsEnabledNewPasswordForEmail = true;
+                IsEnabledRetypePasswordForEmail = true;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public void setPropertyForEmailUpdation(string newEmail)
         {

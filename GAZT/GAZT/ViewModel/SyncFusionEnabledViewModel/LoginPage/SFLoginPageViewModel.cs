@@ -502,6 +502,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
                                     if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                     {
+
+                                        App.TP.Userid = UserId;
+                                        App.TP.Password = Password;
                                         bool IsNavigatingFromLogin = true;
                                         NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 

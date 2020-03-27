@@ -225,11 +225,6 @@
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                         <custom:GAZTBorderlessEntry  x:Name="Password" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#7D858D"  IsEnabled="False">
-                            <Entry.Behaviors>
-
-                                <custom1:OnlyAlphabatesBehaviour/>
-
-                            </Entry.Behaviors>
                         </custom:GAZTBorderlessEntry>
 
                     </inputLayout:SfTextInputLayout>
