@@ -87,14 +87,14 @@
                         <Label  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SSTArBold}" Text="{Binding TinNumber}" TextColor="#7D858D" Style="{StaticResource ForgotPasswordTextColor}" HorizontalOptions="Start" VerticalOptions="Center" IsEnabled="False">
                         </Label>-->
 
-                            <inputLayout:SfTextInputLayout   x:Name="UsernameLayout"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                            <!--<inputLayout:SfTextInputLayout   x:Name="UsernameLayout"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.UserName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding TinNumber}" IsReadOnly="True"  TextColor="#7D858D" x:Name="Username"  FontSize="Small" >
 
                                 </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                            </inputLayout:SfTextInputLayout>-->
 
 
                             <!--<Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding EmailOrMobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
@@ -105,14 +105,14 @@
                         </Label>-->
 
 
-                            <inputLayout:SfTextInputLayout   x:Name="EmailOrMobileLayout"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                            <!--<inputLayout:SfTextInputLayout   x:Name="EmailOrMobileLayout"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{Binding EmailOrMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding MobileNumber}" x:Name="EmailOrMobile" IsReadOnly="True"  TextColor="#7D858D" FontSize="Small"  >
 
                                 </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                            </inputLayout:SfTextInputLayout>-->
 
                             <!--<Label Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.FormattedText>
@@ -123,7 +123,7 @@
                             </Label.FormattedText>
                         </Label>-->
 
-                            <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="4"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                            <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.VarificationCode}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -143,10 +143,10 @@
                             </local:GAZTBorderlessEntry.Behaviors>
                             </local:GAZTBorderlessEntry>-->
 
-                            <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29" Text="{Binding AccountWillBeBlocked}"  Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="Start" Margin="10,0,10,0">
+                            <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29" Text="{Binding AccountWillBeBlocked}"  Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
                             </Label>
 
-                            <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
+                            <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
@@ -161,8 +161,8 @@
                             Grid.Row="7"
                             Grid.Column="0" Grid.ColumnSpan="2"
                             Margin="10,16,10,50"
-                            BackgroundColor="#D99A29"
-                            Opacity="0.7"
+                            BackgroundColor="#006450"
+                     Opacity="0.7"
                                      Command="{Binding OnSubmitClicked}"
                     IsEnabled="{Binding IsVerifyOTPEnabled}"
                     Text="{x:Static local:AppResources.Verify}"
@@ -189,8 +189,8 @@
                     Margin="0"
                     VerticalOptions="EndAndExpand"
                 HorizontalOptions="FillAndExpand"
-                    BackgroundColor="#006450"
-                     Opacity="0.7"
+                    BackgroundColor="#D99A29"
+                            Opacity="0.7"
                    
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="56"

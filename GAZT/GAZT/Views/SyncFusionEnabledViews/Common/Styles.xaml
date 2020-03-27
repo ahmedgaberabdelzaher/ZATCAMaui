@@ -38,6 +38,13 @@
         <Setter Property="LineHeight" Value="1.25" />
     </Style>
 
+    <!--  Common style for labels  -->
+    <Style x:Key="CommonLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="1.25" />
+    </Style>
+
     <!--  Common style for entries  -->
     <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
@@ -50,8 +57,9 @@
         <Setter Property="ReturnType" Value="Done" />
     </Style>
 
+
     <!--  Common style for buttons  -->
-    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+    <Style x:Key="CommonSfButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundGradient">
             <Setter.Value>
                 <graphics:SfLinearGradientBrush>
@@ -62,6 +70,27 @@
                 </graphics:SfLinearGradientBrush>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!--  Common style for buttons  -->
+    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+        <!--<Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="#D99A29" />
+                        <graphics:SfGradientStop Offset="0" Color="#D99A29" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
         <Setter Property="BorderWidth" Value="0" />

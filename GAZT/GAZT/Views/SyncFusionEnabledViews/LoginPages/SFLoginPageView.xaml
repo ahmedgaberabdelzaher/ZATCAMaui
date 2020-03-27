@@ -90,7 +90,7 @@
 
                         <!--  Entry to get password from user  -->
 
-                        <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
+                        <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True"  Margin="10,-6,10,-6" 
    Grid.Row="3"  Hint="{x:Static local1:AppResources.Password}" 
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >

@@ -226,6 +226,20 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             }
         }
 
+        private bool _passwordVisibility = true;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
+
         private bool _isVisibleTinIds = false;
         public bool IsVisibleTinIds
         {
