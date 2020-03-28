@@ -18,6 +18,8 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
 
         public ICommand OnVerifyButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
+
 
         #region Property
 
@@ -164,6 +166,11 @@ namespace GAZT.ViewModel.NewViewModel
             OnVerifyButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 await VarifyMobileNumber();
+            });
+
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
             });
         }
 

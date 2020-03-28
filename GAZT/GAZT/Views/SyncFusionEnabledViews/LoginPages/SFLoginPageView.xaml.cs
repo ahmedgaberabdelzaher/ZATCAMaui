@@ -61,5 +61,9 @@ namespace GAZTeServicesApp.Views.LoginPage
             viewModel.IsVisibleTinIds = false;
         }
 
+        private void OnPasswordVisibilityClicked(object sender, EventArgs e)
+        {
+            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        }
     }
 }

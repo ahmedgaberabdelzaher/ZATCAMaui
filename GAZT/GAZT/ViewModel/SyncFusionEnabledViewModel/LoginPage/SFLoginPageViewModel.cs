@@ -18,11 +18,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-        
-        private string password = "";
-        private string email = "skorada-c@gazt.gov.sa";
-        //private string password;
-        //private string email;
+
+        //private string password = "Init@123";
+        //private string email = "3102285896";
+        private string password;
+        private string email;
         public int CurrentAttempt = 0;
         #endregion
 
@@ -278,6 +278,20 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             }
         }
 
+        private bool _passwordVisibility = true;
+        public bool PasswordVisibility
+        {
+            get
+            {
+                return _passwordVisibility;
+            }
+            set
+            {
+                _passwordVisibility = value;
+                RaisePropertyChanged("PasswordVisibility");
+            }
+        }
+
         private bool _isVisibleTinIds = false;
         public bool IsVisibleTinIds
         {
@@ -488,6 +502,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
                                     if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                     {
+
+                                        App.TP.Userid = UserId;
+                                        App.TP.Password = Password;
                                         bool IsNavigatingFromLogin = true;
                                         NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 
@@ -688,9 +705,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 IsLoading = false;
             });
-
-
-
         }
 
         /// <summary>

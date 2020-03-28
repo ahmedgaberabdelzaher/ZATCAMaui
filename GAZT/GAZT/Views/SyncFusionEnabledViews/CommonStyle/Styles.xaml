@@ -33,6 +33,8 @@
     <x:String x:Key="More2">&#xe715;</x:String>
     <x:String x:Key="Phone">&#xe71c;</x:String>
     <x:String x:Key="contactus">&#xe723;</x:String>
+    <x:String x:Key="Viewd">&#xe71b;</x:String>
+
     <Color x:Key="Green">#7ed321</Color>
 
     <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
