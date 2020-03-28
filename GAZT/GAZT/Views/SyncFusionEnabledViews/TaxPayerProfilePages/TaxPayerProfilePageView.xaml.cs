@@ -23,6 +23,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.TaxPayerProfilePageView;
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
@@ -31,6 +32,18 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
         private void SetLTR()
         {
@@ -43,6 +56,7 @@ namespace GAZT.Views.NewViews
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeAeroIcon();
             viewModel.SetTP();
             Task.Delay(20000);
             //if (viewModel.IscomingFromOTPViewViaEmail)

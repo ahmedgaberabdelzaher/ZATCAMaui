@@ -48,6 +48,20 @@
     <Color x:Key="Green">#7ed321</Color>
 
 
+    <!--  Common style for separator BoxView  -->
+    <Style x:Key="SeparatorStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-200}" />
+    </Style>
+
+
+
+    <Style x:Key="IconImageStyle" TargetType="Image">
+        <Setter Property="Margin" Value="5,8" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
 
     <!--  Common style for content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
@@ -85,7 +99,22 @@
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="WidthRequest" Value="40" />
     </Style>
-    
+
+
+    <!--  Common style for  Label  -->
+    <Style x:Key="LabelStyleFromCommonStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="16, 12" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
+        <Setter Property="MaxLines" Value="2" />
+    </Style>
+
     <!--  Common style for labels  -->
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
