@@ -1875,7 +1875,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tax Returns.
+        ///   Looks up a localized string similar to VAT Returns.
         /// </summary>
         public static string VATDeclaration {
             get {
@@ -5410,7 +5410,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return Status.
+        ///   Looks up a localized string similar to Application Status.
         /// </summary>
         public static string ZZFormBundleStatus {
             get {

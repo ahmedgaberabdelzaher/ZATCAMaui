@@ -590,7 +590,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Submitted</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>Tax Returns</value>
+    <value>VAT Returns</value>
   </data>
   <data name="TotalUnpaidBills" xml:space="preserve">
     <value>Total unpaid bills</value>
@@ -2056,7 +2056,7 @@ Should we require further information, we would be in contact.</value>
     <value>Return Reference Number</value>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Return Status</value>
+    <value>Application Status</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
