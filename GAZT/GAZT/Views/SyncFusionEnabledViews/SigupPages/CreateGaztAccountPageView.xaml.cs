@@ -25,7 +25,9 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             viewModel.SignUpModelRootObjectM = SignUpModelRootObjectModel;
             viewModel.TxtEmailAddress = SignUpModelRootObjectModel.d.AEmail;
-            viewModel.TxtMobileNumber = SignUpModelRootObjectModel.d.AMobile;
+            string mobileno = SignUpModelRootObjectModel.d.AMobile;
+            viewModel.TxtMobileNumber="XXXXXXXXXX"+ mobileno.Substring(mobileno.Length - 4, 4);
+            //viewModel.TxtMobileNumber = SignUpModelRootObjectModel.d.AMobile;//TxtMobileNumber string sub = mystring.Substring(mystring.Length - count, count);
             viewModel.OnPageLoad();
             SetLTR();
         }
