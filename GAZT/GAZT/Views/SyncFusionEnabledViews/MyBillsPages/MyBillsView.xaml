@@ -61,7 +61,7 @@
                                     </chart:SfChart.Legend>
                                     <chart:SfChart.Series>
 
-                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel}" XBindingPath="BillType" YBindingPath="BillCount">
+                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
 
                                             <chart:PieSeries.ColorModel>
 

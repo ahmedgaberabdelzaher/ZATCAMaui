@@ -107,6 +107,25 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+        private SignUpUsing _selectedSignUpUsingSetForCancle = null;
+        public SignUpUsing SelectedSignUpUsingSetForCancle
+        {
+            get
+            {
+                return _selectedSignUpUsingSetForCancle;
+            }
+            set
+            {
+                _selectedSignUpUsingSetForCancle = value;
+                RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
+
+            }
+
+
+
+        }
+
+
 
         private SignUpUsing _selectedSignUpUsing = null;
         public SignUpUsing SelectedSignUpUsing
