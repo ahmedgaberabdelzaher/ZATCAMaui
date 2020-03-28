@@ -19,7 +19,15 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
         public ICommand OnVerifyEmailButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
+        
+
         #region Property
+
+
+
+       
+
 
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
@@ -184,7 +192,16 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _dialogService = dialogService;
 
-            OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
+
+
+            BackButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
+
+
+
+                OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
                 bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);

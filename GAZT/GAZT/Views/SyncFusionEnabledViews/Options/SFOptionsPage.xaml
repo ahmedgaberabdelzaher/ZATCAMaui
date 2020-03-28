@@ -12,7 +12,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
+            <ResourceDictionary Source="..\Common\Styles.xaml" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -88,7 +88,7 @@
                         <!--  Edit profile label  -->
                         <Label
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZMyProfile}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -228,7 +228,7 @@
                         <!--  Help text label  -->
                         <Label
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZHelp}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -261,7 +261,7 @@
                         <!--  FAQs text label  -->
                         <Label
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZFaq}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -295,7 +295,7 @@
                         <!--  Terms of service label  -->
                         <Label
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZTermsAndService}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -327,7 +327,7 @@
                         <!--  Privacy policy text label  -->
                         <Label
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -367,7 +367,7 @@
                         <local1:CustomLabel
                             
                         Grid.Column="1"
-                        Style="{StaticResource LabelStyle}"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{Binding TranslateText}" >
                             <local1:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>

@@ -18,11 +18,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-        
-        private string password = "Init@123";
-        private string email = "3102285896";
-        //private string password;
-        //private string email;
+
+        //private string password = "Init@123";
+        //private string email = "3102285896";
+        private string password;
+        private string email;
         public int CurrentAttempt = 0;
         #endregion
 
@@ -502,6 +502,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
                                     if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                     {
+
+                                        App.TP.Userid = UserId;
+                                        App.TP.Password = Password;
                                         bool IsNavigatingFromLogin = true;
                                         NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
 

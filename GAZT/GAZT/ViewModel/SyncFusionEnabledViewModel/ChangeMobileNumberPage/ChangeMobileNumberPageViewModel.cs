@@ -20,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
 
+
         #region Property
 
 

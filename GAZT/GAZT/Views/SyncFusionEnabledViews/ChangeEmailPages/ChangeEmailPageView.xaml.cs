@@ -25,15 +25,37 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ChangeEmailPageView;
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
             NavigationPage.SetBackButtonTitle(this, "");
+            
+
         }
         #endregion
 
         #region Method
-        private void SetLTR()
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ChangeAeroIcon();
+        }
+
+            private void SetLTR()
         {
             if (!App.IsArabic)
             {

@@ -23,6 +23,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ChangeMobileNumberPageView;
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
@@ -32,6 +33,18 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -43,6 +56,7 @@ namespace GAZT.Views.NewViews
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeAeroIcon();
             // Task.Delay(20000);
             viewModel.NewMobile =string.Empty;
             

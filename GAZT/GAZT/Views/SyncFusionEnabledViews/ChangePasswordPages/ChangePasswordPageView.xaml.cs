@@ -27,7 +27,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.ChangePasswordPageView;
-            
+            ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;           
             viewModel.NavigateToOtpForEmailEnum = navigateTo;
@@ -37,6 +37,18 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
         private void SetLTR()
         {
@@ -48,6 +60,7 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeAeroIcon();
             viewModel.PasswordVisibilityForNewPassword = true;
             viewModel.PasswordVisibilityForOldPassword = true;
             viewModel.PasswordVisibilityForRetypePassword =true;

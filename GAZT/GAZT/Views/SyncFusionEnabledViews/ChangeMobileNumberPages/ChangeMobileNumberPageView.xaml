@@ -38,6 +38,21 @@
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForChangeMobileNumber" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
+            <custom:CustomLabel
+                x:Name="BackLabel"
+                       VerticalOptions="StartAndExpand"
+                HorizontalOptions="StartAndExpand"
+                        Margin="8,10,8,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#ffffff"
+                        Text="{DynamicResource StyleReverseBack}"
+               
+                >
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+
             <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
 
 
@@ -78,7 +93,7 @@
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  x:Name="TCurrentMobile" TextColor="#ffffff" FontSize="Small"  Placeholder="{Binding CurrentMobile}" PlaceholderColor= "#7D858D"  IsEnabled="False">
+                            <custom:GAZTBorderlessEntry  x:Name="TCurrentMobile" TextColor="#ffffff" FontSize="Small"  Placeholder="{Binding CurrentMobile}" PlaceholderColor= "White"  IsEnabled="False">
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -100,7 +115,7 @@
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
 
-                            <custom:GAZTBorderlessEntry Text="{Binding NewMobile}"   TextColor="#7D858D" x:Name="Username" Keyboard="Numeric" FontSize="Small" >
+                            <custom:GAZTBorderlessEntry Text="{Binding NewMobile}"   TextColor="White" x:Name="Username" Keyboard="Numeric" FontSize="Small" >
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:MobileNumberValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
