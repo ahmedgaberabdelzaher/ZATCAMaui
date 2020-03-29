@@ -590,7 +590,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Submitted</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>Tax Returns</value>
+    <value>VAT Returns</value>
   </data>
   <data name="TotalUnpaidBills" xml:space="preserve">
     <value>Total unpaid bills</value>
@@ -2056,7 +2056,7 @@ Should we require further information, we would be in contact.</value>
     <value>Return Reference Number</value>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Return Status</value>
+    <value>Application Status</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
@@ -2842,12 +2842,16 @@ Should we require further information, we would be in contact.</value>
     <value>Required *</value>
     <comment>Mendatory fields </comment>
   </data>
-   <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
+  <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
     <value>Mobile number is missing for the entered TIN</value>
     <comment>OTP Page</comment>
   </data>
-   <data name="RegistrationIsPending" xml:space="preserve">
+  <data name="RegistrationIsPending" xml:space="preserve">
     <value>Registration is pending</value>
     <comment>LogIn Page </comment>
+  </data>
+  <data name="ZZZVATReturn" xml:space="preserve">
+    <value>VAT Return</value>
+    <comment>Tax Return Title</comment>
   </data>
 </root>

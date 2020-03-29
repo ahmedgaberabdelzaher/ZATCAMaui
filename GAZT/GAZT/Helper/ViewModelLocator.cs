@@ -31,7 +31,8 @@ namespace GAZT
             SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
-
+            SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
+            
             //SYNCFUSION INTEGRATION
 
 
@@ -925,6 +926,22 @@ namespace GAZT
             }
         }
 
+        public SFAnonymousLandingPageViewModel SFAnonymousLandingPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SFAnonymousLandingPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
         //SYNC FUSION INTEGRATION
 
@@ -938,6 +955,7 @@ namespace GAZT
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
+            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView)); 
 
             //SYNCFUSION INTEGRATION
 

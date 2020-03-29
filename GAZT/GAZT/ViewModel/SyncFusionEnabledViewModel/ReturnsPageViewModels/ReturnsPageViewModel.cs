@@ -12,6 +12,28 @@ using Xamarin.Forms;
 
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 {
+    public class ReturnsListCountsByStatus
+    {
+        public int SubmittedZakatCount;
+       public int NonSubmittedZakatCount;
+       public  int OverdueZakatCount;
+        public int SubmittedVATCount;
+        public int NonSubmittedVATCount;
+        public int OverdueVATCount;
+        public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
+        private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
+        public string SubmittedZakatWithCountTest
+        {
+            get
+            {
+                return _submittedZakatWithCountTest;
+            }
+            set
+            {
+                _submittedZakatWithCountTest = value;
+            }
+        }
+    }
     public class ReturnsPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
@@ -20,6 +42,22 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public static String ReturnPeriod = "";
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
+
+        private ReturnsListCountsByStatus _returnsListCountsByStatus;
+        public ReturnsListCountsByStatus ReturnsListCountsByStatus
+        {
+            get
+            {
+                return _returnsListCountsByStatus;
+            }
+            set
+            {
+                _returnsListCountsByStatus = value;
+
+                RaisePropertyChanged("ReturnsListCountsByStatus");
+            }
+        }
+
         public List<ICRListSet> ICRListVATSubmitted
         {
             get
@@ -44,8 +82,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ICRListVATSubmitted");
             }
         }
-
-
+        
         private List<ICRListSet> _iCRListVATNonSubmitted;
         public List<ICRListSet> ICRListVATNonSubmitted
         {
@@ -56,18 +93,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _iCRListVATNonSubmitted = value;
-                //if (_iCRList != null && _iCRList.Count != 0)
-                //{
-                //    IsNoDataLabelVisible = false;
-                //    IsICRListVisible = true;
-                //    // SelectedICRStatus = null;
-                //}
-                //else
-                //{
-                //    IsICRListVisible = false;
-                //    IsNoDataLabelVisible = true;
-                //    //  SelectedICRStatus = null;
-                //}
                 RaisePropertyChanged("ICRListVATNonSubmitted");
             }
         }
@@ -82,18 +107,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _iCRListVATOverDue = value;
-                //if (_iCRList != null && _iCRList.Count != 0)
-                //{
-                //    IsNoDataLabelVisible = false;
-                //    IsICRListVisible = true;
-                //    // SelectedICRStatus = null;
-                //}
-                //else
-                //{
-                //    IsICRListVisible = false;
-                //    IsNoDataLabelVisible = true;
-                //    //  SelectedICRStatus = null;
-                //}
                 RaisePropertyChanged("ICRListVATOverDue");
             }
         }
@@ -252,6 +265,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 await Task.Run(async () =>
                 {
                     ICRListVATSubmitted = null;
+                    ReturnsListCountsByStatus = new ReturnsListCountsByStatus();
 
                     ICR icrList = null;
                     try
@@ -262,38 +276,11 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 
                         if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
-                           // ICRStatusList = new List<ICRStatus>();
-                          //  ICRStatusList = icrList.ICR_STATUSSet;
-                            if (App.IsArabic)
-                            {
-
-                                //foreach (var item in ICRStatusList)
-                                //{
-                                //    if(item.Txt30== "All")
-                                //    {
-                                //        item.Txt30 = "الجميع";
-                                //    }
-                                //    if(item.Txt30== "To be filled & In draft")
-                                //    {
-                                //        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-                                //    }
-                                //}
-
-                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
-                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-
-                                //  ICRStatusList.Where(p => p.Txt30 == "All").();
-                            }
-                            //if (string.IsNullOrEmpty(App.ICRStatus))
-                            //{
-                            //    SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
-                            //}
+                           icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.TaxPeriod)).ToList();
                         }
 
-                        VATDeclaration vATDeclaration = new VATDeclaration();
-                        //  vATDeclaration.
-                        // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
 
+                        VATDeclaration vATDeclaration = new VATDeclaration();
                         if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRListVATSubmitted = new List<ICRListSet>();
@@ -301,15 +288,13 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001" || a.Status== "E0013").ToList<ICRListSet>();
                             DateTime Today = DateTime.Now;
                             ICRListVATOverDue = icrList.ICR_LISTSet.Where(a => a.Status != "E0045" && a.Status != "E0055" && a.DueDateDateTime < Today).ToList<ICRListSet>();
-                            // ICRDummyList = ICRList;
-
-
+                            ReturnsListCountsByStatus.SubmittedVATCount = ICRListVATSubmitted.Count;
+                            ReturnsListCountsByStatus.NonSubmittedVATCount = ICRListVATNonSubmitted.Count;
+                            ReturnsListCountsByStatus.OverdueVATCount = ICRListVATOverDue.Count;
 
                         }
                         else
                         {
-                            // await _dialogService.ShowMessageBox(AppResources.ZNoICRAvailable, AppResources.Information);
-                        //    IsLoading = false;
                             _navigationService.GoBack();
                         }
 
@@ -403,6 +388,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         MyZakatReturnsNonSubmitted = MyZakatReturnsNonSubmittedChild;
                         MyZakatReturnsSubmitted = MyZakatReturnsSubmittedChild;
                         MyZakatReturnsOverDue = MyZakatReturnsOverDueChild;
+                        ReturnsListCountsByStatus.SubmittedZakatCount = MyZakatReturnsSubmitted.Count;
+                        ReturnsListCountsByStatus.NonSubmittedZakatCount = MyZakatReturnsNonSubmitted.Count;
+                        ReturnsListCountsByStatus.OverdueZakatCount = MyZakatReturnsOverDue.Count;
                     }
                     catch (InternetException ex)
                     {

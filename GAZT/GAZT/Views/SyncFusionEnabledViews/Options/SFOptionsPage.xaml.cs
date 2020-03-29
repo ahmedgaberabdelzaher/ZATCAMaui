@@ -37,6 +37,12 @@ namespace GAZTeServicesApp.Views.Options
             {
                 viewModel.TranslateText = AppResources.ZZZSetToArabic;
             }
+
+            //if (Device.Idiom == TargetIdiom.Tablet)
+            //{
+            //    ContentLayout.HeightRequest = 900;
+            //}
+
             SetLTR();
         }
         //public void AddTapGestures()

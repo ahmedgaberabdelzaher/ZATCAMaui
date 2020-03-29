@@ -61,7 +61,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
 
         private VATDeclaration _vATDeclarationDataForAttch;
         public VATDeclaration VATDeclarationDataForAttch
@@ -157,8 +157,8 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
         }
-        private ObservableCollection<ZakatAttachment> _vatAttachmentsList;
-        public ObservableCollection<ZakatAttachment> VatAttachmentsList
+        private ObservableCollection<Attachment> _vatAttachmentsList;
+        public ObservableCollection<Attachment> VatAttachmentsList
         {
             get
             {
@@ -282,12 +282,6 @@ namespace GAZT.ViewModel.NewViewModel
                                         {
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-                                            TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-                                            string unixTime = span.TotalSeconds.ToString("N0");
-                                            unixTime = unixTime.Replace(",", "");
-                                            _attachment.d.Erfdt = "/Date(" + unixTime + ")/";// need to
-
-                                           
                                             PopToRootPage();
                                             if (_attachment != null && _attachment.d != null)
                                             {
@@ -297,32 +291,32 @@ namespace GAZT.ViewModel.NewViewModel
                                                 ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
                                                 Device.BeginInvokeOnMainThread(async () =>
                                                 {
-                                                    VatAttachmentsList = CloneAttachmmentListInLocalList(myCollection); ;
+                                                    VatAttachmentsList = myCollection;
                                                 });
-                                             //   VatAttachmentsList = myCollection;
-                                                //foreach (var item in VatAttachmentsList)
-                                                //{
-                                                //    if (App.IsArabic)
-                                                //    {
-                                                //        if (item.Erfdt != null)
-                                                //        {
-                                                //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                VatAttachmentsList = myCollection;
+                                                foreach (var item in VatAttachmentsList)
+                                                {
+                                                    if (App.IsArabic)
+                                                    {
+                                                        if (item.Erfdt != null)
+                                                        {
+                                                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                                                //        }
-                                                //    }
-                                                //    else
-                                                //    {
-                                                //        if (item.Erfdt != null)
-                                                //        {
-                                                //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (item.Erfdt != null)
+                                                        {
+                                                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                //        }
-                                                //    }
-                                                //}
+                                                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                        }
+                                                    }
+                                                }
 
                                                 AttachmentCount++;
                                                 // TotalAttachmentSize += AttachmentSize;
@@ -401,7 +395,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (attachment != null)
                     {
                         attachmentSizeVisibility = true;
-                           AttachmentSizeVisibility = attachmentSizeVisibility;
+                        AttachmentSizeVisibility = attachmentSizeVisibility;
                         SizeList.Add(AttachmentSize);
                         AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
                         TotalAttachmentSize = AttachmentUploadedSize;
@@ -517,73 +511,24 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void ReduceTotalAttachmentSize(int indexToReduceTheSize)
         {
-            if(indexToReduceTheSize > NumberOfAttachmentComingFromServer - 1)
+            if (indexToReduceTheSize > NumberOfAttachmentComingFromServer - 1)
             {
-                if(SizeList != null && SizeList.Count > 0)
+                if (SizeList != null && SizeList.Count > 0)
                 {
                     int indexToDelete = indexToReduceTheSize - NumberOfAttachmentComingFromServer;
                     SizeList.RemoveAt(indexToDelete);
-                    AttachmentUploadedSize  = GetAttachMentSize(SizeList);
+                    AttachmentUploadedSize = GetAttachMentSize(SizeList);
                     TotalAttachmentSize = AttachmentUploadedSize;
                 }
-              
+
             }
             else
             {
                 NumberOfAttachmentComingFromServer = NumberOfAttachmentComingFromServer - 1;
+                ICRListPageViewModel.numberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer - 1;
             }
         }
 
-
-
-        public ObservableCollection<ZakatAttachment> CloneAttachmmentListInLocalList(ObservableCollection<Attachment> estimateZakatAttachment)
-        {
-            ObservableCollection<ZakatAttachment> _estimateZakatAttachment = new ObservableCollection<ZakatAttachment>();
-            foreach (Attachment obj in estimateZakatAttachment)
-            {
-                ZakatAttachment _zakatAttachment = new ZakatAttachment();
-
-                try
-                {
-                    //  public Metadata3 __metadata { get; set; }
-                    _zakatAttachment.RetGuid = obj.RetGuid;
-                    _zakatAttachment.Seqno = obj.Seqno;
-                    _zakatAttachment.Dotyp = obj.Dotyp;
-                    _zakatAttachment.Doguid = obj.Doguid;
-                    _zakatAttachment.AttBy = obj.AttBy;
-                    _zakatAttachment.Filename = obj.Filename;
-                    _zakatAttachment.FileExtn = obj.FileExtn;
-                    _zakatAttachment.Mimetype = obj.Mimetype;
-                    _zakatAttachment.ByPusr = obj.ByPusr;
-                    _zakatAttachment.Erfdt = obj.Erfdt;
-                    _zakatAttachment.DataVersion = obj.DataVersion;
-                    _zakatAttachment.DocUrl = obj.DocUrl;
-                    _zakatAttachment.OutletRef = obj.OutletRef;
-                    //string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
-                    //double unixTime = Convert.ToDouble(unixDate);
-                    //DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-                    //long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
-                 //   DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
-
-                   // _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
-                    _estimateZakatAttachment.Add(_zakatAttachment);
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-            }
-            return _estimateZakatAttachment;
-        }
-
-        private string GetUnixDate(string _erfdt)
-        {
-            int startIndex = 6;
-            int lengthOfCharacter = _erfdt.Length - 8;
-            string unixDateTime = _erfdt.Substring(startIndex, lengthOfCharacter);
-            return unixDateTime;
-        }
 
         #endregion
     }

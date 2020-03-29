@@ -1650,20 +1650,20 @@ namespace GAZT.Views.NewViews
                     if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryVatAmountFrame.BorderColor = Color.Red;
+                        EntryVatAmountFrame.HasError = true;
                     }
                     else
                     {
-                        EntryVatAmountFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryVatAmountFrame.HasError =false;
                     }
                     if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryVatAdjustmentWithSARFrame.BorderColor = Color.Red;
+                        EntryVatAdjustmentWithSARFrame.HasError =true;
                     }
                     else
                     {
-                        EntryVatAdjustmentWithSARFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryVatAdjustmentWithSARFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
                     {
@@ -1672,92 +1672,92 @@ namespace GAZT.Views.NewViews
                     if (string.IsNullOrEmpty(EntrySalesGccAmt.Text) || EntrySalesGccAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntrySalesGccAmtFrame.BorderColor = Color.Red;
+                        EntrySalesGccAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntrySalesGccAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntrySalesGccAmtFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntrySalesGccAdjFrame.BorderColor = Color.Red;
+                        EntrySalesGccAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntrySalesGccAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntrySalesGccAdjFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryZerosalesAmtFrame.BorderColor = Color.Red;
+                        EntryZerosalesAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryZerosalesAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryZerosalesAmtFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryZerosalesAdjFrame.BorderColor = Color.Red;
+                        EntryZerosalesAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryZerosalesAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryZerosalesAdjFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExportsAmtFrame.BorderColor = Color.Red;
+                        EntryExportsAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExportsAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExportsAmtFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExportsAdjFrame.BorderColor = Color.Red;
+                        EntryExportsAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExportsAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExportsAdjFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExemptsalesAmtFrame.BorderColor = Color.Red;
+                        EntryExemptsalesAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExemptsalesAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExemptsalesAmtFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExemptsalesAdjFrame.BorderColor = Color.Red;
+                        EntryExemptsalesAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExemptsalesAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExemptsalesAdjFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryStdpurchaseAmtFrame.BorderColor = Color.Red;
+                        EntryStdpurchaseAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryStdpurchaseAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryStdpurchaseAmtFrame.HasError = false;;
                     }
                     if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryStdpurchaseAdjFrame.BorderColor = Color.Red;
+                        EntryStdpurchaseAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryStdpurchaseAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryStdpurchaseAdjFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
                     {
@@ -1766,20 +1766,20 @@ namespace GAZT.Views.NewViews
                     if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) || EntryZVatAmountWithSAR.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryZVatAmountWithSARFrame.BorderColor = Color.Red;
+                        EntryZVatAmountWithSARFrame.HasError = true;
                     }
                     else
                     {
-                        EntryZVatAmountWithSARFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryZVatAmountWithSARFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryImportspaidAdjFrame.BorderColor = Color.Red;
+                        EntryImportspaidAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryImportspaidAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryImportspaidAdjFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
                     {
@@ -1788,20 +1788,20 @@ namespace GAZT.Views.NewViews
                     if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryImportsaccAmtFrame.BorderColor = Color.Red;
+                        EntryImportsaccAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryImportsaccAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryImportsaccAmtFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryImportsaccAdjFrame.BorderColor = Color.Red;
+                        EntryImportsaccAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryImportsaccAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryImportsaccAdjFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
                     {
@@ -1810,53 +1810,53 @@ namespace GAZT.Views.NewViews
                     if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryZeropurchaseAmtFrame.BorderColor = Color.Red;
+                        EntryZeropurchaseAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryZeropurchaseAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryZeropurchaseAmtFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryZeropurchaseAdjFrame.BorderColor = Color.Red;
+                        EntryZeropurchaseAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryZeropurchaseAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryZeropurchaseAdjFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExemptpurchaseAmtFrame.BorderColor = Color.Red;
+                        EntryExemptpurchaseAmtFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExemptpurchaseAmtFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExemptpurchaseAmtFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryExemptpurchaseAdjFrame.BorderColor = Color.Red;
+                        EntryExemptpurchaseAdjFrame.HasError = true;
                     }
                     else
                     {
-                        EntryExemptpurchaseAdjFrame.BorderColor = Color.FromHex("#B1B1B1");
+                        EntryExemptpurchaseAdjFrame.HasError = false;
                     }
                     if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
                     {
                         IsAllEntered = false;
-                        EntryPreperiodcorrFrame.BorderColor = Color.Red;
+                        EntryPreperiodcorrFrame.HasError =true;
                     }
                     else
                     {
                         if (viewModel.IsGreaterThanFiveT == false)
                         {
-                            EntryPreperiodcorrFrame.BorderColor = Color.FromHex("#B1B1B1");
+                            EntryPreperiodcorrFrame.HasError = false;
                         }
                         else
                         {
-                            EntryPreperiodcorrFrame.BorderColor = Color.Red;
+                            EntryPreperiodcorrFrame.HasError =true;
                         }
                     }
                     if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
@@ -3644,12 +3644,12 @@ namespace GAZT.Views.NewViews
                 //if (EntryVatAmount.TextColor == Color.Red)
                 //{
                 //    viewModel.IsMainButtonEnabled = false;
-                //    EntryVatAmountFrame.BorderColor = Color.Red;
+                //    EntryVatAmountFrame.HasError = true;
                 //}
                 //else
                 //{
                 //    viewModel.IsMainButtonEnabled = true;
-                //    EntryVatAmountFrame.BorderColor = Color.FromHex("#B1B1B1");
+                //    EntryVatAmountFrame.HasError = false;
                 //}
             }
 

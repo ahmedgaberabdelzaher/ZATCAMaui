@@ -49,8 +49,15 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
-
+                <StackLayout  BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
+                  <StackLayout.HeightRequest>
+      <OnIdiom x:TypeArguments="x:Double">
+         
+          <OnIdiom.Tablet>
+              900
+          </OnIdiom.Tablet>
+      </OnIdiom>
+   </StackLayout.HeightRequest>
                     <!--  Header label for account setting  -->
                     <Label
                     Margin="16,0,16,0"
@@ -392,7 +399,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                     Margin="0"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="End"
                 HorizontalOptions="FillAndExpand"
                   BackgroundColor="#D99A29"
                  

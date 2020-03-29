@@ -12,6 +12,7 @@ using GAZT.Views.NewViews;
 using GAZTeServicesApp.Themes;
 using GAZTeServicesApp.Views.LoginPage;
 using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
+using GAZTeServicesApp.Views.LandingPage;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -21,10 +22,9 @@ namespace GAZT
         //SYNCFUSION INTEGRATION
 
         public static string SFLandingPageView = "SFLandingPageView";
-      //  public static string OptionsPageView = "OptionsPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
-
+        public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView"; 
 
         //SYNCFUSION INTEGRATION
 
@@ -142,8 +142,8 @@ namespace GAZT
 
             VATDeclaration vAT = null;
 
-            //CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
-            CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportTypePageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

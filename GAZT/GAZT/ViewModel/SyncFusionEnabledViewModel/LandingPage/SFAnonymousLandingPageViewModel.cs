@@ -23,7 +23,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
     /// ViewModel for article list page.
     /// </summary> 
     [Preserve(AllMembers = true)]
-    public class SFLandingPageViewModel : ViewModelBase
+    public class SFAnonymousLandingPageViewModel : ViewModelBase
     {
         #region Fields
 
@@ -43,7 +43,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         #region Constructor
         /// <summary>
-        /// Initializes a new instance for the <see cref="LandingPageViewModel" /> class.
+        /// Initializes a new instance for the <see cref="SFAnonymousLandingPageViewModel" /> class.
         /// </summary>
         /// 
 
@@ -121,7 +121,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             });
         }
 
-        public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
+        public SFAnonymousLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -684,24 +684,11 @@ private void ShowOptionsCommandClicked(object obj)
             //Call the API to get the eSevrices applicable to the TP
 
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
-            if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
-            {
-                string[] TpTypes = DashboardData.results[0].TpType.Split(',');
-                foreach (string ItemType in TpTypes)
-                {
-                    if (ItemType == "05")
-                    {
+           
                         
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents= "OnTappedVAT" });
+           eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png", OnClickEvents= "OnTappedVAT" });
 
-                    }
-                    if (ItemType == "03" || ItemType == "13")
-                    {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png", OnClickEvents = "OnTappedZakat" });
-                    }
-
-                }
-            }
+                
          
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png", OnClickEvents = "OnTappedBills" });
            

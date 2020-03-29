@@ -4817,5 +4817,11 @@ namespace GAZT {
                 return ResourceManager.GetString("RegistrationIsPending", resourceCulture);
             }
         }
+        
+        public static string ZZZVATReturn {
+            get {
+                return ResourceManager.GetString("ZZZVATReturn", resourceCulture);
+            }
+        }
     }
 }

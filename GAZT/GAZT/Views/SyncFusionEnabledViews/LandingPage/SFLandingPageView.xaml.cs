@@ -136,12 +136,6 @@ namespace GAZTeServicesApp.Views.LandingPage
             viewModel.NavigateToMyBills(billInfo);
         }
 
-        
-
-        private void OnTappedVAT(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.VATReturnsPageView);
-        }
         private void OnTappedTest(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
@@ -183,6 +177,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                 }
+                if (BModel.eServiceName == AppResources.VATLookup)
+                {
+                    viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                }
 
             }
             if (controltype == "Xamarin.Forms.Label")
@@ -221,6 +219,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                }
+                if (BModel.eServiceName == AppResources.VATLookup)
+                {
+                    viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }
 
             }

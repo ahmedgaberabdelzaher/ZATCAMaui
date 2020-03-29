@@ -72,6 +72,9 @@
     <Compile Update="AppResources.ar.Designer.cs">
       <DependentUpon>AppResources.ar.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
+      <DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
+    </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
       <DependentUpon>SFLandingPageView.xaml</DependentUpon>
     </Compile>
@@ -175,7 +178,7 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATLookUpPages\VATLookupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\VATReturnsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATDeclarationPages\VATReturnsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewViews\ZakatBillDetailsPageView.xaml">

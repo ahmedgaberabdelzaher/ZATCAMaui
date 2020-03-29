@@ -33,9 +33,12 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 ClearFields();
                 viewModel.OnPageLoad();
+               
                 DDlIDType.SelectedIndex = 0;
                 // UsingDDl.SelectedIndex = 1;
-
+                viewModel.TxtLOrCIssuedBy = string.Empty;
+                ddlLIssuedBy.SelectedIndex = -1;
+               
                 SetLTR();
             
             }
@@ -92,7 +95,7 @@ namespace GAZT.Views.NewViews
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
-
+            //viewModel.PkrDBO = string.Empty;
 
             // DpDbo.Format = "        ";
         }
@@ -1481,15 +1484,56 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
-                        EntryIDNumber.Text = string.Empty;
+                       
+                        //ZZPleaseenteravalidNationalID
 
                     }
+                    else 
+                    {
+                        if (EntryIDNumber.Text.Length != 10)
+                        {
+
+                            if (Messages.Length > 0)
+                            {
+                                Messages.Append(Environment.NewLine);
+
+                            }
+                            Messages.Append(AppResources.ZZPleaseenteravalidNationalID);
+
+                        }
+                        if (Messages.Length > 0)
+                        {
+                            popUp.Message = Messages.ToString();
+                            popUp.IsLinkAvailable = false;
+
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            FrmIDNumber.HasError = true;
+
+                        }
+                        else
+                        {
+                            FrmIDNumber.HasError = false;
+                        }
+
+                    }
+
+                    
+
+
                 }
                 else if (viewModel.SelectedSignUpUsing.ID == 2)
                 {
                     if (EntryIDNumber.Text.Substring(0, 1) != "2")
                     {
-                        
+
                         popUp.Message = AppResources.ZZIqamaIDstartswith2;
 
 
@@ -1505,42 +1549,43 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
-                        EntryIDNumber.Text = string.Empty;
+
                     }
-                    if (EntryIDNumber.Text.Length != 10)
+                    else 
                     {
-                       
-                        if (Messages.Length > 0)
+                        if (EntryIDNumber.Text.Length != 10)
                         {
-                            Messages.Append(Environment.NewLine);
+
+                            if (Messages.Length > 0)
+                            {
+                                Messages.Append(Environment.NewLine);
+
+                            }
+                            Messages.Append(AppResources.ZZPleaseEnterValidId);
 
                         }
-                        Messages.Append(AppResources.ZZPleaseEnterValidId);
-
-                    }
-                    if (Messages.Length > 0)
-                    {
-                        popUp.Message = Messages.ToString();
-                        popUp.IsLinkAvailable = false;
-
-                        if (App.IsArabic)
+                        if (Messages.Length > 0)
                         {
-                            popUp.FlowDirections = "RightToLeft";
+                            popUp.Message = Messages.ToString();
+                            popUp.IsLinkAvailable = false;
+
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            FrmIDNumber.HasError = true;
+                           
                         }
                         else
                         {
-                            popUp.FlowDirections = "LeftToRight";
+                            FrmIDNumber.HasError = false;
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmTIN.HasError = true;
-                        EntryTIN.Text = string.Empty;
                     }
-                    else
-                    {
-                        FrmTIN.HasError = false;
-                    }
-
-
                 }
                 else if (viewModel.SelectedSignUpUsing.ID == 3)
                 {
@@ -1563,7 +1608,7 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
-                        EntryIDNumber.Text = string.Empty;
+                        
 
                         }
                     else if (!(EntryIDNumber.Text.Length <=15 && EntryIDNumber.Text.Length >= 7))
@@ -1586,7 +1631,7 @@ namespace GAZT.Views.NewViews
 
 
                         FrmIDNumber.HasError = true;
-                        EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                       // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
 
 
                     }
@@ -1604,6 +1649,15 @@ namespace GAZT.Views.NewViews
         private void btn1_Clicked(object sender, EventArgs e)
         {
             DDlIDType.IsOpen = true;
+            try
+            {
+                viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
+            }
+            catch(Exception ex)
+            { 
+
+            }
+            
         }
 
         private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1787,6 +1841,21 @@ namespace GAZT.Views.NewViews
 
         private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
         {
+
+        }
+
+        private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {//viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
+            DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
+            viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
+        }
+
+        private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            
+            
+
+
 
         }
     }
