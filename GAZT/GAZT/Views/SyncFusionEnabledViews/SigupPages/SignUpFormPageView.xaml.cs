@@ -40,12 +40,12 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 
                 ClearFields();
-                
-                viewModel.OnPageLoad();
+       
+              //  viewModel.OnPageLoad();
                
                 DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
-                ddlLIssuedBy.SelectedIndex = -1;
+                //ddlLIssuedBy.SelectedIndex = -1;
                
                 SetLTR();
             }
@@ -62,11 +62,14 @@ namespace GAZT.Views.NewViews
             // viewModel.PkrDBO = null;
             // DpDbo.NullableDate = null;
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             ClearFields();
-            viewModel.OnPageLoad();
+           await viewModel.OnPageLoad();
+            await viewModel.SetIssueIdList();
+            await viewModel.SetCityList();
+
 
         }
         public void ClearFields()
@@ -1819,16 +1822,17 @@ namespace GAZT.Views.NewViews
                 }
             }
 
-
-
-
-        }
+                  }
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             DpDbo.IsOpen = true;
         }
 
+        public void OnDateEntryFocussed(object sender, EventArgs args)
+        {
+            DpDbo.IsOpen = true;
+        }
         //private void LOrCSelect_Clicked(object sender, EventArgs e)
         //{
         //    UsingDDl.IsOpen = true;
@@ -1867,13 +1871,11 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
         }
 
-        private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            
-            
-
-
-
+            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+            viewModel.SelectedSignUpUsing = signUpUsing;
+            viewModel.TxtIDNumber = signUpUsing.SUType;
         }
     }
 }

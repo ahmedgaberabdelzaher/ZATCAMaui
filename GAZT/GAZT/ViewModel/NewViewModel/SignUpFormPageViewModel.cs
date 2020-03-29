@@ -139,19 +139,27 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedSignUpUsing = value;
                 if(_selectedSignUpUsing != null)
                 {
-                    if(_selectedSignUpUsing.ID==1)
+                    try
                     {
-                        MaxLengthID = 10;
+                        if (_selectedSignUpUsing.ID == 1)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 2)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 3)
+                        {
+                            MaxLengthID = 15;
+                        }
+                        TxtIDType = _selectedSignUpUsing.SUType;
                     }
-                    else if(_selectedSignUpUsing.ID==2)
+                    catch(Exception Ex)
                     {
-                        MaxLengthID = 10;
+
                     }
-                    else if (_selectedSignUpUsing.ID == 3)
-                    {
-                        MaxLengthID = 15;
-                    }
-                    TxtIDType = _selectedSignUpUsing.SUType;
+                    
                 }
                 RaisePropertyChanged("SelectedSignUpUsing");
             }
@@ -700,44 +708,41 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-                SignUpUsingList = null;
-                IsCRVisible = true;
-                IsLicenseVisible = false;
-                List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
-                ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
-                ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
-                ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
-                SignUpUsingList = ListSignUpUsing;
-                SignUpUsing SignUpUsingM = new SignUpUsing();
-                SignUpUsingM.ID = 1;
-                SignUpUsingM.SUType = AppResources.ZZNationalID;
-                SelectedSignUpUsing = SignUpUsingM;
-                //LcTypeList = null;
-                //List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
-                //LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
-                //LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
-                //LcTypeList = LIstLcType;
-                LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
-                LicenseOrCRModelM.ID = 2;
-                LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
-                SelectLCType = LicenseOrCRModelM;
-                IssuedByList = null;
-                List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
-                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
-                IssuedByList = IssuedBy.OrderBy(a=>a.txt50).ToList<IssuedByResponse>();
-                CityList = null;
-                SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
-                List<SignupCityResult> CityR = new List<SignupCityResult>();
-                IsCRChecked = true;
+                try
+                {
+                    SignUpUsingList = null;
+                    IsCRVisible = true;
+                    IsLicenseVisible = false;
+                    List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
+                    SignUpUsingList = ListSignUpUsing;
+                    SignUpUsing SignUpUsingM = new SignUpUsing();
+                    SignUpUsingM.ID = 1;
+                    SignUpUsingM.SUType = AppResources.ZZNationalID;
+                    SelectedSignUpUsing = SignUpUsingM;
+                    //LcTypeList = null;
+                    //List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
+                    //LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
+                    //LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
+                    //LcTypeList = LIstLcType;
+                    LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
+                    LicenseOrCRModelM.ID = 2;
+                    LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
+                    SelectLCType = LicenseOrCRModelM;
+                                       //StringBuilder captcha = GetCaptcha();
+                    //Captcha = captcha.ToString();
+                    IDTypeModelRootObject = null;
+                    IDTypeIndex = 0;
+                    SelectedLOrC = 1;
+                }
+                catch(Exception ex)
+                {
 
-                IsLNChecked = false;
-                CityR = CityListSignup.d.city_dropdownSet.results;
-                CityList = CityR;
-                //StringBuilder captcha = GetCaptcha();
-                //Captcha = captcha.ToString();
-                IDTypeModelRootObject = null;
-                IDTypeIndex = 0;
-                SelectedLOrC = 1;
+                }
+
+               
                // PkrDBO = null;
                 await Task.Run(() =>
                 {
@@ -760,6 +765,42 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
+
+        public async Task SetIssueIdList()
+        {
+            try
+            {
+                IssuedByList = null;
+                List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
+                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
+                IssuedByList = IssuedBy.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async Task SetCityList()
+        {
+            try
+            {
+                CityList = null;
+                SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
+                List<SignupCityResult> CityR = new List<SignupCityResult>();
+                IsCRChecked = true;
+
+                IsLNChecked = false;
+                CityR = CityListSignup.d.city_dropdownSet.results;
+                CityList = CityR;
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
+        }
+
         #endregion
     }
 }
