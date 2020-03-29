@@ -2065,7 +2065,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>Return Status</value>
+    <value>حالة الطلب</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
@@ -2838,12 +2838,19 @@
     <value>Required *</value>
     <comment>Mendatory fields </comment>
   </data>
-   <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
+  <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
     <value>Mobile number is missing for the entered TIN.</value>
     <comment>Mendatory fields </comment>
   </data>
   <data name="RegistrationIsPending" xml:space="preserve">
     <value>Registration is pending</value>
     <comment>Mendatory fields </comment>
+  </data>
+  <data name="." xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZZZVATReturn" xml:space="preserve">
+    <value>إقرار ضريبة القيمة المضافة</value>
+    <comment>Tax Returns Title</comment>
   </data>
 </root>

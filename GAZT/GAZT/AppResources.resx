@@ -2850,4 +2850,8 @@ Should we require further information, we would be in contact.</value>
     <value>Registration is pending</value>
     <comment>LogIn Page </comment>
   </data>
+  <data name="ZZZVATReturn" xml:space="preserve">
+    <value>VAT Return</value>
+    <comment>Tax Returns Title</comment>
+  </data>
 </root>
