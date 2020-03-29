@@ -1,7 +1,9 @@
 ﻿using GAZT.ViewModel.NewViewModel;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +51,11 @@ namespace GAZT.Views.NewViews
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else 
+            {
+
+                //PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
             }
         }
         private void onDropdownButtonClicked(object sender, EventArgs e)

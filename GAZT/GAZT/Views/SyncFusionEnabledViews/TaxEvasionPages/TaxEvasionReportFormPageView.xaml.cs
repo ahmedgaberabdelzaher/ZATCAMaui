@@ -1,12 +1,16 @@
 ﻿using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -28,9 +32,12 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
                 InitializeComponent();
+                //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                //PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields();
+                SetLTR();
             }
             catch (Exception ex)
             {
@@ -141,11 +148,32 @@ namespace GAZT.Views.NewViews
             }
             else
             {
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
                 viewModel.IsVisiblePickerAr = true;
                 viewModel.IsVisiblePickerEn = false;
 
 
             }
+            //if (App.IsArabic)
+            //{
+
+            //    this.FlowDirection = FlowDirection.RightToLeft;
+            //    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+            //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+            //    PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+            //        viewModel.IsVisiblePickerAr = true;
+            //        viewModel.IsVisiblePickerEn = false;
+
+            //}
+            //else
+            //{
+            //    viewModel.IsVisiblePickerAr = false;
+            //   viewModel.IsVisiblePickerEn = true;
+            //    this.FlowDirection = FlowDirection.LeftToRight;
+            //    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+            //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+            //}
+
         }
 
 
