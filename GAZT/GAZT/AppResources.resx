@@ -2852,6 +2852,6 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZZVATReturn" xml:space="preserve">
     <value>VAT Return</value>
-    <comment>Tax Returns Title</comment>
+    <comment>Tax Return Title</comment>
   </data>
 </root>

@@ -2846,11 +2846,8 @@
     <value>Registration is pending</value>
     <comment>Mendatory fields </comment>
   </data>
-  <data name="." xml:space="preserve">
-    <value />
-  </data>
   <data name="ZZZVATReturn" xml:space="preserve">
     <value>إقرار ضريبة القيمة المضافة</value>
-    <comment>Tax Returns Title</comment>
+    <comment>Tax Return Title</comment>
   </data>
 </root>
