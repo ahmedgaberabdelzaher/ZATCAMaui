@@ -87,7 +87,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ContentView>
-                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="50">
+                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White" HeightRequest="80">
 
                                                     <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
@@ -143,14 +143,14 @@
                                                                     </Image>
 
 
-                                                                    <!--<Label Text="{Binding Erfdt}" 
+                                                                    <Label Text="{Binding Erfdt}" 
                                                                        Margin="3,0,3,-5"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="2" 
-                                   />-->
+                                   />
 
                                                                     <!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"

@@ -17,10 +17,11 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <custom1:DecimalPlacesConverter x:Key="DecimalPlacesConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <ResourceDictionary>
-            <ResourceDictionary Source="..\Common\Styles.xaml" />
-        </ResourceDictionary>
+       
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
 
@@ -114,7 +115,7 @@
                             <Label Text="{x:Static local1:AppResources.ZVatReadInstructions}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
-                            <local1:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="1."/>
@@ -123,11 +124,11 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            
-                            
-                            
 
-                            <local1:CustomLabel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+
+
+
+                            <local1:CustomLabel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="2."/>
@@ -136,7 +137,7 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            <local1:CustomLabel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="3."/>
@@ -145,7 +146,7 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            <local1:CustomLabel  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="4."/>
@@ -598,7 +599,14 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStandardRatedSalesAmountClicked" />
+                                    </Label.GestureRecognizers>
                                 </Label>
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
@@ -649,7 +657,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnStandardRatedSalesAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -758,7 +770,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnPrivateHealthcareAmountClicked"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -809,7 +825,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnPrivateHealthcareAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -877,7 +897,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnZerorateddomesticsalesAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -931,7 +955,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnZerorateddomesticsalesAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -998,7 +1026,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnExportsAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1050,7 +1082,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnExportsAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -1121,7 +1157,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnExemptAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1173,7 +1213,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnExemptAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -1290,7 +1334,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnStandardrateddomesticpurchasesAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1343,7 +1391,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnStandardrateddomesticpurchasesAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -1373,7 +1425,11 @@
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnStandardrateddomesticpurchasesAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -1446,7 +1502,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatImportsVatPaidatcustomsAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1497,7 +1557,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatImportsVatPaidatcustomsAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -1590,7 +1654,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAmountClickedNew" />
                                     </Label.GestureRecognizers>
@@ -1639,7 +1707,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAdjustmentClickedNew" />
                                     </Label.GestureRecognizers>
@@ -1674,7 +1746,11 @@
                     
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedVatAmountClickedNew" />
                                     </Label.GestureRecognizers>
@@ -1741,7 +1817,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatZeroRatedPurchasesAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1793,7 +1873,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatZeroRatedPurchasesAdjustmentClickedNew" />
                                     </Label.GestureRecognizers>
@@ -1857,7 +1941,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatExemptPurchasesAmountClicked" />
                                     </Label.GestureRecognizers>
@@ -1907,7 +1995,11 @@
                             </inputLayout:SfTextInputLayout.Triggers>
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnVatExemptPurchasesAdjustmentClicked" />
                                     </Label.GestureRecognizers>
@@ -2046,7 +2138,11 @@
                                 </inputLayout:SfTextInputLayout.Triggers>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnVatcreditcarriedforwardFromPreviousPeriodClicked" />
                                         </Label.GestureRecognizers>
@@ -2104,7 +2200,11 @@
                                 </inputLayout:SfTextInputLayout.Triggers>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnVatcreditcarriedforwardClicked" />
                                         </Label.GestureRecognizers>
@@ -2148,7 +2248,11 @@
                             
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Label
-         Text="&#xe72c;">
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnVatNetdueClicked" />
                                         </Label.GestureRecognizers>

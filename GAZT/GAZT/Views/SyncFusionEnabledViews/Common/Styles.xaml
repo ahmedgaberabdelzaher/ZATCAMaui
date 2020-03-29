@@ -99,6 +99,17 @@
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="WidthRequest" Value="40" />
     </Style>
+<!--Common style for VAT Label Icon-->
+    <Style x:Key="IconLabelStyleVAT" TargetType="Label">
+        <Setter Property="Margin" Value="5,8" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
 
 
     <!--  Common style for  Label  -->

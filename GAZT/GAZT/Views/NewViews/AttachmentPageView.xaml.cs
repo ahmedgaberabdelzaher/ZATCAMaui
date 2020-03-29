@@ -38,8 +38,8 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
-                if(vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
-                viewModel.NumberOfAttachmentComingFromServer = vATDeclaration.d.ATTACHSet.results.Count;
+                if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
+                    viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
@@ -50,30 +50,30 @@ namespace GAZT.Views.NewViews
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
 
-                        viewModel.VatAttachmentsList = viewModel.CloneAttachmmentListInLocalList(myCollection);
-                        //foreach (var item in viewModel.VatAttachmentsList)
-                        //{
-                        //    if (App.IsArabic)
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        viewModel.VatAttachmentsList = myCollection;
+                        foreach (var item in viewModel.VatAttachmentsList)
+                        {
+                            if (App.IsArabic)
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        if (item.Erfdt != null)
-                        //        {
-                        //            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                }
+                            }
+                            else
+                            {
+                                if (item.Erfdt != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                        //            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        //        }
-                        //    }
-                        //}
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -101,8 +101,8 @@ namespace GAZT.Views.NewViews
             try
             {
                 Image arrowImage = sender as Image;
-           
-            Attachment attachment = (Attachment)arrowImage.BindingContext;
+
+                Attachment attachment = (Attachment)arrowImage.BindingContext;
                 if (attachment != null)
                 {
                     var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OkText, AppResources.ZZCancel);
@@ -115,7 +115,7 @@ namespace GAZT.Views.NewViews
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
 
@@ -139,16 +139,16 @@ namespace GAZT.Views.NewViews
                         PopToRootPage();
                         if (results == "X")
                         {
-                            ZakatAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                            Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)
-                                            .FirstOrDefault<ZakatAttachment>();
+                                            .FirstOrDefault<Attachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
 
-                           // viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
-                            viewModel.VatAttachmentsList.Remove(listitem);
+                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+
                             if (indexToReduceTheSize != -1)
-                            viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                                viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
                     }
                 });
@@ -158,9 +158,9 @@ namespace GAZT.Views.NewViews
                     viewModel.IsLoading = false;
                 });
 
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -227,8 +227,8 @@ namespace GAZT.Views.NewViews
                 await email(attachment.Doguid, attachment);
             }
 
-               
-           // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
+
+            // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
         }
 
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -243,7 +243,7 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-              await  email(attachment.Doguid, attachment);
+                await email(attachment.Doguid, attachment);
             }
 
             if (sender is ListView lv) lv.SelectedItem = null;
@@ -277,7 +277,7 @@ namespace GAZT.Views.NewViews
                 };
                 var fn = attachment.Filename;
                 var file = Path.Combine(FileSystem.CacheDirectory, fn);
-               
+
                 File.WriteAllBytes(file, PdfBytes);
 
                 await Share.RequestAsync(new ShareFileRequest
@@ -286,7 +286,7 @@ namespace GAZT.Views.NewViews
                     File = new ShareFile(file)
                 });
                 viewModel._navigationService.GoBack();
-               
+
 
             }
             catch (Exception ex)

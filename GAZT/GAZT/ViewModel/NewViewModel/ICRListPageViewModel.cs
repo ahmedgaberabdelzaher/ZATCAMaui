@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static string EUser = string.Empty;
+        public static int numberOfAttachmentComingFromServer = 0;
         //  public ICommand OnBillsButtonClicked { get; set; }
         #endregion
 
@@ -436,6 +437,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 _vATDeclaration.d.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                                if(_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
                                 Result5 result5 = new Result5();
                                 List<Result5> lst = new List<Result5>();
                                 ADRSet _aDRSet = new ADRSet();
