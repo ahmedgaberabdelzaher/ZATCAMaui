@@ -105,7 +105,7 @@ namespace GAZT.Views.NewViews
                 Attachment attachment = (Attachment)arrowImage.BindingContext;
                 if (attachment != null)
                 {
-                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OkText, AppResources.ZZCancel);
+                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
                     DeleteAttachment(result, attachment);
                 }
             }

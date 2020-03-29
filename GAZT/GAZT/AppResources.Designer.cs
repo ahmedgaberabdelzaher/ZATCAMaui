@@ -242,6 +242,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Capital.
         /// </summary>
         public static string Capital {
@@ -1110,11 +1119,11 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to Ok ENG.
         /// </summary>
-        public static string OkText {
+        public static string OKText {
             get {
-                return ResourceManager.GetString("OkText", resourceCulture);
+                return ResourceManager.GetString("OKText", resourceCulture);
             }
         }
         
