@@ -31,7 +31,7 @@ namespace GAZT
             SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
-            SimpleIoc.Default.Register<SFAnonymousLandingPageView>();
+            SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
             
             //SYNCFUSION INTEGRATION
 

@@ -25,11 +25,13 @@ namespace GAZTeServicesApp.Views.LandingPage
             try
             {
                 InitializeComponent();
-                this.BindingContext = viewModel = App.Locator.SFAnonymousLandingPageView;
+
+                viewModel = App.Locator.SFAnonymousLandingPageView;
+                this.BindingContext = viewModel;
                 LoadData();
                 SetLTR();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -68,7 +70,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void SignIn_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo("SFLoginPageView");
+            viewModel._navigationService.NavigateTo(App.SFLoginPageView);
         }
       
         private void OnTappedeService(object sender, EventArgs e)
