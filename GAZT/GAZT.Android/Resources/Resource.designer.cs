@@ -20608,16 +20608,16 @@ namespace GAZT.Droid
 			public const int sf_Sadad_logo = 2131165692;
 			
 			// aapt resource value: 0x7F0701FD
-			public const int sf_Slider_Image_1 = 2131165693;
+			public const int sf_slider_image_1 = 2131165693;
 			
 			// aapt resource value: 0x7F0701FE
-			public const int sf_Slider_Image_2 = 2131165694;
+			public const int sf_slider_image_2 = 2131165694;
 			
 			// aapt resource value: 0x7F0701FF
-			public const int sf_Slider_Image_3 = 2131165695;
+			public const int sf_slider_image_3 = 2131165695;
 			
 			// aapt resource value: 0x7F070200
-			public const int sf_Slider_Image_4 = 2131165696;
+			public const int sf_slider_image_4 = 2131165696;
 			
 			// aapt resource value: 0x7F070201
 			public const int sf_Submited_Returns = 2131165697;

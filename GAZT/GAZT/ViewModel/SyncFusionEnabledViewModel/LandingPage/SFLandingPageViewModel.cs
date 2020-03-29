@@ -710,6 +710,7 @@ private void ShowOptionsCommandClicked(object obj)
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName =  AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png", OnClickEvents = "OnTappedTINStatus" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png", OnClickEvents = "OnTappedCorrespondence" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png", OnClickEvents = "OnTappedCorrespondence" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png", OnClickEvents = "OnTappedCorrespondence" });
         }
 
         public void NavigateToMyBills(BillInfo billInfo)
