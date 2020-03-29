@@ -33,17 +33,21 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.SignUpFormPageView;
 
                 InitializeComponent();
+
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
+
                 this.BindingContext = viewModel;
+                
                 ClearFields();
-                viewModel.OnPageLoad();
+       
+              //  viewModel.OnPageLoad();
                
                 DDlIDType.SelectedIndex = 0;
-                // UsingDDl.SelectedIndex = 1;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
-                ddlLIssuedBy.SelectedIndex = -1;
+                //ddlLIssuedBy.SelectedIndex = -1;
                
                 SetLTR();
-
             }
             catch (Exception ex)
             {
@@ -58,11 +62,14 @@ namespace GAZT.Views.NewViews
             // viewModel.PkrDBO = null;
             // DpDbo.NullableDate = null;
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             ClearFields();
-            viewModel.OnPageLoad();
+           await viewModel.OnPageLoad();
+            await viewModel.SetIssueIdList();
+            await viewModel.SetCityList();
+
 
         }
         public void ClearFields()
@@ -107,26 +114,19 @@ namespace GAZT.Views.NewViews
 
             if (App.IsArabic)
             {
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
+                
                 this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo ci = new CultureInfo("ar-AE");
-                AppResources.Culture = ci;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
-                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SyncFusionRESX.SfPicker.XForms", Application.Current.GetType().Assembly);
             }
             else
             {
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
                 this.FlowDirection = FlowDirection.LeftToRight;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
-                    
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
-
-
-
-
-
-
         }
 
         private void btnSubmitNext_Clicked(object sender, EventArgs e)
@@ -1822,16 +1822,17 @@ namespace GAZT.Views.NewViews
                 }
             }
 
-
-
-
-        }
+                  }
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             DpDbo.IsOpen = true;
         }
 
+        public void OnDateEntryFocussed(object sender, EventArgs args)
+        {
+            DpDbo.IsOpen = true;
+        }
         //private void LOrCSelect_Clicked(object sender, EventArgs e)
         //{
         //    UsingDDl.IsOpen = true;
@@ -1870,13 +1871,11 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
         }
 
-        private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            
-            
-
-
-
+            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+            viewModel.SelectedSignUpUsing = signUpUsing;
+            viewModel.TxtIDNumber = signUpUsing.SUType;
         }
     }
 }

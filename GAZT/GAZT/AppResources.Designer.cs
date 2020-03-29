@@ -1119,7 +1119,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok ENG.
+        ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string OKText {
             get {

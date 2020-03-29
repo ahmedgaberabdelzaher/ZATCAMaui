@@ -100,7 +100,7 @@
                     SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46" CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                    ShowFooter="True" FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -123,9 +123,9 @@
                         </Button>
                         <inputLayout:SfTextInputLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZDateofBirth}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
-    ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
+                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom1:CustomDatePicker 
@@ -138,6 +138,7 @@
 								HeaderText="Date of Birth"
 								Grid.Row="6" Grid.Column="0"    Grid.ColumnSpan="2"
 								x:Name="DpDbo" 
+                            HorizontalOptions="FillAndExpand"
                             
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
 								ItemHeight="45" ShowFooter="True"  >
