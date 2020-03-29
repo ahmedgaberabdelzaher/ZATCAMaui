@@ -98,7 +98,7 @@
                             </Label.GestureRecognizers>
                         </custom:CustomLabel>
                         <!--new card view-->
-                        <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsVisibleListItems}">
+                        <StackLayout   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsVisibleListItems}">
                             <ListView  
            
                                 x:Name="ListTINStatus" 
@@ -188,7 +188,9 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </StackLayout>
+                              </StackLayout>
+                        <Label Text="{x:Static local:AppResources.ZZNocommercialregistrationslinkedtotheTIN}" VerticalOptions="CenterAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" Style="{StaticResource MicroGrayLabelStyleNew}" IsVisible="{Binding IsLabelVisible}"></Label>
+
                     </Grid>
                 </ScrollView>
             </Grid>

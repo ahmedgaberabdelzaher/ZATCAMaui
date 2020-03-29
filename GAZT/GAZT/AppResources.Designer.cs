@@ -242,6 +242,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Capital.
         /// </summary>
         public static string Capital {
@@ -1110,11 +1119,11 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to Ok ENG.
         /// </summary>
-        public static string OkText {
+        public static string OKText {
             get {
-                return ResourceManager.GetString("OkText", resourceCulture);
+                return ResourceManager.GetString("OKText", resourceCulture);
             }
         }
         
@@ -2543,7 +2552,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select parameter type.
+        ///   Looks up a localized string similar to Please select the ID Type value.
         /// </summary>
         public static string ZPleaseselectparametertype {
             get {
@@ -6021,6 +6030,15 @@ namespace GAZT {
         public static string ZZNochangesmadeFormcannotbesubmitted {
             get {
                 return ResourceManager.GetString("ZZNochangesmadeFormcannotbesubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No commercial registrations linked to the TIN.
+        /// </summary>
+        public static string ZZNocommercialregistrationslinkedtotheTIN {
+            get {
+                return ResourceManager.GetString("ZZNocommercialregistrationslinkedtotheTIN", resourceCulture);
             }
         }
         

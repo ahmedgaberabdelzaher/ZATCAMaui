@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,6 +36,14 @@ namespace GAZT.Views.NewViews
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             DDlIDType.IsOpen = true;
+            try
+            {
+                viewModel.SelectedFormBindleFbtypCancel = (FormBundleResult)DDlIDType.SelectedItem;
+            }
+            catch (Exception ex)
+            {
+
+            }
             //BPicker.Focus();
         }
 
@@ -89,6 +98,17 @@ namespace GAZT.Views.NewViews
             //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
             viewModel.populate();
 
+
+        }
+
+        private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            DDlIDType.SelectedItem = viewModel.SelectedFormBindleFbtypCancel;
+            viewModel.SelectedFormBindleFbtyp = viewModel.SelectedFormBindleFbtypCancel;
+        }
+
+        private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
 
         }
     }

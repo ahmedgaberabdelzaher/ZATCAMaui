@@ -71,6 +71,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isLabelVisible = false;
+        public bool IsLabelVisible
+        {
+            get
+            {
+                return _isLabelVisible;
+            }
+            set
+            {
+                _isLabelVisible = value;
+                RaisePropertyChanged("IsLabelVisible");
+            }
+
+        }
+
         private bool _isVisibleListItems = false;
         public bool IsVisibleListItems
         {
@@ -165,7 +180,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-
+                ShowLessOrMore = AppResources.ZShowmoredetails;
+                IsVisibleListItems = false;
                 string Lang = UtilityManager.GetLanguageParameter();
                 if (lastTapped < DateTime.Now.AddSeconds(-4))
                 {
@@ -194,28 +210,37 @@ namespace GAZT.ViewModel.NewViewModel
                         }
 
                         ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
-
-                        if (ConsumerRegisteration != null)
+                        if (ConsumerRegisteration.Count > 0)
                         {
-                            if (ListTINStatus.d.ItemSet.results != null)
+                            IsLabelVisible = false;
+                          
+                            if (ConsumerRegisteration != null)
                             {
-                                foreach (ConsumerRegisteration itemCR in ListTINStatus.d.ItemSet.results)
+                                if (ListTINStatus.d.ItemSet.results != null)
                                 {
-                                    if (itemCR.Udate != null)
+                                    foreach (ConsumerRegisteration itemCR in ListTINStatus.d.ItemSet.results)
                                     {
-                                        if (App.IsArabic)
+                                        if (itemCR.Udate != null)
                                         {
-                                            itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                            itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
-                                        }
-                                        else
-                                        {
-                                            itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                            if (App.IsArabic)
+                                            {
+                                                itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
+                                            }
+                                            else
+                                            {
+                                                itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
+                                            }
                                         }
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            IsLabelVisible = true;
+                           
                         }
                     }
                     else

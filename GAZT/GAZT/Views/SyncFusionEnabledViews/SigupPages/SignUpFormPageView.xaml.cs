@@ -5,13 +5,16 @@ using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -30,17 +33,21 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.SignUpFormPageView;
 
                 InitializeComponent();
+
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
+
                 this.BindingContext = viewModel;
+                
                 ClearFields();
+       
               //  viewModel.OnPageLoad();
                
                 DDlIDType.SelectedIndex = 0;
-                // UsingDDl.SelectedIndex = 1;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
                 //ddlLIssuedBy.SelectedIndex = -1;
                
                 SetLTR();
-            
             }
             catch (Exception ex)
             {
@@ -105,10 +112,20 @@ namespace GAZT.Views.NewViews
         private void SetLTR()
         {
 
+            if (App.IsArabic)
+            {
+                
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
-            if (!App.IsArabic)
+            }
+            else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
         }
 

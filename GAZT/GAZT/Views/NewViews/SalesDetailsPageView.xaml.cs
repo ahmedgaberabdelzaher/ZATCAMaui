@@ -284,7 +284,7 @@ namespace GAZT.Views.NewViews
         {
             if(viewModel.IsCurrentZAKATTaxLess)
             {
-                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.OkText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.OKText, AppResources.ZZCancel);
                 if (result)
                 {
                     await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 

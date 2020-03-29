@@ -406,8 +406,8 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>
-  <data name="OkText" xml:space="preserve">
-    <value>Ok</value>
+  <data name="OKText" xml:space="preserve">
+    <value>Ok ENG</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>User authentication failed</value>
@@ -767,7 +767,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please enter the VAT Certificate No. composed of 15 digits</value>
   </data>
   <data name="ZPleaseselectparametertype" xml:space="preserve">
-    <value>Please select parameter type</value>
+    <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
     <value>Search Parameter</value>
@@ -2853,5 +2853,12 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZVATReturn" xml:space="preserve">
     <value>VAT Return</value>
     <comment>Tax Return Title</comment>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
+    <value>No commercial registrations linked to the TIN</value>
+    <comment>Check TIN Status</comment>
   </data>
 </root>

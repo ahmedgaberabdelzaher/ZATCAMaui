@@ -19,27 +19,35 @@ namespace GAZT.Views.NewViews
         ForgotUsernamePasswordPageViewModel viewModel;
         public ForgotUsernamePasswordPageView()
         {
-            viewModel = App.Locator.ForgotUsernamePasswordPageView;
-            InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-            viewModel.NewPasswordVisibility = true;
-            viewModel.ConfirmPasswordVisibility = true;
-            viewModel.currentAttempts = 0;
-            viewModel.OTPValidDuration = "00:00";
-            SetLTR();
-            string str = "abc";
-            Items.Add(str);
-            //  NavigationPage.SetBackButtonTitle(this, "Forgot");
-            CustomNavigation.SetBackButtonTitle(this, "Forgot");
-            // NavigationPage.BackButtonTitle = "Forgot";
-            App.IsComingFromDashboardToLogOff = false;
             try
             {
-                this.BindingContext = viewModel;
-                viewModel.OnPageLoad();
+                viewModel = App.Locator.ForgotUsernamePasswordPageView;
+                InitializeComponent();
+                NavigationPage.SetBackButtonTitle(this, "");
+                viewModel.MainPageLayoutVisibility = true;
+                viewModel.NewPasswordVisibility = true;
+                viewModel.ConfirmPasswordVisibility = true;
+                viewModel.currentAttempts = 0;
+                viewModel.OTPValidDuration = "00:00";
+                SetLTR();
+                string str = "abc";
+                Items.Add(str);
+                //  NavigationPage.SetBackButtonTitle(this, "Forgot");
+                CustomNavigation.SetBackButtonTitle(this, "Forgot");
+                // NavigationPage.BackButtonTitle = "Forgot";
+                App.IsComingFromDashboardToLogOff = false;
+                try
+                {
+                    this.BindingContext = viewModel;
+                    viewModel.OnPageLoad();
+                }
+                catch (Exception ex)
+                {
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
+
             }
         }
         protected void OnSelectedTaxPAyerType(object sender, EventArgs e)  { }
@@ -127,24 +135,30 @@ namespace GAZT.Views.NewViews
         }
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            viewModel.IsLoading = false;
-            viewModel.NewPassword = "";
-            viewModel.ConfirmPassword = "";
-            viewModel.EnteredOTP = "";
-            viewModel.IDNumber = "";
-            viewModel.NewPasswordLayoutVisibility = false;
-            viewModel.OTPLayoutVisibility = false;
-            viewModel.NavigateToLoginLinkVisibility = false;
-            viewModel.EnteredCaptchaValue  = "";
-            viewModel.IsVisibleTinIds = false;
-            viewModel.IsIDTypeVisible = false;
-            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-            viewModel.IsResendOTPEnabled = false;
-            viewModel.IsOTPEntryEnable = true;
-            viewModel.StopTimer = true;
-            viewModel.ForgotPasswordUserNameChangedMessage = "";
+            try
+            {
+                base.OnAppearing();
+                viewModel.IsLoading = false;
+                viewModel.NewPassword = "";
+                viewModel.ConfirmPassword = "";
+                viewModel.EnteredOTP = "";
+                viewModel.IDNumber = "";
+                viewModel.NewPasswordLayoutVisibility = false;
+                viewModel.OTPLayoutVisibility = false;
+                viewModel.NavigateToLoginLinkVisibility = false;
+                viewModel.EnteredCaptchaValue = "";
+                viewModel.IsVisibleTinIds = false;
+                viewModel.IsIDTypeVisible = false;
+                viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                viewModel.IsResendOTPEnabled = false;
+                viewModel.IsOTPEntryEnable = true;
+                viewModel.StopTimer = true;
+                viewModel.ForgotPasswordUserNameChangedMessage = "";
+            }
+            catch(Exception ex)
+            {
 
+            }
         }
 
         private async void OnOTPEntered(Object sender, EventArgs e)
@@ -162,5 +176,19 @@ namespace GAZT.Views.NewViews
             viewModel.StopTimer = false;
         }
 
+        private void btnTxtSelectedUsernameAndPassword_Clicked(object sender, EventArgs e)
+        {
+            SelectPasswordUserNamePicker.IsOpen = true;
+        }
+
+        private void btnTxtSelectTaxpayerType_Clicked(object sender, EventArgs e)
+        {
+            SelectTaxpayerTypePicker.IsOpen = true;
+        }
+
+        private void btnTxtTIN_Clicked(object sender, EventArgs e)
+        {
+            SelectedTinIdPicker.IsOpen = true;
+        }
     }
 }
