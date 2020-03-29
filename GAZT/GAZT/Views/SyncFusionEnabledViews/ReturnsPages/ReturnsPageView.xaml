@@ -8,7 +8,7 @@
                 xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
                 mc:Ignorable="d"
                 xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-                Title="My Returns"
+                Title="{x:Static local:AppResources.ZZZVATReturn}"
                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
                 xmlns:custom="clr-namespace:GAZT"
                 FlowDirection="RightToLeft"

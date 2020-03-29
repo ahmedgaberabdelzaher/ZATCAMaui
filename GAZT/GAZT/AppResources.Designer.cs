@@ -7243,6 +7243,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return.
+        /// </summary>
+        public static string ZZZVATReturn {
+            get {
+                return ResourceManager.GetString("ZZZVATReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verifications Code.
         /// </summary>
         public static string ZZZVerificationsCode {
