@@ -20,7 +20,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="2" >
+            <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="2" IsScrollButtonEnabled="True">
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
