@@ -611,9 +611,9 @@ namespace GAZT {
             }
         }
         
-        public static string OkText {
+        public static string OKText {
             get {
-                return ResourceManager.GetString("OkText", resourceCulture);
+                return ResourceManager.GetString("OKText", resourceCulture);
             }
         }
         

@@ -402,7 +402,7 @@
   <data name="Information" xml:space="preserve">
     <value>اشعار</value>
   </data>
-  <data name="OkText" xml:space="preserve">
+  <data name="OKText" xml:space="preserve">
     <value>موافق</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
@@ -2849,5 +2849,8 @@
   <data name="ZZZVATReturn" xml:space="preserve">
     <value>إقرار ضريبة القيمة المضافة</value>
     <comment>Tax Return Title</comment>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel Ar</value>
   </data>
 </root>

@@ -5,13 +5,16 @@ using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -40,7 +43,7 @@ namespace GAZT.Views.NewViews
                 ddlLIssuedBy.SelectedIndex = -1;
                
                 SetLTR();
-            
+
             }
             catch (Exception ex)
             {
@@ -102,11 +105,28 @@ namespace GAZT.Views.NewViews
         private void SetLTR()
         {
 
-
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo ci = new CultureInfo("ar-AE");
+                AppResources.Culture = ci;
+
+                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SyncFusionRESX.SfPicker.XForms", Application.Current.GetType().Assembly);
             }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
+                this.FlowDirection = FlowDirection.LeftToRight;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
+                    
+            }
+
+
+
+
+
+
         }
 
         private void btnSubmitNext_Clicked(object sender, EventArgs e)

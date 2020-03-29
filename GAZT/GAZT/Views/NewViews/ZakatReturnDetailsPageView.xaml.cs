@@ -60,7 +60,7 @@ namespace GAZT.Views.NewViews
         {
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {
-                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.OkText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.OKText, AppResources.ZZCancel);
                 if (result)
                 {
                     await viewModel.OnReleaseOrBillsClicked();

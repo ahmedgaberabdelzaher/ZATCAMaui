@@ -57,7 +57,7 @@ namespace GAZT
             await _dialogPage.DisplayAlert(
                 title,
                 message,
-                AppResources.OkText);
+                AppResources.OKText);
         }
 
         public async Task ShowMessage(
@@ -105,7 +105,7 @@ namespace GAZT
             await _dialogPage.DisplayAlert(
                 title,
                 message,
-               AppResources.OkText);
+               AppResources.OKText);
         }
 
         #endregion

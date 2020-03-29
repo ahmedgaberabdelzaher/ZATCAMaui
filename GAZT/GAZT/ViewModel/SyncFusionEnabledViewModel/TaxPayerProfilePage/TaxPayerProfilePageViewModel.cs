@@ -190,13 +190,21 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public void OnPageLoad()
         {
-            TaxPayerProfile = App.TP;
-            TPProfileVisibility = true;
-           
-            CurrentMobile =TaxPayerProfile.Mobile;
-            CurrentPassword = TaxPayerProfile.Password;
-            OldEmail = TaxPayerProfile.Email;
-            CurrentPasswordForEmail = TaxPayerProfile.Password;
+            try
+            {
+                TaxPayerProfile = App.TP;
+                TPProfileVisibility = true;
+
+                CurrentMobile = TaxPayerProfile.Mobile;
+                CurrentPassword = TaxPayerProfile.Password;
+                OldEmail = TaxPayerProfile.Email;
+                CurrentPasswordForEmail = TaxPayerProfile.Password;
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
 
         public async void SetTP()
