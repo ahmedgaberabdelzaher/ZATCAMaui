@@ -10,21 +10,33 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
              Title="{x:Static local:AppResources.TaxpayerProfile}"
-              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"
-             >
+             Style="{StaticResource ContentPageStyle}"
+              NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
+                                                                  iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary Source="..\Common\Styles.xaml" />
+            <!--<ResourceDictionary>
+                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
+            </ResourceDictionary>-->
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ControlTemplate>
+    <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <!--  Title View  -->
+                --><!--  Title View  --><!--
                 <controls:TitleView Title="{x:Static local:AppResources.TaxpayerProfile}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
@@ -43,21 +55,38 @@
                 <ContentPresenter />
             </StackLayout>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
 
     <ContentPage.Content>
-        <Grid  x:Name="ParentGrid" >
-            <Grid.RowDefinitions>
+        <Grid x:Name="ParentGrid">
+            <custom:CustomLabel
+                x:Name="BackLabel"
+                       VerticalOptions="StartAndExpand"
+                HorizontalOptions="StartAndExpand"
+                        Margin="8,10,8,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#ffffff"
+                        Text="{DynamicResource StyleReverseBack}"
                
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="10*"/>
-
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <ScrollView Orientation="Vertical"  Grid.Row="0" Grid.Column="0" Margin="0,10,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                >
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+            <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
+            <StackLayout   Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"  WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
+                <ScrollView HorizontalOptions="Center">
+                    <ScrollView.VerticalOptions>
+                        <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                    </ScrollView.VerticalOptions>
                 <Grid BindingContext="{Binding TaxPayerProfile}"  Margin="0,10,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -82,17 +111,16 @@
                     <!--<custom:GAZTBorderlessEntry Placeholder="{Binding Name}" PlaceholderColor= "#7D858D"  IsEnabled="False" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
 
 
+                        <Label Text="{x:Static local:AppResources.TaxpayerProfile}" TextColor="#ffffff" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerName"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                    
+
+                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerName"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                        <custom:GAZTBorderlessEntry  x:Name="TName" FontSize="Small"  Placeholder="{Binding Name}" PlaceholderColor= "#7D858D"  IsEnabled="False">
-                            <Entry.Behaviors>
-
-                                <custom1:OnlyAlphabatesBehaviour/>
-
-                            </Entry.Behaviors>
+                            <custom:GAZTBorderlessEntry  x:Name="TName" FontSize="Small"  Placeholder="{Binding Name}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+                            
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
@@ -104,16 +132,12 @@
                     <!--<Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
 
 
-                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerTIN"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerTIN"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                        <custom:GAZTBorderlessEntry  x:Name="TTIN" FontSize="Small"  Placeholder="{Binding Tin}" PlaceholderColor= "#7D858D"  IsEnabled="False">
-                            <Entry.Behaviors>
-
-                                <custom1:OnlyAlphabatesBehaviour/>
-
-                            </Entry.Behaviors>
+                            <custom:GAZTBorderlessEntry  x:Name="TTIN" FontSize="Small"  Placeholder="{Binding Tin}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+                          
                         </custom:GAZTBorderlessEntry>
                         
                     </inputLayout:SfTextInputLayout>
@@ -132,21 +156,17 @@
                     </Image>-->
 
 
-                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerMobileNumber"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                    <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerMobileNumber"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                        <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" PlaceholderColor= "#7D858D"  IsEnabled="False">
-                            <Entry.Behaviors>
-
-                                <custom1:OnlyAlphabatesBehaviour/>
-
-                            </Entry.Behaviors>
+                            <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+             
                         </custom:GAZTBorderlessEntry>
 
                     </inputLayout:SfTextInputLayout>
                     <custom:CustomLabel
-                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="End" VerticalOptions="CenterAndExpand"
                         Margin="13,2,13,1"
                         Style="{StaticResource IconLabelStyle}"
@@ -177,22 +197,18 @@
                     </Image>-->
 
 
-                    <inputLayout:SfTextInputLayout x:Name="LayoutEmail"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                    <inputLayout:SfTextInputLayout x:Name="LayoutEmail"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                        <custom:GAZTBorderlessEntry  x:Name="TEmail" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" PlaceholderColor= "#7D858D"  IsEnabled="False">
-                            <Entry.Behaviors>
-
-                                <custom1:OnlyAlphabatesBehaviour/>
-
-                            </Entry.Behaviors>
+                            <custom:GAZTBorderlessEntry  x:Name="TEmail" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+                    
                         </custom:GAZTBorderlessEntry>
 
                     </inputLayout:SfTextInputLayout>
 
                     <custom:CustomLabel
-                      Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                      Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="End" VerticalOptions="CenterAndExpand"
                         Margin="13,2,13,1"
                         Style="{StaticResource IconLabelStyle}"
@@ -220,17 +236,17 @@
                         </Image.GestureRecognizers>
                     </Image>-->
 
-                    <inputLayout:SfTextInputLayout x:Name="LayoutPassword"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                    <inputLayout:SfTextInputLayout x:Name="LayoutPassword"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                        <custom:GAZTBorderlessEntry  x:Name="Password" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#7D858D"  IsEnabled="False">
+                            <custom:GAZTBorderlessEntry  x:Name="Password" IsPassword="True" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#ffffff"  IsEnabled="False">
                         </custom:GAZTBorderlessEntry>
 
                     </inputLayout:SfTextInputLayout>
 
                     <custom:CustomLabel
-                     Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                     Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="End" VerticalOptions="CenterAndExpand"
                         Margin="13,2,13,1"
                         Style="{StaticResource IconLabelStyle}"
@@ -250,6 +266,7 @@
 
                 </Grid>
             </ScrollView>
+            </StackLayout>
             <!--<StackLayout Grid.Column="0" Grid.Row="1" HorizontalOptions="Center">
                 <Image Source="ic_home.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
