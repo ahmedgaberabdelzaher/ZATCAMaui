@@ -93,7 +93,7 @@
                     PickerMode="Dialog"
                                 SelectedItemFontSize="15"               
                    ItemHeight="40"
-                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"    Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
+                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}" CancelButtonClicked="DDlIDType_CancelButtonClicked"  OkButtonClicked="DDlIDType_OkButtonClicked"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
                     PickerHeight="280"
                     PickerWidth="350"
                     ShowFooter="True" FooterHeight="46">

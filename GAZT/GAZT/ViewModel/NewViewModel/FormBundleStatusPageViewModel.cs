@@ -22,6 +22,7 @@ namespace GAZT.ViewModel.NewViewModel
         private List<FormBundleApplicationNumberModelResult> _formBundleApplicationNumberList;
         private string _fbnumdetail;
         private FormBundleResult _selectedFormBindleFbtyp = null;
+        private FormBundleResult _selectedFormBindleFbtypCancel = null;
         private List<FbnumDetailList> _fbnumDetailList;
         public ICommand BackButtonClicked { get; set; }
 
@@ -189,9 +190,27 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public FormBundleResult SelectedFormBindleFbtypCancel
+        {
+            get
+            {
+                return _selectedFormBindleFbtypCancel;
+            }
+            set
+            {
+                _selectedFormBindleFbtypCancel = value;
+              
 
 
-        
+
+                
+             
+                RaisePropertyChanged("SelectedFormBindleFbtypCancel");
+            }
+        }
+
+
+
         public List<FbnumDetailList> FbnumDetailList
         {
             get

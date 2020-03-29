@@ -767,7 +767,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please enter the VAT Certificate No. composed of 15 digits</value>
   </data>
   <data name="ZPleaseselectparametertype" xml:space="preserve">
-    <value>Please select parameter type</value>
+    <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
     <value>Search Parameter</value>
@@ -2856,5 +2856,9 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="CancelText" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
+    <value>No commercial registrations linked to the TIN</value>
+    <comment>Check TIN Status</comment>
   </data>
 </root>

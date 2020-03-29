@@ -2552,7 +2552,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select parameter type.
+        ///   Looks up a localized string similar to Please select the ID Type value.
         /// </summary>
         public static string ZPleaseselectparametertype {
             get {
@@ -6030,6 +6030,15 @@ namespace GAZT {
         public static string ZZNochangesmadeFormcannotbesubmitted {
             get {
                 return ResourceManager.GetString("ZZNochangesmadeFormcannotbesubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No commercial registrations linked to the TIN.
+        /// </summary>
+        public static string ZZNocommercialregistrationslinkedtotheTIN {
+            get {
+                return ResourceManager.GetString("ZZNocommercialregistrationslinkedtotheTIN", resourceCulture);
             }
         }
         

@@ -766,7 +766,7 @@
     <value>يرجى ادخال الرقم الضريبي المؤلف من 15 رقم</value>
   </data>
   <data name="ZPleaseselectparametertype" xml:space="preserve">
-    <value>Please select parameter type</value>
+    <value>الرجاء إختيار نوع المعرف</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
     <value>نوع البحث</value>
@@ -2852,5 +2852,9 @@
   </data>
   <data name="CancelText" xml:space="preserve">
     <value>Cancel Ar</value>
+  </data>
+  <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
+    <value>لا يوجد سجلات تجارية مرتبطة بالرقم المميز</value>
+    <comment>Check TIN Status</comment>
   </data>
 </root>
