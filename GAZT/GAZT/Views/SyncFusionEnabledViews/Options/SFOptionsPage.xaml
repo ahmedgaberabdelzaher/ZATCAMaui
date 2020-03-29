@@ -49,7 +49,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="ContentLayout" BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
 
                     <!--  Header label for account setting  -->
                     <Label
