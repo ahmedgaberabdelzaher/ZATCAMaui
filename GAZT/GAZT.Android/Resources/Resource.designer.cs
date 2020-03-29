@@ -20608,55 +20608,43 @@ namespace GAZT.Droid
 			public const int sf_Sadad_logo = 2131165692;
 			
 			// aapt resource value: 0x7F0701FD
-			public const int sf_slider_image_1 = 2131165693;
+			public const int sf_Submited_Returns = 2131165693;
 			
 			// aapt resource value: 0x7F0701FE
-			public const int sf_slider_image_2 = 2131165694;
+			public const int sf_Tax_Evasion = 2131165694;
 			
 			// aapt resource value: 0x7F0701FF
-			public const int sf_slider_image_3 = 2131165695;
+			public const int sf_TIN_Status = 2131165695;
 			
 			// aapt resource value: 0x7F070200
-			public const int sf_slider_image_4 = 2131165696;
+			public const int sf_Unsubmited_Returns = 2131165696;
 			
 			// aapt resource value: 0x7F070201
-			public const int sf_Submited_Returns = 2131165697;
+			public const int sf_VAT_Declaration = 2131165697;
 			
 			// aapt resource value: 0x7F070202
-			public const int sf_Tax_Evasion = 2131165698;
+			public const int sf_VAT_Lookup = 2131165698;
 			
 			// aapt resource value: 0x7F070203
-			public const int sf_TIN_Status = 2131165699;
+			public const int splash = 2131165699;
 			
 			// aapt resource value: 0x7F070204
-			public const int sf_Unsubmited_Returns = 2131165700;
+			public const int TimeZone = 2131165700;
 			
 			// aapt resource value: 0x7F070205
-			public const int sf_VAT_Declaration = 2131165701;
+			public const int tooltip_frame_dark = 2131165701;
 			
 			// aapt resource value: 0x7F070206
-			public const int sf_VAT_Lookup = 2131165702;
+			public const int tooltip_frame_light = 2131165702;
 			
 			// aapt resource value: 0x7F070207
-			public const int splash = 2131165703;
+			public const int Untitled2 = 2131165703;
 			
 			// aapt resource value: 0x7F070208
-			public const int TimeZone = 2131165704;
+			public const int user = 2131165704;
 			
 			// aapt resource value: 0x7F070209
-			public const int tooltip_frame_dark = 2131165705;
-			
-			// aapt resource value: 0x7F07020A
-			public const int tooltip_frame_light = 2131165706;
-			
-			// aapt resource value: 0x7F07020B
-			public const int Untitled2 = 2131165707;
-			
-			// aapt resource value: 0x7F07020C
-			public const int user = 2131165708;
-			
-			// aapt resource value: 0x7F07020D
-			public const int ViewMode = 2131165709;
+			public const int ViewMode = 2131165705;
 			
 			static Drawable()
 			{
