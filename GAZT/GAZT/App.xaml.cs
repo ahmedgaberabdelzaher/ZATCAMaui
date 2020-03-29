@@ -13,6 +13,9 @@ using GAZTeServicesApp.Themes;
 using GAZTeServicesApp.Views.LoginPage;
 using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
 using GAZTeServicesApp.Views.LandingPage;
+using System.Threading;
+using System.Resources;
+using Syncfusion.SfPicker.XForms;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -121,10 +124,26 @@ namespace GAZT
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIzNTEwQDMxMzcyZTM0MmUzMEJUZG1sRWtvcDRKQTJYUkpTdm5lcXFHbzAzenUvNS81RTZ3SlBwdlN1Njg9");
 
+            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+            {
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
-            String langName = "ar-AE";//"en-US";// "ar-AE";
-            ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
+                // the ResourceManager class constructor has two parameters.
+                // 1. ResXPath => Full path of the resx file in the application. Here in the above line GettingStarted refers to the namespace of the Application
+                // 2. Assembly => Application assembly (PCL)
+
+                // Sets the required culture to the static texts in the control.		
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
+                }
+                else
+                {
+                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                }
+            }
+
+            AppResources.Culture = CultureInfo.CurrentUICulture;
 
             InitializeComponent();
 
