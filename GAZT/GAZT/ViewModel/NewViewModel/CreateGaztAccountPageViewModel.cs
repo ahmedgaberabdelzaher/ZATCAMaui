@@ -429,6 +429,7 @@ namespace GAZT.ViewModel.NewViewModel
                 CreateModel.AEmailCode = TxtEmailCode;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                
                 string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
 
