@@ -72,6 +72,9 @@
     <Compile Update="AppResources.ar.Designer.cs">
       <DependentUpon>AppResources.ar.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
+      <DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
+    </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
       <DependentUpon>SFLandingPageView.xaml</DependentUpon>
     </Compile>
