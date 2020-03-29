@@ -61,20 +61,20 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel text AR.
+        ///   Looks up a localized string similar to الغاء.
         /// </summary>
-        public static string Cancel {
+        public static string CancelText {
             get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
+                return ResourceManager.GetString("CancelText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OK text AR.
+        ///   Looks up a localized string similar to موافق.
         /// </summary>
-        public static string Ok {
+        public static string OKText {
             get {
-                return ResourceManager.GetString("Ok", resourceCulture);
+                return ResourceManager.GetString("OKText", resourceCulture);
             }
         }
     }
