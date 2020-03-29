@@ -115,7 +115,7 @@
                             <Label Text="{x:Static local1:AppResources.ZVatReadInstructions}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
-                            <local1:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="1."/>
@@ -124,11 +124,11 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            
-                            
-                            
 
-                            <local1:CustomLabel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+
+
+
+                            <local1:CustomLabel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="2."/>
@@ -137,7 +137,7 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            <local1:CustomLabel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="3."/>
@@ -146,7 +146,7 @@
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
 
-                            <local1:CustomLabel  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                            <local1:CustomLabel  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="4."/>

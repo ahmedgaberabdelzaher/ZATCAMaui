@@ -136,12 +136,6 @@ namespace GAZTeServicesApp.Views.LandingPage
             viewModel.NavigateToMyBills(billInfo);
         }
 
-        
-
-        private void OnTappedVAT(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.VATReturnsPageView);
-        }
         private void OnTappedTest(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
