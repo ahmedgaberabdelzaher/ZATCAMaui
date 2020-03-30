@@ -1,8 +1,11 @@
 ﻿using GAZT;
 using GAZT.Helper;
 using GAZTeServicesApp.ViewModels.LoginPage;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
+using System.Resources;
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -29,7 +32,21 @@ namespace GAZTeServicesApp.Views.LoginPage
             
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             viewModel.NavigateToThisService = strNavigateToThisService;
+            if (App.IsArabic)
+            {
 
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+            }
             if (Device.RuntimePlatform == Device.Android)
             {
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -45,7 +62,9 @@ namespace GAZTeServicesApp.Views.LoginPage
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
             //InitializeComponent();
-           // this.FlowDirection = FlowDirection.LeftToRight;
+            // this.FlowDirection = FlowDirection.LeftToRight;
+
+
         }
         protected async override void OnAppearing()
         {

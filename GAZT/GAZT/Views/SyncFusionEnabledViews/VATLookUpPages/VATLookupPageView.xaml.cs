@@ -30,6 +30,7 @@ namespace GAZT.Views.NewViews
             //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
             //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
             this.BindingContext = viewModel;
+            viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
@@ -52,16 +53,16 @@ namespace GAZT.Views.NewViews
             {
 
                 this.FlowDirection = FlowDirection.RightToLeft;
-                //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                //Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                //PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
             }
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                //CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                //Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
 
         }
@@ -258,6 +259,11 @@ namespace GAZT.Views.NewViews
 
         }
         public void OnParameterTypeEntryEntryFocussed(object sender, EventArgs args)
+        {
+            PPicker.IsOpen = true;
+        }
+
+        private void PPicker_btn_Clicked(object sender, EventArgs e)
         {
             PPicker.IsOpen = true;
         }

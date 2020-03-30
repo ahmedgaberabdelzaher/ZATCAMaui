@@ -176,5 +176,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
             }
         }
+
+        private void OptionMenuClicked(object sender, EventArgs e)
+        {
+            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
+            viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+        }
     }
 }

@@ -12,6 +12,9 @@ using GAZT.Manager;
 using GAZT.CustomControl;
 using Syncfusion.SfPicker.XForms;
 using System.Resources;
+using System.Globalization;
+using System.Threading;
+using GAZT.Models;
 
 namespace GAZT.Views.NewViews
 {
@@ -130,14 +133,20 @@ namespace GAZT.Views.NewViews
 
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+
             }
             else
             {
-
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
         }
         protected override void OnAppearing()
@@ -196,6 +205,26 @@ namespace GAZT.Views.NewViews
         private void btnTxtTIN_Clicked(object sender, EventArgs e)
         {
             SelectedTinIdPicker.IsOpen = true;
+        }
+
+        private void SelectPasswordUserNamePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            ForgotCredentialType selectedforgotType = (ForgotCredentialType)e.NewValue;
+            SelectPasswordUserNamePicker.SelectedItem = selectedforgotType;
+            viewModel.SelectedForgotType = selectedforgotType;
+            viewModel.TxtSelectedUsernameAndPassword = selectedforgotType.CredentialType;
+            //tSelectedUsernameAndPassword
+
+
+        }
+
+        private void SelectTaxpayerTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {///////////
+            ForgotUserNamePassword selectedTaxPayerType = (ForgotUserNamePassword)e.NewValue;
+            SelectTaxpayerTypePicker.SelectedItem = selectedTaxPayerType;
+            viewModel.SelectedTaxPayerType = selectedTaxPayerType;
+            viewModel.TxtSelectedUsernameAndPassword = selectedTaxPayerType.TaxPayerType;
+
         }
     }
 }

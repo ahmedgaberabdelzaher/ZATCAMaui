@@ -14,6 +14,12 @@ namespace GAZT.Models
         IsMobile=1,
         IsEmail=2
     }
+
+    public enum ComingToOptionScreenFrom
+    {
+        IsDashboardPage = 0,
+        IsAnonymousPage = 1
+    }
     public enum NavigateToTaxationProfilePage
     {
         IsDefault=0,

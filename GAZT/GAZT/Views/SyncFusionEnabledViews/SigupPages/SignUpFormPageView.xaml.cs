@@ -116,16 +116,16 @@ namespace GAZT.Views.NewViews
             {
                 
                 this.FlowDirection = FlowDirection.RightToLeft;
-               //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-               //Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-               // PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+               CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+               Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+               PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
             }
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-           //CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-           //     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+           CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
         }
 
@@ -1876,6 +1876,23 @@ namespace GAZT.Views.NewViews
             SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDNumber = signUpUsing.SUType;
+        }
+
+        private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //SelectedIssuedBy
+            IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
+            ddlLIssuedBy.SelectedItem = issuedByResponse;
+            viewModel.SelectedIssuedBy = issuedByResponse;
+            viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
+        }
+
+        private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+            viewModel.SelectCityList = selectedcity;
+            viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
+
         }
     }
 }
