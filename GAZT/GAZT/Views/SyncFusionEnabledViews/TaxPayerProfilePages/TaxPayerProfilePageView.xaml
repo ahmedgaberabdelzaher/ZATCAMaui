@@ -55,7 +55,7 @@
     </ContentPage.ControlTemplate>-->
 
     <ContentPage.Content>
-        <Grid x:Name="ParentGrid">
+        <Grid x:Name="ParentGrid" Padding="0,15,0,0">
             <custom:CustomLabel
                 x:Name="BackLabel"
                        VerticalOptions="StartAndExpand"

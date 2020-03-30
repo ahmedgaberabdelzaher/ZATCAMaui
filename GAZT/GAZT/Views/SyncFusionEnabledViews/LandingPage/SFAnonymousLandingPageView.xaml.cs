@@ -70,7 +70,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void SignIn_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView);
+            viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
         }
       
         private void OnTappedeService(object sender, EventArgs e)

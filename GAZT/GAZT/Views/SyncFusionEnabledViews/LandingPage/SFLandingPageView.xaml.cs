@@ -138,100 +138,169 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void OnTappedTest(object sender, EventArgs e)
         {
+
             string controltype = sender.GetType().ToString();
 
-            if(controltype== "Xamarin.Forms.Image")
+            if (controltype == "Xamarin.Forms.Image")
             {
-                Image arrowImage = sender as Image;
-                eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                if(BModel.eServiceName== AppResources.VATDeclaration)
+                try
                 {
-                    viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                    Image arrowImage = sender as Image;
+                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                    if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                    }
+
+                    if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyCertificate);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.MyBills)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    {
+                        viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                    {
+                        viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                    }
                 }
-                if (BModel.eServiceName == AppResources.EstimateZakat)
+                catch (Exception ex)
                 {
-                    viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+
                 }
-                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
-                }
-               
-                if (BModel.eServiceName == AppResources.MyCertificate)
-                {
-                    viewModel._navigationService.NavigateTo(App.MyCertificate);
-                }
-                if (BModel.eServiceName == AppResources.ZTINStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
-                }
-                if (BModel.eServiceName == AppResources.ZZCorrespondence)
-                {
-                    viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
-                }
-                if (BModel.eServiceName == AppResources.MyBills)
-                {
-                    viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
-                }
-                if(BModel.eServiceName== AppResources.ZTEReportReportScreenTitle)
-                {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
-                }
-                if (BModel.eServiceName == AppResources.VATLookup)
-                {
-                    viewModel._navigationService.NavigateTo(App.VATLookupPageView);
-                }
+
 
             }
             if (controltype == "Xamarin.Forms.Label")
             {
-                Label arrowImage = sender as Label;
-                eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                if (BModel.eServiceName == AppResources.VATDeclaration)
+                try
                 {
-                    viewModel._navigationService.NavigateTo(App.ICRListPageView);
-                }
-                if (BModel.eServiceName == AppResources.EstimateZakat)
-                {
-                    viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
-                }
-                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
-                }
+                    Label arrowImage = sender as Label;
+                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                    if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                    }
 
-                if (BModel.eServiceName == AppResources.MyCertificate)
-                {
-                    viewModel._navigationService.NavigateTo(App.MyCertificate);
+                    if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyCertificate);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.MyBills)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    {
+                        viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                    {
+                        viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                    }
+
                 }
-                if (BModel.eServiceName == AppResources.ZTINStatus)
+                catch (Exception ex)
                 {
-                    viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
-                }
-                if (BModel.eServiceName == AppResources.ZZCorrespondence)
-                {
-                    viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
-                }
-                if (BModel.eServiceName == AppResources.MyBills)
-                {
-                    viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
-                }
-                if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
-                {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
-                }
-                if (BModel.eServiceName == AppResources.VATLookup)
-                {
-                    viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+
                 }
 
             }
-            // if(sender.BindingContext.eServiceName)
+
+            if (controltype == "Xamarin.Forms.StackLayout")
+            {
+                try
+                {
+                    Label arrowImage = sender as Label;
+                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                    if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                    }
+
+                    if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyCertificate);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
+                    {
+                        viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.MyBills)
+                    {
+                        viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    {
+                        viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                    {
+                        viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+                // if(sender.BindingContext.eServiceName)
+            }
+
 
         }
-
-        
-       
 
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

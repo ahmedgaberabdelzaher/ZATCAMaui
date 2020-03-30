@@ -135,6 +135,9 @@
     <BundleResource Include="Resources\sf_VAT_Lookup.png" />
     <BundleResource Include="Resources\sf_VAT_Lookup%402x.png" />
     <BundleResource Include="Resources\sf_VAT_Lookup%403x.png" />
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%403x.png" />
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
+    <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -909,15 +912,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_Correspondence%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Estimated_Zakat_Return.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Estimated_Zakat_Return%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Estimated_Zakat_Return%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_Form_Bundle_Status.png" />
