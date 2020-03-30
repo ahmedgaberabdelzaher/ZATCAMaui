@@ -158,7 +158,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             OnChangePasswordClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsLogin);
+                _navigationService.NavigateTo(App.ChangePasswordPageView, ComingToOTPVerificationScreenFrom.IsLogin);
             });
             OnHomeClick = new Xamarin.Forms.Command(() =>
             {

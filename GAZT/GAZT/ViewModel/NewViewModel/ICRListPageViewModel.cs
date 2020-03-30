@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
@@ -22,7 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public static string EUser = string.Empty;
         public static int numberOfAttachmentComingFromServer = 0;
-        //  public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand OnHomeButtonClicked { get; set; }
         #endregion
 
         #region Property
@@ -221,10 +222,10 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
 
 
-            //OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
-            //{
-            //    _navigationService.NavigateTo(App.BillDetailsPageView);
-            //});
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
 
 
         }

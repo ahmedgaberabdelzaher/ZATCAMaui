@@ -16,13 +16,18 @@ namespace GAZT.Views
         List<string> list = new List<string>();
         public MyCertificate()
         {
-            InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-            viewModel = App.Locator.MyCertificate;
-            SetLTR();
+            try
+            {
+                InitializeComponent();
+                NavigationPage.SetBackButtonTitle(this, "");
+                viewModel = App.Locator.MyCertificate;
+                SetLTR();
 
-            this.BindingContext = viewModel;
+                this.BindingContext = viewModel;
+            }catch(Exception ex)
+            {
 
+            }
             //string str = "abc";
             //Items.Add(str);
             // CardView.ItemsSource = Items;

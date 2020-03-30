@@ -499,7 +499,7 @@ namespace GAZT.ViewModel
                                     App.TP.Userid = UserId;
                                     App.TP.Password = Password;
                                     bool IsNavigatingFromLogin = true;
-                                    NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+                                    ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
 
                                     Device.BeginInvokeOnMainThread(() =>
                                     {

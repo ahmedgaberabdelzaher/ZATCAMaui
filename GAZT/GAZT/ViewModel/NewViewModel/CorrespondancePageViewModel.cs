@@ -24,6 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onVATLabelClicked { get; set; }
         public ICommand onETLabelClicked { get; set; }
         public ICommand onCITLabelClicked { get; set; }
+        public ICommand OnHomeButtonClicked { get; set; }
         private List<CorrespondanceModel> _listVATCorrespondance = null;
         CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
@@ -414,8 +415,11 @@ namespace GAZT.ViewModel.NewViewModel
             onETLabelClicked = new Xamarin.Forms.Command( () =>
             {
             });
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
 
-           
         }
         #endregion
 

@@ -385,6 +385,20 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             }
         }
 
+        private string _NavigaateToThisService = String.Empty;
+        public string NavigateToThisService
+        {
+            get
+            {
+                return _NavigaateToThisService;
+            }
+            set
+            {
+                _NavigaateToThisService = value;
+            }
+        }
+
+
         #endregion
 
         #region Command
@@ -506,11 +520,13 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                         App.TP.Userid = UserId;
                                         App.TP.Password = Password;
                                         bool IsNavigatingFromLogin = true;
-                                        NavigateToOtp NavigatingFromLogin = NavigateToOtp.IsLogin;
+                                        ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
 
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
-                                            _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
+                                            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo() { _ComingToOTPVerificationScreenFrom = NavigatingFromLogin , NavigateToThisService = NavigateToThisService});
+
+                                           // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromLogin);
 
                                             //_navigationService.NavigateTo(App.LandingPageView);
 

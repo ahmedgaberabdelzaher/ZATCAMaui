@@ -17,7 +17,7 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
-        public NavigateToOtp IsComingFrom { get; set; }
+        public ComingToOTPVerificationScreenFrom IsComingFrom { get; set; }
         #endregion
 
         #region Property
@@ -293,7 +293,7 @@ namespace GAZT
                     {
                         IsLoading = true;
                     });
-                    if (IsComingFrom == NavigateToOtp.IsLogin)
+                    if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
                     {
                         TaxPayerProfile TP = null;
                         try
@@ -346,7 +346,7 @@ namespace GAZT
                             });
                         }
                     }
-                    else if (IsComingFrom == NavigateToOtp.IsMobile)
+                    else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
                     {
                         TaxPayerProfile TP = null;
 
@@ -391,7 +391,7 @@ namespace GAZT
                             });
                         }
                     }
-                    else if (IsComingFrom == NavigateToOtp.IsEmail)
+                    else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsEmail)
                     {
                         String OTP = string.Empty;
 
