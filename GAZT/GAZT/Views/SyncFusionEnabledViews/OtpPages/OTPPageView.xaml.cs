@@ -27,12 +27,14 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-        public OTPPageView(NavigateToOtp e)
+        public OTPPageView(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
         {
 
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.OTPPageView;
+            viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;
+
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
 
             SetLTR();
@@ -69,8 +71,9 @@ namespace GAZT.Views.NewViews
                 DependencyService.Get<IStatusBar>().HideStatusBar();
             }
 
-            viewModel.IsComingFrom = e;
-            if (e == NavigateToOtp.IsMobile)
+            viewModel.IsComingFrom = _ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom;
+
+            if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom  == ComingToOTPVerificationScreenFrom.IsMobile)
             {
                 if (App.TP != null)
                 {
@@ -144,7 +147,7 @@ namespace GAZT.Views.NewViews
 
                 }
             }
-            else if (e == NavigateToOtp.IsEmail)
+            else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsEmail)
             {
                 viewModel.EmailOrMobileNumber = AppResources.Email;
                 if (App.TP != null)
@@ -166,7 +169,7 @@ namespace GAZT.Views.NewViews
 
                 }
             }
-            else if (e == NavigateToOtp.IsLogin)
+            else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsLogin)
             {
                 if (App.TP != null)
                 {

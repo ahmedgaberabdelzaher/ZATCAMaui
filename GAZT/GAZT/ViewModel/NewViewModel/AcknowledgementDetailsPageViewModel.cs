@@ -277,7 +277,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnHomeClick = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.DashboardPageView);
+                _navigationService.NavigateTo(App.SFLandingPageView);
             });
 
         }

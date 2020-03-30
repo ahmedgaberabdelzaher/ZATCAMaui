@@ -8,7 +8,7 @@ namespace GAZT.Models
     {
          
     }
-    public enum NavigateToOtp
+    public enum ComingToOTPVerificationScreenFrom
     {
         IsLogin=0,
         IsMobile=1,
@@ -27,4 +27,11 @@ namespace GAZT.Models
         I = 1,
         O = 2
     }
+
+    public class ComingToOTPVerificationScreenFromAndNavigatingTo
+    {
+        public ComingToOTPVerificationScreenFrom _ComingToOTPVerificationScreenFrom { get; set; }
+        public string NavigateToThisService {get;set;}
+    }
+
 }

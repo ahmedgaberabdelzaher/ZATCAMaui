@@ -172,7 +172,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.GoBack();
+                _navigationService.NavigateTo(App.SFLandingPageView);
             });
         }
 

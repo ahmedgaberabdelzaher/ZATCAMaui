@@ -22,7 +22,7 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-        public ChangePasswordPageView(NavigateToOtp navigateTo)
+        public ChangePasswordPageView(ComingToOTPVerificationScreenFrom navigateTo)
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");

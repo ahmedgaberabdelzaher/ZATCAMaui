@@ -44,6 +44,7 @@
     <x:String x:Key="contactus">&#xe723;</x:String>
     <x:String x:Key="Viewd">&#xe71b;</x:String>
     <x:String x:Key="ReverseBack">&#xe71a;</x:String>
+    <x:String x:Key="Home">&#xe706;</x:String>
 
     <Color x:Key="Green">#7ed321</Color>
 

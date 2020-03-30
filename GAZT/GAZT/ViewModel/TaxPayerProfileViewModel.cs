@@ -505,7 +505,7 @@ namespace GAZT
             });
             OnVerifyEmailButtonClicked = new Command(async () =>
             {
-                NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
+                ComingToOTPVerificationScreenFrom NavigatingFromEmail = ComingToOTPVerificationScreenFrom.IsEmail;
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";
@@ -574,7 +574,7 @@ namespace GAZT
             OnVerifyButtonClicked = new Command(async () =>
             {
                 bool IsNavigatingFromLogin = false;
-                NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
+                ComingToOTPVerificationScreenFrom NavigatingFromMobile = ComingToOTPVerificationScreenFrom.IsMobile;
                 String lang = "EN";
                 if (App.IsArabic == true)
                     lang = "AR";

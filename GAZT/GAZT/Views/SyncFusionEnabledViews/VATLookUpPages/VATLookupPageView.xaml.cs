@@ -34,7 +34,7 @@ namespace GAZT.Views.NewViews
             viewModel.MaxDigids = "15";
             SetLTR();
             NavigationPage.SetBackButtonTitle(this, "");
-          
+            PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
 
@@ -84,7 +84,17 @@ namespace GAZT.Views.NewViews
 
         private void btn1_Clicked(object sender, EventArgs e)
         {
-            PPicker.IsOpen = true;
+           // PPicker.IsOpen = true;
+        }
+
+        private void SelectedParametes_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            VATParameterType vATParameterType = (VATParameterType)e.NewValue;
+            PPicker.SelectedItem = vATParameterType;
+            viewModel.SelectedParameterType = vATParameterType;
+            viewModel.SetSelectedParameterTypeData();
+            //viewModel.SelectedSignUpUsing = signUpUsing;
+            //viewModel.TxtIDNumber = signUpUsing.SUType;
         }
 
         private async void btnSubmit_Clicked(object sender, EventArgs e)
@@ -155,7 +165,7 @@ namespace GAZT.Views.NewViews
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     frmLookupNumner.HasError = false;
-                    frmSearchParameter.HasError = false;
+                   // frmSearchParameter.HasError = false;
                 });
                 if (viewModel.SelectedParameterType != null)
                 {
@@ -234,7 +244,7 @@ namespace GAZT.Views.NewViews
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
-                        frmSearchParameter.HasError = true;
+                      //  frmSearchParameter.HasError = true;
 
                     });
                    
@@ -246,6 +256,10 @@ namespace GAZT.Views.NewViews
                 isMendatoryDataEntered = false;
             }
 
+        }
+        public void OnParameterTypeEntryEntryFocussed(object sender, EventArgs args)
+        {
+            PPicker.IsOpen = true;
         }
     }
 }

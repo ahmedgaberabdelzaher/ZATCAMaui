@@ -17,15 +17,19 @@ namespace GAZTeServicesApp.Views.LoginPage
     public partial class SFLoginPageView
     {
         SFLoginPageViewModel viewModel;
+        private string strNavigaateToThisService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
         /// </summary>
-        public SFLoginPageView()
+        public SFLoginPageView(String strNavigateToThisService)
         {
             SetLTRDirection();
             InitializeComponent();
+            
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            viewModel.NavigateToThisService = strNavigateToThisService;
+
             if (Device.RuntimePlatform == Device.Android)
             {
                 DependencyService.Get<IStatusBar>().HideStatusBar();

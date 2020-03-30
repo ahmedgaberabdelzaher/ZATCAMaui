@@ -16,7 +16,7 @@
     <ContentPage.Content>
 
 
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" SelectedIndex="{Binding TabIndexStatus}" IsScrollButtonEnabled="True" >
+        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="3" SelectedIndex="{Binding TabIndexStatus}" >
             <tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"

@@ -23,6 +23,7 @@ namespace GAZT
         #region Variable
         public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
+        public ICommand OnHomeButtonClicked { get; set; }
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
@@ -302,7 +303,10 @@ namespace GAZT
                 {
                 }
             });
-
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
 
             OnZakatCertificateClicked = new RelayCommand(async () =>
             {

@@ -24,6 +24,8 @@ namespace GAZT.ViewModel
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
 
+        public ICommand OnHomeButtonClicked { get; set; }
+
         private int _groupValue = 0;
         public int GroupValue
         {
@@ -265,7 +267,7 @@ namespace GAZT.ViewModel
 
             OnHomeIconClicked = new Command(() =>
             {
-                _navigationService.GoBack();
+                _navigationService.NavigateTo(App.SFLandingPageView);
             });
 
             if (dialogService == null)
@@ -290,6 +292,10 @@ namespace GAZT.ViewModel
                 onPartiallyPaidLabelClicked = new Command(() =>
                 {
                     OnPartiallyClicked();
+                });
+                OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+                {
+                    _navigationService.NavigateTo(App.SFLandingPageView);
                 });
             }
             catch(Exception e)

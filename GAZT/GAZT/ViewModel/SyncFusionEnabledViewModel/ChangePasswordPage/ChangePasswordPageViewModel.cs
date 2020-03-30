@@ -236,8 +236,8 @@ namespace GAZT
         }
 
 
-        private NavigateToOtp _NavigateToOtpForEmailEnum;
-        public NavigateToOtp NavigateToOtpForEmailEnum
+        private ComingToOTPVerificationScreenFrom _NavigateToOtpForEmailEnum;
+        public ComingToOTPVerificationScreenFrom NavigateToOtpForEmailEnum
         {
             get
             {
@@ -339,7 +339,7 @@ namespace GAZT
                     try
                     {
 
-                        if (NavigateToOtpForEmailEnum == NavigateToOtp.IsEmail)
+                        if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
                         {
                             if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
                             {
@@ -392,7 +392,7 @@ namespace GAZT
                                 ClearPasswordDataForEmail();
                             }
                         }
-                        else if (NavigateToOtpForEmailEnum == NavigateToOtp.IsLogin)//For Default Password Change
+                        else if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsLogin)//For Default Password Change
                     {
 
                             try
@@ -459,7 +459,7 @@ namespace GAZT
                             await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
 
                             ClearPasswordDataForEmail();
-                            if (NavigateToOtpForEmailEnum == NavigateToOtp.IsEmail)
+                            if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
                             {
                                 var _navigation = Application.Current.MainPage.Navigation;
                                 await _navigation.PopAsync();

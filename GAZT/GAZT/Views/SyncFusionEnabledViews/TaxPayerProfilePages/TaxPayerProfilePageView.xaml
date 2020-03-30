@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+             xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
              Title="{x:Static local:AppResources.TaxpayerProfile}"
              BackgroundColor="White"
@@ -58,7 +55,7 @@
     </ContentPage.ControlTemplate>-->
 
     <ContentPage.Content>
-        <Grid x:Name="ParentGrid">
+        <Grid x:Name="ParentGrid" Padding="0,15,0,0">
             <custom:CustomLabel
                 x:Name="BackLabel"
                        VerticalOptions="StartAndExpand"
