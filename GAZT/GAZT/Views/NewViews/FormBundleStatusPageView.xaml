@@ -20,7 +20,7 @@
              x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary Source="..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
