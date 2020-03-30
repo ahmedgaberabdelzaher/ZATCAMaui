@@ -138,41 +138,40 @@ namespace GAZT.Views.NewViews
 
         private void SetLTR()
         {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.IsVisiblePickerAr = false;
-                viewModel.IsVisiblePickerEn = true;
-
-
-            }
-            else
-            {
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
-                viewModel.IsVisiblePickerAr = true;
-                viewModel.IsVisiblePickerEn = false;
-
-
-            }
-            //if (App.IsArabic)
+            //if (!App.IsArabic)
             //{
+            //    this.FlowDirection = FlowDirection.LeftToRight;
+            //    viewModel.IsVisiblePickerAr = false;
+            //    viewModel.IsVisiblePickerEn = true;
 
-            //    this.FlowDirection = FlowDirection.RightToLeft;
-            //    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-            //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-            //    PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
-            //        viewModel.IsVisiblePickerAr = true;
-            //        viewModel.IsVisiblePickerEn = false;
 
             //}
             //else
             //{
-            //    viewModel.IsVisiblePickerAr = false;
-            //   viewModel.IsVisiblePickerEn = true;
-            //    this.FlowDirection = FlowDirection.LeftToRight;
-            //    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-            //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+            //    PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+            //    viewModel.IsVisiblePickerAr = true;
+            //    viewModel.IsVisiblePickerEn = false;
             //}
+
+            if (App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                viewModel.IsVisiblePickerAr = true;
+                viewModel.IsVisiblePickerEn = false;
+
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                viewModel.IsVisiblePickerAr = false;
+                viewModel.IsVisiblePickerEn = true;
+            }
 
         }
 
@@ -792,6 +791,49 @@ namespace GAZT.Views.NewViews
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
+
+        }
+
+        private void ddlFacilityType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            FacilityCompanyType selectedcompanytyp = (FacilityCompanyType)e.NewValue;
+            ddlFacilityType.SelectedItem = selectedcompanytyp;
+            viewModel.SelectedTaxEvasionCompanyType = selectedcompanytyp;
+            viewModel.TxtFType = selectedcompanytyp.Name;
+        }
+
+        private void RegionPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            RegionList selectedregion = (RegionList)e.NewValue;
+            RegionPicker.SelectedItem = selectedregion;
+            viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
+            viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
+            //SelectedTaxEvasionRegion
+        }
+
+        private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            RegionList selectedregion = (RegionList)e.NewValue;
+            RegionPickerAR.SelectedItem = selectedregion;
+            viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
+            viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
+
+        }
+
+        private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            CityList selectedcity = (CityList)e.NewValue;
+            CityPicker.SelectedItem = selectedcity;
+            viewModel.SelectLCType = selectedcity;//selectedregion
+            viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
+        }
+
+        private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            CityList selectedcity = (CityList)e.NewValue;
+            CityPickerAR.SelectedItem = selectedcity;
+            viewModel.SelectLCType = selectedcity;//selectedregion
+            viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
 
         }
     }

@@ -256,16 +256,17 @@ xmlns:custom="clr-namespace:GAZT"
                     ShowColumnHeader="True"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                                               OkButtonClicked="ddlFacilityType_OkButtonClicked"
                    ItemHeight="40"
-                    ItemsSource="{Binding DListFacilityCompanyType}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTaxEvasionCompanyType,Mode=TwoWay}"     Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    ItemsSource="{Binding DListFacilityCompanyType}" DisplayMemberPath="Name"      Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>
+                        </syncfusion:SfPicker> 
+                        <!--SelectedItem="{Binding SelectedTaxEvasionCompanyType,Mode=TwoWay}"-->
 
 
 
@@ -428,10 +429,12 @@ xmlns:custom="clr-namespace:GAZT"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"                                              
                    ItemHeight="40"
-                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameEN" SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                            OkButtonClicked="RegionPicker_OkButtonClicked"
+                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameEN"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
+                            <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -444,12 +447,14 @@ xmlns:custom="clr-namespace:GAZT"
                     ShowColumnHeader="True"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                            OkButtonClicked="RegionPickerAR_OkButtonClicked"
+        
                    ItemHeight="40"
-                   x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR" SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR"  IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
+                            <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -497,10 +502,12 @@ xmlns:custom="clr-namespace:GAZT"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"                                              
                    ItemHeight="40"
-                   x:Name="CityPicker"   SelectedItem="{Binding SelectLCType,Mode=TwoWay}" ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                            OkButtonClicked="CityPicker_OkButtonClicked"
+                   x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
+                            <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -513,12 +520,13 @@ xmlns:custom="clr-namespace:GAZT"
                     ShowColumnHeader="True"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                                               OkButtonClicked="CityPickerAR_OkButtonClicked"
                    ItemHeight="40"
-                   x:Name="CityPickerAR" SelectedItem="{Binding SelectLCType,Mode=TwoWay}" ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
+                            <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
