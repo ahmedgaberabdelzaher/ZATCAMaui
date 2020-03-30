@@ -132,17 +132,18 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedParameterType = value;
+                //EnteredCaptchaValue = string.Empty;
+                //LookupNumber = string.Empty;
+                //Name = string.Empty;
+                //StringBuilder captcha = GetCaptcha();
+                //Captcha = captcha.ToString();
+                //if (SelectedParameterType != null)
+                //{
+                //    TxtSearchParameter = SelectedParameterType.ParameterType;
+                //    SetPlaceholderText();
+                //}
                 RaisePropertyChanged("_selectedParameterType");
-                EnteredCaptchaValue = string.Empty;
-                LookupNumber = string.Empty;
-                Name = string.Empty;
-                StringBuilder captcha = GetCaptcha();
-                Captcha = captcha.ToString();
-                if (SelectedParameterType != null)
-                {
-                    TxtSearchParameter = SelectedParameterType.ParameterType;
-                    SetPlaceholderText();
-                }
+              
             }
         }
         private string _VATACCOrCRNOOrVATCER = "";// AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
@@ -276,7 +277,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        public async Task OnPageLoad()
+        public void OnPageLoad()
         {
             try
             {
@@ -284,7 +285,7 @@ namespace GAZT.ViewModel.NewViewModel
                 LookupNumber = string.Empty;
                 Name = string.Empty;
                 VATACCOrCRNOOrVATCER = string.Empty;
-                List<VATParameterType> VATParameterList = new List<VATParameterType>
+             List<VATParameterType> VATParameterList = new List<VATParameterType>
             {
                new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATLookupIDTaxpayerTinType1},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZVATLookupCRNumberType3},
@@ -495,6 +496,19 @@ namespace GAZT.ViewModel.NewViewModel
 
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
          
+        }
+        public void SetSelectedParameterTypeData()
+        {
+            EnteredCaptchaValue = string.Empty;
+            LookupNumber = string.Empty;
+            Name = string.Empty;
+            StringBuilder captcha = GetCaptcha();
+            Captcha = captcha.ToString();
+            if (SelectedParameterType != null)
+            {
+                TxtSearchParameter = SelectedParameterType.ParameterType;
+                SetPlaceholderText();
+            }
         }
     }
 }
