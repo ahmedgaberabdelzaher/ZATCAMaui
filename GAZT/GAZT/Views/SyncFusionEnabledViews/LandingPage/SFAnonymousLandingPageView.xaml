@@ -8,7 +8,6 @@
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-    xmlns:local1="clr-namespace:GAZT"
     x:Name="LandingPage"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False">
@@ -192,17 +191,15 @@
 
                 <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
 
-                <controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}" RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">
-                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
-                        <local1:CustomLabel.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OptionMenuClicked"></TapGestureRecognizer>
-                        </local1:CustomLabel.GestureRecognizers>
-                    </local1:CustomLabel>
-                </controls:TapAnimationGrid>
+                <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}" RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">
+                    <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" />
+                </controls:TapAnimationGrid>-->
 
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
 
-                <Button  Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Text="{x:Static local:AppResources.LogIn}" BackgroundColor="#d99a29"  Clicked="SignIn_Clicked"/>              
+               <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" >
+                 <Button   VerticalOptions="Center" Text="{x:Static local:AppResources.LogIn}" BackgroundColor="#d99a29"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>              
+                </StackLayout>
                
             </Grid>
 
