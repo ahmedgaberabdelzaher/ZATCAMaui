@@ -7,6 +7,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
              Title="{x:Static local:AppResources.ZAmendSalesDetails}"
              FlowDirection="RightToLeft">
@@ -52,7 +53,7 @@
 
                             </Label>
 
-                            <Label Text="{x:Static local:AppResources.OldValue}" IsEnabled="False" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <!--<Label Text="{x:Static local:AppResources.OldValue}" IsEnabled="False" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
@@ -60,27 +61,45 @@
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
-                            </custom:GAZTBorderlessEntry>
+                            </custom:GAZTBorderlessEntry>-->
+
+                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+    Hint="{x:Static local:AppResources.OldValue}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                                <custom:GAZTBorderlessEntry  Grid.Row="2" Placeholder="{Binding OldValue}" IsEnabled="False"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:AlphaNumericValidatorBehaviour/>
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
 
 
-
-                            <Label  Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <!--<Label  Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
                             <custom:GAZTBorderlessEntry x:Name="NewValue" Grid.Row="4" Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue />
-                                </custom:GAZTBorderlessEntry.Behaviors>-->
-                            </custom:GAZTBorderlessEntry>
+                            </custom:GAZTBorderlessEntry>-->
+                          
+                           
                             <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
                         </Image.GestureRecognizers>
                     </Image>-->
 
+                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+    Hint="{x:Static local:AppResources.ZNewValue}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                                <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"     Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                  
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
 
-                            <Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                            <!--<Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
@@ -88,19 +107,29 @@
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
-                            </custom:GAZTBorderlessEntry>
+                            </custom:GAZTBorderlessEntry>-->
                             <!--<Image Grid.Row="3"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForNewPassword" />
                         </Image.GestureRecognizers>
                     </Image>-->
 
+                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+    Hint="{x:Static local:AppResources.ZChangeReason}" 
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                                <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:AlphaNumericValidatorBehaviour/>
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
 
 
 
                             <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
-                            <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="8"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
                             <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
@@ -268,7 +297,7 @@
                     </ScrollView>
                 </Grid>
 
-                <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}"></Button>
+                <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56" Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}"></Button>
             
             </Grid>
             <!-- Acticity indicator layout start -->

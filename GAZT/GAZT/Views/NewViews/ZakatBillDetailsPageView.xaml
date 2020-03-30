@@ -8,7 +8,17 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              FlowDirection="LeftToRight"
-             x:Class="GAZT.Views.NewViews.ZakatBillDetailsPageView">
+             x:Class="GAZT.Views.NewViews.ZakatBillDetailsPageView"
+              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
             <Grid>
@@ -175,10 +185,12 @@
                 </StackLayout>
             </Grid>-->
                 <!-- Acticity indicator layout End -->
-                <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical">
-                    <Button Text="{x:Static local:AppResources.CopySADADPaymentNumber}" Command="{Binding OnCopySadadNumberButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1">
+                    <buttons:SfButton Text="{x:Static local:AppResources.CopySADADPaymentNumber}" Command="{Binding OnCopySadadNumberButtonClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  Style="{StaticResource SfButtonStyle}"   BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
 
-                    <Button Text="{x:Static local:AppResources.PayByMADA}" Command="{Binding OnPayByMadaButtonClicked}"  Style="{StaticResource GAZTVerifyButton}"></Button>
+                    <buttons:SfButton Text="{x:Static local:AppResources.PayByMADA}" Command="{Binding OnPayByMadaButtonClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}"   BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
 
                 </StackLayout>
             </Grid>
