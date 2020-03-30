@@ -7,16 +7,26 @@
               xmlns:custom="clr-namespace:GAZT"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              x:Class="GAZT.Views.NewViews.ZakatReturnDetailsPageView"
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
             FlowDirection="RightToLeft">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                  <Grid.RowDefinitions>
-                        <RowDefinition Height="88*"/>
-                        <RowDefinition Height="14*"/>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="30*"/>
                         
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -82,14 +92,24 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="Center">
+                    <!--<Image Source="ic_info.png" Grid.Column="2" Grid.Row="8" HorizontalOptions="Start" VerticalOptions="Center">
                         <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnInformationMessageClickedOne"
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
-                    </Image> 
-                    <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    </Image>-->
+                        <Label
+                       Grid.Column="2" Grid.Row="8"
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnInformationMessageClickedOne" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{x:Static local:AppResources.Capital}" Grid.Row="9" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Cpamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="9" Grid.Column="1"    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
@@ -100,15 +120,25 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="9" HorizontalOptions="Start" VerticalOptions="Center">
+                    <!--<Image Source="ic_info.png" Grid.Column="2" Grid.Row="9" HorizontalOptions="Start" VerticalOptions="Center">
 
                          <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnInformationMessageClickedTwo"
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
-                    </Image>
-                    <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    </Image>-->
+                        <Label
+                       Grid.Column="2" Grid.Row="9"
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnInformationMessageClickedTwo" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{x:Static local:AppResources.ZakatBase}" Grid.Row="10" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zbamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="10" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
@@ -119,14 +149,24 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="Center">
+                    <!--<Image Source="ic_info.png" Grid.Column="2" Grid.Row="10" HorizontalOptions="Start" VerticalOptions="Center">
                          <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnInformationMessageClickedThree"
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
-                    </Image>
-                    <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
+                    </Image>-->
+                        <Label
+                       Grid.Column="2" Grid.Row="10"
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnInformationMessageClickedThree" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{x:Static local:AppResources.ZakatAmount}" Grid.Row="11" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
                     <Label Text="{Binding Zkamt}" FontFamily="{StaticResource SSTArBold}" Grid.Row="11" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                          <Label.FormattedText>
@@ -137,18 +177,27 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
-                    <Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="Center">
+                    <!--<Image Source="ic_info.png" Grid.Column="2" Grid.Row="11" HorizontalOptions="Start" VerticalOptions="Center">
                          <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                 Tapped="OnInformationMessageClickedFour"
                 NumberOfTapsRequired="1" />
                                                 </Image.GestureRecognizers>
-                    </Image>
+                    </Image>-->
+                        <Label
+                       Grid.Column="2" Grid.Row="11"
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnInformationMessageClickedFour" />
+                            </Label.GestureRecognizers>
+                        </Label>
 
-
-                </Grid>
+                    </Grid>
  </ScrollView>
-                <StackLayout Orientation="Horizontal"  Grid.Row="1" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
+                <!--<StackLayout Orientation="Horizontal"  Grid.Row="1" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,5,0,5" Padding="0" >
                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
@@ -159,13 +208,26 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Button Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}"  ></Button> <!--Command="{Binding OnSalesDetailsClicked}"-->
+                            <Button Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}" Grid.Row="0" Grid.Column="0" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}"  ></Button> --><!--Command="{Binding OnSalesDetailsClicked}"--><!--
 
-                            <Button Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" ></Button> <!--Command="{Binding OnBillsButtonClicked}"-->
+                            <Button Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked" Grid.Row="0" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" ></Button> --><!--Command="{Binding OnBillsButtonClicked}"--><!--
 
                         </Grid>
-                    </StackLayout>   
-            </Grid>
+                    </StackLayout>-->
+                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1">
+                       
+                        <buttons:SfButton Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}"  Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" BackgroundColor="#006450"
+                     Opacity="0.7" ></buttons:SfButton>
+                        <!--Command="{Binding OnSalesDetailsClicked}"-->
+
+                        <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked"   Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
+                        <!--Command="{Binding OnBillsButtonClicked}"-->
+
+
+
+                    </StackLayout>
+                </Grid>
              <!-- Acticity indicator layout start -->
                 <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -179,6 +241,6 @@
             </Grid>
                 <!-- Acticity indicator layout End -->
        </Grid>
-            </ScrollView>
+            <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
