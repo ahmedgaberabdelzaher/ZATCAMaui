@@ -318,7 +318,8 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 /// <param name="obj">The Object</param>
 private void ShowOptionsCommandClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SFOptionsPageView);
+            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+            _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
         }
 
         /// <summary>

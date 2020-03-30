@@ -1,4 +1,5 @@
 ﻿using GAZT;
+using GAZT.Models;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using GAZTeServicesApp.ViewModels.Options;
 using System;
@@ -25,11 +26,13 @@ namespace GAZTeServicesApp.Views.Options
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageView" /> class.
         /// </summary>
-        public SFOptionsPageView()
+        public SFOptionsPageView(ComingToOptionScreenFrom comingToOption)
         {
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.OptionsPageView;
-            if(App.IsArabic)
+            viewModel.IsComingFrom = comingToOption;
+            VisibleTaxPayerProfile();
+            if (App.IsArabic)
             {
                 viewModel.TranslateText = AppResources.ZZZSetToEnglish;
             }
@@ -54,6 +57,18 @@ namespace GAZTeServicesApp.Views.Options
         //    lblLanguage1.GestureRecognizers.Add(tap1);
         //    lblLanguage2.GestureRecognizers.Add(tap2);
         //}
+        public void VisibleTaxPayerProfile()
+        {
+            if (viewModel.IsComingFrom == ComingToOptionScreenFrom.IsAnonymousPage)
+            {
+                viewModel.IsTaxPayerProfileVisible = false;
+            }
+            else
+            {
+                viewModel.IsTaxPayerProfileVisible = true;
+            }
+            InitializeComponent();
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -129,7 +144,14 @@ namespace GAZTeServicesApp.Views.Options
 
             }
 
-            viewModel._navigationService.NavigateTo(App.SFLandingPageView);
+            if (viewModel.IsComingFrom == ComingToOptionScreenFrom.IsDashboardPage)
+            {
+                viewModel._navigationService.NavigateTo(App.SFLandingPageView);
+            }
+            else
+            {
+                viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            }
         }
     }
 }
