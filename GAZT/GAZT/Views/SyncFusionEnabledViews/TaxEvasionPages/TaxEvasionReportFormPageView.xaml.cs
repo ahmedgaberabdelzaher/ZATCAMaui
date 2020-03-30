@@ -169,6 +169,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
                 viewModel.IsVisiblePickerAr = false;
                 viewModel.IsVisiblePickerEn = true;
             }
