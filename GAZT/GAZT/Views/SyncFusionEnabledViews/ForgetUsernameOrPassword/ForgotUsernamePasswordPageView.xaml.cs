@@ -213,7 +213,18 @@ namespace GAZT.Views.NewViews
             SelectPasswordUserNamePicker.SelectedItem = selectedforgotType;
             viewModel.SelectedForgotType = selectedforgotType;
             viewModel.TxtSelectedUsernameAndPassword = selectedforgotType.CredentialType;
-                
+            //tSelectedUsernameAndPassword
+
+
+        }
+
+        private void SelectTaxpayerTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {///////////
+            ForgotUserNamePassword selectedTaxPayerType = (ForgotUserNamePassword)e.NewValue;
+            SelectTaxpayerTypePicker.SelectedItem = selectedTaxPayerType;
+            viewModel.SelectedTaxPayerType = selectedTaxPayerType;
+            viewModel.TxtSelectedUsernameAndPassword = selectedTaxPayerType.TaxPayerType;
+
         }
     }
 }

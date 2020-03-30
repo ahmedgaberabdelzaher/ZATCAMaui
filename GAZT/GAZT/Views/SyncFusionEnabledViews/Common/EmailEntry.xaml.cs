@@ -1,7 +1,13 @@
-﻿using System;
+﻿using GAZT;
+using Syncfusion.SfPicker.XForms;
+using System;
+using System.Globalization;
+using System.Resources;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GAZTeServicesApp.Views.Common
 {
@@ -18,8 +24,8 @@ namespace GAZTeServicesApp.Views.Common
         public EmailEntry()
         {
             InitializeComponent();
-
         }
+       
 
         private void TINs_Clicked(object sender, System.EventArgs e)
         {
