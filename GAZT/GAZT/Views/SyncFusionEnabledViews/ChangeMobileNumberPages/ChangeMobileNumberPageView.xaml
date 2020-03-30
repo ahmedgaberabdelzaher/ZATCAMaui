@@ -99,9 +99,17 @@
 
 
 
-                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,0,10,-5" IsVisible="{Binding NewMobileNumberEnglishLayout}">
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"   IsVisible="{Binding NewMobileNumberEnglishLayout}">
 
-                            <Label  Text="{Binding CountryCode}" TextColor="#D99A29" FontSize="Medium" Margin="7,0,7,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"></ColumnDefinition>
+                                <ColumnDefinition Width="80*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label  Text="{Binding CountryCode}" Grid.Row="0" Grid.Column="0" TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
 
 
                             <!--<inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
@@ -111,7 +119,7 @@
                         <Label  Text="{Binding CountryCode}" Padding="0,14,0,14"  VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" TextColor="#7D858D" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
                     </inputLayout:SfTextInputLayout>-->
 
-                            <inputLayout:SfTextInputLayout   x:Name="NewMobileNumberLayout"  Margin="-7,0,-7,0"
+                            <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="1"  x:Name="NewMobileNumberLayout"  Margin="7,0,7,0"
     Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -122,12 +130,18 @@
                                     </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                        </Grid>
 
 
-                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="10,0,10,-5" IsVisible="{Binding NewMobileNumberArabicLayout}">
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"   IsVisible="{Binding NewMobileNumberArabicLayout}">
 
-                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"></ColumnDefinition>
+                                <ColumnDefinition Width="20*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
                             <!--<inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
    
@@ -136,7 +150,7 @@
                         <Label  Text="{Binding CountryCode}" Padding="0,14,0,14"  VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" TextColor="#7D858D" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
                     </inputLayout:SfTextInputLayout>-->
 
-                            <inputLayout:SfTextInputLayout   x:Name="NewMobileNumberLayoutForArabic" FlowDirection="LeftToRight"  Margin="7,0,7,0"
+                            <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"  x:Name="NewMobileNumberLayoutForArabic" FlowDirection="LeftToRight"  Margin="7,0,7,0"
     Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -148,10 +162,10 @@
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
-                            <Label  Text="{Binding CountryCode}" TextColor="#D99A29" FontSize="Medium" Margin="10,0,10,0" VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                            <Label  Text="{Binding CountryCode}" Grid.Row="0" Grid.Column="1" TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
 
 
-                        </StackLayout>
+                        </Grid>
 
 
 
