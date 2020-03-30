@@ -2779,7 +2779,7 @@ Should we require further information, we would be in contact.</value>
     <value>Support</value>
   </data>
   <data name="ZZZTermsAndService" xml:space="preserve">
-    <value>Terms of Service</value>
+    <value>Terms and Service</value>
   </data>
   <data name="ZZZDontHaveAccount" xml:space="preserve">
     <value>Don't have an account?</value>
@@ -2860,5 +2860,11 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
     <value>No commercial registrations linked to the TIN</value>
     <comment>Check TIN Status</comment>
+  </data>
+  <data name="ZZZEServices" xml:space="preserve">
+    <value>e-Services</value>
+  </data>
+  <data name="ZZZMyCommitment" xml:space="preserve">
+    <value>My commitments</value>
   </data>
 </root>

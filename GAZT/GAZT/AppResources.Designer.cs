@@ -7117,6 +7117,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to e-Services.
+        /// </summary>
+        public static string ZZZEServices {
+            get {
+                return ResourceManager.GetString("ZZZEServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FAQs.
         /// </summary>
         public static string ZZZFaq {
@@ -7158,6 +7167,15 @@ namespace GAZT {
         public static string ZZZLoginLabel {
             get {
                 return ResourceManager.GetString("ZZZLoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My commitments.
+        /// </summary>
+        public static string ZZZMyCommitment {
+            get {
+                return ResourceManager.GetString("ZZZMyCommitment", resourceCulture);
             }
         }
         
@@ -7252,7 +7270,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Terms of Service.
+        ///   Looks up a localized string similar to Terms and Service.
         /// </summary>
         public static string ZZZTermsAndService {
             get {
