@@ -16,28 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0">
-                <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZZZOptions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
-                    <controls:TitleView.LeadingView>
-                        <buttons:SfButton
-                            x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.BackButtonCommand}"
-                            CommandParameter="{x:Reference backButton}"
-                            CornerRadius="4"
-                            Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource BurgerMenu}"
-                            
-                            FontSize="Large"
-                             />
-                    </controls:TitleView.LeadingView>
-                </controls:TitleView>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>  
+  
 
     <ContentPage.Content>
         <Grid RowSpacing="0">
@@ -50,17 +29,18 @@
             </Grid.ColumnDefinitions>
             <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout  BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
-                  <StackLayout.HeightRequest>
+                  <!--<StackLayout.HeightRequest>
       <OnIdiom x:TypeArguments="x:Double">
          
           <OnIdiom.Tablet>
               900
           </OnIdiom.Tablet>
       </OnIdiom>
-   </StackLayout.HeightRequest>
+   </StackLayout.HeightRequest>-->
                     <!--  Header label for account setting  -->
                     <Label
                     Margin="16,0,16,0"
+                         IsVisible="{Binding IsTaxPayerProfileVisible}"
                     FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     FontSize="12"
                     HeightRequest="50"
@@ -75,6 +55,7 @@
 
                     <!--  Grid for Edit profile label and navigation bar icon  -->
                     <controls:TapAnimationGrid
+                        IsVisible="{Binding IsTaxPayerProfileVisible}"
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
                     Command="{Binding MyProfileCommand}"
@@ -87,6 +68,7 @@
                         </Grid.ColumnDefinitions>
                         <!--  Edit profile icon  -->
                         <Label
+                              IsVisible="{Binding IsTaxPayerProfileVisible}"
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
@@ -94,6 +76,7 @@
                         Text="{StaticResource Account}" />
                         <!--  Edit profile label  -->
                         <Label
+                              IsVisible="{Binding IsTaxPayerProfileVisible}"
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZMyProfile}" />
@@ -103,7 +86,7 @@
                         Style="{StaticResource IconLabelStyle}"
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <BoxView Style="{StaticResource SeparatorStyle}"   IsVisible="{Binding IsTaxPayerProfileVisible}" />
 
                     <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -395,9 +378,11 @@
 
                 </StackLayout>
             </ScrollView>
+            <StackLayout  Grid.Row="1"
+                Grid.Column="0"   IsVisible="{Binding IsTaxPayerProfileVisible}">
             <buttons:SfButton
-                Grid.Row="1"
-                Grid.Column="0"
+                
+               
                     Margin="0"
                     VerticalOptions="End"
                 HorizontalOptions="FillAndExpand"
@@ -412,8 +397,33 @@
                     Text="{x:Static local:AppResources.ZLogout}"
                     TextColor="{DynamicResource Gray-White}"
                      />
+            </StackLayout>
 
         </Grid>
 
     </ContentPage.Content>
+
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZOptions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonCommand}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource BurgerMenu}"
+                            
+                            FontSize="Large"
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 </ContentPage>

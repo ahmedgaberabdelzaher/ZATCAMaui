@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
+using GAZT.Models;
 using GAZTeServicesApp.Views.Options;
 using System;
 using System.Collections.Generic;
@@ -88,6 +89,36 @@ namespace GAZTeServicesApp.ViewModels.Options
             }
         }
 
+        private bool _isTaxPayerProfileVisible;
+        public bool IsTaxPayerProfileVisible
+        {
+            get
+            {
+                return _isTaxPayerProfileVisible;
+            }
+            set
+            {
+                _isTaxPayerProfileVisible = value;
+                RaisePropertyChanged("_isTaxPayerProfileVisible");
+            }
+        }
+
+        private ComingToOptionScreenFrom _isComingFrom;
+        public ComingToOptionScreenFrom IsComingFrom
+        {
+            get
+            {
+                return _isComingFrom;
+            }
+            set
+            {
+                _isComingFrom = value;
+                RaisePropertyChanged("IsComingFrom");
+            }
+        }
+
+
+
         /// <summary>
         /// Gets or sets the command is executed when the favourite button is clicked.
         /// </summary>
@@ -140,7 +171,14 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// <param name="obj">The object</param>
         private void BackButtonClicked(object obj)
         {
-            _navigationService.NavigateTo(App.SFLandingPageView);
+            if (IsComingFrom == ComingToOptionScreenFrom.IsDashboardPage)
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            }
+            else
+            {
+                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            }
             // Do something
         }
 

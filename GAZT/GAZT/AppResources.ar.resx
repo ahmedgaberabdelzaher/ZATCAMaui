@@ -2757,25 +2757,25 @@
     <value>Edit Profile</value>
   </data>
   <data name="ZZZMyProfile" xml:space="preserve">
-    <value>My Profile</value>
+    <value>الملف الشخصي</value>
   </data>
   <data name="ZZZFaq" xml:space="preserve">
-    <value>FAQs</value>
+    <value>اسئلة متداولة</value>
   </data>
   <data name="ZZZHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>المساعدة</value>
   </data>
   <data name="ZZZOptions" xml:space="preserve">
-    <value>Options</value>
+    <value>الاختيارات</value>
   </data>
   <data name="ZZZPrivacyandPolicy" xml:space="preserve">
-    <value>Privacy and Policy</value>
+    <value>الخصوصية والسياسة</value>
   </data>
   <data name="ZZZSupport" xml:space="preserve">
-    <value>Support</value>
+    <value>الدعم</value>
   </data>
   <data name="ZZZTermsAndService" xml:space="preserve">
-    <value>Terms of Service</value>
+    <value>شروط الخدمة</value>
   </data>
   <data name="ZZZDontHaveAccount" xml:space="preserve">
     <value>Don't have an account?</value>
@@ -2828,7 +2828,7 @@
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToEnglish" xml:space="preserve">
-    <value>Set To English</value>
+    <value>تغيير الى الإنجليزية</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZNoDataAvailable" xml:space="preserve">
@@ -2856,5 +2856,11 @@
   <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
     <value>لا يوجد سجلات تجارية مرتبطة بالرقم المميز</value>
     <comment>Check TIN Status</comment>
+  </data>
+  <data name="ZZZEServices" xml:space="preserve">
+    <value>الخدمات الإلكترونية</value>
+  </data>
+  <data name="ZZZMyCommitment" xml:space="preserve">
+    <value>التزاماتي</value>
   </data>
 </root>
