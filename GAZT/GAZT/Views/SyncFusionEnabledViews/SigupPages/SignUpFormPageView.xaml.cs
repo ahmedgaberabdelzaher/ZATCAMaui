@@ -1890,6 +1890,7 @@ namespace GAZT.Views.NewViews
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+            ddlLIssuedByCity.SelectedItem = selectedcity;
             viewModel.SelectCityList = selectedcity;
             viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
 

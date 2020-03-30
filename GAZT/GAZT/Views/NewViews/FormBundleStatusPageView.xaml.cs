@@ -1,10 +1,14 @@
 ﻿using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -62,9 +66,20 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+
+            }
+            else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
         }
 
@@ -93,7 +108,13 @@ namespace GAZT.Views.NewViews
         }
 
         private void CPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
+        {//SelectedFormBindleFbnum
+
+            FormBundleApplicationNumberModelResult selectedfbnum = (FormBundleApplicationNumberModelResult)e.NewValue;
+            CPicker.SelectedItem = selectedfbnum;//Fbnum
+            viewModel.SelectedFormBindleFbnum = selectedfbnum;
+            viewModel.TxtFBnum = selectedfbnum.Fbnum;
+
             //var item = sender as Picker;
             //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
             viewModel.populate();
@@ -108,7 +129,11 @@ namespace GAZT.Views.NewViews
         }
 
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
+        {//SelectedFormBindleFbtyp
+            FormBundleResult selectedfbtyp = (FormBundleResult)e.NewValue;
+            DDlIDType.SelectedItem = selectedfbtyp;
+            viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
+            viewModel.TxtFBtype = selectedfbtyp.Txt50;
 
         }
     }
