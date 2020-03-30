@@ -48,6 +48,14 @@ namespace GAZT.Views.NewViews
            
             viewModel.OnPageLoad();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.OnPageLoad();
+           // this.Content = null;
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -88,11 +96,11 @@ namespace GAZT.Views.NewViews
             return;
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            viewModel.SelectedTaxEvasionListItem = null;
-        }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    viewModel.SelectedTaxEvasionListItem = null;
+        //}
 
 
         private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)

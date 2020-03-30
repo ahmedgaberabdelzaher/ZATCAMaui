@@ -83,7 +83,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TName" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
+                            <Entry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
 
                                     <custom1:OnlyAlphabatesBehaviour/>
@@ -117,7 +117,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
@@ -155,7 +155,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailEMail}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TEmail" FontSize="Small"  Unfocused="TEmail_Unfocused" Text="{Binding TEmail}" >
+                            <Entry  x:Name="TEmail" FontSize="Small"  Unfocused="TEmail_Unfocused" Text="{Binding TEmail}" IsSpellCheckEnabled="False" >
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -184,7 +184,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciName" FontSize="Small"   Text="{Binding TFaciName}" >
+                            <Entry  x:Name="TFaciName" IsSpellCheckEnabled="False" FontSize="Small"   Text="{Binding TFaciName}" >
                                 <Entry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </Entry.Behaviors>
@@ -214,7 +214,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityOwnerName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused"  Text="{Binding TFaciOwnerName}" >
+                            <Entry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
                                 <Entry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </Entry.Behaviors>
@@ -243,7 +243,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityType}"
     ContainerType="Outlined" x:Name="FrmFType" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtFType}" FontSize="Small">
+                            <Entry Text="{Binding TxtFType}"  FontSize="Small" IsSpellCheckEnabled="False">
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnFacilityType" Clicked="btnFacilityType_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
@@ -256,6 +256,7 @@ xmlns:custom="clr-namespace:GAZT"
                     ShowColumnHeader="True"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
+                                             SelectedItemFontSize="10"
                                                OkButtonClicked="ddlFacilityType_OkButtonClicked"
                    ItemHeight="40"
                     ItemsSource="{Binding DListFacilityCompanyType}" DisplayMemberPath="Name"      Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
@@ -296,7 +297,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone" IsSpellCheckEnabled="False" Text="+9665" IsEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
@@ -305,7 +306,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <Entry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused"  Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
+                                <Entry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
@@ -333,7 +334,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityEmail}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciEmail" FontSize="Small" Unfocused="TFaciEmail_Unfocused"  Text="{Binding TFaciEmail}"  Keyboard="Email">
+                            <Entry  x:Name="TFaciEmail" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFaciEmail_Unfocused"  Text="{Binding TFaciEmail}"  Keyboard="Email">
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -359,7 +360,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFDAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" >
+                            <Entry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False" >
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -382,7 +383,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFSAddress" FontSize="Small" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}" >
+                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}" >
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -416,7 +417,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailRegion}"
     ContainerType="Outlined" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtReportDetailRegion}" FontSize="Small">
+                            <Entry Text="{Binding TxtReportDetailRegion}" IsSpellCheckEnabled="False" FontSize="Small">
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnTxtReportDetailRegion" Clicked="btnTxtReportDetailRegion_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
@@ -489,7 +490,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity"
     ContainerType="Outlined" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtReportDetailCity}" FontSize="Small">
+                            <Entry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small">
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
@@ -577,7 +578,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZZTIN}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
+                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
                             </Grid>
@@ -628,7 +629,7 @@ xmlns:custom="clr-namespace:GAZT"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
 
-                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"   Unfocused="DatePicker_Unfocused" Placeholder="dd/MM/yyyy" FontSize="Small"></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"   Unfocused="DatePicker_Unfocused" IsSpellCheckEnabled="False" Placeholder="dd/MM/yyyy" FontSize="Small"></custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
                         <custom1:CustomDatePicker
@@ -668,7 +669,7 @@ ItemHeight="45" ShowFooter="True"  >
     Hint="{x:Static local:AppResources.ZTERReportDetailVATNumber}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry   Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry   IsSpellCheckEnabled="False" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
 
@@ -695,7 +696,7 @@ ItemHeight="45" ShowFooter="True"  >
     Hint="{x:Static local:AppResources.ZTERReportDetailReportDetails}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  MaxLength="3000" Text="{Binding TReportDetail}" x:Name="TReportDetail" Unfocused="TReportDetail_Unfocused"></custom:GAZTBorderlessEntry>
+                            <Editor  MaxLength="3000" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" x:Name="TReportDetail" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
 
                         </inputLayout:SfTextInputLayout>
 
@@ -720,7 +721,7 @@ ItemHeight="45" ShowFooter="True"  >
     Hint="{x:Static local:AppResources.ZTERReportDetailFWType}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry   x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
+                            <custom:GAZTBorderlessEntry  IsSpellCheckEnabled="False" x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
