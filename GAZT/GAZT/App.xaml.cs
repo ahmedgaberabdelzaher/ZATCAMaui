@@ -124,24 +124,24 @@ namespace GAZT
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIzNTEwQDMxMzcyZTM0MmUzMEJUZG1sRWtvcDRKQTJYUkpTdm5lcXFHbzAzenUvNS81RTZ3SlBwdlN1Njg9");
 
-            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
-            {
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+            //if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+            //{
+            //    PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
-                // the ResourceManager class constructor has two parameters.
-                // 1. ResXPath => Full path of the resx file in the application. Here in the above line GettingStarted refers to the namespace of the Application
-                // 2. Assembly => Application assembly (PCL)
+            //    // the ResourceManager class constructor has two parameters.
+            //    // 1. ResXPath => Full path of the resx file in the application. Here in the above line GettingStarted refers to the namespace of the Application
+            //    // 2. Assembly => Application assembly (PCL)
 
-                // Sets the required culture to the static texts in the control.		
-                if (Device.RuntimePlatform != Device.UWP)
-                {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
-                }
-                else
-                {
-                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                }
-            }
+            //    // Sets the required culture to the static texts in the control.		
+            //    if (Device.RuntimePlatform != Device.UWP)
+            //    {
+            //        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
+            //    }
+            //    else
+            //    {
+            //        CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+            //    }
+            //}
 
             AppResources.Culture = CultureInfo.CurrentUICulture;
 
@@ -162,7 +162,7 @@ namespace GAZT
             VATDeclaration vAT = null;
 
             //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportTypePageView()) { BarTextColor = Color.White };
-            CustomNavigation navigationPage = new CustomNavigation(new SFLoginPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

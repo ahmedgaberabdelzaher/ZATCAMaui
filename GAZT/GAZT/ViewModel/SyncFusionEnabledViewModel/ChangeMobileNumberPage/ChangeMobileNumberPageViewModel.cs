@@ -196,7 +196,7 @@ namespace GAZT.ViewModel.NewViewModel
                 await Task.Run(async () =>
                 {
                     bool IsNavigatingFromLogin = false;
-                    NavigateToOtp NavigatingFromMobile = NavigateToOtp.IsMobile;
+                    ComingToOTPVerificationScreenFrom NavigatingFromMobile = ComingToOTPVerificationScreenFrom.IsMobile;
                     String lang = "EN";
                     if (App.IsArabic == true)
                         lang = "AR";
@@ -244,7 +244,9 @@ namespace GAZT.ViewModel.NewViewModel
                             ClearMobileData();
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                                _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo() { _ComingToOTPVerificationScreenFrom = NavigatingFromMobile, NavigateToThisService = String.Empty });
+
+                              //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
                             });
                         }
                     }

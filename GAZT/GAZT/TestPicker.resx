@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel text AR</value>
+  <data name="CancelText" xml:space="preserve">
+    <value>الغاء</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>OK text AR</value>
+  <data name="OKText" xml:space="preserve">
+    <value>موافق</value>
   </data>
 </root>

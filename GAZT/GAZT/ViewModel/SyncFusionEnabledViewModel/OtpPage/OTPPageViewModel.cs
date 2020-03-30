@@ -21,7 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public bool IsComingFromLogIn { get; set; }
-        public NavigateToOtp IsComingFrom { get; set; }
+        public ComingToOTPVerificationScreenFrom IsComingFrom { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
@@ -295,6 +295,23 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo;
+
+        public ComingToOTPVerificationScreenFromAndNavigatingTo ComingToOTPVerificationScreenFromAndNavigatingTo
+        {
+            get
+            {
+                return _ComingToOTPVerificationScreenFromAndNavigatingTo;
+            }
+            set
+            {
+                _ComingToOTPVerificationScreenFromAndNavigatingTo = value;
+                RaisePropertyChanged("ComingToOTPVerificationScreenFromAndNavigatingTo");
+            }
+        }
+
+        
+
 
         #endregion
 
@@ -358,7 +375,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         IsLoading = true;
                     });
-                    if (IsComingFrom == NavigateToOtp.IsLogin)
+                    if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
                     {
                        
                         TaxPayerProfile TP = null;
@@ -398,7 +415,16 @@ namespace GAZT.ViewModel.NewViewModel
                                 App.TP.Password = Password;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.SFLandingPageView);
+                                    //_navigationService.NavigateTo(App.SFLandingPageView);
+                                    if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
+                                    {
+                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService,new BillInfo());
+                                    }
+                                    else
+                                    {
+                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);
+
+                                    }
                                 });
 
                             }
@@ -423,7 +449,7 @@ namespace GAZT.ViewModel.NewViewModel
                             });
                         }
                     }
-                    else if (IsComingFrom == NavigateToOtp.IsMobile)
+                    else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
                     {
                         TaxPayerProfile TP = null;
                         
@@ -497,7 +523,7 @@ namespace GAZT.ViewModel.NewViewModel
                             });
                         }
                     }
-                    else if (IsComingFrom == NavigateToOtp.IsEmail)
+                    else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsEmail)
                     {
                         currentAttempts++;
                         if (currentAttempts <= App.TP.Attempts)
@@ -513,7 +539,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             Device.BeginInvokeOnMainThread(() =>
                             {
-                                _navigationService.NavigateTo(App.ChangePasswordPageView, NavigateToOtp.IsEmail);
+                                _navigationService.NavigateTo(App.ChangePasswordPageView, ComingToOTPVerificationScreenFrom.IsEmail);
                             });
                         }
                         else
@@ -604,7 +630,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         string lang = UtilityManager.GetLanguageParameter();
 
-                        if (IsComingFrom == NavigateToOtp.IsLogin)
+                        if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
                         {
                             EmailOrMobileNumber = AppResources.MobileNumber;
                             var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
@@ -626,7 +652,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
 
                         }
-                        else if (IsComingFrom == NavigateToOtp.IsMobile)
+                        else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
                         {
                             EmailOrMobileNumber = AppResources.MobileNumber;
                             bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
@@ -646,7 +672,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
                         }
-                        else if (IsComingFrom == NavigateToOtp.IsEmail)
+                        else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsEmail)
                         {
                             EmailOrMobileNumber = AppResources.Email;
                             bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);

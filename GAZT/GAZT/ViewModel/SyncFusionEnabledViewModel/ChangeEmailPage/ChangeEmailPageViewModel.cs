@@ -250,7 +250,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 await Task.Run(async () =>
                 {
-                    NavigateToOtp NavigatingFromEmail = NavigateToOtp.IsEmail;
+                    ComingToOTPVerificationScreenFrom NavigatingFromEmail = ComingToOTPVerificationScreenFrom.IsEmail;
                     String lang = "EN";
                     if (App.IsArabic == true)
                         lang = "AR";
@@ -279,7 +279,9 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
 
-                                    _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
+                                    _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
+
+                                   // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
                                 });
 
 

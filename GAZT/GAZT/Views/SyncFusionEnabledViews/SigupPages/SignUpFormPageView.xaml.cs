@@ -34,8 +34,8 @@ namespace GAZT.Views.NewViews
 
                 InitializeComponent();
 
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
+                //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
 
                 this.BindingContext = viewModel;
                 
@@ -116,16 +116,16 @@ namespace GAZT.Views.NewViews
             {
                 
                 this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+               //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+               //Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+               // PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
 
             }
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+           //CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+           //     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
             }
         }
 

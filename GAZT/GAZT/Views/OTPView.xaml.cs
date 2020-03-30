@@ -15,14 +15,14 @@ namespace GAZT.Views
         double DeviceHeight;
         double DeviceWidth;
         OTPViewModel viewModel;
-        public OTPView(NavigateToOtp e)
+        public OTPView(ComingToOTPVerificationScreenFrom e)
         {
             App.IsOTPiew = true;
             viewModel = App.Locator.OTPView;
             InitializeComponent();
             this.BindingContext = viewModel;
             viewModel.IsComingFrom = e;
-            if (e == NavigateToOtp.IsMobile)
+            if (e == ComingToOTPVerificationScreenFrom.IsMobile)
             {
                 viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                 var MobileNumber = viewModel.OTPSentOnThis;
@@ -43,13 +43,13 @@ namespace GAZT.Views
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
                 }
             }
-            else if (e == NavigateToOtp.IsEmail)
+            else if (e == ComingToOTPVerificationScreenFrom.IsEmail)
             {
                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                 viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
                 viewModel.OTPSentOnThisText = viewModel.OTPSentOnThisText + " " + viewModel.OTPSentOnThisEmail;
             }
-            else if (e == NavigateToOtp.IsLogin)
+            else if (e == ComingToOTPVerificationScreenFrom.IsLogin)
             {
                 viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode;
                 viewModel.OTPSentOnThisMobileNumber = App.TP.Mobile;

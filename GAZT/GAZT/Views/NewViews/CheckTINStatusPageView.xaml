@@ -19,7 +19,7 @@
              x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary Source="..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -36,7 +36,7 @@
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Back}"
+                            Text="{StaticResource Home}"
                             
                             
                              />

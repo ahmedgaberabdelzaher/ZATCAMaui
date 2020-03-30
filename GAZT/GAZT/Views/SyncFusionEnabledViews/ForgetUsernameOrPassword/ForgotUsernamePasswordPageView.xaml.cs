@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using GAZT.ViewModel.NewViewModel;
 using GAZT.Manager;
 using GAZT.CustomControl;
+using Syncfusion.SfPicker.XForms;
+using System.Resources;
 
 namespace GAZT.Views.NewViews
 {
@@ -131,6 +133,11 @@ namespace GAZT.Views.NewViews
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
             }
         }
         protected override void OnAppearing()

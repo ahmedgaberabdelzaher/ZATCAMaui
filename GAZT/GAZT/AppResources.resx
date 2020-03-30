@@ -407,7 +407,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Information</value>
   </data>
   <data name="OKText" xml:space="preserve">
-    <value>Ok ENG</value>
+    <value>Ok</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>User authentication failed</value>
