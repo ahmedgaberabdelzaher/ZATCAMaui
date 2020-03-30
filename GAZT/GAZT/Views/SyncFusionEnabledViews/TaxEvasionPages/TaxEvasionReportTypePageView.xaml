@@ -7,9 +7,47 @@
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
                 xmlns:custom="clr-namespace:GAZT"
+             NavigationPage.HasNavigationBar="False"
+                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="GAZT.Views.NewViews.TaxEvasionReportTypePageView"
              BackgroundColor="White" Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary Source="..\Common\Styles.xaml" />
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary Source="..\Common\Styles.xaml" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="{x:Static local:AppResources.ZTINStatus}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Home}"
+                            
+                            
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
 
     <ContentPage.Content>
         <StackLayout>
@@ -50,48 +88,87 @@
                             <ColumnDefinition Width="80*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory1}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"  VerticalOptions="Center" Margin="0,5,0,5" >
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
                         
                         <Image Grid.Row="0"  Grid.Column="1"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec1}" />
+                        <ContentView HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            >
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
+                        <!--category 1-->
 
                         <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label  Text="{x:Static local:AppResources.ZTERReportCategory2}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1" Command="{Binding onCategory3Clicked}"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
                         <Image Grid.Row="2"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec2}"/>
-
+                        <ContentView HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1" Command="{Binding onCategory3Clicked}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
                         <BoxView BackgroundColor="Gray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        <!--category3-->
                         <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec3}" />
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory3}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2" Command="{Binding onCategory3Clicked}"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
-                        
+                        <ContentView HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" Command="{Binding onCategory3Clicked}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
+
 
                         <BoxView BackgroundColor="Gray" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory4}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"  NumberOfTapsRequired="1" Command="{Binding onCategory4Clicked}"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec4}"/>
+                        <ContentView HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"  NumberOfTapsRequired="1" Command="{Binding onCategory4Clicked}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
 
                         <BoxView BackgroundColor="Gray" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory5}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" Command="{Binding onCategory5Clicked}" NumberOfTapsRequired="1"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
                         <Image Grid.Row="8"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec5}" />
+                        <ContentView HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" Command="{Binding onCategory5Clicked}" NumberOfTapsRequired="1"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
 
                         <BoxView BackgroundColor="Gray" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
+                        
 
 
 

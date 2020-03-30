@@ -136,13 +136,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
 
             this.ShowOptionsCommand = new Command(this.ShowOptionsCommandClicked);
-            this.ItemSelectedCommand = new Command(this.ItemSelected);
-            //this.EserviceCommand = new Command(this.ItemSelected);
-            EserviceCommand = new Xamarin.Forms.Command(() =>
-            {
-                _navigationService.NavigateTo(App.MyCertificate);
-
-            });
+            this.ItemSelectedCommand = new Command(this.ItemSelected);        
         }
 
         #endregion

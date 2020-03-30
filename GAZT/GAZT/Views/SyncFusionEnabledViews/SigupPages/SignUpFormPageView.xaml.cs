@@ -126,6 +126,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
             }
         }
 
@@ -1890,6 +1891,7 @@ namespace GAZT.Views.NewViews
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+            ddlLIssuedByCity.SelectedItem = selectedcity;
             viewModel.SelectCityList = selectedcity;
             viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
 
