@@ -27,6 +27,21 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+
+        private string _txtSelectedStatus = string.Empty;
+        public string TxtSelectedStatus
+        {
+            get
+            {
+                return _txtSelectedStatus;
+            }
+            set
+            {
+                _txtSelectedStatus = value;
+                RaisePropertyChanged("TxtSelectedStatus");
+            }
+        }
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -115,6 +130,7 @@ namespace GAZT.ViewModel.NewViewModel
                             ICRList = ICRDummyList.Where(x => x.Status == _selectedICRStatus.Estat).ToList();
                         }
                     }
+                    TxtSelectedStatus = _selectedICRStatus.Txt30;
                     RaisePropertyChanged("SelectedICRStatus");
                 }
 

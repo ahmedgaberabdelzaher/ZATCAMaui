@@ -24,13 +24,18 @@ namespace GAZT.Views.NewViews
          
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             NavigationPage.SetBackButtonTitle(this, "");
-           
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            viewModel = App.Locator.CorrespondancePageView;
-            this.BindingContext = viewModel;
-          //  viewModel.onPageLoad();
-           
+                viewModel = App.Locator.CorrespondancePageView;
+                this.BindingContext = viewModel;
+                //  viewModel.onPageLoad();
+            }
+            catch(Exception ex)
+            {
+
+            }
             SetLTR();
         }
 
@@ -118,5 +123,14 @@ namespace GAZT.Views.NewViews
             }
         }
 
+        private void BPickerButton_Clicked(object sender, EventArgs e)
+        {
+            FPicker.IsOpen = true;
+        }
+
+        private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

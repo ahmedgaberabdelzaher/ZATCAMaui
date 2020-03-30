@@ -27,7 +27,19 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
-
+        private string _txtSelectedStatus = string.Empty;
+        public string TxtSelectedStatus
+        {
+            get
+            {
+                return _txtSelectedStatus;
+            }
+            set
+            {
+                _txtSelectedStatus = value;
+                RaisePropertyChanged("TxtSelectedStatus");
+            }
+        }
         private List<ZAKATStatus> _iCRStatusList;
         public List<ZAKATStatus> ICRStatusList
         {
@@ -57,7 +69,8 @@ namespace GAZT.ViewModel.NewViewModel
                     GetFilteredZAKATICRList(SelectedICRStatus);
 
                 }
-                RaisePropertyChanged("SelectedICR");
+                TxtSelectedStatus = _selectedICRStatus.Value;
+             RaisePropertyChanged("SelectedICR");
             }
         }
 
@@ -87,6 +100,7 @@ namespace GAZT.ViewModel.NewViewModel
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
+                 
                 }
             }
         }
