@@ -860,7 +860,7 @@ namespace GAZT.Views.NewViews
             {
                 try
                 {
-                    EntryIDNumber.IsEnabled = true;
+                  //EntryIDNumber.IsEnabled = true; //commented because bydefault it was coming red border 
                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                     if (selectedItem != null && selectedItem[0] != null)
                     {
@@ -1481,7 +1481,7 @@ namespace GAZT.Views.NewViews
         {
 
             PopUp popUp = new PopUp();
-            StringBuilder Messages = new StringBuilder(); ;
+            StringBuilder Messages = new StringBuilder(); 
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -1875,7 +1875,7 @@ namespace GAZT.Views.NewViews
         {
             SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
             viewModel.SelectedSignUpUsing = signUpUsing;
-            viewModel.TxtIDNumber = signUpUsing.SUType;
+            viewModel.TxtIDType = signUpUsing.SUType;
         }
 
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
