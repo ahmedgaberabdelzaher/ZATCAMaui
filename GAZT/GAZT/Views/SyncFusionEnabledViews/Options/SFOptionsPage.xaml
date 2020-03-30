@@ -379,7 +379,7 @@
                 </StackLayout>
             </ScrollView>
             <StackLayout  Grid.Row="1"
-                Grid.Column="0" IsVisible="False">
+                Grid.Column="0"   IsVisible="{Binding IsTaxPayerProfileVisible}">
             <buttons:SfButton
                 
                
