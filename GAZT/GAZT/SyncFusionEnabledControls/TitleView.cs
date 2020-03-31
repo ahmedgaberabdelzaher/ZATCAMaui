@@ -69,7 +69,7 @@ namespace GAZTeServicesApp.Controls
             {
                 new ColumnDefinition { Width = 8 },
                 new ColumnDefinition(),
-                new ColumnDefinition(),
+                new ColumnDefinition{ Width = 260 },
                 new ColumnDefinition(),
                 new ColumnDefinition { Width = 8 },
             };

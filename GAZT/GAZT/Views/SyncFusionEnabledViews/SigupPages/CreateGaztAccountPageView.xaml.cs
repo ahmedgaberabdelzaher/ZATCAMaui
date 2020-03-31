@@ -30,6 +30,18 @@ namespace GAZT.Views.NewViews
             //viewModel.TxtMobileNumber = SignUpModelRootObjectModel.d.AMobile;//TxtMobileNumber string sub = mystring.Substring(mystring.Length - count, count);
             viewModel.OnPageLoad();
             SetLTR();
+            ChangeAeroIcon();
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
         private void SetLTR()
         {

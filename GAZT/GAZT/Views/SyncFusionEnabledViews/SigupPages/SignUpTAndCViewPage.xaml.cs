@@ -25,7 +25,7 @@ namespace GAZT.Views.NewViews
                 InitializeComponent();
                 this.BindingContext = viewModel;
                 SetLTR();
-
+                ChangeAeroIcon();
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     string baseUrl = DependencyService.Get<IBaseUrl>().Get();
@@ -62,7 +62,17 @@ namespace GAZT.Views.NewViews
 
             }
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

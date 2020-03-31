@@ -23,6 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnNextClicked { get; set; }
         public int DefaultMonth;
+        public ICommand GoBackClick { get; set; }
         #endregion
 
 
@@ -650,14 +651,20 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     throw new ArgumentNullException("dialogService");
                 }
+                GoBackClick = new Command(async () =>
+                {
+                    _navigationService.GoBack();
+
+
+                });
 
                 //OnCaptchaRegenerateClicked = new Xamarin.Forms.Command(() =>
                 //{
-                   
+
                 //        StringBuilder captcha = GetCaptcha();
                 //        Captcha = captcha.ToString();
                 //        EnteredCaptchaValue = string.Empty;
-                    
+
 
                 //});
 
