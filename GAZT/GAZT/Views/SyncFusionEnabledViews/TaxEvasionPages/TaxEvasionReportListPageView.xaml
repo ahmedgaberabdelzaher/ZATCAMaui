@@ -224,7 +224,7 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span  Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                        <Span  Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
                                                                         <Span  Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>
