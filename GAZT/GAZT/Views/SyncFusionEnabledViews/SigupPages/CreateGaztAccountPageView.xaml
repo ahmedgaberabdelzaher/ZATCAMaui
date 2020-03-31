@@ -11,7 +11,42 @@
               xmlns:local1="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="GAZT.Views.NewViews.CreateGaztAccountPageView">
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             x:Class="GAZT.Views.NewViews.CreateGaztAccountPageView"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+            <ControlTemplate>
+                <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                        <controls:TitleView.LeadingView>
+                            <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                        </controls:TitleView.LeadingView>
+
+                    </controls:TitleView>
+                    <ContentPresenter />
+                </StackLayout>
+            </ControlTemplate>
+        </ContentPage.ControlTemplate>
+   
     <ContentPage.Content>
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" RowSpacing="10" >
@@ -123,7 +158,7 @@
                     </Grid>
                 </ScrollView>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZZSubmit}" HeightRequest="56" Style="{StaticResource GAZTVerifyButton}" CornerRadius="0" VerticalOptions="EndAndExpand" x:Name="btnSubmit" Clicked="btnSubmit_Clicked" IsEnabled="{Binding IsVerifyOTPEnabled}" BackgroundColor="{Binding VerifyButtonDisableColor}" Margin="0" ></Button>
+                     <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
 
                 </StackLayout>
             </Grid>

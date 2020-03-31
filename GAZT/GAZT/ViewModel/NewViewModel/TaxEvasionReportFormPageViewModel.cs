@@ -21,15 +21,32 @@ namespace GAZT.ViewModel.NewViewModel
         #region variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand BackButtonClicked { get; set; }
         public ICommand SubmitReportClicked { get; set; }
 
-        #endregion //CreateReportPost/IsVisiblePickerAr/IsVisiblePickerEn
-        //SelectedCategory SubmitReportClicked
-        //TaxEvasionReportList
-        //TaxEvasionReportList selectedtaxEList = new TaxEvasionReportList();
-        //UploadedDocumentsList
+        #endregion 
+        private TEReport _tEReportobj ;
+        public TEReport TEReportobj
+        {
+            get
+            {
+                return _tEReportobj;
 
-            
+            }
+            set
+            {
+                _tEReportobj = value;
+                if (_tEReportobj != null)
+                {
+                    //IsCPickerEnable = true;
+                    //onSelectedTaxEvasionRegion();
+                }
+                
+                RaisePropertyChanged("TEReportobj");
+            }
+        }
+
+
         public ICommand OnAttachmentClick { get; set; }
         public static Decimal AttachmentUploadedSize;
         byte[] attachment;
@@ -161,6 +178,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             }
         }
+
 
         private TaxEvasionReportList _selectedtaxEList = null;
         public TaxEvasionReportList selectedtaxEList
@@ -323,6 +341,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _showIdHelperText = false;
+        public bool ShowIdHelperText
+        {
+            get
+            {
+                return _showIdHelperText;
+            }
+            set
+            {
+                _showIdHelperText = value;
+
+                RaisePropertyChanged("ShowIdHelperText");
+            }
+        }
+
+
         private bool _isTINVisible = false;
         public bool IsTINVisible
         {
@@ -333,6 +367,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isTINVisible = value;
+                if (_isTINVisible==false)
+
+                {
+                    ShowIdHelperText = true;
+                }
                 if (_isTINVisible != null)
                 {
                     if (_tEReportobj != null && _tEReportobj.HavingTIN!=null)
@@ -420,7 +459,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isVisiblePickerAr = value;
-                //_tEReportobj.ViolationType = _selectedCategory;
+                
 
                 RaisePropertyChanged("IsVisiblePickerAr");
             }
@@ -705,7 +744,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFSAddress = value;
-                if (!string.IsNullOrEmpty(_tFSAddress))
+                if (!string.IsNullOrEmpty(_tFSAddress) )
                 {
                     _tEReportobj.CompanyAddress = _tFSAddress;
                 }
@@ -732,27 +771,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private TEReport _tEReportobj = new TEReport();
-        public TEReport TEReportobj
-        {
-            get
-            {
-                return _tEReportobj;
-
-            }
-            set
-            {
-                _tEReportobj = value;
-                if (_tEReportobj != null)
-                {
-                    //IsCPickerEnable = true;
-                    //onSelectedTaxEvasionRegion();
-                }
-                //ListFormBudles = null;
-                RaisePropertyChanged("TEReportobj");
-            }
-        }
-
+       
 
 
 
@@ -893,51 +912,6 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-
-
-
-        //private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum;
-        //public FormBundleApplicationNumberModelResult SelectedFormBindleFbnum
-        //{
-        //    get
-        //    {
-        //        return _selectedFormBindleFbnum;
-        //    }
-        //    set
-        //    {
-        //        _selectedFormBindleFbnum = value;
-        //        if (_selectedFormBindleFbnum != null)
-        //        {
-        //            Fbnumdetail = _selectedFormBindleFbnum.Fbsta;
-        //            List<FormBundleApplicationNumberModelResult> Formbundle = FormBundleApplicatioNumberList.Where(a => a.Fbnum == _selectedFormBindleFbnum.Fbnum).ToList();
-        //            List<FbnumDetailList> Child = new List<FbnumDetailList>();
-        //            foreach (FormBundleApplicationNumberModelResult itemF in Formbundle)
-        //            {
-        //                FbnumDetailList Item = new FbnumDetailList();
-        //                Item.Fbnum = itemF.Fbnum;
-        //                Item.Fbsta = itemF.Fbsta;
-        //                Item.FbDesc = itemF.Txt50;
-        //                Item.FbStatus = itemF.Fbstatus;
-        //                Child.Add(Item);
-        //            }
-        //            ListFormBudles = Child;
-
-        //        }
-        //        RaisePropertyChanged("SelectedFormBindleFbnum");
-        //    }
-        //}
-        //    {
-        //        return _regionList;
-        //    }
-        //    set
-        //    {
-        //        _regionList = value;
-        //        RaisePropertyChanged("RegionList");
-        //    }
-        //}
-
-
-
         public TaxEvasionReportFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -951,6 +925,11 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
 
             SubmitReportClicked = new Xamarin.Forms.Command(() =>
             {
@@ -1128,10 +1107,16 @@ namespace GAZT.ViewModel.NewViewModel
                 _tEReportobj.WSPassword = "gazt@123";
                 _tEReportobj.WSUserName = "GAZT@CRM";
                 _tEReportobj.TaxType = "1";
-
-                
+                _tEReportobj.ReporterName = TName;
+                _tEReportobj.TIN = TxtTIN;
+                _tEReportobj.ReporterEmail = TEmail;
+                _tEReportobj.ReportDetails = TReportDetail;
+                _tEReportobj.HavingTIN = IsTINVisible.ToString().ToLower();
+                _tEReportobj.CompanyName = TFaciName;
+                _tEReportobj.CompanyOwnerName = TFaciOwnerName;
+                _tEReportobj.ReporterMobileNumber = TMobNumber;
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                
+                _tEReportobj.CompanyMobileNumber = TFaciMobNo;
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
                 response = await WebServiceManager.GAZTTESReportSubmit(_tEReportobj, newList);
                 if (response != null && response.Success == true)

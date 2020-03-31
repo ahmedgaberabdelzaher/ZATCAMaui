@@ -19,6 +19,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Veriables
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand GoBackClick { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
         public int numberOfSeconds = 120;
         int TotalSec;
@@ -231,7 +232,12 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     await SendOTPToRegisterMobileNumberToLogIn();
                 });
+                GoBackClick = new Command(async () =>
+                {
+                    _navigationService.GoBack();
 
+
+                });
 
             }
             catch (Exception ex)
