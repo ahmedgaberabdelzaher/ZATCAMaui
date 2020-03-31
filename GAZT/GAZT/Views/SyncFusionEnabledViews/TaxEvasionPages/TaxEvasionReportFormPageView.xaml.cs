@@ -30,8 +30,9 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                viewModel = App.Locator.TaxEvasionReportFormPageView;
+              
                 InitializeComponent();
+                viewModel = App.Locator.TaxEvasionReportFormPageView;
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
                 SetLTR();
@@ -128,7 +129,18 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-
+                if (!string.IsNullOrEmpty(App.TP.Name))
+                {
+                    viewModel.TName = App.TP.Name;
+                }
+                if (!string.IsNullOrEmpty(App.TP.Email))
+                { viewModel.TEmail = App.TP.Email; }
+                if (!string.IsNullOrEmpty(App.TP.Mobile))
+                { string mobb = App.TP.Mobile;
+                    viewModel.TMobNumber = mobb.Replace("009665", string.Empty);
+                }
+                
+                
             }
 
             // viewModel.SelectedCategory = SelectedCat;
@@ -251,7 +263,9 @@ namespace GAZT.Views.NewViews
                 }
 
                 else if (string.IsNullOrEmpty(TMobNumber.Text))
-                { flag = false; TMobNumber.Focus(); }
+                {
+                    flag = false; TMobNumber.Focus();
+                }
                 //else if (string.IsNullOrEmpty(TEmail.Text))
                 //{ flag = false; FrmEmail.Focus(); }
                 else if (string.IsNullOrEmpty(TFaciName.Text))

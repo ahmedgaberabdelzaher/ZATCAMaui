@@ -154,7 +154,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _dialogService = dialogService;
                 BackButtonClicked = new Xamarin.Forms.Command(() =>
                 {
-                    _navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    _navigationService.GoBack();
                 });
 
                 OnBClicked = new Command(() =>
