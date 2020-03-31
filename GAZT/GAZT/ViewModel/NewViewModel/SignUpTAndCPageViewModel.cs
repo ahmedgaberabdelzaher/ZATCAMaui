@@ -86,7 +86,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
             OnSubmitClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.SignUpFormPageView);
+                try
+                {
+                    if (IsButtonEnabled == true)
+                    {
+                        _navigationService.NavigateTo(App.SignUpFormPageView);
+                    }
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+                
+                
              
 
             });

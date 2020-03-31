@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -21,6 +22,7 @@ namespace GAZT.Views.NewViews
         public CreateGaztAccountPageView(SignUpModelRootObject SignUpModelRootObjectModel)
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CreateGaztAccountPageView;
             this.BindingContext = viewModel;
             viewModel.SignUpModelRootObjectM = SignUpModelRootObjectModel;

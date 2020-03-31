@@ -118,9 +118,15 @@
     <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <Compile Include="CustomRenderer\Main.cs" />
-    <BundleResource Include="Resources\GE_SS_Two_Bold.ttf" />
-    <BundleResource Include="Resources\GE_SS_Two_Light.ttf" />
-    <BundleResource Include="Resources\GE_SS_Two_Medium.ttf" />
+    <BundleResource Include="Resources\GE_SS_Two_Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\GE_SS_Two_Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\GE_SS_Two_Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
     <BundleResource Include="Resources\sf_BannerImage.png" />

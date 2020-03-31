@@ -237,7 +237,9 @@ namespace GAZT.Views.NewViews
 
             Attachment attachment = (Attachment)Document.SelectedItem;
             //attachment.DocUrl;
-            if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
                 viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
             }
@@ -285,9 +287,6 @@ namespace GAZT.Views.NewViews
                     Title = Title,
                     File = new ShareFile(file)
                 });
-                viewModel._navigationService.GoBack();
-
-
             }
             catch (Exception ex)
             {

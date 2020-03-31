@@ -288,9 +288,19 @@ namespace GAZT
 
             if (App.IsArabic)
             {
-                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
-                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
-                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
+                if(Device.RuntimePlatform == Device.iOS)
+                {
+                    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
+                    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
+                    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
+                }
+                else
+                {
+                    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
+                    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
+                    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
+
+                }
             }
             else
             {
