@@ -357,7 +357,12 @@ namespace GAZT.ViewModel.NewViewModel
             });
             OnResendOTPClicked = new Command(async () =>
             {
-                await SendOTPToRegisterMobileNumberToLogIn();
+                if (IsResendOTPEnabled == true)
+                {
+                    await SendOTPToRegisterMobileNumberToLogIn();
+                }
+
+                
             });
 
             BackButtonClicked = new Command(() =>
