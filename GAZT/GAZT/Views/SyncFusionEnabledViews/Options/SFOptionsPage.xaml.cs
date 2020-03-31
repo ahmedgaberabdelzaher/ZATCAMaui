@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZTeServicesApp.Views.Options
@@ -29,6 +30,7 @@ namespace GAZTeServicesApp.Views.Options
         public SFOptionsPageView(ComingToOptionScreenFrom comingToOption)
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel = App.Locator.OptionsPageView;
             viewModel.IsComingFrom = comingToOption;
             VisibleTaxPayerProfile();

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
@@ -19,6 +20,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             try
             {
                 InitializeComponent();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ReturnsPageView;
                 this.BindingContext = viewModel;
                 viewModel.onPageLoad();

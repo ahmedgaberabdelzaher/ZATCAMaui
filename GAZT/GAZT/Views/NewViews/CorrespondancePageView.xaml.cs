@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -23,11 +24,11 @@ namespace GAZT.Views.NewViews
             Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
          
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             try
             {
                 InitializeComponent();
-
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.CorrespondancePageView;
                 this.BindingContext = viewModel;
                 //  viewModel.onPageLoad();
@@ -68,9 +69,9 @@ namespace GAZT.Views.NewViews
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             
-            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
             viewModel.ShowCorrespondenceDetails(Correspondence);
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -80,17 +81,17 @@ namespace GAZT.Views.NewViews
 
         private void ListView_ItemTapped_1(object sender, ItemTappedEventArgs e)
         {
-            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
             viewModel.ShowVATPDF(Correspondence);
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
 
         private void ListView_ItemTapped_2(object sender, ItemTappedEventArgs e)
         {
-            CorrespondanceModel Correspondence = ((ListView)sender).SelectedItem as CorrespondanceModel;
+            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
             string Url = Constants.GAZTGetCorrespondenceAttach + "'" + Correspondence.Cokey + "',Cotyp='" + Correspondence.Cotype + "')/$value";
             viewModel.ShowETPDF(Correspondence);
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
         protected async override void OnAppearing()
         {

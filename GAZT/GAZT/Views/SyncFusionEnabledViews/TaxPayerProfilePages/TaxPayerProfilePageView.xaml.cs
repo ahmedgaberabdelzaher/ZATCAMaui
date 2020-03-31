@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -22,7 +23,8 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxPayerProfilePageView;
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
@@ -72,7 +74,7 @@ namespace GAZT.Views.NewViews
 
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
-                Page pg = Navigation.NavigationStack[index];
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[index];
                 if (pg.GetType() == typeof(OTPPageView))
                 {
                     Navigation.RemovePage(pg);

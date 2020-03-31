@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GAZT.ViewModel.NewViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -19,8 +20,9 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsimgVisiblec1 = false;
             viewModel.IsimgVisiblec2 = false;
             viewModel.IsimgVisiblec3 = false;

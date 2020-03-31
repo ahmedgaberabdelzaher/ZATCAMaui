@@ -8,6 +8,7 @@ using System.Collections;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views
@@ -23,7 +24,8 @@ namespace GAZT.Views
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyBillsView;
            
          
@@ -31,7 +33,7 @@ namespace GAZT.Views
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
             try
             {
