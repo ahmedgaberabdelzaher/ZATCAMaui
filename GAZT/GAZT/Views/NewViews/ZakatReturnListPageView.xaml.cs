@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -28,6 +29,7 @@ namespace GAZT.Views.NewViews
         public ZakatReturnListPageView()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ZakatReturnListPageView;
             SetLTR();
             this.BindingContext = viewModel;
@@ -37,9 +39,9 @@ namespace GAZT.Views.NewViews
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
 
         #endregion
@@ -68,7 +70,7 @@ namespace GAZT.Views.NewViews
 
         private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
         protected async override void OnAppearing()

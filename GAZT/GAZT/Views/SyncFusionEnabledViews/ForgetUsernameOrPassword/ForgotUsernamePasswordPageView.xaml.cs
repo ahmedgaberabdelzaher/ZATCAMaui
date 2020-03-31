@@ -15,6 +15,7 @@ using System.Resources;
 using System.Globalization;
 using System.Threading;
 using GAZT.Models;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GAZT.Views.NewViews
 {
@@ -28,7 +29,9 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.ForgotUsernamePasswordPageView;
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                ChangeAeroIcon();
                 viewModel.MainPageLayoutVisibility = true;
                 viewModel.NewPasswordVisibility = true;
                 viewModel.ConfirmPasswordVisibility = true;
@@ -131,6 +134,18 @@ namespace GAZT.Views.NewViews
         }
 
 
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -139,7 +154,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Xamarin.Forms.Application.Current.GetType().Assembly);
 
             }
             else
@@ -147,7 +162,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
         protected override void OnAppearing()

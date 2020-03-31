@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -17,13 +18,14 @@ namespace GAZT.Views.NewViews
         public CheckTINStatusPageView()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CheckTINStatusPageView;
             this.BindingContext = viewModel;
 
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
         }
         private void SetLTR()
@@ -36,7 +38,7 @@ namespace GAZT.Views.NewViews
 
         private void ListTINStatus_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
     }

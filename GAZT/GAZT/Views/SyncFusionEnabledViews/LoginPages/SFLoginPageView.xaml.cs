@@ -8,6 +8,7 @@ using System.Resources;
 using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZTeServicesApp.Views.LoginPage
@@ -31,6 +32,7 @@ namespace GAZTeServicesApp.Views.LoginPage
             InitializeComponent();
             
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
             viewModel.NavigateToThisService = strNavigateToThisService;
             if (App.IsArabic)
@@ -39,7 +41,7 @@ namespace GAZTeServicesApp.Views.LoginPage
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Xamarin.Forms.Application.Current.GetType().Assembly);
 
             }
             else
@@ -47,7 +49,7 @@ namespace GAZTeServicesApp.Views.LoginPage
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
             if (Device.RuntimePlatform == Device.Android)
             {

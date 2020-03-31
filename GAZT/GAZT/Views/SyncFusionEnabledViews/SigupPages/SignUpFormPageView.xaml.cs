@@ -18,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -33,6 +34,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.SignUpFormPageView;
 
                 InitializeComponent();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.SetDefaultDate();
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
@@ -118,7 +120,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.RightToLeft;
                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-               PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+               PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Xamarin.Forms.Application.Current.GetType().Assembly);
 
             }
             else
@@ -126,7 +128,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
 
