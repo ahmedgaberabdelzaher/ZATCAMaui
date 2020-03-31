@@ -250,7 +250,7 @@
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
                                                 </Label>
-                                                <Label Text="{Binding BillAmount}" TextColor="#006450" >
+                                                <Label Text="{Binding BillAmount}" TextColor="#006450" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Micro">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
