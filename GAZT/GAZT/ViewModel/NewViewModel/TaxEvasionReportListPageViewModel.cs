@@ -18,6 +18,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnCloseClicked_Tapped { get; set; }
+        public ICommand BackButtonClicked { get; set; }
         public ICommand OnOpenClicked_Tapped { get; set; }
        
         private bool _setNoDataLabelVisibility = false;//SelectedTaxEvasionListItem
@@ -124,12 +125,16 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
 
             OnCloseClicked_Tapped = new RelayCommand(async () =>
             {
                 try
                 {
-                    TERListReportbymobno.Clear();
+                   // TERListReportbymobno.Clear();
                       TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3") ).ToList();
                     TERListReportbymobnoClosed.Clear();
                     TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
@@ -171,8 +176,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-                    TERListReportbymobno.Clear();
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "2")).ToList();
+                   // TERListReportbymobno.Clear();
+                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -237,7 +242,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //SetCertificateListViewVisibility();
                         TERListReportbymobnoDummy = rlist.TaxEvasionReportList;
 
-                        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "2")).ToList();
+                        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
                         TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
 
 
