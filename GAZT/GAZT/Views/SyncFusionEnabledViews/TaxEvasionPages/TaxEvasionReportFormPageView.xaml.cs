@@ -56,14 +56,10 @@ namespace GAZT.Views.NewViews
             //TName.Text = selectedtaxEList.ReporterName;
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
             {
-                btn4.IsEnabled=false;
-                DatePicker_entry.Text = viewModel.selectedtaxEList.ViolationDate;
-                mapView.IsEnabled = false;
-                
-                //str = str.Remove(0, n);
+
+
                 viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                string str = viewModel.selectedtaxEList.ReporterMobileNumber;
-                viewModel.TMobNumber = str.Remove(0,2); TMobNumber.IsEnabled = false;
+                viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;
                 viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                 //viewModel.TFaciMobNo= selectedtaxEList.
@@ -263,18 +259,17 @@ namespace GAZT.Views.NewViews
 
                 if (string.IsNullOrEmpty(TName.Text))
                 {
-                    flag = false;FrmName.HasError = true; 
-                    TName.Focus();
+                    flag = false; TName.Focus();
                 }
 
                 else if (string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    flag = false; TMobNumber.Focus();FrmNumber.HasError = true;
+                    flag = false; TMobNumber.Focus();
                 }
                 //else if (string.IsNullOrEmpty(TEmail.Text))
                 //{ flag = false; FrmEmail.Focus(); }
                 else if (string.IsNullOrEmpty(TFaciName.Text))
-                { flag = false;  }
+                { flag = false; FrmFName.Focus(); }
                 //else if (string.IsNullOrEmpty(TFaciOwnerName.Text))
                 //{ flag = false; FrmFOName.Focus(); }
                 //else if (string.IsNullOrEmpty(TFaciMobNo.Text))
@@ -282,18 +277,18 @@ namespace GAZT.Views.NewViews
                 //else if (string.IsNullOrEmpty(TFaciEmail.Text))
                 //{ flag = false; FrmFEmail.Focus(); }
                 else if (string.IsNullOrEmpty(TFDAdress.Text))
-                { flag = false;  FrmFDAddress.HasError = true; }
+                { flag = false; FrmFDAddress.Focus(); }
                 else if (string.IsNullOrEmpty(TFSAddress.Text))
-                { flag = false;  FrmFSAddress.HasError = true; }
+                { flag = false; FrmFSAddress.Focus(); }
                 else if (string.IsNullOrEmpty(TxtTIN.Text) && string.IsNullOrEmpty(TID.Text))
-                { flag = false;viewModel.IsTINVisible = true; viewModel.IsTIN = true; FrmTIN.HasError = true; viewModel.IsTINVisible = true; }
+                { flag = false; FrmTIN.Focus();viewModel.IsTINVisible = true; viewModel.IsTIN = true; }
                 else if (string.IsNullOrEmpty(TReportDetail.Text))
-                { flag = false;  FrmReportDetail.HasError = true; }
+                { flag = false; FrmReportDetail.Focus(); }
                 else if (string.IsNullOrEmpty(TFWType.Text))
-                { flag = false;  FrmTFW.HasError = true; }//DatePicker_entry
-                //CityPicker_entry
-                else if (string.IsNullOrEmpty(CityPicker_entry.Text))
-                { flag = false;  FrmCity.HasError = true; }
+                { flag = false; FrmTFW.Focus(); }
+                else if (string.IsNullOrEmpty(TReportDetail.Text))
+                { flag = false; FrmReportDetail.Focus(); FrmReportDetail.HasError = true; }
+
                 else
                 {
                     if (flag == true)
@@ -645,7 +640,6 @@ namespace GAZT.Views.NewViews
             viewModel.IsTIN = true; viewModel.IsTINVisible = true;
             TReportDetail.Text = string.Empty; TFWType.Text = string.Empty;
             TFDAdress.Text = string.Empty; TFSAddress.Text = string.Empty;
-            DatePicker_entry.Text = string.Empty;
             // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
         }
 
@@ -706,15 +700,61 @@ namespace GAZT.Views.NewViews
             mapView.Pins.Clear();
             mapView.Pins.Add(pin);
         }
-        private void mapset(string lat, string lon)
-        {
-            double latitude = Convert.ToDouble(lat);
-            double longitude = Convert.ToDouble(lon);
-            Position position = new Position(latitude, longitude);
-            MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-            mapView.MoveToRegion(mapSpan);
 
-        }
+        //    private async void mapset()
+        //    {
+        //        double lat=00.00, lon=00.00;
+        //        try
+        //        {
+        //            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+        //            var location = await Geolocation.GetLocationAsync(request);
+
+        //            if (location != null)
+        //            {
+        //                lat = location.Latitude;
+        //                lon = location.Longitude;
+        //            }
+
+
+        //            Position position = new Position(lat, lon);
+        //            MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+        //            mapView.MoveToRegion(mapSpan);
+        //            viewModel.TEReportobj.Latitude = lat.ToString();
+        //            viewModel.TEReportobj.Longitude = lon.ToString();
+        //        }
+        //        catch (FeatureNotSupportedException fnsEx)
+        //        {
+        //            // Handle not supported on device exception
+        //        }
+        //        catch (FeatureNotEnabledException fneEx)
+        //        {
+        //            // Handle not enabled on device exception
+        //        }
+        //        catch (PermissionException pEx)
+        //        {
+        //            // Handle permission exception
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Unable to get location
+        //        }
+        //        //Pin pin = new Pin
+        //        //{
+        //        //    Label = "Your Location",
+
+        //        //    Type = PinType.Place,
+        //        //    Position = new Position(lat, lon)
+        //        //};
+
+
+
+
+        //        // Map map = new Map(mapSpan);
+
+
+
+
+        //}
 
         private void btnFacilityType_Clicked(object sender, EventArgs e)
         {
@@ -800,7 +840,6 @@ namespace GAZT.Views.NewViews
             CityPicker.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
-            FrmCity.HasError = false;
         }
 
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -809,7 +848,7 @@ namespace GAZT.Views.NewViews
             CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
-            FrmCity.HasError = false;
+
         }
     }
 }

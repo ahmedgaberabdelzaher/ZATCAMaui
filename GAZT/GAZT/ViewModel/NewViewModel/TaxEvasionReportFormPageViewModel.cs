@@ -219,7 +219,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 RaisePropertyChanged("ListFacilityCompanyType");
             }
-        }
+        }//IsLoading
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -311,14 +311,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _txtTIN = value;
-                //if (!string.IsNullOrEmpty(_txtTIN))
-                //{
-                //    //if (_tEReportobj != null && _tEReportobj.TIN!=null)
-                //    //{
+                if (!string.IsNullOrEmpty(_txtTIN))
+                {
+                    if (_tEReportobj != null && _tEReportobj.TIN!=null)
+                    {
                        
-                //    //        _tEReportobj.TIN = _txtTIN;
-                //    //}
-                //}
+                            _tEReportobj.TIN = _txtTIN;
+                    }
+                }
                 RaisePropertyChanged("TxtTIN");
             }
         }
@@ -333,14 +333,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isTINVisible = value;
-                //if (_isTINVisible != null)
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.HavingTIN!=null)
-                //    {
-                //        _tEReportobj.HavingTIN = "true";
+                if (_isTINVisible != null)
+                {
+                    if (_tEReportobj != null && _tEReportobj.HavingTIN!=null)
+                    {
+                        _tEReportobj.HavingTIN = "true";
 
-                //    }
-                //} 
+                    }
+                } 
                 RaisePropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
@@ -355,14 +355,14 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedTaxEvasionCompanyType = value;
 
-                //if (_selectedTaxEvasionCompanyType != null)
-                //{
-                //    if (_tEReportobj != null )
-                //    {
-                //        TxtFType = _selectedTaxEvasionCompanyType.Name;
+                if (_selectedTaxEvasionCompanyType != null)
+                {
+                    if (_tEReportobj != null )
+                    {
+                        TxtFType = _selectedTaxEvasionCompanyType.Name;
 
-                //    }
-                //}
+                    }
+                }
                 RaisePropertyChanged("SelectedTaxEvasionCompanyType");
             }
         }
@@ -397,12 +397,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tReportDetail = value;
-                //if (_tReportDetail != null)
-                //{if (_tEReportobj != null && _tEReportobj.ReportDetails!=null)
-                //    {
-                //        _tEReportobj.ReportDetails = _tReportDetail;
-                //    }
-                //}
+                if (_tReportDetail != null)
+                {if (_tEReportobj != null && _tEReportobj.ReportDetails!=null)
+                    {
+                        _tEReportobj.ReportDetails = _tReportDetail;
+                    }
+                }
 
                 RaisePropertyChanged("TReportDetail");
             }
@@ -451,15 +451,15 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tEmail = value;
-                //if (!string.IsNullOrEmpty(_tEmail))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.ReporterEmail != null)
+                if (!string.IsNullOrEmpty(_tEmail))
+                {
+                    if (_tEReportobj != null && _tEReportobj.ReporterEmail != null)
                        
-                //    {
-                //        _tEReportobj.ReporterEmail = _tEmail;
-                //    }
+                    {
+                        _tEReportobj.ReporterEmail = _tEmail;
+                    }
                     
-                //}
+                }
                 
 
                 RaisePropertyChanged("TEmail");
@@ -480,14 +480,14 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _tName = value;
 
-                    //if (!string.IsNullOrEmpty(_tName))
-                    //{
-                    //    if (TEReportobj != null && TEReportobj.ReporterName!=null)
-                    //    {
-                    //        TEReportobj.ReporterName = _tName; 
-                    //    }
+                    if (!string.IsNullOrEmpty(_tName))
+                    {
+                        if (TEReportobj != null && TEReportobj.ReporterName!=null)
+                        {
+                            TEReportobj.ReporterName = _tName; 
+                        }
                          
-                    //}
+                    }
 
 
                     RaisePropertyChanged("TName");
@@ -508,14 +508,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tMobNumber = value;
-                //if (!string.IsNullOrEmpty(_tMobNumber))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.ReporterMobileNumber!=null )
-                //    {
-                //        _tEReportobj.ReporterMobileNumber = _tMobNumber;
-                //    }
+                if (!string.IsNullOrEmpty(_tMobNumber))
+                {
+                    if (_tEReportobj != null && _tEReportobj.ReporterMobileNumber!=null )
+                    {
+                        _tEReportobj.ReporterMobileNumber = _tMobNumber;
+                    }
                     
-                //}
+                }
                 
                 RaisePropertyChanged("TMobNumber");
             }
@@ -530,14 +530,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciName = value;
-                //if (!string.IsNullOrEmpty(_tFaciName))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.CompanyName != null)
-                //    {
-                //        _tEReportobj.CompanyName = _tFaciName;
-                //    }
+                if (!string.IsNullOrEmpty(_tFaciName))
+                {
+                    if (_tEReportobj != null && _tEReportobj.CompanyName != null)
+                    {
+                        _tEReportobj.CompanyName = _tFaciName;
+                    }
                       
-                //}
+                }
                 
 
 
@@ -556,14 +556,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciOwnerName = value;
-                //if(!string.IsNullOrEmpty(_tFaciOwnerName))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.CompanyOwnerName != null)
-                //    {
-                //        _tEReportobj.CompanyOwnerName = _tFaciOwnerName;
-                //    }
+                if(!string.IsNullOrEmpty(_tFaciOwnerName))
+                {
+                    if (_tEReportobj != null && _tEReportobj.CompanyName != null)
+                    {
+                        _tEReportobj.CompanyOwnerName = _tFaciOwnerName;
+                    }
                     
-                //}
+                }
                 
 
 
@@ -598,14 +598,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciMobNo = value;
-                //if (!string.IsNullOrEmpty(_tFaciMobNo))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.CompanyMobileNumber != null)
-                //    {
-                //        _tEReportobj.CompanyMobileNumber = _tFaciMobNo;
-                //    }
-                       
-                //}
+                if (!string.IsNullOrEmpty(_tFaciMobNo))
+                {
+                    _tEReportobj.CompanyMobileNumber = _tFaciMobNo;
+                }
                 
 
 
@@ -625,15 +621,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _tFaciEmail = value;
 
-                //if (!string.IsNullOrEmpty(_tFaciEmail))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.CompanyEmail != null)
-                //    {
-                //        _tEReportobj.CompanyEmail = _tFaciEmail;
-                //    }
-
-                    
-                //}
+                if (!string.IsNullOrEmpty(_tFaciEmail))
+                {
+                    _tEReportobj.CompanyEmail = _tFaciEmail;
+                }
                 
 
 
@@ -654,14 +645,8 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tID = value;
-                //if (!string.IsNullOrEmpty(_tID))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.ID != null)
-                //    {
-                //        _tEReportobj.ID = _tID;
-                //    }    
-                     
-                //}
+                if (!string.IsNullOrEmpty(_tID))
+                { _tEReportobj.ID = _tID; }
                
                 RaisePropertyChanged("TID");
             }
@@ -679,14 +664,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tVatNumber = value;
-                //if (!string.IsNullOrEmpty(_tVatNumber))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.VAT != null)
-                //    {
-                //        _tEReportobj.VAT = _tVatNumber;
-                //    }
-                    
-                //}
+                if (!string.IsNullOrEmpty(_tVatNumber))
+                {
+                    _tEReportobj.VAT = _tVatNumber;
+                }
                 
                 RaisePropertyChanged("TVatNumber");
             }
@@ -703,13 +684,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFDAdress = value;
-                //if (!string.IsNullOrEmpty(_tFDAdress))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.District != null)
-                //    {
-                //        _tEReportobj.District = _tFDAdress;
-                //    } 
-                //}
+                if (!string.IsNullOrEmpty(_tFDAdress))
+                {
+                    _tEReportobj.District = _tFDAdress;
+                }
                
 
 
@@ -727,14 +705,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFSAddress = value;
-                //if (!string.IsNullOrEmpty(_tFSAddress))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.CompanyAddress != null)
-                //    {
-                //        _tEReportobj.CompanyAddress = _tFSAddress;
-                //    }
-                    
-                //}
+                if (!string.IsNullOrEmpty(_tFSAddress))
+                {
+                    _tEReportobj.CompanyAddress = _tFSAddress;
+                }
                 
 
                 RaisePropertyChanged("TFSAddress");
@@ -750,14 +724,8 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFWType = value;
-                //if(!string.IsNullOrEmpty(_tFWType))
-                //{
-                //    if (_tEReportobj != null && _tEReportobj.WorkType != null)
-                //    {
-                //        _tEReportobj.WorkType = _tFWType;
-                //    }
-                    
-                //}
+                if(!string.IsNullOrEmpty(_tFWType))
+                { _tEReportobj.WorkType = _tFWType; }
                 
                 RaisePropertyChanged("TFWType");
             }
@@ -800,10 +768,8 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedTaxEvasionRegion = value;
                 if (_selectedTaxEvasionRegion != null)
                 {
-                    
-                        _tEReportobj.RegionCode = _selectedTaxEvasionRegion.RegionCode;
-                    
-                    
+
+                    _tEReportobj.RegionCode = _selectedTaxEvasionRegion.RegionCode;
                     //IsCPickerEnable = true;
                     //string v= SelectedTaxEvasionRegion.RegionCode;
                     onSelectedTaxEvasionRegion();
@@ -816,16 +782,12 @@ namespace GAZT.ViewModel.NewViewModel
                         TxtReportDetailRegion = _selectedTaxEvasionRegion.RegionNameEN;
 
                     }
-
-                    
-
                     //TEReportobj.RegionCode = v;
                 }
                 //ListFormBudles = null;
                 RaisePropertyChanged("SelectedTaxEvasionRegion");
             }
         }
-       
         private string _datePick = string.Empty;
 
         public string DatePick
@@ -858,17 +820,15 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if(_selectLCType!=null)
                 {
-                    
-                  
-                    //_tEReportobj.CityCode = _selectLCType.CityCode;
-                    //if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                    //{ _tEReportobj.Latitude = "0.0"; }
-                    //else
-                    //{ _tEReportobj.Latitude = _selectLCType.Latitude; }
-                    //if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                    //{ _tEReportobj.Longitude = "0.0"; }
-                    //else
-                    //{ _tEReportobj.Longitude = _selectLCType.Longitude; }
+                    _tEReportobj.CityCode = _selectLCType.CityCode;
+                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                    { _tEReportobj.Latitude = "0.0"; }
+                    else
+                    { _tEReportobj.Latitude = _selectLCType.Latitude; }
+                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                    { _tEReportobj.Longitude = "0.0"; }
+                    else
+                    { _tEReportobj.Longitude = _selectLCType.Longitude; }
 
                     if (_selectLCType != null)
                     {
@@ -1160,47 +1120,25 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                TEReportobj = new TEReport();
                 string date = DatePick;
-                TEReportobj.ReceivedDate = date;
-                TEReportobj.CompanyType = SelectedTaxEvasionCompanyType.Id;
-                TEReportobj.ViolationType = _selectedCategory;
-                TEReportobj.Channel = "2";
-                TEReportobj.WSPassword = "gazt@123";
-                TEReportobj.WSUserName = "GAZT@CRM";
-                TEReportobj.TaxType = "1";
-                TEReportobj.ReporterName = TName;
-                TEReportobj.ReporterMobileNumber = TMobNumber;
-                TEReportobj.ReporterEmail = TEmail;
-                TEReportobj.CompanyName = TFaciName;
-                TEReportobj.CompanyEmail = TFaciEmail;
-                TEReportobj.CompanyMobileNumber = TFaciMobNo;
-                TEReportobj.CompanyOwnerName = TFaciOwnerName;
-                TEReportobj.District = TFDAdress;
-                TEReportobj.CompanyAddress = TFSAddress;
-                TEReportobj.WorkType = TFWType;
-                TEReportobj.ReportDetails = TReportDetail;
-                TEReportobj.ID = TID;
-                TEReportobj.CityCode = SelectLCType.CityCode;
-                TEReportobj.RegionCode = SelectedTaxEvasionRegion.RegionCode;
-                TEReportobj.VAT = TVatNumber;
-                TEReportobj.TIN = TxtTIN;
-                TEReportobj.HavingTIN= IsTINVisible.ToString();
-                TEReportobj.Latitude = Latitude.ToString();
-                TEReportobj.Latitude = Longitude.ToString();
+                _tEReportobj.ReceivedDate = date;
+                _tEReportobj.CompanyType = SelectedTaxEvasionCompanyType.Id;
+                _tEReportobj.ViolationType = _selectedCategory;
+                _tEReportobj.Channel = "2";
+                _tEReportobj.WSPassword = "gazt@123";
+                _tEReportobj.WSUserName = "GAZT@CRM";
+                _tEReportobj.TaxType = "1";
+
                 
-
-
-
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
                 
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
-                response = await WebServiceManager.GAZTTESReportSubmit(TEReportobj, newList);
+                response = await WebServiceManager.GAZTTESReportSubmit(_tEReportobj, newList);
                 if (response != null && response.Success == true)
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
-                    TEReportobj = null;
+                    _tEReportobj = null;
 
                     _dialogService.ShowMessage(newrm, AppResources.Submitted);
 
