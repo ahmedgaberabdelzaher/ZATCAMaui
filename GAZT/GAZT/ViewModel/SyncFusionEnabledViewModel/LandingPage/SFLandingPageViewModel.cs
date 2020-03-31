@@ -93,6 +93,10 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                         {
                             MessageForTheUser = AppResources.ZZInternetConnectionMessage;
                         }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -106,12 +110,21 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     }
                 }
             }
+            catch(GAZTSessionExpiredException)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                    PopToRootPage();
+                });
+            }
             catch (Exception)
             {
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    PopToRootPage();
                 });
             }
 
@@ -119,6 +132,17 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             {
                 IsLoading = false;
             });
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () => {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+
         }
 
         public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
