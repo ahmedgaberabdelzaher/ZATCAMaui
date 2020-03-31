@@ -169,6 +169,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
                 viewModel.IsVisiblePickerAr = false;
                 viewModel.IsVisiblePickerEn = true;
             }
@@ -292,7 +293,6 @@ namespace GAZT.Views.NewViews
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZInvalidMobileNoError;
 
-
                     popUp.IsLinkAvailable = false;
 
                     if (App.IsArabic)
@@ -305,8 +305,8 @@ namespace GAZT.Views.NewViews
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmNumber.HasError = true;
-                    TMobNumber.Text = string.Empty;
-                    TMobNumber.Focus();
+                   
+                   
                 }
 
                 else
@@ -359,8 +359,8 @@ namespace GAZT.Views.NewViews
 
                 TName.Text = string.Empty;
             }
-            else
-            { FrmName.HasError = false; }
+           else
+           { FrmName.HasError = false; }
 
 
         }
@@ -373,7 +373,7 @@ namespace GAZT.Views.NewViews
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
 
 
                     popUp.IsLinkAvailable = false;
@@ -388,7 +388,7 @@ namespace GAZT.Views.NewViews
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmEmail.HasError = true;
-                    TEmail.Text = string.Empty;
+                   
                 }
                 else
                 {
@@ -434,7 +434,7 @@ namespace GAZT.Views.NewViews
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
 
 
                     popUp.IsLinkAvailable = false;

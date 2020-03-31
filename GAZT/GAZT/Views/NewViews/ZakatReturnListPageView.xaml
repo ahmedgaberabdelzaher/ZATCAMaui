@@ -11,6 +11,9 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
              FlowDirection="LeftToRight"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView"
@@ -152,7 +155,7 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                <!--<Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
                     <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"    SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Value}" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
 
                 </Frame>
@@ -160,8 +163,50 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
+
+                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,-6,10,-6"
+    
+    ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatus}" FontSize="Small">
+                    </custom:BorderlessEntry>
+                </inputLayout:SfTextInputLayout>
+                <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
+                </custom:CustomButton>
+
+                <syncfusion:SfPicker 
+                   
+                    HeaderHeight="40"
+                    ShowHeader="true"
+                   
+                    ShowColumnHeader="False"
+                x:Name="BPicker"
+                   BackgroundColor="#EAF7CC"
+                   
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                    
+                    HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                    
+                    UnSelectedItemTextColor="#006450"
+                             SelectedItemFontSize="14"     
+                   ItemHeight="40"
+                    
+                 SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                    PickerHeight="280"
+                    PickerWidth="270"
+                                    OkButtonClicked="BPicker_OkButtonClicked"
+                    ShowFooter="False" FooterHeight="46">
+                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+
+                    <syncfusion:SfPicker.Behaviors>
+                        <custom1:SfPickerBehavior />
+                    </syncfusion:SfPicker.Behaviors>
+                </syncfusion:SfPicker>
 
 
 

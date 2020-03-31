@@ -93,7 +93,7 @@
                     PickerMode="Dialog"
                                 SelectedItemFontSize="15"               
                    ItemHeight="40"
-                    SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }" DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}" CancelButtonClicked="DDlIDType_CancelButtonClicked"  OkButtonClicked="DDlIDType_OkButtonClicked"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
+                     DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
                     PickerHeight="280"
                     PickerWidth="350"
                     ShowFooter="True" FooterHeight="46">
@@ -101,6 +101,7 @@
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
+                    <!--SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }"-->
                     <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
 
 
@@ -149,7 +150,7 @@
                     PickerMode="Dialog"
                                                
                    ItemHeight="40"
-                   SelectedItem="{Binding SelectedFormBindleFbnum}" DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Margin="10,0,10,0"
+                   DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Margin="10,0,10,0"
                     PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked"
                     PickerWidth="350" IsEnabled="True"
                     ShowFooter="True" FooterHeight="46">
@@ -157,13 +158,14 @@
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    <!--SelectedItem="{Binding SelectedFormBindleFbnum}"-->
+
+
+
+
+
+
+
                     <!--<Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                     </Frame>

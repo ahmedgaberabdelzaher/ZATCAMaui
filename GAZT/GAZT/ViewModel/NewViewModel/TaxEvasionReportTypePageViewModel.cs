@@ -12,14 +12,28 @@ namespace GAZT.ViewModel.NewViewModel
     public class TaxEvasionReportTypePageViewModel : ViewModelBase
     {
         #region Variable
-       public string CategorySelected_Index = "0";
+       
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand BackButtonClicked { get; set; }
         public ICommand OnNextClicked { get; set; }
         public ICommand OnBClicked { get;  set; }
 
         #endregion
 
+        private string _categorySelected_Index = "0";
+        public string CategorySelected_Index
+        {
+            get
+            {
+                return _categorySelected_Index;
+            }
+            set
+            {
+                _categorySelected_Index = value;
+                RaisePropertyChanged("CategorySelected_Index");
+            }
+        }
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -138,10 +152,14 @@ namespace GAZT.ViewModel.NewViewModel
                     throw new ArgumentNullException("dialogService");
                 }
                 _dialogService = dialogService;
+                BackButtonClicked = new Xamarin.Forms.Command(() =>
+                {
+                    _navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                });
 
                 OnBClicked = new Command(() =>
                 {
-                   
+                    CategorySelected_Index = "0";
 
 
                     try

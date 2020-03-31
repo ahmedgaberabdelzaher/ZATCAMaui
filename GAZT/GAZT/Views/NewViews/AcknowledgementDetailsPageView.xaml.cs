@@ -14,9 +14,9 @@ using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AcknowledgementDetailsPageView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AcknowledgementDetailsPageView : ContentPage
+    {
 
         #region Variable
         AcknowledgementDetailsPageViewModel viewModel;
@@ -30,13 +30,13 @@ namespace GAZT.Views.NewViews
         public AcknowledgementDetailsPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+             NavigationPage.SetBackButtonTitle(this, "");
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
-                if (vATDeclaration!=null)
+                if (vATDeclaration != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
                     viewModel.TPName = App.TP.Name;
@@ -46,7 +46,7 @@ namespace GAZT.Views.NewViews
                     viewModel.SadadNumber = string.Empty;
                     viewModel.IsSadadNumberVisible = false;
                     viewModel.IsButtonVisible = false;
-                    if ((App.ICRStatus== "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
+                    if ((App.ICRStatus == "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
                     {
                         if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
                         {
@@ -62,7 +62,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat)<=0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0))
+                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0))
                         {
                             viewModel.IsSadadNumberVisible = false;
                             viewModel.IsSadadNoteVisible = false;
@@ -71,7 +71,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            if((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
+                            if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
                             {
                                 viewModel.OnRefreshClick();
                             }
@@ -89,10 +89,10 @@ namespace GAZT.Views.NewViews
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
                     }
-                    
-                        
-                   
-                    
+
+
+
+
 
                     if (App.IsArabic)
                     {
@@ -105,7 +105,7 @@ namespace GAZT.Views.NewViews
                     }
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -131,7 +131,7 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        protected async void OnVATRefreshButtonClicked(Object sender,EventArgs e)
+        protected async void OnVATRefreshButtonClicked(Object sender, EventArgs e)
         {
             await viewModel.OnRefreshClick();
         }

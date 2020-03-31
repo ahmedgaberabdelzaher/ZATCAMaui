@@ -47,6 +47,7 @@ namespace GAZTeServicesApp.Views.LoginPage
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
             }
             if (Device.RuntimePlatform == Device.Android)
             {

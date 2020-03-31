@@ -4823,5 +4823,29 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATReturn", resourceCulture);
             }
         }
+        
+        public static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
+        public static string ZZNocommercialregistrationslinkedtotheTIN {
+            get {
+                return ResourceManager.GetString("ZZNocommercialregistrationslinkedtotheTIN", resourceCulture);
+            }
+        }
+        
+        public static string ZZZEServices {
+            get {
+                return ResourceManager.GetString("ZZZEServices", resourceCulture);
+            }
+        }
+        
+        public static string ZZZMyCommitment {
+            get {
+                return ResourceManager.GetString("ZZZMyCommitment", resourceCulture);
+            }
+        }
     }
 }
