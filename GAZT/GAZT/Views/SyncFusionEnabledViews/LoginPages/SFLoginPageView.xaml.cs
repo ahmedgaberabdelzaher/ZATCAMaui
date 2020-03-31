@@ -27,10 +27,11 @@ namespace GAZTeServicesApp.Views.LoginPage
         /// </summary>
         public SFLoginPageView(String strNavigateToThisService)
         {
-          //  SetLTRDirection();
+           // SetLTRDirection();
             InitializeComponent();
             
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            ChangeAeroIcon();
             viewModel.NavigateToThisService = strNavigateToThisService;
             if (App.IsArabic)
             {
@@ -56,6 +57,17 @@ namespace GAZTeServicesApp.Views.LoginPage
             // ParentContainer.RaiseChild(BusyIndicator);
         }
 
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         public void SetLTRDirection()
         {
             App.IsArabic = false;
@@ -70,6 +82,7 @@ namespace GAZTeServicesApp.Views.LoginPage
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeAeroIcon();
             App.TP = null;
             viewModel.CurrentAttempt = 0;
             if (App.CurrentDropdownTIN != null)
@@ -88,6 +101,11 @@ namespace GAZTeServicesApp.Views.LoginPage
         private void OnPasswordVisibilityClicked(object sender, EventArgs e)
         {
             viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        }
+
+        private void onBackButtonClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

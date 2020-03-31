@@ -210,7 +210,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         string MobileNumber = "+9665" + NewMobile;
                         bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
-                        bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(MobileNumber);
+                        bool isNewMobileNumberSameAsOldMobileNumber = IsNewMobileNumberSameAsOldMobileNumber(mobileNumber);
                         if (isValidMobileNumber)
                         {
                             if (!isNewMobileNumberSameAsOldMobileNumber)

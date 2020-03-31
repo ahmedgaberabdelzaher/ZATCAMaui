@@ -287,7 +287,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isTIN = value;
-                if (_isTIN == true)
+                if (_isTIN!=null && _isTIN == true)
                 {
                     IsTINVisible = true;
 
@@ -311,7 +311,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _txtTIN = value;
-                _tEReportobj.TIN = _txtTIN;
+                if (!string.IsNullOrEmpty(_txtTIN))
+                {
+                    if (_tEReportobj != null && _tEReportobj.TIN!=null)
+                    {
+                       
+                            _tEReportobj.TIN = _txtTIN;
+                    }
+                }
                 RaisePropertyChanged("TxtTIN");
             }
         }
@@ -326,7 +333,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isTINVisible = value;
-                _tEReportobj.HavingTIN = "true";
+                if (_isTINVisible != null)
+                {
+                    if (_tEReportobj != null && _tEReportobj.HavingTIN!=null)
+                    {
+                        _tEReportobj.HavingTIN = "true";
+
+                    }
+                } 
                 RaisePropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
@@ -343,9 +357,12 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (_selectedTaxEvasionCompanyType != null)
                 {
-                    TxtFType = _selectedTaxEvasionCompanyType.Name;
-                }
+                    if (_tEReportobj != null )
+                    {
+                        TxtFType = _selectedTaxEvasionCompanyType.Name;
 
+                    }
+                }
                 RaisePropertyChanged("SelectedTaxEvasionCompanyType");
             }
         }
@@ -380,9 +397,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tReportDetail = value;
-                _tEReportobj.ReportDetails = _tReportDetail;
-
-
+                if (_tReportDetail != null)
+                {if (_tEReportobj != null && _tEReportobj.ReportDetails!=null)
+                    {
+                        _tEReportobj.ReportDetails = _tReportDetail;
+                    }
+                }
 
                 RaisePropertyChanged("TReportDetail");
             }
@@ -431,7 +451,16 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tEmail = value;
-                _tEReportobj.ReporterEmail = _tEmail;
+                if (!string.IsNullOrEmpty(_tEmail))
+                {
+                    if (_tEReportobj != null && _tEReportobj.ReporterEmail != null)
+                       
+                    {
+                        _tEReportobj.ReporterEmail = _tEmail;
+                    }
+                    
+                }
+                
 
                 RaisePropertyChanged("TEmail");
             }
@@ -444,12 +473,29 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 return _tName;
             }
+           
             set
             {
-                _tName = value;
-                _tEReportobj.ReporterName = _tName;
+                try
+                {
+                    _tName = value;
 
-                RaisePropertyChanged("TName");
+                    if (!string.IsNullOrEmpty(_tName))
+                    {
+                        if (TEReportobj != null && TEReportobj.ReporterName!=null)
+                        {
+                            TEReportobj.ReporterName = _tName; 
+                        }
+                         
+                    }
+
+
+                    RaisePropertyChanged("TName");
+                }
+                catch(Exception ex)
+                {
+                }
+                
             }
         }
         private string _tMobNumber = string.Empty;
@@ -462,7 +508,15 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tMobNumber = value;
-                _tEReportobj.ReporterMobileNumber = _tMobNumber;
+                if (!string.IsNullOrEmpty(_tMobNumber))
+                {
+                    if (_tEReportobj != null && _tEReportobj.ReporterMobileNumber!=null )
+                    {
+                        _tEReportobj.ReporterMobileNumber = _tMobNumber;
+                    }
+                    
+                }
+                
                 RaisePropertyChanged("TMobNumber");
             }
         }
@@ -476,7 +530,15 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciName = value;
-                _tEReportobj.CompanyName = _tFaciName;
+                if (!string.IsNullOrEmpty(_tFaciName))
+                {
+                    if (_tEReportobj != null && _tEReportobj.CompanyName != null)
+                    {
+                        _tEReportobj.CompanyName = _tFaciName;
+                    }
+                      
+                }
+                
 
 
 
@@ -494,7 +556,15 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciOwnerName = value;
-                _tEReportobj.CompanyOwnerName = _tFaciOwnerName;
+                if(!string.IsNullOrEmpty(_tFaciOwnerName))
+                {
+                    if (_tEReportobj != null && _tEReportobj.CompanyName != null)
+                    {
+                        _tEReportobj.CompanyOwnerName = _tFaciOwnerName;
+                    }
+                    
+                }
+                
 
 
 
@@ -528,7 +598,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciMobNo = value;
-                _tEReportobj.CompanyMobileNumber = _tFaciMobNo;
+                if (!string.IsNullOrEmpty(_tFaciMobNo))
+                {
+                    _tEReportobj.CompanyMobileNumber = _tFaciMobNo;
+                }
+                
 
 
 
@@ -546,7 +620,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciEmail = value;
-                _tEReportobj.CompanyEmail = _tFaciEmail;
+
+                if (!string.IsNullOrEmpty(_tFaciEmail))
+                {
+                    _tEReportobj.CompanyEmail = _tFaciEmail;
+                }
+                
 
 
 
@@ -566,7 +645,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tID = value;
-                _tEReportobj.ID = _tID;
+                if (!string.IsNullOrEmpty(_tID))
+                { _tEReportobj.ID = _tID; }
+               
                 RaisePropertyChanged("TID");
             }
         }
@@ -583,7 +664,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tVatNumber = value;
-                _tEReportobj.VAT = _tVatNumber;
+                if (!string.IsNullOrEmpty(_tVatNumber))
+                {
+                    _tEReportobj.VAT = _tVatNumber;
+                }
+                
                 RaisePropertyChanged("TVatNumber");
             }
         }
@@ -599,7 +684,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFDAdress = value;
-                _tEReportobj.District = _tFDAdress;
+                if (!string.IsNullOrEmpty(_tFDAdress))
+                {
+                    _tEReportobj.District = _tFDAdress;
+                }
+               
 
 
 
@@ -616,7 +705,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFSAddress = value;
-                _tEReportobj.CompanyAddress = _tFSAddress;
+                if (!string.IsNullOrEmpty(_tFSAddress))
+                {
+                    _tEReportobj.CompanyAddress = _tFSAddress;
+                }
+                
 
                 RaisePropertyChanged("TFSAddress");
             }
@@ -631,7 +724,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFWType = value;
-                _tEReportobj.WorkType = _tFWType;
+                if(!string.IsNullOrEmpty(_tFWType))
+                { _tEReportobj.WorkType = _tFWType; }
+                
                 RaisePropertyChanged("TFWType");
             }
         }
@@ -723,28 +818,32 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectLCType = value;
 
-
-                _tEReportobj.CityCode = _selectLCType.CityCode;
-                if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                { _tEReportobj.Latitude = "0.0"; }
-                else
-                { _tEReportobj.Latitude = _selectLCType.Latitude; }
-                if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                { _tEReportobj.Longitude = "0.0"; }
-                else
-                { _tEReportobj.Longitude = _selectLCType.Longitude; }
-
-                if (_selectLCType != null)
+                if(_selectLCType!=null)
                 {
-                    if (App.IsArabic)
-                    {
-                        TxtReportDetailCity = _selectLCType.CityNameAR;
-                    }
+                    _tEReportobj.CityCode = _selectLCType.CityCode;
+                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                    { _tEReportobj.Latitude = "0.0"; }
                     else
+                    { _tEReportobj.Latitude = _selectLCType.Latitude; }
+                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                    { _tEReportobj.Longitude = "0.0"; }
+                    else
+                    { _tEReportobj.Longitude = _selectLCType.Longitude; }
+
+                    if (_selectLCType != null)
                     {
-                        TxtReportDetailCity = _selectLCType.CityNameEN;
+                        if (App.IsArabic)
+                        {
+                            TxtReportDetailCity = _selectLCType.CityNameAR;
+                        }
+                        else
+                        {
+                            TxtReportDetailCity = _selectLCType.CityNameEN;
+                        }
                     }
+
                 }
+                
 
 
 

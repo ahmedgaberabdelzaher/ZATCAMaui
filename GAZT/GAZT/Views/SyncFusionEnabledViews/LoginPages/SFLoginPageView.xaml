@@ -16,6 +16,7 @@
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
     FlowDirection="LeftToRight"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
                                                                   iOSTabletLandscape=sf_LoginBackground-Landscape.png}"
@@ -32,7 +33,21 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid x:Name="ParentContainer">
+        <StackLayout>
+            <custom:CustomLabel
+                x:Name="BackLabel"
+                       VerticalOptions="Start"
+                HorizontalOptions="Start"
+                        Margin="8,10,8,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#ffffff"
+                        Text="{DynamicResource StyleReverseBack}"
+                >
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+
             <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
             <ScrollView HorizontalOptions="Center">
                 <ScrollView.VerticalOptions>
@@ -179,7 +194,7 @@
                                        ViewBoxHeight="150" 
                                        TextColor="DarkGreen" 
                                        IsBusy="{Binding IsLoading}"/>-->
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>
