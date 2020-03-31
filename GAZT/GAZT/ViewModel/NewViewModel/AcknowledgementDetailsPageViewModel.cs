@@ -21,7 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand OnHomeClick { get; set; }
-        
+      
         #endregion
 
         #region Property
@@ -250,7 +250,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
-
+          
 
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {

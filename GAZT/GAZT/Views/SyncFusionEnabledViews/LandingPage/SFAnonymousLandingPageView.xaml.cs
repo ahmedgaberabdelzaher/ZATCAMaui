@@ -118,7 +118,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
                 }
 
                 if (BModel.eServiceName == AppResources.VATLookup)
@@ -167,7 +167,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
                 }
 
                 if (BModel.eServiceName == AppResources.VATLookup)
