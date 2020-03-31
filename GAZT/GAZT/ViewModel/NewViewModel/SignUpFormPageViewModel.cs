@@ -5,6 +5,8 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnNextClicked { get; set; }
+        public int DefaultMonth;
         #endregion
 
 
@@ -80,6 +83,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
+
+        
         private int _selectedLOrC = 1;
         public int SelectedLOrC
         {
@@ -801,6 +819,22 @@ namespace GAZT.ViewModel.NewViewModel
            
         }
 
+        public void SetDefaultDate()
+        {
+
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+
+            //Select today dates
+            todaycollection.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Date.Month).Substring(0, 3));
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
+        }
         #endregion
     }
 }

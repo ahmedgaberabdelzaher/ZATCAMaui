@@ -2742,7 +2742,7 @@ Should we require further information, we would be in contact.</value>
     <value>Invalid TIN</value>
   </data>
   <data name="ZInvalidVatNumber" xml:space="preserve">
-    <value>Number VAT Invalid: "</value>
+    <value>Invalid VAT Number</value>
   </data>
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>Returns Not Found</value>

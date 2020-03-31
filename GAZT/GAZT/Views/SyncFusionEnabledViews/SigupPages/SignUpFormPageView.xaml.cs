@@ -33,7 +33,7 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.SignUpFormPageView;
 
                 InitializeComponent();
-
+                viewModel.SetDefaultDate();
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
 
@@ -145,7 +145,7 @@ namespace GAZT.Views.NewViews
                     FrmTIN.HasError = false;
                 }
             }
-            if ((viewModel.SelectedSignUpUsing == null )|| (FrmIDType.HasError == true))
+            if ((viewModel.SelectedSignUpUsing == null ))
             {
                 FrmIDType.HasError = true;
                 IsNextValid = false;
@@ -194,7 +194,7 @@ namespace GAZT.Views.NewViews
                 {
                     FrmLicenseNumber.HasError = false;
                 }
-                if (viewModel.SelectedIssuedBy == null || FrmLicenseIssuedBy.HasError == true)
+                if (viewModel.SelectedIssuedBy == null )
                 {
                     FrmLicenseIssuedBy.HasError = true;
                     IsNextValid = false;
@@ -204,7 +204,7 @@ namespace GAZT.Views.NewViews
                     FrmLicenseIssuedBy.HasError = false;
 
                 }
-                if (viewModel.SelectCityList == null || FrmLicenseIssuedCity.HasError == true)
+                if (viewModel.SelectCityList == null )
                 {
                     FrmLicenseIssuedCity.HasError = true;
                     IsNextValid = false;
@@ -863,162 +863,195 @@ namespace GAZT.Views.NewViews
                 {
                   //EntryIDNumber.IsEnabled = true; //commented because bydefault it was coming red border 
                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                   // DateTime selecteDate = Convert.ToDateTime(selectedItem);
                     if (selectedItem != null && selectedItem[0] != null)
                     {
+                       // int a = DateTime.Compare(viewModel.TodayDate, selecteDate);
+                    
                         string month = selectedItem[0].ToString();
                         string day = selectedItem[1].ToString();
                         string year = selectedItem[2].ToString();
 
-                        string DBO = year + month + day;
-                        //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+                        string _month = DateTime.Now.Month.ToString();
+                        string _day = DateTime.Now.Day.ToString();
 
-                        if (!string.IsNullOrEmpty(EntryIDNumber.Text))
-                        {
-                            if (viewModel.SelectedSignUpUsing.ID == 1)
+                        string _year = DateTime.Now.Year.ToString();
+                      
+                       
+                            string DBO = year + month + day;
+                            //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+
+                            if (!string.IsNullOrEmpty(EntryIDNumber.Text))
                             {
-                                if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                                if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
-                                    FrmIDNumber.HasError = true;
-                                }
-                                else
-                                {
-                                    FrmIDNumber.HasError = false;
-                                    if (EntryIDNumber.Text.Length == 10)
+                                    if (EntryIDNumber.Text.Substring(0, 1) != "1")
                                     {
-                                        try
-                                        {
-                                            string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                            IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-
-                                            if (SignupIsIDTypeValid.d == null)
-                                            {
-
-                                                IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                                if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                                                {
-                                                    FrmIDNumber.HasError = true;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                    //  viewModel.TxtIDNumber = string.Empty;
-                                                }
-                                                else
-                                                {
-                                                    FrmIDNumber.HasError = false;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                EntryIDNumber.IsEnabled = false;
-                                            }
-                                        }
-                                        catch
+                                        FrmIDNumber.HasError = true;
+                                    }
+                                    else
+                                    {
+                                        FrmIDNumber.HasError = false;
+                                        if (EntryIDNumber.Text.Length == 10)
                                         {
                                             try
                                             {
-                                                string Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                                IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                                            string Result = string.Empty;
+                                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                                            {
+                                                 Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
 
-                                                if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                                                if (SignupIsIDTypeValid.d == null)
                                                 {
-                                                    FrmIDNumber.HasError = true;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                    // viewModel.TxtIDNumber = string.Empty;
+
+                                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                                                    {
+                                                        FrmIDNumber.HasError = true;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                        //  viewModel.TxtIDNumber = string.Empty;
+                                                    }
+                                                    else
+                                                    {
+                                                        FrmIDNumber.HasError = false;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    }
                                                 }
                                                 else
                                                 {
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                     FrmIDNumber.HasError = false;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    EntryName.IsEnabled = false;
                                                 }
                                             }
-                                            catch (InternetException ex)
+                                               
+                                            }
+                                            catch
                                             {
-                                                Device.BeginInvokeOnMainThread(async () =>
+                                                try
                                                 {
-                                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                                });
+                                                string Result = string.Empty;
+                                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                                                {
+                                                    Result = WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                                                    {
+                                                        FrmIDNumber.HasError = true;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                        // viewModel.TxtIDNumber = string.Empty;
+                                                    }
+                                                    else
+                                                    {
+                                                        FrmIDNumber.HasError = false;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    }
+                                                }
+                                                   
+                                                }
+                                                catch (InternetException ex)
+                                                {
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                                else if (viewModel.SelectedSignUpUsing.ID == 2)
+                                {
+                                    if (EntryIDNumber.Text.Substring(0, 1) != "2")
+                                    {
+                                        FrmIDNumber.HasError = true;
+                                    }
+                                    else
+                                    {
+                                        FrmIDNumber.HasError = false;
+                                        if (EntryIDNumber.Text.Length == 10)
+                                        {
+                                            try
+                                            {
+                                            string Result = string.Empty; ;
+                                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                                            {
+
+                                                Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+                                                if (SignupIsIDTypeValid.d == null)
+                                                {
+
+                                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                                                    {
+                                                        FrmIDNumber.HasError = true;
+
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                        //  viewModel.TxtIDNumber = string.Empty;
+                                                    }
+                                                    else
+                                                    {
+                                                        FrmIDNumber.HasError = false;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                                                    EntryName.IsEnabled = false;
+                                                    FrmIDNumber.HasError = false;
+                                                }
+                                            }
+                                               
+
+                                            }
+                                            catch
+                                            {
+                                                try
+                                                {
+                                                string Result = string.Empty;
+                                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                                                {
+                                                    Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                                                    {
+                                                        FrmIDNumber.HasError = true;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                        // viewModel.TxtIDNumber = string.Empty;
+                                                    }
+                                                    else
+                                                    {
+                                                        FrmIDNumber.HasError = false;
+                                                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                                    }
+                                                }
+                                                   
+                                                }
+                                                catch (InternetException ex)
+                                                {
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                                    });
+                                                }
                                             }
                                         }
                                     }
                                 }
-
-                            }
-                            else if (viewModel.SelectedSignUpUsing.ID == 2)
-                            {
-                                if (EntryIDNumber.Text.Substring(0, 1) != "2")
-                                {
-                                    FrmIDNumber.HasError = true;
-                                }
                                 else
                                 {
                                     FrmIDNumber.HasError = false;
-                                    if (EntryIDNumber.Text.Length == 10)
-                                    {
-                                        try
-                                        {
-                                            string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                            IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                                            if (SignupIsIDTypeValid.d == null)
-                                            {
-
-                                                IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                                if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                                                {
-                                                    FrmIDNumber.HasError = true;
-
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                    //  viewModel.TxtIDNumber = string.Empty;
-                                                }
-                                                else
-                                                {
-                                                    FrmIDNumber.HasError = false;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                EntryIDNumber.IsEnabled = false;
-                                            }
-
-                                        }
-                                        catch
-                                        {
-                                            try
-                                            {
-                                                string Result = WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                                IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                                                if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                                                {
-                                                    FrmIDNumber.HasError = true;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                    // viewModel.TxtIDNumber = string.Empty;
-                                                }
-                                                else
-                                                {
-                                                    FrmIDNumber.HasError = false;
-                                                    viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                }
-                                            }
-                                            catch (InternetException ex)
-                                            {
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                                });
-                                            }
-                                        }
-                                    }
                                 }
                             }
-                            else
-                            {
-                                FrmIDNumber.HasError = false;
-                            }
-                        }
+                        
                     }
                 }
                 catch (InternetException ex)
@@ -1077,7 +1110,7 @@ namespace GAZT.Views.NewViews
             string DBO = year + month + day;
             //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
 
-            EntryIDNumber.IsEnabled = true;
+            EntryName.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
@@ -1107,7 +1140,8 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryIDNumber.IsEnabled = false;
+                            EntryName.IsEnabled = false;
+                            FrmIDNumber.HasError = false;
                         }
 
                     }
@@ -1142,7 +1176,7 @@ namespace GAZT.Views.NewViews
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
             {
-                EntryIDNumber.IsEnabled = true;
+                EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -1168,7 +1202,8 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryIDNumber.IsEnabled = false;
+                            EntryName.IsEnabled = false;
+                            FrmIDNumber.HasError = false;
                         }
 
                     }
@@ -1475,7 +1510,7 @@ namespace GAZT.Views.NewViews
         private void DDlIDType_SelectedIndexChanged(object sender, EventArgs e)
         {
             viewModel.TxtIDNumber = string.Empty;
-            EntryIDNumber.IsEnabled = true;
+            EntryName.IsEnabled = true;
         }
 
         private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
@@ -1699,7 +1734,7 @@ namespace GAZT.Views.NewViews
             string DBO = year + month + day;
             //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
 
-            EntryIDNumber.IsEnabled = true;
+            EntryName.IsEnabled = true;
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
@@ -1729,7 +1764,8 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryIDNumber.IsEnabled = false;
+                            EntryName.IsEnabled = false;
+                            FrmIDNumber.HasError = false;
                         }
 
                     }
@@ -1764,7 +1800,7 @@ namespace GAZT.Views.NewViews
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
             {
-                EntryIDNumber.IsEnabled = true;
+                EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -1790,7 +1826,8 @@ namespace GAZT.Views.NewViews
                         else
                         {
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryIDNumber.IsEnabled = false;
+                            EntryName.IsEnabled = false;
+                            FrmIDNumber.HasError = false;
                         }
 
                     }

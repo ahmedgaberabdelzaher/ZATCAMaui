@@ -28,7 +28,7 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZTINStatus}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -37,7 +37,7 @@
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Home}"
+                            Text="{StaticResource Back}"
                             
                             
                              />
@@ -52,7 +52,7 @@
     <ContentPage.Content>
         <StackLayout>
          
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10"  RowSpacing="0">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,0"  RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
                     <RowDefinition Height="10*" />
@@ -187,7 +187,7 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
 
   
 
-                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
                     <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnBClicked}" ></Button>
 
                 </StackLayout>
