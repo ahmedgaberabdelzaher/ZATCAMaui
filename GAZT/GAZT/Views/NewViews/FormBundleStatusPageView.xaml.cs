@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -24,7 +25,8 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
             //CPicker_imgtap.IsEnabled = false;
             //tapImg.Tapped += Gesture_Tapped;
@@ -62,7 +64,7 @@ namespace GAZT.Views.NewViews
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
         private void SetLTR()
         {
@@ -72,7 +74,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Xamarin.Forms.Application.Current.GetType().Assembly);
 
             }
             else
@@ -80,7 +82,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
 

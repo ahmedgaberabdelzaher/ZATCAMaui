@@ -12,6 +12,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Plugin.FilePicker;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GAZT.Views.NewViews
 {
@@ -31,7 +32,8 @@ namespace GAZT.Views.NewViews
         {
 
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
             viewModel = App.Locator.OTPPageView;
             viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;

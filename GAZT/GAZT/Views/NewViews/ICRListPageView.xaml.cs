@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -27,6 +28,8 @@ namespace GAZT.Views.NewViews
         public ICRListPageView()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
             SetLTR();
@@ -41,12 +44,12 @@ namespace GAZT.Views.NewViews
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
 
-            
 
-            NavigationPage.SetBackButtonTitle(this, "");
+
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
 
         #endregion

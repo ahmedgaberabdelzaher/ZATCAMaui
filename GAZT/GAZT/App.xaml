@@ -43,6 +43,16 @@
                 <On Platform="iOS" Value="SSTArabic-Light" />
             </OnPlatform>
 
+              <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Light">
+                <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
+                   <On Platform="iOS" Value="GE_SS_Two_Light" />
+            </OnPlatform>
+
+               <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Bold">
+                <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+                   <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            </OnPlatform>
+
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
                 <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
 

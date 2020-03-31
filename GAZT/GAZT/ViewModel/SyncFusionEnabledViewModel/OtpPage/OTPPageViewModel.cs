@@ -921,7 +921,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-                str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+                if (currentAttempts == 1)
+                {
+                    str = AppResources.InvalidOTP;
+
+                }
+                else if (currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts))
+                {
+                    str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
+                }
+                else
+                {
+                    str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+                }
             }
             return str;
         }

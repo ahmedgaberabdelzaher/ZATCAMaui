@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -18,10 +19,11 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxEvasionReportListPageView;
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.CertificateLst.SelectedItem = null;
             this.CertificateLstClosed.SelectedItem = null;
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
             SetLTR();
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
@@ -32,14 +34,14 @@ namespace GAZT.Views.NewViews
                 if (e.SelectedItem == null)
                 {
                     return;
-                } ((ListView)sender).SelectedItem = null;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
             CertificateLstClosed.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {
                     return;
-                } ((ListView)sender).SelectedItem = null;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
 
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
@@ -91,7 +93,7 @@ namespace GAZT.Views.NewViews
 
         private void CertificateLstClosed_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-             ((ListView)sender).SelectedItem = null;
+             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
 
             return;
         }
@@ -105,7 +107,7 @@ namespace GAZT.Views.NewViews
 
         private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
 
             return;
         }
