@@ -27,7 +27,7 @@ namespace GAZTeServicesApp.Views.LoginPage
         /// </summary>
         public SFLoginPageView(String strNavigateToThisService)
         {
-            SetLTRDirection();
+          //  SetLTRDirection();
             InitializeComponent();
             
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;

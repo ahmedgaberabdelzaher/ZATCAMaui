@@ -176,6 +176,7 @@ namespace GAZT.Views.NewViews
             if (string.IsNullOrEmpty(viewModel.TxtName) )
             {
                 FrmName.HasError = true;
+
                 IsNextValid = false;
             }
             else
@@ -888,10 +889,12 @@ namespace GAZT.Views.NewViews
                                     if (EntryIDNumber.Text.Substring(0, 1) != "1")
                                     {
                                         FrmIDNumber.HasError = true;
-                                    }
+                                    EntryName.Text = string.Empty;
+                                }
                                     else
                                     {
                                         FrmIDNumber.HasError = false;
+                                   
                                         if (EntryIDNumber.Text.Length == 10)
                                         {
                                             try
@@ -910,12 +913,14 @@ namespace GAZT.Views.NewViews
                                                     if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                                     {
                                                         FrmIDNumber.HasError = true;
+                                                        EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                         //  viewModel.TxtIDNumber = string.Empty;
                                                     }
                                                     else
                                                     {
                                                         FrmIDNumber.HasError = false;
+                                                       
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                     }
                                                 }
@@ -923,6 +928,7 @@ namespace GAZT.Views.NewViews
                                                 {
                                                     viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                     FrmIDNumber.HasError = false;
+                                                  
                                                     EntryName.IsEnabled = false;
                                                 }
                                             }
@@ -941,6 +947,7 @@ namespace GAZT.Views.NewViews
                                                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                                                     {
                                                         FrmIDNumber.HasError = true;
+                                                        EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                                         // viewModel.TxtIDNumber = string.Empty;
                                                     }
@@ -969,7 +976,8 @@ namespace GAZT.Views.NewViews
                                     if (EntryIDNumber.Text.Substring(0, 1) != "2")
                                     {
                                         FrmIDNumber.HasError = true;
-                                    }
+                                    EntryName.Text = string.Empty;
+                                }
                                     else
                                     {
                                         FrmIDNumber.HasError = false;
@@ -991,6 +999,7 @@ namespace GAZT.Views.NewViews
                                                     if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                                     {
                                                         FrmIDNumber.HasError = true;
+                                                        EntryName.Text = string.Empty;
 
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                         //  viewModel.TxtIDNumber = string.Empty;
@@ -1024,6 +1033,7 @@ namespace GAZT.Views.NewViews
                                                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                                                     {
                                                         FrmIDNumber.HasError = true;
+                                                        EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                                         // viewModel.TxtIDNumber = string.Empty;
                                                     }
@@ -1540,7 +1550,7 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
-                       
+                        EntryName.Text = string.Empty;
                         //ZZPleaseenteravalidNationalID
 
                     }
@@ -1572,6 +1582,7 @@ namespace GAZT.Views.NewViews
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             FrmIDNumber.HasError = true;
+                            EntryName.Text = string.Empty;
 
                         }
                         else
@@ -1605,6 +1616,7 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
+                        EntryName.Text = string.Empty;
 
                     }
                     else 
@@ -1635,7 +1647,8 @@ namespace GAZT.Views.NewViews
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             FrmIDNumber.HasError = true;
-                           
+                            EntryName.Text = string.Empty;
+
                         }
                         else
                         {
@@ -1664,9 +1677,10 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmIDNumber.HasError = true;
-                        
+                        EntryName.Text = string.Empty;
 
-                        }
+
+                    }
                     else if (!(EntryIDNumber.Text.Length <=15 && EntryIDNumber.Text.Length >= 7))
                     {
                         popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
@@ -1687,7 +1701,8 @@ namespace GAZT.Views.NewViews
 
 
                         FrmIDNumber.HasError = true;
-                       // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        EntryName.Text = string.Empty;
+                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
 
 
                     }
@@ -1752,6 +1767,7 @@ namespace GAZT.Views.NewViews
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -1779,6 +1795,7 @@ namespace GAZT.Views.NewViews
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -1815,6 +1832,7 @@ namespace GAZT.Views.NewViews
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -1841,6 +1859,7 @@ namespace GAZT.Views.NewViews
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
