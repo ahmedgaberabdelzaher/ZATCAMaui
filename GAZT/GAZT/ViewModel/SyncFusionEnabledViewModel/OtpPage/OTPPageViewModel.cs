@@ -23,6 +23,7 @@ namespace GAZT.ViewModel.NewViewModel
         public bool IsComingFromLogIn { get; set; }
         public ComingToOTPVerificationScreenFrom IsComingFrom { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
         public bool StopTimer = false;
@@ -359,6 +360,12 @@ namespace GAZT.ViewModel.NewViewModel
                 await SendOTPToRegisterMobileNumberToLogIn();
             });
 
+            BackButtonClicked = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+
 
         }
         /// <summary>
@@ -579,7 +586,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             EnteredOTP = string.Empty;
         }
-        
+       
         public void OnPageLoad()
         {
             try

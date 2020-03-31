@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -25,7 +26,8 @@ namespace GAZT.Views.NewViews
         public ChangePasswordPageView(ComingToOTPVerificationScreenFrom navigateTo)
         {
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.ChangePasswordPageView;
             ChangeAeroIcon();
             SetLTR();
@@ -66,7 +68,7 @@ namespace GAZT.Views.NewViews
             viewModel.PasswordVisibilityForRetypePassword =true;
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
-                Page pg = Navigation.NavigationStack[index];
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[index];
                 if (pg.GetType() == typeof(OTPPageView))
                 {
                     Navigation.RemovePage(pg);

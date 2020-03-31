@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,12 +24,13 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.ChangeEmailPageView;
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             
 
         }
