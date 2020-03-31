@@ -6,6 +6,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -24,6 +25,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         //private string password;
         //private string email;
         public int CurrentAttempt = 0;
+        public ICommand BackButtonClicked { get; set; }
         #endregion
 
         #region ConstructorF
@@ -90,6 +92,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
 
 
             });
+
+          
+            this.BackButtonClicked = new Command(this.BackButtonClick);
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
@@ -753,6 +758,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         private void SocialLoggedIn(object obj)
         {
             // Do something
+        }
+
+        public void BackButtonClick()
+        {
+            _navigationService.GoBack();
         }
 
         #endregion

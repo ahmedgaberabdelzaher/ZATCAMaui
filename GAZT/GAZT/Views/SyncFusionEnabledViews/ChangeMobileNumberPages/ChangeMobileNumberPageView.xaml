@@ -86,7 +86,7 @@
                             <ColumnDefinition Width="14*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="{x:Static local:AppResources.ChangeMobileNumber}" TextColor="#ffffff" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <Label Text="{x:Static local:AppResources.ChangeMobileNumber}" TextColor="#ffffff" Margin="0,0,0,3" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
 
 
                         <inputLayout:SfTextInputLayout x:Name="LayoutCurrentMobile"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"    Margin="10,-6,10,-6"

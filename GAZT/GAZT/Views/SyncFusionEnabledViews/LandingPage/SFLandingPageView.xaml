@@ -174,6 +174,10 @@
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
                             <syncfusionCalendar:MonthViewSettings 
+                                DayCellFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                DayHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                               HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                
                                     CurrentMonthBackgroundColor="Transparent" 
                                     DayHeaderBackgroundColor="Transparent" 
                                     DisabledBackgroundColor="Transparent"
@@ -193,7 +197,7 @@
                                 <syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
                                     <DataTemplate>
                                         <StackLayout VerticalOptions="CenterAndExpand">
-                                            <Label TextColor="Red" Text="{Binding Subject}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro"> 
+                                            <Label TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro"> 
                                             </Label>
                                             <!--<Button BackgroundColor="DarkGreen" Text="COPY" TextColor="White" />-->
                                         </StackLayout>

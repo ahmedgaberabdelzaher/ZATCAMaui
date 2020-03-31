@@ -32,6 +32,7 @@ namespace GAZT.Views.NewViews
 
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            ChangeAeroIcon();
             viewModel = App.Locator.OTPPageView;
             viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;
 
@@ -235,11 +236,25 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
         #endregion
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeAeroIcon();
             App.IsOTPiew = true;
             viewModel.TimerStart(viewModel.numberOfSeconds);
             viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
