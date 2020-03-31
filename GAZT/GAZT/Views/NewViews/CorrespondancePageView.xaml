@@ -10,6 +10,8 @@
              xmlns:local="clr-namespace:GAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondancePageView"
              NavigationPage.HasNavigationBar="False">
@@ -98,7 +100,7 @@
 
                 </StackLayout>
 
-                <Frame Grid.Row="1"  Margin="10,5,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleForEntry}"  >
+                <!--<Frame Grid.Row="1"  Margin="10,5,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0"   Style="{StaticResource GAZTFrameStyleForEntry}"  >
 
                 </Frame>
 
@@ -108,7 +110,52 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
+
+
+                <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
+    
+    ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                    <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatus}" FontSize="Small">
+                    </local:BorderlessEntry>
+                </inputLayout:SfTextInputLayout>
+                <local:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" >
+                </local:CustomButton>
+
+                <syncfusion:SfPicker 
+                   
+                    HeaderHeight="40"
+                    ShowHeader="true"
+                   
+                    ShowColumnHeader="False"
+                x:Name="FPicker"
+                   BackgroundColor="#EAF7CC"
+                   
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                    
+                    HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                    
+                    UnSelectedItemTextColor="#006450"
+                             SelectedItemFontSize="14"     
+                   ItemHeight="40"
+                    
+                 SelectedIndex="{Binding SetSelectedIndex}"  IsEnabled="true" SelectedItem="{Binding SelectedFilter,Mode=TwoWay}" ItemsSource="{Binding CorresFilter}" DisplayMemberPath="Filter" Grid.Row="1" Grid.Column="0"
+                    PickerHeight="280"
+                    PickerWidth="270"
+                                    OkButtonClicked="BPicker_OkButtonClicked"
+                    ShowFooter="False" FooterHeight="46">
+                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+
+                    <syncfusion:SfPicker.Behaviors>
+                        <custom:SfPickerBehavior />
+                    </syncfusion:SfPicker.Behaviors>
+                </syncfusion:SfPicker>
+
+
 
                 <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="2" IsVisible="{Binding IsZakatVisible}">
 

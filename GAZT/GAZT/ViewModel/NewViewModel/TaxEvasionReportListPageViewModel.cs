@@ -260,6 +260,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 SetNoDataLabelVisibility = true;
                 _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts); }
+            ////_dialogService.ShowMessage(newrm, AppResources.Submitted);
+
+            //var _navigation = Application.Current.MainPage.Navigation;
+           
+            ////Go back 
+            //_navigation.PopAsync();
+            //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
         }
         private void SetNoDataLabelViewVisibility()
         {

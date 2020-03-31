@@ -133,5 +133,15 @@ namespace GAZT.Views.NewViews
             BPicker.Focus();
            
         }
+
+        private void BPickerButton_Clicked(object sender, EventArgs e)
+        {
+            BPicker.IsOpen = true;
+        }
+
+        private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

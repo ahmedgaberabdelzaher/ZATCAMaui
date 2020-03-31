@@ -2352,7 +2352,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number VAT Invalid: &quot;.
+        ///   Looks up a localized string similar to Invalid VAT Number.
         /// </summary>
         public static string ZInvalidVatNumber {
             get {
