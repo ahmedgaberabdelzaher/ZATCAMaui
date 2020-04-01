@@ -592,7 +592,7 @@
     <value>مقدمة</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>إقرار ضريبة القيمة المضافة</value>
+    <value>الاقرارات الضريبية</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المدفوعة</value>
