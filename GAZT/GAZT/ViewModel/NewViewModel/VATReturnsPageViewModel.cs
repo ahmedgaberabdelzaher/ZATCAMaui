@@ -26,6 +26,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand GoBackClick { get; set; }
         public ICommand OnStepButtonClicked { get; set; }
         public ICommand onInstructionsClicked { get; set; }
         public ICommand onTaxPayerDetailsClicked { get; set; }
@@ -2050,7 +2051,12 @@ namespace GAZT.ViewModel.NewViewModel
                 }
 
             });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
             onStandardRatedSalesVatAmountTapped = new Xamarin.Forms.Command(() =>
             {
                 // InstrunctionClicked();
@@ -2905,6 +2911,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsSwichButtonEnableToTap = false;
                         IsEnableIBAN = false;
                         IsEnableCheckedRefund = false;
                         IsEnableIBANType = false;

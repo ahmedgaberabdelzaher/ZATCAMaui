@@ -22,7 +22,14 @@ namespace GAZT.Droid.CustomRenderer
   }
 		protected override void OnLayout(bool changed, int l, int t, int r, int b)
 		{
-			base.OnLayout(changed, l, t, r, b);
+            try
+            {
+                base.OnLayout(changed, l, t, r, b);
+            }
+            catch(Exception ex)
+            {
+
+            }
 			//var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 			//toolbar.LayoutDirection = LayoutDirection.Rtl;
 

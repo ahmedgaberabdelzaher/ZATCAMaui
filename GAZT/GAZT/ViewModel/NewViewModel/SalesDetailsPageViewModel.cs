@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         //  public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         public ICommand OnAcceptReturnButtonClicked { get; set; }
         public ICommand OnAmendReturnButtonClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
@@ -389,7 +390,12 @@ namespace GAZT.ViewModel.NewViewModel
                     CheckBoxStatus = false;
                
             });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
             OnAmendReturnButtonClicked = new Command(async () =>
             {
                 try

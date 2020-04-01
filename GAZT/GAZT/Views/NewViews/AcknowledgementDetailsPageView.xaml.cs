@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
         {
             InitializeComponent();
              NavigationPage.SetBackButtonTitle(this, "");
+         
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
@@ -116,7 +117,7 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+   
         public void IsCheckedEnable()
         {
             if (App.ICRStatus == "E0006")

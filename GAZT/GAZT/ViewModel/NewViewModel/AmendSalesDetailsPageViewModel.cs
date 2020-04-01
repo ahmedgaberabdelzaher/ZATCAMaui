@@ -22,6 +22,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public static SalesDetails SelectedSalesDetails = new SalesDetails();
         //  public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand OnZakatReturnDataUpdateClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
@@ -220,7 +221,12 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
 
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
             OnZakatReturnDataUpdateClicked = new Xamarin.Forms.Command(async () =>
             {
                 try

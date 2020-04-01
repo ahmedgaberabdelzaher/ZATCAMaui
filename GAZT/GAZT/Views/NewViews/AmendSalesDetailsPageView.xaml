@@ -8,9 +8,43 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
              Title="{x:Static local:AppResources.ZAmendSalesDetails}"
+             NavigationPage.HasNavigationBar="False"
              FlowDirection="RightToLeft">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZAmendSalesDetails}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid >
@@ -24,7 +58,7 @@
 
                 </Grid.ColumnDefinitions>
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <ScrollView BackgroundColor="White" Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
                         <Grid >
                             <Grid.RowDefinitions>
@@ -145,7 +179,7 @@
                             <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2">
-                                <local:CustomLabel Text="{x:Static local:AppResources.ZZChooseonlyfilewithextensionForZAKAT}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.ZZChooseonlyfilewithextensionForZAKAT}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                             </StackLayout>
 
                             <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>

@@ -648,7 +648,10 @@ namespace GAZT.Views.NewViews
 
         }
         public void clearFields()
+            
         {
+            viewModel.UploadedDocumentsListObj.Clear();
+            Attachment_Entry.Text = string.Empty;
             FacilityType_entry.Text = string.Empty;
             Date_entry.Text = string.Empty;
             City_entry.Text = string.Empty;Region_entry.Text = string.Empty;
