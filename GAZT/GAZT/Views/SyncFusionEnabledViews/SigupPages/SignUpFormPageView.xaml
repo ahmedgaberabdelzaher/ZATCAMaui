@@ -352,6 +352,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

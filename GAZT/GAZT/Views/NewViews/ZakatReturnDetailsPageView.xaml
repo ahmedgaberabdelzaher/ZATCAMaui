@@ -26,7 +26,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZakatReturnDetails}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -58,7 +58,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100*"/>
                     </Grid.ColumnDefinitions>
-                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
                 <Grid BindingContext="{Binding ZakatReturnDetail}" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>

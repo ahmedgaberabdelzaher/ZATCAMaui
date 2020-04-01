@@ -158,7 +158,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
             });
-
+         
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
                 try

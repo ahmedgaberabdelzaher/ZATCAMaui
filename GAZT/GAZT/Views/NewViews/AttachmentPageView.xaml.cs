@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
+            ChangeAeroIcon();
             try
             {
                 viewModel = App.Locator.AttachmentPageView;
@@ -291,6 +292,17 @@ namespace GAZT.Views.NewViews
             catch (Exception ex)
             {
 
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 

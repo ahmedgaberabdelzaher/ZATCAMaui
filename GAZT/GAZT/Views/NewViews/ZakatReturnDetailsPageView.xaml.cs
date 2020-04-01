@@ -33,13 +33,14 @@ namespace GAZT.Views.NewViews
             SetLTR();
             this.BindingContext = viewModel;
             NavigationPage.SetBackButtonTitle(this, "");
-
+            ChangeAeroIcon();
 
         }
 
         #endregion
 
         #region Method
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

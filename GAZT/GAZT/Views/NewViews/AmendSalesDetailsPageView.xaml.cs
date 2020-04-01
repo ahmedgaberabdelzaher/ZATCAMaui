@@ -38,7 +38,7 @@ namespace GAZT.Views.NewViews
                 SetLTR();
                 NavigationPage.SetBackButtonTitle(this, "");
                 SetDynamicBehaviour();
-
+                ChangeAeroIcon();
 
             }
             catch (Exception ex)
@@ -126,6 +126,16 @@ namespace GAZT.Views.NewViews
                 NewValue.TextColor = Color.Black;
             }
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
     }
 }

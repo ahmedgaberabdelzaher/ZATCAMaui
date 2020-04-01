@@ -29,6 +29,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
+            ChangeAeroIcon();
             try
             {
                 viewModel = App.Locator.AddNotePageView;
@@ -65,6 +66,19 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)

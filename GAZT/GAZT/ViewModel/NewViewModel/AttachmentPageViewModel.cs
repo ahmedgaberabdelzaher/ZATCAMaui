@@ -24,6 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
@@ -204,7 +205,18 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+
+
+            });
 
 
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
