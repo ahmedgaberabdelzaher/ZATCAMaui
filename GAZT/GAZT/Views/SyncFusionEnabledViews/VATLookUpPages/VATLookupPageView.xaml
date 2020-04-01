@@ -119,7 +119,7 @@
                             </custom:CustomButton>-->
                            
                             <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0" Margin="10,-6,10,0" 
-    Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner"
+    Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
                                 <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
@@ -129,6 +129,23 @@
 
                                     </Entry.Behaviors>
                                 </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                    <inputLayout:LabelStyle FontSize="15">
+                                    </inputLayout:LabelStyle>
+                                </inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Label IsEnabled="{Binding IsTooltipEnableVisible}"
+                                           IsVisible="{Binding IsTooltipEnableVisible}"
+                       
+                        Margin="0,0,0,2"
+                        Style="{StaticResource IconLabelStyleVAT}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" >
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
 
 

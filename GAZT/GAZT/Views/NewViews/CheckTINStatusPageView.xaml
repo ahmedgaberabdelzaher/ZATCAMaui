@@ -71,7 +71,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" FontSize="Small" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -79,7 +79,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small" IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -87,7 +87,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
                                 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>

@@ -25,6 +25,19 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand OnHomeButtonClicked { get; set; }
 
+        private bool _isTooltipEnableVisible = false;
+        public bool IsTooltipEnableVisible
+        {
+            get
+            {
+                return _isTooltipEnableVisible;
+            }
+            set
+            {
+                _isTooltipEnableVisible = value;
+                RaisePropertyChanged("IsTooltipEnableVisible");
+            }
+        }
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -518,6 +531,7 @@ namespace GAZT.ViewModel.NewViewModel
             if (SelectedParameterType != null)
             {
                 TxtSearchParameter = SelectedParameterType.ParameterType;
+                IsTooltipEnableVisible = true;
                 SetPlaceholderText();
             }
         }
