@@ -1,4 +1,5 @@
 using Foundation;
+using Microsoft.AppCenter.Distribute;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfCalendar.XForms.iOS;
