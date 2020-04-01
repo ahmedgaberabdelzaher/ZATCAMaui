@@ -67,7 +67,7 @@
     Hint="{x:Static local:AppResources.OldValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry  Grid.Row="2" Placeholder="{Binding OldValue}" IsEnabled="False"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                <custom:GAZTBorderlessEntry  Grid.Row="2" IsReadOnly="True" Text="{Binding OldValue}"  TextColor="#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom:AlphaNumericValidatorBehaviour/>
                                     </custom:GAZTBorderlessEntry.Behaviors>

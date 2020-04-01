@@ -9,49 +9,14 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
-             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              mc:Ignorable="d"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
-             x:Class="GAZT.Views.NewViews.SignUpFormPageView"
-             NavigationPage.HasNavigationBar="False">
+             x:Class="GAZT.Views.NewViews.SignUpFormPageView">
+   
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converter:BooleanToColorConverter x:Key="ColorConverter" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0">
-                <controls:TitleView  Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
-                    <controls:TitleView.LeadingView>
-                        <buttons:SfButton
-                            x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.GoBackClick}"
-                            CommandParameter="{x:Reference backButton}"
-                            CornerRadius="4"
-                            TextColor="#006450"
-                            Style="{StaticResource IconButtonStyle}"
-                             Text="{DynamicResource StyleReverseBack}"
-                            
-                             />
-
-                    </controls:TitleView.LeadingView>
-
-                </controls:TitleView>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
     <ContentPage.Content>
-
-        <StackLayout>
-             <!--ZZZRequired-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,0" >
+        <!--ZZZRequired-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
                 <RowDefinition Height="10*" />
@@ -59,8 +24,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="15">
                         <Grid.RowDefinitions>
@@ -97,7 +62,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <inputLayout:SfTextInputLayout  HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZTIN}"  
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -126,23 +91,18 @@
                         <syncfusion:SfPicker x:Name="DDlIDType"
                     HeaderHeight="40"
                     ShowHeader="true"
-                                                           BackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
-                    BorderColor="Black"
                     HeaderText="{x:Static local:AppResources.ZZIDType}"
-                    ShowColumnHeader="False"
-                   
+                    ShowColumnHeader="True"
+                    SelectedIndex="{Binding IDTypeIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                 
+                                               
                    ItemHeight="40"
-                                             SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}" ItemsSource="{Binding SignUpUsingList}" DisplayMemberPath="SUType" SelectedIndex="{Binding IDTypeIndex}"
-                      SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                     DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                                            
-                    ShowFooter="False" FooterHeight="46" >
+                                              SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"
+                    ShowFooter="True" FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -282,25 +242,19 @@
                                 <syncfusion:SfPicker 
                    
                     HeaderHeight="40"
-                    ShowHeader="True"
-                                     BackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
-                    BorderColor="Black"
-                    
-                    UnSelectedItemTextColor="#006450"
+                    ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}"
-                    ShowColumnHeader="False"
+                    ShowColumnHeader="True"
                 x:Name="ddlLIssuedBy"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                              SelectedItemFontSize="10"     
                    ItemHeight="40"
-                 ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50" SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                 ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="280"
                     PickerWidth="270"
-                                  
-                    ShowFooter="False" FooterHeight="46">
+                                    OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
+                    ShowFooter="True" FooterHeight="46">
                                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
@@ -323,24 +277,18 @@
                    
                     HeaderHeight="40"
                     ShowHeader="true"
-                                     BackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
-                    BorderColor="Black"
-                    
-                    UnSelectedItemTextColor="#006450"
                     HeaderText="{x:Static local:AppResources.ZZIssuingCity}"
-                    ShowColumnHeader="False"
+                    ShowColumnHeader="True"
                 x:Name="ddlLIssuedByCity"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                    SelectedItem="{Binding SelectCityList,Mode=TwoWay}"           
+                                               
                    ItemHeight="40"
                    ItemsSource="{Binding CityList}" DisplayMemberPath="CityName"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="280"
                     PickerWidth="270"
-                                   
-                    ShowFooter="False" FooterHeight="46">
+                                    OkButtonClicked="ddlLIssuedByCity_OkButtonClicked"
+                    ShowFooter="True" FooterHeight="46">
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
@@ -383,8 +331,7 @@
                 </Grid>
             </ScrollView>
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="0,0,0,-15">
-                <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
-
+                <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#c49b2d" BackgroundColor="#005e4b" />
             </StackLayout>
             <Grid  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -397,6 +344,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
