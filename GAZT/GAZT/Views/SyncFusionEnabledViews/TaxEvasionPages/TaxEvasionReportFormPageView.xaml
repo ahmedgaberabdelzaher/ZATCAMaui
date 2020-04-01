@@ -329,7 +329,7 @@ xmlns:custom="clr-namespace:GAZT"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
                         <!--tin have-->
-                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
+                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
                         <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTIN">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
                                 <Grid.RowDefinitions>

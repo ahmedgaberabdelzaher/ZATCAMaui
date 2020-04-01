@@ -2418,12 +2418,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_Check_Golden_TES.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land\sf_LoginBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xhdpi\sf_LoginBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_LoginBackground.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2829,9 +2823,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_add1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xhdpi\ic_add1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-ldpi\ic_add1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2839,9 +2830,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_add1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xhdpi\ic_add.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\ic_add.png" />
@@ -2884,6 +2872,10 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\sf_Sadad_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable-land-xhdpi\" />
+    <Folder Include="Resources\drawable-land\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

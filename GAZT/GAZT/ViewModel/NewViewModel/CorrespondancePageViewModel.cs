@@ -615,6 +615,8 @@ namespace GAZT.ViewModel.NewViewModel
                         childZakat.Title = itemZakat.Descript;
                         childZakat.RefNumber = itemZakat.LetterNum;
                         childZakat.Cokey = itemZakat.Cokey;
+                        childZakat.Coitm = itemZakat.Coitm;
+
                         if (itemZakat.Copri != null)
                         {
                             childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
@@ -628,6 +630,7 @@ namespace GAZT.ViewModel.NewViewModel
                         childZakat.Gpart = itemZakat.Gpart;
                         childZakat.Begdaz = itemZakat.Begdaz;
                         childZakat.Enddaz = itemZakat.Enddaz;
+                        
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Coidt != null)
                         {
@@ -652,11 +655,16 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
 
-                                //StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                //dd MMMM yyyy hh:mm:ss tt
-                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                time= Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
 
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                //time= Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childZakat.Coitm != null)
+                                {
+                                    time = childZakat.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
+                                //16H36M15S
 
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = StartDate + "  " + time;
@@ -669,6 +677,13 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childZakat.Coitm != null)
+                                {
+                                    time = childZakat.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
+
                                 StartDate = StartDate + "  " + time;
 
 
@@ -708,6 +723,7 @@ namespace GAZT.ViewModel.NewViewModel
                         childVAT.Title = itemVAT.Descript;
                         childVAT.RefNumber = itemVAT.LetterNum;
                         childVAT.Cokey = itemVAT.Cokey;
+                        childVAT.Coitm = itemVAT.Coitm;
                         if (itemVAT.Copri != null)
                         {
                             childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
@@ -744,7 +760,13 @@ namespace GAZT.ViewModel.NewViewModel
                             {
 
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                //time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childVAT.Coitm != null)
+                                {
+                                    time = childVAT.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = StartDate + "  " + time;
                             }
@@ -754,7 +776,13 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                //time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childVAT.Coitm != null)
+                                {
+                                    time = childVAT.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
                                 StartDate = StartDate + "  " + time;
                             }
                         }
@@ -777,6 +805,7 @@ namespace GAZT.ViewModel.NewViewModel
                         childET.Title = itemET.Descript;
                         childET.RefNumber = itemET.LetterNum;
                         childET.Cokey = itemET.Cokey;
+                        childET.Coitm = itemET.Coitm;
                         if (itemET.Copri != null)
                         {
                             childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
@@ -813,7 +842,12 @@ namespace GAZT.ViewModel.NewViewModel
                             {
 
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childET.Coitm != null)
+                                {
+                                    time = childET.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
 
                                 StartDate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = StartDate + time;
@@ -825,7 +859,12 @@ namespace GAZT.ViewModel.NewViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childET.Coitm != null)
+                                {
+                                    time = childET.Coitm;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+
+                                }
                                 StartDate = StartDate + time;
                             }
 

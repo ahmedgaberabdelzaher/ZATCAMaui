@@ -22,7 +22,7 @@ namespace GAZT.Models
         public DateTime StartDate { get; set; }
 
         public string Cotype { get; set; }
-
+        public string Coitm { get; set; }
         public string Gpart { get; set; }
         public string Vkont { get; set; }
 
