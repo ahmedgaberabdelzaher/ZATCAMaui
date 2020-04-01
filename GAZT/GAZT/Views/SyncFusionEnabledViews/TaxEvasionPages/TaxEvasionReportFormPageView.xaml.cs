@@ -39,7 +39,6 @@ namespace GAZT.Views.NewViews
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields();
-                SetLTR();
             viewModel.CreateCompanyTypeList();
             viewModel.onPageLoad();
             viewModel.selectedtaxEList = SelectedTaxEvasionListItem;
@@ -905,6 +904,17 @@ namespace GAZT.Views.NewViews
                 FrmDBO.HasError = false;
             }
 
+        }
+
+        private void DpDbo_Closed(object sender, EventArgs e)
+        {
+              var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+
+            string month = selectedItem[0].ToString();
+            string day = selectedItem[1].ToString();
+            string year = selectedItem[2].ToString();
+
+            viewModel.DatePick = day + "/" + month + "/" + year;
         }
     }
 }
