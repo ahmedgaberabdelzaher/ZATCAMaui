@@ -86,7 +86,7 @@
             
                 <WebView x:Name="TCWebView" HeightRequest="860" WidthRequest="1000" />
             </ScrollView>
-            <StackLayout HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <StackLayout BackgroundColor="White" HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                 <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
 
                 <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
@@ -95,7 +95,7 @@
                 <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
 
                 </StackLayout>
-            <StackLayout HeightRequest="56" WidthRequest="1000">
+            <StackLayout BackgroundColor="White" HeightRequest="56" WidthRequest="1000">
                 <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
                 <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
                 <buttons:SfButton
