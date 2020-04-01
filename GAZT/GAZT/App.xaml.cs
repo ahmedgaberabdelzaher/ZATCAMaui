@@ -301,10 +301,20 @@ namespace GAZT
             // Handle when your app starts
             AppCenter.Start("ios=e91bd801-4e1c-4f62-8075-4732d2a1240a;" +
                   "uwp={Your UWP App secret here};" +
-                  "android={c4abea0b-7d25-4680-9354-b0c3e4b2fb7a}",
+                  "android=c4abea0b-7d25-4680-9354-b0c3e4b2fb7a",
                   typeof(Analytics), typeof(Crashes), typeof(Distribute));
 
-            Crashes.GenerateTestCrash();
+         
+
+            try
+            {
+                Crashes.GenerateTestCrash();
+            }
+            catch (Exception exception)
+            {
+                Crashes.TrackError(exception);
+            }
+
         }
 
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
