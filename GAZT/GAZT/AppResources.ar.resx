@@ -2746,7 +2746,7 @@
     <value>من</value>
   </data>
   <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
-    <value>Proceed to indivisual Signup</value>
+    <value>الانتقال الى تسجيل الأفراد</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZProceedtoindividualSignup" xml:space="preserve">
@@ -2778,15 +2778,15 @@
     <value>شروط الخدمة</value>
   </data>
   <data name="ZZZDontHaveAccount" xml:space="preserve">
-    <value>Don't have an account?</value>
+    <value>لا يوجد لديك حساب</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZLoginLabel" xml:space="preserve">
-    <value>Please Enter Your Credentials to Login</value>
+    <value>الرجاء إدخال أسم المستخدم وكلمة السر للدخول</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZWelcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>أهلا</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZPleaseEnterValidId" xml:space="preserve">
@@ -2794,7 +2794,7 @@
     <comment>signup</comment>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>تم النسخ</value>
   </data>
   <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
     <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يبدأ بـ 0</value>
@@ -2835,7 +2835,7 @@
     <value>لا توجد بيانات</value>
   </data>
   <data name="ZZZRequired" xml:space="preserve">
-    <value>Required *</value>
+    <value>مطلوب*</value>
     <comment>Mendatory fields </comment>
   </data>
   <data name="MobileNumberIsMissingForEnteredTIN" xml:space="preserve">
