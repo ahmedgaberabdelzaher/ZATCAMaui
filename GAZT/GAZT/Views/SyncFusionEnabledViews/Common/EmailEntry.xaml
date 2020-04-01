@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <inputLayout:SfTextInputLayout   Margin="3,-6,3,-6" 
+                <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >

@@ -23,10 +23,22 @@ namespace GAZT.Views.NewViews
                 viewModel = App.Locator.ZakatBillDetailsPageView;
                 this.BindingContext = viewModel;
                 NavigationPage.SetBackButtonTitle(this, "");
+                ChangeAeroIcon();
             }
             catch(Exception ex)
             {
 
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
     }

@@ -79,9 +79,9 @@ namespace GAZT.Views.NewViews
                 await viewModel.onPageLoad();
                 if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0 && viewModel.PreviousSelectedICRStatus!=null)
                 {
-                    int indexofPreviousSelectedFilter = viewModel.ICRStatusList.FindIndex(x => x.Estat == viewModel.PreviousSelectedICRStatus.Estat);
+                    //int indexofPreviousSelectedFilter = viewModel.ICRStatusList.FindIndex(x => x.Estat == viewModel.PreviousSelectedICRStatus.Estat);
                     viewModel.SelectedICRStatus = viewModel.PreviousSelectedICRStatus;
-                    BPicker.SelectedIndex = indexofPreviousSelectedFilter;
+                   // BPicker.SelectedIndex = indexofPreviousSelectedFilter;
                 }
             }
             catch (Exception e)

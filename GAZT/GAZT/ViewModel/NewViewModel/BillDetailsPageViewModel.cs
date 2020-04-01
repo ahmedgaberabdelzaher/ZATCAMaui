@@ -25,7 +25,8 @@ namespace GAZT.ViewModel.NewViewModel
         string Cokey = "";
         string Cotyp = "";
         public bool IsrefreshEnabled = false;
-        
+        public ICommand GoBackClick { get; set; }
+
         #endregion
 
         #region Property
@@ -150,7 +151,12 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
 
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {

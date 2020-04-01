@@ -20,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBillsButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
         string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
@@ -151,7 +152,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                
             });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
+         
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
                 try

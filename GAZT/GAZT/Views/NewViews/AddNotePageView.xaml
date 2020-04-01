@@ -7,10 +7,43 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:local1="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             
-             x:Class="GAZT.Views.NewViews.AddNotePageView">
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="GAZT.Views.NewViews.AddNotePageView"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\SyncFusionEnabledViews\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title=""  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" IsVisible="{Binding IsVisibleNotes}" Grid.Column="0" Grid.ColumnSpan="8" VerticalOptions="FillAndExpand"  >
+        <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" IsVisible="{Binding IsVisibleNotes}" Grid.Column="0" Grid.ColumnSpan="8" VerticalOptions="FillAndExpand"  >
             <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="White" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*" />

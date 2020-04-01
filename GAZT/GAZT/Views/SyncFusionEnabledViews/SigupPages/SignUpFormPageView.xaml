@@ -9,14 +9,48 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              mc:Ignorable="d"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
-             x:Class="GAZT.Views.NewViews.SignUpFormPageView">
-   
+             x:Class="GAZT.Views.NewViews.SignUpFormPageView"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <!--ZZZRequired-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+
+        <StackLayout BackgroundColor="White">
+             <!--ZZZRequired-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,10" BackgroundColor="White" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
                 <RowDefinition Height="10*" />
@@ -24,7 +58,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
+            <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White" >
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="15">
@@ -50,7 +84,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="Start" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
+                        <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="StartAndExpand" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
                         <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                         </Label>
                         <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
@@ -134,18 +168,24 @@
                         <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 
-								BorderColor="Gray"
-								ShowColumnHeader="true"
+                              BackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+								
+								ShowColumnHeader="False"
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
 								Grid.Row="6" Grid.Column="0"    Grid.ColumnSpan="2"
 								x:Name="DpDbo"
+                           SelectionChanged="DpDbo_SelectionChanged"
                             
+                            Closed="DpDbo_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
-								ItemHeight="45" ShowFooter="True"  >
+								ItemHeight="45" ShowFooter="False"  >
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
@@ -176,8 +216,8 @@
                             </Label.FormattedText>
                         </Label>
                         <buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Vertical"  Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" >
-                            <buttons:SfRadioButton x:Name="radioButton" HorizontalOptions="Start" Text="{x:Static local:AppResources.ZZCRNumber}" IsChecked="{Binding IsCRChecked}"  UncheckedColor="#B1B1B1"/>
-                            <buttons:SfRadioButton x:Name="radioButton2" Text="{x:Static local:AppResources.ZZLicenseNumber}" IsChecked="{Binding IsLNChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="Start"/>
+                            <buttons:SfRadioButton x:Name="radioButton" HorizontalOptions="StartAndExpand" Text="{x:Static local:AppResources.ZZCRNumber}" IsChecked="{Binding IsCRChecked}"  UncheckedColor="#B1B1B1"/>
+                            <buttons:SfRadioButton x:Name="radioButton2" Text="{x:Static local:AppResources.ZZLicenseNumber}" IsChecked="{Binding IsLNChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="StartAndExpand"/>
                         </buttons:SfRadioGroup>
 
 
@@ -331,7 +371,7 @@
                 </Grid>
             </ScrollView>
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="0,0,0,-15">
-                <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#c49b2d" BackgroundColor="#005e4b" />
+                    <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
             </StackLayout>
             <Grid  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -344,6 +384,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>
