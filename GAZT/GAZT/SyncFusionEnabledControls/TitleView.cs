@@ -64,15 +64,31 @@ namespace GAZTeServicesApp.Controls
             this.ColumnSpacing = 2;
             this.RowSpacing = 8;
             this.Padding = new Thickness(0, 8, 0, 0);
-
-            this.ColumnDefinitions = new ColumnDefinitionCollection
+            if (Device.RuntimePlatform == Device.Android)
             {
+                this.ColumnDefinitions = new ColumnDefinitionCollection
+            {
+
                 new ColumnDefinition { Width = 8 },
                 new ColumnDefinition(),
-                new ColumnDefinition{ Width = 260 },
+                new ColumnDefinition { Width = 260 },
                 new ColumnDefinition(),
                 new ColumnDefinition { Width = 8 },
-            };
+
+                };
+            }
+            else {
+                this.ColumnDefinitions = new ColumnDefinitionCollection
+            {
+
+                new ColumnDefinition { Width = 8 },
+                new ColumnDefinition(),
+                new ColumnDefinition { Width = 200 },
+                new ColumnDefinition(),
+                new ColumnDefinition { Width = 8 },
+
+                };
+            }
 
             this.RowDefinitions = new RowDefinitionCollection
             {

@@ -2418,12 +2418,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_Check_Golden_TES.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_LoginBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxxhdpi\sf_LoginBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-ldpi\sf_ic_Dashboard_Logo_White.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2814,9 +2808,6 @@
     <AndroidAsset Include="Assets\TermsAndConditionsAR.html" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxxhdpi\ic_add1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_add1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2826,13 +2817,7 @@
     <AndroidResource Include="Resources\drawable-ldpi\ic_add1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\ic_add1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_add1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\ic_add.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\drawable\date.png" />
@@ -2876,6 +2861,8 @@
   <ItemGroup>
     <Folder Include="Resources\drawable-land-xhdpi\" />
     <Folder Include="Resources\drawable-land\" />
+    <Folder Include="Resources\drawable-land-xxhdpi\" />
+    <Folder Include="Resources\drawable-land-xxxhdpi\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
