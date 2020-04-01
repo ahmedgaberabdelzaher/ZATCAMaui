@@ -1,23 +1,19 @@
-using Syncfusion.XForms.iOS.Cards;
-
-using System;
-using System.Net;
-using DeviceOrientation.Forms.Plugin.iOS;
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfCalendar.XForms.iOS;
 using Syncfusion.SfPicker.XForms.iOS;
+using Syncfusion.SfRotator.iOS;
+using Syncfusion.XForms.Cards;
+using Syncfusion.XForms.Graphics;
+using Syncfusion.XForms.iOS.Cards;
+using Syncfusion.XForms.iOS.EffectsView;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Syncfusion.XForms.Pickers.iOS;
+using System.Net;
 using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
-using Syncfusion.SfBusyIndicator.XForms.iOS;
-using Syncfusion.SfRotator.iOS;
-using Syncfusion.ListView.XForms;
-using Syncfusion.XForms.Cards;
-using Syncfusion.XForms.Graphics;
-using Syncfusion.ListView.XForms.iOS;
-using Syncfusion.XForms.iOS.EffectsView;
-using Syncfusion.SfCalendar.XForms.iOS;
 
 namespace GAZT.iOS
 {
@@ -36,6 +32,7 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+      
             ServicePointManager
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
@@ -61,12 +58,12 @@ namespace GAZT.iOS
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.
             new SfCardView();
             Syncfusion.XForms.iOS.Graphics.SfGradientViewRenderer.Init();
-           new SfLinearGradientBrush();
+            new SfLinearGradientBrush();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
 
-
+            Distribute.DontCheckForUpdatesInDebug();
 
             LoadApplication(iosapp);
 
@@ -96,12 +93,12 @@ namespace GAZT.iOS
         //public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         //{
         //    String DeviceToken = deviceToken.Description;
-            
+
         //    if (!String.IsNullOrWhiteSpace(DeviceToken))
         //    {
         //        DeviceToken = DeviceToken.Trim('<').Trim('>');
         //    }
-            
+
         //    Console.WriteLine("Device Token: " + DeviceToken);
         //    NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
         //}
@@ -109,14 +106,14 @@ namespace GAZT.iOS
         //public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         //{
         //    NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
-            
+
         //    String alert = string.Empty;
-            
+
         //    if (aps.ContainsKey(new NSString("alert")))
         //        alert = (aps[new NSString("alert")] as NSString).ToString();
-            
+
         //    Console.WriteLine(userInfo);
-            
+
         //    //show alert
         //    if (!string.IsNullOrEmpty(alert))
         //    {

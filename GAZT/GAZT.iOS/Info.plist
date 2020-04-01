@@ -76,7 +76,16 @@
 	<string>Can we use your location at all times?</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
-	<key>Custom Property2</key>
-	<string></string>
+	
+	<key>CFBundleURLTypes</key>
+  <array>
+      <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+              <string>appcenter-${7ada2f7d-1509-41b7-b948-899a7acb8783}</string>
+          </array>
+      </dict>
+  </array>
+	
 </dict>
 </plist>

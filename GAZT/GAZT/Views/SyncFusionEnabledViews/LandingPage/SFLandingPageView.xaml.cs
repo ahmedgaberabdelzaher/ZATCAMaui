@@ -8,6 +8,8 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using GAZT.Models;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Microsoft.AppCenter.Analytics;
+using System.Collections.Generic;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -125,12 +127,16 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void OnImageClicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent(AppResources.MyBills + "from Dashboard", null);
+
             Image img = sender as Image;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
         }
         private void OnLabelClicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent(AppResources.MyBills + "from Dashboard", null);
+
             Label img = sender as Label;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
@@ -138,6 +144,8 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void OnStackLayoutClicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent(AppResources.MyBills + "from Dashboard", null);
+
             StackLayout img = sender as StackLayout;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
@@ -156,39 +164,48 @@ namespace GAZTeServicesApp.Views.LandingPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
                     {
+                        Analytics.TrackEvent(AppResources.VATDeclaration, null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
+                        Analytics.TrackEvent(App.ZakatReturnListPageView, null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
+                        Analytics.TrackEvent(App.FormBundleStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
+                        Analytics.TrackEvent(App.MyCertificate, null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
+                        Analytics.TrackEvent(App.CheckTINStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
+                        Analytics.TrackEvent(App.CorrespondancePageView, null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
+                        Analytics.TrackEvent(App.MyBillsView, null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                     {
+                        Analytics.TrackEvent(App.TaxEvasionReportListPageView, null);
                         viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
+                        Analytics.TrackEvent(App.VATLookupPageView, null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
                 }
@@ -207,39 +224,48 @@ namespace GAZTeServicesApp.Views.LandingPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
                     {
+                        Analytics.TrackEvent(AppResources.VATDeclaration, null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
+                        Analytics.TrackEvent(App.ZakatReturnListPageView, null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
+                        Analytics.TrackEvent(App.FormBundleStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
+                        Analytics.TrackEvent(App.MyCertificate, null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
+                        Analytics.TrackEvent(App.CheckTINStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
+                        Analytics.TrackEvent(App.CorrespondancePageView, null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
+                        Analytics.TrackEvent(App.MyBillsView, null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                     {
+                        Analytics.TrackEvent(App.TaxEvasionReportListPageView, null);
                         viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
+                        Analytics.TrackEvent(App.VATLookupPageView, null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
 
@@ -259,53 +285,56 @@ namespace GAZTeServicesApp.Views.LandingPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
                     {
+                        Analytics.TrackEvent(AppResources.VATDeclaration, null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
+                        Analytics.TrackEvent(App.ZakatReturnListPageView, null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
+                        Analytics.TrackEvent(App.FormBundleStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
+                        Analytics.TrackEvent(App.MyCertificate, null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
+                        Analytics.TrackEvent(App.CheckTINStatusPageView, null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
+                        Analytics.TrackEvent(App.CorrespondancePageView, null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
+                        Analytics.TrackEvent(App.MyBillsView, null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                     {
+                        Analytics.TrackEvent(App.TaxEvasionReportListPageView, null);
                         viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
+                        Analytics.TrackEvent(App.VATLookupPageView, null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
-
 
                 }
                 catch (Exception ex)
                 {
-
                 }
-
-
-                // if(sender.BindingContext.eServiceName)
             }
-
 
         }
 
@@ -320,14 +349,17 @@ namespace GAZTeServicesApp.Views.LandingPage
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
+                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
                 }
                 if (BModel.ReturnTypeName == AppResources.NonSubmitted)
                 {
+                    Analytics.TrackEvent(AppResources.NonSubmitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
+                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
                 }
 
@@ -338,14 +370,17 @@ namespace GAZTeServicesApp.Views.LandingPage
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
+                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
                 }
                 if (BModel.ReturnTypeName == AppResources.NonSubmitted)
                 {
+                    Analytics.TrackEvent(AppResources.NonSubmitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
+                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
                 }
 
