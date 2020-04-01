@@ -590,7 +590,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Submitted</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>VAT Returns</value>
+    <value>VAT Return</value>
   </data>
   <data name="TotalUnpaidBills" xml:space="preserve">
     <value>Total unpaid bills</value>
@@ -2866,5 +2866,45 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZZMyCommitment" xml:space="preserve">
     <value>My commitments</value>
+  </data>
+  <data name="ZZZApplicationStatusTitle" xml:space="preserve">
+    <value>Application Status</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZCorrespondenceTitle" xml:space="preserve">
+    <value>Correspondence</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZEstimatedZakatTitle" xml:space="preserve">
+    <value>Estimated Zakat</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZMyBillsTitle" xml:space="preserve">
+    <value>My Bills</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZMyCertificateTitle" xml:space="preserve">
+    <value>My Certificate</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZSignUpTitle" xml:space="preserve">
+    <value>Sign Up</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZTINStatusTitle" xml:space="preserve">
+    <value>TIN Status</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZVATLookupTitle" xml:space="preserve">
+    <value>VAT Registration Lookup</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZVATReturnTitle" xml:space="preserve">
+    <value>VAT Return</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZZZVATTax EvasionReportsTitle" xml:space="preserve">
+    <value>VAT Tax Evasion Reports</value>
+    <comment>Title</comment>
   </data>
 </root>
