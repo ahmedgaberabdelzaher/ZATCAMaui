@@ -45,10 +45,10 @@ namespace GAZT.Views.NewViews
        
               //  viewModel.OnPageLoad();
                
-                DDlIDType.SelectedIndex = 0;
+              //  DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
                 //ddlLIssuedBy.SelectedIndex = -1;
-               
+                ChangeAeroIcon();
                 SetLTR();
             }
             catch (Exception ex)
@@ -57,6 +57,17 @@ namespace GAZT.Views.NewViews
             }
 
 
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
         protected override void OnDisappearing()
         {
@@ -71,7 +82,7 @@ namespace GAZT.Views.NewViews
            await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
             await viewModel.SetCityList();
-
+            viewModel.TxtLOrCIssuedBy = string.Empty;
 
         }
         public void ClearFields()
@@ -1519,11 +1530,7 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        private void DDlIDType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            viewModel.TxtIDNumber = string.Empty;
-            EntryName.IsEnabled = true;
-        }
+     
 
         private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1909,7 +1916,8 @@ namespace GAZT.Views.NewViews
 
         private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            viewModel.TxtIDNumber = string.Empty;
+            EntryName.IsEnabled = true;
         }
 
         private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
@@ -1926,15 +1934,15 @@ namespace GAZT.Views.NewViews
 
         private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {//viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
-            DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
-            viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
+         //   DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
+         //   viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
         }
 
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
-            viewModel.SelectedSignUpUsing = signUpUsing;
-            viewModel.TxtIDType = signUpUsing.SUType;
+           // SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+          //  viewModel.SelectedSignUpUsing = signUpUsing;
+          //  viewModel.TxtIDType = signUpUsing.SUType;
         }
 
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
