@@ -86,7 +86,7 @@
             
                 <WebView x:Name="TCWebView" HeightRequest="860" WidthRequest="1000" />
             </ScrollView>
-            <StackLayout BackgroundColor="White" HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <StackLayout BackgroundColor="White" HeightRequest="70" Margin="0,0,0,-15" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                 <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
 
                 <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
