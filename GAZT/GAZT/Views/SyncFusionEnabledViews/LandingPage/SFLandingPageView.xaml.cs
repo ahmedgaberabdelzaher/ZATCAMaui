@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using GAZT.Models;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -27,6 +28,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             try
             {
                 InitializeComponent();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 
                 LoadData();

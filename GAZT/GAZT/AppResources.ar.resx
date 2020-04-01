@@ -1206,7 +1206,7 @@
     <value>رقم سداد</value>
   </data>
   <data name="ZAmountPayable" xml:space="preserve">
-    <value>المبلغ المستحق</value>
+    <value>المبلغ المستحق (يتضمن الغرامات)</value>
   </data>
   <data name="Pleasereviewthecalculationandsubmitagain" xml:space="preserve">
     <value>يرجى مراجعة الحسابات والنقر على زر تسليم مرة اخرى</value>

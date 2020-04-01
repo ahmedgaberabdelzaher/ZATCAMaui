@@ -2028,7 +2028,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount Payable.
+        ///   Looks up a localized string similar to Amount Payable (including penalties).
         /// </summary>
         public static string ZAmountPayable {
             get {

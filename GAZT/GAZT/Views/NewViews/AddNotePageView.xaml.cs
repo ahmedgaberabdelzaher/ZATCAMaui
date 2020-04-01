@@ -28,6 +28,7 @@ namespace GAZT.Views.NewViews
         {
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
+            NavigationPage.SetHasBackButton(this, false);
             SetLTR();
             try
             {
@@ -72,6 +73,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
         #endregion
 
     }
