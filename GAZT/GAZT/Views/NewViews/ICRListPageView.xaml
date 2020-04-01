@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
-             Title="{x:Static local:AppResources.ZDeclaration}"
+             Title="{x:Static local:AppResources.VATDeclaration}"
              xmlns:local1="clr-namespace:GAZT"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
@@ -31,7 +31,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZDeclaration}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.VATDeclaration}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
