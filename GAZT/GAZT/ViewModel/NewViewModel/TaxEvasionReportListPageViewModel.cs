@@ -138,36 +138,17 @@ namespace GAZT.ViewModel.NewViewModel
                       TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3") ).ToList();
                     TERListReportbymobnoClosed.Clear();
                     TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                    //SetNoDataLabelVisibility
+                    if (TERListReportbymobnoClosed == null)
+                    {
+                        SetNoDataLabelVisibility = true;
+                    }
+                   
                 }
                 catch (Exception ex)
                 {
                 }
             });
-
-            //OnVATCertificateClicked = new RelayCommand(async () =>
-            //{
-            //    try
-            //    {
-            //        if (allCertificate != null)
-            //        {
-            //            if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
-            //            {
-            //                CertificateType = AppResources.VATCertificates;
-            //                SetCertificateListViewVisibility();
-            //                CertificateList = allCertificate.VATSet.results;
-            //            }
-            //            else
-            //            {
-            //                CertificateType = String.Empty;
-            //                SetNoDataLabelViewVisibility();
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //    }
-            //});
-
 
 
 
@@ -177,7 +158,15 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                    // TERListReportbymobno.Clear();
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
+                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
+                    if (TERListReportbymobno != null)
+                    {
+                        SetNoDataLabelVisibility = false;
+                    }
+                    else
+                    {
+                        SetNoDataLabelVisibility = true;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -238,12 +227,16 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (rlist.TaxEvasionReportList != null && rlist.TaxEvasionReportList.Count > 0)
                     {
+                        SetNoDataLabelVisibility = false;
                         //CertificateType = AppResources.ZakatCertificates;
                         //SetCertificateListViewVisibility();
                         TERListReportbymobnoDummy = rlist.TaxEvasionReportList;
 
                         TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
-                        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                        if (TERListReportbymobno != null)
+                        { SetNoDataLabelVisibility = false; } 
+                            TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                       
 
 
 
