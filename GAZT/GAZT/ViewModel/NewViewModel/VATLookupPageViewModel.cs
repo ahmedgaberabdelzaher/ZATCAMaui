@@ -21,6 +21,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         bool isMendatoryDataEntered = true;
         public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnHomeIconClicked { get; set; }
+
+        public ICommand OnHomeButtonClicked { get; set; }
 
 
         private bool _isLoading = false;
@@ -242,6 +245,14 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
+            });
+            OnHomeIconClicked = new Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
             });
             OnSubmitClicked = new Command(async () =>
             {

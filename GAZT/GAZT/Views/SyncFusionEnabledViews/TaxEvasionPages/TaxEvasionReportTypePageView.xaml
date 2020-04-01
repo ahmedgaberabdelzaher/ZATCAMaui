@@ -187,8 +187,8 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
 
   
 
-                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
-                    <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnBClicked}" ></Button>
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White" Padding="0">
+                    <Button Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}"  Style="{StaticResource GAZTVerifyButton}"  VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnBClicked}" ></Button>
 
                 </StackLayout>
                 <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
