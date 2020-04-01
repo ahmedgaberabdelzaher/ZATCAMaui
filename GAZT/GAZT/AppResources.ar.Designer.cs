@@ -4847,5 +4847,65 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZMyCommitment", resourceCulture);
             }
         }
+        
+        public static string ZZZApplicationStatusTitle {
+            get {
+                return ResourceManager.GetString("ZZZApplicationStatusTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZCorrespondenceTitle {
+            get {
+                return ResourceManager.GetString("ZZZCorrespondenceTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZEstimatedZakatTitle {
+            get {
+                return ResourceManager.GetString("ZZZEstimatedZakatTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZMyBillsTitle {
+            get {
+                return ResourceManager.GetString("ZZZMyBillsTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZMyCertificateTitle {
+            get {
+                return ResourceManager.GetString("ZZZMyCertificateTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSignUpTitle {
+            get {
+                return ResourceManager.GetString("ZZZSignUpTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTINStatusTitle {
+            get {
+                return ResourceManager.GetString("ZZZTINStatusTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZVATLookupTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATLookupTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZVATReturnTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATReturnTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZVATTax_EvasionReportsTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATTax EvasionReportsTitle", resourceCulture);
+            }
+        }
     }
 }

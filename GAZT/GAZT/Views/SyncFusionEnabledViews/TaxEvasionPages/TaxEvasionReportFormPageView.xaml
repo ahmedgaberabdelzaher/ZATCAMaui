@@ -63,8 +63,8 @@ xmlns:custom="clr-namespace:GAZT"
                 </Grid.ColumnDefinitions>
 
 
-                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
-                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10"  Margin="0" Padding="0,10,0,10" >
+                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  Margin="0" Padding="0,10,0,10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -175,16 +175,21 @@ xmlns:custom="clr-namespace:GAZT"
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailFacilityType}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                                              SelectedItemFontSize="10"
+                                                 HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
                                                OkButtonClicked="ddlFacilityType_OkButtonClicked"
+                                             SelectedItem="{Binding SelectedTaxEvasionCompanyType}"
                    ItemHeight="40"
                     ItemsSource="{Binding DListFacilityCompanyType}" DisplayMemberPath="Name"      Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -246,17 +251,22 @@ xmlns:custom="clr-namespace:GAZT"
                         </custom:CustomButton>
                         <syncfusion:SfPicker
                     HeaderHeight="40"
-                    ShowHeader="true"
+                    ShowHeader="True"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailRegion}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"                                              
                    ItemHeight="40"
-                            OkButtonClicked="RegionPicker_OkButtonClicked"
+                                HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                            SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"
+                           
                     x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameEN"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -267,16 +277,19 @@ xmlns:custom="clr-namespace:GAZT"
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailRegion}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
+                               HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                            OkButtonClicked="RegionPickerAR_OkButtonClicked"
-        
+                          SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"
                    ItemHeight="40"
                    x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR"  IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -295,15 +308,20 @@ xmlns:custom="clr-namespace:GAZT"
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"                                              
                    ItemHeight="40"
                             OkButtonClicked="CityPicker_OkButtonClicked"
+                              HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                            SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -314,15 +332,19 @@ xmlns:custom="clr-namespace:GAZT"
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               OkButtonClicked="CityPickerAR_OkButtonClicked"
+                               HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                            SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    ItemHeight="40"
                    x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -383,28 +405,34 @@ xmlns:custom="clr-namespace:GAZT"
 
                         </inputLayout:SfTextInputLayout>
 
-                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
-                        </Button>
-                        <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                               <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
 
-                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"  x:Name="Date_entry" Unfocused="DatePicker_Unfocused" IsSpellCheckEnabled="False" Placeholder="dd/MM/yyyy" TextChanged="Date_entry_TextChanged" FontSize="Small"></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"  x:Name="Date_entry" Unfocused="DatePicker_Unfocused" IsSpellCheckEnabled="False" Placeholder="dd/MM/yyyy" IsEnabled="False" TextChanged="Date_entry_TextChanged" FontSize="Small"></custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
+                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                        </Button>
+
                         <custom1:CustomDatePicker
-ShowHeader="false"
+                            
+ShowHeader="True"
 Margin="2"
-BorderColor="Gray"
-ShowColumnHeader="true"
+ShowColumnHeader="False"
 ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
-HeaderText="Date of Birth"
+HeaderText="{x:Static local:AppResources.Date}"
 Grid.Row="15" Grid.Column="0"    Grid.ColumnSpan="2"
 x:Name="DpDbo"
-                                OkButtonClicked="DpDbo_OkButtonClicked"
-ItemHeight="45" ShowFooter="True"  >
+                              HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                            Closed="DpDbo_Closed"
+                              
+ItemHeight="45" ShowFooter="False"  >
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
