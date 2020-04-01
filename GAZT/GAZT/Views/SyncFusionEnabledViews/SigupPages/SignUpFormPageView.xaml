@@ -126,17 +126,20 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZIDType}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     SelectedIndex="{Binding IDTypeIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                          HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
                    ItemHeight="40"
                      DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                                               SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"
-                    ShowFooter="True" FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                    ShowFooter="False" FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -161,7 +164,7 @@
     Hint="{x:Static local:AppResources.ZZDateofBirth}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
+                                <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                             <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
@@ -285,17 +288,22 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                 x:Name="ddlLIssuedBy"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                              SelectedItemFontSize="10"     
                    ItemHeight="40"
+                                       HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                                    SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"
                  ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
@@ -319,17 +327,22 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZIssuingCity}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                 x:Name="ddlLIssuedByCity"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                                                
                    ItemHeight="40"
+                                      HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                                    SelectedItem="{Binding SelectCityList,Mode=TwoWay}"
                    ItemsSource="{Binding CityList}" DisplayMemberPath="CityName"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="ddlLIssuedByCity_OkButtonClicked"
-                    ShowFooter="True" FooterHeight="46">
+                    ShowFooter="False" FooterHeight="46">
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
