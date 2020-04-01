@@ -521,6 +521,7 @@ namespace GAZT.ViewModel.NewViewModel
                             if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
                             {
                                 ZakatReturnAttachmentsList.RemoveAt(i);
+                                SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
                             }
                         }
                         IsValueChanged();

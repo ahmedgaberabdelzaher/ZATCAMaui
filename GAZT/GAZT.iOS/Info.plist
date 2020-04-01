@@ -67,7 +67,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.2.7</string>
+	<string>2.0.2.8</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -77,6 +77,8 @@
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>Custom Property2</key>
+	<string></string>
+	<key>Custom Property3</key>
 	<string></string>
 </dict>
 </plist>
