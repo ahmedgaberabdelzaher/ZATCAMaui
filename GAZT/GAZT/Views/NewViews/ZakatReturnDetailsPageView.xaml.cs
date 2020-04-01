@@ -40,7 +40,17 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
