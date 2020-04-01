@@ -2,6 +2,7 @@
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,9 @@ namespace GAZT.Views.NewViews
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
+            viewModel.IsTooltipEnableVisible = false;
             NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
@@ -267,6 +270,28 @@ namespace GAZT.Views.NewViews
         private void PPicker_btn_Clicked(object sender, EventArgs e)
         {
             PPicker.IsOpen = true;
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+           
+         if (viewModel.SelectedParameterType != null)
+            {
+                PopUp popUp = new PopUp();//SetPlaceholderText();
+                popUp.Message = viewModel.VATACCOrCRNOOrVATCER;
+
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+            
         }
     }
 }

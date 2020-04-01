@@ -81,7 +81,7 @@ namespace GAZT.Views.NewViews
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
             Image deleteImage = sender as Image;
-            EstimateZakatAttachment estimateZakatAttachment = (EstimateZakatAttachment)deleteImage.BindingContext;
+            ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if(estimateZakatAttachment != null) 
             {
                 var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
