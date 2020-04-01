@@ -35,6 +35,7 @@ namespace GAZT.Views.NewViews
             viewModel.MaxDigids = "15";
             SetLTR();
             NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
