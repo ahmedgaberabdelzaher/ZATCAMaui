@@ -383,16 +383,17 @@ xmlns:custom="clr-namespace:GAZT"
 
                         </inputLayout:SfTextInputLayout>
 
-                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
-                        </Button>
-                        <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                               <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
 
-                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"  x:Name="Date_entry" Unfocused="DatePicker_Unfocused" IsSpellCheckEnabled="False" Placeholder="dd/MM/yyyy" TextChanged="Date_entry_TextChanged" FontSize="Small"></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry    Text="{Binding DatePick}"  x:Name="Date_entry" Unfocused="DatePicker_Unfocused" IsSpellCheckEnabled="False" Placeholder="dd/MM/yyyy" IsEnabled="False" TextChanged="Date_entry_TextChanged" FontSize="Small"></custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
+                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btn4_Clicked"  Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                        </Button>
+
                         <custom1:CustomDatePicker
 ShowHeader="false"
 Margin="2"
