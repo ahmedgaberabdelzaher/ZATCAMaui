@@ -29,6 +29,7 @@ namespace GAZT.Views.NewViews
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
             SetLTR();

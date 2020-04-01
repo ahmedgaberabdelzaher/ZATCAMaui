@@ -14,6 +14,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         #endregion
 
         #region Properties
@@ -85,11 +86,28 @@ namespace GAZT.ViewModel.NewViewModel
             }
             OnSubmitClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.SignUpFormPageView);
+                try
+                {
+                    if (IsButtonEnabled == true)
+                    {
+                        _navigationService.NavigateTo(App.SignUpFormPageView);
+                    }
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+                
+                
              
 
             });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
         }
         #endregion
     }

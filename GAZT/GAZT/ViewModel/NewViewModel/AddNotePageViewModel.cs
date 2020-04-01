@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static bool IsComingFromNotePage = false;
         public ICommand OnAddButtonClicked { get; set; }
         public ICommand OnClearButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         #endregion
 
         #region Property
@@ -72,7 +73,12 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
 
 
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");

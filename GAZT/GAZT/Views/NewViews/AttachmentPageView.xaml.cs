@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
+            ChangeAeroIcon();
             try
             {
                 viewModel = App.Locator.AttachmentPageView;
@@ -237,7 +238,9 @@ namespace GAZT.Views.NewViews
 
             Attachment attachment = (Attachment)Document.SelectedItem;
             //attachment.DocUrl;
-            if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
                 viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
             }
@@ -285,13 +288,21 @@ namespace GAZT.Views.NewViews
                     Title = Title,
                     File = new ShareFile(file)
                 });
-                viewModel._navigationService.GoBack();
-
-
             }
             catch (Exception ex)
             {
 
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
 

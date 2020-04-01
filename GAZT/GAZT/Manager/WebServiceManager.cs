@@ -3717,8 +3717,9 @@ namespace GAZT.Manager
             {
                 try
                 {
+                    string Langz = UtilityManager.GetLanguageParameter();
                     string FirstSignupSubmit = string.Empty;
-                    string url = Constants.GAZTSignUpFirstSubmit;
+                    string url = Constants.GAZTSignUpFirstSubmit+ "?sap-language="+ Langz;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");

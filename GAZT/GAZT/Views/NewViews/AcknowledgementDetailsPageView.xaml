@@ -13,11 +13,12 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              x:Class="GAZT.Views.NewViews.AcknowledgementDetailsPageView"
+             NavigationPage.HasNavigationBar="False"
             >
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_home.png"  
                 Priority="0" Order="Primary" Command="{Binding OnHomeClick}" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -26,29 +27,29 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <!--<ContentPage.ControlTemplate>
+    <ContentPage.ControlTemplate>
         <ControlTemplate>
-            <StackLayout Spacing="0" BackgroundColor="White">
-                 
-                <controls:TitleView Title="{x:Static local:AppResources.Acknowlwdgement}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="White" Opacity="1">
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.Acknowlwdgement}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.OnHomeClick}"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Home}"
-                            
+                             Text="{DynamicResource Home}"
                             
                              />
+
                     </controls:TitleView.LeadingView>
+
                 </controls:TitleView>
                 <ContentPresenter />
             </StackLayout>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>-->
+    </ContentPage.ControlTemplate>
 
 
 
@@ -56,7 +57,7 @@
     <ContentPage.Content>
         <StackLayout>
          
-            <ScrollView>
+            <ScrollView BackgroundColor="White">
         <StackLayout>
 
      
@@ -111,8 +112,8 @@
 
 
             <buttons:SfButton Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Clicked="OnVATRefreshButtonClicked" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
-            <buttons:SfButton Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="True" Command="{Binding OnAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
-            <buttons:SfButton Text="{x:Static local:AppResources.ZDownloadForm}" IsVisible="True" Command="{Binding OnDownloadAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnDownloadAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
 
 
             <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" Grid.ColumnSpan="2">

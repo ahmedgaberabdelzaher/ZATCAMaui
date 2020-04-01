@@ -10,21 +10,45 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
-             x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage">
+             x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage"
+              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+                       
+                    </controls:TitleView.LeadingView>
+                    
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
     <ContentPage.Content>
 
        
                 <StackLayout>
+            <ScrollView>
             <!--<StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -61,6 +85,7 @@
             
             
                 <WebView x:Name="TCWebView" HeightRequest="860" WidthRequest="1000" />
+            </ScrollView>
             <StackLayout HeightRequest="70" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                 <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
 
@@ -75,17 +100,16 @@
                 <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
                 <buttons:SfButton
                     Margin="0"
-                    BackgroundColor="{DynamicResource PrimaryColor}"
-                    BorderColor="{DynamicResource PrimaryColor}"
-                    BorderWidth="1"
-                    FontFamily="{StaticResource Montserrat-SemiBold}"
+                 CornerRadius="0"
                     HeightRequest="56"
                     HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
                     Text="{x:Static local:AppResources.ZZProceedtoindividualSignup}"
-                    TextColor="{DynamicResource Gray-White}"
+                   
                     IsEnabled="{Binding IsButtonEnabled}"
                     Command="{Binding OnSubmitClicked}"  
                      />
+                
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

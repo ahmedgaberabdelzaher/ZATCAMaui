@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
             viewModel.zakatReturnDetailsD = ZakatReturnDetail;
             viewModel.ClearData();
             viewModel.OnPageLoad();
+            ChangeAeroIcon();
             this.BindingContext = viewModel;
             NavigationPage.SetBackButtonTitle(this, "");
             ToolbarItem Refresh = new ToolbarItem
@@ -82,7 +83,17 @@ namespace GAZT.Views.NewViews
         {
          viewModel.GetPdfUrl();
         }
-        
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

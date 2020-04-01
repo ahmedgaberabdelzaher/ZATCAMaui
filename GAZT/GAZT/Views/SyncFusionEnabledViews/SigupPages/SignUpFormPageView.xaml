@@ -15,12 +15,13 @@
    
 
     <ContentPage.Content>
-        <!--ZZZRequired-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,10,0,10" >
+
+        <StackLayout>
+             <!--ZZZRequired-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
                 <RowDefinition Height="10*" />
-
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -51,7 +52,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="Start" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
+                        <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="StartAndExpand" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
                         <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                         </Label>
                         <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
@@ -135,18 +136,24 @@
                         <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 
-								BorderColor="Gray"
-								ShowColumnHeader="true"
+                              BackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+								
+								ShowColumnHeader="False"
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
 								Grid.Row="6" Grid.Column="0"    Grid.ColumnSpan="2"
 								x:Name="DpDbo"
+                           SelectionChanged="DpDbo_SelectionChanged"
                             
+                            Closed="DpDbo_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
-								ItemHeight="45" ShowFooter="True"  >
+								ItemHeight="45" ShowFooter="False"  >
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
@@ -177,8 +184,8 @@
                             </Label.FormattedText>
                         </Label>
                         <buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Vertical"  Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" >
-                            <buttons:SfRadioButton x:Name="radioButton" HorizontalOptions="Start" Text="{x:Static local:AppResources.ZZCRNumber}" IsChecked="{Binding IsCRChecked}"  UncheckedColor="#B1B1B1"/>
-                            <buttons:SfRadioButton x:Name="radioButton2" Text="{x:Static local:AppResources.ZZLicenseNumber}" IsChecked="{Binding IsLNChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="Start"/>
+                            <buttons:SfRadioButton x:Name="radioButton" HorizontalOptions="StartAndExpand" Text="{x:Static local:AppResources.ZZCRNumber}" IsChecked="{Binding IsCRChecked}"  UncheckedColor="#B1B1B1"/>
+                            <buttons:SfRadioButton x:Name="radioButton2" Text="{x:Static local:AppResources.ZZLicenseNumber}" IsChecked="{Binding IsLNChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="StartAndExpand"/>
                         </buttons:SfRadioGroup>
 
 
@@ -345,6 +352,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>
