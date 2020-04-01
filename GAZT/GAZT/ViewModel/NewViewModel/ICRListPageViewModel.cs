@@ -114,7 +114,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (_selectedICRStatus != null)
                 {
-                    PreviousSelectedICRStatus = _selectedICRStatus;
+                   // PreviousSelectedICRStatus = _selectedICRStatus;
                     if (ICRDummyList != null && ICRDummyList.Count != 0)
                     {
                         if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30, "الجميع"))
@@ -451,6 +451,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                             if (_vATDeclaration != null && _vATDeclaration.d != null)
                             {
+                                 PreviousSelectedICRStatus = _selectedICRStatus;
                                 _vATDeclaration.d.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();

@@ -2911,6 +2911,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if (res != null)
                     {
                         ManageEnabledProperty(false);
+                        IsSwichButtonEnableToTap = false;
                         IsEnableIBAN = false;
                         IsEnableCheckedRefund = false;
                         IsEnableIBANType = false;
