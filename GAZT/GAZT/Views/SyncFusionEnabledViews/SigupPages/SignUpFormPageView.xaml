@@ -156,16 +156,17 @@
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                        <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
-                        </Button>
+
                         <inputLayout:SfTextInputLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZDateofBirth}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
+                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <custom1:CustomDatePicker 
+                            <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
+                            </Button>
+                            <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="#EAF7CC"

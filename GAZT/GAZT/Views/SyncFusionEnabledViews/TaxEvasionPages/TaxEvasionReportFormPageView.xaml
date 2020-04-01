@@ -64,7 +64,7 @@ xmlns:custom="clr-namespace:GAZT"
 
 
                 <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
-                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="10"  Margin="0" Padding="0,10,0,10" >
+                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  Margin="0" Padding="0,10,0,10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
