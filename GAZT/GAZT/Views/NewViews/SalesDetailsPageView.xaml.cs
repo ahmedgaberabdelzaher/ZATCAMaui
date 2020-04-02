@@ -253,7 +253,7 @@ namespace GAZT.Views.NewViews
 
         protected async void OnEditImageClicked(Object sender, EventArgs e)
         {
-            Image EditImage = sender as Image;
+            Label EditImage = sender as Label;
             SalesDetails selectedSalesDetails = (SalesDetails)EditImage.BindingContext;
 
             if (!viewModel.ConfirmButtonVisibility)
@@ -310,7 +310,7 @@ namespace GAZT.Views.NewViews
 
         private void OnInformationMessageClicked(object sender, EventArgs e)
         {
-            Image InfoImage = sender as Image;
+            Label InfoImage = sender as Label;
             SalesDetails estimateZakatAttachment = (SalesDetails)InfoImage.BindingContext;
           string informationMessage =   GetInformationMessage(Convert.ToInt32(estimateZakatAttachment.SelectedEditFieldId));
             PopUp popUp = new PopUp();
