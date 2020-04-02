@@ -1245,6 +1245,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  PDF Not Available.
+        /// </summary>
+        public static string PdfIsNotAvailableFor {
+            get {
+                return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate available.
         /// </summary>
         public static string PdfIsNoteAvailable {
