@@ -37,6 +37,22 @@ namespace GAZT
         #endregion
 
         #region Property
+
+        
+        private int _selectedTab = 0;
+
+        public int SelectedTab
+        {
+            get
+            {
+                return _selectedTab;
+            }
+            set
+            {
+                _selectedTab = value;
+                RaisePropertyChanged("SelectedTab");
+            }
+        }
         private bool _isLoading = false;
 
         public bool IsLoading
@@ -52,33 +68,92 @@ namespace GAZT
             }
         }
 
-        private bool _isCertificateAvailable = false;
+        private bool _isCertificateAvailableZakat = false;
 
-        public bool IsCertificateAvailable
+        public bool IsCertificateAvailableZakat
         {
             get
             {
-                return _isCertificateAvailable;
+                return _isCertificateAvailableZakat;
             }
             set
             {
-                _isCertificateAvailable = value;
-                RaisePropertyChanged("IsCertificateAvailable");
+                _isCertificateAvailableZakat = value;
+                RaisePropertyChanged("IsCertificateAvailableZakat");
             }
         }
 
-        private bool _setNoDataLabelVisibility = false;
+        private bool _isCertificateAvailableVAT = false;
 
-        public bool SetNoDataLabelVisibility
+        public bool IsCertificateAvailableVAT
         {
             get
             {
-                return _setNoDataLabelVisibility;
+                return _isCertificateAvailableVAT;
             }
             set
             {
-                _setNoDataLabelVisibility = value;
-                RaisePropertyChanged("SetNoDataLabelVisibility");
+                _isCertificateAvailableVAT = value;
+                RaisePropertyChanged("IsCertificateAvailableVAT");
+            }
+        }
+        private bool _isCertificateAvailableET = false;
+
+        public bool IsCertificateAvailableET
+        {
+            get
+            {
+                return _isCertificateAvailableET;
+            }
+            set
+            {
+                _isCertificateAvailableET = value;
+                RaisePropertyChanged("IsCertificateAvailableET");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakat = false;
+
+        public bool SetNoDataLabelVisibilityZakat
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakat;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakat = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakat");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVAT = false;
+
+        public bool SetNoDataLabelVisibilityVAT
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVAT;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVAT = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityVAT");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityET = false;
+
+        public bool SetNoDataLabelVisibilityET
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityET;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityET = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityET");
             }
         }
 
@@ -102,18 +177,46 @@ namespace GAZT
        
 
 
-        private List<Result> _certificateList;
+        private List<Result> _certificateListZakat;
 
-        public List<Result> CertificateList
+        public List<Result> CertificateListZakat
         {
             get
             {
-                return _certificateList;
+                return _certificateListZakat;
             }
             set
             {
-                _certificateList = value;
-                RaisePropertyChanged("CertificateList");
+                _certificateListZakat = value;
+                RaisePropertyChanged("CertificateListZakat");
+            }
+        }
+        private List<Result> _certificateListVAT;
+
+        public List<Result> CertificateListVAT
+        {
+            get
+            {
+                return _certificateListVAT;
+            }
+            set
+            {
+                _certificateListVAT = value;
+                RaisePropertyChanged("CertificateListVAT");
+            }
+        }
+
+        private List<Result> _certificateListET;
+        public List<Result> CertificateListET
+        {
+            get
+            {
+                return _certificateListET;
+            }
+            set
+            {
+                _certificateListET = value;
+                RaisePropertyChanged("CertificateListET");
             }
         }
 
@@ -280,82 +383,82 @@ namespace GAZT
                 // _navigationService.NavigateTo(App.LoginView);
 
             });
-            OnVATCertificateClicked = new RelayCommand(async () =>
-            {
-                try
-                {
-                    if (allCertificate != null)
-                    {
-                        if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
-                        {
-                            CertificateType = AppResources.VATCertificates;
-                            SetCertificateListViewVisibility();
-                            CertificateList = allCertificate.VATSet.results;
-                        }
-                        else
-                        {
-                            CertificateType =String.Empty;
-                            SetNoDataLabelViewVisibility();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            });
+            //OnVATCertificateClicked = new RelayCommand(async () =>
+            //{
+            //    try
+            //    {
+            //        if (allCertificate != null)
+            //        {
+            //            if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+            //            {
+            //                CertificateType = AppResources.VATCertificates;
+            //                SetCertificateListViewVisibility();
+            //                CertificateList = allCertificate.VATSet.results;
+            //            }
+            //            else
+            //            {
+            //                CertificateType =String.Empty;
+            //                SetNoDataLabelViewVisibility();
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //    }
+            //});
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
 
-            OnZakatCertificateClicked = new RelayCommand(async () =>
-            {
-                try
-                {
-                    if (allCertificate != null)
-                    {
-                        if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
-                        {
-                            CertificateType = AppResources.ZakatCertificates;
-                            SetCertificateListViewVisibility();
-                            CertificateList = allCertificate.ZakatSet.results;
-                        }
-                        else
-                        {
-                            CertificateType = String.Empty;
-                            SetNoDataLabelViewVisibility();
-                        }
-                    }
+            //OnZakatCertificateClicked = new RelayCommand(async () =>
+            //{
+            //    try
+            //    {
+            //        if (allCertificate != null)
+            //        {
+            //            if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
+            //            {
+            //                CertificateType = AppResources.ZakatCertificates;
+            //                SetCertificateListViewVisibility();
+            //                CertificateList = allCertificate.ZakatSet.results;
+            //            }
+            //            else
+            //            {
+            //                CertificateType = String.Empty;
+            //                SetNoDataLabelViewVisibility();
+            //            }
+            //        }
 
-                }
-                catch (Exception ex)
-                {
-                }
-            });
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //    }
+            //});
 
-            OnExciseCertificateClicked = new RelayCommand(async () =>
-            {
-                try
-                {
-                    if (allCertificate != null)
-                    {
-                        if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
-                        {
-                            CertificateType = AppResources.ExciseCertificates;
-                            SetCertificateListViewVisibility();
-                            CertificateList = allCertificate.ExciseSet.results;
-                        }
-                        else
-                        {
-                            CertificateType = String.Empty;
-                            SetNoDataLabelViewVisibility();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            });
+            //OnExciseCertificateClicked = new RelayCommand(async () =>
+            //{
+            //    try
+            //    {
+            //        if (allCertificate != null)
+            //        {
+            //            if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+            //            {
+            //                CertificateType = AppResources.ExciseCertificates;
+            //                SetCertificateListViewVisibility();
+            //                CertificateList = allCertificate.ExciseSet.results;
+            //            }
+            //            else
+            //            {
+            //                CertificateType = String.Empty;
+            //                SetNoDataLabelViewVisibility();
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //    }
+            //});
 
 
           
@@ -504,33 +607,59 @@ namespace GAZT
                 TaxPayerProfile = App.TP;
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
+                bool Flag = false;
                 if (allCertificate != null)
                 {
                     if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
                     {
                         CertificateType = AppResources.ZakatCertificates;
-                        SetCertificateListViewVisibility();
-                        CertificateList = allCertificate.ZakatSet.results;
-
-                    }
-                    else if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
-                    {
-                        CertificateType = AppResources.VATCertificates;
-                        SetCertificateListViewVisibility();
-                        CertificateList = allCertificate.VATSet.results;
-                    }
-                    else if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
-                    {
-                        CertificateType = AppResources.ExciseCertificates;
-                        SetCertificateListViewVisibility();
-                        CertificateList = allCertificate.ExciseSet.results;
+                       // SetCertificateListViewVisibility();
+                        CertificateListZakat = allCertificate.ZakatSet.results;
+                        SelectedTab = 0;
+                        Flag = true;
+                        IsCertificateAvailableZakat = true;
+                        SetNoDataLabelVisibilityZakat = false;
                     }
                     else
                     {
-                        CertificateType = String.Empty;
-                        SetNoDataLabelViewVisibility();
+                        IsCertificateAvailableZakat = false;
+                        SetNoDataLabelVisibilityZakat = true;
                     }
+                    if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
+                    {
+                        CertificateType = AppResources.VATCertificates;
+                      //  SetCertificateListViewVisibility();
+                        CertificateListVAT = allCertificate.VATSet.results;
+                        if(Flag==false)
+                        {
+                            SelectedTab = 1;
+                        }
+                        IsCertificateAvailableVAT = true;
+                        SetNoDataLabelVisibilityVAT = false;
+                    }
+                    else
+                    {
+                        IsCertificateAvailableVAT = false;
+                        SetNoDataLabelVisibilityVAT = true;
+                    }
+                    if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
+                    {
+                        CertificateType = AppResources.ExciseCertificates;
+                     //   SetCertificateListViewVisibility();
+                        CertificateListET = allCertificate.ExciseSet.results;
+                        if(Flag==false)
+                        {
+                            SelectedTab = 2;
+                        }
+                        IsCertificateAvailableET = true;
+                        SetNoDataLabelVisibilityET = false;
+                    }
+                    else
+                    {
+                        IsCertificateAvailableET = false;
+                        SetNoDataLabelVisibilityET = true;
+                    }
+
                     //ZAKATCertificateList = allCertificate.ZakatSet.results;
                     //EXICISECertificateList = allCertificate.ExciseSet.results;
 
@@ -545,7 +674,7 @@ namespace GAZT
                 }
                 else
                 {
-                    SetNoDataLabelVisibility = true;
+                   // SetNoDataLabelVisibility = true;
                     //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     // _navigationService.GoBack();
                 }
@@ -599,17 +728,17 @@ namespace GAZT
             }
         }
 
-        private void SetCertificateListViewVisibility()
-        {
-            IsCertificateAvailable = true;
-            SetNoDataLabelVisibility = false;
-        }
+        //private void SetCertificateListViewVisibility()
+        //{
+        //    IsCertificateAvailable = true;
+        //    SetNoDataLabelVisibility = false;
+        //}
 
-        private void SetNoDataLabelViewVisibility()
-        {
-            IsCertificateAvailable = false;
-            SetNoDataLabelVisibility = true;
-        }
+        //private void SetNoDataLabelViewVisibility()
+        //{
+        //    IsCertificateAvailable = false;
+        //    SetNoDataLabelVisibility = true;
+        //}
 
         #endregion
     }

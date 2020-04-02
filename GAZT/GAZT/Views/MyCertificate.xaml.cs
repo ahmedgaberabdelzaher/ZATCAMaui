@@ -77,14 +77,27 @@ namespace GAZT.Views
             //        return;
             //    } ((ListView)sender).SelectedItem = null;
             //};
-            CertificateLst.ItemSelected += (sender, e) =>
+            CertificateLstET.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {
                     return;
                 } ((ListView)sender).SelectedItem = null;
             };
-
+            CertificateLstZakat.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
+            CertificateLstVAT.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                } ((ListView)sender).SelectedItem = null;
+            };
             //VATCertificateList.ItemSelected += (sender, e) =>
             //{
             //    if (e.SelectedItem == null)
