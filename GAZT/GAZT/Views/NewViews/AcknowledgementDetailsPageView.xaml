@@ -39,12 +39,24 @@
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                             Text="{DynamicResource Home}"
+                            Text="{DynamicResource StyleReverseBack}"
                             
                              />
 
                     </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <buttons:SfButton
+                            x:Name="HomeButton"
+                            Command="{TemplateBinding BindingContext.GoHomeClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource Home}"
+                            
+                             />
 
+                    </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter />
             </StackLayout>

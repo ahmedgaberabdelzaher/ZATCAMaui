@@ -31,7 +31,7 @@ namespace GAZT.Views.NewViews
         {
             InitializeComponent();
              NavigationPage.SetBackButtonTitle(this, "");
-         
+            ChangeAeroIcon();
             try
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
@@ -117,7 +117,17 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-   
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         public void IsCheckedEnable()
         {
             if (App.ICRStatus == "E0006")
