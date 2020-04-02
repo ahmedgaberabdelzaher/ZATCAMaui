@@ -3,8 +3,10 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.TabView;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -310,203 +312,203 @@ namespace GAZT.Views.NewViews
 
         #endregion
 
-        public void OnPageSelected(object sender, SelectionChangedEventArgs e)
-        {
-            // CollectionView pagename =(CollectionView)sender;
-            VATDeclarationTabbedPageName previous = (e.PreviousSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
-            VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
-            var senderObject = sender;
+        //public void OnPageSelected(object sender, SelectionChangedEventArgs e)
+        //{
+        //    // CollectionView pagename =(CollectionView)sender;
+        //    VATDeclarationTabbedPageName previous = (e.PreviousSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
+        //    VATDeclarationTabbedPageName current = (e.CurrentSelection.FirstOrDefault() as VATDeclarationTabbedPageName);
+        //    var senderObject = sender;
 
 
 
 
-            if (current != null)
-            {
-                if (current.pageName == "Instruction" || current.pageName == "التعليمات")
-                {
+        //    if (current != null)
+        //    {
+        //        if (current.pageName == "Instruction" || current.pageName == "التعليمات")
+        //        {
 
-                    viewModel.InstrunctionClicked();
+        //            viewModel.InstrunctionClicked();
 
-                    if (viewModel.IsDeclarationCheckedForInstruction && !((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == false)))
-                    {
-                        viewModel.IsMainButtonEnabled = true;
-                    }
-                    else
-                    {
-                        viewModel.IsMainButtonEnabled = false;
-                    }
-                    // BtnNextStep.IsEnabled = false;
+        //            if (viewModel.IsDeclarationCheckedForInstruction && !((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == false)))
+        //            {
+        //                viewModel.IsMainButtonEnabled = true;
+        //            }
+        //            else
+        //            {
+        //                viewModel.IsMainButtonEnabled = false;
+        //            }
+        //            // BtnNextStep.IsEnabled = false;
 
-                    //if (App.ICRStatus == "E0045")
-                    //{
-                    //    viewModel.IsDeclarationCheckedForInstruction = true;
-                    //    viewModel.IsDeclarationCheckedForSummary = true;
-                    //    viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                    //    chkDeclaration.IsChecked = true;
-                    //}
-                    //else
-                    //{
-                    //    viewModel.IsDeclarationCheckedForInstruction = false;
-                    //    chkDeclaration.IsChecked = false;
-                    //}
-                    //  setColor(previous, current);
-                    NewSetColor(senderObject, current);
-                    viewModel.IsFirstTimeGet = false;
-                }
-                else if (current.pageName == "TaxPayer Details" || current.pageName == "تفاصيل المكلف")
-                {
-                    bool value = viewModel.IsCheckedDraftMode();
-                    bool Tvalue = viewModel.IsTabbedValid("02");
-                    if (value && Tvalue)
-                    {
-                        if (viewModel.IsFirstTimeGet)
-                        {
-                            viewModel.IsDeclarationCheckedForInstruction = true;
-                        }
-                    }
-                    if (viewModel.IsDeclarationCheckedForInstruction == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
-                    {
-                        if (viewModel.IsDeclarationCheckedForInstruction == true)
-                        {
-                            viewModel.TaxpayerDetailsClicked();
-                            // setColor(previous, current);
-                            NewSetColor(senderObject, current);
-                        }
-                        else
-                        {
-                            ((CollectionView)sender).SelectedItem = null;
-                        }
+        //            //if (App.ICRStatus == "E0045")
+        //            //{
+        //            //    viewModel.IsDeclarationCheckedForInstruction = true;
+        //            //    viewModel.IsDeclarationCheckedForSummary = true;
+        //            //    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+        //            //    chkDeclaration.IsChecked = true;
+        //            //}
+        //            //else
+        //            //{
+        //            //    viewModel.IsDeclarationCheckedForInstruction = false;
+        //            //    chkDeclaration.IsChecked = false;
+        //            //}
+        //            //  setColor(previous, current);
+        //            NewSetColor(senderObject, current);
+        //            viewModel.IsFirstTimeGet = false;
+        //        }
+        //        else if (current.pageName == "TaxPayer Details" || current.pageName == "تفاصيل المكلف")
+        //        {
+        //            bool value = viewModel.IsCheckedDraftMode();
+        //            bool Tvalue = viewModel.IsTabbedValid("02");
+        //            if (value && Tvalue)
+        //            {
+        //                if (viewModel.IsFirstTimeGet)
+        //                {
+        //                    viewModel.IsDeclarationCheckedForInstruction = true;
+        //                }
+        //            }
+        //            if (viewModel.IsDeclarationCheckedForInstruction == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+        //            {
+        //                if (viewModel.IsDeclarationCheckedForInstruction == true)
+        //                {
+        //                    viewModel.TaxpayerDetailsClicked();
+        //                    // setColor(previous, current);
+        //                    NewSetColor(senderObject, current);
+        //                }
+        //                else
+        //                {
+        //                    ((CollectionView)sender).SelectedItem = null;
+        //                }
 
-                    }
-                    else
-                    {
-                        if (App.ICRStatus != "E0001")
-                        {
-                            viewModel.IsDeclarationCheckedForInstruction = false;
-                            viewModel.IsMainButtonEnabled = false;
-                        }
-                        // BtnNextStep.IsEnabled = false;
-                        //  chkClearification.IsChecked = false;
-                        ((CollectionView)sender).SelectedItem = null;
-                    }
-                    viewModel.IsFirstTimeGet = false;
-                }
-                else if (current.pageName == "VAT Return Form" || current.pageName == "نموذج الإقرار الضريبي")
-                {
+        //            }
+        //            else
+        //            {
+        //                if (App.ICRStatus != "E0001")
+        //                {
+        //                    viewModel.IsDeclarationCheckedForInstruction = false;
+        //                    viewModel.IsMainButtonEnabled = false;
+        //                }
+        //                // BtnNextStep.IsEnabled = false;
+        //                //  chkClearification.IsChecked = false;
+        //                ((CollectionView)sender).SelectedItem = null;
+        //            }
+        //            viewModel.IsFirstTimeGet = false;
+        //        }
+        //        else if (current.pageName == "VAT Return Form" || current.pageName == "نموذج الإقرار الضريبي")
+        //        {
 
-                    bool value = viewModel.IsCheckedDraftMode();
-                    bool Tvalue = viewModel.IsTabbedValid("03");
-                    if (value && Tvalue)
-                    {
-                        if (viewModel.IsFirstTimeGet)
-                        {
-                            viewModel.IsDeclarationCheckedForInstruction = true;
-                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                        }
-                    }
-                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
-                    {
-                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
-                        {
+        //            bool value = viewModel.IsCheckedDraftMode();
+        //            bool Tvalue = viewModel.IsTabbedValid("03");
+        //            if (value && Tvalue)
+        //            {
+        //                if (viewModel.IsFirstTimeGet)
+        //                {
+        //                    viewModel.IsDeclarationCheckedForInstruction = true;
+        //                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+        //                }
+        //            }
+        //            if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+        //            {
+        //                if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+        //                {
 
-                            viewModel.VATReturnFormClicked();
-                            //   setColor(previous, current);
-                            EntryVatAmount.Focus();
-                            NewSetColor(senderObject, current);
-                        }
-                        else
-                        {
-                            ((CollectionView)sender).SelectedItem = null;
-                        }
-                    }
-                    else
-                    {
-                        ((CollectionView)sender).SelectedItem = null;
-                    }
-                    viewModel.IsFirstTimeGet = false;
-                    //else
-                    //{
-                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
-                    //}
-                }
-                else if (current.pageName == "Summary" || current.pageName == "ملخص")
-                {
-                    if (CheckMandetoryFields())
-                    {
-                        try
-                        {
-
-
-
-                        }
-                        catch
-                        {
-
-                        }
-                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
-                        {
-                            bool value = viewModel.IsCheckedDraftMode();
-                            bool Tvalue = viewModel.IsTabbedValid("04");
-                            if (value && Tvalue)
-                            {
-                                if (viewModel.IsFirstTimeGet)
-                                {
-                                    viewModel.IsDeclarationCheckedForInstruction = true;
-                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                                }
-                            }
-                            if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
-                            {
-                                bool value1 = viewModel.IsCheckedDraftMode();
-
-                                if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
-                                {
-
-                                }
-                                else
-                                {
-                                    viewModel.SummaryClicked();
-                                    // setColor(previous, current);
-                                    NewSetColor(senderObject, current);
-                                }
+        //                    viewModel.VATReturnFormClicked();
+        //                    //   setColor(previous, current);
+        //                    EntryVatAmount.Focus();
+        //                    NewSetColor(senderObject, current);
+        //                }
+        //                else
+        //                {
+        //                    ((CollectionView)sender).SelectedItem = null;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ((CollectionView)sender).SelectedItem = null;
+        //            }
+        //            viewModel.IsFirstTimeGet = false;
+        //            //else
+        //            //{
+        //            //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+        //            //}
+        //        }
+        //        else if (current.pageName == "Summary" || current.pageName == "ملخص")
+        //        {
+        //            if (CheckMandetoryFields())
+        //            {
+        //                try
+        //                {
 
 
-                                //Add because it will  not navigate in tobefilled and draft mode
-                                if (App.ICRStatus == "E0001" || value1)
-                                {
 
-                                    viewModel.SummaryClicked();
-                                    //  setColor(previous, current);
-                                    NewSetColor(senderObject, current);
+        //                }
+        //                catch
+        //                {
 
-                                }
-                                else
-                                {
-                                    ((CollectionView)sender).SelectedItem = null;
-                                }
-                            }
-                            else
-                            {
-                                ((CollectionView)sender).SelectedItem = null;
-                            }
-                        }
-                        else
-                        {
-                            viewModel.IsMainButtonEnabled = false;
+        //                }
+        //                if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+        //                {
+        //                    bool value = viewModel.IsCheckedDraftMode();
+        //                    bool Tvalue = viewModel.IsTabbedValid("04");
+        //                    if (value && Tvalue)
+        //                    {
+        //                        if (viewModel.IsFirstTimeGet)
+        //                        {
+        //                            viewModel.IsDeclarationCheckedForInstruction = true;
+        //                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+        //                        }
+        //                    }
+        //                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+        //                    {
+        //                        bool value1 = viewModel.IsCheckedDraftMode();
 
-                            viewModel.IsMainButtonEnabled = false;
-                            chkDeclarationForSummary.IsChecked = false;
-                        }
-                        viewModel.IsFirstTimeGet = false;
-                    }
-                    else
-                    {
-                        ((CollectionView)sender).SelectedItem = null;
-                    }
-                }
-            }
+        //                        if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
+        //                        {
 
-        }
+        //                        }
+        //                        else
+        //                        {
+        //                            viewModel.SummaryClicked();
+        //                            // setColor(previous, current);
+        //                            NewSetColor(senderObject, current);
+        //                        }
+
+
+        //                        //Add because it will  not navigate in tobefilled and draft mode
+        //                        if (App.ICRStatus == "E0001" || value1)
+        //                        {
+
+        //                            viewModel.SummaryClicked();
+        //                            //  setColor(previous, current);
+        //                            NewSetColor(senderObject, current);
+
+        //                        }
+        //                        else
+        //                        {
+        //                            ((CollectionView)sender).SelectedItem = null;
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        ((CollectionView)sender).SelectedItem = null;
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    viewModel.IsMainButtonEnabled = false;
+
+        //                    viewModel.IsMainButtonEnabled = false;
+        //                    chkDeclarationForSummary.IsChecked = false;
+        //                }
+        //                viewModel.IsFirstTimeGet = false;
+        //            }
+        //            else
+        //            {
+        //                ((CollectionView)sender).SelectedItem = null;
+        //            }
+        //        }
+        //    }
+
+        //}
 
         private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
@@ -4073,7 +4075,351 @@ namespace GAZT.Views.NewViews
             BPicker2.Focus();
         }
 
+        private void SfTabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
+        {
 
+            string PageName = e.Name;
+          
+                if (PageName == AppResources.ZZInstruction)
+                {
+
+                    viewModel.InstrunctionClicked();
+
+                    if (viewModel.IsDeclarationCheckedForInstruction && !((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == false)))
+                    {
+                        viewModel.IsMainButtonEnabled = true;
+                    }
+                    else
+                    {
+                        viewModel.IsMainButtonEnabled = false;
+                    }
+                    // BtnNextStep.IsEnabled = false;
+
+                    //if (App.ICRStatus == "E0045")
+                    //{
+                    //    viewModel.IsDeclarationCheckedForInstruction = true;
+                    //    viewModel.IsDeclarationCheckedForSummary = true;
+                    //    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                    //    chkDeclaration.IsChecked = true;
+                    //}
+                    //else
+                    //{
+                    //    viewModel.IsDeclarationCheckedForInstruction = false;
+                    //    chkDeclaration.IsChecked = false;
+                    //}
+                    //  setColor(previous, current);
+                  //  NewSetColor(senderObject, current);
+                    viewModel.IsFirstTimeGet = false;
+                }
+                else if (PageName == AppResources.ZZTaxPayerDetails)
+                {
+                    bool value = viewModel.IsCheckedDraftMode();
+                    bool Tvalue = viewModel.IsTabbedValid("02");
+                    if (value && Tvalue)
+                    {
+                        if (viewModel.IsFirstTimeGet)
+                        {
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                        }
+                    }
+                    if (viewModel.IsDeclarationCheckedForInstruction == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                    {
+                    if (viewModel.IsDeclarationCheckedForInstruction == true)
+                    {
+                        viewModel.TaxpayerDetailsClicked();
+                        // setColor(previous, current);
+                        //  NewSetColor(senderObject, current);
+                    }
+                    else
+                    {
+                        if (viewModel.IsVisibleInstrunction == true)
+                        {
+                            viewModel.SelectedTab = 0;
+                        }
+                        if (viewModel.IsVisibleTaxPayerDetails == true)
+                        {
+                            viewModel.SelectedTab = 1;
+
+                        }
+                        if (viewModel.IsVisibleVatReturnForm == true)
+                        {
+                            viewModel.SelectedTab = 2;
+
+                        }
+                        if (viewModel.IsVisibleSummary == true)
+                        {
+                            viewModel.SelectedTab = 3;
+
+                        }
+                    }
+
+                    }
+                    else
+                    {
+                        if (App.ICRStatus != "E0001")
+                        {
+                            viewModel.IsDeclarationCheckedForInstruction = false;
+                            viewModel.IsMainButtonEnabled = false;
+                        }
+                    // BtnNextStep.IsEnabled = false;
+                    //  chkClearification.IsChecked = false;
+                    //  ((CollectionView)sender).SelectedItem = null;
+                    if (viewModel.IsVisibleInstrunction == true)
+                    {
+                        viewModel.SelectedTab = 0;
+                    }
+                    if (viewModel.IsVisibleTaxPayerDetails == true)
+                    {
+                        viewModel.SelectedTab = 1;
+
+                    }
+                    if (viewModel.IsVisibleVatReturnForm == true)
+                    {
+                        viewModel.SelectedTab = 2;
+
+                    }
+                    if (viewModel.IsVisibleSummary == true)
+                    {
+                        viewModel.SelectedTab = 3;
+
+                    }
+                }
+                    viewModel.IsFirstTimeGet = false;
+                }
+                else if (PageName == AppResources.ZZVATReturnForm)
+                {
+
+                    bool value = viewModel.IsCheckedDraftMode();
+                    bool Tvalue = viewModel.IsTabbedValid("03");
+                    if (value && Tvalue)
+                    {
+                        if (viewModel.IsFirstTimeGet)
+                        {
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                        }
+                    }
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                    {
+                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                    {
+
+                        viewModel.VATReturnFormClicked();
+                        //   setColor(previous, current);
+                        EntryVatAmount.Focus();
+                        //  NewSetColor(senderObject, current);
+                    }
+                    else
+                    {
+                        if (viewModel.IsVisibleInstrunction == true)
+                        {
+                            viewModel.SelectedTab = 0;
+                        }
+                        if (viewModel.IsVisibleTaxPayerDetails == true)
+                        {
+                            viewModel.SelectedTab = 1;
+
+                        }
+                        if (viewModel.IsVisibleVatReturnForm == true)
+                        {
+                            viewModel.SelectedTab = 2;
+
+                        }
+                        if (viewModel.IsVisibleSummary == true)
+                        {
+                            viewModel.SelectedTab = 3;
+
+                        }
+                        // ((CollectionView)sender).SelectedItem = null;
+                    }
+                    }
+                    else
+                    {
+                    if (viewModel.IsVisibleInstrunction == true)
+                    {
+                        viewModel.SelectedTab = 0;
+                    }
+                    if (viewModel.IsVisibleTaxPayerDetails == true)
+                    {
+                        viewModel.SelectedTab = 1;
+
+                    }
+                    if (viewModel.IsVisibleVatReturnForm == true)
+                    {
+                        viewModel.SelectedTab = 2;
+
+                    }
+                    if (viewModel.IsVisibleSummary == true)
+                    {
+                        viewModel.SelectedTab = 3;
+
+                    }
+                    // ((CollectionView)sender).SelectedItem = null;
+                }
+                    viewModel.IsFirstTimeGet = false;
+                    //else
+                    //{
+                    //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
+                    //}
+                }
+                else if (PageName == AppResources.ZZSummary)
+                {
+                    if (CheckMandetoryFields())
+                    {
+                        try
+                        {
+
+
+
+                        }
+                        catch
+                        {
+
+                        }
+                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                        {
+                            bool value = viewModel.IsCheckedDraftMode();
+                            bool Tvalue = viewModel.IsTabbedValid("04");
+                            if (value && Tvalue)
+                            {
+                                if (viewModel.IsFirstTimeGet)
+                                {
+                                    viewModel.IsDeclarationCheckedForInstruction = true;
+                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                                }
+                            }
+                            if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                            {
+                                bool value1 = viewModel.IsCheckedDraftMode();
+
+                                if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
+                                {
+                                if (viewModel.IsVisibleInstrunction == true)
+                                {
+                                    viewModel.SelectedTab = 0;
+                                }
+                                if (viewModel.IsVisibleTaxPayerDetails == true)
+                                {
+                                    viewModel.SelectedTab = 1;
+
+                                }
+                                if (viewModel.IsVisibleVatReturnForm == true)
+                                {
+                                    viewModel.SelectedTab = 2;
+
+                                }
+                                if (viewModel.IsVisibleSummary == true)
+                                {
+                                    viewModel.SelectedTab = 3;
+
+                                }
+                            }
+                                else
+                                {
+                                    viewModel.SummaryClicked();
+                                    // setColor(previous, current);
+                                 //   NewSetColor(senderObject, current);
+                                }
+
+
+                                //Add because it will  not navigate in tobefilled and draft mode
+                                if (App.ICRStatus == "E0001" || value1)
+                                {
+
+                                    viewModel.SummaryClicked();
+                                    //  setColor(previous, current);
+                                 //   NewSetColor(senderObject, current);
+
+                                }
+                                else
+                                {
+                                if (viewModel.IsVisibleInstrunction == true)
+                                {
+                                    viewModel.SelectedTab = 0;
+                                }
+                                if (viewModel.IsVisibleTaxPayerDetails == true)
+                                {
+                                    viewModel.SelectedTab = 1;
+
+                                }
+                                if (viewModel.IsVisibleVatReturnForm == true)
+                                {
+                                    viewModel.SelectedTab = 2;
+
+                                }
+                                if (viewModel.IsVisibleSummary == true)
+                                {
+                                    viewModel.SelectedTab = 3;
+
+                                }
+                                //((CollectionView)sender).SelectedItem = null;
+                            }
+                            }
+                            else
+                            {
+                            if (viewModel.IsVisibleInstrunction == true)
+                            {
+                                viewModel.SelectedTab = 0;
+                            }
+                            if (viewModel.IsVisibleTaxPayerDetails == true)
+                            {
+                                viewModel.SelectedTab = 1;
+
+                            }
+                            if (viewModel.IsVisibleVatReturnForm == true)
+                            {
+                                viewModel.SelectedTab = 2;
+
+                            }
+                            if (viewModel.IsVisibleSummary == true)
+                            {
+                                viewModel.SelectedTab = 3;
+
+                            }
+                            //((CollectionView)sender).SelectedItem = null;
+                        }
+                        }
+                        else
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+
+                            viewModel.IsMainButtonEnabled = false;
+                            chkDeclarationForSummary.IsChecked = false;
+                        }
+                        viewModel.IsFirstTimeGet = false;
+                    }
+                    else
+                    {
+                    if (viewModel.IsVisibleInstrunction == true)
+                    {
+                        viewModel.SelectedTab = 0;
+                    }
+                    if (viewModel.IsVisibleTaxPayerDetails == true)
+                    {
+                        viewModel.SelectedTab = 1;
+
+                    }
+                    if (viewModel.IsVisibleVatReturnForm == true)
+                    {
+                        viewModel.SelectedTab = 2;
+
+                    }
+                    if (viewModel.IsVisibleSummary == true)
+                    {
+                        viewModel.SelectedTab = 3;
+
+                    }
+                    // ((CollectionView)sender).SelectedItem = null;
+                }
+                }
+            
+
+
+
+           
+
+          
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{

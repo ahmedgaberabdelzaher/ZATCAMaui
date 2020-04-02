@@ -2904,6 +2904,22 @@
     <value>الإبلاغ عن التهرب في ضريبة القيمة المضافة</value>
     <comment>Title</comment>
   </data>
+  <data name="ZZInstruction" xml:space="preserve">
+    <value>التعليمات</value>
+    <comment>VAT Declarations</comment>
+  </data>
+  <data name="ZZSummary" xml:space="preserve">
+    <value>ملخص</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZTaxPayerDetails" xml:space="preserve">
+    <value>تفاصيل المكلف</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZVATReturnForm" xml:space="preserve">
+    <value>نموذج الإقرار الضريبي</value>
+    <comment>VAT Declaration</comment>
+  </data>
   <data name="ZZZAboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>

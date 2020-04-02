@@ -5764,6 +5764,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instruction.
+        /// </summary>
+        public static string ZZInstruction {
+            get {
+                return ResourceManager.GetString("ZZInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
         public static string ZZInternetConnectionMessage {
@@ -6629,6 +6638,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ZZSummary {
+            get {
+                return ResourceManager.GetString("ZZSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TaxPayer Details.
+        /// </summary>
+        public static string ZZTaxPayerDetails {
+            get {
+                return ResourceManager.GetString("ZZTaxPayerDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Terms &amp; Conditions.
         /// </summary>
         public static string ZZTermsAndConditions {
@@ -7014,6 +7041,15 @@ namespace GAZT {
         public static string ZZVATAmount {
             get {
                 return ResourceManager.GetString("ZZVATAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form.
+        /// </summary>
+        public static string ZZVATReturnForm {
+            get {
+                return ResourceManager.GetString("ZZVATReturnForm", resourceCulture);
             }
         }
         
