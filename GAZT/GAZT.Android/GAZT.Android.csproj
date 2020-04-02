@@ -92,6 +92,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>17.4.0.55</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>17.4.0.55</Version>
     </PackageReference>
@@ -171,6 +174,7 @@
     <Compile Include="CustomRenderer\GAZTBorderlessPickerRenderer.cs" />
     <Compile Include="CustomRenderer\PdfWebViewRenderer.cs" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
+    <Compile Include="FileHelperService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PUSH Notifications\MyFirebaseIidService.cs" />
     <Compile Include="PUSH Notifications\MyFirebaseMessagingService.cs" />

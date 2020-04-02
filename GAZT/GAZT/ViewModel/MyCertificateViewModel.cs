@@ -465,7 +465,8 @@ namespace GAZT
                 {
                     //Uri uri = new Uri(pdfUrl);
                     //Device.OpenUri(uri);
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    // _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
