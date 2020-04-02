@@ -2930,4 +2930,8 @@
     <value>عربي</value>
     <comment>option page</comment>
   </data>
+  <data name="ZZSort" xml:space="preserve">
+    <value>Sort</value>
+    <comment>Correspondence</comment>
+  </data>
 </root>

@@ -21,7 +21,15 @@ namespace GAZT.Views.NewViews
         CorrespondenceDetailsPageViewModel viewModel;
         public CorrespondenceDetailsPageView(CorrespondanceModel CorrModel)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            ChangeAeroIcon();
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
             viewModel.IsAttachmentEnabled = false;
@@ -93,6 +101,17 @@ namespace GAZT.Views.NewViews
                 viewModel.FavIcon = "ic_star_border.png";
             }
             SetLTR();
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
 
         private void SetLTR()

@@ -29,17 +29,45 @@ namespace GAZT.ViewModel.NewViewModel
         CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
-        private string _txtSelectedStatus = string.Empty;
-        public string TxtSelectedStatus
+        private string _txtSelectedStatusZakat = string.Empty;
+        public string TxtSelectedStatusZakat
         {
             get
             {
-                return _txtSelectedStatus;
+                return _txtSelectedStatusZakat;
             }
             set
             {
-                _txtSelectedStatus = value;
-                RaisePropertyChanged("TxtSelectedStatus");
+                _txtSelectedStatusZakat = value;
+                RaisePropertyChanged("TxtSelectedStatusZakat");
+            }
+        }
+
+        private string _txtSelectedStatusVAT = string.Empty;
+        public string TxtSelectedStatusVAT
+        {
+            get
+            {
+                return _txtSelectedStatusVAT;
+            }
+            set
+            {
+                _txtSelectedStatusVAT = value;
+                RaisePropertyChanged("TxtSelectedStatusVAT");
+            }
+        }
+
+        private string _txtSelectedStatusET = string.Empty;
+        public string TxtSelectedStatusET
+        {
+            get
+            {
+                return _txtSelectedStatusET;
+            }
+            set
+            {
+                _txtSelectedStatusET = value;
+                RaisePropertyChanged("TxtSelectedStatusET");
             }
         }
         public List<CorrespondanceModel> ListVATCorrespondance
@@ -97,33 +125,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private bool _isZakatVisible = true;
-        public bool IsZakatVisible
-        {
-            get
-            {
-                return _isZakatVisible;
-            }
-            set
-            {
-                _isZakatVisible = value;
-                RaisePropertyChanged("IsZakatVisible");
-            }
-        }
-
-        private bool _isVATVisible = false;
-        public bool IsVATVisible
-        {
-            get
-            {
-                return _isVATVisible;
-            }
-            set
-            {
-                _isVATVisible = value;
-                RaisePropertyChanged("IsVATVisible");
-            }
-        }
 
         private bool _setNoDataLabelVisibility = false;
 
@@ -140,19 +141,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private bool _isETVisible = false;
-        public bool IsETVisible
-        {
-            get
-            {
-                return _isETVisible;
-            }
-            set
-            {
-                _isETVisible = value;
-                RaisePropertyChanged("IsETVisible");
-            }
-        }
+       
 
         private string _zakatCountDisplay = string.Empty;
         public string ZakatCountDisplay
@@ -196,84 +185,83 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<CorrespondenceFiltersModel> _corresFilter;
+     
 
-        public List<CorrespondenceFiltersModel> CorresFilter
+        private List<CorrespondenceFiltersModel> _corresFilterZakat;
+
+        public List<CorrespondenceFiltersModel> CorresFilterZakat
         {
             get
             {
-                return _corresFilter;
+                return _corresFilterZakat;
             }
             set
             {
-                _corresFilter = value;
-                RaisePropertyChanged("CorresFilter");
+                _corresFilterZakat = value;
+                RaisePropertyChanged("CorresFilterZakat");
+            }
+        }
+        private List<CorrespondenceFiltersModel> _corresFilterVAT;
+
+        public List<CorrespondenceFiltersModel> CorresFilterVAT
+        {
+            get
+            {
+                return _corresFilterVAT;
+            }
+            set
+            {
+                _corresFilterVAT = value;
+                RaisePropertyChanged("CorresFilterVAT");
+            }
+        }
+        private List<CorrespondenceFiltersModel> _corresFilterET;
+
+        public List<CorrespondenceFiltersModel> CorresFilterET
+        {
+            get
+            {
+                return _corresFilterET;
+            }
+            set
+            {
+                _corresFilterET = value;
+                RaisePropertyChanged("CorresFilterET");
             }
         }
 
-        private CorrespondenceFiltersModel _selectedFilter = null;
-        public CorrespondenceFiltersModel SelectedFilter
+        private CorrespondenceFiltersModel _selectedFilterZakat = null;
+        public CorrespondenceFiltersModel SelectedFilterZakat
         {
             get
             {
-                return _selectedFilter;
+                return _selectedFilterZakat;
             }
             set
             {
-                _selectedFilter = value;
-                if (_selectedFilter != null)
+                _selectedFilterZakat = value;
+                if (_selectedFilterZakat != null)
                 {
-                    if (_selectedFilter.ID == 1)
+                    if (_selectedFilterZakat.ID == 1)
                     {
-                        if (IsZakatVisible == true)
-                        {
+                      
                             if (ListZAKATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListZAKATCorrespondance;
                                 ListZAKATCorrespondance = null;
                                 var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-                                IsVATVisible = false;
-                                IsETVisible = false;
 
 
                                 ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
+                            
                         }
 
-                        if (IsVATVisible == true)
-                        {
-                            if (ListVATCorrespondance != null)
-                            {
-                                List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
-                                CorreTosort = ListVATCorrespondance;
-                                ListVATCorrespondance = null;
-                                IsZakatVisible = false;
-                                IsETVisible = false;
-                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-
-
-                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
-                        if (IsETVisible == true)
-                        {
-                            if (ListETCorrespondance != null)
-                            {
-                                List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
-                                CorreTosort = ListETCorrespondance;
-                                ListETCorrespondance = null;
-                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-                                IsVATVisible = false;
-                                IsZakatVisible = false;
-                                ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
+                    
                     }
-                    if (_selectedFilter.ID == 2)
+                    if (_selectedFilterZakat.ID == 2)
                     {
-                        if (IsZakatVisible == true)
-                        {
+                       
                             if (ListZAKATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
@@ -286,10 +274,81 @@ namespace GAZT.ViewModel.NewViewModel
                                 }
                             }
 
-                        }
+                        
 
-                        if (IsVATVisible == true)
-                        {
+                       
+                    }
+                    if (_selectedFilterZakat.ID == 3)
+                    {
+                     
+                            if (ListZAKATCorrespondance != null)
+                            {
+                                var SortedList = from item in ListZAKATCorrespondance
+                                                 orderby item.IsFav ascending
+                                                 select item;
+
+
+                                ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                        
+
+                      
+                    }
+                    if (_selectedFilterZakat.ID == 4)
+                    {
+                       
+                            if (ListZAKATCorrespondance != null)
+                            {
+                                var SortedList = from item in ListZAKATCorrespondance
+                                                 orderby item.IsFav descending
+                                                 select item;
+
+
+                                ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                        
+                    }
+                    TxtSelectedStatusZakat = _selectedFilterZakat.Filter;
+                }
+               
+                RaisePropertyChanged("SelectedFilterZakat");
+            }
+        }
+
+        private CorrespondenceFiltersModel _selectedFilterVAT = null;
+        public CorrespondenceFiltersModel SelectedFilterVAT
+        {
+            get
+            {
+                return _selectedFilterVAT;
+            }
+            set
+            {
+                _selectedFilterVAT = value;
+                if (_selectedFilterVAT != null)
+                {
+                    if (_selectedFilterVAT.ID == 1)
+                    {
+                       
+
+                        if (ListVATCorrespondance != null)
+                            {
+                                List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
+                                CorreTosort = ListVATCorrespondance;
+                                ListVATCorrespondance = null;
+                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+
+
+                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                     
+                    }
+                    if (_selectedFilterVAT.ID == 2)
+                    {
+                        
+                           
+
+                      
                             if (ListVATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
@@ -301,9 +360,71 @@ namespace GAZT.ViewModel.NewViewModel
                                     ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
-                        }
-                        if (IsETVisible == true)
-                        {
+                       
+                    }
+                    if (_selectedFilterVAT.ID == 3)
+                    {
+                      
+                            if (ListVATCorrespondance != null)
+                            {
+                                var SortedList = from item in ListVATCorrespondance
+                                                 orderby item.IsFav ascending
+                                                 select item;
+
+
+                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                    
+                    }
+                    if (_selectedFilterVAT.ID == 4)
+                    {
+                            if (ListVATCorrespondance != null)
+                            {
+                                var SortedList = from item in ListVATCorrespondance
+                                                 orderby item.IsFav descending
+                                                 select item;
+
+
+                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                       
+                    }
+                    TxtSelectedStatusVAT = _selectedFilterVAT.Filter;
+                }
+
+                RaisePropertyChanged("SelectedFilterVAT");
+            }
+        }
+
+        private CorrespondenceFiltersModel _selectedFilterET = null;
+        public CorrespondenceFiltersModel SelectedFilterET
+        {
+            get
+            {
+                return _selectedFilterET;
+            }
+            set
+            {
+                _selectedFilterET = value;
+                if (_selectedFilterET != null)
+                {
+                    if (_selectedFilterET.ID == 1)
+                    {
+                      
+                            if (ListETCorrespondance != null)
+                            {
+                                List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
+                                CorreTosort = ListETCorrespondance;
+                                ListETCorrespondance = null;
+                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+                               
+                                ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                            }
+                        
+                    }
+                    if (_selectedFilterET.ID == 2)
+                    {
+                        
                             if (ListETCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
@@ -316,37 +437,11 @@ namespace GAZT.ViewModel.NewViewModel
                                     ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
-                        }
+                        
                     }
-                    if (_selectedFilter.ID == 3)
+                    if (_selectedFilterET.ID == 3)
                     {
-                        if (IsZakatVisible == true)
-                        {
-                            if (ListZAKATCorrespondance != null)
-                            {
-                                var SortedList = from item in ListZAKATCorrespondance
-                                                 orderby item.IsFav ascending
-                                                 select item;
-
-
-                                ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
-
-                        if (IsVATVisible == true)
-                        {
-                            if (ListVATCorrespondance != null)
-                            {
-                                var SortedList = from item in ListVATCorrespondance
-                                                 orderby item.IsFav ascending
-                                                 select item;
-
-
-                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
-                        if (IsETVisible == true)
-                        {
+                      
                             if (ListETCorrespondance != null)
                             {
                                 var SortedList = from item in ListETCorrespondance
@@ -356,37 +451,11 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        }
+                        
                     }
-                    if (_selectedFilter.ID == 4)
+                    if (_selectedFilterET.ID == 4)
                     {
-                        if (IsZakatVisible == true)
-                        {
-                            if (ListZAKATCorrespondance != null)
-                            {
-                                var SortedList = from item in ListZAKATCorrespondance
-                                                 orderby item.IsFav descending
-                                                 select item;
-
-
-                                ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
-
-                        if (IsVATVisible == true)
-                        {
-                            if (ListVATCorrespondance != null)
-                            {
-                                var SortedList = from item in ListVATCorrespondance
-                                                 orderby item.IsFav descending
-                                                 select item;
-
-
-                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            }
-                        }
-                        if (IsETVisible == true)
-                        {
+                        
                             if (ListETCorrespondance != null)
                             {
                                 var SortedList = from item in ListETCorrespondance
@@ -396,28 +465,61 @@ namespace GAZT.ViewModel.NewViewModel
 
                                 ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        }
+                        
                     }
-                    TxtSelectedStatus = _selectedFilter.Filter;
+                    TxtSelectedStatusET = _selectedFilterET.Filter;
                 }
-               
-                RaisePropertyChanged("SelectedFilter");
+
+                RaisePropertyChanged("SelectedFilterET");
             }
         }
 
-        private int? _setSelectedIndex = 0;
-        public int? SetSelectedIndex
+
+        private int? _setSelectedIndexZakat = 0;
+        public int? SetSelectedIndexZakat
         {
             get
             {
-                return _setSelectedIndex;
+                return _setSelectedIndexZakat;
             }
             set
             {
-                _setSelectedIndex = value;
-                RaisePropertyChanged("SetSelectedIndex");
+                _setSelectedIndexZakat = value;
+                RaisePropertyChanged("SetSelectedIndexZakat");
             }
         }
+
+        private int? _setSelectedIndexVAT = 0;
+        public int? SetSelectedIndexVAT
+        {
+            get
+            {
+                return _setSelectedIndexVAT;
+            }
+            set
+            {
+                _setSelectedIndexVAT = value;
+                RaisePropertyChanged("SetSelectedIndexVAT");
+            }
+        }
+
+        private int? _setSelectedIndexET = 0;
+        public int? SetSelectedIndexET
+        {
+            get
+            {
+                return _setSelectedIndexET;
+            }
+            set
+            {
+                _setSelectedIndexET = value;
+                RaisePropertyChanged("SetSelectedIndexET");
+            }
+        }
+
+
+
+
         #endregion
 
         #region Constructor
@@ -444,16 +546,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-                    IsZakatVisible = false;
-                    IsVATVisible = true;
-                    IsETVisible = false;
+                  
 
                     List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
                     Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
                     Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
 
-                    CorresFilter = Filters;
-                    SetSelectedIndex = 2;
+                  
                 }
                 catch (Exception ex)
                 {
@@ -536,9 +635,7 @@ namespace GAZT.ViewModel.NewViewModel
                 });
                 await Task.Run(() =>
                 {
-                    IsVATVisible = false;
-                    IsZakatVisible = true;
-                    IsETVisible = false;
+                  
                     SetNoDataLabelVisibility = false;
                     SetStatusPickerItem();
                         ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
@@ -576,26 +673,26 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                if (IsETVisible == true || IsVATVisible == true)
-                {
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                }
-                else
-                {
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                    Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-                }
-                CorresFilter = Filters;
+                List<CorrespondenceFiltersModel> FiltersZAKAT = new List<CorrespondenceFiltersModel>();
+                List<CorrespondenceFiltersModel> FiltersVATET = new List<CorrespondenceFiltersModel>();
+
+                FiltersVATET.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                FiltersVATET.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+
+                FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+                FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+                FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+                FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+
+                CorresFilterZakat = FiltersZAKAT;
+                CorresFilterVAT = FiltersVATET;
+                CorresFilterET = FiltersVATET;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-                
+
 
         }
 
@@ -873,7 +970,9 @@ namespace GAZT.ViewModel.NewViewModel
                         ETCo.Add(childET);
                     }
                     ListETCorrespondance = ETCo;
-                    SetSelectedIndex = 4;
+                    SetSelectedIndexZakat = 4;
+                    SetSelectedIndexET = 2;
+                    SetSelectedIndexVAT = 2;
                 }
                
             }
@@ -884,96 +983,96 @@ namespace GAZT.ViewModel.NewViewModel
             
         }
 
-        public void OnZAKATClicked()
-        {
-            try
-            {
-                IsZakatVisible = true;
-                IsVATVisible = false;
-                IsETVisible = false;
+        //public void OnZAKATClicked()
+        //{
+        //    try
+        //    {
+        //        IsZakatVisible = true;
+        //        IsVATVisible = false;
+        //        IsETVisible = false;
 
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+        //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
 
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
 
-                CorresFilter = Filters;
-                SetSelectedIndex = 4;
-                if(ListZAKATCorrespondance != null && ListZAKATCorrespondance.Count > 0)
-                {
-                    SetNoDataLabelVisibility = false;
-                }
-                else
-                {
-                    SetNoDataLabelVisibility = true;
-                }
-            }
-            catch (Exception ex)
-            {
+        //        CorresFilter = Filters;
+        //        SetSelectedIndex = 4;
+        //        if(ListZAKATCorrespondance != null && ListZAKATCorrespondance.Count > 0)
+        //        {
+        //            SetNoDataLabelVisibility = false;
+        //        }
+        //        else
+        //        {
+        //            SetNoDataLabelVisibility = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
-        public void OnVATLabelClicked()
-        {
-            try
-            {
-                IsZakatVisible = false;
-                IsVATVisible = true;
-                IsETVisible = false;
+        //public void OnVATLabelClicked()
+        //{
+        //    try
+        //    {
+        //        IsZakatVisible = false;
+        //        IsVATVisible = true;
+        //        IsETVisible = false;
 
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+        //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
 
-                CorresFilter = Filters;
-                SetSelectedIndex = 2;
-                if (ListVATCorrespondance != null && ListVATCorrespondance.Count > 0)
-                {
-                    SetNoDataLabelVisibility = false;
-                }
-                else
-                {
-                    SetNoDataLabelVisibility = true;
-                }
-            }
-            catch (Exception ex)
-            {
+        //        CorresFilter = Filters;
+        //        SetSelectedIndex = 2;
+        //        if (ListVATCorrespondance != null && ListVATCorrespondance.Count > 0)
+        //        {
+        //            SetNoDataLabelVisibility = false;
+        //        }
+        //        else
+        //        {
+        //            SetNoDataLabelVisibility = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
-        public void OnEtLabelClicked()
-        {
-            try
-            {
-                IsZakatVisible = false;
-                IsVATVisible = false;
-                IsETVisible = true;
+        //public void OnEtLabelClicked()
+        //{
+        //    try
+        //    {
+        //        IsZakatVisible = false;
+        //        IsVATVisible = false;
+        //        IsETVisible = true;
 
-                List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-                Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
-                Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
+        //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
+        //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
 
 
-                CorresFilter = Filters;
-                SetSelectedIndex = 2;
-                if (ListETCorrespondance != null && ListETCorrespondance.Count > 0)
-                {
-                    SetNoDataLabelVisibility = false;
-                }
-                else
-                {
-                    SetNoDataLabelVisibility = true;
-                }
-            }
-            catch (Exception ex)
-            {
+        //        CorresFilter = Filters;
+        //        SetSelectedIndex = 2;
+        //        if (ListETCorrespondance != null && ListETCorrespondance.Count > 0)
+        //        {
+        //            SetNoDataLabelVisibility = false;
+        //        }
+        //        else
+        //        {
+        //            SetNoDataLabelVisibility = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
         #endregion
     }
 }
