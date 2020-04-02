@@ -200,8 +200,8 @@ namespace GAZT.ViewModel
                 //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
 
                 if (!string.IsNullOrEmpty(pdfUrl))
-                 { //DownloadUrl = pdfUrl;
-                     DownloadUrl = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
+                 { DownloadUrl = pdfUrl;
+                     //DownloadUrl = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
                     if (Device.RuntimePlatform == Device.Android)
                      {
                          pdf();
