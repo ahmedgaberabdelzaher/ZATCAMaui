@@ -1893,7 +1893,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Lookup.
+        ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
         public static string VATLookup {
             get {
@@ -7113,6 +7113,15 @@ namespace GAZT {
         public static string ZZYoushouldsignupasnewuser {
             get {
                 return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        public static string ZZZAboutUs {
+            get {
+                return ResourceManager.GetString("ZZZAboutUs", resourceCulture);
             }
         }
         

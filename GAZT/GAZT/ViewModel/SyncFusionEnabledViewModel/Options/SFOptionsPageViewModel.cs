@@ -60,7 +60,8 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.EditMobileNumberCommand = new Command(this.EditMobileNumberClicked);
             this.EditPasswordCommand = new Command(this.EditPasswordClicked);
             this.EditEmailCommand = new Command(this.EditEmailClicked);
-            
+            this.AboutCommand = new Command(this.AboutUsClicked);
+
 
 
         }
@@ -73,7 +74,22 @@ namespace GAZTeServicesApp.ViewModels.Options
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
         public Command EditEmailCommand { get; set; }
+        public Command AboutCommand { get; set; }
 
+
+        private string _appVersion = App.AppVersion;
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
 
         private string _translateText;
         public string TranslateText
@@ -224,7 +240,7 @@ namespace GAZTeServicesApp.ViewModels.Options
         /// <param name="obj">The object</param>
         private void PrivacyPolicyClicked(object obj)
         {
-            // Do something
+            _navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
         }
 
         /// <summary>
@@ -235,6 +251,7 @@ namespace GAZTeServicesApp.ViewModels.Options
 
         private void FAQClicked(object obj)
         {
+            _navigationService.NavigateTo(App.FAQPageView);
             // Do something
         }
 
@@ -279,7 +296,12 @@ namespace GAZTeServicesApp.ViewModels.Options
             // Do something
         }
 
-       
+        private void AboutUsClicked(object obj)
+        {
+            _navigationService.NavigateTo(App.AboutUsPageView);
+        }
+
+
 
         public void LogOut()
         {

@@ -143,6 +143,22 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("LocalPath");
             }
         }
+        //Streamoffile
+        private Stream _streamoffile;
+        public Stream Streamoffile
+        {
+            get
+            {
+                return _streamoffile;
+            }
+            set
+            {
+                _streamoffile = value;
+                RaisePropertyChanged("Streamoffile");
+            }
+        }
+
+
         #endregion
 
         #region Constructor
@@ -184,9 +200,8 @@ namespace GAZT.ViewModel
                 //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
 
                 if (!string.IsNullOrEmpty(pdfUrl))
-                 {
-
-                     DownloadUrl = pdfUrl;// "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
+                 { //DownloadUrl = pdfUrl;
+                     DownloadUrl = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
                     if (Device.RuntimePlatform == Device.Android)
                      {
                          pdf();
@@ -214,6 +229,9 @@ namespace GAZT.ViewModel
             Stream stream = null;
             try
             {
+
+
+
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     var dependency = DependencyService.Get<ILocalFileProvider>();
@@ -229,6 +247,7 @@ namespace GAZT.ViewModel
                     {
                         byte[] PdfBytes;
                         HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+
                         WebResponse myResp = myReq.GetResponse();
                         using (Stream streams = myResp.GetResponseStream())
                         using (MemoryStream ms = new MemoryStream())
@@ -253,12 +272,13 @@ namespace GAZT.ViewModel
                             byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
                             stream = new MemoryStream(sPDFDecoded);
                             StreamForDownloadURL = stream;
+                            Streamoffile = StreamForDownloadURL;
                         }
                         localPath =
                       Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                         LocalPath = localPath;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                     }
 

@@ -21,7 +21,23 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         bool isMendatoryDataEntered = true;
         public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnHomeIconClicked { get; set; }
 
+        public ICommand OnHomeButtonClicked { get; set; }
+
+        private bool _isTooltipEnableVisible = false;
+        public bool IsTooltipEnableVisible
+        {
+            get
+            {
+                return _isTooltipEnableVisible;
+            }
+            set
+            {
+                _isTooltipEnableVisible = value;
+                RaisePropertyChanged("IsTooltipEnableVisible");
+            }
+        }
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -242,6 +258,14 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
+            });
+            OnHomeIconClicked = new Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
             });
             OnSubmitClicked = new Command(async () =>
             {
@@ -507,6 +531,7 @@ namespace GAZT.ViewModel.NewViewModel
             if (SelectedParameterType != null)
             {
                 TxtSearchParameter = SelectedParameterType.ParameterType;
+                IsTooltipEnableVisible = true;
                 SetPlaceholderText();
             }
         }

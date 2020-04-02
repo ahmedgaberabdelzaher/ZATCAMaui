@@ -1,21 +1,19 @@
-﻿using System;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight.Views;
+using GAZT.CustomControl;
+using GAZT.Models;
+using GAZTeServicesApp.Views.LandingPage;
+using System;
+using System.Globalization;
+using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using GAZT.Views;
-using System.Globalization;
-using GAZT.CustomControl;
-using CommonServiceLocator;
-using GalaSoft.MvvmLight.Views;
-using GAZT.Models;
-using System.Net.Http;
-using GAZT.Views.NewViews;
-using GAZTeServicesApp.Themes;
-using GAZTeServicesApp.Views.LoginPage;
-using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
-using GAZTeServicesApp.Views.LandingPage;
-using System.Threading;
-using System.Resources;
-using Syncfusion.SfPicker.XForms;
+
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -85,10 +83,13 @@ namespace GAZT
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";
+        public static string FAQPageView = "FAQPageView";
+        public static string AboutUsPageView = "AboutUsPageView";
+        public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
 
 
 
-        
+
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -124,25 +125,6 @@ namespace GAZT
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIzNTEwQDMxMzcyZTM0MmUzMEJUZG1sRWtvcDRKQTJYUkpTdm5lcXFHbzAzenUvNS81RTZ3SlBwdlN1Njg9");
 
-            //if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
-            //{
-            //    PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
-
-            //    // the ResourceManager class constructor has two parameters.
-            //    // 1. ResXPath => Full path of the resx file in the application. Here in the above line GettingStarted refers to the namespace of the Application
-            //    // 2. Assembly => Application assembly (PCL)
-
-            //    // Sets the required culture to the static texts in the control.		
-            //    if (Device.RuntimePlatform != Device.UWP)
-            //    {
-            //        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar-AE");
-            //    }
-            //    else
-            //    {
-            //        CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-            //    }
-            //}
-
             AppResources.Culture = CultureInfo.CurrentUICulture;
 
             InitializeComponent();
@@ -167,6 +149,7 @@ namespace GAZT
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
+            
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
 
@@ -213,15 +196,15 @@ namespace GAZT
             }
             if (PreviousIsArabic)
             {
-                switch (Device.RuntimePlatform)
+                switch (Xamarin.Forms.Device.RuntimePlatform)
                 {
-                    case Device.iOS:
+                    case Xamarin.Forms.Device.iOS:
                         fontFamilyBold = "GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light";
                         fontFamilyRoman = "SSTArabic-Roman";
                         break;
-                    case Device.Android:
+                    case Xamarin.Forms.Device.Android:
                         fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
                         fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
@@ -232,15 +215,15 @@ namespace GAZT
             }
             else
             {
-                switch (Device.RuntimePlatform)
+                switch (Xamarin.Forms.Device.RuntimePlatform)
                 {
-                    case Device.iOS:
+                    case Xamarin.Forms.Device.iOS:
                         fontFamilyBold = "SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light";
                         fontFamilyRoman = "SSTArabic-Roman";
                         break;
-                    case Device.Android:
+                    case Xamarin.Forms.Device.Android:
                         fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
                         fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
@@ -288,7 +271,7 @@ namespace GAZT
 
             if (App.IsArabic)
             {
-                if(Device.RuntimePlatform == Device.iOS)
+                if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
                 {
                     Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
                     Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
@@ -316,7 +299,66 @@ namespace GAZT
 
         protected override void OnStart()
         {
+            Distribute.ReleaseAvailable = OnReleaseAvailable;
+
             // Handle when your app starts
+            AppCenter.Start("ios=e91bd801-4e1c-4f62-8075-4732d2a1240a;" +
+                  "uwp={Your UWP App secret here};" +
+                  "android=c4abea0b-7d25-4680-9354-b0c3e4b2fb7a",
+                  typeof(Analytics), typeof(Crashes), typeof(Distribute));
+
+         
+
+            try
+            {
+                Crashes.GenerateTestCrash();
+            }
+            catch (Exception exception)
+            {
+                Crashes.TrackError(exception);
+            }
+
+        }
+
+        bool OnReleaseAvailable(ReleaseDetails releaseDetails)
+        {
+            // Look at releaseDetails public properties to get version information, release notes text or release notes URL
+            string versionName = releaseDetails.ShortVersion;
+            string versionCodeOrBuildNumber = releaseDetails.Version;
+            string releaseNotes = releaseDetails.ReleaseNotes;
+            Uri releaseNotesUrl = releaseDetails.ReleaseNotesUrl;
+
+            // custom dialog
+            var title = "Version " + versionName + " available!";
+            Task answer;
+
+            // On mandatory update, user cannot postpone
+            if (releaseDetails.MandatoryUpdate)
+            {
+                answer = Current.MainPage.DisplayAlert(title, releaseNotes, "Download and Install");
+            }
+            else
+            {
+                answer = Current.MainPage.DisplayAlert(title, releaseNotes, "Download and Install", "Maybe tomorrow...");
+            }
+            answer.ContinueWith((task) =>
+            {
+                // If mandatory or if answer was positive
+                if (releaseDetails.MandatoryUpdate || (task as Task<bool>).Result)
+                {
+                    // Notify SDK that user selected update
+                    Distribute.NotifyUpdateAction(UpdateAction.Update);
+                }
+                else
+                {
+                    // Notify SDK that user selected postpone (for 1 day)
+                    // Note that this method call is ignored by the SDK if the update is mandatory
+                    Distribute.NotifyUpdateAction(UpdateAction.Postpone);
+                }
+            });
+
+            // Return true if you are using your own dialog, false otherwise
+            return true;
         }
 
         protected override void OnSleep()
@@ -332,8 +374,6 @@ namespace GAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
-            // TimeDifference = TimeAtResume - TimeAtSleep;
-            // Handle when your app resumes
         }
 
     }

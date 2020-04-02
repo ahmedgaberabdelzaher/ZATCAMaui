@@ -4,9 +4,15 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT.ViewModel;
 using GAZT.ViewModel.NewViewModel;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage;
 using GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
 using GAZT.Views;
 using GAZT.Views.NewViews;
+using GAZT.Views.SyncFusionEnabledViews.AboutUs;
+using GAZT.Views.SyncFusionEnabledViews.FAQPage;
+using GAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
 using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using GAZTeServicesApp.ViewModels.LoginPage;
@@ -89,6 +95,9 @@ namespace GAZT
 
             SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
             SimpleIoc.Default.Register<ReturnsPageViewModel>();
+            SimpleIoc.Default.Register<FAQPageViewModel>();
+            SimpleIoc.Default.Register<AboutUsPageViewModel>();
+            SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
 
 
 
@@ -941,6 +950,51 @@ namespace GAZT
             }
         }
 
+        public FAQPageViewModel FAQPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FAQPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public AboutUsPageViewModel AboutUsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AboutUsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public PrivacyAndPolicyPageViewModel PrivacyAndPolicyPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PrivacyAndPolicyPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
         //SYNC FUSION INTEGRATION
@@ -1015,6 +1069,9 @@ namespace GAZT
             navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
             navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
             navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
+            navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
+            navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
+            navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
 
 
             return navigationService;

@@ -1,16 +1,13 @@
-﻿using System;
-
+﻿
+using Android;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Android.Support.V4.Content;
-using Android;
+using Android.Runtime;
 using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using Microsoft.AppCenter.Distribute;
 using Tavant.XToolkit;
-using DeviceOrientation.Forms.Plugin.Droid;
 
 namespace GAZT.Droid
 {
@@ -28,7 +25,7 @@ namespace GAZT.Droid
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
 
-           // Xamarin.Essentials.Platform.Init(this, bundle);
+            // Xamarin.Essentials.Platform.Init(this, bundle);
 
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
 
@@ -45,13 +42,13 @@ namespace GAZT.Droid
             App.AppVersion = info.VersionName;
             App app = new App();
             App.appObj = app;
-           LoadApplication(app);
-           
+
+            Distribute.SetEnabledForDebuggableBuild(true);
+
+            LoadApplication(app);
+
         }
-        //public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
-        //{
-        //    return false;
-        //}
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

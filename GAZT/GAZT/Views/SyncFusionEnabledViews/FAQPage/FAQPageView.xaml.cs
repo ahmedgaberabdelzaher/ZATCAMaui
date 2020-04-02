@@ -1,0 +1,157 @@
+﻿using GAZT.Models;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.Xaml;
+
+namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FAQPageView : ContentPage
+    {
+        FAQPageViewModel viewModel;
+        public FAQPageView()
+        {
+            InitializeComponent();
+
+            viewModel = App.Locator.FAQPageView;
+            //viewModel.IsLoading = true;
+
+            // ParentContainer.RaiseChild(busyindicator);
+
+            this.BindingContext = viewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            ChangeAeroIcon();
+            SetLTR();
+            onPageLoad();
+
+            //List<string> AnswerList = new List<string>();
+            //AnswerList.Add("TestAnswer");
+            //FAQ faq = new FAQ();
+            //faq.Question = "Test";
+            //faq.Answer = AnswerList;
+            //viewModel.Questions = new System.Collections.ObjectModel.ObservableCollection<FAQ>();
+            //viewModel.Questions.Add(faq);
+        }
+
+        /// <summary>
+        /// Invoked when view size is changed.
+        /// </summary>
+        /// <param name="width">The Width</param>
+        /// <param name="height">The Height</param>
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height);
+
+        //    if (width > height)
+        //    {
+        //        if (Search.IsVisible)
+        //        {
+        //            Search.WidthRequest = width;
+        //        }
+        //    }
+        //}
+
+
+        public void onPageLoad()
+        {
+            try
+            {
+                viewModel.OnPageLoad();
+                Questions.ItemsSource = viewModel.Questions;
+            }
+            catch(Exception ex)
+            {
+
+            }
+           // InitializeComponent();
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        /// <summary>
+        /// Invoked when search button is clicked.
+        /// </summary>
+        /// <param name="sender">The Sender</param>
+        /// <param name="e">Event Args</param>
+        //private void SearchButton_Clicked(object sender, EventArgs e)
+        //{
+        //    this.Search.IsVisible = true;
+        //    this.Title.IsVisible = false;
+        //    this.SearchButton.IsVisible = false;
+
+        //    if (this.TitleView != null)
+        //    {
+        //        double opacity;
+
+        //        // Animating Width of the search box, from 0 to full width when it added to the view.
+        //        var expandAnimation = new Animation(
+        //            property =>
+        //            {
+        //                Search.WidthRequest = property;
+        //                opacity = property / TitleView.Width;
+        //                Search.Opacity = opacity;
+        //            }, 0, TitleView.Width, Easing.Linear);
+        //        expandAnimation.Commit(Search, "Expand", 16, 250, Easing.Linear);
+        //    }
+
+        //    SearchEntry.Focus();
+        //}
+
+        ///// <summary>
+        ///// Invoked when back to title button is clicked.
+        ///// </summary>
+        ///// <param name="sender">The Sender</param>
+        ///// <param name="e">Event Args</param>
+        //private void BackToTitle_Clicked(object sender, EventArgs e)
+        //{
+        //    this.SearchButton.IsVisible = true;
+        //    if (this.TitleView != null)
+        //    {
+        //        double opacity;
+
+        //        // Animating Width of the search box, from full width to 0 before it removed from view.
+        //        var shrinkAnimation = new Animation(property =>
+        //        {
+        //            Search.WidthRequest = property;
+        //            opacity = property / TitleView.Width;
+        //            Search.Opacity = opacity;
+        //        },
+        //        TitleView.Width, 0, Easing.Linear);
+        //        shrinkAnimation.Commit(Search, "Shrink", 16, 250, Easing.Linear, (p, q) => this.SearchBoxAnimationCompleted());
+        //    }
+
+        //    SearchEntry.Text = string.Empty;
+        //}
+
+        ///// <summary>
+        ///// Invokes when search box Animation completed.
+        ///// </summary>
+        //private void SearchBoxAnimationCompleted()
+        //{
+        //    this.Search.IsVisible = false;
+        //    this.Title.IsVisible = true;
+        //}
+    }
+}

@@ -20,8 +20,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnVATRefreshButtonClicked { get; set; }
         public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
-        public ICommand OnHomeClick { get; set; }
-      public ICommand GoBackClick { get; set; }
+        public ICommand GoBackClick { get; set; }
+        public ICommand GoHomeClick { get; set; }
+
         #endregion
 
         #region Property
@@ -275,14 +276,15 @@ namespace GAZT.ViewModel.NewViewModel
                 ShowPdf(Url);
             });
 
-            OnHomeClick = new Xamarin.Forms.Command(() =>
-            {
-                _navigationService.NavigateTo(App.SFLandingPageView);
-            });
             GoBackClick = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
+            GoHomeClick = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+
         }
 
 

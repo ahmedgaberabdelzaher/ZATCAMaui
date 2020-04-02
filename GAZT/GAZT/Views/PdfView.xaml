@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.PdfView" xmlns:controls="clr-namespace:pdfjs.Controls">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.PdfView" xmlns:controls="clr-namespace:pdfjs.Controls"
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation" 
                 Priority="1" Order="Primary" Clicked="Share_Clicked"  />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <controls:PdfWebView x:Name="PdfViewForCertificate" Source="{Binding PathOfPdf}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" />
+            <syncfusion:SfPdfViewer   x:Name="PdfViewForCertificate" HorizontalOptions="FillAndExpand"  InputFileStream="{Binding Streamoffile}"  VerticalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" />
+           
+
+
+            <!--<controls:PdfWebView x:Name="PdfViewForCertificate" Source="{Binding PathOfPdf}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" />-->
             <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="7"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>

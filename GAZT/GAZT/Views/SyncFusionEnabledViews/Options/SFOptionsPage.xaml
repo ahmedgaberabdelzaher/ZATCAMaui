@@ -264,7 +264,7 @@
 
 
                     <!--  Grid for Terms of service label and navigation bar icon  -->
-                    <controls:TapAnimationGrid
+                    <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
                     Command="{Binding TermsCommand}"
@@ -275,25 +275,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  Terms of service icon  -->
+                        --><!--  Terms of service icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource More}" />
-                        <!--  Terms of service label  -->
+                        --><!--  Terms of service label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZTermsAndService}" />
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <BoxView Style="{StaticResource SeparatorStyle}" />-->
 
                     <!--  Grid for Privacy policy label and navigation bar icon  -->
                     <controls:TapAnimationGrid
@@ -327,7 +327,39 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
 
-                  
+
+                    <!--  Grid for Privacy policy label and navigation bar icon  -->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding AboutCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Privacy policy icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource More}" />
+                        <!--  Privacy policy text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        Text="{x:Static local:AppResources.ZZZAboutUs}" />
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
+
 
 
                     <!--  Grid for FAQs label and navigation bar icon  -->
@@ -372,8 +404,47 @@
                             <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>
                         </controls:TapAnimationGrid.GestureRecognizers>
                     </controls:TapAnimationGrid>
+                    
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
 
-                    <!--  Logout button  -->
+                    <!--  Grid for Privacy policy label and navigation bar icon  -->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Privacy policy icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Help}" />
+                        <!--  Privacy policy text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="App Version"/>
+                                    <Span Text="&#160;&#160;"/>
+                                    <Span  Text="{Binding AppVersion}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+                   
 
 
                 </StackLayout>

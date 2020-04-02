@@ -113,6 +113,10 @@ namespace GAZT.Views.NewViews
 
             }
         }
+
+        #endregion
+
+        #region Method
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -124,10 +128,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-        #endregion
-
-        #region Method
-
         public void IsCheckedEnable()
         {
             if (App.ICRStatus == "E0006")

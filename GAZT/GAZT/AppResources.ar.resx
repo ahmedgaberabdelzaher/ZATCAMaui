@@ -592,7 +592,7 @@
     <value>مقدمة</value>
   </data>
   <data name="VATDeclaration" xml:space="preserve">
-    <value>الاقرارات الضريبية</value>
+    <value>إقرار ضريبة القيمة المضافة</value>
   </data>
   <data name="TotalPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المدفوعة</value>
@@ -2679,7 +2679,8 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportScreenTitle" xml:space="preserve">
-    <value>ي التهرب عن اإلبالغ</value>
+    <value>الإبلاغ عن التهرب في ضريبة القيمة المضافة</value>
+    <comment>tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportStatus" xml:space="preserve">
     <value>حالة التقرير</value>
@@ -2734,7 +2735,7 @@
     <value>الرقم المميز غير صحيح</value>
   </data>
   <data name="ZInvalidVatNumber" xml:space="preserve">
-    <value>رقم حساب ضريبة القيمة المضافة</value>
+    <value>رقم ضريبة القيمة المضافة غير صالح</value>
   </data>
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>لا توجد اقرارات</value>
@@ -2918,5 +2919,8 @@
   <data name="ZZVATReturnForm" xml:space="preserve">
     <value>نموذج الإقرار الضريبي</value>
     <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZZAboutUs" xml:space="preserve">
+    <value>About Us</value>
   </data>
 </root>

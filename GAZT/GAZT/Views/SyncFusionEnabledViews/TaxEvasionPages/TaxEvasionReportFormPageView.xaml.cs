@@ -241,28 +241,28 @@ namespace GAZT.Views.NewViews
 
                 if (string.IsNullOrEmpty(TName.Text))
                 {
-                    flag = false; TName.Focus(); FrmName.HasError = true;
+                    flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
                 }
 
                 else if (string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    flag = false; TMobNumber.Focus(); FrmNumber.HasError = true;
+                    flag = false; TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
                 }
                 else if (string.IsNullOrEmpty(TFaciName.Text))
-                { flag = false; TFaciName.Focus(); FrmFName.HasError = true; }
+                { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(FacilityType_entry.Text))
-                { flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; }
+                { flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFDAdress.Text))
-                { flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); }
+                { flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFSAddress.Text))
-                { flag = false; FrmFSAddress.HasError = true; TFSAddress.Focus(); }
+                { flag = false; FrmFSAddress.HasError = true; showFillFeildsMessage(); TFSAddress.Focus(); }
                 else if (string.IsNullOrEmpty(TxtTIN.Text) && checkBox.IsChecked == true)
-                { flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; }
+                {  flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage(); }
 
                 else if (string.IsNullOrEmpty(TReportDetail.Text))
-                { flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); }
+                { flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFWType.Text))
-                { flag = false; FrmTFW.HasError = true; TFWType.Focus(); }
+                { flag = false; FrmTFW.HasError = true; TFWType.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(Region_entry.Text))
 
                 {
@@ -280,6 +280,7 @@ namespace GAZT.Views.NewViews
                 else if (string.IsNullOrEmpty(City_entry.Text))
                 {
                     flag = false; FrmCity.HasError = true;
+                    showFillFeildsMessage();
                     if (App.IsArabic)
                     {
                         CityPickerAR.IsOpen = true;
@@ -289,10 +290,12 @@ namespace GAZT.Views.NewViews
                         CityPicker.IsOpen = true;
 
                     }
+
                 }
 
                 else if (string.IsNullOrEmpty(Date_entry.Text))
                 {
+                    showFillFeildsMessage();
                     flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
                 }
 
@@ -326,8 +329,11 @@ namespace GAZT.Views.NewViews
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmNumber.HasError = true;
-                   
-                   
+                    TMobNumber.Text = string.Empty;
+
+
+
+
                 }
 
                 else
@@ -599,7 +605,7 @@ namespace GAZT.Views.NewViews
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmVAT.HasError = true;
-                       
+                        TVatNumber.Text = string.Empty;
 
 
 
@@ -915,6 +921,27 @@ namespace GAZT.Views.NewViews
             string year = selectedItem[2].ToString();
 
             viewModel.DatePick = day + "/" + month + "/" + year;
+        }
+
+        private void showFillFeildsMessage()
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZZPleasefillallthemandatoryfields;
+
+
+            popUp.IsLinkAvailable = false;
+
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+
         }
     }
 }

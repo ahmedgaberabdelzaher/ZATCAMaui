@@ -1,4 +1,5 @@
 ﻿using GAZT;
+using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using System;
@@ -29,6 +30,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
+                DependencyService.Get<IStatusBar>().HideStatusBar();
                 LoadData();
                 SetLTR();
             }
@@ -39,7 +41,14 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void LoadData()
         {
-            viewModel.PopulateeServicesApplicableToTheTaxPayer();
+            try
+            {
+                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+             
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         protected override void OnAppearing()
