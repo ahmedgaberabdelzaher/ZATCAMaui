@@ -1884,7 +1884,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Returns.
+        ///   Looks up a localized string similar to VAT Return.
         /// </summary>
         public static string VATDeclaration {
             get {
@@ -7108,6 +7108,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application Status.
+        /// </summary>
+        public static string ZZZApplicationStatusTitle {
+            get {
+                return ResourceManager.GetString("ZZZApplicationStatusTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correspondence.
+        /// </summary>
+        public static string ZZZCorrespondenceTitle {
+            get {
+                return ResourceManager.GetString("ZZZCorrespondenceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
         public static string ZZZDontHaveAccount {
@@ -7131,6 +7149,15 @@ namespace GAZT {
         public static string ZZZEServices {
             get {
                 return ResourceManager.GetString("ZZZEServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated Zakat.
+        /// </summary>
+        public static string ZZZEstimatedZakatTitle {
+            get {
+                return ResourceManager.GetString("ZZZEstimatedZakatTitle", resourceCulture);
             }
         }
         
@@ -7176,6 +7203,24 @@ namespace GAZT {
         public static string ZZZLoginLabel {
             get {
                 return ResourceManager.GetString("ZZZLoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Bills.
+        /// </summary>
+        public static string ZZZMyBillsTitle {
+            get {
+                return ResourceManager.GetString("ZZZMyBillsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificate.
+        /// </summary>
+        public static string ZZZMyCertificateTitle {
+            get {
+                return ResourceManager.GetString("ZZZMyCertificateTitle", resourceCulture);
             }
         }
         
@@ -7270,6 +7315,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sign Up.
+        /// </summary>
+        public static string ZZZSignUpTitle {
+            get {
+                return ResourceManager.GetString("ZZZSignUpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
         public static string ZZZSupport {
@@ -7288,11 +7342,47 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TIN Status.
+        /// </summary>
+        public static string ZZZTINStatusTitle {
+            get {
+                return ResourceManager.GetString("ZZZTINStatusTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Lookup.
+        /// </summary>
+        public static string ZZZVATLookupTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATLookupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
         public static string ZZZVATReturn {
             get {
                 return ResourceManager.GetString("ZZZVATReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return.
+        /// </summary>
+        public static string ZZZVATReturnTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATReturnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Tax Evasion Reports.
+        /// </summary>
+        public static string ZZZVATTax_EvasionReportsTitle {
+            get {
+                return ResourceManager.GetString("ZZZVATTax EvasionReportsTitle", resourceCulture);
             }
         }
         

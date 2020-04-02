@@ -51,7 +51,7 @@
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="10,20,10,0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" Padding="10,20,10,0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -71,7 +71,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" FontSize="Small" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -79,7 +79,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small" IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -87,7 +87,7 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
                                 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -116,7 +116,7 @@
                                         <ViewCell>
 
                                             <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="10" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
 
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                         <Grid ColumnSpacing="0" RowSpacing="4"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >

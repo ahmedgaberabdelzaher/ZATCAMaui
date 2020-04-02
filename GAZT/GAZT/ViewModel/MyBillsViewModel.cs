@@ -269,6 +269,10 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+            OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
 
             if (dialogService == null)
             {
@@ -293,10 +297,7 @@ namespace GAZT.ViewModel
                 {
                     OnPartiallyClicked();
                 });
-                OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
-                {
-                    _navigationService.NavigateTo(App.SFLandingPageView);
-                });
+               
             }
             catch(Exception e)
             {
