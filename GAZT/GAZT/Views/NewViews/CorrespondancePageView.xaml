@@ -61,7 +61,7 @@
                     <ColumnDefinition Width="auto" />
 
                 </Grid.ColumnDefinitions>
-                <tabView:SfTabView BackgroundColor="White" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0">
+                <tabView:SfTabView BackgroundColor="White" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" VisibleHeaderCount="3" >
                     <tabView:SfTabView.SelectionIndicatorSettings>
                         <tabView:SelectionIndicatorSettings
                     Color="DarkGreen"
