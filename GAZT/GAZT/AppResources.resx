@@ -635,7 +635,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Verification code</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
-    <value>VAT Lookup</value>
+    <value>VAT Registration Lookup</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>Total submitted returns</value>
