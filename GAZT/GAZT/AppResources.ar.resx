@@ -2926,4 +2926,8 @@
   <data name="PdfIsNotAvailableFor" xml:space="preserve">
     <value> PDF Not Available</value>
   </data>
+  <data name="ZZZSetLanguageText" xml:space="preserve">
+    <value>عربي</value>
+    <comment>option page</comment>
+  </data>
 </root>

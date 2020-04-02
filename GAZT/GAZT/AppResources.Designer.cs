@@ -7342,6 +7342,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عربي.
+        /// </summary>
+        public static string ZZZSetLanguageText {
+            get {
+                return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set To Arabic.
         /// </summary>
         public static string ZZZSetToArabic {
