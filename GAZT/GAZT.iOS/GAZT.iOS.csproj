@@ -144,6 +144,7 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%403x.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
+    <Compile Include="DependencyServices\StatusBarImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1068,5 +1069,17 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_Sadad_logo%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\About_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PrivacyPolicy_AR.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PrivacyPolicy_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\About_AR.html" />
   </ItemGroup>
 </Project>

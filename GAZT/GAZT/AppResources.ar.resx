@@ -2904,4 +2904,7 @@
     <value>الإبلاغ عن التهرب في ضريبة القيمة المضافة</value>
     <comment>Title</comment>
   </data>
+  <data name="ZZZAboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
 </root>

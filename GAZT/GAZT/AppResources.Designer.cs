@@ -7081,6 +7081,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        public static string ZZZAboutUs {
+            get {
+                return ResourceManager.GetString("ZZZAboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZAKAT.
         /// </summary>
         public static string ZZZAKAT {

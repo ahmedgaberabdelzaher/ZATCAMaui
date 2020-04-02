@@ -20,10 +20,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        private string password = "Init@123";
-        private string email = "3102289044";
-        //private string password;
-        //private string email;
+        //private string password = "Init@123";
+        //private string email = "3102289044";
+        private string password;
+        private string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;
@@ -108,6 +108,22 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #endregion
 
         #region property
+
+
+        private string _appVersion = App.AppVersion;
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
+
         public string DeviceId { get; set; }
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
