@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
+            ChangeAeroIcon();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -97,6 +98,27 @@ namespace GAZT.Views.NewViews
             viewModel.IsimgVisiblec3 = false;
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = true;
+        }
+        public void ChangeAeroIcon()
+
+        {
+
+            if (App.IsArabic)
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+
+            }
+
+            else
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+
+            }
+
         }
     }
 }
