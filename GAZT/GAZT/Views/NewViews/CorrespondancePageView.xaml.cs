@@ -40,31 +40,31 @@ namespace GAZT.Views.NewViews
             SetLTR();
         }
 
-        private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
-        {
+        //private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
+        //{
 
-            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            viewModel.OnZAKATClicked();
-        }
+        //    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //    viewModel.OnZAKATClicked();
+        //}
 
-        private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
-        {
+        //private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
+        //{
             
-            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            viewModel.OnVATLabelClicked();
-        }
-        private void ClickGestureRecognizer_ClickedForET(object sender, EventArgs e)
-        {
+        //    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //    viewModel.OnVATLabelClicked();
+        //}
+        //private void ClickGestureRecognizer_ClickedForET(object sender, EventArgs e)
+        //{
             
-            Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            viewModel.OnEtLabelClicked();
-        }
+        //    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //    viewModel.OnEtLabelClicked();
+        //}
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -74,10 +74,10 @@ namespace GAZT.Views.NewViews
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            FPicker.Focus();
-        }
+        //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    FPicker.Focus();
+        //}
 
         private void ListView_ItemTapped_1(object sender, ItemTappedEventArgs e)
         {
@@ -124,14 +124,29 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        private void BPickerButton_Clicked(object sender, EventArgs e)
+        //private void BPickerButton_Clicked(object sender, EventArgs e)
+        //{
+        //    FPicker.IsOpen = true;
+        //}
+
+        //private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    FPicker.IsOpen = true;
+        //}
+
+        private void BPickerButtonZakat_Clicked(object sender, EventArgs e)
         {
-            FPicker.IsOpen = true;
+            FPickerZakat.IsOpen = true;
         }
 
-        private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void BPickerButtonVAT_Clicked(object sender, EventArgs e)
         {
+            FPickerVAT.IsOpen = true;
+        }
 
+        private void BPickerButtonET_Clicked(object sender, EventArgs e)
+        {
+            FPickerET.IsOpen = true;
         }
     }
 }

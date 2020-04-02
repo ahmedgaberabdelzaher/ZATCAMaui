@@ -2926,4 +2926,8 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZAboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="ZZSort" xml:space="preserve">
+    <value>Sort</value>
+    <comment>Correspondence</comment>
+  </data>
 </root>
