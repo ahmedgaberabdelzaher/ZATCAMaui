@@ -3894,6 +3894,51 @@ namespace GAZT.Manager
         }
 
 
+        public static TERFFAQObject GAZTTESFAQRetrive()
+        {
+
+            FAQPost Cred = new FAQPost();
+            Cred.WSUserName = "GAZT@CRM";
+            Cred.WSPassword = "gazt@123";
+            Cred.Channel = "2";
+
+
+
+
+            TERFFAQObject Listobject = new TERFFAQObject();
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TERFFAQObject terffaq = new TERFFAQObject();
+                try
+                {
+
+                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");//
+                    var serilized = JsonConvert.SerializeObject(Cred);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    terffaq = JsonConvert.DeserializeObject<TERFFAQObject>(response);
+                    return terffaq;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
+
+
         public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TEReport Cred, List<UploadedDocumentsList> UploadedDocumentsListObj)
         {
             //UploadedDocumentsList u = new UploadedDocumentsList();

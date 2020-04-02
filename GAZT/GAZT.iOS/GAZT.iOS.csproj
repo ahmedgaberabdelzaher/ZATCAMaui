@@ -1054,4 +1054,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_Sadad_logo%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\About_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PrivacyPolicy_AR.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PrivacyPolicy_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\About_AR.html" />
+  </ItemGroup>
 </Project>

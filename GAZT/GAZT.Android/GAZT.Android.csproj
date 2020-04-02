@@ -2864,5 +2864,17 @@
     <Folder Include="Resources\drawable-land-xxxhdpi\" />
     <Folder Include="Resources\drawable-land\" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\About_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\PrivacyPolicy_AR.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\PrivacyPolicy_EN.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\About_AR.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

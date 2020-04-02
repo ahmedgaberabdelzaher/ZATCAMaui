@@ -85,10 +85,13 @@ namespace GAZT
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";
+        public static string FAQPageView = "FAQPageView";
+        public static string AboutUsPageView = "AboutUsPageView";
+        public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
 
 
 
-        
+
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;

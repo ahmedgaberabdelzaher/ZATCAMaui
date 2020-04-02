@@ -108,6 +108,22 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #endregion
 
         #region property
+
+
+        private string _appVersion = App.AppVersion;
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
+
         public string DeviceId { get; set; }
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.

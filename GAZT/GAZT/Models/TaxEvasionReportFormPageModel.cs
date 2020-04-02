@@ -62,6 +62,12 @@ namespace GAZT.Models
         public bool FAQSuccess { get; set; }
     }
 
+    public class TERFFAQObject
+    {
+        public List<FAQList> FAQList { get; set; }
+        public List<object> FAQResultErrorList { get; set; }
+        public bool Success { get; set; }
+    }
 
     public class MTaxEvasionReportList
     {
@@ -144,6 +150,15 @@ namespace GAZT.Models
         public string WSPassword { get; set; } /*"gazt@123"*/
         
         public string RegionCode { get; set; }
+
+    }
+
+    public class FAQPost
+    {
+        public string WSUserName { get; set; }/*: "GAZT@CRM",*/
+        public string WSPassword { get; set; } /*"gazt@123"*/
+
+        public string Channel { get; set; }
 
     }
     public class ReportRetriveByMobileNumberPost
