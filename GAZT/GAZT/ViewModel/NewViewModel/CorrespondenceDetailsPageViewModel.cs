@@ -16,7 +16,7 @@ namespace GAZT.ViewModel.NewViewModel
         #region Properties
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
+        public ICommand GoBackClick { get; set; }
         public ICommand OnAttachmentClick { get; set; }
 
         public ICommand OnFavClicked { get; set; }
@@ -119,7 +119,12 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                 }
             });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
             OnFavClicked = new Xamarin.Forms.Command(async () =>
             {
                if(CorrespondenceD.IsFav==false)

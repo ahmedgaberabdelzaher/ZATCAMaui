@@ -20,6 +20,19 @@ namespace GAZT.ViewModel
         #endregion
 
         #region Property
+        private byte[] _pdfBytes;
+        public byte[] PdfBytes
+        {
+            get
+            {
+                return _pdfBytes;
+            }
+            set
+            {
+                _pdfBytes = value;
+                RaisePropertyChanged("PdfBytes");
+            }
+        }
 
         private bool _isLoading;
         public bool IsLoading
@@ -71,20 +84,6 @@ namespace GAZT.ViewModel
             }
         }
 
-        private string _PathOfPdf = string.Empty;
-        public string PathOfPdf
-        {
-            get
-            {
-                return _PathOfPdf;
-            }
-            set
-            {
-                _PathOfPdf = value;
-                RaisePropertyChanged("PathOfPdf");
-            }
-        }
-
         private string _pdfUrl = string.Empty;
         public string PdfUrl
         {
@@ -98,10 +97,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfUrl");
             }
         }
-
-
-
-
         private string _DownloadUrl = String.Empty;
         public string DownloadUrl
         {
@@ -129,36 +124,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
-
-        private string _localPath = string.Empty;
-        public string LocalPath
-        {
-            get
-            {
-                return _localPath;
-            }
-            set
-            {
-                _localPath = value;
-                RaisePropertyChanged("LocalPath");
-            }
-        }
-        //Streamoffile
-        private Stream _streamoffile;
-        public Stream Streamoffile
-        {
-            get
-            {
-                return _streamoffile;
-            }
-            set
-            {
-                _streamoffile = value;
-                RaisePropertyChanged("Streamoffile");
-            }
-        }
-
-
         #endregion
 
         #region Constructor
@@ -193,23 +158,13 @@ namespace GAZT.ViewModel
             await Task.Run(async () =>
              {
                  IsLoading = true;
-                 String lang = "EN";
-                 if (App.IsArabic == true)
-                     lang = "AR";
-
-                //  String response = await WebServiceManager.GAZTGetPdfUrl(lang, TaxPayerProfile.Tin);
-
                 if (!string.IsNullOrEmpty(pdfUrl))
-                 { DownloadUrl = pdfUrl;
+                 {
+                    DownloadUrl = pdfUrl;
                      //DownloadUrl = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
-                    if (Device.RuntimePlatform == Device.Android)
-                     {
-                         pdf();
-                     }
-                     else
-                     {
-                        // Device.OpenUri(new Uri(response));
-                    }
+                     //getPdfStream();
+                     getPdfStream();
+
 
                  }
                  else
@@ -223,83 +178,132 @@ namespace GAZT.ViewModel
              });
         }
 
-        public void pdf()
+        public async void getPdfStream()
         {
-            var localPath = string.Empty;
             Stream stream = null;
             try
             {
-
-
-
-                if (Device.RuntimePlatform == Device.Android)
+                
+                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+                WebResponse myResp = myReq.GetResponse();
+                using (Stream streams = myResp.GetResponseStream())
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    var dependency = DependencyService.Get<ILocalFileProvider>();
-                    if (dependency == null)
+                    int count = 0;
+                    do
                     {
-                        _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
-                        // DisplayAlert("Error loading PDF", "Computer says no", "OK");
-                        return;
-                    }
-                    var fileName = Guid.NewGuid().ToString();
-                    // Download PDF locally for viewing
-                    try
-                    {
-                        byte[] PdfBytes;
-                        HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
-
-                        WebResponse myResp = myReq.GetResponse();
-                        using (Stream streams = myResp.GetResponseStream())
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            int count = 0;
-                            do
-                            {
-                                byte[] buf = new byte[1024];
-                                count = streams.Read(buf, 0, 1024);
-                                ms.Write(buf, 0, count);
-                            } while (streams.CanRead && count > 0);
-                            PdfBytes = ms.ToArray();
-                        }
-                        string strBase64 = String.Empty;
-                        if (PdfBytes != null)
-                        {
-
-                            strBase64 = Convert.ToBase64String(PdfBytes);
-                        }
-                        if (string.IsNullOrEmpty(strBase64) != true)
-                        {
-                            byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                            stream = new MemoryStream(sPDFDecoded);
-                            StreamForDownloadURL = stream;
-                            Streamoffile = StreamForDownloadURL;
-                        }
-                        localPath =
-                      Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
-                        LocalPath = localPath;
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-
-                    if (string.IsNullOrWhiteSpace(localPath))
-                    {
-                        _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
-                        //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
-
-                        return;
-                    }
+                        byte[] buf = new byte[1024];
+                        count = streams.Read(buf, 0, 1024);
+                        ms.Write(buf, 0, count);
+                    } while (streams.CanRead && count > 0);
+                    PdfBytes = ms.ToArray();
                 }
+                string strBase64 = String.Empty;
+                if (PdfBytes != null)
+                {
 
-                PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
+                    strBase64 = Convert.ToBase64String(PdfBytes);
+                
+                
+                if (string.IsNullOrEmpty(strBase64) != true)
+                {
+                    byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                    stream = new MemoryStream(sPDFDecoded);
+                    StreamForDownloadURL = stream;
+                      
+                }
+                 else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                        });
+                    }
+
+                }
+               
+
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
-            }
 
+            }
         }
 
+
+
+
+
+        //public void getPdfStream()
+        //{
+        //    var localPath = string.Empty;
+        //    Stream stream = null;
+        //    try
+        //    {
+        //        if (Device.RuntimePlatform == Device.Android)
+        //        {
+        //            var dependency = DependencyService.Get<ILocalFileProvider>();
+        //            if (dependency == null)
+        //            {
+        //                _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
+        //                // DisplayAlert("Error loading PDF", "Computer says no", "OK");
+        //                return;
+        //            }
+        //            var fileName = Guid.NewGuid().ToString();
+        //            // Download PDF locally for viewing
+        //            try
+        //            {
+        //                byte[] PdfBytes;
+        //                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+        //                WebResponse myResp = myReq.GetResponse();
+        //                using (Stream streams = myResp.GetResponseStream())
+        //                using (MemoryStream ms = new MemoryStream())
+        //                {
+        //                    int count = 0;
+        //                    do
+        //                    {
+        //                        byte[] buf = new byte[1024];
+        //                        count = streams.Read(buf, 0, 1024);
+        //                        ms.Write(buf, 0, count);
+        //                    } while (streams.CanRead && count > 0);
+        //                    PdfBytes = ms.ToArray();
+        //                }
+        //                string strBase64 = String.Empty;
+        //                if (PdfBytes != null)
+        //                {
+
+        //                    strBase64 = Convert.ToBase64String(PdfBytes);
+        //                }
+        //                if (string.IsNullOrEmpty(strBase64) != true)
+        //                {
+        //                    byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+        //                    stream = new MemoryStream(sPDFDecoded);
+        //                    StreamForDownloadURL = stream;
+        //                }
+        //                localPath =
+        //              Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
+        //                LocalPath = localPath;
+        //            }
+        //            catch (Exception)
+        //            {
+        //            }
+
+        //            if (string.IsNullOrWhiteSpace(localPath))
+        //            {
+        //                _dialogService.ShowMessageBox("Error loading PDF", AppResources.Information);
+        //                return;
+        //            }
+        //        }
+
+        //        //PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+
+        //}
+       
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)

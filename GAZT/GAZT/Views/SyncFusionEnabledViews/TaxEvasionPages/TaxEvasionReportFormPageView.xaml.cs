@@ -33,12 +33,14 @@ namespace GAZT.Views.NewViews
             {
               
                 InitializeComponent();
+                ChangeAeroIcon();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
                 viewModel.TEReportobj = new TEReport();
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields();
+            
             viewModel.CreateCompanyTypeList();
             viewModel.onPageLoad();
             viewModel.selectedtaxEList = SelectedTaxEvasionListItem;
@@ -941,6 +943,27 @@ namespace GAZT.Views.NewViews
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
 
+
+        }
+        public void ChangeAeroIcon()
+
+        {
+
+            if (App.IsArabic)
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+
+            }
+
+            else
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+
+            }
 
         }
     }

@@ -6,13 +6,19 @@
                 Priority="1" Order="Primary" Clicked="Share_Clicked"  />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <syncfusion:SfPdfViewer   x:Name="PdfViewForCertificate" HorizontalOptions="FillAndExpand"  InputFileStream="{Binding Streamoffile}"  VerticalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" />
-           
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <syncfusion:SfPdfViewer   x:Name="PdfViewForCertificate" HorizontalOptions="FillAndExpand"  InputFileStream="{Binding StreamForDownloadURL}" IsVisible="True"  VerticalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="0" />
 
+            <ActivityIndicator  Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" ></ActivityIndicator>
+         
 
-            <!--<controls:PdfWebView x:Name="PdfViewForCertificate" Source="{Binding PathOfPdf}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" />-->
-            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="7"></ActivityIndicator>
-        </StackLayout>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

@@ -30,6 +30,7 @@
                 <!--  Title View  -->
                 <controls:TitleView Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
+
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
@@ -37,8 +38,7 @@
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Back}"
-                            
+                             Text="{DynamicResource StyleReverseBack}"
                             
                              />
                     </controls:TitleView.LeadingView>

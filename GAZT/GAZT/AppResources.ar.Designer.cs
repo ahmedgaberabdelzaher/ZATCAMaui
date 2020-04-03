@@ -4937,5 +4937,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZAboutUs", resourceCulture);
             }
         }
+        
+        public static string PdfIsNotAvailableFor {
+            get {
+                return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSetLanguageText {
+            get {
+                return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
+            }
+        }
+        
+        public static string ZZSort {
+            get {
+                return ResourceManager.GetString("ZZSort", resourceCulture);
+            }
+        }
     }
 }

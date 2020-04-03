@@ -29,6 +29,7 @@ xmlns:custom="clr-namespace:GAZT"
                 <!--  Title View  -->
                 <controls:TitleView Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
+                       
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
@@ -36,8 +37,7 @@ xmlns:custom="clr-namespace:GAZT"
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Back}"
-                            
+                             Text="{DynamicResource StyleReverseBack}"
                             
                              />
                     </controls:TitleView.LeadingView>
