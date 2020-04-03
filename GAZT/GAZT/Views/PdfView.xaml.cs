@@ -17,53 +17,34 @@ namespace GAZT.Views
         PdfViewModel viewModel = null;
 		public PdfView (string Pdfurl)
 		{
-           
-            viewModel = App.Locator.pdfView;
-             
-            InitializeComponent ();
+            viewModel = App.Locator.pdfView;    
+            InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel.pdfUrl = Pdfurl;
+          
             this.BindingContext = viewModel;
-             
-            // string str = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
-            
-
+           
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             viewModel.DownloadUrl = string.Empty;
-            viewModel.LocalPath = string.Empty;
+            //viewModel.LocalPath = string.Empty;
             viewModel.PdfUrl = string.Empty;
-            viewModel.PathOfPdf = string.Empty;
             viewModel.StreamForDownloadURL = null;
             await viewModel.OnPageLoad();
-            //if (Device.RuntimePlatform == Device.iOS)
-            //{
-            //    string str = viewModel.DownloadUrl;
-            //    Uri uri = new Uri(str);
-            //    Device.OpenUri(uri);
-            //}
+            
         }
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
             viewModel.DownloadUrl = string.Empty;
-            viewModel.LocalPath = string.Empty;
             viewModel.PdfUrl = string.Empty;
-            viewModel.PathOfPdf = string.Empty;
             viewModel.StreamForDownloadURL = null;
         }
         private async void Share_Clicked(object sender, EventArgs e)
         {
-            //var file = Path.Combine(viewModel.LocalPath);
-            //File.WriteAllText(file, "Hello World");
-
-            //await Share.RequestAsync(new ShareFileRequest
-            //{
-            //    Title = Title,
-            //    File = new ShareFile(file)
-            //});
+            
             email();
         }
 
@@ -75,35 +56,22 @@ namespace GAZT.Views
                 Subject = "Attached Form :" ,
 
             };
-            if (!string.IsNullOrEmpty(viewModel.LocalPath))
+            if (viewModel.PdfBytes!=null)
             {
-                var file = Path.Combine(viewModel.LocalPath);
-                //var file = Path.Combine(FileSystem.CacheDirectory);
-
-                MemoryStream ms = (MemoryStream)viewModel.StreamForDownloadURL;
-
-                byte[] pdfBytes = ms.ToArray();
-
-                var memStream = new MemoryStream(pdfBytes);
-
-                File.WriteAllBytes(file, pdfBytes);
-
+                var fn = "GAZT"+viewModel.TaxPayerProfile+ ".pdf";
+                var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                File.WriteAllBytes(file, viewModel.PdfBytes);
                 await Share.RequestAsync(new ShareFileRequest
                 {
                     Title = Title,
                     File = new ShareFile(file)
                 });
-
-
             }
             else
             {
                 viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
             }
 
-            //message.Attachments.Add(new EmailAttachment(file));
-
-            //await Email.ComposeAsync(message);
         }
 
     }

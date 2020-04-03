@@ -1245,6 +1245,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  PDF Not Available.
+        /// </summary>
+        public static string PdfIsNotAvailableFor {
+            get {
+                return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate available.
         /// </summary>
         public static string PdfIsNoteAvailable {
@@ -7338,6 +7347,15 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عربي.
+        /// </summary>
+        public static string ZZZSetLanguageText {
+            get {
+                return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
             }
         }
         

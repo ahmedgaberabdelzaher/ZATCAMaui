@@ -36,11 +36,11 @@ namespace GAZTeServicesApp.Views.Options
             VisibleTaxPayerProfile();
             if (App.IsArabic)
             {
-                viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+                viewModel.TranslateText = AppResources.ZZZSetLanguageText;
             }
             else
             {
-                viewModel.TranslateText = AppResources.ZZZSetToArabic;
+                viewModel.TranslateText = AppResources.ZZZSetLanguageText;
             }
 
             //if (Device.Idiom == TargetIdiom.Tablet)

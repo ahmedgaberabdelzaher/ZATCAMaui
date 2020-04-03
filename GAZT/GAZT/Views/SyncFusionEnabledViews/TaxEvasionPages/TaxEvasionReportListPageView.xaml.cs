@@ -19,10 +19,12 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.TaxEvasionReportListPageView;
             InitializeComponent();
+            ChangeAeroIcon();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.CertificateLst.SelectedItem = null;
             this.CertificateLstClosed.SelectedItem = null;
+            viewModel.AddIcon = "ic_add1.png";
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
             SetLTR();
@@ -104,7 +106,27 @@ namespace GAZT.Views.NewViews
         //    viewModel.SelectedTaxEvasionListItem = null;
         //}
 
+        public void ChangeAeroIcon()
 
+        {
+
+            if (App.IsArabic)
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+
+            }
+
+            else
+
+            {
+
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+
+            }
+
+        }
         private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
