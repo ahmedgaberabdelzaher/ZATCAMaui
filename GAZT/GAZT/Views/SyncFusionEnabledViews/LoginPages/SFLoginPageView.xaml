@@ -49,7 +49,7 @@
             </custom:CustomLabel>
 
             <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
-            <ScrollView HorizontalOptions="Center">
+            <ScrollView HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                 <ScrollView.VerticalOptions>
                     <OnIdiom
                         x:TypeArguments="LayoutOptions"

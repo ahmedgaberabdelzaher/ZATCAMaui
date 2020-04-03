@@ -583,7 +583,7 @@
     <value>متأخرة</value>
   </data>
   <data name="Partial" xml:space="preserve">
-    <value>مدفوع جزئي</value>
+    <value>مسدد جزئي</value>
   </data>
   <data name="Returns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -2904,6 +2904,6 @@
     <comment>Title</comment>
   </data>
   <data name="ZZZAboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>​​​​نبذة عن الهيئة​</value>
   </data>
 </root>
