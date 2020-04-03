@@ -312,15 +312,15 @@ namespace GAZT.ViewModel
 
         public void onPageLoad(BillInfo billInfo)
         {
-           
-                //await Task.Run(() =>
-                //{
-                    IsLoading = true;
-                //});
 
-                //await Task.Run(async () =>
-                //{
-                    MyBills = null;
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = true;
+            //});
+
+            //await Task.Run(async () =>
+            //{
+                MyBills = null;
 
                     List<MyBills> myBills = null;
                     try
@@ -329,7 +329,7 @@ namespace GAZT.ViewModel
                     {
 
                         string lang = UtilityManager.GetLanguageParameter();
-                        myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                        myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
                          PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
 
@@ -415,43 +415,43 @@ namespace GAZT.ViewModel
                     IsLoading = false;
               //  });
             }
-        //});
+            //});
 
-               // await Task.Run(() =>
-               // {
-                    IsLoading = false;
-              // });
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
 
 
-                //int i = 5;
-                //MyBills = new List<MyBills>();
-                //for (i = 0; i < 6; i++)
-                //{
-                //    MyBills m = new MyBills();
-                //    m.Abtypt = "Abc";
-                //    m.BETRW = "100";
-                //    m.FAEDN = "12:02:20";
-                //    m.Status = "P";
-                //    m.VTRE2 = "54321";
+            //int i = 5;
+            //MyBills = new List<MyBills>();
+            //for (i = 0; i < 6; i++)
+            //{
+            //    MyBills m = new MyBills();
+            //    m.Abtypt = "Abc";
+            //    m.BETRW = "100";
+            //    m.FAEDN = "12:02:20";
+            //    m.Status = "P";
+            //    m.VTRE2 = "54321";
 
-                //    MyBills.Add(m);
-                //}
+            //    MyBills.Add(m);
+            //}
 
-                //int j = 5;
-                ////S MyBills = new List<MyBills>();
-                //for (i = 0; i < 6; i++)
-                //{
-                //    MyBills m = new MyBills();
-                //    m.Abtypt = "Abc";
-                //    m.BETRW = "100";
-                //    m.FAEDN = "12:02:20";
-                //    m.Status = "I";
-                //    m.VTRE2 = "54321";
+            //int j = 5;
+            ////S MyBills = new List<MyBills>();
+            //for (i = 0; i < 6; i++)
+            //{
+            //    MyBills m = new MyBills();
+            //    m.Abtypt = "Abc";
+            //    m.BETRW = "100";
+            //    m.FAEDN = "12:02:20";
+            //    m.Status = "I";
+            //    m.VTRE2 = "54321";
 
-                //    MyBills.Add(m);
-                //}
-                //MyBillsOriginal = MyBills;
-          
+            //    MyBills.Add(m);
+            //}
+            //MyBillsOriginal = MyBills;
+
         }
 
         public async Task PopToRootPage()

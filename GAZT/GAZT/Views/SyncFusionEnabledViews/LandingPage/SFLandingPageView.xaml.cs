@@ -10,6 +10,7 @@ using GAZT.Models;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Microsoft.AppCenter.Analytics;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -125,45 +126,50 @@ namespace GAZTeServicesApp.Views.LandingPage
             viewModel._navigationService.NavigateTo("OptionsPageView");
         }
 
-        private void OnImageClicked(object sender, EventArgs e)
+        private async  void OnImageClicked(object sender, EventArgs e)
         {
-            if (viewModel.IsButtonEnabled==true)
+            await Task.Run(() =>
             {
-                viewModel.IsButtonEnabled = false;
-                Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+                viewModel.IsLoading = true;
+            });
+
+            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Image img = sender as Image;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
                 viewModel.NavigateToMyBills(billInfo);
                 
-            }
+           
         }
         private async void OnLabelClicked(object sender, EventArgs e)
         {
-
-            if (viewModel.IsButtonEnabled == true)
+            await Task.Run(() =>
             {
-                viewModel.IsButtonEnabled = false;
+                viewModel.IsLoading = true;
+            });
+
+            viewModel.IsButtonEnabled = false;
                 Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Label img = sender as Label;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                await viewModel.NavigateToMyBills(billInfo);
+                viewModel.NavigateToMyBills(billInfo);
                 
-            }
+            
 
            
         }
 
         private async void OnStackLayoutClicked(object sender, EventArgs e)
         {
-            if (viewModel.IsButtonEnabled == true)
+            await Task.Run(() =>
             {
-                viewModel.IsButtonEnabled = false;
-                Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+                viewModel.IsLoading = true;
+            });
+            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 StackLayout img = sender as StackLayout;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
                 viewModel.NavigateToMyBills(billInfo);
                 
-            }
+            
 
         }
 
@@ -178,9 +184,7 @@ namespace GAZTeServicesApp.Views.LandingPage
         private async void OnTappedTest(object sender, EventArgs e)
         {
 
-            if (viewModel.IsButtonEnabled ==true)
-            {
-                viewModel.IsButtonEnabled = false;
+           
 
 
                 string controltype = sender.GetType().ToString();
@@ -363,7 +367,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                     catch (Exception ex)
                     {
                     }
-                }
+                
                
             }
 
@@ -375,9 +379,6 @@ namespace GAZTeServicesApp.Views.LandingPage
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
-            if (viewModel.IsButtonEnabled ==true)
-            {
-                viewModel.IsButtonEnabled = false;
 
 
                 string controltype = sender.GetType().ToString();
@@ -425,7 +426,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
                 }
                 
-            }
+            
 
 
            

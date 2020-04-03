@@ -353,15 +353,10 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 /// <param name="obj">The Object</param>
 private void ShowOptionsCommandClicked(object obj)
         {
-            if (IsButtonEnabled==true)
-            {
-                IsButtonEnabled = false;
-
-
+            
                 ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
                 _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
-                IsButtonEnabled=true;
-            }
+               
 
         }
 
@@ -740,10 +735,13 @@ private void ShowOptionsCommandClicked(object obj)
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png"});
         }
 
-        public async Task NavigateToMyBills(BillInfo billInfo)
+        public void NavigateToMyBills(BillInfo billInfo)
         {
-            await h(billInfo);
-            IsButtonEnabled = true;
+            _navigationService.NavigateTo(App.MyBillsView, billInfo);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                IsLoading = false;
+            });
         }
      
         public async Task h(BillInfo billInfo)
