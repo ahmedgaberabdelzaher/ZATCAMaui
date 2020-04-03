@@ -120,7 +120,7 @@
 
                 <StackLayout Padding="5">
 
-                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}"></Label>
+                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonStyle}" ></Label>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 

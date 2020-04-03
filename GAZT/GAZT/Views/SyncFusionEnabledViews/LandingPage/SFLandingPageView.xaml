@@ -168,9 +168,7 @@
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
                             <syncfusionCalendar:MonthViewSettings 
-                                DayCellFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                DayHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                               HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                               
                                 
                                     CurrentMonthBackgroundColor="Transparent" 
                                     DayHeaderBackgroundColor="Transparent" 

@@ -181,6 +181,7 @@
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="LineHeight" Value="1.25" />
+
     </Style>
 
     <!--  Common style for labels  -->

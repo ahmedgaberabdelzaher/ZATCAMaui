@@ -50,7 +50,7 @@
 
                <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Bold">
                 <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-                   <On Platform="iOS" Value="GE_SS_Two_Bold" />
+                   <On Platform="iOS" Value="GE SS Two" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">

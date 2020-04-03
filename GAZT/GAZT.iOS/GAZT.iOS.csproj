@@ -118,15 +118,6 @@
     <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <Compile Include="CustomRenderer\Main.cs" />
-    <BundleResource Include="Resources\GE_SS_Two_Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\GE_SS_Two_Light.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\GE_SS_Two_Medium.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
     <BundleResource Include="Resources\sf_BannerImage.png" />
@@ -145,6 +136,8 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
+    <BundleResource Include="Resources\ge ss three light.otf" />
+    <BundleResource Include="Resources\GE_SS_Two_Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
