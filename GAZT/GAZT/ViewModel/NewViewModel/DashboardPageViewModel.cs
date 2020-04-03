@@ -448,6 +448,7 @@ namespace GAZT.ViewModel
 
             OnMyCertificateClicked = new Xamarin.Forms.Command(() =>
             {
+                
                 if (lastTapped < DateTime.Now.AddSeconds(-2))
                 {
                     lastTapped = DateTime.Now;

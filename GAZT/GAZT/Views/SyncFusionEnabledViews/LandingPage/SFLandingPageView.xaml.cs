@@ -105,19 +105,27 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private void SetLTR()
         {
-            if (App.IsArabic)
+            try
             {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
-                calendar.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else 
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                calendar.Locale = new System.Globalization.CultureInfo("en-US");
-                calendar.FlowDirection = FlowDirection.LeftToRight;
-            }
+                if (App.IsArabic)
+                {
+                    this.FlowDirection = FlowDirection.RightToLeft;
+                    calendar.Locale = new System.Globalization.CultureInfo("en-US");
+                    calendar.FlowDirection = FlowDirection.RightToLeft;
+                }
+                else
+                {
+                    this.FlowDirection = FlowDirection.LeftToRight;
+                    calendar.Locale = new System.Globalization.CultureInfo("en-US");
+                    calendar.FlowDirection = FlowDirection.LeftToRight;
+                }
 
+            }
+            catch (Exception gec)
+            {
+
+            }
+          
         }
 
         private void Button_Clicked(object sender, EventArgs e)
