@@ -19,6 +19,8 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnCloseClicked_Tapped { get; set; }
         public ICommand BackButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
+        public ICommand AddButtonClicked { get; set; }
         public ICommand OnOpenClicked_Tapped { get; set; }
        
         private bool _setNoDataLabelVisibility = false;//SelectedTaxEvasionListItem
@@ -49,7 +51,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
+        private string _addIcon = string.Empty;
+        public string AddIcon
+        {
+            get
+            {
+                return _addIcon;
+            }
+            set
+            {
+                _addIcon = value;
+                RaisePropertyChanged("AddIcon");
+            }
+        }
         public bool SetNoDataLabelVisibility
         {
             get
@@ -129,6 +143,18 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+            
+            AddButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
+            });
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+
+
+            });
+
 
             OnCloseClicked_Tapped = new RelayCommand(async () =>
             {

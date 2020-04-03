@@ -15,11 +15,53 @@
              
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+               NavigationPage.HasNavigationBar="False"
             ><!--NavigationPage.HasNavigationBar="False"-->
-    <ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZTEReportReportScreenTitle}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <Image Source="{TemplateBinding BindingContext.AddIcon}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.AddButtonClicked}"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </controls:TitleView.TrailingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    
+    
+    
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_add1.png"  
                 Priority="2" Order="Primary" Clicked="ToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
             <tabview:SfTabView.SelectionIndicatorSettings>

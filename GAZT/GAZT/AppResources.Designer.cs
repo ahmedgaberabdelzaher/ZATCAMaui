@@ -1245,6 +1245,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  PDF Not Available.
+        /// </summary>
+        public static string PdfIsNotAvailableFor {
+            get {
+                return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate available.
         /// </summary>
         public static string PdfIsNoteAvailable {
@@ -1893,7 +1902,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Lookup.
+        ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
         public static string VATLookup {
             get {
@@ -4935,7 +4944,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account created successfully.
+        ///   Looks up a localized string similar to Account Confirmation.
         /// </summary>
         public static string ZZAccountCreatedSuccessfully {
             get {
@@ -5760,6 +5769,15 @@ namespace GAZT {
         public static string ZZImportsvaluex115 {
             get {
                 return ResourceManager.GetString("ZZImportsvaluex115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instruction.
+        /// </summary>
+        public static string ZZInstruction {
+            get {
+                return ResourceManager.GetString("ZZInstruction", resourceCulture);
             }
         }
         
@@ -6611,6 +6629,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        public static string ZZSort {
+            get {
+                return ResourceManager.GetString("ZZSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string ZZSubmit {
@@ -6625,6 +6652,24 @@ namespace GAZT {
         public static string ZZSUCCESS {
             get {
                 return ResourceManager.GetString("ZZSUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ZZSummary {
+            get {
+                return ResourceManager.GetString("ZZSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TaxPayer Details.
+        /// </summary>
+        public static string ZZTaxPayerDetails {
+            get {
+                return ResourceManager.GetString("ZZTaxPayerDetails", resourceCulture);
             }
         }
         
@@ -7018,6 +7063,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return Form.
+        /// </summary>
+        public static string ZZVATReturnForm {
+            get {
+                return ResourceManager.GetString("ZZVATReturnForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verifications Code.
         /// </summary>
         public static string ZZVerificationsCode {
@@ -7293,6 +7347,15 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عربي.
+        /// </summary>
+        public static string ZZZSetLanguageText {
+            get {
+                return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
             }
         }
         

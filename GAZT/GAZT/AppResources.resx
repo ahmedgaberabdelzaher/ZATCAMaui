@@ -635,7 +635,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Verification code</value>
   </data>
   <data name="VATLookup" xml:space="preserve">
-    <value>VAT Lookup</value>
+    <value>VAT Registration Lookup</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>Total submitted returns</value>
@@ -2565,7 +2565,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
-    <value>Account created successfully</value>
+    <value>Account Confirmation</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
@@ -2907,7 +2907,34 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Tax Evasion Reports</value>
     <comment>Title</comment>
   </data>
+  <data name="ZZInstruction" xml:space="preserve">
+    <value>Instruction</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZSummary" xml:space="preserve">
+    <value>Summary</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZTaxPayerDetails" xml:space="preserve">
+    <value>TaxPayer Details</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZVATReturnForm" xml:space="preserve">
+    <value>VAT Return Form</value>
+    <comment>VAT Declaration</comment>
+  </data>
   <data name="ZZZAboutUs" xml:space="preserve">
     <value>About Us</value>
+  </data>
+  <data name="PdfIsNotAvailableFor" xml:space="preserve">
+    <value> PDF Not Available</value>
+  </data>
+  <data name="ZZZSetLanguageText" xml:space="preserve">
+    <value>عربي</value>
+    <comment>option page</comment>
+  </data>
+  <data name="ZZSort" xml:space="preserve">
+    <value>Sort</value>
+    <comment>Correspondence</comment>
   </data>
 </root>

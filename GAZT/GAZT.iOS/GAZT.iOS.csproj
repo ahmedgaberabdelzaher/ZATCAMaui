@@ -144,6 +144,7 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%403x.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
+    <Compile Include="DependencyServices\StatusBarImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -323,6 +324,9 @@
       <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
       <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
