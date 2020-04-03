@@ -118,8 +118,8 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedFormBindleFbnum = value;
                 if (_selectedFormBindleFbnum != null)
                 {
-                    //populate();
-
+                    populate();
+                    TxtFBnum = _selectedFormBindleFbnum.Fbnum;
                 }
                 RaisePropertyChanged("SelectedFormBindleFbnum");
             }
