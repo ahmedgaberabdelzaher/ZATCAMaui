@@ -4907,5 +4907,53 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATTax EvasionReportsTitle", resourceCulture);
             }
         }
+        
+        public static string ZZInstruction {
+            get {
+                return ResourceManager.GetString("ZZInstruction", resourceCulture);
+            }
+        }
+        
+        public static string ZZSummary {
+            get {
+                return ResourceManager.GetString("ZZSummary", resourceCulture);
+            }
+        }
+        
+        public static string ZZTaxPayerDetails {
+            get {
+                return ResourceManager.GetString("ZZTaxPayerDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZZVATReturnForm {
+            get {
+                return ResourceManager.GetString("ZZVATReturnForm", resourceCulture);
+            }
+        }
+        
+        public static string ZZZAboutUs {
+            get {
+                return ResourceManager.GetString("ZZZAboutUs", resourceCulture);
+            }
+        }
+        
+        public static string PdfIsNotAvailableFor {
+            get {
+                return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSetLanguageText {
+            get {
+                return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
+            }
+        }
+        
+        public static string ZZSort {
+            get {
+                return ResourceManager.GetString("ZZSort", resourceCulture);
+            }
+        }
     }
 }

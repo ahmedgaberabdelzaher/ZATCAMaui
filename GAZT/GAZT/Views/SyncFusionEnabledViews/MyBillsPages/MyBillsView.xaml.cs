@@ -19,11 +19,12 @@ namespace GAZT.Views
         MyBillsViewModel viewModel;
         public MyBillsView(BillInfo billInfo = null)
         {
+            InitializeComponent();
             Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            InitializeComponent();
+          
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyBillsView;
@@ -39,8 +40,9 @@ namespace GAZT.Views
             {
                 SetLTR();
                 this.BindingContext = viewModel;
+                GetBillsReturnsAsync(billInfo);
 
-                viewModel.onPageLoad(billInfo);
+
 
             }
             catch (Exception ex)
@@ -48,6 +50,24 @@ namespace GAZT.Views
 
             }
         }
+
+
+        public  void GetBillsReturnsAsync(BillInfo billInfo)
+        {
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+
+             viewModel.onPageLoad(billInfo);
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
+
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;

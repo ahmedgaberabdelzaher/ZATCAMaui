@@ -11,9 +11,11 @@
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary Source="..\Common\Styles.xaml" />
-        </ResourceDictionary>
+          <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+              </ResourceDictionary>
     </ContentPage.Resources>
 
   
@@ -184,10 +186,7 @@
 
                     <!--  Header label for Support setting  -->
                     <Label
-                    Margin="16,0,16,0"
-                  FontFamily="{StaticResource GAZT_FONT_BOLD}"
-                    FontSize="12"
-                    HeightRequest="50"
+                Style="{StaticResource LabelStyleFromCommonStyle}"
                     HorizontalOptions="FillAndExpand"
                     LineHeight="{OnPlatform Default=-1,
                                             Android=1.25}"

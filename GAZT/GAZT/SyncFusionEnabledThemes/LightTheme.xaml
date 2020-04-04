@@ -43,7 +43,7 @@
     <OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold"/>
-            <On Platform="iOS" Value="GE_SS_Two_Bold.ttf" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -51,7 +51,7 @@
     <OnPlatform x:Key="Montserrat-Regular" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE_SS_Two_Light" />
+            <On Platform="iOS" Value="GE SS Three" />
             <On Platform="UWP" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -59,7 +59,7 @@
     <OnPlatform x:Key="Montserrat-Medium" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#SSTArabic-Medium" />
-            <On Platform="iOS" Value="GE_SS_Two_Medium" />
+            <On Platform="iOS" Value="GE SS Three" />
             <On Platform="UWP" Value="GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -67,7 +67,7 @@
     <OnPlatform x:Key="Montserrat-Bold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -108,7 +108,7 @@
     <OnPlatform x:Key="Montserrat-SemiBold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -116,7 +116,7 @@
     <OnPlatform x:Key="Montserrat-Regular-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE_SS_Two_Light" />
+            <On Platform="iOS" Value="GE SS Three" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#Montserrat-Regular" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -132,7 +132,7 @@
     <OnPlatform x:Key="Montserrat-Bold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -140,7 +140,7 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE_SS_Two_Bold" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -164,7 +164,7 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
-            <On Platform="iOS" Value="GE_SS_Two_Medium" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -180,7 +180,7 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE_SS_Two_Light" />
+            <On Platform="iOS" Value="GE SS Three" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>

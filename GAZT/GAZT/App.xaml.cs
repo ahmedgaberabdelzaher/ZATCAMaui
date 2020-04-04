@@ -271,19 +271,9 @@ namespace GAZT
 
             if (App.IsArabic)
             {
-                if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-                {
-                    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
-                    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
-                    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-                }
-                else
-                {
                     Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
                     Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
                     Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
-
-                }
             }
             else
             {
