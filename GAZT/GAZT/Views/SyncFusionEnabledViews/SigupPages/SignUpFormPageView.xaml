@@ -129,20 +129,22 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZIDType}"
-                    ShowColumnHeader="False"
+                    
                     SelectedIndex="{Binding IDTypeIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                           HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                                             ShowColumnHeader="False"
+                                             ShowFooter="False"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
                      DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                                               SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"
-                    ShowFooter="False" FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                     FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
