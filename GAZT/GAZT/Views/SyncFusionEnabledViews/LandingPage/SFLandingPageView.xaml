@@ -191,8 +191,9 @@
                                 <syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
                                     <DataTemplate>
                                         <StackLayout VerticalOptions="CenterAndExpand">
-                                            <Label TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro"> 
-                                            </Label>
+                                            <!--<Label TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro">--> 
+                                            <Editor HeightRequest="80" TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"         FontSize="Micro" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                            
                                             <!--<Button BackgroundColor="DarkGreen" Text="COPY" TextColor="White" />-->
                                         </StackLayout>
                                     </DataTemplate>

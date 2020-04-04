@@ -1056,6 +1056,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Dues.
+        /// </summary>
+        public static string NoAppointmentText {
+            get {
+                return ResourceManager.GetString("NoAppointmentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No invoices available.
         /// </summary>
         public static string NoBillsAvailable {
@@ -2593,6 +2602,15 @@ namespace GAZT {
         public static string ZReturnReferenceNumber {
             get {
                 return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Status.
+        /// </summary>
+        public static string ZReturnStatus {
+            get {
+                return ResourceManager.GetString("ZReturnStatus", resourceCulture);
             }
         }
         
@@ -7171,6 +7189,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business Information.
+        /// </summary>
+        public static string ZZZBusinessInformation {
+            get {
+                return ResourceManager.GetString("ZZZBusinessInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Information.
+        /// </summary>
+        public static string ZZZContactInformation {
+            get {
+                return ResourceManager.GetString("ZZZContactInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
         public static string ZZZCorrespondenceTitle {
@@ -7230,6 +7266,15 @@ namespace GAZT {
         public static string ZZZHelp {
             get {
                 return ResourceManager.GetString("ZZZHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual Information.
+        /// </summary>
+        public static string ZZZIndividualInformation {
+            get {
+                return ResourceManager.GetString("ZZZIndividualInformation", resourceCulture);
             }
         }
         

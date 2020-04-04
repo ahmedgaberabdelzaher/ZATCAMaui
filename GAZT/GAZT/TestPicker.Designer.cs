@@ -70,6 +70,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Dues.
+        /// </summary>
+        public static string NoAppointmentText {
+            get {
+                return ResourceManager.GetString("NoAppointmentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to موافق.
         /// </summary>
         public static string OKText {
