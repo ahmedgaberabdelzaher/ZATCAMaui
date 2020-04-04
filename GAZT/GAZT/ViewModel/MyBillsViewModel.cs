@@ -310,7 +310,7 @@ namespace GAZT.ViewModel
         }
 
 
-        public void onPageLoad(BillInfo billInfo)
+        public async Task onPageLoad(BillInfo billInfo)
         {
 
             //await Task.Run(() =>
@@ -329,8 +329,8 @@ namespace GAZT.ViewModel
                     {
 
                         string lang = UtilityManager.GetLanguageParameter();
-                        myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        myBills =await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                        await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
 
                     if (myBills != null && myBills.Count != 0)

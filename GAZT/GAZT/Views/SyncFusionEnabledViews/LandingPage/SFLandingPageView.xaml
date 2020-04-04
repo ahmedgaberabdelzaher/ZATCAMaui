@@ -426,12 +426,14 @@
                                        AnimationType="RollingBall" 
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
-                                           IsBusy="{Binding IsLoading}"
+                                           IsBusy="True"
                                        ViewBoxWidth = "70" 
                                        Title="Loading..."
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="Black"/>
+                        
+                        
                     </StackLayout>
                 </StackLayout>
             </Grid>

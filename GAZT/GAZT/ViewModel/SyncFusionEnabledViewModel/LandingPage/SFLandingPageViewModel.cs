@@ -735,13 +735,14 @@ private void ShowOptionsCommandClicked(object obj)
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png"});
         }
 
-        public void NavigateToMyBills(BillInfo billInfo)
+        public async Task NavigateToMyBills(BillInfo billInfo)
         {
-            _navigationService.NavigateTo(App.MyBillsView, billInfo);
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = false;
-            });
+            await h(billInfo);
+            //_navigationService.NavigateTo(App.MyBillsView, billInfo);
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    IsLoading = false;
+            //});
         }
      
         public async Task h(BillInfo billInfo)
