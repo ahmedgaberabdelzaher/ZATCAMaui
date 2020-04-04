@@ -2934,4 +2934,16 @@
     <value>Sort</value>
     <comment>Correspondence</comment>
   </data>
+  <data name="ZZZBusinessInformation" xml:space="preserve">
+    <value>Business Information</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZZContactInformation" xml:space="preserve">
+    <value>Contact Information</value>
+    <comment>Sign up</comment>
+  </data>
+  <data name="ZZZIndividualInformation" xml:space="preserve">
+    <value>Individual Information</value>
+    <comment>Sign up</comment>
+  </data>
 </root>

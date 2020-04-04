@@ -47,19 +47,17 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-
-        <StackLayout BackgroundColor="White">
-             <!--ZZZRequired-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,10" BackgroundColor="White" >
+        <!--ZZZRequired-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White" >
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                
+                <ScrollView  >
 
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                         <Grid.RowDefinitions>
@@ -84,7 +82,12 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="StartAndExpand" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
+                            <!--heading-->
+                            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                            </Frame>
+                            <Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                            <!--heading-->
+                            <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="StartAndExpand" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
                         <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                         </Label>
                         <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
@@ -209,9 +212,14 @@
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
+                            <!--heading-->
+                            <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                            </Frame>
+                            <Label Text="{x:Static local:AppResources.ZZZBusinessInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" />
+                            <!--heading-->
 
 
-                        <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}"  />
@@ -352,7 +360,12 @@
                             </Grid>
                         </StackLayout>
 
-                        <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                            <!--heading-->
+                            <Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                            </Frame>
+                            <Label Text="{x:Static local:AppResources.ZZZContactInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" />
+
+                            <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HelperText="{x:Static local:AppResources.ZZZRequired}"
     Hint="{x:Static local:AppResources.ZZEmailAddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -360,7 +373,7 @@
 
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                        <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6" HelperText="{x:Static local:AppResources.ZZZRequired}"
     Hint="{x:Static local:AppResources.ZZMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -370,7 +383,7 @@
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout    x:Name="FrmPhoneNumber" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout    x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZPhoneNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -382,10 +395,13 @@
                         </inputLayout:SfTextInputLayout>
 
                     </Grid>
-                </Grid>
+               
             </ScrollView>
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" VerticalOptions="EndAndExpand" Margin="0,0,0,-15">
-                    <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked" VerticalOptions="EndAndExpand"  Margin="0" FontSize="15"  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
+            
+            
+            
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
+                    <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" VerticalOptions="End" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked"   Margin="0" FontSize="15"   Grid.ColumnSpan="2"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
             </StackLayout>
             <Grid  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -398,6 +414,6 @@
                 </StackLayout>
             </Grid>
         </Grid>
-            </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
