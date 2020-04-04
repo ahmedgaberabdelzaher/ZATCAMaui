@@ -29,7 +29,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls1:TitleView Title="{x:Static local:AppResources.ZZZFaq}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls1:TitleView Title="{x:Static local:AppResources.ZZZFaq}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls1:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

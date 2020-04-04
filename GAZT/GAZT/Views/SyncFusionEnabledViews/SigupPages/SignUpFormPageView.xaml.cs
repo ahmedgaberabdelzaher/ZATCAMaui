@@ -1725,6 +1725,11 @@ namespace GAZT.Views.NewViews
                     FrmIDNumber.HasError = false;
                 }
             }
+            else
+            {
+                FrmIDNumber.HasError = false;
+            }
+
         }
 
         private void btn1_Clicked(object sender, EventArgs e)

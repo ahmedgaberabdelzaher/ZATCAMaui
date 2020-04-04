@@ -31,6 +31,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
         public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
         public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
+        public bool _isButtonEnabled = true;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
@@ -38,6 +39,8 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         private ICommand EserviceCommand { get; set; }
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+        public DateTime lastTapped;
 
         #endregion
 
@@ -225,6 +228,20 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
+        public bool IsButtonEnabled
+        {
+            get
+            {
+                return this._isButtonEnabled;
+            }
+
+            set
+            {
+                this._isButtonEnabled = value;
+                this.RaisePropertyChanged("IsButtonEnabled");
+            }
+        }
+
 
         /// <summary>
         /// Gets or sets the returninfo items collection.
@@ -336,8 +353,11 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 /// <param name="obj">The Object</param>
 private void ShowOptionsCommandClicked(object obj)
         {
-            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
-            _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+            
+                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+                _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+               
+
         }
 
         /// <summary>
@@ -716,6 +736,15 @@ private void ShowOptionsCommandClicked(object obj)
         }
 
         public void NavigateToMyBills(BillInfo billInfo)
+        {
+            _navigationService.NavigateTo(App.MyBillsView, billInfo);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                IsLoading = false;
+            });
+        }
+     
+        public async Task h(BillInfo billInfo)
         {
             _navigationService.NavigateTo(App.MyBillsView, billInfo);
         }
