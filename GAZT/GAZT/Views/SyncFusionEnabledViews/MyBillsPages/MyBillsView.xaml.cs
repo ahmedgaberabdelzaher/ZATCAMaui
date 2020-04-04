@@ -2,9 +2,12 @@
 using GAZT.ViewModel;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using Syncfusion.DataSource.Extensions;
 using Syncfusion.SfChart.XForms;
+using Syncfusion.XForms.TabView;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -20,24 +23,16 @@ namespace GAZT.Views
         MyBillsViewModel viewModel;
         public MyBillsView(BillInfo billInfo = null)
         {
-           
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+
+            //Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+            //Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             InitializeComponent();
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyBillsView;
-           
-         
-            Bills.ItemTapped += (object sender, ItemTappedEventArgs e) => {
-                // don't do anything if we just de-selected the row.
-                if (e.Item == null) return;
-
-                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-            };
             try
             {
                 SetLTR();
@@ -54,6 +49,37 @@ namespace GAZT.Views
             {
 
             }
+
+            Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
+
+            BillsPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
+            BillsPartiallyPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
+            BillsUnPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
+
         }
 
 
@@ -121,42 +147,42 @@ namespace GAZT.Views
             }
         }
 
-        private void ClickGestureRecognizer_ClickedForAll(object sender, EventArgs e)
-        {
+        //private void ClickGestureRecognizer_ClickedForAll(object sender, EventArgs e)
+        //{
 
-            Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
 
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        }
+        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //}
 
-        private void ClickGestureRecognizer_ClickedForPaid(object sender, EventArgs e)
-        {
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //private void ClickGestureRecognizer_ClickedForPaid(object sender, EventArgs e)
+        //{
+        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
-            Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        }
-        private void ClickGestureRecognizer_ClickedForUnPaid(object sender, EventArgs e)
-        {
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //}
+        //private void ClickGestureRecognizer_ClickedForUnPaid(object sender, EventArgs e)
+        //{
+        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
-            Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        }
-        private void ClickGestureRecognizer_ClickedForPartiallyPaid(object sender, EventArgs e)
-        {
-            Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-            Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //}
+        //private void ClickGestureRecognizer_ClickedForPartiallyPaid(object sender, EventArgs e)
+        //{
+        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
+        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
            
 
-            Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        }
+        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
+        //}
         protected void OnTaxPayerClicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
@@ -199,15 +225,15 @@ namespace GAZT.Views
                 viewModel.MyBills = null;
                 if (selectedDatapoint.BillType == AppResources.Paid)
                 {
-                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToObservableCollection();
                 }
                 if (selectedDatapoint.BillType == AppResources.UnPaid)
                 {
-                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToObservableCollection();
                 }
                 if (selectedDatapoint.BillType == AppResources.PartiallyPaid)
                 {
-                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+                    viewModel.MyBills = viewModel.MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToObservableCollection();
                 }
                 //await Navigation.PushModalAsync(new SecondaryPage(selectedDatapoint));
             }
@@ -223,6 +249,11 @@ namespace GAZT.Views
         private void ShowSelectedBillsType()
         {
 
+        }
+
+        private void simTab_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
+        {
+            
         }
     }
     }

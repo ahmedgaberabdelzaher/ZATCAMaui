@@ -57,7 +57,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="3" >
+            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0"  SelectionChanged="simTab_SelectionChanged"  Grid.Column="0" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="3" >
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
@@ -98,7 +98,7 @@
                                     </chart:SfChart.Legend>
                                     <chart:SfChart.Series>
 
-                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
+                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
 
                                             <chart:PieSeries.ColorModel>
 
@@ -149,7 +149,7 @@
 
 
                                 <ListView  x:Name="Bills" 
-           ItemsSource="{Binding MyBills}"
+           ItemsSource="{Binding MyBills,Mode=TwoWay}"
                                        ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
