@@ -1056,6 +1056,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Dues.
+        /// </summary>
+        public static string NoAppointmentText {
+            get {
+                return ResourceManager.GetString("NoAppointmentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No invoices available.
         /// </summary>
         public static string NoBillsAvailable {
@@ -2593,6 +2602,15 @@ namespace GAZT {
         public static string ZReturnReferenceNumber {
             get {
                 return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Status.
+        /// </summary>
+        public static string ZReturnStatus {
+            get {
+                return ResourceManager.GetString("ZReturnStatus", resourceCulture);
             }
         }
         

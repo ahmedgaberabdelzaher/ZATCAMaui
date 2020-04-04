@@ -2934,6 +2934,13 @@
     <value>Sort</value>
     <comment>Correspondence</comment>
   </data>
+  <data name="NoAppointmentText" xml:space="preserve">
+    <value>No Dues</value>
+  </data>
+  <data name="ZReturnStatus" xml:space="preserve">
+    <value>Return Status</value>
+    <comment>Return status String</comment>
+  </data>
   <data name="ZZZBusinessInformation" xml:space="preserve">
     <value>Business Information</value>
     <comment>Sign up</comment>

@@ -641,14 +641,14 @@ private void ShowOptionsCommandClicked(object obj)
                    
                     if (item.IcrStatus == "O")
                     {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + item.Fbnum + " | " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount 
+                        BillOrReturnDueEvent.Subject = item.Incotext + " | " +AppResources.SADADNumber +" : "+   item.Fbnum + " | " + AppResources.ZStatus + " : "+ item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount 
                             + " | " + item.Txt50;
 
                         BillOrReturnDueEvent.Color = Color.FromHex("#ff0000");
                     }
                     else
                     {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + item.Fbnum + " | " + item.IcrStatus + " | " + item.Txt50;
+                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber +" : "+ item.Fbnum +  " : " + " | " + AppResources.ZStatus + " : "+ item.IcrStatus + " | " + item.Txt50;
                         BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
                     }
                     
