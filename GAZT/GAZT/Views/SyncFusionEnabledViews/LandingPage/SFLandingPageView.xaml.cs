@@ -111,7 +111,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (App.IsArabic)
                 {
                     this.FlowDirection = FlowDirection.RightToLeft;
-                    calendar.Locale = new System.Globalization.CultureInfo("en-US");
+                    calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
                     calendar.FlowDirection = FlowDirection.RightToLeft;
                 }
                 else

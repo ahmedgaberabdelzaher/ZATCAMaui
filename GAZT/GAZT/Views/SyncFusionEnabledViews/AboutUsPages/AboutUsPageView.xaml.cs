@@ -27,7 +27,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
         #region Constructor
 
         public AboutUsPageView()
-        {
+        {try
+            { 
+            
+            
             InitializeComponent();
             viewModel = App.Locator.AboutUsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -63,6 +66,12 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
                     viewModel.WebUrl = "file:///android_asset/About_AR.html";
 
                 }
+            }
+
+            }
+            catch(Exception ex)
+            { 
+            
             }
 
         }

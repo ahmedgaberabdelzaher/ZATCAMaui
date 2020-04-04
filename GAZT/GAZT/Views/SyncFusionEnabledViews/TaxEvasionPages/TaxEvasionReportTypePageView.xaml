@@ -28,7 +28,7 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
 
                         <buttons:SfButton

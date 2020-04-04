@@ -3096,7 +3096,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.VATDeclaration}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.VATDeclaration}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -3110,7 +3110,19 @@
                              />
 
                     </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <buttons:SfButton
+                            x:Name="MenuButton"
+                            Clicked="onMoreOptionClicked"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource More}"
+                            
+                             />
 
+                    </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter />
             </StackLayout>

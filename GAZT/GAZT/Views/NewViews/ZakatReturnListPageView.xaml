@@ -31,7 +31,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.EstimateZakat}"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.EstimateZakat}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

@@ -20,7 +20,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZZZPrivacyandPolicy}"  FontSize="14"  FontFamily="{StaticResource GESSTwoBold}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZPrivacyandPolicy}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -45,10 +45,10 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <ScrollView>
+           
 
-                <WebView x:Name="PrivacyandPolicyWebView" Source="{Binding WebUrl}" HeightRequest="860" WidthRequest="1000" />
-            </ScrollView>
+                <WebView x:Name="PrivacyandPolicyWebView" Source="{Binding WebUrl}" HeightRequest="860" WidthRequest="1000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
