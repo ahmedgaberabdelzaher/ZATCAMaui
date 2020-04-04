@@ -277,10 +277,13 @@ namespace GAZT
             }
             else
             {
+                Application.Current.Resources["LargeLabelTest"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
+
                 Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
                 Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
                 Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
             }
+
 
 
             //SYNCFUSION INTEGRATION

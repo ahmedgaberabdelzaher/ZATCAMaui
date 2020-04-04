@@ -32,6 +32,12 @@
     <Color x:Key="Gray-Black">#000000</Color>
     <Color x:Key="Gray-White">#ffffff</Color>
 
+    <x:String x:Key="LargeLabelTest"></x:String>
+
+    <Style x:Key="DummyStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{DynamicResource LargeLabelTest}"/>
+    </Style>
+    
     <OnPlatform x:Key="FontIcons" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="UIFontIcons.ttf#UIFontIcons" />
