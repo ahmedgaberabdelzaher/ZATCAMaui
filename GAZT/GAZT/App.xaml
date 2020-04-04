@@ -49,7 +49,6 @@
             </OnPlatform>
 
                <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Bold">
-                <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
                    <On Platform="iOS" Value="GE SS Two" />
             </OnPlatform>
 
@@ -59,11 +58,11 @@
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
 
-            <OnPlatform x:TypeArguments="x:String" x:Key="GESSTwoBold">
+            <!--<OnPlatform x:TypeArguments="x:String" x:Key="GESSTwoBold">
                 <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
 
                 <On Platform="iOS" Value="GE_SS_Two_Bold" />
-            </OnPlatform>
+            </OnPlatform>-->
 
 
             <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">

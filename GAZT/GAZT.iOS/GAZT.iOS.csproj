@@ -136,8 +136,7 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns.png" />
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
-    <BundleResource Include="Resources\ge ss three light.otf" />
-    <BundleResource Include="Resources\GE_SS_Two_Bold.ttf" />
+    <BundleResource Include="Resources\GE_SS_Two_Light.otf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
