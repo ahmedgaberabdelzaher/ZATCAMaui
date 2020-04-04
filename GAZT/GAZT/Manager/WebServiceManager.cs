@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -777,11 +778,11 @@ namespace GAZT.Manager
         }
 
         //done internet exception handling
-        public static async Task<List<MyBills>> GAZTGetMyBills(String Tin, string lang)
+        public static async Task<ObservableCollection<MyBills>> GAZTGetMyBills(String Tin, string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                List<MyBills> myBills = new List<MyBills>();
+                ObservableCollection<MyBills> myBills = new ObservableCollection<MyBills>();
                 String MobileNumber = string.Empty;
                 string PdfUrl = string.Empty;
                 string NewToken = string.Empty;
@@ -820,7 +821,7 @@ namespace GAZT.Manager
                             string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
                             if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
                             {
-                                myBills = JsonConvert.DeserializeObject<List<MyBills>>(GAZTMyBillsResponseJSONJToken);
+                                myBills = JsonConvert.DeserializeObject<ObservableCollection<MyBills>>(GAZTMyBillsResponseJSONJToken);
                             }
                             else
                             {
