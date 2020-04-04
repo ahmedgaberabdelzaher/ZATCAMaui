@@ -195,8 +195,42 @@
                     TextColor="{DynamicResource Gray-800}"
                     VerticalOptions="Center"
                     VerticalTextAlignment="Center" />
+                    <!--Grid for about us-->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding AboutCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Privacy policy icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource More}" />
+                        <!--  Privacy policy text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        Text="{x:Static local:AppResources.ZZZAboutUs}" />
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
 
-                    <!--  Grid for Help label and navigation bar icon  -->
+
+
+
+                    <!--  Grid for Help label and navigation bar icon  --><!--
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
@@ -208,25 +242,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  help icon  -->
+                        --><!--  help icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource Help}" />
-                        <!--  Help text label  -->
+                        --><!--  Help text label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZHelp}" />
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <BoxView Style="{StaticResource SeparatorStyle}" />-->
 
 
                     <!--  Grid for FAQs label and navigation bar icon  -->
@@ -329,7 +363,7 @@
 
 
                     <!--  Grid for Privacy policy label and navigation bar icon  -->
-                    <controls:TapAnimationGrid
+                    <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
                     Command="{Binding AboutCommand}"
@@ -340,25 +374,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <!--  Privacy policy icon  -->
+                        --><!--  Privacy policy icon  --><!--
                         <Label
                         Grid.Column="0"
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource More}" />
-                        <!--  Privacy policy text label  -->
+                        --><!--  Privacy policy text label  --><!--
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{x:Static local:AppResources.ZZZAboutUs}" />
-                        <!--  Navigation icon  -->
+                        --><!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
                         Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
+                        Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <BoxView Style="{StaticResource SeparatorStyle}" />-->
 
 
 

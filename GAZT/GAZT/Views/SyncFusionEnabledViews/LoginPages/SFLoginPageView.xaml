@@ -68,7 +68,7 @@
                     WidthRequest="{OnPlatform Default='-1',
                                               UWP='350'}">
 
-                    <Grid RowSpacing="0" VerticalOptions="CenterAndExpand">
+                    <Grid RowSpacing="0" VerticalOptions="Center">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />

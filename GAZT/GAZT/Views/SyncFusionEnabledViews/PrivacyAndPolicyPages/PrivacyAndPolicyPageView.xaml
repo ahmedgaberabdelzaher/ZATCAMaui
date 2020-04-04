@@ -45,10 +45,10 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <ScrollView>
+           
 
-                <WebView x:Name="PrivacyandPolicyWebView" Source="{Binding WebUrl}" HeightRequest="860" WidthRequest="1000" />
-            </ScrollView>
+                <WebView x:Name="PrivacyandPolicyWebView" Source="{Binding WebUrl}" HeightRequest="860" WidthRequest="1000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
