@@ -298,12 +298,14 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}"
-                    ShowColumnHeader="False"
+                    
                 x:Name="ddlLIssuedBy"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                              SelectedItemFontSize="10"     
                    ItemHeight="40"
+                                     ShowFooter="False"
+                                    ShowColumnHeader="False"
                                        HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
@@ -313,7 +315,7 @@
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
-                    ShowFooter="False" FooterHeight="46">
+                    FooterHeight="46">
                                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
