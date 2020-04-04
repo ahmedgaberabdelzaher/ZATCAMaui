@@ -144,9 +144,14 @@ namespace GAZTeServicesApp.Views.LandingPage
             Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Image img = sender as Image;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                viewModel.NavigateToMyBills(billInfo);
-                
-           
+                await viewModel.NavigateToMyBills(billInfo);
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
         }
         private async void OnLabelClicked(object sender, EventArgs e)
         {
@@ -159,11 +164,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                 Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Label img = sender as Label;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                viewModel.NavigateToMyBills(billInfo);
-                
-            
+                await viewModel.NavigateToMyBills(billInfo);
 
-           
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
+
         }
 
         private async void OnStackLayoutClicked(object sender, EventArgs e)
@@ -175,9 +184,12 @@ namespace GAZTeServicesApp.Views.LandingPage
             Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 StackLayout img = sender as StackLayout;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                viewModel.NavigateToMyBills(billInfo);
-                
-            
+                await viewModel.NavigateToMyBills(billInfo);
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
 
         }
 

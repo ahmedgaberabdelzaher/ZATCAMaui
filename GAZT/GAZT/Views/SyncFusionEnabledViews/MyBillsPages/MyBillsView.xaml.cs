@@ -6,6 +6,7 @@ using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -19,12 +20,13 @@ namespace GAZT.Views
         MyBillsViewModel viewModel;
         public MyBillsView(BillInfo billInfo = null)
         {
-            InitializeComponent();
+           
             Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-          
+            InitializeComponent();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel = App.Locator.MyBillsView;
@@ -40,7 +42,10 @@ namespace GAZT.Views
             {
                 SetLTR();
                 this.BindingContext = viewModel;
-                GetBillsReturnsAsync(billInfo);
+                Task.Run(async () =>
+                {
+                    viewModel.onPageLoad(billInfo);
+                });
 
 
 
@@ -52,17 +57,19 @@ namespace GAZT.Views
         }
 
 
-        public  void GetBillsReturnsAsync(BillInfo billInfo)
+        public async void GetBillsReturnsAsync(BillInfo billInfo)
         {
 
-            Device.BeginInvokeOnMainThread(() =>
+
+            await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
 
-             viewModel.onPageLoad(billInfo);
+            await viewModel.onPageLoad(billInfo);
 
-            Device.BeginInvokeOnMainThread(() =>
+
+            await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
