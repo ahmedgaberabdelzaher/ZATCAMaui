@@ -950,7 +950,7 @@
     <value>TaxPayerDetails</value>
   </data>
   <data name="ZTaxpayerInformation" xml:space="preserve">
-    <value>نموذج الإقرار الضريبي</value>
+    <value>معلومات المكلف</value>
   </data>
   <data name="ZTotalVat" xml:space="preserve">
     <value>مبيعات القيمة المضافة</value>
