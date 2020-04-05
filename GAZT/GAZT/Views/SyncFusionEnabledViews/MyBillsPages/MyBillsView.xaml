@@ -270,7 +270,7 @@
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                             <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
                                                             <!--<BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 
@@ -418,7 +418,7 @@
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                             <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
                                                             <!--<BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 
@@ -566,7 +566,7 @@
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                             <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
                                                             <!--<BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 
@@ -715,7 +715,7 @@
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="10"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                             <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="10"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
                                                             <!--<BoxView  
                      Grid.Row="0" Grid.Column="2" Grid.RowSpan="10" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
 

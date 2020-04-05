@@ -34,15 +34,33 @@ namespace GAZT.CustomControl
             Headers = new ObservableCollection<string>();
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
             {
-                Headers.Add("MONTH");
-                Headers.Add("DAY");
-                Headers.Add("YEAR");
+                if (!App.IsArabic)
+                {
+                    Headers.Add("MONTH");
+                    Headers.Add("DAY");
+                    Headers.Add("YEAR");
+                }
+                else
+                {
+                    Headers.Add("شهر");
+                    Headers.Add("يوم");
+                    Headers.Add("عام");
+                }
             }
             else
             {
-                Headers.Add("Month");
-                Headers.Add("Day");
-                Headers.Add("Year");
+                if (!App.IsArabic)
+                {
+                    Headers.Add("Month");
+                    Headers.Add("Day");
+                    Headers.Add("Year");
+                }
+                else
+                {
+                    Headers.Add("شهر");
+                    Headers.Add("يوم");
+                    Headers.Add("عام");
+                }
             }
             PopulateDateCollection();
             this.ItemsSource = Date;
