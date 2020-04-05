@@ -182,7 +182,8 @@
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
 								
-								ShowColumnHeader="False"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="#EAF7CC"
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
