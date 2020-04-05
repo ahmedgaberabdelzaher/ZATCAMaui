@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace GAZT.ViewModel.NewViewModel
 {
-    public class OTPPageViewModel: ViewModelBase
+    public class OTPPageViewModel : ViewModelBase
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -102,7 +102,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
         private string _OTPSentOnThisText = String.Empty;
         public string OTPSentOnThisText
         {
@@ -144,7 +144,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-      
+
         private String _enteredOTP;
         public String EnteredOTP
         {
@@ -311,7 +311,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
 
 
         #endregion
@@ -339,7 +339,7 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             OnSubmitClicked = new Command(async () =>
             {
-                if(string.IsNullOrEmpty(EnteredOTP))
+                if (string.IsNullOrEmpty(EnteredOTP))
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -349,20 +349,50 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    FrmColour = "#B1B1B1";
-                    await ValidateOTP();
+                   // FrmColour = "#B1B1B1";
+                    Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+                    await Task.Run(async () =>
+                    {
+                        await ValidateOTP();
+                    });
+
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
                 }
 
-               
+
+
+
             });
             OnResendOTPClicked = new Command(async () =>
             {
                 if (IsResendOTPEnabled == true)
                 {
-                    await SendOTPToRegisterMobileNumberToLogIn();
+                    Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+                    await Task.Run(async () =>
+                    {
+                        await SendOTPToRegisterMobileNumberToLogIn();
+                    });
+
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
                 }
 
-                
+
             });
 
             BackButtonClicked = new Command(() =>
@@ -389,7 +419,7 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                     if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
                     {
-                       
+
                         TaxPayerProfile TP = null;
                         try
                         {
@@ -405,17 +435,17 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             currentAttempts++;
                             TP = await WebServiceManager.GAZTValidateOTP(lang, App.TP.Userid, OTP, currentAttempts.ToString());
-                           
+
                             AccountLockedMessage(TP);
                             if (!isValiedOTP)
                             {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
+                                //await Task.Run(() =>
+                                //{
+                                //    IsLoading = false;
+                                //});
                                 return;
                             }
-                           
+
 
 
 
@@ -427,10 +457,10 @@ namespace GAZT.ViewModel.NewViewModel
                                 App.TP.Password = Password;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    //_navigationService.NavigateTo(App.SFLandingPageView);
-                                    if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
+                                //_navigationService.NavigateTo(App.SFLandingPageView);
+                                if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
                                     {
-                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService,new BillInfo());
+                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService, new BillInfo());
                                     }
                                     else
                                     {
@@ -464,10 +494,10 @@ namespace GAZT.ViewModel.NewViewModel
                     else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
                     {
                         TaxPayerProfile TP = null;
-                        
+
                         try
                         {
-                           
+
                             String OTP = string.Empty;
                             String lang = "EN";
                             OTP = EnteredOTP;
@@ -476,45 +506,46 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 lang = "AR";
                             }
-                           
-                           
-                                TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
-                            await PopToRootPage();
-                           
-                           
-                                if (TP != null)
-                                {
-                                    string UpdatedMobile = App.TP.NewMobile;
-                                    App.TP.Mobile = UpdatedMobile;
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
-                                        await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
-                                        _navigationService.NavigateTo(App.DashboardPageView);
-                                    });
-                                }
-                                else
-                                {
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        currentAttempts++;
-                                        if (currentAttempts == App.TP.Attempts)
-                                        {
-                                            App.TP = null;
-                                            ClearData();
-                                            Device.BeginInvokeOnMainThread(async () => {
-                                                var _navigation = Application.Current.MainPage.Navigation;
-                                                await _navigation.PopToRootAsync();
-                                            });
-                                        }
-                                        string isInvalidOtp = AppResources.InvalidOTP;
-                                        await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
-                                        ClearData();
 
-                                    });
-                                }
-                            
-                           
+
+                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            await PopToRootPage();
+
+
+                            if (TP != null)
+                            {
+                                string UpdatedMobile = App.TP.NewMobile;
+                                App.TP.Mobile = UpdatedMobile;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
+                                    await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
+                                    _navigationService.NavigateTo(App.DashboardPageView);
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    currentAttempts++;
+                                    if (currentAttempts == App.TP.Attempts)
+                                    {
+                                        App.TP = null;
+                                        ClearData();
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            var _navigation = Application.Current.MainPage.Navigation;
+                                            await _navigation.PopToRootAsync();
+                                        });
+                                    }
+                                    string isInvalidOtp = AppResources.InvalidOTP;
+                                    await _dialogService.ShowMessageBox(isInvalidOtp, AppResources.Information);
+                                    ClearData();
+
+                                });
+                            }
+
+
                         }
                         catch (Exception ex)
                         {
@@ -525,7 +556,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     App.TP = null;
                                     ClearData();
-                                    Device.BeginInvokeOnMainThread(async () => {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
                                         var _navigation = Application.Current.MainPage.Navigation;
                                         await _navigation.PopToRootAsync();
                                     });
@@ -565,7 +597,7 @@ namespace GAZT.ViewModel.NewViewModel
                             });
                         }
 
-                        }
+                    }
                     await Task.Run(() =>
                     {
                         IsLoading = false;
@@ -576,7 +608,7 @@ namespace GAZT.ViewModel.NewViewModel
                     ClearData();
                 }
             }
-            catch(ThreadInterruptedException ex)
+            catch (ThreadInterruptedException ex)
             {
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 await Task.Run(() =>
@@ -591,7 +623,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             EnteredOTP = string.Empty;
         }
-       
+
         public void OnPageLoad()
         {
             try
@@ -599,7 +631,7 @@ namespace GAZT.ViewModel.NewViewModel
                 ShowAccountWIllBeLockedMessage();
                 FrmColour = "#B1B1B1";
                 TinNumber = App.TP.Tin;
-                if(App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
+                if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
                 {
                     string mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
                     MobileNumber = "XXXXXXXXXX" + mobileNumber;
@@ -612,15 +644,15 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     throw new GAZTMobileNumberInProfileEmptyException();
                 }
-               
+
 
             }
             catch (Exception gex)
             {
-              
+
                 throw new GAZTMobileNumberInProfileEmptyException();
             }
-           
+
 
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
@@ -653,13 +685,13 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsResendOTPEnabled = false;
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                               
+
                                 IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
-                                //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                                //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                numberOfSeconds = 120;
-                            TimerStart(numberOfSeconds);
+                            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
 
                             }
 
@@ -726,7 +758,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-            catch(InternetException ex)
+            catch (InternetException ex)
             {
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 await Task.Run(() =>
@@ -740,7 +772,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
 
-             TotalSec = Seconds;
+            TotalSec = Seconds;
 
             CancellationTokenSource CTS = _CancellationTokenSource;
 
@@ -753,17 +785,17 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
-                       // StopTimer = true;
-                    }
+                    // StopTimer = true;
+                }
                     else
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
                         StopTimer = true;
-                       // TimerStart(TotalSec);
-                    }
+                    // TimerStart(TotalSec);
+                }
 
-                  
+
                 }
                 if (CTS.IsCancellationRequested)
                 {
@@ -775,7 +807,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         return false;
                     }
-                    else if(!StopTimer)
+                    else if (!StopTimer)
                     {
                         return false;
                     }
@@ -783,7 +815,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
 
                     }
-                    
+
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
@@ -795,9 +827,9 @@ namespace GAZT.ViewModel.NewViewModel
                         return false;
 
                     }
-                    TotalSec =  TotalSec - 1;
+                    TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
-                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                    TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -849,7 +881,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () => {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
@@ -858,9 +891,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         private async void AccountLockedMessage(TaxPayerProfile tp)
         {
-             isValiedOTP = false;
+            isValiedOTP = false;
 
-            if(tp != null && tp.Result.Equals("User locked successfully") || tp.Result.Equals("*** لا توجد أية رسالة فيT100 ***"))
+            if (tp != null && tp.Result.Equals("User locked successfully") || tp.Result.Equals("*** لا توجد أية رسالة فيT100 ***"))
             {
                 string remainingAttempts = (Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) - currentAttempts).ToString();
                 string message = ShowAlertPopUpMessage(remainingAttempts);
@@ -873,12 +906,27 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 isValiedOTP = true;
             }
-            else if((tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
+            else if ((tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
             {
-                string remainingAttempts = (Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) - currentAttempts).ToString();
-               string message =  ShowAlertPopUpMessage(remainingAttempts);
-                await _dialogService.ShowMessageBox(message, AppResources.ZError);
-                isValiedOTP = false;
+                
+                    int Test;
+                    var TestMessage=string.Empty;
+                    int ValidAttempts = Convert.ToInt32(WebServiceManager.NumberOfValiedAttempts);
+                    int CurrentAttempts= Convert.ToInt32(currentAttempts);
+
+                    Test = ValidAttempts - CurrentAttempts;
+                    string Test1 = Convert.ToString(Test);
+                    TestMessage = ShowAlertPopUpMessage(Test1);
+                     isValiedOTP = false;
+               // throw new Exception(TestMessage);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(TestMessage, AppResources.ZError);
+                    });
+               
+
+
+
             }
             //else if(tp != null && currentAttempts == 2 && (tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
             //{
@@ -909,12 +957,12 @@ namespace GAZT.ViewModel.NewViewModel
 
             if (!App.IsArabic)
             {
-                if(currentAttempts == 1)
+                if (currentAttempts == 1)
                 {
                     str = AppResources.InvalidOTP;
 
                 }
-                else if(currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) )
+                else if (currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts))
                 {
                     str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
                 }
