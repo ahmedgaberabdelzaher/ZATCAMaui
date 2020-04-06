@@ -1693,7 +1693,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSalesformpointofsales" xml:space="preserve">
-    <value>المبيعات من نقاط التحصيل</value>
+    <value>المبيعات عبر نقاط البيع</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSomethingwentwrong" xml:space="preserve">
