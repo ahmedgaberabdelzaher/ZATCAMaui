@@ -2969,4 +2969,8 @@
     <value>An exception was raised</value>
     <comment>VAT Decalaration</comment>
   </data>
+  <data name="ZZReturnStatus" xml:space="preserve">
+    <value>حالة الإقرار</value>
+    <comment>VAT and Zakat Dropdown</comment>
+  </data>
 </root>

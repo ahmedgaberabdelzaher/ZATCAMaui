@@ -6602,6 +6602,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return Status.
+        /// </summary>
+        public static string ZZReturnStatus {
+            get {
+                return ResourceManager.GetString("ZZReturnStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return Submitted Successfully.
         /// </summary>
         public static string ZZReturnSubmittedSuccessfully {
