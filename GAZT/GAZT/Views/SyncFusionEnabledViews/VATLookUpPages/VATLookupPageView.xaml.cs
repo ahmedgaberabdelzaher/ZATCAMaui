@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace GAZT.Views.NewViews
 {
@@ -77,7 +78,7 @@ namespace GAZT.Views.NewViews
         //    {
         //        if (viewModel.SelectedParameterType != null)
         //        {
-                  
+
         //            PPicker.Focus();
         //        }
         //    }
@@ -89,7 +90,7 @@ namespace GAZT.Views.NewViews
 
         private void btn1_Clicked(object sender, EventArgs e)
         {
-           // PPicker.IsOpen = true;
+            // PPicker.IsOpen = true;
         }
 
         private void SelectedParametes_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -113,37 +114,63 @@ namespace GAZT.Views.NewViews
                 });
                 await Task.Run(async () =>
                 {
-                    ValidateFormData();//isMendatoryDataEntered
-                    if (isMendatoryDataEntered)
+                    try
                     {
-                        isMendatoryDataEntered = true;
-                        string _language = "A"; //UtilityManager.GetLanguageParameter();
-                        VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, viewModel.SelectedParameterType.id, viewModel.LookupNumber);
-                        if (vatLookUp.d != null)
-                        {
-                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
-                            {
-                                viewModel.NameOrNoResultLabel = AppResources.Name;
-                                viewModel.Name = vatLookUp.d.results[0].Name;
-                            }
-                            else
-                            {
-                                viewModel.NameOrNoResultLabel = "";
-                                viewModel.Name = "";
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
-                                });
-                            }
 
-                        }
-                        else
+                        ValidateFormData();//isMendatoryDataEntered
+                        if (isMendatoryDataEntered)
                         {
-                            viewModel.Name = vatLookUp.d.results[0].Name;
-                            viewModel.NameOrNoResultLabel = AppResources.Nodataavailable;
+                            isMendatoryDataEntered = true;
+                            string _language = "A"; //UtilityManager.GetLanguageParameter();
+                            VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, viewModel.SelectedParameterType.id, viewModel.LookupNumber);
+                            if (vatLookUp != null)
+                            {
+                                if (vatLookUp.d != null)
+                                {
+                                    if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                                    {
+                                        viewModel.NameOrNoResultLabel = AppResources.Name;
+                                        viewModel.Name = vatLookUp.d.results[0].Name;
+                                    }
+                                    else
+                                    {
+                                        viewModel.NameOrNoResultLabel = "";
+                                        viewModel.Name = "";
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                        });
+                                    }
+
+                                }
+                                else
+                                {
+                                    viewModel.Name = vatLookUp.d.results[0].Name;
+                                    viewModel.NameOrNoResultLabel = AppResources.Nodataavailable;
+                                }
+                            }
                         }
+
 
                     }
+                    catch (InternetException ex)
+                    {
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+
+                        });
+                        await Task.Run(() =>
+                        {
+                            viewModel.IsLoading = false;
+
+                        });
+
+
+                    }
+
 
                     // IsLoading = true;
                 });
@@ -154,11 +181,24 @@ namespace GAZT.Views.NewViews
             }
             catch (InternetException ex)
             {
-                await viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                await Task.Run(() =>
+                try
                 {
-                    viewModel.IsLoading = false;
-                });
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    });
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+                catch (Exception a)
+                {
+
+                }
+
+
             }
 
         }
@@ -170,7 +210,7 @@ namespace GAZT.Views.NewViews
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     frmLookupNumner.HasError = false;
-                   // frmSearchParameter.HasError = false;
+                    // frmSearchParameter.HasError = false;
                 });
                 if (viewModel.SelectedParameterType != null)
                 {
@@ -187,7 +227,7 @@ namespace GAZT.Views.NewViews
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-                              
+
                                 return;
                             }
 
@@ -204,7 +244,7 @@ namespace GAZT.Views.NewViews
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-                               
+
                                 return;
                             }
 
@@ -222,7 +262,7 @@ namespace GAZT.Views.NewViews
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-                               
+
                                 return;
                             }
 
@@ -239,7 +279,7 @@ namespace GAZT.Views.NewViews
                             frmLookupNumner.HasError = true;
 
                         });
-                  
+
                         return;
                     }
                 }
@@ -249,10 +289,10 @@ namespace GAZT.Views.NewViews
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
-                      //  frmSearchParameter.HasError = true;
+                        //  frmSearchParameter.HasError = true;
 
                     });
-                   
+
                     return;
                 }
             }
@@ -274,8 +314,8 @@ namespace GAZT.Views.NewViews
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-           
-         if (viewModel.SelectedParameterType != null)
+
+            if (viewModel.SelectedParameterType != null)
             {
                 PopUp popUp = new PopUp();//SetPlaceholderText();
                 popUp.Message = viewModel.VATACCOrCRNOOrVATCER;
@@ -291,7 +331,86 @@ namespace GAZT.Views.NewViews
 
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            
+
+        }
+
+        private void SfButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void ScanCode_btn_Clicked(object sender, EventArgs e)
+        {
+            var scan = new ZXingScannerPage();
+            Navigation.PushAsync(scan);
+            string id = string.Empty;
+            string _language = "A";
+            scan.OnScanResult += (result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Navigation.PopAsync();
+                    entryNumber.Text = result.Text;
+                    id = result.Text;
+                    entryNumber.IsEnabled = false;
+                    PPicker_btn.IsEnabled = false;
+                    PPicker.IsEnabled = false; SearchParameterEnter.IsEnabled = false;
+                    SearchParameterEnter.Text = AppResources.ZVATLookupIDTaxpayerTinType1;
+                    try
+                    {
+                        VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, "3", id);
+                        if (vatLookUp != null)
+                        {
+                            if (vatLookUp.d != null)
+                            {
+                                if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                                {
+                                    viewModel.NameOrNoResultLabel = AppResources.Name;
+                                    viewModel.Name = vatLookUp.d.results[0].Name;
+                                }
+                                else
+                                {
+                                    viewModel.NameOrNoResultLabel = "";
+                                    viewModel.Name = "";
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                    });
+                                }
+
+                            }
+                            else
+                            {
+                                viewModel.Name = vatLookUp.d.results[0].Name;
+                                viewModel.NameOrNoResultLabel = AppResources.Nodataavailable;
+                            }
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        try
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                            });
+                            await Task.Run(() =>
+                            {
+                                viewModel.IsLoading = false;
+                            });
+
+                        }
+                        catch (Exception a)
+                        {
+
+                        }
+
+
+                    }
+                });
+                
+            };
+           
         }
     }
 }

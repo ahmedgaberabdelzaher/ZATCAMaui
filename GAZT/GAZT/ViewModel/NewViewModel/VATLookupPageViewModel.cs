@@ -260,8 +260,17 @@ namespace GAZT.ViewModel.NewViewModel
                 Captcha = captcha.ToString();
             });
             OnHomeIconClicked = new Command(() =>
-            {
-                _navigationService.NavigateTo(App.SFLandingPageView);
+            {if (App.TP != null)
+                {
+                    _navigationService.NavigateTo(App.SFLandingPageView);
+                }
+                else
+                
+                {
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                }
+
+                
             });
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
             {

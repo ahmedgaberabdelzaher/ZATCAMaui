@@ -1540,7 +1540,10 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                    
+                        HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+
+                    
 
                     if (GAZTVATLookUp != null)
                     {
@@ -1572,7 +1575,7 @@ namespace GAZT.Manager
                     return vATLookUp;
                 }
                 catch (Exception ex)
-                {
+               {
                     //if (string.Equals(ex.Message, AppResources.Nodataavailable))
                     //{
                     //    throw new Exception(AppResources.Nodataavailable);
@@ -1581,7 +1584,8 @@ namespace GAZT.Manager
                     //{
                     //    throw new Exception(AppResources.NetworkConnectivityIssue);
                     //}
-                    return null;
+                    throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                   
                 }
             }
             else

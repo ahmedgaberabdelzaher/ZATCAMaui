@@ -4,33 +4,38 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GAZT.Views.NewViews.VATLookupPageView"
+             FlowDirection="RightToLeft"
+               xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             xmlns:local2="clr-namespace:GAZT.CustomControl"
-             xmlns:custom="clr-namespace:GAZT"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+            
+             xmlns:local1="clr-namespace:GAZT"
+            
              Title="{x:Static local:AppResources.VATLookup}"
-             >
+              x:Class="GAZT.Views.NewViews.VATLookupPageView"
+            
+              NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local2:DataMarkerConverter x:Key="converter" />
-            <ResourceDictionary Source="..\Common\Styles.xaml" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
     <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0">
-                <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.VATLookup}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
-                    <controls:TitleView.LeadingView>
-                        <buttons:SfButton
+      
+            <ControlTemplate>
+                <StackLayout Spacing="0">
+                    <!--  Title View  -->
+                    <controls:TitleView Title="{x:Static local:AppResources.VATLookup}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                        <controls:TitleView.LeadingView>
+                            <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.OnHomeIconClicked}"
                             CommandParameter="{x:Reference backButton}"
@@ -38,66 +43,87 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Home}"
-                            
-                            
+                           
+                           
                              />
-                    </controls:TitleView.LeadingView>
-                </controls:TitleView>
-                <ContentPresenter />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-
-    <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0,15,0,0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        </controls:TitleView.LeadingView>
+                    </controls:TitleView>
+                    <ContentPresenter />
+                </StackLayout>
+            </ControlTemplate>
+        </ContentPage.ControlTemplate>
+        <ContentPage.Content >
+        <StackLayout BackgroundColor="White" Spacing="0">
+   
+            <StackLayout HeightRequest="944" Spacing="0" BackgroundColor="White">
+                <ScrollView BackgroundColor="White" >
+                    <Grid  RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="90*"/>
-                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
+
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                               
-                            </Grid.ColumnDefinitions>
-                                <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
-                                    <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZStepsTitle}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
-                                            <Span Text="&#10;"/>
-                                            <Span Text="{x:Static local:AppResources.ZStepOne}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
-                                            <Span Text="&#10;"/>
-                                            <Span Text="{x:Static local:AppResources.ZStepTwo}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
-                                            <Span Text="&#10;"/>
-                                            <Span Text="{x:Static local:AppResources.ZStepThree}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                        <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <!--<Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   Margin="10,5,10,5" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0"  />-->
+                        <buttons:SfButton
+                    Margin="10,5,10,5"
+                 CornerRadius="0"
+                            x:Name="ScanCode_btn"
+                            Clicked="ScanCode_btn_Clicked"
 
-                            
-                         
+                            Grid.Row="1" Grid.Column="0"
+                    HeightRequest="56"
+                    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+                    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
+                  Text="{x:Static local:AppResources.ZQRScanner}"
+                   
+                   />
 
-                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,0" 
+
+                        <!--<Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
+                        <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="2" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static local:AppResources.ZOR}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZStepOne}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZStepTwo}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZStepThree}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+
+
+
+                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZSearchParameter}" HelperText="{x:Static local:AppResources.ZZZRequired}"
-    ContainerType="Outlined"  Grid.Row="1" Grid.Column="0"  UnfocusedColor="#B1B1B1" x:Name="frmSearchParameter"
+    ContainerType="Outlined"  Grid.Row="3" Grid.Column="0"  UnfocusedColor="#B1B1B1" x:Name="frmSearchParameter"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry Text="{Binding TxtSearchParameter}" Focused="OnParameterTypeEntryEntryFocussed" IsEnabled="False" IsSpellCheckEnabled="False" FontSize="Small">
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            <custom:CustomButton x:Name="PPicker_btn" Clicked="PPicker_btn_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,0,10,0"  >
-                            </custom:CustomButton>
-                            <syncfusion:SfPicker x:Name="PPicker"
+                            <custom:BorderlessEntry x:Name="SearchParameterEnter" Text="{Binding TxtSearchParameter}" Focused="OnParameterTypeEntryEntryFocussed" IsEnabled="False" IsSpellCheckEnabled="False" FontSize="Small">
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomButton x:Name="PPicker_btn" Clicked="PPicker_btn_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                        </custom:CustomButton>
+                        <syncfusion:SfPicker x:Name="PPicker"
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZSearchParameter}"
@@ -107,172 +133,104 @@
                     PickerMode="Dialog"
                                 SelectedItemFontSize="12"               
                    ItemHeight="40"
-                    ItemsSource="{Binding ParameterTypeList}" OkButtonClicked="SelectedParametes_OkayButtonClicked" Focused="OnParameterTypeEntryEntryFocussed"  DisplayMemberPath="ParameterType"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    ItemsSource="{Binding ParameterTypeList}" OkButtonClicked="SelectedParametes_OkayButtonClicked" Focused="OnParameterTypeEntryEntryFocussed"  DisplayMemberPath="ParameterType"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                     ShowFooter="True" FooterHeight="46">
-                                <syncfusion:SfPicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
-                            </syncfusion:SfPicker>
-                             <!--<custom:CustomButton x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
-                            </custom:CustomButton>-->
-                           
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0" Margin="10,-6,10,0" 
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                      
+
+                        <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
-                                <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
-                                    <Entry.Behaviors>
+                            <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
+                                <Entry.Behaviors>
 
-                                        <custom1:OnlyNumericValuesBehaviour/>
+                                    <custom1:OnlyNumericValuesBehaviour/>
 
-                                    </Entry.Behaviors>
-                                </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                    <inputLayout:LabelStyle FontSize="15">
-                                    </inputLayout:LabelStyle>
-                                </inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Label IsEnabled="{Binding IsTooltipEnableVisible}"
+                                </Entry.Behaviors>
+                            </custom:BorderlessEntry>
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="15">
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label IsEnabled="{Binding IsTooltipEnableVisible}"
                                            IsVisible="{Binding IsTooltipEnableVisible}"
                        
                         Margin="0,0,0,2"
                         Style="{StaticResource IconLabelStyleVAT}"
                          TextColor="#005e4b"
                         Text="{StaticResource Help}" >
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
 
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="5" Grid.Column="0"  Orientation="Horizontal" HeightRequest="50" Padding="0,10,0,0">
 
+                            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
 
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNew}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
 
-                            <!--<Label Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start" >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.Captcha}" />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                            </Grid>
 
-
-                    
-                     
-
-
-
-                        <Grid Grid.Row="6"   Grid.Column="0"  Grid.ColumnSpan="2" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
-                            </Grid.ColumnDefinitions>
-                            <Frame  Grid.Row="0"   Grid.Column="0"    Style="{StaticResource GAZTFrameStyleForEntry}">
-                            </Frame>
-                            <Frame  Grid.Row="0"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}">
-                            </Frame>
-
-                            <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0" Text="{Binding EnteredCaptchaValue}" Placeholder="{x:Static local:AppResources.Captcha}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  HorizontalTextAlignment="Center" >
-                                <custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom:CaptchaValidatorBehaviour/>
-                                </custom:GAZTBorderlessEntry.Behaviors>
-
-                            </custom:GAZTBorderlessEntry>
-                            <Label  Grid.Row="0"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" VerticalOptions="CenterAndExpand" ></Label>
-                            <Image Grid.Row="0"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-
-                        </Grid>-->
-
-                            <!--<Grid   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <Frame  Grid.Row="1"   Grid.Column="1"    Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="9" Margin="5,2,10,10">
-                            </Frame>
-
-
-                            <inputLayout:SfTextInputLayout  Grid.Row="1"  Grid.Column="0" Margin="10,-6,5,-6"
-    Hint="{x:Static local:AppResources.Captcha}"  
-    ContainerType="Outlined" x:Name="FrmEnteredCaptcha" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <Entry Text="{Binding EnteredCaptchaValue}" FontSize="Small">
-                                    <Entry.Behaviors>
-                                        <custom:CaptchaValidatorBehaviour/>
-                                    </Entry.Behaviors>
-                                </Entry>
-                            </inputLayout:SfTextInputLayout>
-                            <Label  Grid.Row="1"  Grid.Column="1" Text="{Binding Captcha}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource MediumGoldLabelStyle}" Margin="0,0,0,5" ></Label>
-
-
-                            <Image Grid.Row="1"  Grid.Column="1"   Source="ic_sync_captcha.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center" Margin="13,0,13,0">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnCaptchaRegenerateClicked}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </Grid>-->
-
-
-                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="0"  Orientation="Horizontal" HeightRequest="50" Padding="0,10,0,0">
-
-                                <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50*"/>
-                                        <ColumnDefinition Width="50*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNew}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
-                                    </Label>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-
-                                </Grid>
-
+                        </StackLayout>
+                        <!-- Acticity indicator layout start -->
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" IsVisible="{Binding IsLoading}">
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                                </StackLayout>
                             </StackLayout>
                         </Grid>
-                        <Button Text="{x:Static local:AppResources.ZSearch}" x:Name="btnSubmit" Clicked="btnSubmit_Clicked" Style="{StaticResource GAZTVerifyButton}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0"  VerticalOptions="EndAndExpand" ></Button>
 
+                        <!-- Acticity indicator layout end -->
                     </Grid>
 
-                    <!-- Acticity indicator layout start -->
-                    <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
-                        </StackLayout>
-                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                                <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                                <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Grid>
 
-                    <!-- Acticity indicator layout end -->
-                </Grid>
+                </ScrollView>
             </StackLayout>
-        </ScrollView>
+            <!--</ScrollView>-->
+
+
+            <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
+            <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
+            <StackLayout  HeightRequest="56" VerticalOptions="FillAndExpand"  WidthRequest="1000" BackgroundColor="White">
+                <buttons:SfButton
+                    Margin="0"
+                 CornerRadius="0"
+                    HeightRequest="56"
+                    HorizontalOptions="End"
+                    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
+                    Text="{x:Static local:AppResources.ZSearch}"
+                    
+                                x:Name="btnSubmit" 
+                                Clicked="btnSubmit_Clicked"
+                   
+  
+                     />
+
+            </StackLayout>
+        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

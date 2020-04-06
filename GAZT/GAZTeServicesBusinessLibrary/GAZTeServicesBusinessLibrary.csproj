@@ -10,6 +10,8 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.4.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.4.0.55" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>
