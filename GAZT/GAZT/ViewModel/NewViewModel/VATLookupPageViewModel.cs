@@ -153,11 +153,12 @@ namespace GAZT.ViewModel.NewViewModel
                 //Name = string.Empty;
                 //StringBuilder captcha = GetCaptcha();
                 //Captcha = captcha.ToString();
-                //if (SelectedParameterType != null)
-                //{
-                //    TxtSearchParameter = SelectedParameterType.ParameterType;
-                //    SetPlaceholderText();
-                //}
+                if (SelectedParameterType != null)
+                {
+                    SetSelectedParameterTypeData();
+                    TxtSearchParameter = SelectedParameterType.ParameterType;
+                    SetPlaceholderText();
+               }
                 RaisePropertyChanged("_selectedParameterType");
               
             }
