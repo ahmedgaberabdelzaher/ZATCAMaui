@@ -16,7 +16,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView"
               NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
