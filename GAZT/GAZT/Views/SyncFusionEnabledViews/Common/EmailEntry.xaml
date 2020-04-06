@@ -98,7 +98,7 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static localres:AppResources.TINS}"
-                    ShowColumnHeader="True"
+                    ShowColumnHeader="False"
                     SelectedIndex="{Binding TINIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
@@ -107,7 +107,11 @@
                     SelectedItem="{Binding SelectedTinId,Mode=TwoWay}" DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
                     
                     PickerWidth="270"
-                    ShowFooter="True" FooterHeight="46">
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             BackgroundColor="#EAF7CC"
+                    ShowFooter="False" FooterHeight="46">
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
