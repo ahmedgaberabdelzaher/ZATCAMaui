@@ -355,7 +355,7 @@ namespace GAZT.ViewModel
                         ListMyBillsChaetModel = myBillsChartModels;
 
                         SelcectedBillsIndex = 0;
-                        int milliseconds = 10000;
+                        int milliseconds = 5000;
                         Thread.Sleep(milliseconds);
                         if (billInfo != null)
                         {
@@ -364,12 +364,12 @@ namespace GAZT.ViewModel
                                 //OnPaidClick();
                                 SelcectedBillsIndex = 1;
                             }
-                            else if (billInfo.BillTypeName == AppResources.Partial)
+                            else if (billInfo.BillTypeName == AppResources.UnPaid)
                             {
                                 //OnPartiallyClicked();
                                 SelcectedBillsIndex = 2;
                             }
-                            else if (billInfo.BillTypeName == AppResources.UnPaid)
+                            else if (billInfo.BillTypeName == AppResources.PartiallyPaid)
                             {
                                 // OnUnpaidClick();
                                 SelcectedBillsIndex = 3;

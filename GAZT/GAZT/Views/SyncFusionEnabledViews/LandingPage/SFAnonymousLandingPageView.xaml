@@ -204,7 +204,7 @@
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
 
                <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" >
-                 <Button   VerticalOptions="Center" Text="{x:Static local:AppResources.LogIn}"  BackgroundColor="#d99a29"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>              
+                 <Button   VerticalOptions="Center" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#d99a29"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>              
                 </StackLayout>
                 <!--HeightRequest="56"-->
                

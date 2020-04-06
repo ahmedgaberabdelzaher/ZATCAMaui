@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
+        public ICommand DowmoadForm { get; set; }
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
         string Cotyp = "";
@@ -157,6 +158,12 @@ namespace GAZT.ViewModel.NewViewModel
 
 
             });
+            DowmoadForm = new Command(async () =>
+            {
+                GetPdfUrl();
+
+
+            });
 
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -270,25 +277,25 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async void ShowPdf(string pdfUrl)
         {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                if (pdfUrl != null)
-                {
-                    //Uri uri = new Uri(pdfUrl);
-                    //Device.OpenUri(uri);
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
-                }
-                else
-                {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
-            }
-            else
-            {
+            //if (Device.RuntimePlatform == Device.iOS)
+            //{
+            //    if (pdfUrl != null)
+            //    {
+            //        //Uri uri = new Uri(pdfUrl);
+            //        //Device.OpenUri(uri);
+            //        _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+            //    }
+            //    else
+            //    {
+            //        //pop that certificate is not available
+            //        Device.BeginInvokeOnMainThread(async () =>
+            //        {
+            //            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+            //        });
+            //    }
+            //}
+            //else
+            //{
                 if (pdfUrl != null)
                 {
                     _navigationService.NavigateTo(App.PdfView, pdfUrl);
@@ -301,7 +308,7 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     });
                 }
-            }
+            //}
         }
 
         public void ClearData()

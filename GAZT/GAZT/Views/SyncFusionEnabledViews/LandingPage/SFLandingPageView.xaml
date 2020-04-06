@@ -162,6 +162,7 @@
 
                 <StackLayout Padding="5">
 
+                                        <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></Label>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 

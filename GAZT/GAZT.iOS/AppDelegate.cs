@@ -66,6 +66,9 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
+            Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
+            Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
+
 
             Distribute.DontCheckForUpdatesInDebug();
 

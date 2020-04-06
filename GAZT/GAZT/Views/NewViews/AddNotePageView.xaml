@@ -19,7 +19,7 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
+    <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <controls:TitleView Title=""  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
@@ -38,10 +38,10 @@
                     </controls:TitleView.LeadingView>
 
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter  VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
         <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" IsVisible="{Binding IsVisibleNotes}" Grid.Column="0" Grid.ColumnSpan="8" VerticalOptions="FillAndExpand"  >
             <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="White" >
@@ -52,6 +52,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="30*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
 
                 </Grid.RowDefinitions>
@@ -66,8 +67,8 @@
 
                 </custom:GAZTBorderlessEditor>
 
-                <Button Text="{x:Static local:AppResources.ZVatNotesSaveandClose}" Command="{Binding OnAddButtonClicked}" Grid.Row="2" Grid.Column="0"  Style="{StaticResource GAZTVerifyButton}" Margin="10,10,10,10"></Button>
-                <Button Text="{x:Static local:AppResources.ZVatNotesClearandClose}" Command="{Binding OnClearButtonClicked}" Grid.Row="2" Grid.Column="1"  Style="{StaticResource GAZTVerifyButton}" Margin="10,10,10,10"></Button>
+                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesSaveandClose}" Command="{Binding OnAddButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" Margin="0" Padding="0" CornerRadius="0"></buttons:SfButton>
+                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesClearandClose}" Command="{Binding OnClearButtonClicked}" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" Margin="0" Padding="0" CornerRadius="0"></buttons:SfButton>
 
             </Grid>
         </ScrollView> 

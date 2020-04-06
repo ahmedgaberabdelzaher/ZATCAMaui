@@ -282,63 +282,72 @@ namespace GAZT.ViewModel.NewViewModel
 
                                     if (Convert.ToDecimal(AttachmentSize) <= 20)
                                     {
-                                        bool IsAttachmentPresent = false;
-                                        foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
+                                        if (Convert.ToDecimal(AttachmentSize) > 0)
                                         {
-                                            if (AttachmentName == ItemA.Filename)
+                                            bool IsAttachmentPresent = false;
+                                            foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
                                             {
-                                                IsAttachmentPresent = true;
-                                            }
-                                        }
-                                        if (IsAttachmentPresent == false)
-                                        {
-                                            string attachmentType = UtilityManager.GetContentType(Extention);
-                                            AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-                                            PopToRootPage();
-                                            if (_attachment != null && _attachment.d != null)
-                                            {
-                                                AttachmentName = string.Empty;
-
-                                                VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
-                                                ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
-                                                Device.BeginInvokeOnMainThread(async () =>
+                                                if (AttachmentName == ItemA.Filename)
                                                 {
-                                                    VatAttachmentsList = myCollection;
-                                                });
-                                                VatAttachmentsList = myCollection;
-                                                foreach (var item in VatAttachmentsList)
-                                                {
-                                                    if (App.IsArabic)
-                                                    {
-                                                        if (item.Erfdt != null)
-                                                        {
-                                                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                            item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        if (item.Erfdt != null)
-                                                        {
-                                                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                        }
-                                                    }
+                                                    IsAttachmentPresent = true;
                                                 }
+                                            }
+                                            if (IsAttachmentPresent == false)
+                                            {
+                                                string attachmentType = UtilityManager.GetContentType(Extention);
+                                                AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                PopToRootPage();
+                                                if (_attachment != null && _attachment.d != null)
+                                                {
+                                                    AttachmentName = string.Empty;
 
-                                                AttachmentCount++;
-                                                // TotalAttachmentSize += AttachmentSize;
+                                                    VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
+                                                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        VatAttachmentsList = myCollection;
+                                                    });
+                                                    VatAttachmentsList = myCollection;
+                                                    foreach (var item in VatAttachmentsList)
+                                                    {
+                                                        if (App.IsArabic)
+                                                        {
+                                                            if (item.Erfdt != null)
+                                                            {
+                                                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                                item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            if (item.Erfdt != null)
+                                                            {
+                                                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                            }
+                                                        }
+                                                    }
+
+                                                    AttachmentCount++;
+                                                    // TotalAttachmentSize += AttachmentSize;
+                                                    AttachmentName = string.Empty;
+                                                }
+                                            }
+                                            else
+                                            {
                                                 AttachmentName = string.Empty;
+                                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                            _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
 
                                         }
 

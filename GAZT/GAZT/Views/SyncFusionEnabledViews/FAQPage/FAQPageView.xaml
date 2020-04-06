@@ -46,7 +46,7 @@
                     </controls1:TitleView.LeadingView>
 
                 </controls1:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>

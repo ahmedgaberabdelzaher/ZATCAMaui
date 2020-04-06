@@ -182,7 +182,7 @@
                             Grid.Row="7"
                             Grid.Column="0" Grid.ColumnSpan="2"
                             Margin="10,16,10,50"
-                          
+                          BackgroundColor="#005e4b"
                                      Command="{Binding OnSubmitClicked}"
                     IsEnabled="{Binding IsVerifyOTPEnabled}"
                     Text="{x:Static local:AppResources.Verify}"

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
@@ -20,8 +21,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public int SubmittedVATCount;
         public int NonSubmittedVATCount;
         public int OverdueVATCount;
+       
         public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
         private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
+        
         public string SubmittedZakatWithCountTest
         {
             get
@@ -44,6 +47,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public static String ReturnPeriod = "";
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
+        public ICommand GoBackClick { get; set; }
 
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
         public ReturnsListCountsByStatus ReturnsListCountsByStatus
@@ -254,6 +258,13 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 throw new ArgumentNullException("dialogService");
             }
 
+
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+
+
+            });
 
         }
         public void PopToRootPage()

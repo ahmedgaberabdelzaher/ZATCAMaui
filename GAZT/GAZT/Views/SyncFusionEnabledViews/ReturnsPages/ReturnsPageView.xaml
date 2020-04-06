@@ -12,8 +12,21 @@
                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
                 xmlns:custom="clr-namespace:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView"
+             NavigationPage.HasNavigationBar="False"
              FlowDirection="RightToLeft"
-                x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForOTP">
             <Grid.RowDefinitions>
@@ -1274,4 +1287,29 @@
 
         </Grid>
     </ContentPage.Content>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+               
+                    <ContentPresenter  VerticalOptions="FillAndExpand" />
+            
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 </ContentPage>

@@ -38,9 +38,10 @@
                              />
 
                     </controls:TitleView.LeadingView>
+                    
 
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>

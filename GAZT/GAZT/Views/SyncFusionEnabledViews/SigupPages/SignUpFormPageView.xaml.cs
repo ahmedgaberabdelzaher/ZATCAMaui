@@ -1737,7 +1737,7 @@ namespace GAZT.Views.NewViews
             DDlIDType.IsOpen = true;
             try
             {
-                viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
+              //  viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
             }
             catch(Exception ex)
             { 
@@ -1924,6 +1924,11 @@ namespace GAZT.Views.NewViews
         {
             viewModel.TxtIDNumber = string.Empty;
             EntryName.IsEnabled = true;
+
+            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+            viewModel.SelectedSignUpUsing = signUpUsing;
+            viewModel.TxtIDType = signUpUsing.SUType;
+
         }
 
         private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
