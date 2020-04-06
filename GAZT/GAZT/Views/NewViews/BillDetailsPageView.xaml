@@ -39,7 +39,19 @@
                              />
 
                     </controls:TitleView.LeadingView>
+                    <controls:TitleView.TrailingView>
+                        <buttons:SfButton
+                            x:Name="DownloadButton"
+                            Command="{TemplateBinding BindingContext.DowmoadForm}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource DownLoad}"
+                            
+                             />
 
+                    </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>

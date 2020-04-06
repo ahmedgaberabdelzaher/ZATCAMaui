@@ -38,6 +38,7 @@
                              />
 
                     </controls:TitleView.LeadingView>
+                    
 
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
