@@ -42,7 +42,7 @@ xmlns:custom="clr-namespace:GAZT"
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>

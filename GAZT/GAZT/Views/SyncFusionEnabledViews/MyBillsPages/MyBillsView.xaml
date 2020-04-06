@@ -43,7 +43,7 @@
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
@@ -57,7 +57,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0"  SelectionChanged="simTab_SelectionChanged"  Grid.Column="0" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="3" >
+            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0"  SelectionChanged="simTab_SelectionChanged"  Grid.Column="0" x:Name="simTab" SelectedIndex="{Binding SelcectedBillsIndex}" VisibleHeaderCount="4" >
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 

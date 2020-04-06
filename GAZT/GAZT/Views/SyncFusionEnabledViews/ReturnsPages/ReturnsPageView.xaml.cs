@@ -23,9 +23,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ReturnsPageView;
                 this.BindingContext = viewModel;
-                viewModel.onPageLoad();
+                OnPageLoad();
                 viewModel.TabIndexStatus = Index;
                 SetLTR();
+                ChangeAeroIcon();
             }
             catch (Exception ex)
             {
