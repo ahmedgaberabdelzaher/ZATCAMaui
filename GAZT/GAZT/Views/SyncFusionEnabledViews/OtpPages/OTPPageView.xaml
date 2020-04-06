@@ -11,6 +11,7 @@
              xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="GAZT.Views.NewViews.OTPPageView"
              Title="{x:Static local:AppResources.EnterVerificationCodeTitle}"
              Style="{StaticResource ContentPageStyle}"
@@ -28,7 +29,14 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForOTP">
-            <custom:CustomLabel
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <custom:CustomLabel
                 x:Name="BackLabel"
                        VerticalOptions="StartAndExpand"
                 HorizontalOptions="StartAndExpand"
@@ -37,12 +45,12 @@
                          TextColor="#ffffff"
                         Text="{DynamicResource StyleReverseBack}"
                 >
-                <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
-                </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>
-            <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
-          
+                    <custom:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
+                    </custom:CustomLabel.GestureRecognizers>
+                </custom:CustomLabel>
+                <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
+
 
                 <StackLayout   Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
                                                                  PhoneLandscape='150,32',
@@ -50,57 +58,57 @@
                                                                  TabletLandscape='300,50',
                                                                  Desktop='30'}"  WidthRequest="{OnPlatform Default='-1',
                                               UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
-                <ScrollView HorizontalOptions="Center">
-                    <ScrollView.VerticalOptions>
-                        <OnIdiom
+                    <ScrollView HorizontalOptions="Center">
+                        <ScrollView.VerticalOptions>
+                            <OnIdiom
                         x:TypeArguments="LayoutOptions"
                         Default="CenterAndExpand"
                         Phone="FillAndExpand" />
-                    </ScrollView.VerticalOptions>
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" RowSpacing="0" ColumnSpacing="0"  VerticalOptions="CenterAndExpand">
+                        </ScrollView.VerticalOptions>
+                        <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto " />
-                                <RowDefinition Height="Auto " />
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*" />
-                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" RowSpacing="0" ColumnSpacing="0"  VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto " />
+                                    <RowDefinition Height="Auto " />
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="50*" />
+                                </Grid.ColumnDefinitions>
 
 
-                            <Label Text="{x:Static local:AppResources.EnterVerificationCodeTitle}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                <Label Text="{x:Static local:AppResources.EnterVerificationCodeTitle}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
 
 
-                            <Label Text="{Binding OTPSentOnThisText}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding OTPSentOnThisText}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
 
 
 
 
-                            <!--<Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.UserName}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
+                                <!--<Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.UserName}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
                         </Label>
                         <Frame Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" >
                         </Frame>
                         <Label  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SSTArBold}" Text="{Binding TinNumber}" TextColor="#7D858D" Style="{StaticResource ForgotPasswordTextColor}" HorizontalOptions="Start" VerticalOptions="Center" IsEnabled="False">
                         </Label>-->
 
-                            <!--<inputLayout:SfTextInputLayout   x:Name="UsernameLayout"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <!--<inputLayout:SfTextInputLayout   x:Name="UsernameLayout"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.UserName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -110,7 +118,7 @@
                             </inputLayout:SfTextInputLayout>-->
 
 
-                            <!--<Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding EmailOrMobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
+                                <!--<Label Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding EmailOrMobileNumber}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
                         </Label>
                         <Frame Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" >
                         </Frame>
@@ -118,7 +126,7 @@
                         </Label>-->
 
 
-                            <!--<inputLayout:SfTextInputLayout   x:Name="EmailOrMobileLayout"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <!--<inputLayout:SfTextInputLayout   x:Name="EmailOrMobileLayout"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{Binding EmailOrMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
@@ -127,7 +135,7 @@
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>-->
 
-                            <!--<Label Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
+                                <!--<Label Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static local:AppResources.VarificationCode}"   />
@@ -136,19 +144,19 @@
                             </Label.FormattedText>
                         </Label>-->
 
-                            <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.VarificationCode}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Text="{Binding EnteredOTP}"  x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}"  FontSize="Small" TextColor="White" IsPassword="True" IsEnabled="{Binding IsOTPEntryEnable}" >
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <custom:NumericValidationBehavior/>
-                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                    <custom:GAZTBorderlessEntry Text="{Binding EnteredOTP}"  x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}"  FontSize="Small" TextColor="White" IsPassword="True" IsEnabled="{Binding IsOTPEntryEnable}" >
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <custom:NumericValidationBehavior/>
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
 
 
-                            <!--<Frame  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" BorderColor="{Binding FrmColour}" >
+                                <!--<Frame  Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" BorderColor="{Binding FrmColour}" >
                         </Frame>
                             <local:GAZTBorderlessEntry  Text="{Binding EnteredOTP}" Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="2" x:Name="EnteredOTP"  TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}"      IsEnabled="{Binding IsOTPEntryEnable}" IsPassword="True">
                             <local:GAZTBorderlessEntry.Behaviors>
@@ -156,20 +164,20 @@
                             </local:GAZTBorderlessEntry.Behaviors>
                             </local:GAZTBorderlessEntry>-->
 
-                            <Label Grid.Row="5" x:Name="NumberOfAttemptsText" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29"   Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
-                            </Label>
+                                <Label Grid.Row="5" x:Name="NumberOfAttemptsText" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#D99A29"   Style="{StaticResource InformationRedColorLabel}"  HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                                </Label>
 
-                            <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
-                                        <Span  Text="{Binding OTPValidDuration}" TextColor="#D99A29" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                                <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
+                                            <Span  Text="{Binding OTPValidDuration}" TextColor="#D99A29" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
 
 
-                            <buttons:SfButton
+                                <buttons:SfButton
                           
                             Grid.Row="7"
                             Grid.Column="0" Grid.ColumnSpan="2"
@@ -183,21 +191,21 @@
                            />
 
 
-                           
 
-                            <!--<StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">  
+
+                                <!--<StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">  
        <Button Text="Pick File" Clicked="Button_Clicked" HorizontalOptions="Center"  
                VerticalOptions="Center"/>  
        <Label Text="File Is :" x:Name="lbl"/>  
    </StackLayout>-->
+                            </Grid>
+
                         </Grid>
-                      
-                    </Grid>
-                </ScrollView>
-            </StackLayout>
-          
-            <StackLayout  VerticalOptions="EndAndExpand" Margin="0" Padding="0"  Orientation="Vertical">
-                <buttons:SfButton
+                    </ScrollView>
+                </StackLayout>
+
+                <StackLayout  VerticalOptions="EndAndExpand" Margin="0" Padding="0"  Orientation="Vertical">
+                    <buttons:SfButton
                     Margin="0"
                     VerticalOptions="EndAndExpand"
                 HorizontalOptions="FillAndExpand"
@@ -213,9 +221,9 @@
                             Text="{x:Static local:AppResources.ResendOTP}"
                     TextColor="{DynamicResource Gray-White}"
                      />
-            </StackLayout>
-            <!-- Acticity indicator layout start -->
-        <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                </StackLayout>
+                <!-- Acticity indicator layout start -->
+                <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
             </StackLayout>
             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" >
@@ -225,7 +233,28 @@
                 </StackLayout>
             </StackLayout>
         </Grid>-->
-        <!-- Acticity indicator layout end -->
+                <!-- Acticity indicator layout end -->
+            </StackLayout>
+
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="RollingBall" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -37,10 +37,7 @@ namespace GAZT.Views
             {
                 SetLTR();
                 this.BindingContext = viewModel;
-                Task.Run(async () =>
-                {
-                    viewModel.onPageLoad(billInfo);
-                });
+                GetBillsReturnsAsync(billInfo);
 
 
 
@@ -87,7 +84,7 @@ namespace GAZT.Views
         {
 
 
-            await Task.Run(() =>
+            Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
@@ -95,7 +92,7 @@ namespace GAZT.Views
             await viewModel.onPageLoad(billInfo);
 
 
-            await Task.Run(() =>
+           Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });

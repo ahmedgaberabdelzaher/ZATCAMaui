@@ -11,7 +11,8 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              mc:Ignorable="d"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-              NavigationPage.HasNavigationBar="False"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             NavigationPage.HasNavigationBar="False"
             
              x:Class="GAZT.Views.SyncFusionEnabledViews.FAQPage.FAQPageView">
     <ContentPage.Resources>
@@ -201,6 +202,27 @@
                     </controls1:SearchableFAQList.ItemTemplate>
                 </controls1:SearchableFAQList>
             </StackLayout>
+
+            <Grid Grid.Row="0"  Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="RollingBall" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

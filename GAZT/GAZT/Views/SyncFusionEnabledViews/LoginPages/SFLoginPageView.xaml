@@ -33,7 +33,14 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout>
             <custom:CustomLabel
                 x:Name="BackLabel"
                        VerticalOptions="Start"
@@ -188,13 +195,37 @@
 
                 </StackLayout>
             </ScrollView>
+            </StackLayout>
             <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
                                        AnimationType="HorizontalPulsingBox" 
                                        ViewBoxWidth = "150" 
                                        ViewBoxHeight="150" 
                                        TextColor="DarkGreen" 
                                        IsBusy="{Binding IsLoading}"/>-->
-        </StackLayout>
+
+            <!-- Acticity indicator layout start -->
+          
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="RollingBall" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <!-- Acticity indicator layout end -->
+        </Grid>
     </ContentPage.Content>
 
 </ContentPage>

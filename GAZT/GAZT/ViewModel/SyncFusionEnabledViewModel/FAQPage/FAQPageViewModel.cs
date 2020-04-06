@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -47,6 +48,21 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
             }
         }
 
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         #endregion
 
         public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) 
@@ -70,12 +86,12 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
 
         #region Method
 
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             try
             {
                 TERFFAQRoot = new TERFFAQObject();
-                TERFFAQRoot = WebServiceManager.GAZTTESFAQRetrive();
+                TERFFAQRoot = await WebServiceManager.GAZTTESFAQRetrive();
                 PopToRootPage();
                 if (TERFFAQRoot!=null && TERFFAQRoot.FAQList.Count!=0 && TERFFAQRoot.Success==true)
                 {
