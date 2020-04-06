@@ -2953,4 +2953,8 @@
     <value>Individual Information</value>
     <comment>Sign up</comment>
   </data>
+  <data name="ZZAnexceptionwasraised" xml:space="preserve">
+    <value>An exception was raised</value>
+    <comment>VAT Decalaration</comment>
+  </data>
 </root>

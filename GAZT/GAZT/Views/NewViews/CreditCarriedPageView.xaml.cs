@@ -20,6 +20,7 @@ namespace GAZT.Views.NewViews
             try
             {
                 InitializeComponent();
+                ChangeAeroIcon();
                 viewModel = App.Locator.CreditCarriedPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
@@ -48,7 +49,17 @@ namespace GAZT.Views.NewViews
 
             }
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
         private void SetLTR()
         {

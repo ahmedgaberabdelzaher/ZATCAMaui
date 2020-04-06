@@ -136,6 +136,9 @@
                  SelectedItem="{Binding SelectedICR}"     
             SeparatorVisibility="None"
             >
+                        <x:Arguments>
+                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                        </x:Arguments>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

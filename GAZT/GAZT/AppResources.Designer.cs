@@ -5007,6 +5007,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An exception was raised.
+        /// </summary>
+        public static string ZZAnexceptionwasraised {
+            get {
+                return ResourceManager.GetString("ZZAnexceptionwasraised", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
         public static string ZZAttachment {

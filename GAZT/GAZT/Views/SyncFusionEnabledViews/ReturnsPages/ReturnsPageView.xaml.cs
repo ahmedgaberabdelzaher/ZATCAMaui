@@ -24,6 +24,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 viewModel = App.Locator.ReturnsPageView;
                 this.BindingContext = viewModel;
                 viewModel.onPageLoad();
+                ChangeAeroIcon();
                 viewModel.TabIndexStatus = Index;
                 SetLTR();
             }
@@ -47,6 +48,17 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
     }

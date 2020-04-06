@@ -53,14 +53,14 @@
 
                 </Grid.ColumnDefinitions>
 
-                <tabView:SfTabView BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" x:Name="SfTabView" SelectedIndex="{Binding SelectedTab}" SelectionChanged="SfTabView_SelectionChanged">
+                <tabView:SfTabView BackgroundColor="White"  Grid.Column="0"  TabItemTapped="SfTabView_TabItemTapped" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" x:Name="SfTabView"  SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectionChanged="SfTabView_SelectionChanged">
                     <tabView:SfTabView.SelectionIndicatorSettings>
                         <tabView:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
                     StrokeThickness="2"/>
                     </tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}">
+                    <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" >
                 <tabView:SfTabItem.Content>
                             <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabInstruction"  IsVisible="{Binding IsVisibleInstrunction}"  VerticalOptions="FillAndExpand"  >
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" >
@@ -574,7 +574,7 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" PropertyChanged="EntryVatAmount_PropertyChanged"   Focused="EntryVatAmountFocused"  Unfocused="EntryVatAmount_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local1:AppResources.ZVatAmountWithSAR}"  Text="{Binding StdsalesAmt}"     Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="22" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -636,7 +636,7 @@
 
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -750,7 +750,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                                             </custom:GAZTBorderlessEntry>
@@ -808,7 +808,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -882,7 +882,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -942,7 +942,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1015,7 +1015,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1073,7 +1073,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1149,7 +1149,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
 
                                             </custom:GAZTBorderlessEntry>
@@ -1208,7 +1208,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1331,7 +1331,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1390,7 +1390,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1505,7 +1505,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>-->
 
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1562,7 +1562,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1665,7 +1665,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1720,7 +1720,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1834,7 +1834,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1891,7 +1891,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -1962,7 +1962,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -2018,7 +2018,7 @@
                                 <custom1:DecimalPlacesConverter/>
                             </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="21" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="14"/>
+                                                    <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.Triggers>
@@ -2991,19 +2991,19 @@
 
 
 
-                <!--<CollectionView  SelectionChanged="OnPageSelected"   SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="{Binding IsTabbedMenuAvailable}"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <CollectionView  SelectionChanged="OnPageSelected"   SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="False"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,0,5,0" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="#005e4b"  HorizontalOptions="Center">
                                 <local1:CustomLabel Text="{Binding pageName}" Style="{StaticResource forLightLabel}" x:Name="lblName"  Margin="5,0,5,0" TextColor="{Binding TextColor}" BackgroundColor="#005e4b"   FontSize="Small"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" >
-                                    --><!--<local1:CustomLabel.GestureRecognizers>
+                                    <!--<local1:CustomLabel.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForCustomLabel"  />
-                                    </local1:CustomLabel.GestureRecognizers>--><!--
+                                    </local1:CustomLabel.GestureRecognizers>-->
                                 </local1:CustomLabel>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>-->
+                </CollectionView>
 
                 <!--<StackLayout Margin="0" Grid.Row="0" Grid.Column="4" IsVisible="{Binding IsVisibleOptionMenu}" Grid.ColumnSpan="4" BackgroundColor="#FFFFFF" >
 
@@ -3074,8 +3074,8 @@
 
 
                 <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                <buttons:SfButton  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}"  Style="{StaticResource SfButtonStyle}" Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
-                     Opacity="0.7"></buttons:SfButton>
+                <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                     Opacity="0.7"></Button>
                 <!--</StackLayout>-->
             </Grid>
             <!-- Acticity indicator layout start -->
