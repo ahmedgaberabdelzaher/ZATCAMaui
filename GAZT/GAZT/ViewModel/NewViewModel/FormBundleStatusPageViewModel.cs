@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -241,16 +242,28 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
 
-
-        public void onPageLoad()
+        public async Task onPageLoad()
         {
             try
             {
                 FormBundleModel formbundleList = new FormBundleModel();
                 string lang = UtilityManager.GetLanguageParameter();
-                formbundleList = WebServiceManager.GAZTGetFormBundleModel();
+                formbundleList = await WebServiceManager.GAZTGetFormBundleModel();
                 PopToRootPage();
 
                 if (formbundleList != null && formbundleList.d != null)
@@ -275,13 +288,26 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
     
-        public void onSelectedFormBindleFbtyp()
+        public async void onSelectedFormBindleFbtyp()
         {
             try{
-                FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
-                formbundleApplicationNumberList = WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                await Task.Run(async () =>
+                {
+                    FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
+                formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
                 PopToRootPage();
                   FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
+                });
+
+                Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
             catch(InternetException ex)
             {

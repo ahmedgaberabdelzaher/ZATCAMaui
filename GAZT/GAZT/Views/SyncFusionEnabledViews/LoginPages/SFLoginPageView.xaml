@@ -217,7 +217,7 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                       Title="Loading..."
+                                       Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="White"/>

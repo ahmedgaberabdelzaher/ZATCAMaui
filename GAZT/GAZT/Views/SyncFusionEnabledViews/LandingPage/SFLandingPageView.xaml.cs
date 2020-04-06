@@ -203,11 +203,15 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private async void OnTappedTest(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
 
-           
 
 
-                string controltype = sender.GetType().ToString();
+
+            string controltype = sender.GetType().ToString();
 
                 if (controltype == "Xamarin.Forms.Image")
                 {
@@ -391,7 +395,12 @@ namespace GAZTeServicesApp.Views.LandingPage
                
             }
 
-          
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
 
         }
 
@@ -399,9 +408,12 @@ namespace GAZTeServicesApp.Views.LandingPage
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
 
-
-                string controltype = sender.GetType().ToString();
+            string controltype = sender.GetType().ToString();
 
                 if (controltype == "Xamarin.Forms.StackLayout")
                 {
@@ -445,11 +457,16 @@ namespace GAZTeServicesApp.Views.LandingPage
                     }
 
                 }
-                
-            
 
 
-           
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
+
+
         }
     }
 }

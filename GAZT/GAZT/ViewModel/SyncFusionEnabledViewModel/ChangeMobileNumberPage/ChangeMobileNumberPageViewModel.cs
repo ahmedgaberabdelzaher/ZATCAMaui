@@ -165,7 +165,24 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnVerifyButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                await VarifyMobileNumber();
+
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+
+                await Task.Run(async () =>
+                {
+                    await VarifyMobileNumber();
+
+                });
+                Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+
             });
 
             BackButtonClicked = new Xamarin.Forms.Command(() =>
