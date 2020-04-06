@@ -12,34 +12,40 @@ namespace GAZT.CustomControl
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter != null && parameter.ToString() == "Label")
-            {
-                if (value is List<object>)
+            
+                  
+                if (parameter != null && parameter.ToString() == "Label")
                 {
-                    return "Others";
+                    if (value is List<object>)
+                    {
+                        return "Others";
+                    }
+                    else
+                    {
+                        if (value != null)
+                        {
+                            return (value as MyBillsChartModel).BillType;
+                        }
+                    }
                 }
                 else
                 {
-                    if (value != null)
+                    if (value is List<object>)
                     {
-                        return (value as MyBillsChartModel).BillType;
+                        return (value as List<object>).Sum(item => (item as MyBillsChartModel).BillCount).ToString();
+                    }
+                    else
+                    {
+                        if (value != null)
+                        {
+                            return (value as MyBillsChartModel).BillCount;
+                        }
                     }
                 }
-            }
-            else
-            {
-                if (value is List<object>)
-                {
-                    return (value as List<object>).Sum(item => (item as MyBillsChartModel).BillCount).ToString();
-                }
-                else
-                {
-                    if (value != null)
-                    {
-                        return (value as MyBillsChartModel).BillCount;
-                    }
-                }
-            }
+                
+            
+
+
             return null;
         }
 

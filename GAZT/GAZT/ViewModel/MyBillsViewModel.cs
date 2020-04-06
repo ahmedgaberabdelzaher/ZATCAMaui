@@ -43,7 +43,7 @@ namespace GAZT.ViewModel
         }
 
         private ObservableCollection<MyBillsChartModel> _listMyBillsChaetModel = null;
-        public ObservableCollection<MyBillsChartModel> ListMyBillsChaetModel
+        public ObservableCollection<MyBillsChartModel> ListMyBillsChartModel
         {
             get
             {
@@ -52,7 +52,7 @@ namespace GAZT.ViewModel
             set
             {
                 _listMyBillsChaetModel = value;
-                RaisePropertyChanged("ListMyBillsChaetModel");
+                RaisePropertyChanged("ListMyBillsChartModel");
             }
         }
 
@@ -348,11 +348,28 @@ namespace GAZT.ViewModel
                         MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
 
                         ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
+                        
                         GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#944E23") });
-                        myBillsChartModels.Add(new MyBillsChartModel { BillCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
-                        ListMyBillsChaetModel = myBillsChartModels;
+
+                        int iBillsCount = -1;
+
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
+                        {
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                        }
+
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
+                        {
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#944E23") });
+                        }
+
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
+                        {
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
+                        }
+
+
+                        ListMyBillsChartModel = myBillsChartModels;
 
                         SelcectedBillsIndex = 0;
                         int milliseconds = 5000;

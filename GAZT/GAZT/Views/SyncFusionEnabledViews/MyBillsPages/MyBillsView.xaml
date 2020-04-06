@@ -79,7 +79,7 @@
                                 <!--<chart:SfChart HeightRequest="160">
 
                                 <chart:SfChart.Series>
-                                    <chart:PieSeries ItemsSource="{Binding ListMyBillsChaetModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
+                                    <chart:PieSeries ItemsSource="{Binding ListMyBillsChartModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
                                 </chart:SfChart.Series>
                             </chart:SfChart>-->
 
@@ -98,7 +98,7 @@
                                     </chart:SfChart.Legend>
                                     <chart:SfChart.Series>
 
-                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChaetModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
+                                        <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChartModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
 
                                             <chart:PieSeries.ColorModel>
 
