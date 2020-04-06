@@ -352,9 +352,10 @@ namespace GAZT.Views.NewViews
                     await Navigation.PopAsync();
                     entryNumber.Text = result.Text;
                     id = result.Text;
-                    entryNumber.IsEnabled = false;
-                    PPicker_btn.IsEnabled = false;
-                    PPicker.IsEnabled = false; SearchParameterEnter.IsEnabled = false;
+                    //entryNumber.IsEnabled = false;
+                    ///PPicker_btn.IsEnabled = false;
+                    //PPicker.IsEnabled = false; SearchParameterEnter.IsEnabled = false;
+                   viewModel.SelectedParameterType=viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
                     SearchParameterEnter.Text = AppResources.ZVATLookupIDTaxpayerTinType1;
                     try
                     {
