@@ -2516,6 +2516,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OR.
+        /// </summary>
+        public static string ZOR {
+            get {
+                return ResourceManager.GetString("ZOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authentication failed. Password locked.
         /// </summary>
         public static string ZPasswordLocked {
@@ -2575,6 +2584,15 @@ namespace GAZT {
         public static string ZPleaseselectparametertype {
             get {
                 return ResourceManager.GetString("ZPleaseselectparametertype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QR Scanner.
+        /// </summary>
+        public static string ZQRScanner {
+            get {
+                return ResourceManager.GetString("ZQRScanner", resourceCulture);
             }
         }
         
@@ -2746,6 +2764,15 @@ namespace GAZT {
         public static string ZStepsTitle {
             get {
                 return ResourceManager.GetString("ZStepsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To perform the search, you can scan QR code:.
+        /// </summary>
+        public static string ZStepsTitleScan {
+            get {
+                return ResourceManager.GetString("ZStepsTitleScan", resourceCulture);
             }
         }
         

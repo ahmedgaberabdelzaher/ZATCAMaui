@@ -20,6 +20,23 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnBClicked { get;  set; }
 
         #endregion
+        private TaxEvasionReportList _taxEvasionListobj = null;
+        public TaxEvasionReportList TaxEvasionListobj
+        {
+            get
+            {
+                return _taxEvasionListobj;
+
+            }
+            set
+            {
+                _taxEvasionListobj = value;
+                //if (_selectedTaxEvasionListItem != null)
+                //{ passSelectedTaxEvasionItem(); }
+
+                RaisePropertyChanged("TaxEvasionListobj");
+            }
+        }
 
         private string _categorySelected_Index = "0";
         public string CategorySelected_Index
@@ -117,23 +134,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private TaxEvasionReportList _taxEvasionListobj = null;
-        public TaxEvasionReportList TaxEvasionListobj
-        {
-            get
-            {
-                return _taxEvasionListobj;
 
-            }
-            set
-            {
-                _taxEvasionListobj = value;
-                //if (_selectedTaxEvasionListItem != null)
-                //{ passSelectedTaxEvasionItem(); }
-
-                RaisePropertyChanged("TaxEvasionListobj");
-            }
-        }
 
 
 
@@ -187,8 +188,6 @@ namespace GAZT.ViewModel.NewViewModel
 
                         if (CategorySelected_Index != "0")
                         {
-                            TaxEvasionListobj = new TaxEvasionReportList();
-
                             TaxEvasionListobj.ViolationType = CategorySelected_Index;
 
                             //TaxEvasionReportList tax = new TaxEvasionReportList();

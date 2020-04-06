@@ -33,7 +33,10 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-      
+
+            
+
+           ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             ServicePointManager
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;

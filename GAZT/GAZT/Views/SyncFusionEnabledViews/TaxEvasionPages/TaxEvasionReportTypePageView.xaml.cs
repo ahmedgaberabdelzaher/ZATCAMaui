@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -23,6 +24,8 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+
+            viewModel.TaxEvasionListobj = new TaxEvasionReportList();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsimgVisiblec1 = false;
             viewModel.IsimgVisiblec2 = false;

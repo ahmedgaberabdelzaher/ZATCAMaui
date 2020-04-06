@@ -21,6 +21,7 @@ namespace GAZT.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
