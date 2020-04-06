@@ -1540,7 +1540,10 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+                    
+                        HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
+
+                    
 
                     if (GAZTVATLookUp != null)
                     {
@@ -1572,7 +1575,7 @@ namespace GAZT.Manager
                     return vATLookUp;
                 }
                 catch (Exception ex)
-                {
+               {
                     //if (string.Equals(ex.Message, AppResources.Nodataavailable))
                     //{
                     //    throw new Exception(AppResources.Nodataavailable);
@@ -1581,7 +1584,8 @@ namespace GAZT.Manager
                     //{
                     //    throw new Exception(AppResources.NetworkConnectivityIssue);
                     //}
-                    return null;
+                    throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                   
                 }
             }
             else
@@ -3207,7 +3211,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static FormBundleModel GAZTGetFormBundleModel()
+        public static async Task<FormBundleModel> GAZTGetFormBundleModel()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3221,7 +3225,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTFormBundleList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
 
                     if (GAZTFormBundleList != null)
                     {
@@ -3242,7 +3246,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String FormBundleList = GAZTFormBundleList.Content.ReadAsStringAsync().Result;
+                        String FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
 
                         ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleModel>(FormBundleList);
 
@@ -3271,7 +3275,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static FormBundleApplicationNumberModel GAZTGetFormBundleApplicationNumberModel(string Fbtyp)
+        public static async Task<FormBundleApplicationNumberModel> GAZTGetFormBundleApplicationNumberModel(string Fbtyp)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3286,7 +3290,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTFormBundleList = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
 
                     if (GAZTFormBundleList != null)
                     {
@@ -3307,7 +3311,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String FormBundleList = GAZTFormBundleList.Content.ReadAsStringAsync().Result;
+                        String FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
 
                         ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleApplicationNumberModel>(FormBundleList);
 
@@ -3895,7 +3899,7 @@ namespace GAZT.Manager
         }
 
 
-        public static TERFFAQObject GAZTTESFAQRetrive()
+        public static async Task<TERFFAQObject> GAZTTESFAQRetrive()
         {
 
             FAQPost Cred = new FAQPost();
@@ -3915,14 +3919,14 @@ namespace GAZT.Manager
                 try
                 {
 
-                    string url = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
+                    string url = Constants.GAZTGetFAQ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var response = await res.Content.ReadAsStringAsync();
                     terffaq = JsonConvert.DeserializeObject<TERFFAQObject>(response);
                     return terffaq;
                 }

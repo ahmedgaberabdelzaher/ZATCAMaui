@@ -28,6 +28,7 @@ namespace GAZT.Views.NewViews
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
+            OnPageLoad();
             //CPicker_imgtap.IsEnabled = false;
             //tapImg.Tapped += Gesture_Tapped;
 
@@ -35,10 +36,30 @@ namespace GAZT.Views.NewViews
             //{
             //    tapImg.Tapped -= Gesture_Tapped;
             //}
-            viewModel.onPageLoad();
-          
+
+
             SetLTR();
         }
+
+
+        public async void OnPageLoad()
+        {
+            Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+
+
+            await Task.Run(async () =>
+            {
+                await viewModel.onPageLoad();
+            });
+            Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             DDlIDType.IsOpen = true;

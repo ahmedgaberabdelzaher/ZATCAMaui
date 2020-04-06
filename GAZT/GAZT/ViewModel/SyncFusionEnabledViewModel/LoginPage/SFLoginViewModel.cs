@@ -41,19 +41,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         #region Property
 
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                this.RaisePropertyChanged("IsLoading");
-            }
-        }
+        
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.

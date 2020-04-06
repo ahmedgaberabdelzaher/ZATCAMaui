@@ -203,6 +203,12 @@ namespace GAZT.ViewModel.NewViewModel
 
                 OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
                 bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
                 bool _isNEwEmailAndOldEmailSame = IsNewEmailSameAsOldEmailSame();
@@ -230,6 +236,11 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 }
+
+                Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             });
 
         }

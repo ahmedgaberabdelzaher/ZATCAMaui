@@ -2927,7 +2927,7 @@
     <value> PDF Not Available</value>
   </data>
   <data name="ZZZSetLanguageText" xml:space="preserve">
-    <value>عربي</value>
+    <value>English</value>
     <comment>option page</comment>
   </data>
   <data name="ZZSort" xml:space="preserve">
@@ -2952,6 +2952,18 @@
   <data name="ZZZIndividualInformation" xml:space="preserve">
     <value>Individual Information</value>
     <comment>Sign up</comment>
+  </data>
+  <data name="ZOR" xml:space="preserve">
+    <value>OR</value>
+    <comment>Vat Look Up</comment>
+  </data>
+  <data name="ZQRScanner" xml:space="preserve">
+    <value>QR Scanner</value>
+    <comment>vat Look up</comment>
+  </data>
+  <data name="ZStepsTitleScan" xml:space="preserve">
+    <value>To perform the search, you can scan QR code:</value>
+    <comment>vat look up</comment>
   </data>
   <data name="ZZAnexceptionwasraised" xml:space="preserve">
     <value>An exception was raised</value>

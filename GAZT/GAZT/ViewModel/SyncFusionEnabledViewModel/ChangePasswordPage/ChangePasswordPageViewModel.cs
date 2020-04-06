@@ -276,6 +276,10 @@ namespace GAZT
 
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
                // await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 if (_isMandatoryFieldEntered)
@@ -313,6 +317,10 @@ namespace GAZT
                        
                     });
                 }
+                Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             });
 
 

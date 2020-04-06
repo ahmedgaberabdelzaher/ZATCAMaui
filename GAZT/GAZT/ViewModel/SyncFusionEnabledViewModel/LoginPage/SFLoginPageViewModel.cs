@@ -37,20 +37,39 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// </summary>
         public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+
+
            
-            this.LoginCommand = new Command(() =>
+
+            this.LoginCommand = new Command(async() =>
             {
-                Task LoginClickedTask = Task.Run(async () =>
-                {
-                    if (lastTapped < DateTime.Now.AddSeconds(-2))
-                    {
-                        await this.LoginClicked();
-                    }
+                //Task LoginClickedTask = Task.Run(async () =>
+                //{
+                //    if (lastTapped < DateTime.Now.AddSeconds(-2))
+                //    {
+                //        await this.LoginClicked();
+                //    }
                   
-                });
+                //});
                 try
                 {
-                    LoginClickedTask.Wait();
+                    Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+                    await Task.Run(async() =>
+                    {
+                        Task LoginClickedTask = Task.Run(async () =>
+                        {
+                                await this.LoginClicked();
+                        });
+                        LoginClickedTask.Wait();
+                    });
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                 }
                 catch (AggregateException ae)
                 {
@@ -237,6 +256,20 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 _tINID = value;
                 RaisePropertyChanged("TINID");
+            }
+        }
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                this.RaisePropertyChanged("IsLoading");
             }
         }
 

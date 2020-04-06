@@ -153,11 +153,12 @@ namespace GAZT.ViewModel.NewViewModel
                 //Name = string.Empty;
                 //StringBuilder captcha = GetCaptcha();
                 //Captcha = captcha.ToString();
-                //if (SelectedParameterType != null)
-                //{
-                //    TxtSearchParameter = SelectedParameterType.ParameterType;
-                //    SetPlaceholderText();
-                //}
+                if (SelectedParameterType != null)
+                {
+                    SetSelectedParameterTypeData();
+                    TxtSearchParameter = SelectedParameterType.ParameterType;
+                    SetPlaceholderText();
+               }
                 RaisePropertyChanged("_selectedParameterType");
               
             }
@@ -260,8 +261,17 @@ namespace GAZT.ViewModel.NewViewModel
                 Captcha = captcha.ToString();
             });
             OnHomeIconClicked = new Command(() =>
-            {
-                _navigationService.NavigateTo(App.SFLandingPageView);
+            {if (App.TP != null)
+                {
+                    _navigationService.NavigateTo(App.SFLandingPageView);
+                }
+                else
+                
+                {
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                }
+
+                
             });
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
             {
